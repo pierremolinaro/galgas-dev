@@ -464,45 +464,45 @@ override method @templateLiteralUIntExpressionAST templateExpressionAnalysis
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @templateLiteralSIntExpressionAST templateExpressionAnalysis
-  ?let @lstring unused inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression
-{
-  outExpression = @literalSIntExpressionForGeneration.new {
-    !inAnalysisContext.mPredefinedTypes.mSIntType
-    !self.mLiteralInt.location
-    !self.mLiteralInt.sint}
-}
+#override method @templateLiteralSIntExpressionAST templateExpressionAnalysis
+#  ?let @lstring unused inUsefulnessCallerEntityName
+#  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+#  ?let @templateAnalysisContext inAnalysisContext
+#  !@semanticExpressionForGeneration outExpression
+#{
+#  outExpression = @literalSIntExpressionForGeneration.new {
+#    !inAnalysisContext.mPredefinedTypes.mSIntType
+#    !self.mLiteralInt.location
+#    !self.mLiteralInt.sint}
+#}
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @templateLiteralUInt64ExpressionAST templateExpressionAnalysis
-  ?let @lstring unused inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression
-{
-  outExpression = @literalUInt64ExpressionForGeneration.new {
-    !inAnalysisContext.mPredefinedTypes.mUInt64Type
-    !self.mLiteralInt.location
-    !self.mLiteralInt.uint64}
-}
+#override method @templateLiteralUInt64ExpressionAST templateExpressionAnalysis
+#  ?let @lstring unused inUsefulnessCallerEntityName
+#  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+#  ?let @templateAnalysisContext inAnalysisContext
+#  !@semanticExpressionForGeneration outExpression
+#{
+#  outExpression = @literalUInt64ExpressionForGeneration.new {
+#    !inAnalysisContext.mPredefinedTypes.mUInt64Type
+#    !self.mLiteralInt.location
+#    !self.mLiteralInt.uint64}
+#}
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @templateLiteralSInt64ExpressionAST templateExpressionAnalysis
-  ?let @lstring unused inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression
-{
-  outExpression = @literalSInt64ExpressionForGeneration.new {
-    !inAnalysisContext.mPredefinedTypes.mSInt64Type
-    !self.mLiteralInt.location
-    !self.mLiteralInt.sint64}
-}
+#override method @templateLiteralSInt64ExpressionAST templateExpressionAnalysis
+#  ?let @lstring unused inUsefulnessCallerEntityName
+#  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+#  ?let @templateAnalysisContext inAnalysisContext
+#  !@semanticExpressionForGeneration outExpression
+#{
+#  outExpression = @literalSInt64ExpressionForGeneration.new {
+#    !inAnalysisContext.mPredefinedTypes.mSInt64Type
+#    !self.mLiteralInt.location
+#    !self.mLiteralInt.sint64}
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

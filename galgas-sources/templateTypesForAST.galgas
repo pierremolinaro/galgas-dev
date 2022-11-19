@@ -124,21 +124,21 @@ refclass @templateLiteralUIntExpressionAST : @templateExpressionAST {
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @templateLiteralSIntExpressionAST : @templateExpressionAST {
-  private let @lsint mLiteralInt
-}
+#refclass @templateLiteralSIntExpressionAST : @templateExpressionAST {
+#  private let @lsint mLiteralInt
+#}
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @templateLiteralUInt64ExpressionAST : @templateExpressionAST {
-  private let @luint64 mLiteralInt
-}
+#refclass @templateLiteralUInt64ExpressionAST : @templateExpressionAST {
+#  private let @luint64 mLiteralInt
+#}
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @templateLiteralSInt64ExpressionAST : @templateExpressionAST {
-  private let @lsint64 mLiteralInt
-}
+#refclass @templateLiteralSInt64ExpressionAST : @templateExpressionAST {
+#  private let @lsint64 mLiteralInt
+#}
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

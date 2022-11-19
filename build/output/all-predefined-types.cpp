@@ -6217,6 +6217,375 @@ GALGAS_lbigint cEnumerator_lbigintlist::current_mValue (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//@lsint type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_lsint ("lsint",
+                              NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_lsint::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lsint ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_lsint::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lsint (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lsint GALGAS_lsint::extractObject (const GALGAS_object & inObject,
+                                          C_Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
+  GALGAS_lsint result ;
+  const GALGAS_lsint * p = (const GALGAS_lsint *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_lsint *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lsint", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lsint::GALGAS_lsint (void) :
+mProperty_sint (),
+mProperty_location () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lsint::~ GALGAS_lsint (void) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lsint::GALGAS_lsint (const GALGAS_sint & inOperand0,
+                            const GALGAS_location & inOperand1) :
+mProperty_sint (inOperand0),
+mProperty_location (inOperand1) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lsint GALGAS_lsint::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_lsint (GALGAS_sint::constructor_default (HERE),
+                       GALGAS_location::constructor_nowhere (HERE)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lsint GALGAS_lsint::constructor_new (const GALGAS_sint & inOperand0,
+                                            const GALGAS_location & inOperand1 
+                                            COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_lsint result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result = GALGAS_lsint (inOperand0, inOperand1) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_lsint::objectCompare (const GALGAS_lsint & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mProperty_sint.objectCompare (inOperand.mProperty_sint) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_lsint::isValid (void) const {
+  return mProperty_sint.isValid () && mProperty_location.isValid () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_lsint::drop (void) {
+  mProperty_sint.drop () ;
+  mProperty_location.drop () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_lsint::description (C_String & ioString,
+                                const int32_t inIndentation) const {
+  ioString << "<struct @lsint:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mProperty_sint.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_location.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lsint64 type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_lsint_36__34_ ("lsint64",
+                                      NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_lsint_36__34_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lsint_36__34_ ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_lsint_36__34_::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lsint_36__34_ (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::extractObject (const GALGAS_object & inObject,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_lsint_36__34_ result ;
+  const GALGAS_lsint_36__34_ * p = (const GALGAS_lsint_36__34_ *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_lsint_36__34_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lsint64", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lsint_36__34_::GALGAS_lsint_36__34_ (void) :
+mProperty_sint_36__34_ (),
+mProperty_location () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lsint_36__34_::~ GALGAS_lsint_36__34_ (void) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lsint_36__34_::GALGAS_lsint_36__34_ (const GALGAS_sint_36__34_ & inOperand0,
+                                            const GALGAS_location & inOperand1) :
+mProperty_sint_36__34_ (inOperand0),
+mProperty_location (inOperand1) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_lsint_36__34_ (GALGAS_sint_36__34_::constructor_default (HERE),
+                               GALGAS_location::constructor_nowhere (HERE)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::constructor_new (const GALGAS_sint_36__34_ & inOperand0,
+                                                            const GALGAS_location & inOperand1 
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_lsint_36__34_ result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result = GALGAS_lsint_36__34_ (inOperand0, inOperand1) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_lsint_36__34_::objectCompare (const GALGAS_lsint_36__34_ & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mProperty_sint_36__34_.objectCompare (inOperand.mProperty_sint_36__34_) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_lsint_36__34_::isValid (void) const {
+  return mProperty_sint_36__34_.isValid () && mProperty_location.isValid () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_lsint_36__34_::drop (void) {
+  mProperty_sint_36__34_.drop () ;
+  mProperty_location.drop () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_lsint_36__34_::description (C_String & ioString,
+                                        const int32_t inIndentation) const {
+  ioString << "<struct @lsint64:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mProperty_sint_36__34_.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_location.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@luint64 type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_luint_36__34_ ("luint64",
+                                      NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_luint_36__34_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_luint_36__34_ ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_luint_36__34_::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_luint_36__34_ (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_luint_36__34_ GALGAS_luint_36__34_::extractObject (const GALGAS_object & inObject,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_luint_36__34_ result ;
+  const GALGAS_luint_36__34_ * p = (const GALGAS_luint_36__34_ *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_luint_36__34_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("luint64", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_luint_36__34_::GALGAS_luint_36__34_ (void) :
+mProperty_uint_36__34_ (),
+mProperty_location () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_luint_36__34_::~ GALGAS_luint_36__34_ (void) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_luint_36__34_::GALGAS_luint_36__34_ (const GALGAS_uint_36__34_ & inOperand0,
+                                            const GALGAS_location & inOperand1) :
+mProperty_uint_36__34_ (inOperand0),
+mProperty_location (inOperand1) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_luint_36__34_ GALGAS_luint_36__34_::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_luint_36__34_ (GALGAS_uint_36__34_::constructor_default (HERE),
+                               GALGAS_location::constructor_nowhere (HERE)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_luint_36__34_ GALGAS_luint_36__34_::constructor_new (const GALGAS_uint_36__34_ & inOperand0,
+                                                            const GALGAS_location & inOperand1 
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_luint_36__34_ result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result = GALGAS_luint_36__34_ (inOperand0, inOperand1) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_luint_36__34_::objectCompare (const GALGAS_luint_36__34_ & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mProperty_uint_36__34_.objectCompare (inOperand.mProperty_uint_36__34_) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_luint_36__34_::isValid (void) const {
+  return mProperty_uint_36__34_.isValid () && mProperty_location.isValid () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_luint_36__34_::drop (void) {
+  mProperty_uint_36__34_.drop () ;
+  mProperty_location.drop () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_luint_36__34_::description (C_String & ioString,
+                                        const int32_t inIndentation) const {
+  ioString << "<struct @luint64:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mProperty_uint_36__34_.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_location.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //@range type
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -7579,375 +7948,6 @@ void GALGAS_lbigint::description (C_String & ioString,
     ioString << " not built" ;
   }else{
     mProperty_bigint.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_location.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@lsint type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lsint ("lsint",
-                              NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_lsint::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lsint ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_lsint::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_lsint (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lsint GALGAS_lsint::extractObject (const GALGAS_object & inObject,
-                                          C_Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
-  GALGAS_lsint result ;
-  const GALGAS_lsint * p = (const GALGAS_lsint *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lsint *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lsint", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lsint::GALGAS_lsint (void) :
-mProperty_sint (),
-mProperty_location () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lsint::~ GALGAS_lsint (void) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lsint::GALGAS_lsint (const GALGAS_sint & inOperand0,
-                            const GALGAS_location & inOperand1) :
-mProperty_sint (inOperand0),
-mProperty_location (inOperand1) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lsint GALGAS_lsint::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_lsint (GALGAS_sint::constructor_default (HERE),
-                       GALGAS_location::constructor_nowhere (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lsint GALGAS_lsint::constructor_new (const GALGAS_sint & inOperand0,
-                                            const GALGAS_location & inOperand1 
-                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_lsint result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_lsint (inOperand0, inOperand1) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_lsint::objectCompare (const GALGAS_lsint & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mProperty_sint.objectCompare (inOperand.mProperty_sint) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_lsint::isValid (void) const {
-  return mProperty_sint.isValid () && mProperty_location.isValid () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_lsint::drop (void) {
-  mProperty_sint.drop () ;
-  mProperty_location.drop () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_lsint::description (C_String & ioString,
-                                const int32_t inIndentation) const {
-  ioString << "<struct @lsint:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mProperty_sint.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_location.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@luint64 type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_luint_36__34_ ("luint64",
-                                      NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_luint_36__34_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_luint_36__34_ ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_luint_36__34_::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_luint_36__34_ (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_luint_36__34_ GALGAS_luint_36__34_::extractObject (const GALGAS_object & inObject,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_luint_36__34_ result ;
-  const GALGAS_luint_36__34_ * p = (const GALGAS_luint_36__34_ *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_luint_36__34_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("luint64", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_luint_36__34_::GALGAS_luint_36__34_ (void) :
-mProperty_uint_36__34_ (),
-mProperty_location () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_luint_36__34_::~ GALGAS_luint_36__34_ (void) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_luint_36__34_::GALGAS_luint_36__34_ (const GALGAS_uint_36__34_ & inOperand0,
-                                            const GALGAS_location & inOperand1) :
-mProperty_uint_36__34_ (inOperand0),
-mProperty_location (inOperand1) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_luint_36__34_ GALGAS_luint_36__34_::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_luint_36__34_ (GALGAS_uint_36__34_::constructor_default (HERE),
-                               GALGAS_location::constructor_nowhere (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_luint_36__34_ GALGAS_luint_36__34_::constructor_new (const GALGAS_uint_36__34_ & inOperand0,
-                                                            const GALGAS_location & inOperand1 
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_luint_36__34_ result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_luint_36__34_ (inOperand0, inOperand1) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_luint_36__34_::objectCompare (const GALGAS_luint_36__34_ & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mProperty_uint_36__34_.objectCompare (inOperand.mProperty_uint_36__34_) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_luint_36__34_::isValid (void) const {
-  return mProperty_uint_36__34_.isValid () && mProperty_location.isValid () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_luint_36__34_::drop (void) {
-  mProperty_uint_36__34_.drop () ;
-  mProperty_location.drop () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_luint_36__34_::description (C_String & ioString,
-                                        const int32_t inIndentation) const {
-  ioString << "<struct @luint64:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mProperty_uint_36__34_.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_location.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@lsint64 type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lsint_36__34_ ("lsint64",
-                                      NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_lsint_36__34_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lsint_36__34_ ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_lsint_36__34_::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_lsint_36__34_ (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::extractObject (const GALGAS_object & inObject,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_lsint_36__34_ result ;
-  const GALGAS_lsint_36__34_ * p = (const GALGAS_lsint_36__34_ *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lsint_36__34_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lsint64", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lsint_36__34_::GALGAS_lsint_36__34_ (void) :
-mProperty_sint_36__34_ (),
-mProperty_location () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lsint_36__34_::~ GALGAS_lsint_36__34_ (void) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lsint_36__34_::GALGAS_lsint_36__34_ (const GALGAS_sint_36__34_ & inOperand0,
-                                            const GALGAS_location & inOperand1) :
-mProperty_sint_36__34_ (inOperand0),
-mProperty_location (inOperand1) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_lsint_36__34_ (GALGAS_sint_36__34_::constructor_default (HERE),
-                               GALGAS_location::constructor_nowhere (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::constructor_new (const GALGAS_sint_36__34_ & inOperand0,
-                                                            const GALGAS_location & inOperand1 
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_lsint_36__34_ result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_lsint_36__34_ (inOperand0, inOperand1) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_lsint_36__34_::objectCompare (const GALGAS_lsint_36__34_ & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mProperty_sint_36__34_.objectCompare (inOperand.mProperty_sint_36__34_) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_lsint_36__34_::isValid (void) const {
-  return mProperty_sint_36__34_.isValid () && mProperty_location.isValid () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_lsint_36__34_::drop (void) {
-  mProperty_sint_36__34_.drop () ;
-  mProperty_location.drop () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_lsint_36__34_::description (C_String & ioString,
-                                        const int32_t inIndentation) const {
-  ioString << "<struct @lsint64:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mProperty_sint_36__34_.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_location.description (ioString, inIndentation+1) ;
   }

@@ -5060,6 +5060,258 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigintlist ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+// Phase 1: @lsint struct
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_lsint : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GALGAS_sint mProperty_sint ;
+  public: inline GALGAS_sint readProperty_sint (void) const {
+    return mProperty_sint ;
+  }
+
+  public: GALGAS_location mProperty_location ;
+  public: inline GALGAS_location readProperty_location (void) const {
+    return mProperty_location ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public: VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_lsint constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_lsint (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setSint (const GALGAS_sint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_sint = inValue ;
+  }
+
+  public: inline void setter_setLocation (const GALGAS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_location = inValue ;
+  }
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public: virtual ~ GALGAS_lsint (void) ;
+
+//--------------------------------- Native constructor
+  public: GALGAS_lsint (const GALGAS_sint & in_sint,
+                        const GALGAS_location & in_location) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_lsint extractObject (const GALGAS_object & inObject,
+                                             C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_lsint constructor_new (const class GALGAS_sint & inOperand0,
+                                                     const class GALGAS_location & inOperand1
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_lsint & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_lsint class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lsint ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @lsint_36__34_ struct
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_lsint_36__34_ : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GALGAS_sint_36__34_ mProperty_sint_36__34_ ;
+  public: inline GALGAS_sint_36__34_ readProperty_sint_36__34_ (void) const {
+    return mProperty_sint_36__34_ ;
+  }
+
+  public: GALGAS_location mProperty_location ;
+  public: inline GALGAS_location readProperty_location (void) const {
+    return mProperty_location ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public: VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_lsint_36__34_ constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_lsint_36__34_ (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setSint_36__34_ (const GALGAS_sint_36__34_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_sint_36__34_ = inValue ;
+  }
+
+  public: inline void setter_setLocation (const GALGAS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_location = inValue ;
+  }
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public: virtual ~ GALGAS_lsint_36__34_ (void) ;
+
+//--------------------------------- Native constructor
+  public: GALGAS_lsint_36__34_ (const GALGAS_sint_36__34_ & in_sint_36__34_,
+                                const GALGAS_location & in_location) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_lsint_36__34_ extractObject (const GALGAS_object & inObject,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_lsint_36__34_ constructor_new (const class GALGAS_sint_36__34_ & inOperand0,
+                                                             const class GALGAS_location & inOperand1
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_lsint_36__34_ & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_lsint_36__34_ class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lsint_36__34_ ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @luint_36__34_ struct
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_luint_36__34_ : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GALGAS_uint_36__34_ mProperty_uint_36__34_ ;
+  public: inline GALGAS_uint_36__34_ readProperty_uint_36__34_ (void) const {
+    return mProperty_uint_36__34_ ;
+  }
+
+  public: GALGAS_location mProperty_location ;
+  public: inline GALGAS_location readProperty_location (void) const {
+    return mProperty_location ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public: VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_luint_36__34_ constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_luint_36__34_ (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setUint_36__34_ (const GALGAS_uint_36__34_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_uint_36__34_ = inValue ;
+  }
+
+  public: inline void setter_setLocation (const GALGAS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_location = inValue ;
+  }
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public: virtual ~ GALGAS_luint_36__34_ (void) ;
+
+//--------------------------------- Native constructor
+  public: GALGAS_luint_36__34_ (const GALGAS_uint_36__34_ & in_uint_36__34_,
+                                const GALGAS_location & in_location) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_luint_36__34_ extractObject (const GALGAS_object & inObject,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_luint_36__34_ constructor_new (const class GALGAS_uint_36__34_ & inOperand0,
+                                                             const class GALGAS_location & inOperand1
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_luint_36__34_ & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_luint_36__34_ class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luint_36__34_ ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 // Phase 1: @range struct
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -5968,258 +6220,6 @@ class GALGAS_lbigint : public AC_GALGAS_root {
 //----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigint ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @lsint struct
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_lsint : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GALGAS_sint mProperty_sint ;
-  public: inline GALGAS_sint readProperty_sint (void) const {
-    return mProperty_sint ;
-  }
-
-  public: GALGAS_location mProperty_location ;
-  public: inline GALGAS_location readProperty_location (void) const {
-    return mProperty_location ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
-  public: VIRTUAL_IN_DEBUG void drop (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_lsint constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Default constructor
-  public: GALGAS_lsint (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setSint (const GALGAS_sint & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_sint = inValue ;
-  }
-
-  public: inline void setter_setLocation (const GALGAS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_location = inValue ;
-  }
-
-//--------------------------------- Virtual destructor (in debug mode)
-  public: virtual ~ GALGAS_lsint (void) ;
-
-//--------------------------------- Native constructor
-  public: GALGAS_lsint (const GALGAS_sint & in_sint,
-                        const GALGAS_location & in_location) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_lsint extractObject (const GALGAS_object & inObject,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_lsint constructor_new (const class GALGAS_sint & inOperand0,
-                                                     const class GALGAS_location & inOperand1
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_lsint & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lsint class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lsint ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @luint_36__34_ struct
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_luint_36__34_ : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GALGAS_uint_36__34_ mProperty_uint_36__34_ ;
-  public: inline GALGAS_uint_36__34_ readProperty_uint_36__34_ (void) const {
-    return mProperty_uint_36__34_ ;
-  }
-
-  public: GALGAS_location mProperty_location ;
-  public: inline GALGAS_location readProperty_location (void) const {
-    return mProperty_location ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
-  public: VIRTUAL_IN_DEBUG void drop (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_luint_36__34_ constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Default constructor
-  public: GALGAS_luint_36__34_ (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setUint_36__34_ (const GALGAS_uint_36__34_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_uint_36__34_ = inValue ;
-  }
-
-  public: inline void setter_setLocation (const GALGAS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_location = inValue ;
-  }
-
-//--------------------------------- Virtual destructor (in debug mode)
-  public: virtual ~ GALGAS_luint_36__34_ (void) ;
-
-//--------------------------------- Native constructor
-  public: GALGAS_luint_36__34_ (const GALGAS_uint_36__34_ & in_uint_36__34_,
-                                const GALGAS_location & in_location) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_luint_36__34_ extractObject (const GALGAS_object & inObject,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_luint_36__34_ constructor_new (const class GALGAS_uint_36__34_ & inOperand0,
-                                                             const class GALGAS_location & inOperand1
-                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_luint_36__34_ & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_luint_36__34_ class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luint_36__34_ ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @lsint_36__34_ struct
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_lsint_36__34_ : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GALGAS_sint_36__34_ mProperty_sint_36__34_ ;
-  public: inline GALGAS_sint_36__34_ readProperty_sint_36__34_ (void) const {
-    return mProperty_sint_36__34_ ;
-  }
-
-  public: GALGAS_location mProperty_location ;
-  public: inline GALGAS_location readProperty_location (void) const {
-    return mProperty_location ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
-  public: VIRTUAL_IN_DEBUG void drop (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_lsint_36__34_ constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Default constructor
-  public: GALGAS_lsint_36__34_ (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setSint_36__34_ (const GALGAS_sint_36__34_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_sint_36__34_ = inValue ;
-  }
-
-  public: inline void setter_setLocation (const GALGAS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_location = inValue ;
-  }
-
-//--------------------------------- Virtual destructor (in debug mode)
-  public: virtual ~ GALGAS_lsint_36__34_ (void) ;
-
-//--------------------------------- Native constructor
-  public: GALGAS_lsint_36__34_ (const GALGAS_sint_36__34_ & in_sint_36__34_,
-                                const GALGAS_location & in_location) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_lsint_36__34_ extractObject (const GALGAS_object & inObject,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_lsint_36__34_ constructor_new (const class GALGAS_sint_36__34_ & inOperand0,
-                                                             const class GALGAS_location & inOperand1
-                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_lsint_36__34_ & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_lsint_36__34_ class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lsint_36__34_ ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //

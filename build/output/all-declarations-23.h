@@ -923,3 +923,12 @@ void routine_checkMethodSignatures (const class GALGAS_formalParameterListForGen
                                     class C_Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'generateFewHeaderFiles'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_bool function_generateFewHeaderFiles (class C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+

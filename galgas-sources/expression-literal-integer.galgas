@@ -8,21 +8,21 @@
 
 #·····················································································································
 
-refclass @literalUInt64ExpressionAST : @semanticExpressionAST {
-  private let @luint64 mValue
-}
+#refclass @literalUInt64ExpressionAST : @semanticExpressionAST {
+#  private let @luint64 mValue
+#}
 
 #·····················································································································
 
-refclass @literalSIntExpressionAST : @semanticExpressionAST {
-  private let @lsint mValue
-}
+#refclass @literalSIntExpressionAST : @semanticExpressionAST {
+#  private let @lsint mValue
+#}
 
 #·····················································································································
 
-refclass @literalSInt64ExpressionAST : @semanticExpressionAST {
-  private let @lsint64 mValue
-}
+#refclass @literalSInt64ExpressionAST : @semanticExpressionAST {
+#  private let @lsint64 mValue
+#}
 
 #·····················································································································
 
@@ -66,71 +66,71 @@ syntax extension galgas4ExpressionSyntax {
 #! SEMANTICS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @literalUInt64ExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap unused ioTypeMap
-{
-}
+#override method @literalUInt64ExpressionAST enterExpressionInSemanticContext
+#  ?!@unifiedTypeMap unused ioTypeMap
+#{
+#}
 
 #·····················································································································
 
-override method @literalUInt64ExpressionAST analyzeSemanticExpression
-  ?let @lstring unused inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMapEntry unused inType
-  ?let @analysisContext inAnalysisContext
-  ?!@localVarManager unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression
-{
-  outExpression = @literalUInt64ExpressionForGeneration.new {
-    !inAnalysisContext.mPredefinedTypes.mUInt64Type
-    !self.mValue.location
-    !self.mValue.uint64
-  }
-}
+#override method @literalUInt64ExpressionAST analyzeSemanticExpression
+#  ?let @lstring unused inUsefulnessCallerEntityName
+#  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+#  ?inferenceType: let @unifiedTypeMapEntry unused inType
+#  ?let @analysisContext inAnalysisContext
+#  ?!@localVarManager unused ioVariableMap
+#  !@semanticExpressionForGeneration outExpression
+#{
+#  outExpression = @literalUInt64ExpressionForGeneration.new {
+#    !inAnalysisContext.mPredefinedTypes.mUInt64Type
+#    !self.mValue.location
+#    !self.mValue.uint64
+#  }
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @literalSIntExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap unused ioTypeMap
-{
-}
+#override method @literalSIntExpressionAST enterExpressionInSemanticContext
+#  ?!@unifiedTypeMap unused ioTypeMap
+#{
+#}
 
 #·····················································································································
 
-override method @literalSIntExpressionAST analyzeSemanticExpression
-  ?let @lstring unused inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMapEntry unused inType
-  ?let @analysisContext inAnalysisContext
-  ?!@localVarManager unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression
-{
-  outExpression = @literalSIntExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mSIntType !self.mValue.location !self.mValue.sint}
-}
+#override method @literalSIntExpressionAST analyzeSemanticExpression
+#  ?let @lstring unused inUsefulnessCallerEntityName
+#  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+#  ?inferenceType: let @unifiedTypeMapEntry unused inType
+#  ?let @analysisContext inAnalysisContext
+#  ?!@localVarManager unused ioVariableMap
+#  !@semanticExpressionForGeneration outExpression
+#{
+#  outExpression = @literalSIntExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mSIntType !self.mValue.location !self.mValue.sint}
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @literalSInt64ExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap unused ioTypeMap
-{
-}
+#override method @literalSInt64ExpressionAST enterExpressionInSemanticContext
+#  ?!@unifiedTypeMap unused ioTypeMap
+#{
+#}
 
 #·····················································································································
 
-override method @literalSInt64ExpressionAST analyzeSemanticExpression
-  ?let @lstring unused inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMapEntry unused inType
-  ?let @analysisContext inAnalysisContext
-  ?!@localVarManager unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression
-{
-  outExpression = @literalSInt64ExpressionForGeneration.new {
-    !inAnalysisContext.mPredefinedTypes.mSInt64Type
-    !self.mValue.location
-    !self.mValue.sint64
-  }
-}
+#override method @literalSInt64ExpressionAST analyzeSemanticExpression
+#  ?let @lstring unused inUsefulnessCallerEntityName
+#  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+#  ?inferenceType: let @unifiedTypeMapEntry unused inType
+#  ?let @analysisContext inAnalysisContext
+#  ?!@localVarManager unused ioVariableMap
+#  !@semanticExpressionForGeneration outExpression
+#{
+#  outExpression = @literalSInt64ExpressionForGeneration.new {
+#    !inAnalysisContext.mPredefinedTypes.mSInt64Type
+#    !self.mValue.location
+#    !self.mValue.sint64
+#  }
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
