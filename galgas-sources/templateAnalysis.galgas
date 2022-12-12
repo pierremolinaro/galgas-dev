@@ -20,8 +20,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @templateVariableMap {
-  public var @unifiedTypeMapEntry mType
-  public var @string mCppName
+  public let @unifiedTypeMapEntry mType
+  public let @string mCppName
   search searchKey error message "the '%K' variable is not declared"
   insert insertKey error message "the '%K' variable is already declared in %L"
 }
@@ -29,8 +29,8 @@ map @templateVariableMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @templateAnalysisContext {
-  public var @semanticContext mSemanticContext
-  public var @predefinedTypes mPredefinedTypes
+  public let @semanticContext mSemanticContext
+  public let @predefinedTypes mPredefinedTypes
   public var @templateVariableMap mTemplateVariableMap
 }
 

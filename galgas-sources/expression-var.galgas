@@ -3,7 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @varInExpressionAST : @semanticExpressionAST {
-  public var @lstring mVarName
+  public let @lstring mVarName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -76,8 +76,8 @@ override method @varInExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @varInExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @string mCppVarName
-  public var @string mNameForCheckingFormalParameterUsing
+  public let @string mCppVarName
+  public let @string mNameForCheckingFormalParameterUsing
 }
 
 #·····················································································································

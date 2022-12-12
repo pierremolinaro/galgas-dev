@@ -98,7 +98,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
       let errorLocation = [propertyTypeName.location union !propertyName.location]
       error errorLocation
       : "old style property declaration (due to '--error-old-style-property-declaration' option)"
-      fixit { replace "public var @" + propertyTypeName + " " + propertyName }
+      fixit { replace "public let @" + propertyTypeName + " " + propertyName }
     end
   }
 
@@ -307,7 +307,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
 #      let errorLocation = [propertyTypeName.location union !propertyName.location]
 #      error errorLocation
 #      : "old style property declaration (due to '--error-old-style-property-declaration' option)"
-#      fixit { replace "public var @" + propertyTypeName + " " + propertyName }
+#      fixit { replace "public let @" + propertyTypeName + " " + propertyName }
 #    end
 #  }
 

@@ -1,7 +1,7 @@
 
 
 map @aMap {
-  public var @uint value %setter
+  public let @uint value %setter
   insert insertKey error message "the '%K' key is already inserted"
   search searchKey error message "the '%K' key is not inserted"
   remove removeKey error message "the '%K' key is not inserted"

@@ -3,13 +3,13 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @loopInstructionWithoutVariantAST : @semanticInstructionAST {
-  public var @semanticInstructionListAST mFirstInstructions
-  public var @location mEndOfFirstInstructions
-  public var @semanticExpressionAST mLoopExpression
-  public var @location mEndOfLoopExpression
-  public var @semanticInstructionListAST mSecondInstructions
-  public var @location mEndOfSecondInstructions
-  public var @location mEndOfLoopInstruction
+  public let @semanticInstructionListAST mFirstInstructions
+  public let @location mEndOfFirstInstructions
+  public let @semanticExpressionAST mLoopExpression
+  public let @location mEndOfLoopExpression
+  public let @semanticInstructionListAST mSecondInstructions
+  public let @location mEndOfSecondInstructions
+  public let @location mEndOfLoopInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -178,10 +178,10 @@ override method @loopInstructionWithoutVariantAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @loopInstructionWithoutVariantForGeneration : @semanticInstructionForGeneration {
-  public var @location mInstructionLocation
-  public var @semanticInstructionListForGeneration mFirstInstructions
-  public var @semanticExpressionForGeneration mLoopExpression
-  public var @semanticInstructionListForGeneration mSecondInstructions
+  public let @location mInstructionLocation
+  public let @semanticInstructionListForGeneration mFirstInstructions
+  public let @semanticExpressionForGeneration mLoopExpression
+  public let @semanticInstructionListForGeneration mSecondInstructions
 }
 
 #······················································································································*

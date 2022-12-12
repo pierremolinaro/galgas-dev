@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @bangExpressionAST : @semanticExpressionAST {
-  public var @location mOperatorLocation
-  public var @semanticExpressionAST mExpression
+  public let @location mOperatorLocation
+  public let @semanticExpressionAST mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -97,8 +97,8 @@ override method @bangExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @bangExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @semanticExpressionForGeneration mExpression
-  public var @string mReceiverTypeName
+  public let @semanticExpressionForGeneration mExpression
+  public let @string mReceiverTypeName
 }
 
 #·····················································································································

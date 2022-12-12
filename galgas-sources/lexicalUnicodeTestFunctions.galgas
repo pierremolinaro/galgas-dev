@@ -18,8 +18,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #list @lexicalFunctionListAST {
-#  public var @lstring mFunctionName
-#  public var @lexicalFunctionExpressionAST mLexicalExpression
+#  public let @lstring mFunctionName
+#  public let @lexicalFunctionExpressionAST mLexicalExpression
 #}
 
 #······················································································································*

@@ -3,9 +3,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingAbstractExtensionMethodAST : @semanticDeclarationAST {
-  public var @lstring mTypeName
-  public var @lstring mOverridingExtensionMethodName
-  public var @formalParameterListAST mOverridingExtensionMethodFormalParameterList
+  public let @lstring mTypeName
+  public let @lstring mOverridingExtensionMethodName
+  public let @formalParameterListAST mOverridingExtensionMethodFormalParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

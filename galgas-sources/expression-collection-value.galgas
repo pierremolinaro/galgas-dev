@@ -3,7 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @collectionValueElementList {
-  public var @abstractCollectionValueElement mElement
+  public let @abstractCollectionValueElement mElement
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -13,23 +13,23 @@ abstract refclass @abstractCollectionValueElement {}
 #·····················································································································
 
 refclass @expressionCollectionValue : @abstractCollectionValueElement {
-  public var @semanticExpressionAST mExpression
-  public var @location mExpressionLocation
+  public let @semanticExpressionAST mExpression
+  public let @location mExpressionLocation
 }
 
 #·····················································································································
 
 refclass @expressionListCollectionValue : @abstractCollectionValueElement {
-  public var @actualOutputExpressionList mExpressionList
-  public var @location mEndOfExpressionLocation
+  public let @actualOutputExpressionList mExpressionList
+  public let @location mEndOfExpressionLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @collectionValueAST : @semanticExpressionAST {
-  public var @lstring mTypeName # Empty string if infered
-  public var @collectionValueElementList mElementList
-  public var @location mEndOfCollectionValue
+  public let @lstring mTypeName # Empty string if infered
+  public let @collectionValueElementList mElementList
+  public let @location mEndOfCollectionValue
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -293,13 +293,13 @@ override method @expressionListCollectionValue analyze
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @collectionValueElementListForGeneration {
-  public var @abstractCollectionValueElementForGeneration mElement
+  public let @abstractCollectionValueElementForGeneration mElement
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @abstractCollectionValueElementForGeneration {
-  public var @location mExpressionLocation
+  public let @location mExpressionLocation
 }
 
 #·····················································································································
@@ -315,7 +315,7 @@ abstract method @abstractCollectionValueElementForGeneration generateCollectionE
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @expressionCollectionValueForGeneration : @abstractCollectionValueElementForGeneration {
-  public var @semanticExpressionForGeneration mExpression
+  public let @semanticExpressionForGeneration mExpression
 }
 
 #·····················································································································
@@ -344,7 +344,7 @@ override method @expressionCollectionValueForGeneration generateCollectionElemen
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @expressionListCollectionForGeneration : @abstractCollectionValueElementForGeneration {
-  public var @semanticExpressionListForGeneration mExpressionList
+  public let @semanticExpressionListForGeneration mExpressionList
 }
 
 #·····················································································································
@@ -386,7 +386,7 @@ override method @expressionListCollectionForGeneration generateCollectionElement
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @expressionCollectionForGeneration : @semanticExpressionForGeneration {
-  public var @collectionValueElementListForGeneration mElementList
+  public let @collectionValueElementListForGeneration mElementList
 }
 
 #·····················································································································

@@ -3,10 +3,10 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionSwitchBranchListAST {
-  public var @lstringlist mConstantList
-  public var @switchExtractedValuesListAST mAssociatedValuesExtraction
-  public var @templateInstructionListAST mInstructionList
-  public var @location mEndOfBranch
+  public let @lstringlist mConstantList
+  public let @switchExtractedValuesListAST mAssociatedValuesExtraction
+  public let @templateInstructionListAST mInstructionList
+  public let @location mEndOfBranch
 }
 
 #·······················································································································
@@ -216,10 +216,10 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionSwitchBranchListForGeneration {
-  public var @lstringlist mConstantList
-  public var @extractedAssociatedValuesForGeneration mExtractedAssociatedValuesForGeneration
-  public var @uint mEndOfBranchLocationIndex
-  public var @templateInstructionListForGeneration mInstructionList
+  public let @lstringlist mConstantList
+  public let @extractedAssociatedValuesForGeneration mExtractedAssociatedValuesForGeneration
+  public let @uint mEndOfBranchLocationIndex
+  public let @templateInstructionListForGeneration mInstructionList
 }
 
 #·······················································································································

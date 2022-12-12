@@ -43,7 +43,7 @@ proc @TestExtensionSetter.setter1 (?!@uint ioArg) {
 #}
 
 class @overridingTestExtensionSetter : @abstractOverridingTestExtensionSetter {
-  public var @uint mOtherInteger
+  public let @uint mOtherInteger
 }
 
 
@@ -61,12 +61,12 @@ override proc @overridingTestExtensionSetter.m() { }
 override abstract proc @abstractOverridingTestExtensionSetter.m()
 
 abstract class @abstractOverridingTestExtensionSetter : @TestExtensionSetter {
-  public var @string mOtherString
+  public let @string mOtherString
 }
 
 #class @adjMat{
-#   public var @uint dim
-#   public var @stringlist nodes
+#   public let @uint dim
+#   public let @stringlist nodes
 #}
 #
 #proc @adjMat.addNode() {

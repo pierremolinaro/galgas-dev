@@ -3,14 +3,14 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @logListAST {
-  public var @lstring mLogMessage
-  public var @semanticExpressionAST mLogExpression
+  public let @lstring mLogMessage
+  public let @semanticExpressionAST mLogExpression
 }
 
 #·····················································································································*
 
 refclass @logInstructionAST : @semanticInstructionAST {
-  public var @logListAST mLogList
+  public let @logListAST mLogList
 }
 
 
@@ -141,8 +141,8 @@ override method @logInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @logInstructionForGeneration : @semanticInstructionForGeneration {
-  public var @lstring mLogMessage
-  public var @semanticExpressionForGeneration mLogExpression
+  public let @lstring mLogMessage
+  public let @semanticExpressionForGeneration mLogExpression
 }
 
 #·····················································································································*

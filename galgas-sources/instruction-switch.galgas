@@ -3,18 +3,18 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @switchExtractedValuesListAST {
-  public var @lstring mExtractedValueTypeName
-  public var @lstring mExtractedValueName
-  public var @bool mMarkedAsUnused
+  public let @lstring mExtractedValueTypeName
+  public let @lstring mExtractedValueName
+  public let @bool mMarkedAsUnused
 }
 
 #·······················································································································
 
 list @switchBranchesAST {
-  public var @lstringlist mSwitchConstantList
-  public var @switchExtractedValuesListAST mAssociatedValuesExtraction
-  public var @semanticInstructionListAST mInstructions
-  public var @location mEndOfBranch
+  public let @lstringlist mSwitchConstantList
+  public let @switchExtractedValuesListAST mAssociatedValuesExtraction
+  public let @semanticInstructionListAST mInstructions
+  public let @location mEndOfBranch
 }
 
 #·······················································································································
@@ -344,18 +344,18 @@ override method @switchInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @extractedAssociatedValuesForGeneration {
-  public var @unifiedTypeMapEntry mType
-  public var @string mCppName
-  public var @uint mIndex
+  public let @unifiedTypeMapEntry mType
+  public let @string mCppName
+  public let @uint mIndex
 }
 
 #·······················································································································
 
 list @switchBranchesForGeneration {
-  public var @lstringlist mSwitchConstantList
-  public var @extractedAssociatedValuesForGeneration mExtractedAssociatedValuesForGeneration
-  public var @uint mEndOfBranchLocationIndex
-  public var @semanticInstructionListForGeneration mInstructions
+  public let @lstringlist mSwitchConstantList
+  public let @extractedAssociatedValuesForGeneration mExtractedAssociatedValuesForGeneration
+  public let @uint mEndOfBranchLocationIndex
+  public let @semanticInstructionListForGeneration mInstructions
 }
 
 #·······················································································································

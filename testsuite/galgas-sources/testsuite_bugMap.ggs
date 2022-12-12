@@ -1,5 +1,5 @@
 map @myMap {
-  public var @string value;
+  public let @string value;
   insert put error message ""
 }
 

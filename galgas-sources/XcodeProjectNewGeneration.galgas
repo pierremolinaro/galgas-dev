@@ -7,7 +7,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @projectQualifiedFeatureMap {
-  public var @lstring mFeatureValue
+  public let @lstring mFeatureValue
   insert insertKey error message "the '%K' attribute is already declared"
   search searchKey error message "the '%K' attribute is not declared"  
 }
@@ -306,53 +306,53 @@ setter @XcodeProjectDescriptor addSettingsToDefaultConfiguration
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @XCodeGroupList {
-  public var @string mGroupReference
-  public var @string mGroupName
-  public var @string mGroupPath
-  public var @stringlist mChildrenRefs
+  public let @string mGroupReference
+  public let @string mGroupName
+  public let @string mGroupPath
+  public let @stringlist mChildrenRefs
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @XCodeToolTargetList {
-  public var @string mTargetRef
-  public var @string mTargetName
-  public var @string mProductFileReference
-  public var @string mProductFileName
-  public var @stringlist mBuildPhaseRefList
-  public var @string mBuildPhaseRef
-  public var @string mBuildConfigurationListRef
-  public var @stringlist mBuildConfigurationSettingList
-  public var @string mBuildConfigurationRef
-  public var @stringlist mFrameworksFileRefList
-  public var @string mFrameworkBuildPhaseRef
+  public let @string mTargetRef
+  public let @string mTargetName
+  public let @string mProductFileReference
+  public let @string mProductFileName
+  public let @stringlist mBuildPhaseRefList
+  public let @string mBuildPhaseRef
+  public let @string mBuildConfigurationListRef
+  public let @stringlist mBuildConfigurationSettingList
+  public let @string mBuildConfigurationRef
+  public let @stringlist mFrameworksFileRefList
+  public let @string mFrameworkBuildPhaseRef
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @XCodeAppTargetList {
-  public var @string mTargetRef
-  public var @string mTargetName
-  public var @string mProductFileReference
-  public var @string mProductFileName
-  public var @stringlist mBuildPhaseRefList
-  public var @string mBuildPhaseRef
-  public var @string mBuildConfigurationListRef
-  public var @stringlist mBuildConfigurationSettingList
-  public var @string mBuildConfigurationRef
-  public var @stringlist mFrameworksFileRefList
-  public var @string mFrameworkBuildPhaseRef
-  public var @2stringlist mDependentTargets
-  public var @string mResourceBuildRef
-  public var @stringlist mResourceFileBuildRefs
+  public let @string mTargetRef
+  public let @string mTargetName
+  public let @string mProductFileReference
+  public let @string mProductFileName
+  public let @stringlist mBuildPhaseRefList
+  public let @string mBuildPhaseRef
+  public let @string mBuildConfigurationListRef
+  public let @stringlist mBuildConfigurationSettingList
+  public let @string mBuildConfigurationRef
+  public let @stringlist mFrameworksFileRefList
+  public let @string mFrameworkBuildPhaseRef
+  public let @2stringlist mDependentTargets
+  public let @string mResourceBuildRef
+  public let @stringlist mResourceFileBuildRefs
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @BuildFileList {
-  public var @string mFileReference
-  public var @string mFileName
-  public var @string mBuildReference
+  public let @string mFileReference
+  public let @string mFileName
+  public let @string mBuildReference
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -371,7 +371,7 @@ setter @XcodeProjectDescriptor getReferenceKey
 
 struct @XcodeProjectDescriptor {
   public var @uint mSequenceNumber
-  public var @string mMainGroupReference
+  public let @string mMainGroupReference
   public var @stringlist mMainGroupChildrenRefs
   public var @string mProjectObjectReference
   public var @XCodeGroupList mGroupList
@@ -385,9 +385,9 @@ struct @XcodeProjectDescriptor {
   public var @2stringlist mHeaderFileList
   public var @BuildFileList mBuildFileList
 #--- Default configuration
-  public var @string mDefaultConfigurationRef
+  public let @string mDefaultConfigurationRef
   public var @stringlist mDefaultConfigurationSettingList
-  public var @string mProjectBuildConfigurationRef
+  public let @string mProjectBuildConfigurationRef
 #--- Resource files
   public var @2stringlist mInfoPlistFileList
   public var @2stringlist mXIB_fileList

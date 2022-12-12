@@ -4,11 +4,11 @@ abstract refclass @cExpression {
 }
 
 refclass @cConst : @cExpression {
-  public var @luint mValue
+  public let @luint mValue
 }
   
 refclass @cAdd : @cExpression {
-  public var @cExpression mLeftExpression
-  public var @cExpression mRightExpression
+  public let @cExpression mLeftExpression
+  public let @cExpression mRightExpression
 }
 

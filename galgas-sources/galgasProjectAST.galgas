@@ -7,8 +7,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @galgas3QualifiedFeatureList {
-  public var @lstring mFeatureName
-  public var @lstring mFeatureValue
+  public let @lstring mFeatureName
+  public let @lstring mFeatureValue
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

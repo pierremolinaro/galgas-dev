@@ -572,9 +572,9 @@ enum @binaryOperator {
 #·····················································································································
 
 refclass @binaryOperatorExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @semanticExpressionForGeneration mLeftExpression
-  public var @binaryOperator mOperator
-  public var @semanticExpressionForGeneration mRightExpression
+  public let @semanticExpressionForGeneration mLeftExpression
+  public let @binaryOperator mOperator
+  public let @semanticExpressionForGeneration mRightExpression
 }
 
 #·····················································································································

@@ -3,17 +3,17 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @andShortExpressionAST : @semanticExpressionAST {
-  public var @location mOperatorLocation
-  public var @semanticExpressionAST mLeftExpression
-  public var @semanticExpressionAST mRightExpression
+  public let @location mOperatorLocation
+  public let @semanticExpressionAST mLeftExpression
+  public let @semanticExpressionAST mRightExpression
 }
 
 #·······················································································································
 
 refclass @andExpressionAST : @semanticExpressionAST {
-  public var @location mOperatorLocation
-  public var @semanticExpressionAST mLeftExpression
-  public var @semanticExpressionAST mRightExpression
+  public let @location mOperatorLocation
+  public let @semanticExpressionAST mLeftExpression
+  public let @semanticExpressionAST mRightExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -187,8 +187,8 @@ override method @andShortExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @andShortExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @semanticExpressionForGeneration mLeftExpression
-  public var @semanticExpressionForGeneration mRightExpression
+  public let @semanticExpressionForGeneration mLeftExpression
+  public let @semanticExpressionForGeneration mRightExpression
 }
 
 #·····················································································································

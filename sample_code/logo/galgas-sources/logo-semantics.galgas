@@ -11,7 +11,7 @@ filewrapper generationTemplate in "."
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @routineMap {
-  public var @instructionList mInstructionList
+  public let @instructionList mInstructionList
   insert insertKey error message "the '%K' routine has been already declared"
   search searchKey error message "the '%K' routine is not declared"
 }
@@ -33,7 +33,7 @@ abstract method @instruction codeDisplay
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @instructionList {
-  public var @instruction mInstruction ;
+  public let @instruction mInstruction ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -73,7 +73,7 @@ override method @penDown codeDisplay
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @rotate : @instruction {
-  public var @luint mAngle
+  public let @luint mAngle
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -91,7 +91,7 @@ override method @rotate codeDisplay
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @forward : @instruction {
-  public var @luint mLength
+  public let @luint mLength
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

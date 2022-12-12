@@ -104,7 +104,7 @@ style commentStyle -> "Comments"
 # keywords can be written in lower or upper case
 # for identifiers, case is significant
 
-$identifier$ ! tokenString error message "an identifier⥆◉"
+$identifier$ ! tokenString error message "an identifier"
 
 list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "abstract",

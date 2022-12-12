@@ -3,9 +3,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @warningInstructionAST : @semanticInstructionAST {
-  public var @semanticExpressionAST mLocationExpression
-  public var @semanticExpressionAST mMessageExpression
-  public var @fixitListAST mFixitListAST
+  public let @semanticExpressionAST mLocationExpression
+  public let @semanticExpressionAST mMessageExpression
+  public let @fixitListAST mFixitListAST
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -110,10 +110,10 @@ override method @warningInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @warningInstructionForGeneration : @semanticInstructionForGeneration {
-  public var @location mInstructionLocation
-  public var @semanticExpressionForGeneration mReceiverExpression
-  public var @semanticExpressionForGeneration mWarningExpression
-  public var @fixitListForGeneration mFixitListForGeneration
+  public let @location mInstructionLocation
+  public let @semanticExpressionForGeneration mReceiverExpression
+  public let @semanticExpressionForGeneration mWarningExpression
+  public let @fixitListForGeneration mFixitListForGeneration
 }
 
 #······················································································································*

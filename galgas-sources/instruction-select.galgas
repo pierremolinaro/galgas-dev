@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @selectInstruction : @syntaxInstructionAST {
-  public var @listOfSyntaxInstructionList mSelectBranchList
-  public var @location mEndOf_select_instruction
+  public let @listOfSyntaxInstructionList mSelectBranchList
+  public let @location mEndOf_select_instruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -176,9 +176,9 @@ override method @selectInstruction analyzeSyntaxInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @selectInstructionForGeneration : @syntaxInstructionForGeneration {
-  public var @string mSyntaxComponentName
-  public var @uint mChoiceIndex
-  public var @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
+  public let @string mSyntaxComponentName
+  public let @uint mChoiceIndex
+  public let @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

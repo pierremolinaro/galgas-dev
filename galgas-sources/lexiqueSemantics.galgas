@@ -3,19 +3,19 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @terminalList {
-  public var @lstring mTerminalName
-  public var @lexicalSentValueList mSentAttributeList
-  public var @string mSyntaxErrorMessage
-  public var @bool mIsEndOfTemplateMark
-  public var @bool mAtomicSelection # True if atomic selection in source editor
-  public var @uint mStyleIndex # 0 if default style
+  public let @lstring mTerminalName
+  public let @lexicalSentValueList mSentAttributeList
+  public let @string mSyntaxErrorMessage
+  public let @bool mIsEndOfTemplateMark
+  public let @bool mAtomicSelection # True if atomic selection in source editor
+  public let @uint mStyleIndex # 0 if default style
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalExplicitTokenListMap {
-  public var @lstring mTerminal
-  public var @lstringlist mAttributeList
+  public let @lstring mTerminal
+  public let @lstringlist mAttributeList
   insert insertKey error message "the '%K' terminal has been already declared in the list"
   search searchKey error message "the '%K' terminal is not declared"
 }
@@ -23,9 +23,9 @@ map @lexicalExplicitTokenListMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 sortedlist @tokenSortedlist {
-  public var @uint mLength
-  public var @string mName
-  public var @string mTerminalName
+  public let @uint mLength
+  public let @string mName
+  public let @string mTerminalName
 }{
   mLength <, mName <
 }
@@ -33,9 +33,9 @@ sortedlist @tokenSortedlist {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalExplicitTokenListMapMap {
-  public var @lexicalExplicitTokenListMap mExplicitTokenListMap
-  public var @tokenSortedlist mTokenSortedList
-  public var @bool mShouldBeGenerated
+  public let @lexicalExplicitTokenListMap mExplicitTokenListMap
+  public let @tokenSortedlist mTokenSortedList
+  public let @bool mShouldBeGenerated
   insert insertKey error message "the '%K' token list has been already declared in %L"
   search searchKey error message "the '%K' token list is not declared"
 }
@@ -43,8 +43,8 @@ map @lexicalExplicitTokenListMapMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalMessageMap {
-  public var @lstring mLexicalMessage
-  public var @bool mMessageIsUsed
+  public let @lstring mLexicalMessage
+  public let @bool mMessageIsUsed
   insert insertKey error message "the '%K' message has been already declared in %L"
   search searchKey error message "the '%K' message is not declared"
 }
@@ -52,17 +52,17 @@ map @lexicalMessageMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalRoutineFormalArgumentList {
-  public var @lexicalArgumentModeAST mLexicalFormalArgumentMode
-  public var @lexicalTypeEnum mLexicalFormalArgumentType
-  public var @string mArgumentNameForComment
+  public let @lexicalArgumentModeAST mLexicalFormalArgumentMode
+  public let @lexicalTypeEnum mLexicalFormalArgumentType
+  public let @string mArgumentNameForComment
  }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalRoutineMap {
-  public var @lexicalRoutineFormalArgumentList mLexicalRoutineFormalArgumentList
-  public var @stringlist mErrorMessageList
-  public var @bool mIsExtern
+  public let @lexicalRoutineFormalArgumentList mLexicalRoutineFormalArgumentList
+  public let @stringlist mErrorMessageList
+  public let @bool mIsExtern
   insert insertKey error message "the '%K' lexical routine has been already declared"
   search searchKey error message "the '%K' lexical routine is not declared"
 }
@@ -70,17 +70,17 @@ map @lexicalRoutineMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalFunctionFormalArgumentList {
-  public var @lexicalTypeEnum mLexicalType
-  public var @string mArgumentNameForComment
+  public let @lexicalTypeEnum mLexicalType
+  public let @string mArgumentNameForComment
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalFunctionMap {
-  public var @lexicalFunctionFormalArgumentList mLexicalTypeList
-  public var @lexicalTypeEnum mReturnedLexicalType
-  public var @string mReplacementFunctionName # If obsolete, the name of replacement routine
-  public var @bool mIsExtern
+  public let @lexicalFunctionFormalArgumentList mLexicalTypeList
+  public let @lexicalTypeEnum mReturnedLexicalType
+  public let @string mReplacementFunctionName # If obsolete, the name of replacement routine
+  public let @bool mIsExtern
   insert insertKey error message "the '%K' lexical function has been already declared"
   search searchKey error message "the '%K' lexical function is not declared"
 }
@@ -89,9 +89,9 @@ map @lexicalFunctionMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateDelimitorList {
-  public var @lstring mStartString
-  public var @lstring mEndString
-  public var @bool mPreservesStartDelimiter
+  public let @lstring mStartString
+  public let @lstring mEndString
+  public let @bool mPreservesStartDelimiter
 }
 
 #------------------------------------------------------------------*
@@ -99,8 +99,8 @@ list @templateDelimitorList {
 #------------------------------------------------------------------*
 
 map @styleMap {
-  public var @lstring mComment
-  public var @uint mStyleIndex # Allways > 0
+  public let @lstring mComment
+  public let @uint mStyleIndex # Allways > 0
   insert insertKey error message "the '%K' style is already declared in %L"
   search searchKey error message "the '%K' style is not declared"
 }
@@ -116,18 +116,18 @@ map @lexicalTagMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @lexiqueAnalysisContext {
-  public var @string mLexiqueName
-  public var @lexicalRoutineMap mLexicalRoutineMessageMap
-  public var @lexicalFunctionMap mLexicalFunctionMap
+  public let @string mLexiqueName
+  public let @lexicalRoutineMap mLexicalRoutineMessageMap
+  public let @lexicalFunctionMap mLexicalFunctionMap
   public var @lexicalMessageMap mLexicalMessageMap
   public var @terminalMap mTerminalMap
   public var @terminalList mTerminalList
-  public var @lexicalAttributeMap mLexicalAttributeMap
+  public var  @lexicalAttributeMap mLexicalAttributeMap
   public var @lexicalExplicitTokenListMapMap mLexicalTokenListMap
   public var @stringset mUnicodeStringToGenerate
   public var @templateDelimitorList mTemplateDelimitorList
   public var @styleMap mStyleMap
-  public var @stringset mUnicodeTestFunctions
+  public let @stringset mUnicodeTestFunctions
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -3,9 +3,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @forInstructionEnumeratedObjectElementListAST {
-  public var @lstring mOptionalTypeName # Empty string if joker
-  public var @bool mDeclaredAsUnused # true if joker
-  public var @lstring mOptionalConstantName  # Empty string if joker
+  public let @lstring mOptionalTypeName # Empty string if joker
+  public let @bool mDeclaredAsUnused # true if joker
+  public let @lstring mOptionalConstantName  # Empty string if joker
 }
 
 #·····················································································································*
@@ -853,9 +853,9 @@ override method @forInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @forInstructionEnumeratedObjectListForGeneration {
-  public var @string mEnumerationOrder
-  public var @semanticExpressionForGeneration mEnumeratedExpression
-  public var @string mEnumeratorCppName
+  public let @string mEnumerationOrder
+  public let @semanticExpressionForGeneration mEnumeratedExpression
+  public let @string mEnumeratorCppName
 }
 
 #·····················································································································*

@@ -270,12 +270,12 @@ override method @getterCallExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @methodKind mKind
-  public var @semanticExpressionForGeneration mReceiverExpression
-  public var @stringlist mFieldList
-  public var @string mGetterName
-  public var @semanticExpressionListForGeneration mExpressions
-  public var @bool mHasCompilerArgument
+  public let @methodKind mKind
+  public let @semanticExpressionForGeneration mReceiverExpression
+  public let @stringlist mFieldList
+  public let @string mGetterName
+  public let @semanticExpressionListForGeneration mExpressions
+  public let @bool mHasCompilerArgument
 }
 
 #·····················································································································

@@ -6600,7 +6600,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_pro
     if (kBoolTrue == test_1) {
       GALGAS_location var_errorLocation_3757 = var_propertyTypeName_3338.readProperty_location ().getter_union (var_propertyName_3373.readProperty_location (), inCompiler COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 98)) ;
       TC_Array <C_FixItDescription> fixItArray2 ;
-      appendFixItActions (fixItArray2, kFixItReplace, GALGAS_string ("public var @").add_operation (var_propertyTypeName_3338.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 101)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 101)).add_operation (var_propertyName_3373.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 101))) ;
+      appendFixItActions (fixItArray2, kFixItReplace, GALGAS_string ("public let @").add_operation (var_propertyTypeName_3338.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 101)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 101)).add_operation (var_propertyName_3373.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 101))) ;
       inCompiler->emitSemanticError (var_errorLocation_3757, GALGAS_string ("old style property declaration (due to '--error-old-style-property-declaration' option)"), fixItArray2  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 99)) ;
     }
   }

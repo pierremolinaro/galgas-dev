@@ -22,9 +22,9 @@ func %once generateFewHeaderFiles -> @bool {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @functionSignature {
-  public var @lstring mFormalSelector
-  public var @unifiedTypeMapEntry mFormalArgumentType
-  public var @string mFormalArgumentName
+  public let @lstring mFormalSelector
+  public let @unifiedTypeMapEntry mFormalArgumentType
+  public let @string mFormalArgumentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -34,9 +34,9 @@ list @functionSignature {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @constructorMap {
-  public var @functionSignature mArgumentTypeList
-  public var @bool mHasCompilerArgument
-  public var @unifiedTypeMapEntry mReturnedType
+  public let @functionSignature mArgumentTypeList
+  public let @bool mHasCompilerArgument
+  public let @unifiedTypeMapEntry mReturnedType
   insert or replace
   insert insertKey error message "the '%K' constructor has been already defined"
   search searchKey error message "the '%K' constuctor is not declared"
@@ -68,16 +68,16 @@ enum @methodKind {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @optionalMethodSignature {
-  public var @bool mInputArgument # true -> input, false -> output
-  public var @lstring mFormalSelector
-  public var @unifiedTypeMapEntry mFormalArgumentType
-  public var @string mFormalArgumentName
+  public let @bool mInputArgument # true -> input, false -> output
+  public let @lstring mFormalSelector
+  public let @unifiedTypeMapEntry mFormalArgumentType
+  public let @string mFormalArgumentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @optionalMethodMap {
-  public var @optionalMethodSignature mArgumentTypeList
+  public let @optionalMethodSignature mArgumentTypeList
  
   insert insertKey error message "the '%K' optional method is already declared"
   search searchKey error message "the '%K' optional method is not declared"
@@ -90,13 +90,13 @@ map @optionalMethodMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @getterMap {
-  public var @methodKind mKind
-  public var @functionSignature mArgumentTypeList
-  public var @location mDeclarationLocation
-  public var @bool mHasCompilerArgument
-  public var @unifiedTypeMapEntry mReturnedType
-  public var @methodQualifier mQualifier
-  public var @string mErrorMessage # If not empty, calling the method raises an error with this message
+  public let @methodKind mKind
+  public let @functionSignature mArgumentTypeList
+  public let @location mDeclarationLocation
+  public let @bool mHasCompilerArgument
+  public let @unifiedTypeMapEntry mReturnedType
+  public let @methodQualifier mQualifier
+  public let @string mErrorMessage # If not empty, calling the method raises an error with this message
  
   insert insertKey error message "the '%K' getter is already declared"
   search searchKey error message "the '%K' getter is not declared"
@@ -111,20 +111,20 @@ map @getterMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalParameterSignature {
-  public var @lstring mFormalSelector
-  public var @unifiedTypeMapEntry mFormalArgumentType
-  public var @formalArgumentPassingModeAST mFormalArgumentPassingMode
-  public var @string mFormalArgumentName
+  public let @lstring mFormalSelector
+  public let @unifiedTypeMapEntry mFormalArgumentType
+  public let @formalArgumentPassingModeAST mFormalArgumentPassingMode
+  public let @string mFormalArgumentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @setterMap {
-  public var @methodKind mKind
-  public var @formalParameterSignature mParameterList
-  public var @bool mHasCompilerArgument
-  public var @methodQualifier mQualifier
-  public var @string mErrorMessage # If not empty, calling the setter raises an error ith this message
+  public let @methodKind mKind
+  public let @formalParameterSignature mParameterList
+  public let @bool mHasCompilerArgument
+  public let @methodQualifier mQualifier
+  public let @string mErrorMessage # If not empty, calling the setter raises an error ith this message
   insert or replace
   insert insertKey error message "the '%K' setter is already declared"
   search searchKey error message "the '%K' setter is not declared"
@@ -144,13 +144,13 @@ map @setterMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @instanceMethodMap {
-  public var @methodKind mKind
-  public var @formalParameterSignature mParameterList
-  public var @location mDeclarationLocation
-  public var @bool mHasCompilerArgument
-  public var @methodQualifier mQualifier
-#  public var @instanceMethodMutability mMutability
-  public var @string mErrorMessage # If not empty, calling the method raises an error with this message
+  public let @methodKind mKind
+  public let @formalParameterSignature mParameterList
+  public let @location mDeclarationLocation
+  public let @bool mHasCompilerArgument
+  public let @methodQualifier mQualifier
+#  public let @instanceMethodMutability mMutability
+  public let @string mErrorMessage # If not empty, calling the method raises an error with this message
   insert insertKey error message "the '%K' instance method is already declared"
   search searchKey error message "the '%K' instance method is not declared"
   search searchInheritedKey error message "as the '%K' method is tagged as 'override', it should be declared in the super class"
@@ -163,8 +163,8 @@ map @instanceMethodMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @classMethodMap {
-  public var @formalParameterSignature mParameterList
-  public var @bool mHasCompilerArgument
+  public let @formalParameterSignature mParameterList
+  public let @bool mHasCompilerArgument
   insert or replace
   insert insertKey error message "the '%K' type proc is already declared"
   search searchKey error message "the '%K' type proc is not declared"
@@ -177,8 +177,8 @@ map @classMethodMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @enumerationDescriptorList {
-  public var @unifiedTypeMapEntry mEnumeratedType
-  public var @string mEnumerationName
+  public let @unifiedTypeMapEntry mEnumeratedType
+  public let @string mEnumerationName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -188,10 +188,10 @@ list @enumerationDescriptorList {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @typedPropertyList {
-  public var @unifiedTypeMapEntry mPropertyTypeEntry
-  public var @lstring mPropertyName
-  public var @bool mHasSetter
-  public var @bool mHasSelector
+  public let @unifiedTypeMapEntry mPropertyTypeEntry
+  public let @lstring mPropertyName
+  public let @bool mHasSetter
+  public let @bool mHasSelector
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -319,9 +319,9 @@ boolset @operators {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @propertyMap {
-  public var @bool mIsPublic
-  public var @bool mIsConstant
-  public var @unifiedTypeMapEntry mPropertyType
+  public let @bool mIsPublic
+  public let @bool mIsConstant
+  public let @unifiedTypeMapEntry mPropertyType
   insert insertKey error message "the '%K' property has been already declared in %L"
   search searchKey error message "the '%K' property is not declared"
 }
@@ -335,8 +335,8 @@ enum @headerKind {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @constantIndexMap {
-  public var @uint mIndex
-  public var @unifiedTypeMapEntryList mAssociatedTypeList
+  public let @uint mIndex
+  public let @unifiedTypeMapEntryList mAssociatedTypeList
   insert insertKey error message "the '%K' constant is already declared"
   search searchKey error message "the '%K' constant is not declared"
 }
@@ -348,8 +348,8 @@ map @constantIndexMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
-  public var @string mPredefinedTypeName
-  public var @predefinedTypeKindEnum mKind
+  public let @string mPredefinedTypeName
+  public let @predefinedTypeKindEnum mKind
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

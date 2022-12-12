@@ -3,16 +3,16 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @graphInsertModifierList {
-  public var @lstring mInsertModifierName
-  public var @lstring mInsertErrorMessage
+  public let @lstring mInsertModifierName
+  public let @lstring mInsertErrorMessage
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @graphDeclarationAST : @semanticDeclarationAST {
-  public var @lstring mGraphTypeName
-  public var @lstring mAssociatedListTypeName
-  public var @graphInsertModifierList mInsertModifierList
+  public let @lstring mGraphTypeName
+  public let @lstring mAssociatedListTypeName
+  public let @graphInsertModifierList mInsertModifierList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -514,9 +514,9 @@ override method @graphDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @graphDeclarationForGeneration : @semanticTypeForGeneration {
-  public var @unifiedTypeMapEntry mAssociatedListTypeEntry
-  public var @unifiedTypeMapEntry mAssociatedListElementTypeEntry
-  public var @graphInsertModifierList mInsertModifierList
+  public let @unifiedTypeMapEntry mAssociatedListTypeEntry
+  public let @unifiedTypeMapEntry mAssociatedListElementTypeEntry
+  public let @graphInsertModifierList mInsertModifierList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -11,8 +11,8 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
 #·······················································································································
 
 list @enumConstantList {
-  public var @lstring mConstantName
-  public var @2lstringlist mAssociatedValueDefinitionList
+  public let @lstring mConstantName
+  public let @2lstringlist mAssociatedValueDefinitionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -343,8 +343,8 @@ override method @enumDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @enumConstantListForGeneration {
-  public var @string mConstantName
-  public var @unifiedTypeMapEntryList mAssociatedValueTypeList
+  public let @string mConstantName
+  public let @unifiedTypeMapEntryList mAssociatedValueTypeList
 }
 
 #·······················································································································

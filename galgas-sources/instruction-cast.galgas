@@ -3,11 +3,11 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @castInstructionBranchListAST {
-  public var @lstring mTypeName
-  public var @lstring mConstantVarName # Empty string if no constant var
-  public var @semanticInstructionListAST mInstructionList
-  public var @dynamicTypeComparisonKind mTypeComparisonKind
-  public var @location mEndOfInstructions
+  public let @lstring mTypeName
+  public let @lstring mConstantVarName # Empty string if no constant var
+  public let @semanticInstructionListAST mInstructionList
+  public let @dynamicTypeComparisonKind mTypeComparisonKind
+  public let @location mEndOfInstructions
 }
 
 #······················································································································*
@@ -318,10 +318,10 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @castInstructionBranchListForGeneration {
-  public var @dynamicTypeComparisonKind mTypeComparisonKind
-  public var @unifiedTypeMapEntry mType
-  public var @string mCastedVarCppName # Empty string if no var
-  public var @semanticInstructionListForGeneration mInstructionList
+  public let @dynamicTypeComparisonKind mTypeComparisonKind
+  public let @unifiedTypeMapEntry mType
+  public let @string mCastedVarCppName # Empty string if no var
+  public let @semanticInstructionListForGeneration mInstructionList
 }
 
 #······················································································································*

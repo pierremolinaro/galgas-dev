@@ -3,9 +3,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @structPropertyAccessExpressionAST : @semanticExpressionAST {
-  public var @location mOperatorLocation
-  public var @semanticExpressionAST mExpression
-  public var @lstring mPropertyName
+  public let @location mOperatorLocation
+  public let @semanticExpressionAST mExpression
+  public let @lstring mPropertyName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -103,8 +103,8 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @structPropertyAccessExpressionForGeneration : @semanticExpressionForGeneration {
-  public var @semanticExpressionForGeneration mExpression
-  public var @string mStructFieldName
+  public let @semanticExpressionForGeneration mExpression
+  public let @string mStructFieldName
 }
 
 #·····················································································································

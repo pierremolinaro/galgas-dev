@@ -15,7 +15,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @programListForGeneration {
-  public var @semanticDeclarationForGeneration mDeclaration
+  public let @semanticDeclarationForGeneration mDeclaration
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

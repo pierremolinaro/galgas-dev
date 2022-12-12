@@ -29,18 +29,18 @@ abstract method @semanticInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @localConstantList {
-  public var @unifiedTypeMapEntry mType
-  public var @lstring mName
-  public var @bool mNoWarningIfUnused
-  public var @string mCppName
+  public let @unifiedTypeMapEntry mType
+  public let @lstring mName
+  public let @bool mNoWarningIfUnused
+  public let @string mCppName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @localInitializedVariableList {
-  public var @unifiedTypeMapEntry mType
-  public var @lstring mName
-  public var @string mCppName
+  public let @unifiedTypeMapEntry mType
+  public let @lstring mName
+  public let @string mCppName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

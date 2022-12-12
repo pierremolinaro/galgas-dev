@@ -118,7 +118,7 @@ abstract method @semanticDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @propertyIndexMap {
-  public var @unifiedTypeMapEntry mPropertyTypeIndex
+  public let @unifiedTypeMapEntry mPropertyTypeIndex
   insert insertKey error message "the '%K' attribute is already declared"
   search searchKey error message "the '%K' attribute is not declared"
 }
@@ -921,9 +921,9 @@ func buildPredefinedTypes ?let @semanticContext inSemanticContext -> @predefined
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @nonterminalLabelMap {
-  public var @formalParameterListForGeneration mSignatureForGeneration
-  public var @formalParameterSignature mSignature
-  public var @location mEndOfArgumentLocation
+  public let @formalParameterListForGeneration mSignatureForGeneration
+  public let @formalParameterSignature mSignature
+  public let @location mEndOfArgumentLocation
   insert insertKey error message "the '%K' nonterminal label has been already declared in %L"
   search searchKey error message "the '%K' nonterminal label is not declared"
 }
@@ -931,7 +931,7 @@ map @nonterminalLabelMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @nonterminalMap {
-  public var @nonterminalLabelMap mLabelMap
+  public let @nonterminalLabelMap mLabelMap
   insert insertKey error message "the '%K' nonterminal has been already declared in %L"
   search searchKey error message "the '%K' nonterminal is not declared"
 }
@@ -939,31 +939,31 @@ map @nonterminalMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @ruleLabelImplementationList {
-  public var @lstring mLabelName
-  public var @formalParameterListForGeneration mSignatureForGeneration
-  public var @formalParameterSignature mSignature
-  public var @location mEndOfArgumentLocation
-  public var @semanticInstructionListForGeneration mInstructionListForGeneration
+  public let @lstring mLabelName
+  public let @formalParameterListForGeneration mSignatureForGeneration
+  public let @formalParameterSignature mSignature
+  public let @location mEndOfArgumentLocation
+  public let @semanticInstructionListForGeneration mInstructionListForGeneration
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @ruleDeclarationList {
-  public var @string mNonterminalName
-  public var @uint mRuleIndex
-  public var @ruleLabelImplementationList mLabelImplementationList
+  public let @string mNonterminalName
+  public let @uint mRuleIndex
+  public let @ruleLabelImplementationList mLabelImplementationList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
-  public var @string mSyntaxComponentName
-  public var @string mLexiqueName
-  public var @nonterminalMap mNonterminalDeclarationMap
-  public var @ruleDeclarationList mRuleDeclarationList
-  public var @uint mSelectMethodCount
-  public var @bool mHasIndexing
-  public var @bool mHasTranslateFeature
+  public let @string mSyntaxComponentName
+  public let @string mLexiqueName
+  public let @nonterminalMap mNonterminalDeclarationMap
+  public let @ruleDeclarationList mRuleDeclarationList
+  public let @uint mSelectMethodCount
+  public let @bool mHasIndexing
+  public let @bool mHasTranslateFeature
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

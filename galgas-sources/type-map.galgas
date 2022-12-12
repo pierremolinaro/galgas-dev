@@ -3,30 +3,30 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @insertMethodListAST {
-  public var @lstring mInsertMethodName
-  public var @lstring mErrorMessage
-  public var @lstring mShadowErrorMessage
+  public let @lstring mInsertMethodName
+  public let @lstring mErrorMessage
+  public let @lstring mShadowErrorMessage
 }
 
 #·······················································································································
 
 list @mapSearchMethodListAST {
-  public var @lstring mSearchMethodName
-  public var @lstring mErrorMessage
-  public var @bool mLocationAttribute
+  public let @lstring mSearchMethodName
+  public let @lstring mErrorMessage
+  public let @bool mLocationAttribute
 }
 
 #·······················································································································
 
 list @mapRemoveMethodListAST {
-  public var @lstring mMethodName
-  public var @lstring mErrorMessage
+  public let @lstring mMethodName
+  public let @lstring mErrorMessage
 }
 
 #·······················································································································
 
 list @insertOrReplaceDeclarationListAST {
-  public var @location mInsertOrReplaceDeclarationLocation
+  public let @location mInsertOrReplaceDeclarationLocation
 }
 
 #·······················································································································

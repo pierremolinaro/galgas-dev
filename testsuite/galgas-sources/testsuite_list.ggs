@@ -3,7 +3,7 @@
 extern proc testsuite_hand_coded(())
 
 list @myList {
-  public var @string mValue
+  public let @string mValue
 }
 
 proc testsuite_list() {

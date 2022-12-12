@@ -3,33 +3,33 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @readAccessWithInstructionAST : @semanticInstructionAST {
-  public var @lstring mPrefix
-  public var @semanticExpressionAST mReceiverExpression
-  public var @location mEndOfReceiverExpression
-  public var @semanticExpressionAST mKeyExpression
-  public var @location mEndOfKeyExpression
-  public var @lstring mSearchMethodNameForErrorSignaling
-  public var @semanticInstructionListAST mDoBranchInstructions
-  public var @location mEndOf_do_instructions
-  public var @semanticInstructionListAST mElseBranchInstructions
-  public var @location mEndOf_else_instructions
+  public let @lstring mPrefix
+  public let @semanticExpressionAST mReceiverExpression
+  public let @location mEndOfReceiverExpression
+  public let @semanticExpressionAST mKeyExpression
+  public let @location mEndOfKeyExpression
+  public let @lstring mSearchMethodNameForErrorSignaling
+  public let @semanticInstructionListAST mDoBranchInstructions
+  public let @location mEndOf_do_instructions
+  public let @semanticInstructionListAST mElseBranchInstructions
+  public let @location mEndOf_else_instructions
 }
 
 #······················································································································*
 
 refclass @readWriteAccessWithInstructionAST : @semanticInstructionAST {
-  public var @lstring mPrefix
-  public var @lstring mReceiverName
-  public var @bool mReceiverIsPrefixedBySelf
-  public var @lstringlist mFieldList
-  public var @location mEndOfReceiverExpression
-  public var @semanticExpressionAST mKeyExpression
-  public var @location mEndOfKeyExpression
-  public var @lstring mSearchMethodNameForErrorSignaling
-  public var @semanticInstructionListAST m_do_Instructions
-  public var @location mEndOf_do_instructions
-  public var @semanticInstructionListAST m_else_Instructions
-  public var @location mEndOf_else_instructions
+  public let @lstring mPrefix
+  public let @lstring mReceiverName
+  public let @bool mReceiverIsPrefixedBySelf
+  public let @lstringlist mFieldList
+  public let @location mEndOfReceiverExpression
+  public let @semanticExpressionAST mKeyExpression
+  public let @location mEndOfKeyExpression
+  public let @lstring mSearchMethodNameForErrorSignaling
+  public let @semanticInstructionListAST m_do_Instructions
+  public let @location mEndOf_do_instructions
+  public let @semanticInstructionListAST m_else_Instructions
+  public let @location mEndOf_else_instructions
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -610,27 +610,27 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @readOnlyWithInstructionForGeneration : @semanticInstructionForGeneration {
-  public var @location mInstructionLocation
-  public var @semanticExpressionForGeneration mReceiverExpression
-  public var @string mObjectArrayCppName
-  public var @semanticExpressionForGeneration mKeyExpression
-  public var @string mSearchMethodNameForErrorSignaling
-  public var @semanticInstructionListForGeneration mDoBranchInstructions
-  public var @semanticInstructionListForGeneration mElseBranchInstructions
+  public let @location mInstructionLocation
+  public let @semanticExpressionForGeneration mReceiverExpression
+  public let @string mObjectArrayCppName
+  public let @semanticExpressionForGeneration mKeyExpression
+  public let @string mSearchMethodNameForErrorSignaling
+  public let @semanticInstructionListForGeneration mDoBranchInstructions
+  public let @semanticInstructionListForGeneration mElseBranchInstructions
 }
 
 #······················································································································*
 
 refclass @readWriteWithInstructionForGeneration : @semanticInstructionForGeneration {
-  public var @location mInstructionLocation
-  public var @string mReceiverVariableCppName
-  public var @unifiedTypeMapEntry mReceiverType
-  public var @lstringlist mStructAttributeList
-  public var @string mObjectArrayCppName
-  public var @semanticExpressionForGeneration mKeyExpression
-  public var @string mSearchMethodNameForErrorSignaling
-  public var @semanticInstructionListForGeneration mDoBranchInstructions
-  public var @semanticInstructionListForGeneration mElseBranchInstructions
+  public let @location mInstructionLocation
+  public let @string mReceiverVariableCppName
+  public let @unifiedTypeMapEntry mReceiverType
+  public let @lstringlist mStructAttributeList
+  public let @string mObjectArrayCppName
+  public let @semanticExpressionForGeneration mKeyExpression
+  public let @string mSearchMethodNameForErrorSignaling
+  public let @semanticInstructionListForGeneration mDoBranchInstructions
+  public let @semanticInstructionListForGeneration mElseBranchInstructions
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

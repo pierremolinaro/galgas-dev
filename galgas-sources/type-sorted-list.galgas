@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @sortedListSortDescriptorListAST {
-  public var @lstring mSortedAttributeName
-  public var @bool mAscending
+  public let @lstring mSortedAttributeName
+  public let @bool mAscending
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -363,9 +363,9 @@ override method @sortedListDeclarationAST semanticAnalysis
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @sortDescriptorListForGeneration {
-  public var @unifiedTypeMapEntry mAttributeTypeIndex
-  public var @string mAttributeName
-  public var @bool mAscendingOrder
+  public let @unifiedTypeMapEntry mAttributeTypeIndex
+  public let @string mAttributeName
+  public let @bool mAscendingOrder
 }
 
 #·······················································································································

@@ -15,40 +15,40 @@ refclass @externTypeDeclarationAST : @semanticDeclarationAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @typeNameFormalParameterNameList {
-  public var @lstring mFormalSelector
-  public var @lstring mFormalParameterTypeName
-  public var @lstring mFormalParameterName
+  public let @lstring mFormalSelector
+  public let @lstring mFormalParameterTypeName
+  public let @lstring mFormalParameterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @externTypeConstructorList {
-  public var @lstring mConstructorName
-  public var @lstring mResultTypeName
-  public var @typeNameFormalParameterNameList mParameterList
+  public let @lstring mConstructorName
+  public let @lstring mResultTypeName
+  public let @typeNameFormalParameterNameList mParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @externTypeGetterList {
-  public var @lstring mGetterName
-  public var @lstring mResultTypeName
-  public var @typeNameFormalParameterNameList mParameterList
+  public let @lstring mGetterName
+  public let @lstring mResultTypeName
+  public let @typeNameFormalParameterNameList mParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @externTypeSetterList {
-  public var @lstring mSetterName
-  public var @formalParameterListAST mFormalParameterList
+  public let @lstring mSetterName
+  public let @formalParameterListAST mFormalParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @externTypeMethodList {
-  public var @lstring mMethodName
-  public var @formalParameterListAST mFormalParameterList
-  public var @location mDeclarationLocation
+  public let @lstring mMethodName
+  public let @formalParameterListAST mFormalParameterList
+  public let @location mDeclarationLocation
 }
 
 

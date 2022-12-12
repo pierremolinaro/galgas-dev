@@ -32,23 +32,23 @@ abstract refclass @lexicalInstructionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalInstructionListAST {
-  public var @lexicalInstructionAST mInstruction
+  public let @lexicalInstructionAST mInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateDelimitorListAST {
-  public var @lstring mStartString
-  public var @lstringlist mOptionList
-  public var @lstring mEndString
+  public let @lstring mStartString
+  public let @lstringlist mOptionList
+  public let @lstring mEndString
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateReplacementListAST {
-  public var @lstring mMatchString
-  public var @lstring mReplacementString
-  public var @lstring mReplacementFunction
+  public let @lstring mMatchString
+  public let @lstring mReplacementString
+  public let @lstring mReplacementFunction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -87,57 +87,57 @@ refclass @lexicalExplicitRuleAST : @abstractLexicalRuleAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalMessageDeclarationListAST {
-  public var @lstring mMessageName
-  public var @lstring mMessageValue
+  public let @lstring mMessageName
+  public let @lstring mMessageValue
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalAttributeListAST {
-  public var @lstring mTypeName
-  public var @lstring mName
+  public let @lstring mTypeName
+  public let @lstring mName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalStyleListAST {
-  public var @lstring mName
-  public var @lstring mComment
+  public let @lstring mName
+  public let @lstring mComment
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @terminalDeclarationListAST {
-  public var @lstring mName
-  public var @sentLexicalAttributeListAST mSentAttributeList
-  public var @lstring mSyntaxErrorMessage
-  public var @lstring mStyle # Empty string if no style
-  public var @lstringlist mOptionList
+  public let @lstring mName
+  public let @sentLexicalAttributeListAST mSentAttributeList
+  public let @lstring mSyntaxErrorMessage
+  public let @lstring mStyle # Empty string if no style
+  public let @lstringlist mOptionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalListEntryListAST {
-  public var @lstring mEntrySpelling
-  public var @lstring mTerminalSpelling
-  public var @lstringlist mAttributeList
+  public let @lstring mEntrySpelling
+  public let @lstring mTerminalSpelling
+  public let @lstringlist mAttributeList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @sentLexicalAttributeListAST {
-  public var @lstring mFormalSelector
-  public var @lstring mAttributeName
+  public let @lstring mFormalSelector
+  public let @lstring mAttributeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalListDeclarationListAST {
-  public var @lstring mName
-  public var @lstring mStyle # Empty string if no style
-  public var @lstring mSyntaxErrorMessage
-  public var @sentLexicalAttributeListAST mSentAttributeList
-  public var @lexicalListEntryListAST mEntryList  
+  public let @lstring mName
+  public let @lstring mStyle # Empty string if no style
+  public let @lstring mSyntaxErrorMessage
+  public let @sentLexicalAttributeListAST mSentAttributeList
+  public let @lexicalListEntryListAST mEntryList  
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -219,8 +219,8 @@ refclass @lexicalErrorByDefaultAST : @lexicalSendDefaultActionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalWhileBranchListAST {
-  public var @lexicalExpressionAST mWhileExpression
-  public var @lexicalInstructionListAST mWhileInstructionList
+  public let @lexicalExpressionAST mWhileExpression
+  public let @lexicalInstructionListAST mWhileInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -233,8 +233,8 @@ refclass @lexicalRepeatInstructionAST : @lexicalInstructionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalSelectBranchListAST {
-  public var @lexicalExpressionAST mSelectExpression
-  public var @lexicalInstructionListAST mSelectInstructionList
+  public let @lexicalExpressionAST mSelectExpression
+  public let @lexicalInstructionListAST mSelectInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -253,7 +253,7 @@ abstract refclass @abstractLexicalRoutineActualArgumentAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalRoutineCallActualArgumentListAST {
-  public var @abstractLexicalRoutineActualArgumentAST mLexicalRoutineActualArgument
+  public let @abstractLexicalRoutineActualArgumentAST mLexicalRoutineActualArgument
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -284,7 +284,7 @@ refclass @lexicalFormalInputArgumentAST : @abstractLexicalRoutineActualArgumentA
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalFunctionCallActualArgumentListAST {
-  public var @lexicalRoutineOrFunctionFormalInputArgumentAST mLexicalActualInputArgument
+  public let @lexicalRoutineOrFunctionFormalInputArgumentAST mLexicalActualInputArgument
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -391,39 +391,39 @@ getter @lexicalArgumentModeAST cocoaPointerInFormalArgument -> @string {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #list @lexicalExternRoutineFormalArgumentListAST {
-#  public var @lexicalArgumentModeAST mPassingMode
-#  public var @lstring mLexicalTypeName
-#  public var @lstring mFormalArgumentName
+#  public let @lexicalArgumentModeAST mPassingMode
+#  public let @lstring mLexicalTypeName
+#  public let @lstring mFormalArgumentName
 #}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #list @externRoutineListAST {
-#  public var @lstring mRoutineName
-#  public var @lexicalExternRoutineFormalArgumentListAST mLexicalRoutineFormalArgumentList
-#  public var @stringlist mErrorMessageList
+#  public let @lstring mRoutineName
+#  public let @lexicalExternRoutineFormalArgumentListAST mLexicalRoutineFormalArgumentList
+#  public let @stringlist mErrorMessageList
 #}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #list @lexicalExternFunctionFormalArgumentListAST {
-#  public var @lstring mLexicalTypeName
-#  public var @lstring mFormalArgumentName
+#  public let @lstring mLexicalTypeName
+#  public let @lstring mFormalArgumentName
 #}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #list @externFunctionListAST {
-#  public var @lstring mFunctionName
-#  public var @lexicalExternFunctionFormalArgumentListAST mLexicalFunctionFormalArgumentList
-#  public var @lstring mReturnedTypeName
+#  public let @lstring mFunctionName
+#  public let @lexicalExternFunctionFormalArgumentListAST mLexicalFunctionFormalArgumentList
+#  public let @lstring mReturnedTypeName
 #}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @indexingListAST {
-  public var @lstring mIndexName
-  public var @lstring mIndexComment
+  public let @lstring mIndexName
+  public let @lstring mIndexComment
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -446,15 +446,15 @@ enum @lexicalTypeEnum {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalSentValueList {
-  public var @lstring mLexicalFormalSelector
-  public var @string mLexicalAttributeName
-  public var @lexicalTypeEnum mLexicalType
+  public let @lstring mLexicalFormalSelector
+  public let @string mLexicalAttributeName
+  public let @lexicalTypeEnum mLexicalType
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @terminalMap {
-  public var @lexicalSentValueList mSentAttributeList
+  public let @lexicalSentValueList mSentAttributeList
   insert insertKey error message "the '%K' terminal has been already declared in %L"
   search searchKey error message "the '%K' terminal is not declared"
 }
@@ -464,7 +464,7 @@ map @terminalMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalTypeMap {
-  public var @lexicalTypeEnum mLexicalType
+  public let @lexicalTypeEnum mLexicalType
   insert insertKey error message "the '@%K' lexical type is already declared in %L"
   search searchKey error message "there is no '@%K' lexical type"
 }
@@ -488,7 +488,7 @@ func %once buildLexicalTypeMap
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalAttributeMap {
-  public var @lexicalTypeEnum mLexicalType
+  public let @lexicalTypeEnum mLexicalType
   insert insertKey error message "the '%K' lexical attribute has been already declared in %L"
   search searchKey error message "the '%K' lexical attribute is not declared"
 }

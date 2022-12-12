@@ -21,7 +21,7 @@ abstract refclass @templateInstructionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionListAST {
-  public var @templateInstructionAST mInstruction
+  public let @templateInstructionAST mInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -36,9 +36,9 @@ abstract refclass @templateExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateExpressionListAST {
-  public var @lstring mActualSelector
-  public var @templateExpressionAST mExpression
-  public var @location mEndOfExpressionLocation
+  public let @lstring mActualSelector
+  public let @templateExpressionAST mExpression
+  public let @location mEndOfExpressionLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -371,8 +371,8 @@ refclass @templateInstructionGotoColumnLocationAST : @templateInstructionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionIfBranchListAST {
-  public var @templateExpressionAST mExpression
-  public var @templateInstructionListAST mInstructionList
+  public let @templateExpressionAST mExpression
+  public let @templateInstructionListAST mInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

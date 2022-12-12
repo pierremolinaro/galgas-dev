@@ -46,8 +46,8 @@ refclass @templateInstructionGotoColumnLocationForGeneration : @templateInstruct
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionIfBranchListForGeneration {
-  public var @semanticExpressionForGeneration mExpression
-  public var @templateInstructionListForGeneration mInstructionList
+  public let @semanticExpressionForGeneration mExpression
+  public let @templateInstructionListForGeneration mInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

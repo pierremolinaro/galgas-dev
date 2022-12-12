@@ -9,7 +9,7 @@ enum @xmlNodeType {
 #------------------------------------------------------------*
 
 map @xmlAttributeMap {
-  public var @lstring value
+  public let @lstring value
   insert insertKey error message "the '%K' attribute has been already declared"
   search searchKey error message "the '%K' attribute is not declared"
 }
@@ -17,16 +17,16 @@ map @xmlAttributeMap {
 #------------------------------------------------------------*
 
 refclass @xmlNode {
-  public var @xmlNodeType mType
-  public var @string name
-  public var @xmlAttributeMap attributeMap
-  public var @xmlNodeList nodeList
+  public let @xmlNodeType mType
+  public let @string name
+  public let @xmlAttributeMap attributeMap
+  public let @xmlNodeList nodeList
 }
 
 #------------------------------------------------------------*
 
 list @xmlNodeList {
-  public var @xmlNode node
+  public let @xmlNode node
 }
 
 #------------------------------------------------------------*
