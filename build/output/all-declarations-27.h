@@ -132,31 +132,3 @@ GALGAS_string filewrapperTemplate_programFileGenerationTemplate_programFileImple
                                                                                            const class GALGAS_string & in_PROJECT_5F_VERSION_5F_STRING
                                                                                            COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'compileBeforeClauseGalgas3'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_compileBeforeClauseGalgas_33_ (class GALGAS_lstringlist & ioArgument0,
-                                            class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                            const class GALGAS_analysisContext constinArgument2,
-                                            const class GALGAS_prologueEpilogueList constinArgument3,
-                                            class GALGAS_programListForGeneration & ioArgument4,
-                                            class C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'compileProgramRulesGalgas3'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_compileProgramRulesGalgas_33_ (class GALGAS_lstringlist & ioArgument0,
-                                            class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                            const class GALGAS_analysisContext constinArgument2,
-                                            const class GALGAS_programRuleList constinArgument3,
-                                            class GALGAS_programListForGeneration & ioArgument4,
-                                            class C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-

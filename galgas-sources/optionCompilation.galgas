@@ -395,6 +395,27 @@ override method @optionComponentForGeneration appendSpecificFiles
       !generatedZone3:"\n\n" # User Zone 3
       !makeExecutable:false
     ]
+  #--- Generate Swift Cocoa Implementation
+    ioAllProductFileSet += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
+    ioCocoaProductFileList += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
+    [@string generateFileWithPattern
+      !startPath:inProductDirectory
+      !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationSwiftCocoa
+        !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-swift-cocoa"
+        !self.mOptionComponentName
+        !self.mBoolOptionMap
+        !self.mUIntOptionMap
+        !self.mStringOptionMap
+        !self.mStringListOptionMap
+      ]
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:"\n\n" # User Zone 3
+      !makeExecutable:false
+    ]
  end
 }
 
@@ -437,6 +458,14 @@ filewrapper optionGenerationTemplates in "+generation-templates/option_generatio
     ?@string OPTION_COMPONENT_NAME
 
   template optionImplementationCocoa "option-implementation-cocoa.galgasTemplate"
+    ?@string OPTION_HEADER_FILE_NAME
+    ?@string OPTION_COMPONENT_NAME
+    ?@commandLineOptionMap BOOL_OPTION_MAP
+    ?@commandLineOptionMap UINT_OPTION_MAP
+    ?@commandLineOptionMap STRING_OPTION_MAP
+    ?@commandLineOptionMap STRING_LIST_OPTION_MAP
+
+  template optionImplementationSwiftCocoa "option-implementation-swift-cocoa.galgasTemplate"
     ?@string OPTION_HEADER_FILE_NAME
     ?@string OPTION_COMPONENT_NAME
     ?@commandLineOptionMap BOOL_OPTION_MAP

@@ -170,6 +170,21 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Filewrapper template 'optionGenerationTemplates optionImplementationSwiftCocoa'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftCocoa (class C_Compiler * inCompiler,
+                                                                                            const class GALGAS_string & in_OPTION_5F_HEADER_5F_FILE_5F_NAME,
+                                                                                            const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
+                                                                                            const class GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
+                                                                                            const class GALGAS_commandLineOptionMap & in_UINT_5F_OPTION_5F_MAP,
+                                                                                            const class GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP,
+                                                                                            const class GALGAS_commandLineOptionMap & in_STRING_5F_LIST_5F_OPTION_5F_MAP
+                                                                                            COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Routine 'compileAllGuiComponentFromASTGalgas3'
 //
 //----------------------------------------------------------------------------------------------------------------------

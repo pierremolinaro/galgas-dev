@@ -6370,6 +6370,23 @@ void cPtr_optionComponentForGeneration::method_appendSpecificFiles (const GALGAS
         "\n"), GALGAS_string ("\n"
         "\n"), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 380)) ;
       }
+      const GALGAS_optionComponentForGeneration temp_16 = this ;
+      ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("option-").add_operation (temp_16.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 399)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 399)).add_operation (GALGAS_string ("-cocoa.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 399))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 399)) ;
+      const GALGAS_optionComponentForGeneration temp_17 = this ;
+      ioArgument_ioCocoaProductFileList.addAssign_operation (GALGAS_string ("option-").add_operation (temp_17.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 400)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 400)).add_operation (GALGAS_string ("-cocoa.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 400))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 400)) ;
+      {
+      const GALGAS_optionComponentForGeneration temp_18 = this ;
+      const GALGAS_optionComponentForGeneration temp_19 = this ;
+      const GALGAS_optionComponentForGeneration temp_20 = this ;
+      const GALGAS_optionComponentForGeneration temp_21 = this ;
+      const GALGAS_optionComponentForGeneration temp_22 = this ;
+      const GALGAS_optionComponentForGeneration temp_23 = this ;
+      const GALGAS_optionComponentForGeneration temp_24 = this ;
+      GALGAS_string::class_method_generateFileWithPattern (constinArgument_inProductDirectory, GALGAS_string ("option-").add_operation (temp_18.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 403)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 403)).add_operation (GALGAS_string ("-cocoa.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 403)), GALGAS_string ("//"), GALGAS_string::makeEmptyString (), GALGAS_string ("\n"
+        "\n"), GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftCocoa (inCompiler, GALGAS_string ("option-").add_operation (temp_19.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 408)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 408)).add_operation (GALGAS_string ("-swift-cocoa"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 408)), temp_20.readProperty_mOptionComponentName (), temp_21.readProperty_mBoolOptionMap (), temp_22.readProperty_mUIntOptionMap (), temp_23.readProperty_mStringOptionMap (), temp_24.readProperty_mStringListOptionMap () COMMA_SOURCE_FILE ("optionCompilation.galgas", 407))), GALGAS_string ("\n"
+        "\n"), GALGAS_string ("\n"
+        "\n"), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 401)) ;
+      }
     }
   }
 }
@@ -6884,6 +6901,162 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
     }
   }
   result << "}\n"
+    "\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'optionGenerationTemplates optionImplementationSwiftCocoa'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftCocoa (C_Compiler * /* inCompiler */,
+                                                                                            const GALGAS_string & /* in_OPTION_5F_HEADER_5F_FILE_5F_NAME */,
+                                                                                            const GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
+                                                                                            const GALGAS_commandLineOptionMap & in_BOOL_5F_OPTION_5F_MAP,
+                                                                                            const GALGAS_commandLineOptionMap & in_UINT_5F_OPTION_5F_MAP,
+                                                                                            const GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP,
+                                                                                            const GALGAS_commandLineOptionMap & in_STRING_5F_LIST_5F_OPTION_5F_MAP
+                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  uint32_t columnMarker = 0 ;
+  result << "\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "\n"
+    "func enterOptionsFor (" ;
+  columnMarker = result.currentColumn () ;
+  result << "_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],\n"
+    "           " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "_ ioUIntOptionArray : inout [SWIFT_GGS_CommandLineOption],\n"
+    "           " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "_ ioStringOptionArray : inout [SWIFT_GGS_CommandLineOption],\n"
+    "           " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "_ ioStringListOptionArray : inout [SWIFT_GGS_CommandLineOption]) {\n" ;
+  GALGAS_uint index_521_ (0) ;
+  if (in_BOOL_5F_OPTION_5F_MAP.isValid ()) {
+    cEnumerator_commandLineOptionMap enumerator_521 (in_BOOL_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
+    while (enumerator_521.hasCurrentObject ()) {
+      result << "  ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (\n"
+        "    domainName: " ;
+      result << in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 10)).stringValue () ;
+      result << ",\n"
+        "    identifier: " ;
+      result << enumerator_521.current_lkey (HERE).readProperty_string ().getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 11)).stringValue () ;
+      result << ",\n"
+        "    commandChar: " ;
+      result << enumerator_521.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 12)).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 12)).stringValue () ;
+      result << ",\n"
+        "    commandString: " ;
+      result << enumerator_521.current_mOptionString (HERE).getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 13)).stringValue () ;
+      result << ",\n"
+        "    comment: " ;
+      result << enumerator_521.current_mComment (HERE).getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 14)).stringValue () ;
+      result << ",\n"
+        "    defaultValue: \"\"\n"
+        "  ))\n" ;
+      index_521_.increment () ;
+      enumerator_521.gotoNextObject () ;
+    }
+  }
+  GALGAS_uint index_1002_ (0) ;
+  if (in_UINT_5F_OPTION_5F_MAP.isValid ()) {
+    cEnumerator_commandLineOptionMap enumerator_1002 (in_UINT_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
+    while (enumerator_1002.hasCurrentObject ()) {
+      result << "  ioUIntOptionArray.append (SWIFT_GGS_CommandLineOption (\n"
+        "    domainName: " ;
+      result << in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 20)).stringValue () ;
+      result << ",\n"
+        "    identifier: " ;
+      result << enumerator_1002.current_lkey (HERE).readProperty_string ().getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 21)).stringValue () ;
+      result << ",\n"
+        "    commandChar: " ;
+      result << enumerator_1002.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 22)).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 22)).stringValue () ;
+      result << ",\n"
+        "    commandString: " ;
+      result << enumerator_1002.current_mOptionString (HERE).getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 23)).stringValue () ;
+      result << ",\n"
+        "    comment: " ;
+      result << enumerator_1002.current_mComment (HERE).getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 24)).stringValue () ;
+      result << ",\n"
+        "    defaultValue: " ;
+      result << enumerator_1002.current_mDefaultValue (HERE).getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 25)).stringValue () ;
+      result << "\n"
+        "  ))\n" ;
+      index_1002_.increment () ;
+      enumerator_1002.gotoNextObject () ;
+    }
+  }
+  GALGAS_uint index_1520_ (0) ;
+  if (in_STRING_5F_OPTION_5F_MAP.isValid ()) {
+    cEnumerator_commandLineOptionMap enumerator_1520 (in_STRING_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
+    while (enumerator_1520.hasCurrentObject ()) {
+      result << "  ioStringOptionArray.append (SWIFT_GGS_CommandLineOption (\n"
+        "    domainName: " ;
+      result << in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 30)).stringValue () ;
+      result << ",\n"
+        "    identifier: " ;
+      result << enumerator_1520.current_lkey (HERE).readProperty_string ().getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 31)).stringValue () ;
+      result << ",\n"
+        "    commandChar: " ;
+      result << enumerator_1520.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 32)).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 32)).stringValue () ;
+      result << ",\n"
+        "    commandString: " ;
+      result << enumerator_1520.current_mOptionString (HERE).getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 33)).stringValue () ;
+      result << ",\n"
+        "    comment: " ;
+      result << enumerator_1520.current_mComment (HERE).getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 34)).stringValue () ;
+      result << ",\n"
+        "    defaultValue: " ;
+      result << enumerator_1520.current_mDefaultValue (HERE).getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 35)).stringValue () ;
+      result << "\n"
+        "  ))\n" ;
+      index_1520_.increment () ;
+      enumerator_1520.gotoNextObject () ;
+    }
+  }
+  GALGAS_uint index_2045_ (0) ;
+  if (in_STRING_5F_LIST_5F_OPTION_5F_MAP.isValid ()) {
+    cEnumerator_commandLineOptionMap enumerator_2045 (in_STRING_5F_LIST_5F_OPTION_5F_MAP, kENUMERATION_UP) ;
+    while (enumerator_2045.hasCurrentObject ()) {
+      result << "  ioStringListOptionArray.append (SWIFT_GGS_CommandLineOption (\n"
+        "    domainName: " ;
+      result << in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 40)).stringValue () ;
+      result << ",\n"
+        "    identifier: " ;
+      result << enumerator_2045.current_lkey (HERE).readProperty_string ().getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 41)).stringValue () ;
+      result << ",\n"
+        "    commandChar: " ;
+      result << enumerator_2045.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 42)).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 42)).stringValue () ;
+      result << ",\n"
+        "    commandString: " ;
+      result << enumerator_2045.current_mOptionString (HERE).getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 43)).stringValue () ;
+      result << ",\n"
+        "    comment: " ;
+      result << enumerator_2045.current_mComment (HERE).getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 44)).stringValue () ;
+      result << ",\n"
+        "    defaultValue: " ;
+      result << enumerator_2045.current_mDefaultValue (HERE).getter_utf_38_Representation (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 45)).stringValue () ;
+      result << "\n"
+        "  ))\n" ;
+      index_2045_.increment () ;
+      enumerator_2045.gotoNextObject () ;
+    }
+  }
+  result << "  ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (\n"
+    "    domainName: \"galgas_cli_options\",\n"
+    "    identifier: \"quiet_output\",\n"
+    "    commandChar: ASCII.q.rawValue,\n"
+    "    commandString: \"quiet\",\n"
+    "    comment: \"Quiet output\",\n"
+    "    defaultValue: \"\"\n"
+    "  ))\n"
+    "}\n"
     "\n"
     "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n" ;
@@ -10033,157 +10206,4 @@ void cPtr_weakReferenceDeclarationAST::method_semanticAnalysis (GALGAS_lstringli
   GALGAS_unifiedTypeMapEntry var_referenceClassType_9336 = extensionGetter_searchKey (constinArgument_inSemanticContext.readProperty_mTypeMap (), temp_23.readProperty_mClassTypeName (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 229)) ;
   const GALGAS_weakReferenceDeclarationAST temp_24 = this ;
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("weak reference ").add_operation (temp_24.readProperty_mWeakReferenceTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 233)), GALGAS_weakReferenceTypeForGeneration::constructor_new (var_selfType_7243, var_referenceClassType_9336, var_superClassEntry_7378, var_allAttributeList_7762, var_typedAttributeList_8697, extensionGetter_definition (var_selfType_7243, inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 240)).readProperty_mGenerateHeaderInSeparateFile ()  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 234))  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 232)) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@weakReferenceTypeForGeneration appendDeclaration1'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void cPtr_weakReferenceTypeForGeneration::method_appendDeclaration_31_ (GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                        GALGAS_string & outArgument_outHeader,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  enumGalgasBool test_0 = kBoolTrue ;
-  if (kBoolTrue == test_0) {
-    const GALGAS_weakReferenceTypeForGeneration temp_1 = this ;
-    test_0 = temp_1.readProperty_mSuperClass ().getter_isNull (SOURCE_FILE ("type-weak-reference.galgas", 260)).operator_not (SOURCE_FILE ("type-weak-reference.galgas", 260)).boolEnum () ;
-    if (kBoolTrue == test_0) {
-      const GALGAS_weakReferenceTypeForGeneration temp_2 = this ;
-      extensionMethod_addHeaderFileName (temp_2.readProperty_mSuperClass (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 261)) ;
-    }
-  }
-  const GALGAS_weakReferenceTypeForGeneration temp_3 = this ;
-  extensionMethod_addHeaderFileName (temp_3.readProperty_mReferenceClassType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 263)) ;
-  const GALGAS_weakReferenceTypeForGeneration temp_4 = this ;
-  GALGAS_unifiedTypeDefinition var_typedefinition_10944 = extensionGetter_definition (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 264)) ;
-  const GALGAS_weakReferenceTypeForGeneration temp_5 = this ;
-  const GALGAS_weakReferenceTypeForGeneration temp_6 = this ;
-  const GALGAS_weakReferenceTypeForGeneration temp_7 = this ;
-  GALGAS_string temp_8 ;
-  const enumGalgasBool test_9 = temp_7.readProperty_mSuperClass ().getter_isNull (SOURCE_FILE ("type-weak-reference.galgas", 268)).boolEnum () ;
-  if (kBoolTrue == test_9) {
-    temp_8 = GALGAS_string::makeEmptyString () ;
-  }else if (kBoolFalse == test_9) {
-    const GALGAS_weakReferenceTypeForGeneration temp_10 = this ;
-    temp_8 = extensionGetter_identifierRepresentation (temp_10.readProperty_mSuperClass (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 268)) ;
-  }
-  outArgument_outHeader = GALGAS_string (filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeHeader_31_ (inCompiler, extensionGetter_identifierRepresentation (temp_5.readProperty_mReferenceClassType (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 266)), extensionGetter_identifierRepresentation (temp_6.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 267)), temp_8, GALGAS_bool (kIsNotEqual, var_typedefinition_10944.readProperty_mDefaultConstructorName ().objectCompare (GALGAS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("type-weak-reference.galgas", 265))) ;
-  outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_typedefinition_10944.readProperty_mTypeName ().readProperty_string (), var_typedefinition_10944.readProperty_mTypeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("type-weak-reference.galgas", 273)), var_typedefinition_10944.readProperty_mIsConcrete (), var_typedefinition_10944.readProperty_mConstructorMap (), var_typedefinition_10944.readProperty_mGetterMap (), var_typedefinition_10944.readProperty_mSetterMap (), var_typedefinition_10944.readProperty_mInstanceMethodMap (), var_typedefinition_10944.readProperty_mClassMethodMap (), var_typedefinition_10944.readProperty_mOptionalMethodMap (), var_typedefinition_10944.readProperty_mEnumerationDescriptor (), var_typedefinition_10944.readProperty_mHandledOperatorFlags (), var_typedefinition_10944.readProperty_mAddAssignOperatorArguments (), var_typedefinition_10944.readProperty_mTypeForEnumeratedElement () COMMA_SOURCE_FILE ("type-weak-reference.galgas", 271))), inCompiler  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 271)) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@weakReferenceTypeForGeneration appendSpecificImplementation'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void cPtr_weakReferenceTypeForGeneration::method_appendSpecificImplementation (const GALGAS_unifiedTypeMap /* constinArgument_inTypeMap */,
-                                                                               GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                               GALGAS_string & outArgument_outImplementation,
-                                                                               C_Compiler * inCompiler
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_weakReferenceTypeForGeneration temp_0 = this ;
-  extensionMethod_addHeaderFileName (temp_0.readProperty_mSelfTypeEntry (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 295)) ;
-  const GALGAS_weakReferenceTypeForGeneration temp_1 = this ;
-  GALGAS_unifiedTypeDefinition var_typedefinition_12304 = extensionGetter_definition (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 296)) ;
-  const GALGAS_weakReferenceTypeForGeneration temp_2 = this ;
-  const GALGAS_weakReferenceTypeForGeneration temp_3 = this ;
-  GALGAS_string temp_4 ;
-  const enumGalgasBool test_5 = temp_3.readProperty_mSuperClass ().getter_isNull (SOURCE_FILE ("type-weak-reference.galgas", 300)).boolEnum () ;
-  if (kBoolTrue == test_5) {
-    temp_4 = GALGAS_string::makeEmptyString () ;
-  }else if (kBoolFalse == test_5) {
-    const GALGAS_weakReferenceTypeForGeneration temp_6 = this ;
-    temp_4 = extensionGetter_identifierRepresentation (temp_6.readProperty_mSuperClass (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 300)) ;
-  }
-  const GALGAS_weakReferenceTypeForGeneration temp_7 = this ;
-  const GALGAS_weakReferenceTypeForGeneration temp_8 = this ;
-  const GALGAS_weakReferenceTypeForGeneration temp_9 = this ;
-  const GALGAS_weakReferenceTypeForGeneration temp_10 = this ;
-  const GALGAS_weakReferenceTypeForGeneration temp_11 = this ;
-  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeSpecificImplementation (inCompiler, extensionGetter_identifierRepresentation (temp_2.readProperty_mReferenceClassType (), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 298)), var_typedefinition_12304.readProperty_mTypeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("type-weak-reference.galgas", 299)), temp_4, temp_7.readProperty_mTypedAttributeList (), temp_8.readProperty_mAllTypedPropertyList (), temp_9.readProperty_mAllTypedPropertyList ().getter_subListWithRange (GALGAS_range::constructor_new (GALGAS_uint (uint32_t (0U)), temp_10.readProperty_mAllTypedPropertyList ().getter_length (SOURCE_FILE ("type-weak-reference.galgas", 303)).substract_operation (temp_11.readProperty_mTypedAttributeList ().getter_length (SOURCE_FILE ("type-weak-reference.galgas", 303)), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 303))  COMMA_SOURCE_FILE ("type-weak-reference.galgas", 303)), inCompiler COMMA_SOURCE_FILE ("type-weak-reference.galgas", 303)), GALGAS_bool (kIsNotEqual, var_typedefinition_12304.readProperty_mDefaultConstructorName ().objectCompare (GALGAS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("type-weak-reference.galgas", 297))) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@enumDeclarationAST enterDeclarationInGraph'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void cPtr_enumDeclarationAST::method_enterDeclarationInGraph (GALGAS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
-                                                              GALGAS_extensionMethodMapForBuildingContext & /* ioArgument_ioExtensionMethodMapForBuildingContext */,
-                                                              GALGAS_extensionGetterMapForBuildingContext & /* ioArgument_ioExtensionGetterMapForBuildingContext */,
-                                                              GALGAS_extensionSetterMapForBuildingContext & /* ioArgument_ioExtensionSetterMapForBuildingContext */,
-                                                              GALGAS_semanticDeclarationListAST & /* ioArgument_ioExtensionOverrideDefinitionList */,
-                                                              C_Compiler * inCompiler
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_enumDeclarationAST temp_0 = this ;
-  const GALGAS_enumDeclarationAST temp_1 = this ;
-  GALGAS_lstring var_key_4451 = GALGAS_lstring::constructor_new (GALGAS_string ("@").add_operation (temp_0.readProperty_mEnumTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 128)), temp_1.readProperty_mEnumTypeName ().readProperty_location ()  COMMA_SOURCE_FILE ("type-enum.galgas", 128)) ;
-  {
-  const GALGAS_enumDeclarationAST temp_2 = this ;
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_4451, temp_2, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 129)) ;
-  }
-  GALGAS_bool var_circularReference_4693 = GALGAS_bool (true) ;
-  const GALGAS_enumDeclarationAST temp_3 = this ;
-  cEnumerator_enumConstantList enumerator_4740 (temp_3.readProperty_mConstantList (), kENUMERATION_UP) ;
-  bool bool_4 = var_circularReference_4693.isValidAndTrue () ;
-  if (enumerator_4740.hasCurrentObject () && bool_4) {
-    while (enumerator_4740.hasCurrentObject () && bool_4) {
-      GALGAS_bool var_namesCurrentType_4815 = GALGAS_bool (false) ;
-      cEnumerator__32_lstringlist enumerator_4842 (enumerator_4740.current_mAssociatedValueDefinitionList (HERE), kENUMERATION_UP) ;
-      bool bool_5 = var_namesCurrentType_4815.operator_not (SOURCE_FILE ("type-enum.galgas", 134)).isValidAndTrue () ;
-      if (enumerator_4842.hasCurrentObject () && bool_5) {
-        while (enumerator_4842.hasCurrentObject () && bool_5) {
-          GALGAS_lstring var_propertyKey_4929 = GALGAS_lstring::constructor_new (GALGAS_string ("@").add_operation (enumerator_4842.current_mValue_30_ (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 135)), enumerator_4842.current_mValue_30_ (HERE).readProperty_location ()  COMMA_SOURCE_FILE ("type-enum.galgas", 135)) ;
-          enumGalgasBool test_6 = kBoolTrue ;
-          if (kBoolTrue == test_6) {
-            test_6 = GALGAS_bool (kIsEqual, var_propertyKey_4929.readProperty_string ().objectCompare (var_key_4451.readProperty_string ())).boolEnum () ;
-            if (kBoolTrue == test_6) {
-              var_namesCurrentType_4815 = GALGAS_bool (true) ;
-            }
-          }
-          enumerator_4842.gotoNextObject () ;
-          if (enumerator_4842.hasCurrentObject ()) {
-            bool_5 = var_namesCurrentType_4815.operator_not (SOURCE_FILE ("type-enum.galgas", 134)).isValidAndTrue () ;
-          }
-        }
-      }
-      enumGalgasBool test_7 = kBoolTrue ;
-      if (kBoolTrue == test_7) {
-        test_7 = var_namesCurrentType_4815.operator_not (SOURCE_FILE ("type-enum.galgas", 140)).boolEnum () ;
-        if (kBoolTrue == test_7) {
-          var_circularReference_4693 = GALGAS_bool (false) ;
-        }
-      }
-      enumerator_4740.gotoNextObject () ;
-      if (enumerator_4740.hasCurrentObject ()) {
-        bool_4 = var_circularReference_4693.isValidAndTrue () ;
-      }
-    }
-  }
-  enumGalgasBool test_8 = kBoolTrue ;
-  if (kBoolTrue == test_8) {
-    test_8 = var_circularReference_4693.boolEnum () ;
-    if (kBoolTrue == test_8) {
-      const GALGAS_enumDeclarationAST temp_9 = this ;
-      cEnumerator_enumConstantList enumerator_5291 (temp_9.readProperty_mConstantList (), kENUMERATION_UP) ;
-      while (enumerator_5291.hasCurrentObject ()) {
-        cEnumerator__32_lstringlist enumerator_5338 (enumerator_5291.current_mAssociatedValueDefinitionList (HERE), kENUMERATION_UP) ;
-        while (enumerator_5338.hasCurrentObject ()) {
-          GALGAS_lstring var_propertyKey_5400 = GALGAS_lstring::constructor_new (GALGAS_string ("@").add_operation (enumerator_5338.current_mValue_30_ (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 148)), enumerator_5338.current_mValue_30_ (HERE).readProperty_location ()  COMMA_SOURCE_FILE ("type-enum.galgas", 148)) ;
-          enumGalgasBool test_10 = kBoolTrue ;
-          if (kBoolTrue == test_10) {
-            test_10 = GALGAS_bool (kIsNotEqual, var_propertyKey_5400.readProperty_string ().objectCompare (var_key_4451.readProperty_string ())).boolEnum () ;
-            if (kBoolTrue == test_10) {
-              {
-              ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_4451, var_propertyKey_5400 COMMA_SOURCE_FILE ("type-enum.galgas", 150)) ;
-              }
-            }
-          }
-          enumerator_5338.gotoNextObject () ;
-        }
-        enumerator_5291.gotoNextObject () ;
-      }
-    }
-  }
 }
