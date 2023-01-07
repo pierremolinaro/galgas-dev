@@ -433,7 +433,7 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
   }
 }
 
-#······················································································································*
+#······················································································································
 
 override method @grammarInStringInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName

@@ -2,58 +2,82 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#······················································································································
+refclass @lexicalErrorInstructionAST : @lexicalInstructionAST {
+  private let @lstring mErrorMessageName
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas3InstructionsSyntax {
+syntax extension galgas3LexiqueComponentSyntax {
 
   #·····················································································································
 
-  
-  #·····················································································································
-  
-
-  #·····················································································································
-
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4InstructionsSyntax {
-
-  #·····················································································································
-
-  
-  #·····················································································································
-  
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $error$
+    $identifier$ ?let errorMessageName
+    ioInstructionList += !@lexicalErrorInstructionAST.new {!errorMessageName}
+  }
 
   #·····················································································································
 
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! CONTEXT
+
+syntax extension galgas4LexiqueComponentSyntax {
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $error$
+    $identifier$ ?let errorMessageName
+    ioInstructionList += !@lexicalErrorInstructionAST.new {!errorMessageName}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CHECK LEXICAL INSTRUCTION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override method @lexicalErrorInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap
+{
+  [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !self.mErrorMessageName.string]
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION TYPES
+#! COCOA GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override getter @lexicalErrorInstructionAST generateCocoaInstructionCode
+  ?let @string unused inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "scanningOk = NO ;\n"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! C++ CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalErrorInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = false
+}
 
 #······················································································································
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
+override getter @lexicalErrorInstructionAST generateLexicalInstructionCode
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string {
+  result = "lexicalError (gLexicalMessage_" + inScannerClassName + "_" + self.mErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
+}
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

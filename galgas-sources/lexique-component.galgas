@@ -220,63 +220,6 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
-    $\$terminal\$$ ?let @lstring sentTerminal
-    outInstruction = @lexicalSimpleSendInstructionAST.new {!sentTerminal}
-  }
-
-  #·····················································································································
-
-  rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
-    var @lexicalSendSearchListAST lexicalSendSearchList = {}
-    $search$
-    repeat
-      $identifier$ ?let @lstring attributeName
-      $in$
-      $identifier$ ?let @lstring searchListName
-      lexicalSendSearchList += !attributeName !searchListName
-      $default$
-    while
-      $search$
-    end
-    let @lexicalSendDefaultActionAST lexicalSendDefaultAction
-    select
-      $\$terminal\$$ ?let @lstring defaultSentTerminal
-      lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST.new {!defaultSentTerminal}
-    or
-      $error$
-      $identifier$ ?let @lstring defaultErrorMessageName
-      lexicalSendDefaultAction = @lexicalErrorByDefaultAST.new {!defaultErrorMessageName}
-    end
-    outInstruction = @lexicalStructuredSendInstructionAST.new {
-      !lexicalSendSearchList
-      !lexicalSendDefaultAction
-    }
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $repeat$
-    var @lexicalInstructionListAST repeatedInstructionList = {}
-    repeat
-    while
-      <lexical_instruction> !?repeatedInstructionList
-    end
-    var @lexicalWhileBranchListAST lexicalWhileBranchList = {}
-    repeat
-      <repeat_while_branch> !?lexicalWhileBranchList
-    while
-    end
-    $end$
-    ioInstructionList += !@lexicalRepeatInstructionAST.new {
-      !repeatedInstructionList
-      !lexicalWhileBranchList
-    }
-  }
-
-  #·····················································································································
-
   rule <repeat_while_branch> ?!@lexicalWhileBranchListAST ioLexicalWhileBranchList {
     $while$
     <lexical_expression> ?let @lexicalExpressionAST whileExpression
@@ -287,79 +230,6 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
       <lexical_instruction> !?whileInstructionList
     end
     ioLexicalWhileBranchList += !whileExpression !whileInstructionList
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $select$
-    var @lexicalSelectBranchListAST lexicalWhileBranchList = {}
-    repeat
-      $case$
-      <lexical_expression> ?let @lexicalExpressionAST selectExpression
-      $:$
-      var @lexicalInstructionListAST selectInstructionList = {}
-      repeat
-      while
-        <lexical_instruction> !?selectInstructionList
-      end
-      lexicalWhileBranchList += !selectExpression !selectInstructionList
-    while
-    end
-    $default$
-    var @lexicalInstructionListAST defaultInstructionList = {}
-    repeat
-    while
-      <lexical_instruction> !?defaultInstructionList
-    end
-    $end$
-    ioInstructionList += !@lexicalSelectInstructionAST.new {
-      !lexicalWhileBranchList
-      !defaultInstructionList
-    }
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $identifier$ ?let @lstring actionName
-    var @lexicalRoutineCallActualArgumentListAST actualArgumentList = {}
-    $($
-    repeat
-    while
-      $!$ ?let selector
-      if selector.string != "" then
-        error selector : "the selector should be '!'" fixit { replace "!" }
-      end
-      let passingModeLocation = @location.here
-      <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
-      actualArgumentList += !@lexicalFormalInputArgumentAST.new {!passingModeLocation !arg}
-    while
-      $!?$ ?let selector
-      if selector.string != "" then
-        error selector : "the selector should be '!?'" fixit { replace "!?" }
-      end
-      let passingModeLocation = @location.here
-      $identifier$ ?let @lstring attributeName
-      let arg = @lexicalAttributeInputOutputArgumentAST.new{!passingModeLocation !attributeName}
-      actualArgumentList += !arg
-    end
-    var @lstringlist errorMessageList = {}
-    select
-    or
-      $error$
-      repeat
-        $identifier$ ?let @lstring errorMessageName
-        errorMessageList += !errorMessageName
-      while
-        $,$
-      end
-    end
-    $)$
-    ioInstructionList += !@lexicalRoutineInstructionAST.new {
-      !actionName
-      !actualArgumentList
-      !errorMessageList}
   }
 
   #·····················································································································
@@ -405,55 +275,6 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
       $)$
       outEffectiveArgument = @lexicalFunctionInputArgumentAST.new {!idf !functionActualArgumentList}
     end
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $error$
-    $identifier$ ?let errorMessageName
-    ioInstructionList += !@lexicalErrorInstructionAST.new {!errorMessageName}
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $warning$
-    $identifier$ ?let warningMessageName
-    ioInstructionList += !@lexicalWarningInstructionAST.new {!warningMessageName}
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $drop$
-    $\$terminal\$$ ?let terminalName
-    ioInstructionList += !@lexicalDropInstructionAST.new {!terminalName}
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $tag$
-    $identifier$ ?let tagName
-    ioInstructionList += !@lexicalTagInstructionAST.new {!tagName}
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $rewind$
-    $identifier$ ?let tagName
-    $send$
-    $\$terminal\$$ ?let terminalName
-    ioInstructionList += !@lexicalRewindInstructionAST.new {!tagName !terminalName}
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $log$
-    ioInstructionList += !@lexicalLogInstructionAST.new
   }
 
   #·····················································································································
@@ -694,73 +515,6 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
-#  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-#    $template$
-#    $lexique$
-#  #--- Lexique Component Name
-#    $identifier$ ?let @lstring lexiqueComponentName
-#  #--- Enable indexing ?
-#    let @lstring indexingDirectory
-#    select
-#      indexingDirectory = ["" nowhere]
-#    or
-#      $indexing$
-#      $in$
-#      $"string"$ ? indexingDirectory
-#    end
-#    ${$
-#  #--- Parse lexique body
-#    var @templateDelimitorListAST templateDelimitorList = {}
-#    var @templateReplacementListAST templateReplacementList = {}
-#    var @lexicalAttributeListAST lexicalAttributeList = {}
-#    var @lexicalStyleListAST lexicalStyleList = {}
-#    var @terminalDeclarationListAST terminalDeclarationList = {}
-#    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = {}
-#    var @lexicalListDeclarationListAST lexicalListDeclarationList = {}
-#    var @lexicalRuleListAST lexicalRuleList = {}
-#    var @indexingListAST indexingListAST = {}
-#    repeat
-#    while 
-#      <template_delimitor> !? templateDelimitorList
-#    while 
-#      <template_replacement> !? templateReplacementList
-#    while 
-#      <lexical_attribute_declaration> !? lexicalAttributeList
-#    while 
-#      <style_declaration> !? lexicalStyleList
-#    while 
-#      <terminal_declaration> !? terminalDeclarationList
-#    while 
-#      <lexical_list_declaration> !? lexicalListDeclarationList
-#    while
-#      <lexical_explicit_rule> !? lexicalRuleList
-#    while
-#      <lexical_implicit_rule> !? lexicalRuleList
-#    while
-#      <lexical_message_declaration> !?lexicalMessageDeclarationList
-#    while
-#      <lexical_indexing_declaration> !?indexingListAST
-#    end
-#    $}$
-#    ioDeclarations.mDeclarationList += !@lexiqueComponentAST.new {
-#      !false # Is not predefined
-#      !lexiqueComponentName
-#      !true # isTemplate
-#      !templateDelimitorList
-#      !templateReplacementList
-#      !lexicalAttributeList
-#      !lexicalStyleList
-#      !terminalDeclarationList
-#      !lexicalMessageDeclarationList
-#      !lexicalListDeclarationList
-#      !lexicalRuleList
-#      !indexingListAST
-#      !indexingDirectory
-#    }
-#  }
-
-  #·····················································································································
-
   rule <lexical_indexing_declaration> ?!@indexingListAST ioIndexingListAST {
     $indexing$
     $identifier$ ?let @lstring indexName indexing indexingNameDefinition
@@ -814,63 +568,6 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
-    $\$terminal\$$ ?let @lstring sentTerminal
-    outInstruction = @lexicalSimpleSendInstructionAST.new {!sentTerminal}
-  }
-
-  #·····················································································································
-
-  rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
-    var @lexicalSendSearchListAST lexicalSendSearchList = {}
-    $search$
-    repeat
-      $identifier$ ?let @lstring attributeName
-      $in$
-      $identifier$ ?let @lstring searchListName
-      lexicalSendSearchList += !attributeName !searchListName
-      $default$
-    while
-      $search$
-    end
-    let @lexicalSendDefaultActionAST lexicalSendDefaultAction
-    select
-      $\$terminal\$$ ?let @lstring defaultSentTerminal
-      lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST.new {!defaultSentTerminal}
-    or
-      $error$
-      $identifier$ ?let @lstring defaultErrorMessageName
-      lexicalSendDefaultAction = @lexicalErrorByDefaultAST.new {!defaultErrorMessageName}
-    end
-    outInstruction = @lexicalStructuredSendInstructionAST.new {
-      !lexicalSendSearchList
-      !lexicalSendDefaultAction
-    }
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $repeat$
-    var @lexicalInstructionListAST repeatedInstructionList = {}
-    repeat
-    while
-      <lexical_instruction> !?repeatedInstructionList
-    end
-    var @lexicalWhileBranchListAST lexicalWhileBranchList = {}
-    repeat
-      <repeat_while_branch> !?lexicalWhileBranchList
-    while
-    end
-    $end$
-    ioInstructionList += !@lexicalRepeatInstructionAST.new {
-      !repeatedInstructionList
-      !lexicalWhileBranchList
-    }
-  }
-
-  #·····················································································································
-
   rule <repeat_while_branch> ?!@lexicalWhileBranchListAST ioLexicalWhileBranchList {
     $while$
     <lexical_expression> ?let @lexicalExpressionAST whileExpression
@@ -881,79 +578,6 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner) {
       <lexical_instruction> !?whileInstructionList
     end
     ioLexicalWhileBranchList += !whileExpression !whileInstructionList
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $select$
-    var @lexicalSelectBranchListAST lexicalWhileBranchList = {}
-    repeat
-      $case$
-      <lexical_expression> ?let @lexicalExpressionAST selectExpression
-      $:$
-      var @lexicalInstructionListAST selectInstructionList = {}
-      repeat
-      while
-        <lexical_instruction> !?selectInstructionList
-      end
-      lexicalWhileBranchList += !selectExpression !selectInstructionList
-    while
-    end
-    $default$
-    var @lexicalInstructionListAST defaultInstructionList = {}
-    repeat
-    while
-      <lexical_instruction> !?defaultInstructionList
-    end
-    $end$
-    ioInstructionList += !@lexicalSelectInstructionAST.new {
-      !lexicalWhileBranchList
-      !defaultInstructionList
-    }
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $identifier$ ?let @lstring actionName
-    var @lexicalRoutineCallActualArgumentListAST actualArgumentList = {}
-    $($
-    repeat
-    while
-      $!$ ?let selector
-      if selector.string != "" then
-        error selector : "the selector should be '!'" fixit { replace "!" }
-      end
-      let passingModeLocation = @location.here
-      <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
-      actualArgumentList += !@lexicalFormalInputArgumentAST.new {!passingModeLocation !arg}
-    while
-      $!?$ ?let selector
-      if selector.string != "" then
-        error selector : "the selector should be '!?'" fixit { replace "!?" }
-      end
-      let passingModeLocation = @location.here
-      $identifier$ ?let @lstring attributeName
-      let arg = @lexicalAttributeInputOutputArgumentAST.new{!passingModeLocation !attributeName}
-      actualArgumentList += !arg
-    end
-    var @lstringlist errorMessageList = {}
-    select
-    or
-      $error$
-      repeat
-        $identifier$ ?let @lstring errorMessageName
-        errorMessageList += !errorMessageName
-      while
-        $,$
-      end
-    end
-    $)$
-    ioInstructionList += !@lexicalRoutineInstructionAST.new {
-      !actionName
-      !actualArgumentList
-      !errorMessageList}
   }
 
   #·····················································································································
@@ -999,55 +623,6 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner) {
       $)$
       outEffectiveArgument = @lexicalFunctionInputArgumentAST.new {!idf !functionActualArgumentList}
     end
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $error$
-    $identifier$ ?let errorMessageName
-    ioInstructionList += !@lexicalErrorInstructionAST.new {!errorMessageName}
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $warning$
-    $identifier$ ?let warningMessageName
-    ioInstructionList += !@lexicalWarningInstructionAST.new {!warningMessageName}
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $drop$
-    $\$terminal\$$ ?let terminalName
-    ioInstructionList += !@lexicalDropInstructionAST.new {!terminalName}
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $tag$
-    $identifier$ ?let tagName
-    ioInstructionList += !@lexicalTagInstructionAST.new {!tagName}
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $rewind$
-    $identifier$ ?let tagName
-    $send$
-    $\$terminal\$$ ?let terminalName
-    ioInstructionList += !@lexicalRewindInstructionAST.new {!tagName !terminalName}
-  }
-
-  #·····················································································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $log$
-    ioInstructionList += !@lexicalLogInstructionAST.new
   }
 
   #·····················································································································

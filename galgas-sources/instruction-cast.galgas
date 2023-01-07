@@ -10,7 +10,7 @@ list @castInstructionBranchListAST {
   public let @location mEndOfInstructions
 }
 
-#······················································································································*
+#······················································································································
 
 refclass @structuredCastInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mCastExpression
@@ -324,7 +324,7 @@ list @castInstructionBranchListForGeneration {
   public let @semanticInstructionListForGeneration mInstructionList
 }
 
-#······················································································································*
+#······················································································································
 
 refclass @structuredCastInstructionForGeneration : @semanticInstructionForGeneration {
   private let @semanticExpressionForGeneration mExpression

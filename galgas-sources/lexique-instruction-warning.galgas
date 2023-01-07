@@ -2,58 +2,81 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#······················································································································
+refclass @lexicalWarningInstructionAST : @lexicalInstructionAST {
+  private let @lstring mWarningMessageName
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas3InstructionsSyntax {
+syntax extension galgas3LexiqueComponentSyntax {
 
   #·····················································································································
 
-  
-  #·····················································································································
-  
-
-  #·····················································································································
-
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4InstructionsSyntax {
-
-  #·····················································································································
-
-  
-  #·····················································································································
-  
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $warning$
+    $identifier$ ?let warningMessageName
+    ioInstructionList += !@lexicalWarningInstructionAST.new {!warningMessageName}
+  }
 
   #·····················································································································
 
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! CONTEXT
+
+syntax extension galgas4LexiqueComponentSyntax {
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $warning$
+    $identifier$ ?let warningMessageName
+    ioInstructionList += !@lexicalWarningInstructionAST.new {!warningMessageName}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CHECK LEXICAL INSTRUCTION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override method @lexicalWarningInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap {
+  [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !self.mWarningMessageName.string]
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION TYPES
+#! COCOA GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override getter @lexicalWarningInstructionAST generateCocoaInstructionCode
+  ?let @string unused inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "" # No generated code
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! C++ CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalWarningInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = false
+}
 
 #······················································································································
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
+override getter @lexicalWarningInstructionAST generateLexicalInstructionCode
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string {
+  result = "lexicalWarning (gLexicalMessage_" + inScannerClassName + "_" + self.mWarningMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
+}
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

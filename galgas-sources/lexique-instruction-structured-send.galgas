@@ -2,19 +2,45 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#······················································································································
+refclass @lexicalStructuredSendInstructionAST : @lexicalInstructionAST {
+  private let @lexicalSendSearchListAST mLexicalSendSearchList
+  private let @lexicalSendDefaultActionAST mLexicalSendDefaultAction
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas3InstructionsSyntax {
+syntax extension galgas3LexiqueComponentSyntax {
 
   #·····················································································································
 
-  
-  #·····················································································································
-  
+  rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
+    var @lexicalSendSearchListAST lexicalSendSearchList = {}
+    $search$
+    repeat
+      $identifier$ ?let @lstring attributeName
+      $in$
+      $identifier$ ?let @lstring searchListName
+      lexicalSendSearchList += !attributeName !searchListName
+      $default$
+    while
+      $search$
+    end
+    let @lexicalSendDefaultActionAST lexicalSendDefaultAction
+    select
+      $\$terminal\$$ ?let @lstring defaultSentTerminal
+      lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST.new {!defaultSentTerminal}
+    or
+      $error$
+      $identifier$ ?let @lstring defaultErrorMessageName
+      lexicalSendDefaultAction = @lexicalErrorByDefaultAST.new {!defaultErrorMessageName}
+    end
+    outInstruction = @lexicalStructuredSendInstructionAST.new {
+      !lexicalSendSearchList
+      !lexicalSendDefaultAction
+    }
+  }
 
   #·····················································································································
 
@@ -22,13 +48,36 @@ syntax extension galgas3InstructionsSyntax {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas4InstructionsSyntax {
+syntax extension galgas4LexiqueComponentSyntax {
 
   #·····················································································································
 
-  
-  #·····················································································································
-  
+  rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
+    var @lexicalSendSearchListAST lexicalSendSearchList = {}
+    $search$
+    repeat
+      $identifier$ ?let @lstring attributeName
+      $in$
+      $identifier$ ?let @lstring searchListName
+      lexicalSendSearchList += !attributeName !searchListName
+      $default$
+    while
+      $search$
+    end
+    let @lexicalSendDefaultActionAST lexicalSendDefaultAction
+    select
+      $\$terminal\$$ ?let @lstring defaultSentTerminal
+      lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST.new {!defaultSentTerminal}
+    or
+      $error$
+      $identifier$ ?let @lstring defaultErrorMessageName
+      lexicalSendDefaultAction = @lexicalErrorByDefaultAST.new {!defaultErrorMessageName}
+    end
+    outInstruction = @lexicalStructuredSendInstructionAST.new {
+      !lexicalSendSearchList
+      !lexicalSendDefaultAction
+    }
+  }
 
   #·····················································································································
 
@@ -38,6 +87,16 @@ syntax extension galgas4InstructionsSyntax {
 #! CONTEXT
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap {
+  for (mAttributeName mSearchListName) in self.mLexicalSendSearchList do
+    [!?ioLexiqueAnalysisContext.mLexicalTokenListMap setMShouldBeGeneratedForKey !true !mSearchListName.string]
+    [ioLexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?*]
+  end
+  [self.mLexicalSendDefaultAction checkLexicalDefaultAction !?ioLexiqueAnalysisContext]
+}
+
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
@@ -45,15 +104,50 @@ syntax extension galgas4InstructionsSyntax {
   
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION TYPES
+#! COCOA GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
-#······················································································································
+override getter @lexicalStructuredSendInstructionAST generateCocoaInstructionCode
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = ""
+  for (mAttributeName mSearchListName) in self.mLexicalSendSearchList do
+    outGeneratedCode += "if (mTokenCode == 0) {\n"
+    outGeneratedCode += "  mTokenCode = search_into_" + [inScannerClassName identifierRepresentation] 
+    outGeneratedCode += "_" + mSearchListName + " (mLexicalAttribute_" + mAttributeName + ") ;\n"
+    outGeneratedCode += "}\n"
+  end
+  outGeneratedCode += "if (mTokenCode == 0) {\n"
+  outGeneratedCode += "  " + [self.mLexicalSendDefaultAction generateCocoaDefaultSendCode !inScannerClassName]
+  outGeneratedCode += "}\n"
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override getter @lexicalStructuredSendInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = false
+}
+
+#······················································································································
+
+override getter @lexicalStructuredSendInstructionAST generateLexicalInstructionCode
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string {
+  result = ""
+  for (mAttributeName mSearchListName) in self.mLexicalSendSearchList do
+    result += "if (token.mTokenCode == -1) {\n"
+    result += "  token.mTokenCode = search_into_" + mSearchListName + " (token.mLexicalAttribute_" + [mAttributeName identifierRepresentation] + ") ;\n"
+    result += "}\n"
+  end
+  result += "if (token.mTokenCode == -1) {\n"
+  result += "  " + [self.mLexicalSendDefaultAction generateDefaultSendCode !inScannerClassName]
+  result += "}\n"
+  result += "enterToken (token) ;\n"
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

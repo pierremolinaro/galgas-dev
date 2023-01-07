@@ -135,7 +135,7 @@ override method @undefinedLocalConstantDeclarationAST enterInstructionInSemantic
 {
 }
 
-#······················································································································*
+#······················································································································
 
   
 override method @localConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext
@@ -143,7 +143,7 @@ override method @localConstantDeclarationWithAssignmentAST enterInstructionInSem
   [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#······················································································································*
+#······················································································································
 
 override method @localVariableOrConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap {
@@ -179,7 +179,7 @@ override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
   }
 }
 
-#······················································································································*
+#······················································································································
 
 override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
                             ?let @lstring inUsefulnessCallerEntityName
@@ -213,7 +213,7 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
     !expression}
 }
 
-#······················································································································*
+#······················································································································
 
 override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
                             ?let @lstring inUsefulnessCallerEntityName
@@ -270,7 +270,7 @@ refclass @undefinedLocalConstantDeclarationForGeneration : @semanticInstructionF
   private let @string mCppVariableName
 }
 
-#······················································································································*
+#······················································································································
 
 refclass @localVariableOrConstantDeclarationWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
   private let @unifiedTypeMapEntry mTargetType
@@ -279,7 +279,7 @@ refclass @localVariableOrConstantDeclarationWithSourceExpressionForGeneration : 
   private let @semanticExpressionForGeneration mSourceExpression
 }
 
-#······················································································································*
+#······················································································································
 
 override method @undefinedLocalConstantDeclarationForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -292,7 +292,7 @@ override method @undefinedLocalConstantDeclarationForGeneration generateInstruct
   ioGeneratedCode += "GALGAS_" + [self.mTargetType identifierRepresentation] + " " + self.mCppVariableName + " ;\n"
 }
 
-#······················································································································*
+#······················································································································
 
 override method @localVariableOrConstantDeclarationWithSourceExpressionForGeneration generateInstruction
                                                     ?!@stringset ioInclusionSet

@@ -116,7 +116,7 @@ refclass @warningInstructionForGeneration : @semanticInstructionForGeneration {
   public let @fixitListForGeneration mFixitListForGeneration
 }
 
-#······················································································································*
+#······················································································································
 
 override method @warningInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet

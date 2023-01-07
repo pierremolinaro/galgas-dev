@@ -33,7 +33,7 @@ end%
     noteObjectAllocation (self) ;
 %
   for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
-    %   mLexicalAttribute_%!lkey.string% = % ![mLexicalType cocoaInitializationCode] % ;\n%
+    %    mLexicalAttribute_%!lkey.string% = % ![mLexicalType cocoaInitializationCode] % ;\n%
   end
 %  }
 % if [LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList length] > 0 then

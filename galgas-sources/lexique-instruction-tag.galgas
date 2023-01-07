@@ -2,58 +2,84 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#······················································································································
+refclass @lexicalTagInstructionAST : @lexicalInstructionAST {
+  private let @lstring mLexicalTagName
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas3InstructionsSyntax {
+syntax extension galgas3LexiqueComponentSyntax {
 
   #·····················································································································
 
-  
-  #·····················································································································
-  
-
-  #·····················································································································
-
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4InstructionsSyntax {
-
-  #·····················································································································
-
-  
-  #·····················································································································
-  
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $tag$
+    $identifier$ ?let tagName
+    ioInstructionList += !@lexicalTagInstructionAST.new {!tagName}
+  }
 
   #·····················································································································
 
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! CONTEXT
+
+syntax extension galgas4LexiqueComponentSyntax {
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $tag$
+    $identifier$ ?let tagName
+    ioInstructionList += !@lexicalTagInstructionAST.new {!tagName}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CHECK LEXICAL INSTRUCTION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override method @lexicalTagInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?!@lexicalTagMap ioTagMap {
+  [!?ioTagMap insertKey !self.mLexicalTagName]
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION TYPES
+#! COCOA GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override getter @lexicalTagInstructionAST generateCocoaInstructionCode
+  ?let @string unused inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "scanningPointStructForCocoa locationForTag_" + self.mLexicalTagName + " ;\n"
+  outGeneratedCode += "[self saveScanningPoint: & locationForTag_" + self.mLexicalTagName + "] ;\n"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! C++ CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalTagInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = false
+}
 
 #······················································································································
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
+override getter @lexicalTagInstructionAST generateLexicalInstructionCode
+  ?let @string unused inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string {
+  result = "const C_LocationInSource currentLocationForTag_" + self.mLexicalTagName + " = mCurrentLocation ;\n"
+                    + "const C_LocationInSource endLocationForTag_" + self.mLexicalTagName + " = mTokenEndLocation ;\n"
+                    + "const utf32 currentCharForTag_" + self.mLexicalTagName + " = mCurrentChar ;\n"
+}
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

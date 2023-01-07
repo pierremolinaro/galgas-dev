@@ -15,7 +15,7 @@ refclass @readAccessWithInstructionAST : @semanticInstructionAST {
   public let @location mEndOf_else_instructions
 }
 
-#······················································································································*
+#······················································································································
 
 refclass @readWriteAccessWithInstructionAST : @semanticInstructionAST {
   public let @lstring mPrefix
@@ -347,7 +347,7 @@ override method @readAccessWithInstructionAST enterInstructionInSemanticContext
   [self.mElseBranchInstructions enterInstructionListInSemanticContext !?ioTypeMap]
 }
 
-#······················································································································*
+#······················································································································
 
 override method @readWriteAccessWithInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -468,7 +468,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   }
 }
 
-#······················································································································*
+#······················································································································
 
 override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
                                 ?let @lstring inUsefulnessCallerEntityName
@@ -619,7 +619,7 @@ refclass @readOnlyWithInstructionForGeneration : @semanticInstructionForGenerati
   public let @semanticInstructionListForGeneration mElseBranchInstructions
 }
 
-#······················································································································*
+#······················································································································
 
 refclass @readWriteWithInstructionForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
@@ -700,7 +700,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#······················································································································*
+#······················································································································
 
 override method @readWriteWithInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet

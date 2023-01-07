@@ -23,7 +23,6 @@ project (3:5:0) -> "galgas" {
   %makefile-x86linux32-on-macosx
   %makefile-x86linux64-on-macosx
   %makefile-win32-on-macosx
-  %codeblocks-mac
   %codeblocks-windows
   %codeblocks-linux32
   %codeblocks-linux64
@@ -61,6 +60,17 @@ project (3:5:0) -> "galgas" {
   "galgas-sources/lexiqueGeneration.galgas"
   "galgas-sources/lexiqueCocoaGeneration.galgas"
   "galgas-sources/lexiqueCompilation.galgas"
+  "galgas-sources/lexique-instruction-structured-send.galgas"
+  "galgas-sources/lexique-instruction-drop.galgas"
+  "galgas-sources/lexique-instruction-error.galgas"
+  "galgas-sources/lexique-instruction-log.galgas"
+  "galgas-sources/lexique-instruction-repeat.galgas"
+  "galgas-sources/lexique-instruction-rewind.galgas"
+  "galgas-sources/lexique-instruction-routine-call.galgas"
+  "galgas-sources/lexique-instruction-select.galgas"
+  "galgas-sources/lexique-instruction-simple-send.galgas"
+  "galgas-sources/lexique-instruction-tag.galgas"
+  "galgas-sources/lexique-instruction-warning.galgas"
 
 #--- Option Component
   "galgas-sources/optionCompilation.galgas"

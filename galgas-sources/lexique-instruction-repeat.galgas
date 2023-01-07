@@ -2,19 +2,37 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#······················································································································
+refclass @lexicalRepeatInstructionAST : @lexicalInstructionAST {
+  private let @lexicalInstructionListAST mRepeatedInstructionList
+  private let @lexicalWhileBranchListAST mLexicalWhileBranchList
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas3InstructionsSyntax {
+syntax extension galgas3LexiqueComponentSyntax {
 
   #·····················································································································
 
-  
-  #·····················································································································
-  
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $repeat$
+    var @lexicalInstructionListAST repeatedInstructionList = {}
+    repeat
+    while
+      <lexical_instruction> !?repeatedInstructionList
+    end
+    var @lexicalWhileBranchListAST lexicalWhileBranchList = {}
+    repeat
+      <repeat_while_branch> !?lexicalWhileBranchList
+    while
+    end
+    $end$
+    ioInstructionList += !@lexicalRepeatInstructionAST.new {
+      !repeatedInstructionList
+      !lexicalWhileBranchList
+    }
+  }
 
   #·····················································································································
 
@@ -22,38 +40,130 @@ syntax extension galgas3InstructionsSyntax {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas4InstructionsSyntax {
+syntax extension galgas4LexiqueComponentSyntax {
 
   #·····················································································································
 
-  
-  #·····················································································································
-  
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $repeat$
+    var @lexicalInstructionListAST repeatedInstructionList = {}
+    repeat
+    while
+      <lexical_instruction> !?repeatedInstructionList
+    end
+    var @lexicalWhileBranchListAST lexicalWhileBranchList = {}
+    repeat
+      <repeat_while_branch> !?lexicalWhileBranchList
+    while
+    end
+    $end$
+    ioInstructionList += !@lexicalRepeatInstructionAST.new {
+      !repeatedInstructionList
+      !lexicalWhileBranchList
+    }
+  }
 
   #·····················································································································
 
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! CONTEXT
+#! CHECK LEXICAL INSTRUCTION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override method @lexicalRepeatInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap ioTagMap {
+  for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList do
+    [mWhileExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
+    var tagMap = @lexicalTagMap.mapWithMapToOverride{!ioTagMap}
+    for (mInstruction) in mWhileInstructionList do
+      [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
+    end
+  end
+  var tagMap = @lexicalTagMap.mapWithMapToOverride{!ioTagMap}
+  for (mInstruction) in self.mRepeatedInstructionList do
+    [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
+  end
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION TYPES
+#! COCOA GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override getter @lexicalRepeatInstructionAST generateCocoaInstructionCode
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "do {\n"
+  [!?outGeneratedCode incIndentation !2]
+#--- Repeated instruction
+  for (mInstruction) in self.mRepeatedInstructionList do
+    outGeneratedCode += [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+  end
+#---
+  for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList
+  do
+    outGeneratedCode += "if (scanningOk && ("
+    outGeneratedCode += [mWhileExpression generateCocoaConditionCode !inLexiqueAnalysisContext]
+    outGeneratedCode += ")) {\n"
+    [!?outGeneratedCode incIndentation !2]
+    for (mInstruction) in mWhileInstructionList do
+      outGeneratedCode += [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+    end
+    [!?outGeneratedCode decIndentation !2]
+  between
+    outGeneratedCode += "}else "
+  end
+  outGeneratedCode += "}else{\n"
+                      "  loop = NO ;\n"
+                      "}\n"
+  [!?outGeneratedCode decIndentation !2]
+  outGeneratedCode += "}while (loop && scanningOk) ;\n"
+                      "loop = YES ;\n"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! C++ CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalRepeatInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = true
+}
 
 #······················································································································
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
+override getter @lexicalRepeatInstructionAST generateLexicalInstructionCode
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string {
+  result = "do {\n"
+  [!?result incIndentation !2]
+#--- Repeated instruction
+  for (mInstruction) in self.mRepeatedInstructionList do
+    result += [mInstruction generateLexicalInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+  end
+#---
+  for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList
+  do
+    result += "if ("
+    result += [mWhileExpression generateConditionCode !context:inLexiqueAnalysisContext]
+    result += ") {\n"
+    [!?result incIndentation !2]
+    for (mInstruction) in mWhileInstructionList do
+      result += [mInstruction generateLexicalInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+    end
+    [!?result decIndentation !2]
+  between
+    result += "}else "
+  end
+  result += "}else{\n"
+                      "  loop = false ;\n"
+                      "}\n"
+  [!?result decIndentation !2]
+  result += "}while (loop) ;\n"
+                      "loop = true ;\n"
+}
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

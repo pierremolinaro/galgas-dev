@@ -2,58 +2,80 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#······················································································································
+refclass @lexicalSimpleSendInstructionAST : @lexicalInstructionAST {
+  private let @lstring mSentTerminal
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas3InstructionsSyntax {
+syntax extension galgas3LexiqueComponentSyntax {
 
   #·····················································································································
 
-  
-  #·····················································································································
-  
-
-  #·····················································································································
-
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4InstructionsSyntax {
-
-  #·····················································································································
-
-  
-  #·····················································································································
-  
+  rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
+    $\$terminal\$$ ?let @lstring sentTerminal
+    outInstruction = @lexicalSimpleSendInstructionAST.new {!sentTerminal}
+  }
 
   #·····················································································································
 
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! CONTEXT
+
+syntax extension galgas4LexiqueComponentSyntax {
+
+  #·····················································································································
+
+  rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
+    $\$terminal\$$ ?let @lstring sentTerminal
+    outInstruction = @lexicalSimpleSendInstructionAST.new {!sentTerminal}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CHECK LEXICAL INSTRUCTION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override method @lexicalSimpleSendInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap {
+  [ioLexiqueAnalysisContext.mTerminalMap searchKey !self.mSentTerminal ?*]
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION TYPES
+#! COCOA GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override getter @lexicalSimpleSendInstructionAST generateCocoaInstructionCode
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "mTokenCode = " + inScannerClassName + "_1_" + [self.mSentTerminal.string identifierRepresentation] + " ;\n"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! C++ CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalSimpleSendInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = false
+}
 
 #······················································································································
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
+override getter @lexicalSimpleSendInstructionAST generateLexicalInstructionCode
+  ?let @string unused inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string
+{
+  result  = "token.mTokenCode = kToken_" + [self.mSentTerminal identifierRepresentation] + " ;\n"
+  result += "enterToken (token) ;\n"
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

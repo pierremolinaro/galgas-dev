@@ -2,58 +2,92 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#······················································································································
+refclass @lexicalRewindInstructionAST : @lexicalInstructionAST {
+  private let @lstring mLexicalTagName
+  private let @lstring mTerminalName
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas3InstructionsSyntax {
+syntax extension galgas3LexiqueComponentSyntax {
 
   #·····················································································································
 
-  
-  #·····················································································································
-  
-
-  #·····················································································································
-
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4InstructionsSyntax {
-
-  #·····················································································································
-
-  
-  #·····················································································································
-  
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $rewind$
+    $identifier$ ?let tagName
+    $send$
+    $\$terminal\$$ ?let terminalName
+    ioInstructionList += !@lexicalRewindInstructionAST.new {!tagName !terminalName}
+  }
 
   #·····················································································································
 
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! CONTEXT
+
+syntax extension galgas4LexiqueComponentSyntax {
+
+  #·····················································································································
+
+  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+    $rewind$
+    $identifier$ ?let tagName
+    $send$
+    $\$terminal\$$ ?let terminalName
+    ioInstructionList += !@lexicalRewindInstructionAST.new {!tagName !terminalName}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CHECK LEXICAL INSTRUCTION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override method @lexicalRewindInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap ioTagMap {
+  [ioTagMap searchKey !self.mLexicalTagName]
+  [ioLexiqueAnalysisContext.mTerminalMap searchKey !self.mTerminalName ?*]
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION TYPES
+#! COCOA GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override getter @lexicalRewindInstructionAST generateCocoaInstructionCode
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "[self restoreScanningPoint: & locationForTag_" + self.mLexicalTagName + "] ;\n"
+  outGeneratedCode += "mTokenCode = " + inScannerClassName + "_1_" + [self.mTerminalName.string identifierRepresentation] + " ;\n"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! C++ CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalRewindInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
+  result = false
+}
 
 #······················································································································
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
+override getter @lexicalRewindInstructionAST generateLexicalInstructionCode
+  ?let @string unused inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string {
+  result  = "mCurrentLocation = currentLocationForTag_" + self.mLexicalTagName + " ;\n"
+  result += "mTokenEndLocation = endLocationForTag_" + self.mLexicalTagName + " ;\n"
+  result += "mCurrentChar = currentCharForTag_" + self.mLexicalTagName + " ;\n"
+  result += "token.mTokenCode = kToken_" + [self.mTerminalName identifierRepresentation] + " ;\n"
+  result += "enterToken (token) ;\n"
+}
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

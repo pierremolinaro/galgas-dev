@@ -184,7 +184,7 @@ refclass @loopInstructionWithoutVariantForGeneration : @semanticInstructionForGe
   public let @semanticInstructionListForGeneration mSecondInstructions
 }
 
-#······················································································································*
+#······················································································································
 
 override method @loopInstructionWithoutVariantForGeneration generateInstruction ?!@stringset ioInclusionSet
                                                                                 ?!@uint ioTemporaryVariableIndex

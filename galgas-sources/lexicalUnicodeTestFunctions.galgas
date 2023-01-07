@@ -22,31 +22,31 @@
 #  public let @lexicalFunctionExpressionAST mLexicalExpression
 #}
 
-#······················································································································*
+#······················································································································
 
 #abstract refclass @lexicalFunctionExpressionAST {
 #}
 
-#······················································································································*
+#······················································································································
 
 #refclass @lexicalFunctionOrExpressionAST : @lexicalFunctionExpressionAST {
 #  private let @lexicalFunctionExpressionAST mLeftOperand
 #  private let @lexicalFunctionExpressionAST mRightOperand
 #}
 
-#······················································································································*
+#······················································································································
 
 #refclass @lexicalFunctionCallAST : @lexicalFunctionExpressionAST {
 #  private let @lstring mCalledFunctionName
 #}
 
-#······················································································································*
+#······················································································································
 
 #refclass @lexicalFunctionCharacterMatchAST : @lexicalFunctionExpressionAST {
 #  private let @lchar mCharacter
 #}
 
-#······················································································································*
+#······················································································································
 
 #refclass @lexicalFunctionCharacterIntervalMatchAST : @lexicalFunctionExpressionAST {
 #  private let @lchar mLowerBound

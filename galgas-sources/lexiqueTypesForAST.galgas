@@ -193,19 +193,6 @@ abstract refclass @lexicalSendDefaultActionAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @lexicalStructuredSendInstructionAST : @lexicalInstructionAST {
-  private let @lexicalSendSearchListAST mLexicalSendSearchList
-  private let @lexicalSendDefaultActionAST mLexicalSendDefaultAction
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @lexicalSimpleSendInstructionAST : @lexicalInstructionAST {
-  private let @lstring mSentTerminal
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 refclass @lexicalSendTerminalByDefaultAST : @lexicalSendDefaultActionAST {
   private let @lstring mDefaultSentTerminal
 }
@@ -225,13 +212,6 @@ list @lexicalWhileBranchListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @lexicalRepeatInstructionAST : @lexicalInstructionAST {
-  private let @lexicalInstructionListAST mRepeatedInstructionList
-  private let @lexicalWhileBranchListAST mLexicalWhileBranchList
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 list @lexicalSelectBranchListAST {
   public let @lexicalExpressionAST mSelectExpression
   public let @lexicalInstructionListAST mSelectInstructionList
@@ -239,46 +219,7 @@ list @lexicalSelectBranchListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @lexicalSelectInstructionAST : @lexicalInstructionAST {
-  private let @lexicalSelectBranchListAST mLexicalSelectBranchList
-  private let @lexicalInstructionListAST mDefaultInstructionList
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-abstract refclass @abstractLexicalRoutineActualArgumentAST {
-  private let @location mActualPassingModeLocation
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-list @lexicalRoutineCallActualArgumentListAST {
-  public let @abstractLexicalRoutineActualArgumentAST mLexicalRoutineActualArgument
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @lexicalRoutineInstructionAST : @lexicalInstructionAST {
-  private let @lstring mRoutineName
-  private let @lexicalRoutineCallActualArgumentListAST mActualArgumentList
-  private let @lstringlist mErrorMessageList
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @lexicalAttributeInputOutputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
-  private let @lstring mAttributeName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 abstract refclass @lexicalRoutineOrFunctionFormalInputArgumentAST {
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @lexicalFormalInputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
-  private let @lexicalRoutineOrFunctionFormalInputArgumentAST mRoutineOrFunctionFormalInputArgument
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -316,42 +257,6 @@ refclass @lexicalCurrentCharacterInputArgumentAST : @lexicalRoutineOrFunctionFor
 refclass @lexicalFunctionInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   private let @lstring mFunctionName
   private let @lexicalFunctionCallActualArgumentListAST mFunctionActualArgumentList
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @lexicalDropInstructionAST : @lexicalInstructionAST {
-  private let @lstring mTerminalName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @lexicalErrorInstructionAST : @lexicalInstructionAST {
-  private let @lstring mErrorMessageName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @lexicalWarningInstructionAST : @lexicalInstructionAST {
-  private let @lstring mWarningMessageName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @lexicalTagInstructionAST : @lexicalInstructionAST {
-  private let @lstring mLexicalTagName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @lexicalRewindInstructionAST : @lexicalInstructionAST {
-  private let @lstring mLexicalTagName
-  private let @lstring mTerminalName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @lexicalLogInstructionAST : @lexicalInstructionAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -9,7 +9,7 @@ refclass @plusEqualElementsInstructionAST : @semanticInstructionAST {
   private let @actualOutputExpressionList mExpressions
 }
 
-#······················································································································*
+#······················································································································
 
 refclass @plusEqualExpressionInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
@@ -18,7 +18,7 @@ refclass @plusEqualExpressionInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mExpression
 }
 
-#······················································································································*
+#······················································································································
 
 refclass @minusEqualExpressionInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
@@ -27,7 +27,7 @@ refclass @minusEqualExpressionInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mExpression
 }
 
-#······················································································································*
+#······················································································································
 
 refclass @mulEqualExpressionInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
@@ -36,7 +36,7 @@ refclass @mulEqualExpressionInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mExpression
 }
 
-#······················································································································*
+#······················································································································
 
 refclass @divEqualExpressionInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf

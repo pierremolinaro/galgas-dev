@@ -224,7 +224,7 @@ refclass @loopInstructionWithVariantForGeneration : @semanticInstructionForGener
   public let @semanticInstructionListForGeneration mSecondInstructions
 }
 
-#······················································································································*
+#······················································································································
 
 override method @loopInstructionWithVariantForGeneration generateInstruction
   ?!@stringset ioInclusionSet
