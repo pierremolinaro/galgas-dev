@@ -1065,12 +1065,28 @@ override method @lexiqueComponentAST semanticAnalysis
       !self.mLexicalStyleListAST
     ]
   #--- Cocoa header
-    let cocoaHeader = [filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2
+    let objCocoaHeader = [filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2
       !self.mLexiqueComponentName.string
       !lexiqueAnalysisContext
     ]
-  #--- Cocoa implementation
-    let cocoaImplementation = [filewrapper lexiqueGenerationTemplates.cocoaImplementationZone2
+  #--- Objc Cocoa implementation
+    let objCocoaImplementation = [filewrapper lexiqueGenerationTemplates.cocoaImplementationZone2
+      !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-cocoa"
+      !self.mLexiqueComponentName.string
+      !lexiqueAnalysisContext.mLexicalAttributeMap
+      !lexiqueAnalysisContext.mLexicalMessageMap
+      !lexiqueAnalysisContext.mTerminalList
+      !lexiqueAnalysisContext.mUnicodeStringToGenerate
+      !self.mLexicalRuleListAST
+      !lexiqueAnalysisContext
+      !self.mTemplateReplacementListAST
+      !self.mIndexingDirectoryAST.string
+      !self.mIndexingListAST
+      !self.mLexicalStyleListAST
+      !self.mTemplateDelimitorListAST
+    ]
+  #--- Swift Cocoa implementation
+    let swiftCocoaImplementation = [filewrapper lexiqueGenerationTemplates.swiftCocoaImplementationZone2
       !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-cocoa"
       !self.mLexiqueComponentName.string
       !lexiqueAnalysisContext.mLexicalAttributeMap
@@ -1094,8 +1110,9 @@ override method @lexiqueComponentAST semanticAnalysis
         !self.mLexiqueComponentName.string
         !headerContents
         !cppContents
-        !cocoaHeader
-        !cocoaImplementation
+        !objCocoaHeader
+        !objCocoaImplementation
+        !swiftCocoaImplementation
       }
   end
 }
@@ -1135,6 +1152,21 @@ private filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
 
   template cocoaImplementationZone2 "lexique_cocoa_implementation.m.galgasTemplate"
+    ?@string LEXIQUE_HEADER_FILE_NAME
+    ?@string LEXIQUE_CLASS_NAME
+    ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
+    ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
+    ?@terminalList TERMINAL_LIST
+    ?@stringset STRINGS_IN_EXPLICIT_RULES
+    ?@lexicalRuleListAST LEXICAL_RULE_LIST
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
+    ?@string INDEXING_DIRECTORY
+    ?@indexingListAST INDEXING_LIST
+    ?@lexicalStyleListAST LEXICAL_STYLE_LIST
+    ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST
+
+  template swiftCocoaImplementationZone2 "lexique_cocoa_implementation.swift.galgasTemplate"
     ?@string LEXIQUE_HEADER_FILE_NAME
     ?@string LEXIQUE_CLASS_NAME
     ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP

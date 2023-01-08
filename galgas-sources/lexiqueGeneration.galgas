@@ -23,10 +23,6 @@ abstract getter @lexicalExpressionAST generateConditionCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#abstract getter @lexicalExpressionAST lexicalExpressionUsesLoopLocalVar -> @bool
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 override getter @lexicalOrExpressionAST generateConditionCode
   ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string {
@@ -50,12 +46,6 @@ override getter @lexicalCharacterIntervalMatchAST generateConditionCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#override getter @lexicalCharacterIntervalMatchAST lexicalExpressionUsesLoopLocalVar -> @bool {
-#  result = false
-#}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 override getter @lexicalStringMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string {
@@ -64,12 +54,6 @@ override getter @lexicalStringMatchAST generateConditionCode
   result += [[self.mString length] string]
   result += ", true)"
 }
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#override getter @lexicalStringMatchAST lexicalExpressionUsesLoopLocalVar -> @bool {
-#  result = false
-#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

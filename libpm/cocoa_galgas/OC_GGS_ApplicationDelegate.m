@@ -777,7 +777,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
   NSDictionary * optionDictionary = [NSDictionary
     dictionaryWithObject:[NSNumber numberWithBool:YES]
-    forKey:NSContinuouslyUpdatesValueBindingOption
+    forKey: NSContinuouslyUpdatesValueBindingOption
   ] ;
   NSRect r;
   r.origin.x = 10.0 ;

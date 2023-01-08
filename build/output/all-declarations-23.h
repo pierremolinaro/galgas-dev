@@ -10,6 +10,33 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Function 'generateClassGetterDeclaration'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_generateClassGetterDeclaration (const class GALGAS_lstring & constinArgument0,
+                                                             const class GALGAS_functionSignature & constinArgument1,
+                                                             const class GALGAS_bool & constinArgument2,
+                                                             const class GALGAS_unifiedTypeMapEntry & constinArgument3,
+                                                             const class GALGAS_methodQualifier & constinArgument4,
+                                                             class C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'generateClassInstanceMethodDeclaration'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_generateClassInstanceMethodDeclaration (const class GALGAS_lstring & constinArgument0,
+                                                                     const class GALGAS_formalParameterSignature & constinArgument1,
+                                                                     const class GALGAS_bool & constinArgument2,
+                                                                     const class GALGAS_methodQualifier & constinArgument3,
+                                                                     class C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Filewrapper 'enumGenerationTemplate'
 //
 //----------------------------------------------------------------------------------------------------------------------

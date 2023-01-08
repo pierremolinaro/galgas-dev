@@ -31,9 +31,11 @@ class GALGAS_lexiqueDeclarationForGeneration : public GALGAS_semanticDeclaration
 
   public: class GALGAS_string readProperty_mCppContents (void) const ;
 
-  public: class GALGAS_string readProperty_mCocoaHeader (void) const ;
+  public: class GALGAS_string readProperty_mObjcCocoaHeader (void) const ;
 
-  public: class GALGAS_string readProperty_mCocoaImplementation (void) const ;
+  public: class GALGAS_string readProperty_mObjcCocoaImplementation (void) const ;
+
+  public: class GALGAS_string readProperty_mSwiftCocoaImplementation (void) const ;
 
 //-- Start of generic part --*
 
@@ -52,19 +54,14 @@ class GALGAS_lexiqueDeclarationForGeneration : public GALGAS_semanticDeclaration
                                                                                const class GALGAS_string & inOperand3,
                                                                                const class GALGAS_string & inOperand4,
                                                                                const class GALGAS_string & inOperand5,
-                                                                               const class GALGAS_string & inOperand6
+                                                                               const class GALGAS_string & inOperand6,
+                                                                               const class GALGAS_string & inOperand7
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_lexiqueDeclarationForGeneration & inOperand) const ;
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_setMCocoaHeader (class GALGAS_string inArgument0
-                                                        COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMCocoaImplementation (class GALGAS_string inArgument0
-                                                                COMMA_LOCATION_ARGS) ;
-
   public: VIRTUAL_IN_DEBUG void setter_setMCppContents (class GALGAS_string inArgument0
                                                         COMMA_LOCATION_ARGS) ;
 
@@ -73,6 +70,15 @@ class GALGAS_lexiqueDeclarationForGeneration : public GALGAS_semanticDeclaration
 
   public: VIRTUAL_IN_DEBUG void setter_setMLexiqueName (class GALGAS_string inArgument0
                                                         COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMObjcCocoaHeader (class GALGAS_string inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMObjcCocoaImplementation (class GALGAS_string inArgument0
+                                                                    COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMSwiftCocoaImplementation (class GALGAS_string inArgument0
+                                                                     COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -124,8 +130,9 @@ class cPtr_lexiqueDeclarationForGeneration : public cPtr_semanticDeclarationWith
   public: GALGAS_string mProperty_mLexiqueName ;
   public: GALGAS_string mProperty_mHeaderContents ;
   public: GALGAS_string mProperty_mCppContents ;
-  public: GALGAS_string mProperty_mCocoaHeader ;
-  public: GALGAS_string mProperty_mCocoaImplementation ;
+  public: GALGAS_string mProperty_mObjcCocoaHeader ;
+  public: GALGAS_string mProperty_mObjcCocoaImplementation ;
+  public: GALGAS_string mProperty_mSwiftCocoaImplementation ;
 
 //--- Constructor
   public: cPtr_lexiqueDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
@@ -133,8 +140,9 @@ class cPtr_lexiqueDeclarationForGeneration : public cPtr_semanticDeclarationWith
                                                 const GALGAS_string & in_mLexiqueName,
                                                 const GALGAS_string & in_mHeaderContents,
                                                 const GALGAS_string & in_mCppContents,
-                                                const GALGAS_string & in_mCocoaHeader,
-                                                const GALGAS_string & in_mCocoaImplementation
+                                                const GALGAS_string & in_mObjcCocoaHeader,
+                                                const GALGAS_string & in_mObjcCocoaImplementation,
+                                                const GALGAS_string & in_mSwiftCocoaImplementation
                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

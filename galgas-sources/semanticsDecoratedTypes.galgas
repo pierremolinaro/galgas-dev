@@ -311,8 +311,9 @@ refclass @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGen
   public let @string mLexiqueName
   public let @string mHeaderContents
   public let @string mCppContents
-  public let @string mCocoaHeader
-  public let @string mCocoaImplementation
+  public let @string mObjcCocoaHeader
+  public let @string mObjcCocoaImplementation
+  public let @string mSwiftCocoaImplementation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

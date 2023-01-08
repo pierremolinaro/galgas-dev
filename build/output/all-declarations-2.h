@@ -5770,6 +5770,16 @@ class GALGAS_string extensionGetter_cocoaTypeName (const class GALGAS_lexicalTyp
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Extension getter '@lexicalTypeEnum swiftTypeName' (as function)
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string extensionGetter_swiftTypeName (const class GALGAS_lexicalTypeEnum & inObject,
+                                                   class C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Extension getter '@lexicalTypeEnum needsReferenceInInputOutputInCocoa' (as function)
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -5785,6 +5795,16 @@ class GALGAS_bool extensionGetter_needsReferenceInInputOutputInCocoa (const clas
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_string extensionGetter_cocoaInitializationCode (const class GALGAS_lexicalTypeEnum & inObject,
+                                                             class C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@lexicalTypeEnum swiftInitializationCode' (as function)
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string extensionGetter_swiftInitializationCode (const class GALGAS_lexicalTypeEnum & inObject,
                                                              class C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 

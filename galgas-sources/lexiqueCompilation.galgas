@@ -90,6 +90,21 @@ getter @lexicalTypeEnum cocoaTypeName -> @string {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+getter @lexicalTypeEnum swiftTypeName -> @string {
+  switch self
+    case lexicalType_string : result = "String"
+    case lexicalType_char   : result = "UInt32"
+    case lexicalType_uint   : result = "UInt32"
+    case lexicalType_uint64 : result = "UInt64"
+    case lexicalType_sint   : result = "Int32"
+    case lexicalType_sint64 : result = "Int64"
+    case lexicalType_double : result = "Double"
+    case lexicalType_bigint : result = "String"
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 getter @lexicalTypeEnum needsReferenceInInputOutputInCocoa -> @bool {
   switch self
     case lexicalType_string : result = false
@@ -118,6 +133,20 @@ getter @lexicalTypeEnum cocoaInitializationCode -> @string {
   end
 }
 
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+getter @lexicalTypeEnum swiftInitializationCode -> @string {
+  switch self
+    case lexicalType_string : result = "\"\""
+    case lexicalType_char   : result = "0"
+    case lexicalType_uint   : result = "0"
+    case lexicalType_uint64 : result = "0"
+    case lexicalType_sint   : result = "0"
+    case lexicalType_sint64 : result = "0"
+    case lexicalType_double : result = "0.0"
+    case lexicalType_bigint : result = "\"\""
+  end
+}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -1248,8 +1248,7 @@ override method @lexiqueDeclarationForGeneration appendSpecificImplementation
 override method @lexiqueDeclarationForGeneration appendSpecificFiles
   ?let @string inProductDirectory
   ?!@stringset ioAllProductFileSet
-  ?!@stringlist ioCocoaProductFileList
-{
+  ?!@stringlist ioCocoaProductFileList {
 #--- Generate cocoa header file
   ioAllProductFileSet += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.h"
   [@string generateFileWithPattern
@@ -1258,12 +1257,12 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
     !lineComment:"//"
     !header:"" # Header
     !defaultUserZone1:"\n\n" # Defaut user zone1
-    !generatedZone2: self.mCocoaHeader
+    !generatedZone2: self.mObjcCocoaHeader
     !defaultUserZone2:"\n\n" # Defaut user zone2
     !generatedZone3:"\n"
     !makeExecutable:false
   ]
-#--- Generate Cocoa implementation file
+#--- Generate Objc Cocoa implementation file
   ioAllProductFileSet += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
   ioCocoaProductFileList += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
   [@string generateFileWithPattern
@@ -1272,7 +1271,20 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
     !lineComment:"//"
     !header:"" # Header
     !defaultUserZone1:"\n\n" # Defaut user zone1
-    !generatedZone2:self.mCocoaImplementation
+    !generatedZone2:self.mObjcCocoaImplementation
+    !defaultUserZone2:"\n\n" # Defaut user zone2
+    !generatedZone3:"\n\n" # Zone 3
+    !makeExecutable:false
+  ]
+#--- Generate Swift Cocoa implementation file
+  ioAllProductFileSet += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"
+  [@string generateFileWithPattern
+    !startPath:inProductDirectory
+    !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"
+    !lineComment:"//"
+    !header:"" # Header
+    !defaultUserZone1:"\n\n" # Defaut user zone1
+    !generatedZone2:self.mSwiftCocoaImplementation
     !defaultUserZone2:"\n\n" # Defaut user zone2
     !generatedZone3:"\n\n" # Zone 3
     !makeExecutable:false

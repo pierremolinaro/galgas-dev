@@ -55,29 +55,43 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplemen
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'templateLexiqueGenerationTemplates cocoaHeaderZone'
+//Filewrapper template 'templateLexiqueGenerationTemplates objcCocoaHeaderZone'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cocoaHeaderZone (class C_Compiler * inCompiler,
-                                                                                      const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
-                                                                                      const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_CLASS_5F_NAME,
-                                                                                      const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME
-                                                                                      COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_objcCocoaHeaderZone (class C_Compiler * inCompiler,
+                                                                                          const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                          const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                          const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME
+                                                                                          COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'templateLexiqueGenerationTemplates cocoaImplementationZone'
+//Filewrapper template 'templateLexiqueGenerationTemplates objcCocoaImplementationZone'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cocoaImplementationZone (class C_Compiler * inCompiler,
-                                                                                              const class GALGAS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
-                                                                                              const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
-                                                                                              const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
-                                                                                              const class GALGAS_templateDelimitorList & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
-                                                                                              const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
-                                                                                              COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_objcCocoaImplementationZone (class C_Compiler * inCompiler,
+                                                                                                  const class GALGAS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
+                                                                                                  const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                                  const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
+                                                                                                  const class GALGAS_templateDelimitorList & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                                  const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
+                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'templateLexiqueGenerationTemplates swiftCocoaImplementationZone'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_swiftCocoaImplementationZone (class C_Compiler * inCompiler,
+                                                                                                   const class GALGAS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
+                                                                                                   const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                                   const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
+                                                                                                   const class GALGAS_templateDelimitorList & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                                   const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
+                                                                                                   COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -240,15 +254,27 @@ extern const cDirectoryWrapper gWrapperDirectory_0_guiGenerationTemplates ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'guiGenerationTemplates gui_implementation'
+//Filewrapper template 'guiGenerationTemplates objc_gui_implementation'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (class C_Compiler * inCompiler,
-                                                                                const class GALGAS_guiAnalysisContext & in_GUI_5F_CONTEXT,
-                                                                                const class GALGAS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT,
-                                                                                const class GALGAS_string & in_BUILD_5F_RUN_5F_OPTION
-                                                                                COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementation (class C_Compiler * inCompiler,
+                                                                                        const class GALGAS_guiAnalysisContext & in_GUI_5F_CONTEXT,
+                                                                                        const class GALGAS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT,
+                                                                                        const class GALGAS_string & in_BUILD_5F_RUN_5F_OPTION
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'guiGenerationTemplates swift_gui_implementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementation (class C_Compiler * inCompiler,
+                                                                                         const class GALGAS_guiAnalysisContext & in_GUI_5F_CONTEXT,
+                                                                                         const class GALGAS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT,
+                                                                                         const class GALGAS_string & in_BUILD_5F_RUN_5F_OPTION
+                                                                                         COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -745,31 +771,4 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
                                                                                               const class GALGAS_lstringlist & in_SLOT_5F_LIST,
                                                                                               const class GALGAS_bigint & in_FULL_5F_SET
                                                                                               COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Function 'generateClassGetterDeclaration'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_string function_generateClassGetterDeclaration (const class GALGAS_lstring & constinArgument0,
-                                                             const class GALGAS_functionSignature & constinArgument1,
-                                                             const class GALGAS_bool & constinArgument2,
-                                                             const class GALGAS_unifiedTypeMapEntry & constinArgument3,
-                                                             const class GALGAS_methodQualifier & constinArgument4,
-                                                             class C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Function 'generateClassInstanceMethodDeclaration'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_string function_generateClassInstanceMethodDeclaration (const class GALGAS_lstring & constinArgument0,
-                                                                     const class GALGAS_formalParameterSignature & constinArgument1,
-                                                                     const class GALGAS_bool & constinArgument2,
-                                                                     const class GALGAS_methodQualifier & constinArgument3,
-                                                                     class C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
 

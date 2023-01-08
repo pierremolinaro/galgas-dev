@@ -5,14 +5,14 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
-                      _ ioUIntOptionArray : inout [SWIFT_GGS_CommandLineOption],
-                      _ ioStringOptionArray : inout [SWIFT_GGS_CommandLineOption],
-                      _ ioStringListOptionArray : inout [SWIFT_GGS_CommandLineOption]) {
+func enterOptions (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
+                   _ ioUIntOptionArray : inout [SWIFT_GGS_CommandLineOption],
+                   _ ioStringOptionArray : inout [SWIFT_GGS_CommandLineOption],
+                   _ ioStringListOptionArray : inout [SWIFT_GGS_CommandLineOption]) {
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "checkEntityUsefulness",
-    commandChar: 0,
+    commandChar: "",
     commandString: "check-usefulness",
     comment: "Check Entity Usefulness",
     defaultValue: ""
@@ -20,7 +20,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "check_gmp",
-    commandChar: 0,
+    commandChar: "",
     commandString: "check-gmp",
     comment: "Run a GMP check",
     defaultValue: ""
@@ -28,7 +28,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "displayUnicodeLexicalTestFunctions",
-    commandChar: 0,
+    commandChar: "",
     commandString: "display-lexical-test-functions",
     comment: "Display Unicode Lexical Test Functions",
     defaultValue: ""
@@ -36,7 +36,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "emitSyntaxDiagrams",
-    commandChar: 0,
+    commandChar: "",
     commandString: "emit-syntax-diagrams",
     comment: "Emit grammar syntax diagrams in TEX files",
     defaultValue: ""
@@ -44,7 +44,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "errorAnomynousForInstructionEnumeratedObject",
-    commandChar: 0,
+    commandChar: "",
     commandString: "error-anonymous-for-instruction",
     comment: "error on anonymous 'for' instruction enumerated object ('for () in ...')",
     defaultValue: ""
@@ -52,7 +52,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "errorClassDeclaration",
-    commandChar: 0,
+    commandChar: "",
     commandString: "error-class-declaration",
     comment: "'class' declaration is obsolete use 'valueclass'",
     defaultValue: ""
@@ -60,7 +60,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "errorEllipsisInEnumeratedObject",
-    commandChar: 0,
+    commandChar: "",
     commandString: "error-ellipsis-in-for-instruction",
     comment: "error on ellipsis in enumerated object ('for (x y ...) in xxx')",
     defaultValue: ""
@@ -68,7 +68,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "errorOldStyleCollectionInitializer",
-    commandChar: 0,
+    commandChar: "",
     commandString: "error-old-syle-collection-initializer",
     comment: "error on old style collection initializer",
     defaultValue: ""
@@ -76,7 +76,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "errorOldStyleLocalVarDeclaration",
-    commandChar: 0,
+    commandChar: "",
     commandString: "error-old-style-local-var-declaration",
     comment: "error on old style local variable declaration",
     defaultValue: ""
@@ -84,7 +84,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "errorOldStylePropertyDeclaration",
-    commandChar: 0,
+    commandChar: "",
     commandString: "error-old-style-property-declaration",
     comment: "error on old style property declaration",
     defaultValue: ""
@@ -92,7 +92,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "errorPropertyGetterCall",
-    commandChar: 0,
+    commandChar: "",
     commandString: "error-property-getter-call",
     comment: "error on calling property getter (instead of dot notation)",
     defaultValue: ""
@@ -100,7 +100,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "errorValueClassDeclaration",
-    commandChar: 0,
+    commandChar: "",
     commandString: "error-value-class-declaration",
     comment: "error on 'value class' declaration",
     defaultValue: ""
@@ -108,7 +108,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "generateManyFiles",
-    commandChar: 0,
+    commandChar: "",
     commandString: "generate-many-cpp-files",
     comment: "Generate many C++ implementation files",
     defaultValue: ""
@@ -116,7 +116,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "generateOneHeader",
-    commandChar: 0,
+    commandChar: "",
     commandString: "generate-one-cpp-header",
     comment: "Generate one C++ header file for all declarations",
     defaultValue: ""
@@ -124,7 +124,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "outputHTMLTypeListFile",
-    commandChar: 84,
+    commandChar: "T",
     commandString: "output-html-type-dump-file",
     comment: "Output a HTML file that contains all defined types",
     defaultValue: ""
@@ -132,7 +132,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "outputHTMLgrammarFile",
-    commandChar: 0,
+    commandChar: "",
     commandString: "output-html-grammar-file",
     comment: "Output a HTML file for every grammar component",
     defaultValue: ""
@@ -140,7 +140,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "printPredefinedLexicalActions",
-    commandChar: 0,
+    commandChar: "",
     commandString: "print-predefined-lexical-actions",
     comment: "Print the list of predefined lexical routines and functions",
     defaultValue: ""
@@ -148,7 +148,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "propertyAccessRequiresSelf",
-    commandChar: 0,
+    commandChar: "",
     commandString: "error-property-access-without-self",
     comment: "'self' is required for accessing properties in getter, setter and methods",
     defaultValue: ""
@@ -156,7 +156,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "warningNotGalgas4Feature",
-    commandChar: 0,
+    commandChar: "",
     commandString: "warns-on-feature-not-handled-in-galgas4",
     comment: "warns on feature not handled in galgas 4",
     defaultValue: ""
@@ -164,7 +164,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioUIntOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "macosxSDK",
-    commandChar: 0,
+    commandChar: "",
     commandString: "macosx",
     comment: "Generate an Xcode project for OS X",
     defaultValue: "0"
@@ -172,7 +172,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioStringOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "cppCompile",
-    commandChar: 0,
+    commandChar: "",
     commandString: "compile",
     comment: "Perform C++ compilation on 'string' target",
     defaultValue: ""
@@ -180,7 +180,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioStringOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "create_project",
-    commandChar: 0,
+    commandChar: "",
     commandString: "create-project",
     comment: "Create a new GALGAS Project",
     defaultValue: ""
@@ -188,7 +188,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioStringOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "extractLIBPMOption",
-    commandChar: 0,
+    commandChar: "",
     commandString: "extract-libpm",
     comment: "Extract embedded LIBPM at given path",
     defaultValue: ""
@@ -196,7 +196,7 @@ func enterOptionsFor (_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
   ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "quiet_output",
-    commandChar: ASCII.q.rawValue,
+    commandChar: "q",
     commandString: "quiet",
     comment: "Quiet output",
     defaultValue: ""

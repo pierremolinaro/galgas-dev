@@ -510,21 +510,40 @@ proc generateAllGuiComponentsGalgas3
   ?!@stringset ioAllProductFileSet
 {
   for (lkey mGuiComponentContext) in inOptionComponentMapForGeneration do
-    let fileName = "gui-" + lkey + ".m"
-    ioApplicationSourceSet += !fileName
-    ioAllProductFileSet += !fileName
-    let @string s = [filewrapper guiGenerationTemplates.gui_implementation
+    let swiftFileName = "gui-" + lkey + ".swift"
+    ioApplicationSourceSet += !swiftFileName
+    ioAllProductFileSet += !swiftFileName
+    let @string swift_string = [filewrapper guiGenerationTemplates.swift_gui_implementation
       !mGuiComponentContext
       !inQuietOutputByDefault
       !mGuiComponentContext.mBuildRunOption
     ]
     [@string generateFileWithPattern
       !startPath:inOutputDirectory
-      !fileName:fileName
+      !fileName: swiftFileName
       !lineComment:"//"
       !header:"" # Header
       !defaultUserZone1:"\n\n" # Defaut user zone1
-      !generatedZone2:s
+      !generatedZone2: swift_string
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:"\n\n" # Zone 3
+      !makeExecutable:false
+    ]
+    let objcFileName = "gui-" + lkey + ".m"
+    ioApplicationSourceSet += !objcFileName
+    ioAllProductFileSet += !objcFileName
+    let @string objc_string = [filewrapper guiGenerationTemplates.objc_gui_implementation
+      !mGuiComponentContext
+      !inQuietOutputByDefault
+      !mGuiComponentContext.mBuildRunOption
+    ]
+    [@string generateFileWithPattern
+      !startPath:inOutputDirectory
+      !fileName: objcFileName
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2: objc_string
       !defaultUserZone2:"\n\n" # Defaut user zone2
       !generatedZone3:"\n\n" # Zone 3
       !makeExecutable:false
@@ -539,7 +558,12 @@ proc generateAllGuiComponentsGalgas3
 filewrapper guiGenerationTemplates in "+generation-templates/gui_generation" {
 }{
 }{
-  template gui_implementation "gui-implementation.m.galgasTemplate"
+  template objc_gui_implementation "gui-implementation.m.galgasTemplate"
+    ?@guiAnalysisContext GUI_CONTEXT
+    ?@bool QUIET_OUTPUT_BY_DEFAULT
+    ?@string BUILD_RUN_OPTION
+
+  template swift_gui_implementation "gui-implementation.swift.galgasTemplate"
     ?@guiAnalysisContext GUI_CONTEXT
     ?@bool QUIET_OUTPUT_BY_DEFAULT
     ?@string BUILD_RUN_OPTION

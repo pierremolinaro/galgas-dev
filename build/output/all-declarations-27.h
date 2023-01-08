@@ -10,6 +10,27 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Routine 'analyzeErrorOrWarningInstruction'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_analyzeErrorOrWarningInstruction (const class GALGAS_lstring constinArgument0,
+                                               class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                               const class GALGAS_analysisContext constinArgument2,
+                                               const class GALGAS_semanticExpressionAST constinArgument3,
+                                               const class GALGAS_semanticExpressionAST constinArgument4,
+                                               const class GALGAS_fixitListAST constinArgument5,
+                                               const class GALGAS_location constinArgument6,
+                                               const class GALGAS_string constinArgument7,
+                                               class GALGAS_localVarManager & ioArgument8,
+                                               class GALGAS_semanticExpressionForGeneration & outArgument9,
+                                               class GALGAS_semanticExpressionForGeneration & outArgument10,
+                                               class GALGAS_fixitListForGeneration & outArgument11,
+                                               class C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Routine 'analyzeOptionalMethodCall'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -100,35 +121,4 @@ GALGAS_string filewrapperTemplate_grammarRulesInTexDocumentTemplate_document (cl
                                                                               const class GALGAS_string & in_DOCUMENT_5F_NAME,
                                                                               const class GALGAS_string & in_TEX_5F_ESCAPED_5F_DOCUMENT_5F_NAME
                                                                               COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'programFileGenerationTemplate'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_programFileGenerationTemplate ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'programFileGenerationTemplate programFileImplementation'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_programFileGenerationTemplate_programFileImplementation (class C_Compiler * inCompiler,
-                                                                                           const class GALGAS_string & in_COMPONENT_5F_NAME,
-                                                                                           const class GALGAS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST,
-                                                                                           const class GALGAS_string & in_BEFORE_5F_AFTER_5F_RULE_5F_IMPLEMENTATION_5F_STRING,
-                                                                                           const class GALGAS_programRuleList & in_PROGRAM_5F_RULE_5F_LIST,
-                                                                                           const class GALGAS_string & in_PROJECT_5F_VERSION_5F_STRING
-                                                                                           COMMA_LOCATION_ARGS) ;
 
