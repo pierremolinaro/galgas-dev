@@ -165,10 +165,66 @@ let galgasScanner_1__3F__5E_ : UInt16 = 150
 let galgasScanner_1__21__5E_ : UInt16 = 151
  
 //----------------------------------------------------------------------------------------------------------------------
+
+func galgasScanner_lexiqueIdentifier () -> String {
+  return "galgasScanner"
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+func galgasScanner_styleCount () -> UInt8 {
+  return 14
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+func galgasScanner_styleNameFor (styleIndex inIndex : UInt8) -> String {
+  let kStyleArray : [String] = [
+    "Default Style",
+    "Keywords",
+    "Delimiters",
+    "Selectors",
+    "Terminal Symbols",
+    "Non Terminal Symbols",
+    "Integer Constants",
+    "Big Integer Constants",
+    "Floating Point Constants",
+    "Character Constants",
+    "String Constants",
+    "Type Names (@...)",
+    "Attributes (%...)",
+    "Comments"
+  ]
+  return kStyleArray [Int (inIndex)]
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+func galgasScanner_styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
+  let kStyleArray : [String] = [
+    "galgasScanner",
+    "galgasScanner-keywordsStyle",
+    "galgasScanner-delimitersStyle",
+    "galgasScanner-selectorStyle",
+    "galgasScanner-terminalStyle",
+    "galgasScanner-nonTerminalStyle",
+    "galgasScanner-integerStyle",
+    "galgasScanner-bigintStyle",
+    "galgasScanner-floatStyle",
+    "galgasScanner-characterStyle",
+    "galgasScanner-stringStyle",
+    "galgasScanner-typeNameStyle",
+    "galgasScanner-attributeStyle",
+    "galgasScanner-commentStyle"
+  ]
+  return kStyleArray [Int (inIndex)]
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 //                     S C A N N E R    C L A S S
 //----------------------------------------------------------------------------------------------------------------------
 
-class OC_Lexique_galgasScanner { // : SWIFT_Lexique_Protocol {
+class SWIFT_Lexique_galgasScanner {
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -184,8 +240,20 @@ class OC_Lexique_galgasScanner { // : SWIFT_Lexique_Protocol {
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  init () {
+    noteObjectAllocation (self)
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   func lexiqueIdentifier () -> String {
-    return "galgasScanner"
+    return galgasScanner_lexiqueIdentifier ()
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -593,51 +661,19 @@ class OC_Lexique_galgasScanner { // : SWIFT_Lexique_Protocol {
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func styleCount () -> UInt8 {
-    return 14
+    return galgasScanner_styleCount ()
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func styleNameFor (styleIndex inIndex : UInt8) -> String {
-    let kStyleArray : [String] = [
-      "Default Style",
-      "Keywords",
-      "Delimiters",
-      "Selectors",
-      "Terminal Symbols",
-      "Non Terminal Symbols",
-      "Integer Constants",
-      "Big Integer Constants",
-      "Floating Point Constants",
-      "Character Constants",
-      "String Constants",
-      "Type Names (@...)",
-      "Attributes (%...)",
-      "Comments"
-    ]
-    return kStyleArray [Int (inIndex)]
+    return galgasScanner_styleNameFor (styleIndex: inIndex)
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func styleIdentifierFor (styleIndex inIndex : UInt8) -> String? {
-    let kStyleArray : [String] = [
-      "galgasScanner",
-      "galgasScanner-keywordsStyle",
-      "galgasScanner-delimitersStyle",
-      "galgasScanner-selectorStyle",
-      "galgasScanner-terminalStyle",
-      "galgasScanner-nonTerminalStyle",
-      "galgasScanner-integerStyle",
-      "galgasScanner-bigintStyle",
-      "galgasScanner-floatStyle",
-      "galgasScanner-characterStyle",
-      "galgasScanner-stringStyle",
-      "galgasScanner-typeNameStyle",
-      "galgasScanner-attributeStyle",
-      "galgasScanner-commentStyle"
-    ]
-    return kStyleArray [Int (inIndex)]
+  func styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
+    return galgasScanner_styleIdentifierFor (styleIndex: inIndex)
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

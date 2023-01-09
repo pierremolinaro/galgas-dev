@@ -3,6 +3,8 @@
 
 //--- END OF USER ZONE 1
 
+import AppKit
+
 //----------------------------------------------------------------------------------------------------------------------
 //
 //          N I B S   A N D   T H E I R   M A I N   C L A S S E S                                
@@ -313,40 +315,99 @@ void enterOptions (NSMutableArray * ioBoolOptionArray,
 } ; */
 
 //----------------------------------------------------------------------------------------------------------------------
-//
-//                            Lexique interface                                                  
-//
+//                            Lexique interface
 //----------------------------------------------------------------------------------------------------------------------
 
-class SWIFT_Tokenizer_0_galgasScanner : OC_Lexique_galgasScanner, SWIFT_Tokenizer_Protocol {
+fileprivate let gfont_galgasScanner = EBGenericPreferenceProperty <NSFont> (
+  defaultValue: NSFont (name: "Courier", size: 13.0)!,
+  prefKey: "FontFor_" + galgasScanner_lexiqueIdentifier ()
+)
 
-}
+//----------------------------------------------------------------------------------------------------------------------
 
-- (NSString *) blockComment ;
+fileprivate let gColors_galgasScanner : [EBGenericPreferenceProperty <NSColor>] = [
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-keywordsStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-delimitersStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-selectorStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-terminalStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-nonTerminalStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-integerStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-bigintStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-floatStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-characterStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-stringStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-typeNameStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-attributeStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-commentStyle")
+]
 
-- (const UInt16 * *) popupListData ;
+//----------------------------------------------------------------------------------------------------------------------
 
-- (NSUInteger) textMacroCount ;
+fileprivate let gBoldStyle_galgasScanner : [EBGenericPreferenceProperty <Bool>] = [
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-keywordsStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-delimitersStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-selectorStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-terminalStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-nonTerminalStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-integerStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-bigintStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-floatStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-characterStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-stringStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-typeNameStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-attributeStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-commentStyle")
+]
 
-- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex ;
+//----------------------------------------------------------------------------------------------------------------------
+  
+class SWIFT_Tokenizer_0_galgasScanner : SWIFT_Lexique_galgasScanner, SWIFT_Tokenizer_Protocol {
 
-- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex ;
+//- (const UInt16 * *) popupListData ;
+
+//- (NSUInteger) textMacroCount ;
+
+//- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex ;
+
+//- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex ;
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var font : EBGenericPreferenceProperty <NSFont> { return gfont_galgasScanner }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func color (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <NSColor> {
+    return gColors_galgasScanner [Int (inStyleIndex)]
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func bold (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <Bool> {
+    return gBoldStyle_galgasScanner [Int (inStyleIndex)]
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tabItemTitle () -> String {
     return "Source GALGAS"
   }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  func blockComment () -> String {
+    return "#"
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 /* @implementation OC_Tokenizer_0_galgasScanner
-
-//----------------------------------------------------------------------------------------------------------------------
-
-- (NSString *) blockComment {
-  return @"#" ;
-}
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -433,40 +494,99 @@ class SWIFT_Tokenizer_0_galgasScanner : OC_Lexique_galgasScanner, SWIFT_Tokenize
 } ; */
 
 //----------------------------------------------------------------------------------------------------------------------
-//
-//                            Lexique interface                                                  
-//
+//                            Lexique interface
 //----------------------------------------------------------------------------------------------------------------------
 
-class SWIFT_Tokenizer_1_galgasTemplateScanner : OC_Lexique_galgasTemplateScanner, SWIFT_Tokenizer_Protocol {
+fileprivate let gfont_galgasTemplateScanner = EBGenericPreferenceProperty <NSFont> (
+  defaultValue: NSFont (name: "Courier", size: 13.0)!,
+  prefKey: "FontFor_" + galgasTemplateScanner_lexiqueIdentifier ()
+)
 
-}
+//----------------------------------------------------------------------------------------------------------------------
 
-- (NSString *) blockComment ;
+fileprivate let gColors_galgasTemplateScanner : [EBGenericPreferenceProperty <NSColor>] = [
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-keywordsStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-delimitersStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-selectorStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-terminalStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-nonTerminalStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-integerStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-bigintStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-floatStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-characterStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-stringStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-typeNameStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-attributeStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-commentStyle")
+]
 
-- (const UInt16 * *) popupListData ;
+//----------------------------------------------------------------------------------------------------------------------
 
-- (NSUInteger) textMacroCount ;
+fileprivate let gBoldStyle_galgasTemplateScanner : [EBGenericPreferenceProperty <Bool>] = [
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-keywordsStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-delimitersStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-selectorStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-terminalStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-nonTerminalStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-integerStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-bigintStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-floatStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-characterStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-stringStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-typeNameStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-attributeStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-commentStyle")
+]
 
-- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex ;
+//----------------------------------------------------------------------------------------------------------------------
+  
+class SWIFT_Tokenizer_1_galgasTemplateScanner : SWIFT_Lexique_galgasTemplateScanner, SWIFT_Tokenizer_Protocol {
 
-- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex ;
+//- (const UInt16 * *) popupListData ;
+
+//- (NSUInteger) textMacroCount ;
+
+//- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex ;
+
+//- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex ;
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var font : EBGenericPreferenceProperty <NSFont> { return gfont_galgasTemplateScanner }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func color (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <NSColor> {
+    return gColors_galgasTemplateScanner [Int (inStyleIndex)]
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func bold (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <Bool> {
+    return gBoldStyle_galgasTemplateScanner [Int (inStyleIndex)]
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tabItemTitle () -> String {
     return "Template"
   }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  func blockComment () -> String {
+    return ""
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 /* @implementation OC_Tokenizer_1_galgasTemplateScanner
-
-//----------------------------------------------------------------------------------------------------------------------
-
-- (NSString *) blockComment {
-  return @"" ;
-}
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -508,8 +628,8 @@ class SWIFT_Tokenizer_1_galgasTemplateScanner : OC_Lexique_galgasTemplateScanner
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func tokenizerFor (extension inExtension : String) -> SWIFT_Lexique_Protocol? {
-  var result : SWIFT_Lexique_Protocol? = nil
+func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol? {
+  var result : SWIFT_Tokenizer_Protocol? = nil
   if inExtension == "galgas" {
     result = SWIFT_Tokenizer_0_galgasScanner ()
   }else if inExtension == "galgasProject" {
@@ -526,7 +646,7 @@ func tokenizerFor (extension inExtension : String) -> SWIFT_Lexique_Protocol? {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func tokenizers () -> [SWIFT_Lexique_Protocol] {
+func tokenizers () -> [SWIFT_Tokenizer_Protocol] {
   return [
     SWIFT_Tokenizer_0_galgasScanner (),
     SWIFT_Tokenizer_1_galgasTemplateScanner ()

@@ -2,7 +2,7 @@
 #import "OC_Token.h"
 #import "F_CocoaWrapperForGalgas.h"
 #import "OC_GGS_CommandLineOption.h"
-%for (mLexiqueClassName mIndex mBlockComment mTitle mTextMacroList mLabels) in GUI_CONTEXT.mWithLexiqueList do
+%for (mLexiqueClassName mIndex mBlockComment mTitle mTextMacroList mLabels lexicalStyleList) in GUI_CONTEXT.mWithLexiqueList do
   %#import "lexique-%![mLexiqueClassName fileNameRepresentation]%-cocoa.h"\n%
 end
 for (mValue) in GUI_CONTEXT.mNibAndClassList do
@@ -88,7 +88,7 @@ end
 %  [ioBoolOptionArray addObject:option] ;
 }
 
-%for (mLexiqueClassName mIndex mBlockComment mTitle mTextMacroList mLabels) in GUI_CONTEXT.mWithLexiqueList do
+%for (mLexiqueClassName mIndex mBlockComment mTitle mTextMacroList mLabels *) in GUI_CONTEXT.mWithLexiqueList do
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %#pragma mark Lexique %!mLexiqueClassName%\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n%
@@ -189,7 +189,7 @@ if [GUI_CONTEXT.mWithLexiqueList length] == 0 then%
   return [NSArray array] ;
 %else%
   return [NSArray arrayWithObjects:
-%for (mLexiqueClassName mIndex mBlockComment mTitle mTextMacroList mLabels) in GUI_CONTEXT.mWithLexiqueList do
+%for (mLexiqueClassName mIndex 5*) in GUI_CONTEXT.mWithLexiqueList do
   %    [OC_Tokenizer_%![mIndex string]%_%!mLexiqueClassName% new],\n%
 end
 %    nil

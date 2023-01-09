@@ -2093,7 +2093,8 @@ class cCollectionElement_importedLexiqueList : public cCollectionElement {
                                                   const GALGAS_string & in_mBlockComment,
                                                   const GALGAS_string & in_mTitle,
                                                   const GALGAS_textMacroList & in_mTextMacroList,
-                                                  const GALGAS_guiLabelListAST & in_mLabels
+                                                  const GALGAS_guiLabelListAST & in_mLabels,
+                                                  const GALGAS_lexicalStyleListAST & in_mLexicalStyleList
                                                   COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_importedLexiqueList (const GALGAS_importedLexiqueList_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
@@ -2117,17 +2118,18 @@ cCollectionElement_importedLexiqueList::cCollectionElement_importedLexiqueList (
                                                                                 const GALGAS_string & in_mBlockComment,
                                                                                 const GALGAS_string & in_mTitle,
                                                                                 const GALGAS_textMacroList & in_mTextMacroList,
-                                                                                const GALGAS_guiLabelListAST & in_mLabels
+                                                                                const GALGAS_guiLabelListAST & in_mLabels,
+                                                                                const GALGAS_lexicalStyleListAST & in_mLexicalStyleList
                                                                                 COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mLexiqueClassName, in_mIndex, in_mBlockComment, in_mTitle, in_mTextMacroList, in_mLabels) {
+mObject (in_mLexiqueClassName, in_mIndex, in_mBlockComment, in_mTitle, in_mTextMacroList, in_mLabels, in_mLexicalStyleList) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_importedLexiqueList::cCollectionElement_importedLexiqueList (const GALGAS_importedLexiqueList_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (inElement.mProperty_mLexiqueClassName, inElement.mProperty_mIndex, inElement.mProperty_mBlockComment, inElement.mProperty_mTitle, inElement.mProperty_mTextMacroList, inElement.mProperty_mLabels) {
+mObject (inElement.mProperty_mLexiqueClassName, inElement.mProperty_mIndex, inElement.mProperty_mBlockComment, inElement.mProperty_mTitle, inElement.mProperty_mTextMacroList, inElement.mProperty_mLabels, inElement.mProperty_mLexicalStyleList) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2140,7 +2142,7 @@ bool cCollectionElement_importedLexiqueList::isValid (void) const {
 
 cCollectionElement * cCollectionElement_importedLexiqueList::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_importedLexiqueList (mObject.mProperty_mLexiqueClassName, mObject.mProperty_mIndex, mObject.mProperty_mBlockComment, mObject.mProperty_mTitle, mObject.mProperty_mTextMacroList, mObject.mProperty_mLabels COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_importedLexiqueList (mObject.mProperty_mLexiqueClassName, mObject.mProperty_mIndex, mObject.mProperty_mBlockComment, mObject.mProperty_mTitle, mObject.mProperty_mTextMacroList, mObject.mProperty_mLabels, mObject.mProperty_mLexicalStyleList COMMA_HERE)) ;
   return result ;
 }
 
@@ -2171,6 +2173,10 @@ void cCollectionElement_importedLexiqueList::description (C_String & ioString, c
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLabels" ":" ;
   mObject.mProperty_mLabels.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mLexicalStyleList" ":" ;
+  mObject.mProperty_mLexicalStyleList.description (ioString, inIndentation) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2206,13 +2212,14 @@ GALGAS_importedLexiqueList GALGAS_importedLexiqueList::constructor_listWithValue
                                                                                   const GALGAS_string & inOperand2,
                                                                                   const GALGAS_string & inOperand3,
                                                                                   const GALGAS_textMacroList & inOperand4,
-                                                                                  const GALGAS_guiLabelListAST & inOperand5
+                                                                                  const GALGAS_guiLabelListAST & inOperand5,
+                                                                                  const GALGAS_lexicalStyleListAST & inOperand6
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_importedLexiqueList result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid ()) {
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
     result = GALGAS_importedLexiqueList (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
-    GALGAS_importedLexiqueList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5 COMMA_THERE) ;
+    GALGAS_importedLexiqueList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6 COMMA_THERE) ;
     result.appendObject (attributes) ;
   }
   return result ;
@@ -2226,7 +2233,8 @@ void GALGAS_importedLexiqueList::makeAttributesFromObjects (capCollectionElement
                                                             const GALGAS_string & in_mBlockComment,
                                                             const GALGAS_string & in_mTitle,
                                                             const GALGAS_textMacroList & in_mTextMacroList,
-                                                            const GALGAS_guiLabelListAST & in_mLabels
+                                                            const GALGAS_guiLabelListAST & in_mLabels,
+                                                            const GALGAS_lexicalStyleListAST & in_mLexicalStyleList
                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement_importedLexiqueList * p = NULL ;
   macroMyNew (p, cCollectionElement_importedLexiqueList (in_mLexiqueClassName,
@@ -2234,7 +2242,8 @@ void GALGAS_importedLexiqueList::makeAttributesFromObjects (capCollectionElement
                                                          in_mBlockComment,
                                                          in_mTitle,
                                                          in_mTextMacroList,
-                                                         in_mLabels COMMA_THERE)) ;
+                                                         in_mLabels,
+                                                         in_mLexicalStyleList COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -2246,12 +2255,13 @@ void GALGAS_importedLexiqueList::addAssign_operation (const GALGAS_string & inOp
                                                       const GALGAS_string & inOperand2,
                                                       const GALGAS_string & inOperand3,
                                                       const GALGAS_textMacroList & inOperand4,
-                                                      const GALGAS_guiLabelListAST & inOperand5
+                                                      const GALGAS_guiLabelListAST & inOperand5,
+                                                      const GALGAS_lexicalStyleListAST & inOperand6
                                                       COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
       cCollectionElement * p = NULL ;
-      macroMyNew (p, cCollectionElement_importedLexiqueList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5 COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_importedLexiqueList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -2289,13 +2299,14 @@ void GALGAS_importedLexiqueList::setter_insertAtIndex (const GALGAS_string inOpe
                                                        const GALGAS_string inOperand3,
                                                        const GALGAS_textMacroList inOperand4,
                                                        const GALGAS_guiLabelListAST inOperand5,
+                                                       const GALGAS_lexicalStyleListAST inOperand6,
                                                        const GALGAS_uint inInsertionIndex,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid ()) {
+    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
       cCollectionElement * p = NULL ;
-      macroMyNew (p, cCollectionElement_importedLexiqueList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5 COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_importedLexiqueList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -2314,6 +2325,7 @@ void GALGAS_importedLexiqueList::setter_removeAtIndex (GALGAS_string & outOperan
                                                        GALGAS_string & outOperand3,
                                                        GALGAS_textMacroList & outOperand4,
                                                        GALGAS_guiLabelListAST & outOperand5,
+                                                       GALGAS_lexicalStyleListAST & outOperand6,
                                                        const GALGAS_uint inRemoveIndex,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
@@ -2329,6 +2341,7 @@ void GALGAS_importedLexiqueList::setter_removeAtIndex (GALGAS_string & outOperan
         outOperand3.drop () ;
         outOperand4.drop () ;
         outOperand5.drop () ;
+        outOperand6.drop () ;
         drop () ;
       }else{
         macroValidSharedObject (p, cCollectionElement_importedLexiqueList) ;
@@ -2338,6 +2351,7 @@ void GALGAS_importedLexiqueList::setter_removeAtIndex (GALGAS_string & outOperan
         outOperand3 = p->mObject.mProperty_mTitle ;
         outOperand4 = p->mObject.mProperty_mTextMacroList ;
         outOperand5 = p->mObject.mProperty_mLabels ;
+        outOperand6 = p->mObject.mProperty_mLexicalStyleList ;
       }
     }else{
       outOperand0.drop () ;
@@ -2346,6 +2360,7 @@ void GALGAS_importedLexiqueList::setter_removeAtIndex (GALGAS_string & outOperan
       outOperand3.drop () ;
       outOperand4.drop () ;
       outOperand5.drop () ;
+      outOperand6.drop () ;
       drop () ;    
     }
   }else{
@@ -2355,6 +2370,7 @@ void GALGAS_importedLexiqueList::setter_removeAtIndex (GALGAS_string & outOperan
     outOperand3.drop () ;
     outOperand4.drop () ;
     outOperand5.drop () ;
+    outOperand6.drop () ;
   }
 }
 
@@ -2366,6 +2382,7 @@ void GALGAS_importedLexiqueList::setter_popFirst (GALGAS_string & outOperand0,
                                                   GALGAS_string & outOperand3,
                                                   GALGAS_textMacroList & outOperand4,
                                                   GALGAS_guiLabelListAST & outOperand5,
+                                                  GALGAS_lexicalStyleListAST & outOperand6,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -2378,6 +2395,7 @@ void GALGAS_importedLexiqueList::setter_popFirst (GALGAS_string & outOperand0,
     outOperand3.drop () ;
     outOperand4.drop () ;
     outOperand5.drop () ;
+    outOperand6.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_importedLexiqueList) ;
     outOperand0 = p->mObject.mProperty_mLexiqueClassName ;
@@ -2386,6 +2404,7 @@ void GALGAS_importedLexiqueList::setter_popFirst (GALGAS_string & outOperand0,
     outOperand3 = p->mObject.mProperty_mTitle ;
     outOperand4 = p->mObject.mProperty_mTextMacroList ;
     outOperand5 = p->mObject.mProperty_mLabels ;
+    outOperand6 = p->mObject.mProperty_mLexicalStyleList ;
   }
 }
 
@@ -2397,6 +2416,7 @@ void GALGAS_importedLexiqueList::setter_popLast (GALGAS_string & outOperand0,
                                                  GALGAS_string & outOperand3,
                                                  GALGAS_textMacroList & outOperand4,
                                                  GALGAS_guiLabelListAST & outOperand5,
+                                                 GALGAS_lexicalStyleListAST & outOperand6,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -2409,6 +2429,7 @@ void GALGAS_importedLexiqueList::setter_popLast (GALGAS_string & outOperand0,
     outOperand3.drop () ;
     outOperand4.drop () ;
     outOperand5.drop () ;
+    outOperand6.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_importedLexiqueList) ;
     outOperand0 = p->mObject.mProperty_mLexiqueClassName ;
@@ -2417,6 +2438,7 @@ void GALGAS_importedLexiqueList::setter_popLast (GALGAS_string & outOperand0,
     outOperand3 = p->mObject.mProperty_mTitle ;
     outOperand4 = p->mObject.mProperty_mTextMacroList ;
     outOperand5 = p->mObject.mProperty_mLabels ;
+    outOperand6 = p->mObject.mProperty_mLexicalStyleList ;
   }
 }
 
@@ -2428,6 +2450,7 @@ void GALGAS_importedLexiqueList::method_first (GALGAS_string & outOperand0,
                                                GALGAS_string & outOperand3,
                                                GALGAS_textMacroList & outOperand4,
                                                GALGAS_guiLabelListAST & outOperand5,
+                                               GALGAS_lexicalStyleListAST & outOperand6,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -2440,6 +2463,7 @@ void GALGAS_importedLexiqueList::method_first (GALGAS_string & outOperand0,
     outOperand3.drop () ;
     outOperand4.drop () ;
     outOperand5.drop () ;
+    outOperand6.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_importedLexiqueList) ;
     outOperand0 = p->mObject.mProperty_mLexiqueClassName ;
@@ -2448,6 +2472,7 @@ void GALGAS_importedLexiqueList::method_first (GALGAS_string & outOperand0,
     outOperand3 = p->mObject.mProperty_mTitle ;
     outOperand4 = p->mObject.mProperty_mTextMacroList ;
     outOperand5 = p->mObject.mProperty_mLabels ;
+    outOperand6 = p->mObject.mProperty_mLexicalStyleList ;
   }
 }
 
@@ -2459,6 +2484,7 @@ void GALGAS_importedLexiqueList::method_last (GALGAS_string & outOperand0,
                                               GALGAS_string & outOperand3,
                                               GALGAS_textMacroList & outOperand4,
                                               GALGAS_guiLabelListAST & outOperand5,
+                                              GALGAS_lexicalStyleListAST & outOperand6,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -2471,6 +2497,7 @@ void GALGAS_importedLexiqueList::method_last (GALGAS_string & outOperand0,
     outOperand3.drop () ;
     outOperand4.drop () ;
     outOperand5.drop () ;
+    outOperand6.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_importedLexiqueList) ;
     outOperand0 = p->mObject.mProperty_mLexiqueClassName ;
@@ -2479,6 +2506,7 @@ void GALGAS_importedLexiqueList::method_last (GALGAS_string & outOperand0,
     outOperand3 = p->mObject.mProperty_mTitle ;
     outOperand4 = p->mObject.mProperty_mTextMacroList ;
     outOperand5 = p->mObject.mProperty_mLabels ;
+    outOperand6 = p->mObject.mProperty_mLexicalStyleList ;
   }
 }
 
@@ -2707,6 +2735,35 @@ GALGAS_guiLabelListAST GALGAS_importedLexiqueList::getter_mLabelsAtIndex (const 
   return result ;
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_importedLexiqueList::setter_setMLexicalStyleListAtIndex (GALGAS_lexicalStyleListAST inOperand,
+                                                                     GALGAS_uint inIndex,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) {
+  cCollectionElement_importedLexiqueList * p = (cCollectionElement_importedLexiqueList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_importedLexiqueList) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mLexicalStyleList = inOperand ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalStyleListAST GALGAS_importedLexiqueList::getter_mLexicalStyleListAtIndex (const GALGAS_uint & inIndex,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_importedLexiqueList * p = (cCollectionElement_importedLexiqueList *) attributes.ptr () ;
+  GALGAS_lexicalStyleListAST result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_importedLexiqueList) ;
+    result = p->mObject.mProperty_mLexicalStyleList ;
+  }
+  return result ;
+}
+
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2772,6 +2829,14 @@ GALGAS_guiLabelListAST cEnumerator_importedLexiqueList::current_mLabels (LOCATIO
   const cCollectionElement_importedLexiqueList * p = (const cCollectionElement_importedLexiqueList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_importedLexiqueList) ;
   return p->mObject.mProperty_mLabels ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalStyleListAST cEnumerator_importedLexiqueList::current_mLexicalStyleList (LOCATION_ARGS) const {
+  const cCollectionElement_importedLexiqueList * p = (const cCollectionElement_importedLexiqueList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_importedLexiqueList) ;
+  return p->mObject.mProperty_mLexicalStyleList ;
 }
 
 

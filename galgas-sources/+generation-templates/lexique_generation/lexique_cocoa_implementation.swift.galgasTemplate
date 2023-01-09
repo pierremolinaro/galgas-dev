@@ -13,10 +13,44 @@ for (mTerminalName 5*) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
 end
 % 
 //----------------------------------------------------------------------------------------------------------------------
+
+func %!LEXIQUE_CLASS_NAME%_lexiqueIdentifier () -> String {
+  return "%!LEXIQUE_CLASS_NAME%"
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+func %!LEXIQUE_CLASS_NAME%_styleCount () -> UInt8 {
+  return %![[LEXICAL_STYLE_LIST length] + 1 string]%
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+func %!LEXIQUE_CLASS_NAME%_styleNameFor (styleIndex inIndex : UInt8) -> String {
+  let kStyleArray : [String] = [
+    "Default Style"%
+for (* mComment) in LEXICAL_STYLE_LIST do
+  %,\n    %![mComment.string utf8Representation]
+end%\n  ]
+  return kStyleArray [Int (inIndex)]
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+func %!LEXIQUE_CLASS_NAME%_styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
+  let kStyleArray : [String] = [
+    "%!LEXIQUE_CLASS_NAME%"%
+for (mName *) in LEXICAL_STYLE_LIST do
+  %,\n    %![LEXIQUE_CLASS_NAME + "-" + mName.string utf8Representation]
+end%\n  ]
+  return kStyleArray [Int (inIndex)]
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 //                     S C A N N E R    C L A S S
 //----------------------------------------------------------------------------------------------------------------------
 
-class OC_Lexique_%!LEXIQUE_CLASS_NAME% { // : SWIFT_Lexique_Protocol {
+class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% {
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -27,8 +61,20 @@ class OC_Lexique_%!LEXIQUE_CLASS_NAME% { // : SWIFT_Lexique_Protocol {
 %
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  init () {
+    noteObjectAllocation (self)
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   func lexiqueIdentifier () -> String {
-    return "%!LEXIQUE_CLASS_NAME%"
+    return %!LEXIQUE_CLASS_NAME%_lexiqueIdentifier ()
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -94,29 +140,19 @@ end
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func styleCount () -> UInt8 {
-    return %![[LEXICAL_STYLE_LIST length] + 1 string]%
+    return %!LEXIQUE_CLASS_NAME%_styleCount ()
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func styleNameFor (styleIndex inIndex : UInt8) -> String {
-    let kStyleArray : [String] = [
-      "Default Style"%
-for (* mComment) in LEXICAL_STYLE_LIST do
-  %,\n      %![mComment.string utf8Representation]
-end%\n    ]
-    return kStyleArray [Int (inIndex)]
+    return %!LEXIQUE_CLASS_NAME%_styleNameFor (styleIndex: inIndex)
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func styleIdentifierFor (styleIndex inIndex : UInt8) -> String? {
-    let kStyleArray : [String] = [
-      "%!LEXIQUE_CLASS_NAME%"%
-for (mName *) in LEXICAL_STYLE_LIST do
-  %,\n      %![LEXIQUE_CLASS_NAME + "-" + mName.string utf8Representation]
-end%\n    ]
-    return kStyleArray [Int (inIndex)]
+  func styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
+    return %!LEXIQUE_CLASS_NAME%_styleIdentifierFor (styleIndex: inIndex)
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

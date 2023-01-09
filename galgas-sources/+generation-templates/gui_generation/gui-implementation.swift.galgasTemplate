@@ -1,4 +1,6 @@
 
+import AppKit
+
 //----------------------------------------------------------------------------------------------------------------------
 //
 //          N I B S   A N D   T H E I R   M A I N   C L A S S E S                                
@@ -72,7 +74,7 @@ end
 
 */
 
-%for (mLexiqueClassName mIndex mBlockComment mTitle mTextMacroList mLabels) in GUI_CONTEXT.mWithLexiqueList do
+%for (mLexiqueClassName mIndex mBlockComment mTitle mTextMacroList mLabels lexicalStyleList) in GUI_CONTEXT.mWithLexiqueList do
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %// #pragma mark Lexique %!mLexiqueClassName%\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n%
@@ -94,29 +96,83 @@ end
     %  gPopUpData_%![mIndex string]%_%![mLexiqueClassName identifierRepresentation]%_%![[mLocation locationIndex] string]%,\n%
   end
     %  NULL\n%
-    %} ; */\n\n%
-  %//----------------------------------------------------------------------------------------------------------------------\n%
-  %//\n%
-  %//                            Lexique interface                                                  \n%
-  %//\n%
-  %//----------------------------------------------------------------------------------------------------------------------\n\n%
-  %class SWIFT_Tokenizer_%![mIndex string]%_%!mLexiqueClassName% : OC_Lexique_%!mLexiqueClassName%, SWIFT_Tokenizer_Protocol {\n\n%
-  %}\n\n%
-  %- (NSString *) blockComment ;\n\n%
-  %- (const UInt16 * *) popupListData ;\n\n%
-  %- (NSUInteger) textMacroCount ;\n\n%
-  %- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex ;\n\n%
-  %- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex ;\n\n%
-  %  func tabItemTitle () -> String {\n%
-  %    return %![mTitle utf8Representation]%\n%
-  %  }\n\n%
-  %}\n\n%
-  %//----------------------------------------------------------------------------------------------------------------------\n\n%
+    %} ; */
+
+//----------------------------------------------------------------------------------------------------------------------
+//                            Lexique interface
+//----------------------------------------------------------------------------------------------------------------------
+
+fileprivate let gfont_%!mLexiqueClassName% = EBGenericPreferenceProperty <NSFont> (
+  defaultValue: NSFont (name: "Courier", size: 13.0)!,
+  prefKey: "FontFor_" + %!mLexiqueClassName%_lexiqueIdentifier ()
+)
+
+//----------------------------------------------------------------------------------------------------------------------
+
+fileprivate let gColors_%!mLexiqueClassName% : [EBGenericPreferenceProperty <NSColor>] = [
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_%!mLexiqueClassName%")%
+for (identifier *) in lexicalStyleList do
+ %,\n  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_%!mLexiqueClassName%-%!identifier.string%")%
+end
+%
+]
+
+//----------------------------------------------------------------------------------------------------------------------
+
+fileprivate let gBoldStyle_%!mLexiqueClassName% : [EBGenericPreferenceProperty <Bool>] = [
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_%!mLexiqueClassName%")%
+for (identifier *) in lexicalStyleList do
+ %,\n  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_%!mLexiqueClassName%-%!identifier.string%")%
+end
+%
+]
+
+//----------------------------------------------------------------------------------------------------------------------
+  
+class SWIFT_Tokenizer_%![mIndex string]%_%!mLexiqueClassName% : SWIFT_Lexique_%!mLexiqueClassName%, SWIFT_Tokenizer_Protocol {
+
+//- (const UInt16 * *) popupListData ;
+
+//- (NSUInteger) textMacroCount ;
+
+//- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex ;
+
+//- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex ;
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var font : EBGenericPreferenceProperty <NSFont> { return gfont_%!mLexiqueClassName% }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func color (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <NSColor> {
+    return gColors_%!mLexiqueClassName% [Int (inStyleIndex)]
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func bold (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <Bool> {
+    return gBoldStyle_%!mLexiqueClassName% [Int (inStyleIndex)]
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func tabItemTitle () -> String {
+    return %![mTitle utf8Representation]%
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  func blockComment () -> String {
+    return %![mBlockComment utf8Representation]%
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------\n\n%
   %/* @implementation OC_Tokenizer_%![mIndex string]%_%!mLexiqueClassName%\n\n%
-  %//----------------------------------------------------------------------------------------------------------------------\n\n%
-  %- (NSString *) blockComment {\n%
-  %  return @%![mBlockComment utf8Representation]% ;\n%
-  %}\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %- (const UInt16 * *) popupListData {\n%
   %  return gPopUpData_%![mIndex string]%_%![mLexiqueClassName identifierRepresentation]% ;\n%
@@ -153,8 +209,8 @@ end
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func tokenizerFor (extension inExtension : String) -> SWIFT_Lexique_Protocol? {
-  var result : SWIFT_Lexique_Protocol? = nil\n%
+func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol? {
+  var result : SWIFT_Tokenizer_Protocol? = nil\n%
 for (lkey mLexiqueName mIndex) in GUI_CONTEXT.mExtensionMap
   before %  if%
   do % inExtension == %![lkey utf8Representation]% {\n%
@@ -167,12 +223,12 @@ end
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func tokenizers () -> [SWIFT_Lexique_Protocol] {%
+func tokenizers () -> [SWIFT_Tokenizer_Protocol] {%
 if [GUI_CONTEXT.mWithLexiqueList length] == 0 then%
   return []
 %else%
   return [
-%for (mLexiqueClassName mIndex 4*) in GUI_CONTEXT.mWithLexiqueList
+%for (mLexiqueClassName mIndex 5*) in GUI_CONTEXT.mWithLexiqueList
   do %    SWIFT_Tokenizer_%![mIndex string]%_%!mLexiqueClassName% ()%
   between %,\n%
 end

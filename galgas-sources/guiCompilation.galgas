@@ -72,6 +72,7 @@ list @importedLexiqueList {
   public let @string mTitle
   public let @textMacroList mTextMacroList
   public let @guiLabelListAST mLabels
+  public let @lexicalStyleListAST mLexicalStyleList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -378,11 +379,9 @@ proc compileAllGuiComponentFromASTGalgas3
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc guiComponentSemanticAnalysis
-  ?let @galgas3GUIComponentListAST-element inGUIComponentAST
-  ?let @semanticContext inSemanticContext
-  ?!@optionComponentMapForGeneration ioOptionComponentMapForGeneration
-{
+private proc guiComponentSemanticAnalysis ?let @galgas3GUIComponentListAST-element inGUIComponentAST
+                                          ?let @semanticContext inSemanticContext
+                                          ?!@optionComponentMapForGeneration ioOptionComponentMapForGeneration {
   if inGUIComponentAST.mGUIComponentName.string != "cocoa" then
     error inGUIComponentAST.mGUIComponentName : "the gui name should be 'cocoa'"
   end
@@ -417,31 +416,33 @@ private proc guiComponentSemanticAnalysis
     end
   end
 #--- 'with lexique' construct analysis
-  for (mLexiqueFileName mLabels mSimpleAttributes mCompoundAttributes) in inGUIComponentAST.mWithLexiqueList do (idx)
+  for (lexiqueFileName labels simpleAttributes compoundAttributes) in inGUIComponentAST.mWithLexiqueList do (idx)
   #--- Check lexique
     [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
-      !mLexiqueFileName
+      !lexiqueFileName
       ?*
       ?let @terminalMap terminalMap
-      ?6*
+      ?4*
+      ?let lexicalStyleListAST
+      ?*
     ]
   #--- Build terminal symbol set
     let terminalSymbolSet = [terminalMap keySet]
   #--- Check labels
-    for (* mTerminalList *) in mLabels do
+    for (* mTerminalList *) in labels do
       for (mTerminal *) in mTerminalList do
         if not [terminalSymbolSet hasKey !mTerminal.string] then
           error mTerminal: "the '$"
             + mTerminal
             + "$' terminal symbol is not declared by the '"
-            + mLexiqueFileName
+            + lexiqueFileName
             + "' lexique"
         end
       end
     end
   #--- Compound attributes
     var @textMacroList textMacroList = {}
-    for (mKey mAttributeName mValue) in mCompoundAttributes do
+    for (mKey mAttributeName mValue) in compoundAttributes do
       if mKey.string != "textMacro" then
         error mKey: "for a compound attribute, only the 'textMacro' key is valid"
       else
@@ -454,9 +455,9 @@ private proc guiComponentSemanticAnalysis
     var @bool hasBlockComment = false
     var @string tabViewTitle = ""
     var @string blockComment = ""
-    for (mKey mValue) in mSimpleAttributes do
+    for (mKey mValue) in simpleAttributes do
       if mKey.string == "fileExtension" then
-        [!?context.mExtensionMap insertKey !mValue !mLexiqueFileName.string !idx]
+        [!?context.mExtensionMap insertKey !mValue !lexiqueFileName.string !idx]
         hasAssociatedExtension = true
       elsif mKey.string == "title" then
         if hasTabViewTitle then
@@ -476,20 +477,21 @@ private proc guiComponentSemanticAnalysis
     end
   #--- has an extension ?
     if not hasAssociatedExtension then
-      error mLexiqueFileName:"one or more file extensions should be associated with a lexique (fileExtension : \"...\")"
+      error lexiqueFileName:"one or more file extensions should be associated with a lexique (fileExtension : \"...\")"
     end
   #--- has title ?
     if not hasTabViewTitle then
-      error mLexiqueFileName:"the 'title' key should be defined once (it is not defined)"
+      error lexiqueFileName:"the 'title' key should be defined once (it is not defined)"
     end
   #---
     context.mWithLexiqueList +=
-      !mLexiqueFileName.string
+      !lexiqueFileName.string
       !idx
       !blockComment
       !tabViewTitle
       !textMacroList
-      !mLabels
+      !labels
+      !lexicalStyleListAST
   end
 #--- Generation
   [!?ioOptionComponentMapForGeneration insertKey

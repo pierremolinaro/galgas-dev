@@ -1127,7 +1127,8 @@ class GALGAS_importedLexiqueList : public AC_GALGAS_list {
                                                  const class GALGAS_string & in_mBlockComment,
                                                  const class GALGAS_string & in_mTitle,
                                                  const class GALGAS_textMacroList & in_mTextMacroList,
-                                                 const class GALGAS_guiLabelListAST & in_mLabels
+                                                 const class GALGAS_guiLabelListAST & in_mLabels,
+                                                 const class GALGAS_lexicalStyleListAST & in_mLexicalStyleList
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of generic part --*
@@ -1148,7 +1149,8 @@ class GALGAS_importedLexiqueList : public AC_GALGAS_list {
                                                                              const class GALGAS_string & inOperand2,
                                                                              const class GALGAS_string & inOperand3,
                                                                              const class GALGAS_textMacroList & inOperand4,
-                                                                             const class GALGAS_guiLabelListAST & inOperand5
+                                                                             const class GALGAS_guiLabelListAST & inOperand5,
+                                                                             const class GALGAS_lexicalStyleListAST & inOperand6
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
@@ -1162,7 +1164,8 @@ class GALGAS_importedLexiqueList : public AC_GALGAS_list {
                                                      const class GALGAS_string & inOperand2,
                                                      const class GALGAS_string & inOperand3,
                                                      const class GALGAS_textMacroList & inOperand4,
-                                                     const class GALGAS_guiLabelListAST & inOperand5
+                                                     const class GALGAS_guiLabelListAST & inOperand5,
+                                                     const class GALGAS_lexicalStyleListAST & inOperand6
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_importedLexiqueList add_operation (const GALGAS_importedLexiqueList & inOperand,
@@ -1181,7 +1184,8 @@ class GALGAS_importedLexiqueList : public AC_GALGAS_list {
                                                       class GALGAS_string constinArgument3,
                                                       class GALGAS_textMacroList constinArgument4,
                                                       class GALGAS_guiLabelListAST constinArgument5,
-                                                      class GALGAS_uint constinArgument6,
+                                                      class GALGAS_lexicalStyleListAST constinArgument6,
+                                                      class GALGAS_uint constinArgument7,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
@@ -1191,6 +1195,7 @@ class GALGAS_importedLexiqueList : public AC_GALGAS_list {
                                                  class GALGAS_string & outArgument3,
                                                  class GALGAS_textMacroList & outArgument4,
                                                  class GALGAS_guiLabelListAST & outArgument5,
+                                                 class GALGAS_lexicalStyleListAST & outArgument6,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -1200,6 +1205,7 @@ class GALGAS_importedLexiqueList : public AC_GALGAS_list {
                                                 class GALGAS_string & outArgument3,
                                                 class GALGAS_textMacroList & outArgument4,
                                                 class GALGAS_guiLabelListAST & outArgument5,
+                                                class GALGAS_lexicalStyleListAST & outArgument6,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
@@ -1209,7 +1215,8 @@ class GALGAS_importedLexiqueList : public AC_GALGAS_list {
                                                       class GALGAS_string & outArgument3,
                                                       class GALGAS_textMacroList & outArgument4,
                                                       class GALGAS_guiLabelListAST & outArgument5,
-                                                      class GALGAS_uint constinArgument6,
+                                                      class GALGAS_lexicalStyleListAST & outArgument6,
+                                                      class GALGAS_uint constinArgument7,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
@@ -1227,6 +1234,11 @@ class GALGAS_importedLexiqueList : public AC_GALGAS_list {
                                                           class GALGAS_uint constinArgument1,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMLexicalStyleListAtIndex (class GALGAS_lexicalStyleListAST constinArgument0,
+                                                                    class GALGAS_uint constinArgument1,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMLexiqueClassNameAtIndex (class GALGAS_string constinArgument0,
                                                                     class GALGAS_uint constinArgument1,
@@ -1251,6 +1263,7 @@ class GALGAS_importedLexiqueList : public AC_GALGAS_list {
                                               class GALGAS_string & outArgument3,
                                               class GALGAS_textMacroList & outArgument4,
                                               class GALGAS_guiLabelListAST & outArgument5,
+                                              class GALGAS_lexicalStyleListAST & outArgument6,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
@@ -1260,6 +1273,7 @@ class GALGAS_importedLexiqueList : public AC_GALGAS_list {
                                              class GALGAS_string & outArgument3,
                                              class GALGAS_textMacroList & outArgument4,
                                              class GALGAS_guiLabelListAST & outArgument5,
+                                             class GALGAS_lexicalStyleListAST & outArgument6,
                                              C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
@@ -1277,6 +1291,10 @@ class GALGAS_importedLexiqueList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG class GALGAS_guiLabelListAST getter_mLabelsAtIndex (const class GALGAS_uint & constinOperand0,
                                                                                C_Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_lexicalStyleListAST getter_mLexicalStyleListAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                             C_Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_string getter_mLexiqueClassNameAtIndex (const class GALGAS_uint & constinOperand0,
                                                                                 C_Compiler * inCompiler
@@ -1328,6 +1346,7 @@ class cEnumerator_importedLexiqueList : public cGenericAbstractEnumerator {
   public: class GALGAS_string current_mTitle (LOCATION_ARGS) const ;
   public: class GALGAS_textMacroList current_mTextMacroList (LOCATION_ARGS) const ;
   public: class GALGAS_guiLabelListAST current_mLabels (LOCATION_ARGS) const ;
+  public: class GALGAS_lexicalStyleListAST current_mLexicalStyleList (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GALGAS_importedLexiqueList_2D_element current (LOCATION_ARGS) const ;
 } ;
@@ -1374,6 +1393,11 @@ class GALGAS_importedLexiqueList_2D_element : public AC_GALGAS_root {
     return mProperty_mLabels ;
   }
 
+  public: GALGAS_lexicalStyleListAST mProperty_mLexicalStyleList ;
+  public: inline GALGAS_lexicalStyleListAST readProperty_mLexicalStyleList (void) const {
+    return mProperty_mLexicalStyleList ;
+  }
+
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
   public: VIRTUAL_IN_DEBUG void drop (void) ;
@@ -1409,6 +1433,10 @@ class GALGAS_importedLexiqueList_2D_element : public AC_GALGAS_root {
     mProperty_mLabels = inValue ;
   }
 
+  public: inline void setter_setMLexicalStyleList (const GALGAS_lexicalStyleListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mLexicalStyleList = inValue ;
+  }
+
 //--------------------------------- Virtual destructor (in debug mode)
   public: virtual ~ GALGAS_importedLexiqueList_2D_element (void) ;
 
@@ -1418,7 +1446,8 @@ class GALGAS_importedLexiqueList_2D_element : public AC_GALGAS_root {
                                                  const GALGAS_string & in_mBlockComment,
                                                  const GALGAS_string & in_mTitle,
                                                  const GALGAS_textMacroList & in_mTextMacroList,
-                                                 const GALGAS_guiLabelListAST & in_mLabels) ;
+                                                 const GALGAS_guiLabelListAST & in_mLabels,
+                                                 const GALGAS_lexicalStyleListAST & in_mLexicalStyleList) ;
 
 //-- Start of generic part --*
 
@@ -1436,7 +1465,8 @@ class GALGAS_importedLexiqueList_2D_element : public AC_GALGAS_root {
                                                                               const class GALGAS_string & inOperand2,
                                                                               const class GALGAS_string & inOperand3,
                                                                               const class GALGAS_textMacroList & inOperand4,
-                                                                              const class GALGAS_guiLabelListAST & inOperand5
+                                                                              const class GALGAS_guiLabelListAST & inOperand5,
+                                                                              const class GALGAS_lexicalStyleListAST & inOperand6
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
