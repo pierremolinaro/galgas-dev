@@ -14,26 +14,26 @@
 #  details.                                 
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N                                     
+#   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N (OBJC)
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract getter @lexicalExpressionAST generateCocoaConditionCode
+abstract getter @lexicalExpressionAST generateObjcCocoaConditionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalOrExpressionAST generateCocoaConditionCode
+override getter @lexicalOrExpressionAST generateObjcCocoaConditionCode
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string result {
-  result = [self.mLeftOperand generateCocoaConditionCode !inLexiqueAnalysisContext]
+  result = [self.mLeftOperand generateObjcCocoaConditionCode !inLexiqueAnalysisContext]
   result += " || "
-  result += [self.mRightOperand generateCocoaConditionCode !inLexiqueAnalysisContext]
+  result += [self.mRightOperand generateObjcCocoaConditionCode !inLexiqueAnalysisContext]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalCharacterIntervalMatchAST generateCocoaConditionCode
+override getter @lexicalCharacterIntervalMatchAST generateObjcCocoaConditionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = ""
@@ -46,7 +46,7 @@ override getter @lexicalCharacterIntervalMatchAST generateCocoaConditionCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalStringMatchAST generateCocoaConditionCode
+override getter @lexicalStringMatchAST generateObjcCocoaConditionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "[self testForInputString:@" + [self.mString.string utf8Representation]
@@ -55,7 +55,7 @@ override getter @lexicalStringMatchAST generateCocoaConditionCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalStringNotMatchAST generateCocoaConditionCode
+override getter @lexicalStringNotMatchAST generateObjcCocoaConditionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "[self notTestForInputString:@"
@@ -65,7 +65,7 @@ override getter @lexicalStringNotMatchAST generateCocoaConditionCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalCharacterMatchAST generateCocoaConditionCode
+override getter @lexicalCharacterMatchAST generateObjcCocoaConditionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "[self testForInputChar:"
@@ -75,7 +75,7 @@ override getter @lexicalCharacterMatchAST generateCocoaConditionCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalCharacterSetMatchAST generateCocoaConditionCode
+override getter @lexicalCharacterSetMatchAST generateObjcCocoaConditionCode
             ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext  -> @string outGeneratedCode {
   outGeneratedCode = "[self testForCharWithFunction: "
   outGeneratedCode += self.mCharacterSetName.string
@@ -83,46 +83,159 @@ override getter @lexicalCharacterSetMatchAST generateCocoaConditionCode
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N (SWIFT)
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+abstract getter @lexicalExpressionAST generateSwiftCocoaConditionCode
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalOrExpressionAST generateSwiftCocoaConditionCode
+  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string result {
+  result = [self.mLeftOperand generateSwiftCocoaConditionCode !inLexiqueAnalysisContext]
+  result += " || "
+  result += [self.mRightOperand generateSwiftCocoaConditionCode !inLexiqueAnalysisContext]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalCharacterIntervalMatchAST generateSwiftCocoaConditionCode
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = ""
+  outGeneratedCode = "self.testForInputFromChar ("
+  outGeneratedCode += [[self.mLowerBound.char uint] string]
+  outGeneratedCode += ", toChar:"
+  outGeneratedCode += [[self.mUpperBound.char uint] string]
+  outGeneratedCode += ")"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalStringMatchAST generateSwiftCocoaConditionCode
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "self.testForInputString (" + [self.mString.string utf8Representation]
+  outGeneratedCode += ", advance: true)"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalStringNotMatchAST generateSwiftCocoaConditionCode
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "self.notTestForInputString ("
+  outGeneratedCode += [self.mString.string utf8Representation]
+  outGeneratedCode += ", error: &scanningOk)"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalCharacterMatchAST generateSwiftCocoaConditionCode
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "self.testForInputChar ("
+  outGeneratedCode += [[self.mCharacter.char uint] string]
+  outGeneratedCode += ")"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalCharacterSetMatchAST generateSwiftCocoaConditionCode
+            ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext -> @string outGeneratedCode {
+  outGeneratedCode = "self.testForCharWithFunction ("
+  outGeneratedCode += self.mCharacterSetName.string
+  outGeneratedCode += ")"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #     R O U T I N E    O R    F U N C T I O N    A R G U M E N T                                               
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract getter @lexicalRoutineOrFunctionFormalInputArgumentAST generateCocoaRoutineOrFunctionArgument
+abstract getter @lexicalRoutineOrFunctionFormalInputArgumentAST generateObjcCocoaRoutineOrFunctionArgument
   -> @string 
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalAttributeInputArgumentAST generateCocoaRoutineOrFunctionArgument
+override getter @lexicalAttributeInputArgumentAST generateObjcCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode {
   outGeneratedCode = "mLexicalAttribute_" + self.mAttributeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalCharacterInputArgumentAST generateCocoaRoutineOrFunctionArgument
+override getter @lexicalCharacterInputArgumentAST generateObjcCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode {
   outGeneratedCode = [[self.mCharacter.char uint] string]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalUnsignedInputArgumentAST generateCocoaRoutineOrFunctionArgument -> @string outGeneratedCode {
+override getter @lexicalUnsignedInputArgumentAST generateObjcCocoaRoutineOrFunctionArgument -> @string outGeneratedCode {
   outGeneratedCode = [self.mUnsigned.bigint string]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalCurrentCharacterInputArgumentAST generateCocoaRoutineOrFunctionArgument
+override getter @lexicalCurrentCharacterInputArgumentAST generateObjcCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode {
   outGeneratedCode = "mPreviousChar"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalFunctionInputArgumentAST generateCocoaRoutineOrFunctionArgument
+override getter @lexicalFunctionInputArgumentAST generateObjcCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode {
   outGeneratedCode = "scanner_cocoa_function_" + self.mFunctionName + " ("
   for (mLexicalActualInputArgument) in self.mFunctionActualArgumentList
-  do outGeneratedCode += [mLexicalActualInputArgument generateCocoaRoutineOrFunctionArgument]
+  do outGeneratedCode += [mLexicalActualInputArgument generateObjcCocoaRoutineOrFunctionArgument]
+  between outGeneratedCode += ", "
+  end
+  outGeneratedCode += ")"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+abstract getter @lexicalRoutineOrFunctionFormalInputArgumentAST generateSwiftCocoaRoutineOrFunctionArgument
+  -> @string 
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalAttributeInputArgumentAST generateSwiftCocoaRoutineOrFunctionArgument
+  -> @string outGeneratedCode {
+  outGeneratedCode = "mLexicalAttribute_" + self.mAttributeName
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalCharacterInputArgumentAST generateSwiftCocoaRoutineOrFunctionArgument
+  -> @string outGeneratedCode {
+  outGeneratedCode = [[self.mCharacter.char uint] string]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalUnsignedInputArgumentAST generateSwiftCocoaRoutineOrFunctionArgument -> @string outGeneratedCode {
+  outGeneratedCode = [self.mUnsigned.bigint string]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalCurrentCharacterInputArgumentAST generateSwiftCocoaRoutineOrFunctionArgument
+  -> @string outGeneratedCode {
+  outGeneratedCode = "self.previousChar"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalFunctionInputArgumentAST generateSwiftCocoaRoutineOrFunctionArgument
+  -> @string outGeneratedCode {
+  outGeneratedCode = "scanner_cocoa_function_" + self.mFunctionName + " ("
+  for (mLexicalActualInputArgument) in self.mFunctionActualArgumentList
+  do outGeneratedCode += [mLexicalActualInputArgument generateSwiftCocoaRoutineOrFunctionArgument]
   between outGeneratedCode += ", "
   end
   outGeneratedCode += ")"
@@ -132,13 +245,13 @@ override getter @lexicalFunctionInputArgumentAST generateCocoaRoutineOrFunctionA
 #  L E X I C A L    S E N D  I N S T R U C T I O N    D E F A U L T                                            
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract getter @lexicalSendDefaultActionAST generateCocoaDefaultSendCode
+abstract getter @lexicalSendDefaultActionAST generateObjcCocoaDefaultSendCode
   ?let @string inScannerClassName
   -> @string
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalSendTerminalByDefaultAST generateCocoaDefaultSendCode
+override getter @lexicalSendTerminalByDefaultAST generateObjcCocoaDefaultSendCode
   ?let @string inScannerClassName
   -> @string outGeneratedCode {
   outGeneratedCode = "mTokenCode = " + inScannerClassName + "_1_" + [self.mDefaultSentTerminal.string identifierRepresentation] + " ;\n"
@@ -146,33 +259,62 @@ override getter @lexicalSendTerminalByDefaultAST generateCocoaDefaultSendCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalErrorByDefaultAST generateCocoaDefaultSendCode
+override getter @lexicalErrorByDefaultAST generateObjcCocoaDefaultSendCode
   ?let @string unused inScannerClassName
   -> @string outGeneratedCode {
   outGeneratedCode = "scanningOk = NO ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+abstract getter @lexicalSendDefaultActionAST generateSwiftCocoaDefaultSendCode
+  ?let @string inScannerClassName
+  -> @string
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalSendTerminalByDefaultAST generateSwiftCocoaDefaultSendCode
+  ?let @string inScannerClassName
+  -> @string outGeneratedCode {
+  outGeneratedCode = "tokenCode = " + inScannerClassName + "_1_" + [self.mDefaultSentTerminal.string identifierRepresentation] + " ;\n"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalErrorByDefaultAST generateSwiftCocoaDefaultSendCode
+  ?let @string unused inScannerClassName
+  -> @string outGeneratedCode {
+  outGeneratedCode = "scanningOk = false\n"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #  L E X I C A L    I N S T R U C T I O N    C O D E    G E N E R A T I O N                                    
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract getter @lexicalInstructionAST generateCocoaInstructionCode
+abstract getter @lexicalInstructionAST generateObjcCocoaInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#        L E X I C A L    R U L E    C O D E    G E N E R A T I O N                                            
+
+abstract getter @lexicalInstructionAST generateSwiftCocoaInstructionCode
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#        L E X I C A L    R U L E    C O D E    G E N E R A T I O N (OBJC)
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract getter @abstractLexicalRuleAST generateCocoaCode
+abstract getter @abstractLexicalRuleAST generateObjcCocoaCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalImplicitRuleAST generateCocoaCode
+override getter @lexicalImplicitRuleAST generateObjcCocoaCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
@@ -189,16 +331,59 @@ override getter @lexicalImplicitRuleAST generateCocoaCode
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalExplicitRuleAST generateCocoaCode
+override getter @lexicalExplicitRuleAST generateObjcCocoaCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "if (scanningOk && ("
-  outGeneratedCode += [self.mLexicalRuleExpression generateCocoaConditionCode !inLexiqueAnalysisContext]
+  outGeneratedCode += [self.mLexicalRuleExpression generateObjcCocoaConditionCode !inLexiqueAnalysisContext]
   outGeneratedCode += ")) {\n"
   [!?outGeneratedCode incIndentation !2]
   for (mInstruction) in self.mInstructionList do
-    outGeneratedCode += [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+    outGeneratedCode += [mInstruction generateObjcCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+  end
+  [!?outGeneratedCode decIndentation !2]
+  outGeneratedCode += "}else "
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#        L E X I C A L    R U L E    C O D E    G E N E R A T I O N (SWIFT)
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+abstract getter @abstractLexicalRuleAST generateSwiftCocoaCode
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalImplicitRuleAST generateSwiftCocoaCode
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  [inLexiqueAnalysisContext.mLexicalTokenListMap searchKey !self.mListName ?* ?let tokenSortedList ?*]
+  outGeneratedCode = ""
+  for > (* mName mTerminalName) in tokenSortedList do
+    outGeneratedCode += "if scanningOk && self.testForInputString ("
+    outGeneratedCode += [mName utf8Representation]
+    outGeneratedCode += ", advance: true) {\n"
+    outGeneratedCode += "  tokenCode = " + inScannerClassName + "_1_" + [mTerminalName identifierRepresentation] + "\n"
+    outGeneratedCode += "}else "
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalExplicitRuleAST generateSwiftCocoaCode
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "if scanningOk && ("
+  outGeneratedCode += [self.mLexicalRuleExpression generateSwiftCocoaConditionCode !inLexiqueAnalysisContext]
+  outGeneratedCode += ") {\n"
+  [!?outGeneratedCode incIndentation !2]
+  for (mInstruction) in self.mInstructionList do
+    outGeneratedCode += [mInstruction generateSwiftCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
   end
   [!?outGeneratedCode decIndentation !2]
   outGeneratedCode += "}else "

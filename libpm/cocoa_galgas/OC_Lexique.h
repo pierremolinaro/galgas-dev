@@ -266,9 +266,9 @@ void scanner_cocoa_routine_convertUnsignedNumberToUnicodeChar (BOOL * ioNoLexica
                                                                UInt32 * ioValue,
                                                                utf32 * outUnicodeCharacter) ;
 
-void scanner_cocoa_routine_convertHTMLSequenceToUnicodeCharacter (BOOL * ioNoLexicalError,
-                                                                  NSMutableString * ioStringValue,
-                                                                  utf32 * outUnicodeCharacter) ;
+//void scanner_cocoa_routine_convertHTMLSequenceToUnicodeCharacter (BOOL * ioNoLexicalError,
+//                                                                  NSMutableString * ioStringValue,
+//                                                                  utf32 * outUnicodeCharacter) ;
 
 void
 scanner_cocoa_routine_codePointToUnicode (BOOL * ioNoLexicalError, 

@@ -97,17 +97,11 @@ override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
   [self.mLexicalSendDefaultAction checkLexicalDefaultAction !?ioLexiqueAnalysisContext]
 }
 
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
-
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! COCOA GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalStructuredSendInstructionAST generateCocoaInstructionCode
+override getter @lexicalStructuredSendInstructionAST generateObjcCocoaInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
@@ -119,7 +113,25 @@ override getter @lexicalStructuredSendInstructionAST generateCocoaInstructionCod
     outGeneratedCode += "}\n"
   end
   outGeneratedCode += "if (mTokenCode == 0) {\n"
-  outGeneratedCode += "  " + [self.mLexicalSendDefaultAction generateCocoaDefaultSendCode !inScannerClassName]
+  outGeneratedCode += "  " + [self.mLexicalSendDefaultAction generateObjcCocoaDefaultSendCode !inScannerClassName]
+  outGeneratedCode += "}\n"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalStructuredSendInstructionAST generateSwiftCocoaInstructionCode
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = ""
+  for (mAttributeName mSearchListName) in self.mLexicalSendSearchList do
+    outGeneratedCode += "if (tokenCode == 0) {\n"
+    outGeneratedCode += "  tokenCode = search_into_" + [inScannerClassName identifierRepresentation] 
+    outGeneratedCode += "_" + mSearchListName + " (mLexicalAttribute_" + mAttributeName + ") ;\n"
+    outGeneratedCode += "}\n"
+  end
+  outGeneratedCode += "if tokenCode == 0 {\n"
+  outGeneratedCode += "  " + [self.mLexicalSendDefaultAction generateSwiftCocoaDefaultSendCode !inScannerClassName]
   outGeneratedCode += "}\n"
 }
 

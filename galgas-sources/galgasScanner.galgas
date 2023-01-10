@@ -354,9 +354,9 @@ message invalideUnicodeDefinition8 : "\\U should be followed by exactly eight he
 
 message unassignedUnicodeValue : "this value does not correspond to an assigned Unicode point"
 
-message incorrectHTMLescapeSequence : "Invalid HTML sequence, should be '&...;'"
-
-message unknownHTMLescapeSequence : "Invalid &...; HTML sequence"
+#message incorrectHTMLescapeSequence : "Invalid HTML sequence, should be '&...;'"
+#
+#message unknownHTMLescapeSequence : "Invalid &...; HTML sequence"
 
 rule '\'' {
   select
@@ -454,12 +454,12 @@ rule '\'' {
       default
         error invalideUnicodeDefinition8
       end
-    case '&' :
-      repeat
-      while ~ ";" error incorrectHTMLescapeSequence :
-        enterCharacterIntoString (!?tokenString !* )
-      end
-      convertHTMLSequenceToUnicodeCharacter (!?tokenString !?charValue error unknownHTMLescapeSequence )
+#    case '&' :
+#      repeat
+#      while ~ ";" error incorrectHTMLescapeSequence :
+#        enterCharacterIntoString (!?tokenString !* )
+#      end
+#      convertHTMLSequenceToUnicodeCharacter (!?tokenString !?charValue error unknownHTMLescapeSequence )
     default
       error incorrectCharConstant
     end
@@ -682,13 +682,13 @@ rule '"' {
       enterCharacterIntoString (!?tokenString !'\'')
     case '?' :
       enterCharacterIntoString (!?tokenString !'?')
-    case '&' :
-      repeat
-      while ~ ";" error incorrectHTMLescapeSequence :
-        enterCharacterIntoString (!?identifierString !* )
-      end
-      convertHTMLSequenceToUnicodeCharacter (!?identifierString !?charValue error unknownHTMLescapeSequence )
-      enterCharacterIntoString (!?tokenString !charValue )
+#    case '&' :
+#      repeat
+#      while ~ ";" error incorrectHTMLescapeSequence :
+#        enterCharacterIntoString (!?identifierString !* )
+#      end
+#      convertHTMLSequenceToUnicodeCharacter (!?identifierString !?charValue error unknownHTMLescapeSequence )
+#      enterCharacterIntoString (!?tokenString !charValue )
     case '0' -> '9' :
       warning obsoleteStringConstruction
       repeat

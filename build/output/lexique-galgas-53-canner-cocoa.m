@@ -471,16 +471,6 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
         }else{
           scanningOk = NO ;
         }
-      }else if (scanningOk && ([self testForInputChar:38])) {
-        do {
-          if (scanningOk && ([self notTestForInputString:@";" error:& scanningOk])) {
-            scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-          }else{
-            loop = NO ;
-          }
-        }while (loop && scanningOk) ;
-        loop = YES ;
-        scanner_cocoa_routine_convertHTMLSequenceToUnicodeCharacter (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_charValue) ;
       }else{
         scanningOk = NO ;
       }
@@ -767,17 +757,6 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
           scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 39) ;
         }else if (scanningOk && ([self testForInputChar:63])) {
           scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 63) ;
-        }else if (scanningOk && ([self testForInputChar:38])) {
-          do {
-            if (scanningOk && ([self notTestForInputString:@";" error:& scanningOk])) {
-              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_identifierString, mPreviousChar) ;
-            }else{
-              loop = NO ;
-            }
-          }while (loop && scanningOk) ;
-          loop = YES ;
-          scanner_cocoa_routine_convertHTMLSequenceToUnicodeCharacter (& scanningOk, mLexicalAttribute_identifierString, & mLexicalAttribute_charValue) ;
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_charValue) ;
         }else if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
           do {
             scanner_cocoa_routine_enterHexDigitIntoASCIIcharacter (& scanningOk, & mLexicalAttribute_charValue, mPreviousChar) ;

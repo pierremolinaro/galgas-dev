@@ -158,7 +158,7 @@ end
 %
   block 2 :
     for (mLexicalRule) in LEXICAL_RULE_LIST do
-      ![mLexicalRule generateCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
+      ![mLexicalRule generateObjcCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
     end
   end
 %  if ([self testForInputChar:'\0']) { // End of source text ?

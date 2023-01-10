@@ -70,8 +70,6 @@ static const char * gLexicalMessage_galgasScanner_hexDigitError = "0x should be 
 
 static const char * gLexicalMessage_galgasScanner_incorrectCharConstant = "incorrect literal character" ;
 
-static const char * gLexicalMessage_galgasScanner_incorrectHTMLescapeSequence = "Invalid HTML sequence, should be '&...;'" ;
-
 static const char * gLexicalMessage_galgasScanner_incorrectStringEnd = "string does not end with '\"'" ;
 
 static const char * gLexicalMessage_galgasScanner_incorrectTypeNameError = "in a type name, a letter, a digit or the underscore character should follow the '@' character" ;
@@ -89,8 +87,6 @@ static const char * gLexicalMessage_galgasScanner_invalideUnicodeDefinition8 = "
 static const char * gLexicalMessage_galgasScanner_obsoleteStringConstruction = "\\ followed by digits is obsolete: now, use \\u.... or \\U........" ;
 
 static const char * gLexicalMessage_galgasScanner_unassignedUnicodeValue = "this value does not correspond to an assigned Unicode point" ;
-
-static const char * gLexicalMessage_galgasScanner_unknownHTMLescapeSequence = "Invalid &...; HTML sequence" ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //          Syntax error messages, for every terminal symbol                                     
@@ -3172,16 +3168,6 @@ void C_Lexique_galgasScanner::internalParseLexicalToken (cTokenFor_galgasScanner
           }else{
             lexicalError (gLexicalMessage_galgasScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
           }
-        }else if (testForInputUTF32Char (TO_UNICODE ('&'))) {
-          do {
-            if (notTestForInputUTF32String (kUnicodeString_galgasScanner__3B_, 1, gLexicalMessage_galgasScanner_incorrectHTMLescapeSequence COMMA_LINE_AND_SOURCE_FILE)) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-            }else{
-              loop = false ;
-            }
-          }while (loop) ;
-          loop = true ;
-          ::scanner_routine_convertHTMLSequenceToUnicodeCharacter (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue, gLexicalMessage_galgasScanner_unknownHTMLescapeSequence) ;
         }else{
           lexicalError (gLexicalMessage_galgasScanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
         }
@@ -3546,17 +3532,6 @@ void C_Lexique_galgasScanner::internalParseLexicalToken (cTokenFor_galgasScanner
             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\'')) ;
           }else if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\?')) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('&'))) {
-            do {
-              if (notTestForInputUTF32String (kUnicodeString_galgasScanner__3B_, 1, gLexicalMessage_galgasScanner_incorrectHTMLescapeSequence COMMA_LINE_AND_SOURCE_FILE)) {
-                ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, previousChar ()) ;
-              }else{
-                loop = false ;
-              }
-            }while (loop) ;
-            loop = true ;
-            ::scanner_routine_convertHTMLSequenceToUnicodeCharacter (*this, token.mLexicalAttribute_identifierString, token.mLexicalAttribute_charValue, gLexicalMessage_galgasScanner_unknownHTMLescapeSequence) ;
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
           }else if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
             lexicalWarning (gLexicalMessage_galgasScanner_obsoleteStringConstruction COMMA_LINE_AND_SOURCE_FILE) ;
             do {

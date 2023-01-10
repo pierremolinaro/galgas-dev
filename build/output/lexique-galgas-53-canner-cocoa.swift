@@ -3,6 +3,8 @@
 
 //--- END OF USER ZONE 1
 
+import AppKit
+
 //----------------------------------------------------------------------------------------------------------------------
 //   LEXIQUE galgasScanner
 //----------------------------------------------------------------------------------------------------------------------
@@ -224,7 +226,7 @@ func galgasScanner_styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
 //                     S C A N N E R    C L A S S
 //----------------------------------------------------------------------------------------------------------------------
 
-class SWIFT_Lexique_galgasScanner {
+class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -237,18 +239,6 @@ class SWIFT_Lexique_galgasScanner {
   private var mLexicalAttribute_tokenString : String = ""
   private var mLexicalAttribute_uint32value : UInt32 = 0
   private var mLexicalAttribute_uint64value : UInt64 = 0
-
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  init () {
-    noteObjectAllocation (self)
-  }
-
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -677,13 +667,664 @@ class SWIFT_Lexique_galgasScanner {
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  // - (BOOL) internalParseLexicalTokenForLexicalColoring ;
-
+  //   Lexical analysis
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  // - (void) parseLexicalTokenForLexicalColoring ;
+  func parseLexicalTokenForLexicalColoring (source inSourceText : String, fromLocation inStartLocation : Int) -> StyledRange {
+    self.set (source: inSourceText, fromLocation: inStartLocation)
+    var loop = true
+    var scanningOk = true
+    self.mLexicalAttribute_bigintValue = ""
+    self.mLexicalAttribute_charValue = 0
+    self.mLexicalAttribute_floatValue = 0.0
+    self.mLexicalAttribute_identifierString = ""
+    self.mLexicalAttribute_sint32value = 0
+    self.mLexicalAttribute_sint64value = 0
+    self.mLexicalAttribute_tokenString = ""
+    self.mLexicalAttribute_uint32value = 0
+    self.mLexicalAttribute_uint64value = 0
+    let tokenStartLocation = inStartLocation
+    var tokenCode : UInt16 = 0
+    if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
+      while (loop && scanningOk) {
+        scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_identifierString, scanner_cocoa_function_toLower (self.previousChar))
+        scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+        if scanningOk && (self.testForCharWithFunction (isUnicodeLetter) || self.testForInputChar (95) || self.testForInputFromChar (48, toChar:57)) {
+        }else{
+          loop = false
+        }
+      }
+      loop = true
+      if (tokenCode == 0) {
+        tokenCode = search_into_galgasScanner_galgasKeyWordList (mLexicalAttribute_identifierString) ;
+      }
+      if tokenCode == 0 {
+        tokenCode = galgasScanner_1_identifier ;
+      }
+    }else if scanningOk && (self.testForInputString ("0x", advance: true)) {
+      while (loop && scanningOk) {
+        if scanningOk && (self.testForInputChar (95)) {
+        }else{
+          loop = false
+        }
+      }
+      loop = true
+      if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+        scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+        while (loop && scanningOk) {
+          if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+          }else if scanningOk && (self.testForInputChar (95)) {
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+        scanner_cocoa_routine_convertHexStringIntoBigInt (&scanningOk, mLexicalAttribute_tokenString, &self.mLexicalAttribute_bigintValue)
+        tokenCode = galgasScanner_1_literalInt
+      }else{
+        scanningOk = false
+      }
+    }else if scanningOk && (self.testForInputFromChar (48, toChar:57)) {
+      scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+      while (loop && scanningOk) {
+        if scanningOk && (self.testForInputFromChar (48, toChar:57)) {
+          scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+        }else if scanningOk && (self.testForInputChar (95)) {
+        }else{
+          loop = false
+        }
+      }
+      loop = true
+      if scanningOk && (self.testForInputChar (46)) {
+        scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 46)
+        while (loop && scanningOk) {
+          if scanningOk && (self.testForInputFromChar (48, toChar:57)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+          }else if scanningOk && (self.testForInputChar (95)) {
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+        scanner_cocoa_routine_convertStringToDouble (&scanningOk, mLexicalAttribute_tokenString, &self.mLexicalAttribute_floatValue)
+        tokenCode = galgasScanner_1_double_2E_xxx
+      }else{
+        scanner_cocoa_routine_convertDecimalStringIntoBigInt (&scanningOk, mLexicalAttribute_tokenString, &self.mLexicalAttribute_bigintValue)
+        tokenCode = galgasScanner_1_literalInt
+      }
+    }else if scanningOk && (self.testForInputChar (46)) {
+      if scanningOk && (self.testForInputFromChar (48, toChar:57)) {
+        scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 48)
+        scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 46)
+        scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+        while (loop && scanningOk) {
+          if scanningOk && (self.testForInputFromChar (48, toChar:57)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+          }else if scanningOk && (self.testForInputChar (95)) {
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+        scanner_cocoa_routine_convertStringToDouble (&scanningOk, mLexicalAttribute_tokenString, &self.mLexicalAttribute_floatValue)
+        tokenCode = galgasScanner_1_double_2E_xxx
+      }else{
+        if scanningOk && (self.testForInputString ("..", advance: true)) {
+          tokenCode = galgasScanner_1__2E__2E__2E_
+        }else if scanningOk && (self.testForInputString (".<", advance: true)) {
+          tokenCode = galgasScanner_1__2E__2E__3C_
+        }else{
+          tokenCode = galgasScanner_1__2E_
+        }
+      }
+    }else if scanningOk && (self.testForInputChar (64)) {
+      if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90) || self.testForInputChar (95) || self.testForInputFromChar (48, toChar:57)) {
+        while (loop && scanningOk) {
+          scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+          if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90) || self.testForInputChar (95) || self.testForInputFromChar (48, toChar:57)) {
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+        if scanningOk && (self.testForInputChar (45)) {
+          while (loop && scanningOk) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+            if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90) || self.testForInputChar (95) || self.testForInputFromChar (48, toChar:57)) {
+            }else{
+              loop = false
+            }
+          }
+          loop = true
+        }
+        if scanningOk && (self.testForInputChar (63)) {
+          scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+        }
+      }else{
+        scanningOk = false
+      }
+      tokenCode = galgasScanner_1__40_type
+    }else if scanningOk && (self.testForInputChar (37)) {
+      if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
+        while (loop && scanningOk) {
+          scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+          if scanningOk && (self.testForCharWithFunction (isUnicodeLetter) || self.testForInputChar (45) || self.testForInputChar (95) || self.testForInputFromChar (48, toChar:57)) {
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+      }else{
+        scanningOk = false
+      }
+      tokenCode = galgasScanner_1__25_attribute
+    }else if scanningOk && (self.testForInputChar (39)) {
+      if scanningOk && (self.testForInputChar (92)) {
+        if scanningOk && (self.testForInputChar (102)) {
+          scanner_cocoa_routine_enterCharacterIntoCharacter (&scanningOk, &self.mLexicalAttribute_charValue, 12)
+        }else if scanningOk && (self.testForInputChar (110)) {
+          scanner_cocoa_routine_enterCharacterIntoCharacter (&scanningOk, &self.mLexicalAttribute_charValue, 10)
+        }else if scanningOk && (self.testForInputChar (114)) {
+          scanner_cocoa_routine_enterCharacterIntoCharacter (&scanningOk, &self.mLexicalAttribute_charValue, 13)
+        }else if scanningOk && (self.testForInputChar (116)) {
+          scanner_cocoa_routine_enterCharacterIntoCharacter (&scanningOk, &self.mLexicalAttribute_charValue, 9)
+        }else if scanningOk && (self.testForInputChar (118)) {
+          scanner_cocoa_routine_enterCharacterIntoCharacter (&scanningOk, &self.mLexicalAttribute_charValue, 11)
+        }else if scanningOk && (self.testForInputChar (92)) {
+          scanner_cocoa_routine_enterCharacterIntoCharacter (&scanningOk, &self.mLexicalAttribute_charValue, 92)
+        }else if scanningOk && (self.testForInputChar (48)) {
+          scanner_cocoa_routine_enterCharacterIntoCharacter (&scanningOk, &self.mLexicalAttribute_charValue, 0)
+        }else if scanningOk && (self.testForInputChar (39)) {
+          scanner_cocoa_routine_enterCharacterIntoCharacter (&scanningOk, &self.mLexicalAttribute_charValue, 39)
+        }else if scanningOk && (self.testForInputChar (117)) {
+          if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+            scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+            if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+              scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+              if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                  scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                  scanner_cocoa_routine_convertUnsignedNumberToUnicodeChar (&scanningOk, &self.mLexicalAttribute_uint32value, &self.mLexicalAttribute_charValue)
+                }else{
+                  scanningOk = false
+                }
+              }else{
+                scanningOk = false
+              }
+            }else{
+              scanningOk = false
+            }
+          }else{
+            scanningOk = false
+          }
+        }else if scanningOk && (self.testForInputChar (85)) {
+          if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+            scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+            if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+              scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+              if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                  scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                  if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                    scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                    if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                      scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                      if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                        scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                        if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                          scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                          scanner_cocoa_routine_convertUnsignedNumberToUnicodeChar (&scanningOk, &self.mLexicalAttribute_uint32value, &self.mLexicalAttribute_charValue)
+                        }else{
+                          scanningOk = false
+                        }
+                      }else{
+                        scanningOk = false
+                      }
+                    }else{
+                      scanningOk = false
+                    }
+                  }else{
+                    scanningOk = false
+                  }
+                }else{
+                  scanningOk = false
+                }
+              }else{
+                scanningOk = false
+              }
+            }else{
+              scanningOk = false
+            }
+          }else{
+            scanningOk = false
+          }
+        }else{
+          scanningOk = false
+        }
+      }else if scanningOk && (self.testForInputFromChar (32, toChar:65533)) {
+        scanner_cocoa_routine_enterCharacterIntoCharacter (&scanningOk, &self.mLexicalAttribute_charValue, self.previousChar)
+      }else{
+        scanningOk = false
+      }
+      if scanningOk && (self.testForInputChar (39)) {
+        tokenCode = galgasScanner_1__27_char_27_
+      }else{
+        scanningOk = false
+      }
+    }else if scanningOk && (self.testForInputChar (36)) {
+      if scanningOk && (self.testForInputString ("\\\\", advance: true)) {
+        scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 92)
+        while (loop && scanningOk) {
+          if scanningOk && (self.testForInputString ("\\\\", advance: true)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 92)
+          }else if scanningOk && (self.testForInputString ("\\$", advance: true)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 36)
+          }else if scanningOk && (self.testForInputFromChar (33, toChar:35) || self.testForInputFromChar (37, toChar:65533)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+      }else if scanningOk && (self.testForInputString ("\\$", advance: true)) {
+        scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 36)
+        while (loop && scanningOk) {
+          if scanningOk && (self.testForInputString ("\\\\", advance: true)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 92)
+          }else if scanningOk && (self.testForInputString ("\\$", advance: true)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 36)
+          }else if scanningOk && (self.testForInputFromChar (33, toChar:35) || self.testForInputFromChar (37, toChar:65533)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+      }else if scanningOk && (self.testForInputFromChar (33, toChar:35) || self.testForInputFromChar (37, toChar:65533)) {
+        scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+        while (loop && scanningOk) {
+          if scanningOk && (self.testForInputString ("\\\\", advance: true)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 92)
+          }else if scanningOk && (self.testForInputString ("\\$", advance: true)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 36)
+          }else if scanningOk && (self.testForInputFromChar (33, toChar:35) || self.testForInputFromChar (37, toChar:65533)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+      }else{
+        scanningOk = false
+      }
+      if scanningOk && (self.testForInputChar (36)) {
+      }else{
+        scanningOk = false
+      }
+      tokenCode = galgasScanner_1__24_terminal_24_
+    }else if scanningOk && self.testForInputString ("===", advance: true) {
+      tokenCode = galgasScanner_1__3D__3D__3D_
+    }else if scanningOk && self.testForInputString ("&--", advance: true) {
+      tokenCode = galgasScanner_1__26__2D__2D_
+    }else if scanningOk && self.testForInputString ("&++", advance: true) {
+      tokenCode = galgasScanner_1__26__2B__2B_
+    }else if scanningOk && self.testForInputString ("!==", advance: true) {
+      tokenCode = galgasScanner_1__21__3D__3D_
+    }else if scanningOk && self.testForInputString ("||", advance: true) {
+      tokenCode = galgasScanner_1__7C__7C_
+    }else if scanningOk && self.testForInputString ("\?^", advance: true) {
+      tokenCode = galgasScanner_1__3F__5E_
+    }else if scanningOk && self.testForInputString (">>", advance: true) {
+      tokenCode = galgasScanner_1__3E__3E_
+    }else if scanningOk && self.testForInputString (">=", advance: true) {
+      tokenCode = galgasScanner_1__3E__3D_
+    }else if scanningOk && self.testForInputString ("==", advance: true) {
+      tokenCode = galgasScanner_1__3D__3D_
+    }else if scanningOk && self.testForInputString (":>", advance: true) {
+      tokenCode = galgasScanner_1__3A__3E_
+    }else if scanningOk && self.testForInputString ("/=", advance: true) {
+      tokenCode = galgasScanner_1__2F__3D_
+    }else if scanningOk && self.testForInputString ("->", advance: true) {
+      tokenCode = galgasScanner_1__2D__3E_
+    }else if scanningOk && self.testForInputString ("-=", advance: true) {
+      tokenCode = galgasScanner_1__2D__3D_
+    }else if scanningOk && self.testForInputString ("--", advance: true) {
+      tokenCode = galgasScanner_1__2D__2D_
+    }else if scanningOk && self.testForInputString ("+=", advance: true) {
+      tokenCode = galgasScanner_1__2B__3D_
+    }else if scanningOk && self.testForInputString ("++", advance: true) {
+      tokenCode = galgasScanner_1__2B__2B_
+    }else if scanningOk && self.testForInputString ("*=", advance: true) {
+      tokenCode = galgasScanner_1__2A__3D_
+    }else if scanningOk && self.testForInputString ("&/", advance: true) {
+      tokenCode = galgasScanner_1__26__2F_
+    }else if scanningOk && self.testForInputString ("&-", advance: true) {
+      tokenCode = galgasScanner_1__26__2D_
+    }else if scanningOk && self.testForInputString ("&+", advance: true) {
+      tokenCode = galgasScanner_1__26__2B_
+    }else if scanningOk && self.testForInputString ("&*", advance: true) {
+      tokenCode = galgasScanner_1__26__2A_
+    }else if scanningOk && self.testForInputString ("&&", advance: true) {
+      tokenCode = galgasScanner_1__26__26_
+    }else if scanningOk && self.testForInputString ("!^", advance: true) {
+      tokenCode = galgasScanner_1__21__5E_
+    }else if scanningOk && self.testForInputString ("!=", advance: true) {
+      tokenCode = galgasScanner_1__21__3D_
+    }else if scanningOk && self.testForInputString ("~", advance: true) {
+      tokenCode = galgasScanner_1__7E_
+    }else if scanningOk && self.testForInputString ("}", advance: true) {
+      tokenCode = galgasScanner_1__7D_
+    }else if scanningOk && self.testForInputString ("|", advance: true) {
+      tokenCode = galgasScanner_1__7C_
+    }else if scanningOk && self.testForInputString ("{", advance: true) {
+      tokenCode = galgasScanner_1__7B_
+    }else if scanningOk && self.testForInputString ("`", advance: true) {
+      tokenCode = galgasScanner_1__60_
+    }else if scanningOk && self.testForInputString ("^", advance: true) {
+      tokenCode = galgasScanner_1__5E_
+    }else if scanningOk && self.testForInputString ("]", advance: true) {
+      tokenCode = galgasScanner_1__5D_
+    }else if scanningOk && self.testForInputString ("[", advance: true) {
+      tokenCode = galgasScanner_1__5B_
+    }else if scanningOk && self.testForInputString (">", advance: true) {
+      tokenCode = galgasScanner_1__3E_
+    }else if scanningOk && self.testForInputString ("=", advance: true) {
+      tokenCode = galgasScanner_1__3D_
+    }else if scanningOk && self.testForInputString (";", advance: true) {
+      tokenCode = galgasScanner_1__3B_
+    }else if scanningOk && self.testForInputString (":", advance: true) {
+      tokenCode = galgasScanner_1__3A_
+    }else if scanningOk && self.testForInputString ("/", advance: true) {
+      tokenCode = galgasScanner_1__2F_
+    }else if scanningOk && self.testForInputString ("-", advance: true) {
+      tokenCode = galgasScanner_1__2D_
+    }else if scanningOk && self.testForInputString (",", advance: true) {
+      tokenCode = galgasScanner_1__2C_
+    }else if scanningOk && self.testForInputString ("+", advance: true) {
+      tokenCode = galgasScanner_1__2B_
+    }else if scanningOk && self.testForInputString ("*", advance: true) {
+      tokenCode = galgasScanner_1__2A_
+    }else if scanningOk && self.testForInputString (")", advance: true) {
+      tokenCode = galgasScanner_1__29_
+    }else if scanningOk && self.testForInputString ("(", advance: true) {
+      tokenCode = galgasScanner_1__28_
+    }else if scanningOk && self.testForInputString ("&", advance: true) {
+      tokenCode = galgasScanner_1__26_
+    }else if scanningOk && (self.testForInputChar (63)) {
+      scanningPointStructForCocoa locationForTag_onlyInterrogationMark ;
+      [self saveScanningPoint: & locationForTag_onlyInterrogationMark] ;
+      if scanningOk && (self.testForInputChar (33)) {
+        scanningPointStructForCocoa locationForTag_onlyExclamationInterrogationMark ;
+        [self saveScanningPoint: & locationForTag_onlyExclamationInterrogationMark] ;
+        if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90)) {
+          while (loop && scanningOk) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+            if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90) || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
+            }else{
+              loop = false
+            }
+          }
+          loop = true
+          if scanningOk && (self.testForInputChar (58)) {
+            tokenCode = galgasScanner_1__3F__21_
+          }else{
+            scanner_cocoa_routine_resetString (&scanningOk, &self.mLexicalAttribute_tokenString)
+            self.restoreScanningPoint (&locationForTag_onlyExclamationInterrogationMark)
+            tokenCode = galgasScanner_1__3F__21_
+          }
+        }else{
+          tokenCode = galgasScanner_1__3F__21_
+        }
+      }else if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90)) {
+        while (loop && scanningOk) {
+          scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+          if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90) || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+        if scanningOk && (self.testForInputChar (58)) {
+          tokenCode = galgasScanner_1__3F_
+        }else{
+          scanner_cocoa_routine_resetString (&scanningOk, &self.mLexicalAttribute_tokenString)
+          self.restoreScanningPoint (&locationForTag_onlyInterrogationMark)
+          tokenCode = galgasScanner_1__3F_
+        }
+      }else{
+        tokenCode = galgasScanner_1__3F_
+      }
+    }else if scanningOk && (self.testForInputChar (33)) {
+      scanningPointStructForCocoa locationForTag_onlyExclamationMark ;
+      [self saveScanningPoint: & locationForTag_onlyExclamationMark] ;
+      if scanningOk && (self.testForInputChar (63)) {
+        scanningPointStructForCocoa locationForTag_onlyInterrogationExclamationMark ;
+        [self saveScanningPoint: & locationForTag_onlyInterrogationExclamationMark] ;
+        if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90)) {
+          while (loop && scanningOk) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+            if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90) || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
+            }else{
+              loop = false
+            }
+          }
+          loop = true
+          if scanningOk && (self.testForInputChar (58)) {
+            tokenCode = galgasScanner_1__21__3F_
+          }else{
+            scanner_cocoa_routine_resetString (&scanningOk, &self.mLexicalAttribute_tokenString)
+            self.restoreScanningPoint (&locationForTag_onlyInterrogationExclamationMark)
+            tokenCode = galgasScanner_1__21__3F_
+          }
+        }else{
+          tokenCode = galgasScanner_1__21__3F_
+        }
+      }else if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90)) {
+        while (loop && scanningOk) {
+          scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+          if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90) || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+        if scanningOk && (self.testForInputChar (58)) {
+          tokenCode = galgasScanner_1__21_
+        }else{
+          scanner_cocoa_routine_resetString (&scanningOk, &self.mLexicalAttribute_tokenString)
+          self.restoreScanningPoint (&locationForTag_onlyExclamationMark)
+          tokenCode = galgasScanner_1__21_
+        }
+      }else{
+        tokenCode = galgasScanner_1__21_
+      }
+    }else if scanningOk && (self.testForInputChar (60)) {
+      scanningPointStructForCocoa locationForTag_onlyInfDelimiter ;
+      [self saveScanningPoint: & locationForTag_onlyInfDelimiter] ;
+      if scanningOk && (self.testForInputChar (61)) {
+        tokenCode = galgasScanner_1__3C__3D_
+      }else if scanningOk && (self.testForInputChar (60)) {
+        tokenCode = galgasScanner_1__3C__3C_
+      }else if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
+        while (loop && scanningOk) {
+          scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+          if scanningOk && (self.testForCharWithFunction (isUnicodeLetter) || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+        if scanningOk && (self.testForInputChar (62)) {
+          tokenCode = galgasScanner_1__3C_non_5F_terminal_3E_
+        }else{
+          self.restoreScanningPoint (&locationForTag_onlyInfDelimiter)
+          tokenCode = galgasScanner_1__3C_
+        }
+      }else{
+        tokenCode = galgasScanner_1__3C_
+      }
+    }else if scanningOk && (self.testForInputChar (34)) {
+      while (loop && scanningOk) {
+        if scanningOk && (self.testForInputChar (92)) {
+          if scanningOk && (self.testForInputChar (102)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 12)
+          }else if scanningOk && (self.testForInputChar (110)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 10)
+          }else if scanningOk && (self.testForInputChar (114)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 13)
+          }else if scanningOk && (self.testForInputChar (116)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 9)
+          }else if scanningOk && (self.testForInputChar (118)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 11)
+          }else if scanningOk && (self.testForInputChar (92)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 92)
+          }else if scanningOk && (self.testForInputChar (34)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 34)
+          }else if scanningOk && (self.testForInputChar (39)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 39)
+          }else if scanningOk && (self.testForInputChar (63)) {
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 63)
+          }else if scanningOk && (self.testForInputFromChar (48, toChar:57)) {
+            while (loop && scanningOk) {
+              scanner_cocoa_routine_enterHexDigitIntoASCIIcharacter (&scanningOk, &self.mLexicalAttribute_charValue, self.previousChar)
+              if scanningOk && (self.testForInputFromChar (48, toChar:57)) {
+              }else{
+                loop = false
+              }
+            }
+            loop = true
+            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, mLexicalAttribute_charValue)
+          }else if scanningOk && (self.testForInputChar (117)) {
+            if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+              scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+              if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                  scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                  if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                    scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                    scanner_cocoa_routine_convertUnsignedNumberToUnicodeChar (&scanningOk, &self.mLexicalAttribute_uint32value, &self.mLexicalAttribute_charValue)
+                    scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, mLexicalAttribute_charValue)
+                  }else{
+                    scanningOk = false
+                  }
+                }else{
+                  scanningOk = false
+                }
+              }else{
+                scanningOk = false
+              }
+            }else{
+              scanningOk = false
+            }
+          }else if scanningOk && (self.testForInputChar (85)) {
+            if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+              scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+              if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                  scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                  if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                    scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                    if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                      scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                      if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                        scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                        if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                          scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                          if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
+                            scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
+                            scanner_cocoa_routine_convertUnsignedNumberToUnicodeChar (&scanningOk, &self.mLexicalAttribute_uint32value, &self.mLexicalAttribute_charValue)
+                            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, mLexicalAttribute_charValue)
+                          }else{
+                            scanningOk = false
+                          }
+                        }else{
+                          scanningOk = false
+                        }
+                      }else{
+                        scanningOk = false
+                      }
+                    }else{
+                      scanningOk = false
+                    }
+                  }else{
+                    scanningOk = false
+                  }
+                }else{
+                  scanningOk = false
+                }
+              }else{
+                scanningOk = false
+              }
+            }else{
+              scanningOk = false
+            }
+          }else{
+            scanningOk = false
+          }
+        }else if scanningOk && (self.testForInputChar (32) || self.testForInputChar (33) || self.testForInputFromChar (35, toChar:65533)) {
+          scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+        }else{
+          loop = false
+        }
+      }
+      loop = true
+      if scanningOk && (self.testForInputChar (34)) {
+        tokenCode = galgasScanner_1__22_string_22_
+      }else{
+        scanningOk = false
+      }
+    }else if scanningOk && (self.testForInputChar (35)) {
+      if scanningOk && (self.testForInputChar (33)) {
+        while (loop && scanningOk) {
+          if scanningOk && (self.testForInputFromChar (1, toChar:9) || self.testForInputChar (11) || self.testForInputChar (12) || self.testForInputFromChar (14, toChar:65533)) {
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+        tokenCode = galgasScanner_1_commentMark
+      }else{
+        while (loop && scanningOk) {
+          if scanningOk && (self.testForInputFromChar (1, toChar:9) || self.testForInputChar (11) || self.testForInputChar (12) || self.testForInputFromChar (14, toChar:1114111)) {
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+        tokenCode = galgasScanner_1_comment
+      }
+    }else if scanningOk && (self.testForInputFromChar (1, toChar:32)) {
+    }else     if ([self testForInputChar:'\0']) { // End of source text ?
+      tokenCode = galgasScanner_1_ ; // Empty string code
+    }else{ // Unknown input character
+      scanningOk = NO ;
+     [self advance] ;
+    }
+    return scanningOk ;
+  }
+  
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+/*  func parseLexicalTokenForLexicalColoring (source inSourceText : String, fromLocation inStartLocation : Int) -> StyledRange {
+    BOOL scanningOk = YES ;
+    mTokenCode = 0 ;
+    while ((mTokenCode == 0) && (mCurrentChar != '\0')) {
+      scanningOk = [self internalParseLexicalTokenForLexicalColoring] ;
+    }
+  //--- Error ?
+    if (! scanningOk) {
+      mTokenCode = -1 ;
+    }
+
+
+    return StyledRange (range: NSRange (location: inStartLocation, length: 0), styleIndex: 0)
+  }
+*/
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
@@ -732,775 +1373,111 @@ class SWIFT_Lexique_galgasScanner {
 
 */
 
-/*
+
 //----------------------------------------------------------------------------------------------------------------------
 //
 //             Key words table 'galgasKeyWordList'      
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-static const C_cocoa_lexique_table_entry ktable_for_galgasScanner_galgasKeyWordList [87] = {
-  {"as", galgasScanner_1_as},
-  {"do", galgasScanner_1_do},
-  {"if", galgasScanner_1_if},
-  {"in", galgasScanner_1_in},
-  {"is", galgasScanner_1_is},
-  {"on", galgasScanner_1_on},
-  {"or", galgasScanner_1_or},
-  {"end", galgasScanner_1_end},
-  {"for", galgasScanner_1_for},
-  {"gui", galgasScanner_1_gui},
-  {"let", galgasScanner_1_let},
-  {"log", galgasScanner_1_log},
-  {"map", galgasScanner_1_map},
-  {"mod", galgasScanner_1_mod},
-  {"not", galgasScanner_1_not},
-  {"tag", galgasScanner_1_tag},
-  {"var", galgasScanner_1_var},
-  {"bang", galgasScanner_1_bang},
-  {"case", galgasScanner_1_case},
-  {"cast", galgasScanner_1_cast},
-  {"dict", galgasScanner_1_dict},
-  {"drop", galgasScanner_1_drop},
-  {"else", galgasScanner_1_else},
-  {"enum", galgasScanner_1_enum},
-  {"func", galgasScanner_1_func},
-  {"list", galgasScanner_1_list},
-  {"loop", galgasScanner_1_loop},
-  {"proc", galgasScanner_1_proc},
-  {"rule", galgasScanner_1_rule},
-  {"self", galgasScanner_1_self},
-  {"send", galgasScanner_1_send},
-  {"then", galgasScanner_1_then},
-  {"true", galgasScanner_1_true},
-  {"with", galgasScanner_1_with},
-  {"after", galgasScanner_1_after},
-  {"array", galgasScanner_1_array},
-  {"block", galgasScanner_1_block},
-  {"class", galgasScanner_1_class},
-  {"elsif", galgasScanner_1_elsif},
-  {"error", galgasScanner_1_error},
-  {"false", galgasScanner_1_false},
-  {"fixit", galgasScanner_1_fixit},
-  {"graph", galgasScanner_1_graph},
-  {"label", galgasScanner_1_label},
-  {"parse", galgasScanner_1_parse},
-  {"style", galgasScanner_1_style},
-  {"while", galgasScanner_1_while},
-  {"before", galgasScanner_1_before},
-  {"extern", galgasScanner_1_extern},
-  {"getter", galgasScanner_1_getter},
-  {"insert", galgasScanner_1_insert},
-  {"method", galgasScanner_1_method},
-  {"option", galgasScanner_1_option},
-  {"public", galgasScanner_1_public},
-  {"remove", galgasScanner_1_remove},
-  {"repeat", galgasScanner_1_repeat},
-  {"rewind", galgasScanner_1_rewind},
-  {"search", galgasScanner_1_search},
-  {"select", galgasScanner_1_select},
-  {"setter", galgasScanner_1_setter},
-  {"struct", galgasScanner_1_struct},
-  {"switch", galgasScanner_1_switch},
-  {"syntax", galgasScanner_1_syntax},
-  {"unused", galgasScanner_1_unused},
-  {"between", galgasScanner_1_between},
-  {"boolset", galgasScanner_1_boolset},
-  {"default", galgasScanner_1_default},
-  {"grammar", galgasScanner_1_grammar},
-  {"lexique", galgasScanner_1_lexique},
-  {"listmap", galgasScanner_1_listmap},
-  {"message", galgasScanner_1_message},
-  {"private", galgasScanner_1_private},
-  {"project", galgasScanner_1_project},
-  {"replace", galgasScanner_1_replace},
-  {"warning", galgasScanner_1_warning},
-  {"abstract", galgasScanner_1_abstract},
-  {"indexing", galgasScanner_1_indexing},
-  {"mutating", galgasScanner_1_mutating},
-  {"operator", galgasScanner_1_operator},
-  {"override", galgasScanner_1_override},
-  {"refclass", galgasScanner_1_refclass},
-  {"template", galgasScanner_1_template},
-  {"extension", galgasScanner_1_extension},
-  {"sortedlist", galgasScanner_1_sortedlist},
-  {"valueclass", galgasScanner_1_valueclass},
-  {"constructor", galgasScanner_1_constructor},
-  {"filewrapper", galgasScanner_1_filewrapper}
-} ;
+fileprivate func search_into_galgasScanner_galgasKeyWordList (_ inString inSearchedString) -> UInt16? {
+  let dictionary : [String : UInt16] = [
+    "as" : galgasScanner_1_as,
+    "do" : galgasScanner_1_do,
+    "if" : galgasScanner_1_if,
+    "in" : galgasScanner_1_in,
+    "is" : galgasScanner_1_is,
+    "on" : galgasScanner_1_on,
+    "or" : galgasScanner_1_or,
+    "end" : galgasScanner_1_end,
+    "for" : galgasScanner_1_for,
+    "gui" : galgasScanner_1_gui,
+    "let" : galgasScanner_1_let,
+    "log" : galgasScanner_1_log,
+    "map" : galgasScanner_1_map,
+    "mod" : galgasScanner_1_mod,
+    "not" : galgasScanner_1_not,
+    "tag" : galgasScanner_1_tag,
+    "var" : galgasScanner_1_var,
+    "bang" : galgasScanner_1_bang,
+    "case" : galgasScanner_1_case,
+    "cast" : galgasScanner_1_cast,
+    "dict" : galgasScanner_1_dict,
+    "drop" : galgasScanner_1_drop,
+    "else" : galgasScanner_1_else,
+    "enum" : galgasScanner_1_enum,
+    "func" : galgasScanner_1_func,
+    "list" : galgasScanner_1_list,
+    "loop" : galgasScanner_1_loop,
+    "proc" : galgasScanner_1_proc,
+    "rule" : galgasScanner_1_rule,
+    "self" : galgasScanner_1_self,
+    "send" : galgasScanner_1_send,
+    "then" : galgasScanner_1_then,
+    "true" : galgasScanner_1_true,
+    "with" : galgasScanner_1_with,
+    "after" : galgasScanner_1_after,
+    "array" : galgasScanner_1_array,
+    "block" : galgasScanner_1_block,
+    "class" : galgasScanner_1_class,
+    "elsif" : galgasScanner_1_elsif,
+    "error" : galgasScanner_1_error,
+    "false" : galgasScanner_1_false,
+    "fixit" : galgasScanner_1_fixit,
+    "graph" : galgasScanner_1_graph,
+    "label" : galgasScanner_1_label,
+    "parse" : galgasScanner_1_parse,
+    "style" : galgasScanner_1_style,
+    "while" : galgasScanner_1_while,
+    "before" : galgasScanner_1_before,
+    "extern" : galgasScanner_1_extern,
+    "getter" : galgasScanner_1_getter,
+    "insert" : galgasScanner_1_insert,
+    "method" : galgasScanner_1_method,
+    "option" : galgasScanner_1_option,
+    "public" : galgasScanner_1_public,
+    "remove" : galgasScanner_1_remove,
+    "repeat" : galgasScanner_1_repeat,
+    "rewind" : galgasScanner_1_rewind,
+    "search" : galgasScanner_1_search,
+    "select" : galgasScanner_1_select,
+    "setter" : galgasScanner_1_setter,
+    "struct" : galgasScanner_1_struct,
+    "switch" : galgasScanner_1_switch,
+    "syntax" : galgasScanner_1_syntax,
+    "unused" : galgasScanner_1_unused,
+    "between" : galgasScanner_1_between,
+    "boolset" : galgasScanner_1_boolset,
+    "default" : galgasScanner_1_default,
+    "grammar" : galgasScanner_1_grammar,
+    "lexique" : galgasScanner_1_lexique,
+    "listmap" : galgasScanner_1_listmap,
+    "message" : galgasScanner_1_message,
+    "private" : galgasScanner_1_private,
+    "project" : galgasScanner_1_project,
+    "replace" : galgasScanner_1_replace,
+    "warning" : galgasScanner_1_warning,
+    "abstract" : galgasScanner_1_abstract,
+    "indexing" : galgasScanner_1_indexing,
+    "mutating" : galgasScanner_1_mutating,
+    "operator" : galgasScanner_1_operator,
+    "override" : galgasScanner_1_override,
+    "refclass" : galgasScanner_1_refclass,
+    "template" : galgasScanner_1_template,
+    "extension" : galgasScanner_1_extension,
+    "sortedlist" : galgasScanner_1_sortedlist,
+    "valueclass" : galgasScanner_1_valueclass,
+    "constructor" : galgasScanner_1_constructor,
+    "filewrapper" : galgasScanner_1_filewrapper
+  ]
 
-static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearchedString) {
-  return searchStringInTable (inSearchedString, ktable_for_galgasScanner_galgasKeyWordList, 87) ;
+  return dictionary [inSearchedString]
 }
 
 
 
-*/
 
-//----------------------------------------------------------------------------------------------------------------------
-//
-//               I N T E R N A L    P A R S E    L E X I C A L    T O K E N
-//
-//----------------------------------------------------------------------------------------------------------------------
 
-/* - (BOOL) internalParseLexicalTokenForLexicalColoring {
-  BOOL loop = YES ;
-  BOOL scanningOk = YES ;
-  [mLexicalAttribute_bigintValue setString:@""] ;
-  mLexicalAttribute_charValue = 0 ;
-  mLexicalAttribute_floatValue = 0.0 ;
-  [mLexicalAttribute_identifierString setString:@""] ;
-  mLexicalAttribute_sint32value = 0 ;
-  mLexicalAttribute_sint64value = 0 ;
-  [mLexicalAttribute_tokenString setString:@""] ;
-  mLexicalAttribute_uint32value = 0 ;
-  mLexicalAttribute_uint64value = 0 ;
-  mTokenStartLocation = mCurrentLocation ;
-  if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter])) {
-    do {
-      scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_identifierString, scanner_cocoa_function_toLower (mPreviousChar)) ;
-      scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-      if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
-      }else{
-        loop = NO ;
-      }
-    }while (loop && scanningOk) ;
-    loop = YES ;
-    if (mTokenCode == 0) {
-      mTokenCode = search_into_galgasScanner_galgasKeyWordList (mLexicalAttribute_identifierString) ;
-    }
-    if (mTokenCode == 0) {
-      mTokenCode = galgasScanner_1_identifier ;
-    }
-  }else if (scanningOk && ([self testForInputString:@"0x" advance:YES])) {
-    do {
-      if (scanningOk && ([self testForInputChar:95])) {
-      }else{
-        loop = NO ;
-      }
-    }while (loop && scanningOk) ;
-    loop = YES ;
-    if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-      scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-      do {
-        if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-        }else if (scanningOk && ([self testForInputChar:95])) {
-        }else{
-          loop = NO ;
-        }
-      }while (loop && scanningOk) ;
-      loop = YES ;
-      scanner_cocoa_routine_convertHexStringIntoBigInt (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_bigintValue) ;
-      mTokenCode = galgasScanner_1_literalInt ;
-    }else{
-      scanningOk = NO ;
-    }
-  }else if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
-    scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-    do {
-      if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
-        scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-      }else if (scanningOk && ([self testForInputChar:95])) {
-      }else{
-        loop = NO ;
-      }
-    }while (loop && scanningOk) ;
-    loop = YES ;
-    if (scanningOk && ([self testForInputChar:46])) {
-      scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 46) ;
-      do {
-        if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-        }else if (scanningOk && ([self testForInputChar:95])) {
-        }else{
-          loop = NO ;
-        }
-      }while (loop && scanningOk) ;
-      loop = YES ;
-      scanner_cocoa_routine_convertStringToDouble (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_floatValue) ;
-      mTokenCode = galgasScanner_1_double_2E_xxx ;
-    }else{
-      scanner_cocoa_routine_convertDecimalStringIntoBigInt (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_bigintValue) ;
-      mTokenCode = galgasScanner_1_literalInt ;
-    }
-  }else if (scanningOk && ([self testForInputChar:46])) {
-    if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
-      scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 48) ;
-      scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 46) ;
-      scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-      do {
-        if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-        }else if (scanningOk && ([self testForInputChar:95])) {
-        }else{
-          loop = NO ;
-        }
-      }while (loop && scanningOk) ;
-      loop = YES ;
-      scanner_cocoa_routine_convertStringToDouble (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_floatValue) ;
-      mTokenCode = galgasScanner_1_double_2E_xxx ;
-    }else{
-      if (scanningOk && ([self testForInputString:@".." advance:YES])) {
-        mTokenCode = galgasScanner_1__2E__2E__2E_ ;
-      }else if (scanningOk && ([self testForInputString:@".<" advance:YES])) {
-        mTokenCode = galgasScanner_1__2E__2E__3C_ ;
-      }else{
-        mTokenCode = galgasScanner_1__2E_ ;
-      }
-    }
-  }else if (scanningOk && ([self testForInputChar:64])) {
-    if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
-      do {
-        scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-        if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
-        }else{
-          loop = NO ;
-        }
-      }while (loop && scanningOk) ;
-      loop = YES ;
-      if (scanningOk && ([self testForInputChar:45])) {
-        do {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-          if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
-          }else{
-            loop = NO ;
-          }
-        }while (loop && scanningOk) ;
-        loop = YES ;
-      }
-      if (scanningOk && ([self testForInputChar:63])) {
-        scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-      }
-    }else{
-      scanningOk = NO ;
-    }
-    mTokenCode = galgasScanner_1__40_type ;
-  }else if (scanningOk && ([self testForInputChar:37])) {
-    if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter])) {
-      do {
-        scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-        if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter] || [self testForInputChar:45] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
-        }else{
-          loop = NO ;
-        }
-      }while (loop && scanningOk) ;
-      loop = YES ;
-    }else{
-      scanningOk = NO ;
-    }
-    mTokenCode = galgasScanner_1__25_attribute ;
-  }else if (scanningOk && ([self testForInputChar:39])) {
-    if (scanningOk && ([self testForInputChar:92])) {
-      if (scanningOk && ([self testForInputChar:102])) {
-        scanner_cocoa_routine_enterCharacterIntoCharacter (& scanningOk, & mLexicalAttribute_charValue, 12) ;
-      }else if (scanningOk && ([self testForInputChar:110])) {
-        scanner_cocoa_routine_enterCharacterIntoCharacter (& scanningOk, & mLexicalAttribute_charValue, 10) ;
-      }else if (scanningOk && ([self testForInputChar:114])) {
-        scanner_cocoa_routine_enterCharacterIntoCharacter (& scanningOk, & mLexicalAttribute_charValue, 13) ;
-      }else if (scanningOk && ([self testForInputChar:116])) {
-        scanner_cocoa_routine_enterCharacterIntoCharacter (& scanningOk, & mLexicalAttribute_charValue, 9) ;
-      }else if (scanningOk && ([self testForInputChar:118])) {
-        scanner_cocoa_routine_enterCharacterIntoCharacter (& scanningOk, & mLexicalAttribute_charValue, 11) ;
-      }else if (scanningOk && ([self testForInputChar:92])) {
-        scanner_cocoa_routine_enterCharacterIntoCharacter (& scanningOk, & mLexicalAttribute_charValue, 92) ;
-      }else if (scanningOk && ([self testForInputChar:48])) {
-        scanner_cocoa_routine_enterCharacterIntoCharacter (& scanningOk, & mLexicalAttribute_charValue, 0) ;
-      }else if (scanningOk && ([self testForInputChar:39])) {
-        scanner_cocoa_routine_enterCharacterIntoCharacter (& scanningOk, & mLexicalAttribute_charValue, 39) ;
-      }else if (scanningOk && ([self testForInputChar:117])) {
-        if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-          scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-          if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-            scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-            if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-              scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-              if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-                scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-                scanner_cocoa_routine_convertUnsignedNumberToUnicodeChar (& scanningOk, & mLexicalAttribute_uint32value, & mLexicalAttribute_charValue) ;
-              }else{
-                scanningOk = NO ;
-              }
-            }else{
-              scanningOk = NO ;
-            }
-          }else{
-            scanningOk = NO ;
-          }
-        }else{
-          scanningOk = NO ;
-        }
-      }else if (scanningOk && ([self testForInputChar:85])) {
-        if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-          scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-          if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-            scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-            if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-              scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-              if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-                scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-                if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-                  scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-                  if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-                    scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-                    if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-                      scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-                      if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-                        scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-                        scanner_cocoa_routine_convertUnsignedNumberToUnicodeChar (& scanningOk, & mLexicalAttribute_uint32value, & mLexicalAttribute_charValue) ;
-                      }else{
-                        scanningOk = NO ;
-                      }
-                    }else{
-                      scanningOk = NO ;
-                    }
-                  }else{
-                    scanningOk = NO ;
-                  }
-                }else{
-                  scanningOk = NO ;
-                }
-              }else{
-                scanningOk = NO ;
-              }
-            }else{
-              scanningOk = NO ;
-            }
-          }else{
-            scanningOk = NO ;
-          }
-        }else{
-          scanningOk = NO ;
-        }
-      }else if (scanningOk && ([self testForInputChar:38])) {
-        do {
-          if (scanningOk && ([self notTestForInputString:@";" error:& scanningOk])) {
-            scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-          }else{
-            loop = NO ;
-          }
-        }while (loop && scanningOk) ;
-        loop = YES ;
-        scanner_cocoa_routine_convertHTMLSequenceToUnicodeCharacter (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_charValue) ;
-      }else{
-        scanningOk = NO ;
-      }
-    }else if (scanningOk && ([self testForInputFromChar:32 toChar:65533])) {
-      scanner_cocoa_routine_enterCharacterIntoCharacter (& scanningOk, & mLexicalAttribute_charValue, mPreviousChar) ;
-    }else{
-      scanningOk = NO ;
-    }
-    if (scanningOk && ([self testForInputChar:39])) {
-      mTokenCode = galgasScanner_1__27_char_27_ ;
-    }else{
-      scanningOk = NO ;
-    }
-  }else if (scanningOk && ([self testForInputChar:36])) {
-    if (scanningOk && ([self testForInputString:@"\\\\" advance:YES])) {
-      scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 92) ;
-      do {
-        if (scanningOk && ([self testForInputString:@"\\\\" advance:YES])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 92) ;
-        }else if (scanningOk && ([self testForInputString:@"\\$" advance:YES])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 36) ;
-        }else if (scanningOk && ([self testForInputFromChar:33 toChar:35] || [self testForInputFromChar:37 toChar:65533])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-        }else{
-          loop = NO ;
-        }
-      }while (loop && scanningOk) ;
-      loop = YES ;
-    }else if (scanningOk && ([self testForInputString:@"\\$" advance:YES])) {
-      scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 36) ;
-      do {
-        if (scanningOk && ([self testForInputString:@"\\\\" advance:YES])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 92) ;
-        }else if (scanningOk && ([self testForInputString:@"\\$" advance:YES])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 36) ;
-        }else if (scanningOk && ([self testForInputFromChar:33 toChar:35] || [self testForInputFromChar:37 toChar:65533])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-        }else{
-          loop = NO ;
-        }
-      }while (loop && scanningOk) ;
-      loop = YES ;
-    }else if (scanningOk && ([self testForInputFromChar:33 toChar:35] || [self testForInputFromChar:37 toChar:65533])) {
-      scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-      do {
-        if (scanningOk && ([self testForInputString:@"\\\\" advance:YES])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 92) ;
-        }else if (scanningOk && ([self testForInputString:@"\\$" advance:YES])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 36) ;
-        }else if (scanningOk && ([self testForInputFromChar:33 toChar:35] || [self testForInputFromChar:37 toChar:65533])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-        }else{
-          loop = NO ;
-        }
-      }while (loop && scanningOk) ;
-      loop = YES ;
-    }else{
-      scanningOk = NO ;
-    }
-    if (scanningOk && ([self testForInputChar:36])) {
-    }else{
-      scanningOk = NO ;
-    }
-    mTokenCode = galgasScanner_1__24_terminal_24_ ;
-  }else if (scanningOk && [self testForInputString:@"===" advance:YES]) {
-    mTokenCode = galgasScanner_1__3D__3D__3D_ ;
-  }else if (scanningOk && [self testForInputString:@"&--" advance:YES]) {
-    mTokenCode = galgasScanner_1__26__2D__2D_ ;
-  }else if (scanningOk && [self testForInputString:@"&++" advance:YES]) {
-    mTokenCode = galgasScanner_1__26__2B__2B_ ;
-  }else if (scanningOk && [self testForInputString:@"!==" advance:YES]) {
-    mTokenCode = galgasScanner_1__21__3D__3D_ ;
-  }else if (scanningOk && [self testForInputString:@"||" advance:YES]) {
-    mTokenCode = galgasScanner_1__7C__7C_ ;
-  }else if (scanningOk && [self testForInputString:@"\?^" advance:YES]) {
-    mTokenCode = galgasScanner_1__3F__5E_ ;
-  }else if (scanningOk && [self testForInputString:@">>" advance:YES]) {
-    mTokenCode = galgasScanner_1__3E__3E_ ;
-  }else if (scanningOk && [self testForInputString:@">=" advance:YES]) {
-    mTokenCode = galgasScanner_1__3E__3D_ ;
-  }else if (scanningOk && [self testForInputString:@"==" advance:YES]) {
-    mTokenCode = galgasScanner_1__3D__3D_ ;
-  }else if (scanningOk && [self testForInputString:@":>" advance:YES]) {
-    mTokenCode = galgasScanner_1__3A__3E_ ;
-  }else if (scanningOk && [self testForInputString:@"/=" advance:YES]) {
-    mTokenCode = galgasScanner_1__2F__3D_ ;
-  }else if (scanningOk && [self testForInputString:@"->" advance:YES]) {
-    mTokenCode = galgasScanner_1__2D__3E_ ;
-  }else if (scanningOk && [self testForInputString:@"-=" advance:YES]) {
-    mTokenCode = galgasScanner_1__2D__3D_ ;
-  }else if (scanningOk && [self testForInputString:@"--" advance:YES]) {
-    mTokenCode = galgasScanner_1__2D__2D_ ;
-  }else if (scanningOk && [self testForInputString:@"+=" advance:YES]) {
-    mTokenCode = galgasScanner_1__2B__3D_ ;
-  }else if (scanningOk && [self testForInputString:@"++" advance:YES]) {
-    mTokenCode = galgasScanner_1__2B__2B_ ;
-  }else if (scanningOk && [self testForInputString:@"*=" advance:YES]) {
-    mTokenCode = galgasScanner_1__2A__3D_ ;
-  }else if (scanningOk && [self testForInputString:@"&/" advance:YES]) {
-    mTokenCode = galgasScanner_1__26__2F_ ;
-  }else if (scanningOk && [self testForInputString:@"&-" advance:YES]) {
-    mTokenCode = galgasScanner_1__26__2D_ ;
-  }else if (scanningOk && [self testForInputString:@"&+" advance:YES]) {
-    mTokenCode = galgasScanner_1__26__2B_ ;
-  }else if (scanningOk && [self testForInputString:@"&*" advance:YES]) {
-    mTokenCode = galgasScanner_1__26__2A_ ;
-  }else if (scanningOk && [self testForInputString:@"&&" advance:YES]) {
-    mTokenCode = galgasScanner_1__26__26_ ;
-  }else if (scanningOk && [self testForInputString:@"!^" advance:YES]) {
-    mTokenCode = galgasScanner_1__21__5E_ ;
-  }else if (scanningOk && [self testForInputString:@"!=" advance:YES]) {
-    mTokenCode = galgasScanner_1__21__3D_ ;
-  }else if (scanningOk && [self testForInputString:@"~" advance:YES]) {
-    mTokenCode = galgasScanner_1__7E_ ;
-  }else if (scanningOk && [self testForInputString:@"}" advance:YES]) {
-    mTokenCode = galgasScanner_1__7D_ ;
-  }else if (scanningOk && [self testForInputString:@"|" advance:YES]) {
-    mTokenCode = galgasScanner_1__7C_ ;
-  }else if (scanningOk && [self testForInputString:@"{" advance:YES]) {
-    mTokenCode = galgasScanner_1__7B_ ;
-  }else if (scanningOk && [self testForInputString:@"`" advance:YES]) {
-    mTokenCode = galgasScanner_1__60_ ;
-  }else if (scanningOk && [self testForInputString:@"^" advance:YES]) {
-    mTokenCode = galgasScanner_1__5E_ ;
-  }else if (scanningOk && [self testForInputString:@"]" advance:YES]) {
-    mTokenCode = galgasScanner_1__5D_ ;
-  }else if (scanningOk && [self testForInputString:@"[" advance:YES]) {
-    mTokenCode = galgasScanner_1__5B_ ;
-  }else if (scanningOk && [self testForInputString:@">" advance:YES]) {
-    mTokenCode = galgasScanner_1__3E_ ;
-  }else if (scanningOk && [self testForInputString:@"=" advance:YES]) {
-    mTokenCode = galgasScanner_1__3D_ ;
-  }else if (scanningOk && [self testForInputString:@";" advance:YES]) {
-    mTokenCode = galgasScanner_1__3B_ ;
-  }else if (scanningOk && [self testForInputString:@":" advance:YES]) {
-    mTokenCode = galgasScanner_1__3A_ ;
-  }else if (scanningOk && [self testForInputString:@"/" advance:YES]) {
-    mTokenCode = galgasScanner_1__2F_ ;
-  }else if (scanningOk && [self testForInputString:@"-" advance:YES]) {
-    mTokenCode = galgasScanner_1__2D_ ;
-  }else if (scanningOk && [self testForInputString:@"," advance:YES]) {
-    mTokenCode = galgasScanner_1__2C_ ;
-  }else if (scanningOk && [self testForInputString:@"+" advance:YES]) {
-    mTokenCode = galgasScanner_1__2B_ ;
-  }else if (scanningOk && [self testForInputString:@"*" advance:YES]) {
-    mTokenCode = galgasScanner_1__2A_ ;
-  }else if (scanningOk && [self testForInputString:@")" advance:YES]) {
-    mTokenCode = galgasScanner_1__29_ ;
-  }else if (scanningOk && [self testForInputString:@"(" advance:YES]) {
-    mTokenCode = galgasScanner_1__28_ ;
-  }else if (scanningOk && [self testForInputString:@"&" advance:YES]) {
-    mTokenCode = galgasScanner_1__26_ ;
-  }else if (scanningOk && ([self testForInputChar:63])) {
-    scanningPointStructForCocoa locationForTag_onlyInterrogationMark ;
-    [self saveScanningPoint: & locationForTag_onlyInterrogationMark] ;
-    if (scanningOk && ([self testForInputChar:33])) {
-      scanningPointStructForCocoa locationForTag_onlyExclamationInterrogationMark ;
-      [self saveScanningPoint: & locationForTag_onlyExclamationInterrogationMark] ;
-      if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
-        do {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-          if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
-          }else{
-            loop = NO ;
-          }
-        }while (loop && scanningOk) ;
-        loop = YES ;
-        if (scanningOk && ([self testForInputChar:58])) {
-          mTokenCode = galgasScanner_1__3F__21_ ;
-        }else{
-          scanner_cocoa_routine_resetString (& scanningOk, mLexicalAttribute_tokenString) ;
-          [self restoreScanningPoint: & locationForTag_onlyExclamationInterrogationMark] ;
-          mTokenCode = galgasScanner_1__3F__21_ ;
-        }
-      }else{
-        mTokenCode = galgasScanner_1__3F__21_ ;
-      }
-    }else if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
-      do {
-        scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-        if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
-        }else{
-          loop = NO ;
-        }
-      }while (loop && scanningOk) ;
-      loop = YES ;
-      if (scanningOk && ([self testForInputChar:58])) {
-        mTokenCode = galgasScanner_1__3F_ ;
-      }else{
-        scanner_cocoa_routine_resetString (& scanningOk, mLexicalAttribute_tokenString) ;
-        [self restoreScanningPoint: & locationForTag_onlyInterrogationMark] ;
-        mTokenCode = galgasScanner_1__3F_ ;
-      }
-    }else{
-      mTokenCode = galgasScanner_1__3F_ ;
-    }
-  }else if (scanningOk && ([self testForInputChar:33])) {
-    scanningPointStructForCocoa locationForTag_onlyExclamationMark ;
-    [self saveScanningPoint: & locationForTag_onlyExclamationMark] ;
-    if (scanningOk && ([self testForInputChar:63])) {
-      scanningPointStructForCocoa locationForTag_onlyInterrogationExclamationMark ;
-      [self saveScanningPoint: & locationForTag_onlyInterrogationExclamationMark] ;
-      if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
-        do {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-          if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
-          }else{
-            loop = NO ;
-          }
-        }while (loop && scanningOk) ;
-        loop = YES ;
-        if (scanningOk && ([self testForInputChar:58])) {
-          mTokenCode = galgasScanner_1__21__3F_ ;
-        }else{
-          scanner_cocoa_routine_resetString (& scanningOk, mLexicalAttribute_tokenString) ;
-          [self restoreScanningPoint: & locationForTag_onlyInterrogationExclamationMark] ;
-          mTokenCode = galgasScanner_1__21__3F_ ;
-        }
-      }else{
-        mTokenCode = galgasScanner_1__21__3F_ ;
-      }
-    }else if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
-      do {
-        scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-        if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
-        }else{
-          loop = NO ;
-        }
-      }while (loop && scanningOk) ;
-      loop = YES ;
-      if (scanningOk && ([self testForInputChar:58])) {
-        mTokenCode = galgasScanner_1__21_ ;
-      }else{
-        scanner_cocoa_routine_resetString (& scanningOk, mLexicalAttribute_tokenString) ;
-        [self restoreScanningPoint: & locationForTag_onlyExclamationMark] ;
-        mTokenCode = galgasScanner_1__21_ ;
-      }
-    }else{
-      mTokenCode = galgasScanner_1__21_ ;
-    }
-  }else if (scanningOk && ([self testForInputChar:60])) {
-    scanningPointStructForCocoa locationForTag_onlyInfDelimiter ;
-    [self saveScanningPoint: & locationForTag_onlyInfDelimiter] ;
-    if (scanningOk && ([self testForInputChar:61])) {
-      mTokenCode = galgasScanner_1__3C__3D_ ;
-    }else if (scanningOk && ([self testForInputChar:60])) {
-      mTokenCode = galgasScanner_1__3C__3C_ ;
-    }else if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter])) {
-      do {
-        scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-        if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
-        }else{
-          loop = NO ;
-        }
-      }while (loop && scanningOk) ;
-      loop = YES ;
-      if (scanningOk && ([self testForInputChar:62])) {
-        mTokenCode = galgasScanner_1__3C_non_5F_terminal_3E_ ;
-      }else{
-        [self restoreScanningPoint: & locationForTag_onlyInfDelimiter] ;
-        mTokenCode = galgasScanner_1__3C_ ;
-      }
-    }else{
-      mTokenCode = galgasScanner_1__3C_ ;
-    }
-  }else if (scanningOk && ([self testForInputChar:34])) {
-    do {
-      if (scanningOk && ([self testForInputChar:92])) {
-        if (scanningOk && ([self testForInputChar:102])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 12) ;
-        }else if (scanningOk && ([self testForInputChar:110])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 10) ;
-        }else if (scanningOk && ([self testForInputChar:114])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 13) ;
-        }else if (scanningOk && ([self testForInputChar:116])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 9) ;
-        }else if (scanningOk && ([self testForInputChar:118])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 11) ;
-        }else if (scanningOk && ([self testForInputChar:92])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 92) ;
-        }else if (scanningOk && ([self testForInputChar:34])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 34) ;
-        }else if (scanningOk && ([self testForInputChar:39])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 39) ;
-        }else if (scanningOk && ([self testForInputChar:63])) {
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 63) ;
-        }else if (scanningOk && ([self testForInputChar:38])) {
-          do {
-            if (scanningOk && ([self notTestForInputString:@";" error:& scanningOk])) {
-              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_identifierString, mPreviousChar) ;
-            }else{
-              loop = NO ;
-            }
-          }while (loop && scanningOk) ;
-          loop = YES ;
-          scanner_cocoa_routine_convertHTMLSequenceToUnicodeCharacter (& scanningOk, mLexicalAttribute_identifierString, & mLexicalAttribute_charValue) ;
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_charValue) ;
-        }else if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
-          do {
-            scanner_cocoa_routine_enterHexDigitIntoASCIIcharacter (& scanningOk, & mLexicalAttribute_charValue, mPreviousChar) ;
-            if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
-            }else{
-              loop = NO ;
-            }
-          }while (loop && scanningOk) ;
-          loop = YES ;
-          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_charValue) ;
-        }else if (scanningOk && ([self testForInputChar:117])) {
-          if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-            scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-            if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-              scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-              if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-                scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-                if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-                  scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-                  scanner_cocoa_routine_convertUnsignedNumberToUnicodeChar (& scanningOk, & mLexicalAttribute_uint32value, & mLexicalAttribute_charValue) ;
-                  scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_charValue) ;
-                }else{
-                  scanningOk = NO ;
-                }
-              }else{
-                scanningOk = NO ;
-              }
-            }else{
-              scanningOk = NO ;
-            }
-          }else{
-            scanningOk = NO ;
-          }
-        }else if (scanningOk && ([self testForInputChar:85])) {
-          if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-            scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-            if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-              scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-              if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-                scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-                if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-                  scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-                  if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-                    scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-                    if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-                      scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-                      if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-                        scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-                        if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
-                          scanner_cocoa_routine_enterHexDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_uint32value) ;
-                          scanner_cocoa_routine_convertUnsignedNumberToUnicodeChar (& scanningOk, & mLexicalAttribute_uint32value, & mLexicalAttribute_charValue) ;
-                          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_charValue) ;
-                        }else{
-                          scanningOk = NO ;
-                        }
-                      }else{
-                        scanningOk = NO ;
-                      }
-                    }else{
-                      scanningOk = NO ;
-                    }
-                  }else{
-                    scanningOk = NO ;
-                  }
-                }else{
-                  scanningOk = NO ;
-                }
-              }else{
-                scanningOk = NO ;
-              }
-            }else{
-              scanningOk = NO ;
-            }
-          }else{
-            scanningOk = NO ;
-          }
-        }else{
-          scanningOk = NO ;
-        }
-      }else if (scanningOk && ([self testForInputChar:32] || [self testForInputChar:33] || [self testForInputFromChar:35 toChar:65533])) {
-        scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-      }else{
-        loop = NO ;
-      }
-    }while (loop && scanningOk) ;
-    loop = YES ;
-    if (scanningOk && ([self testForInputChar:34])) {
-      mTokenCode = galgasScanner_1__22_string_22_ ;
-    }else{
-      scanningOk = NO ;
-    }
-  }else if (scanningOk && ([self testForInputChar:35])) {
-    if (scanningOk && ([self testForInputChar:33])) {
-      do {
-        if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:65533])) {
-        }else{
-          loop = NO ;
-        }
-      }while (loop && scanningOk) ;
-      loop = YES ;
-      mTokenCode = galgasScanner_1_commentMark ;
-    }else{
-      do {
-        if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:1114111])) {
-        }else{
-          loop = NO ;
-        }
-      }while (loop && scanningOk) ;
-      loop = YES ;
-      mTokenCode = galgasScanner_1_comment ;
-    }
-  }else if (scanningOk && ([self testForInputFromChar:1 toChar:32])) {
-  }else   if ([self testForInputChar:'\0']) { // End of source text ?
-    mTokenCode = galgasScanner_1_ ; // Empty string code
-  }else{ // Unknown input character
-    scanningOk = NO ;
-    [self advance] ;
-  }
-  return scanningOk ;
-}
-
-*/
 //----------------------------------------------------------------------------------------------------------------------
 //
 //               P A R S E    L E X I C A L    T O K E N

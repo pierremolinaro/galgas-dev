@@ -140,13 +140,13 @@ syntax extension galgas4LexiqueComponentSyntax {
 #! CHECK LEXICAL INSTRUCTION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract getter @abstractLexicalRoutineActualArgumentAST generateCocoaRoutineArgument
+abstract getter @abstractLexicalRoutineActualArgumentAST generateObjcCocoaRoutineArgument
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string 
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalAttributeInputOutputArgumentAST generateCocoaRoutineArgument
+override getter @lexicalAttributeInputOutputArgumentAST generateObjcCocoaRoutineArgument
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 {
@@ -160,10 +160,38 @@ override getter @lexicalAttributeInputOutputArgumentAST generateCocoaRoutineArgu
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalFormalInputArgumentAST generateCocoaRoutineArgument
+override getter @lexicalFormalInputArgumentAST generateObjcCocoaRoutineArgument
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
-  outGeneratedCode = [self.mRoutineOrFunctionFormalInputArgument generateCocoaRoutineOrFunctionArgument]
+  outGeneratedCode = [self.mRoutineOrFunctionFormalInputArgument generateObjcCocoaRoutineOrFunctionArgument]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+abstract getter @abstractLexicalRoutineActualArgumentAST generateSwiftCocoaRoutineArgument
+  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string 
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalAttributeInputOutputArgumentAST generateSwiftCocoaRoutineArgument
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode
+{
+#  [inLexiqueAnalysisContext.mLexicalAttributeMap searchKey !self.mAttributeName ?let lexicalType]
+#  outGeneratedCode = ""
+#  if [lexicalType needsReferenceInInputOutputInCocoa] then
+#    outGeneratedCode += "& "
+#  end
+  outGeneratedCode = "&self.mLexicalAttribute_" + self.mAttributeName
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalFormalInputArgumentAST generateSwiftCocoaRoutineArgument
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = [self.mRoutineOrFunctionFormalInputArgument generateSwiftCocoaRoutineOrFunctionArgument]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -260,15 +288,28 @@ override method @lexicalRoutineCallInstructionAST checkLexicalInstruction
 #! COCOA GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalRoutineCallInstructionAST generateCocoaInstructionCode
+override getter @lexicalRoutineCallInstructionAST generateObjcCocoaInstructionCode
   ?let @string unused inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "scanner_cocoa_routine_" + self.mRoutineName + " (& scanningOk"
   for (mLexicalRoutineActualArgument) in self.mActualArgumentList do
-    outGeneratedCode += ", " + [mLexicalRoutineActualArgument generateCocoaRoutineArgument !inLexiqueAnalysisContext]
+    outGeneratedCode += ", " + [mLexicalRoutineActualArgument generateObjcCocoaRoutineArgument !inLexiqueAnalysisContext]
   end
   outGeneratedCode += ") ;\n"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalRoutineCallInstructionAST generateSwiftCocoaInstructionCode
+  ?let @string unused inScannerClassName
+  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "scanner_cocoa_routine_" + self.mRoutineName + " (&scanningOk"
+  for (mLexicalRoutineActualArgument) in self.mActualArgumentList do
+    outGeneratedCode += ", " + [mLexicalRoutineActualArgument generateSwiftCocoaRoutineArgument !inLexiqueAnalysisContext]
+  end
+  outGeneratedCode += ")\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

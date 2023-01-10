@@ -97,9 +97,6 @@
     mPreviousChar = mCurrentChar ;
     mCurrentLocation ++ ;
     mCurrentChar = [mSourceString characterAtIndex:mCurrentLocation] ;
-//    if (55357 == mCurrentChar) {
-//      NSLog (@"mCurrentChar %u", mCurrentChar) ;
-//    }
   }else{
     mCurrentLocation = [mSourceString length] ;
     mPreviousChar = mCurrentChar ;
@@ -1280,15 +1277,15 @@ void scanner_cocoa_routine_convertUnsignedNumberToUnicodeChar (BOOL * ioScanning
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void scanner_cocoa_routine_convertHTMLSequenceToUnicodeCharacter (BOOL * ioScanningOk,
-                                                                  NSMutableString * ioStringValue,
-                                                                  utf32 * outUnicodeCharacter) {
-  *outUnicodeCharacter = unicodeCharacterFromHTMLSequence (ioStringValue) ;
-  if (UNICODE_VALUE (outUnicodeCharacter) == 0) {
-    * ioScanningOk = NO ;
-  }
-  [ioStringValue setString:@""] ;
-}
+//void scanner_cocoa_routine_convertHTMLSequenceToUnicodeCharacter (BOOL * ioScanningOk,
+//                                                                  NSMutableString * ioStringValue,
+//                                                                  utf32 * outUnicodeCharacter) {
+//  *outUnicodeCharacter = unicodeCharacterFromHTMLSequence (ioStringValue) ;
+//  if (UNICODE_VALUE (outUnicodeCharacter) == 0) {
+//    * ioScanningOk = NO ;
+//  }
+//  [ioStringValue setString:@""] ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 

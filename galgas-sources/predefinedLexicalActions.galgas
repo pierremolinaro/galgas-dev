@@ -457,17 +457,17 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !false # Is not extern
   ]
 #--- convertHTMLSequenceToUnicodeCharacter
-  lexicalRoutineFormalArgumentList = {}
-  errorMessageList = {}
-  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_string !"inString"
-  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_char !"ioUnicodeCharacter"
-  errorMessageList += !"inUnassignedHTMLSequenceError"
-  [!?outLexicalRoutineMap insertKey
-    !@lstring.new {!"convertHTMLSequenceToUnicodeCharacter" !@location.here}
-    !lexicalRoutineFormalArgumentList
-    !errorMessageList
-    !false # Is not extern
-  ]
+#  lexicalRoutineFormalArgumentList = {}
+#  errorMessageList = {}
+#  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_string !"inString"
+#  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_char !"ioUnicodeCharacter"
+#  errorMessageList += !"inUnassignedHTMLSequenceError"
+#  [!?outLexicalRoutineMap insertKey
+#    !@lstring.new {!"convertHTMLSequenceToUnicodeCharacter" !@location.here}
+#    !lexicalRoutineFormalArgumentList
+#    !errorMessageList
+#    !false # Is not extern
+#  ]
 #--- codePointToUnicode
   lexicalRoutineFormalArgumentList = {}
   errorMessageList = {}

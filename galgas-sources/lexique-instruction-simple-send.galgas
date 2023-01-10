@@ -52,11 +52,20 @@ override method @lexicalSimpleSendInstructionAST checkLexicalInstruction
 #! COCOA GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalSimpleSendInstructionAST generateCocoaInstructionCode
+override getter @lexicalSimpleSendInstructionAST generateObjcCocoaInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "mTokenCode = " + inScannerClassName + "_1_" + [self.mSentTerminal.string identifierRepresentation] + " ;\n"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalSimpleSendInstructionAST generateSwiftCocoaInstructionCode
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "tokenCode = " + inScannerClassName + "_1_" + [self.mSentTerminal.string identifierRepresentation] + "\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

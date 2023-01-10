@@ -282,6 +282,8 @@ setter @XcodeProjectDescriptor addGroupWithFiles
       childrenRefs += !resource_FileRef
       [!?self addBuildFile !fileRef:resource_FileRef !fileName:f ?buildRef:let @string buildRef]
       ioResourceFileBuildRefs += !buildRef
+    elsif [f pathExtension] == "swift" then
+      # ignored file
     else
       error @location. nowhere : "unhandled extension for file '" + f + "'"
     end

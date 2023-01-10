@@ -1,4 +1,6 @@
 
+import AppKit
+
 //----------------------------------------------------------------------------------------------------------------------
 //   LEXIQUE %!LEXIQUE_CLASS_NAME%
 //----------------------------------------------------------------------------------------------------------------------
@@ -50,7 +52,7 @@ end%\n  ]
 //                     S C A N N E R    C L A S S
 //----------------------------------------------------------------------------------------------------------------------
 
-class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% {
+class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique {
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -59,18 +61,6 @@ class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% {
     %  private var mLexicalAttribute_%!lkey.string% : %![mLexicalType swiftTypeName]% = %![mLexicalType swiftInitializationCode]%\n%
   end
 %
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  init () {
-    noteObjectAllocation (self)
-  }
-
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func lexiqueIdentifier () -> String {
@@ -156,13 +146,74 @@ end
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  // - (BOOL) internalParseLexicalTokenForLexicalColoring ;
-
+  //   Lexical analysis
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  // - (void) parseLexicalTokenForLexicalColoring ;
+  func parseLexicalTokenForLexicalColoring (source inSourceText : String, fromLocation inStartLocation : Int) -> StyledRange {
+    self.set (source: inSourceText, fromLocation: inStartLocation)
+    var loop = true
+    var scanningOk = true
+%  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
+    %    self.mLexicalAttribute_%!lkey.string% = %![mLexicalType swiftInitializationCode]%\n%
+  end
+%    let tokenStartLocation = inStartLocation
+    var tokenCode : UInt16 = 0
+%
+  block 4 :
+    for (lexicalRule) in LEXICAL_RULE_LIST do
+      ![lexicalRule generateSwiftCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
+    end
+  end
+% if self.testForInputChar (0) { // End of source text ?
+      tokenCode = %!LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
+    }else{ // Unknown input character
+      scanningOk = false
+      self.advance ()
+    }
+    return scanningOk ;
+  }
+  
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+/*  func parseLexicalTokenForLexicalColoring (source inSourceText : String, fromLocation inStartLocation : Int) -> StyledRange {
+    BOOL scanningOk = YES ;
+    mTokenCode = 0 ;
+    while ((mTokenCode == 0) && (mCurrentChar != '\0')) {
+%
+  if [TEMPLATE_DELIMITOR_LIST length] > 0 then
+%      if ((mMatchedTemplateDelimiterIndex >= 0) && ([[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] startString].length > 0)) {
+        const BOOL foundEndDelimitor = [self testForInputString:[[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] endString] advance:YES] ;
+        if (foundEndDelimitor) {
+          mMatchedTemplateDelimiterIndex = -1 ;
+        }
+      }
+      while ((mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\0')) {
+      %if [TEMPLATE_REPLACEMENT_LIST length] > 0 then%
+        [self searchForReplacementPattern:kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%] ;
+      %end%
+        mMatchedTemplateDelimiterIndex = [self findTemplateDelimiterIndex:kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%] ;
+        if (mMatchedTemplateDelimiterIndex < 0) {
+          [self advance] ;
+          mTokenCode = -2 ;
+        }
+      }
+      if ((mMatchedTemplateDelimiterIndex >= 0) && (mTokenCode == 0) && (mCurrentChar != '\0') && scanningOk) {
+        scanningOk = [self internalParseLexicalTokenForLexicalColoring] ;
+      }
+      if ((mTokenCode > 0) && kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [mTokenCode - 1]) {
+        mMatchedTemplateDelimiterIndex = -1 ;
+    }%else
+%      scanningOk = [self internalParseLexicalTokenForLexicalColoring] ;%end %
+    }
+  //--- Error ?
+    if (! scanningOk) {
+      mTokenCode = -1 ;
+    }
+
+
+    return StyledRange (range: NSRange (location: inStartLocation, length: 0), styleIndex: 0)
+  }
+*/
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
@@ -246,59 +297,29 @@ end%
 %
 */
 
-/*
-%
-  for (tokenList_lkey tokenList_mExplicitTokenListMap tokenList_mTokenSortedList tokenList_mShouldBeGenerated) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalTokenListMap do
+
+%  for (tokenList_lkey tokenList_mExplicitTokenListMap tokenList_mTokenSortedList tokenList_mShouldBeGenerated) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalTokenListMap do
     if tokenList_mShouldBeGenerated then
       %//----------------------------------------------------------------------------------------------------------------------\n%
       %//\n%
       %//             Key words table '%!tokenList_lkey.string%'      \n%
       %//\n%
       %//----------------------------------------------------------------------------------------------------------------------\n\n%
-      %static const C_cocoa_lexique_table_entry ktable_for_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%!tokenList_lkey.string% [%![[tokenList_mExplicitTokenListMap count] string]%] = {\n%
-        for (mLength mName mTerminalName) in tokenList_mTokenSortedList
-        do %  {%![mName utf8Representation]%, %!LEXIQUE_CLASS_NAME%_1_%![mTerminalName identifierRepresentation]%}%
+      %fileprivate func search_into_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%!tokenList_lkey.string% (_ inString inSearchedString) -> UInt16? {\n%
+      %  let dictionary : [String : UInt16] = [\n%
+        for (* name terminalName) in tokenList_mTokenSortedList
+        do %    %![name utf8Representation]% : %!LEXIQUE_CLASS_NAME%_1_%![terminalName identifierRepresentation]
         between %,\n%
         end
-      %\n} ;\n\n%
-      %static NSInteger search_into_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%!tokenList_lkey.string% (NSString * inSearchedString) {\n%
-      %  return searchStringInTable (inSearchedString, ktable_for_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%!tokenList_lkey.string%, %![[tokenList_mExplicitTokenListMap count] string]%) ;\n%
+      %\n  ]\n\n%
+      %  return dictionary [inSearchedString]\n%
       %}\n\n%
     end
   end
 %
 
-*/
 
-//----------------------------------------------------------------------------------------------------------------------
-//
-//               I N T E R N A L    P A R S E    L E X I C A L    T O K E N
-//
-//----------------------------------------------------------------------------------------------------------------------
 
-/* - (BOOL) internalParseLexicalTokenForLexicalColoring {
-  BOOL loop = YES ;
-  BOOL scanningOk = YES ;
-%  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
-    %  %![mLexicalType cocoaResetPrefix]%mLexicalAttribute_%!lkey.string ![mLexicalType cocoaReset] % ;\n%
-  end
-%  mTokenStartLocation = mCurrentLocation ;
-%
-  block 2 :
-    for (mLexicalRule) in LEXICAL_RULE_LIST do
-      ![mLexicalRule generateCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
-    end
-  end
-%  if ([self testForInputChar:'\0']) { // End of source text ?
-    mTokenCode = %!LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
-  }else{ // Unknown input character
-    scanningOk = NO ;
-    [self advance] ;
-  }
-  return scanningOk ;
-}
-
-*/
 //----------------------------------------------------------------------------------------------------------------------
 //
 //               P A R S E    L E X I C A L    T O K E N

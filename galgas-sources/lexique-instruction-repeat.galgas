@@ -91,7 +91,7 @@ override method @lexicalRepeatInstructionAST checkLexicalInstruction
 #! COCOA GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalRepeatInstructionAST generateCocoaInstructionCode
+override getter @lexicalRepeatInstructionAST generateObjcCocoaInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
@@ -99,17 +99,17 @@ override getter @lexicalRepeatInstructionAST generateCocoaInstructionCode
   [!?outGeneratedCode incIndentation !2]
 #--- Repeated instruction
   for (mInstruction) in self.mRepeatedInstructionList do
-    outGeneratedCode += [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+    outGeneratedCode += [mInstruction generateObjcCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
   end
 #---
   for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList
   do
     outGeneratedCode += "if (scanningOk && ("
-    outGeneratedCode += [mWhileExpression generateCocoaConditionCode !inLexiqueAnalysisContext]
+    outGeneratedCode += [mWhileExpression generateObjcCocoaConditionCode !inLexiqueAnalysisContext]
     outGeneratedCode += ")) {\n"
     [!?outGeneratedCode incIndentation !2]
     for (mInstruction) in mWhileInstructionList do
-      outGeneratedCode += [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+      outGeneratedCode += [mInstruction generateObjcCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
     end
     [!?outGeneratedCode decIndentation !2]
   between
@@ -121,6 +121,40 @@ override getter @lexicalRepeatInstructionAST generateCocoaInstructionCode
   [!?outGeneratedCode decIndentation !2]
   outGeneratedCode += "}while (loop && scanningOk) ;\n"
                       "loop = YES ;\n"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @lexicalRepeatInstructionAST generateSwiftCocoaInstructionCode
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "while (loop && scanningOk) {\n"
+  [!?outGeneratedCode incIndentation !2]
+#--- Repeated instruction
+  for (mInstruction) in self.mRepeatedInstructionList do
+    outGeneratedCode += [mInstruction generateSwiftCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+  end
+#---
+  for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList
+  do
+    outGeneratedCode += "if scanningOk && ("
+    outGeneratedCode += [mWhileExpression generateSwiftCocoaConditionCode !inLexiqueAnalysisContext]
+    outGeneratedCode += ") {\n"
+    [!?outGeneratedCode incIndentation !2]
+    for (mInstruction) in mWhileInstructionList do
+      outGeneratedCode += [mInstruction generateSwiftCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+    end
+    [!?outGeneratedCode decIndentation !2]
+  between
+    outGeneratedCode += "}else "
+  end
+  outGeneratedCode += "}else{\n"
+                      "  loop = false\n"
+                      "}\n"
+  [!?outGeneratedCode decIndentation !2]
+  outGeneratedCode += "}\n"
+                      "loop = true\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
