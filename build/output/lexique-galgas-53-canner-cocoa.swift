@@ -13,158 +13,159 @@ import AppKit
 //         T E R M I N A L    S Y M B O L    E N U M E R A T I O N
 //----------------------------------------------------------------------------------------------------------------------
 
-let galgasScanner_1_identifier : UInt16 = 0
-let galgasScanner_1_double_2E_xxx : UInt16 = 1
-let galgasScanner_1_literalInt : UInt16 = 2
-let galgasScanner_1__2E_ : UInt16 = 3
-let galgasScanner_1__2E__2E__2E_ : UInt16 = 4
-let galgasScanner_1__2E__2E__3C_ : UInt16 = 5
-let galgasScanner_1__40_type : UInt16 = 6
-let galgasScanner_1__25_attribute : UInt16 = 7
-let galgasScanner_1__27_char_27_ : UInt16 = 8
-let galgasScanner_1__24_terminal_24_ : UInt16 = 9
-let galgasScanner_1__3F_ : UInt16 = 10
-let galgasScanner_1__3F__21_ : UInt16 = 11
-let galgasScanner_1__21_ : UInt16 = 12
-let galgasScanner_1__21__3F_ : UInt16 = 13
-let galgasScanner_1__3C_ : UInt16 = 14
-let galgasScanner_1__3C__3D_ : UInt16 = 15
-let galgasScanner_1__3C__3C_ : UInt16 = 16
-let galgasScanner_1__3C_non_5F_terminal_3E_ : UInt16 = 17
-let galgasScanner_1__22_string_22_ : UInt16 = 18
-let galgasScanner_1_comment : UInt16 = 19
-let galgasScanner_1_commentMark : UInt16 = 20
-let galgasScanner_1_abstract : UInt16 = 21
-let galgasScanner_1_after : UInt16 = 22
-let galgasScanner_1_array : UInt16 = 23
-let galgasScanner_1_as : UInt16 = 24
-let galgasScanner_1_bang : UInt16 = 25
-let galgasScanner_1_before : UInt16 = 26
-let galgasScanner_1_between : UInt16 = 27
-let galgasScanner_1_block : UInt16 = 28
-let galgasScanner_1_boolset : UInt16 = 29
-let galgasScanner_1_cast : UInt16 = 30
-let galgasScanner_1_case : UInt16 = 31
-let galgasScanner_1_class : UInt16 = 32
-let galgasScanner_1_constructor : UInt16 = 33
-let galgasScanner_1_default : UInt16 = 34
-let galgasScanner_1_dict : UInt16 = 35
-let galgasScanner_1_do : UInt16 = 36
-let galgasScanner_1_drop : UInt16 = 37
-let galgasScanner_1_else : UInt16 = 38
-let galgasScanner_1_elsif : UInt16 = 39
-let galgasScanner_1_end : UInt16 = 40
-let galgasScanner_1_enum : UInt16 = 41
-let galgasScanner_1_error : UInt16 = 42
-let galgasScanner_1_extension : UInt16 = 43
-let galgasScanner_1_extern : UInt16 = 44
-let galgasScanner_1_false : UInt16 = 45
-let galgasScanner_1_filewrapper : UInt16 = 46
-let galgasScanner_1_for : UInt16 = 47
-let galgasScanner_1_fixit : UInt16 = 48
-let galgasScanner_1_func : UInt16 = 49
-let galgasScanner_1_getter : UInt16 = 50
-let galgasScanner_1_grammar : UInt16 = 51
-let galgasScanner_1_graph : UInt16 = 52
-let galgasScanner_1_gui : UInt16 = 53
-let galgasScanner_1_if : UInt16 = 54
-let galgasScanner_1_in : UInt16 = 55
-let galgasScanner_1_indexing : UInt16 = 56
-let galgasScanner_1_insert : UInt16 = 57
-let galgasScanner_1_is : UInt16 = 58
-let galgasScanner_1_label : UInt16 = 59
-let galgasScanner_1_let : UInt16 = 60
-let galgasScanner_1_lexique : UInt16 = 61
-let galgasScanner_1_list : UInt16 = 62
-let galgasScanner_1_listmap : UInt16 = 63
-let galgasScanner_1_log : UInt16 = 64
-let galgasScanner_1_loop : UInt16 = 65
-let galgasScanner_1_map : UInt16 = 66
-let galgasScanner_1_message : UInt16 = 67
-let galgasScanner_1_method : UInt16 = 68
-let galgasScanner_1_mod : UInt16 = 69
-let galgasScanner_1_mutating : UInt16 = 70
-let galgasScanner_1_not : UInt16 = 71
-let galgasScanner_1_on : UInt16 = 72
-let galgasScanner_1_operator : UInt16 = 73
-let galgasScanner_1_option : UInt16 = 74
-let galgasScanner_1_or : UInt16 = 75
-let galgasScanner_1_override : UInt16 = 76
-let galgasScanner_1_parse : UInt16 = 77
-let galgasScanner_1_public : UInt16 = 78
-let galgasScanner_1_private : UInt16 = 79
-let galgasScanner_1_proc : UInt16 = 80
-let galgasScanner_1_project : UInt16 = 81
-let galgasScanner_1_refclass : UInt16 = 82
-let galgasScanner_1_remove : UInt16 = 83
-let galgasScanner_1_replace : UInt16 = 84
-let galgasScanner_1_repeat : UInt16 = 85
-let galgasScanner_1_rewind : UInt16 = 86
-let galgasScanner_1_rule : UInt16 = 87
-let galgasScanner_1_search : UInt16 = 88
-let galgasScanner_1_select : UInt16 = 89
-let galgasScanner_1_self : UInt16 = 90
-let galgasScanner_1_send : UInt16 = 91
-let galgasScanner_1_setter : UInt16 = 92
-let galgasScanner_1_sortedlist : UInt16 = 93
-let galgasScanner_1_struct : UInt16 = 94
-let galgasScanner_1_style : UInt16 = 95
-let galgasScanner_1_switch : UInt16 = 96
-let galgasScanner_1_syntax : UInt16 = 97
-let galgasScanner_1_tag : UInt16 = 98
-let galgasScanner_1_template : UInt16 = 99
-let galgasScanner_1_then : UInt16 = 100
-let galgasScanner_1_true : UInt16 = 101
-let galgasScanner_1_unused : UInt16 = 102
-let galgasScanner_1_var : UInt16 = 103
-let galgasScanner_1_valueclass : UInt16 = 104
-let galgasScanner_1_warning : UInt16 = 105
-let galgasScanner_1_while : UInt16 = 106
-let galgasScanner_1_with : UInt16 = 107
-let galgasScanner_1__2A_ : UInt16 = 108
-let galgasScanner_1__2C_ : UInt16 = 109
-let galgasScanner_1__2B_ : UInt16 = 110
-let galgasScanner_1__26__2B_ : UInt16 = 111
-let galgasScanner_1__26__2D_ : UInt16 = 112
-let galgasScanner_1__26__2A_ : UInt16 = 113
-let galgasScanner_1__26__2F_ : UInt16 = 114
-let galgasScanner_1__3E_ : UInt16 = 115
-let galgasScanner_1__3B_ : UInt16 = 116
-let galgasScanner_1__3A_ : UInt16 = 117
-let galgasScanner_1__3A__3E_ : UInt16 = 118
-let galgasScanner_1__2D_ : UInt16 = 119
-let galgasScanner_1__28_ : UInt16 = 120
-let galgasScanner_1__29_ : UInt16 = 121
-let galgasScanner_1__2D__3E_ : UInt16 = 122
-let galgasScanner_1__3D__3D_ : UInt16 = 123
-let galgasScanner_1__3D_ : UInt16 = 124
-let galgasScanner_1__26__26_ : UInt16 = 125
-let galgasScanner_1__5B_ : UInt16 = 126
-let galgasScanner_1__5D_ : UInt16 = 127
-let galgasScanner_1__2B__3D_ : UInt16 = 128
-let galgasScanner_1__2D__3D_ : UInt16 = 129
-let galgasScanner_1__2A__3D_ : UInt16 = 130
-let galgasScanner_1__2F__3D_ : UInt16 = 131
-let galgasScanner_1__2F_ : UInt16 = 132
-let galgasScanner_1__21__3D_ : UInt16 = 133
-let galgasScanner_1__3E__3D_ : UInt16 = 134
-let galgasScanner_1__26_ : UInt16 = 135
-let galgasScanner_1__7B_ : UInt16 = 136
-let galgasScanner_1__7D_ : UInt16 = 137
-let galgasScanner_1__60_ : UInt16 = 138
-let galgasScanner_1__7C__7C_ : UInt16 = 139
-let galgasScanner_1__7C_ : UInt16 = 140
-let galgasScanner_1__5E_ : UInt16 = 141
-let galgasScanner_1__3E__3E_ : UInt16 = 142
-let galgasScanner_1__7E_ : UInt16 = 143
-let galgasScanner_1__2D__2D_ : UInt16 = 144
-let galgasScanner_1__2B__2B_ : UInt16 = 145
-let galgasScanner_1__26__2D__2D_ : UInt16 = 146
-let galgasScanner_1__26__2B__2B_ : UInt16 = 147
-let galgasScanner_1__3D__3D__3D_ : UInt16 = 148
-let galgasScanner_1__21__3D__3D_ : UInt16 = 149
-let galgasScanner_1__3F__5E_ : UInt16 = 150
-let galgasScanner_1__21__5E_ : UInt16 = 151
+let galgasScanner_1_ : UInt16 = 0
+let galgasScanner_1_identifier : UInt16 = 1
+let galgasScanner_1_double_2E_xxx : UInt16 = 2
+let galgasScanner_1_literalInt : UInt16 = 3
+let galgasScanner_1__2E_ : UInt16 = 4
+let galgasScanner_1__2E__2E__2E_ : UInt16 = 5
+let galgasScanner_1__2E__2E__3C_ : UInt16 = 6
+let galgasScanner_1__40_type : UInt16 = 7
+let galgasScanner_1__25_attribute : UInt16 = 8
+let galgasScanner_1__27_char_27_ : UInt16 = 9
+let galgasScanner_1__24_terminal_24_ : UInt16 = 10
+let galgasScanner_1__3F_ : UInt16 = 11
+let galgasScanner_1__3F__21_ : UInt16 = 12
+let galgasScanner_1__21_ : UInt16 = 13
+let galgasScanner_1__21__3F_ : UInt16 = 14
+let galgasScanner_1__3C_ : UInt16 = 15
+let galgasScanner_1__3C__3D_ : UInt16 = 16
+let galgasScanner_1__3C__3C_ : UInt16 = 17
+let galgasScanner_1__3C_non_5F_terminal_3E_ : UInt16 = 18
+let galgasScanner_1__22_string_22_ : UInt16 = 19
+let galgasScanner_1_comment : UInt16 = 20
+let galgasScanner_1_commentMark : UInt16 = 21
+let galgasScanner_1_abstract : UInt16 = 22
+let galgasScanner_1_after : UInt16 = 23
+let galgasScanner_1_array : UInt16 = 24
+let galgasScanner_1_as : UInt16 = 25
+let galgasScanner_1_bang : UInt16 = 26
+let galgasScanner_1_before : UInt16 = 27
+let galgasScanner_1_between : UInt16 = 28
+let galgasScanner_1_block : UInt16 = 29
+let galgasScanner_1_boolset : UInt16 = 30
+let galgasScanner_1_cast : UInt16 = 31
+let galgasScanner_1_case : UInt16 = 32
+let galgasScanner_1_class : UInt16 = 33
+let galgasScanner_1_constructor : UInt16 = 34
+let galgasScanner_1_default : UInt16 = 35
+let galgasScanner_1_dict : UInt16 = 36
+let galgasScanner_1_do : UInt16 = 37
+let galgasScanner_1_drop : UInt16 = 38
+let galgasScanner_1_else : UInt16 = 39
+let galgasScanner_1_elsif : UInt16 = 40
+let galgasScanner_1_end : UInt16 = 41
+let galgasScanner_1_enum : UInt16 = 42
+let galgasScanner_1_error : UInt16 = 43
+let galgasScanner_1_extension : UInt16 = 44
+let galgasScanner_1_extern : UInt16 = 45
+let galgasScanner_1_false : UInt16 = 46
+let galgasScanner_1_filewrapper : UInt16 = 47
+let galgasScanner_1_for : UInt16 = 48
+let galgasScanner_1_fixit : UInt16 = 49
+let galgasScanner_1_func : UInt16 = 50
+let galgasScanner_1_getter : UInt16 = 51
+let galgasScanner_1_grammar : UInt16 = 52
+let galgasScanner_1_graph : UInt16 = 53
+let galgasScanner_1_gui : UInt16 = 54
+let galgasScanner_1_if : UInt16 = 55
+let galgasScanner_1_in : UInt16 = 56
+let galgasScanner_1_indexing : UInt16 = 57
+let galgasScanner_1_insert : UInt16 = 58
+let galgasScanner_1_is : UInt16 = 59
+let galgasScanner_1_label : UInt16 = 60
+let galgasScanner_1_let : UInt16 = 61
+let galgasScanner_1_lexique : UInt16 = 62
+let galgasScanner_1_list : UInt16 = 63
+let galgasScanner_1_listmap : UInt16 = 64
+let galgasScanner_1_log : UInt16 = 65
+let galgasScanner_1_loop : UInt16 = 66
+let galgasScanner_1_map : UInt16 = 67
+let galgasScanner_1_message : UInt16 = 68
+let galgasScanner_1_method : UInt16 = 69
+let galgasScanner_1_mod : UInt16 = 70
+let galgasScanner_1_mutating : UInt16 = 71
+let galgasScanner_1_not : UInt16 = 72
+let galgasScanner_1_on : UInt16 = 73
+let galgasScanner_1_operator : UInt16 = 74
+let galgasScanner_1_option : UInt16 = 75
+let galgasScanner_1_or : UInt16 = 76
+let galgasScanner_1_override : UInt16 = 77
+let galgasScanner_1_parse : UInt16 = 78
+let galgasScanner_1_public : UInt16 = 79
+let galgasScanner_1_private : UInt16 = 80
+let galgasScanner_1_proc : UInt16 = 81
+let galgasScanner_1_project : UInt16 = 82
+let galgasScanner_1_refclass : UInt16 = 83
+let galgasScanner_1_remove : UInt16 = 84
+let galgasScanner_1_replace : UInt16 = 85
+let galgasScanner_1_repeat : UInt16 = 86
+let galgasScanner_1_rewind : UInt16 = 87
+let galgasScanner_1_rule : UInt16 = 88
+let galgasScanner_1_search : UInt16 = 89
+let galgasScanner_1_select : UInt16 = 90
+let galgasScanner_1_self : UInt16 = 91
+let galgasScanner_1_send : UInt16 = 92
+let galgasScanner_1_setter : UInt16 = 93
+let galgasScanner_1_sortedlist : UInt16 = 94
+let galgasScanner_1_struct : UInt16 = 95
+let galgasScanner_1_style : UInt16 = 96
+let galgasScanner_1_switch : UInt16 = 97
+let galgasScanner_1_syntax : UInt16 = 98
+let galgasScanner_1_tag : UInt16 = 99
+let galgasScanner_1_template : UInt16 = 100
+let galgasScanner_1_then : UInt16 = 101
+let galgasScanner_1_true : UInt16 = 102
+let galgasScanner_1_unused : UInt16 = 103
+let galgasScanner_1_var : UInt16 = 104
+let galgasScanner_1_valueclass : UInt16 = 105
+let galgasScanner_1_warning : UInt16 = 106
+let galgasScanner_1_while : UInt16 = 107
+let galgasScanner_1_with : UInt16 = 108
+let galgasScanner_1__2A_ : UInt16 = 109
+let galgasScanner_1__2C_ : UInt16 = 110
+let galgasScanner_1__2B_ : UInt16 = 111
+let galgasScanner_1__26__2B_ : UInt16 = 112
+let galgasScanner_1__26__2D_ : UInt16 = 113
+let galgasScanner_1__26__2A_ : UInt16 = 114
+let galgasScanner_1__26__2F_ : UInt16 = 115
+let galgasScanner_1__3E_ : UInt16 = 116
+let galgasScanner_1__3B_ : UInt16 = 117
+let galgasScanner_1__3A_ : UInt16 = 118
+let galgasScanner_1__3A__3E_ : UInt16 = 119
+let galgasScanner_1__2D_ : UInt16 = 120
+let galgasScanner_1__28_ : UInt16 = 121
+let galgasScanner_1__29_ : UInt16 = 122
+let galgasScanner_1__2D__3E_ : UInt16 = 123
+let galgasScanner_1__3D__3D_ : UInt16 = 124
+let galgasScanner_1__3D_ : UInt16 = 125
+let galgasScanner_1__26__26_ : UInt16 = 126
+let galgasScanner_1__5B_ : UInt16 = 127
+let galgasScanner_1__5D_ : UInt16 = 128
+let galgasScanner_1__2B__3D_ : UInt16 = 129
+let galgasScanner_1__2D__3D_ : UInt16 = 130
+let galgasScanner_1__2A__3D_ : UInt16 = 131
+let galgasScanner_1__2F__3D_ : UInt16 = 132
+let galgasScanner_1__2F_ : UInt16 = 133
+let galgasScanner_1__21__3D_ : UInt16 = 134
+let galgasScanner_1__3E__3D_ : UInt16 = 135
+let galgasScanner_1__26_ : UInt16 = 136
+let galgasScanner_1__7B_ : UInt16 = 137
+let galgasScanner_1__7D_ : UInt16 = 138
+let galgasScanner_1__60_ : UInt16 = 139
+let galgasScanner_1__7C__7C_ : UInt16 = 140
+let galgasScanner_1__7C_ : UInt16 = 141
+let galgasScanner_1__5E_ : UInt16 = 142
+let galgasScanner_1__3E__3E_ : UInt16 = 143
+let galgasScanner_1__7E_ : UInt16 = 144
+let galgasScanner_1__2D__2D_ : UInt16 = 145
+let galgasScanner_1__2B__2B_ : UInt16 = 146
+let galgasScanner_1__26__2D__2D_ : UInt16 = 147
+let galgasScanner_1__26__2B__2B_ : UInt16 = 148
+let galgasScanner_1__3D__3D__3D_ : UInt16 = 149
+let galgasScanner_1__21__3D__3D_ : UInt16 = 150
+let galgasScanner_1__3F__5E_ : UInt16 = 151
+let galgasScanner_1__21__5E_ : UInt16 = 152
  
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -683,7 +684,6 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
     self.mLexicalAttribute_tokenString = ""
     self.mLexicalAttribute_uint32value = 0
     self.mLexicalAttribute_uint64value = 0
-    let tokenStartLocation = inStartLocation
     var tokenCode : UInt16 = 0
     if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
       while (loop && scanningOk) {
@@ -975,7 +975,7 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
       tokenCode = galgasScanner_1__21__3D__3D_
     }else if scanningOk && self.testForInputString ("||", advance: true) {
       tokenCode = galgasScanner_1__7C__7C_
-    }else if scanningOk && self.testForInputString ("\?^", advance: true) {
+    }else if scanningOk && self.testForInputString ("?^", advance: true) {
       tokenCode = galgasScanner_1__3F__5E_
     }else if scanningOk && self.testForInputString (">>", advance: true) {
       tokenCode = galgasScanner_1__3E__3E_
@@ -1054,11 +1054,9 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
     }else if scanningOk && self.testForInputString ("&", advance: true) {
       tokenCode = galgasScanner_1__26_
     }else if scanningOk && (self.testForInputChar (63)) {
-      scanningPointStructForCocoa locationForTag_onlyInterrogationMark ;
-      [self saveScanningPoint: & locationForTag_onlyInterrogationMark] ;
+      let locationForTag_onlyInterrogationMark = self.savedScanningPoint ()
       if scanningOk && (self.testForInputChar (33)) {
-        scanningPointStructForCocoa locationForTag_onlyExclamationInterrogationMark ;
-        [self saveScanningPoint: & locationForTag_onlyExclamationInterrogationMark] ;
+        let locationForTag_onlyExclamationInterrogationMark = self.savedScanningPoint ()
         if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90)) {
           while (loop && scanningOk) {
             scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
@@ -1072,7 +1070,7 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
             tokenCode = galgasScanner_1__3F__21_
           }else{
             scanner_cocoa_routine_resetString (&scanningOk, &self.mLexicalAttribute_tokenString)
-            self.restoreScanningPoint (&locationForTag_onlyExclamationInterrogationMark)
+            self.restoreScanningPoint (locationForTag_onlyExclamationInterrogationMark)
             tokenCode = galgasScanner_1__3F__21_
           }
         }else{
@@ -1091,18 +1089,16 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
           tokenCode = galgasScanner_1__3F_
         }else{
           scanner_cocoa_routine_resetString (&scanningOk, &self.mLexicalAttribute_tokenString)
-          self.restoreScanningPoint (&locationForTag_onlyInterrogationMark)
+          self.restoreScanningPoint (locationForTag_onlyInterrogationMark)
           tokenCode = galgasScanner_1__3F_
         }
       }else{
         tokenCode = galgasScanner_1__3F_
       }
     }else if scanningOk && (self.testForInputChar (33)) {
-      scanningPointStructForCocoa locationForTag_onlyExclamationMark ;
-      [self saveScanningPoint: & locationForTag_onlyExclamationMark] ;
+      let locationForTag_onlyExclamationMark = self.savedScanningPoint ()
       if scanningOk && (self.testForInputChar (63)) {
-        scanningPointStructForCocoa locationForTag_onlyInterrogationExclamationMark ;
-        [self saveScanningPoint: & locationForTag_onlyInterrogationExclamationMark] ;
+        let locationForTag_onlyInterrogationExclamationMark = self.savedScanningPoint ()
         if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90)) {
           while (loop && scanningOk) {
             scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
@@ -1116,7 +1112,7 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
             tokenCode = galgasScanner_1__21__3F_
           }else{
             scanner_cocoa_routine_resetString (&scanningOk, &self.mLexicalAttribute_tokenString)
-            self.restoreScanningPoint (&locationForTag_onlyInterrogationExclamationMark)
+            self.restoreScanningPoint (locationForTag_onlyInterrogationExclamationMark)
             tokenCode = galgasScanner_1__21__3F_
           }
         }else{
@@ -1135,15 +1131,14 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
           tokenCode = galgasScanner_1__21_
         }else{
           scanner_cocoa_routine_resetString (&scanningOk, &self.mLexicalAttribute_tokenString)
-          self.restoreScanningPoint (&locationForTag_onlyExclamationMark)
+          self.restoreScanningPoint (locationForTag_onlyExclamationMark)
           tokenCode = galgasScanner_1__21_
         }
       }else{
         tokenCode = galgasScanner_1__21_
       }
     }else if scanningOk && (self.testForInputChar (60)) {
-      scanningPointStructForCocoa locationForTag_onlyInfDelimiter ;
-      [self saveScanningPoint: & locationForTag_onlyInfDelimiter] ;
+      let locationForTag_onlyInfDelimiter = self.savedScanningPoint ()
       if scanningOk && (self.testForInputChar (61)) {
         tokenCode = galgasScanner_1__3C__3D_
       }else if scanningOk && (self.testForInputChar (60)) {
@@ -1160,7 +1155,7 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
         if scanningOk && (self.testForInputChar (62)) {
           tokenCode = galgasScanner_1__3C_non_5F_terminal_3E_
         }else{
-          self.restoreScanningPoint (&locationForTag_onlyInfDelimiter)
+          self.restoreScanningPoint (locationForTag_onlyInfDelimiter)
           tokenCode = galgasScanner_1__3C_
         }
       }else{
@@ -1187,16 +1182,6 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
             scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 39)
           }else if scanningOk && (self.testForInputChar (63)) {
             scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, 63)
-          }else if scanningOk && (self.testForInputFromChar (48, toChar:57)) {
-            while (loop && scanningOk) {
-              scanner_cocoa_routine_enterHexDigitIntoASCIIcharacter (&scanningOk, &self.mLexicalAttribute_charValue, self.previousChar)
-              if scanningOk && (self.testForInputFromChar (48, toChar:57)) {
-              }else{
-                loop = false
-              }
-            }
-            loop = true
-            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, mLexicalAttribute_charValue)
           }else if scanningOk && (self.testForInputChar (117)) {
             if scanningOk && (self.testForInputFromChar (48, toChar:57) || self.testForInputFromChar (97, toChar:102) || self.testForInputFromChar (65, toChar:70)) {
               scanner_cocoa_routine_enterHexDigitIntoUInt (&scanningOk, self.previousChar, &self.mLexicalAttribute_uint32value)
@@ -1299,13 +1284,16 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
         tokenCode = galgasScanner_1_comment
       }
     }else if scanningOk && (self.testForInputFromChar (1, toChar:32)) {
-    }else     if ([self testForInputChar:'\0']) { // End of source text ?
+    }else if self.testForInputChar (0) { // End of source text ?
       tokenCode = galgasScanner_1_ ; // Empty string code
     }else{ // Unknown input character
-      scanningOk = NO ;
-     [self advance] ;
+      scanningOk = false
+      self.advance ()
     }
-    return scanningOk ;
+    return StyledRange (
+      range: NSRange (location: inStartLocation, length: self.currentLocation - inStartLocation),
+      styleIndex: scanningOk ? styleIndexFor (token: tokenCode) : self.styleCount ()
+    )
   }
   
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1380,7 +1368,7 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-fileprivate func search_into_galgasScanner_galgasKeyWordList (_ inString inSearchedString) -> UInt16? {
+fileprivate func search_into_galgasScanner_galgasKeyWordList (_ inSearchedString : String) -> UInt16 {
   let dictionary : [String : UInt16] = [
     "as" : galgasScanner_1_as,
     "do" : galgasScanner_1_do,
@@ -1471,7 +1459,7 @@ fileprivate func search_into_galgasScanner_galgasKeyWordList (_ inString inSearc
     "filewrapper" : galgasScanner_1_filewrapper
   ]
 
-  return dictionary [inSearchedString]
+  return dictionary [inSearchedString, default: galgasScanner_1_]
 }
 
 

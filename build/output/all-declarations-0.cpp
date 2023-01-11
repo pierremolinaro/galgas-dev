@@ -60,8 +60,6 @@ C_String C_Lexique_galgasScanner::indexingDirectory (void) const {
 //                        Lexical error message list                                             
 //----------------------------------------------------------------------------------------------------------------------
 
-static const char * gLexicalMessage_galgasScanner_ASCIIcodeTooLargeError = "ASCII code > 255" ;
-
 static const char * gLexicalMessage_galgasScanner_attributeError = "in an attribute name, a letter or a digit should follow the '%' character" ;
 
 static const char * gLexicalMessage_galgasScanner_floatNumberConversionError = "invalid float number" ;
@@ -83,8 +81,6 @@ static const char * gLexicalMessage_galgasScanner_internalError = "internal erro
 static const char * gLexicalMessage_galgasScanner_invalideUnicodeDefinition4 = "\\u should be followed by exactly four hexadecimal digits" ;
 
 static const char * gLexicalMessage_galgasScanner_invalideUnicodeDefinition8 = "\\U should be followed by exactly eight hexadecimal digits" ;
-
-static const char * gLexicalMessage_galgasScanner_obsoleteStringConstruction = "\\ followed by digits is obsolete: now, use \\u.... or \\U........" ;
 
 static const char * gLexicalMessage_galgasScanner_unassignedUnicodeValue = "this value does not correspond to an assigned Unicode point" ;
 
@@ -123,16 +119,16 @@ static const char * gSyntaxErrorMessage_galgasScanner__27_char_27_ = "a characte
 static const char * gSyntaxErrorMessage_galgasScanner__24_terminal_24_ = "a terminal symbol ($...$)" ;
 
 //--- Syntax error message for terminal '$?$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3F_ = "the '\?' or '\?selector:' delimitor" ;
+static const char * gSyntaxErrorMessage_galgasScanner__3F_ = "the '?' or '?selector:' delimitor" ;
 
 //--- Syntax error message for terminal '$?!$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3F__21_ = "the '\?!' or '\?!selector:' delimitor" ;
+static const char * gSyntaxErrorMessage_galgasScanner__3F__21_ = "the '?!' or '?!selector:' delimitor" ;
 
 //--- Syntax error message for terminal '$!$' :
 static const char * gSyntaxErrorMessage_galgasScanner__21_ = "the '!' or '!selector:' delimitor" ;
 
 //--- Syntax error message for terminal '$!?$' :
-static const char * gSyntaxErrorMessage_galgasScanner__21__3F_ = "the '!\?' or '!\?selector:' delimitor" ;
+static const char * gSyntaxErrorMessage_galgasScanner__21__3F_ = "the '!?' or '!?selector:' delimitor" ;
 
 //--- Syntax error message for terminal '$<$' :
 static const char * gSyntaxErrorMessage_galgasScanner__3C_ = "the '<' delimitor" ;
@@ -543,7 +539,7 @@ static const char * gSyntaxErrorMessage_galgasScanner__3D__3D__3D_ = "the '===' 
 static const char * gSyntaxErrorMessage_galgasScanner__21__3D__3D_ = "the '!==' delimitor" ;
 
 //--- Syntax error message for terminal '$?^$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3F__5E_ = "the '\?^' delimitor" ;
+static const char * gSyntaxErrorMessage_galgasScanner__3F__5E_ = "the '?^' delimitor" ;
 
 //--- Syntax error message for terminal '$!^$' :
 static const char * gSyntaxErrorMessage_galgasScanner__21__5E_ = "the '!^' delimitor" ;
@@ -2183,14 +2179,14 @@ C_String C_Lexique_galgasScanner::getCurrentTokenString (const cToken * inTokenP
       break ;
     case kToken__3F_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("\?") ;
+      s.appendCString ("?") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
       s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken__3F__21_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("\?!") ;
+      s.appendCString ("?!") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
       s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
@@ -2204,7 +2200,7 @@ C_String C_Lexique_galgasScanner::getCurrentTokenString (const cToken * inTokenP
       break ;
     case kToken__21__3F_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("!\?") ;
+      s.appendCString ("!?") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
       s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
@@ -2895,7 +2891,7 @@ C_String C_Lexique_galgasScanner::getCurrentTokenString (const cToken * inTokenP
       break ;
     case kToken__3F__5E_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("\?^") ;
+      s.appendCString ("?^") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken__21__5E_:
@@ -3532,17 +3528,6 @@ void C_Lexique_galgasScanner::internalParseLexicalToken (cTokenFor_galgasScanner
             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\'')) ;
           }else if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\?')) ;
-          }else if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-            lexicalWarning (gLexicalMessage_galgasScanner_obsoleteStringConstruction COMMA_LINE_AND_SOURCE_FILE) ;
-            do {
-              ::scanner_routine_enterHexDigitIntoASCIIcharacter (*this, token.mLexicalAttribute_charValue, previousChar (), gLexicalMessage_galgasScanner_ASCIIcodeTooLargeError, gLexicalMessage_galgasScanner_internalError) ;
-              if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-              }else{
-                loop = false ;
-              }
-            }while (loop) ;
-            loop = true ;
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
           }else if (testForInputUTF32Char (TO_UNICODE ('u'))) {
             if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
               ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasScanner_internalError, gLexicalMessage_galgasScanner_internalError) ;
@@ -3883,10 +3868,10 @@ GALGAS_stringlist C_Lexique_galgasScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("%attribute") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("'char'") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("$terminal$") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("\?") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("\?!") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("?") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("?!") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("!") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("!\?") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("!?") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("<") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("<=") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("<<") COMMA_THERE) ;
@@ -4023,7 +4008,7 @@ GALGAS_stringlist C_Lexique_galgasScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("&++") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("===") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("!==") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("\?^") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("?^") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("!^") COMMA_THERE) ;
   return result ;
 }
@@ -4080,7 +4065,7 @@ static void getKeywordsForIdentifier_galgasScanner (const C_String & inIdentifie
     ioList.appendObject ("==") ;
     ioList.appendObject (">=") ;
     ioList.appendObject (">>") ;
-    ioList.appendObject ("\?^") ;
+    ioList.appendObject ("?^") ;
     ioList.appendObject ("||") ;
     ioList.appendObject ("!==") ;
     ioList.appendObject ("&++") ;

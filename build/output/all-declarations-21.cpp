@@ -9879,7 +9879,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_lexique 
     "\n"
     "rule 'a'->'z' |  'A'->'Z' {\n"
     "  repeat\n"
-    "    enterCharacterIntoString (!\?tokenString !*)\n"
+    "    enterCharacterIntoString (!?tokenString !*)\n"
     "  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :\n"
     "  end\n"
     "  send search tokenString in keyWordList default $identifier$\n"
@@ -9897,13 +9897,13 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_lexique 
     "message internalError : \"internal error\"\n"
     "\n"
     "rule '0'->'9' {\n"
-    "  enterCharacterIntoString (!\?tokenString !*)\n"
+    "  enterCharacterIntoString (!?tokenString !*)\n"
     "  repeat\n"
     "  while '0'->'9' :\n"
-    "    enterCharacterIntoString (!\?tokenString !*)\n"
+    "    enterCharacterIntoString (!?tokenString !*)\n"
     "  while '_' :\n"
     "  end\n"
-    "  convertDecimalStringIntoUInt (!tokenString !\?uint32value error decimalNumberTooLarge, internalError)\n"
+    "  convertDecimalStringIntoUInt (!tokenString !?uint32value error decimalNumberTooLarge, internalError)\n"
     "  send $integer$\n"
     "}\n"
     "\n"
@@ -9920,7 +9920,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_lexique 
     "rule '\"' {\n"
     "  repeat\n"
     "   while ' ' | '!' | '#'-> '\\uFFFD' :\n"
-    "    enterCharacterIntoString (!\?tokenString !*)\n"
+    "    enterCharacterIntoString (!?tokenString !*)\n"
     "  end\n"
     "  select\n"
     "  case '\"' :\n"
@@ -10012,7 +10012,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_program 
     "grammar " ;
   result << in_PROJECT_5F_NAME.stringValue () ;
   result << "_grammar\n"
-    "\?sourceFilePath:@lstring inSourceFile {\n"
+    "?sourceFilePath:@lstring inSourceFile {\n"
     "  grammar " ;
   result << in_PROJECT_5F_NAME.stringValue () ;
   result << "_grammar () in inSourceFile\n"

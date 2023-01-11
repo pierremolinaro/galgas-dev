@@ -339,7 +339,8 @@ fileprivate let gColors_galgasScanner : [EBGenericPreferenceProperty <NSColor>] 
   EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-stringStyle"),
   EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-typeNameStyle"),
   EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-attributeStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-commentStyle")
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-commentStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .red, prefKey: "ColorFor_galgasScanner_lexical_error")
 ]
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -358,7 +359,8 @@ fileprivate let gBoldStyle_galgasScanner : [EBGenericPreferenceProperty <Bool>] 
   EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-stringStyle"),
   EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-typeNameStyle"),
   EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-attributeStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-commentStyle")
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-commentStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner_lexical_error")
 ]
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -399,6 +401,19 @@ class SWIFT_Tokenizer_0_galgasScanner : SWIFT_Lexique_galgasScanner, SWIFT_Token
   
   func blockComment () -> String {
     return "#"
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func attributes (fromStyleIndex inStyleIndex : UInt8) -> [NSAttributedString.Key : Any] {
+    let fontManager = NSFontManager.shared
+    var result = [NSAttributedString.Key : Any] ()
+    result [.foregroundColor] = self.color (forStyle: inStyleIndex).propval
+    result [.font] = fontManager.convert (
+      self.font.propval,
+      toHaveTrait: self.bold (forStyle: inStyleIndex).propval ? .boldFontMask : .unboldFontMask
+    )
+    return result
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -518,7 +533,8 @@ fileprivate let gColors_galgasTemplateScanner : [EBGenericPreferenceProperty <NS
   EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-stringStyle"),
   EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-typeNameStyle"),
   EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-attributeStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-commentStyle")
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasTemplateScanner-commentStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .red, prefKey: "ColorFor_galgasTemplateScanner_lexical_error")
 ]
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -537,7 +553,8 @@ fileprivate let gBoldStyle_galgasTemplateScanner : [EBGenericPreferenceProperty 
   EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-stringStyle"),
   EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-typeNameStyle"),
   EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-attributeStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-commentStyle")
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner-commentStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasTemplateScanner_lexical_error")
 ]
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -578,6 +595,19 @@ class SWIFT_Tokenizer_1_galgasTemplateScanner : SWIFT_Lexique_galgasTemplateScan
   
   func blockComment () -> String {
     return ""
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func attributes (fromStyleIndex inStyleIndex : UInt8) -> [NSAttributedString.Key : Any] {
+    let fontManager = NSFontManager.shared
+    var result = [NSAttributedString.Key : Any] ()
+    result [.foregroundColor] = self.color (forStyle: inStyleIndex).propval
+    result [.font] = fontManager.convert (
+      self.font.propval,
+      toHaveTrait: self.bold (forStyle: inStyleIndex).propval ? .boldFontMask : .unboldFontMask
+    )
+    return result
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

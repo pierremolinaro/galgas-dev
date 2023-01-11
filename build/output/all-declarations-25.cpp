@@ -4689,7 +4689,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << ") ;\n"
     "    MF_Assert (mSharedObject->isUniquelyReferenced (), \"isUniquelyReferenced () is false\", 0, 0) ;\n"
-    "  //--- Resize \?\n"
+    "  //--- Resize ?\n"
     "    const bool resize = " ;
   GALGAS_uint index_15942_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
@@ -4805,7 +4805,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
       result << enumerator_17672.current_mValue (HERE).stringValue () ;
       result << " = (" ;
       result << enumerator_17672.current_mValue (HERE).stringValue () ;
-      result << " == axisIndex) \? inNewSize.uintValue () : mSharedObject->size" ;
+      result << " == axisIndex) ? inNewSize.uintValue () : mSharedObject->size" ;
       result << enumerator_17672.current_mValue (HERE).stringValue () ;
       result << " () ;\n" ;
       index_17672_.increment () ;
@@ -5034,7 +5034,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   result << "::objectCompare (const GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " & inOperand) const {\n"
-    "  typeComparisonResult result = (isValid () && inOperand.isValid ()) \? kOperandEqual : kOperandNotValid ;\n"
+    "  typeComparisonResult result = (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;\n"
     "  if (kOperandEqual == result) {\n"
     "    result = mSharedObject->objectCompare (inOperand.mSharedObject) ;\n"
     "  }\n"

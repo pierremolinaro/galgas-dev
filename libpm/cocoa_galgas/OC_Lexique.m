@@ -1277,15 +1277,15 @@ void scanner_cocoa_routine_convertUnsignedNumberToUnicodeChar (BOOL * ioScanning
 
 //----------------------------------------------------------------------------------------------------------------------
 
-//void scanner_cocoa_routine_convertHTMLSequenceToUnicodeCharacter (BOOL * ioScanningOk,
-//                                                                  NSMutableString * ioStringValue,
-//                                                                  utf32 * outUnicodeCharacter) {
-//  *outUnicodeCharacter = unicodeCharacterFromHTMLSequence (ioStringValue) ;
-//  if (UNICODE_VALUE (outUnicodeCharacter) == 0) {
-//    * ioScanningOk = NO ;
-//  }
-//  [ioStringValue setString:@""] ;
-//}
+void scanner_cocoa_routine_convertHTMLSequenceToUnicodeCharacter (BOOL * ioScanningOk,
+                                                                  NSMutableString * ioStringValue,
+                                                                  utf32 * outUnicodeCharacter) {
+  *outUnicodeCharacter = unicodeCharacterFromHTMLSequence (ioStringValue) ;
+  if (UNICODE_VALUE (outUnicodeCharacter) == 0) {
+    * ioScanningOk = NO ;
+  }
+  [ioStringValue setString:@""] ;
+}
 
 //----------------------------------------------------------------------------------------------------------------------
 

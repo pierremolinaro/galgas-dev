@@ -346,7 +346,7 @@ $'char'$ ! charValue  style characterStyle error message "a character constant"
 
 message incorrectCharConstant : "incorrect literal character"
 
-message ASCIIcodeTooLargeError : "ASCII code > 255"
+#message ASCIIcodeTooLargeError : "ASCII code > 255"
 
 message invalideUnicodeDefinition4 : "\\u should be followed by exactly four hexadecimal digits"
 
@@ -658,7 +658,7 @@ $"string"$ ! tokenString  style stringStyle %nonAtomicSelection error message "a
 
 message incorrectStringEnd : "string does not end with '\"'"
 
-message obsoleteStringConstruction : "\\ followed by digits is obsolete: now, use \\u.... or \\U........"
+#message obsoleteStringConstruction : "\\ followed by digits is obsolete: now, use \\u.... or \\U........"
 
 rule '"' {
   repeat
@@ -689,13 +689,13 @@ rule '"' {
 #      end
 #      convertHTMLSequenceToUnicodeCharacter (!?identifierString !?charValue error unknownHTMLescapeSequence )
 #      enterCharacterIntoString (!?tokenString !charValue )
-    case '0' -> '9' :
-      warning obsoleteStringConstruction
-      repeat
-        enterHexDigitIntoASCIIcharacter (!?charValue !* error ASCIIcodeTooLargeError, internalError )
-      while '0' -> '9' :
-      end
-      enterCharacterIntoString (!?tokenString !charValue )
+#    case '0' -> '9' :
+#      warning obsoleteStringConstruction
+#      repeat
+#        enterHexDigitIntoASCIIcharacter (!?charValue !* error ASCIIcodeTooLargeError, internalError )
+#      while '0' -> '9' :
+#      end
+#      enterCharacterIntoString (!?tokenString !charValue )
     case 'u' :
       select
       case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :

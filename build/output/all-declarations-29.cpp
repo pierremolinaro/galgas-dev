@@ -3555,7 +3555,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
                                                                                                const GALGAS_bool & in_VERBOSE_5F_OPTION
                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "<\?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" \?>\n"
+  result << "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>\n"
     "<CodeBlocks_project_file>\n"
     " <FileVersion major=\"1\" minor=\"6\" />\n"
     " <Project>\n"
@@ -4074,7 +4074,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
                                                                                                    const GALGAS_string & in_MACOSX_5F_DEPLOYMENT_5F_TARGET
                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "<\?xml version=\"1.0\" encoding=\"UTF-8\"\?>\n"
+  result << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
     "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n"
     "<plist version=\"1.0\">\n"
     "<dict>\n"
@@ -4096,8 +4096,6 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     " <string>${PRODUCT_NAME}</string>\n"
     " <key>CFBundlePackageType</key>\n"
     " <string>APPL</string>\n"
-    " <key>CFBundleSignature</key>\n"
-    " <string>\?\?\?\?</string>\n"
     " <key>LSMinimumSystemVersion</key>\n"
     " <string>" ;
   result << in_MACOSX_5F_DEPLOYMENT_5F_TARGET.stringValue () ;
@@ -4112,14 +4110,14 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     " <string>NSApplication</string>\n"
     " <key>CFBundleDocumentTypes</key>\n"
     " <array>\n" ;
-  GALGAS_uint index_1040_ (0) ;
+  GALGAS_uint index_987_ (0) ;
   if (in_HANDLED_5F_EXTENSION_5F_SET.isValid ()) {
-    cEnumerator_stringset enumerator_1040 (in_HANDLED_5F_EXTENSION_5F_SET, kENUMERATION_UP) ;
-    while (enumerator_1040.hasCurrentObject ()) {
+    cEnumerator_stringset enumerator_987 (in_HANDLED_5F_EXTENSION_5F_SET, kENUMERATION_UP) ;
+    while (enumerator_987.hasCurrentObject ()) {
       result << "  <dict>\n"
         "      <key>CFBundleTypeIconFile</key>\n"
         "      <string>" ;
-      result << enumerator_1040.current_key (HERE).stringValue () ;
+      result << enumerator_987.current_key (HERE).stringValue () ;
       result << "_icns</string>\n"
         "      <key>CFBundleTypeIconSystemGenerated</key>\n"
         "      <integer>0</integer>\n"
@@ -4134,24 +4132,24 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
         "      <key>LSItemContentTypes</key>\n"
         "      <array>\n"
         "        <string>$(PRODUCT_BUNDLE_IDENTIFIER)." ;
-      result << enumerator_1040.current_key (HERE).stringValue () ;
+      result << enumerator_987.current_key (HERE).stringValue () ;
       result << "</string>\n"
         "      </array>\n"
         "      <key>NSDocumentClass</key>\n"
         "      <string>OC_GGS_Document</string>\n"
         "  </dict>\n" ;
-      index_1040_.increment () ;
-      enumerator_1040.gotoNextObject () ;
+      index_987_.increment () ;
+      enumerator_987.gotoNextObject () ;
     }
   }
   result << "\n"
     " </array>\n"
     " <key>UTExportedTypeDeclarations</key>\n"
     " <array>\n" ;
-  GALGAS_uint index_1716_ (0) ;
+  GALGAS_uint index_1663_ (0) ;
   if (in_HANDLED_5F_EXTENSION_5F_SET.isValid ()) {
-    cEnumerator_stringset enumerator_1716 (in_HANDLED_5F_EXTENSION_5F_SET, kENUMERATION_UP) ;
-    while (enumerator_1716.hasCurrentObject ()) {
+    cEnumerator_stringset enumerator_1663 (in_HANDLED_5F_EXTENSION_5F_SET, kENUMERATION_UP) ;
+    while (enumerator_1663.hasCurrentObject ()) {
       result << "  <dict>\n"
         "    <key>UTTypeConformsTo</key>\n"
         "    <array>\n"
@@ -4159,7 +4157,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
         "    </array>\n"
         "    <key>UTTypeDescription</key>\n"
         "    <string>" ;
-      result << enumerator_1716.current_key (HERE).stringValue () ;
+      result << enumerator_1663.current_key (HERE).stringValue () ;
       result << "</string>\n"
         "    <key>UTTypeIcons</key>\n"
         "    <dict>\n"
@@ -4168,20 +4166,20 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
         "    </dict>\n"
         "    <key>UTTypeIdentifier</key>\n"
         "    <string>$(PRODUCT_BUNDLE_IDENTIFIER)." ;
-      result << enumerator_1716.current_key (HERE).stringValue () ;
+      result << enumerator_1663.current_key (HERE).stringValue () ;
       result << "</string>\n"
         "    <key>UTTypeTagSpecification</key>\n"
         "    <dict>\n"
         "      <key>public.filename-extension</key>\n"
         "      <array>\n"
         "        <string>" ;
-      result << enumerator_1716.current_key (HERE).stringValue () ;
+      result << enumerator_1663.current_key (HERE).stringValue () ;
       result << "</string>\n"
         "      </array>\n"
         "    </dict>\n"
         "  </dict>\n" ;
-      index_1716_.increment () ;
-      enumerator_1716.gotoNextObject () ;
+      index_1663_.increment () ;
+      enumerator_1663.gotoNextObject () ;
     }
   }
   result << "\n"
@@ -5862,7 +5860,7 @@ static const char * kSourceFileHelpMessages [] = {
 //----------------------------------------------------------------------------------------------------------------------
 
 const char * projectVersionString (void) {
-  return "3.5.0" ;
+  return "3.6.0" ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

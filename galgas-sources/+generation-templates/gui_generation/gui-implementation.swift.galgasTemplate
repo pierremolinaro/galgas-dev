@@ -110,21 +110,23 @@ fileprivate let gfont_%!mLexiqueClassName% = EBGenericPreferenceProperty <NSFont
 //----------------------------------------------------------------------------------------------------------------------
 
 fileprivate let gColors_%!mLexiqueClassName% : [EBGenericPreferenceProperty <NSColor>] = [
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_%!mLexiqueClassName%")%
-for (identifier *) in lexicalStyleList do
- %,\n  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_%!mLexiqueClassName%-%!identifier.string%")%
-end
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_%!mLexiqueClassName%"),
 %
+for (identifier *) in lexicalStyleList do
+ %  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_%!mLexiqueClassName%-%!identifier.string%"),\n%
+end
+%  EBGenericPreferenceProperty <NSColor> (defaultValue: .red, prefKey: "ColorFor_%!mLexiqueClassName%_lexical_error")
 ]
 
 //----------------------------------------------------------------------------------------------------------------------
 
 fileprivate let gBoldStyle_%!mLexiqueClassName% : [EBGenericPreferenceProperty <Bool>] = [
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_%!mLexiqueClassName%")%
-for (identifier *) in lexicalStyleList do
- %,\n  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_%!mLexiqueClassName%-%!identifier.string%")%
-end
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_%!mLexiqueClassName%"),
 %
+for (identifier *) in lexicalStyleList do
+ %  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_%!mLexiqueClassName%-%!identifier.string%"),\n%
+end
+%  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_%!mLexiqueClassName%_lexical_error")
 ]
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -165,6 +167,19 @@ class SWIFT_Tokenizer_%![mIndex string]%_%!mLexiqueClassName% : SWIFT_Lexique_%!
   
   func blockComment () -> String {
     return %![mBlockComment utf8Representation]%
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func attributes (fromStyleIndex inStyleIndex : UInt8) -> [NSAttributedString.Key : Any] {
+    let fontManager = NSFontManager.shared
+    var result = [NSAttributedString.Key : Any] ()
+    result [.foregroundColor] = self.color (forStyle: inStyleIndex).propval
+    result [.font] = fontManager.convert (
+      self.font.propval,
+      toHaveTrait: self.bold (forStyle: inStyleIndex).propval ? .boldFontMask : .unboldFontMask
+    )
+    return result
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -472,6 +472,7 @@
         addAttributes: [mFontAttributesDictionaryArray objectAtIndex:0]
         range: allTextRange
       ] ;
+      [mSourceTextStorage fixAttributesInRange: allTextRange] ;
       for (NSUInteger i=0 ; i<[mTokenArray count] ; i++) {
         OC_Token * token = [mTokenArray objectAtIndex:i] ;
         const NSInteger colorIndex = [token style] ;
@@ -481,6 +482,7 @@
             addAttributes: mTemplateTextAttributeDictionary
             range: range
           ] ;
+          [mSourceTextStorage fixAttributesInRange: range] ;
         }else if (colorIndex == -1) {
         
         }else if (colorIndex > 0) {
@@ -488,6 +490,7 @@
             addAttributes: [mFontAttributesDictionaryArray objectAtIndex:(NSUInteger) colorIndex]
             range: range
           ] ;
+          [mSourceTextStorage fixAttributesInRange: range] ;
         }
       }    
     }else{
@@ -497,9 +500,10 @@
         if (colorIndex == inChangedColorIndex) {
           const NSRange range = [token range] ;
           [mSourceTextStorage
-            addAttributes:[mFontAttributesDictionaryArray objectAtIndex:0]
-            range:range
+            addAttributes: [mFontAttributesDictionaryArray objectAtIndex:0]
+            range: range
           ] ;
+          [mSourceTextStorage fixAttributesInRange: range] ;
           #ifdef DEBUG_MESSAGES
             NSLog (@"change attribute for index %lu [%lu, %lu]>", i, range.location, range.length) ;
           #endif
@@ -508,6 +512,7 @@
               addAttributes:mTemplateTextAttributeDictionary
               range:range
             ] ;
+            [mSourceTextStorage fixAttributesInRange: range] ;
           }else if (colorIndex == -1) {
           
           }else if (colorIndex > 0) {
@@ -515,6 +520,7 @@
               addAttributes:[mFontAttributesDictionaryArray objectAtIndex:(NSUInteger) colorIndex]
               range:range
             ] ;
+            [mSourceTextStorage fixAttributesInRange: range] ;
           }
         }
       }
@@ -637,6 +643,7 @@
         addAttributes: [mFontAttributesDictionaryArray objectAtIndex: 0]
         range: eraseRange
       ] ;
+      [mSourceTextStorage fixAttributesInRange: eraseRange] ;
       #ifdef DEBUG_MESSAGES
         NSLog (@"mSourceTextStorage setAttributes DONE") ;
       #endif
@@ -663,11 +670,13 @@
           addAttributes: mTemplateTextAttributeDictionary
           range: range
         ] ;
+        [mSourceTextStorage fixAttributesInRange: range] ;
       }else if (style > 0) {
         [mSourceTextStorage
           addAttributes: [mFontAttributesDictionaryArray objectAtIndex:(NSUInteger) style]
           range: range
         ] ;
+        [mSourceTextStorage fixAttributesInRange: range] ;
       }
     }
     [mSourceTextStorage endEditing] ;

@@ -9,9 +9,10 @@ import AppKit
 //         T E R M I N A L    S Y M B O L    E N U M E R A T I O N
 //----------------------------------------------------------------------------------------------------------------------
 
+let %!LEXIQUE_CLASS_NAME %_1_ : UInt16 = 0
 %
 for (mTerminalName 5*) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
-  %let %!LEXIQUE_CLASS_NAME %_1_%![mTerminalName.string identifierRepresentation]% : UInt16 = %![idx string]%\n%
+  %let %!LEXIQUE_CLASS_NAME %_1_%![mTerminalName.string identifierRepresentation]% : UInt16 = %![idx+1 string]%\n%
 end
 % 
 //----------------------------------------------------------------------------------------------------------------------
@@ -156,21 +157,23 @@ end
 %  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
     %    self.mLexicalAttribute_%!lkey.string% = %![mLexicalType swiftInitializationCode]%\n%
   end
-%    let tokenStartLocation = inStartLocation
-    var tokenCode : UInt16 = 0
+%    var tokenCode : UInt16 = 0
 %
   block 4 :
     for (lexicalRule) in LEXICAL_RULE_LIST do
       ![lexicalRule generateSwiftCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
     end
   end
-% if self.testForInputChar (0) { // End of source text ?
+%if self.testForInputChar (0) { // End of source text ?
       tokenCode = %!LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
     }else{ // Unknown input character
       scanningOk = false
       self.advance ()
     }
-    return scanningOk ;
+    return StyledRange (
+      range: NSRange (location: inStartLocation, length: self.currentLocation - inStartLocation),
+      styleIndex: scanningOk ? styleIndexFor (token: tokenCode) : self.styleCount ()
+    )
   }
   
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -305,14 +308,14 @@ end%
       %//             Key words table '%!tokenList_lkey.string%'      \n%
       %//\n%
       %//----------------------------------------------------------------------------------------------------------------------\n\n%
-      %fileprivate func search_into_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%!tokenList_lkey.string% (_ inString inSearchedString) -> UInt16? {\n%
+      %fileprivate func search_into_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%!tokenList_lkey.string% (_ inSearchedString : String) -> UInt16 {\n%
       %  let dictionary : [String : UInt16] = [\n%
         for (* name terminalName) in tokenList_mTokenSortedList
         do %    %![name utf8Representation]% : %!LEXIQUE_CLASS_NAME%_1_%![terminalName identifierRepresentation]
         between %,\n%
         end
       %\n  ]\n\n%
-      %  return dictionary [inSearchedString]\n%
+      %  return dictionary [inSearchedString, default: %!LEXIQUE_CLASS_NAME%_1_]\n%
       %}\n\n%
     end
   end

@@ -1470,7 +1470,7 @@ GALGAS_string extensionGetter_lexicalFormalModeName (const GALGAS_lexicalArgumen
     break ;
   case GALGAS_lexicalArgumentModeAST::kEnum_lexicalInputOutputMode:
     {
-      result_result = GALGAS_string ("\?!") ;
+      result_result = GALGAS_string ("?!") ;
     }
     break ;
   }

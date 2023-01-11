@@ -59,12 +59,12 @@ GALGAS_string extensionGetter_correspondingEffectiveParameterString (const GALGA
     break ;
   case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut:
     {
-      result_result = GALGAS_string ("\?") ;
+      result_result = GALGAS_string ("?") ;
     }
     break ;
   case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut:
     {
-      result_result = GALGAS_string ("!\?") ;
+      result_result = GALGAS_string ("!?") ;
     }
     break ;
   }
