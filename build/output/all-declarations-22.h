@@ -88,6 +88,7 @@ GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_objcCocoaIm
 GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_swiftCocoaImplementationZone (class C_Compiler * inCompiler,
                                                                                                    const class GALGAS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
                                                                                                    const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                                   const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_CLASS_5F_NAME,
                                                                                                    const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
                                                                                                    const class GALGAS_templateDelimitorList & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
                                                                                                    const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
@@ -687,88 +688,4 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_weakReferenceClassTypeS
                                                                                                        const class GALGAS_typedPropertyList & in_INHERITED_5F_ATTRIBUTE_5F_LIST,
                                                                                                        const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
                                                                                                        COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Function 'forbiddenKeysForBoolset'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_stringset function_forbiddenKeysForBoolset (class C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'addExtensions'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_addExtensions (const class GALGAS_extensionMethodMapForBuildingContext constinArgument0,
-                            const class GALGAS_extensionGetterMapForBuildingContext constinArgument1,
-                            const class GALGAS_extensionSetterMapForBuildingContext constinArgument2,
-                            class GALGAS_semanticContext & ioArgument3,
-                            const class GALGAS_lstring constinArgument4,
-                            const class GALGAS_bool constinArgument5,
-                            class GALGAS_getterMap & ioArgument6,
-                            class GALGAS_setterMap & ioArgument7,
-                            class GALGAS_instanceMethodMap & ioArgument8,
-                            const class GALGAS_bool constinArgument9,
-                            class C_Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'enterBaseFinalGetterWithoutArgument'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_enterBaseFinalGetterWithoutArgument (class GALGAS_getterMap & ioArgument0,
-                                                  class GALGAS_unifiedTypeMap & ioArgument1,
-                                                  const class GALGAS_string constinArgument2,
-                                                  const class GALGAS_string constinArgument3,
-                                                  const class GALGAS_bool constinArgument4,
-                                                  class C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'structGenerationTemplate'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'structGenerationTemplate boolsetTypeHeader1'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (class C_Compiler * inCompiler,
-                                                                                  const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                  const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                  const class GALGAS_lstringlist & in_SLOT_5F_LIST
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'structGenerationTemplate boolsetTypeSpecificImplementation'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (class C_Compiler * inCompiler,
-                                                                                              const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                              const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                              const class GALGAS_lstringlist & in_SLOT_5F_LIST,
-                                                                                              const class GALGAS_bigint & in_FULL_5F_SET
-                                                                                              COMMA_LOCATION_ARGS) ;
 

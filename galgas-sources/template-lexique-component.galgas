@@ -388,14 +388,14 @@ override method @templateLexiqueComponentAST semanticAnalysis
        ![self.mLexiqueComponentName.string identifierRepresentation]
        ![self.mLexiqueSuperComponentName.string identifierRepresentation]
     ]
-   #--- Cpp
+  #--- Cpp
     let cppContents =  [filewrapper templateLexiqueGenerationTemplates.cppImplementation
       ![self.mLexiqueComponentName.string identifierRepresentation]
       ![self.mLexiqueSuperComponentName.string identifierRepresentation]
       !lexiqueAnalysisContext.mLexicalTokenListMap
       !unicodeStringToGenerate
       !templateDelimitorList
-      !terminalList # lexiqueAnalysisContext.mTerminalList
+      !terminalList
       !self.mLexiqueComponentName.string
       !self.mTemplateReplacementList
     ]
@@ -409,7 +409,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
     let objcCocoaImplementation = [filewrapper templateLexiqueGenerationTemplates.objcCocoaImplementationZone
       !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-cocoa"
       !self.mLexiqueComponentName.string
-      !terminalList # lexiqueAnalysisContext.mTerminalList
+      !terminalList
       !templateDelimitorList
       !self.mTemplateReplacementList
     ]
@@ -417,7 +417,8 @@ override method @templateLexiqueComponentAST semanticAnalysis
     let swiftCocoaImplementation = [filewrapper templateLexiqueGenerationTemplates.swiftCocoaImplementationZone
       !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-cocoa"
       !self.mLexiqueComponentName.string
-      !terminalList # lexiqueAnalysisContext.mTerminalList
+      !self.mLexiqueSuperComponentName.string
+      !terminalList
       !templateDelimitorList
       !self.mTemplateReplacementList
     ]
@@ -473,6 +474,7 @@ private filewrapper templateLexiqueGenerationTemplates in "+generation-templates
   template swiftCocoaImplementationZone "template_lexique_cocoa_implementation.swift.galgasTemplate"
     ?@string LEXIQUE_HEADER_FILE_NAME
     ?@string LEXIQUE_CLASS_NAME
+    ?@string SUPER_LEXIQUE_CLASS_NAME
     ?@terminalList TERMINAL_LIST
     ?@templateDelimitorList TEMPLATE_DELIMITOR_LIST
     ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST

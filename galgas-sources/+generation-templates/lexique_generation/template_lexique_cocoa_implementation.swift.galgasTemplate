@@ -1,29 +1,147 @@
-//----------------------------------------------------------------------------------------------------------------------
-//
-//%!"LEXIQUE " + LEXIQUE_CLASS_NAME%
-//
+
+import AppKit
+
 //----------------------------------------------------------------------------------------------------------------------
 //                           Template Replacements
 //----------------------------------------------------------------------------------------------------------------------
 
 %if [TEMPLATE_REPLACEMENT_LIST length] > 0 then
-%static NSArray * kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% ; // Of NSString \n%
-end
+%fileprivate let kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [String] = [
 %
+for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST
+  do %  %![mMatchString utf8Representation]
+  between %,\n%
+end%
+]
+%end%
 //----------------------------------------------------------------------------------------------------------------------
 //                           Template Delimiters
 //----------------------------------------------------------------------------------------------------------------------
 
 %if [TEMPLATE_DELIMITOR_LIST length] > 0 then
-%static NSArray * kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% ;\n%
+%fileprivate let kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [SWIFT_TemplateDelimiter] = [
+%
+for (mStartString mEndString mPreservesStartDelimiter) in TEMPLATE_DELIMITOR_LIST
+  do  %  SWIFT_TemplateDelimiter (startString: %![mStartString utf8Representation]%, endString: %
+      if [mEndString length] == 0 then
+        %nil%
+      else
+        ![mEndString utf8Representation]
+      end
+      %, discardStartString: %
+      ![not mPreservesStartDelimiter cString]
+      %)%
+  between %,\n%
 end%
+]
+%end%
+//----------------------------------------------------------------------------------------------------------------------
+//            Terminal Symbols as end of script in template mark
+//----------------------------------------------------------------------------------------------------------------------
+
+% for (mTerminalName 2* mIsEndOfTemplateMark 2*) in TERMINAL_LIST
+    before %fileprivate let kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [Bool] = [\n%
+    do %  %![mIsEndOfTemplateMark cString]% /* %!mTerminalName.string% */%
+    between %,\n%
+    after %\n]\n%
+  end
+%
+
+//----------------------------------------------------------------------------------------------------------------------
+
+func %!LEXIQUE_CLASS_NAME%_lexiqueIdentifier () -> String {
+  return "%!LEXIQUE_CLASS_NAME%"
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                     S C A N N E R    C L A S S
+//----------------------------------------------------------------------------------------------------------------------
+
+class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_NAME% {
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func isTemplateLexique () -> Bool {
+    return true
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Lexical analysis
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func parseLexicalTokenForLexicalColoring () -> SWIFT_Token {
+    let startLocation = self.currentLocation
+    if let idx = self.mEndTemplateDelimiterIndex, self.testForInputString (kTemplateDefinitionArray_galgasTemplateScanner [idx].endString, advance: true) {
+      self.mEndTemplateDelimiterIndex = nil
+    }
+    if self.mEndTemplateDelimiterIndex != nil {
+      return super.parseLexicalTokenForLexicalColoring ()
+    }else{ // In template string, find code start string
+      while self.mEndTemplateDelimiterIndex == nil, self.currentChar != 0 {
+        var idx = 0
+        while self.mEndTemplateDelimiterIndex == nil, idx < kTemplateDefinitionArray_galgasTemplateScanner.count {
+          if self.testForInputString (kTemplateDefinitionArray_galgasTemplateScanner [idx].startString, advance: true) {
+            self.mEndTemplateDelimiterIndex = idx
+          }
+          idx += 1
+        }
+        if self.mEndTemplateDelimiterIndex == nil {
+          self.advance ()
+        }
+      }
+      return SWIFT_Token (
+        range: NSRange (location: startLocation, length: self.currentLocation - startLocation),
+        tokenCode: galgasScanner_2_TEMPLATE,
+        templateDelimiterIndex: self.mEndTemplateDelimiterIndex
+      )
+    }
+  }
+//    var styleIndex : UInt8 = 0
+//    var tokenCode : UInt16 = 0
+//    let startLocation = self.currentLocation
+//    while styleIndex == 0, self.currentChar != 0 {
+//      let tokenStartLocation = self.currentLocation
+//      if let idx = matchedTemplateDelimiterIndex, !kTemplateDefinitionArray_galgasTemplateScanner [idx].startString.isEmpty {
+//        let foundEndDelimitor = self.testForInputString (kTemplateDefinitionArray_galgasTemplateScanner [idx].endString, advance: true)
+//        if foundEndDelimitor {
+//          matchedTemplateDelimiterIndex = nil
+//        }
+//      }
+//      while matchedTemplateDelimiterIndex != nil, self.currentChar != 0 {
+//        self.searchForReplacementPattern (kTemplateReplacementArray_galgasTemplateScanner)
+//        matchedTemplateDelimiterIndex = self.findTemplateDelimiterIndex (kTemplateDefinitionArray_galgasTemplateScanner)
+//        if matchedTemplateDelimiterIndex == nil {
+//          self.advance ()
+//          styleIndex = -2
+//        }
+//      }
+//      if matchedTemplateDelimiterIndex != nil, styleIndex == 0, self.currentChar != 0 {
+//        let s = super.parseLexicalTokenForLexicalColoring ()
+//        styleIndex = s.styleIndex
+//        tokenCode = s.token
+//      }
+//      if styleIndex > 0, kEndOfScriptInTemplateArray_galgasTemplateScanner [Int (styleIndex) - 1] {
+//        matchedTemplateDelimiterIndex = nil
+//      }
+//    //--- Error ?
+////      if !scanningOk {
+////        styleIndex = Int8 (self.styleCount ())
+////        self.advance ()
+////      }
+//    }
+//  }
+  
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 //
 //                           init
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-- (instancetype) init {
+/* - (instancetype) init {
   self = [super init] ;
   if (self) {
     noteObjectAllocation (self) ;
@@ -58,12 +176,13 @@ end%
   end
 %  return self ;
 }
+*/
 
 //----------------------------------------------------------------------------------------------------------------------
 
-- (void) dealloc {
+/* - (void) dealloc {
   noteObjectDeallocation (self) ;
-}
+} */
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -71,20 +190,22 @@ end%
 //
 //----------------------------------------------------------------------------------------------------------------------
 
+/*
 % for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST
     before %static const BOOL kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [%![[TERMINAL_LIST length] string]%] = {\n%
     do %  %![mIsEndOfTemplateMark ocString]% /* %!mTerminalName.string% */%
     between %,\n%
     after %\n} ;\n%
   end
-%
+% */
+
 //----------------------------------------------------------------------------------------------------------------------
 //
 //               P A R S E    L E X I C A L    T O K E N
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-- (void) parseLexicalTokenForLexicalColoring {
+/* - (void) parseLexicalTokenForLexicalColoring {
   BOOL scanningOk = YES ;
   mTokenCode = 0 ;
   while ((mTokenCode == 0) && (mCurrentChar != '\0')) {
@@ -116,16 +237,16 @@ end%
     }
   }
 }
-
+*/ 
 //----------------------------------------------------------------------------------------------------------------------
 //
 //                I S    T E M P L A T E    L E X I Q U E
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-- (BOOL) isTemplateLexique {
+/* - (BOOL) isTemplateLexique {
   return YES ;
-}
+} */
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -133,11 +254,11 @@ end%
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-- (NSString *) lexiqueIdentifier {
+/* - (NSString *) lexiqueIdentifier {
   return @"%!LEXIQUE_CLASS_NAME%" ;
-}
+} */
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@end
+// @end
 

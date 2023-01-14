@@ -2,21 +2,274 @@
 
 
 //--- END OF USER ZONE 1
-//----------------------------------------------------------------------------------------------------------------------
-//
-//LEXIQUE galgasTemplateScanner
-//
+
+import AppKit
+
 //----------------------------------------------------------------------------------------------------------------------
 //                           Template Replacements
 //----------------------------------------------------------------------------------------------------------------------
 
-static NSArray * kTemplateReplacementArray_galgasTemplateScanner ; // Of NSString 
+fileprivate let kTemplateReplacementArray_galgasTemplateScanner : [String] = [
+  "\\%",
+  "\\n",
+  "\\\\"
+]
 
 //----------------------------------------------------------------------------------------------------------------------
 //                           Template Delimiters
 //----------------------------------------------------------------------------------------------------------------------
 
-static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
+fileprivate let kTemplateDefinitionArray_galgasTemplateScanner : [SWIFT_TemplateDelimiter] = [
+  SWIFT_TemplateDelimiter (startString: "%", endString: "%", discardStartString: true)
+]
+
+//----------------------------------------------------------------------------------------------------------------------
+//            Terminal Symbols as end of script in template mark
+//----------------------------------------------------------------------------------------------------------------------
+
+fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
+  false /* identifier */,
+  false /* double.xxx */,
+  false /* literalInt */,
+  false /* . */,
+  false /* ... */,
+  false /* ..< */,
+  false /* @type */,
+  false /* %attribute */,
+  false /* 'char' */,
+  false /* $terminal$ */,
+  false /* ? */,
+  false /* ?! */,
+  false /* ! */,
+  false /* !? */,
+  false /* < */,
+  false /* <= */,
+  false /* << */,
+  false /* <non_terminal> */,
+  false /* "string" */,
+  false /* comment */,
+  false /* commentMark */,
+  false /* abstract */,
+  false /* after */,
+  false /* array */,
+  false /* as */,
+  false /* bang */,
+  false /* before */,
+  false /* between */,
+  false /* block */,
+  false /* boolset */,
+  false /* cast */,
+  false /* case */,
+  false /* class */,
+  false /* constructor */,
+  false /* default */,
+  false /* dict */,
+  false /* do */,
+  false /* drop */,
+  false /* else */,
+  false /* elsif */,
+  false /* end */,
+  false /* enum */,
+  false /* error */,
+  false /* extension */,
+  false /* extern */,
+  false /* false */,
+  false /* filewrapper */,
+  false /* for */,
+  false /* fixit */,
+  false /* func */,
+  false /* getter */,
+  false /* grammar */,
+  false /* graph */,
+  false /* gui */,
+  false /* if */,
+  false /* in */,
+  false /* indexing */,
+  false /* insert */,
+  false /* is */,
+  false /* label */,
+  false /* let */,
+  false /* lexique */,
+  false /* list */,
+  false /* listmap */,
+  false /* log */,
+  false /* loop */,
+  false /* map */,
+  false /* message */,
+  false /* method */,
+  false /* mod */,
+  false /* mutating */,
+  false /* not */,
+  false /* on */,
+  false /* operator */,
+  false /* option */,
+  false /* or */,
+  false /* override */,
+  false /* parse */,
+  false /* public */,
+  false /* private */,
+  false /* proc */,
+  false /* project */,
+  false /* refclass */,
+  false /* remove */,
+  false /* replace */,
+  false /* repeat */,
+  false /* rewind */,
+  false /* rule */,
+  false /* search */,
+  false /* select */,
+  false /* self */,
+  false /* send */,
+  false /* setter */,
+  false /* sortedlist */,
+  false /* struct */,
+  false /* style */,
+  false /* switch */,
+  false /* syntax */,
+  false /* tag */,
+  false /* template */,
+  false /* then */,
+  false /* true */,
+  false /* unused */,
+  false /* var */,
+  false /* valueclass */,
+  false /* warning */,
+  false /* while */,
+  false /* with */,
+  false /* * */,
+  false /* , */,
+  false /* + */,
+  false /* &+ */,
+  false /* &- */,
+  false /* &* */,
+  false /* &/ */,
+  false /* > */,
+  false /* ; */,
+  false /* : */,
+  false /* :> */,
+  false /* - */,
+  false /* ( */,
+  false /* ) */,
+  false /* -> */,
+  false /* == */,
+  false /* = */,
+  false /* && */,
+  false /* [ */,
+  false /* ] */,
+  false /* += */,
+  false /* -= */,
+  false /* *= */,
+  false /* /= */,
+  false /* / */,
+  false /* != */,
+  false /* >= */,
+  false /* & */,
+  false /* { */,
+  false /* } */,
+  false /* ` */,
+  false /* || */,
+  false /* | */,
+  false /* ^ */,
+  false /* >> */,
+  false /* ~ */,
+  false /* -- */,
+  false /* ++ */,
+  false /* &-- */,
+  false /* &++ */,
+  false /* === */,
+  false /* !== */,
+  false /* ?^ */,
+  false /* !^ */
+]
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+func galgasTemplateScanner_lexiqueIdentifier () -> String {
+  return "galgasTemplateScanner"
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//                     S C A N N E R    C L A S S
+//----------------------------------------------------------------------------------------------------------------------
+
+class SWIFT_Lexique_galgasTemplateScanner : SWIFT_Lexique_galgasScanner {
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func isTemplateLexique () -> Bool {
+    return true
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Lexical analysis
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func parseLexicalTokenForLexicalColoring () -> SWIFT_Token {
+    let startLocation = self.currentLocation
+    if let idx = self.mEndTemplateDelimiterIndex, self.testForInputString (kTemplateDefinitionArray_galgasTemplateScanner [idx].endString, advance: true) {
+      self.mEndTemplateDelimiterIndex = nil
+    }
+    if self.mEndTemplateDelimiterIndex != nil {
+      return super.parseLexicalTokenForLexicalColoring ()
+    }else{ // In template string, find code start string
+      while self.mEndTemplateDelimiterIndex == nil, self.currentChar != 0 {
+        var idx = 0
+        while self.mEndTemplateDelimiterIndex == nil, idx < kTemplateDefinitionArray_galgasTemplateScanner.count {
+          if self.testForInputString (kTemplateDefinitionArray_galgasTemplateScanner [idx].startString, advance: true) {
+            self.mEndTemplateDelimiterIndex = idx
+          }
+          idx += 1
+        }
+        if self.mEndTemplateDelimiterIndex == nil {
+          self.advance ()
+        }
+      }
+      return SWIFT_Token (
+        range: NSRange (location: startLocation, length: self.currentLocation - startLocation),
+        tokenCode: galgasScanner_2_TEMPLATE,
+        templateDelimiterIndex: self.mEndTemplateDelimiterIndex
+      )
+    }
+  }
+//    var styleIndex : UInt8 = 0
+//    var tokenCode : UInt16 = 0
+//    let startLocation = self.currentLocation
+//    while styleIndex == 0, self.currentChar != 0 {
+//      let tokenStartLocation = self.currentLocation
+//      if let idx = matchedTemplateDelimiterIndex, !kTemplateDefinitionArray_galgasTemplateScanner [idx].startString.isEmpty {
+//        let foundEndDelimitor = self.testForInputString (kTemplateDefinitionArray_galgasTemplateScanner [idx].endString, advance: true)
+//        if foundEndDelimitor {
+//          matchedTemplateDelimiterIndex = nil
+//        }
+//      }
+//      while matchedTemplateDelimiterIndex != nil, self.currentChar != 0 {
+//        self.searchForReplacementPattern (kTemplateReplacementArray_galgasTemplateScanner)
+//        matchedTemplateDelimiterIndex = self.findTemplateDelimiterIndex (kTemplateDefinitionArray_galgasTemplateScanner)
+//        if matchedTemplateDelimiterIndex == nil {
+//          self.advance ()
+//          styleIndex = -2
+//        }
+//      }
+//      if matchedTemplateDelimiterIndex != nil, styleIndex == 0, self.currentChar != 0 {
+//        let s = super.parseLexicalTokenForLexicalColoring ()
+//        styleIndex = s.styleIndex
+//        tokenCode = s.token
+//      }
+//      if styleIndex > 0, kEndOfScriptInTemplateArray_galgasTemplateScanner [Int (styleIndex) - 1] {
+//        matchedTemplateDelimiterIndex = nil
+//      }
+//    //--- Error ?
+////      if !scanningOk {
+////        styleIndex = Int8 (self.styleCount ())
+////        self.advance ()
+////      }
+//    }
+//  }
+  
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -24,7 +277,7 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-- (instancetype) init {
+/* - (instancetype) init {
   self = [super init] ;
   if (self) {
     noteObjectAllocation (self) ;
@@ -45,12 +298,13 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
   }
   return self ;
 }
+*/
 
 //----------------------------------------------------------------------------------------------------------------------
 
-- (void) dealloc {
+/* - (void) dealloc {
   noteObjectDeallocation (self) ;
-}
+} */
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -58,6 +312,7 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
+/*
 static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [152] = {
   NO /* identifier */,
   NO /* double.xxx */,
@@ -212,6 +467,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [152] = {
   NO /* ?^ */,
   NO /* !^ */
 } ;
+ */
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -219,7 +475,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [152] = {
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-- (void) parseLexicalTokenForLexicalColoring {
+/* - (void) parseLexicalTokenForLexicalColoring {
   BOOL scanningOk = YES ;
   mTokenCode = 0 ;
   while ((mTokenCode == 0) && (mCurrentChar != '\0')) {
@@ -251,16 +507,16 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [152] = {
     }
   }
 }
-
+*/ 
 //----------------------------------------------------------------------------------------------------------------------
 //
 //                I S    T E M P L A T E    L E X I Q U E
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-- (BOOL) isTemplateLexique {
+/* - (BOOL) isTemplateLexique {
   return YES ;
-}
+} */
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -268,13 +524,13 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [152] = {
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-- (NSString *) lexiqueIdentifier {
+/* - (NSString *) lexiqueIdentifier {
   return @"galgasTemplateScanner" ;
-}
+} */
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@end
+// @end
 
 //--- START OF USER ZONE 2
 
