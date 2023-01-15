@@ -1,12 +1,12 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func enterOptions (%?^%_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption],
-           %!^%_ ioUIntOptionArray : inout [SWIFT_GGS_CommandLineOption],
-           %!^%_ ioStringOptionArray : inout [SWIFT_GGS_CommandLineOption],
-           %!^%_ ioStringListOptionArray : inout [SWIFT_GGS_CommandLineOption]) {
+func enterOptions (%?^%_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
+           %!^%_ ioUIntOptionArray : inout [SWIFT_CommandLineOption],
+           %!^%_ ioStringOptionArray : inout [SWIFT_CommandLineOption],
+           %!^%_ ioStringListOptionArray : inout [SWIFT_CommandLineOption]) {
 %for (lkey mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_MAP do
-  %  ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (\n%
+  %  ioBoolOptionArray.append (SWIFT_CommandLineOption (\n%
   %    domainName: %![OPTION_COMPONENT_NAME utf8Representation]%,\n%
   %    identifier: %![lkey utf8Representation]%,\n%
   %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
@@ -16,7 +16,7 @@ func enterOptions (%?^%_ ioBoolOptionArray : inout [SWIFT_GGS_CommandLineOption]
   %  ))\n%
 end
 for (lkey mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_MAP do
-  %  ioUIntOptionArray.append (SWIFT_GGS_CommandLineOption (\n%
+  %  ioUIntOptionArray.append (SWIFT_CommandLineOption (\n%
   %    domainName: %![OPTION_COMPONENT_NAME utf8Representation]%,\n%
   %    identifier: %![lkey utf8Representation]%,\n%
   %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
@@ -26,7 +26,7 @@ for (lkey mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_MAP d
   %  ))\n%
 end
 for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_MAP do
-  %  ioStringOptionArray.append (SWIFT_GGS_CommandLineOption (\n%
+  %  ioStringOptionArray.append (SWIFT_CommandLineOption (\n%
   %    domainName: %![OPTION_COMPONENT_NAME utf8Representation]%,\n%
   %    identifier: %![lkey utf8Representation]%,\n%
   %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
@@ -36,7 +36,7 @@ for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_MAP
   %  ))\n%
 end
 for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_MAP do
-  %  ioStringListOptionArray.append (SWIFT_GGS_CommandLineOption (\n%
+  %  ioStringListOptionArray.append (SWIFT_CommandLineOption (\n%
   %    domainName: %![OPTION_COMPONENT_NAME utf8Representation]%,\n%
   %    identifier: %![lkey utf8Representation]%,\n%
   %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
@@ -45,7 +45,7 @@ for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTIO
   %    defaultValue: %![mDefaultValue utf8Representation]%\n%
   %  ))\n%
 end
-%  ioBoolOptionArray.append (SWIFT_GGS_CommandLineOption (
+%  ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "quiet_output",
     commandChar: "q",

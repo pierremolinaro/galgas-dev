@@ -9,6 +9,81 @@ import AppKit
 //   LEXIQUE galgasScanner
 //----------------------------------------------------------------------------------------------------------------------
 
+fileprivate let gFont_galgasScanner = EBGenericPreferenceProperty <NSFont> (
+  defaultValue: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular),
+  prefKey: "FontFor_" + galgasScanner_lexiqueIdentifier ()
+)
+
+//----------------------------------------------------------------------------------------------------------------------
+
+fileprivate let gLineHeight_galgasScanner = EBGenericPreferenceProperty <Int> (
+  defaultValue: 12,
+  prefKey: "LineHeightFor_" + galgasScanner_lexiqueIdentifier ()
+)
+
+//----------------------------------------------------------------------------------------------------------------------
+
+fileprivate let gColors_galgasScanner : [EBGenericPreferenceProperty <NSColor>] = [
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-keywordsStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-delimitersStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-selectorStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-terminalStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-nonTerminalStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-integerStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-bigintStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-floatStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-characterStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-stringStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-typeNameStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-attributeStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner-commentStyle"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .red, prefKey: "ColorFor_galgasScanner_lexical_error"),
+  EBGenericPreferenceProperty <NSColor> (defaultValue: .gray, prefKey: "ColorFor_galgasScanner_template")
+]
+
+//----------------------------------------------------------------------------------------------------------------------
+
+fileprivate let gBoldStyle_galgasScanner : [EBGenericPreferenceProperty <Bool>] = [
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-keywordsStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-delimitersStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-selectorStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-terminalStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-nonTerminalStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-integerStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-bigintStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-floatStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-characterStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-stringStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-typeNameStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-attributeStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner-commentStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: true, prefKey: "BoldFor_galgasScanner_lexical_error"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner_template")
+]
+
+//----------------------------------------------------------------------------------------------------------------------
+
+fileprivate let gItalicStyle_galgasScanner : [EBGenericPreferenceProperty <Bool>] = [
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner-keywordsStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner-delimitersStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner-selectorStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner-terminalStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner-nonTerminalStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner-integerStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner-bigintStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner-floatStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner-characterStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner-stringStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner-typeNameStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner-attributeStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner-commentStyle"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner_lexical_error"),
+  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner_template")
+]
+
 //----------------------------------------------------------------------------------------------------------------------
 //                           Template Replacements
 //----------------------------------------------------------------------------------------------------------------------
@@ -269,6 +344,32 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
 
   func terminalVocabularyCount () -> Int {
     return 152
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var font : EBGenericPreferenceProperty <NSFont> { return gFont_galgasScanner }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var lineHeight : EBGenericPreferenceProperty <Int> { return gLineHeight_galgasScanner }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func color (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <NSColor> {
+    return gColors_galgasScanner [Int (inStyleIndex)]
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func bold (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <Bool> {
+    return gBoldStyle_galgasScanner [Int (inStyleIndex)]
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func italic (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <Bool> {
+    return gItalicStyle_galgasScanner [Int (inStyleIndex)]
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

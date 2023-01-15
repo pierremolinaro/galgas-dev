@@ -92,79 +92,11 @@ fileprivate let gPopUpData_%![lexiqueIndex string]%_%![lexiqueClassName identifi
 %
 ]
 
-%  for (mLeadingCharacterStrippedCount mTerminalList mLocation) in labels do
-    %/* static const UInt16 gPopUpData_%![lexiqueIndex string]%_%![lexiqueClassName identifierRepresentation]%_%![[mLocation locationIndex] string]% [%![ 2 * [mTerminalList length] + 2 string]%] = {\n%
-    %  %![mLeadingCharacterStrippedCount string]%, // Leading character count to strip\n%
-      for (mTerminal mDisplayFlags) in mTerminalList do
-        %  %!lexiqueClassName%_1_%![mTerminal identifierRepresentation]%, %![mDisplayFlags string]%,\n%
-      end    
-    %  0\n%
-    %} ; */\n\n%
-  end
-  % /* static const UInt16 * gPopUpData_%![lexiqueIndex string]%_%![lexiqueClassName identifierRepresentation]% [%![[labels length] + 1 string]%] = {\n%
-  for (* * mLocation) in labels do
-    %  gPopUpData_%![lexiqueIndex string]%_%![lexiqueClassName identifierRepresentation]%_%![[mLocation locationIndex] string]%,\n%
-  end
-    %  NULL\n%
-    %} ; */
-
 //----------------------------------------------------------------------------------------------------------------------
 //                            Lexique interface
 //----------------------------------------------------------------------------------------------------------------------
-
-fileprivate let gFont_%!lexiqueClassName% = EBGenericPreferenceProperty <NSFont> (
-  defaultValue: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular),
-  prefKey: "FontFor_" + %!lexiqueClassName%_lexiqueIdentifier ()
-)
-
-//----------------------------------------------------------------------------------------------------------------------
-
-fileprivate let gLineHeight_%!lexiqueClassName% = EBGenericPreferenceProperty <Int> (
-  defaultValue: 12,
-  prefKey: "LineHeightFor_" + %!lexiqueClassName%_lexiqueIdentifier ()
-)
-
-//----------------------------------------------------------------------------------------------------------------------
-
-fileprivate let gColors_%!lexiqueClassName% : [EBGenericPreferenceProperty <NSColor>] = [
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_%!lexiqueClassName%"),
-%
-for (identifier *) in lexicalStyleList do
- %  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_%!lexiqueClassName%-%!identifier.string%"),\n%
-end
-%  EBGenericPreferenceProperty <NSColor> (defaultValue: .red, prefKey: "ColorFor_%!lexiqueClassName%_lexical_error"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .gray, prefKey: "ColorFor_%!lexiqueClassName%_template")
-]
-
-//----------------------------------------------------------------------------------------------------------------------
-
-fileprivate let gBoldStyle_%!lexiqueClassName% : [EBGenericPreferenceProperty <Bool>] = [
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_%!lexiqueClassName%"),
-%
-for (identifier *) in lexicalStyleList do
- %  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_%!lexiqueClassName%-%!identifier.string%"),\n%
-end
-%  EBGenericPreferenceProperty <Bool> (defaultValue: true, prefKey: "BoldFor_%!lexiqueClassName%_lexical_error"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_%!lexiqueClassName%_template")
-]
-
-//----------------------------------------------------------------------------------------------------------------------
-
-fileprivate let gItalicStyle_%!lexiqueClassName% : [EBGenericPreferenceProperty <Bool>] = [
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_%!lexiqueClassName%"),
-%
-for (identifier *) in lexicalStyleList do
- %  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_%!lexiqueClassName%-%!identifier.string%"),\n%
-end
-%  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_%!lexiqueClassName%_lexical_error"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_%!lexiqueClassName%_template")
-]
-
-//----------------------------------------------------------------------------------------------------------------------
   
 class SWIFT_Tokenizer_%![lexiqueIndex string]%_%!lexiqueClassName% : SWIFT_Lexique_%!lexiqueClassName%, SWIFT_Tokenizer_Protocol {
-
-//- (const UInt16 * *) popupListData ;
 
 //- (NSUInteger) textMacroCount ;
 
@@ -174,28 +106,8 @@ class SWIFT_Tokenizer_%![lexiqueIndex string]%_%!lexiqueClassName% : SWIFT_Lexiq
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var font : EBGenericPreferenceProperty <NSFont> { return gFont_%!lexiqueClassName% }
-
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  var lineHeight : EBGenericPreferenceProperty <Int> { return gLineHeight_%!lexiqueClassName% }
-
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func color (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <NSColor> {
-    return gColors_%!lexiqueClassName% [Int (inStyleIndex)]
-  }
-
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func bold (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <Bool> {
-    return gBoldStyle_%!lexiqueClassName% [Int (inStyleIndex)]
-  }
-
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func italic (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <Bool> {
-    return gItalicStyle_%!lexiqueClassName% [Int (inStyleIndex)]
+  func popupListData () -> [[UInt16]] {
+    return gPopUpData_%![lexiqueIndex string]%_%![lexiqueClassName identifierRepresentation]%
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -235,10 +147,6 @@ class SWIFT_Tokenizer_%![lexiqueIndex string]%_%!lexiqueClassName% : SWIFT_Lexiq
 
 //----------------------------------------------------------------------------------------------------------------------\n\n%
   %/* @implementation OC_Tokenizer_%![lexiqueIndex string]%_%!lexiqueClassName%\n\n%
-  %//----------------------------------------------------------------------------------------------------------------------\n\n%
-  %- (const UInt16 * *) popupListData {\n%
-  %  return gPopUpData_%![lexiqueIndex string]%_%![lexiqueClassName identifierRepresentation]% ;\n%
-  %}\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %- (NSUInteger) textMacroCount {\n%
   %  return %![[textMacroList length] string]% ;\n%
