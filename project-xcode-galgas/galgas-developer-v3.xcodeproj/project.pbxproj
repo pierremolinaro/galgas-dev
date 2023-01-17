@@ -1637,7 +1637,8 @@
 				CFBF7004179ACAD400789D8A /* PMUndoManager.h */,
 				CFBF7005179ACAD400789D8A /* PMUndoManager.m */,
 			);
-			path = cocoa_galgas;
+			name = cocoa_galgas;
+			path = cocoa_objc_galgas;
 			sourceTree = "<group>";
 		};
 		CFB9E4850DF28AC500885084 /* collections */ = {

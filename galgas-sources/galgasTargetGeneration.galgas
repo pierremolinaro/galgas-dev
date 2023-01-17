@@ -57,16 +57,16 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
     ?platform:@string PLATFORM
     ?verboseOption:@bool VERBOSE_OPTION
 
-  template makefile_info_plist "project_xcode/Info.plist.txt"
+  template makefile_info_plist "project-xcode-objc/Info.plist.txt"
     ?@string PROJECT_NAME
     ?@string APPLICATION_BUNDLE_BASE
     ?@string VERSION_STRING
     ?@stringset HANDLED_EXTENSION_SET
     ?@string MACOSX_DEPLOYMENT_TARGET
 
-  template makefile_build_xcode "project_xcode/build.command"
+  template makefile_build_xcode "project-xcode-objc/build.command"
 
-  template makefile_info_plist_strings "project_xcode/Base.lproj/InfoPlist.strings" ?@string PROJECT_NAME
+  template makefile_info_plist_strings "project-xcode-objc/Base.lproj/InfoPlist.strings" ?@string PROJECT_NAME
 
   template json_file_list "json-file-list-galgas3.galgasTemplate"
     ?@stringset HAND_CODED_SOURCE_DIR_SET
@@ -508,7 +508,7 @@ proc updateGalgas3Targets
     ]
     [InfoPlistContents writeToFileWhenDifferentContents !dir +"/Info.plist" ?*]
   #--- Build.command
-    if not [dir +"/build.command" fileExists] then
+    if not [dir + "/build.command" fileExists] then
       [[filewrapper targetGalgas3GenerationFileWrapper.makefile_build_xcode] writeToExecutableFile !dir +"/build.command"]
     end
 
@@ -517,7 +517,7 @@ proc updateGalgas3Targets
     [[filewrapper targetGalgas3GenerationFileWrapper.makefile_info_plist_strings !inTargetName] writeToFileWhenDifferentContents !InfoPlist_strings_path ?*]
     let Credits_rtf_path = dir + "/Base.lproj/Credits.rtf"
     if not [Credits_rtf_path fileExists] then
-      [[filewrapper targetGalgas3GenerationFileWrapper."project_xcode/Base.lproj/Credits.rtf"] writeToFile !Credits_rtf_path]
+      [[filewrapper targetGalgas3GenerationFileWrapper."project-xcode-objc/Base.lproj/Credits.rtf"] writeToFile !Credits_rtf_path]
     end
   #--- Enumerate icons files in "userResources" directory
     let userResourceDir = projectDirectory + "/xcode-project/userResources"
@@ -754,8 +754,8 @@ proc updateGalgas3Targets
     libpmReferenceGroupList += !groupRef
   #--- Add "Cocoa GALGAS" group
     [!?xcodeProject addGroupWithFiles
-      !groupName:"Cocoa GALGAS"
-      !groupPath:"cocoa_galgas"
+      !groupName:"Cocoa Objc GALGAS"
+      !groupPath:"cocoa_objc_galgas"
       !fileNames:{
         !"Base.lproj/OC_GGS_Document.xib",
         !"Base.lproj/PMDebug.xib",

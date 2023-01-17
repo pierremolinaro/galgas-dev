@@ -37,6 +37,7 @@ gui cocoa {
     label $sortedlist$, $@type$
     label $enum$, $@type$
     label $class$, $@type$
+    label $refclass$, $@type$
     label $extern$, $@type$
     label $struct$, $@type$
     label $rule$, $<non_terminal>$
