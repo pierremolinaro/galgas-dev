@@ -592,7 +592,7 @@ class cPtr_abstractExtensionGetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioExtensionSettierListMap,
+           class GALGAS_genericExtensionMethodListMap & ioExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionMethodListMapAST,
@@ -1121,7 +1121,7 @@ class cPtr_abstractExtensionMethodAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioExtensionSettierListMap,
+           class GALGAS_genericExtensionMethodListMap & ioExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionMethodListMapAST,
@@ -1639,7 +1639,7 @@ class cPtr_abstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioExtensionSettierListMap,
+           class GALGAS_genericExtensionMethodListMap & ioExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionMethodListMapAST,
@@ -2256,7 +2256,7 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioExtensionSettierListMap,
+           class GALGAS_genericExtensionMethodListMap & ioExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionMethodListMapAST,
@@ -2760,7 +2760,7 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioExtensionSettierListMap,
+           class GALGAS_genericExtensionMethodListMap & ioExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionMethodListMapAST,
@@ -2969,7 +2969,7 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioExtensionSettierListMap,
+           class GALGAS_genericExtensionMethodListMap & ioExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionMethodListMapAST,
@@ -3172,7 +3172,7 @@ class cPtr_overridingAbstractExtensionGetterAST : public cPtr_semanticDeclaratio
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioExtensionSettierListMap,
+           class GALGAS_genericExtensionMethodListMap & ioExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionMethodListMapAST,
@@ -3377,7 +3377,7 @@ class cPtr_overridingAbstractExtensionMethodAST : public cPtr_semanticDeclaratio
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioExtensionSettierListMap,
+           class GALGAS_genericExtensionMethodListMap & ioExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionMethodListMapAST,
@@ -3571,7 +3571,7 @@ class cPtr_overridingAbstractExtensionSetterAST : public cPtr_semanticDeclaratio
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioExtensionSettierListMap,
+           class GALGAS_genericExtensionMethodListMap & ioExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionMethodListMapAST,
@@ -3780,7 +3780,7 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioExtensionSettierListMap,
+           class GALGAS_genericExtensionMethodListMap & ioExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionMethodListMapAST,
@@ -3993,7 +3993,7 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioExtensionSettierListMap,
+           class GALGAS_genericExtensionMethodListMap & ioExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionMethodListMapAST,
@@ -4202,7 +4202,7 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioExtensionSettierListMap,
+           class GALGAS_genericExtensionMethodListMap & ioExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionMethodListMapAST,

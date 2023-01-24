@@ -397,9 +397,7 @@ override method @setterCallInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode
-{
-#  ioGeneratedCode += "try{\n"
+  ?!@string ioGeneratedCode {
   ioGeneratedCode += "{\n"
   var receiverCppName = self.mReceiverCppName
   for (mValue) in self.mReceiverStructAttributes do

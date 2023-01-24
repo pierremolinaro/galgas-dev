@@ -122,8 +122,8 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
 #--- Search base type that declares the method
   var baseType = receiverExpression.mResultType
   var searching = true
-  if @uint. errorCount == 0 then
-    loop (@uint. max) while searching do
+  if @uint.errorCount == 0 then
+    loop (@uint.max) while searching do
       if [[baseType definition].mSuperType isNull] then
         searching = false
       else

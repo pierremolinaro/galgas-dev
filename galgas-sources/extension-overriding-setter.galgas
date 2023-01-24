@@ -202,7 +202,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
 
 override method @overridingExtensionSetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
-  ?!@genericExtensionMethodListMap unused ioExtensionSettierListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap
   ?!@genericExtensionMethodListMap ioOverridingExtensionSetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionSetterListMap
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST

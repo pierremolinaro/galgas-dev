@@ -13161,7 +13161,7 @@ GALGAS_genericExtensionMethodListMap GALGAS_genericExtensionMethodListMap::extra
 //----------------------------------------------------------------------------------------------------------------------
 
 void cPtr_semanticDeclarationAST::method_buildExtensionListMaps (GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionSetterListMap */,
-                                                                 GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionSettierListMap */,
+                                                                 GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionSetterListMap */,
                                                                  GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionSetterListMap */,
                                                                  GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionSetterListMap */,
                                                                  GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionMethodListMapAST */,
@@ -13180,7 +13180,7 @@ void cPtr_semanticDeclarationAST::method_buildExtensionListMaps (GALGAS_genericE
 
 void callExtensionMethod_buildExtensionListMaps (cPtr_semanticDeclarationAST * inObject,
                                                  GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionSetterListMap,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioExtensionSettierListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioExtensionSetterListMap,
                                                  GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionSetterListMap,
                                                  GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionSetterListMap,
                                                  GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionMethodListMapAST,
@@ -13195,7 +13195,7 @@ void callExtensionMethod_buildExtensionListMaps (cPtr_semanticDeclarationAST * i
                                                  COMMA_LOCATION_ARGS) {
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
-    inObject->method_buildExtensionListMaps  (io_ioAbstractExtensionSetterListMap, io_ioExtensionSettierListMap, io_ioOverridingExtensionSetterListMap, io_ioOverridingAbstractExtensionSetterListMap, io_ioAbstractExtensionMethodListMapAST, io_ioExtensionMethodListMap, io_ioOverridingExtensionMethodListMap, io_ioOverridingAbstractExtensionMethodListMap, io_ioAbstractExtensionGetterListMap, io_ioExtensionGetterListMap, io_ioOverridingExtensionGetterListMap, io_ioOverridingAbstractExtensionGetterListMap, inCompiler COMMA_THERE) ;
+    inObject->method_buildExtensionListMaps  (io_ioAbstractExtensionSetterListMap, io_ioExtensionSetterListMap, io_ioOverridingExtensionSetterListMap, io_ioOverridingAbstractExtensionSetterListMap, io_ioAbstractExtensionMethodListMapAST, io_ioExtensionMethodListMap, io_ioOverridingExtensionMethodListMap, io_ioOverridingAbstractExtensionMethodListMap, io_ioAbstractExtensionGetterListMap, io_ioExtensionGetterListMap, io_ioOverridingExtensionGetterListMap, io_ioOverridingAbstractExtensionGetterListMap, inCompiler COMMA_THERE) ;
   }
 }
 //----------------------------------------------------------------------------------------------------------------------

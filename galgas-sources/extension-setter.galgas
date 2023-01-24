@@ -93,7 +93,10 @@ override method @extensionSetterAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"extension setter @" + self.mTypeName + " " + self.mExtensionSetterName !self.mExtensionSetterName.location}
+  let key = @lstring.new {
+    !"extension setter @" + self.mTypeName + " " + self.mExtensionSetterName
+    !self.mExtensionSetterName.location
+  }
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName !self.mTypeName.location}]
 #---
@@ -195,7 +198,7 @@ override method @extensionSetterAST semanticAnalysis
 
 override method @extensionSetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
-  ?!@genericExtensionMethodListMap ioExtensionSettierListMap
+  ?!@genericExtensionMethodListMap ioExtensionSetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionSetterListMap
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
@@ -207,7 +210,7 @@ override method @extensionSetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
 {
-  ioExtensionSettierListMap +=
+  ioExtensionSetterListMap +=
     !self.mTypeName.string
     !self.mExtensionSetterName
 }

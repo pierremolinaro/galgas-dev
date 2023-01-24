@@ -4720,7 +4720,7 @@ class cPtr_semanticDeclarationAST : public acStrongPtr_class {
 
 //--- Extension method buildExtensionListMaps
   public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioExtensionSettierListMap,
+           class GALGAS_genericExtensionMethodListMap & ioExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionSetterListMap,
            class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionMethodListMapAST,

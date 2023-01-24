@@ -9546,7 +9546,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericExtensionMet
 
 void callExtensionMethod_buildExtensionListMaps (class cPtr_semanticDeclarationAST * inObject,
                                                  GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionSetterListMap,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioExtensionSettierListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioExtensionSetterListMap,
                                                  GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionSetterListMap,
                                                  GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionSetterListMap,
                                                  GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionMethodListMapAST,

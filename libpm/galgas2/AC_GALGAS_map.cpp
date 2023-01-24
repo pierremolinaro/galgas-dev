@@ -847,8 +847,8 @@ void AC_GALGAS_map::performInsert (const capCollectionElement & inAttributes,
       if (NULL != mSharedMap) {
         mSharedMap->performInsert (inAttributes, inCompiler, inInsertErrorMessage, inShadowErrorMessage COMMA_THERE) ;
       }
-    }else{
-      drop () ;
+//    }else{
+//      drop () ;
     }
   }
 }
