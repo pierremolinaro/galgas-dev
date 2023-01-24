@@ -9,6 +9,21 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Overriding extension method '@functionPrototypeDeclarationForGeneration appendDeclaration1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_functionPrototypeDeclarationForGeneration::method_appendDeclaration_31_ (GALGAS_stringset & /* ioArgument_ioInclusionSet */,
+                                                                                   GALGAS_string & outArgument_outHeader,
+                                                                                   C_Compiler * inCompiler
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_functionPrototypeDeclarationForGeneration temp_0 = this ;
+  const GALGAS_functionPrototypeDeclarationForGeneration temp_1 = this ;
+  const GALGAS_functionPrototypeDeclarationForGeneration temp_2 = this ;
+  outArgument_outHeader = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_functionDeclaration (inCompiler, temp_0.readProperty_mFunctionName (), temp_1.readProperty_mFormalArgumentList (), extensionGetter_identifierRepresentation (temp_2.readProperty_mReturnType (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1098)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1095))) ;
+}
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Overriding extension getter '@onceFunctionDeclarationForGeneration headerKind'
 //
 //----------------------------------------------------------------------------------------------------------------------

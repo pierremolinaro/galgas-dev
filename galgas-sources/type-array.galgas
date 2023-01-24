@@ -127,7 +127,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
   enterBaseGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"axisCount"
+    !getterName: "axisCount"
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )

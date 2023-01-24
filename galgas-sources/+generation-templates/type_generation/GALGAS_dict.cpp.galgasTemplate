@@ -248,9 +248,9 @@ end
     }
   }
 
-  protected: static void  getPreviousElement (cNode_%!TYPE_IDENTIFIER% * & ioRoot,
-                                               cNode_%!TYPE_IDENTIFIER% * & ioElement,
-                                               bool & ioBranchHasBeenRemoved) {
+  protected: static void getPreviousElement (cNode_%!TYPE_IDENTIFIER% * & ioRoot,
+                                             cNode_%!TYPE_IDENTIFIER% * & ioElement,
+                                             bool & ioBranchHasBeenRemoved) {
     if (ioRoot->mSupPtr == NULL) {
       ioElement = ioRoot ;
       ioRoot = ioRoot->mInfPtr ;
@@ -424,6 +424,16 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (C_String & ioString,
     ioString << " not built" ;
   }
   ioString << ">" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (isValid ()) {
+    result = GALGAS_uint (mSharedDict->mCount) ;
+  }
+  return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

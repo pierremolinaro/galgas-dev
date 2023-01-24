@@ -182,11 +182,12 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !getterName: "hasKey" !self.mKeyTypeName.string !"inKey"
+    !getterName: "hasKey"
+    !self.mKeyTypeName.string !"inKey"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
-  enterInheritedGetterWithoutArgument (
+  enterBaseGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName:"count"

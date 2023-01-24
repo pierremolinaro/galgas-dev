@@ -459,7 +459,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   enterBaseGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"overriddenMap"
+    !getterName: "overriddenMap"
     !returnedTypeName:self.mMapTypeName.string
     !hasCompilerArgument:true
   )

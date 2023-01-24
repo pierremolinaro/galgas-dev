@@ -231,7 +231,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     enterBaseGetterWithoutArgument (
       !?getterMap
       !?ioSemanticContext.mTypeMap
-      !"is" + [mConstantName stringByCapitalizingFirstCharacter]
+      !getterName: "is" + [mConstantName stringByCapitalizingFirstCharacter]
       !returnedTypeName:"bool"
       !hasCompilerArgument:false
     )

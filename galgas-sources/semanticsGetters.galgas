@@ -117,7 +117,7 @@ proc enterInheritedGetterWith2Arguments
 proc enterBaseGetterWithoutArgument
   ?!@getterMap ioGetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?let @string inGetterName
+  ?getterName: let @string inGetterName
   ?returnedTypeName:let @string inReturnedTypeName
   ?hasCompilerArgument:let @bool inHasCompilerArgument
 {
@@ -329,42 +329,42 @@ override method @locationPredefinedTypeAST getGetterMap
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"locationString"
+    !getterName: "locationString"
     !returnedTypeName:"string"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"locationIndex"
+    !getterName: "locationIndex"
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"file"
+    !getterName: "file"
     !returnedTypeName:"string"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"line"
+    !getterName: "line"
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"column"
+    !getterName: "column"
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"isNowhere"
+    !getterName: "isNowhere"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -387,357 +387,357 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"lastCharacter"
+    !getterName: "lastCharacter"
     !returnedTypeName:"char"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"nowhere"
+    !getterName: "nowhere"
     !returnedTypeName:"lstring"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"here"
+    !getterName: "here"
     !returnedTypeName:"lstring"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"doesEnvironmentVariableExist"
+    !getterName: "doesEnvironmentVariableExist"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"length"
+    !getterName: "length"
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"range"
+    !getterName: "range"
     !returnedTypeName:"range"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"utf8RepresentationWithUnicodeEscaping"
+    !getterName: "utf8RepresentationWithUnicodeEscaping"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"assemblerRepresentation"
+    !getterName: "assemblerRepresentation"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"fileNameRepresentation"
+    !getterName: "fileNameRepresentation"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"nameRepresentation"
+    !getterName: "nameRepresentation"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"cStringRepresentation"
+    !getterName: "cStringRepresentation"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"identifierRepresentation"
+    !getterName: "identifierRepresentation"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"decodedStringFromRepresentation"
+    !getterName: "decodedStringFromRepresentation"
     !returnedTypeName:"string"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"HTMLRepresentation"
+    !getterName: "HTMLRepresentation"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"utf8Representation"
+    !getterName: "utf8Representation"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"utf8RepresentationWithoutDelimiters"
+    !getterName: "utf8RepresentationWithoutDelimiters"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"utf8Length"
+    !getterName: "utf8Length"
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"utf32Representation"
+    !getterName: "utf32Representation"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"stringByTrimmingWhiteSpaces"
+    !getterName: "stringByTrimmingWhiteSpaces"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"md5"
+    !getterName: "md5"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"decimalUnsignedNumber"
+    !getterName: "decimalUnsignedNumber"
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"isDecimalUnsignedNumber"
+    !getterName: "isDecimalUnsignedNumber"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"decimalUnsigned64Number"
+    !getterName: "decimalUnsigned64Number"
     !returnedTypeName:"uint64"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"isDecimalUnsigned64Number"
+    !getterName: "isDecimalUnsigned64Number"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"decimalSignedNumber"
+    !getterName: "decimalSignedNumber"
     !returnedTypeName:"sint"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"isDecimalSignedNumber"
+    !getterName: "isDecimalSignedNumber"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"decimalSigned64Number"
+    !getterName: "decimalSigned64Number"
     !returnedTypeName:"sint64"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"isDecimalSigned64Number"
+    !getterName: "isDecimalSigned64Number"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"decimalSignedBigInt"
+    !getterName: "decimalSignedBigInt"
     !returnedTypeName:"bigint"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"isDecimalSignedBigInt"
+    !getterName: "isDecimalSignedBigInt"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"isDoubleNumber"
+    !getterName: "isDoubleNumber"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"doubleNumber"
+    !getterName: "doubleNumber"
     !returnedTypeName:"double"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"capacity"
+    !getterName: "capacity"
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"isSymbolicLink"
+    !getterName: "isSymbolicLink"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"fileExists"
+    !getterName: "fileExists"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"directoryExists"
+    !getterName: "directoryExists"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"pathExtension"
+    !getterName: "pathExtension"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"nativePathWithUnixPath"
+    !getterName: "nativePathWithUnixPath"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"unixPathWithNativePath"
+    !getterName: "unixPathWithNativePath"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"lastPathComponent"
+    !getterName: "lastPathComponent"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"stringByDeletingPathExtension"
+    !getterName: "stringByDeletingPathExtension"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"stringByCapitalizingFirstCharacter"
+    !getterName: "stringByCapitalizingFirstCharacter"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"firstCharacterOrNul"
+    !getterName: "firstCharacterOrNul"
     !returnedTypeName:"char"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"stringByDeletingLastPathComponent"
+    !getterName: "stringByDeletingLastPathComponent"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"stringByStandardizingPath"
+    !getterName: "stringByStandardizingPath"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"lowercaseString"
+    !getterName: "lowercaseString"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"uppercaseString"
+    !getterName: "uppercaseString"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"reversedString"
+    !getterName: "reversedString"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"currentColumn"
+    !getterName: "currentColumn"
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"system"
+    !getterName: "system"
     !returnedTypeName:"sint"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"popen"
+    !getterName: "popen"
     !returnedTypeName:"string"
     !hasCompilerArgument:true
   )
