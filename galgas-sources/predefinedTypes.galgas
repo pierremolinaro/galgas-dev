@@ -250,7 +250,8 @@ override method @predefinedTypeAST enterDeclarationInSemanticContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
-  let optionalMethodMap = @optionalMethodMap {}
+#  let optionalMethodMap = @optionalMethodMap {}
+  [self getOptionalMethodMap !?ioSemanticContext.mTypeMap ?let @optionalMethodMap optionalMethodMap]
   [self getConstructorMap !?ioSemanticContext.mTypeMap ?let @constructorMap constructorMap]
   [self getGetterMap !?ioSemanticContext.mTypeMap ?var @getterMap getterMap]
   [self getSetterMap !?ioSemanticContext.mTypeMap ?var @setterMap setterMap]

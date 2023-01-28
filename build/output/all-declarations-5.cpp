@@ -14888,6 +14888,32 @@ void callExtensionMethod_getClassMethodMap (cPtr_predefinedTypeAST * inObject,
 }
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Extension method '@predefinedTypeAST getOptionalMethodMap'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_predefinedTypeAST::method_getOptionalMethodMap (GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
+                                                          GALGAS_optionalMethodMap & outArgument_outMap,
+                                                          C_Compiler * /* inCompiler */
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outMap = GALGAS_optionalMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 431)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getOptionalMethodMap (cPtr_predefinedTypeAST * inObject,
+                                               GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                               GALGAS_optionalMethodMap & out_outMap,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
+  out_outMap.drop () ;
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
+    inObject->method_getOptionalMethodMap  (io_ioUnifiedTypeMap, out_outMap, inCompiler COMMA_THERE) ;
+  }
+}
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Extension getter '@predefinedTypeAST getSupportedOperatorFlags'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -14895,7 +14921,7 @@ void callExtensionMethod_getClassMethodMap (cPtr_predefinedTypeAST * inObject,
 GALGAS_operators cPtr_predefinedTypeAST::getter_getSupportedOperatorFlags (C_Compiler */* inCompiler */
                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_operators result_outFlags ; // Returned variable
-  result_outFlags = GALGAS_operators::constructor_none (SOURCE_FILE ("semanticsTypes.galgas", 430)) ;
+  result_outFlags = GALGAS_operators::constructor_none (SOURCE_FILE ("semanticsTypes.galgas", 437)) ;
 //---
   return result_outFlags ;
 }
@@ -14924,7 +14950,7 @@ void cPtr_predefinedTypeAST::method_getAddAssignArgumentList (GALGAS_unifiedType
                                                               GALGAS_functionSignature & outArgument_outAddAssignArgumentList,
                                                               C_Compiler * /* inCompiler */
                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outAddAssignArgumentList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 438)) ;
+  outArgument_outAddAssignArgumentList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 445)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -14951,7 +14977,7 @@ void cPtr_predefinedTypeAST::method_getEnumerationList (GALGAS_unifiedTypeMap & 
                                                         GALGAS_string & outArgument_outEnumeratedType,
                                                         C_Compiler * /* inCompiler */
                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outEnumerationList = GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 452)) ;
+  outArgument_outEnumerationList = GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 459)) ;
   outArgument_outEnumeratedType = GALGAS_string::makeEmptyString () ;
 }
 

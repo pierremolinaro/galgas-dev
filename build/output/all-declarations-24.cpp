@@ -4637,6 +4637,46 @@ void cPtr_binarysetPredefinedTypeAST::method_getClassMethodMap (GALGAS_unifiedTy
 }
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Routine 'enterBaseOptionalMethodWithArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterBaseOptionalMethodWithArgument (GALGAS_optionalMethodMap & ioArgument_ioMap,
+                                                  GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
+                                                  const GALGAS_string constinArgument_inOptionalMethodName,
+                                                  const GALGAS_string constinArgument_inArgument_31_TypeName,
+                                                  const GALGAS_string constinArgument_inArgument_31_Name,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_optionalMethodSignature var_argList_6052 = GALGAS_optionalMethodSignature::constructor_emptyList (SOURCE_FILE ("semanticsOptionalMethods.galgas", 147)) ;
+  GALGAS_unifiedTypeMapEntry var_t_6127 ;
+  {
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t_6127, inCompiler COMMA_SOURCE_FILE ("semanticsOptionalMethods.galgas", 148)) ;
+  }
+  var_argList_6052.addAssign_operation (GALGAS_bool (false), GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsOptionalMethods.galgas", 149)), var_t_6127, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsOptionalMethods.galgas", 149)) ;
+  {
+  ioArgument_ioMap.setter_insertKey (GALGAS_lstring::constructor_new (constinArgument_inOptionalMethodName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsOptionalMethods.galgas", 151))  COMMA_SOURCE_FILE ("semanticsOptionalMethods.galgas", 151)), var_argList_6052, inCompiler COMMA_SOURCE_FILE ("semanticsOptionalMethods.galgas", 150)) ;
+  }
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@stringPredefinedTypeAST getOptionalMethodMap'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_stringPredefinedTypeAST::method_getOptionalMethodMap (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
+                                                                GALGAS_optionalMethodMap & outArgument_outMap,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outMap = GALGAS_optionalMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsOptionalMethods.galgas", 379)) ;
+  {
+  routine_enterBaseOptionalMethodWithArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("extractBigInt"), GALGAS_string ("bigint"), GALGAS_string ("outBigInt"), inCompiler  COMMA_SOURCE_FILE ("semanticsOptionalMethods.galgas", 380)) ;
+  }
+}
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Once function 'compilerCppName'
 //
 //----------------------------------------------------------------------------------------------------------------------

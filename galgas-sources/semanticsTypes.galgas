@@ -426,6 +426,13 @@ method @predefinedTypeAST getClassMethodMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+method @predefinedTypeAST getOptionalMethodMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
+                                               !@optionalMethodMap outMap {
+  outMap = {}
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 getter @predefinedTypeAST getSupportedOperatorFlags -> @operators outFlags {
   outFlags = .none # No supported operator
 }

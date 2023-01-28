@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 1996, ..., 2021 Pierre Molinaro.
+//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -2304,6 +2304,21 @@ void GALGAS_string::class_method_generateFileWithPattern (GALGAS_string inStartP
       inMakeExecutable.boolValue ()
     ) ;
   }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_string::optional_extractBigInt (GALGAS_bigint & outBigInt) const {
+  bool extracted = false ;
+  outBigInt.drop () ;
+  if (isValid () && (mString.length () > 0)) {
+    extracted = true ;
+    const C_BigInt bigint (mString.cString (HERE), 10, extracted) ;
+    if (extracted) {
+      outBigInt = GALGAS_bigint (bigint) ;
+    }
+  }
+  return extracted ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

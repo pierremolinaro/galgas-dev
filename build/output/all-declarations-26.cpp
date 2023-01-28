@@ -2038,59 +2038,61 @@ void cPtr_predefinedTypeAST::method_enterDeclarationInSemanticContext (const GAL
                                                                        GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                        C_Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_optionalMethodMap var_optionalMethodMap_12490 = GALGAS_optionalMethodMap::constructor_emptyMap (SOURCE_FILE ("predefinedTypes.galgas", 253)) ;
-  GALGAS_constructorMap var_constructorMap_12605 ;
+  GALGAS_optionalMethodMap var_optionalMethodMap_12615 ;
   const GALGAS_predefinedTypeAST temp_0 = this ;
-  callExtensionMethod_getConstructorMap ((cPtr_predefinedTypeAST *) temp_0.ptr (), ioArgument_ioSemanticContext.mProperty_mTypeMap, var_constructorMap_12605, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 254)) ;
-  GALGAS_getterMap var_getterMap_12682 ;
+  callExtensionMethod_getOptionalMethodMap ((cPtr_predefinedTypeAST *) temp_0.ptr (), ioArgument_ioSemanticContext.mProperty_mTypeMap, var_optionalMethodMap_12615, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 254)) ;
+  GALGAS_constructorMap var_constructorMap_12707 ;
   const GALGAS_predefinedTypeAST temp_1 = this ;
-  callExtensionMethod_getGetterMap ((cPtr_predefinedTypeAST *) temp_1.ptr (), ioArgument_ioSemanticContext.mProperty_mTypeMap, var_getterMap_12682, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 255)) ;
-  GALGAS_setterMap var_setterMap_12759 ;
+  callExtensionMethod_getConstructorMap ((cPtr_predefinedTypeAST *) temp_1.ptr (), ioArgument_ioSemanticContext.mProperty_mTypeMap, var_constructorMap_12707, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 255)) ;
+  GALGAS_getterMap var_getterMap_12784 ;
   const GALGAS_predefinedTypeAST temp_2 = this ;
-  callExtensionMethod_getSetterMap ((cPtr_predefinedTypeAST *) temp_2.ptr (), ioArgument_ioSemanticContext.mProperty_mTypeMap, var_setterMap_12759, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 256)) ;
-  GALGAS_instanceMethodMap var_instanceMethodMap_12860 ;
+  callExtensionMethod_getGetterMap ((cPtr_predefinedTypeAST *) temp_2.ptr (), ioArgument_ioSemanticContext.mProperty_mTypeMap, var_getterMap_12784, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 256)) ;
+  GALGAS_setterMap var_setterMap_12861 ;
   const GALGAS_predefinedTypeAST temp_3 = this ;
-  callExtensionMethod_getInstanceMethodMap ((cPtr_predefinedTypeAST *) temp_3.ptr (), ioArgument_ioSemanticContext.mProperty_mTypeMap, var_instanceMethodMap_12860, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 257)) ;
-  GALGAS_classMethodMap var_classMethodMap_12952 ;
+  callExtensionMethod_getSetterMap ((cPtr_predefinedTypeAST *) temp_3.ptr (), ioArgument_ioSemanticContext.mProperty_mTypeMap, var_setterMap_12861, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 257)) ;
+  GALGAS_instanceMethodMap var_instanceMethodMap_12962 ;
   const GALGAS_predefinedTypeAST temp_4 = this ;
-  callExtensionMethod_getClassMethodMap ((cPtr_predefinedTypeAST *) temp_4.ptr (), ioArgument_ioSemanticContext.mProperty_mTypeMap, var_classMethodMap_12952, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 258)) ;
-  GALGAS_functionSignature var_addAssignArgumentList_13061 ;
+  callExtensionMethod_getInstanceMethodMap ((cPtr_predefinedTypeAST *) temp_4.ptr (), ioArgument_ioSemanticContext.mProperty_mTypeMap, var_instanceMethodMap_12962, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 258)) ;
+  GALGAS_classMethodMap var_classMethodMap_13054 ;
   const GALGAS_predefinedTypeAST temp_5 = this ;
-  callExtensionMethod_getAddAssignArgumentList ((cPtr_predefinedTypeAST *) temp_5.ptr (), ioArgument_ioSemanticContext.mProperty_mTypeMap, var_addAssignArgumentList_13061, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 259)) ;
-  GALGAS_enumerationDescriptorList var_enumerationList_13174 ;
-  GALGAS_string var_enumeratedTypeName_13210 ;
+  callExtensionMethod_getClassMethodMap ((cPtr_predefinedTypeAST *) temp_5.ptr (), ioArgument_ioSemanticContext.mProperty_mTypeMap, var_classMethodMap_13054, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 259)) ;
+  GALGAS_functionSignature var_addAssignArgumentList_13163 ;
   const GALGAS_predefinedTypeAST temp_6 = this ;
-  callExtensionMethod_getEnumerationList ((cPtr_predefinedTypeAST *) temp_6.ptr (), ioArgument_ioSemanticContext.mProperty_mTypeMap, var_enumerationList_13174, var_enumeratedTypeName_13210, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 260)) ;
-  {
+  callExtensionMethod_getAddAssignArgumentList ((cPtr_predefinedTypeAST *) temp_6.ptr (), ioArgument_ioSemanticContext.mProperty_mTypeMap, var_addAssignArgumentList_13163, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 260)) ;
+  GALGAS_enumerationDescriptorList var_enumerationList_13276 ;
+  GALGAS_string var_enumeratedTypeName_13312 ;
   const GALGAS_predefinedTypeAST temp_7 = this ;
-  GALGAS_unifiedTypeMapEntry joker_13302 ; // Joker input parameter
-  extensionSetter_makeEntryFromString (ioArgument_ioSemanticContext.mProperty_mTypeMap, temp_7.readProperty_mPredefinedTypeName (), joker_13302, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 265)) ;
+  callExtensionMethod_getEnumerationList ((cPtr_predefinedTypeAST *) temp_7.ptr (), ioArgument_ioSemanticContext.mProperty_mTypeMap, var_enumerationList_13276, var_enumeratedTypeName_13312, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 261)) ;
+  {
+  const GALGAS_predefinedTypeAST temp_8 = this ;
+  GALGAS_unifiedTypeMapEntry joker_13404 ; // Joker input parameter
+  extensionSetter_makeEntryFromString (ioArgument_ioSemanticContext.mProperty_mTypeMap, temp_8.readProperty_mPredefinedTypeName (), joker_13404, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 266)) ;
   }
-  GALGAS_unifiedTypeMapEntry var_enumeratedTypeEntry_13411 ;
-  enumGalgasBool test_8 = kBoolTrue ;
-  if (kBoolTrue == test_8) {
-    test_8 = GALGAS_bool (kIsEqual, var_enumeratedTypeName_13210.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-    if (kBoolTrue == test_8) {
-      var_enumeratedTypeEntry_13411 = GALGAS_unifiedTypeMapEntry::constructor_null (SOURCE_FILE ("predefinedTypes.galgas", 272)) ;
+  GALGAS_unifiedTypeMapEntry var_enumeratedTypeEntry_13513 ;
+  enumGalgasBool test_9 = kBoolTrue ;
+  if (kBoolTrue == test_9) {
+    test_9 = GALGAS_bool (kIsEqual, var_enumeratedTypeName_13312.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    if (kBoolTrue == test_9) {
+      var_enumeratedTypeEntry_13513 = GALGAS_unifiedTypeMapEntry::constructor_null (SOURCE_FILE ("predefinedTypes.galgas", 273)) ;
     }
   }
-  if (kBoolFalse == test_8) {
+  if (kBoolFalse == test_9) {
     {
-    extensionSetter_makeEntryFromString (ioArgument_ioSemanticContext.mProperty_mTypeMap, var_enumeratedTypeName_13210, var_enumeratedTypeEntry_13411, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 274)) ;
+    extensionSetter_makeEntryFromString (ioArgument_ioSemanticContext.mProperty_mTypeMap, var_enumeratedTypeName_13312, var_enumeratedTypeEntry_13513, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 275)) ;
     }
   }
   {
-  const GALGAS_predefinedTypeAST temp_9 = this ;
-  routine_addExtensions (constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, GALGAS_lstring::constructor_new (temp_9.readProperty_mPredefinedTypeName (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 282))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 282)), GALGAS_bool (false), var_getterMap_12682, var_setterMap_12759, var_instanceMethodMap_12860, GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 277)) ;
-  }
   const GALGAS_predefinedTypeAST temp_10 = this ;
+  routine_addExtensions (constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, GALGAS_lstring::constructor_new (temp_10.readProperty_mPredefinedTypeName (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 283))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 283)), GALGAS_bool (false), var_getterMap_12784, var_setterMap_12861, var_instanceMethodMap_12962, GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 278)) ;
+  }
   const GALGAS_predefinedTypeAST temp_11 = this ;
   const GALGAS_predefinedTypeAST temp_12 = this ;
   const GALGAS_predefinedTypeAST temp_13 = this ;
   const GALGAS_predefinedTypeAST temp_14 = this ;
-  GALGAS_unifiedTypeDefinition var_typeDefinition_13993 = GALGAS_unifiedTypeDefinition::constructor_new (GALGAS_lstring::constructor_new (temp_10.readProperty_mPredefinedTypeName (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 291))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 291)), temp_11.readProperty_mIsPredefined (), GALGAS_bool (true), GALGAS_unifiedTypeMapEntry::constructor_null (SOURCE_FILE ("predefinedTypes.galgas", 294)), GALGAS_typeKindEnum::constructor_predefinedType (SOURCE_FILE ("predefinedTypes.galgas", 295)), GALGAS_bool (kIsEqual, temp_12.readProperty_mPredefinedTypeName ().objectCompare (GALGAS_string ("stringset"))), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("predefinedTypes.galgas", 297)), GALGAS_propertyMap::constructor_emptyMap (SOURCE_FILE ("predefinedTypes.galgas", 298)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("predefinedTypes.galgas", 299)), var_constructorMap_12605, var_getterMap_12682, var_setterMap_12759, var_instanceMethodMap_12860, var_classMethodMap_12952, var_optionalMethodMap_12490, var_enumerationList_13174, callExtensionGetter_getSupportedOperatorFlags ((const cPtr_predefinedTypeAST *) temp_13.ptr (), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 307)), var_addAssignArgumentList_13061, GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("predefinedTypes.galgas", 309)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("predefinedTypes.galgas", 310)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("predefinedTypes.galgas", 311)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("predefinedTypes.galgas", 312)), GALGAS_bool (false), var_enumeratedTypeEntry_13411, extensionGetter_defaultConstructorName (temp_14.readProperty_mKind (), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 315)), GALGAS_string ("galgas2/predefined-types"), GALGAS_headerKind::constructor_twoHeaders (SOURCE_FILE ("predefinedTypes.galgas", 317))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 290)) ;
+  const GALGAS_predefinedTypeAST temp_15 = this ;
+  GALGAS_unifiedTypeDefinition var_typeDefinition_14095 = GALGAS_unifiedTypeDefinition::constructor_new (GALGAS_lstring::constructor_new (temp_11.readProperty_mPredefinedTypeName (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 292))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 292)), temp_12.readProperty_mIsPredefined (), GALGAS_bool (true), GALGAS_unifiedTypeMapEntry::constructor_null (SOURCE_FILE ("predefinedTypes.galgas", 295)), GALGAS_typeKindEnum::constructor_predefinedType (SOURCE_FILE ("predefinedTypes.galgas", 296)), GALGAS_bool (kIsEqual, temp_13.readProperty_mPredefinedTypeName ().objectCompare (GALGAS_string ("stringset"))), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("predefinedTypes.galgas", 298)), GALGAS_propertyMap::constructor_emptyMap (SOURCE_FILE ("predefinedTypes.galgas", 299)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("predefinedTypes.galgas", 300)), var_constructorMap_12707, var_getterMap_12784, var_setterMap_12861, var_instanceMethodMap_12962, var_classMethodMap_13054, var_optionalMethodMap_12615, var_enumerationList_13276, callExtensionGetter_getSupportedOperatorFlags ((const cPtr_predefinedTypeAST *) temp_14.ptr (), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 308)), var_addAssignArgumentList_13163, GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("predefinedTypes.galgas", 310)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("predefinedTypes.galgas", 311)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("predefinedTypes.galgas", 312)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("predefinedTypes.galgas", 313)), GALGAS_bool (false), var_enumeratedTypeEntry_13513, extensionGetter_defaultConstructorName (temp_15.readProperty_mKind (), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 316)), GALGAS_string ("galgas2/predefined-types"), GALGAS_headerKind::constructor_twoHeaders (SOURCE_FILE ("predefinedTypes.galgas", 318))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 291)) ;
   {
-  extensionSetter_insertType (ioArgument_ioSemanticContext.mProperty_mTypeMap, var_typeDefinition_13993, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 319)) ;
+  extensionSetter_insertType (ioArgument_ioSemanticContext.mProperty_mTypeMap, var_typeDefinition_14095, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 320)) ;
   }
 }
 //----------------------------------------------------------------------------------------------------------------------
@@ -2108,15 +2110,15 @@ void cPtr_predefinedTypeAST::method_semanticAnalysis (GALGAS_lstringlist & /* io
                                                       C_Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_predefinedTypeAST temp_0 = this ;
-  GALGAS_lstring var_nameForUsefulness_15418 = function_typeNameForUsefulEntitiesGraph (GALGAS_lstring::constructor_new (temp_0.readProperty_mPredefinedTypeName (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 333))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 333)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 333)) ;
+  GALGAS_lstring var_nameForUsefulness_15520 = function_typeNameForUsefulEntitiesGraph (GALGAS_lstring::constructor_new (temp_0.readProperty_mPredefinedTypeName (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_15418, var_nameForUsefulness_15418, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_15520, var_nameForUsefulness_15520, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 335)) ;
   }
   const GALGAS_predefinedTypeAST temp_1 = this ;
   const GALGAS_predefinedTypeAST temp_2 = this ;
   const GALGAS_predefinedTypeAST temp_3 = this ;
   const GALGAS_predefinedTypeAST temp_4 = this ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("Predefined type ").add_operation (temp_1.readProperty_mPredefinedTypeName (), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 337)), GALGAS_primitiveTypeForGeneration::constructor_new (extensionGetter_searchKey (constinArgument_inSemanticContext.readProperty_mTypeMap (), GALGAS_lstring::constructor_new (temp_2.readProperty_mPredefinedTypeName (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 339))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 339)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 339)), temp_3.readProperty_mPredefinedTypeName (), temp_4.readProperty_mKind ()  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 338))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 336)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("Predefined type ").add_operation (temp_1.readProperty_mPredefinedTypeName (), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 338)), GALGAS_primitiveTypeForGeneration::constructor_new (extensionGetter_searchKey (constinArgument_inSemanticContext.readProperty_mTypeMap (), GALGAS_lstring::constructor_new (temp_2.readProperty_mPredefinedTypeName (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 340))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 340)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 340)), temp_3.readProperty_mPredefinedTypeName (), temp_4.readProperty_mKind ()  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 339))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 337)) ;
 }
 //----------------------------------------------------------------------------------------------------------------------
 //

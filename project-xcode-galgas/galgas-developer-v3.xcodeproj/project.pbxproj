@@ -583,19 +583,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CF6B581828A966A8008DCF75 /* PBXContainerItemProxy */ = {
+		CFD84AC82983F9C50010E774 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF6DF12309E3F23700506859;
+			remoteInfo = "GALGAS tool";
+		};
+		CFD84ACA2983F9CB0010E774 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CF6DF19C09E3F30400506859;
 			remoteInfo = "GALGAS tool debug";
-		};
-		CF6DF25809E3F3C400506859 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CF6DF12309E3F23700506859;
-			remoteInfo = "GALGAS tool LL1 (ppc)";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1918,8 +1918,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				CF6B581928A966A8008DCF75 /* PBXTargetDependency */,
-				CF6DF25909E3F3C400506859 /* PBXTargetDependency */,
+				CFD84ACB2983F9CB0010E774 /* PBXTargetDependency */,
+				CFD84AC92983F9C50010E774 /* PBXTargetDependency */,
 			);
 			name = "GALGAS Cocoa";
 			productInstallPath = "$(HOME)/Applications";
@@ -1933,7 +1933,7 @@
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1310;
+				LastUpgradeCheck = 1420;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					CF6DF12309E3F23700506859 = {
@@ -2585,15 +2585,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CF6B581928A966A8008DCF75 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CF6DF19C09E3F30400506859 /* GALGAS tool debug */;
-			targetProxy = CF6B581828A966A8008DCF75 /* PBXContainerItemProxy */;
-		};
-		CF6DF25909E3F3C400506859 /* PBXTargetDependency */ = {
+		CFD84AC92983F9C50010E774 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CF6DF12309E3F23700506859 /* GALGAS tool */;
-			targetProxy = CF6DF25809E3F3C400506859 /* PBXContainerItemProxy */;
+			targetProxy = CFD84AC82983F9C50010E774 /* PBXContainerItemProxy */;
+		};
+		CFD84ACB2983F9CB0010E774 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF6DF19C09E3F30400506859 /* GALGAS tool debug */;
+			targetProxy = CFD84ACA2983F9CB0010E774 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2645,7 +2645,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = x86_64;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
@@ -2726,7 +2725,6 @@
 				OSACOMPILE_EXECUTE_ONLY = YES;
 				SDKROOT = macosx;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
-				SYMROOT = "build-developer-v3";
 			};
 			name = Default;
 		};
@@ -2740,6 +2738,7 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PREPROCESSOR_DEFINITIONS = DO_NOT_GENERATE_CHECKINGS;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = galgas;
 			};
@@ -2757,6 +2756,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				LD_OPENMP_FLAGS = "";
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "galgas-debug";
 				RUN_CLANG_STATIC_ANALYZER = NO;
@@ -2777,7 +2777,6 @@
 				DEVELOPMENT_TEAM = YW8QY74J2A;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
 					"$(PROJECT_DIR)/Sparkle.framework",
 					"$(PROJECT_DIR)",
 				);
@@ -2800,6 +2799,7 @@
 					"$(LD_RUNPATH_SEARCH_PATHS_$(IS_MACCATALYST))",
 					"@loader_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.ec-nantes.irccyn.molinaro.cocoaGalgas";
 				PRODUCT_NAME = cocoaGalgas;
 				PROVISIONING_PROFILE_SPECIFIER = "";

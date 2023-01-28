@@ -582,6 +582,8 @@ class GALGAS_string : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public: VIRTUAL_IN_DEBUG bool optional_extractBigInt (class GALGAS_bigint & outOperand0) const ;
+
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;

@@ -272,7 +272,6 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier.isBasic
     !""
   ]
-#  drop setterOutputFormalArgumentList
   for (mPropertyTypeEntry mPropertyName mHasSetter *) in typedAttributeList do
     if mHasSetter then
       var setterFormalArgumentList = @formalParameterSignature {}
@@ -298,7 +297,6 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier.isBasic
     !"" # No error message
   ]
-#  drop setterInputFormalArgumentList
 #--- Add extensions
   addExtensions (
     !inExtensionMethodMapForBuildingContext
@@ -318,7 +316,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !self.mIsPredefined
     !true # Concrete Type
     !@unifiedTypeMapEntry.null
-    !@typeKindEnum. listType
+    !@typeKindEnum.listType
     !true # Support collection value
     !typedAttributeList
     !{}

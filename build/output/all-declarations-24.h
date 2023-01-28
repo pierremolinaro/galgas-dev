@@ -330,6 +330,20 @@ void routine_enterClassMethodWithStringInputArgument (class GALGAS_classMethodMa
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Routine 'enterBaseOptionalMethodWithArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterBaseOptionalMethodWithArgument (class GALGAS_optionalMethodMap & ioArgument0,
+                                                  class GALGAS_unifiedTypeMap & ioArgument1,
+                                                  const class GALGAS_string constinArgument2,
+                                                  const class GALGAS_string constinArgument3,
+                                                  const class GALGAS_string constinArgument4,
+                                                  class C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Function 'compilerCppName'
 //
 //----------------------------------------------------------------------------------------------------------------------

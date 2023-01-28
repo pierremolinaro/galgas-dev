@@ -3374,6 +3374,11 @@ class cPtr_predefinedTypeAST : public cPtr_semanticDeclarationAST {
            class GALGAS_instanceMethodMap & outInstanceMethodMap,
            C_Compiler * COMMA_LOCATION_ARGS) ;
 
+//--- Extension method getOptionalMethodMap
+  public: virtual void method_getOptionalMethodMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
+           class GALGAS_optionalMethodMap & outMap,
+           C_Compiler * COMMA_LOCATION_ARGS) ;
+
 //--- Extension method getSetterMap
   public: virtual void method_getSetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_setterMap & outSetterMap,
@@ -5370,6 +5375,11 @@ class cPtr_stringPredefinedTypeAST : public cPtr_predefinedTypeAST {
            class GALGAS_instanceMethodMap & outInstanceMethodMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
+//--- Extension method getOptionalMethodMap
+  public: virtual void method_getOptionalMethodMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
+           class GALGAS_optionalMethodMap & outMap,
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
+
 //--- Extension method getSetterMap
   public: virtual void method_getSetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
            class GALGAS_setterMap & outSetterMap,
@@ -6483,6 +6493,18 @@ void callExtensionMethod_getClassMethodMap (class cPtr_predefinedTypeAST * inObj
                                             GALGAS_classMethodMap & out_outClassMethodMap,
                                             C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension method '@predefinedTypeAST getOptionalMethodMap'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_getOptionalMethodMap (class cPtr_predefinedTypeAST * inObject,
+                                               GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                               GALGAS_optionalMethodMap & out_outMap,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
