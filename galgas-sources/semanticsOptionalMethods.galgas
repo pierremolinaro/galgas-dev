@@ -143,7 +143,6 @@ proc enterBaseOptionalMethodWithArgument
   ?let @string inArgument1TypeName
   ?let @string inArgument1Name
 {
-#  [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var @optionalMethodSignature argList = {}
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?let t]
   argList += !false !["" nowhere] !t !inArgument1Name

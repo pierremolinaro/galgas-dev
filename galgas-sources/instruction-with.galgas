@@ -124,21 +124,33 @@ syntax extension galgas3InstructionsSyntax {
     if selector.string != "" then
       error selector : "an empty selector '!?' is required here"
     end
+    var structAttributeList = @lstringlist {}
     let @bool targetIsPrefixedBySelf
+    let @lstring targetObjectName
     select
       targetIsPrefixedBySelf = false
+      $identifier$ ?targetObjectName
+      repeat
+      while
+        $.$
+        $identifier$ ?let mStructFieldName
+        structAttributeList += !mStructFieldName
+      end
     or
-      $self$
-      $.$
       targetIsPrefixedBySelf = true
-    end
-    $identifier$ ?let targetObjectName
-    var structAttributeList = @lstringlist {}
-    repeat
-    while
-      $.$
-      $identifier$ ?let mStructFieldName
-      structAttributeList += !mStructFieldName
+      $self$
+      select
+        targetObjectName = ["" here]
+      or
+        $.$
+        $identifier$ ?targetObjectName
+        repeat
+        while
+          $.$
+          $identifier$ ?let mStructFieldName
+          structAttributeList += !mStructFieldName
+        end
+      end
     end
     let endOfReceiverExpression = @location.here
     let @lstring searchMethodNameForErrorSignaling
@@ -274,21 +286,33 @@ syntax extension galgas4InstructionsSyntax {
     if selector.string != "" then
       error selector : "an empty selector '!?' is required here"
     end
+    var structAttributeList = @lstringlist {}
     let @bool targetIsPrefixedBySelf
+    let @lstring targetObjectName
     select
       targetIsPrefixedBySelf = false
+      $identifier$ ?targetObjectName
+      repeat
+      while
+        $.$
+        $identifier$ ?let mStructFieldName
+        structAttributeList += !mStructFieldName
+      end
     or
-      $self$
-      $.$
       targetIsPrefixedBySelf = true
-    end
-    $identifier$ ?let targetObjectName
-    var structAttributeList = @lstringlist {}
-    repeat
-    while
-      $.$
-      $identifier$ ?let mStructFieldName
-      structAttributeList += !mStructFieldName
+      $self$
+      select
+        targetObjectName = ["" here]
+      or
+        $.$
+        $identifier$ ?targetObjectName
+        repeat
+        while
+          $.$
+          $identifier$ ?let mStructFieldName
+          structAttributeList += !mStructFieldName
+        end
+      end
     end
     let endOfReceiverExpression = @location.here
     let @lstring searchMethodNameForErrorSignaling
@@ -505,15 +529,20 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
                         ?type:  let selfType
                         ?mutable: *
                         ?mutableproperties: let propertiesAreMutable] then
-      let propertyMap = [selfType definition].mPropertyMap
-      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
-      if isConstant then
-        error self.mReceiverName: "a constant property cannot be modified"
-      elsif not propertiesAreMutable then
-        error self.mReceiverName: "the property cannot be modified in this context"
-      end
-      receiverVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
-       + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+      if self.mReceiverName.string == "" then
+        receiverVariableCppName = inAnalysisContext.mSelfObjectCppName
+        targetType = selfType
+      else
+        let propertyMap = [selfType definition].mPropertyMap
+        [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
+        if isConstant then
+          error self.mReceiverName: "a constant property cannot be modified"
+        elsif not propertiesAreMutable then
+          error self.mReceiverName: "the property cannot be modified in this context"
+        end
+        receiverVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+         + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+       end
     else
       error self.mReceiverName: "'self' cannot be used in this context" : targetType, receiverVariableCppName
     end

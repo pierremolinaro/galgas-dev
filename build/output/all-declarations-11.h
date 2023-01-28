@@ -960,6 +960,10 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected: virtual int32_t select_galgas_33_InstructionsSyntax_83 (C_Lexique_galgasScanner *) = 0 ;
 
+  protected: virtual int32_t select_galgas_33_InstructionsSyntax_84 (C_Lexique_galgasScanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_33_InstructionsSyntax_85 (C_Lexique_galgasScanner *) = 0 ;
+
 
 } ;
 
@@ -2177,59 +2181,6 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
   public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Parser class 'galgas3OptionComponentSyntax' declaration
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class cParser_galgas_33_OptionComponentSyntax {
-//--- Virtual destructor
-  public: virtual ~ cParser_galgas_33_OptionComponentSyntax (void) {}
-
-//--- Non terminal declarations
-  protected: virtual void nt_declaration_ (class GALGAS_galgasDeclarationAST & ioArgument0,
-                                           class C_Lexique_galgasScanner * inLexique) = 0 ;
-
-  protected: virtual void nt_declaration_parse (class C_Lexique_galgasScanner * inLexique) = 0 ;
-
-  protected: virtual void nt_declaration_indexing (class C_Lexique_galgasScanner * inLexique) = 0 ;
-
-  protected: virtual void nt_option_5F_declaration_ (class GALGAS_commandLineOptionListAST & ioArgument0,
-                                                     class C_Lexique_galgasScanner * inLexique) = 0 ;
-
-  protected: virtual void nt_option_5F_declaration_parse (class C_Lexique_galgasScanner * inLexique) = 0 ;
-
-  protected: virtual void nt_option_5F_declaration_indexing (class C_Lexique_galgasScanner * inLexique) = 0 ;
-
-
-//--- Rule declarations
-  protected: void rule_galgas_33_OptionComponentSyntax_declaration_i0_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                        C_Lexique_galgasScanner * inLexique) ;
-
-  protected: void rule_galgas_33_OptionComponentSyntax_declaration_i0_parse (C_Lexique_galgasScanner * inLexique) ;
-
-  protected: void rule_galgas_33_OptionComponentSyntax_declaration_i0_indexing (C_Lexique_galgasScanner * inLexique) ;
-
-  protected: void rule_galgas_33_OptionComponentSyntax_option_5F_declaration_i1_ (GALGAS_commandLineOptionListAST & ioArgument0,
-                                                                                  C_Lexique_galgasScanner * inLexique) ;
-
-  protected: void rule_galgas_33_OptionComponentSyntax_option_5F_declaration_i1_parse (C_Lexique_galgasScanner * inLexique) ;
-
-  protected: void rule_galgas_33_OptionComponentSyntax_option_5F_declaration_i1_indexing (C_Lexique_galgasScanner * inLexique) ;
-
-
-
-//--- Select methods
-  protected: virtual int32_t select_galgas_33_OptionComponentSyntax_0 (C_Lexique_galgasScanner *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_OptionComponentSyntax_1 (C_Lexique_galgasScanner *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_OptionComponentSyntax_2 (C_Lexique_galgasScanner *) = 0 ;
-
 
 } ;
 
