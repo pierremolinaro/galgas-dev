@@ -131,7 +131,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
         hasCompilerArgument = true
         returnedType = @unifiedTypeMapEntry.null
         kind = @methodKind. definedAsMember
-        for (mPropertyTypeEntry mPropertyName * *) in [receiverType definition].mCurrentTypedPropertyList do
+        for (mPropertyTypeEntry mPropertyName 3*) in [receiverType definition].mCurrentTypedPropertyList do
           let @getterMap aMap = [mPropertyTypeEntry definition].mGetterMap
           with self.mGetterName.string in aMap  do
             matchingReaderCount += 1

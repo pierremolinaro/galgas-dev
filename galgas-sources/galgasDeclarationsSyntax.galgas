@@ -38,6 +38,8 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
   
   rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
 
+  rule <expression> !@semanticExpressionAST outExpression
+
   #·····················································································································
   #    A T T R I B U T E    I N    C O L L E C T I O N
   #·····················································································································
@@ -69,12 +71,21 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
       $%attribute$ ?let @lstring featureName
       featureList += !featureName
     end
+    let @propertyInCollectionInitializationAST initialization
+    select
+      initialization = .none
+    or
+      $=$
+      <expression> ?let expression
+      initialization = .some {!expression: expression}
+    end
     ioAttributeInCollectionList +=
       !isConstant: isConstant
       !attributeTypeName
       !attributeName
       !isPublic
       !featureList
+      !initialization
   }
 
   #·····················································································································
@@ -88,12 +99,21 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
       $%attribute$ ?let @lstring featureName
       featureList += !featureName
     end
+    let @propertyInCollectionInitializationAST initialization
+    select
+      initialization = .none
+    or
+      $=$
+      <expression> ?let expression
+      initialization = .some {!expression: expression}
+    end
     ioAttributeInCollectionList +=
       !isConstant: false
       !propertyTypeName
       !propertyName
       !true
       !featureList
+      !initialization
     if [option galgas_cli_options.errorOldStylePropertyDeclaration value] then
       let errorLocation = [propertyTypeName.location union !propertyName.location]
       error errorLocation
@@ -247,6 +267,8 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
   
   rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
 
+  rule <expression> !@semanticExpressionAST outExpression
+
   #·····················································································································
   #    A T T R I B U T E    I N    C O L L E C T I O N
   #·····················································································································
@@ -278,38 +300,22 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
       $%attribute$ ?let @lstring featureName
       featureList += !featureName
     end
+    let @propertyInCollectionInitializationAST initialization
+    select
+      initialization = .none
+    or
+      $=$
+      <expression> ?let expression
+      initialization = .some {!expression: expression}
+    end
     ioAttributeInCollectionList +=
       !isConstant: isConstant
       !attributeTypeName
       !attributeName
       !isPublic
       !featureList
+      !initialization
   }
-
-  #·····················································································································
-
-#  rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
-#    $@type$ ?let propertyTypeName
-#    $identifier$ ?let propertyName
-#    var featureList = @lstringlist {}
-#    repeat
-#    while
-#      $%attribute$ ?let @lstring featureName
-#      featureList += !featureName
-#    end
-#    ioAttributeInCollectionList +=
-#      !isConstant: false
-#      !propertyTypeName
-#      !propertyName
-#      !true
-#      !featureList
-#    if [option galgas_cli_options.errorOldStylePropertyDeclaration value] then
-#      let errorLocation = [propertyTypeName.location union !propertyName.location]
-#      error errorLocation
-#      : "old style property declaration (due to '--error-old-style-property-declaration' option)"
-#      fixit { replace "public let @" + propertyTypeName + " " + propertyName }
-#    end
-#  }
 
   #·····················································································································
   #! Filewrapper Declaration

@@ -321,6 +321,14 @@ list @propertyInCollectionListAST {
   public let @lstring mPropertyName
   public let @bool mIsPublic
   public let @lstringlist mAttributeList
+  public let @propertyInCollectionInitializationAST mInitialization
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum @propertyInCollectionInitializationAST {
+  case none
+  case some (@semanticExpressionAST expression)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

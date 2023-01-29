@@ -9343,11 +9343,11 @@ mProperty_mInstruction (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListAST_2D_element GALGAS_templateInstructionListAST_2D_element::constructor_new (const GALGAS_templateInstructionAST & inOperand0 
+GALGAS_templateInstructionListAST_2D_element GALGAS_templateInstructionListAST_2D_element::constructor_new (const GALGAS_templateInstructionAST & in_mInstruction 
                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateInstructionListAST_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_templateInstructionListAST_2D_element (inOperand0) ;
+  if (in_mInstruction.isValid ()) {
+    result = GALGAS_templateInstructionListAST_2D_element (in_mInstruction) ;
   }
   return result ;
 }
@@ -9452,12 +9452,12 @@ mProperty_mInstructionList (inOperand1) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionIfBranchListAST_2D_element GALGAS_templateInstructionIfBranchListAST_2D_element::constructor_new (const GALGAS_templateExpressionAST & inOperand0,
-                                                                                                                            const GALGAS_templateInstructionListAST & inOperand1 
+GALGAS_templateInstructionIfBranchListAST_2D_element GALGAS_templateInstructionIfBranchListAST_2D_element::constructor_new (const GALGAS_templateExpressionAST & in_mExpression,
+                                                                                                                            const GALGAS_templateInstructionListAST & in_mInstructionList 
                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateInstructionIfBranchListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_templateInstructionIfBranchListAST_2D_element (inOperand0, inOperand1) ;
+  if (in_mExpression.isValid () && in_mInstructionList.isValid ()) {
+    result = GALGAS_templateInstructionIfBranchListAST_2D_element (in_mExpression, in_mInstructionList) ;
   }
   return result ;
 }
@@ -9583,14 +9583,14 @@ GALGAS_templateInstructionSwitchBranchListAST_2D_element GALGAS_templateInstruct
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionSwitchBranchListAST_2D_element GALGAS_templateInstructionSwitchBranchListAST_2D_element::constructor_new (const GALGAS_lstringlist & inOperand0,
-                                                                                                                                    const GALGAS_switchExtractedValuesListAST & inOperand1,
-                                                                                                                                    const GALGAS_templateInstructionListAST & inOperand2,
-                                                                                                                                    const GALGAS_location & inOperand3 
+GALGAS_templateInstructionSwitchBranchListAST_2D_element GALGAS_templateInstructionSwitchBranchListAST_2D_element::constructor_new (const GALGAS_lstringlist & in_mConstantList,
+                                                                                                                                    const GALGAS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
+                                                                                                                                    const GALGAS_templateInstructionListAST & in_mInstructionList,
+                                                                                                                                    const GALGAS_location & in_mEndOfBranch 
                                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateInstructionSwitchBranchListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_templateInstructionSwitchBranchListAST_2D_element (inOperand0, inOperand1, inOperand2, inOperand3) ;
+  if (in_mConstantList.isValid () && in_mAssociatedValuesExtraction.isValid () && in_mInstructionList.isValid () && in_mEndOfBranch.isValid ()) {
+    result = GALGAS_templateInstructionSwitchBranchListAST_2D_element (in_mConstantList, in_mAssociatedValuesExtraction, in_mInstructionList, in_mEndOfBranch) ;
   }
   return result ;
 }
@@ -9728,14 +9728,14 @@ GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element GALGAS_templa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element::constructor_new (const GALGAS_lstringlist & inOperand0,
-                                                                                                                                                        const GALGAS_extractedAssociatedValuesForGeneration & inOperand1,
-                                                                                                                                                        const GALGAS_uint & inOperand2,
-                                                                                                                                                        const GALGAS_templateInstructionListForGeneration & inOperand3 
+GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element::constructor_new (const GALGAS_lstringlist & in_mConstantList,
+                                                                                                                                                        const GALGAS_extractedAssociatedValuesForGeneration & in_mExtractedAssociatedValuesForGeneration,
+                                                                                                                                                        const GALGAS_uint & in_mEndOfBranchLocationIndex,
+                                                                                                                                                        const GALGAS_templateInstructionListForGeneration & in_mInstructionList 
                                                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element (inOperand0, inOperand1, inOperand2, inOperand3) ;
+  if (in_mConstantList.isValid () && in_mExtractedAssociatedValuesForGeneration.isValid () && in_mEndOfBranchLocationIndex.isValid () && in_mInstructionList.isValid ()) {
+    result = GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element (in_mConstantList, in_mExtractedAssociatedValuesForGeneration, in_mEndOfBranchLocationIndex, in_mInstructionList) ;
   }
   return result ;
 }
@@ -9855,11 +9855,11 @@ mProperty_mInstruction (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalInstructionListAST_2D_element GALGAS_lexicalInstructionListAST_2D_element::constructor_new (const GALGAS_lexicalInstructionAST & inOperand0 
+GALGAS_lexicalInstructionListAST_2D_element GALGAS_lexicalInstructionListAST_2D_element::constructor_new (const GALGAS_lexicalInstructionAST & in_mInstruction 
                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalInstructionListAST_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_lexicalInstructionListAST_2D_element (inOperand0) ;
+  if (in_mInstruction.isValid ()) {
+    result = GALGAS_lexicalInstructionListAST_2D_element (in_mInstruction) ;
   }
   return result ;
 }
@@ -9961,11 +9961,11 @@ mProperty_mLexicalRule (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRuleListAST_2D_element GALGAS_lexicalRuleListAST_2D_element::constructor_new (const GALGAS_abstractLexicalRuleAST & inOperand0 
+GALGAS_lexicalRuleListAST_2D_element GALGAS_lexicalRuleListAST_2D_element::constructor_new (const GALGAS_abstractLexicalRuleAST & in_mLexicalRule 
                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalRuleListAST_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_lexicalRuleListAST_2D_element (inOperand0) ;
+  if (in_mLexicalRule.isValid ()) {
+    result = GALGAS_lexicalRuleListAST_2D_element (in_mLexicalRule) ;
   }
   return result ;
 }
@@ -10070,12 +10070,12 @@ mProperty_mWhileInstructionList (inOperand1) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalWhileBranchListAST_2D_element GALGAS_lexicalWhileBranchListAST_2D_element::constructor_new (const GALGAS_lexicalExpressionAST & inOperand0,
-                                                                                                          const GALGAS_lexicalInstructionListAST & inOperand1 
+GALGAS_lexicalWhileBranchListAST_2D_element GALGAS_lexicalWhileBranchListAST_2D_element::constructor_new (const GALGAS_lexicalExpressionAST & in_mWhileExpression,
+                                                                                                          const GALGAS_lexicalInstructionListAST & in_mWhileInstructionList 
                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalWhileBranchListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_lexicalWhileBranchListAST_2D_element (inOperand0, inOperand1) ;
+  if (in_mWhileExpression.isValid () && in_mWhileInstructionList.isValid ()) {
+    result = GALGAS_lexicalWhileBranchListAST_2D_element (in_mWhileExpression, in_mWhileInstructionList) ;
   }
   return result ;
 }
@@ -10186,12 +10186,12 @@ mProperty_mSelectInstructionList (inOperand1) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSelectBranchListAST_2D_element GALGAS_lexicalSelectBranchListAST_2D_element::constructor_new (const GALGAS_lexicalExpressionAST & inOperand0,
-                                                                                                            const GALGAS_lexicalInstructionListAST & inOperand1 
+GALGAS_lexicalSelectBranchListAST_2D_element GALGAS_lexicalSelectBranchListAST_2D_element::constructor_new (const GALGAS_lexicalExpressionAST & in_mSelectExpression,
+                                                                                                            const GALGAS_lexicalInstructionListAST & in_mSelectInstructionList 
                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalSelectBranchListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_lexicalSelectBranchListAST_2D_element (inOperand0, inOperand1) ;
+  if (in_mSelectExpression.isValid () && in_mSelectInstructionList.isValid ()) {
+    result = GALGAS_lexicalSelectBranchListAST_2D_element (in_mSelectExpression, in_mSelectInstructionList) ;
   }
   return result ;
 }
@@ -10299,11 +10299,11 @@ mProperty_mLexicalActualInputArgument (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element::constructor_new (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inOperand0 
+GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element::constructor_new (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & in_mLexicalActualInputArgument 
                                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element (inOperand0) ;
+  if (in_mLexicalActualInputArgument.isValid ()) {
+    result = GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element (in_mLexicalActualInputArgument) ;
   }
   return result ;
 }
@@ -10419,13 +10419,13 @@ GALGAS_tokenSortedlist_2D_element GALGAS_tokenSortedlist_2D_element::constructor
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_tokenSortedlist_2D_element GALGAS_tokenSortedlist_2D_element::constructor_new (const GALGAS_uint & inOperand0,
-                                                                                      const GALGAS_string & inOperand1,
-                                                                                      const GALGAS_string & inOperand2 
+GALGAS_tokenSortedlist_2D_element GALGAS_tokenSortedlist_2D_element::constructor_new (const GALGAS_uint & in_mLength,
+                                                                                      const GALGAS_string & in_mName,
+                                                                                      const GALGAS_string & in_mTerminalName 
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_tokenSortedlist_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_tokenSortedlist_2D_element (inOperand0, inOperand1, inOperand2) ;
+  if (in_mLength.isValid () && in_mName.isValid () && in_mTerminalName.isValid ()) {
+    result = GALGAS_tokenSortedlist_2D_element (in_mLength, in_mName, in_mTerminalName) ;
   }
   return result ;
 }
@@ -10545,13 +10545,13 @@ mProperty_mArgumentNameForComment (inOperand2) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineFormalArgumentList_2D_element GALGAS_lexicalRoutineFormalArgumentList_2D_element::constructor_new (const GALGAS_lexicalArgumentModeAST & inOperand0,
-                                                                                                                        const GALGAS_lexicalTypeEnum & inOperand1,
-                                                                                                                        const GALGAS_string & inOperand2 
+GALGAS_lexicalRoutineFormalArgumentList_2D_element GALGAS_lexicalRoutineFormalArgumentList_2D_element::constructor_new (const GALGAS_lexicalArgumentModeAST & in_mLexicalFormalArgumentMode,
+                                                                                                                        const GALGAS_lexicalTypeEnum & in_mLexicalFormalArgumentType,
+                                                                                                                        const GALGAS_string & in_mArgumentNameForComment 
                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalRoutineFormalArgumentList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_lexicalRoutineFormalArgumentList_2D_element (inOperand0, inOperand1, inOperand2) ;
+  if (in_mLexicalFormalArgumentMode.isValid () && in_mLexicalFormalArgumentType.isValid () && in_mArgumentNameForComment.isValid ()) {
+    result = GALGAS_lexicalRoutineFormalArgumentList_2D_element (in_mLexicalFormalArgumentMode, in_mLexicalFormalArgumentType, in_mArgumentNameForComment) ;
   }
   return result ;
 }
@@ -10668,12 +10668,12 @@ mProperty_mArgumentNameForComment (inOperand1) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionFormalArgumentList_2D_element GALGAS_lexicalFunctionFormalArgumentList_2D_element::constructor_new (const GALGAS_lexicalTypeEnum & inOperand0,
-                                                                                                                          const GALGAS_string & inOperand1 
+GALGAS_lexicalFunctionFormalArgumentList_2D_element GALGAS_lexicalFunctionFormalArgumentList_2D_element::constructor_new (const GALGAS_lexicalTypeEnum & in_mLexicalType,
+                                                                                                                          const GALGAS_string & in_mArgumentNameForComment 
                                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalFunctionFormalArgumentList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_lexicalFunctionFormalArgumentList_2D_element (inOperand0, inOperand1) ;
+  if (in_mLexicalType.isValid () && in_mArgumentNameForComment.isValid ()) {
+    result = GALGAS_lexicalFunctionFormalArgumentList_2D_element (in_mLexicalType, in_mArgumentNameForComment) ;
   }
   return result ;
 }
@@ -10781,11 +10781,11 @@ mProperty_mLexicalRoutineActualArgument (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element::constructor_new (const GALGAS_abstractLexicalRoutineActualArgumentAST & inOperand0 
+GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element::constructor_new (const GALGAS_abstractLexicalRoutineActualArgumentAST & in_mLexicalRoutineActualArgument 
                                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element (inOperand0) ;
+  if (in_mLexicalRoutineActualArgument.isValid ()) {
+    result = GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element (in_mLexicalRoutineActualArgument) ;
   }
   return result ;
 }
@@ -10901,13 +10901,13 @@ GALGAS_guiLabelListAST_2D_element GALGAS_guiLabelListAST_2D_element::constructor
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_guiLabelListAST_2D_element GALGAS_guiLabelListAST_2D_element::constructor_new (const GALGAS_uint & inOperand0,
-                                                                                      const GALGAS_terminalLabelListAST & inOperand1,
-                                                                                      const GALGAS_location & inOperand2 
+GALGAS_guiLabelListAST_2D_element GALGAS_guiLabelListAST_2D_element::constructor_new (const GALGAS_uint & in_mLeadingCharacterStrippedCount,
+                                                                                      const GALGAS_terminalLabelListAST & in_mTerminalList,
+                                                                                      const GALGAS_location & in_mLocation 
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_guiLabelListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_guiLabelListAST_2D_element (inOperand0, inOperand1, inOperand2) ;
+  if (in_mLeadingCharacterStrippedCount.isValid () && in_mTerminalList.isValid () && in_mLocation.isValid ()) {
+    result = GALGAS_guiLabelListAST_2D_element (in_mLeadingCharacterStrippedCount, in_mTerminalList, in_mLocation) ;
   }
   return result ;
 }
@@ -11043,15 +11043,15 @@ GALGAS_guiCommandLineOptionList_2D_element GALGAS_guiCommandLineOptionList_2D_el
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_guiCommandLineOptionList_2D_element GALGAS_guiCommandLineOptionList_2D_element::constructor_new (const GALGAS_string & inOperand0,
-                                                                                                        const GALGAS_string & inOperand1,
-                                                                                                        const GALGAS_char & inOperand2,
-                                                                                                        const GALGAS_string & inOperand3,
-                                                                                                        const GALGAS_string & inOperand4 
+GALGAS_guiCommandLineOptionList_2D_element GALGAS_guiCommandLineOptionList_2D_element::constructor_new (const GALGAS_string & in_mOptionComponent,
+                                                                                                        const GALGAS_string & in_mOptionIdentifier,
+                                                                                                        const GALGAS_char & in_mOptionChar,
+                                                                                                        const GALGAS_string & in_mOptionString,
+                                                                                                        const GALGAS_string & in_mComment 
                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_guiCommandLineOptionList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    result = GALGAS_guiCommandLineOptionList_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4) ;
+  if (in_mOptionComponent.isValid () && in_mOptionIdentifier.isValid () && in_mOptionChar.isValid () && in_mOptionString.isValid () && in_mComment.isValid ()) {
+    result = GALGAS_guiCommandLineOptionList_2D_element (in_mOptionComponent, in_mOptionIdentifier, in_mOptionChar, in_mOptionString, in_mComment) ;
   }
   return result ;
 }
@@ -11187,12 +11187,12 @@ GALGAS_textMacroList_2D_element GALGAS_textMacroList_2D_element::constructor_def
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_textMacroList_2D_element GALGAS_textMacroList_2D_element::constructor_new (const GALGAS_string & inOperand0,
-                                                                                  const GALGAS_string & inOperand1 
+GALGAS_textMacroList_2D_element GALGAS_textMacroList_2D_element::constructor_new (const GALGAS_string & in_mKey,
+                                                                                  const GALGAS_string & in_mContents 
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_textMacroList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_textMacroList_2D_element (inOperand0, inOperand1) ;
+  if (in_mKey.isValid () && in_mContents.isValid ()) {
+    result = GALGAS_textMacroList_2D_element (in_mKey, in_mContents) ;
   }
   return result ;
 }
@@ -11330,17 +11330,17 @@ GALGAS_importedLexiqueList_2D_element GALGAS_importedLexiqueList_2D_element::con
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_importedLexiqueList_2D_element GALGAS_importedLexiqueList_2D_element::constructor_new (const GALGAS_string & inOperand0,
-                                                                                              const GALGAS_uint & inOperand1,
-                                                                                              const GALGAS_string & inOperand2,
-                                                                                              const GALGAS_string & inOperand3,
-                                                                                              const GALGAS_textMacroList & inOperand4,
-                                                                                              const GALGAS_guiLabelListAST & inOperand5,
-                                                                                              const GALGAS_lexicalStyleListAST & inOperand6 
+GALGAS_importedLexiqueList_2D_element GALGAS_importedLexiqueList_2D_element::constructor_new (const GALGAS_string & in_mLexiqueClassName,
+                                                                                              const GALGAS_uint & in_mIndex,
+                                                                                              const GALGAS_string & in_mBlockComment,
+                                                                                              const GALGAS_string & in_mTitle,
+                                                                                              const GALGAS_textMacroList & in_mTextMacroList,
+                                                                                              const GALGAS_guiLabelListAST & in_mLabels,
+                                                                                              const GALGAS_lexicalStyleListAST & in_mLexicalStyleList 
                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_importedLexiqueList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
-    result = GALGAS_importedLexiqueList_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6) ;
+  if (in_mLexiqueClassName.isValid () && in_mIndex.isValid () && in_mBlockComment.isValid () && in_mTitle.isValid () && in_mTextMacroList.isValid () && in_mLabels.isValid () && in_mLexicalStyleList.isValid ()) {
+    result = GALGAS_importedLexiqueList_2D_element (in_mLexiqueClassName, in_mIndex, in_mBlockComment, in_mTitle, in_mTextMacroList, in_mLabels, in_mLexicalStyleList) ;
   }
   return result ;
 }
@@ -11488,12 +11488,12 @@ GALGAS_enumConstantListForGeneration_2D_element GALGAS_enumConstantListForGenera
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_enumConstantListForGeneration_2D_element GALGAS_enumConstantListForGeneration_2D_element::constructor_new (const GALGAS_string & inOperand0,
-                                                                                                                  const GALGAS_unifiedTypeMapEntryList & inOperand1 
+GALGAS_enumConstantListForGeneration_2D_element GALGAS_enumConstantListForGeneration_2D_element::constructor_new (const GALGAS_string & in_mConstantName,
+                                                                                                                  const GALGAS_unifiedTypeMapEntryList & in_mAssociatedValueTypeList 
                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_enumConstantListForGeneration_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_enumConstantListForGeneration_2D_element (inOperand0, inOperand1) ;
+  if (in_mConstantName.isValid () && in_mAssociatedValueTypeList.isValid ()) {
+    result = GALGAS_enumConstantListForGeneration_2D_element (in_mConstantName, in_mAssociatedValueTypeList) ;
   }
   return result ;
 }
@@ -11607,11 +11607,11 @@ GALGAS_insertOrReplaceDeclarationListAST_2D_element GALGAS_insertOrReplaceDeclar
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_insertOrReplaceDeclarationListAST_2D_element GALGAS_insertOrReplaceDeclarationListAST_2D_element::constructor_new (const GALGAS_location & inOperand0 
+GALGAS_insertOrReplaceDeclarationListAST_2D_element GALGAS_insertOrReplaceDeclarationListAST_2D_element::constructor_new (const GALGAS_location & in_mInsertOrReplaceDeclarationLocation 
                                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_insertOrReplaceDeclarationListAST_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_insertOrReplaceDeclarationListAST_2D_element (inOperand0) ;
+  if (in_mInsertOrReplaceDeclarationLocation.isValid ()) {
+    result = GALGAS_insertOrReplaceDeclarationListAST_2D_element (in_mInsertOrReplaceDeclarationLocation) ;
   }
   return result ;
 }
@@ -11719,13 +11719,13 @@ mProperty_mAscendingOrder (inOperand2) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_sortDescriptorListForGeneration_2D_element GALGAS_sortDescriptorListForGeneration_2D_element::constructor_new (const GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                                                      const GALGAS_string & inOperand1,
-                                                                                                                      const GALGAS_bool & inOperand2 
+GALGAS_sortDescriptorListForGeneration_2D_element GALGAS_sortDescriptorListForGeneration_2D_element::constructor_new (const GALGAS_unifiedTypeMapEntry & in_mAttributeTypeIndex,
+                                                                                                                      const GALGAS_string & in_mAttributeName,
+                                                                                                                      const GALGAS_bool & in_mAscendingOrder 
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_sortDescriptorListForGeneration_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_sortDescriptorListForGeneration_2D_element (inOperand0, inOperand1, inOperand2) ;
+  if (in_mAttributeTypeIndex.isValid () && in_mAttributeName.isValid () && in_mAscendingOrder.isValid ()) {
+    result = GALGAS_sortDescriptorListForGeneration_2D_element (in_mAttributeTypeIndex, in_mAttributeName, in_mAscendingOrder) ;
   }
   return result ;
 }
@@ -11839,11 +11839,11 @@ mProperty_mActualParameter (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_actualParameterListAST_2D_element GALGAS_actualParameterListAST_2D_element::constructor_new (const GALGAS_actualParameterAST & inOperand0 
+GALGAS_actualParameterListAST_2D_element GALGAS_actualParameterListAST_2D_element::constructor_new (const GALGAS_actualParameterAST & in_mActualParameter 
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_actualParameterListAST_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_actualParameterListAST_2D_element (inOperand0) ;
+  if (in_mActualParameter.isValid ()) {
+    result = GALGAS_actualParameterListAST_2D_element (in_mActualParameter) ;
   }
   return result ;
 }
@@ -11945,11 +11945,11 @@ mProperty_mInstruction (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListAST_2D_element GALGAS_semanticInstructionListAST_2D_element::constructor_new (const GALGAS_semanticInstructionAST & inOperand0 
+GALGAS_semanticInstructionListAST_2D_element GALGAS_semanticInstructionListAST_2D_element::constructor_new (const GALGAS_semanticInstructionAST & in_mInstruction 
                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_semanticInstructionListAST_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_semanticInstructionListAST_2D_element (inOperand0) ;
+  if (in_mInstruction.isValid ()) {
+    result = GALGAS_semanticInstructionListAST_2D_element (in_mInstruction) ;
   }
   return result ;
 }
@@ -12051,11 +12051,11 @@ mProperty_mSemanticDeclaration (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticDeclarationListAST_2D_element GALGAS_semanticDeclarationListAST_2D_element::constructor_new (const GALGAS_semanticDeclarationAST & inOperand0 
+GALGAS_semanticDeclarationListAST_2D_element GALGAS_semanticDeclarationListAST_2D_element::constructor_new (const GALGAS_semanticDeclarationAST & in_mSemanticDeclaration 
                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_semanticDeclarationListAST_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_semanticDeclarationListAST_2D_element (inOperand0) ;
+  if (in_mSemanticDeclaration.isValid ()) {
+    result = GALGAS_semanticDeclarationListAST_2D_element (in_mSemanticDeclaration) ;
   }
   return result ;
 }
@@ -12157,11 +12157,11 @@ mProperty_mInstruction (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_syntaxInstructionList_2D_element GALGAS_syntaxInstructionList_2D_element::constructor_new (const GALGAS_syntaxInstructionAST & inOperand0 
+GALGAS_syntaxInstructionList_2D_element GALGAS_syntaxInstructionList_2D_element::constructor_new (const GALGAS_syntaxInstructionAST & in_mInstruction 
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_syntaxInstructionList_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_syntaxInstructionList_2D_element (inOperand0) ;
+  if (in_mInstruction.isValid ()) {
+    result = GALGAS_syntaxInstructionList_2D_element (in_mInstruction) ;
   }
   return result ;
 }
@@ -12273,12 +12273,12 @@ GALGAS_listOfSyntaxInstructionList_2D_element GALGAS_listOfSyntaxInstructionList
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_listOfSyntaxInstructionList_2D_element GALGAS_listOfSyntaxInstructionList_2D_element::constructor_new (const GALGAS_syntaxInstructionList & inOperand0,
-                                                                                                              const GALGAS_location & inOperand1 
+GALGAS_listOfSyntaxInstructionList_2D_element GALGAS_listOfSyntaxInstructionList_2D_element::constructor_new (const GALGAS_syntaxInstructionList & in_mSyntaxInstructionList,
+                                                                                                              const GALGAS_location & in_mEndOf_instructions 
                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_listOfSyntaxInstructionList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_listOfSyntaxInstructionList_2D_element (inOperand0, inOperand1) ;
+  if (in_mSyntaxInstructionList.isValid () && in_mEndOf_instructions.isValid ()) {
+    result = GALGAS_listOfSyntaxInstructionList_2D_element (in_mSyntaxInstructionList, in_mEndOf_instructions) ;
   }
   return result ;
 }
@@ -12396,12 +12396,12 @@ GALGAS_syntaxExtensions_2D_element GALGAS_syntaxExtensions_2D_element::construct
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_syntaxExtensions_2D_element GALGAS_syntaxExtensions_2D_element::constructor_new (const GALGAS_string & inOperand0,
-                                                                                        const GALGAS_galgas_33_SyntaxExtensionListAST & inOperand1 
+GALGAS_syntaxExtensions_2D_element GALGAS_syntaxExtensions_2D_element::constructor_new (const GALGAS_string & in_key,
+                                                                                        const GALGAS_galgas_33_SyntaxExtensionListAST & in_mList 
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_syntaxExtensions_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_syntaxExtensions_2D_element (inOperand0, inOperand1) ;
+  if (in_key.isValid () && in_mList.isValid ()) {
+    result = GALGAS_syntaxExtensions_2D_element (in_key, in_mList) ;
   }
   return result ;
 }
@@ -12519,12 +12519,12 @@ GALGAS_prologueEpilogueList_2D_element GALGAS_prologueEpilogueList_2D_element::c
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_prologueEpilogueList_2D_element GALGAS_prologueEpilogueList_2D_element::constructor_new (const GALGAS_semanticInstructionListAST & inOperand0,
-                                                                                                const GALGAS_location & inOperand1 
+GALGAS_prologueEpilogueList_2D_element GALGAS_prologueEpilogueList_2D_element::constructor_new (const GALGAS_semanticInstructionListAST & in_mInstructionList,
+                                                                                                const GALGAS_location & in_mEndOfInstructionList 
                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_prologueEpilogueList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_prologueEpilogueList_2D_element (inOperand0, inOperand1) ;
+  if (in_mInstructionList.isValid () && in_mEndOfInstructionList.isValid ()) {
+    result = GALGAS_prologueEpilogueList_2D_element (in_mInstructionList, in_mEndOfInstructionList) ;
   }
   return result ;
 }
@@ -12635,12 +12635,12 @@ mProperty_mEnumerationName (inOperand1) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_enumerationDescriptorList_2D_element GALGAS_enumerationDescriptorList_2D_element::constructor_new (const GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                                          const GALGAS_string & inOperand1 
+GALGAS_enumerationDescriptorList_2D_element GALGAS_enumerationDescriptorList_2D_element::constructor_new (const GALGAS_unifiedTypeMapEntry & in_mEnumeratedType,
+                                                                                                          const GALGAS_string & in_mEnumerationName 
                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_enumerationDescriptorList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_enumerationDescriptorList_2D_element (inOperand0, inOperand1) ;
+  if (in_mEnumeratedType.isValid () && in_mEnumerationName.isValid ()) {
+    result = GALGAS_enumerationDescriptorList_2D_element (in_mEnumeratedType, in_mEnumerationName) ;
   }
   return result ;
 }
@@ -12748,11 +12748,11 @@ mProperty_mInstruction (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionListForGeneration_2D_element GALGAS_templateInstructionListForGeneration_2D_element::constructor_new (const GALGAS_templateInstructionForGeneration & inOperand0 
+GALGAS_templateInstructionListForGeneration_2D_element GALGAS_templateInstructionListForGeneration_2D_element::constructor_new (const GALGAS_templateInstructionForGeneration & in_mInstruction 
                                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateInstructionListForGeneration_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_templateInstructionListForGeneration_2D_element (inOperand0) ;
+  if (in_mInstruction.isValid ()) {
+    result = GALGAS_templateInstructionListForGeneration_2D_element (in_mInstruction) ;
   }
   return result ;
 }
@@ -12854,11 +12854,11 @@ mProperty_mActualParameter (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_actualParameterListForGeneration_2D_element GALGAS_actualParameterListForGeneration_2D_element::constructor_new (const GALGAS_actualParameterForGeneration & inOperand0 
+GALGAS_actualParameterListForGeneration_2D_element GALGAS_actualParameterListForGeneration_2D_element::constructor_new (const GALGAS_actualParameterForGeneration & in_mActualParameter 
                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_actualParameterListForGeneration_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_actualParameterListForGeneration_2D_element (inOperand0) ;
+  if (in_mActualParameter.isValid ()) {
+    result = GALGAS_actualParameterListForGeneration_2D_element (in_mActualParameter) ;
   }
   return result ;
 }
@@ -12960,11 +12960,11 @@ mProperty_mInstruction (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListForGeneration_2D_element GALGAS_semanticInstructionListForGeneration_2D_element::constructor_new (const GALGAS_semanticInstructionForGeneration & inOperand0 
+GALGAS_semanticInstructionListForGeneration_2D_element GALGAS_semanticInstructionListForGeneration_2D_element::constructor_new (const GALGAS_semanticInstructionForGeneration & in_mInstruction 
                                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_semanticInstructionListForGeneration_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_semanticInstructionListForGeneration_2D_element (inOperand0) ;
+  if (in_mInstruction.isValid ()) {
+    result = GALGAS_semanticInstructionListForGeneration_2D_element (in_mInstruction) ;
   }
   return result ;
 }
@@ -13076,12 +13076,12 @@ GALGAS_listOfSemanticInstructionListForGeneration_2D_element GALGAS_listOfSemant
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_listOfSemanticInstructionListForGeneration_2D_element GALGAS_listOfSemanticInstructionListForGeneration_2D_element::constructor_new (const GALGAS_semanticInstructionListForGeneration & inOperand0,
-                                                                                                                                            const GALGAS_location & inOperand1 
+GALGAS_listOfSemanticInstructionListForGeneration_2D_element GALGAS_listOfSemanticInstructionListForGeneration_2D_element::constructor_new (const GALGAS_semanticInstructionListForGeneration & in_mInstructionList,
+                                                                                                                                            const GALGAS_location & in_mEndOfInstructionList 
                                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_listOfSemanticInstructionListForGeneration_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_listOfSemanticInstructionListForGeneration_2D_element (inOperand0, inOperand1) ;
+  if (in_mInstructionList.isValid () && in_mEndOfInstructionList.isValid ()) {
+    result = GALGAS_listOfSemanticInstructionListForGeneration_2D_element (in_mInstructionList, in_mEndOfInstructionList) ;
   }
   return result ;
 }
@@ -13192,12 +13192,12 @@ mProperty_mDeclaration (inOperand1) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticDeclarationListForGeneration_2D_element GALGAS_semanticDeclarationListForGeneration_2D_element::constructor_new (const GALGAS_string & inOperand0,
-                                                                                                                                const GALGAS_semanticDeclarationForGeneration & inOperand1 
+GALGAS_semanticDeclarationListForGeneration_2D_element GALGAS_semanticDeclarationListForGeneration_2D_element::constructor_new (const GALGAS_string & in_mMessage,
+                                                                                                                                const GALGAS_semanticDeclarationForGeneration & in_mDeclaration 
                                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_semanticDeclarationListForGeneration_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_semanticDeclarationListForGeneration_2D_element (inOperand0, inOperand1) ;
+  if (in_mMessage.isValid () && in_mDeclaration.isValid ()) {
+    result = GALGAS_semanticDeclarationListForGeneration_2D_element (in_mMessage, in_mDeclaration) ;
   }
   return result ;
 }
@@ -13315,12 +13315,12 @@ GALGAS_nonTerminalToAddList_2D_element GALGAS_nonTerminalToAddList_2D_element::c
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_nonTerminalToAddList_2D_element GALGAS_nonTerminalToAddList_2D_element::constructor_new (const GALGAS_string & inOperand0,
-                                                                                                const GALGAS_uint & inOperand1 
+GALGAS_nonTerminalToAddList_2D_element GALGAS_nonTerminalToAddList_2D_element::constructor_new (const GALGAS_string & in_mSyntaxComponentName,
+                                                                                                const GALGAS_uint & in_mNonTerminalToAddCount 
                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_nonTerminalToAddList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_nonTerminalToAddList_2D_element (inOperand0, inOperand1) ;
+  if (in_mSyntaxComponentName.isValid () && in_mNonTerminalToAddCount.isValid ()) {
+    result = GALGAS_nonTerminalToAddList_2D_element (in_mSyntaxComponentName, in_mNonTerminalToAddCount) ;
   }
   return result ;
 }
@@ -13442,13 +13442,13 @@ GALGAS_terminalCheckAssignementList_2D_element GALGAS_terminalCheckAssignementLi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_terminalCheckAssignementList_2D_element GALGAS_terminalCheckAssignementList_2D_element::constructor_new (const GALGAS_string & inOperand0,
-                                                                                                                const GALGAS_string & inOperand1,
-                                                                                                                const GALGAS_string & inOperand2 
+GALGAS_terminalCheckAssignementList_2D_element GALGAS_terminalCheckAssignementList_2D_element::constructor_new (const GALGAS_string & in_mTypeName,
+                                                                                                                const GALGAS_string & in_mTargetVarCppName,
+                                                                                                                const GALGAS_string & in_mSourceLexicalAttributeName 
                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_terminalCheckAssignementList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_terminalCheckAssignementList_2D_element (inOperand0, inOperand1, inOperand2) ;
+  if (in_mTypeName.isValid () && in_mTargetVarCppName.isValid () && in_mSourceLexicalAttributeName.isValid ()) {
+    result = GALGAS_terminalCheckAssignementList_2D_element (in_mTypeName, in_mTargetVarCppName, in_mSourceLexicalAttributeName) ;
   }
   return result ;
 }
@@ -13576,13 +13576,13 @@ GALGAS_filewrapperTemplateListForGeneration_2D_element GALGAS_filewrapperTemplat
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateListForGeneration_2D_element GALGAS_filewrapperTemplateListForGeneration_2D_element::constructor_new (const GALGAS_string & inOperand0,
-                                                                                                                                const GALGAS_formalInputParameterListForGeneration & inOperand1,
-                                                                                                                                const GALGAS_templateInstructionListForGeneration & inOperand2 
+GALGAS_filewrapperTemplateListForGeneration_2D_element GALGAS_filewrapperTemplateListForGeneration_2D_element::constructor_new (const GALGAS_string & in_mFilewrapperTemplateName,
+                                                                                                                                const GALGAS_formalInputParameterListForGeneration & in_mFilewrapperTemplateFormalInputParameters,
+                                                                                                                                const GALGAS_templateInstructionListForGeneration & in_mTemplateInstructionListForGeneration 
                                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_filewrapperTemplateListForGeneration_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_filewrapperTemplateListForGeneration_2D_element (inOperand0, inOperand1, inOperand2) ;
+  if (in_mFilewrapperTemplateName.isValid () && in_mFilewrapperTemplateFormalInputParameters.isValid () && in_mTemplateInstructionListForGeneration.isValid ()) {
+    result = GALGAS_filewrapperTemplateListForGeneration_2D_element (in_mFilewrapperTemplateName, in_mFilewrapperTemplateFormalInputParameters, in_mTemplateInstructionListForGeneration) ;
   }
   return result ;
 }
@@ -13710,13 +13710,13 @@ GALGAS_ruleDeclarationList_2D_element GALGAS_ruleDeclarationList_2D_element::con
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_ruleDeclarationList_2D_element GALGAS_ruleDeclarationList_2D_element::constructor_new (const GALGAS_string & inOperand0,
-                                                                                              const GALGAS_uint & inOperand1,
-                                                                                              const GALGAS_ruleLabelImplementationList & inOperand2 
+GALGAS_ruleDeclarationList_2D_element GALGAS_ruleDeclarationList_2D_element::constructor_new (const GALGAS_string & in_mNonterminalName,
+                                                                                              const GALGAS_uint & in_mRuleIndex,
+                                                                                              const GALGAS_ruleLabelImplementationList & in_mLabelImplementationList 
                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_ruleDeclarationList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_ruleDeclarationList_2D_element (inOperand0, inOperand1, inOperand2) ;
+  if (in_mNonterminalName.isValid () && in_mRuleIndex.isValid () && in_mLabelImplementationList.isValid ()) {
+    result = GALGAS_ruleDeclarationList_2D_element (in_mNonterminalName, in_mRuleIndex, in_mLabelImplementationList) ;
   }
   return result ;
 }

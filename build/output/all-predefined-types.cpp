@@ -1664,12 +1664,12 @@ GALGAS_lbool GALGAS_lbool::constructor_default (UNUSED_LOCATION_ARGS) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lbool GALGAS_lbool::constructor_new (const GALGAS_bool & inOperand0,
-                                            const GALGAS_location & inOperand1 
+GALGAS_lbool GALGAS_lbool::constructor_new (const GALGAS_bool & in_bool,
+                                            const GALGAS_location & in_location 
                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lbool result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_lbool (inOperand0, inOperand1) ;
+  if (in_bool.isValid () && in_location.isValid ()) {
+    result = GALGAS_lbool (in_bool, in_location) ;
   }
   return result ;
 }
@@ -3662,12 +3662,12 @@ GALGAS_luint GALGAS_luint::constructor_default (UNUSED_LOCATION_ARGS) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_luint GALGAS_luint::constructor_new (const GALGAS_uint & inOperand0,
-                                            const GALGAS_location & inOperand1 
+GALGAS_luint GALGAS_luint::constructor_new (const GALGAS_uint & in_uint,
+                                            const GALGAS_location & in_location 
                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_luint result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_luint (inOperand0, inOperand1) ;
+  if (in_uint.isValid () && in_location.isValid ()) {
+    result = GALGAS_luint (in_uint, in_location) ;
   }
   return result ;
 }
@@ -6287,12 +6287,12 @@ GALGAS_lsint GALGAS_lsint::constructor_default (UNUSED_LOCATION_ARGS) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lsint GALGAS_lsint::constructor_new (const GALGAS_sint & inOperand0,
-                                            const GALGAS_location & inOperand1 
+GALGAS_lsint GALGAS_lsint::constructor_new (const GALGAS_sint & in_sint,
+                                            const GALGAS_location & in_location 
                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lsint result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_lsint (inOperand0, inOperand1) ;
+  if (in_sint.isValid () && in_location.isValid ()) {
+    result = GALGAS_lsint (in_sint, in_location) ;
   }
   return result ;
 }
@@ -6410,12 +6410,12 @@ GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::constructor_default (UNUSED_LOCATION_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::constructor_new (const GALGAS_sint_36__34_ & inOperand0,
-                                                            const GALGAS_location & inOperand1 
+GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::constructor_new (const GALGAS_sint_36__34_ & in_sint64,
+                                                            const GALGAS_location & in_location 
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lsint_36__34_ result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_lsint_36__34_ (inOperand0, inOperand1) ;
+  if (in_sint64.isValid () && in_location.isValid ()) {
+    result = GALGAS_lsint_36__34_ (in_sint64, in_location) ;
   }
   return result ;
 }
@@ -6533,12 +6533,12 @@ GALGAS_luint_36__34_ GALGAS_luint_36__34_::constructor_default (UNUSED_LOCATION_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_luint_36__34_ GALGAS_luint_36__34_::constructor_new (const GALGAS_uint_36__34_ & inOperand0,
-                                                            const GALGAS_location & inOperand1 
+GALGAS_luint_36__34_ GALGAS_luint_36__34_::constructor_new (const GALGAS_uint_36__34_ & in_uint64,
+                                                            const GALGAS_location & in_location 
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_luint_36__34_ result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_luint_36__34_ (inOperand0, inOperand1) ;
+  if (in_uint64.isValid () && in_location.isValid ()) {
+    result = GALGAS_luint_36__34_ (in_uint64, in_location) ;
   }
   return result ;
 }
@@ -6656,12 +6656,12 @@ GALGAS_range GALGAS_range::constructor_default (UNUSED_LOCATION_ARGS) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_range GALGAS_range::constructor_new (const GALGAS_uint & inOperand0,
-                                            const GALGAS_uint & inOperand1 
+GALGAS_range GALGAS_range::constructor_new (const GALGAS_uint & in_start,
+                                            const GALGAS_uint & in_length 
                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_range result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_range (inOperand0, inOperand1) ;
+  if (in_start.isValid () && in_length.isValid ()) {
+    result = GALGAS_range (in_start, in_length) ;
   }
   return result ;
 }
@@ -6769,11 +6769,11 @@ mProperty_mValue (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_functionlist_2D_element GALGAS_functionlist_2D_element::constructor_new (const GALGAS_function & inOperand0 
+GALGAS_functionlist_2D_element GALGAS_functionlist_2D_element::constructor_new (const GALGAS_function & in_mValue 
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_functionlist_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_functionlist_2D_element (inOperand0) ;
+  if (in_mValue.isValid ()) {
+    result = GALGAS_functionlist_2D_element (in_mValue) ;
   }
   return result ;
 }
@@ -6881,11 +6881,11 @@ GALGAS_luintlist_2D_element GALGAS_luintlist_2D_element::constructor_default (UN
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_luintlist_2D_element GALGAS_luintlist_2D_element::constructor_new (const GALGAS_luint & inOperand0 
+GALGAS_luintlist_2D_element GALGAS_luintlist_2D_element::constructor_new (const GALGAS_luint & in_mValue 
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_luintlist_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_luintlist_2D_element (inOperand0) ;
+  if (in_mValue.isValid ()) {
+    result = GALGAS_luintlist_2D_element (in_mValue) ;
   }
   return result ;
 }
@@ -6987,11 +6987,11 @@ mProperty_mValue (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_objectlist_2D_element GALGAS_objectlist_2D_element::constructor_new (const GALGAS_object & inOperand0 
+GALGAS_objectlist_2D_element GALGAS_objectlist_2D_element::constructor_new (const GALGAS_object & in_mValue 
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_objectlist_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_objectlist_2D_element (inOperand0) ;
+  if (in_mValue.isValid ()) {
+    result = GALGAS_objectlist_2D_element (in_mValue) ;
   }
   return result ;
 }
@@ -7099,11 +7099,11 @@ GALGAS_stringlist_2D_element GALGAS_stringlist_2D_element::constructor_default (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_stringlist_2D_element GALGAS_stringlist_2D_element::constructor_new (const GALGAS_string & inOperand0 
+GALGAS_stringlist_2D_element GALGAS_stringlist_2D_element::constructor_new (const GALGAS_string & in_mValue 
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_stringlist_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_stringlist_2D_element (inOperand0) ;
+  if (in_mValue.isValid ()) {
+    result = GALGAS_stringlist_2D_element (in_mValue) ;
   }
   return result ;
 }
@@ -7205,11 +7205,11 @@ mProperty_mValue (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typelist_2D_element GALGAS_typelist_2D_element::constructor_new (const GALGAS_type & inOperand0 
+GALGAS_typelist_2D_element GALGAS_typelist_2D_element::constructor_new (const GALGAS_type & in_mValue 
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typelist_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_typelist_2D_element (inOperand0) ;
+  if (in_mValue.isValid ()) {
+    result = GALGAS_typelist_2D_element (in_mValue) ;
   }
   return result ;
 }
@@ -7317,11 +7317,11 @@ GALGAS_uintlist_2D_element GALGAS_uintlist_2D_element::constructor_default (UNUS
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uintlist_2D_element GALGAS_uintlist_2D_element::constructor_new (const GALGAS_uint & inOperand0 
+GALGAS_uintlist_2D_element GALGAS_uintlist_2D_element::constructor_new (const GALGAS_uint & in_mValue 
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uintlist_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_uintlist_2D_element (inOperand0) ;
+  if (in_mValue.isValid ()) {
+    result = GALGAS_uintlist_2D_element (in_mValue) ;
   }
   return result ;
 }
@@ -7429,11 +7429,11 @@ GALGAS_uint_36__34_list_2D_element GALGAS_uint_36__34_list_2D_element::construct
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_list_2D_element GALGAS_uint_36__34_list_2D_element::constructor_new (const GALGAS_uint_36__34_ & inOperand0 
+GALGAS_uint_36__34_list_2D_element GALGAS_uint_36__34_list_2D_element::constructor_new (const GALGAS_uint_36__34_ & in_mValue 
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint_36__34_list_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_uint_36__34_list_2D_element (inOperand0) ;
+  if (in_mValue.isValid ()) {
+    result = GALGAS_uint_36__34_list_2D_element (in_mValue) ;
   }
   return result ;
 }
@@ -7541,11 +7541,11 @@ GALGAS_bigintlist_2D_element GALGAS_bigintlist_2D_element::constructor_default (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bigintlist_2D_element GALGAS_bigintlist_2D_element::constructor_new (const GALGAS_bigint & inOperand0 
+GALGAS_bigintlist_2D_element GALGAS_bigintlist_2D_element::constructor_new (const GALGAS_bigint & in_mValue 
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bigintlist_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_bigintlist_2D_element (inOperand0) ;
+  if (in_mValue.isValid ()) {
+    result = GALGAS_bigintlist_2D_element (in_mValue) ;
   }
   return result ;
 }
@@ -7657,12 +7657,12 @@ GALGAS__32_stringlist_2D_element GALGAS__32_stringlist_2D_element::constructor_d
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS__32_stringlist_2D_element GALGAS__32_stringlist_2D_element::constructor_new (const GALGAS_string & inOperand0,
-                                                                                    const GALGAS_string & inOperand1 
+GALGAS__32_stringlist_2D_element GALGAS__32_stringlist_2D_element::constructor_new (const GALGAS_string & in_mValue0,
+                                                                                    const GALGAS_string & in_mValue1 
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS__32_stringlist_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS__32_stringlist_2D_element (inOperand0, inOperand1) ;
+  if (in_mValue0.isValid () && in_mValue1.isValid ()) {
+    result = GALGAS__32_stringlist_2D_element (in_mValue0, in_mValue1) ;
   }
   return result ;
 }
@@ -7780,12 +7780,12 @@ GALGAS_lstring GALGAS_lstring::constructor_default (UNUSED_LOCATION_ARGS) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_lstring::constructor_new (const GALGAS_string & inOperand0,
-                                                const GALGAS_location & inOperand1 
+GALGAS_lstring GALGAS_lstring::constructor_new (const GALGAS_string & in_string,
+                                                const GALGAS_location & in_location 
                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstring result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_lstring (inOperand0, inOperand1) ;
+  if (in_string.isValid () && in_location.isValid ()) {
+    result = GALGAS_lstring (in_string, in_location) ;
   }
   return result ;
 }
@@ -7903,12 +7903,12 @@ GALGAS_lbigint GALGAS_lbigint::constructor_default (UNUSED_LOCATION_ARGS) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lbigint GALGAS_lbigint::constructor_new (const GALGAS_bigint & inOperand0,
-                                                const GALGAS_location & inOperand1 
+GALGAS_lbigint GALGAS_lbigint::constructor_new (const GALGAS_bigint & in_bigint,
+                                                const GALGAS_location & in_location 
                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lbigint result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_lbigint (inOperand0, inOperand1) ;
+  if (in_bigint.isValid () && in_location.isValid ()) {
+    result = GALGAS_lbigint (in_bigint, in_location) ;
   }
   return result ;
 }
@@ -8026,12 +8026,12 @@ GALGAS_lchar GALGAS_lchar::constructor_default (UNUSED_LOCATION_ARGS) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lchar GALGAS_lchar::constructor_new (const GALGAS_char & inOperand0,
-                                            const GALGAS_location & inOperand1 
+GALGAS_lchar GALGAS_lchar::constructor_new (const GALGAS_char & in_char,
+                                            const GALGAS_location & in_location 
                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lchar result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_lchar (inOperand0, inOperand1) ;
+  if (in_char.isValid () && in_location.isValid ()) {
+    result = GALGAS_lchar (in_char, in_location) ;
   }
   return result ;
 }
@@ -8149,12 +8149,12 @@ GALGAS_ldouble GALGAS_ldouble::constructor_default (UNUSED_LOCATION_ARGS) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_ldouble GALGAS_ldouble::constructor_new (const GALGAS_double & inOperand0,
-                                                const GALGAS_location & inOperand1 
+GALGAS_ldouble GALGAS_ldouble::constructor_new (const GALGAS_double & in_double,
+                                                const GALGAS_location & in_location 
                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_ldouble result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_ldouble (inOperand0, inOperand1) ;
+  if (in_double.isValid () && in_location.isValid ()) {
+    result = GALGAS_ldouble (in_double, in_location) ;
   }
   return result ;
 }
@@ -8268,11 +8268,11 @@ GALGAS_lstringlist_2D_element GALGAS_lstringlist_2D_element::constructor_default
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist_2D_element GALGAS_lstringlist_2D_element::constructor_new (const GALGAS_lstring & inOperand0 
+GALGAS_lstringlist_2D_element GALGAS_lstringlist_2D_element::constructor_new (const GALGAS_lstring & in_mValue 
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstringlist_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_lstringlist_2D_element (inOperand0) ;
+  if (in_mValue.isValid ()) {
+    result = GALGAS_lstringlist_2D_element (in_mValue) ;
   }
   return result ;
 }
@@ -8380,11 +8380,11 @@ GALGAS_lbigintlist_2D_element GALGAS_lbigintlist_2D_element::constructor_default
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lbigintlist_2D_element GALGAS_lbigintlist_2D_element::constructor_new (const GALGAS_lbigint & inOperand0 
+GALGAS_lbigintlist_2D_element GALGAS_lbigintlist_2D_element::constructor_new (const GALGAS_lbigint & in_mValue 
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lbigintlist_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_lbigintlist_2D_element (inOperand0) ;
+  if (in_mValue.isValid ()) {
+    result = GALGAS_lbigintlist_2D_element (in_mValue) ;
   }
   return result ;
 }
@@ -8496,12 +8496,12 @@ GALGAS__32_lstringlist_2D_element GALGAS__32_lstringlist_2D_element::constructor
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS__32_lstringlist_2D_element GALGAS__32_lstringlist_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                      const GALGAS_lstring & inOperand1 
+GALGAS__32_lstringlist_2D_element GALGAS__32_lstringlist_2D_element::constructor_new (const GALGAS_lstring & in_mValue0,
+                                                                                      const GALGAS_lstring & in_mValue1 
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS__32_lstringlist_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS__32_lstringlist_2D_element (inOperand0, inOperand1) ;
+  if (in_mValue0.isValid () && in_mValue1.isValid ()) {
+    result = GALGAS__32_lstringlist_2D_element (in_mValue0, in_mValue1) ;
   }
   return result ;
 }

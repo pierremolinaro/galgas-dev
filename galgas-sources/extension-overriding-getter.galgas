@@ -96,6 +96,38 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
+  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+    $override$
+    $func$
+    $identifier$ ?let @lstring mMethodName indexing overrideExtensionGetterDefinition
+    <formal_input_parameter_list> ?let formalInputParameterList
+    $->$
+    $@type$ ?let @lstring mReturnedTypeName
+    let @lstring resultVariableName
+    select
+      $identifier$ ?resultVariableName
+    or
+      resultVariableName = .new {!"result" !.here}
+    end
+    ${$
+    <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+    let @location endOfInstructionList = .here
+    $}$
+    ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST.new {
+      !false # Is not predefined
+      !requiresSelfForAccessingProperty: true
+      !inClassName
+      !mMethodName
+      !formalInputParameterList
+      !mReturnedTypeName
+      !resultVariableName
+      !routineInstructionList
+      !endOfInstructionList
+    }
+  }
+
+  #·····················································································································
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

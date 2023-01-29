@@ -1343,6 +1343,10 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
 
   public: virtual int32_t select_galgas_33_DeclarationsSyntax_43 (C_Lexique_galgasScanner *) ;
 
+  public: virtual int32_t select_galgas_33_DeclarationsSyntax_44 (C_Lexique_galgasScanner *) ;
+
+  public: virtual int32_t select_galgas_33_DeclarationsSyntax_45 (C_Lexique_galgasScanner *) ;
+
   public: virtual int32_t select_galgas_33_LexiqueComponentSyntax_0 (C_Lexique_galgasScanner *) ;
 
   public: virtual int32_t select_galgas_33_LexiqueComponentSyntax_1 (C_Lexique_galgasScanner *) ;

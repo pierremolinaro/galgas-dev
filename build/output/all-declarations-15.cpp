@@ -5446,6 +5446,12 @@ typeComparisonResult cPtr_structTypeForGeneration::dynamicObjectCompare (const a
   if (kOperandEqual == result) {
     result = mProperty_mTypedPropertyList.objectCompare (p->mProperty_mTypedPropertyList) ;
   }
+  if (kOperandEqual == result) {
+    result = mProperty_mConstructorArgumentList.objectCompare (p->mProperty_mConstructorArgumentList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mConstructorInitializationCode.objectCompare (p->mProperty_mConstructorInitializationCode) ;
+  }
   return result ;
 }
 
@@ -5483,11 +5489,13 @@ GALGAS_semanticTypeForGeneration (inSourcePtr) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mSelfTypeEntry,
-                                                                                const GALGAS_typedPropertyList & inAttribute_mTypedPropertyList
+                                                                                const GALGAS_typedPropertyList & inAttribute_mTypedPropertyList,
+                                                                                const GALGAS_typedPropertyList & inAttribute_mConstructorArgumentList,
+                                                                                const GALGAS_string & inAttribute_mConstructorInitializationCode
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_structTypeForGeneration result ;
-  if (inAttribute_mSelfTypeEntry.isValid () && inAttribute_mTypedPropertyList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_structTypeForGeneration (inAttribute_mSelfTypeEntry, inAttribute_mTypedPropertyList COMMA_THERE)) ;
+  if (inAttribute_mSelfTypeEntry.isValid () && inAttribute_mTypedPropertyList.isValid () && inAttribute_mConstructorArgumentList.isValid () && inAttribute_mConstructorInitializationCode.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_structTypeForGeneration (inAttribute_mSelfTypeEntry, inAttribute_mTypedPropertyList, inAttribute_mConstructorArgumentList, inAttribute_mConstructorInitializationCode COMMA_THERE)) ;
   }
   return result ;
 }
@@ -5505,14 +5513,42 @@ GALGAS_typedPropertyList GALGAS_structTypeForGeneration::readProperty_mTypedProp
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_typedPropertyList GALGAS_structTypeForGeneration::readProperty_mConstructorArgumentList (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_typedPropertyList () ;
+  }else{
+    cPtr_structTypeForGeneration * p = (cPtr_structTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_structTypeForGeneration) ;
+    return p->mProperty_mConstructorArgumentList ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_structTypeForGeneration::readProperty_mConstructorInitializationCode (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_string () ;
+  }else{
+    cPtr_structTypeForGeneration * p = (cPtr_structTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_structTypeForGeneration) ;
+    return p->mProperty_mConstructorInitializationCode ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @structTypeForGeneration class
 //----------------------------------------------------------------------------------------------------------------------
 
 cPtr_structTypeForGeneration::cPtr_structTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                            const GALGAS_typedPropertyList & in_mTypedPropertyList
+                                                            const GALGAS_typedPropertyList & in_mTypedPropertyList,
+                                                            const GALGAS_typedPropertyList & in_mConstructorArgumentList,
+                                                            const GALGAS_string & in_mConstructorInitializationCode
                                                             COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
-mProperty_mTypedPropertyList (in_mTypedPropertyList) {
+mProperty_mTypedPropertyList (in_mTypedPropertyList),
+mProperty_mConstructorArgumentList (in_mConstructorArgumentList),
+mProperty_mConstructorInitializationCode (in_mConstructorInitializationCode) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5527,6 +5563,10 @@ void cPtr_structTypeForGeneration::description (C_String & ioString,
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mTypedPropertyList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mConstructorArgumentList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mConstructorInitializationCode.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -5534,7 +5574,7 @@ void cPtr_structTypeForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_structTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_structTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mTypedPropertyList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_structTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mTypedPropertyList, mProperty_mConstructorArgumentList, mProperty_mConstructorInitializationCode COMMA_THERE)) ;
   return ptr ;
 }
 

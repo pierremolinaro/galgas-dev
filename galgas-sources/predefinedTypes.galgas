@@ -27,6 +27,7 @@ private proc appendPredefinedListTypeAST
     !@lstring.new {!"mValue" !@location.here}
     !true
     !{}
+    !.none
   ioDeclarationListASTs += !@listDeclarationAST.new {
     !true # Is predefined
     !@lstring.new {!inElementTypeName + "list" !@location.here}
@@ -48,12 +49,14 @@ private proc appendPredefined2StringListTypeAST
     !@lstring.new {!"mValue0" !@location.here}
     !true
     !{}
+    !.none
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"string" !@location.here}
     !@lstring.new {!"mValue1" !@location.here}
     !true
     !{}
+    !.none
 
   ioDeclarationListASTs += !@listDeclarationAST.new {
     !true # Is predefined
@@ -76,13 +79,14 @@ private proc appendPredefined2LStringListTypeAST
     !@lstring.new {!"mValue0" !@location.here}
     !true
     !{}
+    !.none
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"lstring" !@location.here}
     !@lstring.new {!"mValue1" !@location.here}
     !true
     !{}
-
+    !.none
   ioDeclarationListASTs += !@listDeclarationAST.new {
     !true # Is predefined
     !@lstring.new {!"2lstringlist" !@location.here}
@@ -105,12 +109,14 @@ private proc appendStructASTForTypeWithLocation
     !@lstring.new {!inElementTypeName !@location.here}
     !true
     !{}
+    !.none
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"location" !@location.here}
     !@lstring.new {!"location" !@location.here}
     !true
     !{}
+    !.none
   ioDeclarationListASTs += !@structDeclarationAST.new {
     !true # Is prefined
     !@lstring.new {!"l" + inElementTypeName !@location.here}
@@ -133,12 +139,14 @@ private proc appendStructASTForRangeType
     !@lstring.new {!"start" !@location.here}
     !true
     !{}
+    !.none
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"uint" !@location.here}
     !@lstring.new {!"length" !@location.here}
     !true
     !{}
+    !.none
   ioDeclarationListASTs += !@structDeclarationAST.new {
     !true # Is prefined
     !@lstring.new {!"range" !@location.here}

@@ -74,6 +74,28 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
+  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+    $override$
+    $proc$
+    $identifier$ ?let @lstring mMethodName indexing overrideExtensionMethodDefinition
+    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    ${$
+    <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+    let @location endOfMethodLocation = @location.here
+    $}$
+    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST.new {
+      !false # Is not predefined
+      !requiresSelfForAccessingProperty: true
+      !inClassName
+      !mMethodName
+      !formalParameterList
+      !routineInstructionList
+      !endOfMethodLocation
+    }
+  }
+
+  #·····················································································································
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

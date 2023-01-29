@@ -55,7 +55,7 @@ syntax extension galgas4DeclarationsSyntax {
     while
       <property_declaration> !?propertyList
     while
-      $;$
+      <method_declaration> !structTypeName !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@structDeclarationAST.new {
@@ -83,7 +83,7 @@ override method @structDeclarationAST enterDeclarationInGraph
 {
   let key = @lstring.new {!"@" + self.mStructTypeName !self.mStructTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for (* mPropertyTypeName * * *) in self.mStructurePropertyList do
+  for (* mPropertyTypeName 4*) in self.mStructurePropertyList do
     let propertyKey = @lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
   end
@@ -122,7 +122,7 @@ override method @structDeclarationAST enterDeclarationInSemanticContext
   var @functionSignature constructorPropertyTypeList = {}
   var @typedPropertyList typedPropertyList = {}
   var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
-  for (isConstant mPropertyTypeName mPropertyName isPublic mAttributeList) in self.mStructurePropertyList do
+  for (isConstant mPropertyTypeName mPropertyName isPublic mAttributeList initExpression) in self.mStructurePropertyList do
     [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let propertyTypeEntry]
     var @lstring selector = ["" nowhere]
     for (mValue) in mAttributeList do
@@ -130,11 +130,13 @@ override method @structDeclarationAST enterDeclarationInSemanticContext
         selector = mPropertyName
       end
     end
-    constructorPropertyTypeList += !selector !propertyTypeEntry !mPropertyName.string
+    if [initExpression isNone] then
+      constructorPropertyTypeList += !selector !propertyTypeEntry !mPropertyName.string
+    end
     typesToIncludeInHeaderCompilation += !propertyTypeEntry
     let hasSetter = isPublic && not isConstant
     let hasSelector = false
-    typedPropertyList += !propertyTypeEntry !mPropertyName !hasSetter !hasSelector
+    typedPropertyList += !propertyTypeEntry !mPropertyName !hasSetter !hasSelector !.none
     [!?propertyMap insertKey !mPropertyName !isPublic !isConstant !propertyTypeEntry]
   end
   [!?constructorMap insertKey
@@ -149,7 +151,7 @@ override method @structDeclarationAST enterDeclarationInSemanticContext
   var @setterMap setterMap = {}
 #--- Instance methods
   var @instanceMethodMap instanceMethodMap = {}
-#--- Add Categories
+#--- Add Extensions
   addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
@@ -174,7 +176,7 @@ override method @structDeclarationAST enterDeclarationInSemanticContext
   end
 #--- Generate a "default" constructor ?
   var @string defaultConstructorName = "default"
-  for (mPropertyTypeEntry * * *) in typedPropertyList while defaultConstructorName != "" do
+  for (mPropertyTypeEntry 4*) in typedPropertyList while defaultConstructorName != "" do
     if ([mPropertyTypeEntry definition].mDefaultConstructorName == "") | not [mPropertyTypeEntry definition].mIsConcrete then
       defaultConstructorName = ""
     end
@@ -230,7 +232,7 @@ override method @structDeclarationAST semanticAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes unused inPredefinedTypes
+  ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
@@ -241,8 +243,9 @@ override method @structDeclarationAST semanticAnalysis
     error self.mStructTypeName: "a structure cannot be empty: it must have at least one property" 
   end
   var @typedPropertyList typedPropertyList = {}
+  var @typedPropertyList constructorArgumentList = {}
   var @propertyIndexMap propertyMap = {}
-  for (* mPropertyTypeName mPropertyName * mAttributeList) in self.mStructurePropertyList do
+  for (* mPropertyTypeName mPropertyName * mAttributeList initExpression) in self.mStructurePropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
     let t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
@@ -256,12 +259,7 @@ override method @structDeclarationAST semanticAnalysis
         hasSelector = true
       end
     end
-    let hasSetter = true # mIsPublic
-    typedPropertyList +=
-      !t
-      !mPropertyName
-      !hasSetter
-      !hasSelector
+    let hasSetter = true
     if [forbiddenKeysForStruct () hasKey !mPropertyName.string] then
       var @string m = "an property cannot be named:"
       for s in forbiddenKeysForStruct () do
@@ -271,12 +269,98 @@ override method @structDeclarationAST semanticAnalysis
       error mPropertyName: m
     end
     [!?propertyMap insertKey !mPropertyName !t]
+#    let @propertyInCollectionInitialization initialization
+    switch initExpression
+    case none :
+#      initialization = .none
+      constructorArgumentList +=
+        !t
+        !mPropertyName
+        !hasSetter
+        !hasSelector
+        !.none
+    case some (*) :
+#      var variableMap = @localVarManager.new {!.new {!{} !{}} !{}}
+#      let @analysisContext analysisContext = .new {
+#        !inSemanticContext
+#        !inPredefinedTypes
+#        !""
+#        !selfType: .none
+#        !""
+#        !requiresSelfForAccessingProperty: true
+#      }
+#      [expressionAST analyzeSemanticExpression
+#        !["" nowhere]
+#        !?ioUsefulEntitiesGraph
+#        !inferenceType: t
+#        !analysisContext
+#        !?variableMap
+#        ?let @semanticExpressionForGeneration expression
+#      ]
+#      initialization = .some {!expression: expression}
+    end
+    typedPropertyList +=
+      !t
+      !mPropertyName
+      !hasSetter
+      !hasSelector
+      !.none
   end
+#--- Build property initialzation code
+  var initializationCode = ""
+  var inclusionSet = @stringset {}
+  var @uint temporaryVariableIndex = 0
+  var unusedVariableCppNameSet = @stringset {}
+  var @usefulEntitiesGraph usefulEntitiesGraph = .emptyGraph
+  for (* propertyTypeName propertyName 2* initExpression) in self.mStructurePropertyList do
+   switch initExpression
+    case none :
+    case some (expressionAST) :
+      var variableMap = @localVarManager.new {!.new {!{} !{}} !{}}
+      let @analysisContext analysisContext = .new {
+        !inSemanticContext
+        !inPredefinedTypes
+        !""
+        !selfType: .none
+        !""
+        !requiresSelfForAccessingProperty: true
+      }
+      let propertyType = [inSemanticContext.mTypeMap searchKey !propertyTypeName]
+      [expressionAST analyzeSemanticExpression
+        !["" nowhere]
+        !?usefulEntitiesGraph
+        !inferenceType: propertyType
+        !analysisContext
+        !?variableMap
+        ?var @semanticExpressionForGeneration expression
+      ]
+    #--- Check assignment type compatibility
+      checkAssignmentTypeWithImplicitGetterCall (
+        !propertyType
+        !expression.mResultType
+        !propertyName.location
+        !?expression
+      )
+      [expression generateExpression
+        !?initializationCode
+        !?inclusionSet
+        !?temporaryVariableIndex
+        !?unusedVariableCppNameSet
+        ?let sourceVar
+      ]
+      initializationCode += "  const GALGAS_" + [propertyType identifierRepresentation]
+      initializationCode += " in_" + [propertyName string] + " = " + sourceVar + " ;\n"
+    end
+
+  end
+#---
   ioSemanticDeclarationListForGeneration +=
     !"struct " + self.mStructTypeName
     !@structTypeForGeneration.new {
       ![inSemanticContext.mTypeMap searchKey !self.mStructTypeName]
       !typedPropertyList
+      !constructorArgumentList
+      !initializationCode
     }
 }
 
@@ -286,6 +370,8 @@ override method @structDeclarationAST semanticAnalysis
 
 refclass @structTypeForGeneration : @semanticTypeForGeneration {
   private let @typedPropertyList mTypedPropertyList
+  private let @typedPropertyList mConstructorArgumentList
+  private let @string mConstructorInitializationCode
 }
 
 #·······················································································································
@@ -297,12 +383,15 @@ filewrapper boolsetGenerationTemplate in "+generation-templates/type_generation"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedPropertyList PROPERTY_LIST
+    ?@typedPropertyList CONSTRUCTOR_ARGUMENT_LIST
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 
   template structTypeSpecificImplementation "GALGAS_struct.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedPropertyList PROPERTY_LIST
+    ?@typedPropertyList CONSTRUCTOR_ARGUMENT_LIST
+    ?@string CONSTRUCTOR_INITIALIZATION_CODE
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 }
 
@@ -312,7 +401,7 @@ override method @structTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader
 {
-  for (t 3*) in self.mTypedPropertyList do
+  for (t 4*) in self.mTypedPropertyList do
     [t addHeaderFileName1 !?ioInclusionSet]
   end
   let selfTypedefinition = [self.mSelfTypeEntry definition]
@@ -320,6 +409,7 @@ override method @structTypeForGeneration appendDeclaration1
     !selfTypedefinition.mTypeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedPropertyList
+    !self.mConstructorArgumentList
     !selfTypedefinition.mDefaultConstructorName != ""
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
@@ -352,6 +442,8 @@ override method @structTypeForGeneration appendSpecificImplementation
     !selfTypedefinition.mTypeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedPropertyList
+    !self.mConstructorArgumentList
+    !self.mConstructorInitializationCode
     !selfTypedefinition.mDefaultConstructorName != ""
   ]
  }

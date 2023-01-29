@@ -109,9 +109,9 @@ syntax extension galgas4DeclarationsSyntax {
 
 override method @dictDeclarationAST addAssociatedElement ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   var @propertyInCollectionListAST structAttributeList = {}
-  structAttributeList += !isConstant: false !self.mKeyTypeName !["key" nowhere] !true !{}
-  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
-    structAttributeList += !isConstant: false !mPropertyTypeName !mPropertyName !true !{}
+  structAttributeList += !isConstant: false !self.mKeyTypeName !["key" nowhere] !true !{} !.none
+  for (* mPropertyTypeName mPropertyName 3*) in self.mPropertyList do
+    structAttributeList += !isConstant: false !mPropertyTypeName !mPropertyName !true !{} !.none
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
     !self.mIsPredefined
@@ -135,7 +135,7 @@ override method @dictDeclarationAST enterDeclarationInGraph
   let dictionary = @lstring.new {!"@" + self.mDictTypeName !self.mDictTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !dictionary !self]
   [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + self.mKeyTypeName !self.mKeyTypeName}]
-  for (* mPropertyTypeName * * *) in self.mPropertyList do
+  for (* mPropertyTypeName 4*) in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName}]
   end
 }
@@ -217,12 +217,12 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !keyTypeIndex
     !"inKey"
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapEntryList {}
-  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName 3*) in self.mPropertyList do
     [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true
     let hasSelector = false
     argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
-    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
+    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector !.none
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     insertMethodFormalArgumentList +=
@@ -261,7 +261,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !"" # No error message
   ]
 #--- Enter "attributeForKey" getters
-  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName 3*) in self.mPropertyList do
     let accessorName = @lstring.new {!mPropertyName.string + "ForKey" !mPropertyName.location}
     [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
@@ -276,7 +276,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     ]
   end
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor
-  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName 3*) in self.mPropertyList do
     let accessorName = @lstring.new {
       !"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey"
       !mPropertyName.location
@@ -414,7 +414,7 @@ override method @dictDeclarationAST semanticAnalysis
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName 3*) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let @unifiedTypeMapEntry t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
@@ -425,6 +425,7 @@ override method @dictDeclarationAST semanticAnalysis
       !mPropertyName
       !hasSetter
       !hasSelector
+      !.none
     if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
       var @string m = "a property cannot be named:"
       for s in forbiddenKeysForMapAndDict () do

@@ -20,7 +20,6 @@ syntax extension galgas3DeclarationsSyntax {
     $abstract$
     $setter$
     $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionSetter
-#    error className : "ABSTRACT SETTER"
     $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
     <formal_parameter_list> ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST.new {

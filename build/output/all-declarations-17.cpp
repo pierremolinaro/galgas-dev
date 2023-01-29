@@ -3939,16 +3939,16 @@ mProperty_requiresSelfForAccessingProperty (inOperand5) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_analysisContext GALGAS_analysisContext::constructor_new (const GALGAS_semanticContext & inOperand0,
-                                                                const GALGAS_predefinedTypes & inOperand1,
-                                                                const GALGAS_string & inOperand2,
-                                                                const GALGAS_selfAvailability & inOperand3,
-                                                                const GALGAS_string & inOperand4,
-                                                                const GALGAS_bool & inOperand5 
+GALGAS_analysisContext GALGAS_analysisContext::constructor_new (const GALGAS_semanticContext & in_mSemanticContext,
+                                                                const GALGAS_predefinedTypes & in_mPredefinedTypes,
+                                                                const GALGAS_string & in_mSelfObjectCppName,
+                                                                const GALGAS_selfAvailability & in_selfType,
+                                                                const GALGAS_string & in_mSelfObjectCppPrefixForAccessingProperty,
+                                                                const GALGAS_bool & in_requiresSelfForAccessingProperty 
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_analysisContext result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid ()) {
-    result = GALGAS_analysisContext (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5) ;
+  if (in_mSemanticContext.isValid () && in_mPredefinedTypes.isValid () && in_mSelfObjectCppName.isValid () && in_selfType.isValid () && in_mSelfObjectCppPrefixForAccessingProperty.isValid () && in_requiresSelfForAccessingProperty.isValid ()) {
+    result = GALGAS_analysisContext (in_mSemanticContext, in_mPredefinedTypes, in_mSelfObjectCppName, in_selfType, in_mSelfObjectCppPrefixForAccessingProperty, in_requiresSelfForAccessingProperty) ;
   }
   return result ;
 }

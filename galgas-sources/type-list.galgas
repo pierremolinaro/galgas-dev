@@ -52,12 +52,10 @@ syntax extension galgas4DeclarationsSyntax {
     ${$
     var @propertyInCollectionListAST propertyList = {}
     repeat
-      <property_declaration> !?propertyList
-      select
-      or
-        $;$
-      end
     while
+      <property_declaration> !?propertyList
+    while
+      <method_declaration> !listTypeName !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@listDeclarationAST.new {
@@ -83,7 +81,7 @@ override method @listDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + self.mListTypeName !self.mListTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for (* mPropertyTypeName * * *) in self.mPropertyList do
+  for (* mPropertyTypeName 4*) in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName.location}]
   end
 }
@@ -100,7 +98,10 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
 {
 #--- Handle attributes
   var @typedPropertyList typedAttributeList = {}
-  for (* mPropertyTypeName mPropertyName isPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
+    if [initExpression isSome] then
+      error mPropertyName : "property initialization is not handled for a list"
+    end
     [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     var hasSelector = false
     for (mValue) in mAttributeList do
@@ -119,7 +120,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
         fixit { replace {!"%selector"} }
       end
     end
-    typedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
+    typedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector !.none
   end
 #--- uint type index
   [!?ioSemanticContext.mTypeMap makeEntryFromString !"uint" ?let uintType]
@@ -135,7 +136,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   var @functionSignature constructorAttributeTypeList = {}
   var @formalParameterSignature setterOutputFormalArgumentList = {}
   var @formalParameterSignature setterInputFormalArgumentList = {}
-  for (mPropertyTypeEntry @lstring mPropertyName * mHasSelector) in typedAttributeList do
+  for (mPropertyTypeEntry @lstring mPropertyName * mHasSelector *) in typedAttributeList do
     let selector = if mHasSelector then mPropertyName.string else "" end
     enumerationDescriptor += !mPropertyTypeEntry !mPropertyName.string
     constructorAttributeTypeList +=
@@ -205,7 +206,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName:self.mListTypeName.string
     !hasCompilerArgument:true
   )
-  for (mPropertyTypeEntry mPropertyName * *) in typedAttributeList do
+  for (mPropertyTypeEntry mPropertyName 3*) in typedAttributeList do
     [!?getterMap insertOrReplace
       !@lstring.new {!mPropertyName.string + "AtIndex" !mPropertyName.location}
       !@methodKind.definedAsMember
@@ -272,7 +273,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier.isBasic
     !""
   ]
-  for (mPropertyTypeEntry mPropertyName mHasSetter *) in typedAttributeList do
+  for (mPropertyTypeEntry mPropertyName mHasSetter 2*) in typedAttributeList do
     if mHasSetter then
       var setterFormalArgumentList = @formalParameterSignature {}
       setterFormalArgumentList += !["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
@@ -349,13 +350,14 @@ override method @listDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList
 {
   var @propertyInCollectionListAST structAttributeList = {}
-  for (isConstant mPropertyTypeName mPropertyName * *) in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName * * initExpression) in self.mPropertyList do
     structAttributeList +=
       !isConstant: isConstant
       !mPropertyTypeName
       !mPropertyName
       !true
       !{}
+      !initExpression
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
     !self.mIsPredefined
@@ -386,7 +388,10 @@ override method @listDeclarationAST semanticAnalysis
 #---
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (* mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName mIsPublic mAttributeList initExpression) in self.mPropertyList do
+    if [initExpression isSome] then
+      error mPropertyName : "property initialization is not handled for a list"
+    end
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
@@ -413,6 +418,7 @@ override method @listDeclarationAST semanticAnalysis
       !mPropertyName
       !hasSetter
       !hasSelector
+      !.none
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #---
@@ -487,7 +493,7 @@ override method @listTypeForGeneration appendSpecificImplementation
                                         ?let @unifiedTypeMap unused inTypeMap
                                         ?!@stringset ioInclusionSet
                                         !@string outImplementation {
-  for (t 3*) in self.mTypedAttributeList do
+  for (t 4*) in self.mTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
   [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]

@@ -1685,6 +1685,10 @@ class GALGAS_structTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Property read access
   public: class GALGAS_typedPropertyList readProperty_mTypedPropertyList (void) const ;
 
+  public: class GALGAS_typedPropertyList readProperty_mConstructorArgumentList (void) const ;
+
+  public: class GALGAS_string readProperty_mConstructorInitializationCode (void) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1697,7 +1701,9 @@ class GALGAS_structTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_structTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                       const class GALGAS_typedPropertyList & inOperand1
+                                                                       const class GALGAS_typedPropertyList & inOperand1,
+                                                                       const class GALGAS_typedPropertyList & inOperand2,
+                                                                       const class GALGAS_string & inOperand3
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1743,10 +1749,14 @@ class cPtr_structTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Properties
   public: GALGAS_typedPropertyList mProperty_mTypedPropertyList ;
+  public: GALGAS_typedPropertyList mProperty_mConstructorArgumentList ;
+  public: GALGAS_string mProperty_mConstructorInitializationCode ;
 
 //--- Constructor
   public: cPtr_structTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                        const GALGAS_typedPropertyList & in_mTypedPropertyList
+                                        const GALGAS_typedPropertyList & in_mTypedPropertyList,
+                                        const GALGAS_typedPropertyList & in_mConstructorArgumentList,
+                                        const GALGAS_string & in_mConstructorInitializationCode
                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

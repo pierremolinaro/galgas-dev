@@ -1471,32 +1471,32 @@ mProperty_mLStringListType (inOperand21) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_predefinedTypes GALGAS_predefinedTypes::constructor_new (const GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand2,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand3,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand4,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand5,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand6,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand7,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand8,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand9,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand10,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand11,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand12,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand13,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand14,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand15,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand16,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand17,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand18,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand19,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand20,
-                                                                const GALGAS_unifiedTypeMapEntry & inOperand21 
+GALGAS_predefinedTypes GALGAS_predefinedTypes::constructor_new (const GALGAS_unifiedTypeMapEntry & in_mLocationType,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mBoolType,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mCharType,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mStringType,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mUIntType,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mSIntType,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mUInt64Type,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mSInt64Type,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mDoubleType,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mLBoolType,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mLCharType,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mLStringType,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mLUIntType,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mLSIntType,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mLUInt64Type,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mLSInt64Type,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mLDoubleType,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mStringListType,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mLBigIntType,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mBigIntType,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mStringSetType,
+                                                                const GALGAS_unifiedTypeMapEntry & in_mLStringListType 
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_predefinedTypes result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid () && inOperand14.isValid () && inOperand15.isValid () && inOperand16.isValid () && inOperand17.isValid () && inOperand18.isValid () && inOperand19.isValid () && inOperand20.isValid () && inOperand21.isValid ()) {
-    result = GALGAS_predefinedTypes (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13, inOperand14, inOperand15, inOperand16, inOperand17, inOperand18, inOperand19, inOperand20, inOperand21) ;
+  if (in_mLocationType.isValid () && in_mBoolType.isValid () && in_mCharType.isValid () && in_mStringType.isValid () && in_mUIntType.isValid () && in_mSIntType.isValid () && in_mUInt64Type.isValid () && in_mSInt64Type.isValid () && in_mDoubleType.isValid () && in_mLBoolType.isValid () && in_mLCharType.isValid () && in_mLStringType.isValid () && in_mLUIntType.isValid () && in_mLSIntType.isValid () && in_mLUInt64Type.isValid () && in_mLSInt64Type.isValid () && in_mLDoubleType.isValid () && in_mStringListType.isValid () && in_mLBigIntType.isValid () && in_mBigIntType.isValid () && in_mStringSetType.isValid () && in_mLStringListType.isValid ()) {
+    result = GALGAS_predefinedTypes (in_mLocationType, in_mBoolType, in_mCharType, in_mStringType, in_mUIntType, in_mSIntType, in_mUInt64Type, in_mSInt64Type, in_mDoubleType, in_mLBoolType, in_mLCharType, in_mLStringType, in_mLUIntType, in_mLSIntType, in_mLUInt64Type, in_mLSInt64Type, in_mLDoubleType, in_mStringListType, in_mLBigIntType, in_mBigIntType, in_mStringSetType, in_mLStringListType) ;
   }
   return result ;
 }

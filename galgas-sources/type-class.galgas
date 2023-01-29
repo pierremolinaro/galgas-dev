@@ -138,7 +138,7 @@ syntax extension galgas4DeclarationsSyntax {
     while
       <property_declaration> !? propertyList
     while
-      $;$
+      <method_declaration> !className !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@classDeclarationAST.new {
@@ -194,7 +194,7 @@ override method @classDeclarationAST enterDeclarationInGraph
     ]
   end
 #--- Add edge from property types
-  for (* mPropertyTypeName * * *) in self.mPropertyList do
+  for (* mPropertyTypeName 4*) in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph addEdge
       !key
       !@lstring.new {!"@" + mPropertyTypeName !self.mSuperClassName.location}
@@ -286,13 +286,16 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
   end
 #--- Build attribute Map and constructor argument list
   var @functionSignature constructorPropertyTypeList = {}
-  for (mPropertyTypeEntry mPropertyName * mHasSelector) in inheritedTypedPropertyList do
+  for (mPropertyTypeEntry mPropertyName * mHasSelector *) in inheritedTypedPropertyList do
     constructorPropertyTypeList +=
       !if mHasSelector then mPropertyName else ["" nowhere] end
       !mPropertyTypeEntry
       !mPropertyName.string
   end
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList) in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList initExpression) in self.mPropertyList do
+    if [initExpression isSome] then
+      error mPropertyName : "property initialization is not handled for a class"
+    end
     [!?ioSemanticContext.mTypeMap makeEntry !mPropertyTypeName ?let attributeTypeIndex]
     var hasSelector = false
     for (attribute) in mAttributeList do
@@ -335,7 +338,10 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
 #--- Typed attribute list
   var @typedPropertyList currentClassTypedPropertyList = {}
   var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
-  for (* mPropertyTypeName mPropertyName isPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
+    if [initExpression isSome] then
+      error mPropertyName : "property initialization is not handled for a class"
+    end
     [!?ioSemanticContext.mTypeMap makeEntry !mPropertyTypeName ?let attributeTypeIndex]
     var hasSelector = false
     for (mValue) in mAttributeList do
@@ -347,11 +353,11 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
         hasSelector = true
       end
     end
-    currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
-    allTypedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
+    currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector !.none
+    allTypedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector !.none
   end
 #--- set...attribute setter
-  for (mPropertyTypeEntry mPropertyName mHasSetter *) in currentClassTypedPropertyList do
+  for (mPropertyTypeEntry mPropertyName mHasSetter 2*) in currentClassTypedPropertyList do
     if mHasSetter then
       [!?setterMap insertKey
         !@lstring.new {!"set"+ [mPropertyName.string stringByCapitalizingFirstCharacter] !@location.here}
@@ -378,7 +384,7 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
   )
 #--- Generate a "default" constructor ?
   var @string defaultConstructorName = if self.mIsAbstract then "" else "default" end
-  for (propertyTypeEntry 3*) in allTypedAttributeList while defaultConstructorName != "" do
+  for (propertyTypeEntry 4*) in allTypedAttributeList while defaultConstructorName != "" do
     if [propertyTypeEntry definition].mDefaultConstructorName == "" then 
       defaultConstructorName = ""
     end
@@ -486,7 +492,10 @@ override method @classDeclarationAST semanticAnalysis
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (* mPropertyTypeName mPropertyName isPublic mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
+    if [initExpression isSome] then
+      error mPropertyName : "property initialization is not handled for a class"
+    end
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
     let t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
@@ -499,11 +508,13 @@ override method @classDeclarationAST semanticAnalysis
       !mPropertyName
       !isPublic
       !hasSelector
+      !.none
     allAttributeList +=
       !t
       !mPropertyName
       !isPublic
       !hasSelector
+      !.none
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #------
@@ -582,7 +593,7 @@ override method @classTypeForGeneration appendDeclaration1 ?!@stringset ioInclus
 override method @classTypeForGeneration appendDeclaration2 ?let @string inOutputDirectory
                                                            ?!@stringset ioInclusionSet
                                                            !@string outHeader {
-  for (t 3*) in self.mCurrentTypedAttributeList do
+  for (t 4*) in self.mCurrentTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
   let typedefinition = [self.mSelfTypeEntry definition]

@@ -76,6 +76,30 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
+  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+    $override$
+    $abstract$
+    $func$
+    $identifier$ ?let mGetterName indexing overrideAbstractExtensionGetterDefinition
+    <formal_input_parameter_list> ?let @formalInputParameterListAST mFormalInputParameterList
+    $->$
+    $@type$ ?let @lstring mReturnedTypeName
+    select
+      $identifier$ ? let idf
+      warning idf : "an identifier is no longer required here" fixit { remove }
+    or
+    end
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST.new {
+      !false # Is not predefined
+      !inClassName
+      !mGetterName
+      !mFormalInputParameterList
+      !mReturnedTypeName
+    }
+  }
+
+  #·····················································································································
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

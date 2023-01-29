@@ -88,8 +88,6 @@ syntax extension galgas4DeclarationsSyntax {
     repeat
     while
       <property_declaration> !? attributeList
-    while
-      $;$
     end
     $}$
     ${$
@@ -138,7 +136,7 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + self.mSortedListTypeName !self.mSortedListTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for (* mPropertyTypeName * * *) in self.mPropertyList do
+  for (* mPropertyTypeName 4*) in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName.location}]
   end
 }
@@ -150,13 +148,14 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
 override method @sortedListDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   var @propertyInCollectionListAST structAttributeList = {}
-  for (isConstant mPropertyTypeName mPropertyName * *) in self.mPropertyList do
+  for (isConstant mPropertyTypeName mPropertyName * * initExpression) in self.mPropertyList do
     structAttributeList +=
       !isConstant: isConstant 
       !mPropertyTypeName
       !mPropertyName
       !true
       !{}
+      !initExpression
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
     !self.mIsPredefined
@@ -186,11 +185,11 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   var @functionSignature constructorAttributeTypeList = {}
   var @formalParameterSignature setterFormalArgumentList = {}
   var @typedPropertyList typedAttributeList = {}
-  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName 3*) in self.mPropertyList do
     [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true
     let hasSelector = false
-    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector !.none
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
     setterFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST.argumentOut !mPropertyName.string
@@ -323,7 +322,7 @@ override method @sortedListDeclarationAST semanticAnalysis
 #--- Attribute
   var typedAttributeList = @typedPropertyList {}
   var @propertyIndexMap attributeMap = {}
-  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName 3*) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !propertyTypeNameForUsefulness]
     let t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
@@ -334,6 +333,7 @@ override method @sortedListDeclarationAST semanticAnalysis
       !mPropertyName
       !hasSetter
       !hasSelector
+      !.none
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #--- Sort descriptor
@@ -426,7 +426,7 @@ override method @sortedListTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  for (t 3*) in self.mTypedAttributeList do
+  for (t 4*) in self.mTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
   [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]

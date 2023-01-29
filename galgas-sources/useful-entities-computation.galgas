@@ -33,7 +33,7 @@ proc checkUsefulEntities
   ?let @lstringlist inRootEntities
   ?let @string unused inProductDirectory
 {
-  if [option galgas_cli_options.checkEntityUsefulness value] && (@uint.errorCount == 0) then
+  if [option galgas_cli_options.checkEntityUsefulness value], @uint.errorCount == 0 then
   #--- Undefined nodes
     let undefinedNodeList = [inUsefulEntitiesGraph undefinedNodeKeyList]
     if [undefinedNodeList length] > 0 then

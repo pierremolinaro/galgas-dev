@@ -102,6 +102,10 @@ syntax extension galgas4DeclarationsSyntax {
       $default$
       $identifier$ ?defaultConstantName
     end
+    repeat
+    while
+      <method_declaration> !mEnumTypeName !?ioDeclarations
+    end
     $}$
     ioDeclarations.mDeclarationList += !@enumDeclarationAST.new {
       !false # Is not predefined

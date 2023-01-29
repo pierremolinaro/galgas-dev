@@ -57,6 +57,21 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
+  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+    $abstract$
+    $proc$
+    $identifier$ ?let @lstring mMethodName indexing abstractExtensionMethodDefinition
+    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST.new {
+      !false # Is not predefined
+      !inClassName
+      !mMethodName
+      !formalParameterList
+    }
+  }
+
+  #·····················································································································
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

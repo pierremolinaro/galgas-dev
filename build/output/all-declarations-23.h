@@ -395,6 +395,7 @@ GALGAS_string filewrapperTemplate_boolsetGenerationTemplate_structTypeHeader_31_
                                                                                   const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                   const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                   const class GALGAS_typedPropertyList & in_PROPERTY_5F_LIST,
+                                                                                  const class GALGAS_typedPropertyList & in_CONSTRUCTOR_5F_ARGUMENT_5F_LIST,
                                                                                   const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
                                                                                   COMMA_LOCATION_ARGS) ;
 
@@ -408,6 +409,8 @@ GALGAS_string filewrapperTemplate_boolsetGenerationTemplate_structTypeSpecificIm
                                                                                               const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                               const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                               const class GALGAS_typedPropertyList & in_PROPERTY_5F_LIST,
+                                                                                              const class GALGAS_typedPropertyList & in_CONSTRUCTOR_5F_ARGUMENT_5F_LIST,
+                                                                                              const class GALGAS_string & in_CONSTRUCTOR_5F_INITIALIZATION_5F_CODE,
                                                                                               const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
                                                                                               COMMA_LOCATION_ARGS) ;
 
@@ -923,15 +926,4 @@ void routine_generateProcedure (const class GALGAS_bool constinArgument0,
                                 class GALGAS_string & outArgument10,
                                 class C_Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Function 'setterNameForUsefulEntitiesGraph'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_lstring function_setterNameForUsefulEntitiesGraph (const class GALGAS_string & constinArgument0,
-                                                                const class GALGAS_lstring & constinArgument1,
-                                                                class C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
 

@@ -211,7 +211,7 @@ syntax extension galgas4DeclarationsSyntax {
     while
       <insert_or_replace_declaration> !?insertOrReplaceDeclarationListAST
     while
-      $;$
+      <method_declaration> !mMapTypeName !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@mapDeclarationAST.new {
@@ -273,13 +273,6 @@ syntax extension galgas4DeclarationsSyntax {
   rule <map_insert_setter_declaration> ?!@insertMethodListAST ioMapMethodList {
     $insert$
     $identifier$ ?let @lstring mMethodName
-#    let @lstring stateName
-##    select
-#      stateName = @lstring.new {!"" !@location.here}
-#    or
-#      $state$
-#      $identifier$ ? stateName
-#    end
     $error$
     $message$
     $"string"$ ?let @lstring mErrorMessage
@@ -294,7 +287,6 @@ syntax extension galgas4DeclarationsSyntax {
       !mMethodName
       !mErrorMessage
       !mShadowErrorMessage
-#      !stateName
   }
 
   #·····················································································································
@@ -314,13 +306,15 @@ override method @mapDeclarationAST addAssociatedElement
     !["lkey" nowhere]
     !true
     !{}
-  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
+    !.none
+  for (* mPropertyTypeName mPropertyName * * initExpression) in self.mPropertyList do
     structAttributeList +=
       !isConstant: false
       !mPropertyTypeName
       !mPropertyName
       !true
       !{}
+      !initExpression
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
     !self.mIsPredefined
@@ -342,7 +336,7 @@ override method @mapDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + self.mMapTypeName !self.mMapTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for (* mPropertyTypeName * * *) in self.mPropertyList do
+  for (* mPropertyTypeName 4*) in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName.location}]
   end
 }
@@ -493,7 +487,10 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inLKey"
   var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
-  for (* mPropertyTypeName mPropertyName * mAttributeList) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName * mAttributeList initExpression) in self.mPropertyList do
+    if [initExpression isSome] then
+      error mPropertyName : "property initialization is not handled for a map"
+    end
     [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true
     var hasSelector = false
@@ -506,7 +503,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
       end
     end
     argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
-    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
+    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector !.none
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     insertMethodFormalArgumentList +=
@@ -576,7 +573,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     ]
   end
 #--- Enter "attributeForKey" getters
-  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName 3*) in self.mPropertyList do
     let accessorName = @lstring.new {!mPropertyName.string + "ForKey" !mPropertyName.location}
     [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
@@ -603,7 +600,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     ]
   end
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor
-  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName 3*) in self.mPropertyList do
     let accessorName = @lstring.new {
       !"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey"
       !mPropertyName.location
@@ -720,7 +717,7 @@ override method @mapDeclarationAST semanticAnalysis
 #------ Enter property
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (* mPropertyTypeName mPropertyName * *) in self.mPropertyList do
+  for (* mPropertyTypeName mPropertyName 3*) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let @unifiedTypeMapEntry t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
@@ -731,6 +728,7 @@ override method @mapDeclarationAST semanticAnalysis
       !mPropertyName
       !hasSetter
       !hasSelector
+      !.none
     if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
       var @string m = "a property cannot be named:"
       for s in forbiddenKeysForMapAndDict () do
@@ -838,7 +836,7 @@ override method @mapTypeForGeneration appendDeclaration2
   ?let @string unused inOutputDirectory
   ?!@stringset ioInclusionSet
   !@string outHeader {
-  for (t 3*) in self.mTypedAttributeList do
+  for (t 4*) in self.mTypedAttributeList do
     [t addHeaderFileName1 !?ioInclusionSet]
   end
   let selfTypedefinition = [self.mSelfTypeEntry definition]
