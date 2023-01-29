@@ -179,7 +179,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       var returnedType = @unifiedTypeMapEntry.null
       var kind = @methodKind.definedAsExtension
       let @stringlist fieldList = {}
-      for (propertyTypeEntry propertyName 3*) in [receiverType definition].mCurrentTypedPropertyList do
+      for (propertyTypeEntry propertyName 2*) in [receiverType definition].mCurrentTypedPropertyList do
         let propertyType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !.new {![propertyTypeEntry definition].mTypeName.string !.here}]
         let aMap = [propertyType definition].mGetterMap
         with self.mGetterName.string in aMap  do

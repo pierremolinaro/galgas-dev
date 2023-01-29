@@ -218,13 +218,11 @@ override method @weakReferenceDeclarationAST semanticAnalysis
       !mPropertyName
       !isPublic
       !hasSelector
-      !.none
     allAttributeList +=
       !t
       !mPropertyName
       !isPublic
       !hasSelector
-      !.none
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #------

@@ -441,7 +441,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'do' branch : add attributes as constant
   var localConstantList = @localConstantList {}
-  for (mPropertyTypeEntry mPropertyName 3*) in [receiverType definition].mCurrentTypedPropertyList do
+  for (mPropertyTypeEntry mPropertyName 2*) in [receiverType definition].mCurrentTypedPropertyList do
     localConstantList +=
       !mPropertyTypeEntry
       !@lstring.new {!self.mPrefix.string + mPropertyName !self.mEndOfReceiverExpression}
@@ -582,7 +582,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'do' branch
   var @localInitializedVariableList localInitializedVariableList = {}
-  for (mPropertyTypeEntry mPropertyName 3*) in [targetType definition].mCurrentTypedPropertyList do
+  for (mPropertyTypeEntry mPropertyName 2*) in [targetType definition].mCurrentTypedPropertyList do
     localInitializedVariableList +=
       !mPropertyTypeEntry
       !@lstring.new {!self.mPrefix.string + mPropertyName !self.mEndOfReceiverExpression}

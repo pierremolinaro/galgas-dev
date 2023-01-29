@@ -1,12 +1,12 @@
 //--- Properties
 %
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector *) in CURRENT_PROPERTY_LIST do
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do
     %  public: GALGAS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
 %
 //--- Constructor
   public: cPtr_%!TYPE_IDENTIFIER% (%?^
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector *) in ALL_PROPERTY_LIST
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST
     do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end

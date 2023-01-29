@@ -222,7 +222,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     let hasSetter = true
     let hasSelector = false
     argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
-    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector !.none
+    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     insertMethodFormalArgumentList +=
@@ -425,7 +425,6 @@ override method @dictDeclarationAST semanticAnalysis
       !mPropertyName
       !hasSetter
       !hasSelector
-      !.none
     if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
       var @string m = "a property cannot be named:"
       for s in forbiddenKeysForMapAndDict () do

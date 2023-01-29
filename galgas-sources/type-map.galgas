@@ -503,7 +503,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
       end
     end
     argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
-    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector !.none
+    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     insertMethodFormalArgumentList +=
@@ -728,7 +728,6 @@ override method @mapDeclarationAST semanticAnalysis
       !mPropertyName
       !hasSetter
       !hasSelector
-      !.none
     if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
       var @string m = "a property cannot be named:"
       for s in forbiddenKeysForMapAndDict () do
@@ -836,7 +835,7 @@ override method @mapTypeForGeneration appendDeclaration2
   ?let @string unused inOutputDirectory
   ?!@stringset ioInclusionSet
   !@string outHeader {
-  for (t 4*) in self.mTypedAttributeList do
+  for (t 3*) in self.mTypedAttributeList do
     [t addHeaderFileName1 !?ioInclusionSet]
   end
   let selfTypedefinition = [self.mSelfTypeEntry definition]

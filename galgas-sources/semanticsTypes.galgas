@@ -184,14 +184,6 @@ list @typedPropertyList {
   public let @lstring mPropertyName
   public let @bool mHasSetter
   public let @bool mHasSelector
-  public let @propertyInCollectionInitialization mInitialization
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum @propertyInCollectionInitialization {
-  case none
-  case some (@semanticExpressionForGeneration expression)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

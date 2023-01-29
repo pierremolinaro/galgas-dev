@@ -286,7 +286,7 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
   end
 #--- Build attribute Map and constructor argument list
   var @functionSignature constructorPropertyTypeList = {}
-  for (mPropertyTypeEntry mPropertyName * mHasSelector *) in inheritedTypedPropertyList do
+  for (mPropertyTypeEntry mPropertyName * mHasSelector) in inheritedTypedPropertyList do
     constructorPropertyTypeList +=
       !if mHasSelector then mPropertyName else ["" nowhere] end
       !mPropertyTypeEntry
@@ -353,11 +353,11 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
         hasSelector = true
       end
     end
-    currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector !.none
-    allTypedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector !.none
+    currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
+    allTypedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
   end
 #--- set...attribute setter
-  for (mPropertyTypeEntry mPropertyName mHasSetter 2*) in currentClassTypedPropertyList do
+  for (mPropertyTypeEntry mPropertyName mHasSetter *) in currentClassTypedPropertyList do
     if mHasSetter then
       [!?setterMap insertKey
         !@lstring.new {!"set"+ [mPropertyName.string stringByCapitalizingFirstCharacter] !@location.here}
@@ -384,7 +384,7 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
   )
 #--- Generate a "default" constructor ?
   var @string defaultConstructorName = if self.mIsAbstract then "" else "default" end
-  for (propertyTypeEntry 4*) in allTypedAttributeList while defaultConstructorName != "" do
+  for (propertyTypeEntry 3*) in allTypedAttributeList while defaultConstructorName != "" do
     if [propertyTypeEntry definition].mDefaultConstructorName == "" then 
       defaultConstructorName = ""
     end
@@ -508,13 +508,11 @@ override method @classDeclarationAST semanticAnalysis
       !mPropertyName
       !isPublic
       !hasSelector
-      !.none
     allAttributeList +=
       !t
       !mPropertyName
       !isPublic
       !hasSelector
-      !.none
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #------
@@ -593,7 +591,7 @@ override method @classTypeForGeneration appendDeclaration1 ?!@stringset ioInclus
 override method @classTypeForGeneration appendDeclaration2 ?let @string inOutputDirectory
                                                            ?!@stringset ioInclusionSet
                                                            !@string outHeader {
-  for (t 4*) in self.mCurrentTypedAttributeList do
+  for (t 3*) in self.mCurrentTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
   let typedefinition = [self.mSelfTypeEntry definition]

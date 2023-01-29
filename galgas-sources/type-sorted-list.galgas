@@ -189,7 +189,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true
     let hasSelector = false
-    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector !.none
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
     setterFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST.argumentOut !mPropertyName.string
@@ -333,7 +333,6 @@ override method @sortedListDeclarationAST semanticAnalysis
       !mPropertyName
       !hasSetter
       !hasSelector
-      !.none
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #--- Sort descriptor
@@ -426,7 +425,7 @@ override method @sortedListTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  for (t 4*) in self.mTypedAttributeList do
+  for (t 3*) in self.mTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
   [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]

@@ -178,7 +178,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
 #--- Add assign operator description
   var addAssignOperatorDescription = @functionSignature {}
   addAssignOperatorDescription += !["" nowhere] !stringTypeIndex !"inKey"
-  for (mPropertyTypeEntry mPropertyName 3*) in listTypedAttributeList do
+  for (mPropertyTypeEntry mPropertyName 2*) in listTypedAttributeList do
     addAssignOperatorDescription += !["" nowhere] !mPropertyTypeEntry !mPropertyName.string
   end
 #--- Add extensions
@@ -291,7 +291,7 @@ refclass @listmapTypeForGeneration : @semanticTypeForGeneration {
 override method @listmapTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader {
-  for (t 4*) in self.mAssociatedListTypedAttributeList do
+  for (t 3*) in self.mAssociatedListTypedAttributeList do
     [t addHeaderFileName1 !?ioInclusionSet]
   end
   let selfTypedefinition = [self.mSelfTypeEntry definition]

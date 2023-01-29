@@ -13,7 +13,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_list {
 
 //--------------------------------- Element constructor
   public: static void makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector *) in ATTRIBUTE_LIST
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
     do %,\n%!^%const class GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   end
 %\n%

@@ -120,7 +120,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
         fixit { replace {!"%selector"} }
       end
     end
-    typedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector !.none
+    typedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
   end
 #--- uint type index
   [!?ioSemanticContext.mTypeMap makeEntryFromString !"uint" ?let uintType]
@@ -136,7 +136,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   var @functionSignature constructorAttributeTypeList = {}
   var @formalParameterSignature setterOutputFormalArgumentList = {}
   var @formalParameterSignature setterInputFormalArgumentList = {}
-  for (mPropertyTypeEntry @lstring mPropertyName * mHasSelector *) in typedAttributeList do
+  for (mPropertyTypeEntry @lstring mPropertyName * mHasSelector) in typedAttributeList do
     let selector = if mHasSelector then mPropertyName.string else "" end
     enumerationDescriptor += !mPropertyTypeEntry !mPropertyName.string
     constructorAttributeTypeList +=
@@ -206,7 +206,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName:self.mListTypeName.string
     !hasCompilerArgument:true
   )
-  for (mPropertyTypeEntry mPropertyName 3*) in typedAttributeList do
+  for (mPropertyTypeEntry mPropertyName 2*) in typedAttributeList do
     [!?getterMap insertOrReplace
       !@lstring.new {!mPropertyName.string + "AtIndex" !mPropertyName.location}
       !@methodKind.definedAsMember
@@ -273,7 +273,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier.isBasic
     !""
   ]
-  for (mPropertyTypeEntry mPropertyName mHasSetter 2*) in typedAttributeList do
+  for (mPropertyTypeEntry mPropertyName mHasSetter *) in typedAttributeList do
     if mHasSetter then
       var setterFormalArgumentList = @formalParameterSignature {}
       setterFormalArgumentList += !["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
@@ -418,7 +418,6 @@ override method @listDeclarationAST semanticAnalysis
       !mPropertyName
       !hasSetter
       !hasSelector
-      !.none
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #---
@@ -493,7 +492,7 @@ override method @listTypeForGeneration appendSpecificImplementation
                                         ?let @unifiedTypeMap unused inTypeMap
                                         ?!@stringset ioInclusionSet
                                         !@string outImplementation {
-  for (t 4*) in self.mTypedAttributeList do
+  for (t 3*) in self.mTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
   [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]

@@ -136,7 +136,7 @@ override method @structDeclarationAST enterDeclarationInSemanticContext
     typesToIncludeInHeaderCompilation += !propertyTypeEntry
     let hasSetter = isPublic && not isConstant
     let hasSelector = false
-    typedPropertyList += !propertyTypeEntry !mPropertyName !hasSetter !hasSelector !.none
+    typedPropertyList += !propertyTypeEntry !mPropertyName !hasSetter !hasSelector
     [!?propertyMap insertKey !mPropertyName !isPublic !isConstant !propertyTypeEntry]
   end
   [!?constructorMap insertKey
@@ -176,7 +176,7 @@ override method @structDeclarationAST enterDeclarationInSemanticContext
   end
 #--- Generate a "default" constructor ?
   var @string defaultConstructorName = "default"
-  for (mPropertyTypeEntry 4*) in typedPropertyList while defaultConstructorName != "" do
+  for (mPropertyTypeEntry 3*) in typedPropertyList while defaultConstructorName != "" do
     if ([mPropertyTypeEntry definition].mDefaultConstructorName == "") | not [mPropertyTypeEntry definition].mIsConcrete then
       defaultConstructorName = ""
     end
@@ -278,33 +278,13 @@ override method @structDeclarationAST semanticAnalysis
         !mPropertyName
         !hasSetter
         !hasSelector
-        !.none
     case some (*) :
-#      var variableMap = @localVarManager.new {!.new {!{} !{}} !{}}
-#      let @analysisContext analysisContext = .new {
-#        !inSemanticContext
-#        !inPredefinedTypes
-#        !""
-#        !selfType: .none
-#        !""
-#        !requiresSelfForAccessingProperty: true
-#      }
-#      [expressionAST analyzeSemanticExpression
-#        !["" nowhere]
-#        !?ioUsefulEntitiesGraph
-#        !inferenceType: t
-#        !analysisContext
-#        !?variableMap
-#        ?let @semanticExpressionForGeneration expression
-#      ]
-#      initialization = .some {!expression: expression}
     end
     typedPropertyList +=
       !t
       !mPropertyName
       !hasSetter
       !hasSelector
-      !.none
   end
 #--- Build property initialzation code
   var initializationCode = ""
@@ -401,7 +381,7 @@ override method @structTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader
 {
-  for (t 4*) in self.mTypedPropertyList do
+  for (t 3*) in self.mTypedPropertyList do
     [t addHeaderFileName1 !?ioInclusionSet]
   end
   let selfTypedefinition = [self.mSelfTypeEntry definition]
