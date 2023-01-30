@@ -171,10 +171,18 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
       ?*
       ?*
     ]
+    let currentTargetType = targetType
     let propertyMap = [targetType definition].mPropertyMap
     [propertyMap searchKey !self.mOptionalProperty ?let isPublic ?let isConstant ?targetType]
     if not isPublic then
-      error self.mOptionalProperty : " inaccessible property (due to its 'private' qualifier)"
+      switch inAnalysisContext.selfType
+      case none :
+        error self.mOptionalProperty : " inaccessible property (due to its 'private' qualifier)"
+      case available (selfType 2*) :
+        if currentTargetType != selfType then
+          error self.mOptionalProperty : " inaccessible property (due to its 'private' qualifier)"
+        end
+      end
     end
     if isConstant then
       error self.mOptionalProperty : "a constant property cannot be modified"
