@@ -917,9 +917,6 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
           }
           loop = true
         }
-        if scanningOk && (self.testForInputChar (63)) {
-          scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
-        }
       }else{
         scanningOk = false
       }

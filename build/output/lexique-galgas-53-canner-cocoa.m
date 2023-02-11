@@ -368,9 +368,6 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
         }while (loop && scanningOk) ;
         loop = YES ;
       }
-      if (scanningOk && ([self testForInputChar:63])) {
-        scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-      }
     }else{
       scanningOk = NO ;
     }

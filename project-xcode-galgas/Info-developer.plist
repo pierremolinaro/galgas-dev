@@ -135,7 +135,7 @@
 			<key>UTTypeDescription</key>
 			<string>GALGAS 3 Template</string>
 			<key>UTTypeIconFile</key>
-			<string>galgasDocuments</string>
+			<string></string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconBadgeName</key>
@@ -159,7 +159,7 @@
 			<key>UTTypeDescription</key>
 			<string>GALGAS 3 Project</string>
 			<key>UTTypeIconFile</key>
-			<string>galgasDocuments</string>
+			<string></string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconBadgeName</key>
@@ -183,7 +183,7 @@
 			<key>UTTypeDescription</key>
 			<string>GALGAS 4 File</string>
 			<key>UTTypeIconFile</key>
-			<string>galgasDocuments</string>
+			<string></string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconBadgeName</key>

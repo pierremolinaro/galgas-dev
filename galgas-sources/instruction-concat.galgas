@@ -613,8 +613,8 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: let mutableProperties] then
-      if not selfIsMutable then
+    if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: * ?mutableproperties: let mutableProperties] then
+      if not mutableProperties then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
       let propertyMap = [selfType definition].mPropertyMap

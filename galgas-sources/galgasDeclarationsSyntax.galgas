@@ -64,6 +64,16 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
       isConstant = true
     end
     $@type$ ?let attributeTypeName
+    let @bool isOptional
+    select
+      isOptional = false
+    or
+     $?$ ?let selector
+     isOptional = true
+     if selector.string != "" then
+       error selector : "only '?' is allowed here"
+     end
+    end
     $identifier$ ?let attributeName
     var featureList = @lstringlist {}
     repeat
@@ -82,6 +92,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
     ioAttributeInCollectionList +=
       !isConstant: isConstant
       !attributeTypeName
+      !optional: isOptional
       !attributeName
       !isPublic
       !featureList
@@ -110,6 +121,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
     ioAttributeInCollectionList +=
       !isConstant: false
       !propertyTypeName
+      !optional: false
       !propertyName
       !true
       !featureList
@@ -311,6 +323,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
     ioAttributeInCollectionList +=
       !isConstant: isConstant
       !attributeTypeName
+      !optional: false
       !attributeName
       !isPublic
       !featureList

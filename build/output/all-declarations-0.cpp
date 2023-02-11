@@ -3059,9 +3059,6 @@ void C_Lexique_galgasScanner::internalParseLexicalToken (cTokenFor_galgasScanner
           }while (loop) ;
           loop = true ;
         }
-        if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
-          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-        }
       }else{
         lexicalError (gLexicalMessage_galgasScanner_incorrectTypeNameError COMMA_LINE_AND_SOURCE_FILE) ;
       }

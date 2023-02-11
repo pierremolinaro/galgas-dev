@@ -24,6 +24,7 @@ private proc appendPredefinedListTypeAST
   attributeList +=
     !isConstant: false 
     !@lstring.new {!inElementTypeName !@location.here}
+    !optional: false
     !@lstring.new {!"mValue" !@location.here}
     !true
     !{}
@@ -46,6 +47,7 @@ private proc appendPredefined2StringListTypeAST
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"string" !@location.here}
+    !optional: false
     !@lstring.new {!"mValue0" !@location.here}
     !true
     !{}
@@ -53,6 +55,7 @@ private proc appendPredefined2StringListTypeAST
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"string" !@location.here}
+    !optional: false
     !@lstring.new {!"mValue1" !@location.here}
     !true
     !{}
@@ -76,6 +79,7 @@ private proc appendPredefined2LStringListTypeAST
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"lstring" !@location.here}
+    !optional: false
     !@lstring.new {!"mValue0" !@location.here}
     !true
     !{}
@@ -83,6 +87,7 @@ private proc appendPredefined2LStringListTypeAST
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"lstring" !@location.here}
+    !optional: false
     !@lstring.new {!"mValue1" !@location.here}
     !true
     !{}
@@ -106,6 +111,7 @@ private proc appendStructASTForTypeWithLocation
   attributeList += 
     !isConstant: false 
     !@lstring.new {!inElementTypeName !@location.here}
+    !optional: false
     !@lstring.new {!inElementTypeName !@location.here}
     !true
     !{}
@@ -113,6 +119,7 @@ private proc appendStructASTForTypeWithLocation
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"location" !@location.here}
+    !optional: false
     !@lstring.new {!"location" !@location.here}
     !true
     !{}
@@ -136,6 +143,7 @@ private proc appendStructASTForRangeType
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"uint" !@location.here}
+    !optional: false
     !@lstring.new {!"start" !@location.here}
     !true
     !{}
@@ -143,6 +151,7 @@ private proc appendStructASTForRangeType
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"uint" !@location.here}
+    !optional: false
     !@lstring.new {!"length" !@location.here}
     !true
     !{}

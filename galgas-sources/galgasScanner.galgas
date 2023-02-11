@@ -311,11 +311,11 @@ rule '@' {
       end
     default
     end
-    select
-    case '?' :
-      enterCharacterIntoString (!?tokenString !*)
-    default
-    end
+#    select
+#    case '?' :
+#      enterCharacterIntoString (!?tokenString !*)
+#    default
+#    end
   default
     error incorrectTypeNameError
   end

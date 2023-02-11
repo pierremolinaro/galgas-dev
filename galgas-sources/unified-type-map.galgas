@@ -60,7 +60,7 @@ getter @unifiedTypeMap searchKey ?let @lstring inLKey -> @unifiedTypeMapEntry {
   elsif let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
     result = .element {!weakElement: element}
   else
-    error inLKey : "there is not '@" + inLKey + "' type" : result
+    error inLKey : "there is no '@" + inLKey + "' type" : result
   end
 }
 
@@ -93,7 +93,7 @@ method @unifiedTypeMap searchType ?let @lstring inLKey
       error inLKey : "unsolved type" : outTypeDefinition
     end
   else
-    error inLKey : "there is not '@" + inLKey + "' type" : outTypeDefinition
+    error inLKey : "there is no '@" + inLKey + "' type" : outTypeDefinition
   end
 }
 

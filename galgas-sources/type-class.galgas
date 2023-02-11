@@ -194,7 +194,7 @@ override method @classDeclarationAST enterDeclarationInGraph
     ]
   end
 #--- Add edge from property types
-  for (* mPropertyTypeName 4*) in self.mPropertyList do
+  for (* mPropertyTypeName 5*) in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph addEdge
       !key
       !@lstring.new {!"@" + mPropertyTypeName !self.mSuperClassName.location}
@@ -292,7 +292,7 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
       !mPropertyTypeEntry
       !mPropertyName.string
   end
-  for (isConstant mPropertyTypeName mPropertyName mIsPublic mAttributeList initExpression) in self.mPropertyList do
+  for (isConstant mPropertyTypeName isOptional mPropertyName mIsPublic mAttributeList initExpression) in self.mPropertyList do
     if [initExpression isSome] then
       error mPropertyName : "property initialization is not handled for a class"
     end
@@ -338,7 +338,7 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
 #--- Typed attribute list
   var @typedPropertyList currentClassTypedPropertyList = {}
   var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
-  for (* mPropertyTypeName mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
+  for (* mPropertyTypeName isOptional mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
     if [initExpression isSome] then
       error mPropertyName : "property initialization is not handled for a class"
     end
@@ -492,7 +492,7 @@ override method @classDeclarationAST semanticAnalysis
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (* mPropertyTypeName mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
+  for (* mPropertyTypeName isOptional mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
     if [initExpression isSome] then
       error mPropertyName : "property initialization is not handled for a class"
     end
