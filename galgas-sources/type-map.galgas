@@ -489,7 +489,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inLKey"
   var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
-  for (* mPropertyTypeName isOptional mPropertyName * mAttributeList initExpression) in self.mPropertyList do
+  for (* mPropertyTypeName unused isOptional mPropertyName * mAttributeList initExpression) in self.mPropertyList do
     if [initExpression isSome] then
       error mPropertyName : "property initialization is not handled for a map"
     end
@@ -575,7 +575,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     ]
   end
 #--- Enter "attributeForKey" getters
-  for (* mPropertyTypeName isOptional mPropertyName 3*) in self.mPropertyList do
+  for (* mPropertyTypeName unused isOptional mPropertyName 3*) in self.mPropertyList do
     let accessorName = @lstring.new {!mPropertyName.string + "ForKey" !mPropertyName.location}
     [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
@@ -602,7 +602,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     ]
   end
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor
-  for (* mPropertyTypeName isOptional mPropertyName 3*) in self.mPropertyList do
+  for (* mPropertyTypeName unused isOptional mPropertyName 3*) in self.mPropertyList do
     let accessorName = @lstring.new {
       !"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey"
       !mPropertyName.location
@@ -719,7 +719,7 @@ override method @mapDeclarationAST semanticAnalysis
 #------ Enter property
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (* mPropertyTypeName isOptional mPropertyName 3*) in self.mPropertyList do
+  for (* mPropertyTypeName unused isOptional mPropertyName 3*) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let @unifiedTypeMapEntry t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]

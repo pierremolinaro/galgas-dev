@@ -207,7 +207,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (* mPropertyTypeName isOptional mPropertyName isPublic attributeList *) in self.mPropertyList do
+  for (* mPropertyTypeName unused isOptional mPropertyName isPublic attributeList *) in self.mPropertyList do
     let t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
     var hasSelector = false
     for (mValue) in attributeList while not hasSelector do

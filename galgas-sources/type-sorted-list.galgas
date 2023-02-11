@@ -186,7 +186,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   var @functionSignature constructorAttributeTypeList = {}
   var @formalParameterSignature setterFormalArgumentList = {}
   var @typedPropertyList typedAttributeList = {}
-  for (* mPropertyTypeName isOptional mPropertyName 3*) in self.mPropertyList do
+  for (* mPropertyTypeName unused isOptional mPropertyName 3*) in self.mPropertyList do
     [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true
     let hasSelector = false
@@ -323,7 +323,7 @@ override method @sortedListDeclarationAST semanticAnalysis
 #--- Attribute
   var typedAttributeList = @typedPropertyList {}
   var @propertyIndexMap attributeMap = {}
-  for (* mPropertyTypeName isOptional mPropertyName 3*) in self.mPropertyList do
+  for (* mPropertyTypeName unused isOptional mPropertyName 3*) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !propertyTypeNameForUsefulness]
     let t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
