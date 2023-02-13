@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="384" height="156"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="34" id="75">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="34" id="75">
                     <rect key="frame" x="170" y="25" width="38" height="14"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="from:" id="94">
@@ -34,7 +33,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button toolTip="Installs the embedded Command Line Interface (CLI) tools in the given directory." verticalHuggingPriority="750" fixedFrame="YES" id="73">
+                <button toolTip="Installs the embedded Command Line Interface (CLI) tools in the given directory." verticalHuggingPriority="750" id="73">
                     <rect key="frame" x="18" y="17" width="152" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Remove CLI Tools…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" inset="2" id="93">
@@ -45,7 +44,7 @@
                         <action selector="performCLIToolRemove:" target="-2" id="76"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="34" id="68">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="34" id="68">
                     <rect key="frame" x="170" y="52" width="38" height="14"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="in:" id="92">
@@ -65,7 +64,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </textFieldCell>
                 </textField>
-                <button toolTip="Installs the embedded Command Line Interface (CLI) tools in the given directory." verticalHuggingPriority="750" fixedFrame="YES" id="66">
+                <button toolTip="Installs the embedded Command Line Interface (CLI) tools in the given directory." verticalHuggingPriority="750" id="66">
                     <rect key="frame" x="18" y="44" width="152" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Install CLI Tools…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" inset="2" id="90">
@@ -99,7 +98,7 @@
                         <font key="font" metaFont="label" size="11"/>
                     </buttonCell>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" id="dnb-Lh-EKK">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="dnb-Lh-EKK">
                     <rect key="frame" x="21" y="120" width="353" height="16"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Sparkle Version message" id="I1J-7i-M1e">
@@ -118,7 +117,7 @@
                 <webView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="110">
                     <rect key="frame" x="0.0" y="0.0" width="611" height="552"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
+                    <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" javaEnabled="NO">
                         <nil key="identifier"/>
                     </webPreferences>
                 </webView>
@@ -207,7 +206,7 @@
                         </binding>
                     </connections>
                 </progressIndicator>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="299" id="164">
+                <textField verticalHuggingPriority="750" preferredMaxLayoutWidth="299" id="164">
                     <rect key="frame" x="291" y="567" width="303" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="165">
@@ -243,7 +242,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="814" height="154"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1496" height="933"/>
             <view key="contentView" id="181">
                 <rect key="frame" x="0.0" y="0.0" width="814" height="154"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -283,8 +282,8 @@
         <customObject id="xaS-5W-O3r" customClass="SUUpdater"/>
     </objects>
     <resources>
-        <image name="NSGoLeftTemplate" width="9" height="12"/>
-        <image name="NSGoRightTemplate" width="9" height="12"/>
-        <image name="NSRefreshTemplate" width="11" height="15"/>
+        <image name="NSGoLeftTemplate" width="12" height="17"/>
+        <image name="NSGoRightTemplate" width="12" height="17"/>
+        <image name="NSRefreshTemplate" width="18" height="21"/>
     </resources>
 </document>

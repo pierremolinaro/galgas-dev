@@ -2228,7 +2228,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
                                                                                          const GALGAS_string & in_PROJECT_5F_NAME
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2274,7 +2274,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_macosx (C_Compiler * /* inCompiler */
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2294,7 +2294,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -2314,7 +2314,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_macosx (C_Compiler * /* inCompiler */
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2334,7 +2334,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"debug\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"debug\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -2354,7 +2354,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_macosx (C_Compiler * /* inCompiler */
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2374,7 +2374,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"release\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"release\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -2394,7 +2394,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_macosx (C_Compiler * /* inCompiler */
                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2414,7 +2414,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"lto\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"lto\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -2434,7 +2434,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_macosx (C_Compiler * /* inCompiler */
                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2454,7 +2454,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"install-release\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"install-release\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -2475,7 +2475,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
                                                                                          const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2495,7 +2495,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"clean\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"clean\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -2516,7 +2516,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
                                                                                        const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2536,7 +2536,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"clean\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"clean\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -2557,7 +2557,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
                                                                                        const GALGAS_string & in_PROJECT_5F_NAME
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2603,7 +2603,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_unix (C_Compiler * /* inCompiler */
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2623,7 +2623,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -2643,7 +2643,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_unix (C_Compiler * /* inCompiler */
                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2663,7 +2663,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"debug\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"debug\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -2683,7 +2683,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_unix (C_Compiler * /* inCompiler */
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2703,7 +2703,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"release\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"release\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -2723,8 +2723,8 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_unix (C_Compiler * /* inCompiler */
                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
-    "# -*- coding: UTF-8 -*-\n"
+  result << "#! /usr/bin/python3\n"
+    "#! /usr/bin/python3\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
@@ -2743,7 +2743,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"lto\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"lto\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -2763,7 +2763,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_unix (C_Compiler * /* inCompiler */
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2783,7 +2783,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"install-release\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"install-release\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -2804,7 +2804,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
                                                                                                                       const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2824,7 +2824,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"clean\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"clean\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -2845,7 +2845,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
                                                                                                                       const GALGAS_string & in_PROJECT_5F_NAME
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2891,7 +2891,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2911,7 +2911,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -2931,7 +2931,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2951,7 +2951,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"debug\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"debug\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -2971,7 +2971,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -2991,7 +2991,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"release\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"release\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -3011,7 +3011,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -3031,7 +3031,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"lto\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"lto\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -3052,7 +3052,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
                                                                                                                       const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -3072,7 +3072,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"clean\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"clean\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -3093,7 +3093,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
                                                                                                                       const GALGAS_string & in_PROJECT_5F_NAME
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -3139,7 +3139,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_36__34__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -3159,7 +3159,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -3179,7 +3179,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_36__34__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -3199,7 +3199,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"debug\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"debug\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -3219,7 +3219,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_36__34__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -3239,7 +3239,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"release\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"release\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -3259,7 +3259,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_36__34__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -3279,7 +3279,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"lto\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"lto\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -3300,7 +3300,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
                                                                                                            const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -3320,7 +3320,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"clean\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"clean\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -3341,7 +3341,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
                                                                                                            const GALGAS_string & in_PROJECT_5F_NAME
                                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -3387,7 +3387,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_win_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -3407,7 +3407,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -3427,7 +3427,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_win_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -3447,7 +3447,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"debug\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"debug\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -3467,7 +3467,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_win_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -3487,7 +3487,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"release\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"release\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"
@@ -3507,7 +3507,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_win_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#! /usr/bin/env python\n"
+  result << "#! /usr/bin/python3\n"
     "# -*- coding: UTF-8 -*-\n"
     "\n"
     "#-----------------------------------------------------------------------------------------------------------------------\n"
@@ -3527,7 +3527,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "#--- Get script absolute path\n"
     "scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n"
     "#---\n"
-    "childProcess = subprocess.Popen ([\"python\", \"build.py\", \"lto\"], cwd=scriptDir)\n"
+    "childProcess = subprocess.Popen ([\"python3\", \"build.py\", \"lto\"], cwd=scriptDir)\n"
     "#--- Wait for subprocess termination\n"
     "if childProcess.poll () == None :\n"
     "  childProcess.wait ()\n"

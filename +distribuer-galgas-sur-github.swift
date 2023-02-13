@@ -291,11 +291,11 @@ print ("ANNÉE : \(ANNÉE)")
   }
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev-master")
 //-------------------- Vérifier GMP
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/build-developer-v3/Default/galgas", ["--check-gmp"])
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/build-developer-v3/Default/galgas-debug", ["--check-gmp"])
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/build/Default/galgas", ["--check-gmp"])
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/build/Default/galgas-debug", ["--check-gmp"])
   //-------------------- Construction package
   let packageFile = PRODUCT_NAME + "-" + VERSION_GALGAS + ".pkg"
-  runCommand ("/usr/bin/productbuild", ["--component-compression", "auto", "--component", "project-xcode-galgas/build-developer-v3/Default/cocoaGalgas.app", "/Applications", packageFile])
+  runCommand ("/usr/bin/productbuild", ["--component-compression", "auto", "--component", "project-xcode-galgas/build/Default/cocoaGalgas.app", "/Applications", packageFile])
   runCommand ("/bin/cp", [packageFile, DISTRIBUTION_DIR])
   //-------------------- Créer l'archive de Cocoa canari
   let nomArchive = PRODUCT_NAME + "-" + VERSION_GALGAS
@@ -346,7 +346,7 @@ print ("ANNÉE : \(ANNÉE)")
   let nomJSON = DISTRIBUTION_DIR + "/" + PRODUCT_NAME + "-" + VERSION_GALGAS + ".json"
   try jsonData.write (to: URL (fileURLWithPath: nomJSON), options: .atomic)
 //--- Vérifier la signature
-  runCommand ("/usr/bin/codesign", ["-dv", "--verbose=4", DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/build-developer-v3/Default/cocoaGalgas.app"])
+  runCommand ("/usr/bin/codesign", ["-dv", "--verbose=4", DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/build/Default/cocoaGalgas.app"])
 //--- Supprimer les répertoires intermédiaires
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
   while fm.fileExists (atPath: DISTRIBUTION_DIR + "/galgas-dev-master") {
