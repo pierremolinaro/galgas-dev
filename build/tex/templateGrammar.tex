@@ -81,7 +81,7 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {uint32}; & \node (p0-3) [terminal] {*}; & \node (p0-4) [lastPoint] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {literalInt}; & \node (p0-3) [terminal] {*}; & \node (p0-4) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
@@ -153,7 +153,7 @@
 
 \nonTerminalSection{output\_expression\_list}{7}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{513}
+\ruleSubsection{templateSyntax}{templateSyntax}{477}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -217,7 +217,7 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {uint32}; & \node (p0-3) [lastPoint] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {literalInt}; & \node (p0-3) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
@@ -227,7 +227,7 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {sint32\_S}; & \node (p0-3) [lastPoint] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {double.xxx}; & \node (p0-3) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
@@ -237,43 +237,13 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {uint64\_L}; & \node (p0-3) [lastPoint] {}; & \\
-  };
-  \draw[->] (P0start) -- (p0-2) ;
-  \draw[->] (p0-2) -- (p0-3) ;
-\end{tikzpicture}
-
-\ruleSubsection{templateSyntax}{templateSyntax}{341}
-
-\begin{tikzpicture}
-  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {sint64\_LS}; & \node (p0-3) [lastPoint] {}; & \\
-  };
-  \draw[->] (P0start) -- (p0-2) ;
-  \draw[->] (p0-2) -- (p0-3) ;
-\end{tikzpicture}
-
-\ruleSubsection{templateSyntax}{templateSyntax}{353}
-
-\begin{tikzpicture}
-  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {double.xxx}; & \node (p0-3) [lastPoint] {}; & \\
-  };
-  \draw[->] (P0start) -- (p0-2) ;
-  \draw[->] (p0-2) -- (p0-3) ;
-\end{tikzpicture}
-
-\ruleSubsection{templateSyntax}{templateSyntax}{365}
-
-\begin{tikzpicture}
-  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
     \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {'char'}; & \node (p0-3) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{376}
+\ruleSubsection{templateSyntax}{templateSyntax}{340}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -286,7 +256,7 @@
   \draw[->] (p0-3) -- (p0-6) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{398}
+\ruleSubsection{templateSyntax}{templateSyntax}{362}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -336,7 +306,7 @@
   \draw[->] (p0-12) -- (p0-13) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{473}
+\ruleSubsection{templateSyntax}{templateSyntax}{437}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -349,7 +319,7 @@
   \draw[->] (p0-5) -- (p0-6) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{483}
+\ruleSubsection{templateSyntax}{templateSyntax}{447}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -467,7 +437,7 @@
     & & & & & & & & & & & & \node (p4-12) [point] {}; & & & \node (p4-15) [terminal] {unused}; & \\
     & & & & & & & & & & & \node (p3-11) [point] {}; & \node (p3-12) [terminal] {@type}; & \node (p3-13) [point] {}; & \node (p3-14) [point] {}; & \node (p3-15) [point] {}; & \node (p3-16) [point] {}; & \node (p3-17) [terminal] {identifier}; & \\
     & & & & & & \node (p2-6) [point] {}; & & & & & \node (p2-11) [terminal] {*}; & \\
-    & & & & & \node (p1-5) [terminal] {,}; & & & \node (p1-8) [terminal] {(}; & \node (p1-9) [point] {}; & \node (p1-10) [point] {}; & \node (p1-11) [terminal] {uint32}; & \node (p1-12) [terminal] {*}; & & & & & & \node (p1-18) [point] {}; & \node (p1-19) [point] {}; & & \node (p1-21) [terminal] {)}; & \\
+    & & & & & \node (p1-5) [terminal] {,}; & & & \node (p1-8) [terminal] {(}; & \node (p1-9) [point] {}; & \node (p1-10) [point] {}; & \node (p1-11) [terminal] {literalInt}; & \node (p1-12) [terminal] {*}; & & & & & & \node (p1-18) [point] {}; & \node (p1-19) [point] {}; & & \node (p1-21) [terminal] {)}; & \\
     \node (P0start) [firstPoint] {}; & & \node (p0-2) [point] {}; & \node (p0-3) [terminal] {identifier}; & \node (p0-4) [point] {}; & & & \node (p0-7) [point] {}; & \node (p0-8) [point] {}; & & & & & & & & & & & & & & \node (p0-22) [point] {}; & \node (p0-23) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-3) ;
@@ -501,7 +471,7 @@
 
 \nonTerminalSection{template\_instruction}{8}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{529}
+\ruleSubsection{templateSyntax}{templateSyntax}{493}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -512,7 +482,7 @@
   \draw[->] (p0-3) -- (p0-4) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{541}
+\ruleSubsection{templateSyntax}{templateSyntax}{505}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -522,7 +492,7 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{548}
+\ruleSubsection{templateSyntax}{templateSyntax}{512}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -532,7 +502,7 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{555}
+\ruleSubsection{templateSyntax}{templateSyntax}{519}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -551,7 +521,7 @@
   \draw[->] (p0-10) -- (p0-11) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{576}
+\ruleSubsection{templateSyntax}{templateSyntax}{540}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -666,7 +636,7 @@
 
 \nonTerminalSection{template\_parser\_start\_symbol}{9}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{612}
+\ruleSubsection{templateSyntax}{templateSyntax}{576}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {

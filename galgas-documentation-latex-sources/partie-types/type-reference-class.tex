@@ -302,11 +302,11 @@ L'objet créé disparaît aussitôt (il n'a pas de pointeur fort qui le référe
 
 \subsection{Extraction de l'objet}
 
-Si un pointeur faible n'est pas \ggs=nil=, l'opérateur \ggs=°= permet d'obtenir un pointeur fort sur cet objet.
+Si un pointeur faible n'est pas \ggs=nil=, l'opérateur \ggs=bang= permet d'obtenir un pointeur fort sur cet objet.
 \begin{galgas}
   var a = @A.new
   @A-weak weakA = a
-  var @A b = weakA°
+  var @A b = weakA.bang
 \end{galgas}
 Si le pointeur faible est \ggs=nil=, une erreur d'exécution est déclenchée.
 
