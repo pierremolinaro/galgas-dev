@@ -293,19 +293,34 @@ print ("ANNÉE : \(ANNÉE)")
 //-------------------- Vérifier GMP
   runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/build/Default/galgas", ["--check-gmp"])
   runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/build/Default/galgas-debug", ["--check-gmp"])
-  //-------------------- Construction package
+//-------------------- Recompiler en utilsant différents modes de génération
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/build/Default/galgas", ["--generate-many-cpp-files", DISTRIBUTION_DIR + "/galgas-dev-master/+galgas.galgasProject"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev-master/makefile-macosx")
+  runCommand ("/usr/local/bin/python", ["build.py"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/build/Default/galgas", ["--generate-many-cpp-files", "--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev-master/+galgas.galgasProject"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev-master/makefile-macosx")
+  runCommand ("/usr/local/bin/python", ["clean.py"])
+  runCommand ("/usr/local/bin/python", ["build.py"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/build/Default/galgas", ["--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev-master/+galgas.galgasProject"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev-master/makefile-macosx")
+  runCommand ("/usr/local/bin/python", ["clean.py"])
+  runCommand ("/usr/local/bin/python", ["build.py"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
+//-------------------- Construction package
   let packageFile = PRODUCT_NAME + "-" + VERSION_GALGAS + ".pkg"
   runCommand ("/usr/bin/productbuild", ["--component-compression", "auto", "--component", "project-xcode-galgas/build/Default/cocoaGalgas.app", "/Applications", packageFile])
   runCommand ("/bin/cp", [packageFile, DISTRIBUTION_DIR])
-  //-------------------- Créer l'archive de Cocoa canari
+//-------------------- Créer l'archive de Cocoa canari
   let nomArchive = PRODUCT_NAME + "-" + VERSION_GALGAS
   runCommand ("/bin/mkdir", [nomArchive])
   runCommand ("/bin/cp", [packageFile, nomArchive])
   runCommand ("/usr/bin/hdiutil", ["create", "-srcfolder", nomArchive, nomArchive + ".dmg", "-fs", "HFS+"])
   runCommand ("/bin/mv", [nomArchive + ".dmg", "../" + nomArchive + ".dmg"])
-  //-------------------- Supprimer le fichier .pkg
+//-------------------- Supprimer le fichier .pkg
   runCommand ("/bin/rm", [DISTRIBUTION_DIR + "/" + packageFile])
-  //-------------------- Calculer la clé de la somme de contrôle de l'archive DMG pour Sparkle
+//-------------------- Calculer la clé de la somme de contrôle de l'archive DMG pour Sparkle
   let signature = runHiddenCommand ("./distribution-galgas-sign-update/sign_update", ["../" + nomArchive + ".dmg"])
   // print ("cleArchive '\(signature)'")
   var edSignature = ""

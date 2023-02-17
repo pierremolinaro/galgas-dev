@@ -6714,7 +6714,7 @@ void callExtensionMethod_appendSyntaxSignature (class cPtr_semanticInstructionFo
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_bool callExtensionGetter_compareInstructionSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
-                                                                         const GALGAS_semanticInstructionForGeneration constin_inTestedInstruction,
+                                                                         const class GALGAS_semanticInstructionForGeneration constin_inTestedInstruction,
                                                                          class C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
@@ -8903,7 +8903,7 @@ void callExtensionMethod_transformInstruction (class cPtr_syntaxInstructionAST *
                                                const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis constin_inNonTerminalSymbolMap,
                                                class GALGAS_uint & io_ioAddedNonTerminalIndex,
                                                class GALGAS_syntaxInstructionListForGrammarAnalysis & io_ioSyntaxInstructionList,
-                                               C_Compiler * inCompiler
+                                               class C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -9073,7 +9073,7 @@ void callExtensionMethod_tikzNodeForSyntaxInstruction (class cPtr_abstractSyntax
                                                        class GALGAS_string & io_ioArrows,
                                                        class GALGAS_uint & io_ioMaxUsedRowIndex,
                                                        const class GALGAS_bool constin_inDebug,
-                                                       C_Compiler * inCompiler
+                                                       class C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -9180,7 +9180,7 @@ class GALGAS_bool extensionGetter_displayVertically (const class GALGAS_syntaxIn
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_bool callExtensionGetter_isLinear (const class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObject,
-                                                C_Compiler * inCompiler
+                                                class C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------

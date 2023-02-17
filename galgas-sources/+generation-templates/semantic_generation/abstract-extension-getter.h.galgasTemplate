@@ -8,11 +8,11 @@ class GALGAS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GE
   for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mIsConstant then
-      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% constin_%![mFormalArgumentName identifierRepresentation]
+      %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% constin_%![mFormalArgumentName identifierRepresentation]
     else
-      %GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
+      %class GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     end
   end
-  %,\n%!^%C_Compiler * inCompiler%
+  %,\n%!^%class C_Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) ;
 

@@ -27,6 +27,8 @@ class GALGAS_lexiqueDeclarationForGeneration : public GALGAS_semanticDeclaration
 //--------------------------------- Property read access
   public: class GALGAS_string readProperty_mLexiqueName (void) const ;
 
+  public: class GALGAS_string readProperty_mSuperLexiqueName (void) const ;
+
   public: class GALGAS_string readProperty_mHeaderContents (void) const ;
 
   public: class GALGAS_string readProperty_mCppContents (void) const ;
@@ -55,7 +57,8 @@ class GALGAS_lexiqueDeclarationForGeneration : public GALGAS_semanticDeclaration
                                                                                const class GALGAS_string & inOperand4,
                                                                                const class GALGAS_string & inOperand5,
                                                                                const class GALGAS_string & inOperand6,
-                                                                               const class GALGAS_string & inOperand7
+                                                                               const class GALGAS_string & inOperand7,
+                                                                               const class GALGAS_string & inOperand8
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -76,6 +79,9 @@ class GALGAS_lexiqueDeclarationForGeneration : public GALGAS_semanticDeclaration
 
   public: VIRTUAL_IN_DEBUG void setter_setMObjcCocoaImplementation (class GALGAS_string inArgument0
                                                                     COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMSuperLexiqueName (class GALGAS_string inArgument0
+                                                             COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMSwiftCocoaImplementation (class GALGAS_string inArgument0
                                                                      COMMA_LOCATION_ARGS) ;
@@ -128,6 +134,7 @@ class cPtr_lexiqueDeclarationForGeneration : public cPtr_semanticDeclarationWith
 
 //--- Properties
   public: GALGAS_string mProperty_mLexiqueName ;
+  public: GALGAS_string mProperty_mSuperLexiqueName ;
   public: GALGAS_string mProperty_mHeaderContents ;
   public: GALGAS_string mProperty_mCppContents ;
   public: GALGAS_string mProperty_mObjcCocoaHeader ;
@@ -138,6 +145,7 @@ class cPtr_lexiqueDeclarationForGeneration : public cPtr_semanticDeclarationWith
   public: cPtr_lexiqueDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                 const GALGAS_string & in_mImplementationCppFileName,
                                                 const GALGAS_string & in_mLexiqueName,
+                                                const GALGAS_string & in_mSuperLexiqueName,
                                                 const GALGAS_string & in_mHeaderContents,
                                                 const GALGAS_string & in_mCppContents,
                                                 const GALGAS_string & in_mObjcCocoaHeader,
@@ -1817,7 +1825,7 @@ void callExtensionMethod_analyzeGrammarInstructionSDT (class cPtr_abstractGramma
                                                        const class GALGAS_string constin_inSyntaxDirectedTranslationResultVarName,
                                                        class GALGAS_stringlist & io_ioAssignementList,
                                                        class GALGAS_localVarManager & io_ioVariableMap,
-                                                       C_Compiler * inCompiler
+                                                       class C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------

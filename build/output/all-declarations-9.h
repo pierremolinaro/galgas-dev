@@ -234,8 +234,8 @@ void callExtensionMethod_generateExpression (class cPtr_semanticExpressionForGen
                                              class GALGAS_stringset & io_ioInclusionSet,
                                              class GALGAS_uint & io_ioTemporaryVariableIndex,
                                              class GALGAS_stringset & io_ioUnusedVariableCppNameSet,
-                                             GALGAS_string & out_outCppExpression,
-                                             C_Compiler * inCompiler
+                                             class GALGAS_string & out_outCppExpression,
+                                             class C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1746,7 +1746,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionAST_2
 
 void callExtensionMethod_enterInSemanticContext (class cPtr_abstractEnumeratedCollectionAST * inObject,
                                                  class GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                                 C_Compiler * inCompiler
+                                                 class C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1761,9 +1761,9 @@ void callExtensionMethod_analyzeEnumeration (class cPtr_abstractEnumeratedCollec
                                              const class GALGAS_analysisContext constin_inAnalysisContext,
                                              class GALGAS_localVarManager & io_ioVariableMap,
                                              class GALGAS_localConstantList & io_ioLocalConstantListForDoBranch,
-                                             GALGAS_string & out_outEnumeratorCppName,
-                                             GALGAS_semanticExpressionForGeneration & out_outEnumerationExpression,
-                                             C_Compiler * inCompiler
+                                             class GALGAS_string & out_outEnumeratorCppName,
+                                             class GALGAS_semanticExpressionForGeneration & out_outEnumerationExpression,
+                                             class C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------

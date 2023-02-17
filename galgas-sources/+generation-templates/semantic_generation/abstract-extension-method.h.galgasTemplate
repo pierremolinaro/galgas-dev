@@ -12,11 +12,11 @@ void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%class cP
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
       %class GALGAS_%![mFormalArgumentType identifierRepresentation]% & io_%![mFormalArgumentName identifierRepresentation]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %GALGAS_%![mFormalArgumentType identifierRepresentation]% & out_%![mFormalArgumentName identifierRepresentation]
+      %class GALGAS_%![mFormalArgumentType identifierRepresentation]% & out_%![mFormalArgumentName identifierRepresentation]
     else # argumentIn
       %class GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     end
   end
-  %,\n%!^%C_Compiler * inCompiler%
+  %,\n%!^%class C_Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) ;
 

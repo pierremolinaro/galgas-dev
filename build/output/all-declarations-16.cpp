@@ -2404,6 +2404,9 @@ typeComparisonResult cPtr_lexiqueDeclarationForGeneration::dynamicObjectCompare 
     result = mProperty_mLexiqueName.objectCompare (p->mProperty_mLexiqueName) ;
   }
   if (kOperandEqual == result) {
+    result = mProperty_mSuperLexiqueName.objectCompare (p->mProperty_mSuperLexiqueName) ;
+  }
+  if (kOperandEqual == result) {
     result = mProperty_mHeaderContents.objectCompare (p->mProperty_mHeaderContents) ;
   }
   if (kOperandEqual == result) {
@@ -2456,6 +2459,7 @@ GALGAS_lexiqueDeclarationForGeneration GALGAS_lexiqueDeclarationForGeneration::c
                                                                   GALGAS_string::constructor_default (HERE),
                                                                   GALGAS_string::constructor_default (HERE),
                                                                   GALGAS_string::constructor_default (HERE),
+                                                                  GALGAS_string::constructor_default (HERE),
                                                                   GALGAS_string::constructor_default (HERE)
                                                                   COMMA_THERE) ;
 }
@@ -2471,6 +2475,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 GALGAS_lexiqueDeclarationForGeneration GALGAS_lexiqueDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                 const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                 const GALGAS_string & inAttribute_mLexiqueName,
+                                                                                                const GALGAS_string & inAttribute_mSuperLexiqueName,
                                                                                                 const GALGAS_string & inAttribute_mHeaderContents,
                                                                                                 const GALGAS_string & inAttribute_mCppContents,
                                                                                                 const GALGAS_string & inAttribute_mObjcCocoaHeader,
@@ -2478,8 +2483,8 @@ GALGAS_lexiqueDeclarationForGeneration GALGAS_lexiqueDeclarationForGeneration::c
                                                                                                 const GALGAS_string & inAttribute_mSwiftCocoaImplementation
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_lexiqueDeclarationForGeneration result ;
-  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mLexiqueName.isValid () && inAttribute_mHeaderContents.isValid () && inAttribute_mCppContents.isValid () && inAttribute_mObjcCocoaHeader.isValid () && inAttribute_mObjcCocoaImplementation.isValid () && inAttribute_mSwiftCocoaImplementation.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_lexiqueDeclarationForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mLexiqueName, inAttribute_mHeaderContents, inAttribute_mCppContents, inAttribute_mObjcCocoaHeader, inAttribute_mObjcCocoaImplementation, inAttribute_mSwiftCocoaImplementation COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mLexiqueName.isValid () && inAttribute_mSuperLexiqueName.isValid () && inAttribute_mHeaderContents.isValid () && inAttribute_mCppContents.isValid () && inAttribute_mObjcCocoaHeader.isValid () && inAttribute_mObjcCocoaImplementation.isValid () && inAttribute_mSwiftCocoaImplementation.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_lexiqueDeclarationForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mLexiqueName, inAttribute_mSuperLexiqueName, inAttribute_mHeaderContents, inAttribute_mCppContents, inAttribute_mObjcCocoaHeader, inAttribute_mObjcCocoaImplementation, inAttribute_mSwiftCocoaImplementation COMMA_THERE)) ;
   }
   return result ;
 }
@@ -2492,6 +2497,17 @@ void GALGAS_lexiqueDeclarationForGeneration::setter_setMLexiqueName (GALGAS_stri
     cPtr_lexiqueDeclarationForGeneration * p = (cPtr_lexiqueDeclarationForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_lexiqueDeclarationForGeneration) ;
     p->mProperty_mLexiqueName = inValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_lexiqueDeclarationForGeneration::setter_setMSuperLexiqueName (GALGAS_string inValue
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    cPtr_lexiqueDeclarationForGeneration * p = (cPtr_lexiqueDeclarationForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueDeclarationForGeneration) ;
+    p->mProperty_mSuperLexiqueName = inValue ;
   }
 }
 
@@ -2564,6 +2580,18 @@ GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mLexiqueName 
 
 //----------------------------------------------------------------------------------------------------------------------
 
+GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mSuperLexiqueName (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_string () ;
+  }else{
+    cPtr_lexiqueDeclarationForGeneration * p = (cPtr_lexiqueDeclarationForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueDeclarationForGeneration) ;
+    return p->mProperty_mSuperLexiqueName ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mHeaderContents (void) const {
   if (NULL == mObjectPtr) {
     return GALGAS_string () ;
@@ -2629,6 +2657,7 @@ GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mSwiftCocoaIm
 cPtr_lexiqueDeclarationForGeneration::cPtr_lexiqueDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                             const GALGAS_string & in_mImplementationCppFileName,
                                                                             const GALGAS_string & in_mLexiqueName,
+                                                                            const GALGAS_string & in_mSuperLexiqueName,
                                                                             const GALGAS_string & in_mHeaderContents,
                                                                             const GALGAS_string & in_mCppContents,
                                                                             const GALGAS_string & in_mObjcCocoaHeader,
@@ -2637,6 +2666,7 @@ cPtr_lexiqueDeclarationForGeneration::cPtr_lexiqueDeclarationForGeneration (cons
                                                                             COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mProperty_mLexiqueName (in_mLexiqueName),
+mProperty_mSuperLexiqueName (in_mSuperLexiqueName),
 mProperty_mHeaderContents (in_mHeaderContents),
 mProperty_mCppContents (in_mCppContents),
 mProperty_mObjcCocoaHeader (in_mObjcCocoaHeader),
@@ -2659,6 +2689,8 @@ void cPtr_lexiqueDeclarationForGeneration::description (C_String & ioString,
   ioString << ", " ;
   mProperty_mLexiqueName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
+  mProperty_mSuperLexiqueName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
   mProperty_mHeaderContents.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mCppContents.description (ioString, inIndentation+1) ;
@@ -2675,7 +2707,7 @@ void cPtr_lexiqueDeclarationForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_lexiqueDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_lexiqueDeclarationForGeneration (mProperty_mHasHeader, mProperty_mImplementationCppFileName, mProperty_mLexiqueName, mProperty_mHeaderContents, mProperty_mCppContents, mProperty_mObjcCocoaHeader, mProperty_mObjcCocoaImplementation, mProperty_mSwiftCocoaImplementation COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexiqueDeclarationForGeneration (mProperty_mHasHeader, mProperty_mImplementationCppFileName, mProperty_mLexiqueName, mProperty_mSuperLexiqueName, mProperty_mHeaderContents, mProperty_mCppContents, mProperty_mObjcCocoaHeader, mProperty_mObjcCocoaImplementation, mProperty_mSwiftCocoaImplementation COMMA_THERE)) ;
   return ptr ;
 }
 

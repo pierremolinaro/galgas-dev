@@ -309,6 +309,7 @@ override getter @semanticDeclarationWithHeaderForGeneration isPredefined -> @boo
 
 refclass @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mLexiqueName
+  public let @string mSuperLexiqueName
   public let @string mHeaderContents
   public let @string mCppContents
   public let @string mObjcCocoaHeader

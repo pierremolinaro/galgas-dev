@@ -5423,7 +5423,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueAST_
 
 void callExtensionMethod_enterInSemanticContext (class cPtr_abstractCollectionValueElement * inObject,
                                                  class GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                                 C_Compiler * inCompiler
+                                                 class C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5439,7 +5439,7 @@ void callExtensionMethod_analyze (class cPtr_abstractCollectionValueElement * in
                                   const class GALGAS_unifiedTypeMapEntry constin_inElementType,
                                   class GALGAS_localVarManager & io_ioVariableMap,
                                   class GALGAS_collectionValueElementListForGeneration & io_ioCollectionValueElementListForGeneration,
-                                  C_Compiler * inCompiler
+                                  class C_Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5801,7 +5801,7 @@ void callExtensionMethod_generateCollectionElementCode (class cPtr_abstractColle
                                                         class GALGAS_uint & io_ioTemporaryVariableIndex,
                                                         class GALGAS_stringset & io_ioUnusedVariableCppNameSet,
                                                         const class GALGAS_string constin_inCppTargetVar,
-                                                        C_Compiler * inCompiler
+                                                        class C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -9921,8 +9921,8 @@ void callExtensionMethod_analyzeSemanticExpression (class cPtr_semanticExpressio
                                                     const class GALGAS_unifiedTypeMapEntry constin_inType,
                                                     const class GALGAS_analysisContext constin_inAnalysisContext,
                                                     class GALGAS_localVarManager & io_ioVariableMap,
-                                                    GALGAS_semanticExpressionForGeneration & out_outExpression,
-                                                    C_Compiler * inCompiler
+                                                    class GALGAS_semanticExpressionForGeneration & out_outExpression,
+                                                    class C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------

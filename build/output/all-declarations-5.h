@@ -6836,7 +6836,7 @@ class GALGAS_string extensionGetter_commaSourceFile (const class GALGAS_location
 
 void callExtensionMethod_enterInstructionInSemanticContext (class cPtr_semanticInstructionAST * inObject,
                                                             class GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                                            C_Compiler * inCompiler
+                                                            class C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6847,7 +6847,7 @@ void callExtensionMethod_enterInstructionInSemanticContext (class cPtr_semanticI
 
 void callExtensionMethod_enterExpressionInSemanticContext (class cPtr_semanticExpressionAST * inObject,
                                                            class GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                                           C_Compiler * inCompiler
+                                                           class C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------

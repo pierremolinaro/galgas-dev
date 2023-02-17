@@ -429,6 +429,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
         !true # has header
         !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation]
         !self.mLexiqueComponentName.string
+        !self.mLexiqueSuperComponentName.string
         !headerContents
         !cppContents
         !objcCocoaHeader

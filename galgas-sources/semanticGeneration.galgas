@@ -1228,9 +1228,12 @@ override getter @lexiqueDeclarationForGeneration headerKind ->@headerKind {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexiqueDeclarationForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
+  ?!@stringset ioInclusionSet
   !@string outHeader {
   outHeader = self.mHeaderContents
+  if self.mSuperLexiqueName != "" then
+    ioInclusionSet += !"lexique-" + [self.mSuperLexiqueName fileNameRepresentation]
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -25,7 +25,7 @@ void callExtensionMethod_checkAgainstFormalArgument (class cPtr_actualParameterA
                                                      class GALGAS_actualParameterListForGeneration & io_ioActualParameterListForGeneration,
                                                      class GALGAS_stringset & io_ioExclusiveVariableSet,
                                                      class GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
-                                                     C_Compiler * inCompiler
+                                                     class C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -46,7 +46,7 @@ class GALGAS_string extensionGetter_correspondingEffectiveParameterString (const
 
 void callExtensionMethod_enterParameterInSemanticContext (class cPtr_actualParameterAST * inObject,
                                                           class GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                                          C_Compiler * inCompiler
+                                                          class C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -153,7 +153,7 @@ void callExtensionMethod_semanticAnalysis (class cPtr_semanticDeclarationAST * i
                                            const class GALGAS_semanticContext constin_inSemanticContext,
                                            const class GALGAS_predefinedTypes constin_inPredefinedTypes,
                                            class GALGAS_semanticDeclarationListForGeneration & io_ioSemanticDeclarationListForGeneration,
-                                           C_Compiler * inCompiler
+                                           class C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1697,7 +1697,7 @@ void callExtensionMethod_analyzeSyntaxInstruction (class cPtr_syntaxInstructionA
                                                    class GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
                                                    class GALGAS_localVarManager & io_ioVariableMap,
                                                    class GALGAS_uint & io_ioSelectMethodCount,
-                                                   C_Compiler * inCompiler
+                                                   class C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1712,7 +1712,7 @@ void callExtensionMethod_analyzeInputParameter (class cPtr_abstractInputParamete
                                                 const class GALGAS_string constin_inLexicalAttributeName,
                                                 class GALGAS_terminalCheckAssignementList & io_ioTerminalCheckAssignementList,
                                                 class GALGAS_localVarManager & io_ioVariableMap,
-                                                C_Compiler * inCompiler
+                                                class C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1725,7 +1725,7 @@ void callExtensionMethod_analyzeSDT (class cPtr_abstractGrammarInstructionSyntax
                                      const class GALGAS_analysisContext constin_inAnalysisContext,
                                      const class GALGAS_bool constin_inHasTranslateFeature,
                                      class GALGAS_localVarManager & io_ioVariableMap,
-                                     C_Compiler * inCompiler
+                                     class C_Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1739,7 +1739,7 @@ void callExtensionMethod_generateCode (class cPtr_abstractGrammarInstructionSynt
                                        const class GALGAS_string constin_inAccessMethodName,
                                        class GALGAS_stringset & io_ioUnusedVariableCppNameSet,
                                        class GALGAS_string & io_ioGeneratedCode,
-                                       C_Compiler * inCompiler
+                                       class C_Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------

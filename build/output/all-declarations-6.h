@@ -3247,7 +3247,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapF
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_string callExtensionGetter_keyRepresentation (const class cPtr_semanticDeclarationAST * inObject,
-                                                           C_Compiler * inCompiler
+                                                           class C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3261,7 +3261,7 @@ void callExtensionMethod_enterDeclarationInSemanticContext (class cPtr_semanticD
                                                             const class GALGAS_extensionGetterMapForBuildingContext constin_inExtensionGetterMapForBuildingContext,
                                                             const class GALGAS_extensionSetterMapForBuildingContext constin_inExtensionSetterMapForBuildingContext,
                                                             class GALGAS_semanticContext & io_ioSemanticContext,
-                                                            C_Compiler * inCompiler
+                                                            class C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3560,7 +3560,7 @@ void callExtensionMethod_enterDeclarationInGraph (class cPtr_semanticDeclaration
                                                   class GALGAS_extensionGetterMapForBuildingContext & io_ioExtensionGetterMapForBuildingContext,
                                                   class GALGAS_extensionSetterMapForBuildingContext & io_ioExtensionSetterMapForBuildingContext,
                                                   class GALGAS_semanticDeclarationListAST & io_ioExtensionOverrideDefinitionList,
-                                                  C_Compiler * inCompiler
+                                                  class C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4158,8 +4158,8 @@ void callExtensionMethod_generateActualParameter (class cPtr_actualParameterForG
                                                   class GALGAS_stringlist & io_ioJokerParametersToReleaseList,
                                                   class GALGAS_stringlist & io_ioOutputVariableList,
                                                   class GALGAS_stringset & io_ioUnusedVariableCppNameSet,
-                                                  GALGAS_string & out_outCppName,
-                                                  C_Compiler * inCompiler
+                                                  class GALGAS_string & out_outCppName,
+                                                  class C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5058,7 +5058,7 @@ void callExtensionMethod_generateInstruction (class cPtr_semanticInstructionForG
                                               class GALGAS_stringset & io_ioUnusedVariableCppNameSet,
                                               const class GALGAS_bool constin_inGenerateSyntaxDirectedTranslationString,
                                               class GALGAS_string & io_ioGeneratedCode,
-                                              C_Compiler * inCompiler
+                                              class C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5648,7 +5648,7 @@ void callExtensionMethod_appendPrimitiveTypePreDeclaration (class cPtr_semanticD
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_string callExtensionGetter_implementationCppFileName (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                   C_Compiler * inCompiler
+                                                                   class C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5658,7 +5658,7 @@ class GALGAS_string callExtensionGetter_implementationCppFileName (const class c
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_bool callExtensionGetter_hasCppHeaderFile (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                        C_Compiler * inCompiler
+                                                        class C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5668,7 +5668,7 @@ class GALGAS_bool callExtensionGetter_hasCppHeaderFile (const class cPtr_semanti
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_bool callExtensionGetter_isPredefined (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                    C_Compiler * inCompiler
+                                                    class C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5678,7 +5678,7 @@ class GALGAS_bool callExtensionGetter_isPredefined (const class cPtr_semanticDec
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_headerKind callExtensionGetter_headerKind (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                        C_Compiler * inCompiler
+                                                        class C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7595,7 +7595,7 @@ void callExtensionMethod_analyzeSemanticInstruction (class cPtr_semanticInstruct
                                                      const class GALGAS_analysisContext constin_inAnalysisContext,
                                                      class GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
                                                      class GALGAS_localVarManager & io_ioVariableMap,
-                                                     C_Compiler * inCompiler
+                                                     class C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------

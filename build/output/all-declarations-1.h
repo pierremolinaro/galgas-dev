@@ -1007,8 +1007,8 @@ void callExtensionMethod_templateExpressionAnalysis (class cPtr_templateExpressi
                                                      const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                      class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const class GALGAS_templateAnalysisContext constin_inAnalysisContext,
-                                                     GALGAS_semanticExpressionForGeneration & out_outExpression,
-                                                     C_Compiler * inCompiler
+                                                     class GALGAS_semanticExpressionForGeneration & out_outExpression,
+                                                     class C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2710,7 +2710,7 @@ void callExtensionMethod_templateInstructionAnalysis (class cPtr_templateInstruc
                                                       class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                       const class GALGAS_templateAnalysisContext constin_inAnalysisContext,
                                                       class GALGAS_templateInstructionListForGeneration & io_ioInstructionList,
-                                                      C_Compiler * inCompiler
+                                                      class C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2725,7 +2725,7 @@ void callExtensionMethod_templateCodeGeneration (class cPtr_templateInstructionF
                                                  class GALGAS_uint & io_ioTemporaryVariableIndex,
                                                  class GALGAS_stringset & io_ioUnusedVariableCppNameSet,
                                                  class GALGAS_bool & io_ioUseColumnMarker,
-                                                 C_Compiler * inCompiler
+                                                 class C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -8340,7 +8340,7 @@ class GALGAS_bool extensionGetter_useLoopLocalVar (const class GALGAS_lexicalRul
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_bool callExtensionGetter_lexicalRuleUsesLoopLocalVar (const class cPtr_abstractLexicalRuleAST * inObject,
-                                                                   C_Compiler * inCompiler
+                                                                   class C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
