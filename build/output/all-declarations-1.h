@@ -1004,9 +1004,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypes ;
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_templateExpressionAnalysis (class cPtr_templateExpressionAST * inObject,
-                                                     const GALGAS_lstring constin_inUsefulnessCallerEntityName,
-                                                     GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                                     const GALGAS_templateAnalysisContext constin_inAnalysisContext,
+                                                     const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                                     class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                                     const class GALGAS_templateAnalysisContext constin_inAnalysisContext,
                                                      GALGAS_semanticExpressionForGeneration & out_outExpression,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
@@ -2706,10 +2706,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateGetterCallI
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_templateInstructionAnalysis (class cPtr_templateInstructionAST * inObject,
-                                                      const GALGAS_lstring constin_inUsefulnessCallerEntityName,
-                                                      GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                                      const GALGAS_templateAnalysisContext constin_inAnalysisContext,
-                                                      GALGAS_templateInstructionListForGeneration & io_ioInstructionList,
+                                                      const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                                      class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                                      const class GALGAS_templateAnalysisContext constin_inAnalysisContext,
+                                                      class GALGAS_templateInstructionListForGeneration & io_ioInstructionList,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
@@ -2720,11 +2720,11 @@ void callExtensionMethod_templateInstructionAnalysis (class cPtr_templateInstruc
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_templateCodeGeneration (class cPtr_templateInstructionForGeneration * inObject,
-                                                 GALGAS_string & io_ioGeneratedCode,
-                                                 GALGAS_stringset & io_ioInclusionSet,
-                                                 GALGAS_uint & io_ioTemporaryVariableIndex,
-                                                 GALGAS_stringset & io_ioUnusedVariableCppNameSet,
-                                                 GALGAS_bool & io_ioUseColumnMarker,
+                                                 class GALGAS_string & io_ioGeneratedCode,
+                                                 class GALGAS_stringset & io_ioInclusionSet,
+                                                 class GALGAS_uint & io_ioTemporaryVariableIndex,
+                                                 class GALGAS_stringset & io_ioUnusedVariableCppNameSet,
+                                                 class GALGAS_bool & io_ioUseColumnMarker,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 

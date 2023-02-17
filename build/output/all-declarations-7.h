@@ -15,16 +15,16 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkAgainstFormalArgument (class cPtr_actualParameterAST * inObject,
-                                                     const GALGAS_lstring constin_inUsefulnessCallerEntityName,
-                                                     GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                                     const GALGAS_analysisContext constin_inAnalysisContext,
-                                                     const GALGAS_lstring constin_inFormalSelector,
-                                                     const GALGAS_unifiedTypeMapEntry constin_inFormalArgumentType,
-                                                     const GALGAS_formalArgumentPassingModeAST constin_inFormalArgumentPassingMode,
-                                                     GALGAS_localVarManager & io_ioVariableMap,
-                                                     GALGAS_actualParameterListForGeneration & io_ioActualParameterListForGeneration,
-                                                     GALGAS_stringset & io_ioExclusiveVariableSet,
-                                                     GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
+                                                     const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                                     class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                                     const class GALGAS_analysisContext constin_inAnalysisContext,
+                                                     const class GALGAS_lstring constin_inFormalSelector,
+                                                     const class GALGAS_unifiedTypeMapEntry constin_inFormalArgumentType,
+                                                     const class GALGAS_formalArgumentPassingModeAST constin_inFormalArgumentPassingMode,
+                                                     class GALGAS_localVarManager & io_ioVariableMap,
+                                                     class GALGAS_actualParameterListForGeneration & io_ioActualParameterListForGeneration,
+                                                     class GALGAS_stringset & io_ioExclusiveVariableSet,
+                                                     class GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
@@ -45,7 +45,7 @@ class GALGAS_string extensionGetter_correspondingEffectiveParameterString (const
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_enterParameterInSemanticContext (class cPtr_actualParameterAST * inObject,
-                                                          GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                                          class GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
@@ -147,12 +147,12 @@ class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult : public ac
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_semanticAnalysis (class cPtr_semanticDeclarationAST * inObject,
-                                           GALGAS_lstringlist & io_ioUsefulnessRootEntities,
-                                           GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                           const GALGAS_string constin_inProductDirectory,
-                                           const GALGAS_semanticContext constin_inSemanticContext,
-                                           const GALGAS_predefinedTypes constin_inPredefinedTypes,
-                                           GALGAS_semanticDeclarationListForGeneration & io_ioSemanticDeclarationListForGeneration,
+                                           class GALGAS_lstringlist & io_ioUsefulnessRootEntities,
+                                           class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                           const class GALGAS_string constin_inProductDirectory,
+                                           const class GALGAS_semanticContext constin_inSemanticContext,
+                                           const class GALGAS_predefinedTypes constin_inPredefinedTypes,
+                                           class GALGAS_semanticDeclarationListForGeneration & io_ioSemanticDeclarationListForGeneration,
                                            C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
@@ -1685,18 +1685,18 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxDeclarationFo
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_analyzeSyntaxInstruction (class cPtr_syntaxInstructionAST * inObject,
-                                                   const GALGAS_lstring constin_inUsefulnessCallerEntityName,
-                                                   GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                                   const GALGAS_analysisContext constin_inAnalysisContext,
-                                                   const GALGAS_bool constin_inHasTranslateFeature,
-                                                   const GALGAS_terminalMap constin_inTerminalMap,
-                                                   const GALGAS_string constin_inLexiqueName,
-                                                   const GALGAS_nonterminalMap constin_inNonterminalMap,
-                                                   const GALGAS_string constin_inComponentName,
-                                                   const GALGAS_stringset constin_inIndexNameSet,
-                                                   GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
-                                                   GALGAS_localVarManager & io_ioVariableMap,
-                                                   GALGAS_uint & io_ioSelectMethodCount,
+                                                   const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                                   class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                                   const class GALGAS_analysisContext constin_inAnalysisContext,
+                                                   const class GALGAS_bool constin_inHasTranslateFeature,
+                                                   const class GALGAS_terminalMap constin_inTerminalMap,
+                                                   const class GALGAS_string constin_inLexiqueName,
+                                                   const class GALGAS_nonterminalMap constin_inNonterminalMap,
+                                                   const class GALGAS_string constin_inComponentName,
+                                                   const class GALGAS_stringset constin_inIndexNameSet,
+                                                   class GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
+                                                   class GALGAS_localVarManager & io_ioVariableMap,
+                                                   class GALGAS_uint & io_ioSelectMethodCount,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
@@ -1707,11 +1707,11 @@ void callExtensionMethod_analyzeSyntaxInstruction (class cPtr_syntaxInstructionA
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_analyzeInputParameter (class cPtr_abstractInputParameter * inObject,
-                                                const GALGAS_analysisContext constin_inAnalysisContext,
-                                                const GALGAS_lexicalTypeEnum constin_inRequiredLexicalType,
-                                                const GALGAS_string constin_inLexicalAttributeName,
-                                                GALGAS_terminalCheckAssignementList & io_ioTerminalCheckAssignementList,
-                                                GALGAS_localVarManager & io_ioVariableMap,
+                                                const class GALGAS_analysisContext constin_inAnalysisContext,
+                                                const class GALGAS_lexicalTypeEnum constin_inRequiredLexicalType,
+                                                const class GALGAS_string constin_inLexicalAttributeName,
+                                                class GALGAS_terminalCheckAssignementList & io_ioTerminalCheckAssignementList,
+                                                class GALGAS_localVarManager & io_ioVariableMap,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
@@ -1722,9 +1722,9 @@ void callExtensionMethod_analyzeInputParameter (class cPtr_abstractInputParamete
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_analyzeSDT (class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
-                                     const GALGAS_analysisContext constin_inAnalysisContext,
-                                     const GALGAS_bool constin_inHasTranslateFeature,
-                                     GALGAS_localVarManager & io_ioVariableMap,
+                                     const class GALGAS_analysisContext constin_inAnalysisContext,
+                                     const class GALGAS_bool constin_inHasTranslateFeature,
+                                     class GALGAS_localVarManager & io_ioVariableMap,
                                      C_Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
@@ -1735,10 +1735,10 @@ void callExtensionMethod_analyzeSDT (class cPtr_abstractGrammarInstructionSyntax
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_generateCode (class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
-                                       const GALGAS_bool constin_inGenerateSyntaxDirectedTranslationString,
-                                       const GALGAS_string constin_inAccessMethodName,
-                                       GALGAS_stringset & io_ioUnusedVariableCppNameSet,
-                                       GALGAS_string & io_ioGeneratedCode,
+                                       const class GALGAS_bool constin_inGenerateSyntaxDirectedTranslationString,
+                                       const class GALGAS_string constin_inAccessMethodName,
+                                       class GALGAS_stringset & io_ioUnusedVariableCppNameSet,
+                                       class GALGAS_string & io_ioGeneratedCode,
                                        C_Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 

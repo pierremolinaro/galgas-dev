@@ -5909,7 +5909,7 @@ class GALGAS_string extensionGetter_cocoaReset (const class GALGAS_lexicalTypeEn
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkLexicalDefaultAction (class cPtr_lexicalSendDefaultActionAST * inObject,
-                                                    GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
+                                                    class GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
                                                     C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
@@ -5920,7 +5920,7 @@ void callExtensionMethod_checkLexicalDefaultAction (class cPtr_lexicalSendDefaul
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkLexicalExpression (class cPtr_lexicalExpressionAST * inObject,
-                                                 GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
+                                                 class GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -5931,8 +5931,8 @@ void callExtensionMethod_checkLexicalExpression (class cPtr_lexicalExpressionAST
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkLexicalFunctionCallArgument (class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
-                                                           GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                           GALGAS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
+                                                           class GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
+                                                           class GALGAS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
@@ -5943,8 +5943,8 @@ void callExtensionMethod_checkLexicalFunctionCallArgument (class cPtr_lexicalRou
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkLexicalRoutineCallArgument (class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
-                                                          GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                          GALGAS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
+                                                          class GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
+                                                          class GALGAS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
@@ -5955,8 +5955,8 @@ void callExtensionMethod_checkLexicalRoutineCallArgument (class cPtr_lexicalRout
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkLexicalInstruction (class cPtr_lexicalInstructionAST * inObject,
-                                                  GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                  GALGAS_lexicalTagMap & io_ioTagMap,
+                                                  class GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
+                                                  class GALGAS_lexicalTagMap & io_ioTagMap,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
@@ -5967,7 +5967,7 @@ void callExtensionMethod_checkLexicalInstruction (class cPtr_lexicalInstructionA
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkLexicalRule (class cPtr_abstractLexicalRuleAST * inObject,
-                                           GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
+                                           class GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
                                            C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
@@ -7824,9 +7824,9 @@ class GALGAS_string callExtensionGetter_generateSwiftCocoaRoutineArgument (const
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkLexicalRoutineCallArgument (class cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                          GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                          GALGAS_lexicalArgumentModeAST in_inLexicalRoutineFormalArgumentMode,
-                                                          GALGAS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
+                                                          class GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
+                                                          class GALGAS_lexicalArgumentModeAST in_inLexicalRoutineFormalArgumentMode,
+                                                          class GALGAS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 

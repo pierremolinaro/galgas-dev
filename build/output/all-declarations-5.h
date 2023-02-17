@@ -6680,8 +6680,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_timerPredefinedType
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_getConstructorMap (class cPtr_predefinedTypeAST * inObject,
-                                            GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                            GALGAS_constructorMap & out_outConstructorMap,
+                                            class GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                            class GALGAS_constructorMap & out_outConstructorMap,
                                             C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
@@ -6720,8 +6720,8 @@ class cMapElement_unifiedTypeMap : public cMapElement {
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_getGetterMap (class cPtr_predefinedTypeAST * inObject,
-                                       GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                       GALGAS_getterMap & out_outGetterMap,
+                                       class GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                       class GALGAS_getterMap & out_outGetterMap,
                                        C_Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 
@@ -6732,8 +6732,8 @@ void callExtensionMethod_getGetterMap (class cPtr_predefinedTypeAST * inObject,
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_getSetterMap (class cPtr_predefinedTypeAST * inObject,
-                                       GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                       GALGAS_setterMap & out_outSetterMap,
+                                       class GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                       class GALGAS_setterMap & out_outSetterMap,
                                        C_Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 
@@ -6744,8 +6744,8 @@ void callExtensionMethod_getSetterMap (class cPtr_predefinedTypeAST * inObject,
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_getInstanceMethodMap (class cPtr_predefinedTypeAST * inObject,
-                                               GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                               GALGAS_instanceMethodMap & out_outInstanceMethodMap,
+                                               class GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                               class GALGAS_instanceMethodMap & out_outInstanceMethodMap,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -6756,8 +6756,8 @@ void callExtensionMethod_getInstanceMethodMap (class cPtr_predefinedTypeAST * in
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_getClassMethodMap (class cPtr_predefinedTypeAST * inObject,
-                                            GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                            GALGAS_classMethodMap & out_outClassMethodMap,
+                                            class GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                            class GALGAS_classMethodMap & out_outClassMethodMap,
                                             C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
@@ -6768,8 +6768,8 @@ void callExtensionMethod_getClassMethodMap (class cPtr_predefinedTypeAST * inObj
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_getOptionalMethodMap (class cPtr_predefinedTypeAST * inObject,
-                                               GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                               GALGAS_optionalMethodMap & out_outMap,
+                                               class GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                               class GALGAS_optionalMethodMap & out_outMap,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -6790,8 +6790,8 @@ class GALGAS_operators callExtensionGetter_getSupportedOperatorFlags (const cPtr
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_getAddAssignArgumentList (class cPtr_predefinedTypeAST * inObject,
-                                                   GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                                   GALGAS_functionSignature & out_outAddAssignArgumentList,
+                                                   class GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                                   class GALGAS_functionSignature & out_outAddAssignArgumentList,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
@@ -6802,9 +6802,9 @@ void callExtensionMethod_getAddAssignArgumentList (class cPtr_predefinedTypeAST 
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_getEnumerationList (class cPtr_predefinedTypeAST * inObject,
-                                             GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                             GALGAS_enumerationDescriptorList & out_outEnumerationList,
-                                             GALGAS_string & out_outEnumeratedType,
+                                             class GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                             class GALGAS_enumerationDescriptorList & out_outEnumerationList,
+                                             class GALGAS_string & out_outEnumeratedType,
                                              C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
@@ -6835,7 +6835,7 @@ class GALGAS_string extensionGetter_commaSourceFile (const class GALGAS_location
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_enterInstructionInSemanticContext (class cPtr_semanticInstructionAST * inObject,
-                                                            GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                                            class GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
@@ -6846,7 +6846,7 @@ void callExtensionMethod_enterInstructionInSemanticContext (class cPtr_semanticI
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_enterExpressionInSemanticContext (class cPtr_semanticExpressionAST * inObject,
-                                                           GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                                           class GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 

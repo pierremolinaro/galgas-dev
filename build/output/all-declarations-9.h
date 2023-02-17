@@ -230,10 +230,10 @@ void extensionMethod_generateFixIt (const class GALGAS_fixitListForGeneration in
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_generateExpression (class cPtr_semanticExpressionForGeneration * inObject,
-                                             GALGAS_string & io_ioGeneratedCode,
-                                             GALGAS_stringset & io_ioInclusionSet,
-                                             GALGAS_uint & io_ioTemporaryVariableIndex,
-                                             GALGAS_stringset & io_ioUnusedVariableCppNameSet,
+                                             class GALGAS_string & io_ioGeneratedCode,
+                                             class GALGAS_stringset & io_ioInclusionSet,
+                                             class GALGAS_uint & io_ioTemporaryVariableIndex,
+                                             class GALGAS_stringset & io_ioUnusedVariableCppNameSet,
                                              GALGAS_string & out_outCppExpression,
                                              C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
@@ -1745,7 +1745,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionAST_2
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_enterInSemanticContext (class cPtr_abstractEnumeratedCollectionAST * inObject,
-                                                 GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                                 class GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -1756,11 +1756,11 @@ void callExtensionMethod_enterInSemanticContext (class cPtr_abstractEnumeratedCo
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_analyzeEnumeration (class cPtr_abstractEnumeratedCollectionAST * inObject,
-                                             const GALGAS_lstring constin_inUsefulnessCallerEntityName,
-                                             GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                             const GALGAS_analysisContext constin_inAnalysisContext,
-                                             GALGAS_localVarManager & io_ioVariableMap,
-                                             GALGAS_localConstantList & io_ioLocalConstantListForDoBranch,
+                                             const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                             class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                             const class GALGAS_analysisContext constin_inAnalysisContext,
+                                             class GALGAS_localVarManager & io_ioVariableMap,
+                                             class GALGAS_localConstantList & io_ioLocalConstantListForDoBranch,
                                              GALGAS_string & out_outEnumeratorCppName,
                                              GALGAS_semanticExpressionForGeneration & out_outEnumerationExpression,
                                              C_Compiler * inCompiler

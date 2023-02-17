@@ -3257,10 +3257,10 @@ class GALGAS_string callExtensionGetter_keyRepresentation (const class cPtr_sema
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_enterDeclarationInSemanticContext (class cPtr_semanticDeclarationAST * inObject,
-                                                            const GALGAS_extensionMethodMapForBuildingContext constin_inExtensionMethodMapForBuildingContext,
-                                                            const GALGAS_extensionGetterMapForBuildingContext constin_inExtensionGetterMapForBuildingContext,
-                                                            const GALGAS_extensionSetterMapForBuildingContext constin_inExtensionSetterMapForBuildingContext,
-                                                            GALGAS_semanticContext & io_ioSemanticContext,
+                                                            const class GALGAS_extensionMethodMapForBuildingContext constin_inExtensionMethodMapForBuildingContext,
+                                                            const class GALGAS_extensionGetterMapForBuildingContext constin_inExtensionGetterMapForBuildingContext,
+                                                            const class GALGAS_extensionSetterMapForBuildingContext constin_inExtensionSetterMapForBuildingContext,
+                                                            class GALGAS_semanticContext & io_ioSemanticContext,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
@@ -3555,11 +3555,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticTypePrecede
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_enterDeclarationInGraph (class cPtr_semanticDeclarationAST * inObject,
-                                                  GALGAS_semanticTypePrecedenceGraph & io_ioSemanticTypePrecedenceGraph,
-                                                  GALGAS_extensionMethodMapForBuildingContext & io_ioExtensionMethodMapForBuildingContext,
-                                                  GALGAS_extensionGetterMapForBuildingContext & io_ioExtensionGetterMapForBuildingContext,
-                                                  GALGAS_extensionSetterMapForBuildingContext & io_ioExtensionSetterMapForBuildingContext,
-                                                  GALGAS_semanticDeclarationListAST & io_ioExtensionOverrideDefinitionList,
+                                                  class GALGAS_semanticTypePrecedenceGraph & io_ioSemanticTypePrecedenceGraph,
+                                                  class GALGAS_extensionMethodMapForBuildingContext & io_ioExtensionMethodMapForBuildingContext,
+                                                  class GALGAS_extensionGetterMapForBuildingContext & io_ioExtensionGetterMapForBuildingContext,
+                                                  class GALGAS_extensionSetterMapForBuildingContext & io_ioExtensionSetterMapForBuildingContext,
+                                                  class GALGAS_semanticDeclarationListAST & io_ioExtensionOverrideDefinitionList,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
@@ -3570,7 +3570,7 @@ void callExtensionMethod_enterDeclarationInGraph (class cPtr_semanticDeclaration
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_addAssociatedElement (class cPtr_semanticDeclarationAST * inObject,
-                                               GALGAS_semanticDeclarationListAST & io_ioSemanticDeclarationList,
+                                               class GALGAS_semanticDeclarationListAST & io_ioSemanticDeclarationList,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -4152,12 +4152,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterForG
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_generateActualParameter (class cPtr_actualParameterForGeneration * inObject,
-                                                  GALGAS_stringset & io_ioInclusionSet,
-                                                  GALGAS_uint & io_ioTemporaryVariableIndex,
-                                                  GALGAS_string & io_ioImplementation,
-                                                  GALGAS_stringlist & io_ioJokerParametersToReleaseList,
-                                                  GALGAS_stringlist & io_ioOutputVariableList,
-                                                  GALGAS_stringset & io_ioUnusedVariableCppNameSet,
+                                                  class GALGAS_stringset & io_ioInclusionSet,
+                                                  class GALGAS_uint & io_ioTemporaryVariableIndex,
+                                                  class GALGAS_string & io_ioImplementation,
+                                                  class GALGAS_stringlist & io_ioJokerParametersToReleaseList,
+                                                  class GALGAS_stringlist & io_ioOutputVariableList,
+                                                  class GALGAS_stringset & io_ioUnusedVariableCppNameSet,
                                                   GALGAS_string & out_outCppName,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
@@ -5053,11 +5053,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstruction
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_generateInstruction (class cPtr_semanticInstructionForGeneration * inObject,
-                                              GALGAS_stringset & io_ioInclusionSet,
-                                              GALGAS_uint & io_ioTemporaryVariableIndex,
-                                              GALGAS_stringset & io_ioUnusedVariableCppNameSet,
-                                              const GALGAS_bool constin_inGenerateSyntaxDirectedTranslationString,
-                                              GALGAS_string & io_ioGeneratedCode,
+                                              class GALGAS_stringset & io_ioInclusionSet,
+                                              class GALGAS_uint & io_ioTemporaryVariableIndex,
+                                              class GALGAS_stringset & io_ioUnusedVariableCppNameSet,
+                                              const class GALGAS_bool constin_inGenerateSyntaxDirectedTranslationString,
+                                              class GALGAS_string & io_ioGeneratedCode,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
@@ -5637,7 +5637,7 @@ class GALGAS_string callExtensionGetter_appendPrimitiveTypeDeclaration (const cP
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_appendPrimitiveTypePreDeclaration (class cPtr_semanticDeclarationForGeneration * inObject,
-                                                            GALGAS_string & io_ioHeader,
+                                                            class GALGAS_string & io_ioHeader,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
@@ -7529,8 +7529,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplate
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_appendDeclaration_31_ (class cPtr_semanticDeclarationForGeneration * inObject,
-                                                GALGAS_stringset & io_ioInclusionSet,
-                                                GALGAS_string & out_outHeader,
+                                                class GALGAS_stringset & io_ioInclusionSet,
+                                                class GALGAS_string & out_outHeader,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
@@ -7541,9 +7541,9 @@ void callExtensionMethod_appendDeclaration_31_ (class cPtr_semanticDeclarationFo
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_appendDeclaration_32_ (class cPtr_semanticDeclarationForGeneration * inObject,
-                                                const GALGAS_string constin_inOutputDirectory,
-                                                GALGAS_stringset & io_ioInclusionSet,
-                                                GALGAS_string & out_outHeader,
+                                                const class GALGAS_string constin_inOutputDirectory,
+                                                class GALGAS_stringset & io_ioInclusionSet,
+                                                class GALGAS_string & out_outHeader,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
@@ -7564,9 +7564,9 @@ class GALGAS_string callExtensionGetter_appendTypeGenericImplementation (const c
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_appendSpecificImplementation (class cPtr_semanticDeclarationForGeneration * inObject,
-                                                       const GALGAS_unifiedTypeMap constin_inUnifiedTypeMap,
-                                                       GALGAS_stringset & io_ioInclusionSet,
-                                                       GALGAS_string & out_outImplementation,
+                                                       const class GALGAS_unifiedTypeMap constin_inUnifiedTypeMap,
+                                                       class GALGAS_stringset & io_ioInclusionSet,
+                                                       class GALGAS_string & out_outImplementation,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
@@ -7577,9 +7577,9 @@ void callExtensionMethod_appendSpecificImplementation (class cPtr_semanticDeclar
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_appendSpecificFiles (class cPtr_semanticDeclarationForGeneration * inObject,
-                                              const GALGAS_string constin_inProductDirectory,
-                                              GALGAS_stringset & io_ioAllProductFileSet,
-                                              GALGAS_stringlist & io_ioCocoaProductFileList,
+                                              const class GALGAS_string constin_inProductDirectory,
+                                              class GALGAS_stringset & io_ioAllProductFileSet,
+                                              class GALGAS_stringlist & io_ioCocoaProductFileList,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
@@ -7590,11 +7590,11 @@ void callExtensionMethod_appendSpecificFiles (class cPtr_semanticDeclarationForG
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_analyzeSemanticInstruction (class cPtr_semanticInstructionAST * inObject,
-                                                     const GALGAS_lstring constin_inUsefulnessCallerEntityName,
-                                                     GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                                     const GALGAS_analysisContext constin_inAnalysisContext,
-                                                     GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
-                                                     GALGAS_localVarManager & io_ioVariableMap,
+                                                     const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                                     class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                                     const class GALGAS_analysisContext constin_inAnalysisContext,
+                                                     class GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
+                                                     class GALGAS_localVarManager & io_ioVariableMap,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 

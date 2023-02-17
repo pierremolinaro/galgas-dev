@@ -5422,7 +5422,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueAST_
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_enterInSemanticContext (class cPtr_abstractCollectionValueElement * inObject,
-                                                 GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                                 class GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -5433,12 +5433,12 @@ void callExtensionMethod_enterInSemanticContext (class cPtr_abstractCollectionVa
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_analyze (class cPtr_abstractCollectionValueElement * inObject,
-                                  const GALGAS_lstring constin_inUsefulnessCallerEntityName,
-                                  GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                  const GALGAS_analysisContext constin_inAnalysisContext,
-                                  const GALGAS_unifiedTypeMapEntry constin_inElementType,
-                                  GALGAS_localVarManager & io_ioVariableMap,
-                                  GALGAS_collectionValueElementListForGeneration & io_ioCollectionValueElementListForGeneration,
+                                  const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                  class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                  const class GALGAS_analysisContext constin_inAnalysisContext,
+                                  const class GALGAS_unifiedTypeMapEntry constin_inElementType,
+                                  class GALGAS_localVarManager & io_ioVariableMap,
+                                  class GALGAS_collectionValueElementListForGeneration & io_ioCollectionValueElementListForGeneration,
                                   C_Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
@@ -5795,12 +5795,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractCollectionV
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_generateCollectionElementCode (class cPtr_abstractCollectionValueElementForGeneration * inObject,
-                                                        const GALGAS_unifiedTypeMapEntry constin_inTargetType,
-                                                        GALGAS_string & io_ioGeneratedCode,
-                                                        GALGAS_stringset & io_ioInclusionSet,
-                                                        GALGAS_uint & io_ioTemporaryVariableIndex,
-                                                        GALGAS_stringset & io_ioUnusedVariableCppNameSet,
-                                                        const GALGAS_string constin_inCppTargetVar,
+                                                        const class GALGAS_unifiedTypeMapEntry constin_inTargetType,
+                                                        class GALGAS_string & io_ioGeneratedCode,
+                                                        class GALGAS_stringset & io_ioInclusionSet,
+                                                        class GALGAS_uint & io_ioTemporaryVariableIndex,
+                                                        class GALGAS_stringset & io_ioUnusedVariableCppNameSet,
+                                                        const class GALGAS_string constin_inCppTargetVar,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
@@ -9916,11 +9916,11 @@ class cEnumAssociatedValues_selfAvailability_available : public cEnumAssociatedV
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_analyzeSemanticExpression (class cPtr_semanticExpressionAST * inObject,
-                                                    const GALGAS_lstring constin_inUsefulnessCallerEntityName,
-                                                    GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                                    const GALGAS_unifiedTypeMapEntry constin_inType,
-                                                    const GALGAS_analysisContext constin_inAnalysisContext,
-                                                    GALGAS_localVarManager & io_ioVariableMap,
+                                                    const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                                    class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                                    const class GALGAS_unifiedTypeMapEntry constin_inType,
+                                                    const class GALGAS_analysisContext constin_inAnalysisContext,
+                                                    class GALGAS_localVarManager & io_ioVariableMap,
                                                     GALGAS_semanticExpressionForGeneration & out_outExpression,
                                                     C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;

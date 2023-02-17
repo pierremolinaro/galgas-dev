@@ -6702,8 +6702,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxSendInstructi
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_appendSyntaxSignature (class cPtr_semanticInstructionForGeneration * inObject,
-                                                const GALGAS_string constin_inPosfix,
-                                                GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
+                                                const class GALGAS_string constin_inPosfix,
+                                                class GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
@@ -8899,10 +8899,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalSymbolsMapF
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_transformInstruction (class cPtr_syntaxInstructionAST * inObject,
-                                               GALGAS_terminalSymbolsMapForGrammarAnalysis & io_ioActuallyUsedTerminalSymbolMap,
-                                               const GALGAS_nonTerminalSymbolMapForGrammarAnalysis constin_inNonTerminalSymbolMap,
-                                               GALGAS_uint & io_ioAddedNonTerminalIndex,
-                                               GALGAS_syntaxInstructionListForGrammarAnalysis & io_ioSyntaxInstructionList,
+                                               class GALGAS_terminalSymbolsMapForGrammarAnalysis & io_ioActuallyUsedTerminalSymbolMap,
+                                               const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis constin_inNonTerminalSymbolMap,
+                                               class GALGAS_uint & io_ioAddedNonTerminalIndex,
+                                               class GALGAS_syntaxInstructionListForGrammarAnalysis & io_ioSyntaxInstructionList,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -9065,14 +9065,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rowList ;
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_tikzNodeForSyntaxInstruction (class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObject,
-                                                       GALGAS_rowList & io_ioRowList,
-                                                       const GALGAS_uint constin_inRow,
-                                                       GALGAS_uint & io_ioColumn,
-                                                       GALGAS_string & io_ioCurrentNode,
-                                                       GALGAS_string & io_ioArrowShape,
-                                                       GALGAS_string & io_ioArrows,
-                                                       GALGAS_uint & io_ioMaxUsedRowIndex,
-                                                       const GALGAS_bool constin_inDebug,
+                                                       class GALGAS_rowList & io_ioRowList,
+                                                       const class GALGAS_uint constin_inRow,
+                                                       class GALGAS_uint & io_ioColumn,
+                                                       class GALGAS_string & io_ioCurrentNode,
+                                                       class GALGAS_string & io_ioArrowShape,
+                                                       class GALGAS_string & io_ioArrows,
+                                                       class GALGAS_uint & io_ioMaxUsedRowIndex,
+                                                       const class GALGAS_bool constin_inDebug,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
@@ -9545,18 +9545,18 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericExtensionMet
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_buildExtensionListMaps (class cPtr_semanticDeclarationAST * inObject,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionSetterListMap,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioExtensionSetterListMap,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionSetterListMap,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionSetterListMap,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionMethodListMapAST,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioExtensionMethodListMap,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionMethodListMap,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionMethodListMap,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionGetterListMap,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioExtensionGetterListMap,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionGetterListMap,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionGetterListMap,
+                                                 class GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionSetterListMap,
+                                                 class GALGAS_genericExtensionMethodListMap & io_ioExtensionSetterListMap,
+                                                 class GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionSetterListMap,
+                                                 class GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionSetterListMap,
+                                                 class GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionMethodListMapAST,
+                                                 class GALGAS_genericExtensionMethodListMap & io_ioExtensionMethodListMap,
+                                                 class GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionMethodListMap,
+                                                 class GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionMethodListMap,
+                                                 class GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionGetterListMap,
+                                                 class GALGAS_genericExtensionMethodListMap & io_ioExtensionGetterListMap,
+                                                 class GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionGetterListMap,
+                                                 class GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionGetterListMap,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 

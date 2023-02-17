@@ -1812,11 +1812,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programComponentFor
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_analyzeGrammarInstructionSDT (class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
-                                                       const GALGAS_analysisContext constin_inAnalysisContext,
-                                                       const GALGAS_bool constin_inHasTranslateFeature,
-                                                       const GALGAS_string constin_inSyntaxDirectedTranslationResultVarName,
-                                                       GALGAS_stringlist & io_ioAssignementList,
-                                                       GALGAS_localVarManager & io_ioVariableMap,
+                                                       const class GALGAS_analysisContext constin_inAnalysisContext,
+                                                       const class GALGAS_bool constin_inHasTranslateFeature,
+                                                       const class GALGAS_string constin_inSyntaxDirectedTranslationResultVarName,
+                                                       class GALGAS_stringlist & io_ioAssignementList,
+                                                       class GALGAS_localVarManager & io_ioVariableMap,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
