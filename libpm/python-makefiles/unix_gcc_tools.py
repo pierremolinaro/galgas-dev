@@ -1,13 +1,13 @@
-#! /usr/bin/env python
+#! /usr/bin/python3
 # -*- coding: UTF-8 -*-
 
-#----------------------------------------------------------------------------------------------------------------------*
+#-----------------------------------------------------------------------------------------
 
 import sys, time, os, json
 import makefile, default_build_options
 import generic_galgas_makefile
 
-#----------------------------------------------------------------------------------------------------------------------*
+#-----------------------------------------------------------------------------------------
 
 def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, GOAL, maxParallelJobs, displayCommands) :
   gmf = generic_galgas_makefile.GenericGalgasMakefile ()
@@ -24,11 +24,6 @@ def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, GOAL, maxParallelJobs, d
   gmf.mStripTool    = ["strip"]
   gmf.mSudoTool     = ["sudo"]
 
-#   gmf.mCompilerTool = ["/usr/local/Cellar/gcc/10.2.0/bin/gcc-10"]
-#   gmf.mLinkerTool   = ["/usr/local/Cellar/gcc/10.2.0/bin/g++-10"]
-#   gmf.mStripTool    = ["strip"]
-#   gmf.mSudoTool     = ["sudo"]
-
   gmf.mCompilationMessage = "Compiling for Unix"
   gmf.mLinkingMessage = "Linking for Unix"
   gmf.mInstallationgMessage = "Installing"
@@ -36,7 +31,7 @@ def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, GOAL, maxParallelJobs, d
 #--- Options for all compilers
   gmf.mAllCompilerOptions = default_build_options.allCompilerOptions (["-Wconversion"])
 #--- Options for release mode
-  gmf.mCompilerReleaseOptions = default_build_options.compilerReleaseOptions (["-O2"])
+  gmf.mCompilerReleaseOptions = default_build_options.compilerReleaseOptions (["-O1"])
 #--- Options for debug mode
   gmf.mCompilerDebugOptions = default_build_options.compilerDebugOptions ([])
 #--- Options for C compiling (.c extension)
@@ -50,4 +45,4 @@ def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, GOAL, maxParallelJobs, d
 #--- Run makefile
   gmf.run ()
 
-#----------------------------------------------------------------------------------------------------------------------*
+#-----------------------------------------------------------------------------------------

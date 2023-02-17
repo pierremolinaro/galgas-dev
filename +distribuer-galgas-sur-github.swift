@@ -289,7 +289,6 @@ print ("ANNÉE : \(ANNÉE)")
   case .release:
     PRODUCT_NAME = "galgas"
   }
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev-master")
 //-------------------- Vérifier GMP
   runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/build/Default/galgas", ["--check-gmp"])
   runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/build/Default/galgas-debug", ["--check-gmp"])
@@ -309,6 +308,7 @@ print ("ANNÉE : \(ANNÉE)")
   runCommand ("/usr/local/bin/python", ["build.py"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
 //-------------------- Construction package
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev-master")
   let packageFile = PRODUCT_NAME + "-" + VERSION_GALGAS + ".pkg"
   runCommand ("/usr/bin/productbuild", ["--component-compression", "auto", "--component", "project-xcode-galgas/build/Default/cocoaGalgas.app", "/Applications", packageFile])
   runCommand ("/bin/cp", [packageFile, DISTRIBUTION_DIR])

@@ -1,7 +1,7 @@
-#! /usr/bin/env python
+#! /usr/bin/python3
 # -*- coding: UTF-8 -*-
 
-#----------------------------------------------------------------------------------------------------------------------*
+#-----------------------------------------------------------------------------------------
 
 import sys, time, os, json
 import makefile, default_build_options
@@ -9,7 +9,7 @@ import generic_galgas_makefile
 import tool_chain_installation_path
 import cross_compiler_download
 
-#----------------------------------------------------------------------------------------------------------------------*
+#-----------------------------------------------------------------------------------------
 
 def buildForLinux32OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, GOAL, maxParallelJobs, displayCommands) :
 #--- Too chain installation
@@ -55,4 +55,4 @@ def buildForLinux32OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, GOAL, maxPara
 #--- Run makefile
   gmf.run ()
 
-#----------------------------------------------------------------------------------------------------------------------*
+#-----------------------------------------------------------------------------------------
