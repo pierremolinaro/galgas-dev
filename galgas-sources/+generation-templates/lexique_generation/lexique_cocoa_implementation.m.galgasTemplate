@@ -40,11 +40,11 @@ end%
 %  if (nil == kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n%
 %    kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
   for (mStartString mEndString mPreservesStartDelimiter) in LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList do
-  %      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@%![mStartString utf8Representation]% endString:%
+  %      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@%![mStartString utf8RepresentationEscapingQuestionMark]% endString:%
       if [mEndString length] == 0 then
         %nil%
       else
-        %@%![mEndString utf8Representation]
+        %@%![mEndString utf8RepresentationEscapingQuestionMark]
       end
       % discardStartString:%
       ![not mPreservesStartDelimiter ocString]
@@ -58,7 +58,7 @@ end%
   %  if (nil == kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n\n%
   %    kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
   for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST do
-    %      @%![mMatchString utf8Representation]%, %
+    %      @%![mMatchString utf8RepresentationEscapingQuestionMark]%, %
   end
   %      nil\n%
   %    ] ;\n%
@@ -80,7 +80,7 @@ end%
 //----------------------------------------------------------------------------------------------------------------------
 
 - (NSString *) indexingDirectory {
-  return @%![INDEXING_DIRECTORY utf8Representation]% ;
+  return @%![INDEXING_DIRECTORY utf8RepresentationEscapingQuestionMark]% ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -95,7 +95,7 @@ if [INDEXING_LIST length] > 0 then
 %  return [NSArray arrayWithObjects:
 %
   for (mIndexName mIndexComment) in INDEXING_LIST do
-    %    @%![mIndexComment utf8Representation]%,\n%
+    %    @%![mIndexComment utf8RepresentationEscapingQuestionMark]%,\n%
   end
 %    NULL
   ] ;
@@ -132,7 +132,7 @@ end
       %//----------------------------------------------------------------------------------------------------------------------\n\n%
       %static const C_cocoa_lexique_table_entry ktable_for_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%!tokenList_lkey.string% [%![[tokenList_mExplicitTokenListMap count] string]%] = {\n%
         for (mLength mName mTerminalName) in tokenList_mTokenSortedList
-        do %  {%![mName utf8Representation]%, %!LEXIQUE_CLASS_NAME%_1_%![mTerminalName identifierRepresentation]%}%
+        do %  {%![mName utf8RepresentationEscapingQuestionMark]%, %!LEXIQUE_CLASS_NAME%_1_%![mTerminalName identifierRepresentation]%}%
         between %,\n%
         end
       %\n} ;\n\n%
@@ -282,7 +282,7 @@ end%\n  } ;
     NSString * kStyleArray [%![[LEXICAL_STYLE_LIST length] + 1 string]%] = {
       @"Default Style"%
 for (mName mComment) in LEXICAL_STYLE_LIST do
-  %,\n      @%![mComment.string utf8Representation]
+  %,\n      @%![mComment.string utf8RepresentationEscapingQuestionMark]
 end%\n    } ;
     result = kStyleArray [inIndex] ;
   }

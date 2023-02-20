@@ -9,7 +9,7 @@ import AppKit
 %fileprivate let kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [String] = [
 %
 for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST
-  do %  %![mMatchString utf8Representation]
+  do %  %![mMatchString utf8RepresentationEscapingQuestionMark]
   between %,\n%
 end%
 ]
@@ -22,11 +22,11 @@ end%
 %fileprivate let kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [SWIFT_TemplateDelimiter] = [
 %
 for (mStartString mEndString mPreservesStartDelimiter) in TEMPLATE_DELIMITOR_LIST
-  do  %  SWIFT_TemplateDelimiter (startString: %![mStartString utf8Representation]%, endString: %
+  do  %  SWIFT_TemplateDelimiter (startString: %![mStartString utf8RepresentationEscapingQuestionMark]%, endString: %
       if [mEndString length] == 0 then
         %nil%
       else
-        ![mEndString utf8Representation]
+        ![mEndString utf8RepresentationEscapingQuestionMark]
       end
       %, discardStartString: %
       ![not mPreservesStartDelimiter cString]
@@ -150,11 +150,11 @@ class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_
 %  if (nil == kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n%
 %    kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
   for (mStartString mEndString mPreservesStartDelimiter) in TEMPLATE_DELIMITOR_LIST do
-  %      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@%![mStartString utf8Representation]% endString:%
+  %      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@%![mStartString utf8RepresentationEscapingQuestionMark]% endString:%
       if [mEndString length] == 0 then
         %nil%
       else
-        %@%![mEndString utf8Representation]
+        %@%![mEndString utf8RepresentationEscapingQuestionMark]
       end
       % discardStartString:%
       ![not mPreservesStartDelimiter ocString]
@@ -168,7 +168,7 @@ class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_
   %  if (nil == kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n%
   %    kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
   for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST do
-    %      @%![mMatchString utf8Representation]%,\n%
+    %      @%![mMatchString utf8RepresentationEscapingQuestionMark]%,\n%
   end
   %      nil\n%
   %    ] ;\n%

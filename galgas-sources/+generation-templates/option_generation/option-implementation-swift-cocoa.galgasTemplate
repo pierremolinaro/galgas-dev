@@ -7,42 +7,42 @@ func enterOptions (%?^%_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
            %!^%_ ioStringListOptionArray : inout [SWIFT_CommandLineOption]) {
 %for (lkey mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_MAP do
   %  ioBoolOptionArray.append (SWIFT_CommandLineOption (\n%
-  %    domainName: %![OPTION_COMPONENT_NAME utf8Representation]%,\n%
-  %    identifier: %![lkey utf8Representation]%,\n%
+  %    domainName: %![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%,\n%
+  %    identifier: %![lkey utf8RepresentationEscapingQuestionMark]%,\n%
   %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
-  %    commandString: %![mOptionString utf8Representation]%,\n%
-  %    comment: %![mComment utf8Representation]%,\n%
+  %    commandString: %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
+  %    comment: %![mComment utf8RepresentationEscapingQuestionMark]%,\n%
   %    defaultValue: ""\n%
   %  ))\n%
 end
 for (lkey mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_MAP do
   %  ioUIntOptionArray.append (SWIFT_CommandLineOption (\n%
-  %    domainName: %![OPTION_COMPONENT_NAME utf8Representation]%,\n%
-  %    identifier: %![lkey utf8Representation]%,\n%
+  %    domainName: %![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%,\n%
+  %    identifier: %![lkey utf8RepresentationEscapingQuestionMark]%,\n%
   %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
-  %    commandString: %![mOptionString utf8Representation]%,\n%
-  %    comment: %![mComment utf8Representation]%,\n%
-  %    defaultValue: %![mDefaultValue utf8Representation]%\n%
+  %    commandString: %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
+  %    comment: %![mComment utf8RepresentationEscapingQuestionMark]%,\n%
+  %    defaultValue: %![mDefaultValue utf8RepresentationEscapingQuestionMark]%\n%
   %  ))\n%
 end
 for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_MAP do
   %  ioStringOptionArray.append (SWIFT_CommandLineOption (\n%
-  %    domainName: %![OPTION_COMPONENT_NAME utf8Representation]%,\n%
-  %    identifier: %![lkey utf8Representation]%,\n%
+  %    domainName: %![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%,\n%
+  %    identifier: %![lkey utf8RepresentationEscapingQuestionMark]%,\n%
   %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
-  %    commandString: %![mOptionString utf8Representation]%,\n%
-  %    comment: %![mComment utf8Representation]%,\n%
-  %    defaultValue: %![mDefaultValue utf8Representation]%\n%
+  %    commandString: %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
+  %    comment: %![mComment utf8RepresentationEscapingQuestionMark]%,\n%
+  %    defaultValue: %![mDefaultValue utf8RepresentationEscapingQuestionMark]%\n%
   %  ))\n%
 end
 for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_MAP do
   %  ioStringListOptionArray.append (SWIFT_CommandLineOption (\n%
-  %    domainName: %![OPTION_COMPONENT_NAME utf8Representation]%,\n%
-  %    identifier: %![lkey utf8Representation]%,\n%
+  %    domainName: %![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%,\n%
+  %    identifier: %![lkey utf8RepresentationEscapingQuestionMark]%,\n%
   %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
-  %    commandString: %![mOptionString utf8Representation]%,\n%
-  %    comment: %![mComment utf8Representation]%,\n%
-  %    defaultValue: %![mDefaultValue utf8Representation]%\n%
+  %    commandString: %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
+  %    comment: %![mComment utf8RepresentationEscapingQuestionMark]%,\n%
+  %    defaultValue: %![mDefaultValue utf8RepresentationEscapingQuestionMark]%\n%
   %  ))\n%
 end
 %  ioBoolOptionArray.append (SWIFT_CommandLineOption (

@@ -310,7 +310,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
     ioGeneratedCode += compilerCppName ()
     ioGeneratedCode += "->enterIndexing (C_Lexique_" + self.mLexiqueIdentifier + "::kIndexing_"
     ioGeneratedCode += [mValue0 identifierRepresentation]
-    ioGeneratedCode += ", " + [mValue1 utf8Representation] + ") ;\n"
+    ioGeneratedCode += ", " + [mValue1 utf8RepresentationEscapingQuestionMark] + ") ;\n"
   end
 #--- Syntax directed translation
   [self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor generateCode

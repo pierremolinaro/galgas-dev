@@ -40,11 +40,11 @@ end%
 %  if (nil == kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n%
 %    kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
   for (mStartString mEndString mPreservesStartDelimiter) in TEMPLATE_DELIMITOR_LIST do
-  %      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@%![mStartString utf8Representation]% endString:%
+  %      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@%![mStartString utf8RepresentationEscapingQuestionMark]% endString:%
       if [mEndString length] == 0 then
         %nil%
       else
-        %@%![mEndString utf8Representation]
+        %@%![mEndString utf8RepresentationEscapingQuestionMark]
       end
       % discardStartString:%
       ![not mPreservesStartDelimiter ocString]
@@ -58,7 +58,7 @@ end%
   %  if (nil == kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n%
   %    kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
   for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST do
-    %      @%![mMatchString utf8Representation]%,\n%
+    %      @%![mMatchString utf8RepresentationEscapingQuestionMark]%,\n%
   end
   %      nil\n%
   %    ] ;\n%

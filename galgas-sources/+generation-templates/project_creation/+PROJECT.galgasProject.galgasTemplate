@@ -1,4 +1,4 @@
-project (0:0:1) -> %![PROJECT_NAME utf8Representation]% {
+project (0:0:1) -> %![PROJECT_NAME utf8RepresentationEscapingQuestionMark]% {
 #--- Targets
   \%makefile-macosx
   \%makefile-unix

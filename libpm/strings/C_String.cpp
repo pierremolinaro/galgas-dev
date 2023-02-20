@@ -1483,7 +1483,7 @@ C_String C_String::assemblerRepresentation (void) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-C_String C_String::utf8RepresentationEnclosedWithin (const utf32 inCharacter) const {
+C_String C_String::utf8RepresentationEnclosedWithin (const utf32 inCharacter, const bool inEscapeQuestionMark) const {
   C_String s ;
   const int32_t receiver_length = length () ;
   s.setCapacity ((uint32_t) receiver_length) ;
@@ -1497,6 +1497,12 @@ C_String C_String::utf8RepresentationEnclosedWithin (const utf32 inCharacter) co
     }else if (UNICODE_VALUE (c) == '\n') {
       s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
       s.appendUnicodeCharacter ('n' COMMA_HERE) ;
+    }else if (UNICODE_VALUE (c) == '\r') {
+      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+      s.appendUnicodeCharacter ('r' COMMA_HERE) ;
+    }else if (inEscapeQuestionMark && (UNICODE_VALUE (c) == '?')) { // Trigraph protection !!!
+      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+      s.appendUnicodeCharacter ('?' COMMA_HERE) ;
     }else if (c == inCharacter) {
       s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
       s.appendUnicodeCharacter (inCharacter COMMA_HERE) ;

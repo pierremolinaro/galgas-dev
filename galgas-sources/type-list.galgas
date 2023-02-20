@@ -188,21 +188,24 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !getterName: "subListFromIndex" !"uint" !"inIndex"
+    !getterName: "subListFromIndex"
+    !argSelector: "" !"uint" !"inIndex"
     !returnedTypeName:self.mListTypeName.string
     !hasCompilerArgument:true
   )
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !getterName: "subListToIndex" !"uint" !"inIndex"
+    !getterName: "subListToIndex"
+    !argSelector: "" !"uint" !"inIndex"
     !returnedTypeName:self.mListTypeName.string
     !hasCompilerArgument:true
   )
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !getterName: "subListWithRange" !"range" !"inRange"
+    !getterName: "subListWithRange"
+    !argSelector: "" !"range" !"inRange"
     !returnedTypeName:self.mListTypeName.string
     !hasCompilerArgument:true
   )

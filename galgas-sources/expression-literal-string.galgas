@@ -94,7 +94,7 @@ override method @literalStringExpressionForGeneration generateExpression
   if self.mString == "" then
     outCppExpression = "GALGAS_string::makeEmptyString ()"
   else
-    outCppExpression = "GALGAS_string (" + [self.mString utf8Representation] + ")"
+    outCppExpression = "GALGAS_string (" + [self.mString utf8RepresentationEscapingQuestionMark] + ")"
   end
 }
 

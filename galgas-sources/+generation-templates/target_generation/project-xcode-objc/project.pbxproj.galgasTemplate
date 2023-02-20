@@ -22,8 +22,8 @@ for (mValue0 mValue1) in C_FILE_LIST do
 %    isa = PBXFileReference;\n%
 %    fileEncoding = 4;\n%
 %    lastKnownFileType = sourcecode.c.c;\n%
-%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
-%    path = %![mValue1 utf8Representation]%;\n%
+%    name = %![[mValue1 lastPathComponent] utf8RepresentationEscapingQuestionMark]%;\n%
+%    path = %![mValue1 utf8RepresentationEscapingQuestionMark]%;\n%
 %    sourceTree = "<group>";\n%
 %  };\n\n%
 end
@@ -32,8 +32,8 @@ for (mValue0 mValue1) in CPP_FILE_LIST do
 %    isa = PBXFileReference;\n%
 %    fileEncoding = 4;\n%
 %    lastKnownFileType = sourcecode.cpp.cpp;\n%
-%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
-%    path = %![mValue1 utf8Representation]%;\n%
+%    name = %![[mValue1 lastPathComponent] utf8RepresentationEscapingQuestionMark]%;\n%
+%    path = %![mValue1 utf8RepresentationEscapingQuestionMark]%;\n%
 %    sourceTree = "<group>";\n%
 %  };\n\n%
 end
@@ -42,8 +42,8 @@ for (mValue0 mValue1) in M_FILE_LIST do
 %    isa = PBXFileReference;\n%
 %    fileEncoding = 4;\n%
 %    lastKnownFileType = sourcecode.c.obj;\n%
-%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
-%    path = %![mValue1 utf8Representation]%;\n%
+%    name = %![[mValue1 lastPathComponent] utf8RepresentationEscapingQuestionMark]%;\n%
+%    path = %![mValue1 utf8RepresentationEscapingQuestionMark]%;\n%
 %    sourceTree = "<group>";\n%
 %  };\n\n%
 end
@@ -52,8 +52,8 @@ for (mValue0 mValue1) in MM_FILE_LIST do
 %    isa = PBXFileReference;\n%
 %    fileEncoding = 4;\n%
 %    lastKnownFileType = sourcecode.cpp.objcpp;\n%
-%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
-%    path = %![mValue1 utf8Representation]%;\n%
+%    name = %![[mValue1 lastPathComponent] utf8RepresentationEscapingQuestionMark]%;\n%
+%    path = %![mValue1 utf8RepresentationEscapingQuestionMark]%;\n%
 %    sourceTree = "<group>";\n%
 %  };\n\n%
 end
@@ -62,8 +62,8 @@ for (mValue0 mValue1) in HEADER_FILE_LIST do
 %    isa = PBXFileReference;\n%
 %    fileEncoding = 4;\n%
 %    lastKnownFileType = sourcecode.c.h;\n%
-%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
-%    path = %![mValue1 utf8Representation]%;\n%
+%    name = %![[mValue1 lastPathComponent] utf8RepresentationEscapingQuestionMark]%;\n%
+%    path = %![mValue1 utf8RepresentationEscapingQuestionMark]%;\n%
 %    sourceTree = "<group>";\n%
 %  };\n\n%
 end
@@ -71,8 +71,8 @@ for (mValue0 mValue1) in FRAMEWORK_FILE_LIST do
 %  %!mValue0% /* %!mValue1% */ = {\n%
 %    isa = PBXFileReference;\n%
 %    lastKnownFileType = wrapper.framework;\n%
-%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
-%    path = %![mValue1 utf8Representation]%;\n%
+%    name = %![[mValue1 lastPathComponent] utf8RepresentationEscapingQuestionMark]%;\n%
+%    path = %![mValue1 utf8RepresentationEscapingQuestionMark]%;\n%
 %    sourceTree = "<group>";\n%
 %  };\n\n%
 end
@@ -81,7 +81,7 @@ for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRe
 %    isa = PBXFileReference;\n%
 %    explicitFileType = "compiled.mach-o.executable";\n%
 %    includeInIndex = 0;\n%
-%    path = %![mProductFileName utf8Representation]%;\n%
+%    path = %![mProductFileName utf8RepresentationEscapingQuestionMark]%;\n%
 %    sourceTree = BUILT_PRODUCTS_DIR;\n%
 %  };\n\n%
 end
@@ -90,7 +90,7 @@ for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRe
 %    isa = PBXFileReference;\n%
 %    explicitFileType = "compiled.mach-o.executable";\n%
 %    includeInIndex = 0;\n%
-%    path = %![mProductFileName utf8Representation]%;\n%
+%    path = %![mProductFileName utf8RepresentationEscapingQuestionMark]%;\n%
 %    sourceTree = BUILT_PRODUCTS_DIR;\n%
 %  };\n\n%
 end
@@ -99,8 +99,8 @@ for (mValue0 mValue1) in PLIST_FILE_LIST do
 %    isa = PBXFileReference;\n%
 %    fileEncoding = 4;\n%
 %    lastKnownFileType = text.plist;\n%
-%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
-%    path = %![mValue1 utf8Representation]%;\n%
+%    name = %![[mValue1 lastPathComponent] utf8RepresentationEscapingQuestionMark]%;\n%
+%    path = %![mValue1 utf8RepresentationEscapingQuestionMark]%;\n%
 %    sourceTree = "<group>";\n%
 %  };\n\n%
 end
@@ -109,8 +109,8 @@ for (mValue0 mValue1) in XIB_FILE_LIST do
 %    isa = PBXFileReference;\n%
 %    fileEncoding = 4;\n%
 %    lastKnownFileType = wrapper.xib;\n%
-%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
-%    path = %![mValue1 utf8Representation]%;\n%
+%    name = %![[mValue1 lastPathComponent] utf8RepresentationEscapingQuestionMark]%;\n%
+%    path = %![mValue1 utf8RepresentationEscapingQuestionMark]%;\n%
 %    sourceTree = "<group>";\n%
 %  };\n\n%
 end
@@ -118,8 +118,8 @@ for (mValue0 mValue1) in TIFF_FILE_LIST do
 %  %!mValue0% = {\n%
 %    isa = PBXFileReference;\n%
 %    lastKnownFileType = image.tiff;\n%
-%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
-%    path = %![mValue1 utf8Representation]%;\n%
+%    name = %![[mValue1 lastPathComponent] utf8RepresentationEscapingQuestionMark]%;\n%
+%    path = %![mValue1 utf8RepresentationEscapingQuestionMark]%;\n%
 %    sourceTree = "<group>";\n%
 %  };\n\n%
 end
@@ -127,8 +127,8 @@ for (mValue0 mValue1) in ICNS_FILE_LIST do
 %  %!mValue0% = {\n%
 %    isa = PBXFileReference;\n%
 %    lastKnownFileType = image.icns;\n%
-%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
-%    path = %![mValue1 utf8Representation]%;\n%
+%    name = %![[mValue1 lastPathComponent] utf8RepresentationEscapingQuestionMark]%;\n%
+%    path = %![mValue1 utf8RepresentationEscapingQuestionMark]%;\n%
 %    sourceTree = "<group>";\n%
 %  };\n\n%
 end
@@ -171,8 +171,8 @@ for (mValue) in mChildrenRefs do
   %      %!mValue%, \n%
 end
 %    );\n%
-%    name = %![mGroupName utf8Representation]%;\n%
-%    path = %![mGroupPath utf8Representation]%;\n%
+%    name = %![mGroupName utf8RepresentationEscapingQuestionMark]%;\n%
+%    path = %![mGroupPath utf8RepresentationEscapingQuestionMark]%;\n%
 %    sourceTree = "<group>";\n%
 %  };\n%
 end
@@ -205,9 +205,9 @@ for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRe
     );
     dependencies = (
     );
-    name = %![mTargetName utf8Representation]%;
+    name = %![mTargetName utf8RepresentationEscapingQuestionMark]%;
     productInstallPath = "$(HOME)/bin";
-    productName = %![mTargetName utf8Representation]%;
+    productName = %![mTargetName utf8RepresentationEscapingQuestionMark]%;
     productReference = %!mProductFileReference% ;
     productType = "com.apple.product-type.tool";
   };
@@ -231,9 +231,9 @@ for (mValue0 mValue1) in mDependentTargets do
   %      %!mValue0% ,\n%
 end
 %    );
-    name = %![mTargetName utf8Representation]%;
+    name = %![mTargetName utf8RepresentationEscapingQuestionMark]%;
     productInstallPath = "$(HOME)/bin";
-    productName = %![mTargetName utf8Representation]%;
+    productName = %![mTargetName utf8RepresentationEscapingQuestionMark]%;
     productReference = %!mProductFileReference% ;
     productType = "com.apple.product-type.application";
   };
@@ -342,7 +342,7 @@ for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRe
 for (mValue) in mBuildConfigurationSettingList do
 %      %!mValue% ;\n%
 end
-%      PRODUCT_NAME = %![mProductFileName utf8Representation]% ;\n%
+%      PRODUCT_NAME = %![mProductFileName utf8RepresentationEscapingQuestionMark]% ;\n%
 %    };\n%
 %    name = Default;\n%
 %  };\n\n%
@@ -355,7 +355,7 @@ for (mValue) in mBuildConfigurationSettingList do
 %      %!mValue% ;\n%
 end
 %      INFOPLIST_FILE = "Info.plist";\n%
-%      PRODUCT_NAME = %![mProductFileName utf8Representation]%;\n%
+%      PRODUCT_NAME = %![mProductFileName utf8RepresentationEscapingQuestionMark]%;\n%
 %      PRODUCT_BUNDLE_IDENTIFIER = "%!APPLICATION_BUNDLE_BASE%.%!PROJECT_NAME%";\n%
 %    };\n%
 %    name = Default;\n%

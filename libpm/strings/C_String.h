@@ -165,7 +165,7 @@ class C_String : public AC_OutputStream {
 //--- Get a representation enclosing by a given character
 //      - escaped by a back slash
 //      - back slash is also escaped by back slash
-  public: C_String utf8RepresentationEnclosedWithin (const utf32 inCharacter) const ;
+  public: C_String utf8RepresentationEnclosedWithin (const utf32 inCharacter, const bool inEscapeQuestionMark) const ;
 
 //--- Get an HTML representation (&, <, > and " are escaped using HTML escape sequence)
   public: C_String HTMLRepresentation (void) const ;

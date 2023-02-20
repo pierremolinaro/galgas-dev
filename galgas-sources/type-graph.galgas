@@ -322,11 +322,13 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   enterBaseGetterWith2Arguments (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"subgraphFromNodes"
-    !"lstringlist"
-    !"inStartNodeLStringList"
-    !"stringset"
-    !"inNodesToExclude"
+    !getterName: "subgraphFromNodes"
+    !arg1Selector: ""
+    !arg1TypeName: "lstringlist"
+    !arg1Name: "inStartNodeLStringList"
+    !arg2Selector: "" 
+    !arg2TypeName: "stringset"
+    !arg2Name: "inNodesToExclude"
     !returnedTypeName: self.mGraphTypeName.string
     !hasCompilerArgument:true # has compiler argument
   )
@@ -334,9 +336,9 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   enterBaseGetterWith2Arguments (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"accessibleNodesFrom"
-    !"lstringlist" !"inStartNodeStringList"
-    !"stringset" !"inNodesToExclude"
+    !getterName: "accessibleNodesFrom"
+    !arg1Selector: "" !arg1TypeName: "lstringlist" !arg1Name: "inStartNodeStringList"
+    !arg2Selector: "" !arg2TypeName: "stringset" !arg2Name: "inNodesToExclude"
     !returnedTypeName:"lstringlist"
     !hasCompilerArgument:true # has compiler argument
   )

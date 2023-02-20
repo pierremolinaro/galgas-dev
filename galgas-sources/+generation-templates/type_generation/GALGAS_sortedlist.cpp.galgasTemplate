@@ -76,7 +76,7 @@ void cSortedListElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, co
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do
     %  ioString << "\\n" ;\n%
     %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
-    %  ioString << %![mPropertyName utf8Representation]% ":" ;\n%
+    %  ioString << %![mPropertyName utf8RepresentationEscapingQuestionMark]% ":" ;\n%
     %  mObject.mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
   end
 %}

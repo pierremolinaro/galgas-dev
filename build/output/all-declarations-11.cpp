@@ -193,8 +193,8 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
           test_1 = GALGAS_bool (kIsNotEqual, var_selector_3406.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_1) {
             TC_Array <C_FixItDescription> fixItArray2 ;
-            appendFixItActions (fixItArray2, kFixItReplace, GALGAS_string ("?")) ;
-            inCompiler->emitSemanticError (var_selector_3406.readProperty_location (), GALGAS_string ("the selector should be '?'"), fixItArray2  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 90)) ;
+            appendFixItActions (fixItArray2, kFixItReplace, GALGAS_string ("\?")) ;
+            inCompiler->emitSemanticError (var_selector_3406.readProperty_location (), GALGAS_string ("the selector should be '\?'"), fixItArray2  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 90)) ;
           }
         }
         enumGalgasBool test_3 = kBoolTrue ;
@@ -277,8 +277,8 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
         test_6 = GALGAS_bool (kIsNotEqual, var_selector_4761.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
         if (kBoolTrue == test_6) {
           TC_Array <C_FixItDescription> fixItArray7 ;
-          appendFixItActions (fixItArray7, kFixItReplace, GALGAS_string ("!?")) ;
-          inCompiler->emitSemanticError (var_selector_4761.readProperty_location (), GALGAS_string ("the selector should be '!?'"), fixItArray7  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 131)) ;
+          appendFixItActions (fixItArray7, kFixItReplace, GALGAS_string ("!\?")) ;
+          inCompiler->emitSemanticError (var_selector_4761.readProperty_location (), GALGAS_string ("the selector should be '!\?'"), fixItArray7  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 131)) ;
         }
       }
       enumGalgasBool test_8 = kBoolTrue ;
@@ -1354,8 +1354,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_syn
     test_0 = GALGAS_bool (kIsNotEqual, var_selector_10485.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
-      appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("?")) ;
-      inCompiler->emitSemanticError (var_selector_10485.readProperty_location (), GALGAS_string ("the selector should be '?'"), fixItArray1  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 269)) ;
+      appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("\?")) ;
+      inCompiler->emitSemanticError (var_selector_10485.readProperty_location (), GALGAS_string ("the selector should be '\?'"), fixItArray1  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 269)) ;
     }
   }
   switch (select_galgas_33_InstructionsSyntax_5 (inCompiler)) {
@@ -4276,8 +4276,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_
               test_2 = GALGAS_bool (kIsNotEqual, var_selector_5305.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
               if (kBoolTrue == test_2) {
                 TC_Array <C_FixItDescription> fixItArray3 ;
-                appendFixItActions (fixItArray3, kFixItReplace, GALGAS_string ("?")) ;
-                inCompiler->emitSemanticError (var_selector_5305.readProperty_location (), GALGAS_string ("the selector should be '?'"), fixItArray3  COMMA_SOURCE_FILE ("instruction-if.galgas", 175)) ;
+                appendFixItActions (fixItArray3, kFixItReplace, GALGAS_string ("\?")) ;
+                inCompiler->emitSemanticError (var_selector_5305.readProperty_location (), GALGAS_string ("the selector should be '\?'"), fixItArray3  COMMA_SOURCE_FILE ("instruction-if.galgas", 175)) ;
               }
             }
             enumGalgasBool test_4 = kBoolTrue ;
@@ -5231,7 +5231,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
     test_0 = GALGAS_bool (kIsNotEqual, var_selector_1431.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (var_selector_1431.readProperty_location (), GALGAS_string ("an empty selector '!?' is required here"), fixItArray1  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 34)) ;
+      inCompiler->emitSemanticError (var_selector_1431.readProperty_location (), GALGAS_string ("an empty selector '!\?' is required here"), fixItArray1  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 34)) ;
     }
   }
   GALGAS_bool var_prefixedBySelf_1567 ;
@@ -5386,7 +5386,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
     test_0 = GALGAS_bool (kIsNotEqual, var_selector_2667.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (var_selector_2667.readProperty_location (), GALGAS_string ("an empty selector '!?' is required here"), fixItArray1  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 80)) ;
+      inCompiler->emitSemanticError (var_selector_2667.readProperty_location (), GALGAS_string ("an empty selector '!\?' is required here"), fixItArray1  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 80)) ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken_self COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 82)) ;
@@ -6194,7 +6194,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_wit
     test_0 = GALGAS_bool (kIsNotEqual, var_selector_4693.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (var_selector_4693.readProperty_location (), GALGAS_string ("an empty selector '!?' is required here"), fixItArray1  COMMA_SOURCE_FILE ("instruction-with.galgas", 125)) ;
+      inCompiler->emitSemanticError (var_selector_4693.readProperty_location (), GALGAS_string ("an empty selector '!\?' is required here"), fixItArray1  COMMA_SOURCE_FILE ("instruction-with.galgas", 125)) ;
     }
   }
   GALGAS_lstringlist var_structAttributeList_4828 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("instruction-with.galgas", 127)) ;
@@ -6553,7 +6553,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_pro
       test_0 = GALGAS_bool (kIsNotEqual, var_selector_2908.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
       if (kBoolTrue == test_0) {
         TC_Array <C_FixItDescription> fixItArray1 ;
-        inCompiler->emitSemanticError (var_selector_2908.readProperty_location (), GALGAS_string ("only '?' is allowed here"), fixItArray1  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 74)) ;
+        inCompiler->emitSemanticError (var_selector_2908.readProperty_location (), GALGAS_string ("only '\?' is allowed here"), fixItArray1  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 74)) ;
       }
     }
   } break ;
@@ -12000,8 +12000,8 @@ void cParser_galgas_33_LexiqueComponentSyntax::rule_galgas_33_LexiqueComponentSy
         test_3 = GALGAS_bool (kIsNotEqual, var_selector_2604.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
         if (kBoolTrue == test_3) {
           TC_Array <C_FixItDescription> fixItArray4 ;
-          appendFixItActions (fixItArray4, kFixItReplace, GALGAS_string ("!?")) ;
-          inCompiler->emitSemanticError (var_selector_2604.readProperty_location (), GALGAS_string ("the selector should be '!?'"), fixItArray4  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 59)) ;
+          appendFixItActions (fixItArray4, kFixItReplace, GALGAS_string ("!\?")) ;
+          inCompiler->emitSemanticError (var_selector_2604.readProperty_location (), GALGAS_string ("the selector should be '!\?'"), fixItArray4  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 59)) ;
         }
       }
       GALGAS_location var_passingModeLocation_2758 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 61)) ;

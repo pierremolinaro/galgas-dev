@@ -51,7 +51,7 @@ override method @templateInstructionStringForGeneration templateCodeGeneration
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@bool unused ioUseColumnMarker {
-  ioGeneratedCode += "result << " + [self.mTemplateString utf8Representation] + " ;\n"
+  ioGeneratedCode += "result << " + [self.mTemplateString utf8RepresentationEscapingQuestionMark] + " ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

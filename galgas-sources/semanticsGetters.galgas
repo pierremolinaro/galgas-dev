@@ -140,6 +140,7 @@ proc enterBaseGetterWithArgument
   ?!@getterMap ioGetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?getterName: let @string inGetterName
+  ?argSelector: let @string inArgument1Selector
   ?let @string inArgument1TypeName
   ?let @string inArgument1Name
   ?returnedTypeName:let @string inReturnedTypeName
@@ -148,7 +149,7 @@ proc enterBaseGetterWithArgument
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var @functionSignature argList = {}
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?let t]
-  argList += !["" nowhere] !t !inArgument1Name
+  argList += ![inArgument1Selector nowhere] !t !inArgument1Name
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
     !@methodKind. definedAsMember
@@ -193,20 +194,22 @@ proc enterBaseFinalGetterWithArgument
 proc enterBaseGetterWith2Arguments
   ?!@getterMap ioGetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?let @string inGetterName
-  ?let @string inArgument1TypeName
-  ?let @string inArgument1Name
-  ?let @string inArgument2TypeName
-  ?let @string inArgument2Name
+  ?getterName: let @string inGetterName
+  ?arg1Selector: let @string inArgument1Selector
+  ?arg1TypeName: let @string inArgument1TypeName
+  ?arg1Name: let @string inArgument1Name
+  ?arg2Selector: let @string inArgument2Selector
+  ?arg2TypeName: let @string inArgument2TypeName
+  ?arg2Name: let @string inArgument2Name
   ?returnedTypeName:let @string inReturnedTypeName
   ?hasCompilerArgument:let @bool inHasCompilerArgument
 {
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var @functionSignature argList = {}
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?@unifiedTypeMapEntry t]
-  argList += !["" nowhere] !t !inArgument1Name
+  argList += ![inArgument1Selector nowhere] !t !inArgument1Name
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
-  argList += !["" nowhere] !t !inArgument2Name
+  argList += ![inArgument2Selector nowhere] !t !inArgument2Name
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
     !@methodKind. definedAsMember
@@ -372,7 +375,7 @@ override method @locationPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "union"
-    !"location" !"inOtherLocation"
+    !argSelector: "" !"location" !"inOtherLocation"
     !returnedTypeName:"location"
     !hasCompilerArgument: true
   )
@@ -485,10 +488,25 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "utf8Representation"
-    !returnedTypeName:"string"
+    !getterName: "utf8RepresentationEscapingQuestionMark"
+    !returnedTypeName: "string"
     !hasCompilerArgument:false
   )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName: "utf8RepresentationWithoutEscapingQuestionMark"
+    !returnedTypeName: "string"
+    !hasCompilerArgument:false
+  )
+#  enterBaseGetterWithArgument (
+#    !?outMap
+#    !?ioUnifiedTypeMap
+#    !getterName: "utf8Representation"
+#    !argSelector: "escapeQuestionMark" !"bool" !"inEscapeQuestionMark"
+#    !returnedTypeName: "string"
+#    !hasCompilerArgument: false
+#  )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
@@ -744,130 +762,154 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "utf8RepresentationEnclosedWithin" !"char" !"inCharacter"
+    !getterName: "utf8RepresentationEnclosedWithin"
+    !argSelector: "" !"char" !"inCharacter"
     !returnedTypeName: "string"
     !hasCompilerArgument: false
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "commandWithArguments" !"stringlist" !"inArguments"
+    !getterName: "commandWithArguments"
+    !argSelector: "" !"stringlist" !"inArguments"
     !returnedTypeName: "sint"
     !hasCompilerArgument: true
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "hiddenCommandWithArguments" !"stringlist" !"inArguments"
+    !getterName: "hiddenCommandWithArguments"
+    !argSelector: "" !"stringlist" !"inArguments"
     !returnedTypeName: "string"
     !hasCompilerArgument: true
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "characterAtIndex" !"uint" !"inIndex"
+    !getterName: "characterAtIndex"
+    !argSelector: "" !"uint" !"inIndex"
     !returnedTypeName:"char"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "containsCharacter" !"char" !"inCharacter"
+    !getterName: "containsCharacter"
+    !argSelector: "" !"char" !"inCharacter"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
   enterBaseGetterWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !"containsCharacterInRange"
-    !"char"
-    !"inFirstCharacter"
-    !"char"
-    !"inLastCharacter"
+    !getterName: "containsCharacterInRange"
+    !arg1Selector: "" 
+    !arg1TypeName: "char"
+    !arg1Name: "inFirstCharacter"
+    !arg2Selector: "" 
+    !arg2TypeName: "char"
+    !arg2Name: "inLastCharacter"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
  )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "stringByRemovingCharacterAtIndex" !"uint" !"inIndex"
+    !getterName: "stringByRemovingCharacterAtIndex"
+    !argSelector: "" !"uint" !"inIndex"
     !returnedTypeName:"string"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "subStringFromIndex" !"uint" !"inIndex"
+    !getterName: "subStringFromIndex"
+    !argSelector: "" !"uint" !"inIndex"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "rightSubString" !"uint" !"inLength"
+    !getterName: "rightSubString"
+    !argSelector: "" !"uint" !"inLength"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "leftSubString" !"uint" !"inLength"
+    !getterName: "leftSubString"
+    !argSelector: "" !"uint" !"inLength"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !"subString" !"uint" !"inStart" !"uint" !"inLength"
+    !getterName: "subString"
+    !arg1Selector: "" !arg1TypeName: "uint" !arg1Name: "inStart"
+    !arg2Selector: "" !arg2TypeName: "uint" !arg2Name: "inLength"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "absolutePathFromPath" !"string" !"inPath"
+    !getterName: "absolutePathFromPath"
+    !argSelector: "" !"string" !"inPath"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "relativePathFromPath" !"string" !"inPath"
+    !getterName: "relativePathFromPath"
+    !argSelector: "" !"string" !"inPath"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "componentsSeparatedByString" !"string" !"inSeparator"
+    !getterName: "componentsSeparatedByString"
+    !argSelector: "" !"string" !"inSeparator"
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false
   )
   enterBaseGetterWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !"stringByLeftPadding" !"uint" !"inPaddedStringLength" !"char" !"inPaddingChar"
+    !getterName: "stringByLeftPadding"
+    !arg1Selector: "" !arg1TypeName: "uint" !arg1Name: "inPaddedStringLength"
+    !arg2Selector: "" !arg2TypeName: "char" !arg2Name: "inPaddingChar"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !"stringByRightPadding" !"uint" !"inPaddedStringLength" !"char" !"inPaddingChar"
+    !getterName: "stringByRightPadding"
+    !arg1Selector: "" !arg1TypeName: "uint" !arg1Name: "inPaddedStringLength"
+    !arg2Selector: "" !arg2TypeName: "char" !arg2Name: "inPaddingChar"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !"stringByLeftAndRightPadding" !"uint" !"inPaddedStringLength" !"char" !"inPaddingChar"
+    !getterName: "stringByLeftAndRightPadding"
+    !arg1Selector: "" !arg1TypeName: "uint" !arg1Name: "inPaddedStringLength"
+    !arg2Selector: "" !arg2TypeName: "char" !arg2Name: "inPaddingChar"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !"stringByReplacingStringByString" !"string" !"inSearchedString" !"string" !"inReplacementString"
+    !getterName: "stringByReplacingStringByString" 
+    !arg1Selector: "" !arg1TypeName: "string" !arg1Name: "inSearchedString"
+    !arg2Selector: "" !arg2TypeName: "string" !arg2Name: "inReplacementString"
     !returnedTypeName:"string"
     !hasCompilerArgument:true
   )
@@ -875,6 +917,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "regularFiles"
+    !argSelector: "" 
     !"bool"
     !"inRecursiveSearch"
     !returnedTypeName:"stringlist"
@@ -883,28 +926,34 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "hiddenFiles" !"bool" !"inRecursiveSearch"
+    !getterName: "hiddenFiles"
+    !argSelector: "" !"bool" !"inRecursiveSearch"
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "directories"  !"bool" !"inRecursiveSearch"
+    !getterName: "directories"
+    !argSelector: "" !"bool" !"inRecursiveSearch"
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false
   )
   enterBaseGetterWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !"directoriesWithExtensions" !"bool" !"inRecursiveSearch" !"stringlist" !"inExtensionList"
+    !getterName: "directoriesWithExtensions"
+    !arg1Selector: "" !arg1TypeName: "bool" !arg1Name: "inRecursiveSearch"
+    !arg2Selector: "" !arg2TypeName: "stringlist" !arg2Name: "inExtensionList"
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false
   )
   enterBaseGetterWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !"regularFilesWithExtensions" !"bool" !"inRecursiveSearch" !"stringlist" !"inExtensionList"
+    !getterName: "regularFilesWithExtensions"
+    !arg1Selector: "" !arg1TypeName: "bool" !arg1Name: "inRecursiveSearch"
+    !arg2Selector: "" !arg2TypeName: "stringlist" !arg2Name: "inExtensionList"
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false
   )

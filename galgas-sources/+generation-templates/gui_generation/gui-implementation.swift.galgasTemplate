@@ -113,13 +113,13 @@ class SWIFT_Tokenizer_%![lexiqueIndex string]%_%!lexiqueClassName% : SWIFT_Lexiq
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tabItemTitle () -> String {
-    return %![title utf8Representation]%
+    return %![title utf8RepresentationEscapingQuestionMark]%
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
   func blockComment () -> String {
-    return %![blockComment utf8Representation]%
+    return %![blockComment utf8RepresentationEscapingQuestionMark]%
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -156,7 +156,7 @@ class SWIFT_Tokenizer_%![lexiqueIndex string]%_%!lexiqueClassName% : SWIFT_Lexiq
   %- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {\n%
   %  static NSString * kTextMacroTitle [%![[textMacroList length] + 1 string]%] = {\n%
   for (mKey mContents) in textMacroList do
-    %    @%![mKey utf8Representation]%,\n%
+    %    @%![mKey utf8RepresentationEscapingQuestionMark]%,\n%
   end
   %    NULL\n%
   %  } ;\n%
@@ -166,7 +166,7 @@ class SWIFT_Tokenizer_%![lexiqueIndex string]%_%!lexiqueClassName% : SWIFT_Lexiq
   %- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {\n%
   %  static NSString * kTextMacroContent [%![[textMacroList length] + 1 string]%] = {\n%
   for (mKey mContents) in textMacroList do
-    %    @%![mContents utf8Representation]%,\n%
+    %    @%![mContents utf8RepresentationEscapingQuestionMark]%,\n%
   end
   %    NULL\n%
   %  } ;\n%
@@ -185,7 +185,7 @@ func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol? 
   var result : SWIFT_Tokenizer_Protocol? = nil\n%
 for (lkey mLexiqueName mIndex) in GUI_CONTEXT.mExtensionMap
   before %  if%
-  do % inExtension == %![lkey utf8Representation]% {\n%
+  do % inExtension == %![lkey utf8RepresentationEscapingQuestionMark]% {\n%
      %    result = SWIFT_Tokenizer_%![mIndex string]%_%!mLexiqueName% ()\n%
   between %  }else if%
   after %  }\n%

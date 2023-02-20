@@ -9620,8 +9620,7 @@ void extensionMethod_displayRule (const GALGAS_productionRuleListForGrammarAnaly
   var_arrows_5038.plusAssign_operation(GALGAS_string ("  \\draw[->] (").add_operation (var_currentNode_4942, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 130)).add_operation (GALGAS_string (") -- ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 130)).add_operation (var_lastNodeName_5562, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 130)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 130)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 130)) ;
   const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_3 = inObject ;
   GALGAS_location var_loc_5672 = temp_3.readProperty_mLeftNonterminalSymbol ().readProperty_location () ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("\\ruleSubsection{").add_operation (function_escapeForTex (constinArgument_inSyntaxCompnentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 134)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 133)).add_operation (GALGAS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 134)).add_operation (function_escapeForTex (var_loc_5672.getter_file (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 136)).getter_lastPathComponent (SOURCE_FILE ("production-rules-in-tex.galgas", 136)).getter_stringByDeletingPathExtension (SOURCE_FILE ("production-rules-in-tex.galgas", 136)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 136)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 135)).add_operation (GALGAS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 136)).add_operation (function_escapeForTex (var_loc_5672.getter_line (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 137)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas", 137)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 137)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 137)).add_operation (GALGAS_string ("}\n"
-    "\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 137)).add_operation (GALGAS_string ("\\begin{tikzpicture}\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 138)).add_operation (GALGAS_string ("  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 139)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 133)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("\\ruleSubsection{").add_operation (function_escapeForTex (constinArgument_inSyntaxCompnentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 134)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 133)).add_operation (GALGAS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 134)).add_operation (function_escapeForTex (var_loc_5672.getter_file (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 136)).getter_lastPathComponent (SOURCE_FILE ("production-rules-in-tex.galgas", 136)).getter_stringByDeletingPathExtension (SOURCE_FILE ("production-rules-in-tex.galgas", 136)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 136)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 135)).add_operation (GALGAS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 136)).add_operation (function_escapeForTex (var_loc_5672.getter_line (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 137)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas", 137)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 137)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 137)).add_operation (GALGAS_string ("}\n\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 137)).add_operation (GALGAS_string ("\\begin{tikzpicture}\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 138)).add_operation (GALGAS_string ("  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 139)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 133)) ;
   cEnumerator_rowList enumerator_6092 (var_rowArray_4978, kENUMERATION_DOWN) ;
   while (enumerator_6092.hasCurrentObject ()) {
     ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("    "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 142)) ;
@@ -9644,8 +9643,7 @@ void extensionMethod_displayRule (const GALGAS_productionRuleListForGrammarAnaly
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("  };\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 152)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(var_arrows_5038, inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 154)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("\\end{tikzpicture}\n"
-    "\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 155)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("\\end{tikzpicture}\n\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 155)) ;
 }
 
 
@@ -9877,45 +9875,22 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_project 
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   result << "project (0:0:1) -> " ;
-  result << in_PROJECT_5F_NAME.getter_utf_38_Representation (SOURCE_FILE ("+PROJECT.galgasProject.galgasTemplate", 1)).stringValue () ;
-  result << " {\n"
-    "#--- Targets\n"
-    "  %makefile-macosx\n"
-    "  %makefile-unix\n"
-    "  %makefile-x86linux32-on-macosx\n"
-    "  %makefile-x86linux64-on-macosx\n"
-    "  %makefile-win32-on-macosx\n"
-    "  %MacOS\n"
-    "  %applicationBundleBase : \"fr.what\"\n"
-    "  %codeblocks-windows\n"
-    "  %codeblocks-linux32\n"
-    "  %codeblocks-linux64\n"
-    "  %codeblocks-mac\n"
-    "\n"
-    "#--- Source files\n"
-    "  \"galgas-sources/" ;
+  result << in_PROJECT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("+PROJECT.galgasProject.galgasTemplate", 1)).stringValue () ;
+  result << " {\n#--- Targets\n  %makefile-macosx\n  %makefile-unix\n  %makefile-x86linux32-on-macosx\n  %makefile-x86linux64-on-macosx\n  %makefile-win32-on-macosx\n  %MacOS\n  %applicationBundleBase : \"fr.what\"\n  %codeblocks-windows\n  %codeblocks-linux32\n  %codeblocks-linux64\n  %codeblocks-mac\n\n#--- Source files\n  \"galgas-sources/" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "-lexique.galgas\"\n"
-    "  \"galgas-sources/" ;
+  result << "-lexique.galgas\"\n  \"galgas-sources/" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "-options.galgas\"\n"
-    "  \"galgas-sources/" ;
+  result << "-options.galgas\"\n  \"galgas-sources/" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "-semantics.galgas\"\n"
-    "  \"galgas-sources/" ;
+  result << "-semantics.galgas\"\n  \"galgas-sources/" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "-syntax.galgas\"\n"
-    "  \"galgas-sources/" ;
+  result << "-syntax.galgas\"\n  \"galgas-sources/" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "-grammar.galgas\"\n"
-    "  \"galgas-sources/" ;
+  result << "-grammar.galgas\"\n  \"galgas-sources/" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "-cocoa.galgas\"\n"
-    "  \"galgas-sources/" ;
+  result << "-cocoa.galgas\"\n  \"galgas-sources/" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "-program.galgas\"\n"
-    "}\n"
-    "\n" ;
+  result << "-program.galgas\"\n}\n\n" ;
   return GALGAS_string (result) ;
 }
 
@@ -9929,22 +9904,13 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_cocoa (C
                                                                                const GALGAS_string & in_PROJECT_5F_NAME
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "gui cocoa {\n"
-    "  with option " ;
+  result << "gui cocoa {\n  with option " ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "_options\n"
-    "\n"
-    "  with lexique " ;
+  result << "_options\n\n  with lexique " ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "_lexique {\n"
-    "    fileExtension: \"" ;
+  result << "_lexique {\n    fileExtension: \"" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "\"\n"
-    "    title: \"Source\"\n"
-    "    blockComment : \"#\"\n"
-    "  }\n"
-    "\n"
-    "}\n" ;
+  result << "\"\n    title: \"Source\"\n    blockComment : \"#\"\n  }\n\n}\n" ;
   return GALGAS_string (result) ;
 }
 
@@ -9960,13 +9926,9 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_grammar 
   C_String result ;
   result << "grammar " ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "_grammar \"LL1\" {\n"
-    "  syntax " ;
+  result << "_grammar \"LL1\" {\n  syntax " ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "_syntax\n"
-    "  <start_symbol>\n"
-    "}\n"
-    "\n" ;
+  result << "_syntax\n  <start_symbol>\n}\n\n" ;
   return GALGAS_string (result) ;
 }
 
@@ -9982,112 +9944,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_lexique 
   C_String result ;
   result << "lexique " ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "_lexique {\n"
-    "\n"
-    "#-----------------------------------------------------------------------------------------------------------------------\n"
-    "#   Identifiers and keywords                                                                     \n"
-    "#-----------------------------------------------------------------------------------------------------------------------\n"
-    "\n"
-    "@string tokenString\n"
-    "\n"
-    "style keywordsStyle -> \"Keywords\"\n"
-    "\n"
-    "$identifier$ ! tokenString error message \"an identifier\"\n"
-    "\n"
-    "#--- This is the keyword list\n"
-    "list keyWordList style keywordsStyle error message \"the '%K' keyword\" {\n"
-    "  \"begin\",\n"
-    "  \"end\"\n"
-    "}\n"
-    "\n"
-    "rule 'a'->'z' |  'A'->'Z' {\n"
-    "  repeat\n"
-    "    enterCharacterIntoString (!?tokenString !*)\n"
-    "  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :\n"
-    "  end\n"
-    "  send search tokenString in keyWordList default $identifier$\n"
-    "}\n"
-    "\n"
-    "#-----------------------------------------------------------------------------------------------------------------------\n"
-    "#   Literal decimal integers                                                                     \n"
-    "#-----------------------------------------------------------------------------------------------------------------------\n"
-    "\n"
-    "style integerStyle -> \"Integer Constants\"\n"
-    "@uint uint32value\n"
-    "$integer$ !uint32value style integerStyle error message \"a 32-bit unsigned decimal number\"\n"
-    "\n"
-    "message decimalNumberTooLarge : \"decimal number too large\"\n"
-    "message internalError : \"internal error\"\n"
-    "\n"
-    "rule '0'->'9' {\n"
-    "  enterCharacterIntoString (!?tokenString !*)\n"
-    "  repeat\n"
-    "  while '0'->'9' :\n"
-    "    enterCharacterIntoString (!?tokenString !*)\n"
-    "  while '_' :\n"
-    "  end\n"
-    "  convertDecimalStringIntoUInt (!tokenString !?uint32value error decimalNumberTooLarge, internalError)\n"
-    "  send $integer$\n"
-    "}\n"
-    "\n"
-    "#-----------------------------------------------------------------------------------------------------------------------\n"
-    "#   Literal character strings                                                                    \n"
-    "#-----------------------------------------------------------------------------------------------------------------------\n"
-    "\n"
-    "style stringStyle -> \"String Constants\"\n"
-    "$\"string\"$ ! tokenString style stringStyle %nonAtomicSelection error message \"a character string constant \\\"...\\\"\"\n"
-    "\n"
-    "\n"
-    "message incorrectStringEnd : \"string does not end with '\\\"'\"\n"
-    "\n"
-    "rule '\"' {\n"
-    "  repeat\n"
-    "   while ' ' | '!' | '#'-> '\\uFFFD' :\n"
-    "    enterCharacterIntoString (!?tokenString !*)\n"
-    "  end\n"
-    "  select\n"
-    "  case '\"' :\n"
-    "    send $\"string\"$\n"
-    "  default\n"
-    "    error incorrectStringEnd\n"
-    "  end\n"
-    "}\n"
-    "\n"
-    "#-----------------------------------------------------------------------------------------------------------------------\n"
-    "#   Delimiters                                                                                   \n"
-    "#-----------------------------------------------------------------------------------------------------------------------\n"
-    "\n"
-    "style delimitersStyle -> \"Delimiters\"\n"
-    "list delimitorsList style delimitersStyle error message \"the '%K' delimitor\" {\n"
-    "  \":\",    \",\",    \";\",   \"!\",  \"{\",  \"}\", \"->\", \"@\", \"*\", \"-\"\n"
-    "}\n"
-    "\n"
-    "rule list delimitorsList\n"
-    "\n"
-    "#-----------------------------------------------------------------------------------------------------------------------\n"
-    "#   Comments                                                                                     \n"
-    "#-----------------------------------------------------------------------------------------------------------------------\n"
-    "\n"
-    "style commentStyle -> \"Comments\"\n"
-    "$comment$ style commentStyle %nonAtomicSelection error message \"a comment\"\n"
-    "rule '#' {\n"
-    "  repeat\n"
-    "  while '\\u0001' -> '\\u0009' | '\\u000B' | '\\u000C' | '\\u000E' -> '\\uFFFD' :\n"
-    "  end\n"
-    "  drop $comment$\n"
-    "}\n"
-    "\n"
-    "#-----------------------------------------------------------------------------------------------------------------------\n"
-    "#   Separators                                                                                   \n"
-    "#-----------------------------------------------------------------------------------------------------------------------\n"
-    "\n"
-    "rule '\\u0001' -> ' ' {\n"
-    "}\n"
-    "\n"
-    "#-----------------------------------------------------------------------------------------------------------------------\n"
-    "\n"
-    "}\n"
-    "\n" ;
+  result << "_lexique {\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Identifiers and keywords                                                                     \n#-----------------------------------------------------------------------------------------------------------------------\n\n@string tokenString\n\nstyle keywordsStyle -> \"Keywords\"\n\n$identifier$ ! tokenString error message \"an identifier\"\n\n#--- This is the keyword list\nlist keyWordList style keywordsStyle error message \"the '%K' keyword\" {\n  \"begin\",\n  \"end\"\n}\n\nrule 'a'->'z' |  'A'->'Z' {\n  repeat\n    enterCharacterIntoString (!\?tokenString !*)\n  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :\n  end\n  send search tokenString in keyWordList default $identifier$\n}\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Literal decimal integers                                                                     \n#-----------------------------------------------------------------------------------------------------------------------\n\nstyle integerStyle -> \"Integer Constants\"\n@uint uint32value\n$integer$ !uint32value style integerStyle error message \"a 32-bit unsigned decimal number\"\n\nmessage decimalNumberTooLarge : \"decimal number too large\"\nmessage internalError : \"internal error\"\n\nrule '0'->'9' {\n  enterCharacterIntoString (!\?tokenString !*)\n  repeat\n  while '0'->'9' :\n    enterCharacterIntoString (!\?tokenString !*)\n  while '_' :\n  end\n  convertDecimalStringIntoUInt (!tokenString !\?uint32value error decimalNumberTooLarge, internalError)\n  send $integer$\n}\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Literal character strings                                                                    \n#-----------------------------------------------------------------------------------------------------------------------\n\nstyle stringStyle -> \"String Constants\"\n$\"string\"$ ! tokenString style stringStyle %nonAtomicSelection error message \"a character string constant \\\"...\\\"\"\n\n\nmessage incorrectStringEnd : \"string does not end with '\\\"'\"\n\nrule '\"' {\n  repeat\n   while ' ' | '!' | '#'-> '\\uFFFD' :\n    enterCharacterIntoString (!\?tokenString !*)\n  end\n  select\n  case '\"' :\n    send $\"string\"$\n  default\n    error incorrectStringEnd\n  end\n}\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Delimiters                                                                                   \n#-----------------------------------------------------------------------------------------------------------------------\n\nstyle delimitersStyle -> \"Delimiters\"\nlist delimitorsList style delimitersStyle error message \"the '%K' delimitor\" {\n  \":\",    \",\",    \";\",   \"!\",  \"{\",  \"}\", \"->\", \"@\", \"*\", \"-\"\n}\n\nrule list delimitorsList\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Comments                                                                                     \n#-----------------------------------------------------------------------------------------------------------------------\n\nstyle commentStyle -> \"Comments\"\n$comment$ style commentStyle %nonAtomicSelection error message \"a comment\"\nrule '#' {\n  repeat\n  while '\\u0001' -> '\\u0009' | '\\u000B' | '\\u000C' | '\\u000E' -> '\\uFFFD' :\n  end\n  drop $comment$\n}\n\n#-----------------------------------------------------------------------------------------------------------------------\n#   Separators                                                                                   \n#-----------------------------------------------------------------------------------------------------------------------\n\nrule '\\u0001' -> ' ' {\n}\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n}\n\n" ;
   return GALGAS_string (result) ;
 }
 
@@ -10103,11 +9960,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_options 
   C_String result ;
   result << "option " ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "_options {\n"
-    "\n"
-    "# ADD YOUR CODE\n"
-    "\n"
-    "}\n" ;
+  result << "_options {\n\n# ADD YOUR CODE\n\n}\n" ;
   return GALGAS_string (result) ;
 }
 
@@ -10121,29 +9974,15 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_program 
                                                                                  const GALGAS_string & in_PROJECT_5F_NAME
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#--- Prologue routine\n"
-    "before {\n"
-    "}\n"
-    "\n"
-    "#--- 'when' clauses\n"
-    "case . \"" ;
+  result << "#--- Prologue routine\nbefore {\n}\n\n#--- 'when' clauses\ncase . \"" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "\"\n"
-    "message \"a source text file with the ." ;
+  result << "\"\nmessage \"a source text file with the ." ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << " extension\"\n"
-    "grammar " ;
+  result << " extension\"\ngrammar " ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "_grammar\n"
-    "?sourceFilePath:@lstring inSourceFile {\n"
-    "  grammar " ;
+  result << "_grammar\n\?sourceFilePath:@lstring inSourceFile {\n  grammar " ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "_grammar () in inSourceFile\n"
-    "}\n"
-    "\n"
-    "#--- Epilogue routine\n"
-    "after {\n"
-    "}\n" ;
+  result << "_grammar () in inSourceFile\n}\n\n#--- Epilogue routine\nafter {\n}\n" ;
   return GALGAS_string (result) ;
 }
 
@@ -10157,9 +9996,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_semantic
                                                                                    const GALGAS_string & /* in_PROJECT_5F_NAME */
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "\n"
-    "# ADD YOUR CODE\n"
-    "\n" ;
+  result << "\n# ADD YOUR CODE\n\n" ;
   return GALGAS_string (result) ;
 }
 
@@ -10177,15 +10014,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_syntax (
   result << in_PROJECT_5F_NAME.stringValue () ;
   result << "_syntax (" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
-  result << "_lexique) {\n"
-    "\n"
-    "rule <start_symbol> {\n"
-    "  # ADD YOUR SYNTAX INSTRUCTIONS\n"
-    "}\n"
-    "\n"
-    "# ADD OTHER RULES\n"
-    "\n"
-    "}\n" ;
+  result << "_lexique) {\n\nrule <start_symbol> {\n  # ADD YOUR SYNTAX INSTRUCTIONS\n}\n\n# ADD OTHER RULES\n\n}\n" ;
   return GALGAS_string (result) ;
 }
 
@@ -11872,7 +11701,7 @@ void cPtr_templateInstructionStringForGeneration::method_templateCodeGeneration 
                                                                                  C_Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateInstructionStringForGeneration temp_0 = this ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("result << ").add_operation (temp_0.readProperty_mTemplateString ().getter_utf_38_Representation (SOURCE_FILE ("templateCodeGeneration.galgas", 54)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 54)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 54)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 54)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("result << ").add_operation (temp_0.readProperty_mTemplateString ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("templateCodeGeneration.galgas", 54)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 54)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 54)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 54)) ;
 }
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -11887,10 +11716,10 @@ void cPtr_templateInstructionExpressionForGeneration::method_templateCodeGenerat
                                                                                      GALGAS_bool & /* ioArgument_ioUseColumnMarker */,
                                                                                      C_Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_cppName_3025 ;
+  GALGAS_string var_cppName_3045 ;
   const GALGAS_templateInstructionExpressionForGeneration temp_0 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_cppName_3025, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 66)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("result << ").add_operation (var_cppName_3025, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 67)).add_operation (GALGAS_string (".stringValue () ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 67)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 67)) ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_cppName_3045, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 66)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("result << ").add_operation (var_cppName_3045, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 67)).add_operation (GALGAS_string (".stringValue () ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 67)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 67)) ;
 }
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -11905,18 +11734,18 @@ void cPtr_templateBlockInstructionForGeneration::method_templateCodeGeneration (
                                                                                 GALGAS_bool & ioArgument_ioUseColumnMarker,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_indendationVarCppName_3635 ;
+  GALGAS_string var_indendationVarCppName_3655 ;
   const GALGAS_templateBlockInstructionForGeneration temp_0 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_indendationVarCppName_3635, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 79)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (").add_operation (var_indendationVarCppName_3635, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 80)).add_operation (GALGAS_string (".isValid ()) {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 80)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 80)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("  result.incIndentation ((int32_t) ").add_operation (var_indendationVarCppName_3635, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 81)).add_operation (GALGAS_string (".uintValue ()) ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 81)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 81)) ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_indendationVarCppName_3655, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 79)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (").add_operation (var_indendationVarCppName_3655, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 80)).add_operation (GALGAS_string (".isValid ()) {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 80)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 80)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("  result.incIndentation ((int32_t) ").add_operation (var_indendationVarCppName_3655, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 81)).add_operation (GALGAS_string (".uintValue ()) ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 81)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 81)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 82)) ;
   {
   const GALGAS_templateBlockInstructionForGeneration temp_1 = this ;
   routine_templateCodeGenerationForListInstruction (temp_1.readProperty_mBlockInstructionList (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, ioArgument_ioUseColumnMarker, inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 83)) ;
   }
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (").add_operation (var_indendationVarCppName_3635, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 91)).add_operation (GALGAS_string (".isValid ()) {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 91)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 91)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("  result.incIndentation (- ((int32_t) ").add_operation (var_indendationVarCppName_3635, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 92)).add_operation (GALGAS_string (".uintValue ())) ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 92)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 92)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (").add_operation (var_indendationVarCppName_3655, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 91)).add_operation (GALGAS_string (".isValid ()) {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 91)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 91)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("  result.incIndentation (- ((int32_t) ").add_operation (var_indendationVarCppName_3655, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 92)).add_operation (GALGAS_string (".uintValue ())) ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 92)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 92)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 93)) ;
 }
 //----------------------------------------------------------------------------------------------------------------------
@@ -11965,41 +11794,41 @@ void cPtr_templateInstructionIfForGeneration::method_templateCodeGeneration (GAL
                                                                              C_Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateInstructionIfForGeneration temp_0 = this ;
-  cEnumerator_templateInstructionIfBranchListForGeneration enumerator_5661 (temp_0.readProperty_mTemplateInstructionIfBranchList (), kENUMERATION_UP) ;
-  while (enumerator_5661.hasCurrentObject ()) {
-    GALGAS_string var_ifVarCppName_5872 ;
-    callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) enumerator_5661.current_mExpression (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_ifVarCppName_5872, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 130)) ;
-    GALGAS_string var_testVar_5897 = GALGAS_string ("test_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("templateCodeGeneration.galgas", 131)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 131)) ;
+  cEnumerator_templateInstructionIfBranchListForGeneration enumerator_5681 (temp_0.readProperty_mTemplateInstructionIfBranchList (), kENUMERATION_UP) ;
+  while (enumerator_5681.hasCurrentObject ()) {
+    GALGAS_string var_ifVarCppName_5892 ;
+    callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) enumerator_5681.current_mExpression (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_ifVarCppName_5892, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 130)) ;
+    GALGAS_string var_testVar_5917 = GALGAS_string ("test_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("templateCodeGeneration.galgas", 131)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 131)) ;
     ioArgument_ioTemporaryVariableIndex.plusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 132)) ;
-    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("const enumGalgasBool ").add_operation (var_testVar_5897, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 133)).add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 133)).add_operation (var_ifVarCppName_5872, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 133)).add_operation (GALGAS_string (".boolEnum () ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 133)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 133)) ;
-    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (kBoolTrue == ").add_operation (var_testVar_5897, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 134)).add_operation (GALGAS_string (") {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 134)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 134)) ;
+    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("const enumGalgasBool ").add_operation (var_testVar_5917, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 133)).add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 133)).add_operation (var_ifVarCppName_5892, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 133)).add_operation (GALGAS_string (".boolEnum () ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 133)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 133)) ;
+    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (kBoolTrue == ").add_operation (var_testVar_5917, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 134)).add_operation (GALGAS_string (") {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 134)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 134)) ;
     {
     ioArgument_ioGeneratedCode.setter_incIndentation (GALGAS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 135)) ;
     }
     {
-    routine_templateCodeGenerationForListInstruction (enumerator_5661.current_mInstructionList (HERE), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, ioArgument_ioUseColumnMarker, inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 136)) ;
+    routine_templateCodeGenerationForListInstruction (enumerator_5681.current_mInstructionList (HERE), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, ioArgument_ioUseColumnMarker, inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 136)) ;
     }
     {
     ioArgument_ioGeneratedCode.setter_decIndentation (GALGAS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 144)) ;
     }
-    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}else if (kBoolFalse == ").add_operation (var_testVar_5897, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 145)).add_operation (GALGAS_string (") {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 145)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 145)) ;
+    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}else if (kBoolFalse == ").add_operation (var_testVar_5917, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 145)).add_operation (GALGAS_string (") {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 145)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 145)) ;
     {
     ioArgument_ioGeneratedCode.setter_incIndentation (GALGAS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 146)) ;
     }
-    enumerator_5661.gotoNextObject () ;
+    enumerator_5681.gotoNextObject () ;
   }
   {
   const GALGAS_templateInstructionIfForGeneration temp_1 = this ;
   routine_templateCodeGenerationForListInstruction (temp_1.readProperty_mElseInstructionList (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, ioArgument_ioUseColumnMarker, inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 149)) ;
   }
   const GALGAS_templateInstructionIfForGeneration temp_2 = this ;
-  cEnumerator_templateInstructionIfBranchListForGeneration enumerator_6806 (temp_2.readProperty_mTemplateInstructionIfBranchList (), kENUMERATION_UP) ;
-  while (enumerator_6806.hasCurrentObject ()) {
+  cEnumerator_templateInstructionIfBranchListForGeneration enumerator_6826 (temp_2.readProperty_mTemplateInstructionIfBranchList (), kENUMERATION_UP) ;
+  while (enumerator_6826.hasCurrentObject ()) {
     {
     ioArgument_ioGeneratedCode.setter_decIndentation (GALGAS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 158)) ;
     }
     ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 159)) ;
-    enumerator_6806.gotoNextObject () ;
+    enumerator_6826.gotoNextObject () ;
   }
 }
 //----------------------------------------------------------------------------------------------------------------------
@@ -12416,8 +12245,7 @@ void cPtr_templateInstructionSwitchAST::method_templateInstructionAnalysis (cons
       GALGAS_string var_s_8224 = GALGAS_string::makeEmptyString () ;
       cEnumerator_stringset enumerator_8242 (var_forgottenConstants_8102, kENUMERATION_UP) ;
       while (enumerator_8242.hasCurrentObject ()) {
-        var_s_8224.plusAssign_operation(GALGAS_string ("\n"
-          "  - ").add_operation (enumerator_8242.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 201)), inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 201)) ;
+        var_s_8224.plusAssign_operation(GALGAS_string ("\n  - ").add_operation (enumerator_8242.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 201)), inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 201)) ;
         enumerator_8242.gotoNextObject () ;
       }
       const GALGAS_templateInstructionSwitchAST temp_21 = this ;

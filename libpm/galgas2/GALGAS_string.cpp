@@ -546,11 +546,23 @@ GALGAS_string GALGAS_string::getter_utf_33__32_Representation (UNUSED_LOCATION_A
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::getter_utf_38_Representation (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_string::getter_utf_38_RepresentationEscapingQuestionMark (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
-    C_String s ;
-    s.appendCLiteralStringConstant (mString) ;
+    const bool escapeQuestionMark = true ;
+    const C_String s = mString.utf8RepresentationEnclosedWithin ('"', escapeQuestionMark) ;
+    result = GALGAS_string (s) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_string::getter_utf_38_RepresentationWithoutEscapingQuestionMark (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    const bool escapeQuestionMark = false ;
+    const C_String s = mString.utf8RepresentationEnclosedWithin ('"', escapeQuestionMark) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -561,7 +573,8 @@ GALGAS_string GALGAS_string::getter_utf_38_Representation (UNUSED_LOCATION_ARGS)
 GALGAS_string GALGAS_string::getter_cStringRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
-    const C_String s = mString.utf8RepresentationEnclosedWithin ('"') ;
+    const bool escapeQuestionMark = true ;
+    const C_String s = mString.utf8RepresentationEnclosedWithin ('"', escapeQuestionMark) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -572,7 +585,8 @@ GALGAS_string GALGAS_string::getter_cStringRepresentation (UNUSED_LOCATION_ARGS)
 GALGAS_string GALGAS_string::getter_utf_38_RepresentationEnclosedWithin (const GALGAS_char & inCharacter COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid () && inCharacter.isValid ()) {
-    const C_String s = mString.utf8RepresentationEnclosedWithin (inCharacter.charValue ()) ;
+    const bool escapeQuestionMark = true ;
+    const C_String s = mString.utf8RepresentationEnclosedWithin (inCharacter.charValue (), escapeQuestionMark) ;
     result = GALGAS_string (s) ;
   }
   return result ;

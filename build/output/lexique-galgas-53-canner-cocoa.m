@@ -542,7 +542,7 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
     mTokenCode = galgasScanner_1__21__3D__3D_ ;
   }else if (scanningOk && [self testForInputString:@"||" advance:YES]) {
     mTokenCode = galgasScanner_1__7C__7C_ ;
-  }else if (scanningOk && [self testForInputString:@"?^" advance:YES]) {
+  }else if (scanningOk && [self testForInputString:@"\?^" advance:YES]) {
     mTokenCode = galgasScanner_1__3F__5E_ ;
   }else if (scanningOk && [self testForInputString:@">>" advance:YES]) {
     mTokenCode = galgasScanner_1__3E__3E_ ;

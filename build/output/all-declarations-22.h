@@ -300,7 +300,8 @@ void routine_enterBaseGetterWithArgument (class GALGAS_getterMap & ioArgument0,
                                           const class GALGAS_string constinArgument3,
                                           const class GALGAS_string constinArgument4,
                                           const class GALGAS_string constinArgument5,
-                                          const class GALGAS_bool constinArgument6,
+                                          const class GALGAS_string constinArgument6,
+                                          const class GALGAS_bool constinArgument7,
                                           class C_Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
@@ -730,4 +731,46 @@ void routine_enterBaseFinalGetterWithoutArgument (class GALGAS_getterMap & ioArg
                                                   const class GALGAS_bool constinArgument4,
                                                   class C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'structGenerationTemplate'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'structGenerationTemplate boolsetTypeHeader1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                                  const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                  const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                  const class GALGAS_lstringlist & in_SLOT_5F_LIST
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'structGenerationTemplate boolsetTypeSpecificImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                              const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                              const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                              const class GALGAS_lstringlist & in_SLOT_5F_LIST,
+                                                                                              const class GALGAS_bigint & in_FULL_5F_SET
+                                                                                              COMMA_LOCATION_ARGS) ;
 

@@ -14,45 +14,45 @@ void enterOptionsFor_%![OPTION_COMPONENT_NAME identifierRepresentation]% (%?^%NS
 end
 for (lkey mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
-  %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
-  %    identifier:@%![lkey utf8Representation]%\n%
+  %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%\n%
+  %    identifier:@%![lkey utf8RepresentationEscapingQuestionMark]%\n%
   %    commandChar:%![[mOptionChar uint] string]%\n%
-  %    commandString:@%![mOptionString utf8Representation]%\n%
-  %    comment:@%![mComment utf8Representation]%\n%
+  %    commandString:@%![mOptionString utf8RepresentationEscapingQuestionMark]%\n%
+  %    comment:@%![mComment utf8RepresentationEscapingQuestionMark]%\n%
   %    defaultValue:@""\n%
   %  ] ;\n%
   %  [ioBoolOptionArray addObject:option] ;\n%
 end
 for (lkey mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
-  %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
-  %    identifier:@%![lkey utf8Representation]%\n%
+  %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%\n%
+  %    identifier:@%![lkey utf8RepresentationEscapingQuestionMark]%\n%
   %    commandChar:%![[mOptionChar uint] string]%\n%
-  %    commandString:@%![mOptionString utf8Representation]%\n%
-  %    comment:@%![mComment utf8Representation]%\n%
-  %    defaultValue:@%![mDefaultValue utf8Representation]%\n%
+  %    commandString:@%![mOptionString utf8RepresentationEscapingQuestionMark]%\n%
+  %    comment:@%![mComment utf8RepresentationEscapingQuestionMark]%\n%
+  %    defaultValue:@%![mDefaultValue utf8RepresentationEscapingQuestionMark]%\n%
   %  ] ;\n%
   %  [ioUIntOptionArray addObject:option] ;\n%
 end
 for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
-  %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
-  %    identifier:@%![lkey utf8Representation]%\n%
+  %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%\n%
+  %    identifier:@%![lkey utf8RepresentationEscapingQuestionMark]%\n%
   %    commandChar:%![[mOptionChar uint] string]%\n%
-  %    commandString:@%![mOptionString utf8Representation]%\n%
-  %    comment:@%![mComment utf8Representation]%\n%
-  %    defaultValue:@%![mDefaultValue utf8Representation]%\n%
+  %    commandString:@%![mOptionString utf8RepresentationEscapingQuestionMark]%\n%
+  %    comment:@%![mComment utf8RepresentationEscapingQuestionMark]%\n%
+  %    defaultValue:@%![mDefaultValue utf8RepresentationEscapingQuestionMark]%\n%
   %  ] ;\n%
   %  [ioStringOptionArray addObject:option] ;\n%
 end
 for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
-  %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
-  %    identifier:@%![lkey utf8Representation]%\n%
+  %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%\n%
+  %    identifier:@%![lkey utf8RepresentationEscapingQuestionMark]%\n%
   %    commandChar:%![[mOptionChar uint] string]%\n%
-  %    commandString:@%![mOptionString utf8Representation]%\n%
-  %    comment:@%![mComment utf8Representation]%\n%
-  %    defaultValue:@%![mDefaultValue utf8Representation]%\n%
+  %    commandString:@%![mOptionString utf8RepresentationEscapingQuestionMark]%\n%
+  %    comment:@%![mComment utf8RepresentationEscapingQuestionMark]%\n%
+  %    defaultValue:@%![mDefaultValue utf8RepresentationEscapingQuestionMark]%\n%
   %  ] ;\n%
   %  [ioStringListOptionArray addObject:option] ;\n%
 end

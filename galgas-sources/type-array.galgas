@@ -134,7 +134,8 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !getterName: "sizeForAxis" !"uint" !"inAxisIndex"
+    !getterName: "sizeForAxis"
+    !argSelector: "" !"uint" !"inAxisIndex"
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
@@ -142,8 +143,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName: "rangeForAxis"
-    !"uint"
-    !"inAxisIndex"
+    !argSelector: "" !"uint" !"inAxisIndex"
     !returnedTypeName:"range"
     !hasCompilerArgument:true
   )

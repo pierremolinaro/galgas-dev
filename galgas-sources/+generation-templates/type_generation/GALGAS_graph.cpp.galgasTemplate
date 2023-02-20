@@ -31,7 +31,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_%![mInsertModifierName identifierRepresen
   do (IDX) %, inArgument_%![IDX string]
   end
   % COMMA_THERE) ;
-  const char * kErrorMessage = %![mInsertErrorMessage utf8Representation]% ;
+  const char * kErrorMessage = %![mInsertErrorMessage utf8RepresentationEscapingQuestionMark]% ;
   internalAddNode (inKey, kErrorMessage, attributes, inCompiler COMMA_THERE) ;
 }
 

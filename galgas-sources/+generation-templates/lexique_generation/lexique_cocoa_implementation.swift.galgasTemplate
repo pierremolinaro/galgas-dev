@@ -61,7 +61,7 @@ end
 %fileprivate let kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [String] = [
 %
 for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST
-  do %  %![mMatchString utf8Representation]
+  do %  %![mMatchString utf8RepresentationEscapingQuestionMark]
   between %,\n%
 end%
 ]
@@ -75,11 +75,11 @@ end%
 %fileprivate let kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [SWIFT_TemplateDelimiter] = [
 %
 for (mStartString mEndString mPreservesStartDelimiter) in LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList
-  do  %  SWIFT_TemplateDelimiter (startString: %![mStartString utf8Representation]%, endString: %
+  do  %  SWIFT_TemplateDelimiter (startString: %![mStartString utf8RepresentationEscapingQuestionMark]%, endString: %
       if [mEndString length] == 0 then
         %nil%
       else
-        ![mEndString utf8Representation]
+        ![mEndString utf8RepresentationEscapingQuestionMark]
       end
       %, discardStartString: %
       ![not mPreservesStartDelimiter cString]
@@ -114,7 +114,7 @@ func %!LEXIQUE_CLASS_NAME%_styleNameFor (styleIndex inIndex : UInt8) -> String {
     "Default Style", // 0
 %
 for (* mComment) in LEXICAL_STYLE_LIST do (idx)
-  %    %![mComment.string utf8Representation]%, // %![idx+1 string]%\n%
+  %    %![mComment.string utf8RepresentationEscapingQuestionMark]%, // %![idx+1 string]%\n%
 end
 %    "Lexical error", // %![[LEXICAL_STYLE_LIST length]+1 string]%
     "Template" // %![[LEXICAL_STYLE_LIST length]+2 string]%
@@ -128,10 +128,10 @@ func %!LEXIQUE_CLASS_NAME%_styleIdentifierFor (styleIndex inIndex : UInt8) -> St
   let kStyleArray : [String] = [
     "%!LEXIQUE_CLASS_NAME%", // 0
 %for (mName *) in LEXICAL_STYLE_LIST do (idx)
-  %    %![LEXIQUE_CLASS_NAME + "-" + mName.string utf8Representation]%, // %![idx+1 string]%\n%
+  %    %![LEXIQUE_CLASS_NAME + "-" + mName.string utf8RepresentationEscapingQuestionMark]%, // %![idx+1 string]%\n%
 end
-%    %![LEXIQUE_CLASS_NAME + ".ERROR" utf8Representation]%, // %![[LEXICAL_STYLE_LIST length]+1 string]%
-    %![LEXIQUE_CLASS_NAME + ".TEMPLATE" utf8Representation]% // %![[LEXICAL_STYLE_LIST length]+2 string]%
+%    %![LEXIQUE_CLASS_NAME + ".ERROR" utf8RepresentationEscapingQuestionMark]%, // %![[LEXICAL_STYLE_LIST length]+1 string]%
+    %![LEXIQUE_CLASS_NAME + ".TEMPLATE" utf8RepresentationEscapingQuestionMark]% // %![[LEXICAL_STYLE_LIST length]+2 string]%
   ]
   return kStyleArray [Int (inIndex)]
 }
@@ -226,7 +226,7 @@ end
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func indexingDirectory () -> String {
-    return %![INDEXING_DIRECTORY utf8Representation]%
+    return %![INDEXING_DIRECTORY utf8RepresentationEscapingQuestionMark]%
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -237,7 +237,7 @@ if [INDEXING_LIST length] > 0 then
 %    return [
 %
   for (mIndexName mIndexComment) in INDEXING_LIST
-    do %      %![mIndexComment utf8Representation]% /* %!mIndexName.string% */%
+    do %      %![mIndexComment utf8RepresentationEscapingQuestionMark]% /* %!mIndexName.string% */%
     between %,\n%
   end
 %
@@ -319,11 +319,11 @@ end
 %  if (nil == kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n%
 %    kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
   for (mStartString mEndString mPreservesStartDelimiter) in LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList do
-  %      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@%![mStartString utf8Representation]% endString:%
+  %      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@%![mStartString utf8RepresentationEscapingQuestionMark]% endString:%
       if [mEndString length] == 0 then
         %nil%
       else
-        %@%![mEndString utf8Representation]
+        %@%![mEndString utf8RepresentationEscapingQuestionMark]
       end
       % discardStartString:%
       ![not mPreservesStartDelimiter ocString]
@@ -337,7 +337,7 @@ end
   %  if (nil == kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n\n%
   %    kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
   for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST do
-    %      @%![mMatchString utf8Representation]%, %
+    %      @%![mMatchString utf8RepresentationEscapingQuestionMark]%, %
   end
   %      nil\n%
   %    ] ;\n%
@@ -375,7 +375,7 @@ end
       %fileprivate func search_into_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%!tokenList_lkey.string% (_ inSearchedString : String) -> UInt16 {\n%
       %  let dictionary : [String : UInt16] = [\n%
         for (* name terminalName) in tokenList_mTokenSortedList
-        do %    %![name utf8Representation]% : %!LEXIQUE_CLASS_NAME%_1_%![terminalName identifierRepresentation]
+        do %    %![name utf8RepresentationEscapingQuestionMark]% : %!LEXIQUE_CLASS_NAME%_1_%![terminalName identifierRepresentation]
         between %,\n%
         end
       %\n  ]\n%

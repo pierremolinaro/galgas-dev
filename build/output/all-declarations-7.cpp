@@ -59,12 +59,12 @@ GALGAS_string extensionGetter_correspondingEffectiveParameterString (const GALGA
     break ;
   case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut:
     {
-      result_result = GALGAS_string ("?") ;
+      result_result = GALGAS_string ("\?") ;
     }
     break ;
   case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut:
     {
-      result_result = GALGAS_string ("!?") ;
+      result_result = GALGAS_string ("!\?") ;
     }
     break ;
   }
@@ -6713,8 +6713,7 @@ void extensionSetter_combineMapWith (GALGAS_scopeLocalVarMap & ioObject,
         if (kBoolTrue == test_2) {
           test_2 = GALGAS_bool (kIsNotEqual, enumerator_40300.current_mCppName (HERE).objectCompare (var_otherCppName_40375)).boolEnum () ;
           if (kBoolTrue == test_2) {
-            ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n"
-              "  - 'internal error type 1 for '").add_operation (enumerator_40300.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 890)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 890)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 890)) ;
+            ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n  - 'internal error type 1 for '").add_operation (enumerator_40300.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 890)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 890)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 890)) ;
           }
         }
         if (kBoolFalse == test_2) {
@@ -6733,8 +6732,7 @@ void extensionSetter_combineMapWith (GALGAS_scopeLocalVarMap & ioObject,
       }
     }
     if (kBoolFalse == test_1) {
-      ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n"
-        "  - 'internal error type 2 for '").add_operation (enumerator_40300.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 898)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 898)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 898)) ;
+      ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n  - 'internal error type 2 for '").add_operation (enumerator_40300.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 898)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 898)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 898)) ;
     }
     enumerator_40300.gotoNextObject () ;
   }
@@ -6745,8 +6743,7 @@ void extensionSetter_combineMapWith (GALGAS_scopeLocalVarMap & ioObject,
       const GALGAS_scopeLocalVarMap temp_5 = ioObject ;
       test_4 = temp_5.getter_hasKey (enumerator_40898.current_lkey (HERE).readProperty_string () COMMA_SOURCE_FILE ("variable-manager.galgas", 903)).operator_not (SOURCE_FILE ("variable-manager.galgas", 903)).boolEnum () ;
       if (kBoolTrue == test_4) {
-        ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n"
-          "  - 'internal error type 3 for '").add_operation (enumerator_40898.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 904)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 904)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 904)) ;
+        ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n  - 'internal error type 3 for '").add_operation (enumerator_40898.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 904)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 904)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 904)) ;
       }
     }
     enumerator_40898.gotoNextObject () ;

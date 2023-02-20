@@ -44,7 +44,7 @@ else
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do
     %  ioString << "\\n" ;\n%
     %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
-    %  ioString << %![mPropertyName utf8Representation]% ":" ;\n%
+    %  ioString << %![mPropertyName utf8RepresentationEscapingQuestionMark]% ":" ;\n%
     %  mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
   end
 end
@@ -150,8 +150,8 @@ end
   %  attributes.setPointer (p) ;\n%
   %  macroDetachSharedObject (p) ;\n%
   block 2 :
-    %const char * kInsertErrorMessage = %![mErrorMessage utf8Representation]% ;\n%
-    %const char * kShadowErrorMessage = %![mShadowErrorMessage utf8Representation]% ;\n%
+    %const char * kInsertErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;\n%
+    %const char * kShadowErrorMessage = %![mShadowErrorMessage utf8RepresentationEscapingQuestionMark]% ;\n%
     %performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
   end
   %}\n\n%
@@ -159,7 +159,7 @@ end
 
 for (mSearchMethodName mErrorMessage mLocationAttribute) in SEARCH_METHOD_LIST do
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
-  %const char * kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]% = %![mErrorMessage utf8Representation]% ;\n\n%
+  %const char * kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]% = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mSearchMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
@@ -202,7 +202,7 @@ for (mMethodName mErrorMessage) in REMOVE_METHOD_LIST do
   end
   %,\n %!^%C_Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) {\n%
-  %  const char * kRemoveErrorMessage = %![mErrorMessage utf8Representation]% ;\n%
+  %  const char * kRemoveErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;\n%
   %  capCollectionElement attributes ;\n%
   %  performRemove (inKey, attributes, inCompiler, kRemoveErrorMessage COMMA_THERE) ;\n%
   %  cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;\n%

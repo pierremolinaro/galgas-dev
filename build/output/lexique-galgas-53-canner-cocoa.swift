@@ -1091,7 +1091,7 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
       tokenCode = galgasScanner_1__21__3D__3D_
     }else if scanningOk && self.testForInputString ("||", advance: true) {
       tokenCode = galgasScanner_1__7C__7C_
-    }else if scanningOk && self.testForInputString ("?^", advance: true) {
+    }else if scanningOk && self.testForInputString ("\?^", advance: true) {
       tokenCode = galgasScanner_1__3F__5E_
     }else if scanningOk && self.testForInputString (">>", advance: true) {
       tokenCode = galgasScanner_1__3E__3E_

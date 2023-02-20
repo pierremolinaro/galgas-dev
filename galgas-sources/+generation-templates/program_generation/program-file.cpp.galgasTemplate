@@ -24,7 +24,7 @@ static void print_tool_help_message (void) {
 static const char * kSourceFileExtensions [] = {
 %
 for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in PROGRAM_RULE_LIST do
-  %  %![mSourceFileExtension utf8Representation]%,\n%
+  %  %![mSourceFileExtension utf8RepresentationEscapingQuestionMark]%,\n%
 end
 %  NULL
 } ;    
@@ -34,7 +34,7 @@ end
 static const char * kSourceFileHelpMessages [] = {
 %
 for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in PROGRAM_RULE_LIST do
-  %  %![mSourceFileHelp utf8Representation]%,\n%
+  %  %![mSourceFileHelp utf8RepresentationEscapingQuestionMark]%,\n%
 end
 %  NULL
 } ;    
@@ -42,7 +42,7 @@ end
 //----------------------------------------------------------------------------------------------------------------------
 
 const char * projectVersionString (void) {
-  return %![PROJECT_VERSION_STRING utf8Representation]% ;
+  return %![PROJECT_VERSION_STRING utf8RepresentationEscapingQuestionMark]% ;
 }
 
 %!BEFORE_AFTER_RULE_IMPLEMENTATION_STRING
@@ -86,7 +86,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         %
           for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in PROGRAM_RULE_LIST 
           do (IDX)
-            %if (fileExtension == %![mSourceFileExtension utf8Representation]%) {\n%
+            %if (fileExtension == %![mSourceFileExtension utf8RepresentationEscapingQuestionMark]%) {\n%
             if mReferenceGrammar.string == "" then
             %          switch (executionMode ()) {\n%
             %          case kExecutionModeNormal :\n%

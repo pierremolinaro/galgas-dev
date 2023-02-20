@@ -160,8 +160,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName: "listForKey"
-    !"string"
-    !"inKey"
+    !argSelector: "" !"string" !"inKey"
     !returnedTypeName:self.mAssociatedListTypeName.string
     !hasCompilerArgument:false
   )

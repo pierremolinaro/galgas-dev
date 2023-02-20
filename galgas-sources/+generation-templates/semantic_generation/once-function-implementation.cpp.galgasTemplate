@@ -75,7 +75,7 @@ end
 %
 //----------------------------------------------------------------------------------------------------------------------
 
-C_galgas_function_descriptor functionDescriptor_%![FUNCTION_NAME identifierRepresentation]% (%?^![FUNCTION_NAME utf8Representation]%,\n%
+C_galgas_function_descriptor functionDescriptor_%![FUNCTION_NAME identifierRepresentation]% (%?^![FUNCTION_NAME utf8RepresentationEscapingQuestionMark]%,\n%
                                             !^%functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]%,\n%
                                             !^%& kTypeDescriptor_GALGAS_%!RETURN_TYPE_IDENTIFIER%,\n%
                                             !^![[FORMAL_ARGUMENT_LIST length] string]%,\n%

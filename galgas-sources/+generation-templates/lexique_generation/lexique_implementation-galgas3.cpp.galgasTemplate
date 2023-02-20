@@ -49,7 +49,7 @@ C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
 //----------------------------------------------------------------------------------------------------------------------
 
 C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
-  return %![INDEXING_DIRECTORY utf8Representation]% ;
+  return %![INDEXING_DIRECTORY utf8RepresentationEscapingQuestionMark]% ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -57,7 +57,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
 //----------------------------------------------------------------------------------------------------------------------
 %
   for (lkey mLexicalMessage mMessageIsUsed) in LEXICAL_MESSAGE_MAP do
-   %\nstatic const char * gLexicalMessage_%!LEXIQUE_IDENTIFIER%_%!lkey.string% = % ![mLexicalMessage utf8Representation]% ;\n%
+   %\nstatic const char * gLexicalMessage_%!LEXIQUE_IDENTIFIER%_%!lkey.string% = % ![mLexicalMessage utf8RepresentationEscapingQuestionMark]% ;\n%
   end
 %
 //----------------------------------------------------------------------------------------------------------------------
@@ -66,7 +66,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
 %
   for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST do
    %\n//--- Syntax error message for terminal '$%!mTerminalName.string%$' :\n%
-   %static const char * gSyntaxErrorMessage_%!LEXIQUE_IDENTIFIER%_%![mTerminalName.string identifierRepresentation]% = %![mSyntaxErrorMessage utf8Representation]% ;\n%
+   %static const char * gSyntaxErrorMessage_%!LEXIQUE_IDENTIFIER%_%![mTerminalName.string identifierRepresentation]% = %![mSyntaxErrorMessage utf8RepresentationEscapingQuestionMark]% ;\n%
   end
 %
 //----------------------------------------------------------------------------------------------------------------------
@@ -131,7 +131,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getCurrentTokenString (const cToken * 
 %for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST do
    %    case kToken_%![mTerminalName.string identifierRepresentation]%:\n%
    %      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;\n%
-   %      s.appendCString (%![mTerminalName.string utf8Representation]%) ;\n%
+   %      s.appendCString (%![mTerminalName.string utf8RepresentationEscapingQuestionMark]%) ;\n%
    %      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;\n%
    for (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in mSentAttributeList do
      %      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;\n%
@@ -343,7 +343,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER
 GALGAS_stringlist C_Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
   GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
 %for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
-  do %  result.addAssign_operation (GALGAS_string (%![mTerminalName utf8Representation]%) COMMA_THERE) ;\n%
+  do %  result.addAssign_operation (GALGAS_string (%![mTerminalName utf8RepresentationEscapingQuestionMark]%) COMMA_THERE) ;\n%
   end
 %  return result ;
 }
@@ -355,7 +355,7 @@ if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* ioList */% else %ioList% end
 %) {
 %
 for (lkey mExplicitTokenListMap mTokenSortedList mShouldBeGenerated) in LEXICAL_TOKEN_LIST_MAP do
-  %  ioList.appendObject (%![LEXIQUE_COMPONENT_NAME + ":" + lkey utf8Representation]%) ;\n%
+  %  ioList.appendObject (%![LEXIQUE_COMPONENT_NAME + ":" + lkey utf8RepresentationEscapingQuestionMark]%) ;\n%
 end
 %}
 
@@ -367,10 +367,10 @@ static void getKeywordsForIdentifier_%!LEXIQUE_IDENTIFIER% (%?^%const C_String &
 %) {
 %
 for (lkey mExplicitTokenListMap mTokenSortedList mShouldBeGenerated) in LEXICAL_TOKEN_LIST_MAP do
-  %  if (inIdentifier == %![LEXIQUE_COMPONENT_NAME + ":" + lkey utf8Representation]%) {\n%
+  %  if (inIdentifier == %![LEXIQUE_COMPONENT_NAME + ":" + lkey utf8RepresentationEscapingQuestionMark]%) {\n%
   %    ioFound = true ;\n%
   for (mLength mName mTerminalName) in mTokenSortedList do
-    %    ioList.appendObject (%![mName utf8Representation]%) ;\n%
+    %    ioList.appendObject (%![mName utf8RepresentationEscapingQuestionMark]%) ;\n%
   end
   %    ioList.sortArrayUsingCompareMethod() ;\n%
   %  }\n%
@@ -405,7 +405,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::styleNameForIndex (const uint32_t inSt
     static const char * kStyleArray [%![[LEXICAL_STYLE_LIST length] + 1 string]%] = {
       ""%
 for (mName mComment) in LEXICAL_STYLE_LIST do
-  %,\n      %![mName.string utf8Representation]
+  %,\n      %![mName.string utf8RepresentationEscapingQuestionMark]
 end%\n    } ;
     result = kStyleArray [inStyleIndex] ;
   }

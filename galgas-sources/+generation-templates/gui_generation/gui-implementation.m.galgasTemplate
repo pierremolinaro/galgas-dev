@@ -129,7 +129,7 @@ end
   %@implementation OC_Tokenizer_%![mIndex string]%_%!mLexiqueClassName%\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %- (NSString *) blockComment {\n%
-  %  return @%![mBlockComment utf8Representation]% ;\n%
+  %  return @%![mBlockComment utf8RepresentationEscapingQuestionMark]% ;\n%
   %}\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %- (const UInt16 * *) popupListData {\n%
@@ -141,13 +141,13 @@ end
   %}\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %- (NSString *) tabItemTitle {\n%
-  %  return @%![mTitle utf8Representation]% ;\n%
+  %  return @%![mTitle utf8RepresentationEscapingQuestionMark]% ;\n%
   %}\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {\n%
   %  static NSString * kTextMacroTitle [%![[mTextMacroList length] + 1 string]%] = {\n%
   for (mKey mContents) in mTextMacroList do
-    %    @%![mKey utf8Representation]%,\n%
+    %    @%![mKey utf8RepresentationEscapingQuestionMark]%,\n%
   end
   %    NULL\n%
   %  } ;\n%
@@ -157,7 +157,7 @@ end
   %- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {\n%
   %  static NSString * kTextMacroContent [%![[mTextMacroList length] + 1 string]%] = {\n%
   for (mKey mContents) in mTextMacroList do
-    %    @%![mContents utf8Representation]%,\n%
+    %    @%![mContents utf8RepresentationEscapingQuestionMark]%,\n%
   end
   %    NULL\n%
   %  } ;\n%
@@ -174,7 +174,7 @@ OC_Lexique * tokenizerForExtension (const NSString * inExtension) {
   OC_Lexique * result = nil ;\n%
 for (lkey mLexiqueName mIndex) in GUI_CONTEXT.mExtensionMap
   before %  if%
-  do % ([inExtension isEqualToString:@%![lkey utf8Representation]%]) {\n%
+  do % ([inExtension isEqualToString:@%![lkey utf8RepresentationEscapingQuestionMark]%]) {\n%
      %    result = [OC_Tokenizer_%![mIndex string]%_%!mLexiqueName% new] ;\n%
   between %  }else if%
   after %  }\n%

@@ -183,7 +183,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName: "hasKey"
-    !self.mKeyTypeName.string !"inKey"
+    !argSelector: "" !self.mKeyTypeName.string !"inKey"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )

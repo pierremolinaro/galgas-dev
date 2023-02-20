@@ -10,48 +10,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Filewrapper 'structGenerationTemplate'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'structGenerationTemplate boolsetTypeHeader1'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (class C_Compiler * inCompiler,
-                                                                                  const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                  const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                  const class GALGAS_lstringlist & in_SLOT_5F_LIST
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'structGenerationTemplate boolsetTypeSpecificImplementation'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (class C_Compiler * inCompiler,
-                                                                                              const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                              const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                              const class GALGAS_lstringlist & in_SLOT_5F_LIST,
-                                                                                              const class GALGAS_bigint & in_FULL_5F_SET
-                                                                                              COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Function 'generateClassGetterDeclaration'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -147,7 +105,9 @@ void routine_enterBaseGetterWith_32_Arguments (class GALGAS_getterMap & ioArgume
                                                const class GALGAS_string constinArgument5,
                                                const class GALGAS_string constinArgument6,
                                                const class GALGAS_string constinArgument7,
-                                               const class GALGAS_bool constinArgument8,
+                                               const class GALGAS_string constinArgument8,
+                                               const class GALGAS_string constinArgument9,
+                                               const class GALGAS_bool constinArgument10,
                                                class C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -926,4 +886,31 @@ void routine_generateProcedure (const class GALGAS_bool constinArgument0,
                                 class GALGAS_string & outArgument10,
                                 class C_Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'setterNameForUsefulEntitiesGraph'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_lstring function_setterNameForUsefulEntitiesGraph (const class GALGAS_string & constinArgument0,
+                                                                const class GALGAS_lstring & constinArgument1,
+                                                                class C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'generateExtensionSetter'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_generateExtensionSetter (const class GALGAS_string constinArgument0,
+                                      const class GALGAS_string constinArgument1,
+                                      const class GALGAS_string constinArgument2,
+                                      class GALGAS_stringset & ioArgument3,
+                                      const class GALGAS_formalParameterListForGeneration constinArgument4,
+                                      const class GALGAS_semanticInstructionListForGeneration constinArgument5,
+                                      class GALGAS_string & outArgument6,
+                                      class C_Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
 

@@ -161,7 +161,7 @@ override method @logInstructionForGeneration generateInstruction
     !?ioUnusedVariableCppNameSet
     ?let @string logVar
   ]
-  ioGeneratedCode += logVar + ".log (" + [self.mLogMessage utf8Representation]
+  ioGeneratedCode += logVar + ".log (" + [self.mLogMessage utf8RepresentationEscapingQuestionMark]
   ioGeneratedCode += " " + [self.mLogMessage.location commaSourceFile] + ") ;\n"
 }
 

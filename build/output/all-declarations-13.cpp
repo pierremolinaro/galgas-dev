@@ -1841,8 +1841,8 @@ void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSy
         test_3 = GALGAS_bool (kIsNotEqual, var_selector_4396.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
         if (kBoolTrue == test_3) {
           TC_Array <C_FixItDescription> fixItArray4 ;
-          appendFixItActions (fixItArray4, kFixItReplace, GALGAS_string ("!?")) ;
-          inCompiler->emitSemanticError (var_selector_4396.readProperty_location (), GALGAS_string ("the selector should be '!?'"), fixItArray4  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 110)) ;
+          appendFixItActions (fixItArray4, kFixItReplace, GALGAS_string ("!\?")) ;
+          inCompiler->emitSemanticError (var_selector_4396.readProperty_location (), GALGAS_string ("the selector should be '!\?'"), fixItArray4  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 110)) ;
         }
       }
       GALGAS_location var_passingModeLocation_4550 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 112)) ;
@@ -4838,8 +4838,8 @@ void cParser_galgas_34_ProgramDeclarations::rule_galgas_34_ProgramDeclarations_d
     test_0 = GALGAS_bool (kIsNotEqual, var_selector_6584.readProperty_string ().objectCompare (GALGAS_string ("sourceFilePath"))).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
-      appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("?sourceFilePath:")) ;
-      inCompiler->emitSemanticError (var_selector_6584.readProperty_location (), GALGAS_string ("the selector should be '?sourceFilePath:'"), fixItArray1  COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas", 172)) ;
+      appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("\?sourceFilePath:")) ;
+      inCompiler->emitSemanticError (var_selector_6584.readProperty_location (), GALGAS_string ("the selector should be '\?sourceFilePath:'"), fixItArray1  COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas", 172)) ;
     }
   }
   switch (select_galgas_34_ProgramDeclarations_1 (inCompiler)) {

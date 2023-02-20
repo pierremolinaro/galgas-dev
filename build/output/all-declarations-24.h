@@ -10,33 +10,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Function 'setterNameForUsefulEntitiesGraph'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_lstring function_setterNameForUsefulEntitiesGraph (const class GALGAS_string & constinArgument0,
-                                                                const class GALGAS_lstring & constinArgument1,
-                                                                class C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateExtensionSetter'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateExtensionSetter (const class GALGAS_string constinArgument0,
-                                      const class GALGAS_string constinArgument1,
-                                      const class GALGAS_string constinArgument2,
-                                      class GALGAS_stringset & ioArgument3,
-                                      const class GALGAS_formalParameterListForGeneration constinArgument4,
-                                      const class GALGAS_semanticInstructionListForGeneration constinArgument5,
-                                      class GALGAS_string & outArgument6,
-                                      class C_Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Routine 'checkGetterSignatures'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -630,4 +603,14 @@ void routine_handleNonTerminalDeclarationsFromRuleList (class GALGAS_nonTerminal
                                                         const class GALGAS_syntaxRuleListAST constinArgument1,
                                                         class C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'buildPredefinedTypes'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_predefinedTypes function_buildPredefinedTypes (const class GALGAS_semanticContext & constinArgument0,
+                                                            class C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
 

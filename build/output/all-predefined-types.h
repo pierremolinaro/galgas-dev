@@ -571,14 +571,16 @@ class GALGAS_string : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_uint getter_utf_38_Length (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_string getter_utf_38_Representation (LOCATION_ARGS) const ;
-
   public: VIRTUAL_IN_DEBUG class GALGAS_string getter_utf_38_RepresentationEnclosedWithin (const class GALGAS_char & constinOperand0
                                                                                            COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_string getter_utf_38_RepresentationEscapingQuestionMark (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_string getter_utf_38_RepresentationWithUnicodeEscaping (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_string getter_utf_38_RepresentationWithoutDelimiters (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_string getter_utf_38_RepresentationWithoutEscapingQuestionMark (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods

@@ -151,7 +151,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
 GALGAS_stringlist C_Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
   GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
 %for (mTerminalName * * * * *) in TERMINAL_LIST
-  do %  result.addAssign_operation (GALGAS_string (%![mTerminalName utf8Representation]%) COMMA_THERE) ;\n%
+  do %  result.addAssign_operation (GALGAS_string (%![mTerminalName utf8RepresentationEscapingQuestionMark]%) COMMA_THERE) ;\n%
   end
 %  return result ;
 }
@@ -163,7 +163,7 @@ if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* ioList */% else %ioList% end
 %) {
 %
 for (lkey mExplicitTokenListMap mTokenSortedList mShouldBeGenerated) in LEXICAL_TOKEN_LIST_MAP do
-  %  ioList.appendObject (%![LEXIQUE_COMPONENT_NAME + ":" + lkey utf8Representation]%) ;\n%
+  %  ioList.appendObject (%![LEXIQUE_COMPONENT_NAME + ":" + lkey utf8RepresentationEscapingQuestionMark]%) ;\n%
 end
 %}
 
@@ -175,10 +175,10 @@ static void getKeywordsForIdentifier_%!LEXIQUE_IDENTIFIER% (%?^%const C_String &
 %) {
 %
 for (lkey mExplicitTokenListMap mTokenSortedList mShouldBeGenerated) in LEXICAL_TOKEN_LIST_MAP do
-  %  if (inIdentifier == %![LEXIQUE_COMPONENT_NAME + ":" + lkey utf8Representation]%) {\n%
+  %  if (inIdentifier == %![LEXIQUE_COMPONENT_NAME + ":" + lkey utf8RepresentationEscapingQuestionMark]%) {\n%
   %    ioFound = true ;\n%
   for (mLength mName mTerminalName) in mTokenSortedList do
-    %    ioList.appendObject (%![mName utf8Representation]%) ;\n%
+    %    ioList.appendObject (%![mName utf8RepresentationEscapingQuestionMark]%) ;\n%
   end
   %    ioList.sortArrayUsingCompareMethod() ;\n%
   %  }\n%

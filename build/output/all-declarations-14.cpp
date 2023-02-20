@@ -3501,10 +3501,10 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("%attribute") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("'char'") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("$terminal$") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("?") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("?!") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("\?") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("\?!") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("!") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("!?") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("!\?") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("<") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("<=") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("<<") COMMA_THERE) ;
@@ -3641,7 +3641,7 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("&++") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("===") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("!==") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("?^") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("\?^") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("!^") COMMA_THERE) ;
   return result ;
 }

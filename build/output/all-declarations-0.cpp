@@ -119,16 +119,16 @@ static const char * gSyntaxErrorMessage_galgasScanner__27_char_27_ = "a characte
 static const char * gSyntaxErrorMessage_galgasScanner__24_terminal_24_ = "a terminal symbol ($...$)" ;
 
 //--- Syntax error message for terminal '$?$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3F_ = "the '?' or '?selector:' delimitor" ;
+static const char * gSyntaxErrorMessage_galgasScanner__3F_ = "the '\?' or '\?selector:' delimitor" ;
 
 //--- Syntax error message for terminal '$?!$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3F__21_ = "the '?!' or '?!selector:' delimitor" ;
+static const char * gSyntaxErrorMessage_galgasScanner__3F__21_ = "the '\?!' or '\?!selector:' delimitor" ;
 
 //--- Syntax error message for terminal '$!$' :
 static const char * gSyntaxErrorMessage_galgasScanner__21_ = "the '!' or '!selector:' delimitor" ;
 
 //--- Syntax error message for terminal '$!?$' :
-static const char * gSyntaxErrorMessage_galgasScanner__21__3F_ = "the '!?' or '!?selector:' delimitor" ;
+static const char * gSyntaxErrorMessage_galgasScanner__21__3F_ = "the '!\?' or '!\?selector:' delimitor" ;
 
 //--- Syntax error message for terminal '$<$' :
 static const char * gSyntaxErrorMessage_galgasScanner__3C_ = "the '<' delimitor" ;
@@ -539,7 +539,7 @@ static const char * gSyntaxErrorMessage_galgasScanner__3D__3D__3D_ = "the '===' 
 static const char * gSyntaxErrorMessage_galgasScanner__21__3D__3D_ = "the '!==' delimitor" ;
 
 //--- Syntax error message for terminal '$?^$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3F__5E_ = "the '?^' delimitor" ;
+static const char * gSyntaxErrorMessage_galgasScanner__3F__5E_ = "the '\?^' delimitor" ;
 
 //--- Syntax error message for terminal '$!^$' :
 static const char * gSyntaxErrorMessage_galgasScanner__21__5E_ = "the '!^' delimitor" ;
@@ -2179,14 +2179,14 @@ C_String C_Lexique_galgasScanner::getCurrentTokenString (const cToken * inTokenP
       break ;
     case kToken__3F_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("?") ;
+      s.appendCString ("\?") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
       s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken__3F__21_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("?!") ;
+      s.appendCString ("\?!") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
       s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
@@ -2200,7 +2200,7 @@ C_String C_Lexique_galgasScanner::getCurrentTokenString (const cToken * inTokenP
       break ;
     case kToken__21__3F_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("!?") ;
+      s.appendCString ("!\?") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
       s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
@@ -2891,7 +2891,7 @@ C_String C_Lexique_galgasScanner::getCurrentTokenString (const cToken * inTokenP
       break ;
     case kToken__3F__5E_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("?^") ;
+      s.appendCString ("\?^") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken__21__5E_:
@@ -3865,10 +3865,10 @@ GALGAS_stringlist C_Lexique_galgasScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("%attribute") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("'char'") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("$terminal$") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("?") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("?!") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("\?") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("\?!") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("!") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("!?") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("!\?") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("<") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("<=") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("<<") COMMA_THERE) ;
@@ -4005,7 +4005,7 @@ GALGAS_stringlist C_Lexique_galgasScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("&++") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("===") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("!==") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("?^") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("\?^") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("!^") COMMA_THERE) ;
   return result ;
 }
@@ -4062,7 +4062,7 @@ static void getKeywordsForIdentifier_galgasScanner (const C_String & inIdentifie
     ioList.appendObject ("==") ;
     ioList.appendObject (">=") ;
     ioList.appendObject (">>") ;
-    ioList.appendObject ("?^") ;
+    ioList.appendObject ("\?^") ;
     ioList.appendObject ("||") ;
     ioList.appendObject ("!==") ;
     ioList.appendObject ("&++") ;

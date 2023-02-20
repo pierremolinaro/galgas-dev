@@ -144,7 +144,7 @@ end
 static const char * gEnumNameArrayFor_%!TYPE_IDENTIFIER% [%![[CONSTANT_LIST length] + 1 string]%] = {
   "(not built)"%
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST
-   do %,\n  %![mConstantName utf8Representation]
+   do %,\n  %![mConstantName utf8RepresentationEscapingQuestionMark]
 end%
 } ;
 

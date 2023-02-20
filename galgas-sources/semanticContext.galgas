@@ -19,7 +19,7 @@ getter @location sourceFile -> @string {
   if [self isNowhere] then
     result = "SOURCE_FILE (\"\", 0)"
   else
-    result = "SOURCE_FILE (" + [[[self file] lastPathComponent] utf8Representation] + ", " +  [[self line] string] + ")"
+    result = "SOURCE_FILE (" + [[[self file] lastPathComponent] utf8RepresentationEscapingQuestionMark] + ", " +  [[self line] string] + ")"
   end
 }
 
