@@ -495,18 +495,10 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "utf8RepresentationWithoutEscapingQuestionMark"
+    !getterName: "utf8Representation"
     !returnedTypeName: "string"
     !hasCompilerArgument:false
   )
-#  enterBaseGetterWithArgument (
-#    !?outMap
-#    !?ioUnifiedTypeMap
-#    !getterName: "utf8Representation"
-#    !argSelector: "escapeQuestionMark" !"bool" !"inEscapeQuestionMark"
-#    !returnedTypeName: "string"
-#    !hasCompilerArgument: false
-#  )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap

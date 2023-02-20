@@ -558,7 +558,7 @@ GALGAS_string GALGAS_string::getter_utf_38_RepresentationEscapingQuestionMark (U
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::getter_utf_38_RepresentationWithoutEscapingQuestionMark (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_string::getter_utf_38_Representation (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     const bool escapeQuestionMark = false ;

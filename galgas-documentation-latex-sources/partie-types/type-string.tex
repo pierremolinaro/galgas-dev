@@ -1614,11 +1614,37 @@ Retourne le nombre d'octets de la représentation UTF-8 de la valeur du récepte
 getter @string utf8Representation -> @string
 \end{galgasbox}
 
-Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8, c'est-à-dire qu'un caractère « \texttt{"} » a été inséré au début et à la fin. Tous les 150 caractères, la séquence « \texttt{"\textbackslash n~~"} » est insérée.
+Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8, c'est-à-dire qu'un caractère « \texttt{"} » a été inséré au début et à la fin.
 
 Les caractères non-ASCII sont échappés.
 
 Le caractère « \texttt{"} » est échappé en « \texttt{\textbackslash"} », le caractère « \texttt{\textbackslash} » est échappé en « \texttt{\textbackslash\textbackslash} ».
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsectionGetter{utf8RepresentationEscapingQuestionMark}{string}
+
+\begin{galgasbox}
+getter @string utf8RepresentationEscapingQuestionMark -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8, c'est-à-dire qu'un caractère « \texttt{"} » a été inséré au début et à la fin.
+
+Les caractères non-ASCII sont échappés. De plus, le caractère « \texttt{"} » est échappé en « \texttt{\textbackslash"} », le caractère « \texttt{\textbackslash} » est échappé en « \texttt{\textbackslash\textbackslash} », le caractère « \texttt{?} » est échappé en « \texttt{\textbackslash?} ».
 
 
 
@@ -1638,7 +1664,6 @@ Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8, entourée pa
 
 Le caractère indiqué en argument est échappé en le préfixant par« \texttt{\textbackslash} ». Le caractère « \texttt{\textbackslash} » est échappé en « \texttt{\textbackslash\textbackslash} ».
 
-Appeler ce getter avec le caractère « \texttt{"} » en argument n'est pas équivalent à appeler le \refGetterPage{string}{utf8Representation} qui insère  « \texttt{"\textbackslash n~~"} » tous les 150 caractères.
 
 
 
@@ -1653,7 +1678,7 @@ Appeler ce getter avec le caractère « \texttt{"} » en argument n'est pas équ
 getter @string utf8RepresentationWithoutDelimiters -> @string
 \end{galgasbox}
 
-Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8 sans le délimiteur initial et ni le délimiteur terminal, c'est-à-dire qu'aucun caractère « \texttt{"} » n'est inséré au début et à la fin. Tous les 150 caractères, la séquence « \texttt{"\textbackslash n~~"} » est insérée.
+Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8 sans le délimiteur initial et ni le délimiteur terminal, c'est-à-dire qu'aucun caractère « \texttt{"} » n'est inséré au début et à la fin.
 
 
 
