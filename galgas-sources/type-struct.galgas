@@ -25,7 +25,7 @@ syntax extension galgas3DeclarationsSyntax {
     while
       <property_declaration> !?propertyList
     while
-      $;$
+      <method_declaration> !structTypeName !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@structDeclarationAST.new {

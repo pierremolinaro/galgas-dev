@@ -41,6 +41,27 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
+  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+    $setter$
+    $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
+    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    ${$
+    <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+    let @location endOfSetterLocation = @location.here
+    $}$
+    ioDeclarations.mDeclarationList += !@extensionSetterAST.new {
+      !false # Is not predefined
+      !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
+      !inClassName
+      !setterName
+      !formalParameterList
+      !routineInstructionList
+      !endOfSetterLocation
+    }
+  }
+
+  #·····················································································································
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

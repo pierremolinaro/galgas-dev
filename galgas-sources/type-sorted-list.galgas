@@ -33,8 +33,6 @@ syntax extension galgas3DeclarationsSyntax {
     repeat
     while
       <property_declaration> !? attributeList
-    while
-      $;$
     end
     $}$
     ${$

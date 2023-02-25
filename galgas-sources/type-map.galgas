@@ -85,7 +85,7 @@ syntax extension galgas3DeclarationsSyntax {
     while
       <insert_or_replace_declaration> !?insertOrReplaceDeclarationListAST
     while
-      $;$
+      <method_declaration> !mMapTypeName !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@mapDeclarationAST.new {
