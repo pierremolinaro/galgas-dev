@@ -23,6 +23,7 @@ abstract method @semanticInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+  ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 
@@ -49,6 +50,7 @@ proc analyzeSemanticInstructionList
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?localConstantList: let @localConstantList inLocalConstantList
   ?localInitializedVariableListWarnsIfNotMutated: let @localInitializedVariableList inLocalInitializedVariableList
   ?localInitializedVariableListNoWarnsIfNotMutated: let @localInitializedVariableList inLocalInitializedVariableListNoWarns
@@ -64,6 +66,7 @@ proc analyzeSemanticInstructionList
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !localConstantList: inLocalConstantList
     !localInitializedVariableListWarnsIfNotMutated: inLocalInitializedVariableList
     !localInitializedVariableListNoWarnsIfNotMutated: inLocalInitializedVariableListNoWarns
@@ -81,6 +84,7 @@ proc analyzeSemanticInstructionListWithoutBranch
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?localConstantList: let @localConstantList inLocalConstantList
   ?localInitializedVariableListWarnsIfNotMutated: let @localInitializedVariableList inLocalInitializedVariableList
   ?localInitializedVariableListNoWarnsIfNotMutated: let @localInitializedVariableList inLocalInitializedVariableListNoWarns
@@ -110,6 +114,7 @@ proc analyzeSemanticInstructionListWithoutBranch
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
+      !?ioTypeMap
       !?outInstructionListForGeneration
       !?ioVariableMap
     ]

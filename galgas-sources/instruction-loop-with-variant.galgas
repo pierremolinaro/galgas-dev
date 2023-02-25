@@ -137,6 +137,7 @@ override method @loopInstructionWithVariantAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Variant expression
@@ -180,6 +181,7 @@ override method @loopInstructionWithVariantAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !localConstantList: {}
     !localInitializedVariableListWarnsIfNotMutated: {}
     !localInitializedVariableListNoWarnsIfNotMutated: {}
@@ -193,6 +195,7 @@ override method @loopInstructionWithVariantAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !localConstantList: {}
     !localInitializedVariableListWarnsIfNotMutated: {}
     !localInitializedVariableListNoWarnsIfNotMutated: {}

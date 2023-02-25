@@ -116,6 +116,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @bool inHasTranslateFeature
   ?let @terminalMap  inTerminalMap
   ?let @string inLexiqueName
@@ -137,6 +138,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inAnalysisContext
+        !?ioTypeMap
         !inHasTranslateFeature
         !inTerminalMap
         !inLexiqueName

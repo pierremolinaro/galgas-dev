@@ -13946,6 +13946,7 @@ void callExtensionMethod_analyzeSemanticInstruction (cPtr_semanticInstructionAST
                                                      const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                      GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const GALGAS_analysisContext constin_inAnalysisContext,
+                                                     GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                      GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
                                                      GALGAS_localVarManager & io_ioVariableMap,
                                                      C_Compiler * inCompiler
@@ -13954,7 +13955,7 @@ void callExtensionMethod_analyzeSemanticInstruction (cPtr_semanticInstructionAST
 //--- Find method
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticInstructionAST) ;
-    inObject->method_analyzeSemanticInstruction (constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioInstructionListForGeneration, io_ioVariableMap, inCompiler COMMA_THERE) ;
+    inObject->method_analyzeSemanticInstruction (constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioTypeMap, io_ioInstructionListForGeneration, io_ioVariableMap, inCompiler COMMA_THERE) ;
   }
 }
 //----------------------------------------------------------------------------------------------------------------------

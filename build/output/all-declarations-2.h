@@ -9057,6 +9057,7 @@ class cPtr_optionComponentDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;

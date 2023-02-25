@@ -233,6 +233,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Expression
@@ -281,6 +282,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
+      !?ioTypeMap
       !localConstantList: localConstantList
       !localInitializedVariableListWarnsIfNotMutated: {}
       !localInitializedVariableListNoWarnsIfNotMutated: {}
@@ -296,6 +298,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !localConstantList: {}
     !localInitializedVariableListWarnsIfNotMutated: {}
     !localInitializedVariableListNoWarnsIfNotMutated: {}

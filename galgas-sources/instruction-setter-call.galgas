@@ -197,6 +197,7 @@ override method @selfSetterCallInstructionAST enterInstructionInSemanticContext
 override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
                                                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                                           ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
                                                           ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                                                           ?!@localVarManager ioVariableMap {
   var @unifiedTypeMapEntry receiverType
@@ -322,6 +323,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression

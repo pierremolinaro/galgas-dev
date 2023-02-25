@@ -161,6 +161,7 @@ override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
                                           ?let @lstring unused inUsefulnessCallerEntityName
                                           ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
                                           ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
                                           ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                                           ?!@localVarManager ioVariableMap {
   let targetType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mConstantTypeName]
@@ -185,6 +186,7 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
                             ?let @lstring inUsefulnessCallerEntityName
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                             ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                             ?!@localVarManager ioVariableMap {
 #--- Analyze source expression
@@ -219,6 +221,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
                             ?let @lstring inUsefulnessCallerEntityName
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                             ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                             ?!@localVarManager ioVariableMap {
   let targetType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mOptionalTypeName]

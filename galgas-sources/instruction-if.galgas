@@ -415,6 +415,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
@@ -541,6 +542,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !localConstantList: {}
     !localInitializedVariableListWarnsIfNotMutated: {}
     !localInitializedVariableListNoWarnsIfNotMutated: {}
@@ -560,6 +562,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !localConstantList: {}
     !localInitializedVariableListWarnsIfNotMutated: {}
     !localInitializedVariableListNoWarnsIfNotMutated: {}

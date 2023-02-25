@@ -232,6 +232,7 @@ override method @structDeclarationAST semanticAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {

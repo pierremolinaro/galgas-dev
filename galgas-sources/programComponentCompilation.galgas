@@ -45,6 +45,7 @@ proc compileBeforeClauseGalgas3
   ?!@lstringlist ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @prologueEpilogueList inPrologueList
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
 {
@@ -58,8 +59,8 @@ proc compileBeforeClauseGalgas3
       !usefulnessName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
+      !?ioTypeMap
       !@formalParameterListAST {} # Routine signature : no argument
-#      !localConstantList: {} # No local constant
       !nonMutablePropertyList: @typedPropertyList {} # No attribute (not a method)
       !mutablePropertyList: @typedPropertyList {} # No attribute (not a method)
       !mInstructionList
@@ -92,6 +93,7 @@ private proc compileProgramRulesGalgas3
   ?!@lstringlist ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @programRuleList inProgramRules
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
 {
@@ -111,6 +113,7 @@ private proc compileProgramRulesGalgas3
       !usefulnessName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
+      !?ioTypeMap
       !argumentList
       !nonMutablePropertyList: @typedPropertyList {} # No attribute (not a method)
       !mutablePropertyList: @typedPropertyList {} # No attribute (not a method)
@@ -142,6 +145,7 @@ proc compileAfterClauseGalgas3
   ?!@lstringlist ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @prologueEpilogueList inEpilogueList
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
 {
@@ -155,6 +159,7 @@ proc compileAfterClauseGalgas3
       !usefulnessName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
+      !?ioTypeMap
       !@formalParameterListAST {} # Routine signature : no argument
 #      !localConstantList: {} # No local constant
       !nonMutablePropertyList: @typedPropertyList {} # No attribute (not a method)
@@ -190,6 +195,7 @@ proc compileProgramComponentGalgas3
   ?let @programRuleList inProgramRules
   ?let @prologueEpilogueList inEpilogueList
   ?let @semanticContext inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @string inProjectVersionString
   !@programComponentForGeneration outProgramComponentForGeneration
 {
@@ -208,6 +214,7 @@ proc compileProgramComponentGalgas3
     !?ioUsefulnessRootEntities
     !?ioUsefulEntitiesGraph
     !analysisContext
+     !?ioTypeMap
     !inPrologueList
     !?decoratedDeclarationListForGeneration
   )
@@ -216,6 +223,7 @@ proc compileProgramComponentGalgas3
     !?ioUsefulnessRootEntities
     !?ioUsefulEntitiesGraph
     !analysisContext
+    !?ioTypeMap
     !inEpilogueList
     !?decoratedDeclarationListForGeneration
   )
@@ -224,6 +232,7 @@ proc compileProgramComponentGalgas3
     !?ioUsefulnessRootEntities
     !?ioUsefulEntitiesGraph
     !analysisContext
+    !?ioTypeMap
     !inProgramRules
     !?decoratedDeclarationListForGeneration
   )

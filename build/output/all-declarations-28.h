@@ -98,8 +98,9 @@ GALGAS_string filewrapperTemplate_programFileGenerationTemplate_programFileImple
 void routine_compileBeforeClauseGalgas_33_ (class GALGAS_lstringlist & ioArgument0,
                                             class GALGAS_usefulEntitiesGraph & ioArgument1,
                                             const class GALGAS_analysisContext constinArgument2,
-                                            const class GALGAS_prologueEpilogueList constinArgument3,
-                                            class GALGAS_programListForGeneration & ioArgument4,
+                                            class GALGAS_unifiedTypeMap & ioArgument3,
+                                            const class GALGAS_prologueEpilogueList constinArgument4,
+                                            class GALGAS_programListForGeneration & ioArgument5,
                                             class C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
@@ -112,8 +113,9 @@ void routine_compileBeforeClauseGalgas_33_ (class GALGAS_lstringlist & ioArgumen
 void routine_compileProgramRulesGalgas_33_ (class GALGAS_lstringlist & ioArgument0,
                                             class GALGAS_usefulEntitiesGraph & ioArgument1,
                                             const class GALGAS_analysisContext constinArgument2,
-                                            const class GALGAS_programRuleList constinArgument3,
-                                            class GALGAS_programListForGeneration & ioArgument4,
+                                            class GALGAS_unifiedTypeMap & ioArgument3,
+                                            const class GALGAS_programRuleList constinArgument4,
+                                            class GALGAS_programListForGeneration & ioArgument5,
                                             class C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
@@ -126,8 +128,9 @@ void routine_compileProgramRulesGalgas_33_ (class GALGAS_lstringlist & ioArgumen
 void routine_compileAfterClauseGalgas_33_ (class GALGAS_lstringlist & ioArgument0,
                                            class GALGAS_usefulEntitiesGraph & ioArgument1,
                                            const class GALGAS_analysisContext constinArgument2,
-                                           const class GALGAS_prologueEpilogueList constinArgument3,
-                                           class GALGAS_programListForGeneration & ioArgument4,
+                                           class GALGAS_unifiedTypeMap & ioArgument3,
+                                           const class GALGAS_prologueEpilogueList constinArgument4,
+                                           class GALGAS_programListForGeneration & ioArgument5,
                                            class C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
@@ -143,8 +146,9 @@ void routine_compileProgramComponentGalgas_33_ (class GALGAS_lstringlist & ioArg
                                                 const class GALGAS_programRuleList constinArgument3,
                                                 const class GALGAS_prologueEpilogueList constinArgument4,
                                                 const class GALGAS_semanticContext constinArgument5,
-                                                const class GALGAS_string constinArgument6,
-                                                class GALGAS_programComponentForGeneration & outArgument7,
+                                                class GALGAS_unifiedTypeMap & ioArgument6,
+                                                const class GALGAS_string constinArgument7,
+                                                class GALGAS_programComponentForGeneration & outArgument8,
                                                 class C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
@@ -248,7 +252,8 @@ void routine_compileSemanticDeclarationsGalgas (class GALGAS_lstringlist & ioArg
                                                 const class GALGAS_location constinArgument3,
                                                 const class GALGAS_semanticDeclarationListAST constinArgument4,
                                                 class GALGAS_semanticContext & outArgument5,
-                                                class GALGAS_semanticDeclarationListForGeneration & outArgument6,
+                                                class GALGAS_unifiedTypeMap & outArgument6,
+                                                class GALGAS_semanticDeclarationListForGeneration & outArgument7,
                                                 class C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 

@@ -389,6 +389,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze receiver expression
@@ -458,6 +459,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !localConstantList: localConstantList
     !localInitializedVariableListWarnsIfNotMutated: {}
     !localInitializedVariableListNoWarnsIfNotMutated: {}
@@ -471,6 +473,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !localConstantList: {}
     !localInitializedVariableListWarnsIfNotMutated: {}
     !localInitializedVariableListNoWarnsIfNotMutated: {}
@@ -498,6 +501,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
                                 ?let @lstring inUsefulnessCallerEntityName
                                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                 ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
                                 ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                                 ?!@localVarManager ioVariableMap {
 #--- Analyze source expression
@@ -598,6 +602,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !localConstantList: localConstantList
     !localInitializedVariableListWarnsIfNotMutated: {}
     !localInitializedVariableListNoWarnsIfNotMutated: localInitializedVariableList
@@ -611,6 +616,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !localConstantList: {}
     !localInitializedVariableListWarnsIfNotMutated: {}
     !localInitializedVariableListNoWarnsIfNotMutated: {}

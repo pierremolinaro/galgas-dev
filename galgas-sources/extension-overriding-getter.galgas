@@ -187,6 +187,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
@@ -242,6 +243,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
     !analysisContext
+    !?ioTypeMap
     !self.mOverridingExtensionGetterFormalInputParameterList
     !if [[selfType definition].mTypeKindEnum isClassType] | ([selfType definition].mTypeKindEnum == .structType)
        then [selfType definition].mAllTypedPropertyList

@@ -415,6 +415,7 @@ void callExtensionMethod_semanticAnalysis (class cPtr_semanticDeclarationAST * i
                                            class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                            const class GALGAS_string constin_inProductDirectory,
                                            const class GALGAS_semanticContext constin_inSemanticContext,
+                                           class GALGAS_unifiedTypeMap & io_ioTypeMap,
                                            const class GALGAS_predefinedTypes constin_inPredefinedTypes,
                                            class GALGAS_semanticDeclarationListForGeneration & io_ioSemanticDeclarationListForGeneration,
                                            class C_Compiler * inCompiler
@@ -1952,6 +1953,7 @@ void callExtensionMethod_analyzeSyntaxInstruction (class cPtr_syntaxInstructionA
                                                    const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                    class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                    const class GALGAS_analysisContext constin_inAnalysisContext,
+                                                   class GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                    const class GALGAS_bool constin_inHasTranslateFeature,
                                                    const class GALGAS_terminalMap constin_inTerminalMap,
                                                    const class GALGAS_string constin_inLexiqueName,

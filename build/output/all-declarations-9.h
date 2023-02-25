@@ -1854,6 +1854,7 @@ class cPtr_forInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -3382,6 +3383,7 @@ class cPtr_grammarInFileInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -3564,6 +3566,7 @@ class cPtr_grammarInStringInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -4188,6 +4191,7 @@ class cPtr_incDecInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -4366,6 +4370,7 @@ class cPtr_incDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -4526,6 +4531,7 @@ class cPtr_selfIncDecInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -4680,6 +4686,7 @@ class cPtr_selfIncDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -6041,6 +6048,7 @@ class cPtr_ifInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -7131,6 +7139,7 @@ class cPtr_localVariableOrConstantDeclarationWithAssignmentAST : public cPtr_sem
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -7294,6 +7303,7 @@ class cPtr_undefinedLocalConstantDeclarationAST : public cPtr_semanticInstructio
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -7450,6 +7460,7 @@ class cPtr_localConstantDeclarationWithAssignmentAST : public cPtr_semanticInstr
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8153,6 +8164,7 @@ class cPtr_logInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8511,6 +8523,7 @@ class cPtr_loopInstructionWithVariantAST : public cPtr_semanticInstructionAST {
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8897,6 +8910,7 @@ class cPtr_loopInstructionWithoutVariantAST : public cPtr_semanticInstructionAST
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -9232,6 +9246,7 @@ class cPtr_messageInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -9539,6 +9554,7 @@ class cPtr_methodCallInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -9880,6 +9896,7 @@ class cPtr_procCallInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -10186,6 +10203,7 @@ class cPtr_selfAssignmentInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -10340,6 +10358,7 @@ class cPtr_selfPlusEqualElementsInstructionAST : public cPtr_semanticInstruction
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;

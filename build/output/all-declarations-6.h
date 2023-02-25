@@ -7731,6 +7731,7 @@ void callExtensionMethod_analyzeSemanticInstruction (class cPtr_semanticInstruct
                                                      const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                      class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const class GALGAS_analysisContext constin_inAnalysisContext,
+                                                     class GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                      class GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
                                                      class GALGAS_localVarManager & io_ioVariableMap,
                                                      class C_Compiler * inCompiler

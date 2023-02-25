@@ -101,6 +101,7 @@ class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -625,6 +626,7 @@ class cPtr_abstractExtensionGetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -1154,6 +1156,7 @@ class cPtr_abstractExtensionMethodAST : public cPtr_semanticDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -1672,6 +1675,7 @@ class cPtr_abstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -1955,6 +1959,7 @@ class cPtr_syntaxInstructionAST : public acStrongPtr_class {
   public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_bool inHasTranslateFeature,
            const class GALGAS_terminalMap inTerminalMap,
            const class GALGAS_string inLexiqueName,
@@ -2049,6 +2054,7 @@ class cPtr_semanticInstructionAST : public cPtr_syntaxInstructionAST {
   public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
@@ -2057,6 +2063,7 @@ class cPtr_semanticInstructionAST : public cPtr_syntaxInstructionAST {
   public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_bool inHasTranslateFeature,
            const class GALGAS_terminalMap inTerminalMap,
            const class GALGAS_string inLexiqueName,
@@ -2289,6 +2296,7 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -2793,6 +2801,7 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -3002,6 +3011,7 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -3205,6 +3215,7 @@ class cPtr_overridingAbstractExtensionGetterAST : public cPtr_semanticDeclaratio
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -3410,6 +3421,7 @@ class cPtr_overridingAbstractExtensionMethodAST : public cPtr_semanticDeclaratio
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -3604,6 +3616,7 @@ class cPtr_overridingAbstractExtensionSetterAST : public cPtr_semanticDeclaratio
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -3813,6 +3826,7 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -4026,6 +4040,7 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -4235,6 +4250,7 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8214,6 +8230,7 @@ class cPtr_externRoutineDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8388,6 +8405,7 @@ class cPtr_procDeclarationAST : public cPtr_externRoutineDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8577,6 +8595,7 @@ class cPtr_externFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8762,6 +8781,7 @@ class cPtr_functionDeclarationAST : public cPtr_externFunctionDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8981,6 +9001,7 @@ class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -9765,6 +9786,7 @@ class cPtr_filewrapperDeclarationAST : public cPtr_semanticDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -11482,6 +11504,7 @@ class cPtr_galgas_33_SyntaxComponentAST : public cPtr_semanticDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -11704,6 +11727,7 @@ class cPtr_galgas_33_GrammarComponentAST : public cPtr_semanticDeclarationAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_string inProductDirectory,
            const class GALGAS_semanticContext inSemanticContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_predefinedTypes inPredefinedTypes,
            class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;

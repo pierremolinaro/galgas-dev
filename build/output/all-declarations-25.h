@@ -10,6 +10,16 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Function 'buildPredefinedTypes'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_predefinedTypes function_buildPredefinedTypes (const class GALGAS_semanticContext & constinArgument0,
+                                                            class C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Filewrapper 'syntaxFileGenerationTemplate'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -84,17 +94,18 @@ void routine_buildNonterminalDeclarationsMap (const class GALGAS_nonterminalDecl
 void routine_analyzeSyntaxInstructionList (const class GALGAS_lstring constinArgument0,
                                            class GALGAS_usefulEntitiesGraph & ioArgument1,
                                            const class GALGAS_analysisContext constinArgument2,
-                                           const class GALGAS_bool constinArgument3,
-                                           const class GALGAS_terminalMap constinArgument4,
-                                           const class GALGAS_string constinArgument5,
-                                           const class GALGAS_nonterminalMap constinArgument6,
-                                           const class GALGAS_string constinArgument7,
-                                           const class GALGAS_syntaxInstructionList constinArgument8,
-                                           const class GALGAS_location constinArgument9,
-                                           const class GALGAS_stringset constinArgument10,
-                                           class GALGAS_localVarManager & ioArgument11,
-                                           class GALGAS_uint & ioArgument12,
-                                           class GALGAS_semanticInstructionListForGeneration & outArgument13,
+                                           class GALGAS_unifiedTypeMap & ioArgument3,
+                                           const class GALGAS_bool constinArgument4,
+                                           const class GALGAS_terminalMap constinArgument5,
+                                           const class GALGAS_string constinArgument6,
+                                           const class GALGAS_nonterminalMap constinArgument7,
+                                           const class GALGAS_string constinArgument8,
+                                           const class GALGAS_syntaxInstructionList constinArgument9,
+                                           const class GALGAS_location constinArgument10,
+                                           const class GALGAS_stringset constinArgument11,
+                                           class GALGAS_localVarManager & ioArgument12,
+                                           class GALGAS_uint & ioArgument13,
+                                           class GALGAS_semanticInstructionListForGeneration & outArgument14,
                                            class C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
@@ -109,17 +120,18 @@ void routine_semanticAnalysisOfRuleLabel (const class GALGAS_lstring constinArgu
                                           const class GALGAS_formalParameterListAST constinArgument2,
                                           const class GALGAS_syntaxInstructionList constinArgument3,
                                           const class GALGAS_analysisContext constinArgument4,
-                                          const class GALGAS_terminalMap constinArgument5,
-                                          const class GALGAS_bool constinArgument6,
-                                          const class GALGAS_string constinArgument7,
-                                          const class GALGAS_nonterminalMap constinArgument8,
-                                          const class GALGAS_string constinArgument9,
-                                          const class GALGAS_location constinArgument10,
-                                          const class GALGAS_stringset constinArgument11,
-                                          class GALGAS_uint & ioArgument12,
-                                          class GALGAS_formalParameterListForGeneration & outArgument13,
-                                          class GALGAS_formalParameterSignature & outArgument14,
-                                          class GALGAS_semanticInstructionListForGeneration & outArgument15,
+                                          class GALGAS_unifiedTypeMap & ioArgument5,
+                                          const class GALGAS_terminalMap constinArgument6,
+                                          const class GALGAS_bool constinArgument7,
+                                          const class GALGAS_string constinArgument8,
+                                          const class GALGAS_nonterminalMap constinArgument9,
+                                          const class GALGAS_string constinArgument10,
+                                          const class GALGAS_location constinArgument11,
+                                          const class GALGAS_stringset constinArgument12,
+                                          class GALGAS_uint & ioArgument13,
+                                          class GALGAS_formalParameterListForGeneration & outArgument14,
+                                          class GALGAS_formalParameterSignature & outArgument15,
+                                          class GALGAS_semanticInstructionListForGeneration & outArgument16,
                                           class C_Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
@@ -167,19 +179,4 @@ class GALGAS_semanticInstructionListForGeneration function_syntaxSignatureOfInst
                                                                                              const class GALGAS_semanticInstructionListForGeneration & constinArgument1,
                                                                                              class C_Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'recursivlyEnumerateRegularFile'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_recursivlyEnumerateRegularFile (const class GALGAS_wrapperFileMap constinArgument0,
-                                             const class GALGAS_wrapperDirectoryMap constinArgument1,
-                                             class GALGAS_stringlist & ioArgument2,
-                                             class GALGAS_stringlist & ioArgument3,
-                                             class GALGAS_stringlist & ioArgument4,
-                                             class GALGAS_stringlist & ioArgument5,
-                                             class C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
 

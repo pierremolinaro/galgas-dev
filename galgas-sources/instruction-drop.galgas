@@ -69,6 +69,7 @@ override method @dropInstructionAST analyzeSemanticInstruction
                     ?let @lstring unused inUsefulnessCallerEntityName
                     ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
                     ?let @analysisContext unused inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
                     ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
                     ?!@localVarManager ioVariableMap {
   for (mValue) in self.mDropList do

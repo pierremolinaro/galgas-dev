@@ -10,6 +10,48 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Filewrapper 'structGenerationTemplate'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'structGenerationTemplate boolsetTypeHeader1'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                                  const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                  const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                  const class GALGAS_lstringlist & in_SLOT_5F_LIST
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'structGenerationTemplate boolsetTypeSpecificImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                              const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                              const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                              const class GALGAS_lstringlist & in_SLOT_5F_LIST,
+                                                                                              const class GALGAS_bigint & in_FULL_5F_SET
+                                                                                              COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Function 'generateClassGetterDeclaration'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -772,17 +814,18 @@ class GALGAS_lstring function_getterNameForUsefulEntitiesGraph (const class GALG
 void routine_analyzeFunctionBody (const class GALGAS_lstring constinArgument0,
                                   class GALGAS_usefulEntitiesGraph & ioArgument1,
                                   const class GALGAS_analysisContext constinArgument2,
-                                  const class GALGAS_formalInputParameterListAST constinArgument3,
-                                  const class GALGAS_typedPropertyList constinArgument4,
-                                  const class GALGAS_string constinArgument5,
-                                  const class GALGAS_semanticInstructionListAST constinArgument6,
-                                  const class GALGAS_lstring constinArgument7,
+                                  class GALGAS_unifiedTypeMap & ioArgument3,
+                                  const class GALGAS_formalInputParameterListAST constinArgument4,
+                                  const class GALGAS_typedPropertyList constinArgument5,
+                                  const class GALGAS_string constinArgument6,
+                                  const class GALGAS_semanticInstructionListAST constinArgument7,
                                   const class GALGAS_lstring constinArgument8,
-                                  const class GALGAS_location constinArgument9,
-                                  class GALGAS_formalInputParameterListForGeneration & outArgument10,
-                                  class GALGAS_unifiedTypeMapEntry & outArgument11,
-                                  class GALGAS_string & outArgument12,
-                                  class GALGAS_semanticInstructionListForGeneration & outArgument13,
+                                  const class GALGAS_lstring constinArgument9,
+                                  const class GALGAS_location constinArgument10,
+                                  class GALGAS_formalInputParameterListForGeneration & outArgument11,
+                                  class GALGAS_unifiedTypeMapEntry & outArgument12,
+                                  class GALGAS_string & outArgument13,
+                                  class GALGAS_semanticInstructionListForGeneration & outArgument14,
                                   class C_Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
@@ -842,13 +885,14 @@ class GALGAS_lstring function_methodNameForUsefulEntitiesGraph (const class GALG
 void routine_analyzeRoutineBody (const class GALGAS_lstring constinArgument0,
                                  class GALGAS_usefulEntitiesGraph & ioArgument1,
                                  const class GALGAS_analysisContext constinArgument2,
-                                 const class GALGAS_formalParameterListAST constinArgument3,
-                                 const class GALGAS_typedPropertyList constinArgument4,
+                                 class GALGAS_unifiedTypeMap & ioArgument3,
+                                 const class GALGAS_formalParameterListAST constinArgument4,
                                  const class GALGAS_typedPropertyList constinArgument5,
-                                 const class GALGAS_semanticInstructionListAST constinArgument6,
-                                 const class GALGAS_location constinArgument7,
-                                 class GALGAS_semanticInstructionListForGeneration & outArgument8,
-                                 class GALGAS_formalParameterListForGeneration & outArgument9,
+                                 const class GALGAS_typedPropertyList constinArgument6,
+                                 const class GALGAS_semanticInstructionListAST constinArgument7,
+                                 const class GALGAS_location constinArgument8,
+                                 class GALGAS_semanticInstructionListForGeneration & outArgument9,
+                                 class GALGAS_formalParameterListForGeneration & outArgument10,
                                  class C_Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
@@ -897,20 +941,4 @@ class GALGAS_lstring function_setterNameForUsefulEntitiesGraph (const class GALG
                                                                 const class GALGAS_lstring & constinArgument1,
                                                                 class C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateExtensionSetter'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateExtensionSetter (const class GALGAS_string constinArgument0,
-                                      const class GALGAS_string constinArgument1,
-                                      const class GALGAS_string constinArgument2,
-                                      class GALGAS_stringset & ioArgument3,
-                                      const class GALGAS_formalParameterListForGeneration constinArgument4,
-                                      const class GALGAS_semanticInstructionListForGeneration constinArgument5,
-                                      class GALGAS_string & outArgument6,
-                                      class C_Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
 

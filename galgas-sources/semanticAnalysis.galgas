@@ -112,6 +112,7 @@ abstract method @semanticDeclarationAST semanticAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string inProductDirectory
   ?let @semanticContext unused inSemanticContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
 
@@ -190,6 +191,7 @@ proc buildLocalVariableMapAndSignature ?let @semanticContext inSemanticContext
 proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                         ?let @analysisContext inAnalysisContext
+                        ?!@unifiedTypeMap ioTypeMap
                         ?let @formalParameterListAST inRoutineSignatureAST
                         ?nonMutablePropertyList: let @typedPropertyList inNonMutableTypedAttributeList
                         ?mutablePropertyList: let @typedPropertyList inMutableTypedAttributeList
@@ -234,6 +236,7 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
+      !?ioTypeMap
       !?outSemanticInstructionListForGeneration
       !?variableMap
     ]
@@ -249,6 +252,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
@@ -283,6 +287,7 @@ override method @externRoutineDeclarationAST semanticAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
@@ -315,6 +320,7 @@ override method @procDeclarationAST semanticAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
@@ -334,6 +340,7 @@ override method @procDeclarationAST semanticAnalysis
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
     !analysisContext
+    !?ioTypeMap
     !self.mFormalArgumentList
     !nonMutablePropertyList: @typedPropertyList {}
     !mutablePropertyList: @typedPropertyList {}
@@ -361,6 +368,7 @@ proc analyzeFunctionBody
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @formalInputParameterListAST inFunctionSignature
   ?let @typedPropertyList inTypedAttributeList
   ?let @string inAttributeVariableNamePrefix
@@ -429,6 +437,7 @@ proc analyzeFunctionBody
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
+      !?ioTypeMap
       !?outSemanticInstructionListForGeneration
       !?variableMap
     ]
@@ -444,6 +453,7 @@ override method @functionDeclarationAST semanticAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
@@ -466,6 +476,7 @@ override method @functionDeclarationAST semanticAnalysis
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
     !analysisContext
+    !?ioTypeMap
     !self.mFormalArgumentList
     !@typedPropertyList {}
     !""
@@ -499,6 +510,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
@@ -521,6 +533,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
     !analysisContext
+    !?ioTypeMap
     !@formalInputParameterListAST {}
     !@typedPropertyList {}
     !""
@@ -556,6 +569,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
@@ -648,6 +662,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
@@ -680,6 +695,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
       !self.mSyntaxComponentName.string
       !lexiqueName
       !inSemanticContext
+      !?ioTypeMap
       !inPredefinedTypes
       !terminalMap
       !indexNameSet
@@ -701,6 +717,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string inProductDirectory
   ?let @semanticContext inSemanticContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
@@ -1072,6 +1089,7 @@ abstract method @syntaxInstructionAST analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @bool inHasTranslateFeature
   ?let @terminalMap inTerminalMap
   ?let @string inLexiqueName
@@ -1088,6 +1106,7 @@ override method @semanticInstructionAST analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+  ?!@unifiedTypeMap ioTypeMap
   ?let @bool unused inHasTranslateFeature
   ?let @terminalMap unused inTerminalMap
   ?let @string unused inLexiqueName
@@ -1102,6 +1121,7 @@ override method @semanticInstructionAST analyzeSyntaxInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !?ioInstructionListForGeneration
     !?ioVariableMap
   ]
@@ -1399,6 +1419,7 @@ proc analyzeSyntaxInstructionList
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @bool inHasTranslateFeature
   ?let @terminalMap inTerminalMap
   ?let @string inLexiqueName
@@ -1419,6 +1440,7 @@ proc analyzeSyntaxInstructionList
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
+      !?ioTypeMap
       !inHasTranslateFeature
       !inTerminalMap
       !inLexiqueName
@@ -1446,6 +1468,7 @@ proc semanticAnalysisOfRuleLabel
   ?let @formalParameterListAST inFormalArguments
   ?let @syntaxInstructionList inSyntaxInstructionList
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @terminalMap inTerminalMap
   ?let @bool inHasTranslateFeature
   ?let @string inLexiqueName
@@ -1478,6 +1501,7 @@ proc semanticAnalysisOfRuleLabel
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
+      !?ioTypeMap
       !inHasTranslateFeature
       !inTerminalMap
       !inLexiqueName
@@ -1507,6 +1531,7 @@ private proc semanticAnalysisOfSyntaxComponent
   ?let @string inSyntaxComponentName
   ?let @string inLexiqueName
   ?let @semanticContext inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes inPredefinedTypes
   ?let @terminalMap inTerminalMap
   ?let @stringset inIndexNameSet
@@ -1566,6 +1591,7 @@ private proc semanticAnalysisOfSyntaxComponent
         !mFormalArguments
         !mSyntaxInstructionList
         !analysisContext
+        !?ioTypeMap
         !inTerminalMap
         !inHasTranslateFeature
         ![inLexiqueName identifierRepresentation]

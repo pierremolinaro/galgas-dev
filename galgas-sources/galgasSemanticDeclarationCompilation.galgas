@@ -19,6 +19,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
                             ?let @location inEndOfProjectSourceFile
                             ?let @semanticDeclarationListAST inSemanticDeclarationList
                             !@semanticContext outSemanticContext
+                            !@unifiedTypeMap outTypeMap
                             !@semanticDeclarationListForGeneration outSemanticDeclarationSortedListForGeneration {
   if @application.verboseOutput then
     message "*** Building semantic context\n"
@@ -70,6 +71,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
     !semanticDeclarationListWithPredefinedTypes
     !inEndOfProjectSourceFile
     ?outSemanticContext
+    ?outTypeMap
     ?let @semanticDeclarationListAST sortedSemanticDeclarationListAST
   )
 #---
@@ -90,6 +92,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
         !?ioUsefulEntitiesGraph
         !inProductDirectory
         !outSemanticContext
+        !?outTypeMap
         !predefinedTypes
         !?outSemanticDeclarationSortedListForGeneration
       ]
@@ -106,6 +109,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
 private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSemanticDeclarationList
                                         ?let @location inEndOfProjectSourceFile
                                         !@semanticContext outSemanticContext
+                                        !@unifiedTypeMap outTypeMap
                                         !@semanticDeclarationListAST outSortedSemanticDeclarationListAST {
 #------ Create associated type (@TYPE-element) for lists, maps, ...
   var @semanticDeclarationListAST semanticDeclarationList = inSemanticDeclarationList
@@ -143,7 +147,7 @@ private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSeman
     end
     error inEndOfProjectSourceFile
       : "semantic analysis not performed, due to undefined type error(s)"
-      : outSemanticContext, outSortedSemanticDeclarationListAST
+      : outSemanticContext, outSortedSemanticDeclarationListAST, outTypeMap
   else
     [semanticTypePrecedenceGraph topologicalSort
       ?outSortedSemanticDeclarationListAST
@@ -156,7 +160,7 @@ private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSeman
       for declaration in unsortedSemanticDeclarationListAST do
         s += "\n-  " + [declaration.mSemanticDeclaration keyRepresentation]
       end
-      error inEndOfProjectSourceFile : s : outSemanticContext
+      error inEndOfProjectSourceFile : s : outSemanticContext, outTypeMap
     else
     #--- Add extension override
       outSortedSemanticDeclarationListAST += extensionOverrideDefinitionList
@@ -180,6 +184,7 @@ private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSeman
           !?outSemanticContext
         ]
       end
+      outTypeMap = outSemanticContext.mTypeMap
     end
   end
 }

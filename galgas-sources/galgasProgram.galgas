@@ -257,6 +257,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
   let productDirectory = buildDirectory + "/output"
   let @stringlist appProductFileList = {}
   let @semanticContext semanticContext
+  var @unifiedTypeMap typeMap
   var @semanticDeclarationListForGeneration semanticDeclarationSortedListForGeneration
   if @uint.errorCount == 0 then
     compileSemanticDeclarationsGalgas (
@@ -266,11 +267,13 @@ private proc compileProject ?let @lstring inProjectSourceFile
       !inProjectComponentAST.mEndOfSourceFile
       !declarationAST.mDeclarationList
       ?semanticContext
+      ?typeMap
       ?semanticDeclarationSortedListForGeneration
     )
   else
     semanticDeclarationSortedListForGeneration = {}
     semanticContext = .default
+    typeMap = {}
   end
 #---------------------------------- Compile GUI components
   let @optionComponentMapForGeneration optionComponentMapForGeneration
@@ -295,6 +298,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
       !declarationAST.mSourceRuleList
       !declarationAST.mEpilogueDeclarationList
       !semanticContext
+      !?typeMap
       !projectVersionString
       ?let @programComponentForGeneration programComponentForGeneration
     )

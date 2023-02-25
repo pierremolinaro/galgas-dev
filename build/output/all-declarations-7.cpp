@@ -736,6 +736,7 @@ void callExtensionMethod_semanticAnalysis (cPtr_semanticDeclarationAST * inObjec
                                            GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                            const GALGAS_string constin_inProductDirectory,
                                            const GALGAS_semanticContext constin_inSemanticContext,
+                                           GALGAS_unifiedTypeMap & io_ioTypeMap,
                                            const GALGAS_predefinedTypes constin_inPredefinedTypes,
                                            GALGAS_semanticDeclarationListForGeneration & io_ioSemanticDeclarationListForGeneration,
                                            C_Compiler * inCompiler
@@ -744,7 +745,7 @@ void callExtensionMethod_semanticAnalysis (cPtr_semanticDeclarationAST * inObjec
 //--- Find method
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
-    inObject->method_semanticAnalysis (io_ioUsefulnessRootEntities, io_ioUsefulEntitiesGraph, constin_inProductDirectory, constin_inSemanticContext, constin_inPredefinedTypes, io_ioSemanticDeclarationListForGeneration, inCompiler COMMA_THERE) ;
+    inObject->method_semanticAnalysis (io_ioUsefulnessRootEntities, io_ioUsefulEntitiesGraph, constin_inProductDirectory, constin_inSemanticContext, io_ioTypeMap, constin_inPredefinedTypes, io_ioSemanticDeclarationListForGeneration, inCompiler COMMA_THERE) ;
   }
 }
 //----------------------------------------------------------------------------------------------------------------------
@@ -3369,6 +3370,7 @@ void callExtensionMethod_analyzeSyntaxInstruction (cPtr_syntaxInstructionAST * i
                                                    const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                    GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                    const GALGAS_analysisContext constin_inAnalysisContext,
+                                                   GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                    const GALGAS_bool constin_inHasTranslateFeature,
                                                    const GALGAS_terminalMap constin_inTerminalMap,
                                                    const GALGAS_string constin_inLexiqueName,
@@ -3384,7 +3386,7 @@ void callExtensionMethod_analyzeSyntaxInstruction (cPtr_syntaxInstructionAST * i
 //--- Find method
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_syntaxInstructionAST) ;
-    inObject->method_analyzeSyntaxInstruction (constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, constin_inHasTranslateFeature, constin_inTerminalMap, constin_inLexiqueName, constin_inNonterminalMap, constin_inComponentName, constin_inIndexNameSet, io_ioInstructionListForGeneration, io_ioVariableMap, io_ioSelectMethodCount, inCompiler COMMA_THERE) ;
+    inObject->method_analyzeSyntaxInstruction (constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioTypeMap, constin_inHasTranslateFeature, constin_inTerminalMap, constin_inLexiqueName, constin_inNonterminalMap, constin_inComponentName, constin_inIndexNameSet, io_ioInstructionListForGeneration, io_ioVariableMap, io_ioSelectMethodCount, inCompiler COMMA_THERE) ;
   }
 }
 //----------------------------------------------------------------------------------------------------------------------

@@ -67,6 +67,7 @@ override method @syntaxSendInstruction analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?let @bool inHasTranslateFeature
   ?let @terminalMap unused inTerminalMap
   ?let @string unused inLexiqueName

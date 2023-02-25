@@ -27,7 +27,8 @@ void routine_updateLIBPMatPath (const class GALGAS_string constinArgument0,
 void routine_buildGalgasSemanticContext (const class GALGAS_semanticDeclarationListAST constinArgument0,
                                          const class GALGAS_location constinArgument1,
                                          class GALGAS_semanticContext & outArgument2,
-                                         class GALGAS_semanticDeclarationListAST & outArgument3,
+                                         class GALGAS_unifiedTypeMap & outArgument3,
+                                         class GALGAS_semanticDeclarationListAST & outArgument4,
                                          class C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 

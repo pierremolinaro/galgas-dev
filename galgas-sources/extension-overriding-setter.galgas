@@ -120,6 +120,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Useful entities graph
@@ -164,6 +165,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
     !analysisContext
+    !?ioTypeMap
     !self.mOverridingExtensionSetterFormalParameterList
     !nonMutablePropertyList: @typedPropertyList {}
     !mutablePropertyList: [selfType definition].mAllTypedPropertyList
