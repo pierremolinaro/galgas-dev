@@ -93,6 +93,7 @@ class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -618,6 +619,7 @@ class cPtr_abstractExtensionGetterAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1148,6 +1150,7 @@ class cPtr_abstractExtensionMethodAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1667,6 +1670,7 @@ class cPtr_abstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2288,6 +2292,7 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2793,6 +2798,7 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3003,6 +3009,7 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3207,6 +3214,7 @@ class cPtr_overridingAbstractExtensionGetterAST : public cPtr_semanticDeclaratio
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3413,6 +3421,7 @@ class cPtr_overridingAbstractExtensionMethodAST : public cPtr_semanticDeclaratio
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3608,6 +3617,7 @@ class cPtr_overridingAbstractExtensionSetterAST : public cPtr_semanticDeclaratio
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3818,6 +3828,7 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -4032,6 +4043,7 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -4242,6 +4254,7 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -4356,6 +4369,7 @@ class cPtr_semanticExpressionAST : public acStrongPtr_class {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
@@ -4514,6 +4528,7 @@ class cPtr_actualParameterAST : public acStrongPtr_class {
   public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lstring inFormalSelector,
            const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
            const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
@@ -4678,6 +4693,7 @@ class cPtr_outputActualParameterAST : public cPtr_actualParameterAST {
   public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lstring inFormalSelector,
            const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
            const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
@@ -4854,6 +4870,7 @@ class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
   public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lstring inFormalSelector,
            const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
            const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
@@ -5018,6 +5035,7 @@ class cPtr_outputInputSingleJokerParameterAST : public cPtr_actualParameterAST {
   public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lstring inFormalSelector,
            const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
            const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
@@ -5178,6 +5196,7 @@ class cPtr_outputInputSelfParameterAST : public cPtr_actualParameterAST {
   public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lstring inFormalSelector,
            const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
            const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
@@ -5344,6 +5363,7 @@ class cPtr_outputInputJokerParameterAST : public cPtr_actualParameterAST {
   public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lstring inFormalSelector,
            const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
            const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
@@ -5512,6 +5532,7 @@ class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameter
   public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lstring inFormalSelector,
            const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
            const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
@@ -5680,6 +5701,7 @@ class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST 
   public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lstring inFormalSelector,
            const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
            const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
@@ -5848,6 +5870,7 @@ class cPtr_inputActualSelfParameterAST : public cPtr_actualParameterAST {
   public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lstring inFormalSelector,
            const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
            const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
@@ -6022,6 +6045,7 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
   public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lstring inFormalSelector,
            const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
            const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
@@ -6204,6 +6228,7 @@ class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
   public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lstring inFormalSelector,
            const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
            const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
@@ -6370,6 +6395,7 @@ class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
   public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lstring inFormalSelector,
            const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
            const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
@@ -6536,6 +6562,7 @@ class cPtr_inputJokerActualParameterAST : public cPtr_actualParameterAST {
   public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lstring inFormalSelector,
            const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
            const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
@@ -6888,6 +6915,7 @@ class cPtr_abstractInputParameter : public acStrongPtr_class {
 
 //--- Extension method analyzeInputParameter
   public: virtual void method_analyzeInputParameter (const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lexicalTypeEnum inRequiredLexicalType,
            const class GALGAS_string inLexicalAttributeName,
            class GALGAS_terminalCheckAssignementList & ioTerminalCheckAssignementList,
@@ -7028,6 +7056,7 @@ class cPtr_inputParameterAnonymousVariable : public cPtr_abstractInputParameter 
 
 //--- Extension method analyzeInputParameter
   public: virtual void method_analyzeInputParameter (const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lexicalTypeEnum inRequiredLexicalType,
            const class GALGAS_string inLexicalAttributeName,
            class GALGAS_terminalCheckAssignementList & ioTerminalCheckAssignementList,
@@ -7177,6 +7206,7 @@ class cPtr_inputParameterVariable : public cPtr_abstractInputParameter {
 
 //--- Extension method analyzeInputParameter
   public: virtual void method_analyzeInputParameter (const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lexicalTypeEnum inRequiredLexicalType,
            const class GALGAS_string inLexicalAttributeName,
            class GALGAS_terminalCheckAssignementList & ioTerminalCheckAssignementList,
@@ -7334,6 +7364,7 @@ class cPtr_inputParameterDeclaredVariable : public cPtr_abstractInputParameter {
 
 //--- Extension method analyzeInputParameter
   public: virtual void method_analyzeInputParameter (const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lexicalTypeEnum inRequiredLexicalType,
            const class GALGAS_string inLexicalAttributeName,
            class GALGAS_terminalCheckAssignementList & ioTerminalCheckAssignementList,
@@ -7493,6 +7524,7 @@ class cPtr_inputParameterDeclaredConstant : public cPtr_abstractInputParameter {
 
 //--- Extension method analyzeInputParameter
   public: virtual void method_analyzeInputParameter (const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_lexicalTypeEnum inRequiredLexicalType,
            const class GALGAS_string inLexicalAttributeName,
            class GALGAS_terminalCheckAssignementList & ioTerminalCheckAssignementList,
@@ -8222,6 +8254,7 @@ class cPtr_externRoutineDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -8397,6 +8430,7 @@ class cPtr_procDeclarationAST : public cPtr_externRoutineDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -8587,6 +8621,7 @@ class cPtr_externFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -8993,6 +9028,7 @@ class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -9778,6 +9814,7 @@ class cPtr_filewrapperDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -11496,6 +11533,7 @@ class cPtr_galgas_33_SyntaxComponentAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -11719,6 +11757,7 @@ class cPtr_galgas_33_GrammarComponentAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 

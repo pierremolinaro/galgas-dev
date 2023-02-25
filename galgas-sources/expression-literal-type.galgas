@@ -56,16 +56,17 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
-  ?let @analysisContext inAnalysisContext
+  ?let @analysisContext unused inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   let usefulnessName = typeNameForUsefulEntitiesGraph (!self.mLiteralTypeName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #---
-  let type = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mLiteralTypeName]
+  let type = [ioTypeMap searchKey !self.mLiteralTypeName]
   outExpression = @literalTypeInExpressionForGeneration.new {
-    ![inAnalysisContext.mSemanticContext.mTypeMap searchKey !.new {!"type" !.here}]
+    ![ioTypeMap searchKey !.new {!"type" !.here}]
     !self.mLiteralTypeName.location
     !type
   }

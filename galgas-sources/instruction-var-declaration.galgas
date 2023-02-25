@@ -70,13 +70,13 @@ override method @localVariableDeclarationAST enterInstructionInSemanticContext ?
 override method @localVariableDeclarationAST analyzeSemanticInstruction
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+  ?let @analysisContext unused inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
 #--- Check target variable
-  let targetType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeName]
+  let targetType = [ioTypeMap searchKey !self.mTypeName]
   let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location locationIndex]
   [!?ioVariableMap insertDeclaredLocalVariable
     !self.mVariableName

@@ -8541,7 +8541,6 @@ GALGAS_templateBlockInstructionForGeneration GALGAS_templateBlockInstructionForG
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_semanticContext::GALGAS_semanticContext (void) :
-mProperty_mTypeMap (),
 mProperty_mRoutineMap (),
 mProperty_mFunctionMap (),
 mProperty_mFilewrapperMap (),
@@ -8558,29 +8557,26 @@ GALGAS_semanticContext::~ GALGAS_semanticContext (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticContext::GALGAS_semanticContext (const GALGAS_unifiedTypeMap & inOperand0,
-                                                const GALGAS_routineMap & inOperand1,
-                                                const GALGAS_functionMap & inOperand2,
-                                                const GALGAS_filewrapperMap & inOperand3,
-                                                const GALGAS_grammarMap & inOperand4,
-                                                const GALGAS_optionComponentMapForSemanticAnalysis & inOperand5,
-                                                const GALGAS_lexiqueComponentMapForSemanticAnalysis & inOperand6,
-                                                const GALGAS_syntaxComponentMap & inOperand7) :
-mProperty_mTypeMap (inOperand0),
-mProperty_mRoutineMap (inOperand1),
-mProperty_mFunctionMap (inOperand2),
-mProperty_mFilewrapperMap (inOperand3),
-mProperty_mGrammarMap (inOperand4),
-mProperty_mOptionComponentMapForSemanticAnalysis (inOperand5),
-mProperty_mLexiqueComponentMapForSemanticAnalysis (inOperand6),
-mProperty_mSyntaxComponentMapForSemanticAnalysis (inOperand7) {
+GALGAS_semanticContext::GALGAS_semanticContext (const GALGAS_routineMap & inOperand0,
+                                                const GALGAS_functionMap & inOperand1,
+                                                const GALGAS_filewrapperMap & inOperand2,
+                                                const GALGAS_grammarMap & inOperand3,
+                                                const GALGAS_optionComponentMapForSemanticAnalysis & inOperand4,
+                                                const GALGAS_lexiqueComponentMapForSemanticAnalysis & inOperand5,
+                                                const GALGAS_syntaxComponentMap & inOperand6) :
+mProperty_mRoutineMap (inOperand0),
+mProperty_mFunctionMap (inOperand1),
+mProperty_mFilewrapperMap (inOperand2),
+mProperty_mGrammarMap (inOperand3),
+mProperty_mOptionComponentMapForSemanticAnalysis (inOperand4),
+mProperty_mLexiqueComponentMapForSemanticAnalysis (inOperand5),
+mProperty_mSyntaxComponentMapForSemanticAnalysis (inOperand6) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_semanticContext GALGAS_semanticContext::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_semanticContext (GALGAS_unifiedTypeMap::constructor_emptyMap (HERE),
-                                 GALGAS_routineMap::constructor_emptyMap (HERE),
+  return GALGAS_semanticContext (GALGAS_routineMap::constructor_emptyMap (HERE),
                                  GALGAS_functionMap::constructor_emptyMap (HERE),
                                  GALGAS_filewrapperMap::constructor_emptyMap (HERE),
                                  GALGAS_grammarMap::constructor_emptyMap (HERE),
@@ -8591,8 +8587,7 @@ GALGAS_semanticContext GALGAS_semanticContext::constructor_default (UNUSED_LOCAT
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticContext GALGAS_semanticContext::constructor_new (const GALGAS_unifiedTypeMap & in_mTypeMap,
-                                                                const GALGAS_routineMap & in_mRoutineMap,
+GALGAS_semanticContext GALGAS_semanticContext::constructor_new (const GALGAS_routineMap & in_mRoutineMap,
                                                                 const GALGAS_functionMap & in_mFunctionMap,
                                                                 const GALGAS_filewrapperMap & in_mFilewrapperMap,
                                                                 const GALGAS_grammarMap & in_mGrammarMap,
@@ -8601,8 +8596,8 @@ GALGAS_semanticContext GALGAS_semanticContext::constructor_new (const GALGAS_uni
                                                                 const GALGAS_syntaxComponentMap & in_mSyntaxComponentMapForSemanticAnalysis 
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_semanticContext result ;
-  if (in_mTypeMap.isValid () && in_mRoutineMap.isValid () && in_mFunctionMap.isValid () && in_mFilewrapperMap.isValid () && in_mGrammarMap.isValid () && in_mOptionComponentMapForSemanticAnalysis.isValid () && in_mLexiqueComponentMapForSemanticAnalysis.isValid () && in_mSyntaxComponentMapForSemanticAnalysis.isValid ()) {
-    result = GALGAS_semanticContext (in_mTypeMap, in_mRoutineMap, in_mFunctionMap, in_mFilewrapperMap, in_mGrammarMap, in_mOptionComponentMapForSemanticAnalysis, in_mLexiqueComponentMapForSemanticAnalysis, in_mSyntaxComponentMapForSemanticAnalysis) ;
+  if (in_mRoutineMap.isValid () && in_mFunctionMap.isValid () && in_mFilewrapperMap.isValid () && in_mGrammarMap.isValid () && in_mOptionComponentMapForSemanticAnalysis.isValid () && in_mLexiqueComponentMapForSemanticAnalysis.isValid () && in_mSyntaxComponentMapForSemanticAnalysis.isValid ()) {
+    result = GALGAS_semanticContext (in_mRoutineMap, in_mFunctionMap, in_mFilewrapperMap, in_mGrammarMap, in_mOptionComponentMapForSemanticAnalysis, in_mLexiqueComponentMapForSemanticAnalysis, in_mSyntaxComponentMapForSemanticAnalysis) ;
   }
   return result ;
 }
@@ -8611,9 +8606,6 @@ GALGAS_semanticContext GALGAS_semanticContext::constructor_new (const GALGAS_uni
 
 typeComparisonResult GALGAS_semanticContext::objectCompare (const GALGAS_semanticContext & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mProperty_mTypeMap.objectCompare (inOperand.mProperty_mTypeMap) ;
-  }
   if (result == kOperandEqual) {
     result = mProperty_mRoutineMap.objectCompare (inOperand.mProperty_mRoutineMap) ;
   }
@@ -8641,13 +8633,12 @@ typeComparisonResult GALGAS_semanticContext::objectCompare (const GALGAS_semanti
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_semanticContext::isValid (void) const {
-  return mProperty_mTypeMap.isValid () && mProperty_mRoutineMap.isValid () && mProperty_mFunctionMap.isValid () && mProperty_mFilewrapperMap.isValid () && mProperty_mGrammarMap.isValid () && mProperty_mOptionComponentMapForSemanticAnalysis.isValid () && mProperty_mLexiqueComponentMapForSemanticAnalysis.isValid () && mProperty_mSyntaxComponentMapForSemanticAnalysis.isValid () ;
+  return mProperty_mRoutineMap.isValid () && mProperty_mFunctionMap.isValid () && mProperty_mFilewrapperMap.isValid () && mProperty_mGrammarMap.isValid () && mProperty_mOptionComponentMapForSemanticAnalysis.isValid () && mProperty_mLexiqueComponentMapForSemanticAnalysis.isValid () && mProperty_mSyntaxComponentMapForSemanticAnalysis.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_semanticContext::drop (void) {
-  mProperty_mTypeMap.drop () ;
   mProperty_mRoutineMap.drop () ;
   mProperty_mFunctionMap.drop () ;
   mProperty_mFilewrapperMap.drop () ;
@@ -8665,8 +8656,6 @@ void GALGAS_semanticContext::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mProperty_mTypeMap.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
     mProperty_mRoutineMap.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mFunctionMap.description (ioString, inIndentation+1) ;

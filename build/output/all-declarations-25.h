@@ -14,7 +14,7 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_predefinedTypes function_buildPredefinedTypes (const class GALGAS_semanticContext & constinArgument0,
+class GALGAS_predefinedTypes function_buildPredefinedTypes (const class GALGAS_unifiedTypeMap & constinArgument0,
                                                             class C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
@@ -81,7 +81,8 @@ void routine_enterNonterminalNonTerminalInMapAndCheck (const class GALGAS_lstrin
 
 void routine_buildNonterminalDeclarationsMap (const class GALGAS_nonterminalDeclarationListAST constinArgument0,
                                               const class GALGAS_semanticContext constinArgument1,
-                                              class GALGAS_nonterminalMap & outArgument2,
+                                              class GALGAS_unifiedTypeMap & ioArgument2,
+                                              class GALGAS_nonterminalMap & outArgument3,
                                               class C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 

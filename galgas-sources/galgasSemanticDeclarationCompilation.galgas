@@ -79,13 +79,13 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
     message "*** Semantic analysis\n"
   end
 #------ Check there is no undefined types
-  for entry in [outSemanticContext.mTypeMap unsolvedEntryList] do
+  for entry in [outTypeMap unsolvedEntryList] do
     error entry.mValue : "the '@" + entry.mValue + "' type is undefined"
   end
 #------ Semantic Analysis
   outSemanticDeclarationSortedListForGeneration = {}
   if @uint.errorCount == 0 then
-    let @predefinedTypes predefinedTypes = buildPredefinedTypes (!outSemanticContext)
+    let @predefinedTypes predefinedTypes = buildPredefinedTypes (!outTypeMap)
     for declaration in sortedSemanticDeclarationListAST do
       [declaration.mSemanticDeclaration semanticAnalysis
         !?ioUsefulnessRootEntities 
@@ -165,8 +165,9 @@ private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSeman
     #--- Add extension override
       outSortedSemanticDeclarationListAST += extensionOverrideDefinitionList
     #--- Build initial semantic context
+      outTypeMap = .emptyMap
       outSemanticContext = @semanticContext.new {
-        !mTypeMap: .emptyMap
+#        !mTypeMap: .emptyMap
         !mRoutineMap: {}
         !mFunctionMap: {}
         !mFilewrapperMap: {}
@@ -181,10 +182,11 @@ private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSeman
           !extensionMethodMapForBuildingContext
           !extensionGetterMapForBuildingContext
           !extensionSetterMapForBuildingContext
+          !?outTypeMap
           !?outSemanticContext
         ]
       end
-      outTypeMap = outSemanticContext.mTypeMap
+#      outTypeMap = outSemanticContext.mTypeMap
     end
   end
 }

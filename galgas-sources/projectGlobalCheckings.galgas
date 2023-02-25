@@ -203,7 +203,7 @@ proc checkExtensionGetterDefinitionForClass
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc performGalgas3ProjectGlobalCheckings
-  ?let @semanticContext inSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
   ?let @semanticDeclarationListAST inSemanticDeclarationList
 {
   if @application.verboseOutput then
@@ -212,12 +212,12 @@ proc performGalgas3ProjectGlobalCheckings
 #------ Build descendant type list map
 # For every type, a list of its directed descendants is associated
   var @descendantClassListMap descendantClassListMap = {}
-  for (lkey element) in inSemanticContext.mTypeMap do
+  for (lkey element) in ioTypeMap do
      let superType = [element definition].mSuperType
      if not [superType isNull] then
        descendantClassListMap +=
          ![superType definition].mTypeName.string
-         ![inSemanticContext.mTypeMap searchKey !lkey]
+         ![ioTypeMap searchKey !lkey]
      end
   end
 #--- Build Extension method listmaps
@@ -288,7 +288,7 @@ proc performGalgas3ProjectGlobalCheckings
           !mValue
           !descendantClassListMap
           !overridingExtensionSetterListMap
-          !inSemanticContext.mTypeMap
+          !ioTypeMap
         )
       end
     end
@@ -301,7 +301,7 @@ proc performGalgas3ProjectGlobalCheckings
           !mValue
           !descendantClassListMap
           !overridingExtensionSetterListMap
-          !inSemanticContext.mTypeMap
+          !ioTypeMap
         )
       end
     end
@@ -342,7 +342,7 @@ proc performGalgas3ProjectGlobalCheckings
           !mValue
           !descendantClassListMap
           !overridingExtensionMethodListMap
-          !inSemanticContext.mTypeMap
+          !ioTypeMap
         )
       end
     end
@@ -355,7 +355,7 @@ proc performGalgas3ProjectGlobalCheckings
           !mValue
           !descendantClassListMap
           !overridingExtensionMethodListMap
-          !inSemanticContext.mTypeMap
+          !ioTypeMap
         )
       end
     end
@@ -391,7 +391,7 @@ proc performGalgas3ProjectGlobalCheckings
           !mValue
           !descendantClassListMap
           !overridingExtensionGetterListMap
-          !inSemanticContext.mTypeMap
+          !ioTypeMap
         )
       end
     end
@@ -404,7 +404,7 @@ proc performGalgas3ProjectGlobalCheckings
           !mValue
           !descendantClassListMap
           !overridingExtensionGetterListMap
-          !inSemanticContext.mTypeMap
+          !ioTypeMap
         )
       end
     end

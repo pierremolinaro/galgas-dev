@@ -536,6 +536,7 @@ abstract method @abstractEnumeratedCollectionAST analyzeEnumeration
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   ?!@localConstantList ioLocalConstantListForDoBranch
   !@string outEnumeratorCppName
@@ -547,6 +548,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   ?!@localConstantList ioLocalConstantListForDoBranch
   !@string outEnumeratorCppName
@@ -557,6 +559,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?outEnumerationExpression
   ]
@@ -593,6 +596,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   ?!@localConstantList ioLocalConstantListForDoBranch
   !@string outEnumeratorCppName
@@ -603,6 +607,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?outEnumerationExpression
   ]
@@ -647,7 +652,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
       for (mOptionalTypeName mDeclaredAsUnused mOptionalConstantName) in self.mElementList, (mEnumeratedType mEnumerationName) in enumerationDescriptorList do
         if mOptionalConstantName.string != "" then # Empty string if joker
           if mOptionalTypeName.string != "" then
-            let foundType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mOptionalTypeName]
+            let foundType = [ioTypeMap searchKey !mOptionalTypeName]
             if foundType != mEnumeratedType then
               error mOptionalTypeName : "incorrect '@" + [foundType definition].mTypeName.string + "' type: '@" + [mEnumeratedType definition].mTypeName.string + "' type required here"
             end
@@ -669,6 +674,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   ?!@localConstantList ioLocalConstantListForDoBranch
   !@string outEnumeratorCppName
@@ -679,6 +685,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?outEnumerationExpression
   ]
@@ -692,7 +699,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   end
 #--- Check enumeration type
   if self.mEnumerationOptionalTypeName.string != "" then
-    let explicitType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mEnumerationOptionalTypeName]
+    let explicitType = [ioTypeMap searchKey !self.mEnumerationOptionalTypeName]
     if [enumeratedElementType definition].mTypeName.string != [explicitType definition].mTypeName.string then
       error self.mEnumerationOptionalTypeName: "the '@" + [enumeratedElementType definition].mTypeName.string + "' type is expected here"
     end
@@ -769,6 +776,7 @@ override method @forInstructionAST analyzeSemanticInstruction
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
+      !?ioTypeMap
       !?ioVariableMap
       !?localConstantListForDoBranch
       ?let @string enumeratorCppName
@@ -798,6 +806,7 @@ override method @forInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration uncheckedWhileExpression
   ]

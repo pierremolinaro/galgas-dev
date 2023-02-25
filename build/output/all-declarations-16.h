@@ -1821,6 +1821,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programComponentFor
 
 void callExtensionMethod_analyzeGrammarInstructionSDT (class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
                                                        const class GALGAS_analysisContext constin_inAnalysisContext,
+                                                       class GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                        const class GALGAS_bool constin_inHasTranslateFeature,
                                                        const class GALGAS_string constin_inSyntaxDirectedTranslationResultVarName,
                                                        class GALGAS_stringlist & io_ioAssignementList,
@@ -2140,6 +2141,16 @@ void extensionMethod_checkAutomatonStates (const class GALGAS_localVarManager in
                                            const class GALGAS_location constin_inErrorLocation,
                                            class C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMap unsolvedEntryList' (as function)
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_lstringlist extensionGetter_unsolvedEntryList (const class GALGAS_unifiedTypeMap & inObject,
+                                                            class C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //

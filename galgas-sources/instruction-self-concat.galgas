@@ -218,7 +218,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
@@ -257,6 +257,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
           !?ioUsefulEntitiesGraph
           !inferenceType: mFormalArgumentType
           !inAnalysisContext
+          !?ioTypeMap
           !?ioVariableMap
           ?@semanticExpressionForGeneration expression
         ]
@@ -288,7 +289,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
@@ -319,6 +320,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
       !?ioUsefulEntitiesGraph
       !inferenceType: selfType
       !inAnalysisContext
+      !?ioTypeMap
       !?ioVariableMap
       ?@semanticExpressionForGeneration expression
     ]
@@ -345,7 +347,7 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
@@ -376,6 +378,7 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
       !?ioUsefulEntitiesGraph
       !inferenceType: selfType
       !inAnalysisContext
+      !?ioTypeMap
       !?ioVariableMap
       ?@semanticExpressionForGeneration expression
     ]
@@ -402,7 +405,7 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
@@ -433,6 +436,7 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
       !?ioUsefulEntitiesGraph
       !inferenceType: selfType
       !inAnalysisContext
+      !?ioTypeMap
       !?ioVariableMap
       ?@semanticExpressionForGeneration expression
     ]
@@ -459,7 +463,7 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
@@ -490,6 +494,7 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
       !?ioUsefulEntitiesGraph
       !inferenceType: selfType
       !inAnalysisContext
+      !?ioTypeMap
       !?ioVariableMap
       ?@semanticExpressionForGeneration expression
     ]

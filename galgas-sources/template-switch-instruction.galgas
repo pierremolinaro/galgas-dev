@@ -118,6 +118,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@templateInstructionListForGeneration ioInstructionList
 {
 #---
@@ -125,6 +126,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     ?let switchExpression
   ]
   if [switchExpression.mResultType definition].mTypeKindEnum != .enumType then
@@ -184,6 +186,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !analysisContext
+      !?ioTypeMap
       !mInstructionList
       !?instructionList
     )

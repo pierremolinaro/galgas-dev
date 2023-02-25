@@ -822,8 +822,9 @@ class GALGAS_lstring function_functionNameForUsefulEntitiesGraph (const class GA
 void routine_templateInstructionListAnalysis (const class GALGAS_lstring constinArgument0,
                                               class GALGAS_usefulEntitiesGraph & ioArgument1,
                                               const class GALGAS_templateAnalysisContext constinArgument2,
-                                              const class GALGAS_templateInstructionListAST constinArgument3,
-                                              class GALGAS_templateInstructionListForGeneration & ioArgument4,
+                                              class GALGAS_unifiedTypeMap & ioArgument3,
+                                              const class GALGAS_templateInstructionListAST constinArgument4,
+                                              class GALGAS_templateInstructionListForGeneration & ioArgument5,
                                               class C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 

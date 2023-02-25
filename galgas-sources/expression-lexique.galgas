@@ -65,6 +65,7 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
@@ -81,7 +82,7 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
   end
 #---
   outExpression = @lexiqueIntrospectionForGeneration.new {
-    ![inAnalysisContext.mSemanticContext.mTypeMap searchKey !["stringlist" nowhere]]
+    ![ioTypeMap searchKey !["stringlist" nowhere]]
     !self.mLexiqueComponentName.location
     !self.mLexiqueComponentName.string
     !self.mLexiqueGetterName.string}

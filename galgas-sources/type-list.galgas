@@ -94,6 +94,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+  ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext
 {
 #--- Handle attributes
@@ -102,7 +103,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     if [initExpression isSome] then
       error mPropertyName : "property initialization is not handled for a list"
     end
-    [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     var hasSelector = false
     for (mValue) in mAttributeList do
       if mValue.string == "setter" then
@@ -123,11 +124,11 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     typedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
   end
 #--- uint type index
-  [!?ioSemanticContext.mTypeMap makeEntryFromString !"uint" ?let uintType]
+  [!?ioTypeMap makeEntryFromString !"uint" ?let uintType]
 #--- List type index
-  [!?ioSemanticContext.mTypeMap makeEntry  !self.mListTypeName ?let listTypeIndex]
+  [!?ioTypeMap makeEntry  !self.mListTypeName ?let listTypeIndex]
 #--- Element type index
-  [!?ioSemanticContext.mTypeMap makeEntry
+  [!?ioTypeMap makeEntry
     !@lstring.new {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}
     ?let @unifiedTypeMapEntry listElementTypeIndex
   ]
@@ -158,7 +159,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   var @constructorMap constructorMap = {}
   enterConstructorWithoutArgument (
     !?constructorMap
-    !?ioSemanticContext.mTypeMap 
+    !?ioTypeMap 
     !name:"emptyList"
     !resultTypeName:self.mListTypeName.string
     !hasLexiqueArg:false
@@ -170,24 +171,24 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !listTypeIndex
   ]
 #--- Readers
-  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
   enterInheritedGetterWithoutArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !getterName:"length"
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !getterName:"range"
     !returnedTypeName:"range"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !getterName: "subListFromIndex"
     !argSelector: "" !"uint" !"inIndex"
     !returnedTypeName:self.mListTypeName.string
@@ -195,7 +196,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   )
   enterBaseGetterWithArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !getterName: "subListToIndex"
     !argSelector: "" !"uint" !"inIndex"
     !returnedTypeName:self.mListTypeName.string
@@ -203,7 +204,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   )
   enterBaseGetterWithArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !getterName: "subListWithRange"
     !argSelector: "" !"range" !"inRange"
     !returnedTypeName:self.mListTypeName.string
@@ -307,6 +308,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
+    !?ioTypeMap
     !self.mListTypeName
     !isClass: false
     !?getterMap
@@ -344,7 +346,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !"list-" + [self.mListTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition]
 }
 
 #·······················································································································
@@ -380,8 +382,8 @@ override method @listDeclarationAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+  ?let @semanticContext unused inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
@@ -399,7 +401,7 @@ override method @listDeclarationAST semanticAnalysis
     end
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    let t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
+    let t = [ioTypeMap searchKey !mPropertyTypeName]
     let hasSetter = mIsPublic
     var hasSelector = false
     for (mValue) in mAttributeList do
@@ -426,12 +428,12 @@ override method @listDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #---
-  let selfType = [inSemanticContext.mTypeMap searchKey !self.mListTypeName]
+  let selfType = [ioTypeMap searchKey !self.mListTypeName]
   ioSemanticDeclarationListForGeneration +=
     !"list type " + self.mListTypeName
     !@listTypeForGeneration.new {
       !selfType
-      ![inSemanticContext.mTypeMap searchKey !.new {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}]
+      ![ioTypeMap searchKey !.new {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}]
       !typedAttributeList
     }
 }

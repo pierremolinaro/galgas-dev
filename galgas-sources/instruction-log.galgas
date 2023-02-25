@@ -116,7 +116,7 @@ override method @logInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
   for (mLogMessage mLogExpression) in self.mLogList do
@@ -126,6 +126,7 @@ override method @logInstructionAST analyzeSemanticInstruction
       !?ioUsefulEntitiesGraph
       !inferenceType: @unifiedTypeMapEntry.null
       !inAnalysisContext
+      !?ioTypeMap
       !?ioVariableMap
       ?let expression
     ]

@@ -164,7 +164,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @bool inHasTranslateFeature
   ?let @terminalMap inTerminalMap
   ?let @string inLexiqueName
@@ -189,6 +189,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
   for (mActualSelector mInputParameter) in self.mActualInputParameterList, (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in sentAttributeList do
     [mInputParameter analyzeInputParameter
       !inAnalysisContext
+      !?ioTypeMap
       !mLexicalType
       !mLexicalAttributeName
       !?terminalCheckAssignementList
@@ -208,11 +209,13 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
 #--- Check syntax directed translation destination variable
   [self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor analyzeSDT
     !inAnalysisContext
+    !?ioTypeMap
     !inHasTranslateFeature
     !?ioVariableMap
   ]
   [self.mGrammarInstructionSyntaxDirectedTranslationToken analyzeSDT
     !inAnalysisContext
+    !?ioTypeMap
     !inHasTranslateFeature
     !?ioVariableMap
   ]

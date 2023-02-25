@@ -141,6 +141,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
@@ -150,17 +151,18 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?let expression
   ]
 #--- Get type information
-   let castType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeName]
+   let castType = [ioTypeMap searchKey !self.mTypeName]
 #--- This type is either a class
   if [[expression.mResultType definition].mTypeKindEnum isClassType] then
   #--- Check expression type is a descendant of named type
     var @unifiedTypeMapEntry t = castType
     var @bool found = t == expression.mResultType
-    loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
+    loop ([ioTypeMap count] + 1)
     while (not found) & not [[t definition].mSuperType isNull] do
       t = [t definition].mSuperType
       found = t == expression.mResultType
@@ -197,6 +199,7 @@ override method @castInExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
@@ -206,17 +209,18 @@ override method @castInExpressionAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext 
+    !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration expression
    ]
 #--- Get type information
-   let type = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeName]
+   let type = [ioTypeMap searchKey !self.mTypeName]
 #--- This type is an @object type
   if [[expression.mResultType definition].mTypeKindEnum isClassType]then
   #--- Check expression type is a descendant of named type
     var @unifiedTypeMapEntry t = type
     var @bool found = t == expression.mResultType
-    loop ([inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
+    loop ([ioTypeMap count] + 1)
     while (not found) & not [[t definition].mSuperType isNull] do
       t = [t definition].mSuperType
       found = t == expression.mResultType

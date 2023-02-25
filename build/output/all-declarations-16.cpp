@@ -6157,6 +6157,7 @@ GALGAS_programComponentForGeneration_2D_weak GALGAS_programComponentForGeneratio
 
 void callExtensionMethod_analyzeGrammarInstructionSDT (cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
                                                        const GALGAS_analysisContext constin_inAnalysisContext,
+                                                       GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                        const GALGAS_bool constin_inHasTranslateFeature,
                                                        const GALGAS_string constin_inSyntaxDirectedTranslationResultVarName,
                                                        GALGAS_stringlist & io_ioAssignementList,
@@ -6167,7 +6168,7 @@ void callExtensionMethod_analyzeGrammarInstructionSDT (cPtr_abstractGrammarInstr
 //--- Find method
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
-    inObject->method_analyzeGrammarInstructionSDT (constin_inAnalysisContext, constin_inHasTranslateFeature, constin_inSyntaxDirectedTranslationResultVarName, io_ioAssignementList, io_ioVariableMap, inCompiler COMMA_THERE) ;
+    inObject->method_analyzeGrammarInstructionSDT (constin_inAnalysisContext, io_ioTypeMap, constin_inHasTranslateFeature, constin_inSyntaxDirectedTranslationResultVarName, io_ioAssignementList, io_ioVariableMap, inCompiler COMMA_THERE) ;
   }
 }
 //----------------------------------------------------------------------------------------------------------------------
@@ -7179,6 +7180,36 @@ GALGAS_unifiedTypeDefinition GALGAS_unifiedTypeDefinition::extractObject (const 
   }
   return result ;
 }
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@unifiedTypeMap unsolvedEntryList'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lstringlist extensionGetter_unsolvedEntryList (const GALGAS_unifiedTypeMap & inObject,
+                                                      C_Compiler *
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_lstringlist result_result ; // Returned variable
+  result_result = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("unified-type-map.galgas", 19)) ;
+  const GALGAS_unifiedTypeMap temp_0 = inObject ;
+  cEnumerator_unifiedTypeMap enumerator_1193 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_1193.hasCurrentObject ()) {
+    enumGalgasBool test_1 = kBoolTrue ;
+    if (kBoolTrue == test_1) {
+      test_1 = enumerator_1193.current_mElement (HERE).readProperty_mDefinition ().getter_isUnsolved (SOURCE_FILE ("unified-type-map.galgas", 21)).boolEnum () ;
+      if (kBoolTrue == test_1) {
+        result_result.addAssign_operation (enumerator_1193.current_lkey (HERE)  COMMA_SOURCE_FILE ("unified-type-map.galgas", 22)) ;
+      }
+    }
+    enumerator_1193.gotoNextObject () ;
+  }
+//---
+  return result_result ;
+}
+
+
+
 
 //----------------------------------------------------------------------------------------------------------------------
 // @unifiedTypeMapElementClass reference class

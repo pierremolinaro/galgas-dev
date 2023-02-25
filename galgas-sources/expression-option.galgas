@@ -92,6 +92,7 @@ override method @optionExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {

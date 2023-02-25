@@ -87,28 +87,29 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext {
+                                ?!@unifiedTypeMap ioTypeMap
+  ?!@semanticContext unused ioSemanticContext {
 #---
   if self.mDimension.bigint == 0 then
     error self.mDimension: "the dimension of an array should be > 0"
   end
 #--- array type
-#  [!?ioSemanticContext.mTypeMap makeEntry  !self.mArrayTypeName ?let arrayTypeIndex]
-  [!?ioSemanticContext.mTypeMap makeEntry !self.mArrayTypeName ?let arrayTypeIndex]
+#  [!?ioTypeMap makeEntry  !self.mArrayTypeName ?let arrayTypeIndex]
+  [!?ioTypeMap makeEntry !self.mArrayTypeName ?let arrayTypeIndex]
 #--- element type
-  [!?ioSemanticContext.mTypeMap makeEntry !self.mElementTypeName ?let elementTypeIndex]
-#  [!?ioSemanticContext.mTypeMap makeEntry  !self.mElementTypeName ?let elementTypeIndex]
+  [!?ioTypeMap makeEntry !self.mElementTypeName ?let elementTypeIndex]
+#  [!?ioTypeMap makeEntry  !self.mElementTypeName ?let elementTypeIndex]
 #---
   var @constructorMap constructorMap = {}
-  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
   var @setterMap setterMap ={}
   let @instanceMethodMap instanceMethodMap = {}
 #--- 
-#  [!?ioSemanticContext.mTypeMap makeEntryFromString !"bool" ?let boolType]
-  [!?ioSemanticContext.mTypeMap makeEntry !.new {!"bool" !.nowhere} ?let boolType]
+#  [!?ioTypeMap makeEntryFromString !"bool" ?let boolType]
+  [!?ioTypeMap makeEntry !.new {!"bool" !.nowhere} ?let boolType]
 #--- 
-#  [!?ioSemanticContext.mTypeMap makeEntryFromString !"uint" ?let uintType]
-  [!?ioSemanticContext.mTypeMap makeEntry !.new {!"uint" !.nowhere} ?let uintType]
+#  [!?ioTypeMap makeEntryFromString !"uint" ?let uintType]
+  [!?ioTypeMap makeEntry !.new {!"uint" !.nowhere} ?let uintType]
 #---
   var @functionSignature uintArgs = {}
   var @uint idx = 0
@@ -126,14 +127,14 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
 #--- Getters
   enterBaseGetterWithoutArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !getterName: "axisCount"
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !getterName: "sizeForAxis"
     !argSelector: "" !"uint" !"inAxisIndex"
     !returnedTypeName:"uint"
@@ -141,7 +142,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
   )
   enterBaseGetterWithArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !getterName: "rangeForAxis"
     !argSelector: "" !"uint" !"inAxisIndex"
     !returnedTypeName:"range"
@@ -249,7 +250,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
     !"array-" + [self.mArrayTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -260,8 +261,8 @@ override method @arrayDeclarationAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+  ?let @semanticContext unused inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
@@ -274,8 +275,8 @@ override method @arrayDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"array " + self.mArrayTypeName
     !@arrayTypeForGeneration.new {
-      ![inSemanticContext.mTypeMap searchKey !self.mArrayTypeName]
-      ![inSemanticContext.mTypeMap searchKey !self.mElementTypeName]
+      ![ioTypeMap searchKey !self.mArrayTypeName]
+      ![ioTypeMap searchKey !self.mElementTypeName]
       !self.mDimension.bigint
     }
 }

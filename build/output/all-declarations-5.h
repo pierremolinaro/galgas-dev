@@ -3607,6 +3607,7 @@ class cPtr_predefinedTypeAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -6685,34 +6686,6 @@ void callExtensionMethod_getConstructorMap (class cPtr_predefinedTypeAST * inObj
                                             class GALGAS_constructorMap & out_outConstructorMap,
                                             C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 2: class for element of '@unifiedTypeMap' map
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class cMapElement_unifiedTypeMap : public cMapElement {
-//--- Map attributes
-  public: GALGAS_unifiedTypeMapElementClass mProperty_mElement ;
-
-//--- Constructor
-  public: cMapElement_unifiedTypeMap (const GALGAS_lstring & inKey,
-                                      const GALGAS_unifiedTypeMapElementClass & in_mElement
-                                      COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cMapElement * copy (void) ;
-
-//--- Description
- public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
-} ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //

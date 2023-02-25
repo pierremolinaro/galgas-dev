@@ -263,7 +263,7 @@ void routine_compileSemanticDeclarationsGalgas (class GALGAS_lstringlist & ioArg
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_performGalgas_33_ProjectGlobalCheckings (const class GALGAS_semanticContext constinArgument0,
+void routine_performGalgas_33_ProjectGlobalCheckings (class GALGAS_unifiedTypeMap & ioArgument0,
                                                       const class GALGAS_semanticDeclarationListAST constinArgument1,
                                                       class C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;

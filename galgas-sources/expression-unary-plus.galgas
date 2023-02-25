@@ -60,6 +60,7 @@ override method @unaryPlusExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
+  ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Expression analysis
@@ -68,6 +69,7 @@ override method @unaryPlusExpressionAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: .null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?outExpression
   ]

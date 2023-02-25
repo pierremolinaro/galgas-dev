@@ -356,12 +356,12 @@ private proc compileProject ?let @lstring inProjectSourceFile
          + "/build/helpers/" +  [inProjectSourceFile lastPathComponent] + ".html"
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
     var @stringset firstLetterSet = {}
-    for (lkey *) in semanticContext.mTypeMap do
+    for (lkey *) in typeMap do
       firstLetterSet += ![[lkey.string characterAtIndex!0] string]
     end
     var @string tableOfTypeString = ""
     var @char currentFirstLetter = ' '
-    for (type_lkey *) in semanticContext.mTypeMap do
+    for (type_lkey *) in typeMap do
       if currentFirstLetter != [type_lkey.string characterAtIndex !0] then
         currentFirstLetter = [type_lkey.string characterAtIndex !0]
         tableOfTypeString += "<br><a name=\"" + [currentFirstLetter uint] + "\"><b>" + currentFirstLetter + "</b></a><br>"
@@ -370,7 +370,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
     end
     let typeDumpString = [filewrapper typeDumpGenerationTemplate.typeDump
       ![inProjectSourceFile lastPathComponent]
-      !semanticContext.mTypeMap
+      !typeMap
       !firstLetterSet
       !tableOfTypeString
     ]
@@ -381,14 +381,14 @@ private proc compileProject ?let @lstring inProjectSourceFile
 #---------------------------------- Perform global checkings
   if (0 == @uint.errorCount) & (inSourceToAnalyze == "") then
     performGalgas3ProjectGlobalCheckings (
-      !semanticContext
+      !?typeMap
       !declarationAST.mDeclarationList
     )
   end
 #---------------------------------- File generation
   if (0 == @uint.errorCount) & (inSourceToAnalyze == "") then
     projectGeneration (
-      !semanticContext.mTypeMap
+      !typeMap
       !buildDirectory
       !optionComponentMapForGeneration
       !appProductFileList

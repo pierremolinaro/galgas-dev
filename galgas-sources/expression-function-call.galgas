@@ -70,6 +70,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
@@ -104,6 +105,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
         !?ioUsefulEntitiesGraph
         !inferenceType: mFormalArgumentType
         !inAnalysisContext
+        !?ioTypeMap
         !?ioVariableMap
         ?@semanticExpressionForGeneration expression
       ]

@@ -197,7 +197,7 @@ override method @selfSetterCallInstructionAST enterInstructionInSemanticContext
 override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
                                                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                                           ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
                                                           ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                                                           ?!@localVarManager ioVariableMap {
   var @unifiedTypeMapEntry receiverType
@@ -255,7 +255,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
 #--- Type cast ?
   let @unifiedTypeMapEntry castType
   if self.mTypeNameForCasting.string != "" then
-    castType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeNameForCasting]
+    castType = [ioTypeMap searchKey !self.mTypeNameForCasting]
     checkAssignmentTypes (!receiverType !castType !self.mTypeNameForCasting.location)
   else 
     castType = receiverType
@@ -277,6 +277,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !self.mSetterName
     !invokedEntityNameForErrorSignaling: "'" + self.mSetterName + "' setter header"
     !routineSignature
@@ -323,7 +324,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
@@ -341,6 +342,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
+      !?ioTypeMap
       !self.mSetterName
       !invokedEntityNameForErrorSignaling: "'" + self.mSetterName + "' setter header"
       !routineSignature

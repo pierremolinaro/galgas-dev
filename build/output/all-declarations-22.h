@@ -709,12 +709,13 @@ void routine_addExtensions (const class GALGAS_extensionMethodMapForBuildingCont
                             const class GALGAS_extensionGetterMapForBuildingContext constinArgument1,
                             const class GALGAS_extensionSetterMapForBuildingContext constinArgument2,
                             class GALGAS_semanticContext & ioArgument3,
-                            const class GALGAS_lstring constinArgument4,
-                            const class GALGAS_bool constinArgument5,
-                            class GALGAS_getterMap & ioArgument6,
-                            class GALGAS_setterMap & ioArgument7,
-                            class GALGAS_instanceMethodMap & ioArgument8,
-                            const class GALGAS_bool constinArgument9,
+                            class GALGAS_unifiedTypeMap & ioArgument4,
+                            const class GALGAS_lstring constinArgument5,
+                            const class GALGAS_bool constinArgument6,
+                            class GALGAS_getterMap & ioArgument7,
+                            class GALGAS_setterMap & ioArgument8,
+                            class GALGAS_instanceMethodMap & ioArgument9,
+                            const class GALGAS_bool constinArgument10,
                             class C_Compiler * inCompiler
                             COMMA_LOCATION_ARGS) ;
 

@@ -351,14 +351,15 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+  ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext
 {
 #--- string type index
-  [!?ioSemanticContext.mTypeMap makeEntryFromString !"string" ?let stringTypeIndex]
+  [!?ioTypeMap makeEntryFromString !"string" ?let stringTypeIndex]
 #--- location type index
-  [!?ioSemanticContext.mTypeMap makeEntryFromString !"location" ?let locationTypeEntry]
+  [!?ioTypeMap makeEntryFromString !"location" ?let locationTypeEntry]
 #--- lstring type index
-  [!?ioSemanticContext.mTypeMap makeEntryFromString !"lstring" ?let lstringTypeIndex]
+  [!?ioTypeMap makeEntryFromString !"lstring" ?let lstringTypeIndex]
 #--- Enumeration description
   var @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
 #--- Attributes
@@ -381,20 +382,20 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   end
 #---
   var @constructorMap constructorMap = {}
-  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap)
+  commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
 #--- Constructors
   enterConstructorWithoutArgument (
     !?constructorMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !name:"emptyMap"
     !resultTypeName:self.mMapTypeName.string
     !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?constructorMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !name:"mapWithMapToOverride"
     !argTypeName:self.mMapTypeName.string
     !argName:"inMap"
@@ -404,14 +405,14 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
 #--- Getters
   enterInheritedGetterWithoutArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !getterName:"levels"
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
   enterInheritedGetterWith2Arguments (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !"hasKeyAtLevel"
     !"string"
     !"inKey"
@@ -422,21 +423,21 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !getterName:"keySet"
     !returnedTypeName:"stringset"
     !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !getterName:"keyList"
     !returnedTypeName:"lstringlist"
     !hasCompilerArgument:false
   )
   enterInheritedGetterWithArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !getterName:"hasKey"
     !argumentTypeName:"string"
     !argumentName:"inKey"
@@ -445,7 +446,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   )
   enterInheritedGetterWithArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap 
+    !?ioTypeMap 
     !getterName:"locationForKey"
     !argumentTypeName:"string"
     !argumentName:"inKey" 
@@ -454,14 +455,14 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   )
   enterBaseGetterWithoutArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !getterName: "overriddenMap"
     !returnedTypeName:self.mMapTypeName.string
     !hasCompilerArgument:true
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !getterName:"count"
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
@@ -493,7 +494,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     if [initExpression isSome] then
       error mPropertyName : "property initialization is not handled for a map"
     end
-    [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     let hasSetter = true
     var hasSelector = false
     for (attribute) in mAttributeList do
@@ -577,7 +578,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
 #--- Enter "attributeForKey" getters
   for (* mPropertyTypeName unused isOptional mPropertyName 3*) in self.mPropertyList do
     let accessorName = @lstring.new {!mPropertyName.string + "ForKey" !mPropertyName.location}
-    [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
       !.definedAsMember
@@ -607,7 +608,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
       !"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey"
       !mPropertyName.location
     }
-    [!?ioSemanticContext.mTypeMap makeEntry
+    [!?ioTypeMap makeEntry
       !mPropertyTypeName
       ?let @unifiedTypeMapEntry attributeTypeIndex
     ]
@@ -632,6 +633,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
+    !?ioTypeMap
     !self.mMapTypeName
     !isClass: false
     !?getterMap
@@ -640,7 +642,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !acceptSetters: true
   )
 #--- Element type index
-  [!?ioSemanticContext.mTypeMap makeEntry
+  [!?ioTypeMap makeEntry
     !@lstring.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName.location}
     ?let @unifiedTypeMapEntry elementTypeEntry
   ]
@@ -674,7 +676,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !"map-" + [self.mMapTypeName fileNameRepresentation]
     !@headerKind.twoHeaders
   }
-  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -697,8 +699,8 @@ override method @mapDeclarationAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+  ?let @semanticContext unused  inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
@@ -723,7 +725,7 @@ override method @mapDeclarationAST semanticAnalysis
   for (* mPropertyTypeName unused isOptional mPropertyName 3*) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    let @unifiedTypeMapEntry t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
+    let @unifiedTypeMapEntry t = [ioTypeMap searchKey !mPropertyTypeName]
     let hasSetter = true
     let hasSelector = false
     typedAttributeList +=
@@ -775,8 +777,8 @@ override method @mapDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"map " + self.mMapTypeName
     !@mapTypeForGeneration.new {
-      ![inSemanticContext.mTypeMap searchKey !self.mMapTypeName]
-      ![inSemanticContext.mTypeMap searchKey !.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName}]
+      ![ioTypeMap searchKey !self.mMapTypeName]
+      ![ioTypeMap searchKey !.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName}]
       !self.mMapTypeName
       !typedAttributeList
       !self.mInsertMethodList

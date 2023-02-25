@@ -127,6 +127,7 @@ override method @loopInstructionWithoutVariantAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?let loopExpression
   ]

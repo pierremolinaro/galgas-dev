@@ -191,6 +191,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@templateInstructionListForGeneration ioInstructionList
 {
 #--- Foreach expression
@@ -198,6 +199,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     ?let expression
   ]
 #--- Check expression is enumerable (empty List if cannot be enumerated)
@@ -211,6 +213,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !self.mBeforeInstructionList
     !?beforeInstructionList
   )
@@ -269,6 +272,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !doAnalysisContext
+    !?ioTypeMap
     !self.mDoInstructionList
     !?doInstructionList
   )
@@ -278,6 +282,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !self.mBetweenInstructionList
     !?betweenInstructionList
   )
@@ -287,6 +292,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !self.mAfterInstructionList
     !?afterInstructionList
   )

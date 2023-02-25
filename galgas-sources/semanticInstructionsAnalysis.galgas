@@ -127,6 +127,7 @@ abstract method @actualParameterAST checkAgainstFormalArgument
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+  ?!@unifiedTypeMap ioTypeMap
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
@@ -152,6 +153,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
@@ -176,6 +178,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
       !?ioUsefulEntitiesGraph
       !inferenceType: inFormalArgumentType
       !inAnalysisContext
+      !?ioTypeMap
       !?ioVariableMap
       ?@semanticExpressionForGeneration expression
     ]
@@ -194,6 +197,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
                             ?let @lstring unused inUsefulnessCallerEntityName
                             ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
                             ?let @analysisContext unused inAnalysisContext
+                            ?!@unifiedTypeMap unused ioTypeMap
                             ?let @lstring inFormalSelector
                             ?let @unifiedTypeMapEntry inFormalArgumentType
                             ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
@@ -262,6 +266,7 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
@@ -303,6 +308,7 @@ override method @outputInputSelfParameterAST checkAgainstFormalArgument
                           ?let @lstring unused inUsefulnessCallerEntityName
                           ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
                           ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
                           ?let @lstring inFormalSelector
                           ?let @unifiedTypeMapEntry inFormalArgumentType
                           ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
@@ -354,6 +360,7 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
                                             ?let @lstring unused inUsefulnessCallerEntityName
                                             ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
                                             ?let @analysisContext unused inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
                                             ?let @lstring unused inFormalSelector
                                             ?let @unifiedTypeMapEntry inFormalArgumentType
                                             ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
@@ -390,6 +397,7 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
@@ -437,6 +445,7 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
@@ -485,6 +494,7 @@ override method @inputActualSelfParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
@@ -533,7 +543,8 @@ override method @inputActualSelfParameterAST checkAgainstFormalArgument
 override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
+  ?let @analysisContext unused inAnalysisContext
+  ?!@unifiedTypeMap ioTypeMap
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
@@ -555,7 +566,7 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
 #--- Analyze or infer type
 
   if self.mInputOptionalActualTypeName.string != "" then
-    let parameterType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mInputOptionalActualTypeName]
+    let parameterType = [ioTypeMap searchKey !self.mInputOptionalActualTypeName]
     if inFormalArgumentType != parameterType then
       error self.mInputActualParameterName
       :"the parameter object has the '@" + [parameterType definition].mTypeName.string
@@ -592,7 +603,8 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
 override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
+  ?let @analysisContext unused inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
@@ -613,7 +625,7 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   end
 #--- Analyze or infer type
   if self.mInputOptionalActualTypeName.string != "" then
-    let parameterType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mInputOptionalActualTypeName]
+    let parameterType = [ioTypeMap searchKey !self.mInputOptionalActualTypeName]
     if inFormalArgumentType != parameterType then
       error self.mInputActualParameterName
       :"the parameter object has the '@" + [parameterType definition].mTypeName.string
@@ -661,6 +673,7 @@ override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
@@ -691,6 +704,7 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?let @lstring unused inFormalSelector
   ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
@@ -782,6 +796,7 @@ override method @outputInputSelfParameterAST enterParameterInSemanticContext ?!@
 proc analyzeRoutineArguments  ?let @lstring inUsefulnessCallerEntityName
                               ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                               ?let @analysisContext inAnalysisContext
+                              ?!@unifiedTypeMap ioTypeMap
                               ?let @lstring inRoutineName
                               ?invokedEntityNameForErrorSignaling: let @string inInvokedEntityName
                               ?let @formalParameterSignature inRoutineSignature
@@ -803,6 +818,7 @@ proc analyzeRoutineArguments  ?let @lstring inUsefulnessCallerEntityName
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inAnalysisContext
+        !?ioTypeMap
         !mFormalSelector
         !mFormalArgumentType
         !mFormalArgumentPassingMode
@@ -894,6 +910,7 @@ proc checkExpressionIsBoolean
 
 abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
+  ?!@unifiedTypeMap ioTypeMap
   ?let @bool inHasTranslateFeature
   ?let @string inSyntaxDirectedTranslationResultVarName
   ?!@stringlist ioAssignementList
@@ -903,6 +920,7 @@ abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analy
 
 override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGrammarInstructionSDT
   ?let @analysisContext unused inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?let @bool unused inHasTranslateFeature
   ?let @string unused inSyntaxDirectedTranslationResultVarName
   ?!@stringlist unused ioAssignementList
@@ -913,6 +931,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGr
 
 override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeGrammarInstructionSDT
   ?let @analysisContext unused inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?let @bool inHasTranslateFeature
   ?let @string unused inSyntaxDirectedTranslationResultVarName
   ?!@stringlist unused ioAssignementList
@@ -926,6 +945,7 @@ override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeG
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?let @bool inHasTranslateFeature
   ?let @string inSyntaxDirectedTranslationResultVarName
   ?!@stringlist ioAssignementList
@@ -947,6 +967,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
+  ?!@unifiedTypeMap ioTypeMap
   ?let @bool inHasTranslateFeature
   ?let @string inSyntaxDirectedTranslationResultVarName
   ?!@stringlist ioAssignementList
@@ -955,7 +976,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location locationIndex]
-  let type = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mActualParameterTypeName]
+  let type = [ioTypeMap searchKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalVariable !self.mActualParameterName !warnsIfNotMutated: true !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then
@@ -970,6 +991,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @bool inHasTranslateFeature
   ?let @string inSyntaxDirectedTranslationResultVarName
   ?!@stringlist ioAssignementList
@@ -978,7 +1000,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location locationIndex]
-  let type = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mActualParameterTypeName]
+  let type = [ioTypeMap searchKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalConstant !self.mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
   if expectedType != type then

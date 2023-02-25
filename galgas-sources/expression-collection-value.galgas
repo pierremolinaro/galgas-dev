@@ -153,6 +153,7 @@ override method @collectionValueAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Type
@@ -160,7 +161,7 @@ override method @collectionValueAST analyzeSemanticExpression
   if self.mTypeName.string == "" then
     targetType = inType
   else
-    targetType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeName]
+    targetType = [ioTypeMap searchKey !self.mTypeName]
   end
 #---
   if targetType == .null then
@@ -182,6 +183,7 @@ override method @collectionValueAST analyzeSemanticExpression
           !inUsefulnessCallerEntityName
           !?ioUsefulEntitiesGraph
           !inAnalysisContext
+          !?ioTypeMap
           !targetType
           !?ioVariableMap
           !?collectionValueElementListForGeneration
@@ -219,6 +221,7 @@ abstract method @abstractCollectionValueElement analyze
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @unifiedTypeMapEntry inElementType
   ?!@localVarManager ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
@@ -229,6 +232,7 @@ override method @expressionCollectionValue analyze
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @unifiedTypeMapEntry inElementType
   ?!@localVarManager ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
@@ -238,6 +242,7 @@ override method @expressionCollectionValue analyze
     !?ioUsefulEntitiesGraph
     !inferenceType: inElementType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
   ]
@@ -253,6 +258,7 @@ override method @expressionListCollectionValue analyze
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @unifiedTypeMapEntry inElementType
   ?!@localVarManager ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration {
@@ -270,6 +276,7 @@ override method @expressionListCollectionValue analyze
         !?ioUsefulEntitiesGraph
         !inferenceType: mFormalArgumentType
         !inAnalysisContext
+        !?ioTypeMap
         !?ioVariableMap
         ?@semanticExpressionForGeneration exp
       ]

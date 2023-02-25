@@ -69,7 +69,7 @@ override method @procCallInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
@@ -93,6 +93,7 @@ override method @procCallInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !self.mRoutineName
     !invokedEntityNameForErrorSignaling: "'" + self.mRoutineName + "' routine header"
     !routineSignature

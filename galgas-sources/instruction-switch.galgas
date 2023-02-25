@@ -245,6 +245,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?let switchExpression
   ]

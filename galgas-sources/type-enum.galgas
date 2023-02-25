@@ -166,6 +166,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+  ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext {
 #---
   var @constructorMap constructorMap = {}
@@ -174,7 +175,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
 #  let @classMethodMap classMethodMap = {}
   var @optionalMethodMap optionalMethodMap = {}
 #--- currentType type index
-  [!?ioSemanticContext.mTypeMap makeEntry  !self.mEnumTypeName ?let enumTypeEntry]
+  [!?ioTypeMap makeEntry  !self.mEnumTypeName ?let enumTypeEntry]
 #--- Constructors
   var @constantIndexMap constantMap = {}
   var @bool hasAssociatedValues = false
@@ -182,7 +183,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     var @unifiedTypeMapEntryList associatedTypeList = {}
     var @functionSignature argumentTypeList = {}
     for (typeName selectorName) in mAssociatedValueDefinitionList do
-      [!?ioSemanticContext.mTypeMap makeEntry  !typeName ?let associatedTypeEntry]
+      [!?ioTypeMap makeEntry  !typeName ?let associatedTypeEntry]
       argumentTypeList += !selectorName !associatedTypeEntry !typeName.string
       associatedTypeList += !associatedTypeEntry
       hasAssociatedValues = true
@@ -199,7 +200,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
   for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
     var @optionalMethodSignature argumentTypeList = {}
     for (typeName selectorName) in mAssociatedValueDefinitionList do
-      [!?ioSemanticContext.mTypeMap makeEntry  !typeName ?let associatedTypeEntry]
+      [!?ioTypeMap makeEntry  !typeName ?let associatedTypeEntry]
       argumentTypeList += !false !selectorName !associatedTypeEntry !typeName.string
     end
     [!?optionalMethodMap insertKey
@@ -213,7 +214,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
       var @unifiedTypeMapEntryList associatedTypeList = {}
       var @formalParameterSignature argumentTypeList = {}
       for (typeName selectorName) in mAssociatedValueDefinitionList do
-        [!?ioSemanticContext.mTypeMap makeEntry  !typeName ?let associatedTypeEntry]
+        [!?ioTypeMap makeEntry  !typeName ?let associatedTypeEntry]
         argumentTypeList += !selectorName !associatedTypeEntry !.argumentOut !typeName.string
         associatedTypeList += !associatedTypeEntry
         hasAssociatedValues = true
@@ -230,11 +231,11 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     end
   end
 #--- getters
-  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap)
+  commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
   for (mConstantName *) in self.mConstantList do
     enterBaseGetterWithoutArgument (
       !?getterMap
-      !?ioSemanticContext.mTypeMap
+      !?ioTypeMap
       !getterName: "is" + [mConstantName stringByCapitalizingFirstCharacter]
       !returnedTypeName:"bool"
       !hasCompilerArgument:false
@@ -246,6 +247,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
+    !?ioTypeMap
     !self.mEnumTypeName
     !isClass: false
     !?getterMap
@@ -293,7 +295,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !"enum-" + [self.mEnumTypeName fileNameRepresentation]
     !if hasAssociatedValues then @headerKind.twoHeaders else @headerKind.oneHeader end
   }
-  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -304,8 +306,8 @@ override method @enumDeclarationAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+  ?let @semanticContext unused inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
@@ -323,7 +325,7 @@ override method @enumDeclarationAST semanticAnalysis
     for (mValue0 mValue1) in mAssociatedValueDefinitionList do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mValue0)
       [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-      let associatedTypeEntry = [inSemanticContext.mTypeMap searchKey !mValue0]
+      let associatedTypeEntry = [ioTypeMap searchKey !mValue0]
       associatedTypeList += !associatedTypeEntry
       if [associatedValueNameSet hasKey !mValue1.string] then
         error mValue1 : "duplicated name"
@@ -334,7 +336,7 @@ override method @enumDeclarationAST semanticAnalysis
     enumConstantListForGeneration += !mConstantName.string !associatedTypeList
   end
 #---
-  let selfType = [inSemanticContext.mTypeMap searchKey !self.mEnumTypeName]
+  let selfType = [ioTypeMap searchKey !self.mEnumTypeName]
   ioSemanticDeclarationListForGeneration +=
     !"enum " + self.mEnumTypeName
     !@enumTypeForGeneration.new {

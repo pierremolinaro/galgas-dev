@@ -109,6 +109,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext
 {
 #--- Check unicity of slot names
@@ -127,22 +128,22 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     slotNameSet += !slotName
   end  
 #--- boolset type index
-  [!?ioSemanticContext.mTypeMap makeEntry !self.mBoolsetTypeName ?let boolsetTypeIndex]
+  [!?ioTypeMap makeEntry !self.mBoolsetTypeName ?let boolsetTypeIndex]
 #--- Constructors and attribute map
-  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?@getterMap getterMap)
+  commonGetterMapForAllTypes (!?ioTypeMap ?@getterMap getterMap)
   var @constructorMap constructorMap = {}
   [!?constructorMap insertKey !["none" nowhere] !{} !false !boolsetTypeIndex] 
   [!?constructorMap insertKey !["all" nowhere] !{} !false !boolsetTypeIndex] 
   enterBaseFinalGetterWithoutArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap 
+    !?ioTypeMap 
     !getterName:"none"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
   enterBaseFinalGetterWithoutArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap 
+    !?ioTypeMap 
     !getterName:"all"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
@@ -152,7 +153,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
       [!?constructorMap insertKey !slotName !{} !false !boolsetTypeIndex] 
       enterBaseFinalGetterWithoutArgument (
         !?getterMap
-        !?ioSemanticContext.mTypeMap 
+        !?ioTypeMap 
         !getterName:slotName.string
         !returnedTypeName:"bool"
         !hasCompilerArgument:false
@@ -169,6 +170,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
+    !?ioTypeMap
     !self.mBoolsetTypeName
     !isClass: false
     !?getterMap
@@ -209,7 +211,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !"boolset-" + [self.mBoolsetTypeName fileNameRepresentation]
     !.oneHeader
   }
-  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition]
 }
 
 
@@ -221,8 +223,8 @@ override method @boolsetDeclarationAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+  ?let @semanticContext unused inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
@@ -237,7 +239,7 @@ override method @boolsetDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"boolset " + self.mBoolsetTypeName
     !@boolsetTypeForGeneration.new {
-      ![inSemanticContext.mTypeMap searchKey !self.mBoolsetTypeName]
+      ![ioTypeMap searchKey !self.mBoolsetTypeName]
       !self.mFlagList
     }
 }

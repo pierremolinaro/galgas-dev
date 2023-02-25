@@ -398,6 +398,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration receiverExpression
   ]
@@ -419,6 +420,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration keyExpression
   ]
@@ -451,7 +453,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   end
 #--- Add lkey as @lstring constant
   localConstantList +=
-    ![inAnalysisContext.mSemanticContext.mTypeMap searchKey !["lstring" nowhere]]
+    ![ioTypeMap searchKey !["lstring" nowhere]]
     !@lstring.new {!self.mPrefix.string + "lkey" !self.mEndOfReceiverExpression}
     !true # Do not warn if unused
     !objectArrayCppName + "->mPropertylkey"
@@ -510,6 +512,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration keyExpression
   ]
@@ -593,7 +596,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
       !objectArrayCppName + "->mProperty_" + [mPropertyName identifierRepresentation]
   end
   let localConstantList = @localConstantList {
-    ![inAnalysisContext.mSemanticContext.mTypeMap searchKey !["lstring" nowhere]]
+    ![ioTypeMap searchKey !["lstring" nowhere]]
     !@lstring.new {!self.mPrefix.string + "lkey" !self.mEndOfReceiverExpression}
     !true # Do not warn if unused
     !objectArrayCppName + "->mProperty_lkey"

@@ -175,6 +175,7 @@ override method @optionComponentDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?!@semanticContext ioSemanticContext
 {
   var @commandLineOptionMap boolOptionMap = {}

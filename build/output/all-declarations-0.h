@@ -395,6 +395,7 @@ class cPtr_templateInstructionAST : public acStrongPtr_class {
   public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
            C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
@@ -732,6 +733,7 @@ class cPtr_templateExpressionAST : public acStrongPtr_class {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
@@ -1144,6 +1146,7 @@ class cPtr_templateConstructorAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1301,6 +1304,7 @@ class cPtr_templateFileWrapperTemplateCallAST : public cPtr_templateExpressionAS
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1455,6 +1459,7 @@ class cPtr_templateExtensionTemplateCallAST : public cPtr_templateExpressionAST 
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1609,6 +1614,7 @@ class cPtr_templateAndOperationAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1763,6 +1769,7 @@ class cPtr_templateOrOperationAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1917,6 +1924,7 @@ class cPtr_templateXorOperationAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2068,6 +2076,7 @@ class cPtr_templateTrueBoolAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2215,6 +2224,7 @@ class cPtr_templateFalseBoolAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2365,6 +2375,7 @@ class cPtr_templateLiteralStringExpressionAST : public cPtr_templateExpressionAS
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2514,6 +2525,7 @@ class cPtr_templateLiteralUIntExpressionAST : public cPtr_templateExpressionAST 
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2661,6 +2673,7 @@ class cPtr_templateLiteralCharExpressionAST : public cPtr_templateExpressionAST 
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2808,6 +2821,7 @@ class cPtr_templateLiteralDoubleExpressionAST : public cPtr_templateExpressionAS
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2958,6 +2972,7 @@ class cPtr_structFieldAccessTemplateExpressionAST : public cPtr_templateExpressi
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3109,6 +3124,7 @@ class cPtr_templateNotOperatorAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3258,6 +3274,7 @@ class cPtr_templateLogicalNegateAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3413,6 +3430,7 @@ class cPtr_templateOptionAccessAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3650,6 +3668,7 @@ class cPtr_templateTestDynamicClassAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3806,6 +3825,7 @@ class cPtr_templateFunctionCallAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3955,6 +3975,7 @@ class cPtr_templateVarInExpressionAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -4105,6 +4126,7 @@ class cPtr_templateAddOperationAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -4259,6 +4281,7 @@ class cPtr_templateSubOperationAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -4413,6 +4436,7 @@ class cPtr_templateMultiplyOperationAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -4567,6 +4591,7 @@ class cPtr_templateDivideOperationAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -4721,6 +4746,7 @@ class cPtr_templateModuloOperationAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -4872,6 +4898,7 @@ class cPtr_templateUnaryMinusOperationAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -5024,6 +5051,7 @@ class cPtr_templateEqualTestAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -5178,6 +5206,7 @@ class cPtr_templateNonEqualTestAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -5332,6 +5361,7 @@ class cPtr_templateStrictInfTestAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -5486,6 +5516,7 @@ class cPtr_templateInfOrEqualTestAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -5640,6 +5671,7 @@ class cPtr_templateStrictSupTestAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -5794,6 +5826,7 @@ class cPtr_templateSupOrEqualTestAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -5948,6 +5981,7 @@ class cPtr_templateLeftShiftOperationAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -6102,6 +6136,7 @@ class cPtr_templateRightShiftOperationAST : public cPtr_templateExpressionAST {
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -6253,6 +6288,7 @@ class cPtr_templateInstructionStringAST : public cPtr_templateInstructionAST {
   public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -6400,6 +6436,7 @@ class cPtr_templateInstructionExpressionAST : public cPtr_templateInstructionAST
   public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -6552,6 +6589,7 @@ class cPtr_templateBlockInstructionAST : public cPtr_templateInstructionAST {
   public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -6700,6 +6738,7 @@ class cPtr_templateInstructionGetColumnLocationAST : public cPtr_templateInstruc
   public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -6842,6 +6881,7 @@ class cPtr_templateInstructionGotoColumnLocationAST : public cPtr_templateInstru
   public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -7224,6 +7264,7 @@ class cPtr_templateInstructionIfAST : public cPtr_templateInstructionAST {
   public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 

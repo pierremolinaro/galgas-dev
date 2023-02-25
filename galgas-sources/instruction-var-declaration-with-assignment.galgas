@@ -125,7 +125,7 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
@@ -135,6 +135,7 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration expression
   ]

@@ -436,15 +436,16 @@ void routine_analyzeConstructorInvocation (const class GALGAS_lstring constinArg
                                            class GALGAS_usefulEntitiesGraph & ioArgument1,
                                            const class GALGAS_unifiedTypeMapEntry constinArgument2,
                                            const class GALGAS_analysisContext constinArgument3,
-                                           class GALGAS_localVarManager & ioArgument4,
-                                           const class GALGAS_lstring constinArgument5,
+                                           class GALGAS_unifiedTypeMap & ioArgument4,
+                                           class GALGAS_localVarManager & ioArgument5,
                                            const class GALGAS_lstring constinArgument6,
-                                           const class GALGAS_actualOutputExpressionList constinArgument7,
-                                           const class GALGAS_location constinArgument8,
-                                           class GALGAS_unifiedTypeMapEntry & outArgument9,
+                                           const class GALGAS_lstring constinArgument7,
+                                           const class GALGAS_actualOutputExpressionList constinArgument8,
+                                           const class GALGAS_location constinArgument9,
                                            class GALGAS_unifiedTypeMapEntry & outArgument10,
-                                           class GALGAS_semanticExpressionListForGeneration & outArgument11,
-                                           class GALGAS_bool & outArgument12,
+                                           class GALGAS_unifiedTypeMapEntry & outArgument11,
+                                           class GALGAS_semanticExpressionListForGeneration & outArgument12,
+                                           class GALGAS_bool & outArgument13,
                                            class C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 

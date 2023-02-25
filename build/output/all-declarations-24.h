@@ -46,9 +46,10 @@ void routine_checkGetterSignatures (const class GALGAS_formalInputParameterListF
 //----------------------------------------------------------------------------------------------------------------------
 
 void routine_buildLocalVariableMapAndSignature (const class GALGAS_semanticContext constinArgument0,
-                                                const class GALGAS_formalParameterListAST constinArgument1,
-                                                class GALGAS_localVarManager & ioArgument2,
-                                                class GALGAS_formalParameterListForGeneration & outArgument3,
+                                                class GALGAS_unifiedTypeMap & ioArgument1,
+                                                const class GALGAS_formalParameterListAST constinArgument2,
+                                                class GALGAS_localVarManager & ioArgument3,
+                                                class GALGAS_formalParameterListForGeneration & outArgument4,
                                                 class C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
@@ -440,13 +441,14 @@ void routine_analyzeSemanticInstructionListWithoutBranch (const class GALGAS_lst
 void routine_analyzeRoutineArguments (const class GALGAS_lstring constinArgument0,
                                       class GALGAS_usefulEntitiesGraph & ioArgument1,
                                       const class GALGAS_analysisContext constinArgument2,
-                                      const class GALGAS_lstring constinArgument3,
-                                      const class GALGAS_string constinArgument4,
-                                      const class GALGAS_formalParameterSignature constinArgument5,
-                                      const class GALGAS_actualParameterListAST constinArgument6,
-                                      class GALGAS_localVarManager & ioArgument7,
-                                      class GALGAS_semanticInstructionListForGeneration & ioArgument8,
-                                      class GALGAS_actualParameterListForGeneration & outArgument9,
+                                      class GALGAS_unifiedTypeMap & ioArgument3,
+                                      const class GALGAS_lstring constinArgument4,
+                                      const class GALGAS_string constinArgument5,
+                                      const class GALGAS_formalParameterSignature constinArgument6,
+                                      const class GALGAS_actualParameterListAST constinArgument7,
+                                      class GALGAS_localVarManager & ioArgument8,
+                                      class GALGAS_semanticInstructionListForGeneration & ioArgument9,
+                                      class GALGAS_actualParameterListForGeneration & outArgument10,
                                       class C_Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 

@@ -210,6 +210,7 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
                                       ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
                                       ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
                                       ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+                                ?!@unifiedTypeMap ioTypeMap
                                       ?!@semanticContext ioSemanticContext {
   var @getterMap getterMap
   var @setterMap setterMap
@@ -221,7 +222,7 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
   var @bool generateHeaderInSeparateFile
   if self.mSuperClassName.string == "" then
     superClassIndex = @unifiedTypeMapEntry.null
-    commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap )
+    commonGetterMapForAllTypes (!?ioTypeMap ?getterMap )
     setterMap = {}
     instanceMethodMap = {}
     inheritedTypedPropertyList = {}
@@ -233,8 +234,8 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
       end
     end
   else
-    [!?ioSemanticContext.mTypeMap makeEntry !self.mSuperClassName ?superClassIndex]
-    [ioSemanticContext.mTypeMap searchType !self.mSuperClassName ?let superTypeDefinition]
+    [!?ioTypeMap makeEntry !self.mSuperClassName ?superClassIndex]
+    [ioTypeMap searchType !self.mSuperClassName ?let superTypeDefinition]
     inheritedTypedPropertyList = superTypeDefinition.mAllTypedPropertyList
     attributeMap = superTypeDefinition.mPropertyMap
     generateHeaderInSeparateFile = superTypeDefinition.mGenerateHeaderInSeparateFile
@@ -296,7 +297,7 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
     if [initExpression isSome] then
       error mPropertyName : "property initialization is not handled for a class"
     end
-    [!?ioSemanticContext.mTypeMap makeEntry !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioTypeMap makeEntry !mPropertyTypeName ?let attributeTypeIndex]
     var hasSelector = false
     for (attribute) in mAttributeList do
       if attribute.string == "selector" then
@@ -321,7 +322,7 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
     end
   end
 #--- Current class Index
-  [!?ioSemanticContext.mTypeMap makeEntry
+  [!?ioTypeMap makeEntry
      !self.mClassTypeName
      ?let @unifiedTypeMapEntry classIndex
   ]
@@ -342,7 +343,7 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
     if [initExpression isSome] then
       error mPropertyName : "property initialization is not handled for a class"
     end
-    [!?ioSemanticContext.mTypeMap makeEntry !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioTypeMap makeEntry !mPropertyTypeName ?let attributeTypeIndex]
     var hasSelector = false
     for (mValue) in mAttributeList do
       if mValue.string == "setter" then
@@ -375,6 +376,7 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
+    !?ioTypeMap
     !self.mClassTypeName
     !isClass: true
     !?getterMap
@@ -419,7 +421,7 @@ override method @classDeclarationAST enterDeclarationInSemanticContext
     !"class-" + [self.mClassTypeName fileNameRepresentation]
     !@headerKind.twoHeaders
   }
-  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -430,8 +432,8 @@ override method @classDeclarationAST semanticAnalysis
                                       ?!@lstringlist unused ioUsefulnessRootEntities 
                                       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                       ?let @string unused inProductDirectory
-                                      ?let @semanticContext inSemanticContext
-                                      ?!@unifiedTypeMap unused ioTypeMap
+                                      ?let @semanticContext unused inSemanticContext
+                                      ?!@unifiedTypeMap ioTypeMap
                                       ?let @predefinedTypes unused inPredefinedTypes
                                       ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Useful entities graph
@@ -446,11 +448,11 @@ override method @classDeclarationAST semanticAnalysis
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !weakRefTypeNameForUsefulness]
   end
 #------ Self type
-  let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mClassTypeName]
+  let @unifiedTypeMapEntry selfType = [ioTypeMap searchKey !self.mClassTypeName]
 #--- Super class type
   let @unifiedTypeMapEntry superClassEntry = if self.mSuperClassName.string == ""
     then @unifiedTypeMapEntry.null
-    else [inSemanticContext.mTypeMap searchKey !self.mSuperClassName]
+    else [ioTypeMap searchKey !self.mSuperClassName]
   end
 #------ check "reference" status:
 # a base class can be freely declared as shared or not
@@ -499,7 +501,7 @@ override method @classDeclarationAST semanticAnalysis
     end
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
-    let t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
+    let t = [ioTypeMap searchKey !mPropertyTypeName]
     var hasSelector = false
     for (mValue) in mAttributeList while not hasSelector do
       hasSelector = mValue.string == "selector"

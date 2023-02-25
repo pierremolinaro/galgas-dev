@@ -1716,6 +1716,7 @@ void callExtensionMethod_templateExpressionAnalysis (cPtr_templateExpressionAST 
                                                      const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                      GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const GALGAS_templateAnalysisContext constin_inAnalysisContext,
+                                                     GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                      GALGAS_semanticExpressionForGeneration & out_outExpression,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
@@ -1724,7 +1725,7 @@ void callExtensionMethod_templateExpressionAnalysis (cPtr_templateExpressionAST 
 //--- Find method
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_templateExpressionAST) ;
-    inObject->method_templateExpressionAnalysis (constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, out_outExpression, inCompiler COMMA_THERE) ;
+    inObject->method_templateExpressionAnalysis (constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioTypeMap, out_outExpression, inCompiler COMMA_THERE) ;
   }
 }
 //----------------------------------------------------------------------------------------------------------------------
@@ -1848,6 +1849,7 @@ void callExtensionMethod_templateInstructionAnalysis (cPtr_templateInstructionAS
                                                       const GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                       GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                       const GALGAS_templateAnalysisContext constin_inAnalysisContext,
+                                                      GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                       GALGAS_templateInstructionListForGeneration & io_ioInstructionList,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
@@ -1855,7 +1857,7 @@ void callExtensionMethod_templateInstructionAnalysis (cPtr_templateInstructionAS
 //--- Find method
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_templateInstructionAST) ;
-    inObject->method_templateInstructionAnalysis (constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioInstructionList, inCompiler COMMA_THERE) ;
+    inObject->method_templateInstructionAnalysis (constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioTypeMap, io_ioInstructionList, inCompiler COMMA_THERE) ;
   }
 }
 //----------------------------------------------------------------------------------------------------------------------

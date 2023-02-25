@@ -117,6 +117,7 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
@@ -138,7 +139,7 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
   end
 #---
   outExpression = @filewrapperInExpressionForGeneration.new {
-    ![inAnalysisContext.mSemanticContext.mTypeMap searchKey !@lstring.new {!"filewrapper" !self.mFilewrapperName.location}]
+    ![ioTypeMap searchKey !@lstring.new {!"filewrapper" !self.mFilewrapperName.location}]
     !self.mFilewrapperName.location
     !self.mFilewrapperName.string
     !filewrapperPath.string}
@@ -161,6 +162,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
@@ -203,6 +205,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
         !?ioUsefulEntitiesGraph
         !inferenceType: mFormalArgumentType
         !inAnalysisContext
+        !?ioTypeMap
         !?ioVariableMap
         ?@semanticExpressionForGeneration exp
       ]
@@ -233,6 +236,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
@@ -297,7 +301,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   outExpression = @filewrapperStaticPathInExpressionForGeneration.new {
     !if isTextFile
       then inAnalysisContext.mPredefinedTypes.mStringType
-      else [inAnalysisContext.mSemanticContext.mTypeMap searchKey !@lstring.new {!"data" !@location.here}]
+      else [ioTypeMap searchKey !@lstring.new {!"data" !@location.here}]
      end
     !self.mFilewrapperName.location
     !self.mFilewrapperName.string

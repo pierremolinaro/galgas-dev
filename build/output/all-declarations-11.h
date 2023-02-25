@@ -2603,6 +2603,7 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 

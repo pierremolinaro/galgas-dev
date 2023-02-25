@@ -109,11 +109,12 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+  ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext {
 #--- Check associated map is really a list
-  [ioSemanticContext.mTypeMap searchType !self.mAssociatedListTypeName ?let associatedTypeDefinition]
+  [ioTypeMap searchType !self.mAssociatedListTypeName ?let associatedTypeDefinition]
   var @typedPropertyList listTypedAttributeList = associatedTypeDefinition.mAllTypedPropertyList
-#  [ioSemanticContext.mTypeMap searchKey
+#  [ioTypeMap searchKey
 #    !self.mAssociatedListTypeName
 #    ?3*
 #    ?let @typeKindEnum typeKindEnum
@@ -127,38 +128,38 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
   end
 #---
   var @constructorMap constructorMap ={}
-  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
 #--- Associated map type index
-  [!?ioSemanticContext.mTypeMap makeEntry  !self.mAssociatedListTypeName ?let associatedListTypeIndex]
+  [!?ioTypeMap makeEntry  !self.mAssociatedListTypeName ?let associatedListTypeIndex]
 #--- currentType type index
-  [!?ioSemanticContext.mTypeMap makeEntryFromString !"string" ?let stringTypeIndex]
+  [!?ioTypeMap makeEntryFromString !"string" ?let stringTypeIndex]
 #--- Getters
   enterInheritedGetterWithoutArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap 
+    !?ioTypeMap 
     !getterName:"count"
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !getterName:"allKeys"
     !returnedTypeName:"stringset"
     !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !getterName:"keyList"
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithArgument (
     !?getterMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !getterName: "listForKey"
     !argSelector: "" !"string" !"inKey"
     !returnedTypeName:self.mAssociatedListTypeName.string
@@ -167,7 +168,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
 #--- Constructors
   enterConstructorWithoutArgument (
     !?constructorMap
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     !name:"emptyMap"
     !resultTypeName:self.mListmapTypeName.string
     !hasLexiqueArg:false
@@ -188,6 +189,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
+    !?ioTypeMap
     !self.mListmapTypeName
     !isClass: false
     !?getterMap
@@ -196,7 +198,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !acceptSetters: true
   )
 #--- Element type index
-  [!?ioSemanticContext.mTypeMap makeEntry
+  [!?ioTypeMap makeEntry
     !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}
     ?let @unifiedTypeMapEntry listElementTypeIndex
   ]
@@ -230,7 +232,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !"listmap-" + [self.mListmapTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -241,8 +243,8 @@ override method @listmapDeclarationAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+  ?let @semanticContext unused inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
@@ -254,8 +256,8 @@ override method @listmapDeclarationAST semanticAnalysis
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mListmapTypeName.string + "-element" !self.mListmapTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #--- Check associated list is actually a list
-  [inSemanticContext.mTypeMap searchType !self.mAssociatedListTypeName ?let associatedTypeDefinition]
-#  [inSemanticContext.mTypeMap searchKey
+  [ioTypeMap searchType !self.mAssociatedListTypeName ?let associatedTypeDefinition]
+#  [ioTypeMap searchKey
 #    !self.mAssociatedListTypeName
 #    ?3*
 #    ?let @typeKindEnum typeKindEnum
@@ -271,10 +273,10 @@ override method @listmapDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"list map " + self.mListmapTypeName
     !@listmapTypeForGeneration.new {
-      ![inSemanticContext.mTypeMap searchKey !self.mListmapTypeName]
-      ![inSemanticContext.mTypeMap searchKey !self.mAssociatedListTypeName]
+      ![ioTypeMap searchKey !self.mListmapTypeName]
+      ![ioTypeMap searchKey !self.mAssociatedListTypeName]
       !associatedTypeDefinition.mAllTypedPropertyList
-      ![inSemanticContext.mTypeMap searchKey !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}]
+      ![ioTypeMap searchKey !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}]
     }
 }
 

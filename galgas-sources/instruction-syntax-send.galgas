@@ -67,7 +67,7 @@ override method @syntaxSendInstruction analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @bool inHasTranslateFeature
   ?let @terminalMap unused inTerminalMap
   ?let @string unused inLexiqueName
@@ -86,6 +86,7 @@ override method @syntaxSendInstruction analyzeSyntaxInstruction
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration expression
   ]

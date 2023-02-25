@@ -225,6 +225,7 @@ proc analyzeErrorOrWarningInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
+  ?!@unifiedTypeMap ioTypeMap
   ?let @semanticExpressionAST inLocationExpression
   ?let @semanticExpressionAST inMessageExpression
   ?let @fixitListAST inFixitListAST
@@ -241,6 +242,7 @@ proc analyzeErrorOrWarningInstruction
     !?ioUsefulEntitiesGraph
     !inferenceType: inAnalysisContext.mPredefinedTypes.mLocationType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?outLocationExpression
   ]
@@ -257,6 +259,7 @@ proc analyzeErrorOrWarningInstruction
     !?ioUsefulEntitiesGraph
     !inferenceType: .null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?outMessageExpression
   ]
@@ -272,6 +275,7 @@ proc analyzeErrorOrWarningInstruction
         !?ioUsefulEntitiesGraph
         !inferenceType: inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext
+        !?ioTypeMap
         !?ioVariableMap
         ?let expression
       ]
@@ -289,6 +293,7 @@ proc analyzeErrorOrWarningInstruction
         !?ioUsefulEntitiesGraph
         !inferenceType: inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext
+        !?ioTypeMap
         !?ioVariableMap
         ?let expression
       ]
@@ -306,6 +311,7 @@ proc analyzeErrorOrWarningInstruction
         !?ioUsefulEntitiesGraph
         !inferenceType: inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext
+        !?ioTypeMap
         !?ioVariableMap
         ?let expression
       ]
@@ -333,7 +339,7 @@ override method @errorInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
@@ -342,6 +348,7 @@ override method @errorInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !self.mLocationExpression
     !self.mMessageExpression
     !self.mFixitListAST

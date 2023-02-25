@@ -137,6 +137,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?let variant_expression
   ]
@@ -151,6 +152,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?let while_expression
   ]

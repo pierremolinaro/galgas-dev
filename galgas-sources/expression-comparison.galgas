@@ -170,6 +170,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
@@ -179,6 +180,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
   ]
@@ -188,6 +190,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap 
     ?var @semanticExpressionForGeneration rightExpression
   ]

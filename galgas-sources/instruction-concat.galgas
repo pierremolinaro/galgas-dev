@@ -287,7 +287,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
@@ -344,6 +344,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
     !?ioUsefulEntitiesGraph
     !inferenceType:  targetType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
   ]
@@ -367,7 +368,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
@@ -424,6 +425,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
     !?ioUsefulEntitiesGraph
     !inferenceType:  targetType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
   ]
@@ -447,7 +449,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
@@ -505,6 +507,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
     !?ioUsefulEntitiesGraph
     !inferenceType:  targetType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
   ]
@@ -528,7 +531,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
@@ -586,6 +589,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
     !?ioUsefulEntitiesGraph
     !inferenceType:  targetType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
   ]
@@ -609,7 +613,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
@@ -686,6 +690,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
         !?ioUsefulEntitiesGraph
         !inferenceType: mFormalArgumentType
         !inAnalysisContext
+        !?ioTypeMap
         !?ioVariableMap
         ?@semanticExpressionForGeneration expression
       ]

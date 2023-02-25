@@ -815,6 +815,7 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?!@semanticContext ioSemanticContext {
 #--------------------------------------- Build lexical attribute map
   let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()

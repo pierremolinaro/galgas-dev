@@ -282,6 +282,7 @@ void callExtensionMethod_checkAgainstFormalArgument (class cPtr_actualParameterA
                                                      const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                      class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const class GALGAS_analysisContext constin_inAnalysisContext,
+                                                     class GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                      const class GALGAS_lstring constin_inFormalSelector,
                                                      const class GALGAS_unifiedTypeMapEntry constin_inFormalArgumentType,
                                                      const class GALGAS_formalArgumentPassingModeAST constin_inFormalArgumentPassingMode,
@@ -369,6 +370,7 @@ class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult : public ac
 
 //--- Extension method analyzeGrammarInstructionSDT
   public: virtual void method_analyzeGrammarInstructionSDT (const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_bool inHasTranslateFeature,
            const class GALGAS_string inSyntaxDirectedTranslationResultVarName,
            class GALGAS_stringlist & ioAssignementList,
@@ -377,6 +379,7 @@ class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult : public ac
 
 //--- Extension method analyzeSDT
   public: virtual void method_analyzeSDT (const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            const class GALGAS_bool inHasTranslateFeature,
            class GALGAS_localVarManager & ioVariableMap,
            C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
@@ -1974,6 +1977,7 @@ void callExtensionMethod_analyzeSyntaxInstruction (class cPtr_syntaxInstructionA
 
 void callExtensionMethod_analyzeInputParameter (class cPtr_abstractInputParameter * inObject,
                                                 const class GALGAS_analysisContext constin_inAnalysisContext,
+                                                class GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                 const class GALGAS_lexicalTypeEnum constin_inRequiredLexicalType,
                                                 const class GALGAS_string constin_inLexicalAttributeName,
                                                 class GALGAS_terminalCheckAssignementList & io_ioTerminalCheckAssignementList,
@@ -1989,6 +1993,7 @@ void callExtensionMethod_analyzeInputParameter (class cPtr_abstractInputParamete
 
 void callExtensionMethod_analyzeSDT (class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
                                      const class GALGAS_analysisContext constin_inAnalysisContext,
+                                     class GALGAS_unifiedTypeMap & io_ioTypeMap,
                                      const class GALGAS_bool constin_inHasTranslateFeature,
                                      class GALGAS_localVarManager & io_ioVariableMap,
                                      class C_Compiler * inCompiler
@@ -3220,13 +3225,84 @@ void extensionMethod_addHeaderFileName_31_ (const class GALGAS_unifiedTypeMapEnt
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension getter '@unifiedTypeMap unsolvedEntryList' (as function)
+// Phase 1: @unifiedTypeMap_2D_element struct
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_lstringlist extensionGetter_unsolvedEntryList (const class GALGAS_unifiedTypeMap & inObject,
-                                                            class C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
+class GALGAS_unifiedTypeMap_2D_element : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (void) const {
+    return mProperty_lkey ;
+  }
+
+  public: GALGAS_unifiedTypeMapElementClass mProperty_mElement ;
+  public: inline GALGAS_unifiedTypeMapElementClass readProperty_mElement (void) const {
+    return mProperty_mElement ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public: VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_unifiedTypeMap_2D_element (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setLkey (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_lkey = inValue ;
+  }
+
+  public: inline void setter_setMElement (const GALGAS_unifiedTypeMapElementClass & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mElement = inValue ;
+  }
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public: virtual ~ GALGAS_unifiedTypeMap_2D_element (void) ;
+
+//--------------------------------- Native constructor
+  public: GALGAS_unifiedTypeMap_2D_element (const GALGAS_lstring & in_lkey,
+                                            const GALGAS_unifiedTypeMapElementClass & in_mElement) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_unifiedTypeMap_2D_element extractObject (const GALGAS_object & inObject,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_unifiedTypeMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                         const class GALGAS_unifiedTypeMapElementClass & inOperand1
+                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_unifiedTypeMap_2D_element & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_unifiedTypeMap_2D_element class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMap_2D_element ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -3372,6 +3448,7 @@ class cPtr_ifExpressionAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -3699,6 +3776,7 @@ class cPtr_unaryPlusExpressionAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -3854,6 +3932,7 @@ class cPtr_unaryMinusExpressionAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -4161,6 +4240,7 @@ class cPtr_varInExpressionAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -4749,6 +4829,7 @@ class cPtr_trueExpressionAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -4902,6 +4983,7 @@ class cPtr_falseExpressionAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -5349,6 +5431,7 @@ class cPtr_literalStringExpressionAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -5653,6 +5736,7 @@ class cPtr_literalCharExpressionAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -5955,6 +6039,7 @@ class cPtr_literalDoubleExpressionAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -6257,6 +6342,7 @@ class cPtr_literalBigIntExpressionAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -7294,6 +7380,7 @@ class cPtr_comparisonExpressionAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -7624,6 +7711,7 @@ class cPtr_rightShiftExpressionAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -7784,6 +7872,7 @@ class cPtr_leftShiftExpressionAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -7944,6 +8033,7 @@ class cPtr_addExpressionAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8104,6 +8194,7 @@ class cPtr_addExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8264,6 +8355,7 @@ class cPtr_subExpressionAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8424,6 +8516,7 @@ class cPtr_subExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8918,6 +9011,7 @@ class cPtr_multiplicationExpressionAST : public cPtr_semanticExpressionAST {
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_unifiedTypeMapEntry inType,
            const class GALGAS_analysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_localVarManager & ioVariableMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8936,175 +9030,6 @@ class cPtr_multiplicationExpressionAST : public cPtr_semanticExpressionAST {
                                             const GALGAS_semanticExpressionAST & in_mLeftExpression,
                                             const GALGAS_semanticExpressionAST & in_mRightExpression
                                             COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @multiplicationExpressionAST_2D_weak weak reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_multiplicationExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_multiplicationExpressionAST_2D_weak (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_multiplicationExpressionAST_2D_weak constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_multiplicationExpressionAST_2D_weak (const class GALGAS_multiplicationExpressionAST & inSource) ;
-
-  public: GALGAS_multiplicationExpressionAST_2D_weak & operator = (const class GALGAS_multiplicationExpressionAST & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_multiplicationExpressionAST bang_multiplicationExpressionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_multiplicationExpressionAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_multiplicationExpressionAST_2D_weak constructor_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_multiplicationExpressionAST_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_multiplicationExpressionAST_2D_weak class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpressionAST_2D_weak ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @multiplicationExpressionNoOverflowAST reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_multiplicationExpressionNoOverflowAST : public GALGAS_semanticExpressionAST {
-//--------------------------------- Default constructor
-  public: GALGAS_multiplicationExpressionNoOverflowAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_multiplicationExpressionNoOverflowAST (const class cPtr_multiplicationExpressionNoOverflowAST * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
-
-  public: class GALGAS_semanticExpressionAST readProperty_mLeftExpression (void) const ;
-
-  public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_multiplicationExpressionNoOverflowAST extractObject (const GALGAS_object & inObject,
-                                                                             C_Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_multiplicationExpressionNoOverflowAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                                     const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                                     const class GALGAS_semanticExpressionAST & inOperand2
-                                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_multiplicationExpressionNoOverflowAST & inOperand) const ;
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_semanticExpressionAST inArgument0
-                                                           COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMOperatorLocation (class GALGAS_location inArgument0
-                                                             COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMRightExpression (class GALGAS_semanticExpressionAST inArgument0
-                                                            COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_multiplicationExpressionNoOverflowAST class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @multiplicationExpressionNoOverflowAST class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class cPtr_multiplicationExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
-
-//--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
-           C_Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GALGAS_location mProperty_mOperatorLocation ;
-  public: GALGAS_semanticExpressionAST mProperty_mLeftExpression ;
-  public: GALGAS_semanticExpressionAST mProperty_mRightExpression ;
-
-//--- Constructor
-  public: cPtr_multiplicationExpressionNoOverflowAST (const GALGAS_location & in_mOperatorLocation,
-                                                      const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                      const GALGAS_semanticExpressionAST & in_mRightExpression
-                                                      COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;

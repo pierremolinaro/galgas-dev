@@ -212,7 +212,7 @@ map @syntaxComponentMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @semanticContext {
-  public var @unifiedTypeMap mTypeMap %selector
+#  public var @unifiedTypeMap mTypeMap %selector
   public var @routineMap mRoutineMap %selector
   public var @functionMap mFunctionMap %selector
   public var @filewrapperMap mFilewrapperMap %selector
@@ -403,7 +403,8 @@ override getter @externRoutineDeclarationAST keyRepresentation -> @string {
 proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
                    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
                    ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-                   ?!@semanticContext ioSemanticContext
+                   ?!@semanticContext unused ioSemanticContext
+                   ?!@unifiedTypeMap ioTypeMap
                    ?let @lstring inTypeName
                    ?isClass: let @bool inIsClass
                    ?!@getterMap ioGetterMap
@@ -416,10 +417,10 @@ proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodM
     for (lkey mResultTypeName mInputFormalParameterList qualifier) in extensionGetterMapForType do
       var @functionSignature formalArgumentList = {}
       for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * *) in mInputFormalParameterList do
-        [!?ioSemanticContext.mTypeMap makeEntry !mFormalArgumentTypeName ?let typeIndex]
+        [!?ioTypeMap makeEntry !mFormalArgumentTypeName ?let typeIndex]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentName.string
       end
-      [!?ioSemanticContext.mTypeMap makeEntry !mResultTypeName ?let returnedType]
+      [!?ioTypeMap makeEntry !mResultTypeName ?let returnedType]
       if qualifier == .isVirtualOverriding then
         if [ioGetterMap hasKey !lkey] then
           [!?ioGetterMap setMQualifierForKey !.isVirtualOverriding !lkey]
@@ -459,7 +460,7 @@ proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodM
     for (lkey mFormalParameterList qualifier) in extensionMethodMapForType do
       var formalArgumentList = @formalParameterSignature {}
       for parameter in mFormalParameterList do
-        [!?ioSemanticContext.mTypeMap makeEntry
+        [!?ioTypeMap makeEntry
           !parameter.mFormalArgumentTypeName
           ?let @unifiedTypeMapEntry typeIndex
         ]
@@ -506,7 +507,7 @@ proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodM
     for (lkey mFormalParameterList) in extensionSetterMapForType do
       var @formalParameterSignature formalArgumentList = {}
       for parameter in mFormalParameterList do
-        [!?ioSemanticContext.mTypeMap makeEntry  !parameter.mFormalArgumentTypeName ?let typeIndex]
+        [!?ioTypeMap makeEntry  !parameter.mFormalArgumentTypeName ?let typeIndex]
         formalArgumentList +=
           !parameter.mFormalSelector
           !typeIndex
@@ -547,6 +548,7 @@ abstract method @semanticDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+  ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext unused ioSemanticContext
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -653,6 +655,7 @@ override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext
 {
 #--- Templates
@@ -660,7 +663,7 @@ override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
   for (mFilewrapperTemplateName mFilewrapperTemplatePath mFilewrapperTemplateFormalInputParameters) in self.mFilewrapperTemplateList do
     var @functionSignature templateSignature = {}
     for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName *) in mFilewrapperTemplateFormalInputParameters do
-      [!?ioSemanticContext.mTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
+      [!?ioTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
       templateSignature += !mFormalTemplateSelector !parameterTypeIndex !mFormalArgumentName.string
     end
     [!?filewrapperTemplateMap insertKey
@@ -728,11 +731,12 @@ override method @externRoutineDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
   var routineSignature = @formalParameterSignature {}
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mFormalArgumentList do
-    [!?ioSemanticContext.mTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
+    [!?ioTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
     routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
   end
 #--- Enter routine in routine map
@@ -749,15 +753,16 @@ override method @procDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
   var routineSignature = @formalParameterSignature {}
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mFormalArgumentList do
-    [!?ioSemanticContext.mTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
+    [!?ioTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
     routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
   end
 #--- Enter types for instruction list
-  [self.mRoutineInstructionList enterInstructionListInSemanticContext !?ioSemanticContext.mTypeMap]
+  [self.mRoutineInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
 #--- Enter routine in routine map
   [!?ioSemanticContext.mRoutineMap insertKey
     !self.mRoutineName
@@ -772,15 +777,16 @@ override method @externFunctionDeclarationAST enterDeclarationInSemanticContext 
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
   var functionSignature = @functionSignature {}
   for (mFormalSelector mFormalArgumentTypeName * * *) in self.mFormalArgumentList do
-    [!?ioSemanticContext.mTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
+    [!?ioTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
     functionSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentTypeName.string
   end
 #--- Result type
-  [!?ioSemanticContext.mTypeMap makeEntry  !self.mResultTypeName ?let resultTypeIndex]
+  [!?ioTypeMap makeEntry  !self.mResultTypeName ?let resultTypeIndex]
 #--- Enter function in routine map
   [!?ioSemanticContext.mFunctionMap insertKey
     !self.mFunctionName
@@ -796,9 +802,10 @@ override method @onceFunctionDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext {
 #--- Result type
-  [!?ioSemanticContext.mTypeMap makeEntry  !self.mResultTypeName ?let @unifiedTypeMapEntry resultTypeIndex]
+  [!?ioTypeMap makeEntry  !self.mResultTypeName ?let @unifiedTypeMapEntry resultTypeIndex]
 #--- Enter function in routine map
   [!?ioSemanticContext.mFunctionMap insertKey !self.mFunctionName !{} !resultTypeIndex !self.mIsInternal]
 }
@@ -809,6 +816,7 @@ override method @galgas3SyntaxComponentAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?!@semanticContext ioSemanticContext
 {
   [!?ioSemanticContext.mSyntaxComponentMapForSemanticAnalysis insertKey
@@ -826,6 +834,7 @@ override method @galgas3GrammarComponentAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext
 {
 #--- Analyze start symbol labels
@@ -834,7 +843,7 @@ override method @galgas3GrammarComponentAST enterDeclarationInSemanticContext
   #--- Analyze signature
     var @formalParameterSignature formalArgumentList = {}
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalArgumentList do
-      [!?ioSemanticContext.mTypeMap makeEntry  !mFormalArgumentTypeName ?let argumentType]
+      [!?ioTypeMap makeEntry  !mFormalArgumentTypeName ?let argumentType]
       formalArgumentList +=
         !mFormalSelector
         !argumentType

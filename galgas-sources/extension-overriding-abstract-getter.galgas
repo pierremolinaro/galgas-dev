@@ -146,6 +146,7 @@ override method @overridingAbstractExtensionGetterAST enterDeclarationInSemantic
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?!@semanticContext unused ioSemanticContext
 {
 }
@@ -158,8 +159,8 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+  ?let @semanticContext unused inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
 {
@@ -167,9 +168,9 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
 #  let nameForUsefulness = getterNameForUsefulEntitiesGraph (!self.mTypeName !mAbstractExtensionGetterReturnedTypeName)
 #  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [ioTypeMap searchKey !self.mTypeName]
 #--- Return type
-  let returnType = [inSemanticContext.mTypeMap searchKey !self.mAbstractExtensionGetterReturnedTypeName]
+  let returnType = [ioTypeMap searchKey !self.mAbstractExtensionGetterReturnedTypeName]
 #--- Check type is an abstract class
   if not [[selfType definition].mTypeKindEnum isClassType] then
     error self.mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType definition].mTypeName.string + "' is not a class"
@@ -182,7 +183,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   var @functionSignature inheritedSignature = {}
   var @unifiedTypeMapEntry inheritedReturnType = .null{}
   var @location inheritedDeclarationLocation = @location.here
-  loop ([inSemanticContext.mTypeMap count] + 1)
+  loop ([ioTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType definition].mGetterMap hasKey !self.mAbstractExtensionGetterName.string] then
       [[superType definition].mGetterMap searchKey
@@ -210,7 +211,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
     for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mAbstractExtensionGetterFormalInputParameterList do
       formalParameterListForGeneration +=
         !mFormalSelector
-        ![inSemanticContext.mTypeMap searchKey !mFormalArgumentTypeName]
+        ![ioTypeMap searchKey !mFormalArgumentTypeName]
         !mFormalArgumentName.string
         !mFormalArgumentName
         !mIsConstant

@@ -175,6 +175,7 @@ private proc analyzeConstructorInvocation
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   ?let @lstring inTypeName
   ?let @lstring inConstructorName
@@ -187,7 +188,7 @@ private proc analyzeConstructorInvocation
 {
   outConstructorType = inType
   if inTypeName.string != "" then
-    outConstructorType = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !inTypeName]
+    outConstructorType = [ioTypeMap searchKey !inTypeName]
   end
   if [outConstructorType isNull] then
     error inTypeName
@@ -229,6 +230,7 @@ private proc analyzeConstructorInvocation
         !?ioUsefulEntitiesGraph
         !inferenceType: mFormalArgumentType
         !inAnalysisContext
+        !?ioTypeMap
         !?ioVariableMap
         ?@semanticExpressionForGeneration exp
       ]
@@ -258,6 +260,7 @@ override method @constructorExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
@@ -266,6 +269,7 @@ override method @constructorExpressionAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     !self.mTypeName
     !self.mConstructorName
@@ -307,13 +311,14 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inType
-  ?let @analysisContext inAnalysisContext
+  ?let @analysisContext unused inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   var type = inType
   if self.mTypeName.string != "" then
-    type = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeName]
+    type = [ioTypeMap searchKey !self.mTypeName]
   end
   if [type isNull] then
     error self.mTypeName : "cannot infer type" : outExpression

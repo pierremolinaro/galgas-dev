@@ -1007,6 +1007,7 @@ void callExtensionMethod_templateExpressionAnalysis (class cPtr_templateExpressi
                                                      const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                      class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const class GALGAS_templateAnalysisContext constin_inAnalysisContext,
+                                                     class GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                      class GALGAS_semanticExpressionForGeneration & out_outExpression,
                                                      class C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
@@ -1098,6 +1099,134 @@ class GALGAS_usefulEntitiesGraph : public AC_GALGAS_graph {
 //----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_usefulEntitiesGraph ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @unifiedTypeMap map
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cMapElement_unifiedTypeMap ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_unifiedTypeMap : public AC_GALGAS_map {
+//--------------------------------- Default constructor
+  public: GALGAS_unifiedTypeMap (void) ;
+
+//--------------------------------- Handle copy
+  public: GALGAS_unifiedTypeMap (const GALGAS_unifiedTypeMap & inSource) ;
+  public: GALGAS_unifiedTypeMap & operator = (const GALGAS_unifiedTypeMap & inSource) ;
+  
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_unifiedTypeMap extractObject (const GALGAS_object & inObject,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_unifiedTypeMap constructor_emptyMap (LOCATION_ARGS) ;
+
+  public: static class GALGAS_unifiedTypeMap constructor_mapWithMapToOverride (const class GALGAS_unifiedTypeMap & inOperand0
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
+                                                     const class GALGAS_unifiedTypeMapElementClass & inOperand1,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_internalInsertKey (class GALGAS_lstring constinArgument0,
+                                                          class GALGAS_unifiedTypeMapElementClass constinArgument1,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMElementForKey (class GALGAS_unifiedTypeMapElementClass constinArgument0,
+                                                          class GALGAS_string constinArgument1,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapElementClass getter_mElementForKey (const class GALGAS_string & constinOperand0,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap getter_overriddenMap (C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
+                                                    class GALGAS_unifiedTypeMapElementClass & outOperand1) const ;
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+  public: VIRTUAL_IN_DEBUG cMapElement_unifiedTypeMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+                                                                                           const GALGAS_string & inKey
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
+
+  friend class cEnumerator_unifiedTypeMap ;
+ 
+} ; // End of GALGAS_unifiedTypeMap class
+
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
+
+class cEnumerator_unifiedTypeMap : public cGenericAbstractEnumerator {
+  public: cEnumerator_unifiedTypeMap (const GALGAS_unifiedTypeMap & inEnumeratedObject,
+                                      const typeEnumerationOrder inOrder) ;
+
+//--- Current element access
+  public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GALGAS_unifiedTypeMapElementClass current_mElement (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GALGAS_unifiedTypeMap_2D_element current (LOCATION_ARGS) const ;
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMap ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: class for element of '@unifiedTypeMap' map
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cMapElement_unifiedTypeMap : public cMapElement {
+//--- Map attributes
+  public: GALGAS_unifiedTypeMapElementClass mProperty_mElement ;
+
+//--- Constructor
+  public: cMapElement_unifiedTypeMap (const GALGAS_lstring & inKey,
+                                      const GALGAS_unifiedTypeMapElementClass & in_mElement
+                                      COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public: virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public: virtual cMapElement * copy (void) ;
+
+//--- Description
+ public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -2200,117 +2329,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxComponentMap 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @unifiedTypeMap map
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class cMapElement_unifiedTypeMap ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_unifiedTypeMap : public AC_GALGAS_map {
-//--------------------------------- Default constructor
-  public: GALGAS_unifiedTypeMap (void) ;
-
-//--------------------------------- Handle copy
-  public: GALGAS_unifiedTypeMap (const GALGAS_unifiedTypeMap & inSource) ;
-  public: GALGAS_unifiedTypeMap & operator = (const GALGAS_unifiedTypeMap & inSource) ;
-  
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_unifiedTypeMap extractObject (const GALGAS_object & inObject,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_unifiedTypeMap constructor_emptyMap (LOCATION_ARGS) ;
-
-  public: static class GALGAS_unifiedTypeMap constructor_mapWithMapToOverride (const class GALGAS_unifiedTypeMap & inOperand0
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                     const class GALGAS_unifiedTypeMapElementClass & inOperand1,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_internalInsertKey (class GALGAS_lstring constinArgument0,
-                                                          class GALGAS_unifiedTypeMapElementClass constinArgument1,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMElementForKey (class GALGAS_unifiedTypeMapElementClass constinArgument0,
-                                                          class GALGAS_string constinArgument1,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapElementClass getter_mElementForKey (const class GALGAS_string & constinOperand0,
-                                                                                          C_Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap getter_overriddenMap (C_Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_unifiedTypeMapElementClass & outOperand1) const ;
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
-  public: VIRTUAL_IN_DEBUG cMapElement_unifiedTypeMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
-                                                                                           const GALGAS_string & inKey
-                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Friend
-
-  friend class cEnumerator_unifiedTypeMap ;
- 
-} ; // End of GALGAS_unifiedTypeMap class
-
-//----------------------------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//----------------------------------------------------------------------------------------------------------------------
-
-class cEnumerator_unifiedTypeMap : public cGenericAbstractEnumerator {
-  public: cEnumerator_unifiedTypeMap (const GALGAS_unifiedTypeMap & inEnumeratedObject,
-                                      const typeEnumerationOrder inOrder) ;
-
-//--- Current element access
-  public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GALGAS_unifiedTypeMapElementClass current_mElement (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GALGAS_unifiedTypeMap_2D_element current (LOCATION_ARGS) const ;
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMap ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticContext struct
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_semanticContext : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GALGAS_unifiedTypeMap mProperty_mTypeMap ;
-  public: inline GALGAS_unifiedTypeMap readProperty_mTypeMap (void) const {
-    return mProperty_mTypeMap ;
-  }
-
   public: GALGAS_routineMap mProperty_mRoutineMap ;
   public: inline GALGAS_routineMap readProperty_mRoutineMap (void) const {
     return mProperty_mRoutineMap ;
@@ -2357,10 +2381,6 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
   public: GALGAS_semanticContext (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setMTypeMap (const GALGAS_unifiedTypeMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mTypeMap = inValue ;
-  }
-
   public: inline void setter_setMRoutineMap (const GALGAS_routineMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mRoutineMap = inValue ;
   }
@@ -2393,8 +2413,7 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
   public: virtual ~ GALGAS_semanticContext (void) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_semanticContext (const GALGAS_unifiedTypeMap & in_mTypeMap,
-                                  const GALGAS_routineMap & in_mRoutineMap,
+  public: GALGAS_semanticContext (const GALGAS_routineMap & in_mRoutineMap,
                                   const GALGAS_functionMap & in_mFunctionMap,
                                   const GALGAS_filewrapperMap & in_mFilewrapperMap,
                                   const GALGAS_grammarMap & in_mGrammarMap,
@@ -2413,14 +2432,13 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_semanticContext constructor_new (const class GALGAS_unifiedTypeMap & inOperand0,
-                                                               const class GALGAS_routineMap & inOperand1,
-                                                               const class GALGAS_functionMap & inOperand2,
-                                                               const class GALGAS_filewrapperMap & inOperand3,
-                                                               const class GALGAS_grammarMap & inOperand4,
-                                                               const class GALGAS_optionComponentMapForSemanticAnalysis & inOperand5,
-                                                               const class GALGAS_lexiqueComponentMapForSemanticAnalysis & inOperand6,
-                                                               const class GALGAS_syntaxComponentMap & inOperand7
+  public: static class GALGAS_semanticContext constructor_new (const class GALGAS_routineMap & inOperand0,
+                                                               const class GALGAS_functionMap & inOperand1,
+                                                               const class GALGAS_filewrapperMap & inOperand2,
+                                                               const class GALGAS_grammarMap & inOperand3,
+                                                               const class GALGAS_optionComponentMapForSemanticAnalysis & inOperand4,
+                                                               const class GALGAS_lexiqueComponentMapForSemanticAnalysis & inOperand5,
+                                                               const class GALGAS_syntaxComponentMap & inOperand6
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -2613,6 +2631,7 @@ class cPtr_templateGetterCallInExpressionAST : public cPtr_templateExpressionAST
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticExpressionForGeneration & outExpression,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2709,6 +2728,7 @@ void callExtensionMethod_templateInstructionAnalysis (class cPtr_templateInstruc
                                                       const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
                                                       class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                       const class GALGAS_templateAnalysisContext constin_inAnalysisContext,
+                                                      class GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                       class GALGAS_templateInstructionListForGeneration & io_ioInstructionList,
                                                       class C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
@@ -2947,6 +2967,7 @@ class cPtr_templateInstructionForeachAST : public cPtr_templateInstructionAST {
   public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3855,6 +3876,7 @@ class cPtr_templateInstructionSwitchAST : public cPtr_templateInstructionAST {
   public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
            const class GALGAS_templateAnalysisContext inAnalysisContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_templateInstructionListForGeneration & ioInstructionList,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -4745,6 +4767,7 @@ class cPtr_semanticDeclarationAST : public acStrongPtr_class {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
@@ -7677,6 +7700,7 @@ class cPtr_templateLexiqueComponentAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 

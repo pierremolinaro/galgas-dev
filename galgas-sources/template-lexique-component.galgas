@@ -192,6 +192,7 @@ override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
                               ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
                               ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
                               ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+                              ?!@unifiedTypeMap unused ioTypeMap
                               ?!@semanticContext ioSemanticContext {
 #--------------------------------------- Get super lexique features
   [ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey

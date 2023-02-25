@@ -116,7 +116,7 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @bool inHasTranslateFeature
   ?let @terminalMap unused inTerminalMap
   ?let @string unused inLexiqueName
@@ -139,6 +139,7 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !self.mNonterminalName
     !invokedEntityNameForErrorSignaling: "'<" + self.mNonterminalName + ">' nonterminal declaration"
     !signature
@@ -150,6 +151,7 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
 #--- Check syntax directed translation destination variable
   [self.mGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
     !inAnalysisContext
+    !?ioTypeMap
     !inHasTranslateFeature
     !?ioVariableMap
   ]

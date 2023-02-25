@@ -152,7 +152,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
@@ -195,6 +195,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inferenceType:  targetType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
   ]
@@ -240,7 +241,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
@@ -272,6 +273,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
       !?ioUsefulEntitiesGraph
       !inferenceType:  targetType
       !inAnalysisContext
+      !?ioTypeMap
       !?ioVariableMap
       ?@semanticExpressionForGeneration expression
     ]

@@ -69,7 +69,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
@@ -83,6 +83,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
       !?ioUsefulEntitiesGraph
       !inferenceType: selfType
       !inAnalysisContext
+      !?ioTypeMap
       !?ioVariableMap
       ?@semanticExpressionForGeneration expression
     ]

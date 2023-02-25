@@ -105,6 +105,7 @@ override method @ifExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
@@ -114,6 +115,7 @@ override method @ifExpressionAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: inAnalysisContext.mPredefinedTypes.mBoolType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration if_expression
   ]
@@ -123,6 +125,7 @@ override method @ifExpressionAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: inType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?let then_expression
   ]
@@ -132,6 +135,7 @@ override method @ifExpressionAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: inType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?let else_expression
   ]

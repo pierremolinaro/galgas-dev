@@ -173,6 +173,7 @@ override method @extensionGetterAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+                                ?!@unifiedTypeMap unused ioTypeMap
   ?!@semanticContext unused ioSemanticContext
 {
 }
@@ -196,7 +197,7 @@ override method @extensionGetterAST semanticAnalysis
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMapEntry selfType = [inSemanticContext.mTypeMap searchKey !self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [ioTypeMap searchKey !self.mTypeName]
 #--- Check self type is a class (new)
   let @string selfObjectNameNew
   let @string selfObjectAccessorNew

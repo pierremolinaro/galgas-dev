@@ -266,21 +266,22 @@ override method @predefinedTypeAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext {
 #  let optionalMethodMap = @optionalMethodMap {}
-  [self getOptionalMethodMap !?ioSemanticContext.mTypeMap ?let @optionalMethodMap optionalMethodMap]
-  [self getConstructorMap !?ioSemanticContext.mTypeMap ?let @constructorMap constructorMap]
-  [self getGetterMap !?ioSemanticContext.mTypeMap ?var @getterMap getterMap]
-  [self getSetterMap !?ioSemanticContext.mTypeMap ?var @setterMap setterMap]
-  [self getInstanceMethodMap !?ioSemanticContext.mTypeMap ?var @instanceMethodMap instanceMethodMap]
-  [self getClassMethodMap !?ioSemanticContext.mTypeMap ?let @classMethodMap classMethodMap]
-  [self getAddAssignArgumentList !?ioSemanticContext.mTypeMap ?let @functionSignature addAssignArgumentList]
+  [self getOptionalMethodMap !?ioTypeMap ?let @optionalMethodMap optionalMethodMap]
+  [self getConstructorMap !?ioTypeMap ?let @constructorMap constructorMap]
+  [self getGetterMap !?ioTypeMap ?var @getterMap getterMap]
+  [self getSetterMap !?ioTypeMap ?var @setterMap setterMap]
+  [self getInstanceMethodMap !?ioTypeMap ?var @instanceMethodMap instanceMethodMap]
+  [self getClassMethodMap !?ioTypeMap ?let @classMethodMap classMethodMap]
+  [self getAddAssignArgumentList !?ioTypeMap ?let @functionSignature addAssignArgumentList]
   [self getEnumerationList
-    !?ioSemanticContext.mTypeMap
+    !?ioTypeMap
     ?let @enumerationDescriptorList enumerationList
     ?let @string enumeratedTypeName
   ]
-  [!?ioSemanticContext.mTypeMap makeEntryFromString
+  [!?ioTypeMap makeEntryFromString
     !self.mPredefinedTypeName
     ?* #let @unifiedTypeMapEntry selfTypeEntry
   ]
@@ -289,7 +290,7 @@ override method @predefinedTypeAST enterDeclarationInSemanticContext
   if enumeratedTypeName == "" then
     enumeratedTypeEntry = @unifiedTypeMapEntry.null
   else
-    [!?ioSemanticContext.mTypeMap makeEntryFromString!enumeratedTypeName ?enumeratedTypeEntry]
+    [!?ioTypeMap makeEntryFromString!enumeratedTypeName ?enumeratedTypeEntry]
   end
 #--- Add Extensions
   addExtensions (
@@ -297,6 +298,7 @@ override method @predefinedTypeAST enterDeclarationInSemanticContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
+    !?ioTypeMap
     !@lstring.new {!self.mPredefinedTypeName !@location.here}
     !isClass: false
     !?getterMap
@@ -334,7 +336,7 @@ override method @predefinedTypeAST enterDeclarationInSemanticContext
     !"galgas2/predefined-types"
     !@headerKind.twoHeaders
   }
-  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -343,8 +345,8 @@ override method @predefinedTypeAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+  ?let @semanticContext unused inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
@@ -355,7 +357,7 @@ override method @predefinedTypeAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"Predefined type " + self.mPredefinedTypeName
     !@primitiveTypeForGeneration.new {
-      ![inSemanticContext.mTypeMap searchKey !.new {!self.mPredefinedTypeName !.here}]
+      ![ioTypeMap searchKey !.new {!self.mPredefinedTypeName !.here}]
       !self.mPredefinedTypeName
       !self.mKind
     }

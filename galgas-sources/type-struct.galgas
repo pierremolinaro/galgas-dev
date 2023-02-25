@@ -111,11 +111,12 @@ override method @structDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+  ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext
 {
   let optionalMethodMap = @optionalMethodMap {}
 #--- Struct type index
-  [!?ioSemanticContext.mTypeMap makeEntry  !self.mStructTypeName ?let structTypeIndex]
+  [!?ioTypeMap makeEntry  !self.mStructTypeName ?let structTypeIndex]
 #--- Constructors and property map
   var @propertyMap propertyMap = {}
   var @constructorMap constructorMap = {}
@@ -123,7 +124,7 @@ override method @structDeclarationAST enterDeclarationInSemanticContext
   var @typedPropertyList typedPropertyList = {}
   var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
   for (isConstant mPropertyTypeName unused isOptional mPropertyName isPublic mAttributeList initExpression) in self.mStructurePropertyList do
-    [!?ioSemanticContext.mTypeMap makeEntry  !mPropertyTypeName ?let propertyTypeEntry]
+    [!?ioTypeMap makeEntry  !mPropertyTypeName ?let propertyTypeEntry]
     var @lstring selector = ["" nowhere]
     for (mValue) in mAttributeList do
       if mValue.string == selectorFeatureForNewConstructor () then
@@ -146,7 +147,7 @@ override method @structDeclarationAST enterDeclarationInSemanticContext
     !structTypeIndex
   ]
 #--- Getters
-  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap)
+  commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
 #--- Setters
   var @setterMap setterMap = {}
 #--- Instance methods
@@ -157,6 +158,7 @@ override method @structDeclarationAST enterDeclarationInSemanticContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
+    !?ioTypeMap
     !self.mStructTypeName
     !isClass: false
     !?getterMap
@@ -169,7 +171,7 @@ override method @structDeclarationAST enterDeclarationInSemanticContext
   if self.mEnumeratedElementTypeName == "" then
     enumeratedType = @unifiedTypeMapEntry.null
   else
-   [!?ioSemanticContext.mTypeMap makeEntryFromString
+   [!?ioTypeMap makeEntryFromString
      !self.mEnumeratedElementTypeName
      ?enumeratedType
     ]
@@ -211,7 +213,7 @@ override method @structDeclarationAST enterDeclarationInSemanticContext
     !"struct-" + [self.mStructTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioSemanticContext.mTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -232,7 +234,7 @@ override method @structDeclarationAST semanticAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
@@ -249,7 +251,7 @@ override method @structDeclarationAST semanticAnalysis
   for (* mPropertyTypeName unused isOptional mPropertyName * mAttributeList initExpression) in self.mStructurePropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
-    let t = [inSemanticContext.mTypeMap searchKey !mPropertyTypeName]
+    let t = [ioTypeMap searchKey !mPropertyTypeName]
     var hasSelector = false
     for (mValue) in mAttributeList do
       if mValue.string != selectorFeatureForNewConstructor () then
@@ -306,12 +308,13 @@ override method @structDeclarationAST semanticAnalysis
         !""
         !requiresSelfForAccessingProperty: true
       }
-      let propertyType = [inSemanticContext.mTypeMap searchKey !propertyTypeName]
+      let propertyType = [ioTypeMap searchKey !propertyTypeName]
       [expressionAST analyzeSemanticExpression
         !["" nowhere]
         !?usefulEntitiesGraph
         !inferenceType: propertyType
         !analysisContext
+        !?ioTypeMap
         !?variableMap
         ?var @semanticExpressionForGeneration expression
       ]
@@ -338,7 +341,7 @@ override method @structDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"struct " + self.mStructTypeName
     !@structTypeForGeneration.new {
-      ![inSemanticContext.mTypeMap searchKey !self.mStructTypeName]
+      ![ioTypeMap searchKey !self.mStructTypeName]
       !typedPropertyList
       !constructorArgumentList
       !initializationCode

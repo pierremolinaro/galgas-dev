@@ -2238,6 +2238,7 @@ class cPtr_arrayDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2415,6 +2416,7 @@ class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3135,6 +3137,7 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3430,6 +3433,7 @@ class cPtr_weakReferenceDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3698,6 +3702,7 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -5751,6 +5756,7 @@ class cPtr_externTypeDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -6481,6 +6487,7 @@ class cPtr_graphDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -6662,6 +6669,7 @@ class cPtr_listDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -6841,6 +6849,7 @@ class cPtr_listmapDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -7026,6 +7035,7 @@ class cPtr_dictDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -8030,6 +8040,7 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -8831,6 +8842,7 @@ class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & ioTypeMap,
            class GALGAS_semanticContext & ioSemanticContext,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 

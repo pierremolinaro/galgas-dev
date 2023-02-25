@@ -76,11 +76,11 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Get type method map for the named type
-  let type = [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mTypeName]
+  let type = [ioTypeMap searchKey !self.mTypeName]
 #--- Get type method signature
   [[type definition].mClassMethodMap searchKey !self.mMethodName ?let routineSignature ?let hasCompilerArgument]
 #--- Check effective parameters
@@ -88,6 +88,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !self.mMethodName
     !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' type proc header"
     !routineSignature

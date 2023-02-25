@@ -365,7 +365,7 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
@@ -388,6 +388,7 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !self.mLabelName
     !invokedEntityNameForErrorSignaling: "label of the " + self.mGrammarComponentName + " grammar"
     !labelSignature
@@ -402,6 +403,7 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration sourceExpression
   ]
@@ -416,6 +418,7 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
   var assignementList = @stringlist {}
   [self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
     !inAnalysisContext
+    !?ioTypeMap
     !hasTranslateFeature
     !syntaxDirectedTranslationResultVarName
     !?assignementList
@@ -440,7 +443,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
@@ -463,6 +466,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
+    !?ioTypeMap
     !self.mLabelName
     !invokedEntityNameForErrorSignaling: "label of the " + self.mGrammarComponentName + " grammar"
     !labelSignature
@@ -477,6 +481,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration sourceExpression
   ]
@@ -492,6 +497,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration nameExpression
   ]
@@ -506,6 +512,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
   var assignementList = @stringlist {}
   [self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
     !inAnalysisContext
+    !?ioTypeMap
     !hasTranslateFeature
     !syntaxDirectedTranslationResultVarName
     !?assignementList

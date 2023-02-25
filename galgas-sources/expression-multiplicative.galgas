@@ -152,6 +152,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
@@ -160,6 +161,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
   ]
@@ -169,6 +171,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
@@ -207,6 +210,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
@@ -215,6 +219,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
   ]
@@ -224,6 +229,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
@@ -261,6 +267,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
@@ -269,6 +276,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
   ]
@@ -278,6 +286,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
@@ -315,6 +324,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
@@ -323,6 +333,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
   ]
@@ -332,6 +343,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
@@ -369,6 +381,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
@@ -377,6 +390,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
   ]
@@ -386,6 +400,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
+    !?ioTypeMap
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
