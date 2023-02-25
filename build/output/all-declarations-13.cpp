@@ -4983,7 +4983,8 @@ mProperty_mHeaderString (in_mHeaderString) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_headerCompositionMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mInclusion.isValid () && mProperty_mHeaderString.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mInclusion.isValid () && mProperty_mHeaderString.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5306,7 +5307,8 @@ mProperty_mHeaderFileName (in_mHeaderFileName) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_headerRepartitionMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mHeaderFileName.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mHeaderFileName.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5577,7 +5579,8 @@ mProperty_mFeatureValue (in_mFeatureValue) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_projectQualifiedFeatureMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mFeatureValue.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mFeatureValue.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5887,7 +5890,7 @@ mObject (inElement.mProperty_mGroupReference, inElement.mProperty_mGroupName, in
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_XCodeGroupList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6513,7 +6516,7 @@ mObject (inElement.mProperty_mTargetRef, inElement.mProperty_mTargetName, inElem
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_XCodeToolTargetList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7586,7 +7589,7 @@ mObject (inElement.mProperty_mTargetRef, inElement.mProperty_mTargetName, inElem
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_XCodeAppTargetList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -8826,7 +8829,7 @@ mObject (inElement.mProperty_mFileReference, inElement.mProperty_mFileName, inEl
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_BuildFileList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -249,7 +249,7 @@ mObject (inElement.mProperty_mLexicalActualInputArgument) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalFunctionCallActualArgumentListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1881,7 +1881,7 @@ mObject (inElement.mProperty_mLexicalFormalSelector, inElement.mProperty_mLexica
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalSentValueList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2391,7 +2391,8 @@ mProperty_mSentAttributeList (in_mSentAttributeList) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_terminalMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mSentAttributeList.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mSentAttributeList.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2662,7 +2663,8 @@ mProperty_mLexicalType (in_mLexicalType) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_lexicalTypeMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mLexicalType.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mLexicalType.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2933,7 +2935,8 @@ mProperty_mLexicalType (in_mLexicalType) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_lexicalAttributeMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mLexicalType.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mLexicalType.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3247,7 +3250,7 @@ mObject (inElement.mProperty_mTerminalName, inElement.mProperty_mSentAttributeLi
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_terminalList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3948,7 +3951,8 @@ mProperty_mAttributeList (in_mAttributeList) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_lexicalExplicitTokenListMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mTerminal.isValid () && mProperty_mAttributeList.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mTerminal.isValid () && mProperty_mAttributeList.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4599,7 +4603,8 @@ mProperty_mShouldBeGenerated (in_mShouldBeGenerated) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_lexicalExplicitTokenListMapMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mExplicitTokenListMap.isValid () && mProperty_mTokenSortedList.isValid () && mProperty_mShouldBeGenerated.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mExplicitTokenListMap.isValid () && mProperty_mTokenSortedList.isValid () && mProperty_mShouldBeGenerated.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4976,7 +4981,8 @@ mProperty_mMessageIsUsed (in_mMessageIsUsed) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_lexicalMessageMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mLexicalMessage.isValid () && mProperty_mMessageIsUsed.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mLexicalMessage.isValid () && mProperty_mMessageIsUsed.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5336,7 +5342,7 @@ mObject (inElement.mProperty_mLexicalFormalArgumentMode, inElement.mProperty_mLe
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalRoutineFormalArgumentList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5850,7 +5856,8 @@ mProperty_mIsExtern (in_mIsExtern) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_lexicalRoutineMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mLexicalRoutineFormalArgumentList.isValid () && mProperty_mErrorMessageList.isValid () && mProperty_mIsExtern.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mLexicalRoutineFormalArgumentList.isValid () && mProperty_mErrorMessageList.isValid () && mProperty_mIsExtern.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6260,7 +6267,7 @@ mObject (inElement.mProperty_mLexicalType, inElement.mProperty_mArgumentNameForC
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalFunctionFormalArgumentList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6713,7 +6720,8 @@ mProperty_mIsExtern (in_mIsExtern) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_lexicalFunctionMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mLexicalTypeList.isValid () && mProperty_mReturnedLexicalType.isValid () && mProperty_mReplacementFunctionName.isValid () && mProperty_mIsExtern.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mLexicalTypeList.isValid () && mProperty_mReturnedLexicalType.isValid () && mProperty_mReplacementFunctionName.isValid () && mProperty_mIsExtern.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7177,7 +7185,7 @@ mObject (inElement.mProperty_mStartString, inElement.mProperty_mEndString, inEle
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_templateDelimitorList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7689,7 +7697,8 @@ mProperty_mStyleIndex (in_mStyleIndex) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_styleMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mComment.isValid () && mProperty_mStyleIndex.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mComment.isValid () && mProperty_mStyleIndex.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -8010,6 +8019,7 @@ cMapElement (inKey COMMA_THERE) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_lexicalTagMap::isValid (void) const {
+  /* return mProperty_lkey.isValid () ; */
   return mProperty_lkey.isValid () ;
 }
 
@@ -11108,7 +11118,7 @@ mObject (inElement.mProperty_mLexicalRoutineActualArgument) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalRoutineCallActualArgumentListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12477,7 +12487,7 @@ mObject (inElement.mProperty_mOptionTypeName, inElement.mProperty_mOptionInterna
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_commandLineOptionListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13356,7 +13366,8 @@ mProperty_mDefaultValue (in_mDefaultValue) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_commandLineOptionMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mOptionChar.isValid () && mProperty_mOptionString.isValid () && mProperty_mComment.isValid () && mProperty_mDefaultValue.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mOptionChar.isValid () && mProperty_mOptionString.isValid () && mProperty_mComment.isValid () && mProperty_mDefaultValue.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13818,7 +13829,7 @@ mObject (inElement.mProperty_mKey, inElement.mProperty_mValue) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_guiSimpleAttributeListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -14302,7 +14313,7 @@ mObject (inElement.mProperty_mKey, inElement.mProperty_mAttributeName, inElement
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_guiCompoundAttributeListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -14847,7 +14858,7 @@ mObject (inElement.mProperty_mTerminal, inElement.mProperty_mDisplayFlags) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_terminalLabelListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -15331,7 +15342,7 @@ mObject (inElement.mProperty_mLeadingCharacterStrippedCount, inElement.mProperty
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_guiLabelListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

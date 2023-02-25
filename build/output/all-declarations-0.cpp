@@ -4601,7 +4601,7 @@ mObject (inElement.mProperty_mInstruction) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_templateInstructionListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5219,7 +5219,7 @@ mObject (inElement.mProperty_mActualSelector, inElement.mProperty_mExpression, i
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_templateExpressionListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -14438,7 +14438,7 @@ mObject (inElement.mProperty_mExpression, inElement.mProperty_mInstructionList) 
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_templateInstructionIfBranchListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -15508,7 +15508,7 @@ mObject (inElement.mProperty_mInstruction) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_templateInstructionListForGeneration::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -601,7 +601,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
 
 #·····················································································································*
 
-override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # += !… !…
+override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
@@ -643,10 +643,21 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
 #--- Check target variable
   for (mValue) in self.mStructAttributeList do
     let propertyMap = [targetType definition].mPropertyMap
+    let previousTargetType = targetType
     [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
-    if not isPublic then
-      error mValue : " inaccessible property (due to its 'private' qualifier)"
+    if not isPublic  then
+      switch inAnalysisContext.selfType
+      case none :
+        error mValue : " inaccessible property (due to its 'private' qualifier)"
+      case available (selfType 2*) :
+        if previousTargetType != selfType then
+          error mValue : " inaccessible property (due to its 'private' qualifier)"
+        end
+      end
     end
+#    if not isPublic && inAnalysisContext.selfType  then
+#      error mValue : " inaccessible property (due to its 'private' qualifier)"
+#    end
     if isConstant then
       error mValue : "a constant property cannot be modified"
     end

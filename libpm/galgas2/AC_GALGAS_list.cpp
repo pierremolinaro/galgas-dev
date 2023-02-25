@@ -31,9 +31,9 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_list::removeObjectAtIndex (capCollectionElement & outAttributes,
-                                              const uint32_t inRemoveIndex,
-                                              C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
+                                          const uint32_t inRemoveIndex,
+                                          C_Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
   mSharedArray.removeObjectAtIndex (outAttributes, inRemoveIndex, inCompiler COMMA_THERE) ;
 }
 
@@ -46,8 +46,8 @@ void AC_GALGAS_list::removeObjectAtIndex (capCollectionElement & outAttributes,
 //----------------------------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_list::removeFirstObject (capCollectionElement & outAttributes,
-                                            C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
+                                        C_Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) {
   mSharedArray.removeFirstObject (outAttributes, inCompiler COMMA_THERE) ;
 }
 
@@ -60,8 +60,8 @@ void AC_GALGAS_list::removeFirstObject (capCollectionElement & outAttributes,
 //----------------------------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_list::removeLastObject (capCollectionElement & outAttributes,
-                                           C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
+                                       C_Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) {
   mSharedArray.removeLastObject (outAttributes, inCompiler COMMA_THERE) ;
 }
 
@@ -91,7 +91,7 @@ AC_GALGAS_list::~ AC_GALGAS_list (void) {
 //----------------------------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_list::description (C_String & ioString,
-                                      const int32_t inIndentation) const {
+                                  const int32_t inIndentation) const {
   ioString << "<list @" << staticTypeDescriptor ()->mGalgasTypeName
            << " (" << cStringWithUnsigned (count()) << " object"
            << ((count() > 1) ? "s" : "") << "):" ;

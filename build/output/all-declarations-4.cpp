@@ -171,7 +171,7 @@ mObject (inElement.mProperty_mFormalSelector, inElement.mProperty_mFormalArgumen
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_formalInputParameterListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -959,7 +959,7 @@ mObject (inElement.mProperty_mFormalSelector, inElement.mProperty_mFormalArgumen
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_formalInputParameterListForGeneration::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1747,7 +1747,7 @@ mObject (inElement.mProperty_mFormalSelector, inElement.mProperty_mFormalArgumen
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_formalParameterListForGeneration::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2527,7 +2527,7 @@ mObject (inElement.mProperty_mInstruction) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_semanticInstructionListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3055,7 +3055,7 @@ mObject (inElement.mProperty_mInstruction) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_semanticInstructionListForGeneration::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6723,7 +6723,7 @@ mObject (inElement.mProperty_mActualParameter) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_actualParameterListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7907,7 +7907,7 @@ mObject (inElement.mProperty_mActualSelector, inElement.mProperty_mInputParamete
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_actualInputParameterListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -8807,7 +8807,7 @@ mObject (inElement.mProperty_mSemanticDeclaration) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_semanticDeclarationListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -9967,7 +9967,7 @@ mObject (inElement.mProperty_mFormalTemplateSelector, inElement.mProperty_mForma
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_formalTemplateInputParameterListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10577,7 +10577,7 @@ mObject (inElement.mProperty_mFilewrapperTemplateName, inElement.mProperty_mFile
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_filewrapperTemplateListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -11231,7 +11231,7 @@ mObject (inElement.mProperty_mInstruction) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_syntaxInstructionList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -11652,7 +11652,7 @@ mObject (inElement.mProperty_mLabelName, inElement.mProperty_mFormalArgumentList
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_nonTerminalLabelListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12197,7 +12197,7 @@ mObject (inElement.mProperty_mNonterminalName, inElement.mProperty_mLabels) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_nonterminalDeclarationListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12685,7 +12685,7 @@ mObject (inElement.mProperty_mLabelName, inElement.mProperty_mFormalArguments, i
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_syntaxRuleLabelListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13356,7 +13356,7 @@ mObject (inElement.mProperty_mNonterminalName, inElement.mProperty_mLabelList) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_syntaxRuleListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13838,7 +13838,7 @@ mObject (inElement.mProperty_mSyntaxInstructionList, inElement.mProperty_mEndOf_
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_listOfSyntaxInstructionList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -14548,7 +14548,7 @@ mObject (inElement.mProperty_mSyntaxComponentName, inElement.mProperty_mImported
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_galgas_33_SyntaxComponentListAST::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

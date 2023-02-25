@@ -16,11 +16,12 @@ end
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_%!TYPE_IDENTIFIER%::isValid (void) const {
-  return mProperty_lkey.isValid ()%
+  /* return mProperty_lkey.isValid ()%
     for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
       do % && mProperty_%![mPropertyName identifierRepresentation]%.isValid ()%
     end
-  % ;
+  % ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -132,11 +133,11 @@ block 2 :
 end
 %}
 
-%for (mInsertMethodName mErrorMessage mShadowErrorMessage) in INSERT_METHOD_LIST do
+%for (insertMethodName errorMessage shadowErrorMessage) in INSERT_METHOD_LIST do
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::setter_%![mInsertMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
-    for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
-      do (IDX) %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
+  %void GALGAS_%!TYPE_IDENTIFIER%::setter_%![insertMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
+    for (propertyTypeEntry * * *) in ATTRIBUTE_LIST
+      do (IDX) %,\n%!^%GALGAS_%![propertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
     end
     %,\n %!^%C_Compiler * inCompiler%
     %\n %!^%COMMA_LOCATION_ARGS) {\n%
@@ -150,8 +151,8 @@ end
   %  attributes.setPointer (p) ;\n%
   %  macroDetachSharedObject (p) ;\n%
   block 2 :
-    %const char * kInsertErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;\n%
-    %const char * kShadowErrorMessage = %![mShadowErrorMessage utf8RepresentationEscapingQuestionMark]% ;\n%
+    %const char * kInsertErrorMessage = %![errorMessage utf8RepresentationEscapingQuestionMark]% ;\n%
+    %const char * kShadowErrorMessage = %![shadowErrorMessage utf8RepresentationEscapingQuestionMark]% ;\n%
     %performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
   end
   %}\n\n%
