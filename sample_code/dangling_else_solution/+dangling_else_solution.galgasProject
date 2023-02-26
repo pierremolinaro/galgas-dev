@@ -1,6 +1,5 @@
 project (1:0:0) -> "all_dangling_else_solution" {
 #--- Targets
-  %makefile-macosx
   %makefile-unix
   %MacOS
   %applicationBundleBase : "fr.what"

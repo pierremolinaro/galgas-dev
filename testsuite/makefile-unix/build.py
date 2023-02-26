@@ -25,8 +25,8 @@ with open (jsonFilePath) as f:
 LIBPM_DIRECTORY_PATH = dictionary ["LIBPM_DIRECTORY_PATH"]
 #----------------------------------------------------------------- Import builder
 sys.path.append (os.path.abspath (LIBPM_DIRECTORY_PATH + "/python-makefiles"))
-from macosx_gcc_tools import buildForMacOSX
+from unix_gcc_tools import buildForUnix
 #----------------------------------------------------------------- Build
-buildForMacOSX (dictionary, jsonFilePath, "testsuite", goal, maxParallelJobs, maxParallelJobs == 1)
+buildForUnix (dictionary, jsonFilePath, "testsuite", goal, maxParallelJobs, maxParallelJobs == 1)
 
 #-----------------------------------------------------------------------------------------------------------------------

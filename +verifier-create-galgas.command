@@ -1,19 +1,19 @@
 #!/bin/sh
 set -x
 DIR=`dirname $0` &&
-GALGAS=`dirname $0`/makefile-macosx/galgas-debug &&
+GALGAS=`dirname $0`/makefile-unix/galgas-debug &&
 TEST=TEST_GALGAS &&
 rm -fr ${DIR}/${TEST} &&
 rm -fr ${DIR}/${TEST} &&
 rm -fr ${DIR}/${TEST} &&
 echo "---------------- BUILD GALGAS --------------------------" &&
-cd ${DIR}/makefile-macosx && python ./build.py &&
+cd ${DIR}/makefile-unix && python ./build.py &&
 echo "---------------- CREATE PROJECT --------------------------" &&
 cd ${DIR} && ${GALGAS} --create-project=${TEST} &&
 echo "---------------- GALGAS COMPILE --------------------------" &&
 ${GALGAS} --output-html-grammar-file --Werror ${DIR}/${TEST}/+${TEST}.galgasProject &&
 echo "---------------- XCODE BUILD --------------------------" &&
-cd ${DIR}/${TEST}/xcode-project && xcodebuild -alltargets &&
+cd ${DIR}/${TEST}/xcode-project && /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -alltargets &&
 echo "---------------- MAKE i386 Linux --------------------------" &&
 cd ${DIR}/${TEST}/makefile-x86linux32-on-macosx && python ./build.py &&
 echo "---------------- MAKE x86_64 Linux --------------------------" &&
@@ -23,12 +23,12 @@ cd ${DIR}/${TEST}/makefile-unix && python ./build.py &&
 echo "---------------- MAKE win32 --------------------------" &&
 cd ${DIR}/${TEST}/makefile-win32-on-macosx && python ./build.py &&
 echo "---------------- MAKE --------------------------" &&
-cd ${DIR}/${TEST}/makefile-macosx && python ./build.py &&
+cd ${DIR}/${TEST}/makefile-unix && python ./build.py &&
 echo "---------------- EXECUTE NORMAL --------------------------" &&
-cd ${DIR}/${TEST}/makefile-macosx &&
+cd ${DIR}/${TEST}/makefile-unix &&
 ./${TEST} --help &&
 echo "---------------- EXECUTE DEBUG --------------------------" &&
-cd ${DIR}/${TEST}/makefile-macosx &&
+cd ${DIR}/${TEST}/makefile-unix &&
 ./${TEST}-debug --help &&
 echo "---------------- REMOVE PROJECT --------------------------" &&
 cd ${DIR} &&

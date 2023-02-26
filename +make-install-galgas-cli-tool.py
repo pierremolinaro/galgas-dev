@@ -18,10 +18,10 @@ def runCommandInShell (command) :
 scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))
 os.chdir (scriptDir + "/makefile-unix")
 #---
-runCommandInShell ("/usr/bin/python3 build.py")
+runCommandInShell ("/usr/bin/python3 build+release.py")
 #---
 runCommandInShell ("file galgas")
 #---
-runCommandInShell ("/usr/bin/python3 build.py install-release")
+runCommandInShell ("/usr/bin/python3 install.py")
 
 #------------------------------------------------------------------------------

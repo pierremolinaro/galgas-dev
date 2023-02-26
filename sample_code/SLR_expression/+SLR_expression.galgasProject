@@ -1,6 +1,5 @@
 project (1:0:0) -> "SLR_expression" {
 #--- Targets
-  %makefile-macosx
   %makefile-unix
   %MacOS
   %applicationBundleBase : "fr.what"

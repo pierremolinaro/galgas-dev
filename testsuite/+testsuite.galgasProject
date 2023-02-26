@@ -1,5 +1,5 @@
 project (1:0:0) -> "testsuite" {
-  %makefile-macosx
+  %makefile-unix
   %makefile-win32-on-macosx
   %MacOS
   %applicationBundleBase : "fr.what"

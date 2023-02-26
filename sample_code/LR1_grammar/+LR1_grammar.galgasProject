@@ -1,6 +1,5 @@
 project (1:0:0) -> "LR1_grammar"{
 #--- Targets
-  %makefile-macosx
   %makefile-unix
   %MacOS
   %applicationBundleBase : "fr.what"

@@ -1,6 +1,5 @@
 project (1:0:0) -> "class_sample_language" {
 #--- Targets
-  %makefile-macosx
   %makefile-unix
   %MacOS
   %applicationBundleBase : "fr.what"
