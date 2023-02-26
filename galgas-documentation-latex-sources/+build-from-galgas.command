@@ -1,7 +1,7 @@
 #!/bin/sh
 set -x
 DIR=`dirname $0` &&
-cd $DIR/../makefile-unix && python build.py release &&
+cd $DIR/../makefile-unix && /usr/bin/python3 build.py release &&
 PATH=$DIR/../makefile-unix:$PATH &&
 cd $DIR &&
 #--- Obtenir la description des grammaires en tex
