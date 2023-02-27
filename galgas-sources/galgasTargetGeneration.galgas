@@ -346,7 +346,7 @@ proc updateGalgas3Targets
   availableGenerationFeatures += !"codeblocks-linux32"
   availableGenerationFeatures += !"codeblocks-linux64"
   availableGenerationFeatures += !"codeblocks-mac"
-#  availableGenerationFeatures += !"makefile-macosx"
+  availableGenerationFeatures += !"makefile-macosx"
   availableGenerationFeatures += !"makefile-unix"
   availableGenerationFeatures += !"makefile-x86linux32-on-macosx"
   availableGenerationFeatures += !"makefile-x86linux64-on-macosx"
