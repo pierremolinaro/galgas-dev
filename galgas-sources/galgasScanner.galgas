@@ -180,6 +180,7 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "send",
   "setter",
   "sortedlist",
+  "spoil",
   "struct",
   "style",
   "switch",

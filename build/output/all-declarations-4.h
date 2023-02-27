@@ -5477,6 +5477,8 @@ class GALGAS_inputActualExistingVariableParameterAST : public GALGAS_actualParam
 
   public: class GALGAS_lstring readProperty_mInputActualParameterName (void) const ;
 
+  public: class GALGAS_lstringlist readProperty_mPoisonedVarNameList (void) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -5489,7 +5491,8 @@ class GALGAS_inputActualExistingVariableParameterAST : public GALGAS_actualParam
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_inputActualExistingVariableParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                       const class GALGAS_lstring & inOperand1
+                                                                                       const class GALGAS_lstring & inOperand1,
+                                                                                       const class GALGAS_lstringlist & inOperand2
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5501,6 +5504,9 @@ class GALGAS_inputActualExistingVariableParameterAST : public GALGAS_actualParam
 
   public: VIRTUAL_IN_DEBUG void setter_setMInputActualParameterName (class GALGAS_lstring inArgument0
                                                                      COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMPoisonedVarNameList (class GALGAS_lstringlist inArgument0
+                                                                COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -5549,10 +5555,12 @@ class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameter
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
   public: GALGAS_lstring mProperty_mInputActualParameterName ;
+  public: GALGAS_lstringlist mProperty_mPoisonedVarNameList ;
 
 //--- Constructor
   public: cPtr_inputActualExistingVariableParameterAST (const GALGAS_lstring & in_mActualSelector,
-                                                        const GALGAS_lstring & in_mInputActualParameterName
+                                                        const GALGAS_lstring & in_mInputActualParameterName,
+                                                        const GALGAS_lstringlist & in_mPoisonedVarNameList
                                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -5646,6 +5654,8 @@ class GALGAS_inputActualSelfPropertyParameterAST : public GALGAS_actualParameter
 
   public: class GALGAS_lstring readProperty_mInputActualSelfPropertyName (void) const ;
 
+  public: class GALGAS_lstringlist readProperty_mPoisonedVarNameList (void) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -5658,7 +5668,8 @@ class GALGAS_inputActualSelfPropertyParameterAST : public GALGAS_actualParameter
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_inputActualSelfPropertyParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                   const class GALGAS_lstring & inOperand1
+                                                                                   const class GALGAS_lstring & inOperand1,
+                                                                                   const class GALGAS_lstringlist & inOperand2
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5670,6 +5681,9 @@ class GALGAS_inputActualSelfPropertyParameterAST : public GALGAS_actualParameter
 
   public: VIRTUAL_IN_DEBUG void setter_setMInputActualSelfPropertyName (class GALGAS_lstring inArgument0
                                                                         COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMPoisonedVarNameList (class GALGAS_lstringlist inArgument0
+                                                                COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -5718,10 +5732,12 @@ class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
   public: GALGAS_lstring mProperty_mInputActualSelfPropertyName ;
+  public: GALGAS_lstringlist mProperty_mPoisonedVarNameList ;
 
 //--- Constructor
   public: cPtr_inputActualSelfPropertyParameterAST (const GALGAS_lstring & in_mActualSelector,
-                                                    const GALGAS_lstring & in_mInputActualSelfPropertyName
+                                                    const GALGAS_lstring & in_mInputActualSelfPropertyName,
+                                                    const GALGAS_lstringlist & in_mPoisonedVarNameList
                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -5815,6 +5831,8 @@ class GALGAS_inputActualSelfParameterAST : public GALGAS_actualParameterAST {
 
   public: class GALGAS_location readProperty_mSelfLocation (void) const ;
 
+  public: class GALGAS_lstringlist readProperty_mPoisonedVarNameList (void) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -5827,7 +5845,8 @@ class GALGAS_inputActualSelfParameterAST : public GALGAS_actualParameterAST {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_inputActualSelfParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                           const class GALGAS_location & inOperand1
+                                                                           const class GALGAS_location & inOperand1,
+                                                                           const class GALGAS_lstringlist & inOperand2
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5836,6 +5855,9 @@ class GALGAS_inputActualSelfParameterAST : public GALGAS_actualParameterAST {
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMActualSelector (class GALGAS_lstring inArgument0
                                                            COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMPoisonedVarNameList (class GALGAS_lstringlist inArgument0
+                                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMSelfLocation (class GALGAS_location inArgument0
                                                          COMMA_LOCATION_ARGS) ;
@@ -5887,10 +5909,12 @@ class cPtr_inputActualSelfParameterAST : public cPtr_actualParameterAST {
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
   public: GALGAS_location mProperty_mSelfLocation ;
+  public: GALGAS_lstringlist mProperty_mPoisonedVarNameList ;
 
 //--- Constructor
   public: cPtr_inputActualSelfParameterAST (const GALGAS_lstring & in_mActualSelector,
-                                            const GALGAS_location & in_mSelfLocation
+                                            const GALGAS_location & in_mSelfLocation,
+                                            const GALGAS_lstringlist & in_mPoisonedVarNameList
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -5986,6 +6010,8 @@ class GALGAS_inputActualNewVariableParameterAST : public GALGAS_actualParameterA
 
   public: class GALGAS_lstring readProperty_mInputActualParameterName (void) const ;
 
+  public: class GALGAS_lstringlist readProperty_mPoisonedVarNameList (void) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -5999,7 +6025,8 @@ class GALGAS_inputActualNewVariableParameterAST : public GALGAS_actualParameterA
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_inputActualNewVariableParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
                                                                                   const class GALGAS_lstring & inOperand1,
-                                                                                  const class GALGAS_lstring & inOperand2
+                                                                                  const class GALGAS_lstring & inOperand2,
+                                                                                  const class GALGAS_lstringlist & inOperand3
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6014,6 +6041,9 @@ class GALGAS_inputActualNewVariableParameterAST : public GALGAS_actualParameterA
 
   public: VIRTUAL_IN_DEBUG void setter_setMInputOptionalActualTypeName (class GALGAS_lstring inArgument0
                                                                         COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMPoisonedVarNameList (class GALGAS_lstringlist inArgument0
+                                                                COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -6063,11 +6093,13 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
   public: GALGAS_lstring mProperty_mActualSelector ;
   public: GALGAS_lstring mProperty_mInputOptionalActualTypeName ;
   public: GALGAS_lstring mProperty_mInputActualParameterName ;
+  public: GALGAS_lstringlist mProperty_mPoisonedVarNameList ;
 
 //--- Constructor
   public: cPtr_inputActualNewVariableParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                    const GALGAS_lstring & in_mInputOptionalActualTypeName,
-                                                   const GALGAS_lstring & in_mInputActualParameterName
+                                                   const GALGAS_lstring & in_mInputActualParameterName,
+                                                   const GALGAS_lstringlist & in_mPoisonedVarNameList
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -6165,6 +6197,8 @@ class GALGAS_inputActualNewConstantParameterAST : public GALGAS_actualParameterA
 
   public: class GALGAS_bool readProperty_mMarkedAsUnused (void) const ;
 
+  public: class GALGAS_lstringlist readProperty_mPoisonedVarNameList (void) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -6179,7 +6213,8 @@ class GALGAS_inputActualNewConstantParameterAST : public GALGAS_actualParameterA
   public: static class GALGAS_inputActualNewConstantParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
                                                                                   const class GALGAS_lstring & inOperand1,
                                                                                   const class GALGAS_lstring & inOperand2,
-                                                                                  const class GALGAS_bool & inOperand3
+                                                                                  const class GALGAS_bool & inOperand3,
+                                                                                  const class GALGAS_lstringlist & inOperand4
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6197,6 +6232,9 @@ class GALGAS_inputActualNewConstantParameterAST : public GALGAS_actualParameterA
 
   public: VIRTUAL_IN_DEBUG void setter_setMMarkedAsUnused (class GALGAS_bool inArgument0
                                                            COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMPoisonedVarNameList (class GALGAS_lstringlist inArgument0
+                                                                COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -6247,12 +6285,14 @@ class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
   public: GALGAS_lstring mProperty_mInputOptionalActualTypeName ;
   public: GALGAS_lstring mProperty_mInputActualParameterName ;
   public: GALGAS_bool mProperty_mMarkedAsUnused ;
+  public: GALGAS_lstringlist mProperty_mPoisonedVarNameList ;
 
 //--- Constructor
   public: cPtr_inputActualNewConstantParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                    const GALGAS_lstring & in_mInputOptionalActualTypeName,
                                                    const GALGAS_lstring & in_mInputActualParameterName,
-                                                   const GALGAS_bool & in_mMarkedAsUnused
+                                                   const GALGAS_bool & in_mMarkedAsUnused,
+                                                   const GALGAS_lstringlist & in_mPoisonedVarNameList
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -6344,6 +6384,8 @@ class GALGAS_inputSingleJokerActualParameterAST : public GALGAS_actualParameterA
 //--------------------------------- Property read access
   public: class GALGAS_lstring readProperty_mActualSelector (void) const ;
 
+  public: class GALGAS_lstringlist readProperty_mPoisonedVarNameList (void) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -6355,7 +6397,8 @@ class GALGAS_inputSingleJokerActualParameterAST : public GALGAS_actualParameterA
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_inputSingleJokerActualParameterAST constructor_new (const class GALGAS_lstring & inOperand0
+  public: static class GALGAS_inputSingleJokerActualParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                  const class GALGAS_lstringlist & inOperand1
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6364,6 +6407,9 @@ class GALGAS_inputSingleJokerActualParameterAST : public GALGAS_actualParameterA
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMActualSelector (class GALGAS_lstring inArgument0
                                                            COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMPoisonedVarNameList (class GALGAS_lstringlist inArgument0
+                                                                COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -6411,9 +6457,11 @@ class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
+  public: GALGAS_lstringlist mProperty_mPoisonedVarNameList ;
 
 //--- Constructor
-  public: cPtr_inputSingleJokerActualParameterAST (const GALGAS_lstring & in_mActualSelector
+  public: cPtr_inputSingleJokerActualParameterAST (const GALGAS_lstring & in_mActualSelector,
+                                                   const GALGAS_lstringlist & in_mPoisonedVarNameList
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

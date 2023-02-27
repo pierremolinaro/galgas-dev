@@ -433,9 +433,20 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
   end
   ioExclusiveVariableSet += !self.mInputActualParameterName.string
 #--- Generate actual parameter
+  var @2stringlist poisonedVarCppNameList = {}
+  for (varName) in self.mPoisonedVarNameList do
+    [!?ioVariableMap searchForWriteAccess
+      !varName
+      ?*
+      ?let targetVariableCppName
+      ?let nameForCheckingFormalParameterUsing
+    ]
+    poisonedVarCppNameList += !targetVariableCppName !nameForCheckingFormalParameterUsing
+  end
   ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
     !parameterType
     !targetVariableCppName
+    !poisonedVarCppNameList
   }
 }
 
@@ -449,7 +460,7 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-  ?!@localVarManager unused ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset unused ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
@@ -478,9 +489,20 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
       + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType definition].mTypeName.string + "'"
     end
   #--- Generate actual parameter
+    var @2stringlist poisonedVarCppNameList = {}
+    for (varName) in self.mPoisonedVarNameList do
+      [!?ioVariableMap searchForWriteAccess
+        !varName
+        ?*
+        ?let targetVariableCppName
+        ?let nameForCheckingFormalParameterUsing
+      ]
+      poisonedVarCppNameList += !targetVariableCppName !nameForCheckingFormalParameterUsing
+    end
     ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
       !parameterType
       !targetVariableCppName
+      !poisonedVarCppNameList
     }
 
   else
@@ -498,7 +520,7 @@ override method @inputActualSelfParameterAST checkAgainstFormalArgument
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-  ?!@localVarManager unused ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset unused ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
@@ -528,9 +550,20 @@ override method @inputActualSelfParameterAST checkAgainstFormalArgument
       + [inFormalArgumentType definition].mTypeName.string + "'"
     end
   #--- Generate actual parameter
+    var @2stringlist poisonedVarCppNameList = {}
+    for (varName) in self.mPoisonedVarNameList do
+      [!?ioVariableMap searchForWriteAccess
+        !varName
+        ?*
+        ?let targetVariableCppName
+        ?let nameForCheckingFormalParameterUsing
+      ]
+      poisonedVarCppNameList += !targetVariableCppName !nameForCheckingFormalParameterUsing
+    end
     ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
       !selfType
       !targetVariableCppName
+      !poisonedVarCppNameList
     }
 
   else
@@ -593,9 +626,21 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   end
   ioExclusiveVariableSet += !self.mInputActualParameterName.string
 #--- Generate actual parameter
+  var @2stringlist poisonedVarCppNameList = {}
+  for (varName) in self.mPoisonedVarNameList do
+    [!?ioVariableMap searchForWriteAccess
+      !varName
+      ?*
+      ?let targetVariableCppName
+      ?let nameForCheckingFormalParameterUsing
+    ]
+    poisonedVarCppNameList += !targetVariableCppName !nameForCheckingFormalParameterUsing
+  end
   ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
     !inFormalArgumentType
-    !targetVariableCppName}
+    !targetVariableCppName
+    !poisonedVarCppNameList
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -661,9 +706,20 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   end
   ioExclusiveVariableSet += !self.mInputActualParameterName.string
 #--- Generate actual parameter
+  var @2stringlist poisonedVarCppNameList = {}
+  for (varName) in self.mPoisonedVarNameList do
+    [!?ioVariableMap searchForWriteAccess
+      !varName
+      ?*
+      ?let targetVariableCppName
+      ?let nameForCheckingFormalParameterUsing
+    ]
+    poisonedVarCppNameList += !targetVariableCppName !nameForCheckingFormalParameterUsing
+  end
   ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
     !inFormalArgumentType
     !targetVariableCppName
+    !poisonedVarCppNameList
   }
 }
 
@@ -677,7 +733,7 @@ override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMapEntry inFormalArgumentType
   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-  ?!@localVarManager unused ioVariableMap
+  ?!@localVarManager ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset unused ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
@@ -692,9 +748,21 @@ override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
   else
     let cppVarName = "joker_" + [self.mActualSelector.location locationIndex]
   #--- Generate actual parameter
+    var @2stringlist poisonedVarCppNameList = {}
+    for (varName) in self.mPoisonedVarNameList do
+      [!?ioVariableMap searchForWriteAccess
+        !varName
+        ?*
+        ?let targetVariableCppName
+        ?let nameForCheckingFormalParameterUsing
+      ]
+      poisonedVarCppNameList += !targetVariableCppName !nameForCheckingFormalParameterUsing
+    end
     ioActualParameterListForGeneration += !@inputJokerParameterForGeneration.new {
       !inFormalArgumentType
-      !cppVarName}
+      !cppVarName
+      !poisonedVarCppNameList
+    }
   end
 }
 
@@ -722,6 +790,7 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
     ioActualParameterListForGeneration += !@inputJokerParameterForGeneration.new {
       !inFormalArgumentType
       !cppVarName
+      !{}
     }
   end
 }

@@ -164,6 +164,7 @@ class C_Lexique_galgasScanner : public C_Lexique {
    kToken_send,
    kToken_setter,
    kToken_sortedlist,
+   kToken_spoil,
    kToken_struct,
    kToken_style,
    kToken_switch,
@@ -324,7 +325,7 @@ class C_Lexique_galgasScanner : public C_Lexique {
   protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int16_t terminalVocabularyCount (void) const override { return 152 ; }
+  public: virtual int16_t terminalVocabularyCount (void) const override { return 153 ; }
 
 //--- Get Token String
   public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const override ;

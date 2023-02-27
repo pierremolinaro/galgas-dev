@@ -370,6 +370,9 @@ static const char * gSyntaxErrorMessage_galgasScanner_setter = "the 'setter' key
 //--- Syntax error message for terminal '$sortedlist$' :
 static const char * gSyntaxErrorMessage_galgasScanner_sortedlist = "the 'sortedlist' keyword" ;
 
+//--- Syntax error message for terminal '$spoil$' :
+static const char * gSyntaxErrorMessage_galgasScanner_spoil = "the 'spoil' keyword" ;
+
 //--- Syntax error message for terminal '$struct$' :
 static const char * gSyntaxErrorMessage_galgasScanner_struct = "the 'struct' keyword" ;
 
@@ -550,8 +553,8 @@ static const char * gSyntaxErrorMessage_galgasScanner__21__5E_ = "the '!^' delim
 
 C_String C_Lexique_galgasScanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
   C_String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 153)) {
-    static const char * syntaxErrorMessageArray [153] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 154)) {
+    static const char * syntaxErrorMessageArray [154] = {kEndOfSourceLexicalErrorMessage,
         gSyntaxErrorMessage_galgasScanner_identifier,
         gSyntaxErrorMessage_galgasScanner_double_2E_xxx,
         gSyntaxErrorMessage_galgasScanner_literalInt,
@@ -646,6 +649,7 @@ C_String C_Lexique_galgasScanner::getMessageForTerminal (const int16_t inTermina
         gSyntaxErrorMessage_galgasScanner_send,
         gSyntaxErrorMessage_galgasScanner_setter,
         gSyntaxErrorMessage_galgasScanner_sortedlist,
+        gSyntaxErrorMessage_galgasScanner_spoil,
         gSyntaxErrorMessage_galgasScanner_struct,
         gSyntaxErrorMessage_galgasScanner_style,
         gSyntaxErrorMessage_galgasScanner_switch,
@@ -1761,6 +1765,16 @@ static const utf32 kUnicodeString_galgasScanner_sortedlist [] = {
   TO_UNICODE (0)
 } ;
 
+//--- Unicode string for '$spoil$'
+static const utf32 kUnicodeString_galgasScanner_spoil [] = {
+  TO_UNICODE ('s'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('l'),
+  TO_UNICODE (0)
+} ;
+
 //--- Unicode string for '$struct$'
 static const utf32 kUnicodeString_galgasScanner_struct [] = {
   TO_UNICODE ('s'),
@@ -2000,7 +2014,7 @@ int16_t C_Lexique_galgasScanner::search_into_galgasDelimitorsList (const C_Strin
 //             Key words table 'galgasKeyWordList'      
 //----------------------------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_galgasKeyWordList = 87 ;
+static const int32_t ktable_size_galgasScanner_galgasKeyWordList = 88 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_galgasKeyWordList [ktable_size_galgasScanner_galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_as, 2, C_Lexique_galgasScanner::kToken_as),
@@ -2048,6 +2062,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_galgasKeyWor
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_graph, 5, C_Lexique_galgasScanner::kToken_graph),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_label, 5, C_Lexique_galgasScanner::kToken_label),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_parse, 5, C_Lexique_galgasScanner::kToken_parse),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_spoil, 5, C_Lexique_galgasScanner::kToken_spoil),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_style, 5, C_Lexique_galgasScanner::kToken_style),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_while, 5, C_Lexique_galgasScanner::kToken_while),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_before, 6, C_Lexique_galgasScanner::kToken_before),
@@ -2607,6 +2622,11 @@ C_String C_Lexique_galgasScanner::getCurrentTokenString (const cToken * inTokenP
     case kToken_sortedlist:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("sortedlist") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken_spoil:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("spoil") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_struct:
@@ -3949,6 +3969,7 @@ GALGAS_stringlist C_Lexique_galgasScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("send") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("setter") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("sortedlist") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("spoil") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("struct") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("style") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("switch") COMMA_THERE) ;
@@ -4117,6 +4138,7 @@ static void getKeywordsForIdentifier_galgasScanner (const C_String & inIdentifie
     ioList.appendObject ("graph") ;
     ioList.appendObject ("label") ;
     ioList.appendObject ("parse") ;
+    ioList.appendObject ("spoil") ;
     ioList.appendObject ("style") ;
     ioList.appendObject ("while") ;
     ioList.appendObject ("before") ;
@@ -4174,7 +4196,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner, getKeywordsForIdentifie
 //----------------------------------------------------------------------------------------------------------------------
 
 uint32_t C_Lexique_galgasScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [153] = {0,
+  static const uint32_t kTerminalSymbolStyles [154] = {0,
     0 /* galgasScanner_1_identifier */,
     8 /* galgasScanner_1_double_2E_xxx */,
     7 /* galgasScanner_1_literalInt */,
@@ -4269,6 +4291,7 @@ uint32_t C_Lexique_galgasScanner::styleIndexForTerminal (const int32_t inTermina
     1 /* galgasScanner_1_send */,
     1 /* galgasScanner_1_setter */,
     1 /* galgasScanner_1_sortedlist */,
+    1 /* galgasScanner_1_spoil */,
     1 /* galgasScanner_1_struct */,
     1 /* galgasScanner_1_style */,
     1 /* galgasScanner_1_switch */,

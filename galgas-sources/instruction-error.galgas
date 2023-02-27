@@ -154,7 +154,7 @@ syntax extension galgas4InstructionsSyntax {
     var mBuiltVariableList = @lstringlist {}
     select
     or
-      $:$
+      $spoil$
       repeat
        $identifier$ ?let builtVariableName
        mBuiltVariableList += !builtVariableName

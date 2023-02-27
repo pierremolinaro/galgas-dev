@@ -1,13 +1,4 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @procCallInstructionAST : @semanticInstructionAST {
-  private let @lstring mRoutineName
-  private let @actualParameterListAST mActualParameterList
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -49,6 +40,15 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! Class
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @procCallInstructionAST : @semanticInstructionAST {
+  private let @lstring mRoutineName
+  private let @actualParameterListAST mActualParameterList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -105,7 +105,8 @@ override method @procCallInstructionAST analyzeSemanticInstruction
 #--- Generate instruction
   ioInstructionListForGeneration += !@procCallInstructionForGeneration.new {
     !self.mRoutineName
-    !actualParameterListForGeneration}
+    !actualParameterListForGeneration
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -124,16 +125,15 @@ override method @procCallInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode
-{
+  ?!@string ioGeneratedCode {
   ioInclusionSet += !"proc-" + [self.mRoutineName fileNameRepresentation]
   ioGeneratedCode += "{\n"
 #--- Parameters
   var @stringlist parameterCppNameList = {}
   var @stringlist jokerParametersToReleaseList = {}
   var @stringlist inputVariableList = {}
-  for (mActualParameter) in self.mActualParameterList do
-    [mActualParameter generateActualParameter
+  for (actualParameter) in self.mActualParameterList do
+    [actualParameter generateActualParameter
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioGeneratedCode
@@ -152,6 +152,13 @@ override method @procCallInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   ioGeneratedCode +=  compilerCppName () + " " + [self.mRoutineName.location commaSourceFile] + ") ;\n"
   ioGeneratedCode += "}\n"
+#--- Generate poisoned variables
+  for (actualParameter) in self.mActualParameterList do
+    [actualParameter generatePoisonedVariables
+      !?ioGeneratedCode
+      !?ioUnusedVariableCppNameSet
+    ]
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

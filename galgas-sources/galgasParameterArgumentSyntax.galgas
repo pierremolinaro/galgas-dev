@@ -81,7 +81,8 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner) {
       $?$ ?let selector
       select
         $*$
-        outActualParameterList += !@inputSingleJokerActualParameterAST.new {!selector}
+        <poisoned_var_list> ?let poisonedVarNameList
+        outActualParameterList += !@inputSingleJokerActualParameterAST.new {!selector !poisonedVarNameList}
       or
         $literalInt$ ?let count
         $*$
@@ -142,25 +143,31 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner) {
     while # input parameter, existing variable
       $?$ ?let selector
       $identifier$ ?let inputActualParameterName
+      <poisoned_var_list> ?let poisonedVarNameList
       outActualParameterList += !@inputActualExistingVariableParameterAST.new {
         !selector
         !inputActualParameterName
+        !poisonedVarNameList
       }
     while # input parameter, self.property
       $?$ ?let selector
       $self$
       $.$
       $identifier$ ?let inputActualParameterName
+      <poisoned_var_list> ?let poisonedVarNameList
       outActualParameterList += !@inputActualSelfPropertyParameterAST.new {
         !selector
         !inputActualParameterName
+        !poisonedVarNameList
       }
     while # input parameter, self
       $?$ ?let selector
       $self$
+      <poisoned_var_list> ?let poisonedVarNameList
       outActualParameterList += !@inputActualSelfParameterAST.new {
         !selector
         !.here
+        !poisonedVarNameList
       }
     while  # input parameter, new variable
       $?$ ?let selector
@@ -172,19 +179,23 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner) {
         $@type$ ?declarationTypeName
       end
       $identifier$ ?let inputActualParameterName
+      <poisoned_var_list> ?let poisonedVarNameList
       outActualParameterList += !@inputActualNewVariableParameterAST.new {
         !selector
         !declarationTypeName
         !inputActualParameterName
+        !poisonedVarNameList
       }
     while  # input parameter, new variable, explicit type
       $?$ ?let selector
       $@type$ ?let @lstring declarationTypeName
       $identifier$ ?let inputActualParameterName
+      <poisoned_var_list> ?let poisonedVarNameList
       outActualParameterList += !@inputActualNewVariableParameterAST.new {
         !selector
         !declarationTypeName
         !inputActualParameterName
+        !poisonedVarNameList
       }
     while # input parameter, new constant
       $?$ ?let selector
@@ -203,11 +214,13 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner) {
         markedAsUnused = true
       end
       $identifier$ ?let inputActualParameterName
+      <poisoned_var_list> ?let poisonedVarNameList
       outActualParameterList += !@inputActualNewConstantParameterAST.new {
         !selector
         !declarationTypeName
         !inputActualParameterName
         !markedAsUnused
+        !poisonedVarNameList
       }
     end
   }
@@ -246,6 +259,25 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner) {
     end
   }
 
+  #·····················································································································
+
+  rule <poisoned_var_list> !@lstringlist outPoisonedVarNameList {
+    outPoisonedVarNameList = {}
+  }
+  
+  #·····················································································································
+
+  rule <poisoned_var_list> !@lstringlist outPoisonedVarNameList {
+    outPoisonedVarNameList = {}
+    $spoil$
+    repeat
+       $identifier$ ?let varName
+       outPoisonedVarNameList += !varName
+    while
+      $,$
+    end
+  }
+  
   #·····················································································································
 
 }
@@ -321,7 +353,8 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
       $?$ ?let selector
       select
         $*$
-        outActualParameterList += !@inputSingleJokerActualParameterAST.new {!selector}
+        <poisoned_var_list> ?let poisonedVarNameList
+        outActualParameterList += !@inputSingleJokerActualParameterAST.new {!selector !poisonedVarNameList}
       or
         $literalInt$ ?let count
         $*$
@@ -391,25 +424,31 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
     while # input parameter, existing variable
       $?$ ?let selector
       $identifier$ ?let inputActualParameterName
+      <poisoned_var_list> ?let poisonedVarNameList
       outActualParameterList += !@inputActualExistingVariableParameterAST.new {
         !selector
         !inputActualParameterName
+        !poisonedVarNameList
       }
     while # input parameter, self.property
       $?$ ?let selector
       $self$
       $.$
       $identifier$ ?let inputActualParameterName
+      <poisoned_var_list> ?let poisonedVarNameList
       outActualParameterList += !@inputActualSelfPropertyParameterAST.new {
         !selector
         !inputActualParameterName
+        !poisonedVarNameList
       }
     while # input parameter, self
       $?$ ?let selector
       $self$
+      <poisoned_var_list> ?let poisonedVarNameList
       outActualParameterList += !@inputActualSelfParameterAST.new {
         !selector
         !.here
+        !poisonedVarNameList
       }
     while  # input parameter, new variable
       $?$ ?let selector
@@ -421,19 +460,23 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
         $@type$ ?declarationTypeName
       end
       $identifier$ ?let inputActualParameterName
+      <poisoned_var_list> ?let poisonedVarNameList
       outActualParameterList += !@inputActualNewVariableParameterAST.new {
         !selector
         !declarationTypeName
         !inputActualParameterName
+        !poisonedVarNameList
       }
     while  # input parameter, new variable, explicit type
       $?$ ?let selector
       $@type$ ?let @lstring declarationTypeName
       $identifier$ ?let inputActualParameterName
+      <poisoned_var_list> ?let poisonedVarNameList
       outActualParameterList += !@inputActualNewVariableParameterAST.new {
         !selector
         !declarationTypeName
         !inputActualParameterName
+        !poisonedVarNameList
       }
     while # input parameter, new constant
       $?$ ?let selector
@@ -452,11 +495,13 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
         markedAsUnused = true
       end
       $identifier$ ?let inputActualParameterName
+      <poisoned_var_list> ?let poisonedVarNameList
       outActualParameterList += !@inputActualNewConstantParameterAST.new {
         !selector
         !declarationTypeName
         !inputActualParameterName
         !markedAsUnused
+        !poisonedVarNameList
       }
     end
   }
@@ -497,6 +542,25 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
     $)$
   }
 
+  #·····················································································································
+
+  rule <poisoned_var_list> !@lstringlist outPoisonedVarNameList {
+    outPoisonedVarNameList = {}
+  }
+  
+  #·····················································································································
+
+  rule <poisoned_var_list> !@lstringlist outPoisonedVarNameList {
+    outPoisonedVarNameList = {}
+    $spoil$
+    repeat
+       $identifier$ ?let varName
+       outPoisonedVarNameList += !varName
+    while
+      $,$
+    end
+  }
+  
   #·····················································································································
 
 }

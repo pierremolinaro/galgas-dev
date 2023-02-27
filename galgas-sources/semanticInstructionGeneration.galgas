@@ -101,3 +101,47 @@ override method @semanticBlockInstructionForGeneration generateInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @outputInputActualParameterForGeneration generatePoisonedVariables
+  ?!@string unused ioImplementation
+  ?!@stringset unused ioUnusedVariableCppNameSet {
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @outputActualParameterForGeneration generatePoisonedVariables
+  ?!@string unused ioImplementation
+  ?!@stringset unused ioUnusedVariableCppNameSet {
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @inputJokerParameterForGeneration generatePoisonedVariables
+  ?!@string ioImplementation
+  ?!@stringset ioUnusedVariableCppNameSet {
+  if [self.mPoisonedVarNameList length] > 0 then
+    ioImplementation += "if (!" + self.mInputActualCppName + ".isValid ()) {\n"
+    for (cppVarName nameForCheckingFormalParameterUsing) in self.mPoisonedVarNameList do
+      [!?ioUnusedVariableCppNameSet removeKey !nameForCheckingFormalParameterUsing]
+      ioImplementation += "  " + cppVarName + ".drop () ;\n"
+    end
+    ioImplementation += "}\n"  
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @inputActualParameterForGeneration generatePoisonedVariables
+                        ?!@string ioImplementation
+                        ?!@stringset ioUnusedVariableCppNameSet {
+  if [self.mPoisonedVarNameList length] > 0 then
+    ioImplementation += "if (!" + self.mInputActualCppName + ".isValid ()) {\n"
+    for (cppVarName nameForCheckingFormalParameterUsing) in self.mPoisonedVarNameList do
+      [!?ioUnusedVariableCppNameSet removeKey !nameForCheckingFormalParameterUsing]
+      ioImplementation += "  " + cppVarName + ".drop () ;\n"
+    end
+    ioImplementation += "}\n"  
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

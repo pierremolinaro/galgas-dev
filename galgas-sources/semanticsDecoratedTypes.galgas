@@ -130,6 +130,12 @@ abstract method @actualParameterForGeneration generateActualParameter
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+abstract method @actualParameterForGeneration generatePoisonedVariables
+  ?!@string ioImplementation
+  ?!@stringset ioUnusedVariableCppNameSet
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 refclass @outputActualParameterForGeneration : @actualParameterForGeneration {
   public let @semanticExpressionForGeneration mOutputActualParameterExpression
 }
@@ -146,12 +152,14 @@ refclass @outputInputActualParameterForGeneration : @actualParameterForGeneratio
 
 refclass @inputActualParameterForGeneration : @actualParameterForGeneration {
   public let @string mInputActualCppName
+  public let @2stringlist mPoisonedVarNameList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputJokerParameterForGeneration : @actualParameterForGeneration {
   public let @string mInputActualCppName
+  public let @2stringlist mPoisonedVarNameList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

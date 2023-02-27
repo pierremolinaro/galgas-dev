@@ -719,6 +719,17 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public: virtual void nt_output_5F_expression_5F_list_ (GALGAS_actualOutputExpressionList & outArgument0,
                                                          C_Lexique_galgasScanner * inCompiler) ;
 
+//------------------------------------- 'poisoned_var_list' non terminal
+//--- 'parse' label
+  public: virtual void nt_poisoned_5F_var_5F_list_parse (C_Lexique_galgasScanner * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_poisoned_5F_var_5F_list_indexing (C_Lexique_galgasScanner * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_poisoned_5F_var_5F_list_ (GALGAS_lstringlist & outArgument0,
+                                                    C_Lexique_galgasScanner * inCompiler) ;
+
 //------------------------------------- 'primary' non terminal
 //--- 'parse' label
   public: virtual void nt_primary_parse (C_Lexique_galgasScanner * inCompiler) ;
@@ -1094,6 +1105,8 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public: virtual int32_t select_galgas_33_ParameterArgumentSyntax_10 (C_Lexique_galgasScanner *) ;
 
   public: virtual int32_t select_galgas_33_ParameterArgumentSyntax_11 (C_Lexique_galgasScanner *) ;
+
+  public: virtual int32_t select_galgas_33_ParameterArgumentSyntax_12 (C_Lexique_galgasScanner *) ;
 
   public: virtual int32_t select_galgas_33_InstructionsSyntax_0 (C_Lexique_galgasScanner *) ;
 

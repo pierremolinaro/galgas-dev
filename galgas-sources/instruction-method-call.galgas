@@ -218,6 +218,13 @@ override method @methodCallInstructionForGeneration generateInstruction
     ioGeneratedCode += " COMMA_"
   end
   ioGeneratedCode += [self.mInstructionLocation sourceFile] + ") ;\n"
+#--- Generate poisoned variables
+  for (actualParameter) in self.mActualParameterList do
+    [actualParameter generatePoisonedVariables
+      !?ioGeneratedCode
+      !?ioUnusedVariableCppNameSet
+    ]
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
