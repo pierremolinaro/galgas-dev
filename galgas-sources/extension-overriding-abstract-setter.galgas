@@ -32,6 +32,21 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
+  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+    $override$
+    $abstract$
+    $setter$
+    $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
+    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST.new {
+      !false # Is not predefined
+      !inClassName
+      !setterName
+      !formalParameterList}
+  }
+
+  #·····················································································································
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -289,3 +289,4 @@ testsuite/makefile-macosx/testsuite
 testsuite/makefile-macosx/testsuite-debug
 galgas-sources/+generation-templates/build/*
 project-xcode-galgas/*
+makefile-unix/galgas-lto

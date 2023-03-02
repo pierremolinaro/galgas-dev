@@ -1,17 +1,4 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                     
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @classDeclarationAST : @semanticDeclarationAST {
-  private let @bool mIsAbstract
-  private let @bool mIsReference
-  private let @lstring mClassTypeName
-  private let @lstring mSuperClassName # Empty if no super class
-  private let @lstringlist mClassFeatureList
-  private let @propertyInCollectionListAST mPropertyList
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func weakSuffix -> @string { result = "-weak" }
 
@@ -71,7 +58,7 @@ syntax extension galgas3DeclarationsSyntax {
     while
       <property_declaration> !? propertyList
     while
-      $;$
+      <method_declaration> !className !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@classDeclarationAST.new {
@@ -169,367 +156,376 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                          
+#   AST                                     
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @classDeclarationAST keyRepresentation -> @string {
-  result = "valueclass @" + self.mClassTypeName
-}
+refclass @classDeclarationAST : @semanticDeclarationAST {
+  private let @bool mIsAbstract
+  private let @bool mIsReference
+  private let @lstring mClassTypeName
+  private let @lstring mSuperClassName # Empty if no super class
+  private let @lstringlist mClassFeatureList
+  private let @propertyInCollectionListAST mPropertyList
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+  #·····················································································································
 
-override method @classDeclarationAST enterDeclarationInGraph
-                                  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-                                  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-                                  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-                                  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-                                  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + self.mClassTypeName !self.mClassTypeName.location}
-  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-#--- Add edge from super class
-  if self.mSuperClassName.string != "" then
-    [!?ioSemanticTypePrecedenceGraph addEdge
-      !key
-      !.new {!"@" + self.mSuperClassName !self.mSuperClassName.location}
-    ]
-  end
-#--- Add edge from property types
-  for (* mPropertyTypeName 5*) in self.mPropertyList do
-    [!?ioSemanticTypePrecedenceGraph addEdge
-      !key
-      !@lstring.new {!"@" + mPropertyTypeName !self.mSuperClassName.location}
-    ]
-  end
-}
+  override getter keyRepresentation -> @string {
+    result = "valueclass @" + self.mClassTypeName
+  }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                        
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+  #·····················································································································
 
-override method @classDeclarationAST enterDeclarationInSemanticContext
-                                      ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-                                      ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-                                      ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-                                ?!@unifiedTypeMap ioTypeMap
-                                      ?!@semanticContext ioSemanticContext {
-  var @getterMap getterMap
-  var @setterMap setterMap
-  var @instanceMethodMap instanceMethodMap
-  let @typedPropertyList inheritedTypedPropertyList
-  var @propertyMap attributeMap = {}
-#--- Handle super class
-  let @unifiedTypeMapEntry superClassIndex
-  var @bool generateHeaderInSeparateFile
-  if self.mSuperClassName.string == "" then
-    superClassIndex = @unifiedTypeMapEntry.null
-    commonGetterMapForAllTypes (!?ioTypeMap ?getterMap )
-    setterMap = {}
-    instanceMethodMap = {}
-    inheritedTypedPropertyList = {}
-    attributeMap = {}
-    generateHeaderInSeparateFile = false
-    for (mValue) in self.mClassFeatureList do
-      if mValue.string == "generatedInSeparateFile" then
-        generateHeaderInSeparateFile = true
-      end
-    end
-  else
-    [!?ioTypeMap makeEntry !self.mSuperClassName ?superClassIndex]
-    [ioTypeMap searchType !self.mSuperClassName ?let superTypeDefinition]
-    inheritedTypedPropertyList = superTypeDefinition.mAllTypedPropertyList
-    attributeMap = superTypeDefinition.mPropertyMap
-    generateHeaderInSeparateFile = superTypeDefinition.mGenerateHeaderInSeparateFile
-  #---
-    if not [superTypeDefinition.mTypeKindEnum isClassType] then
-      error self.mSuperClassName : "the @" + self.mSuperClassName + " should be a class type"
-    end
-  #--- Mark all setters as inherited
-    setterMap = {}
-    for (lkey mKind mParameterList mHasCompilerArgument * *) in superTypeDefinition.mSetterMap do
-      [!?setterMap insertKey
-        !lkey
-        !mKind
-        !mParameterList
-        !mHasCompilerArgument
-        !.isInherited
-        !"" # No error message
-      ] 
-    end
-  #--- Mark all getters as inherited
-    getterMap = {}
-    for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType * mErrorMessage)
-          in superTypeDefinition.mGetterMap do
-      [!?getterMap insertKey
-        !lkey
-        !mKind
-        !mArgumentTypeList
-        !mDeclarationLocation
-        !mHasCompilerArgument
-        !mReturnedType
-        !.isInherited
-        !mErrorMessage
-      ] 
-    end
-  #--- Mark all methods as inherited
-    instanceMethodMap = {}
-    for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument * mErrorMessage)
-      in superTypeDefinition.mInstanceMethodMap do
-      [!?instanceMethodMap insertKey
-        !lkey
-        !mKind
-        !mParameterList
-        !mDeclarationLocation
-        !mHasCompilerArgument
-        !.isInherited
-        !mErrorMessage
-      ] 
-    end
-  end
-#--- Build attribute Map and constructor argument list
-  var @functionSignature constructorPropertyTypeList = {}
-  for (mPropertyTypeEntry mPropertyName * mHasSelector) in inheritedTypedPropertyList do
-    constructorPropertyTypeList +=
-      !if mHasSelector then mPropertyName else ["" nowhere] end
-      !mPropertyTypeEntry
-      !mPropertyName.string
-  end
-  for (isConstant mPropertyTypeName unused isOptional mPropertyName mIsPublic mAttributeList initExpression) in self.mPropertyList do
-    if [initExpression isSome] then
-      error mPropertyName : "property initialization is not handled for a class"
-    end
-    [!?ioTypeMap makeEntry !mPropertyTypeName ?let attributeTypeIndex]
-    var hasSelector = false
-    for (attribute) in mAttributeList do
-      if attribute.string == "selector" then
-        if hasSelector then
-          error attribute : "duplicated attribute" fixit { remove }
-        end
-        hasSelector = true
-      end
-    end
-    constructorPropertyTypeList += 
-      !if hasSelector then mPropertyName else ["" nowhere] end
-      !attributeTypeIndex
-      !mPropertyName.string
-    [!?attributeMap insertKey
-      !mPropertyName
-      !mIsPublic
-      !isConstant
-      !attributeTypeIndex
-    ]
-    if [getterMap hasKey !mPropertyName.string] then
-      error mPropertyName: "'" + mPropertyName + "' is the name of a prefefined or a user defined getter"
-    end
-  end
-#--- Current class Index
-  [!?ioTypeMap makeEntry
-     !self.mClassTypeName
-     ?let @unifiedTypeMapEntry classIndex
-  ]
-#--- Constructors
-  var @constructorMap constructorMap = {}
-  if not self.mIsAbstract then
-    [!?constructorMap insertKey
-      !@lstring.new {!"new" !@location.here}
-      !constructorPropertyTypeList
-      !false
-      !classIndex
-    ]
-  end
-#--- Typed attribute list
-  var @typedPropertyList currentClassTypedPropertyList = {}
-  var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
-  for (* mPropertyTypeName unused isOptional mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
-    if [initExpression isSome] then
-      error mPropertyName : "property initialization is not handled for a class"
-    end
-    [!?ioTypeMap makeEntry !mPropertyTypeName ?let attributeTypeIndex]
-    var hasSelector = false
-    for (mValue) in mAttributeList do
-      if mValue.string == "setter" then
-        warning mValue : "'%nogetter' is obsolete and has no effect"
-      elsif mValue.string == "nogetter" then
-        warning mValue : "'%setter' is obsolete and has no effect"
-      elsif mValue.string == "selector" then
-        hasSelector = true
-      end
-    end
-    currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
-    allTypedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
-  end
-#--- set...attribute setter
-  for (mPropertyTypeEntry mPropertyName mHasSetter *) in currentClassTypedPropertyList do
-    if mHasSetter then
-      [!?setterMap insertKey
-        !@lstring.new {!"set"+ [mPropertyName.string stringByCapitalizingFirstCharacter] !@location.here}
-        !@methodKind.definedAsMember
-        !{!["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentIn !mPropertyName.string}
-        !false # Compiler argument
-        !@methodQualifier.isBasicFinal
-        !"" # No error message
+  override method enterDeclarationInGraph
+                                    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+                                    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+                                    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+                                    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+                                    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+    let key = @lstring.new {!"@" + self.mClassTypeName !self.mClassTypeName.location}
+    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  #--- Add edge from super class
+    if self.mSuperClassName.string != "" then
+      [!?ioSemanticTypePrecedenceGraph addEdge
+        !key
+        !.new {!"@" + self.mSuperClassName !self.mSuperClassName.location}
       ]
     end
-  end
-#--- Add Extensions
-  addExtensions (
-    !inExtensionMethodMapForBuildingContext
-    !inExtensionGetterMapForBuildingContext
-    !inExtensionSetterMapForBuildingContext
-    !?ioSemanticContext
-    !?ioTypeMap
-    !self.mClassTypeName
-    !isClass: true
-    !?getterMap
-    !?setterMap
-    !?instanceMethodMap
-    !acceptSetters: not self.mIsReference
-  )
-#--- Generate a "default" constructor ?
-  var @string defaultConstructorName = if self.mIsAbstract then "" else "default" end
-  for (propertyTypeEntry 3*) in allTypedAttributeList while defaultConstructorName != "" do
-    if [propertyTypeEntry definition].mDefaultConstructorName == "" then 
-      defaultConstructorName = ""
+  #--- Add edge from property types
+    for (* mPropertyTypeName 5*) in self.mPropertyList do
+      [!?ioSemanticTypePrecedenceGraph addEdge
+        !key
+        !@lstring.new {!"@" + mPropertyTypeName !self.mSuperClassName.location}
+      ]
     end
-  end
-#--- Enter in type map
-  let typeDefinition = @unifiedTypeDefinition.new {
-    !self.mClassTypeName
-    !self.mIsPredefined
-    !not self.mIsAbstract # Concrete Type
-    !superClassIndex
-    !@typeKindEnum.classType {!isReference: self.mIsReference}
-    !false # Does not support collection value
-    !allTypedAttributeList
-    !attributeMap
-    !currentClassTypedPropertyList
-    !constructorMap
-    !getterMap
-    !setterMap
-    !instanceMethodMap
-    !{}
-    !@optionalMethodMap {}
-    !{}
-    !if self.mIsReference then .isReferenceEquatable else .isComparable end
-    !{}
-    !{}
-    !{}
-    !{}
-    !{}
-    !generateHeaderInSeparateFile
-    !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
-    !defaultConstructorName # Default constructor name
-    !"class-" + [self.mClassTypeName fileNameRepresentation]
-    !@headerKind.twoHeaders
   }
-  [!?ioTypeMap insertType !typeDefinition]
-}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                       
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+  #·····················································································································
 
-override method @classDeclarationAST semanticAnalysis
-                                      ?!@lstringlist unused ioUsefulnessRootEntities 
-                                      ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                      ?let @string unused inProductDirectory
-                                      ?let @semanticContext unused inSemanticContext
-                                      ?!@unifiedTypeMap ioTypeMap
-                                      ?let @predefinedTypes unused inPredefinedTypes
-                                      ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
-#--- Useful entities graph
-  let classTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mClassTypeName)
-  [!?ioUsefulEntitiesGraph addNode !classTypeNameForUsefulness !classTypeNameForUsefulness]
-  if self.mSuperClassName.string != "" then
-    let superClassNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSuperClassName)
-    [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !superClassNameForUsefulness]
-  end
-  if self.mIsReference then
-    let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new {!self.mClassTypeName.string + weakSuffix () !self.mClassTypeName})
-    [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !weakRefTypeNameForUsefulness]
-  end
-#------ Self type
-  let @unifiedTypeMapEntry selfType = [ioTypeMap searchKey !self.mClassTypeName]
-#--- Super class type
-  let @unifiedTypeMapEntry superClassEntry = if self.mSuperClassName.string == ""
-    then @unifiedTypeMapEntry.null
-    else [ioTypeMap searchKey !self.mSuperClassName]
-  end
-#------ check "reference" status:
-# a base class can be freely declared as shared or not
-# a class should the same 'reference' status as its super class
-  if superClassEntry != .null then
-    [[superClassEntry definition].mTypeKindEnum classType ?isReference: let superClassIsReference]
-    if superClassIsReference & not self.mIsReference then
-      error self.mClassTypeName : "this class should be declared by 'refClass', as its super class"
-    elsif not superClassIsReference & self.mIsReference then
-      error self.mClassTypeName : "this class should be declared by 'valueclass', as its super class"
-    end
-  end
-#------ Super type, and class features
-# A class that has a super may not have any feature
-# A class without a super class admits the 'generatedInSeparateFile' feature
-  var @typedPropertyList allAttributeList
-  if superClassEntry == .null then
-    allAttributeList = {}
-    var @bool generatedInSeparateFileFeature = false
-    if [self.mClassFeatureList length] > 0 then
+  override method enterDeclarationInSemanticContext
+                                        ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+                                        ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+                                        ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+                                  ?!@unifiedTypeMap ioTypeMap
+                                        ?!@semanticContext ioSemanticContext {
+    var @getterMap getterMap
+    var @setterMap setterMap
+    var @instanceMethodMap instanceMethodMap
+    let @typedPropertyList inheritedTypedPropertyList
+    var @propertyMap attributeMap = {}
+  #--- Handle super class
+    let @unifiedTypeMapEntry superClassIndex
+    var @bool generateHeaderInSeparateFile
+    if self.mSuperClassName.string == "" then
+      superClassIndex = @unifiedTypeMapEntry.null
+      commonGetterMapForAllTypes (!?ioTypeMap ?getterMap )
+      setterMap = {}
+      instanceMethodMap = {}
+      inheritedTypedPropertyList = {}
+      attributeMap = {}
+      generateHeaderInSeparateFile = false
       for (mValue) in self.mClassFeatureList do
         if mValue.string == "generatedInSeparateFile" then
-          if generatedInSeparateFileFeature then
-            error mValue:"the 'generatedInSeparateFile' is already named"
+          generateHeaderInSeparateFile = true
+        end
+      end
+    else
+      [!?ioTypeMap makeEntry !self.mSuperClassName ?superClassIndex]
+      [ioTypeMap searchType !self.mSuperClassName ?let superTypeDefinition]
+      inheritedTypedPropertyList = superTypeDefinition.mAllTypedPropertyList
+      attributeMap = superTypeDefinition.mPropertyMap
+      generateHeaderInSeparateFile = superTypeDefinition.mGenerateHeaderInSeparateFile
+    #---
+      if not [superTypeDefinition.mTypeKindEnum isClassType] then
+        error self.mSuperClassName : "the @" + self.mSuperClassName + " should be a class type"
+      end
+    #--- Mark all setters as inherited
+      setterMap = {}
+      for (lkey mKind mParameterList mHasCompilerArgument * *) in superTypeDefinition.mSetterMap do
+        [!?setterMap insertKey
+          !lkey
+          !mKind
+          !mParameterList
+          !mHasCompilerArgument
+          !.isInherited
+          !"" # No error message
+        ] 
+      end
+    #--- Mark all getters as inherited
+      getterMap = {}
+      for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType * mErrorMessage)
+            in superTypeDefinition.mGetterMap do
+        [!?getterMap insertKey
+          !lkey
+          !mKind
+          !mArgumentTypeList
+          !mDeclarationLocation
+          !mHasCompilerArgument
+          !mReturnedType
+          !.isInherited
+          !mErrorMessage
+        ] 
+      end
+    #--- Mark all methods as inherited
+      instanceMethodMap = {}
+      for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument * mErrorMessage)
+        in superTypeDefinition.mInstanceMethodMap do
+        [!?instanceMethodMap insertKey
+          !lkey
+          !mKind
+          !mParameterList
+          !mDeclarationLocation
+          !mHasCompilerArgument
+          !.isInherited
+          !mErrorMessage
+        ] 
+      end
+    end
+  #--- Build attribute Map and constructor argument list
+    var @functionSignature constructorPropertyTypeList = {}
+    for (mPropertyTypeEntry mPropertyName * mHasSelector) in inheritedTypedPropertyList do
+      constructorPropertyTypeList +=
+        !if mHasSelector then mPropertyName else ["" nowhere] end
+        !mPropertyTypeEntry
+        !mPropertyName.string
+    end
+    for (isConstant mPropertyTypeName unused isOptional mPropertyName mIsPublic mAttributeList initExpression) in self.mPropertyList do
+      if [initExpression isSome] then
+        error mPropertyName : "property initialization is not handled for a class"
+      end
+      [!?ioTypeMap makeEntry !mPropertyTypeName ?let attributeTypeIndex]
+      var hasSelector = false
+      for (attribute) in mAttributeList do
+        if attribute.string == "selector" then
+          if hasSelector then
+            error attribute : "duplicated attribute" fixit { remove }
           end
-          generatedInSeparateFileFeature = true
-        else
-          error mValue:"only the 'generatedInSeparateFile' attribute is allowed here"
+          hasSelector = true
+        end
+      end
+      constructorPropertyTypeList += 
+        !if hasSelector then mPropertyName else ["" nowhere] end
+        !attributeTypeIndex
+        !mPropertyName.string
+      [!?attributeMap insertKey
+        !mPropertyName
+        !mIsPublic
+        !isConstant
+        !attributeTypeIndex
+      ]
+      if [getterMap hasKey !mPropertyName.string] then
+        error mPropertyName: "'" + mPropertyName + "' is the name of a prefefined or a user defined getter"
+      end
+    end
+  #--- Current class Index
+    [!?ioTypeMap makeEntry
+       !self.mClassTypeName
+       ?let @unifiedTypeMapEntry classIndex
+    ]
+  #--- Constructors
+    var @constructorMap constructorMap = {}
+    if not self.mIsAbstract then
+      [!?constructorMap insertKey
+        !@lstring.new {!"new" !@location.here}
+        !constructorPropertyTypeList
+        !false
+        !classIndex
+      ]
+    end
+  #--- Typed attribute list
+    var @typedPropertyList currentClassTypedPropertyList = {}
+    var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
+    for (* mPropertyTypeName unused isOptional mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
+      if [initExpression isSome] then
+        error mPropertyName : "property initialization is not handled for a class"
+      end
+      [!?ioTypeMap makeEntry !mPropertyTypeName ?let attributeTypeIndex]
+      var hasSelector = false
+      for (mValue) in mAttributeList do
+        if mValue.string == "setter" then
+          warning mValue : "'%nogetter' is obsolete and has no effect"
+        elsif mValue.string == "nogetter" then
+          warning mValue : "'%setter' is obsolete and has no effect"
+        elsif mValue.string == "selector" then
+          hasSelector = true
+        end
+      end
+      currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
+      allTypedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
+    end
+  #--- set...attribute setter
+    for (mPropertyTypeEntry mPropertyName mHasSetter *) in currentClassTypedPropertyList do
+      if mHasSetter then
+        [!?setterMap insertKey
+          !@lstring.new {!"set"+ [mPropertyName.string stringByCapitalizingFirstCharacter] !@location.here}
+          !@methodKind.definedAsMember
+          !{!["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentIn !mPropertyName.string}
+          !false # Compiler argument
+          !@methodQualifier.isBasicFinal
+          !"" # No error message
+        ]
+      end
+    end
+  #--- Add Extensions
+    addExtensions (
+      !inExtensionMethodMapForBuildingContext
+      !inExtensionGetterMapForBuildingContext
+      !inExtensionSetterMapForBuildingContext
+      !?ioSemanticContext
+      !?ioTypeMap
+      !self.mClassTypeName
+      !isClass: true
+      !?getterMap
+      !?setterMap
+      !?instanceMethodMap
+      !acceptSetters: not self.mIsReference
+    )
+  #--- Generate a "default" constructor ?
+    var @string defaultConstructorName = if self.mIsAbstract then "" else "default" end
+    for (propertyTypeEntry 3*) in allTypedAttributeList while defaultConstructorName != "" do
+      if [propertyTypeEntry definition].mDefaultConstructorName == "" then 
+        defaultConstructorName = ""
+      end
+    end
+  #--- Enter in type map
+    let typeDefinition = @unifiedTypeDefinition.new {
+      !self.mClassTypeName
+      !self.mIsPredefined
+      !not self.mIsAbstract # Concrete Type
+      !superClassIndex
+      !@typeKindEnum.classType {!isReference: self.mIsReference}
+      !false # Does not support collection value
+      !allTypedAttributeList
+      !attributeMap
+      !currentClassTypedPropertyList
+      !constructorMap
+      !getterMap
+      !setterMap
+      !instanceMethodMap
+      !{}
+      !@optionalMethodMap {}
+      !{}
+      !if self.mIsReference then .isReferenceEquatable else .isComparable end
+      !{}
+      !{}
+      !{}
+      !{}
+      !{}
+      !generateHeaderInSeparateFile
+      !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
+      !defaultConstructorName # Default constructor name
+      !"class-" + [self.mClassTypeName fileNameRepresentation]
+      !@headerKind.twoHeaders
+    }
+    [!?ioTypeMap insertType !typeDefinition]
+  }
+
+  #·····················································································································
+
+  override method semanticAnalysis ?!@lstringlist unused ioUsefulnessRootEntities 
+                                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                    ?let @string unused inProductDirectory
+                                    ?let @semanticContext unused inSemanticContext
+                                    ?!@unifiedTypeMap ioTypeMap
+                                    ?let @predefinedTypes unused inPredefinedTypes
+                                    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+  #--- Useful entities graph
+    let classTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mClassTypeName)
+    [!?ioUsefulEntitiesGraph addNode !classTypeNameForUsefulness !classTypeNameForUsefulness]
+    if self.mSuperClassName.string != "" then
+      let superClassNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSuperClassName)
+      [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !superClassNameForUsefulness]
+    end
+    if self.mIsReference then
+      let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new {!self.mClassTypeName.string + weakSuffix () !self.mClassTypeName})
+      [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !weakRefTypeNameForUsefulness]
+    end
+  #------ Self type
+    let @unifiedTypeMapEntry selfType = [ioTypeMap searchKey !self.mClassTypeName]
+  #--- Super class type
+    let @unifiedTypeMapEntry superClassEntry = if self.mSuperClassName.string == ""
+      then @unifiedTypeMapEntry.null
+      else [ioTypeMap searchKey !self.mSuperClassName]
+    end
+  #------ check "reference" status:
+  # a base class can be freely declared as shared or not
+  # a class should the same 'reference' status as its super class
+    if superClassEntry != .null then
+      [[superClassEntry definition].mTypeKindEnum classType ?isReference: let superClassIsReference]
+      if superClassIsReference & not self.mIsReference then
+        error self.mClassTypeName : "this class should be declared by 'refClass', as its super class"
+      elsif not superClassIsReference & self.mIsReference then
+        error self.mClassTypeName : "this class should be declared by 'valueclass', as its super class"
+      end
+    end
+  #------ Super type, and class features
+  # A class that has a super may not have any feature
+  # A class without a super class admits the 'generatedInSeparateFile' feature
+    var @typedPropertyList allAttributeList
+    if superClassEntry == .null then
+      allAttributeList = {}
+      var @bool generatedInSeparateFileFeature = false
+      if [self.mClassFeatureList length] > 0 then
+        for (mValue) in self.mClassFeatureList do
+          if mValue.string == "generatedInSeparateFile" then
+            if generatedInSeparateFileFeature then
+              error mValue:"the 'generatedInSeparateFile' is already named"
+            end
+            generatedInSeparateFileFeature = true
+          else
+            error mValue:"only the 'generatedInSeparateFile' attribute is allowed here"
+          end
+        end
+      end
+    else
+      allAttributeList = [superClassEntry definition].mAllTypedPropertyList
+      if [self.mClassFeatureList length] > 0 then
+        for (mValue) in self.mClassFeatureList do
+          error mValue:"a class that has a super class does not accept any feature"
         end
       end
     end
-  else
-    allAttributeList = [superClassEntry definition].mAllTypedPropertyList
-    if [self.mClassFeatureList length] > 0 then
-      for (mValue) in self.mClassFeatureList do
-        error mValue:"a class that has a super class does not accept any feature"
+  #------ Enter attributes
+    var @typedPropertyList typedAttributeList = {}
+    var @propertyIndexMap attributeMap = {}
+    for (* mPropertyTypeName unused isOptional mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
+      if [initExpression isSome] then
+        error mPropertyName : "property initialization is not handled for a class"
       end
+      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
+      [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
+      let t = [ioTypeMap searchKey !mPropertyTypeName]
+      var hasSelector = false
+      for (mValue) in mAttributeList while not hasSelector do
+        hasSelector = mValue.string == "selector"
+      end
+      typedAttributeList +=
+        !t
+        !mPropertyName
+        !isPublic
+        !hasSelector
+      allAttributeList +=
+        !t
+        !mPropertyName
+        !isPublic
+        !hasSelector
+      [!?attributeMap insertKey !mPropertyName !t]
     end
-  end
-#------ Enter attributes
-  var @typedPropertyList typedAttributeList = {}
-  var @propertyIndexMap attributeMap = {}
-  for (* mPropertyTypeName unused isOptional mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
-    if [initExpression isSome] then
-      error mPropertyName : "property initialization is not handled for a class"
-    end
-    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
-    [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
-    let t = [ioTypeMap searchKey !mPropertyTypeName]
-    var hasSelector = false
-    for (mValue) in mAttributeList while not hasSelector do
-      hasSelector = mValue.string == "selector"
-    end
-    typedAttributeList +=
-      !t
-      !mPropertyName
-      !isPublic
-      !hasSelector
-    allAttributeList +=
-      !t
-      !mPropertyName
-      !isPublic
-      !hasSelector
-    [!?attributeMap insertKey !mPropertyName !t]
-  end
-#------
-  ioSemanticDeclarationListForGeneration +=
-    !"class " + self.mClassTypeName
-    !@classTypeForGeneration.new {
-      !selfType
-      !self.mIsAbstract
-      !self.mIsReference
-      !superClassEntry
-      !allAttributeList
-      !typedAttributeList
-      ![selfType definition].mGenerateHeaderInSeparateFile
-    }
+  #------
+    ioSemanticDeclarationListForGeneration +=
+      !"class " + self.mClassTypeName
+      !@classTypeForGeneration.new {
+        !selfType
+        !self.mIsAbstract
+        !self.mIsReference
+        !superClassEntry
+        !allAttributeList
+        !typedAttributeList
+        ![selfType definition].mGenerateHeaderInSeparateFile
+      }
+  }
+
+  #·····················································································································
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

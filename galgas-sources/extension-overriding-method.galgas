@@ -1,17 +1,4 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                     
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @overridingExtensionMethodAST : @semanticDeclarationAST {
-  private let @bool requiresSelfForAccessingProperty %selector
-  private let @lstring mTypeName
-  private let @lstring mOverridingExtensionMethodName
-  private let @formalParameterListAST mOverridingExtensionMethodFormalParameterList
-  private let @semanticInstructionListAST mOverridingExtensionMethodInstructionList
-  private let @location mEndOfMethodLocation
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX                                  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -118,6 +105,19 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   AST                                     
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @overridingExtensionMethodAST : @semanticDeclarationAST {
+  private let @bool requiresSelfForAccessingProperty %selector
+  private let @lstring mTypeName
+  private let @lstring mOverridingExtensionMethodName
+  private let @formalParameterListAST mOverridingExtensionMethodFormalParameterList
+  private let @semanticInstructionListAST mOverridingExtensionMethodInstructionList
+  private let @location mEndOfMethodLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
