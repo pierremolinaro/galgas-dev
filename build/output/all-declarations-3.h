@@ -2526,8 +2526,7 @@ class GALGAS_propertyInCollectionListAST : public AC_GALGAS_list {
 //--------------------------------- Element constructor
   public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                  const class GALGAS_bool & in_isConstant,
-                                                 const class GALGAS_lstring & in_mPropertyTypeName,
-                                                 const class GALGAS_bool & in_optional,
+                                                 const class GALGAS_QualifiedTypeAST & in_mPropertyQualifiedTypeAST,
                                                  const class GALGAS_lstring & in_mPropertyName,
                                                  const class GALGAS_bool & in_mIsPublic,
                                                  const class GALGAS_lstringlist & in_mAttributeList,
@@ -2548,12 +2547,11 @@ class GALGAS_propertyInCollectionListAST : public AC_GALGAS_list {
   public: static class GALGAS_propertyInCollectionListAST constructor_emptyList (LOCATION_ARGS) ;
 
   public: static class GALGAS_propertyInCollectionListAST constructor_listWithValue (const class GALGAS_bool & inOperand0,
-                                                                                     const class GALGAS_lstring & inOperand1,
-                                                                                     const class GALGAS_bool & inOperand2,
-                                                                                     const class GALGAS_lstring & inOperand3,
-                                                                                     const class GALGAS_bool & inOperand4,
-                                                                                     const class GALGAS_lstringlist & inOperand5,
-                                                                                     const class GALGAS_propertyInCollectionInitializationAST & inOperand6
+                                                                                     const class GALGAS_QualifiedTypeAST & inOperand1,
+                                                                                     const class GALGAS_lstring & inOperand2,
+                                                                                     const class GALGAS_bool & inOperand3,
+                                                                                     const class GALGAS_lstringlist & inOperand4,
+                                                                                     const class GALGAS_propertyInCollectionInitializationAST & inOperand5
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
@@ -2563,12 +2561,11 @@ class GALGAS_propertyInCollectionListAST : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_bool & inOperand0,
-                                                     const class GALGAS_lstring & inOperand1,
-                                                     const class GALGAS_bool & inOperand2,
-                                                     const class GALGAS_lstring & inOperand3,
-                                                     const class GALGAS_bool & inOperand4,
-                                                     const class GALGAS_lstringlist & inOperand5,
-                                                     const class GALGAS_propertyInCollectionInitializationAST & inOperand6
+                                                     const class GALGAS_QualifiedTypeAST & inOperand1,
+                                                     const class GALGAS_lstring & inOperand2,
+                                                     const class GALGAS_bool & inOperand3,
+                                                     const class GALGAS_lstringlist & inOperand4,
+                                                     const class GALGAS_propertyInCollectionInitializationAST & inOperand5
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_propertyInCollectionListAST add_operation (const GALGAS_propertyInCollectionListAST & inOperand,
@@ -2582,44 +2579,40 @@ class GALGAS_propertyInCollectionListAST : public AC_GALGAS_list {
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_bool constinArgument0,
-                                                      class GALGAS_lstring constinArgument1,
-                                                      class GALGAS_bool constinArgument2,
-                                                      class GALGAS_lstring constinArgument3,
-                                                      class GALGAS_bool constinArgument4,
-                                                      class GALGAS_lstringlist constinArgument5,
-                                                      class GALGAS_propertyInCollectionInitializationAST constinArgument6,
-                                                      class GALGAS_uint constinArgument7,
+                                                      class GALGAS_QualifiedTypeAST constinArgument1,
+                                                      class GALGAS_lstring constinArgument2,
+                                                      class GALGAS_bool constinArgument3,
+                                                      class GALGAS_lstringlist constinArgument4,
+                                                      class GALGAS_propertyInCollectionInitializationAST constinArgument5,
+                                                      class GALGAS_uint constinArgument6,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_bool & outArgument0,
-                                                 class GALGAS_lstring & outArgument1,
-                                                 class GALGAS_bool & outArgument2,
-                                                 class GALGAS_lstring & outArgument3,
-                                                 class GALGAS_bool & outArgument4,
-                                                 class GALGAS_lstringlist & outArgument5,
-                                                 class GALGAS_propertyInCollectionInitializationAST & outArgument6,
+                                                 class GALGAS_QualifiedTypeAST & outArgument1,
+                                                 class GALGAS_lstring & outArgument2,
+                                                 class GALGAS_bool & outArgument3,
+                                                 class GALGAS_lstringlist & outArgument4,
+                                                 class GALGAS_propertyInCollectionInitializationAST & outArgument5,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_bool & outArgument0,
-                                                class GALGAS_lstring & outArgument1,
-                                                class GALGAS_bool & outArgument2,
-                                                class GALGAS_lstring & outArgument3,
-                                                class GALGAS_bool & outArgument4,
-                                                class GALGAS_lstringlist & outArgument5,
-                                                class GALGAS_propertyInCollectionInitializationAST & outArgument6,
+                                                class GALGAS_QualifiedTypeAST & outArgument1,
+                                                class GALGAS_lstring & outArgument2,
+                                                class GALGAS_bool & outArgument3,
+                                                class GALGAS_lstringlist & outArgument4,
+                                                class GALGAS_propertyInCollectionInitializationAST & outArgument5,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_bool & outArgument0,
-                                                      class GALGAS_lstring & outArgument1,
-                                                      class GALGAS_bool & outArgument2,
-                                                      class GALGAS_lstring & outArgument3,
-                                                      class GALGAS_bool & outArgument4,
-                                                      class GALGAS_lstringlist & outArgument5,
-                                                      class GALGAS_propertyInCollectionInitializationAST & outArgument6,
-                                                      class GALGAS_uint constinArgument7,
+                                                      class GALGAS_QualifiedTypeAST & outArgument1,
+                                                      class GALGAS_lstring & outArgument2,
+                                                      class GALGAS_bool & outArgument3,
+                                                      class GALGAS_lstringlist & outArgument4,
+                                                      class GALGAS_propertyInCollectionInitializationAST & outArgument5,
+                                                      class GALGAS_uint constinArgument6,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
@@ -2648,35 +2641,28 @@ class GALGAS_propertyInCollectionListAST : public AC_GALGAS_list {
                                                                 C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMPropertyTypeNameAtIndex (class GALGAS_lstring constinArgument0,
-                                                                    class GALGAS_uint constinArgument1,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setOptionalAtIndex (class GALGAS_bool constinArgument0,
-                                                           class GALGAS_uint constinArgument1,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_setMPropertyQualifiedTypeASTAtIndex (class GALGAS_QualifiedTypeAST constinArgument0,
+                                                                            class GALGAS_uint constinArgument1,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_bool & outArgument0,
-                                              class GALGAS_lstring & outArgument1,
-                                              class GALGAS_bool & outArgument2,
-                                              class GALGAS_lstring & outArgument3,
-                                              class GALGAS_bool & outArgument4,
-                                              class GALGAS_lstringlist & outArgument5,
-                                              class GALGAS_propertyInCollectionInitializationAST & outArgument6,
+                                              class GALGAS_QualifiedTypeAST & outArgument1,
+                                              class GALGAS_lstring & outArgument2,
+                                              class GALGAS_bool & outArgument3,
+                                              class GALGAS_lstringlist & outArgument4,
+                                              class GALGAS_propertyInCollectionInitializationAST & outArgument5,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_bool & outArgument0,
-                                             class GALGAS_lstring & outArgument1,
-                                             class GALGAS_bool & outArgument2,
-                                             class GALGAS_lstring & outArgument3,
-                                             class GALGAS_bool & outArgument4,
-                                             class GALGAS_lstringlist & outArgument5,
-                                             class GALGAS_propertyInCollectionInitializationAST & outArgument6,
+                                             class GALGAS_QualifiedTypeAST & outArgument1,
+                                             class GALGAS_lstring & outArgument2,
+                                             class GALGAS_bool & outArgument3,
+                                             class GALGAS_lstringlist & outArgument4,
+                                             class GALGAS_propertyInCollectionInitializationAST & outArgument5,
                                              C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
@@ -2703,13 +2689,9 @@ class GALGAS_propertyInCollectionListAST : public AC_GALGAS_list {
                                                                              C_Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mPropertyTypeNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                 C_Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_optionalAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_QualifiedTypeAST getter_mPropertyQualifiedTypeASTAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                  C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_propertyInCollectionListAST getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
                                                                                              C_Compiler * inCompiler
@@ -2744,8 +2726,7 @@ class cEnumerator_propertyInCollectionListAST : public cGenericAbstractEnumerato
 
 //--- Current element access
   public: class GALGAS_bool current_isConstant (LOCATION_ARGS) const ;
-  public: class GALGAS_lstring current_mPropertyTypeName (LOCATION_ARGS) const ;
-  public: class GALGAS_bool current_optional (LOCATION_ARGS) const ;
+  public: class GALGAS_QualifiedTypeAST current_mPropertyQualifiedTypeAST (LOCATION_ARGS) const ;
   public: class GALGAS_lstring current_mPropertyName (LOCATION_ARGS) const ;
   public: class GALGAS_bool current_mIsPublic (LOCATION_ARGS) const ;
   public: class GALGAS_lstringlist current_mAttributeList (LOCATION_ARGS) const ;
@@ -2757,6 +2738,130 @@ class cEnumerator_propertyInCollectionListAST : public cGenericAbstractEnumerato
 //----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionListAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                                           Phase 1: @QualifiedTypeAST enum                                           *
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_QualifiedTypeAST : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public: GALGAS_QualifiedTypeAST (void) ;
+
+//--------------------------------- Enumeration
+  public: typedef enum {
+    kNotBuilt,
+    kEnum_simpleType,
+    kEnum_optionalType
+  } enumeration ;
+  
+//--------------------------------- Private data member
+  private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;
+  public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
+    return mAssociatedValues.unsafePointer () ;
+  }
+
+  private: enumeration mEnum ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const { return kNotBuilt != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) { mEnum = kNotBuilt ; }
+  public: inline enumeration enumValue (void) const { return mEnum ; }
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_QualifiedTypeAST extractObject (const GALGAS_object & inObject,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_QualifiedTypeAST constructor_optionalType (const class GALGAS_lstring & inOperand0
+                                                                         COMMA_LOCATION_ARGS) ;
+
+  public: static class GALGAS_QualifiedTypeAST constructor_simpleType (const class GALGAS_lstring & inOperand0
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_QualifiedTypeAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+  public: VIRTUAL_IN_DEBUG void method_optionalType (class GALGAS_lstring & outArgument0,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG void method_simpleType (class GALGAS_lstring & outArgument0,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isOptionalType (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isSimpleType (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+  public: VIRTUAL_IN_DEBUG bool optional_optionalType (class GALGAS_lstring & outOperand0) const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_simpleType (class GALGAS_lstring & outOperand0) const ;
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_QualifiedTypeAST class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_QualifiedTypeAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: @QualifiedTypeAST enum, associated values
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cEnumAssociatedValues_QualifiedTypeAST_simpleType : public cEnumAssociatedValues {
+  public: const GALGAS_lstring mAssociatedValue0 ;
+
+//--- Constructor
+  public: cEnumAssociatedValues_QualifiedTypeAST_simpleType (const GALGAS_lstring inAssociatedValue0
+                                                             COMMA_LOCATION_ARGS) ;
+
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+  public: virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
+
+  public: virtual ~ cEnumAssociatedValues_QualifiedTypeAST_simpleType (void) {}
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class cEnumAssociatedValues_QualifiedTypeAST_optionalType : public cEnumAssociatedValues {
+  public: const GALGAS_lstring mAssociatedValue0 ;
+
+//--- Constructor
+  public: cEnumAssociatedValues_QualifiedTypeAST_optionalType (const GALGAS_lstring inAssociatedValue0
+                                                               COMMA_LOCATION_ARGS) ;
+
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+  public: virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
+
+  public: virtual ~ cEnumAssociatedValues_QualifiedTypeAST_optionalType (void) {}
+} ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -2920,14 +3025,9 @@ class GALGAS_propertyInCollectionListAST_2D_element : public AC_GALGAS_root {
     return mProperty_isConstant ;
   }
 
-  public: GALGAS_lstring mProperty_mPropertyTypeName ;
-  public: inline GALGAS_lstring readProperty_mPropertyTypeName (void) const {
-    return mProperty_mPropertyTypeName ;
-  }
-
-  public: GALGAS_bool mProperty_optional ;
-  public: inline GALGAS_bool readProperty_optional (void) const {
-    return mProperty_optional ;
+  public: GALGAS_QualifiedTypeAST mProperty_mPropertyQualifiedTypeAST ;
+  public: inline GALGAS_QualifiedTypeAST readProperty_mPropertyQualifiedTypeAST (void) const {
+    return mProperty_mPropertyQualifiedTypeAST ;
   }
 
   public: GALGAS_lstring mProperty_mPropertyName ;
@@ -2962,12 +3062,8 @@ class GALGAS_propertyInCollectionListAST_2D_element : public AC_GALGAS_root {
     mProperty_isConstant = inValue ;
   }
 
-  public: inline void setter_setMPropertyTypeName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mPropertyTypeName = inValue ;
-  }
-
-  public: inline void setter_setOptional (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_optional = inValue ;
+  public: inline void setter_setMPropertyQualifiedTypeAST (const GALGAS_QualifiedTypeAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mPropertyQualifiedTypeAST = inValue ;
   }
 
   public: inline void setter_setMPropertyName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -2991,8 +3087,7 @@ class GALGAS_propertyInCollectionListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public: GALGAS_propertyInCollectionListAST_2D_element (const GALGAS_bool & in_isConstant,
-                                                         const GALGAS_lstring & in_mPropertyTypeName,
-                                                         const GALGAS_bool & in_optional,
+                                                         const GALGAS_QualifiedTypeAST & in_mPropertyQualifiedTypeAST,
                                                          const GALGAS_lstring & in_mPropertyName,
                                                          const GALGAS_bool & in_mIsPublic,
                                                          const GALGAS_lstringlist & in_mAttributeList,
@@ -3010,12 +3105,11 @@ class GALGAS_propertyInCollectionListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_propertyInCollectionListAST_2D_element constructor_new (const class GALGAS_bool & inOperand0,
-                                                                                      const class GALGAS_lstring & inOperand1,
-                                                                                      const class GALGAS_bool & inOperand2,
-                                                                                      const class GALGAS_lstring & inOperand3,
-                                                                                      const class GALGAS_bool & inOperand4,
-                                                                                      const class GALGAS_lstringlist & inOperand5,
-                                                                                      const class GALGAS_propertyInCollectionInitializationAST & inOperand6
+                                                                                      const class GALGAS_QualifiedTypeAST & inOperand1,
+                                                                                      const class GALGAS_lstring & inOperand2,
+                                                                                      const class GALGAS_bool & inOperand3,
+                                                                                      const class GALGAS_lstringlist & inOperand4,
+                                                                                      const class GALGAS_propertyInCollectionInitializationAST & inOperand5
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'

@@ -109,9 +109,9 @@ syntax extension galgas4DeclarationsSyntax {
 
 override method @dictDeclarationAST addAssociatedElement ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   var @propertyInCollectionListAST structAttributeList = {}
-  structAttributeList += !isConstant: false !self.mKeyTypeName !optional: false !["key" nowhere] !true !{} !.none
-  for (* mPropertyTypeName isOptional mPropertyName 3*) in self.mPropertyList do
-    structAttributeList += !isConstant: false !mPropertyTypeName !optional: isOptional !mPropertyName !true !{} !.none
+  structAttributeList += !isConstant: false !.simpleType {!typeName: self.mKeyTypeName} !["key" nowhere] !true !{} !.none
+  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
+    structAttributeList += !isConstant: false !qualifiedTypeAST !mPropertyName !true !{} !.none
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
     !self.mIsPredefined
@@ -135,8 +135,9 @@ override method @dictDeclarationAST enterDeclarationInGraph
   let dictionary = @lstring.new {!"@" + self.mDictTypeName !self.mDictTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !dictionary !self]
   [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + self.mKeyTypeName !self.mKeyTypeName}]
-  for (* mPropertyTypeName 5*) in self.mPropertyList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName}]
+  for (* qualifiedTypeAST 4*) in self.mPropertyList do
+    let typeName = [qualifiedTypeAST typeName]
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + typeName !typeName}]
   end
 }
 
@@ -218,8 +219,8 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !keyTypeIndex
     !"inKey"
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapEntryList {}
-  for (* mPropertyTypeName unused isOptional mPropertyName 3*) in self.mPropertyList do
-    [!?ioTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
+  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
+    [!?ioTypeMap makeEntry ![qualifiedTypeAST typeName] ?let attributeTypeIndex]
     let hasSetter = true
     let hasSelector = false
     argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
@@ -262,9 +263,9 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !"" # No error message
   ]
 #--- Enter "attributeForKey" getters
-  for (* mPropertyTypeName unused isOptional mPropertyName 3*) in self.mPropertyList do
+  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
     let accessorName = @lstring.new {!mPropertyName.string + "ForKey" !mPropertyName.location}
-    [!?ioTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioTypeMap makeEntry  ![qualifiedTypeAST typeName] ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
       !@methodKind.definedAsMember
@@ -277,13 +278,13 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     ]
   end
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor
-  for (* mPropertyTypeName unused isOptional mPropertyName 3*) in self.mPropertyList do
+  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
     let accessorName = @lstring.new {
       !"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey"
       !mPropertyName.location
     }
     [!?ioTypeMap makeEntry
-      !mPropertyTypeName
+      ![qualifiedTypeAST typeName]
       ?let @unifiedTypeMapEntry attributeTypeIndex
     ]
     var accessorFormalArgumentList = @formalParameterSignature {}
@@ -417,10 +418,10 @@ override method @dictDeclarationAST semanticAnalysis
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (* mPropertyTypeName unused isOptional mPropertyName 3*) in self.mPropertyList do
-    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
+  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
+    let propertyTypeNameForUsefulness = [qualifiedTypeAST typeNameForUsefulEntitiesGraph]
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    let @unifiedTypeMapEntry t = [ioTypeMap searchKey !mPropertyTypeName]
+    let @unifiedTypeMapEntry t = [ioTypeMap searchKey ![qualifiedTypeAST typeName]]
     let hasSetter = true
     let hasSelector = false
     typedAttributeList +=

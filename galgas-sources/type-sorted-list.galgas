@@ -134,8 +134,9 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + self.mSortedListTypeName !self.mSortedListTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for (* mPropertyTypeName 5*) in self.mPropertyList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName.location}]
+  for (* qualifiedTypeAST 4*) in self.mPropertyList do
+    let typeName = [qualifiedTypeAST typeName]
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + typeName !typeName.location}]
   end
 }
 
@@ -146,11 +147,10 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
 override method @sortedListDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   var @propertyInCollectionListAST structAttributeList = {}
-  for (isConstant mPropertyTypeName isOptional mPropertyName * * initExpression) in self.mPropertyList do
+  for (isConstant qualifiedTypeAST mPropertyName * * initExpression) in self.mPropertyList do
     structAttributeList +=
       !isConstant: isConstant 
-      !mPropertyTypeName
-      !optional: isOptional
+      !qualifiedTypeAST
       !mPropertyName
       !true
       !{}
@@ -185,8 +185,8 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   var @functionSignature constructorAttributeTypeList = {}
   var @formalParameterSignature setterFormalArgumentList = {}
   var @typedPropertyList typedAttributeList = {}
-  for (* mPropertyTypeName unused isOptional mPropertyName 3*) in self.mPropertyList do
-    [!?ioTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
+  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
+    [!?ioTypeMap makeEntry  ![qualifiedTypeAST typeName] ?let attributeTypeIndex]
     let hasSetter = true
     let hasSelector = false
     typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
@@ -324,10 +324,10 @@ override method @sortedListDeclarationAST semanticAnalysis
 #--- Attribute
   var typedAttributeList = @typedPropertyList {}
   var @propertyIndexMap attributeMap = {}
-  for (* mPropertyTypeName unused isOptional mPropertyName 3*) in self.mPropertyList do
-    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
+  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
+    let propertyTypeNameForUsefulness = [qualifiedTypeAST typeNameForUsefulEntitiesGraph]
     [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !propertyTypeNameForUsefulness]
-    let t = [ioTypeMap searchKey !mPropertyTypeName]
+    let t = [ioTypeMap searchKey ![qualifiedTypeAST typeName]]
     let hasSetter = true
     let hasSelector = true
     typedAttributeList +=

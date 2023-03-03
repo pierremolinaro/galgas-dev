@@ -46,6 +46,10 @@ syntax extension galgas3DeclarationsSyntax {
       mConstantList += !constantName !associatedValueTypeList
     while
     end
+    repeat
+    while
+      <method_declaration> !mEnumTypeName !?ioDeclarations
+    end
     let @lstring defaultConstantName
     select
       defaultConstantName = ["" nowhere]
@@ -95,23 +99,23 @@ syntax extension galgas4DeclarationsSyntax {
       mConstantList += !constantName !associatedValueTypeList
     while
     end
-    let @lstring defaultConstantName
-    select
-      defaultConstantName = ["" nowhere]
-    or
-      $default$
-      $identifier$ ?defaultConstantName
-    end
     repeat
     while
       <method_declaration> !mEnumTypeName !?ioDeclarations
     end
+#    let @lstring defaultConstantName
+#    select
+#      defaultConstantName = ["" nowhere]
+#    or
+#      $default$
+#      $identifier$ ?defaultConstantName
+#    end
     $}$
     ioDeclarations.mDeclarationList += !@enumDeclarationAST.new {
       !false # Is not predefined
       !mEnumTypeName
       !mConstantList
-      !defaultConstantName
+      !["" nowhere]
     }
   }
 

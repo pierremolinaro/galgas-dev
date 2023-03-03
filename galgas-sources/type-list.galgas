@@ -81,8 +81,9 @@ override method @listDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + self.mListTypeName !self.mListTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for (* mPropertyTypeName 5*) in self.mPropertyList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName.location}]
+  for (* qualifiedTypeAST 4*) in self.mPropertyList do
+    let typeName = [qualifiedTypeAST typeName]
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + typeName !typeName.location}]
   end
 }
 
@@ -99,11 +100,11 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
 {
 #--- Handle attributes
   var @typedPropertyList typedAttributeList = {}
-  for (* mPropertyTypeName unused isOptional mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
+  for (* qualifiedTypeAST mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
     if [initExpression isSome] then
       error mPropertyName : "property initialization is not handled for a list"
     end
-    [!?ioTypeMap makeEntry  !mPropertyTypeName ?let attributeTypeIndex]
+    [!?ioTypeMap makeEntry  ![qualifiedTypeAST typeName] ?let attributeTypeIndex]
     var hasSelector = false
     for (mValue) in mAttributeList do
       if mValue.string == "setter" then
@@ -355,11 +356,10 @@ override method @listDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList
 {
   var @propertyInCollectionListAST structAttributeList = {}
-  for (isConstant mPropertyTypeName isOptional mPropertyName * * initExpression) in self.mPropertyList do
+  for (isConstant qualifiedTypeAST mPropertyName * * initExpression) in self.mPropertyList do
     structAttributeList +=
       !isConstant: isConstant
-      !mPropertyTypeName
-      !optional: isOptional
+      !qualifiedTypeAST
       !mPropertyName
       !true
       !{}
@@ -395,13 +395,13 @@ override method @listDeclarationAST semanticAnalysis
 #---
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (* mPropertyTypeName unused isOptional mPropertyName mIsPublic mAttributeList initExpression) in self.mPropertyList do
+  for (* qualifiedTypeAST mPropertyName mIsPublic mAttributeList initExpression) in self.mPropertyList do
     if [initExpression isSome] then
       error mPropertyName : "property initialization is not handled for a list"
     end
-    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
+    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (![qualifiedTypeAST typeName])
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    let t = [ioTypeMap searchKey !mPropertyTypeName]
+    let t = [ioTypeMap searchKey ![qualifiedTypeAST typeName]]
     let hasSetter = mIsPublic
     var hasSelector = false
     for (mValue) in mAttributeList do

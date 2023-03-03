@@ -9,6 +9,61 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Overriding extension method '@galgas3SyntaxComponentAST semanticAnalysis'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_galgas_33_SyntaxComponentAST::method_semanticAnalysis (GALGAS_lstringlist & /* ioArgument_ioUsefulnessRootEntities */,
+                                                                 GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                 const GALGAS_string /* constinArgument_inProductDirectory */,
+                                                                 const GALGAS_semanticContext constinArgument_inSemanticContext,
+                                                                 GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                 const GALGAS_predefinedTypes constinArgument_inPredefinedTypes,
+                                                                 GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_galgas_33_SyntaxComponentAST temp_0 = this ;
+  GALGAS_lstring var_nameForUsefulness_30413 = function_syntaxNameForUsefulEntitiesGraph (temp_0.readProperty_mSyntaxComponentName (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 673)) ;
+  {
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_30413, var_nameForUsefulness_30413, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 674)) ;
+  }
+  GALGAS_terminalMap var_terminalMap_30746 ;
+  GALGAS_indexingListAST var_indexingListAST_30788 ;
+  GALGAS_lstring var_indexingDirectory_30824 ;
+  const GALGAS_galgas_33_SyntaxComponentAST temp_1 = this ;
+  GALGAS_bool joker_30711 ; // Joker input parameter
+  GALGAS_terminalDeclarationListAST joker_30830_4 ; // Joker input parameter
+  GALGAS_lexicalAttributeListAST joker_30830_3 ; // Joker input parameter
+  GALGAS_lexicalStyleListAST joker_30830_2 ; // Joker input parameter
+  GALGAS_lexicalListDeclarationListAST joker_30830_1 ; // Joker input parameter
+  constinArgument_inSemanticContext.readProperty_mLexiqueComponentMapForSemanticAnalysis ().method_searchKey (temp_1.readProperty_mLexiqueName (), joker_30711, var_terminalMap_30746, var_indexingListAST_30788, var_indexingDirectory_30824, joker_30830_4, joker_30830_3, joker_30830_2, joker_30830_1, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 676)) ;
+  GALGAS_stringset var_indexNameSet_30928 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticAnalysis.galgas", 685)) ;
+  cEnumerator_indexingListAST enumerator_30953 (var_indexingListAST_30788, kENUMERATION_UP) ;
+  while (enumerator_30953.hasCurrentObject ()) {
+    var_indexNameSet_30928.addAssign_operation (enumerator_30953.current_mIndexName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 687)) ;
+    enumerator_30953.gotoNextObject () ;
+  }
+  GALGAS_bool var_hasIndexing_31045 = var_indexingDirectory_30824.readProperty_location ().getter_isNowhere (SOURCE_FILE ("semanticAnalysis.galgas", 689)).operator_not (SOURCE_FILE ("semanticAnalysis.galgas", 689)) ;
+  enumGalgasBool test_2 = kBoolTrue ;
+  if (kBoolTrue == test_2) {
+    test_2 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("semanticAnalysis.galgas", 691)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+    if (kBoolTrue == test_2) {
+      const GALGAS_galgas_33_SyntaxComponentAST temp_3 = this ;
+      GALGAS_string var_lexiqueName_31209 = temp_3.readProperty_mLexiqueName ().readProperty_string () ;
+      GALGAS_syntaxDeclarationForGeneration var_syntaxDeclarationForGeneration_31685 ;
+      {
+      const GALGAS_galgas_33_SyntaxComponentAST temp_4 = this ;
+      const GALGAS_galgas_33_SyntaxComponentAST temp_5 = this ;
+      const GALGAS_galgas_33_SyntaxComponentAST temp_6 = this ;
+      const GALGAS_galgas_33_SyntaxComponentAST temp_7 = this ;
+      routine_semanticAnalysisOfSyntaxComponent (var_nameForUsefulness_30413, ioArgument_ioUsefulEntitiesGraph, temp_4.readProperty_mNonterminalDeclarationList (), temp_5.readProperty_mRuleList (), temp_6.readProperty_mSyntaxComponentName ().readProperty_string (), var_lexiqueName_31209, constinArgument_inSemanticContext, ioArgument_ioTypeMap, constinArgument_inPredefinedTypes, var_terminalMap_30746, var_indexNameSet_30928, var_hasIndexing_31045, temp_7.readProperty_mHasTranslateFeature (), var_syntaxDeclarationForGeneration_31685, inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 693)) ;
+      }
+      ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string::makeEmptyString (), var_syntaxDeclarationForGeneration_31685  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 709)) ;
+    }
+  }
+}
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Overriding extension method '@galgas3GrammarComponentAST semanticAnalysis'
 //
 //----------------------------------------------------------------------------------------------------------------------

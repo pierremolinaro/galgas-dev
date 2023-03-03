@@ -63,16 +63,14 @@ override method @listmapDeclarationAST addAssociatedElement
   var structAttributeList = @propertyInCollectionListAST {}
   structAttributeList +=
     !isConstant: false
-    !["string" nowhere]
-    !optional: false
+    !.simpleType {!typeName: ["string" nowhere]}
     !["key" nowhere]
     !true
     !{}
     !.none
   structAttributeList +=
     !isConstant: false
-    !self.mAssociatedListTypeName
-    !optional: false
+    !.simpleType {!typeName: self.mAssociatedListTypeName}
     !["mList" nowhere]
     !true
     !{}

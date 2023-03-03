@@ -496,36 +496,3 @@ class GALGAS_lstring function_filewrapperTemplateNameForUsefulEntitiesGraph (con
                                                                              class C_Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Function 'syntaxNameForUsefulEntitiesGraph'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_lstring function_syntaxNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                class C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'semanticAnalysisOfSyntaxComponent'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_semanticAnalysisOfSyntaxComponent (const class GALGAS_lstring constinArgument0,
-                                                class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                                const class GALGAS_nonterminalDeclarationListAST constinArgument2,
-                                                const class GALGAS_syntaxRuleListAST constinArgument3,
-                                                const class GALGAS_string constinArgument4,
-                                                const class GALGAS_string constinArgument5,
-                                                const class GALGAS_semanticContext constinArgument6,
-                                                class GALGAS_unifiedTypeMap & ioArgument7,
-                                                const class GALGAS_predefinedTypes constinArgument8,
-                                                const class GALGAS_terminalMap constinArgument9,
-                                                const class GALGAS_stringset constinArgument10,
-                                                const class GALGAS_bool constinArgument11,
-                                                const class GALGAS_bool constinArgument12,
-                                                class GALGAS_syntaxDeclarationForGeneration & outArgument13,
-                                                class C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-

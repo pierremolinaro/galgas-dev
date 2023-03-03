@@ -321,16 +321,6 @@ void routine_enterBaseGetterWithoutArgument (class GALGAS_getterMap & ioArgument
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Function 'typeNameForUsefulEntitiesGraph'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_lstring function_typeNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                              class C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'typeGenerationTemplate'
 //
 //----------------------------------------------------------------------------------------------------------------------

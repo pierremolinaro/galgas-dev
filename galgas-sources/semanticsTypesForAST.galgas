@@ -323,8 +323,7 @@ refclass @onceFunctionDeclarationAST : @semanticDeclarationAST {
 
 list @propertyInCollectionListAST {
   public let @bool isConstant %selector
-  public let @lstring mPropertyTypeName
-  public let @bool optional %selector
+  public let @QualifiedTypeAST mPropertyQualifiedTypeAST
   public let @lstring mPropertyName
   public let @bool mIsPublic
   public let @lstringlist mAttributeList

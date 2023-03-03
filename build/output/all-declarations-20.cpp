@@ -7935,8 +7935,7 @@ GALGAS_actualInputParameterListAST_2D_element GALGAS_actualInputParameterListAST
 
 GALGAS_propertyInCollectionListAST_2D_element::GALGAS_propertyInCollectionListAST_2D_element (void) :
 mProperty_isConstant (),
-mProperty_mPropertyTypeName (),
-mProperty_optional (),
+mProperty_mPropertyQualifiedTypeAST (),
 mProperty_mPropertyName (),
 mProperty_mIsPublic (),
 mProperty_mAttributeList (),
@@ -7951,34 +7950,31 @@ GALGAS_propertyInCollectionListAST_2D_element::~ GALGAS_propertyInCollectionList
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_propertyInCollectionListAST_2D_element::GALGAS_propertyInCollectionListAST_2D_element (const GALGAS_bool & inOperand0,
-                                                                                              const GALGAS_lstring & inOperand1,
-                                                                                              const GALGAS_bool & inOperand2,
-                                                                                              const GALGAS_lstring & inOperand3,
-                                                                                              const GALGAS_bool & inOperand4,
-                                                                                              const GALGAS_lstringlist & inOperand5,
-                                                                                              const GALGAS_propertyInCollectionInitializationAST & inOperand6) :
+                                                                                              const GALGAS_QualifiedTypeAST & inOperand1,
+                                                                                              const GALGAS_lstring & inOperand2,
+                                                                                              const GALGAS_bool & inOperand3,
+                                                                                              const GALGAS_lstringlist & inOperand4,
+                                                                                              const GALGAS_propertyInCollectionInitializationAST & inOperand5) :
 mProperty_isConstant (inOperand0),
-mProperty_mPropertyTypeName (inOperand1),
-mProperty_optional (inOperand2),
-mProperty_mPropertyName (inOperand3),
-mProperty_mIsPublic (inOperand4),
-mProperty_mAttributeList (inOperand5),
-mProperty_mInitialization (inOperand6) {
+mProperty_mPropertyQualifiedTypeAST (inOperand1),
+mProperty_mPropertyName (inOperand2),
+mProperty_mIsPublic (inOperand3),
+mProperty_mAttributeList (inOperand4),
+mProperty_mInitialization (inOperand5) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_propertyInCollectionListAST_2D_element GALGAS_propertyInCollectionListAST_2D_element::constructor_new (const GALGAS_bool & in_isConstant,
-                                                                                                              const GALGAS_lstring & in_mPropertyTypeName,
-                                                                                                              const GALGAS_bool & in_optional,
+                                                                                                              const GALGAS_QualifiedTypeAST & in_mPropertyQualifiedTypeAST,
                                                                                                               const GALGAS_lstring & in_mPropertyName,
                                                                                                               const GALGAS_bool & in_mIsPublic,
                                                                                                               const GALGAS_lstringlist & in_mAttributeList,
                                                                                                               const GALGAS_propertyInCollectionInitializationAST & in_mInitialization 
                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_propertyInCollectionListAST_2D_element result ;
-  if (in_isConstant.isValid () && in_mPropertyTypeName.isValid () && in_optional.isValid () && in_mPropertyName.isValid () && in_mIsPublic.isValid () && in_mAttributeList.isValid () && in_mInitialization.isValid ()) {
-    result = GALGAS_propertyInCollectionListAST_2D_element (in_isConstant, in_mPropertyTypeName, in_optional, in_mPropertyName, in_mIsPublic, in_mAttributeList, in_mInitialization) ;
+  if (in_isConstant.isValid () && in_mPropertyQualifiedTypeAST.isValid () && in_mPropertyName.isValid () && in_mIsPublic.isValid () && in_mAttributeList.isValid () && in_mInitialization.isValid ()) {
+    result = GALGAS_propertyInCollectionListAST_2D_element (in_isConstant, in_mPropertyQualifiedTypeAST, in_mPropertyName, in_mIsPublic, in_mAttributeList, in_mInitialization) ;
   }
   return result ;
 }
@@ -7991,10 +7987,7 @@ typeComparisonResult GALGAS_propertyInCollectionListAST_2D_element::objectCompar
     result = mProperty_isConstant.objectCompare (inOperand.mProperty_isConstant) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mPropertyTypeName.objectCompare (inOperand.mProperty_mPropertyTypeName) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_optional.objectCompare (inOperand.mProperty_optional) ;
+    result = mProperty_mPropertyQualifiedTypeAST.objectCompare (inOperand.mProperty_mPropertyQualifiedTypeAST) ;
   }
   if (result == kOperandEqual) {
     result = mProperty_mPropertyName.objectCompare (inOperand.mProperty_mPropertyName) ;
@@ -8014,15 +8007,14 @@ typeComparisonResult GALGAS_propertyInCollectionListAST_2D_element::objectCompar
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_propertyInCollectionListAST_2D_element::isValid (void) const {
-  return mProperty_isConstant.isValid () && mProperty_mPropertyTypeName.isValid () && mProperty_optional.isValid () && mProperty_mPropertyName.isValid () && mProperty_mIsPublic.isValid () && mProperty_mAttributeList.isValid () && mProperty_mInitialization.isValid () ;
+  return mProperty_isConstant.isValid () && mProperty_mPropertyQualifiedTypeAST.isValid () && mProperty_mPropertyName.isValid () && mProperty_mIsPublic.isValid () && mProperty_mAttributeList.isValid () && mProperty_mInitialization.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_propertyInCollectionListAST_2D_element::drop (void) {
   mProperty_isConstant.drop () ;
-  mProperty_mPropertyTypeName.drop () ;
-  mProperty_optional.drop () ;
+  mProperty_mPropertyQualifiedTypeAST.drop () ;
   mProperty_mPropertyName.drop () ;
   mProperty_mIsPublic.drop () ;
   mProperty_mAttributeList.drop () ;
@@ -8039,9 +8031,7 @@ void GALGAS_propertyInCollectionListAST_2D_element::description (C_String & ioSt
   }else{
     mProperty_isConstant.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mPropertyTypeName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_optional.description (ioString, inIndentation+1) ;
+    mProperty_mPropertyQualifiedTypeAST.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mPropertyName.description (ioString, inIndentation+1) ;
     ioString << ", " ;

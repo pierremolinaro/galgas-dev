@@ -914,6 +914,17 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual void nt_terminal_5F_instruction_5F_indexing_ (GALGAS__32_lstringlist & outArgument0,
                                                                 C_Lexique_galgasScanner * inCompiler) ;
 
+//------------------------------------- 'type_with_optional_qualifier' non terminal
+//--- 'parse' label
+  public: virtual void nt_type_5F_with_5F_optional_5F_qualifier_parse (C_Lexique_galgasScanner * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_type_5F_with_5F_optional_5F_qualifier_indexing (C_Lexique_galgasScanner * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_type_5F_with_5F_optional_5F_qualifier_ (GALGAS_QualifiedTypeAST & outArgument0,
+                                                                  C_Lexique_galgasScanner * inCompiler) ;
+
 //------------------------------------- 'with_instruction_core' non terminal
 //--- 'parse' label
   public: virtual void nt_with_5F_instruction_5F_core_parse (C_Lexique_galgasScanner * inCompiler) ;

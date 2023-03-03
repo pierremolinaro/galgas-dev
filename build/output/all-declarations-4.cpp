@@ -9736,6 +9736,245 @@ GALGAS_onceFunctionDeclarationAST_2D_weak GALGAS_onceFunctionDeclarationAST_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 
+cEnumAssociatedValues_QualifiedTypeAST_simpleType::cEnumAssociatedValues_QualifiedTypeAST_simpleType (const GALGAS_lstring inAssociatedValue0
+                                                                                                      COMMA_LOCATION_ARGS) :
+cEnumAssociatedValues (THERE),
+mAssociatedValue0 (inAssociatedValue0) {
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cEnumAssociatedValues_QualifiedTypeAST_simpleType::description (C_String & ioString,
+                                                                     const int32_t inIndentation) const {
+  ioString << "(\n" ;
+  mAssociatedValue0.description (ioString, inIndentation) ;
+  ioString << ")" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cEnumAssociatedValues_QualifiedTypeAST_simpleType::compare (const cEnumAssociatedValues * inOperand) const {
+  const cEnumAssociatedValues_QualifiedTypeAST_simpleType * ptr = dynamic_cast<const cEnumAssociatedValues_QualifiedTypeAST_simpleType *> (inOperand) ;
+  macroValidPointer (ptr) ;
+  typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cEnumAssociatedValues_QualifiedTypeAST_optionalType::cEnumAssociatedValues_QualifiedTypeAST_optionalType (const GALGAS_lstring inAssociatedValue0
+                                                                                                          COMMA_LOCATION_ARGS) :
+cEnumAssociatedValues (THERE),
+mAssociatedValue0 (inAssociatedValue0) {
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cEnumAssociatedValues_QualifiedTypeAST_optionalType::description (C_String & ioString,
+                                                                       const int32_t inIndentation) const {
+  ioString << "(\n" ;
+  mAssociatedValue0.description (ioString, inIndentation) ;
+  ioString << ")" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cEnumAssociatedValues_QualifiedTypeAST_optionalType::compare (const cEnumAssociatedValues * inOperand) const {
+  const cEnumAssociatedValues_QualifiedTypeAST_optionalType * ptr = dynamic_cast<const cEnumAssociatedValues_QualifiedTypeAST_optionalType *> (inOperand) ;
+  macroValidPointer (ptr) ;
+  typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_QualifiedTypeAST::GALGAS_QualifiedTypeAST (void) :
+mAssociatedValues (),
+mEnum (kNotBuilt) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_QualifiedTypeAST GALGAS_QualifiedTypeAST::constructor_simpleType (const GALGAS_lstring & inAssociatedValue0
+                                                                         COMMA_LOCATION_ARGS) {
+  GALGAS_QualifiedTypeAST result ;
+  if (inAssociatedValue0.isValid ()) {
+    result.mEnum = kEnum_simpleType ;
+    cEnumAssociatedValues * ptr = NULL ;
+    macroMyNew (ptr, cEnumAssociatedValues_QualifiedTypeAST_simpleType (inAssociatedValue0 COMMA_THERE)) ;
+    result.mAssociatedValues.setPointer (ptr) ;
+    macroDetachSharedObject (ptr) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_QualifiedTypeAST GALGAS_QualifiedTypeAST::constructor_optionalType (const GALGAS_lstring & inAssociatedValue0
+                                                                           COMMA_LOCATION_ARGS) {
+  GALGAS_QualifiedTypeAST result ;
+  if (inAssociatedValue0.isValid ()) {
+    result.mEnum = kEnum_optionalType ;
+    cEnumAssociatedValues * ptr = NULL ;
+    macroMyNew (ptr, cEnumAssociatedValues_QualifiedTypeAST_optionalType (inAssociatedValue0 COMMA_THERE)) ;
+    result.mAssociatedValues.setPointer (ptr) ;
+    macroDetachSharedObject (ptr) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_QualifiedTypeAST::method_simpleType (GALGAS_lstring & outAssociatedValue0,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const {
+  if (mEnum != kEnum_simpleType) {
+    outAssociatedValue0.drop () ;
+    C_String s ;
+    s << "method @QualifiedTypeAST simpleType invoked with an invalid enum value" ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const cEnumAssociatedValues_QualifiedTypeAST_simpleType * ptr = (const cEnumAssociatedValues_QualifiedTypeAST_simpleType *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_QualifiedTypeAST::method_optionalType (GALGAS_lstring & outAssociatedValue0,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
+  if (mEnum != kEnum_optionalType) {
+    outAssociatedValue0.drop () ;
+    C_String s ;
+    s << "method @QualifiedTypeAST optionalType invoked with an invalid enum value" ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const cEnumAssociatedValues_QualifiedTypeAST_optionalType * ptr = (const cEnumAssociatedValues_QualifiedTypeAST_optionalType *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_QualifiedTypeAST::optional_simpleType (GALGAS_lstring & outAssociatedValue0) const {
+  const bool ok = mEnum == kEnum_simpleType ;
+  if (ok) {
+    const auto * ptr = (const cEnumAssociatedValues_QualifiedTypeAST_simpleType *) unsafePointer () ;
+    // const cEnumAssociatedValues_QualifiedTypeAST_simpleType * ptr = (const cEnumAssociatedValues_QualifiedTypeAST_simpleType *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_QualifiedTypeAST::optional_optionalType (GALGAS_lstring & outAssociatedValue0) const {
+  const bool ok = mEnum == kEnum_optionalType ;
+  if (ok) {
+    const auto * ptr = (const cEnumAssociatedValues_QualifiedTypeAST_optionalType *) unsafePointer () ;
+    // const cEnumAssociatedValues_QualifiedTypeAST_optionalType * ptr = (const cEnumAssociatedValues_QualifiedTypeAST_optionalType *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_QualifiedTypeAST [3] = {
+  "(not built)",
+  "simpleType",
+  "optionalType"
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_QualifiedTypeAST::getter_isSimpleType (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_simpleType == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_QualifiedTypeAST::getter_isOptionalType (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_optionalType == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_QualifiedTypeAST::description (C_String & ioString,
+                                           const int32_t inIndentation) const {
+  ioString << "<enum @QualifiedTypeAST: " << gEnumNameArrayFor_QualifiedTypeAST [mEnum] ;
+  mAssociatedValues.description (ioString, inIndentation) ;
+  ioString << ">" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_QualifiedTypeAST::objectCompare (const GALGAS_QualifiedTypeAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (mEnum < inOperand.mEnum) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mEnum > inOperand.mEnum) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mAssociatedValues.objectCompare (inOperand.mAssociatedValues) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@QualifiedTypeAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_QualifiedTypeAST ("QualifiedTypeAST",
+                                         NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_QualifiedTypeAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_QualifiedTypeAST ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_QualifiedTypeAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_QualifiedTypeAST (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_QualifiedTypeAST GALGAS_QualifiedTypeAST::extractObject (const GALGAS_object & inObject,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_QualifiedTypeAST result ;
+  const GALGAS_QualifiedTypeAST * p = (const GALGAS_QualifiedTypeAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_QualifiedTypeAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("QualifiedTypeAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 cEnumAssociatedValues_propertyInCollectionInitializationAST_some::cEnumAssociatedValues_propertyInCollectionInitializationAST_some (const GALGAS_semanticExpressionAST inAssociatedValue0
                                                                                                                                     COMMA_LOCATION_ARGS) :
 cEnumAssociatedValues (THERE),

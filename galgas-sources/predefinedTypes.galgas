@@ -23,8 +23,7 @@ private proc appendPredefinedListTypeAST
   var @propertyInCollectionListAST attributeList = {}
   attributeList +=
     !isConstant: false 
-    !@lstring.new {!inElementTypeName !@location.here}
-    !optional: false
+    !.simpleType {!typeName: @lstring.new {!inElementTypeName !@location.here}}
     !@lstring.new {!"mValue" !@location.here}
     !true
     !{}
@@ -46,16 +45,14 @@ private proc appendPredefined2StringListTypeAST
   var attributeList = @propertyInCollectionListAST {}
   attributeList +=
     !isConstant: false 
-    !@lstring.new {!"string" !@location.here}
-    !optional: false
+    !.simpleType {!typeName: @lstring.new {!"string" !@location.here}}
     !@lstring.new {!"mValue0" !@location.here}
     !true
     !{}
     !.none
   attributeList +=
     !isConstant: false 
-    !@lstring.new {!"string" !@location.here}
-    !optional: false
+    !.simpleType {!typeName: @lstring.new {!"string" !@location.here}}
     !@lstring.new {!"mValue1" !@location.here}
     !true
     !{}
@@ -78,16 +75,14 @@ private proc appendPredefined2LStringListTypeAST
   var @propertyInCollectionListAST attributeList = {}
   attributeList +=
     !isConstant: false 
-    !@lstring.new {!"lstring" !@location.here}
-    !optional: false
+    !.simpleType {!typeName: @lstring.new {!"lstring" !@location.here}}
     !@lstring.new {!"mValue0" !@location.here}
     !true
     !{}
     !.none
   attributeList +=
     !isConstant: false 
-    !@lstring.new {!"lstring" !@location.here}
-    !optional: false
+    !.simpleType {!typeName: @lstring.new {!"lstring" !@location.here}}
     !@lstring.new {!"mValue1" !@location.here}
     !true
     !{}
@@ -110,16 +105,14 @@ private proc appendStructASTForTypeWithLocation
   var attributeList = @propertyInCollectionListAST {}
   attributeList += 
     !isConstant: false 
-    !@lstring.new {!inElementTypeName !@location.here}
-    !optional: false
+    !.simpleType {!typeName: @lstring.new {!inElementTypeName !@location.here}}
     !@lstring.new {!inElementTypeName !@location.here}
     !true
     !{}
     !.none
   attributeList +=
     !isConstant: false 
-    !@lstring.new {!"location" !@location.here}
-    !optional: false
+    !.simpleType {!typeName: @lstring.new {!"location" !@location.here}}
     !@lstring.new {!"location" !@location.here}
     !true
     !{}
@@ -142,16 +135,14 @@ private proc appendStructASTForRangeType
   var @propertyInCollectionListAST attributeList = {}
   attributeList +=
     !isConstant: false 
-    !@lstring.new {!"uint" !@location.here}
-    !optional: false
+    !@QualifiedTypeAST.simpleType {!typeName:@lstring.new {!"uint" !@location.here}}
     !@lstring.new {!"start" !@location.here}
     !true
     !{}
     !.none
   attributeList +=
     !isConstant: false 
-    !@lstring.new {!"uint" !@location.here}
-    !optional: false
+    !@QualifiedTypeAST.simpleType {!typeName: @lstring.new {!"uint" !@location.here}}
     !@lstring.new {!"length" !@location.here}
     !true
     !{}

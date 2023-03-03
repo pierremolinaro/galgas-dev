@@ -191,10 +191,10 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       ]
     end
   #--- Add edge from property types
-    for (* mPropertyTypeName 5*) in self.mPropertyList do
+    for (* qualifiedTypeAST 4*) in self.mPropertyList do
       [!?ioSemanticTypePrecedenceGraph addEdge
         !key
-        !@lstring.new {!"@" + mPropertyTypeName !self.mSuperClassName.location}
+        !@lstring.new {!"@" + [qualifiedTypeAST typeName] !self.mSuperClassName.location}
       ]
     end
   }
@@ -288,11 +288,11 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         !mPropertyTypeEntry
         !mPropertyName.string
     end
-    for (isConstant mPropertyTypeName unused isOptional mPropertyName mIsPublic mAttributeList initExpression) in self.mPropertyList do
+    for (isConstant qualifiedTypeAST mPropertyName mIsPublic mAttributeList initExpression) in self.mPropertyList do
       if [initExpression isSome] then
         error mPropertyName : "property initialization is not handled for a class"
       end
-      [!?ioTypeMap makeEntry !mPropertyTypeName ?let attributeTypeIndex]
+      [!?ioTypeMap makeEntry ![qualifiedTypeAST typeName] ?let attributeTypeIndex]
       var hasSelector = false
       for (attribute) in mAttributeList do
         if attribute.string == "selector" then
@@ -334,11 +334,11 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   #--- Typed attribute list
     var @typedPropertyList currentClassTypedPropertyList = {}
     var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
-    for (* mPropertyTypeName unused isOptional mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
+    for (* qualifiedTypeAST mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
       if [initExpression isSome] then
         error mPropertyName : "property initialization is not handled for a class"
       end
-      [!?ioTypeMap makeEntry !mPropertyTypeName ?let attributeTypeIndex]
+      [!?ioTypeMap makeEntry ![qualifiedTypeAST typeName] ?let attributeTypeIndex]
       var hasSelector = false
       for (mValue) in mAttributeList do
         if mValue.string == "setter" then
@@ -487,13 +487,13 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   #------ Enter attributes
     var @typedPropertyList typedAttributeList = {}
     var @propertyIndexMap attributeMap = {}
-    for (* mPropertyTypeName unused isOptional mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
+    for (* qualifiedTypeAST mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
       if [initExpression isSome] then
         error mPropertyName : "property initialization is not handled for a class"
       end
-      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
+      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (![qualifiedTypeAST typeName])
       [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
-      let t = [ioTypeMap searchKey !mPropertyTypeName]
+      let t = [ioTypeMap searchKey ![qualifiedTypeAST typeName]]
       var hasSelector = false
       for (mValue) in mAttributeList while not hasSelector do
         hasSelector = mValue.string == "selector"
