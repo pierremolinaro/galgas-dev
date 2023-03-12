@@ -71,7 +71,8 @@
     [mCheckUpdateAtStartUpCheckBox bind: @"value" toObject: mSparkleUpdater withKeyPath: @"automaticallyChecksForUpdates" options: nil] ;
   //--- Populate WebView
     NSURL * url = [NSURL URLWithString: @"https://pierremolinaro.github.io/galgas-distribution/release-notes.html"] ;
-    [[mChangeLogInPreferencePaneWebView mainFrame] loadRequest: [NSURLRequest requestWithURL: url]] ;
+    NSURLRequest * request = [[NSURLRequest alloc] initWithURL: url] ;
+    [mChangeLogInPreferencePaneWebView loadRequest: request] ;
   }
 
   //····················································································································

@@ -7,11 +7,13 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-@class WebView ;
+//@class WebView ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#import <Cocoa/Cocoa.h>
+#import <AppKit/AppKit.h>
+#import <WebKit/WebKit.h>
+//#import <WebKit/WKWebView.h>
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -23,7 +25,7 @@
 
 
   @private IBOutlet NSView * mViewForChangeLogInPreferencePane ;
-  @private IBOutlet WebView * mChangeLogInPreferencePaneWebView ;
+  @private IBOutlet WKWebView * mChangeLogInPreferencePaneWebView ;
   @private IBOutlet NSView * mUpdateView ;
   
 //--- Install CLI tool

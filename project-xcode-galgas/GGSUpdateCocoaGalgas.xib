@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21699.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21699.1"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="21699.1"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="GGSUpdateCocoaGalgas">
             <connections>
                 <outlet property="mCLIToolInstallationPath" destination="67" id="69"/>
-                <outlet property="mChangeLogInPreferencePaneWebView" destination="110" id="113"/>
+                <outlet property="mChangeLogInPreferencePaneWebView" destination="9mc-29-TS7" id="8FU-d2-ONV"/>
                 <outlet property="mCheckUpdateAtStartUpCheckBox" destination="17" id="22"/>
                 <outlet property="mResultTextView" destination="183" id="187"/>
                 <outlet property="mSparkleUpdater" destination="xaS-5W-O3r" id="2EF-07-JFL"/>
@@ -114,130 +115,50 @@
             <rect key="frame" x="0.0" y="0.0" width="611" height="608"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <webView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="110">
-                    <rect key="frame" x="0.0" y="0.0" width="611" height="552"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" javaEnabled="NO">
-                        <nil key="identifier"/>
-                    </webPreferences>
-                </webView>
-                <button toolTip="Make text Larger" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="116">
-                    <rect key="frame" x="20" y="560" width="30" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="A" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" inset="2" id="117">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system" size="18"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="makeTextLarger:" target="110" id="120"/>
-                        <binding destination="146" name="enabled" keyPath="selection.canMakeTextLarger" id="152"/>
-                    </connections>
-                </button>
-                <button toolTip="Make text Smaller" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="118">
-                    <rect key="frame" x="78" y="560" width="30" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="A" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" inset="2" id="119">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu" size="9"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="makeTextSmaller:" target="110" id="121"/>
-                        <binding destination="146" name="enabled" keyPath="selection.canMakeTextSmaller" id="154"/>
-                    </connections>
-                </button>
-                <button toolTip="Make text Standard Size" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="122">
-                    <rect key="frame" x="49" y="560" width="30" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="A" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" inset="2" id="123">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="makeTextStandardSize:" target="110" id="125"/>
-                        <binding destination="146" name="enabled" keyPath="selection.canMakeTextStandardSize" id="157"/>
-                    </connections>
-                </button>
                 <button toolTip="Make text Larger" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="129">
-                    <rect key="frame" x="142" y="560" width="30" height="30"/>
+                    <rect key="frame" x="1" y="558" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSGoLeftTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" inset="2" id="130">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system" size="18"/>
-                        <connections>
-                            <binding destination="146" name="enabled" keyPath="selection.canGoBack" id="149"/>
-                        </connections>
                     </buttonCell>
                     <connections>
-                        <action selector="goBack:" target="110" id="135"/>
+                        <action selector="goBack:" target="9mc-29-TS7" id="2EW-Z9-dvl"/>
                     </connections>
                 </button>
+                <button toolTip="Make text Larger" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="137">
+                    <rect key="frame" x="115" y="558" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRefreshTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" inset="2" id="138">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system" size="18"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="reload:" target="9mc-29-TS7" id="cgj-Sy-mBv"/>
+                    </connections>
+                </button>
+                <wkWebView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9mc-29-TS7">
+                    <rect key="frame" x="1" y="0.0" width="610" height="542"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <wkWebViewConfiguration key="configuration">
+                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                        <wkPreferences key="preferences"/>
+                    </wkWebViewConfiguration>
+                </wkWebView>
                 <button toolTip="Make text Larger" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="132">
-                    <rect key="frame" x="171" y="560" width="30" height="30"/>
+                    <rect key="frame" x="30" y="558" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSGoRightTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" inset="2" id="133">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system" size="18"/>
                     </buttonCell>
                     <connections>
-                        <action selector="goForward:" target="110" id="136"/>
-                        <binding destination="146" name="enabled" keyPath="selection.canGoForward" id="150"/>
+                        <action selector="goForward:" target="9mc-29-TS7" id="amk-z8-bpH"/>
                     </connections>
                 </button>
-                <button toolTip="Make text Larger" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="137">
-                    <rect key="frame" x="232" y="560" width="30" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRefreshTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" inset="2" id="138">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system" size="18"/>
-                        <connections>
-                            <action selector="reload:" target="110" id="140"/>
-                        </connections>
-                    </buttonCell>
-                </button>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="158">
-                    <rect key="frame" x="270" y="567" width="16" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <connections>
-                        <binding destination="146" name="animate" keyPath="selection.isLoading" id="160"/>
-                        <binding destination="146" name="hidden" keyPath="selection.isLoading" id="163">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </progressIndicator>
-                <textField verticalHuggingPriority="750" preferredMaxLayoutWidth="299" id="164">
-                    <rect key="frame" x="291" y="567" width="303" height="17"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="165">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        <connections>
-                            <binding destination="146" name="enabled" keyPath="selection.mainFrameURL" id="167"/>
-                        </connections>
-                    </textFieldCell>
-                    <connections>
-                        <binding destination="146" name="value" keyPath="selection.mainFrameURL" id="171"/>
-                    </connections>
-                </textField>
             </subviews>
-            <point key="canvasLocation" x="139" y="-282"/>
+            <point key="canvasLocation" x="138.5" y="-282"/>
         </customView>
-        <objectController id="146" userLabel="Web View Object Controller">
-            <declaredKeys>
-                <string>canGoBack</string>
-                <string>canGoForward</string>
-                <string>canMakeTextLarger</string>
-                <string>canMakeTextSmaller</string>
-                <string>canMakeTextStandardSize</string>
-                <string>isLoading</string>
-                <string>mainFrameURL</string>
-            </declaredKeys>
-            <connections>
-                <binding destination="-2" name="contentObject" keyPath="mChangeLogInPreferencePaneWebView" id="147"/>
-            </connections>
-        </objectController>
         <window title="Create New Project" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="180" userLabel="Create new project">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
