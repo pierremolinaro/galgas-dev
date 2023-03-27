@@ -3425,12 +3425,6 @@ bool GALGAS_localVariableAttributes::isValid (void) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_localVariableAttributes::drop (void) {
-  mIsValid = false ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_localVariableAttributes GALGAS_localVariableAttributes::operator_or (const GALGAS_localVariableAttributes & inOperand
                                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_localVariableAttributes result ;

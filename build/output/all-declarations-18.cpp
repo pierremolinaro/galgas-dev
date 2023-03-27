@@ -8715,6 +8715,195 @@ void extensionMethod_displayRuleVertically (const GALGAS_productionRuleListForGr
 }
 
 
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_galgas_33_ProjectComponentAST::GALGAS_galgas_33_ProjectComponentAST (void) :
+mProperty_mProjectSourceList (),
+mProperty_mMajorVersion (),
+mProperty_mMinorVersion (),
+mProperty_mRevisionVersion (),
+mProperty_mGenerationFeatureList (),
+mProperty_mQualifiedFeatureList (),
+mProperty_mTargetName (),
+mProperty_mEndOfSourceFile () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_galgas_33_ProjectComponentAST::~ GALGAS_galgas_33_ProjectComponentAST (void) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_galgas_33_ProjectComponentAST::GALGAS_galgas_33_ProjectComponentAST (const GALGAS_lstringlist & inOperand0,
+                                                                            const GALGAS_lbigint & inOperand1,
+                                                                            const GALGAS_lbigint & inOperand2,
+                                                                            const GALGAS_lbigint & inOperand3,
+                                                                            const GALGAS_lstringlist & inOperand4,
+                                                                            const GALGAS_galgas_33_QualifiedFeatureList & inOperand5,
+                                                                            const GALGAS_lstring & inOperand6,
+                                                                            const GALGAS_location & inOperand7) :
+mProperty_mProjectSourceList (inOperand0),
+mProperty_mMajorVersion (inOperand1),
+mProperty_mMinorVersion (inOperand2),
+mProperty_mRevisionVersion (inOperand3),
+mProperty_mGenerationFeatureList (inOperand4),
+mProperty_mQualifiedFeatureList (inOperand5),
+mProperty_mTargetName (inOperand6),
+mProperty_mEndOfSourceFile (inOperand7) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_galgas_33_ProjectComponentAST GALGAS_galgas_33_ProjectComponentAST::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_galgas_33_ProjectComponentAST (GALGAS_lstringlist::constructor_emptyList (HERE),
+                                               GALGAS_lbigint::constructor_default (HERE),
+                                               GALGAS_lbigint::constructor_default (HERE),
+                                               GALGAS_lbigint::constructor_default (HERE),
+                                               GALGAS_lstringlist::constructor_emptyList (HERE),
+                                               GALGAS_galgas_33_QualifiedFeatureList::constructor_emptyList (HERE),
+                                               GALGAS_lstring::constructor_default (HERE),
+                                               GALGAS_location::constructor_nowhere (HERE)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_galgas_33_ProjectComponentAST GALGAS_galgas_33_ProjectComponentAST::constructor_new (const GALGAS_lstringlist & in_mProjectSourceList,
+                                                                                            const GALGAS_lbigint & in_mMajorVersion,
+                                                                                            const GALGAS_lbigint & in_mMinorVersion,
+                                                                                            const GALGAS_lbigint & in_mRevisionVersion,
+                                                                                            const GALGAS_lstringlist & in_mGenerationFeatureList,
+                                                                                            const GALGAS_galgas_33_QualifiedFeatureList & in_mQualifiedFeatureList,
+                                                                                            const GALGAS_lstring & in_mTargetName,
+                                                                                            const GALGAS_location & in_mEndOfSourceFile 
+                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_galgas_33_ProjectComponentAST result ;
+  if (in_mProjectSourceList.isValid () && in_mMajorVersion.isValid () && in_mMinorVersion.isValid () && in_mRevisionVersion.isValid () && in_mGenerationFeatureList.isValid () && in_mQualifiedFeatureList.isValid () && in_mTargetName.isValid () && in_mEndOfSourceFile.isValid ()) {
+    result = GALGAS_galgas_33_ProjectComponentAST (in_mProjectSourceList, in_mMajorVersion, in_mMinorVersion, in_mRevisionVersion, in_mGenerationFeatureList, in_mQualifiedFeatureList, in_mTargetName, in_mEndOfSourceFile) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_galgas_33_ProjectComponentAST::objectCompare (const GALGAS_galgas_33_ProjectComponentAST & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mProperty_mProjectSourceList.objectCompare (inOperand.mProperty_mProjectSourceList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mMajorVersion.objectCompare (inOperand.mProperty_mMajorVersion) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mMinorVersion.objectCompare (inOperand.mProperty_mMinorVersion) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mRevisionVersion.objectCompare (inOperand.mProperty_mRevisionVersion) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mGenerationFeatureList.objectCompare (inOperand.mProperty_mGenerationFeatureList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mQualifiedFeatureList.objectCompare (inOperand.mProperty_mQualifiedFeatureList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mTargetName.objectCompare (inOperand.mProperty_mTargetName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mEndOfSourceFile.objectCompare (inOperand.mProperty_mEndOfSourceFile) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_galgas_33_ProjectComponentAST::isValid (void) const {
+  return mProperty_mProjectSourceList.isValid () && mProperty_mMajorVersion.isValid () && mProperty_mMinorVersion.isValid () && mProperty_mRevisionVersion.isValid () && mProperty_mGenerationFeatureList.isValid () && mProperty_mQualifiedFeatureList.isValid () && mProperty_mTargetName.isValid () && mProperty_mEndOfSourceFile.isValid () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_galgas_33_ProjectComponentAST::drop (void) {
+  mProperty_mProjectSourceList.drop () ;
+  mProperty_mMajorVersion.drop () ;
+  mProperty_mMinorVersion.drop () ;
+  mProperty_mRevisionVersion.drop () ;
+  mProperty_mGenerationFeatureList.drop () ;
+  mProperty_mQualifiedFeatureList.drop () ;
+  mProperty_mTargetName.drop () ;
+  mProperty_mEndOfSourceFile.drop () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_galgas_33_ProjectComponentAST::description (C_String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString << "<struct @galgas3ProjectComponentAST:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mProperty_mProjectSourceList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mMajorVersion.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mMinorVersion.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mRevisionVersion.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mGenerationFeatureList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mQualifiedFeatureList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mTargetName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mEndOfSourceFile.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@galgas3ProjectComponentAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_galgas_33_ProjectComponentAST ("galgas3ProjectComponentAST",
+                                                      NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_galgas_33_ProjectComponentAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_galgas_33_ProjectComponentAST ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_galgas_33_ProjectComponentAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_galgas_33_ProjectComponentAST (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_galgas_33_ProjectComponentAST GALGAS_galgas_33_ProjectComponentAST::extractObject (const GALGAS_object & inObject,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_galgas_33_ProjectComponentAST result ;
+  const GALGAS_galgas_33_ProjectComponentAST * p = (const GALGAS_galgas_33_ProjectComponentAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_galgas_33_ProjectComponentAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("galgas3ProjectComponentAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 #include "utilities/MF_MemoryControl.h"
@@ -8736,7 +8925,7 @@ void extensionMethod_displayRuleVertically (const GALGAS_productionRuleListForGr
 #define END_PRODUCTION  (0)
 
 static const int16_t gProductions_galgas3ProjectGrammar [] = {
-// At index 0 : <project_header>, in file 'galgas3ProjectSyntax.ggs', line 20
+// At index 0 : <project_header>, in file 'galgas3ProjectSyntax.ggs', line 49
   TERMINAL (C_Lexique_galgasScanner::kToken_project) // $project$
 , TERMINAL (C_Lexique_galgasScanner::kToken__28_) // $($
 , TERMINAL (C_Lexique_galgasScanner::kToken_literalInt) // $literalInt$
@@ -8748,29 +8937,29 @@ static const int16_t gProductions_galgas3ProjectGrammar [] = {
 , TERMINAL (C_Lexique_galgasScanner::kToken__2D__3E_) // $->$
 , TERMINAL (C_Lexique_galgasScanner::kToken__22_string_22_) // $"string"$
 , END_PRODUCTION
-// At index 11 : <project_component_start_symbol>, in file 'galgas3ProjectSyntax.ggs', line 35
+// At index 11 : <project_component_start_symbol>, in file 'galgas3ProjectSyntax.ggs', line 64
 , NONTERMINAL (0) // <project_header>
 , TERMINAL (C_Lexique_galgasScanner::kToken__7B_) // ${$
 , NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TERMINAL (C_Lexique_galgasScanner::kToken__7D_) // $}$
 , END_PRODUCTION
 //---- Added productions from 'select' and 'repeat' instructions
-// At index 16 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 45
+// At index 16 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
 , END_PRODUCTION
-// At index 17 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 45
+// At index 17 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
 , TERMINAL (C_Lexique_galgasScanner::kToken__25_attribute) // $%attribute$
 , NONTERMINAL (3) // <select_galgas_33_ProjectSyntax_1>
 , NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , END_PRODUCTION
-// At index 21 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 45
+// At index 21 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
 , TERMINAL (C_Lexique_galgasScanner::kToken__22_string_22_) // $"string"$
 , NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , END_PRODUCTION
-// At index 24 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 48
+// At index 24 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 77
 , TERMINAL (C_Lexique_galgasScanner::kToken__3A_) // $:$
 , TERMINAL (C_Lexique_galgasScanner::kToken__22_string_22_) // $"string"$
 , END_PRODUCTION
-// At index 27 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 48
+// At index 27 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 77
 , END_PRODUCTION
 // At index 28 : <>, in file '.ggs', line 0
 , NONTERMINAL (1) // <project_component_start_symbol>
@@ -8801,13 +8990,13 @@ static const cProductionNameDescriptor gProductionNames_galgas3ProjectGrammar [8
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const int16_t gProductionIndexes_galgas3ProjectGrammar [8] = {
-0, // index 0 : <project_header>, in file 'galgas3ProjectSyntax.ggs', line 20
-11, // index 1 : <project_component_start_symbol>, in file 'galgas3ProjectSyntax.ggs', line 35
-16, // index 2 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 45
-17, // index 3 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 45
-21, // index 4 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 45
-24, // index 5 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 48
-27, // index 6 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 48
+0, // index 0 : <project_header>, in file 'galgas3ProjectSyntax.ggs', line 49
+11, // index 1 : <project_component_start_symbol>, in file 'galgas3ProjectSyntax.ggs', line 64
+16, // index 2 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+17, // index 3 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+21, // index 4 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+24, // index 5 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 77
+27, // index 6 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 77
 28 // index 7 : <>, in file '.ggs', line 0
 } ;
 
@@ -9028,195 +9217,6 @@ int32_t cGrammar_galgas_33_ProjectGrammar::select_galgas_33_ProjectSyntax_1 (C_L
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_galgas_33_ProjectComponentAST::GALGAS_galgas_33_ProjectComponentAST (void) :
-mProperty_mProjectSourceList (),
-mProperty_mMajorVersion (),
-mProperty_mMinorVersion (),
-mProperty_mRevisionVersion (),
-mProperty_mGenerationFeatureList (),
-mProperty_mQualifiedFeatureList (),
-mProperty_mTargetName (),
-mProperty_mEndOfSourceFile () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_galgas_33_ProjectComponentAST::~ GALGAS_galgas_33_ProjectComponentAST (void) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_galgas_33_ProjectComponentAST::GALGAS_galgas_33_ProjectComponentAST (const GALGAS_lstringlist & inOperand0,
-                                                                            const GALGAS_lbigint & inOperand1,
-                                                                            const GALGAS_lbigint & inOperand2,
-                                                                            const GALGAS_lbigint & inOperand3,
-                                                                            const GALGAS_lstringlist & inOperand4,
-                                                                            const GALGAS_galgas_33_QualifiedFeatureList & inOperand5,
-                                                                            const GALGAS_lstring & inOperand6,
-                                                                            const GALGAS_location & inOperand7) :
-mProperty_mProjectSourceList (inOperand0),
-mProperty_mMajorVersion (inOperand1),
-mProperty_mMinorVersion (inOperand2),
-mProperty_mRevisionVersion (inOperand3),
-mProperty_mGenerationFeatureList (inOperand4),
-mProperty_mQualifiedFeatureList (inOperand5),
-mProperty_mTargetName (inOperand6),
-mProperty_mEndOfSourceFile (inOperand7) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_galgas_33_ProjectComponentAST GALGAS_galgas_33_ProjectComponentAST::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_galgas_33_ProjectComponentAST (GALGAS_lstringlist::constructor_emptyList (HERE),
-                                               GALGAS_lbigint::constructor_default (HERE),
-                                               GALGAS_lbigint::constructor_default (HERE),
-                                               GALGAS_lbigint::constructor_default (HERE),
-                                               GALGAS_lstringlist::constructor_emptyList (HERE),
-                                               GALGAS_galgas_33_QualifiedFeatureList::constructor_emptyList (HERE),
-                                               GALGAS_lstring::constructor_default (HERE),
-                                               GALGAS_location::constructor_nowhere (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_galgas_33_ProjectComponentAST GALGAS_galgas_33_ProjectComponentAST::constructor_new (const GALGAS_lstringlist & in_mProjectSourceList,
-                                                                                            const GALGAS_lbigint & in_mMajorVersion,
-                                                                                            const GALGAS_lbigint & in_mMinorVersion,
-                                                                                            const GALGAS_lbigint & in_mRevisionVersion,
-                                                                                            const GALGAS_lstringlist & in_mGenerationFeatureList,
-                                                                                            const GALGAS_galgas_33_QualifiedFeatureList & in_mQualifiedFeatureList,
-                                                                                            const GALGAS_lstring & in_mTargetName,
-                                                                                            const GALGAS_location & in_mEndOfSourceFile 
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_galgas_33_ProjectComponentAST result ;
-  if (in_mProjectSourceList.isValid () && in_mMajorVersion.isValid () && in_mMinorVersion.isValid () && in_mRevisionVersion.isValid () && in_mGenerationFeatureList.isValid () && in_mQualifiedFeatureList.isValid () && in_mTargetName.isValid () && in_mEndOfSourceFile.isValid ()) {
-    result = GALGAS_galgas_33_ProjectComponentAST (in_mProjectSourceList, in_mMajorVersion, in_mMinorVersion, in_mRevisionVersion, in_mGenerationFeatureList, in_mQualifiedFeatureList, in_mTargetName, in_mEndOfSourceFile) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_galgas_33_ProjectComponentAST::objectCompare (const GALGAS_galgas_33_ProjectComponentAST & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mProperty_mProjectSourceList.objectCompare (inOperand.mProperty_mProjectSourceList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mMajorVersion.objectCompare (inOperand.mProperty_mMajorVersion) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mMinorVersion.objectCompare (inOperand.mProperty_mMinorVersion) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mRevisionVersion.objectCompare (inOperand.mProperty_mRevisionVersion) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mGenerationFeatureList.objectCompare (inOperand.mProperty_mGenerationFeatureList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mQualifiedFeatureList.objectCompare (inOperand.mProperty_mQualifiedFeatureList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mTargetName.objectCompare (inOperand.mProperty_mTargetName) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mEndOfSourceFile.objectCompare (inOperand.mProperty_mEndOfSourceFile) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_galgas_33_ProjectComponentAST::isValid (void) const {
-  return mProperty_mProjectSourceList.isValid () && mProperty_mMajorVersion.isValid () && mProperty_mMinorVersion.isValid () && mProperty_mRevisionVersion.isValid () && mProperty_mGenerationFeatureList.isValid () && mProperty_mQualifiedFeatureList.isValid () && mProperty_mTargetName.isValid () && mProperty_mEndOfSourceFile.isValid () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_galgas_33_ProjectComponentAST::drop (void) {
-  mProperty_mProjectSourceList.drop () ;
-  mProperty_mMajorVersion.drop () ;
-  mProperty_mMinorVersion.drop () ;
-  mProperty_mRevisionVersion.drop () ;
-  mProperty_mGenerationFeatureList.drop () ;
-  mProperty_mQualifiedFeatureList.drop () ;
-  mProperty_mTargetName.drop () ;
-  mProperty_mEndOfSourceFile.drop () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_galgas_33_ProjectComponentAST::description (C_String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString << "<struct @galgas3ProjectComponentAST:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mProperty_mProjectSourceList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mMajorVersion.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mMinorVersion.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mRevisionVersion.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mGenerationFeatureList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mQualifiedFeatureList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mTargetName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mEndOfSourceFile.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@galgas3ProjectComponentAST type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_galgas_33_ProjectComponentAST ("galgas3ProjectComponentAST",
-                                                      NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_galgas_33_ProjectComponentAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_galgas_33_ProjectComponentAST ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_galgas_33_ProjectComponentAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_galgas_33_ProjectComponentAST (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_galgas_33_ProjectComponentAST GALGAS_galgas_33_ProjectComponentAST::extractObject (const GALGAS_object & inObject,
-                                                                                          C_Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_galgas_33_ProjectComponentAST result ;
-  const GALGAS_galgas_33_ProjectComponentAST * p = (const GALGAS_galgas_33_ProjectComponentAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_galgas_33_ProjectComponentAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("galgas3ProjectComponentAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 

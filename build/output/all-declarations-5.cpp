@@ -8817,12 +8817,6 @@ bool GALGAS_operators::isValid (void) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_operators::drop (void) {
-  mIsValid = false ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_operators GALGAS_operators::operator_or (const GALGAS_operators & inOperand
                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_operators result ;

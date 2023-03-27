@@ -57,12 +57,6 @@ bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
-  mIsValid = false ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_or (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand
                                       %!^%COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_%!TYPE_IDENTIFIER% result ;

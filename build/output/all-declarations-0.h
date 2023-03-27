@@ -7761,7 +7761,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDefinition ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// Phase 1: @operators struct
+// Phase 1: @operators boolset
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7772,7 +7772,7 @@ class GALGAS_operators : public AC_GALGAS_root {
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
-  public: VIRTUAL_IN_DEBUG void drop (void) ;
+  public: VIRTUAL_IN_DEBUG void drop (void) { mIsValid = false ; }
 
 //--------------------------------- Default constructor
   public: GALGAS_operators (void) ;

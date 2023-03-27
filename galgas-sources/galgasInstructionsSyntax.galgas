@@ -371,9 +371,7 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
     $extern$
     $proc$
     $identifier$ ?let @lstring mActionName indexing routineDefinition
-    $($
     <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
-    $)$
     ioDeclarations.mDeclarationList += !@externRoutineDeclarationAST.new {
       !false # Is not predefined
       !false # Is not internal
@@ -568,9 +566,7 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
     $extern$
     $func$
     $identifier$ ?let mActionName indexing functionDefinition
-    $($
     <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
-    $)$
     $->$
     $@type$ ?let resultTypeName
     ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST.new {

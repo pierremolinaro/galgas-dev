@@ -15,6 +15,35 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+list @galgas3QualifiedFeatureList {
+  public let @lstring mFeatureName
+  public let @lstring mFeatureValue
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct @galgas3ProjectComponentAST {
+  public let @lstringlist mProjectSourceList
+  public let @lbigint mMajorVersion
+  public let @lbigint mMinorVersion
+  public let @lbigint mRevisionVersion
+  public let @lstringlist mGenerationFeatureList
+  public let @galgas3QualifiedFeatureList mQualifiedFeatureList
+  public let @lstring mTargetName
+  public let @location mEndOfSourceFile
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+indexing grammar galgas3ProjectGrammar "LL1" {
+  syntax galgas3ProjectSyntax
+
+  <project_component_start_symbol> !@galgas3ProjectComponentAST outComponent
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 syntax galgas3ProjectSyntax (galgasScanner) {
 
 rule <project_header> !@lbigint majorVersion !@lbigint minorVersion !@lbigint revisionVersion !@lstring targetName {

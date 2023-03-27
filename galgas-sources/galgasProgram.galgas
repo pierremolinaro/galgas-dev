@@ -143,8 +143,7 @@ grammar galgas3ProjectGrammar
 
 private proc parseAndAnalyzeProject
   ?let @lstring inProjectSourceFile
-  ?let @string inSourceToAnalyze
-{
+  ?let @string inSourceToAnalyze {
   if @application.verboseOutput then
     message "*** Parsing project files\n"
   end
@@ -197,10 +196,10 @@ private proc compileProject ?let @lstring inProjectSourceFile
   var @stringlist handCodedSourceToolFileList = {}
   var @stringlist frameworkToolFileList = {}
   var @stringset handCodedSourceDirectorySet = {}
-  for (mFeatureName mFeatureValue) in inProjectComponentAST.mQualifiedFeatureList do
-    if "tool-source" == mFeatureName then
-      handCodedSourceToolFileList += !mFeatureValue.string
-      let directory = [mFeatureValue stringByDeletingLastPathComponent]
+  for (featureName featureValue) in inProjectComponentAST.mQualifiedFeatureList do
+    if "tool-source" == featureName then
+      handCodedSourceToolFileList += !featureValue.string
+      let directory = [featureValue stringByDeletingLastPathComponent]
       if directory == "" then
         handCodedSourceDirectorySet += !"../"
       elsif [directory characterAtIndex !0] != '/' then
@@ -208,11 +207,13 @@ private proc compileProject ?let @lstring inProjectSourceFile
       else
         handCodedSourceDirectorySet += !directory
       end
-    elsif mFeatureName.string == "tool-framework" then
-      frameworkToolFileList += ![mFeatureValue lastPathComponent]
-    elsif mFeatureName.string == "app-source" then
-      handCodedSourceAppFileList += !mFeatureValue.string
-      let directory = [mFeatureValue stringByDeletingLastPathComponent]
+    elsif featureName.string == "tool-include" then
+      handCodedSourceDirectorySet += !featureValue
+    elsif featureName.string == "tool-framework" then
+      frameworkToolFileList += ![featureValue lastPathComponent]
+    elsif featureName.string == "app-source" then
+      handCodedSourceAppFileList += !featureValue.string
+      let directory = [featureValue stringByDeletingLastPathComponent]
       if directory == "" then
         handCodedSourceDirectorySet += !"../"
       elsif [directory characterAtIndex !0] != '/' then
@@ -220,30 +221,27 @@ private proc compileProject ?let @lstring inProjectSourceFile
       else
         handCodedSourceDirectorySet += !directory
       end
-    elsif mFeatureName.string == "tool-link" then
-      handCodedLinkToolFileList += !mFeatureValue.string
-    elsif mFeatureName.string == "app-link" then
-      handCodedLinkAppFileList += !mFeatureValue.string
-    elsif mFeatureName.string == "libpmAtPath" then
-    elsif mFeatureName.string == "applicationBundleBase" then
-    elsif mFeatureName.string == "macCodeSign" then
-    elsif mFeatureName.string == "MacOSDeployment" then
+    elsif featureName.string == "tool-link" then
+      handCodedLinkToolFileList += !featureValue.string
+    elsif featureName.string == "app-link" then
+      handCodedLinkAppFileList += !featureValue.string
+    elsif featureName.string == "libpmAtPath" then
+    elsif featureName.string == "applicationBundleBase" then
+    elsif featureName.string == "macCodeSign" then
+    elsif featureName.string == "MacOSDeployment" then
     else
-      error mFeatureName : "unknown feature"
+      error featureName : "unknown feature"
     end
   end
 #---------------------------------- Display result
-#  if [@uint errorCount] == 0 then
-#    message "  Semantic declarations: " . [declarationAST->mDeclarationList length] . "\n" ;
-#    message "  Lexique components: " . [declarationAST->mLexiqueComponentList length] . "\n" ;
-#    message "  Syntax components: " . [declarationAST->mSyntaxComponentList length] . "\n" ;
-#    message "  Grammar components: " . [declarationAST->mGrammarComponentList length] . "\n" ;
-#    message "  GUI components: " . [declarationAST->mGUIComponentList length] . "\n" ;
-#    message "  Option components: " . [declarationAST->mOptionComponentList length] . "\n" ;
-#    message "  Source rules: " . [declarationAST->mSourceRuleList length] . "\n" ;
-#    message "  Prologue procs: " . [declarationAST->mPrologueDeclarationList length] . "\n" ;
-#    message "  Epilogue procs: " . [declarationAST->mEpilogueDeclarationList length] . "\n" ;
-#  end if ;
+#  if @uint.errorCount == 0 then
+#    message "  Declarations: " + [declarationAST.mDeclarationList length] + "\n"
+#    message "  Syntax components: " + [declarationAST.mSyntaxComponentList length] + "\n" ;
+#    message "  GUI components: " + [declarationAST.mGUIComponentList length] + "\n"
+#    message "  Source rules: " + [declarationAST.mSourceRuleList length] + "\n" ;
+#    message "  Prologue procs: " + [declarationAST.mPrologueDeclarationList length] + "\n"
+#    message "  Epilogue procs: " + [declarationAST.mEpilogueDeclarationList length] + "\n"
+#  end
 #---------------------------------- Group syntax components and their extensions
   groupSyntaxComponentsGalgas3 (
     !declarationAST.mSyntaxComponentList
@@ -306,51 +304,6 @@ private proc compileProject ?let @lstring inProjectSourceFile
   end
 #------------------------------------ Check entity usefulness
   checkUsefulEntities (!usefulEntitiesGraph !usefulnessRootEntities !productDirectory)
-#------------------------------------ Check entity usefulness
-#  if [option galgas_cli_options.warningOnPropertyMethodCollision value] then
-#    for (lkey
-#         3*
-#         kind
-#         3*
-#         @typedPropertyList unused propertyList
-#         @constructorMap unused constructorMap
-#         @getterMap unused getterMap
-#         @setterMap setterMap
-#         @instanceMethodMap instanceMethodMap
-#         14*) in semanticContext.mTypeMap do
-#      var methodNameSet = @stringset {}
-#      for (* propertyName 2*) in propertyList do
-#        if [methodNameSet hasKey !propertyName] then
-#          warning propertyName : "type " + kind + " @" + lkey + ": property name collision"
-#        end
-#        methodNameSet += !propertyName.string
-#      end
-#      for (initializerName 3*) in constructorMap do
-#        if [methodNameSet hasKey !initializerName.string] then
-#          warning initializerName : "type " + kind + " @" + lkey + ": initializer name collision"
-#        end
-#        methodNameSet += !initializerName.string
-#      end
-#      for (getterName 7*) in getterMap do
-#        if [methodNameSet hasKey !getterName.string] then
-#          warning getterName : "type " + kind + " @" + lkey + ": getter name collision"
-#        end
-#        methodNameSet += !getterName.string
-#      end
-#      for (setterName 5*) in setterMap do
-#        if [methodNameSet hasKey !setterName.string] then
-#          error setterName : "type " + kind + " @" + lkey + ": setter name collision"
-#        end
-#        methodNameSet += !setterName.string
-#      end
-#      for (methodName 6*) in instanceMethodMap do
-#        if [methodNameSet hasKey !methodName.string] then
-#          error methodName : "type " + kind + " @" + lkey + ": method name collision"
-#        end
-#        methodNameSet += !methodName.string
-#      end
-#    end
-#  end
 #------------------------------------ Build an HTML file that contains all declared types
   let typeDumpFilePath = [inProjectSourceFile stringByDeletingLastPathComponent]
          + "/build/helpers/" +  [inProjectSourceFile lastPathComponent] + ".html"

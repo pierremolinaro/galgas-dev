@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------------------------------------------------
 //
-//%!" Phase 1: @" + TYPE_IDENTIFIER + " struct"%
+//%!" Phase 1: @" + TYPE_IDENTIFIER + " boolset"%
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11,7 +11,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
-  public: VIRTUAL_IN_DEBUG void drop (void) ;
+  public: VIRTUAL_IN_DEBUG void drop (void) { mIsValid = false ; }
 
 //--------------------------------- Default constructor
   public: GALGAS_%!TYPE_IDENTIFIER% (void) ;

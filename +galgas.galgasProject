@@ -222,9 +222,7 @@ project (3:6:0) -> "galgas" {
 
 #--- GALGAS Project
   "galgas-sources/galgasScanner.galgas"
-  "galgas-sources/galgasProjectSyntax.galgas"
-  "galgas-sources/galgasProjectGrammar.galgas"
-  "galgas-sources/galgasProjectAST.galgas"
+  "galgas-sources/galgasProject.galgas"
 
 #--- GALGAS File
   "galgas-sources/galgasParameterArgumentSyntax.galgas"
