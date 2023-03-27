@@ -50,11 +50,11 @@ syntax extension galgas4ExpressionSyntax {
   #·····················································································································
 
   rule <primary> !@semanticExpressionAST outExpression {
-    $[$
     $option$
     $identifier$ ?let optionComponentName indexing optionComponentReference
-    $.$
+    $[$
     $identifier$ ?let optionName
+    $.$
     $identifier$ ?let getterName
     outExpression = @optionExpressionAST.new {!optionComponentName !optionName !getterName}
     $]$
@@ -63,10 +63,10 @@ syntax extension galgas4ExpressionSyntax {
   #·····················································································································
   
   rule <primary> !@semanticExpressionAST outExpression {
-    $[$
     $option$
-    $.$
+    $[$
     $identifier$ ?let optionName
+    $.$
     $identifier$ ?let getterName
     outExpression = @optionExpressionAST.new {!.new {!"galgas_builtin_options" !.here} !optionName !getterName}
     $]$
