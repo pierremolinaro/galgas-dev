@@ -43,6 +43,10 @@ syntax extension galgas4ExpressionSyntax {
   rule <factor> !@semanticExpressionAST outExpression {
     <primary> ? outExpression
     repeat
+#    while
+#      $($
+#      <expression> ?let unused expression
+#      $)$
     while
       $.$
       $identifier$ ?let structFieldName

@@ -41,10 +41,7 @@ syntax extension galgas4ExpressionSyntax {
     $($
     <output_expression_list> ?let @actualOutputExpressionList expressionList
     $)$
-    outExpression = @functionCallExpressionAST.new {
-      !functionName
-      !expressionList
-    }
+    outExpression = @functionCallExpressionAST.new {!functionName !expressionList}
   }
 
   #·····················································································································
