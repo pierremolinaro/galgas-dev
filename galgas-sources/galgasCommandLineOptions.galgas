@@ -45,6 +45,9 @@ option galgas_cli_options {
   @bool emitSyntaxDiagrams : '\0', "emit-syntax-diagrams"
     -> "Emit grammar syntax diagrams in TEX files"
 
+  @bool emitClassGraph : '\0', "emit-class-graph"
+    -> "Emit class graph in dot file"
+
   @bool displayUnicodeLexicalTestFunctions : '\0', "display-lexical-test-functions"
     -> "Display Unicode Lexical Test Functions"
 

@@ -35,6 +35,14 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
+    identifier: "emitClassGraph",
+    commandChar: "",
+    commandString: "emit-class-graph",
+    comment: "Emit class graph in dot file",
+    defaultValue: ""
+  ))
+  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
     identifier: "emitSyntaxDiagrams",
     commandChar: "",
     commandString: "emit-syntax-diagrams",

@@ -228,6 +228,7 @@
   mDisplayDescriptorTableViewHigh.dataSource = self ;
   [mDisplayDescriptorTableViewHigh
     registerForDraggedTypes: [NSArray arrayWithObject: (NSString*) kUTTypeFileURL]
+//    registerForDraggedTypes: [NSArray arrayWithObjects: (NSString*) kPasteboardTypeFileURLPromise, @"source.path.molinaro.name", nil]
   ] ;
 //---
   [mBuildProgressIndicator startAnimation:nil] ;
@@ -2061,6 +2062,27 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//- (id <NSPasteboardWriting>) tableView: (NSTableView *) inTableView
+//                             pasteboardWriterForRow: (NSInteger) inRowIndex {
+//  #ifdef DEBUG_MESSAGES
+//    NSLog (@"%s, inRowIndex %d", __PRETTY_FUNCTION__, inRowIndex) ;
+//  #endif
+//  id <NSPasteboardWriting> result = nil ;
+//  if ((inRowIndex >= 0) && (inRowIndex < (NSInteger) mDisplayDescriptorArrayHigh.count)) {
+//    OC_GGS_TextDisplayDescriptor * tdd = [mSourceDisplayArrayControllerHigh.selectedObjects objectAtIndex:0] ;
+//    NSPasteboardItem * pasteboardItem = [[NSPasteboardItem alloc] init] ;
+//    [pasteboardItem
+////      setPropertyList:@{ @"index": @(inRowIndex), @"item": tdd.sourceURL.path }
+//      setString: tdd.sourceURL.path
+//      forType: @"source.path.molinaro.name"
+//    ] ;
+//    result = pasteboardItem ;
+//  }
+//  return result ;
+//}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 - (NSDragOperation) tableView: (NSTableView*)tv
                     validateDrop:(id <NSDraggingInfo>)info
                     proposedRow:(NSInteger)row
@@ -2080,22 +2102,42 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSArray * classArray = [NSArray arrayWithObject:[NSURL class]]; // types of objects you are looking for
-  NSArray * arrayOfURLs = [inDraggingInfo.draggingPasteboard readObjectsForClasses:classArray options:nil]; // read objects of those classes
+  NSLog (@"%s", __PRETTY_FUNCTION__) ;
+//--- file pathes
+  NSArray * pathClassArray = [NSArray arrayWithObject:[NSString class]]; // types of objects you are looking for
+  NSArray * arrayOfPathes = [inDraggingInfo.draggingPasteboard readObjectsForClasses:pathClassArray options:nil]; // read objects of those classes
+//---
+  for (NSString * path in arrayOfPathes) {
+    OC_GGS_DocumentData * documentData = [self findOrAddDocumentWithPath: path] ;
+    if (nil != documentData) { // Find a text display descriptor
+      OC_GGS_TextDisplayDescriptor * tdd = [[OC_GGS_TextDisplayDescriptor alloc]
+        initWithDocumentData: documentData
+        displayDocument: self
+      ] ;
+      // NSLog (@"Inserted %@", tdd) ;
+      [mSourceDisplayArrayControllerHigh insertObject: tdd atArrangedObjectIndex: (NSUInteger) inRow] ;
+      [mSourceDisplayArrayControllerHigh setSelectedObjects: [NSArray arrayWithObject:tdd]] ;
+      [self registerConfigurationInPreferences] ;
+    }
+  }
+//--- URLs
+  NSArray * urlClassArray = [NSArray arrayWithObject:[NSURL class]]; // types of objects you are looking for
+  NSArray * arrayOfURLs = [inDraggingInfo.draggingPasteboard readObjectsForClasses:urlClassArray options:nil]; // read objects of those classes
 //---
   for (NSURL * url in arrayOfURLs) {
     OC_GGS_DocumentData * documentData = [self findOrAddDocumentWithPath:url.path] ;
     if (nil != documentData) { // Find a text display descriptor
       OC_GGS_TextDisplayDescriptor * tdd = [[OC_GGS_TextDisplayDescriptor alloc]
-        initWithDocumentData:documentData
-        displayDocument:self
+        initWithDocumentData: documentData
+        displayDocument: self
       ] ;
       // NSLog (@"Inserted %@", tdd) ;
-      [mSourceDisplayArrayControllerHigh insertObject:tdd atArrangedObjectIndex:(NSUInteger) inRow] ;
-      [mSourceDisplayArrayControllerHigh setSelectedObjects:[NSArray arrayWithObject:tdd]] ;
+      [mSourceDisplayArrayControllerHigh insertObject: tdd atArrangedObjectIndex: (NSUInteger) inRow] ;
+      [mSourceDisplayArrayControllerHigh setSelectedObjects: [NSArray arrayWithObject:tdd]] ;
       [self registerConfigurationInPreferences] ;
     }
   }
+//---
   return YES ;
 }
 

@@ -43,6 +43,15 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
+    identifier:@"emitClassGraph"
+    commandChar:0
+    commandString:@"emit-class-graph"
+    comment:@"Emit class graph in dot file"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
     identifier:@"emitSyntaxDiagrams"
     commandChar:0
     commandString:@"emit-syntax-diagrams"

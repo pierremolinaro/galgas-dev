@@ -1,6 +1,6 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  Copyright (C) 2007, ..., 2015 Pierre Molinaro.
+#  Copyright (C) 2007, ..., 2023 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
@@ -839,7 +839,17 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       !self.mStartSymbolName
     )
   end
-#---------------------------------------------------------- Header of implementation file
+#---------------------------------------------------------- Emit class graph
+  let dotDocumentFilePath = inProductDirectory + "/../graph-class/graph-class.dot"
+  if [option galgas_cli_options.emitClassGraph value] then
+    emitClassGraphFile (
+      !dotDocumentFilePath
+      !ioTypeMap
+    )
+  else
+    [@string deleteFileIfExists !dotDocumentFilePath]
+  end
+  #---------------------------------------------------------- Header of implementation file
 #  Loop throuht all rules for detecting input arguments: as the generated C++ code uses a copy constructor
 # for these arguments, we need to include the corresponding type declaration.
   var @stringset implementationFileHeader = {}
@@ -1645,6 +1655,35 @@ private proc semanticAnalysisOfSyntaxComponent
     !selectMethodCount
     !inHasIndexing
     !inHasTranslateFeature}
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+private proc emitClassGraphFile ?let @string inDotDocumentFilePath
+                                ?let @unifiedTypeMap inTypeMap {
+  [[inDotDocumentFilePath stringByDeletingLastPathComponent] makeDirectory]
+  var document = "digraph G {\n"
+  document += "  rankdir=LR ;\n"
+  document += "  node [shape=record fontname=helvetica style=rounded] ;\n"
+  for (* entry) in inTypeMap do
+    switch entry.mDefinition
+    case unsolved :
+    case solved (@unifiedTypeDefinition definition) :
+      if [definition.mTypeKindEnum isClassType] then
+        switch definition.mSuperType
+        case null :
+          document += "  \"@" + definition.mTypeName + "\" ;\n"
+        case element (@unifiedTypeMapElementClass-weak superType) :
+          if let t = superType, let [t.mDefinition solved ?definition: let superTypeDefinition] then
+            document += "  \"@" + definition.mTypeName + "\" ;\n"
+            document += "  \"@" + definition.mTypeName + "\" -> \"@" + superTypeDefinition.mTypeName + "\" ;\n"
+          end
+        end
+      end
+    end
+  end
+  document += "}\n"
+  [document writeToFileWhenDifferentContents !inDotDocumentFilePath ?*]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

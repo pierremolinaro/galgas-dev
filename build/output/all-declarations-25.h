@@ -81,6 +81,17 @@ void routine_checkLabelMap (const class GALGAS_location constinArgument0,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Routine 'emitClassGraphFile'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_emitClassGraphFile (const class GALGAS_string constinArgument0,
+                                 const class GALGAS_unifiedTypeMap constinArgument1,
+                                 class C_Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Routine 'emitProductionRulesInTexFile'
 //
 //----------------------------------------------------------------------------------------------------------------------

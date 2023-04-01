@@ -9690,6 +9690,12 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLexicalTe
                                          "display-lexical-test-functions",
                                          "Display Unicode Lexical Test Functions") ;
 
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitClassGraph ("galgas_cli_options",
+                                         "emitClassGraph",
+                                         0,
+                                         "emit-class-graph",
+                                         "Emit class graph in dot file") ;
+
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ("galgas_cli_options",
                                          "emitSyntaxDiagrams",
                                          0,
