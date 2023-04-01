@@ -10,6 +10,213 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Parser class 'galgas3ProjectSyntax' declaration
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cParser_galgas_33_ProjectSyntax {
+//--- Virtual destructor
+  public: virtual ~ cParser_galgas_33_ProjectSyntax (void) {}
+
+//--- Non terminal declarations
+  protected: virtual void nt_project_5F_component_5F_start_5F_symbol_ (class GALGAS_galgas_33_ProjectComponentAST & outArgument0,
+                                                                       class C_Lexique_galgasScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_project_5F_component_5F_start_5F_symbol_parse (class C_Lexique_galgasScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_project_5F_component_5F_start_5F_symbol_indexing (class C_Lexique_galgasScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_project_5F_header_ (class GALGAS_lbigint & outArgument0,
+                                                 class GALGAS_lbigint & outArgument1,
+                                                 class GALGAS_lbigint & outArgument2,
+                                                 class GALGAS_lstring & outArgument3,
+                                                 class C_Lexique_galgasScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_project_5F_header_parse (class C_Lexique_galgasScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_project_5F_header_indexing (class C_Lexique_galgasScanner * inLexique) = 0 ;
+
+
+//--- Rule declarations
+  protected: void rule_galgas_33_ProjectSyntax_project_5F_header_i0_ (GALGAS_lbigint & outArgument0,
+                                                                      GALGAS_lbigint & outArgument1,
+                                                                      GALGAS_lbigint & outArgument2,
+                                                                      GALGAS_lstring & outArgument3,
+                                                                      C_Lexique_galgasScanner * inLexique) ;
+
+  protected: void rule_galgas_33_ProjectSyntax_project_5F_header_i0_parse (C_Lexique_galgasScanner * inLexique) ;
+
+  protected: void rule_galgas_33_ProjectSyntax_project_5F_header_i0_indexing (C_Lexique_galgasScanner * inLexique) ;
+
+  protected: void rule_galgas_33_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i1_ (GALGAS_galgas_33_ProjectComponentAST & outArgument0,
+                                                                                            C_Lexique_galgasScanner * inLexique) ;
+
+  protected: void rule_galgas_33_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i1_parse (C_Lexique_galgasScanner * inLexique) ;
+
+  protected: void rule_galgas_33_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i1_indexing (C_Lexique_galgasScanner * inLexique) ;
+
+
+
+//--- Select methods
+  protected: virtual int32_t select_galgas_33_ProjectSyntax_0 (C_Lexique_galgasScanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_33_ProjectSyntax_1 (C_Lexique_galgasScanner *) = 0 ;
+
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @galgas_33_ProjectComponentAST struct
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GALGAS_lstringlist mProperty_mProjectSourceList ;
+  public: inline GALGAS_lstringlist readProperty_mProjectSourceList (void) const {
+    return mProperty_mProjectSourceList ;
+  }
+
+  public: GALGAS_lbigint mProperty_mMajorVersion ;
+  public: inline GALGAS_lbigint readProperty_mMajorVersion (void) const {
+    return mProperty_mMajorVersion ;
+  }
+
+  public: GALGAS_lbigint mProperty_mMinorVersion ;
+  public: inline GALGAS_lbigint readProperty_mMinorVersion (void) const {
+    return mProperty_mMinorVersion ;
+  }
+
+  public: GALGAS_lbigint mProperty_mRevisionVersion ;
+  public: inline GALGAS_lbigint readProperty_mRevisionVersion (void) const {
+    return mProperty_mRevisionVersion ;
+  }
+
+  public: GALGAS_lstringlist mProperty_mGenerationFeatureList ;
+  public: inline GALGAS_lstringlist readProperty_mGenerationFeatureList (void) const {
+    return mProperty_mGenerationFeatureList ;
+  }
+
+  public: GALGAS_galgas_33_QualifiedFeatureList mProperty_mQualifiedFeatureList ;
+  public: inline GALGAS_galgas_33_QualifiedFeatureList readProperty_mQualifiedFeatureList (void) const {
+    return mProperty_mQualifiedFeatureList ;
+  }
+
+  public: GALGAS_lstring mProperty_mTargetName ;
+  public: inline GALGAS_lstring readProperty_mTargetName (void) const {
+    return mProperty_mTargetName ;
+  }
+
+  public: GALGAS_location mProperty_mEndOfSourceFile ;
+  public: inline GALGAS_location readProperty_mEndOfSourceFile (void) const {
+    return mProperty_mEndOfSourceFile ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public: VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_galgas_33_ProjectComponentAST constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_galgas_33_ProjectComponentAST (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMProjectSourceList (const GALGAS_lstringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mProjectSourceList = inValue ;
+  }
+
+  public: inline void setter_setMMajorVersion (const GALGAS_lbigint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mMajorVersion = inValue ;
+  }
+
+  public: inline void setter_setMMinorVersion (const GALGAS_lbigint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mMinorVersion = inValue ;
+  }
+
+  public: inline void setter_setMRevisionVersion (const GALGAS_lbigint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mRevisionVersion = inValue ;
+  }
+
+  public: inline void setter_setMGenerationFeatureList (const GALGAS_lstringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mGenerationFeatureList = inValue ;
+  }
+
+  public: inline void setter_setMQualifiedFeatureList (const GALGAS_galgas_33_QualifiedFeatureList & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mQualifiedFeatureList = inValue ;
+  }
+
+  public: inline void setter_setMTargetName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mTargetName = inValue ;
+  }
+
+  public: inline void setter_setMEndOfSourceFile (const GALGAS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mEndOfSourceFile = inValue ;
+  }
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public: virtual ~ GALGAS_galgas_33_ProjectComponentAST (void) ;
+
+//--------------------------------- Native constructor
+  public: GALGAS_galgas_33_ProjectComponentAST (const GALGAS_lstringlist & in_mProjectSourceList,
+                                                const GALGAS_lbigint & in_mMajorVersion,
+                                                const GALGAS_lbigint & in_mMinorVersion,
+                                                const GALGAS_lbigint & in_mRevisionVersion,
+                                                const GALGAS_lstringlist & in_mGenerationFeatureList,
+                                                const GALGAS_galgas_33_QualifiedFeatureList & in_mQualifiedFeatureList,
+                                                const GALGAS_lstring & in_mTargetName,
+                                                const GALGAS_location & in_mEndOfSourceFile) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_galgas_33_ProjectComponentAST extractObject (const GALGAS_object & inObject,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_galgas_33_ProjectComponentAST constructor_new (const class GALGAS_lstringlist & inOperand0,
+                                                                             const class GALGAS_lbigint & inOperand1,
+                                                                             const class GALGAS_lbigint & inOperand2,
+                                                                             const class GALGAS_lbigint & inOperand3,
+                                                                             const class GALGAS_lstringlist & inOperand4,
+                                                                             const class GALGAS_galgas_33_QualifiedFeatureList & inOperand5,
+                                                                             const class GALGAS_lstring & inOperand6,
+                                                                             const class GALGAS_location & inOperand7
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_galgas_33_ProjectComponentAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_galgas_33_ProjectComponentAST class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_ProjectComponentAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Extension getter '@QualifiedTypeAST location' (as function)
 //
 //----------------------------------------------------------------------------------------------------------------------
