@@ -14,9 +14,6 @@
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_dataPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -280,9 +277,6 @@ GALGAS_dataPredefinedTypeAST_2D_weak GALGAS_dataPredefinedTypeAST_2D_weak::extra
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_timerPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -8409,7 +8403,7 @@ GALGAS_castInExpressionForGeneration_2D_weak GALGAS_castInExpressionForGeneratio
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_actualParameterForGeneration::printNonNullClassInstanceProperties (void) const {
     acStrongPtr_class::printNonNullClassInstanceProperties () ;
-    mProperty_mFormalArgumentType.printNonNullClassInstanceProperties () ;
+    mProperty_mFormalArgumentType.printNonNullClassInstanceProperties ("mFormalArgumentType") ;
   }
 #endif
 
@@ -8793,10 +8787,9 @@ GALGAS_outputActualParameterForGeneration_2D_weak GALGAS_outputActualParameterFo
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_outputInputActualParameterForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mFormalArgumentType.printNonNullClassInstanceProperties () ;
-    mProperty_mOutputInputVariableCppName.printNonNullClassInstanceProperties () ;
-    mProperty_mStructAttributeList.printNonNullClassInstanceProperties () ;
-    mProperty_mTypeList.printNonNullClassInstanceProperties () ;
+    mProperty_mOutputInputVariableCppName.printNonNullClassInstanceProperties ("mOutputInputVariableCppName") ;
+    mProperty_mStructAttributeList.printNonNullClassInstanceProperties ("mStructAttributeList") ;
+    mProperty_mTypeList.printNonNullClassInstanceProperties ("mTypeList") ;
   }
 #endif
 
@@ -9250,9 +9243,8 @@ GALGAS_inputActualParameterForGeneration_2D_weak GALGAS_inputActualParameterForG
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputJokerParameterForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mFormalArgumentType.printNonNullClassInstanceProperties () ;
-    mProperty_mInputActualCppName.printNonNullClassInstanceProperties () ;
-    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties () ;
+    mProperty_mInputActualCppName.printNonNullClassInstanceProperties ("mInputActualCppName") ;
+    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
   }
 #endif
 
@@ -10207,7 +10199,7 @@ void callExtensionMethod_generateInstruction (cPtr_semanticInstructionForGenerat
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_semanticBlockInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mInstructionList.printNonNullClassInstanceProperties () ;
+    mProperty_mInstructionList.printNonNullClassInstanceProperties ("mInstructionList") ;
   }
 #endif
 
@@ -13880,7 +13872,7 @@ GALGAS_terminalCheckAssignementList GALGAS_terminalCheckAssignementList::extract
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_syntaxInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mInstructionLocation.printNonNullClassInstanceProperties () ;
+    mProperty_mInstructionLocation.printNonNullClassInstanceProperties ("mInstructionLocation") ;
   }
 #endif
 

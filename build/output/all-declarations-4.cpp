@@ -6085,8 +6085,8 @@ GALGAS_outputInputSelfParameterAST_2D_weak GALGAS_outputInputSelfParameterAST_2D
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_outputInputJokerParameterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mQualifierLocation.printNonNullClassInstanceProperties () ;
-    mProperty_mJokerIndex.printNonNullClassInstanceProperties () ;
+    mProperty_mQualifierLocation.printNonNullClassInstanceProperties ("mQualifierLocation") ;
+    mProperty_mJokerIndex.printNonNullClassInstanceProperties ("mJokerIndex") ;
   }
 #endif
 
@@ -7065,8 +7065,8 @@ GALGAS_inputSingleJokerActualParameterAST_2D_weak GALGAS_inputSingleJokerActualP
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputJokerActualParameterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mQualifierLocation.printNonNullClassInstanceProperties () ;
-    mProperty_mJokerIndex.printNonNullClassInstanceProperties () ;
+    mProperty_mQualifierLocation.printNonNullClassInstanceProperties ("mQualifierLocation") ;
+    mProperty_mJokerIndex.printNonNullClassInstanceProperties ("mJokerIndex") ;
   }
 #endif
 
@@ -9059,7 +9059,7 @@ GALGAS_actualInputParameterListAST GALGAS_actualInputParameterListAST::extractOb
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_syntaxInstructionAST::printNonNullClassInstanceProperties (void) const {
     acStrongPtr_class::printNonNullClassInstanceProperties () ;
-    mProperty_mInstructionLocation.printNonNullClassInstanceProperties () ;
+    mProperty_mInstructionLocation.printNonNullClassInstanceProperties ("mInstructionLocation") ;
   }
 #endif
 
@@ -9290,7 +9290,6 @@ GALGAS_syntaxInstructionAST_2D_weak GALGAS_syntaxInstructionAST_2D_weak::extract
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_semanticInstructionAST::printNonNullClassInstanceProperties (void) const {
     cPtr_syntaxInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mInstructionLocation.printNonNullClassInstanceProperties () ;
   }
 #endif
 

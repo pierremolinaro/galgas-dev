@@ -93,7 +93,7 @@ class AC_GALGAS_root {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void checkIsValid (LOCATION_ARGS) const ;
-    public: virtual void printNonNullClassInstanceProperties (void) const ;
+    public: virtual void printNonNullClassInstanceProperties (const char * inPropertyName) const ;
   #endif
 } ;
 

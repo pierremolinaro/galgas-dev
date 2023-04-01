@@ -14,11 +14,10 @@
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingAbstractExtensionGetterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mAbstractExtensionGetterName.printNonNullClassInstanceProperties () ;
-    mProperty_mAbstractExtensionGetterFormalInputParameterList.printNonNullClassInstanceProperties () ;
-    mProperty_mAbstractExtensionGetterReturnedTypeName.printNonNullClassInstanceProperties () ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mAbstractExtensionGetterName.printNonNullClassInstanceProperties ("mAbstractExtensionGetterName") ;
+    mProperty_mAbstractExtensionGetterFormalInputParameterList.printNonNullClassInstanceProperties ("mAbstractExtensionGetterFormalInputParameterList") ;
+    mProperty_mAbstractExtensionGetterReturnedTypeName.printNonNullClassInstanceProperties ("mAbstractExtensionGetterReturnedTypeName") ;
   }
 #endif
 
@@ -248,10 +247,9 @@ GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGe
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingAbstractExtensionMethodAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mOverridingExtensionMethodName.printNonNullClassInstanceProperties () ;
-    mProperty_mOverridingExtensionMethodFormalParameterList.printNonNullClassInstanceProperties () ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mOverridingExtensionMethodName.printNonNullClassInstanceProperties ("mOverridingExtensionMethodName") ;
+    mProperty_mOverridingExtensionMethodFormalParameterList.printNonNullClassInstanceProperties ("mOverridingExtensionMethodFormalParameterList") ;
   }
 #endif
 
@@ -493,10 +491,9 @@ GALGAS_overridingAbstractExtensionMethodAST GALGAS_overridingAbstractExtensionMe
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingAbstractExtensionSetterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mOverridingExtensionSetterName.printNonNullClassInstanceProperties () ;
-    mProperty_mOverridingExtensionSetterFormalParameterList.printNonNullClassInstanceProperties () ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mOverridingExtensionSetterName.printNonNullClassInstanceProperties ("mOverridingExtensionSetterName") ;
+    mProperty_mOverridingExtensionSetterFormalParameterList.printNonNullClassInstanceProperties ("mOverridingExtensionSetterFormalParameterList") ;
   }
 #endif
 
@@ -705,15 +702,14 @@ GALGAS_overridingAbstractExtensionSetterAST GALGAS_overridingAbstractExtensionSe
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingExtensionGetterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_requiresSelfForAccessingProperty.printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mOverridingExtensionGetterName.printNonNullClassInstanceProperties () ;
-    mProperty_mOverridingExtensionGetterFormalInputParameterList.printNonNullClassInstanceProperties () ;
-    mProperty_mOverridingExtensionGetterReturnedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mOverridingExtensionGetterReturnedVariableName.printNonNullClassInstanceProperties () ;
-    mProperty_mOverridingExtensionGetterInstructionList.printNonNullClassInstanceProperties () ;
-    mProperty_mEndOfReaderLocation.printNonNullClassInstanceProperties () ;
+    mProperty_requiresSelfForAccessingProperty.printNonNullClassInstanceProperties ("requiresSelfForAccessingProperty") ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mOverridingExtensionGetterName.printNonNullClassInstanceProperties ("mOverridingExtensionGetterName") ;
+    mProperty_mOverridingExtensionGetterFormalInputParameterList.printNonNullClassInstanceProperties ("mOverridingExtensionGetterFormalInputParameterList") ;
+    mProperty_mOverridingExtensionGetterReturnedTypeName.printNonNullClassInstanceProperties ("mOverridingExtensionGetterReturnedTypeName") ;
+    mProperty_mOverridingExtensionGetterReturnedVariableName.printNonNullClassInstanceProperties ("mOverridingExtensionGetterReturnedVariableName") ;
+    mProperty_mOverridingExtensionGetterInstructionList.printNonNullClassInstanceProperties ("mOverridingExtensionGetterInstructionList") ;
+    mProperty_mEndOfReaderLocation.printNonNullClassInstanceProperties ("mEndOfReaderLocation") ;
   }
 #endif
 
@@ -1027,16 +1023,14 @@ GALGAS_overridingExtensionGetterAST GALGAS_overridingExtensionGetterAST::extract
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overrideExtensionGetterForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mHasHeader.printNonNullClassInstanceProperties () ;
-    mProperty_mImplementationCppFileName.printNonNullClassInstanceProperties () ;
-    mProperty_mReceiverType.printNonNullClassInstanceProperties () ;
-    mProperty_mBaseTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mOverridingExtensionGetterName.printNonNullClassInstanceProperties () ;
-    mProperty_mResultType.printNonNullClassInstanceProperties () ;
-    mProperty_mResultVarCppName.printNonNullClassInstanceProperties () ;
-    mProperty_mOverridingExtensionGetterFormalParameterList.printNonNullClassInstanceProperties () ;
-    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties () ;
-    mProperty_mSemanticInstructionListForGeneration.printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
+    mProperty_mBaseTypeName.printNonNullClassInstanceProperties ("mBaseTypeName") ;
+    mProperty_mOverridingExtensionGetterName.printNonNullClassInstanceProperties ("mOverridingExtensionGetterName") ;
+    mProperty_mResultType.printNonNullClassInstanceProperties ("mResultType") ;
+    mProperty_mResultVarCppName.printNonNullClassInstanceProperties ("mResultVarCppName") ;
+    mProperty_mOverridingExtensionGetterFormalParameterList.printNonNullClassInstanceProperties ("mOverridingExtensionGetterFormalParameterList") ;
+    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
+    mProperty_mSemanticInstructionListForGeneration.printNonNullClassInstanceProperties ("mSemanticInstructionListForGeneration") ;
   }
 #endif
 
@@ -1453,13 +1447,12 @@ GALGAS_overrideExtensionGetterForGeneration_2D_weak GALGAS_overrideExtensionGett
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingExtensionMethodAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_requiresSelfForAccessingProperty.printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mOverridingExtensionMethodName.printNonNullClassInstanceProperties () ;
-    mProperty_mOverridingExtensionMethodFormalParameterList.printNonNullClassInstanceProperties () ;
-    mProperty_mOverridingExtensionMethodInstructionList.printNonNullClassInstanceProperties () ;
-    mProperty_mEndOfMethodLocation.printNonNullClassInstanceProperties () ;
+    mProperty_requiresSelfForAccessingProperty.printNonNullClassInstanceProperties ("requiresSelfForAccessingProperty") ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mOverridingExtensionMethodName.printNonNullClassInstanceProperties ("mOverridingExtensionMethodName") ;
+    mProperty_mOverridingExtensionMethodFormalParameterList.printNonNullClassInstanceProperties ("mOverridingExtensionMethodFormalParameterList") ;
+    mProperty_mOverridingExtensionMethodInstructionList.printNonNullClassInstanceProperties ("mOverridingExtensionMethodInstructionList") ;
+    mProperty_mEndOfMethodLocation.printNonNullClassInstanceProperties ("mEndOfMethodLocation") ;
   }
 #endif
 
@@ -1731,14 +1724,12 @@ GALGAS_overridingExtensionMethodAST GALGAS_overridingExtensionMethodAST::extract
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingExtensionMethodForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mHasHeader.printNonNullClassInstanceProperties () ;
-    mProperty_mImplementationCppFileName.printNonNullClassInstanceProperties () ;
-    mProperty_mReceiverType.printNonNullClassInstanceProperties () ;
-    mProperty_mBaseTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mExtensionMethodName.printNonNullClassInstanceProperties () ;
-    mProperty_mExtensionMethodFormalParameterList.printNonNullClassInstanceProperties () ;
-    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties () ;
-    mProperty_mSemanticInstructionListForGeneration.printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
+    mProperty_mBaseTypeName.printNonNullClassInstanceProperties ("mBaseTypeName") ;
+    mProperty_mExtensionMethodName.printNonNullClassInstanceProperties ("mExtensionMethodName") ;
+    mProperty_mExtensionMethodFormalParameterList.printNonNullClassInstanceProperties ("mExtensionMethodFormalParameterList") ;
+    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
+    mProperty_mSemanticInstructionListForGeneration.printNonNullClassInstanceProperties ("mSemanticInstructionListForGeneration") ;
   }
 #endif
 
@@ -2115,13 +2106,12 @@ GALGAS_overridingExtensionMethodForGeneration_2D_weak GALGAS_overridingExtension
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingExtensionSetterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_requiresSelfForAccessingProperty.printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mOverridingExtensionSetterName.printNonNullClassInstanceProperties () ;
-    mProperty_mOverridingExtensionSetterFormalParameterList.printNonNullClassInstanceProperties () ;
-    mProperty_mOverridingExtensionSetterInstructionList.printNonNullClassInstanceProperties () ;
-    mProperty_mEndOfSetterDeclarationLocation.printNonNullClassInstanceProperties () ;
+    mProperty_requiresSelfForAccessingProperty.printNonNullClassInstanceProperties ("requiresSelfForAccessingProperty") ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mOverridingExtensionSetterName.printNonNullClassInstanceProperties ("mOverridingExtensionSetterName") ;
+    mProperty_mOverridingExtensionSetterFormalParameterList.printNonNullClassInstanceProperties ("mOverridingExtensionSetterFormalParameterList") ;
+    mProperty_mOverridingExtensionSetterInstructionList.printNonNullClassInstanceProperties ("mOverridingExtensionSetterInstructionList") ;
+    mProperty_mEndOfSetterDeclarationLocation.printNonNullClassInstanceProperties ("mEndOfSetterDeclarationLocation") ;
   }
 #endif
 
@@ -2393,14 +2383,12 @@ GALGAS_overridingExtensionSetterAST GALGAS_overridingExtensionSetterAST::extract
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingExtensionSetterForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mHasHeader.printNonNullClassInstanceProperties () ;
-    mProperty_mImplementationCppFileName.printNonNullClassInstanceProperties () ;
-    mProperty_mReceiverType.printNonNullClassInstanceProperties () ;
-    mProperty_mBaseTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mExtensionSetterName.printNonNullClassInstanceProperties () ;
-    mProperty_mExtensionSetterFormalParameterList.printNonNullClassInstanceProperties () ;
-    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties () ;
-    mProperty_mSemanticInstructionListForGeneration.printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
+    mProperty_mBaseTypeName.printNonNullClassInstanceProperties ("mBaseTypeName") ;
+    mProperty_mExtensionSetterName.printNonNullClassInstanceProperties ("mExtensionSetterName") ;
+    mProperty_mExtensionSetterFormalParameterList.printNonNullClassInstanceProperties ("mExtensionSetterFormalParameterList") ;
+    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
+    mProperty_mSemanticInstructionListForGeneration.printNonNullClassInstanceProperties ("mSemanticInstructionListForGeneration") ;
   }
 #endif
 
@@ -2777,9 +2765,9 @@ GALGAS_overridingExtensionSetterForGeneration_2D_weak GALGAS_overridingExtension
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_outputActualParameterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties () ;
-    mProperty_mOutputActualParameterExpression.printNonNullClassInstanceProperties () ;
-    mProperty_mEndOfExpressionLocation.printNonNullClassInstanceProperties () ;
+    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
+    mProperty_mOutputActualParameterExpression.printNonNullClassInstanceProperties ("mOutputActualParameterExpression") ;
+    mProperty_mEndOfExpressionLocation.printNonNullClassInstanceProperties ("mEndOfExpressionLocation") ;
   }
 #endif
 
@@ -3004,9 +2992,9 @@ GALGAS_outputActualParameterAST GALGAS_outputActualParameterAST::extractObject (
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_outputInputActualParameterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties () ;
-    mProperty_mOutputInputActualParameterName.printNonNullClassInstanceProperties () ;
-    mProperty_mStructAttributeList.printNonNullClassInstanceProperties () ;
+    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
+    mProperty_mOutputInputActualParameterName.printNonNullClassInstanceProperties ("mOutputInputActualParameterName") ;
+    mProperty_mStructAttributeList.printNonNullClassInstanceProperties ("mStructAttributeList") ;
   }
 #endif
 
@@ -3240,7 +3228,7 @@ GALGAS_outputInputActualParameterAST GALGAS_outputInputActualParameterAST::extra
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_outputInputSingleJokerParameterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties () ;
+    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
   }
 #endif
 
@@ -3410,7 +3398,7 @@ GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameter
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_outputInputSelfParameterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties () ;
+    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
   }
 #endif
 
@@ -3580,9 +3568,9 @@ GALGAS_outputInputSelfParameterAST GALGAS_outputInputSelfParameterAST::extractOb
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputActualExistingVariableParameterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties () ;
-    mProperty_mInputActualParameterName.printNonNullClassInstanceProperties () ;
-    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties () ;
+    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
+    mProperty_mInputActualParameterName.printNonNullClassInstanceProperties ("mInputActualParameterName") ;
+    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
   }
 #endif
 
@@ -3816,9 +3804,9 @@ GALGAS_inputActualExistingVariableParameterAST GALGAS_inputActualExistingVariabl
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputActualSelfPropertyParameterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties () ;
-    mProperty_mInputActualSelfPropertyName.printNonNullClassInstanceProperties () ;
-    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties () ;
+    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
+    mProperty_mInputActualSelfPropertyName.printNonNullClassInstanceProperties ("mInputActualSelfPropertyName") ;
+    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
   }
 #endif
 
@@ -4052,9 +4040,9 @@ GALGAS_inputActualSelfPropertyParameterAST GALGAS_inputActualSelfPropertyParamet
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputActualSelfParameterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties () ;
-    mProperty_mSelfLocation.printNonNullClassInstanceProperties () ;
-    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties () ;
+    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
+    mProperty_mSelfLocation.printNonNullClassInstanceProperties ("mSelfLocation") ;
+    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
   }
 #endif
 
@@ -4288,10 +4276,10 @@ GALGAS_inputActualSelfParameterAST GALGAS_inputActualSelfParameterAST::extractOb
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputActualNewVariableParameterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties () ;
-    mProperty_mInputOptionalActualTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mInputActualParameterName.printNonNullClassInstanceProperties () ;
-    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties () ;
+    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
+    mProperty_mInputOptionalActualTypeName.printNonNullClassInstanceProperties ("mInputOptionalActualTypeName") ;
+    mProperty_mInputActualParameterName.printNonNullClassInstanceProperties ("mInputActualParameterName") ;
+    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
   }
 #endif
 
@@ -4557,11 +4545,11 @@ GALGAS_inputActualNewVariableParameterAST GALGAS_inputActualNewVariableParameter
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputActualNewConstantParameterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties () ;
-    mProperty_mInputOptionalActualTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mInputActualParameterName.printNonNullClassInstanceProperties () ;
-    mProperty_mMarkedAsUnused.printNonNullClassInstanceProperties () ;
-    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties () ;
+    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
+    mProperty_mInputOptionalActualTypeName.printNonNullClassInstanceProperties ("mInputOptionalActualTypeName") ;
+    mProperty_mInputActualParameterName.printNonNullClassInstanceProperties ("mInputActualParameterName") ;
+    mProperty_mMarkedAsUnused.printNonNullClassInstanceProperties ("mMarkedAsUnused") ;
+    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
   }
 #endif
 
@@ -4859,8 +4847,8 @@ GALGAS_inputActualNewConstantParameterAST GALGAS_inputActualNewConstantParameter
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputSingleJokerActualParameterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties () ;
-    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties () ;
+    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
+    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
   }
 #endif
 
@@ -5062,7 +5050,7 @@ GALGAS_inputSingleJokerActualParameterAST GALGAS_inputSingleJokerActualParameter
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputParameterVariable::printNonNullClassInstanceProperties (void) const {
     cPtr_abstractInputParameter::printNonNullClassInstanceProperties () ;
-    mProperty_mActualParameterName.printNonNullClassInstanceProperties () ;
+    mProperty_mActualParameterName.printNonNullClassInstanceProperties ("mActualParameterName") ;
   }
 #endif
 
@@ -5232,8 +5220,8 @@ GALGAS_inputParameterVariable GALGAS_inputParameterVariable::extractObject (cons
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputParameterDeclaredVariable::printNonNullClassInstanceProperties (void) const {
     cPtr_abstractInputParameter::printNonNullClassInstanceProperties () ;
-    mProperty_mActualParameterTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mActualParameterName.printNonNullClassInstanceProperties () ;
+    mProperty_mActualParameterTypeName.printNonNullClassInstanceProperties ("mActualParameterTypeName") ;
+    mProperty_mActualParameterName.printNonNullClassInstanceProperties ("mActualParameterName") ;
   }
 #endif
 
@@ -5435,8 +5423,8 @@ GALGAS_inputParameterDeclaredVariable GALGAS_inputParameterDeclaredVariable::ext
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputParameterDeclaredConstant::printNonNullClassInstanceProperties (void) const {
     cPtr_abstractInputParameter::printNonNullClassInstanceProperties () ;
-    mProperty_mActualParameterTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mActualParameterName.printNonNullClassInstanceProperties () ;
+    mProperty_mActualParameterTypeName.printNonNullClassInstanceProperties ("mActualParameterTypeName") ;
+    mProperty_mActualParameterName.printNonNullClassInstanceProperties ("mActualParameterName") ;
   }
 #endif
 
@@ -5638,10 +5626,9 @@ GALGAS_inputParameterDeclaredConstant GALGAS_inputParameterDeclaredConstant::ext
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_externRoutineDeclarationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mIsInternal.printNonNullClassInstanceProperties () ;
-    mProperty_mRoutineName.printNonNullClassInstanceProperties () ;
-    mProperty_mFormalArgumentList.printNonNullClassInstanceProperties () ;
+    mProperty_mIsInternal.printNonNullClassInstanceProperties ("mIsInternal") ;
+    mProperty_mRoutineName.printNonNullClassInstanceProperties ("mRoutineName") ;
+    mProperty_mFormalArgumentList.printNonNullClassInstanceProperties ("mFormalArgumentList") ;
   }
 #endif
 
@@ -5883,12 +5870,8 @@ GALGAS_externRoutineDeclarationAST GALGAS_externRoutineDeclarationAST::extractOb
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_procDeclarationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_externRoutineDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mIsInternal.printNonNullClassInstanceProperties () ;
-    mProperty_mRoutineName.printNonNullClassInstanceProperties () ;
-    mProperty_mFormalArgumentList.printNonNullClassInstanceProperties () ;
-    mProperty_mRoutineInstructionList.printNonNullClassInstanceProperties () ;
-    mProperty_mEndOfRoutineInstructionList.printNonNullClassInstanceProperties () ;
+    mProperty_mRoutineInstructionList.printNonNullClassInstanceProperties ("mRoutineInstructionList") ;
+    mProperty_mEndOfRoutineInstructionList.printNonNullClassInstanceProperties ("mEndOfRoutineInstructionList") ;
   }
 #endif
 
@@ -6122,10 +6105,9 @@ GALGAS_procDeclarationAST GALGAS_procDeclarationAST::extractObject (const GALGAS
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_externFunctionDeclarationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mFunctionName.printNonNullClassInstanceProperties () ;
-    mProperty_mFormalArgumentList.printNonNullClassInstanceProperties () ;
-    mProperty_mResultTypeName.printNonNullClassInstanceProperties () ;
+    mProperty_mFunctionName.printNonNullClassInstanceProperties ("mFunctionName") ;
+    mProperty_mFormalArgumentList.printNonNullClassInstanceProperties ("mFormalArgumentList") ;
+    mProperty_mResultTypeName.printNonNullClassInstanceProperties ("mResultTypeName") ;
   }
 #endif
 
@@ -6367,15 +6349,11 @@ GALGAS_externFunctionDeclarationAST GALGAS_externFunctionDeclarationAST::extract
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_functionDeclarationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_externFunctionDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mFunctionName.printNonNullClassInstanceProperties () ;
-    mProperty_mFormalArgumentList.printNonNullClassInstanceProperties () ;
-    mProperty_mResultTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mResultVariableName.printNonNullClassInstanceProperties () ;
-    mProperty_mFunctionInstructionList.printNonNullClassInstanceProperties () ;
-    mProperty_mEndOfFunctionInstructionList.printNonNullClassInstanceProperties () ;
-    mProperty_mIsInternal.printNonNullClassInstanceProperties () ;
-    mProperty_mIsUsefull.printNonNullClassInstanceProperties () ;
+    mProperty_mResultVariableName.printNonNullClassInstanceProperties ("mResultVariableName") ;
+    mProperty_mFunctionInstructionList.printNonNullClassInstanceProperties ("mFunctionInstructionList") ;
+    mProperty_mEndOfFunctionInstructionList.printNonNullClassInstanceProperties ("mEndOfFunctionInstructionList") ;
+    mProperty_mIsInternal.printNonNullClassInstanceProperties ("mIsInternal") ;
+    mProperty_mIsUsefull.printNonNullClassInstanceProperties ("mIsUsefull") ;
   }
 #endif
 
@@ -6705,14 +6683,13 @@ GALGAS_functionDeclarationAST GALGAS_functionDeclarationAST::extractObject (cons
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_onceFunctionDeclarationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mFunctionName.printNonNullClassInstanceProperties () ;
-    mProperty_mResultTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mResultVariableName.printNonNullClassInstanceProperties () ;
-    mProperty_mFunctionInstructionList.printNonNullClassInstanceProperties () ;
-    mProperty_mEndOfFunctionInstructionList.printNonNullClassInstanceProperties () ;
-    mProperty_mIsInternal.printNonNullClassInstanceProperties () ;
-    mProperty_mIsUsefull.printNonNullClassInstanceProperties () ;
+    mProperty_mFunctionName.printNonNullClassInstanceProperties ("mFunctionName") ;
+    mProperty_mResultTypeName.printNonNullClassInstanceProperties ("mResultTypeName") ;
+    mProperty_mResultVariableName.printNonNullClassInstanceProperties ("mResultVariableName") ;
+    mProperty_mFunctionInstructionList.printNonNullClassInstanceProperties ("mFunctionInstructionList") ;
+    mProperty_mEndOfFunctionInstructionList.printNonNullClassInstanceProperties ("mEndOfFunctionInstructionList") ;
+    mProperty_mIsInternal.printNonNullClassInstanceProperties ("mIsInternal") ;
+    mProperty_mIsUsefull.printNonNullClassInstanceProperties ("mIsUsefull") ;
   }
 #endif
 
@@ -7082,14 +7059,13 @@ GALGAS_onceFunctionDeclarationAST GALGAS_onceFunctionDeclarationAST::extractObje
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_filewrapperDeclarationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mIsInternal.printNonNullClassInstanceProperties () ;
-    mProperty_mSourceFileAbsolutePath.printNonNullClassInstanceProperties () ;
-    mProperty_mFilewrapperName.printNonNullClassInstanceProperties () ;
-    mProperty_mFilewrapperPath.printNonNullClassInstanceProperties () ;
-    mProperty_mFilewrapperTextFileExtensionList.printNonNullClassInstanceProperties () ;
-    mProperty_mFilewrapperBinaryFileExtensionList.printNonNullClassInstanceProperties () ;
-    mProperty_mFilewrapperTemplateList.printNonNullClassInstanceProperties () ;
+    mProperty_mIsInternal.printNonNullClassInstanceProperties ("mIsInternal") ;
+    mProperty_mSourceFileAbsolutePath.printNonNullClassInstanceProperties ("mSourceFileAbsolutePath") ;
+    mProperty_mFilewrapperName.printNonNullClassInstanceProperties ("mFilewrapperName") ;
+    mProperty_mFilewrapperPath.printNonNullClassInstanceProperties ("mFilewrapperPath") ;
+    mProperty_mFilewrapperTextFileExtensionList.printNonNullClassInstanceProperties ("mFilewrapperTextFileExtensionList") ;
+    mProperty_mFilewrapperBinaryFileExtensionList.printNonNullClassInstanceProperties ("mFilewrapperBinaryFileExtensionList") ;
+    mProperty_mFilewrapperTemplateList.printNonNullClassInstanceProperties ("mFilewrapperTemplateList") ;
   }
 #endif
 
@@ -7459,12 +7435,11 @@ GALGAS_filewrapperDeclarationAST GALGAS_filewrapperDeclarationAST::extractObject
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_galgas_33_SyntaxComponentAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mSyntaxComponentName.printNonNullClassInstanceProperties () ;
-    mProperty_mLexiqueName.printNonNullClassInstanceProperties () ;
-    mProperty_mNonterminalDeclarationList.printNonNullClassInstanceProperties () ;
-    mProperty_mRuleList.printNonNullClassInstanceProperties () ;
-    mProperty_mHasTranslateFeature.printNonNullClassInstanceProperties () ;
+    mProperty_mSyntaxComponentName.printNonNullClassInstanceProperties ("mSyntaxComponentName") ;
+    mProperty_mLexiqueName.printNonNullClassInstanceProperties ("mLexiqueName") ;
+    mProperty_mNonterminalDeclarationList.printNonNullClassInstanceProperties ("mNonterminalDeclarationList") ;
+    mProperty_mRuleList.printNonNullClassInstanceProperties ("mRuleList") ;
+    mProperty_mHasTranslateFeature.printNonNullClassInstanceProperties ("mHasTranslateFeature") ;
   }
 #endif
 
@@ -7770,15 +7745,14 @@ GALGAS_galgas_33_SyntaxComponentAST GALGAS_galgas_33_SyntaxComponentAST::extract
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_galgas_33_GrammarComponentAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mHasIndexing.printNonNullClassInstanceProperties () ;
-    mProperty_mGrammarComponentName.printNonNullClassInstanceProperties () ;
-    mProperty_mGrammarClass.printNonNullClassInstanceProperties () ;
-    mProperty_mSyntaxComponents.printNonNullClassInstanceProperties () ;
-    mProperty_mStartSymbolName.printNonNullClassInstanceProperties () ;
-    mProperty_mStartSymbolLabelList.printNonNullClassInstanceProperties () ;
-    mProperty_mUnusedNonterminalList.printNonNullClassInstanceProperties () ;
-    mProperty_mHasTranslateFeature.printNonNullClassInstanceProperties () ;
+    mProperty_mHasIndexing.printNonNullClassInstanceProperties ("mHasIndexing") ;
+    mProperty_mGrammarComponentName.printNonNullClassInstanceProperties ("mGrammarComponentName") ;
+    mProperty_mGrammarClass.printNonNullClassInstanceProperties ("mGrammarClass") ;
+    mProperty_mSyntaxComponents.printNonNullClassInstanceProperties ("mSyntaxComponents") ;
+    mProperty_mStartSymbolName.printNonNullClassInstanceProperties ("mStartSymbolName") ;
+    mProperty_mStartSymbolLabelList.printNonNullClassInstanceProperties ("mStartSymbolLabelList") ;
+    mProperty_mUnusedNonterminalList.printNonNullClassInstanceProperties ("mUnusedNonterminalList") ;
+    mProperty_mHasTranslateFeature.printNonNullClassInstanceProperties ("mHasTranslateFeature") ;
   }
 #endif
 
@@ -8202,11 +8176,9 @@ void callExtensionMethod_generateExpression (cPtr_semanticExpressionForGeneratio
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_castInExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mResultType.printNonNullClassInstanceProperties () ;
-    mProperty_mLocation.printNonNullClassInstanceProperties () ;
-    mProperty_mReceiverExpression.printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mCastType.printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverExpression.printNonNullClassInstanceProperties ("mReceiverExpression") ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mCastType.printNonNullClassInstanceProperties ("mCastType") ;
   }
 #endif
 
@@ -8445,8 +8417,7 @@ GALGAS_castInExpressionForGeneration GALGAS_castInExpressionForGeneration::extra
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_outputActualParameterForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mFormalArgumentType.printNonNullClassInstanceProperties () ;
-    mProperty_mOutputActualParameterExpression.printNonNullClassInstanceProperties () ;
+    mProperty_mOutputActualParameterExpression.printNonNullClassInstanceProperties ("mOutputActualParameterExpression") ;
   }
 #endif
 
@@ -8616,9 +8587,8 @@ GALGAS_outputActualParameterForGeneration GALGAS_outputActualParameterForGenerat
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputActualParameterForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mFormalArgumentType.printNonNullClassInstanceProperties () ;
-    mProperty_mInputActualCppName.printNonNullClassInstanceProperties () ;
-    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties () ;
+    mProperty_mInputActualCppName.printNonNullClassInstanceProperties ("mInputActualCppName") ;
+    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
   }
 #endif
 
@@ -8819,15 +8789,13 @@ GALGAS_inputActualParameterForGeneration GALGAS_inputActualParameterForGeneratio
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_lexiqueDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mHasHeader.printNonNullClassInstanceProperties () ;
-    mProperty_mImplementationCppFileName.printNonNullClassInstanceProperties () ;
-    mProperty_mLexiqueName.printNonNullClassInstanceProperties () ;
-    mProperty_mSuperLexiqueName.printNonNullClassInstanceProperties () ;
-    mProperty_mHeaderContents.printNonNullClassInstanceProperties () ;
-    mProperty_mCppContents.printNonNullClassInstanceProperties () ;
-    mProperty_mObjcCocoaHeader.printNonNullClassInstanceProperties () ;
-    mProperty_mObjcCocoaImplementation.printNonNullClassInstanceProperties () ;
-    mProperty_mSwiftCocoaImplementation.printNonNullClassInstanceProperties () ;
+    mProperty_mLexiqueName.printNonNullClassInstanceProperties ("mLexiqueName") ;
+    mProperty_mSuperLexiqueName.printNonNullClassInstanceProperties ("mSuperLexiqueName") ;
+    mProperty_mHeaderContents.printNonNullClassInstanceProperties ("mHeaderContents") ;
+    mProperty_mCppContents.printNonNullClassInstanceProperties ("mCppContents") ;
+    mProperty_mObjcCocoaHeader.printNonNullClassInstanceProperties ("mObjcCocoaHeader") ;
+    mProperty_mObjcCocoaImplementation.printNonNullClassInstanceProperties ("mObjcCocoaImplementation") ;
+    mProperty_mSwiftCocoaImplementation.printNonNullClassInstanceProperties ("mSwiftCocoaImplementation") ;
   }
 #endif
 
@@ -9316,17 +9284,15 @@ GALGAS_lexiqueDeclarationForGeneration_2D_weak GALGAS_lexiqueDeclarationForGener
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_grammarForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mHasHeader.printNonNullClassInstanceProperties () ;
-    mProperty_mImplementationCppFileName.printNonNullClassInstanceProperties () ;
-    mProperty_mGrammarName.printNonNullClassInstanceProperties () ;
-    mProperty_mLexiqueName.printNonNullClassInstanceProperties () ;
-    mProperty_mNonTerminalMapForGrammarAnalysis.printNonNullClassInstanceProperties () ;
-    mProperty_mNonTerminalToAddList.printNonNullClassInstanceProperties () ;
-    mProperty_mHasIndexing.printNonNullClassInstanceProperties () ;
-    mProperty_mSyntaxComponents.printNonNullClassInstanceProperties () ;
-    mProperty_mStartSymbolName.printNonNullClassInstanceProperties () ;
-    mProperty_mHasTranslateFeature.printNonNullClassInstanceProperties () ;
-    mProperty_mCppFileContents.printNonNullClassInstanceProperties () ;
+    mProperty_mGrammarName.printNonNullClassInstanceProperties ("mGrammarName") ;
+    mProperty_mLexiqueName.printNonNullClassInstanceProperties ("mLexiqueName") ;
+    mProperty_mNonTerminalMapForGrammarAnalysis.printNonNullClassInstanceProperties ("mNonTerminalMapForGrammarAnalysis") ;
+    mProperty_mNonTerminalToAddList.printNonNullClassInstanceProperties ("mNonTerminalToAddList") ;
+    mProperty_mHasIndexing.printNonNullClassInstanceProperties ("mHasIndexing") ;
+    mProperty_mSyntaxComponents.printNonNullClassInstanceProperties ("mSyntaxComponents") ;
+    mProperty_mStartSymbolName.printNonNullClassInstanceProperties ("mStartSymbolName") ;
+    mProperty_mHasTranslateFeature.printNonNullClassInstanceProperties ("mHasTranslateFeature") ;
+    mProperty_mCppFileContents.printNonNullClassInstanceProperties ("mCppFileContents") ;
   }
 #endif
 
@@ -9879,10 +9845,8 @@ GALGAS_grammarForGeneration_2D_weak GALGAS_grammarForGeneration_2D_weak::extract
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_routinePrototypeDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mHasHeader.printNonNullClassInstanceProperties () ;
-    mProperty_mImplementationCppFileName.printNonNullClassInstanceProperties () ;
-    mProperty_mRoutineName.printNonNullClassInstanceProperties () ;
-    mProperty_mFormalArgumentList.printNonNullClassInstanceProperties () ;
+    mProperty_mRoutineName.printNonNullClassInstanceProperties ("mRoutineName") ;
+    mProperty_mFormalArgumentList.printNonNullClassInstanceProperties ("mFormalArgumentList") ;
   }
 #endif
 
@@ -10211,12 +10175,8 @@ GALGAS_routinePrototypeDeclarationForGeneration_2D_weak GALGAS_routinePrototypeD
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_routineImplementationForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_routinePrototypeDeclarationForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mHasHeader.printNonNullClassInstanceProperties () ;
-    mProperty_mImplementationCppFileName.printNonNullClassInstanceProperties () ;
-    mProperty_mRoutineName.printNonNullClassInstanceProperties () ;
-    mProperty_mFormalArgumentList.printNonNullClassInstanceProperties () ;
-    mProperty_mGenerateStatic.printNonNullClassInstanceProperties () ;
-    mProperty_mRoutineInstructionList.printNonNullClassInstanceProperties () ;
+    mProperty_mGenerateStatic.printNonNullClassInstanceProperties ("mGenerateStatic") ;
+    mProperty_mRoutineInstructionList.printNonNullClassInstanceProperties ("mRoutineInstructionList") ;
   }
 #endif
 
@@ -10561,11 +10521,9 @@ GALGAS_routineImplementationForGeneration_2D_weak GALGAS_routineImplementationFo
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_functionPrototypeDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mHasHeader.printNonNullClassInstanceProperties () ;
-    mProperty_mImplementationCppFileName.printNonNullClassInstanceProperties () ;
-    mProperty_mFunctionName.printNonNullClassInstanceProperties () ;
-    mProperty_mFormalArgumentList.printNonNullClassInstanceProperties () ;
-    mProperty_mReturnType.printNonNullClassInstanceProperties () ;
+    mProperty_mFunctionName.printNonNullClassInstanceProperties ("mFunctionName") ;
+    mProperty_mFormalArgumentList.printNonNullClassInstanceProperties ("mFormalArgumentList") ;
+    mProperty_mReturnType.printNonNullClassInstanceProperties ("mReturnType") ;
   }
 #endif
 
@@ -10915,13 +10873,8 @@ GALGAS_functionPrototypeDeclarationForGeneration_2D_weak GALGAS_functionPrototyp
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_functionImplementationForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_functionPrototypeDeclarationForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mHasHeader.printNonNullClassInstanceProperties () ;
-    mProperty_mImplementationCppFileName.printNonNullClassInstanceProperties () ;
-    mProperty_mFunctionName.printNonNullClassInstanceProperties () ;
-    mProperty_mFormalArgumentList.printNonNullClassInstanceProperties () ;
-    mProperty_mReturnType.printNonNullClassInstanceProperties () ;
-    mProperty_mResultVariableCppName.printNonNullClassInstanceProperties () ;
-    mProperty_mFunctionInstructionList.printNonNullClassInstanceProperties () ;
+    mProperty_mResultVariableCppName.printNonNullClassInstanceProperties ("mResultVariableCppName") ;
+    mProperty_mFunctionInstructionList.printNonNullClassInstanceProperties ("mFunctionInstructionList") ;
   }
 #endif
 
@@ -11261,12 +11214,10 @@ GALGAS_functionImplementationForGeneration_2D_weak GALGAS_functionImplementation
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_onceFunctionDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mHasHeader.printNonNullClassInstanceProperties () ;
-    mProperty_mImplementationCppFileName.printNonNullClassInstanceProperties () ;
-    mProperty_mFunctionName.printNonNullClassInstanceProperties () ;
-    mProperty_mReturnType.printNonNullClassInstanceProperties () ;
-    mProperty_mResultVariableCppName.printNonNullClassInstanceProperties () ;
-    mProperty_mFunctionInstructionList.printNonNullClassInstanceProperties () ;
+    mProperty_mFunctionName.printNonNullClassInstanceProperties ("mFunctionName") ;
+    mProperty_mReturnType.printNonNullClassInstanceProperties ("mReturnType") ;
+    mProperty_mResultVariableCppName.printNonNullClassInstanceProperties ("mResultVariableCppName") ;
+    mProperty_mFunctionInstructionList.printNonNullClassInstanceProperties ("mFunctionInstructionList") ;
   }
 #endif
 
@@ -11647,9 +11598,8 @@ GALGAS_onceFunctionDeclarationForGeneration_2D_weak GALGAS_onceFunctionDeclarati
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_primitiveTypeForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mSelfTypeEntry.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
+    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties ("mPredefinedTypeName") ;
+    mProperty_mKind.printNonNullClassInstanceProperties ("mKind") ;
   }
 #endif
 
@@ -11961,13 +11911,11 @@ GALGAS_primitiveTypeForGeneration_2D_weak GALGAS_primitiveTypeForGeneration_2D_w
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_filewrapperDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mHasHeader.printNonNullClassInstanceProperties () ;
-    mProperty_mImplementationCppFileName.printNonNullClassInstanceProperties () ;
-    mProperty_mFilewrapperName.printNonNullClassInstanceProperties () ;
-    mProperty_mFilewrapperAbsolutePath.printNonNullClassInstanceProperties () ;
-    mProperty_mFilewrapperFileMap.printNonNullClassInstanceProperties () ;
-    mProperty_mFilewrapperDirectoryMap.printNonNullClassInstanceProperties () ;
-    mProperty_mFilewrapperTemplateListForGeneration.printNonNullClassInstanceProperties () ;
+    mProperty_mFilewrapperName.printNonNullClassInstanceProperties ("mFilewrapperName") ;
+    mProperty_mFilewrapperAbsolutePath.printNonNullClassInstanceProperties ("mFilewrapperAbsolutePath") ;
+    mProperty_mFilewrapperFileMap.printNonNullClassInstanceProperties ("mFilewrapperFileMap") ;
+    mProperty_mFilewrapperDirectoryMap.printNonNullClassInstanceProperties ("mFilewrapperDirectoryMap") ;
+    mProperty_mFilewrapperTemplateListForGeneration.printNonNullClassInstanceProperties ("mFilewrapperTemplateListForGeneration") ;
   }
 #endif
 
@@ -12392,10 +12340,8 @@ GALGAS_filewrapperDeclarationForGeneration_2D_weak GALGAS_filewrapperDeclaration
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_programComponentForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mHasHeader.printNonNullClassInstanceProperties () ;
-    mProperty_mImplementationCppFileName.printNonNullClassInstanceProperties () ;
-    mProperty_mInclusionSet.printNonNullClassInstanceProperties () ;
-    mProperty_mImplementationString.printNonNullClassInstanceProperties () ;
+    mProperty_mInclusionSet.printNonNullClassInstanceProperties ("mInclusionSet") ;
+    mProperty_mImplementationString.printNonNullClassInstanceProperties ("mImplementationString") ;
   }
 #endif
 
@@ -13786,7 +13732,7 @@ GALGAS_lstringlist extensionGetter_unsolvedEntryList (const GALGAS_unifiedTypeMa
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_unifiedTypeMapElementClass::printNonNullClassInstanceProperties (void) const {
     acStrongPtr_class::printNonNullClassInstanceProperties () ;
-    mProperty_mDefinition.printNonNullClassInstanceProperties () ;
+    mProperty_mDefinition.printNonNullClassInstanceProperties ("mDefinition") ;
   }
 #endif
 
@@ -13995,11 +13941,9 @@ GALGAS_unifiedTypeDefinition callExtensionGetter_definition (const cPtr_unifiedT
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_ifExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mResultType.printNonNullClassInstanceProperties () ;
-    mProperty_mLocation.printNonNullClassInstanceProperties () ;
-    mProperty_mIfExpression.printNonNullClassInstanceProperties () ;
-    mProperty_mThenExpression.printNonNullClassInstanceProperties () ;
-    mProperty_mElseExpression.printNonNullClassInstanceProperties () ;
+    mProperty_mIfExpression.printNonNullClassInstanceProperties ("mIfExpression") ;
+    mProperty_mThenExpression.printNonNullClassInstanceProperties ("mThenExpression") ;
+    mProperty_mElseExpression.printNonNullClassInstanceProperties ("mElseExpression") ;
   }
 #endif
 

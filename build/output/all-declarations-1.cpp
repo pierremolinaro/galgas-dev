@@ -850,8 +850,8 @@ GALGAS_templateInstructionIfBranchListForGeneration GALGAS_templateInstructionIf
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateInstructionIfForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_templateInstructionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mTemplateInstructionIfBranchList.printNonNullClassInstanceProperties () ;
-    mProperty_mElseInstructionList.printNonNullClassInstanceProperties () ;
+    mProperty_mTemplateInstructionIfBranchList.printNonNullClassInstanceProperties ("mTemplateInstructionIfBranchList") ;
+    mProperty_mElseInstructionList.printNonNullClassInstanceProperties ("mElseInstructionList") ;
   }
 #endif
 
@@ -3785,9 +3785,9 @@ GALGAS_switchExtractedValuesListAST GALGAS_switchExtractedValuesListAST::extract
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateInstructionSwitchAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mSwitchExpression.printNonNullClassInstanceProperties () ;
-    mProperty_mSwitchExpressionEndLocation.printNonNullClassInstanceProperties () ;
-    mProperty_mTemplateInstructionSwitchBranchList.printNonNullClassInstanceProperties () ;
+    mProperty_mSwitchExpression.printNonNullClassInstanceProperties ("mSwitchExpression") ;
+    mProperty_mSwitchExpressionEndLocation.printNonNullClassInstanceProperties ("mSwitchExpressionEndLocation") ;
+    mProperty_mTemplateInstructionSwitchBranchList.printNonNullClassInstanceProperties ("mTemplateInstructionSwitchBranchList") ;
   }
 #endif
 
@@ -5360,7 +5360,7 @@ GALGAS_templateInstructionSwitchForGeneration_2D_weak GALGAS_templateInstruction
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties (void) const {
     acStrongPtr_class::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
+    mProperty_mIsPredefined.printNonNullClassInstanceProperties ("mIsPredefined") ;
   }
 #endif
 
@@ -11657,8 +11657,8 @@ GALGAS_lexicalImplicitRuleAST_2D_weak GALGAS_lexicalImplicitRuleAST_2D_weak::ext
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_lexicalExplicitRuleAST::printNonNullClassInstanceProperties (void) const {
     cPtr_abstractLexicalRuleAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLexicalRuleExpression.printNonNullClassInstanceProperties () ;
-    mProperty_mInstructionList.printNonNullClassInstanceProperties () ;
+    mProperty_mLexicalRuleExpression.printNonNullClassInstanceProperties ("mLexicalRuleExpression") ;
+    mProperty_mInstructionList.printNonNullClassInstanceProperties ("mInstructionList") ;
   }
 #endif
 
@@ -12970,8 +12970,8 @@ GALGAS_lexicalListEntryListAST GALGAS_lexicalListEntryListAST::extractObject (co
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_lexicalOrExpressionAST::printNonNullClassInstanceProperties (void) const {
     cPtr_lexicalExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLeftOperand.printNonNullClassInstanceProperties () ;
-    mProperty_mRightOperand.printNonNullClassInstanceProperties () ;
+    mProperty_mLeftOperand.printNonNullClassInstanceProperties ("mLeftOperand") ;
+    mProperty_mRightOperand.printNonNullClassInstanceProperties ("mRightOperand") ;
   }
 #endif
 

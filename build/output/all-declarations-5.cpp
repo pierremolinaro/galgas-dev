@@ -11118,9 +11118,8 @@ GALGAS_constantIndexMap GALGAS_constantIndexMap::extractObject (const GALGAS_obj
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_predefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
+    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties ("mPredefinedTypeName") ;
+    mProperty_mKind.printNonNullClassInstanceProperties ("mKind") ;
   }
 #endif
 
@@ -11377,9 +11376,6 @@ GALGAS_predefinedTypeAST_2D_weak GALGAS_predefinedTypeAST_2D_weak::extractObject
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_applicationPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -11643,9 +11639,6 @@ GALGAS_applicationPredefinedTypeAST_2D_weak GALGAS_applicationPredefinedTypeAST_
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_bigintPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -11909,9 +11902,6 @@ GALGAS_bigintPredefinedTypeAST_2D_weak GALGAS_bigintPredefinedTypeAST_2D_weak::e
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_objectPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -12175,9 +12165,6 @@ GALGAS_objectPredefinedTypeAST_2D_weak GALGAS_objectPredefinedTypeAST_2D_weak::e
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_filewrapperPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -12441,9 +12428,6 @@ GALGAS_filewrapperPredefinedTypeAST_2D_weak GALGAS_filewrapperPredefinedTypeAST_
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_binarysetPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -12707,9 +12691,6 @@ GALGAS_binarysetPredefinedTypeAST_2D_weak GALGAS_binarysetPredefinedTypeAST_2D_w
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_boolPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -12973,9 +12954,6 @@ GALGAS_boolPredefinedTypeAST_2D_weak GALGAS_boolPredefinedTypeAST_2D_weak::extra
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_uintPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -13239,9 +13217,6 @@ GALGAS_uintPredefinedTypeAST_2D_weak GALGAS_uintPredefinedTypeAST_2D_weak::extra
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_uint_36__34_PredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -13505,9 +13480,6 @@ GALGAS_uint_36__34_PredefinedTypeAST_2D_weak GALGAS_uint_36__34_PredefinedTypeAS
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_sintPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -13771,9 +13743,6 @@ GALGAS_sintPredefinedTypeAST_2D_weak GALGAS_sintPredefinedTypeAST_2D_weak::extra
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_sint_36__34_PredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -14037,9 +14006,6 @@ GALGAS_sint_36__34_PredefinedTypeAST_2D_weak GALGAS_sint_36__34_PredefinedTypeAS
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_charPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -14303,9 +14269,6 @@ GALGAS_charPredefinedTypeAST_2D_weak GALGAS_charPredefinedTypeAST_2D_weak::extra
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_doublePredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -14569,9 +14532,6 @@ GALGAS_doublePredefinedTypeAST_2D_weak GALGAS_doublePredefinedTypeAST_2D_weak::e
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_stringPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -14835,9 +14795,6 @@ GALGAS_stringPredefinedTypeAST_2D_weak GALGAS_stringPredefinedTypeAST_2D_weak::e
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_locationPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -15101,9 +15058,6 @@ GALGAS_locationPredefinedTypeAST_2D_weak GALGAS_locationPredefinedTypeAST_2D_wea
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_stringsetPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -15367,9 +15321,6 @@ GALGAS_stringsetPredefinedTypeAST_2D_weak GALGAS_stringsetPredefinedTypeAST_2D_w
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_functionPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -15633,9 +15584,6 @@ GALGAS_functionPredefinedTypeAST_2D_weak GALGAS_functionPredefinedTypeAST_2D_wea
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typePredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mPredefinedTypeName.printNonNullClassInstanceProperties () ;
-    mProperty_mKind.printNonNullClassInstanceProperties () ;
   }
 #endif
 

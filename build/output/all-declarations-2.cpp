@@ -1451,7 +1451,7 @@ GALGAS_lexicalUnsignedInputArgumentAST_2D_weak GALGAS_lexicalUnsignedInputArgume
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_lexicalCurrentCharacterInputArgumentAST::printNonNullClassInstanceProperties (void) const {
     cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLocation.printNonNullClassInstanceProperties () ;
+    mProperty_mLocation.printNonNullClassInstanceProperties ("mLocation") ;
   }
 #endif
 
@@ -9872,8 +9872,8 @@ void callExtensionMethod_checkLexicalRule (cPtr_abstractLexicalRuleAST * inObjec
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_lexicalStructuredSendInstructionAST::printNonNullClassInstanceProperties (void) const {
     cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLexicalSendSearchList.printNonNullClassInstanceProperties () ;
-    mProperty_mLexicalSendDefaultAction.printNonNullClassInstanceProperties () ;
+    mProperty_mLexicalSendSearchList.printNonNullClassInstanceProperties ("mLexicalSendSearchList") ;
+    mProperty_mLexicalSendDefaultAction.printNonNullClassInstanceProperties ("mLexicalSendDefaultAction") ;
   }
 #endif
 
@@ -10621,8 +10621,8 @@ GALGAS_lexicalLogInstructionAST_2D_weak GALGAS_lexicalLogInstructionAST_2D_weak:
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_lexicalRepeatInstructionAST::printNonNullClassInstanceProperties (void) const {
     cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mRepeatedInstructionList.printNonNullClassInstanceProperties () ;
-    mProperty_mLexicalWhileBranchList.printNonNullClassInstanceProperties () ;
+    mProperty_mRepeatedInstructionList.printNonNullClassInstanceProperties ("mRepeatedInstructionList") ;
+    mProperty_mLexicalWhileBranchList.printNonNullClassInstanceProperties ("mLexicalWhileBranchList") ;
   }
 #endif
 
@@ -11024,7 +11024,7 @@ GALGAS_lexicalRewindInstructionAST_2D_weak GALGAS_lexicalRewindInstructionAST_2D
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_abstractLexicalRoutineActualArgumentAST::printNonNullClassInstanceProperties (void) const {
     acStrongPtr_class::printNonNullClassInstanceProperties () ;
-    mProperty_mActualPassingModeLocation.printNonNullClassInstanceProperties () ;
+    mProperty_mActualPassingModeLocation.printNonNullClassInstanceProperties ("mActualPassingModeLocation") ;
   }
 #endif
 
@@ -11355,8 +11355,7 @@ GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak GALGAS_lexicalAttributeInp
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_lexicalFormalInputArgumentAST::printNonNullClassInstanceProperties (void) const {
     cPtr_abstractLexicalRoutineActualArgumentAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualPassingModeLocation.printNonNullClassInstanceProperties () ;
-    mProperty_mRoutineOrFunctionFormalInputArgument.printNonNullClassInstanceProperties () ;
+    mProperty_mRoutineOrFunctionFormalInputArgument.printNonNullClassInstanceProperties ("mRoutineOrFunctionFormalInputArgument") ;
   }
 #endif
 
@@ -12223,8 +12222,8 @@ GALGAS_string callExtensionGetter_generateRoutineArgument (const cPtr_abstractLe
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_lexicalSelectInstructionAST::printNonNullClassInstanceProperties (void) const {
     cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLexicalSelectBranchList.printNonNullClassInstanceProperties () ;
-    mProperty_mDefaultInstructionList.printNonNullClassInstanceProperties () ;
+    mProperty_mLexicalSelectBranchList.printNonNullClassInstanceProperties ("mLexicalSelectBranchList") ;
+    mProperty_mDefaultInstructionList.printNonNullClassInstanceProperties ("mDefaultInstructionList") ;
   }
 #endif
 

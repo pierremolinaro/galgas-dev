@@ -63,7 +63,7 @@ class AC_GALGAS_reference_class : public AC_GALGAS_root { // AC_GALGAS_reference
                                     const int32_t inIndentation) const ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const ;
+    public: virtual void printNonNullClassInstanceProperties (const char * inPropertyName) const ;
   #endif
 } ;
 

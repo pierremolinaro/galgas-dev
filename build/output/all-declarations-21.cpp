@@ -2649,7 +2649,7 @@ GALGAS_projectQualifiedFeatureMap_2D_element GALGAS_projectQualifiedFeatureMap_2
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateLiteralUIntExpressionAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLiteralInt.printNonNullClassInstanceProperties () ;
+    mProperty_mLiteralInt.printNonNullClassInstanceProperties ("mLiteralInt") ;
   }
 #endif
 
@@ -2808,7 +2808,7 @@ GALGAS_templateLiteralUIntExpressionAST GALGAS_templateLiteralUIntExpressionAST:
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateLiteralCharExpressionAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLiteralChar.printNonNullClassInstanceProperties () ;
+    mProperty_mLiteralChar.printNonNullClassInstanceProperties ("mLiteralChar") ;
   }
 #endif
 
@@ -2967,7 +2967,7 @@ GALGAS_templateLiteralCharExpressionAST GALGAS_templateLiteralCharExpressionAST:
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateLiteralDoubleExpressionAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLiteralDouble.printNonNullClassInstanceProperties () ;
+    mProperty_mLiteralDouble.printNonNullClassInstanceProperties ("mLiteralDouble") ;
   }
 #endif
 
@@ -8603,7 +8603,7 @@ int32_t cGrammar_templateGrammar::select_templateSyntax_36 (C_Lexique_galgasTemp
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateInstructionExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_templateInstructionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mExpression.printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
   }
 #endif
 
@@ -8881,14 +8881,12 @@ GALGAS_templateAnalysisContext GALGAS_templateAnalysisContext::extractObject (co
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_optionComponentForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mHasHeader.printNonNullClassInstanceProperties () ;
-    mProperty_mImplementationCppFileName.printNonNullClassInstanceProperties () ;
-    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
-    mProperty_mOptionComponentName.printNonNullClassInstanceProperties () ;
-    mProperty_mBoolOptionMap.printNonNullClassInstanceProperties () ;
-    mProperty_mUIntOptionMap.printNonNullClassInstanceProperties () ;
-    mProperty_mStringOptionMap.printNonNullClassInstanceProperties () ;
-    mProperty_mStringListOptionMap.printNonNullClassInstanceProperties () ;
+    mProperty_mIsPredefined.printNonNullClassInstanceProperties ("mIsPredefined") ;
+    mProperty_mOptionComponentName.printNonNullClassInstanceProperties ("mOptionComponentName") ;
+    mProperty_mBoolOptionMap.printNonNullClassInstanceProperties ("mBoolOptionMap") ;
+    mProperty_mUIntOptionMap.printNonNullClassInstanceProperties ("mUIntOptionMap") ;
+    mProperty_mStringOptionMap.printNonNullClassInstanceProperties ("mStringOptionMap") ;
+    mProperty_mStringListOptionMap.printNonNullClassInstanceProperties ("mStringListOptionMap") ;
   }
 #endif
 
@@ -9345,9 +9343,8 @@ GALGAS_optionComponentForGeneration_2D_weak GALGAS_optionComponentForGeneration_
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_arrayTypeForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mSelfTypeEntry.printNonNullClassInstanceProperties () ;
-    mProperty_mElementTypeEntry.printNonNullClassInstanceProperties () ;
-    mProperty_mDimension.printNonNullClassInstanceProperties () ;
+    mProperty_mElementTypeEntry.printNonNullClassInstanceProperties ("mElementTypeEntry") ;
+    mProperty_mDimension.printNonNullClassInstanceProperties ("mDimension") ;
   }
 #endif
 

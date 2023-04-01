@@ -199,7 +199,7 @@ class GALGAS_string : public AC_GALGAS_root {
   public: GALGAS_string (const C_String & inValue) ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+    public: virtual void printNonNullClassInstanceProperties (const char * inPropertyName) const override ;
   #endif
 
 //-- Start of generic part --*

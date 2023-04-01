@@ -2339,9 +2339,9 @@ bool GALGAS_string::optional_extractBigInt (GALGAS_bigint & outBigInt) const {
 //----------------------------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void GALGAS_string::printNonNullClassInstanceProperties (void) const {
+  void GALGAS_string::printNonNullClassInstanceProperties (const char * inPropertyName) const {
     if (isValid ()) {
-      std::cout << "    " << mString.cString (HERE) << std::endl ;
+      std::cout << "    " << inPropertyName << " : " << mString.cString (HERE) << std::endl ;
     }
   }
 #endif
