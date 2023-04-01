@@ -14,8 +14,8 @@ for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in PROPERTY_LIST 
   %  }\n\n%
 end
 %//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
-  public: VIRTUAL_IN_DEBUG void drop (void) ;
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 %if HAS_DEFAULT_CONSTRUCTOR then
 %//--------------------------------- Default GALGAS constructor

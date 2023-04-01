@@ -8704,6 +8704,17 @@ __attribute__ ((unused)) (getKeywordLists_galgasTemplateScanner, getKeywordsForI
 // @templateConstructorAST reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateConstructorAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties () ;
+    mProperty_mConstructorName.printNonNullClassInstanceProperties () ;
+    mProperty_mExpressionList.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_templateConstructorAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_templateConstructorAST * p = (const cPtr_templateConstructorAST *) inOperandPtr ;
@@ -8894,6 +8905,17 @@ GALGAS_templateConstructorAST GALGAS_templateConstructorAST::extractObject (cons
 
 //----------------------------------------------------------------------------------------------------------------------
 // @templateFileWrapperTemplateCallAST reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateFileWrapperTemplateCallAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mFileWrapperName.printNonNullClassInstanceProperties () ;
+    mProperty_mTemplateName.printNonNullClassInstanceProperties () ;
+    mProperty_mOutExpressionList.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
 //----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_templateFileWrapperTemplateCallAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -9088,6 +9110,17 @@ GALGAS_templateFileWrapperTemplateCallAST GALGAS_templateFileWrapperTemplateCall
 // @templateExtensionTemplateCallAST reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateExtensionTemplateCallAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mExpressionValue.printNonNullClassInstanceProperties () ;
+    mProperty_mTemplateName.printNonNullClassInstanceProperties () ;
+    mProperty_mOutExpressionList.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_templateExtensionTemplateCallAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_templateExtensionTemplateCallAST * p = (const cPtr_templateExtensionTemplateCallAST *) inOperandPtr ;
@@ -9271,6 +9304,16 @@ GALGAS_templateExtensionTemplateCallAST GALGAS_templateExtensionTemplateCallAST:
 // @templateLiteralStringExpressionAST reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateLiteralStringExpressionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mLiteralStringList.printNonNullClassInstanceProperties () ;
+    mProperty_mLocation.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_templateLiteralStringExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_templateLiteralStringExpressionAST * p = (const cPtr_templateLiteralStringExpressionAST *) inOperandPtr ;
@@ -9440,6 +9483,17 @@ GALGAS_templateLiteralStringExpressionAST GALGAS_templateLiteralStringExpression
 
 //----------------------------------------------------------------------------------------------------------------------
 // @structFieldAccessTemplateExpressionAST reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_structFieldAccessTemplateExpressionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mOperatorLocation.printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties () ;
+    mProperty_mStructFieldName.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
 //----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_structFieldAccessTemplateExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -9623,6 +9677,17 @@ GALGAS_structFieldAccessTemplateExpressionAST GALGAS_structFieldAccessTemplateEx
 
 //----------------------------------------------------------------------------------------------------------------------
 // @templateOptionAccessAST reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateOptionAccessAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mOptionComponentName.printNonNullClassInstanceProperties () ;
+    mProperty_mOptionName.printNonNullClassInstanceProperties () ;
+    mProperty_mGetterName.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
 //----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_templateOptionAccessAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -9815,6 +9880,18 @@ GALGAS_templateOptionAccessAST GALGAS_templateOptionAccessAST::extractObject (co
 
 //----------------------------------------------------------------------------------------------------------------------
 // @templateTestDynamicClassAST reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateTestDynamicClassAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverExpression.printNonNullClassInstanceProperties () ;
+    mProperty_mEndOfReceiverExpression.printNonNullClassInstanceProperties () ;
+    mProperty_mTypeComparisonKind.printNonNullClassInstanceProperties () ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
 //----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_templateTestDynamicClassAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -10020,6 +10097,16 @@ GALGAS_templateTestDynamicClassAST GALGAS_templateTestDynamicClassAST::extractOb
 // @templateFunctionCallAST reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateFunctionCallAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mFunctionName.printNonNullClassInstanceProperties () ;
+    mProperty_mExpressionList.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_templateFunctionCallAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_templateFunctionCallAST * p = (const cPtr_templateFunctionCallAST *) inOperandPtr ;
@@ -10191,6 +10278,15 @@ GALGAS_templateFunctionCallAST GALGAS_templateFunctionCallAST::extractObject (co
 // @templateVarInExpressionAST reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateVarInExpressionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_templateVarInExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_templateVarInExpressionAST * p = (const cPtr_templateVarInExpressionAST *) inOperandPtr ;
@@ -10339,6 +10435,15 @@ GALGAS_templateVarInExpressionAST GALGAS_templateVarInExpressionAST::extractObje
 
 //----------------------------------------------------------------------------------------------------------------------
 // @templateInstructionStringAST reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateInstructionStringAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mTemplateString.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
 //----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_templateInstructionStringAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -12998,6 +13103,15 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_indexing (C_
 // @templateInstructionStringForGeneration reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateInstructionStringForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateInstructionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mTemplateString.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_templateInstructionStringForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_templateInstructionStringForGeneration * p = (const cPtr_templateInstructionStringForGeneration *) inOperandPtr ;
@@ -13259,6 +13373,16 @@ GALGAS_templateInstructionStringForGeneration_2D_weak GALGAS_templateInstruction
 // @semanticExpressionForGeneration reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+    mProperty_mResultType.printNonNullClassInstanceProperties () ;
+    mProperty_mLocation.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 
 
 typeComparisonResult GALGAS_semanticExpressionForGeneration::objectCompare (const GALGAS_semanticExpressionForGeneration & inOperand) const {
@@ -13393,6 +13517,17 @@ GALGAS_semanticExpressionForGeneration GALGAS_semanticExpressionForGeneration::e
 
 //----------------------------------------------------------------------------------------------------------------------
 // @templateBlockInstructionForGeneration reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateBlockInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateInstructionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties () ;
+    mProperty_mLocation.printNonNullClassInstanceProperties () ;
+    mProperty_mBlockInstructionList.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
 //----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_templateBlockInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -13756,6 +13891,18 @@ GALGAS_semanticContext GALGAS_semanticContext::extractObject (const GALGAS_objec
 // @templateGetterCallInExpressionAST reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateGetterCallInExpressionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverExpression.printNonNullClassInstanceProperties () ;
+    mProperty_mGetterName.printNonNullClassInstanceProperties () ;
+    mProperty_mExpressionList.printNonNullClassInstanceProperties () ;
+    mProperty_mExpressionLocation.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_templateGetterCallInExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_templateGetterCallInExpressionAST * p = (const cPtr_templateGetterCallInExpressionAST *) inOperandPtr ;
@@ -13957,6 +14104,22 @@ GALGAS_templateGetterCallInExpressionAST GALGAS_templateGetterCallInExpressionAS
 
 //----------------------------------------------------------------------------------------------------------------------
 // @templateInstructionForeachAST reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateInstructionForeachAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mIsAscending.printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties () ;
+    mProperty_mEnumeratedObjectProperties.printNonNullClassInstanceProperties () ;
+    mProperty_mBeforeInstructionList.printNonNullClassInstanceProperties () ;
+    mProperty_mDoInstructionList.printNonNullClassInstanceProperties () ;
+    mProperty_mIndexIdentifier.printNonNullClassInstanceProperties () ;
+    mProperty_mBetweenInstructionList.printNonNullClassInstanceProperties () ;
+    mProperty_mAfterInstructionList.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
 //----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_templateInstructionForeachAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -14242,6 +14405,22 @@ GALGAS_templateInstructionForeachAST GALGAS_templateInstructionForeachAST::extra
 // @templateInstructionForeachForGeneration reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateInstructionForeachForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateInstructionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mIsAscending.printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties () ;
+    mProperty_mEnumeratorCppName.printNonNullClassInstanceProperties () ;
+    mProperty_mBeforeInstructionList.printNonNullClassInstanceProperties () ;
+    mProperty_mDoInstructionList.printNonNullClassInstanceProperties () ;
+    mProperty_mIndexCppName.printNonNullClassInstanceProperties () ;
+    mProperty_mBetweenInstructionList.printNonNullClassInstanceProperties () ;
+    mProperty_mAfterInstructionList.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_templateInstructionForeachForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_templateInstructionForeachForGeneration * p = (const cPtr_templateInstructionForeachForGeneration *) inOperandPtr ;
@@ -14525,6 +14704,17 @@ GALGAS_templateInstructionForeachForGeneration GALGAS_templateInstructionForeach
 // @templateInstructionSwitchForGeneration reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateInstructionSwitchForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateInstructionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mEnumType.printNonNullClassInstanceProperties () ;
+    mProperty_mSwitchExpression.printNonNullClassInstanceProperties () ;
+    mProperty_mTemplateInstructionSwitchBranchList.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_templateInstructionSwitchForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_templateInstructionSwitchForGeneration * p = (const cPtr_templateInstructionSwitchForGeneration *) inOperandPtr ;
@@ -14706,6 +14896,27 @@ GALGAS_templateInstructionSwitchForGeneration GALGAS_templateInstructionSwitchFo
 
 //----------------------------------------------------------------------------------------------------------------------
 // @lexiqueComponentAST reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexiqueComponentAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mIsPredefined.printNonNullClassInstanceProperties () ;
+    mProperty_mLexiqueComponentName.printNonNullClassInstanceProperties () ;
+    mProperty_mIsTemplate.printNonNullClassInstanceProperties () ;
+    mProperty_mTemplateDelimitorListAST.printNonNullClassInstanceProperties () ;
+    mProperty_mTemplateReplacementListAST.printNonNullClassInstanceProperties () ;
+    mProperty_mLexicalAttributeListAST.printNonNullClassInstanceProperties () ;
+    mProperty_mLexicalStyleListAST.printNonNullClassInstanceProperties () ;
+    mProperty_mTerminalDeclarationListAST.printNonNullClassInstanceProperties () ;
+    mProperty_mLexicalMessageDeclarationListAST.printNonNullClassInstanceProperties () ;
+    mProperty_mLexicalListDeclarationListAST.printNonNullClassInstanceProperties () ;
+    mProperty_mLexicalRuleListAST.printNonNullClassInstanceProperties () ;
+    mProperty_mIndexingListAST.printNonNullClassInstanceProperties () ;
+    mProperty_mIndexingDirectoryAST.printNonNullClassInstanceProperties () ;
+  }
+#endif
+
 //----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_lexiqueComponentAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {

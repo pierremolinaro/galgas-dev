@@ -91,3 +91,13 @@ void AC_GALGAS_reference_class::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void AC_GALGAS_reference_class::printNonNullClassInstanceProperties (void) const {
+    if (mObjectPtr != nullptr) {
+      mObjectPtr->printNonNullClassInstanceProperties () ;
+    }
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------

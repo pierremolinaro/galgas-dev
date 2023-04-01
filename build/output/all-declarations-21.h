@@ -290,7 +290,7 @@ class GALGAS_optionComponentForGeneration : public GALGAS_semanticDeclarationWit
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
   public: static GALGAS_optionComponentForGeneration extractObject (const GALGAS_object & inObject,
@@ -339,7 +339,7 @@ class GALGAS_optionComponentForGeneration : public GALGAS_semanticDeclarationWit
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
 } ; // End of GALGAS_optionComponentForGeneration class
 
@@ -356,6 +356,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentForG
 
 class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
 //--- Extension getter headerKind
   public: virtual class GALGAS_headerKind getter_headerKind (C_Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -436,7 +439,7 @@ class GALGAS_optionComponentForGeneration_2D_weak : public GALGAS_semanticDeclar
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
   public: static GALGAS_optionComponentForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
@@ -459,7 +462,7 @@ class GALGAS_optionComponentForGeneration_2D_weak : public GALGAS_semanticDeclar
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
 } ; // End of GALGAS_optionComponentForGeneration_2D_weak class
 
@@ -489,7 +492,7 @@ class GALGAS_arrayTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
   public: static GALGAS_arrayTypeForGeneration extractObject (const GALGAS_object & inObject,
@@ -515,7 +518,7 @@ class GALGAS_arrayTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
 } ; // End of GALGAS_arrayTypeForGeneration class
 
@@ -532,6 +535,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeForGenerat
 
 class cPtr_arrayTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
 //--- Extension method appendDeclaration1
   public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
            class GALGAS_string & outHeader,
@@ -591,7 +597,7 @@ class GALGAS_arrayTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGener
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
   public: static GALGAS_arrayTypeForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
@@ -614,7 +620,7 @@ class GALGAS_arrayTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGener
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
 } ; // End of GALGAS_arrayTypeForGeneration_2D_weak class
 

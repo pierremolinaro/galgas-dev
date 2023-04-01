@@ -366,8 +366,7 @@ class cSharedListMapRoot : public C_SharedObject {
   public: VIRTUAL_IN_DEBUG uint32_t count (void) const { return mCount ; }
 
 //--- Description
-  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
+  public: VIRTUAL_IN_DEBUG void description (C_String & ioString, const int32_t inIndentation) const  ;
 
   public: static void internalDescription (cListMapNode * inNode,
                                             C_String & ioString,

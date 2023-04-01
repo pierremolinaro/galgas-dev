@@ -2,8 +2,22 @@
 //%!" @" + TYPE_IDENTIFIER% reference class
 //----------------------------------------------------------------------------------------------------------------------
 
-%
-if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST length] == 0) then
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_%!TYPE_IDENTIFIER%::printNonNullClassInstanceProperties (void) const {
+  %if SUPER_TYPE_IDENTIFIER == "" then
+     %  acStrongPtr_class::printNonNullClassInstanceProperties () ;\n%
+  else
+    %  cPtr_%!SUPER_TYPE_IDENTIFIER%::printNonNullClassInstanceProperties () ;\n%
+  end
+  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST do
+    %    mProperty_%![mPropertyName identifierRepresentation]%.printNonNullClassInstanceProperties () ;\n%
+  end
+%  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
+%if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST length] == 0) then
 %typeComparisonResult cPtr_%!TYPE_IDENTIFIER%::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
   return kOperandEqual ;
 }

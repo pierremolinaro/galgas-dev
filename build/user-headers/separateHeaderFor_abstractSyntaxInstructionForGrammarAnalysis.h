@@ -13,6 +13,9 @@ class cVocabulary ;
 
 class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_class {
 
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
 //--- Extension getter isLinear
   public: virtual class GALGAS_bool getter_isLinear (C_Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 

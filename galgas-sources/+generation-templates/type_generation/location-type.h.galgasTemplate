@@ -17,9 +17,9 @@ class GALGAS_location : public AC_GALGAS_root {
   private: bool mIsValid ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
   public: VIRTUAL_IN_DEBUG bool isValidAndNotNowhere (void) const ;
-  public: VIRTUAL_IN_DEBUG void drop (void) ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
   public: C_LocationInSource startLocation (void) const { return mStartLocationInSource ; }
   public: C_LocationInSource endLocation (void) const { return mEndLocationInSource ; }
   public: C_SourceTextInString sourceText (void) const { return mSourceText ; }

@@ -523,7 +523,7 @@ class GALGAS_lexiqueComponentAST : public GALGAS_semanticDeclarationAST {
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
   public: static GALGAS_lexiqueComponentAST extractObject (const GALGAS_object & inObject,
@@ -559,7 +559,7 @@ class GALGAS_lexiqueComponentAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
 } ; // End of GALGAS_lexiqueComponentAST class
 
@@ -576,6 +576,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentAST
 
 class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
 
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
 //--- Extension getter keyRepresentation
   public: virtual class GALGAS_string getter_keyRepresentation (C_Compiler * COMMA_LOCATION_ARGS) const override ;
 

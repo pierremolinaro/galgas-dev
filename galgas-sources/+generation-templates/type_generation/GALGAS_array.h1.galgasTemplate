@@ -25,12 +25,12 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
   private: VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
 
 //--- isValid
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const {
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
     return NULL != mSharedObject ;
   }
 
 //--- Drop
-  public: VIRTUAL_IN_DEBUG void drop (void) ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--- Private attribute
   private: cPtr_%!TYPE_IDENTIFIER% * mSharedObject ;
