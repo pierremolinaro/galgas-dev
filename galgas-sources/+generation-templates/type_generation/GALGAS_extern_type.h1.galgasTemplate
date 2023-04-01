@@ -14,12 +14,12 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
   public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
 //---
-  public: virtual bool isValid (void) const ;
-  public: virtual void drop (void) ;
+  public: virtual bool isValid (void) const override ;
+  public: virtual void drop (void) override ;
 
 //--- For log instruction
   public: virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
+                                     const int32_t inIndentation) const override ;
 
 //--- Code (from GALGAS extern type declaration)
 %!CODE%

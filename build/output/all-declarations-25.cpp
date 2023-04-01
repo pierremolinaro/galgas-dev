@@ -3762,7 +3762,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_externTypeHeader_31_ (C
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " : public AC_GALGAS_root {\n//--------------------------------- Default constructor\n  public: GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
-  result << " (void) ;\n\n//---\n  public: virtual bool isValid (void) const ;\n  public: virtual void drop (void) ;\n\n//--- For log instruction\n  public: virtual void description (C_String & ioString,\n                                     const int32_t inIndentation) const ;\n\n//--- Code (from GALGAS extern type declaration)\n" ;
+  result << " (void) ;\n\n//---\n  public: virtual bool isValid (void) const override ;\n  public: virtual void drop (void) override ;\n\n//--- For log instruction\n  public: virtual void description (C_String & ioString,\n                                     const int32_t inIndentation) const override ;\n\n//--- Code (from GALGAS extern type declaration)\n" ;
   result << in_CODE.stringValue () ;
   result << "\n\n" ;
   return GALGAS_string (result) ;
