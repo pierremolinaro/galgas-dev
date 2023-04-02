@@ -7352,9 +7352,7 @@ class GALGAS_dictDeclarationAST : public GALGAS_semanticDeclarationAST {
 
   public: class GALGAS_lstring readProperty_mKeyTypeName (void) const ;
 
-  public: class GALGAS_lstringlist readProperty_mAttributeList (void) const ;
-
-  public: class GALGAS_propertyInCollectionListAST readProperty_mPropertyList (void) const ;
+  public: class GALGAS_lstring readProperty_mElementTypeName (void) const ;
 
 //-- Start of generic part --*
 
@@ -7370,8 +7368,7 @@ class GALGAS_dictDeclarationAST : public GALGAS_semanticDeclarationAST {
   public: static class GALGAS_dictDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
                                                                   const class GALGAS_lstring & inOperand1,
                                                                   const class GALGAS_lstring & inOperand2,
-                                                                  const class GALGAS_lstringlist & inOperand3,
-                                                                  const class GALGAS_propertyInCollectionListAST & inOperand4
+                                                                  const class GALGAS_lstring & inOperand3
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7443,15 +7440,13 @@ class cPtr_dictDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Properties
   public: GALGAS_lstring mProperty_mDictTypeName ;
   public: GALGAS_lstring mProperty_mKeyTypeName ;
-  public: GALGAS_lstringlist mProperty_mAttributeList ;
-  public: GALGAS_propertyInCollectionListAST mProperty_mPropertyList ;
+  public: GALGAS_lstring mProperty_mElementTypeName ;
 
 //--- Constructor
   public: cPtr_dictDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                    const GALGAS_lstring & in_mDictTypeName,
                                    const GALGAS_lstring & in_mKeyTypeName,
-                                   const GALGAS_lstringlist & in_mAttributeList,
-                                   const GALGAS_propertyInCollectionListAST & in_mPropertyList
+                                   const GALGAS_lstring & in_mElementTypeName
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

@@ -942,3 +942,19 @@ class GALGAS_lstring function_setterNameForUsefulEntitiesGraph (const class GALG
                                                                 class C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'generateExtensionSetter'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_generateExtensionSetter (const class GALGAS_string constinArgument0,
+                                      const class GALGAS_string constinArgument1,
+                                      const class GALGAS_string constinArgument2,
+                                      class GALGAS_stringset & ioArgument3,
+                                      const class GALGAS_formalParameterListForGeneration constinArgument4,
+                                      const class GALGAS_semanticInstructionListForGeneration constinArgument5,
+                                      class GALGAS_string & outArgument6,
+                                      class C_Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
+

@@ -5,8 +5,8 @@
 refclass @dictDeclarationAST : @semanticDeclarationAST {
   private let @lstring mDictTypeName
   private let @lstring mKeyTypeName
-  private let @lstringlist mAttributeList
-  private let @propertyInCollectionListAST mPropertyList
+  private let @lstring mElementTypeName
+#  private let @propertyInCollectionListAST mPropertyList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -26,33 +26,27 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $dict$
   #--- Dict type name
-    $@type$ ?let mDictTypeName indexing mapDefinition, structDefinition "-element"
+    $@type$ ?let mDictTypeName indexing dictionaryDefinition
   #--- Dict key type name
     $:$
     $@type$ ?let keyTypeName
-  #--- Map attributes
-    var @lstringlist mapAttributeList = {}
-    repeat
-    while
-      $%attribute$ ?let attribute
-      mapAttributeList += !attribute
-    end
   #--- Map properties
     ${$
-    var propertyList = @propertyInCollectionListAST {}
-    repeat
-    while
-      <property_declaration> !? propertyList
-    while
-      $;$
-    end
+  #--- Elelement type name
+    $@type$ ?let elementTypeName
+#    var propertyList = @propertyInCollectionListAST {}
+#    repeat
+#    while
+#      <property_declaration> !? propertyList
+#    while
+#      $;$
+#    end
     $}$
     ioDeclarations.mDeclarationList += !@dictDeclarationAST.new {
       !false # Is not predefined
       !mDictTypeName
       !keyTypeName
-      !mapAttributeList
-      !propertyList
+      !elementTypeName
     }
   }
   
@@ -69,36 +63,27 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $dict$
   #--- Dict type name
-    $@type$ ?let mDictTypeName indexing mapDefinition, structDefinition "-element"
+    $@type$ ?let mDictTypeName indexing dictionaryDefinition
   #--- Dict key type name
     $:$
     $@type$ ?let keyTypeName
-  #--- Map attributes
-    var @lstringlist mapAttributeList = {}
-    repeat
-    while
-      $%attribute$ ?let attribute
-      mapAttributeList += !attribute
-    end
   #--- Map properties
     ${$
-    var propertyList = @propertyInCollectionListAST {}
-    repeat
-    while
-      <property_declaration> !? propertyList
-    while
-      $;$
-    end
-    $}$
-#    if [propertyList length] > 1 then
-#      warning keyTypeName : "SEVERAL PROPERTIES"
+  #--- Elelement type name
+    $@type$ ?let elementTypeName
+#    var propertyList = @propertyInCollectionListAST {}
+#    repeat
+#    while
+#      <property_declaration> !? propertyList
+#    while
+#      $;$
 #    end
+    $}$
     ioDeclarations.mDeclarationList += !@dictDeclarationAST.new {
       !false # Is not predefined
       !mDictTypeName
       !keyTypeName
-      !mapAttributeList
-      !propertyList
+      !elementTypeName
     }
   }
   
@@ -113,9 +98,10 @@ syntax extension galgas4DeclarationsSyntax {
 override method @dictDeclarationAST addAssociatedElement ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   var @propertyInCollectionListAST structAttributeList = {}
   structAttributeList += !isConstant: false !.simpleType {!typeName: self.mKeyTypeName} !["key" nowhere] !true !{} !.none
-  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
-    structAttributeList += !isConstant: false !qualifiedTypeAST !mPropertyName !true !{} !.none
-  end
+  structAttributeList += !isConstant: false !.simpleType {!typeName: self.mElementTypeName} !["element" nowhere] !true !{} !.none
+#  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
+#    structAttributeList += !isConstant: false !qualifiedTypeAST !mPropertyName !true !{} !.none
+#  end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
     !self.mIsPredefined
     !.new {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}
@@ -138,10 +124,10 @@ override method @dictDeclarationAST enterDeclarationInGraph
   let dictionary = @lstring.new {!"@" + self.mDictTypeName !self.mDictTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !dictionary !self]
   [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + self.mKeyTypeName !self.mKeyTypeName}]
-  for (* qualifiedTypeAST 4*) in self.mPropertyList do
-    let typeName = [qualifiedTypeAST typeName]
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + typeName !typeName}]
-  end
+#  for (* qualifiedTypeAST 4*) in self.mPropertyList do
+#    let typeName = [qualifiedTypeAST typeName]
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + self.mElementTypeName !self.mElementTypeName}]
+#  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -158,18 +144,6 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap makeEntryFromString !self.mKeyTypeName ?let keyTypeIndex]
 #--- Enumeration description
   var enumerationDescriptor = @enumerationDescriptorList.listWithValue {!keyTypeIndex !"key"}
-#--- Attributes
-  var @bool usesSelectorsInInsertAndSearch = false
-  for (s) in self.mAttributeList do
-    if s.string == "selectors" then
-      if usesSelectorsInInsertAndSearch then
-        error s : "duplicated attribute"
-      end
-      usesSelectorsInInsertAndSearch = true
-    else
-      error s : "unknown attribute"
-    end
-  end
 #---
   var @constructorMap constructorMap = {}
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
@@ -180,8 +154,8 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !?constructorMap
     !?ioTypeMap
     !name:"emptyDict"
-    !resultTypeName:self.mDictTypeName.string
-    !hasLexiqueArg:false
+    !resultTypeName: self.mDictTypeName.string
+    !hasLexiqueArg: false
   )
 #--- Getters
   enterBaseGetterWithArgument (
@@ -189,15 +163,15 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !?ioTypeMap
     !getterName: "hasKey"
     !argSelector: "" !self.mKeyTypeName.string !"inKey"
-    !returnedTypeName:"bool"
-    !hasCompilerArgument:false
+    !returnedTypeName: "bool"
+    !hasCompilerArgument: false
   )
   enterBaseGetterWithoutArgument (
     !?getterMap
     !?ioTypeMap
-    !getterName:"count"
-    !returnedTypeName:"uint"
-    !hasCompilerArgument:false
+    !getterName: "count"
+    !returnedTypeName: "uint"
+    !hasCompilerArgument: false
   )
 #--- Handle properties
   var @formalParameterSignature insertMethodFormalArgumentList = {}
@@ -205,47 +179,48 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = {}
   argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !keyTypeIndex !"key"
   insertMethodFormalArgumentList +=
-    ![if usesSelectorsInInsertAndSearch then "key" else "" end nowhere]
+    !["" nowhere]
     !keyTypeIndex
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inKey"
   var @formalParameterSignature removeMethodFormalArgumentList = {}
   removeMethodFormalArgumentList +=
-    ![if usesSelectorsInInsertAndSearch then "key" else "" end nowhere]
+    !["" nowhere]
     !keyTypeIndex
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inKey"
   var @optionalMethodSignature optionalMethodSignature = {}
   optionalMethodSignature +=
     !true
-    ![if usesSelectorsInInsertAndSearch then "key" else "" end nowhere]
+    !["" nowhere]
     !keyTypeIndex
     !"inKey"
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapEntryList {}
-  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
-    [!?ioTypeMap makeEntry ![qualifiedTypeAST typeName] ?let attributeTypeIndex]
-    let hasSetter = true
+#  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
+    [!?ioTypeMap makeEntry !self.mElementTypeName ?let attributeTypeIndex]
+    let elementPropertyName = ["element" nowhere]
+    let hasSetter = false
     let hasSelector = false
-    argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
-    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
+    argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !elementPropertyName.string
+    typedPropertyList += !attributeTypeIndex !elementPropertyName !hasSetter !hasSelector
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
-    enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
+    enumerationDescriptor += !attributeTypeIndex !elementPropertyName.string
     insertMethodFormalArgumentList +=
-      !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
+      !["" nowhere]
       !attributeTypeIndex
       !@formalArgumentPassingModeAST.argumentConstantIn
-      !mPropertyName.string
+      !elementPropertyName.string
     removeMethodFormalArgumentList +=
-      !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
+      !["" nowhere]
       !attributeTypeIndex
       !@formalArgumentPassingModeAST.argumentOut
-      !mPropertyName.string
+      !elementPropertyName.string
     optionalMethodSignature +=
       !false
-      !if usesSelectorsInInsertAndSearch || hasSelector then mPropertyName else ["" nowhere] end
+      !["" nowhere]
       !attributeTypeIndex
-      !mPropertyName.string
-  end
+      !elementPropertyName.string
+#  end
 #--- Handle remove setter
   [!?setterMap insertOrReplace
     !.new {!"removeKey" !self.mDictTypeName.location}
@@ -266,9 +241,9 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !"" # No error message
   ]
 #--- Enter "attributeForKey" getters
-  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
-    let accessorName = @lstring.new {!mPropertyName.string + "ForKey" !mPropertyName.location}
-    [!?ioTypeMap makeEntry  ![qualifiedTypeAST typeName] ?let attributeTypeIndex]
+#  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
+    let accessorName = @lstring.new {!elementPropertyName.string + "ForKey" !elementPropertyName.location}
+#    [!?ioTypeMap makeEntry  !self.mElementTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
       !@methodKind.definedAsMember
@@ -279,29 +254,29 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
       !@methodQualifier.isBasic
       !"" # No Error message
     ]
-  end
+#  end
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor
-  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
-    let accessorName = @lstring.new {
-      !"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey"
-      !mPropertyName.location
-    }
-    [!?ioTypeMap makeEntry
-      ![qualifiedTypeAST typeName]
-      ?let @unifiedTypeMapEntry attributeTypeIndex
-    ]
-    var accessorFormalArgumentList = @formalParameterSignature {}
-    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
-    accessorFormalArgumentList += !["" nowhere] !keyTypeIndex !.argumentConstantIn !"key"
-    [!?setterMap insertOrReplace
-      !accessorName
-      !@methodKind.definedAsMember
-      !accessorFormalArgumentList
-      !true
-      !@methodQualifier.isBasic
-      !"" # No error message
-    ]
-  end
+#  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
+#    let accessorName = @lstring.new {
+#      !"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey"
+#      !mPropertyName.location
+#    }
+#    [!?ioTypeMap makeEntry
+#      ![qualifiedTypeAST typeName]
+#      ?let @unifiedTypeMapEntry attributeTypeIndex
+#    ]
+#    var accessorFormalArgumentList = @formalParameterSignature {}
+#    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
+#    accessorFormalArgumentList += !["" nowhere] !keyTypeIndex !.argumentConstantIn !"key"
+#    [!?setterMap insertOrReplace
+#      !accessorName
+#      !@methodKind.definedAsMember
+#      !accessorFormalArgumentList
+#      !true
+#      !@methodQualifier.isBasic
+#      !"" # No error message
+#    ]
+#  end
 #--- Add Categories
   addExtensions (
     !inExtensionMethodMapForBuildingContext
@@ -420,28 +395,28 @@ override method @dictDeclarationAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = {}
-  var @propertyIndexMap attributeMap = {}
-  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
-    let propertyTypeNameForUsefulness = [qualifiedTypeAST typeNameForUsefulEntitiesGraph]
-    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    let @unifiedTypeMapEntry t = [ioTypeMap searchKey ![qualifiedTypeAST typeName]]
-    let hasSetter = true
+#  var @propertyIndexMap attributeMap = {}
+#  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
+#    let propertyTypeNameForUsefulness = [qualifiedTypeAST typeNameForUsefulEntitiesGraph]
+#    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
+   let @unifiedTypeMapEntry t = [ioTypeMap searchKey !self.mElementTypeName]
+    let hasSetter = false
     let hasSelector = false
     typedAttributeList +=
       !t
-      !mPropertyName
+      !["element" nowhere]
       !hasSetter
       !hasSelector
-    if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
-      var @string m = "a property cannot be named:"
-      for s in forbiddenKeysForMapAndDict () do
-        m+= " " + s
-      end
-      m += "; theses names are reserved"
-      error mPropertyName: m
-    end
-    [!?attributeMap insertKey !mPropertyName !t]
-  end
+#    if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
+#      var @string m = "a property cannot be named:"
+#      for s in forbiddenKeysForMapAndDict () do
+#        m+= " " + s
+#      end
+#      m += "; theses names are reserved"
+#      error mPropertyName: m
+#    end
+#    [!?attributeMap insertKey !mPropertyName !t]
+#  end
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
     !"dict " + self.mDictTypeName

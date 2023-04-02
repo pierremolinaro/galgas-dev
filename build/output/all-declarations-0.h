@@ -264,6 +264,7 @@ class C_Lexique_galgasScanner : public C_Lexique {
     kIndexing_sortedListDefinition,
     kIndexing_listmapDefinition,
     kIndexing_mapDefinition,
+    kIndexing_dictionaryDefinition,
     kIndexing_externTypeDefinition,
     kIndexing_mapEntryDefinition,
     kIndexing_arrayTypeDefinition,

@@ -718,6 +718,7 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
       "Sorted List Definition" /* sortedListDefinition */,
       "Listmap Definition" /* listmapDefinition */,
       "Map Definition" /* mapDefinition */,
+      "Dictionary Definition" /* dictionaryDefinition */,
       "Extern Type Definition" /* externTypeDefinition */,
       "Shared Map Entry Definition" /* mapEntryDefinition */,
       "Array Definition" /* arrayTypeDefinition */,

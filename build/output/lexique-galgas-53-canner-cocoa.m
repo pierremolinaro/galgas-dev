@@ -75,6 +75,7 @@
     @"Sorted List Definition",
     @"Listmap Definition",
     @"Map Definition",
+    @"Dictionary Definition",
     @"Extern Type Definition",
     @"Shared Map Entry Definition",
     @"Array Definition",
