@@ -1,6 +1,6 @@
 {
     "LIBPM_DIRECTORY_PATH"  :  "%!LIBPM_DIRECTORY_PATH%",
-    "SOURCES_DIR"  :  ["../build/output",  "../build/user-headers",  "%!LIBPM_DIRECTORY_PATH%"%
+    "SOURCES_DIR"  :  ["../%!RELATIVE_BUILD_DIR%/output",  "../%!RELATIVE_BUILD_DIR%/user-headers",  "%!LIBPM_DIRECTORY_PATH%"%
 for  (key)  in  HAND_CODED_SOURCE_DIR_SET  do
     %,  "%!key%"%
 end

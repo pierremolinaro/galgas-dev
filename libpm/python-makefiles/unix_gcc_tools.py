@@ -9,7 +9,7 @@ import generic_galgas_makefile
 
 #-----------------------------------------------------------------------------------------
 
-def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, GOAL, maxParallelJobs, displayCommands) :
+def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, maxParallelJobs, displayCommands) :
   gmf = generic_galgas_makefile.GenericGalgasMakefile ()
   gmf.mJSONfilePath = jsonFilePath
   gmf.mDictionary = dictionary
@@ -18,6 +18,7 @@ def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, GOAL, maxParallelJobs, d
   gmf.mMaxParallelJobs = maxParallelJobs
   gmf.mDisplayCommands = displayCommands
   gmf.mTargetName = "unix"
+  gmf.mBuildDirName = BUILD_DIR_NAME
 #---
   gmf.mCompilerTool = ["gcc"]
   gmf.mLinkerTool   = ["g++"]

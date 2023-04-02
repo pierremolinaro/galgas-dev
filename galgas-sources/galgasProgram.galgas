@@ -79,7 +79,7 @@ grammar galgas3Grammar
     error inSourceFile : s
   else
     let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    parseAndAnalyzeProject (!.new {!projectFilePath !inSourceFile.location} !inSourceFile.string )
+    parseAndAnalyzeProject (!.new {!projectFilePath !inSourceFile.location} !galgas4: false !inSourceFile.string )
   end
 }
 
@@ -94,7 +94,7 @@ message "a GALGAS 4 source file"
 grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 #--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
-  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !{!"galgasProject"}]
+  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !{!"ggsProject"}]
   if [candidateProjectFiles length] == 0 then
     error inSourceFile : "no project file in parent directory of source file"
   elsif [candidateProjectFiles length] > 1 then
@@ -105,7 +105,7 @@ grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
     error inSourceFile : s
   else
     let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    parseAndAnalyzeProject (!.new {!projectFilePath !inSourceFile.location} !inSourceFile.string )
+    parseAndAnalyzeProject (!.new {!projectFilePath !inSourceFile.location} !galgas4: true !inSourceFile.string )
   end
 }
 
@@ -132,7 +132,16 @@ case . "galgasProject"
 message "a GALGAS project source file"
 grammar galgas3ProjectGrammar
 ?sourceFilePath:@lstring inProjectSourceFile {
-  parseAndAnalyzeProject (!inProjectSourceFile !"" )
+  parseAndAnalyzeProject (!inProjectSourceFile !galgas4: false !"" )
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+case . "ggsproject"
+message "a GALGAS project source file"
+grammar galgas3ProjectGrammar
+?sourceFilePath: @lstring inProjectSourceFile {
+  parseAndAnalyzeProject (!inProjectSourceFile !galgas4: true !"" )
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -141,15 +150,15 @@ grammar galgas3ProjectGrammar
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc parseAndAnalyzeProject
-  ?let @lstring inProjectSourceFile
-  ?let @string inSourceToAnalyze {
+private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFile
+                                    ?galgas4: let @bool inGalgas4
+                                    ?let @string inSourceToAnalyze {
   if @application.verboseOutput then
     message "*** Parsing project files\n"
   end
   grammar galgas3ProjectGrammar (?let @galgas3ProjectComponentAST projectComponentAST) in inProjectSourceFile
   if [option.mode value] == "" then
-    compileProject (!inProjectSourceFile !inSourceToAnalyze !projectComponentAST)
+    compileProject (!inProjectSourceFile !inSourceToAnalyze !galgas4: inGalgas4 !projectComponentAST)
   #--- C++ compilation
     if 0 == @uint.errorCount then
       let cppCompilationTarget = [option galgas_cli_options.cppCompile value]
@@ -176,6 +185,7 @@ private proc parseAndAnalyzeProject
 
 private proc compileProject ?let @lstring inProjectSourceFile
                             ?let @string inSourceToAnalyze
+                            ?galgas4: let @bool inGalgas4
                             ?let @galgas3ProjectComponentAST inProjectComponentAST {
   var @galgasDeclarationAST declarationAST = .default
   for (mValue) in inProjectComponentAST.mProjectSourceList do
@@ -251,8 +261,14 @@ private proc compileProject ?let @lstring inProjectSourceFile
 #---------------------------------- Compile semantic declarations
   var @usefulEntitiesGraph usefulEntitiesGraph = .emptyGraph
   var @lstringlist usefulnessRootEntities = {}
-  let buildDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/build"
-  let productDirectory = buildDirectory + "/output"
+  let @string buildDirectoryName
+  if inGalgas4 then
+    buildDirectoryName = [[inProjectSourceFile lastPathComponent] stringByReplacingStringByString !"." !"-"] + "-build"
+  else
+    buildDirectoryName = "build"
+  end
+  let absoluteBuildDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/" + buildDirectoryName
+  let productDirectory = absoluteBuildDirectory + "/output"
   let @stringlist appProductFileList = {}
   let @semanticContext semanticContext
   var @unifiedTypeMap typeMap
@@ -306,7 +322,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
   checkUsefulEntities (!usefulEntitiesGraph !usefulnessRootEntities !productDirectory)
 #------------------------------------ Build an HTML file that contains all declared types
   let typeDumpFilePath = [inProjectSourceFile stringByDeletingLastPathComponent]
-         + "/build/helpers/" +  [inProjectSourceFile lastPathComponent] + ".html"
+         + buildDirectoryName + "/helpers/" +  [inProjectSourceFile lastPathComponent] + ".html"
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
     var @stringset firstLetterSet = {}
     for (lkey *) in typeMap do
@@ -342,7 +358,8 @@ private proc compileProject ?let @lstring inProjectSourceFile
   if (0 == @uint.errorCount) & (inSourceToAnalyze == "") then
     projectGeneration (
       !typeMap
-      !buildDirectory
+      !absoluteBuildDir: absoluteBuildDirectory
+      !buildDirName: buildDirectoryName
       !optionComponentMapForGeneration
       !appProductFileList
       !semanticDeclarationSortedListForGeneration
@@ -367,7 +384,8 @@ private proc compileProject ?let @lstring inProjectSourceFile
 
 private proc projectGeneration
   ?let @unifiedTypeMap inTypeMap
-  ?let @string inBuildDirectory
+  ?absoluteBuildDir: let @string inAbsoluteBuildDirectory
+  ?buildDirName: let @string inBuildDirectoryName
   ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
   ?let @stringlist inAppProductFileList
   ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
@@ -388,12 +406,12 @@ private proc projectGeneration
   end
   var @stringset allProductFileSet = {}
 #---------------------------------- Create build/user-headers if does not exist
-  let userHeadersDir = inBuildDirectory + "/user-headers"
+  let userHeadersDir = inAbsoluteBuildDirectory + "/user-headers"
   [userHeadersDir makeDirectory] ;
 #---------------------------------- %quietOutputByDefault
   let quietOutputByDefault = [@stringset.setWithLStringList {!inProjectComponentAST.mGenerationFeatureList} hasKey !"quietOutputByDefault"]
 #---------------------------------- Generate GUI components
-  let productDirectory = inBuildDirectory + "/output"
+  let productDirectory = inAbsoluteBuildDirectory + "/output"
 #  let cacheDirectory = inBuildDirectory + "/md5-cache"
 #  [cacheDirectory makeDirectory]
 #  message "*** Generate GUI\n" ;
@@ -448,7 +466,9 @@ private proc projectGeneration
         ]
       end
     end
-    updateGalgas3Targets (
+    updateGalgasTargets (
+      !absoluteBuildDir: inAbsoluteBuildDirectory
+      !buildDirName: inBuildDirectoryName
       !inProjectSourceFile
       !inProjectComponentAST.mTargetName.string
       !inProjectComponentAST.mEndOfSourceFile

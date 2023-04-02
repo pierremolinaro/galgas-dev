@@ -409,6 +409,8 @@ func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol? 
     result = SWIFT_Tokenizer_0_galgasScanner ()
   }else if inExtension == "ggsTemplate" {
     result = SWIFT_Tokenizer_1_galgasTemplateScanner ()
+  }else if inExtension == "ggsproject" {
+    result = SWIFT_Tokenizer_0_galgasScanner ()
   }
   return result
 }

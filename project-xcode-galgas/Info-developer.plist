@@ -78,6 +78,24 @@
 			<key>NSDocumentClass</key>
 			<string>OC_GGS_Document</string>
 		</dict>
+		<dict>
+			<key>CFBundleTypeIconFile</key>
+			<string>galgasDocuments</string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>0</integer>
+			<key>CFBundleTypeName</key>
+			<string>GALGAS 4 project File</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas4Project</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>OC_GGS_Document</string>
+		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>cocoaGalgas</string>
@@ -196,6 +214,28 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>ggs</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.text</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>GALGAS 4 Project</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string>galgasDocuments</string>
+			</dict>
+			<key>UTTypeIdentifier</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas4Project</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>ggsproject</string>
 				</array>
 			</dict>
 		</dict>

@@ -11,7 +11,7 @@ import cross_compiler_download
 
 #-----------------------------------------------------------------------------------------
 
-def buildForWin32OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, GOAL, maxParallelJobs, displayCommands) :
+def buildForWin32OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, maxParallelJobs, displayCommands) :
 #--- Too chain installation
   GCC_VERSION = "7.2.0"
   BINUTILS_VERSION = "2.28"
@@ -31,6 +31,7 @@ def buildForWin32OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, GOAL, maxParall
   gmf.mTargetName = "win32"
   gmf.mLinkerOptions = ["-lws2_32", "-lComdlg32"]
   gmf.mExecutableSuffix = ".exe"
+  gmf.mBuildDirName = BUILD_DIR_NAME
 #---
   gmf.mCompilerTool = [TOOL_CHAIN_INSTALL_PATH + "/bin/i586-mingw32-gcc", "-m32", "-D_WIN32_WINNT=0x501"]
   gmf.mLinkerTool = [TOOL_CHAIN_INSTALL_PATH + "/bin/i586-mingw32-g++", "-m32", "--enable-auto-import", "-Wl,--gc-sections"]

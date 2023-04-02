@@ -48,6 +48,7 @@ class GenericGalgasMakefile :
   m_ObjectiveC_CompilerOptions = []
   m_ObjectiveCpp_CompilerOptions = []
   mTargetName = ""
+  mBuildDirName = ""
   mLinkerOptions = []
   mExecutableSuffix = ""
   mCrossCompilation = ""
@@ -90,7 +91,7 @@ class GenericGalgasMakefile :
     make = makefile.Make (self.mGoal, self.mMaxParallelJobs == 1) # Display command utility tool path if sequential build
   #--------------------------------------------------------------------------- Add Compile rule for sources (release)
   #--- Object file directory
-    objectDirectory = "../build/cli-objects/makefile-" + self.mTargetName + "-objects"
+    objectDirectory = "../" + self.mBuildDirName + "/cli-objects/makefile-" + self.mTargetName + "-objects"
   #---
     objectFileList = []
     for source in SOURCES:

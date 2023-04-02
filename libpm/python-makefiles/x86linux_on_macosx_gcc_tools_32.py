@@ -11,7 +11,7 @@ import cross_compiler_download
 
 #-----------------------------------------------------------------------------------------
 
-def buildForLinux32OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, GOAL, maxParallelJobs, displayCommands) :
+def buildForLinux32OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, maxParallelJobs, displayCommands) :
 #--- Too chain installation
   GCC_VERSION = "7.2.0"
   BINUTILS_VERSION = "2.28"
@@ -29,7 +29,8 @@ def buildForLinux32OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, GOAL, maxPara
   gmf.mMaxParallelJobs = maxParallelJobs
   gmf.mDisplayCommands = displayCommands
   gmf.mTargetName = "x86linux32"
-#---
+  gmf.mBuildDirName = BUILD_DIR_NAME
+#--
   UNIX_TOOL_PREFIX = TOOL_CHAIN_INSTALL_PATH + "/bin/i586-pc-linux"
   gmf.mCompilerTool = [UNIX_TOOL_PREFIX + "-gcc"]
   gmf.mLinkerTool = [UNIX_TOOL_PREFIX + "-g++", "-static-libgcc", "-Wl,--gc-sections"]

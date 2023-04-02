@@ -11,7 +11,7 @@ import cross_compiler_download
 
 #-----------------------------------------------------------------------------------------
 
-def buildForLinux64OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, GOAL, maxParallelJobs, displayCommands) :
+def buildForLinux64OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, maxParallelJobs, displayCommands) :
 #--- Too chain installation
   GCC_VERSION = "10.2.0"
   BINUTILS_VERSION = "2.35.1"
@@ -29,6 +29,7 @@ def buildForLinux64OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, GOAL, maxPara
   gmf.mMaxParallelJobs = maxParallelJobs
   gmf.mDisplayCommands = displayCommands
   gmf.mTargetName = "x86linux64"
+  gmf.mBuildDirName = BUILD_DIR_NAME
 #---
   UNIX_TOOL_PREFIX = TOOL_CHAIN_INSTALL_PATH + "/bin/x86_64-pc-linux"
   gmf.mCompilerTool = [UNIX_TOOL_PREFIX + "-gcc"]

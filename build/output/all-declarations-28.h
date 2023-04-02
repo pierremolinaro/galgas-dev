@@ -177,7 +177,8 @@ void routine_displayUnicodeLexicalTestFunctions (class C_Compiler * inCompiler
 //----------------------------------------------------------------------------------------------------------------------
 
 void routine_parseAndAnalyzeProject (const class GALGAS_lstring constinArgument0,
-                                     const class GALGAS_string constinArgument1,
+                                     const class GALGAS_bool constinArgument1,
+                                     const class GALGAS_string constinArgument2,
                                      class C_Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
@@ -189,7 +190,8 @@ void routine_parseAndAnalyzeProject (const class GALGAS_lstring constinArgument0
 
 void routine_compileProject (const class GALGAS_lstring constinArgument0,
                              const class GALGAS_string constinArgument1,
-                             const class GALGAS_galgas_33_ProjectComponentAST constinArgument2,
+                             const class GALGAS_bool constinArgument2,
+                             const class GALGAS_galgas_33_ProjectComponentAST constinArgument3,
                              class C_Compiler * inCompiler
                              COMMA_LOCATION_ARGS) ;
 
@@ -276,18 +278,19 @@ void routine_performGalgas_33_ProjectGlobalCheckings (class GALGAS_unifiedTypeMa
 
 void routine_projectGeneration (const class GALGAS_unifiedTypeMap constinArgument0,
                                 const class GALGAS_string constinArgument1,
-                                const class GALGAS_optionComponentMapForGeneration constinArgument2,
-                                const class GALGAS_stringlist constinArgument3,
-                                const class GALGAS_semanticDeclarationListForGeneration constinArgument4,
-                                const class GALGAS_programRuleList constinArgument5,
-                                const class GALGAS_galgas_33_ProjectComponentAST constinArgument6,
-                                const class GALGAS_string constinArgument7,
-                                const class GALGAS_stringset constinArgument8,
-                                const class GALGAS_stringlist constinArgument9,
+                                const class GALGAS_string constinArgument2,
+                                const class GALGAS_optionComponentMapForGeneration constinArgument3,
+                                const class GALGAS_stringlist constinArgument4,
+                                const class GALGAS_semanticDeclarationListForGeneration constinArgument5,
+                                const class GALGAS_programRuleList constinArgument6,
+                                const class GALGAS_galgas_33_ProjectComponentAST constinArgument7,
+                                const class GALGAS_string constinArgument8,
+                                const class GALGAS_stringset constinArgument9,
                                 const class GALGAS_stringlist constinArgument10,
                                 const class GALGAS_stringlist constinArgument11,
                                 const class GALGAS_stringlist constinArgument12,
                                 const class GALGAS_stringlist constinArgument13,
+                                const class GALGAS_stringlist constinArgument14,
                                 class C_Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
@@ -309,30 +312,32 @@ void routine_generateSemanticDeclarationsGalgas_33_ (const class GALGAS_unifiedT
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'updateGalgas3Targets'
+//Routine 'updateGalgasTargets'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_updateGalgas_33_Targets (const class GALGAS_string constinArgument0,
-                                      const class GALGAS_string constinArgument1,
-                                      const class GALGAS_location constinArgument2,
-                                      const class GALGAS_string constinArgument3,
-                                      const class GALGAS_projectQualifiedFeatureMap constinArgument4,
-                                      const class GALGAS_lstringlist constinArgument5,
-                                      const class GALGAS_bool constinArgument6,
-                                      const class GALGAS_stringlist constinArgument7,
-                                      const class GALGAS_stringlist constinArgument8,
-                                      const class GALGAS_stringlist constinArgument9,
-                                      const class GALGAS_stringlist constinArgument10,
-                                      const class GALGAS_stringlist constinArgument11,
-                                      const class GALGAS_stringset constinArgument12,
-                                      const class GALGAS_stringset constinArgument13,
-                                      class GALGAS_stringset & ioArgument14,
-                                      const class GALGAS_stringlist constinArgument15,
-                                      const class GALGAS_stringlist constinArgument16,
-                                      const class GALGAS_stringlist constinArgument17,
-                                      class C_Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
+void routine_updateGalgasTargets (const class GALGAS_string constinArgument0,
+                                  const class GALGAS_string constinArgument1,
+                                  const class GALGAS_string constinArgument2,
+                                  const class GALGAS_string constinArgument3,
+                                  const class GALGAS_location constinArgument4,
+                                  const class GALGAS_string constinArgument5,
+                                  const class GALGAS_projectQualifiedFeatureMap constinArgument6,
+                                  const class GALGAS_lstringlist constinArgument7,
+                                  const class GALGAS_bool constinArgument8,
+                                  const class GALGAS_stringlist constinArgument9,
+                                  const class GALGAS_stringlist constinArgument10,
+                                  const class GALGAS_stringlist constinArgument11,
+                                  const class GALGAS_stringlist constinArgument12,
+                                  const class GALGAS_stringlist constinArgument13,
+                                  const class GALGAS_stringset constinArgument14,
+                                  const class GALGAS_stringset constinArgument15,
+                                  class GALGAS_stringset & ioArgument16,
+                                  const class GALGAS_stringlist constinArgument17,
+                                  const class GALGAS_stringlist constinArgument18,
+                                  const class GALGAS_stringlist constinArgument19,
+                                  class C_Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
