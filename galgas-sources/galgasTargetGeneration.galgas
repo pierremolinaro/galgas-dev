@@ -56,6 +56,7 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
     ?windows:@bool GENERATE_FOR_WINDOWS
     ?platform:@string PLATFORM
     ?verboseOption:@bool VERBOSE_OPTION
+    ?buildDirName: @string BUILD_DIR_NAME
 
   template makefile_info_plist "project-xcode-objc/Info.plist.txt"
     ?@string PROJECT_NAME
@@ -84,6 +85,7 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
 
 private proc generateGalgasCodeBlocksWindowsTarget
   ?let @string inProjectDirectory
+  ?buildDirName: let @string inBuildDirectoryName
   ?let @string inProjectName
   ?let @stringlist inToolCppFileList
   ?libpmPath: let @string inLIBPMpath
@@ -102,6 +104,7 @@ private proc generateGalgasCodeBlocksWindowsTarget
     !windows:true
     !platform:"Windows"
     !verboseOption:inVerboseOption
+    !buildDirName: inBuildDirectoryName
   ]
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
@@ -110,6 +113,7 @@ private proc generateGalgasCodeBlocksWindowsTarget
 
 private proc generateGalgasCodeBlocksMacTarget
   ?let @string inProjectDirectory
+  ?buildDirName: let @string inBuildDirectoryName
   ?let @string inProjectName
   ?let @stringlist inToolCppFileList
   ?let @string inLIBPMpath
@@ -128,6 +132,7 @@ private proc generateGalgasCodeBlocksMacTarget
     !windows:false
     !platform:"Mac"
     !verboseOption:inVerboseOption
+    !buildDirName: inBuildDirectoryName
   ]
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
@@ -136,6 +141,7 @@ private proc generateGalgasCodeBlocksMacTarget
 
 private proc generateGalgasCodeBlocksLinuxI686Target
   ?let @string inProjectDirectory
+  ?buildDirName: let @string inBuildDirectoryName
   ?let @string inProjectName
   ?let @stringlist inToolCppFileList
   ?let @string inLIBPMpath
@@ -154,6 +160,7 @@ private proc generateGalgasCodeBlocksLinuxI686Target
     !windows:false
     !platform:"Unix"
     !verboseOption:inVerboseOption
+    !buildDirName: inBuildDirectoryName
   ]
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
@@ -162,6 +169,7 @@ private proc generateGalgasCodeBlocksLinuxI686Target
 
 private proc generateGalgasCodeBlocksLinuxX86_64Target
   ?let @string inProjectDirectory
+  ?buildDirName: let @string inBuildDirectoryName
   ?let @string inProjectName
   ?let @stringlist inToolCppFileList
   ?let @string inLIBPMpath
@@ -180,6 +188,7 @@ private proc generateGalgasCodeBlocksLinuxX86_64Target
     !windows:false
     !platform:"Unix"
     !verboseOption:inVerboseOption
+    !buildDirName: inBuildDirectoryName
   ]
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
@@ -417,6 +426,7 @@ proc updateGalgasTargets
   if [generationFeatures hasKey !"codeblocks-windows"] then
     generateGalgasCodeBlocksWindowsTarget (
       !projectDirectory
+      !buildDirName: inBuildDirectoryName
       !inTargetName
       !inToolCppFileList
       !libpmPath: libpmPath
@@ -428,6 +438,7 @@ proc updateGalgasTargets
   if [generationFeatures hasKey !"codeblocks-mac"] then
     generateGalgasCodeBlocksMacTarget (
       !projectDirectory
+      !buildDirName: inBuildDirectoryName
       !inTargetName
       !inToolCppFileList
       !libpmPath
@@ -439,6 +450,7 @@ proc updateGalgasTargets
   if [generationFeatures hasKey !"codeblocks-linux32"] then
     generateGalgasCodeBlocksLinuxI686Target (
       !projectDirectory
+      !buildDirName: inBuildDirectoryName
       !inTargetName
       !inToolCppFileList
       !libpmPath
@@ -450,6 +462,7 @@ proc updateGalgasTargets
   if [generationFeatures hasKey !"codeblocks-linux64"] then
     generateGalgasCodeBlocksLinuxX86_64Target (
       !projectDirectory
+      !buildDirName: inBuildDirectoryName
       !inTargetName
       !inToolCppFileList
       !libpmPath

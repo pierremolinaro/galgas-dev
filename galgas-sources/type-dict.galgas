@@ -90,6 +90,9 @@ syntax extension galgas4DeclarationsSyntax {
       $;$
     end
     $}$
+#    if [propertyList length] > 1 then
+#      warning keyTypeName : "SEVERAL PROPERTIES"
+#    end
     ioDeclarations.mDeclarationList += !@dictDeclarationAST.new {
       !false # Is not predefined
       !mDictTypeName

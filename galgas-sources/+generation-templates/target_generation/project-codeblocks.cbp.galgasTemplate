@@ -60,8 +60,8 @@
   </VirtualTargets>
   <Compiler>
    <Add directory="%!LIBPM_PATH%" />
-   <Add directory="../build/user-headers" />
-   <Add directory="../build/output" />
+   <Add directory="../%!BUILD_DIR_NAME%/user-headers" />
+   <Add directory="../%!BUILD_DIR_NAME%/output" />
 %
 for (key) in HAND_CODED_SOURCE_TOOL_DIRECTORY_SET do
 %  <Add directory="%!key%" />\n%
@@ -79,7 +79,7 @@ end
 %
 end
 for (mValue) in TOOL_CPP_FILE_LIST do
-%  <Unit filename="../build/output/%!mValue%" />\n%
+%  <Unit filename="../%!BUILD_DIR_NAME%/output/%!mValue%" />\n%
 end
 for (mValue) in HAND_CODED_SOURCE_TOOL_FILE_LIST do
 %  <Unit filename="../%!mValue%" />\n%
