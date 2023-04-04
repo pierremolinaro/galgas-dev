@@ -118,7 +118,7 @@ acPtr_class * cPtr_dataPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@dataPredefinedTypeAST type
+//     @dataPredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -229,7 +229,7 @@ GALGAS_dataPredefinedTypeAST GALGAS_dataPredefinedTypeAST_2D_weak::bang_dataPred
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@dataPredefinedTypeAST-weak type
+//     @dataPredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -381,7 +381,7 @@ acPtr_class * cPtr_timerPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@timerPredefinedTypeAST type
+//     @timerPredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -492,7 +492,7 @@ GALGAS_timerPredefinedTypeAST GALGAS_timerPredefinedTypeAST_2D_weak::bang_timerP
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@timerPredefinedTypeAST-weak type
+//     @timerPredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1106,7 +1106,7 @@ bool GALGAS_grammarLabelMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@grammarLabelMap type
+//     @grammarLabelMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1486,7 +1486,7 @@ bool GALGAS_grammarMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@grammarMap type
+//     @grammarMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1812,7 +1812,7 @@ bool GALGAS_routineMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@routineMap type
+//     @routineMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2192,7 +2192,7 @@ bool GALGAS_functionMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@functionMap type
+//     @functionMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2626,7 +2626,7 @@ bool GALGAS_wrapperFileMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@wrapperFileMap type
+//     @wrapperFileMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3006,7 +3006,7 @@ bool GALGAS_wrapperDirectoryMap::optional_searchKey (const GALGAS_string & inKey
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@wrapperDirectoryMap type
+//     @wrapperDirectoryMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3332,7 +3332,7 @@ bool GALGAS_filewrapperTemplateMap::optional_searchKey (const GALGAS_string & in
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@filewrapperTemplateMap type
+//     @filewrapperTemplateMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3874,7 +3874,7 @@ bool GALGAS_filewrapperMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@filewrapperMap type
+//     @filewrapperMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4362,7 +4362,7 @@ bool GALGAS_optionComponentMapForSemanticAnalysis::optional_searchKey (const GAL
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@optionComponentMapForSemanticAnalysis type
+//     @optionComponentMapForSemanticAnalysis generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5012,7 +5012,7 @@ bool GALGAS_lexiqueComponentMapForSemanticAnalysis::optional_searchKey (const GA
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexiqueComponentMapForSemanticAnalysis type
+//     @lexiqueComponentMapForSemanticAnalysis generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5446,7 +5446,7 @@ bool GALGAS_syntaxComponentMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@syntaxComponentMap type
+//     @syntaxComponentMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5747,7 +5747,7 @@ bool GALGAS_extensionMethodMapForType::optional_searchKey (const GALGAS_string &
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionMethodMapForType type
+//     @extensionMethodMapForType generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6019,7 +6019,7 @@ bool GALGAS_extensionMethodMapForBuildingContext::optional_searchKey (const GALG
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionMethodMapForBuildingContext type
+//     @extensionMethodMapForBuildingContext generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6269,7 +6269,7 @@ bool GALGAS_extensionSetterMapForType::optional_searchKey (const GALGAS_string &
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionSetterMapForType type
+//     @extensionSetterMapForType generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6541,7 +6541,7 @@ bool GALGAS_extensionSetterMapForBuildingContext::optional_searchKey (const GALG
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionSetterMapForBuildingContext type
+//     @extensionSetterMapForBuildingContext generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6893,7 +6893,7 @@ bool GALGAS_extensionGetterMapForType::optional_searchKey (const GALGAS_string &
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionGetterMapForType type
+//     @extensionGetterMapForType generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7165,7 +7165,7 @@ bool GALGAS_extensionGetterMapForBuildingContext::optional_searchKey (const GALG
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionGetterMapForBuildingContext type
+//     @extensionGetterMapForBuildingContext generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7490,7 +7490,7 @@ bool GALGAS_wrapperExtensionMap::optional_searchKey (const GALGAS_string & inKey
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@wrapperExtensionMap type
+//     @wrapperExtensionMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7673,7 +7673,7 @@ GALGAS_lstringlist GALGAS_semanticTypePrecedenceGraph::getter_accessibleNodesFro
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticTypePrecedenceGraph type
+//     @semanticTypePrecedenceGraph generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7827,7 +7827,7 @@ GALGAS_semanticExpressionForGeneration GALGAS_semanticExpressionForGeneration_2D
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticExpressionForGeneration-weak type
+//     @semanticExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8244,7 +8244,7 @@ GALGAS_semanticExpressionForGeneration cEnumerator_semanticExpressionListForGene
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticExpressionListForGeneration type
+//     @semanticExpressionListForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8355,7 +8355,7 @@ GALGAS_castInExpressionForGeneration GALGAS_castInExpressionForGeneration_2D_wea
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@castInExpressionForGeneration-weak type
+//     @castInExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8475,7 +8475,7 @@ mProperty_mFormalArgumentType (in_mFormalArgumentType) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@actualParameterForGeneration type
+//     @actualParameterForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8586,7 +8586,7 @@ GALGAS_actualParameterForGeneration GALGAS_actualParameterForGeneration_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@actualParameterForGeneration-weak type
+//     @actualParameterForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8739,7 +8739,7 @@ GALGAS_outputActualParameterForGeneration GALGAS_outputActualParameterForGenerat
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@outputActualParameterForGeneration-weak type
+//     @outputActualParameterForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8973,7 +8973,7 @@ acPtr_class * cPtr_outputInputActualParameterForGeneration::duplicate (LOCATION_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@outputInputActualParameterForGeneration type
+//     @outputInputActualParameterForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9084,7 +9084,7 @@ GALGAS_outputInputActualParameterForGeneration GALGAS_outputInputActualParameter
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@outputInputActualParameterForGeneration-weak type
+//     @outputInputActualParameterForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9195,7 +9195,7 @@ GALGAS_inputActualParameterForGeneration GALGAS_inputActualParameterForGeneratio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputActualParameterForGeneration-weak type
+//     @inputActualParameterForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9397,7 +9397,7 @@ acPtr_class * cPtr_inputJokerParameterForGeneration::duplicate (LOCATION_ARGS) c
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputJokerParameterForGeneration type
+//     @inputJokerParameterForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9508,7 +9508,7 @@ GALGAS_inputJokerParameterForGeneration GALGAS_inputJokerParameterForGeneration_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputJokerParameterForGeneration-weak type
+//     @inputJokerParameterForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9925,7 +9925,7 @@ GALGAS_actualParameterForGeneration cEnumerator_actualParameterListForGeneration
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@actualParameterListForGeneration type
+//     @actualParameterListForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10019,7 +10019,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticInstructionForGeneration type
+//     @semanticInstructionForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10130,7 +10130,7 @@ GALGAS_semanticInstructionForGeneration GALGAS_semanticInstructionForGeneration_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticInstructionForGeneration-weak type
+//     @semanticInstructionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10321,7 +10321,7 @@ acPtr_class * cPtr_semanticBlockInstructionForGeneration::duplicate (LOCATION_AR
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticBlockInstructionForGeneration type
+//     @semanticBlockInstructionForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10432,7 +10432,7 @@ GALGAS_semanticBlockInstructionForGeneration GALGAS_semanticBlockInstructionForG
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticBlockInstructionForGeneration-weak type
+//     @semanticBlockInstructionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10914,7 +10914,7 @@ GALGAS_location cEnumerator_listOfSemanticInstructionListForGeneration::current_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@listOfSemanticInstructionListForGeneration type
+//     @listOfSemanticInstructionListForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11008,7 +11008,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticDeclarationForGeneration type
+//     @semanticDeclarationForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11119,7 +11119,7 @@ GALGAS_semanticDeclarationForGeneration GALGAS_semanticDeclarationForGeneration_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticDeclarationForGeneration-weak type
+//     @semanticDeclarationForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11715,7 +11715,7 @@ GALGAS_semanticDeclarationForGeneration cEnumerator_semanticDeclarationListForGe
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticDeclarationListForGeneration type
+//     @semanticDeclarationListForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12197,7 +12197,7 @@ GALGAS_lstring cEnumerator_signatureForGrammarAnalysis::current_mGalgasTypeNameF
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@signatureForGrammarAnalysis type
+//     @signatureForGrammarAnalysis generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12469,7 +12469,7 @@ bool GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis::optional_searchKey (con
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@nonterminalSymbolLabelMapForGrammarAnalysis type
+//     @nonterminalSymbolLabelMapForGrammarAnalysis generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12795,7 +12795,7 @@ bool GALGAS_nonTerminalSymbolMapForGrammarAnalysis::optional_searchKey (const GA
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@nonTerminalSymbolMapForGrammarAnalysis type
+//     @nonTerminalSymbolMapForGrammarAnalysis generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13277,7 +13277,7 @@ GALGAS_uint cEnumerator_nonTerminalToAddList::current_mNonTerminalToAddCount (LO
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@nonTerminalToAddList type
+//     @nonTerminalToAddList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13824,7 +13824,7 @@ GALGAS_string cEnumerator_terminalCheckAssignementList::current_mSourceLexicalAt
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@terminalCheckAssignementList type
+//     @terminalCheckAssignementList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13944,7 +13944,7 @@ mProperty_mInstructionLocation (in_mInstructionLocation) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@syntaxInstructionForGeneration type
+//     @syntaxInstructionForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14055,7 +14055,7 @@ GALGAS_syntaxInstructionForGeneration GALGAS_syntaxInstructionForGeneration_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@syntaxInstructionForGeneration-weak type
+//     @syntaxInstructionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14602,7 +14602,7 @@ GALGAS_templateInstructionListForGeneration cEnumerator_filewrapperTemplateListF
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@filewrapperTemplateListForGeneration type
+//     @filewrapperTemplateListForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 

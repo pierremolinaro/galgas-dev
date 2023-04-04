@@ -8,6 +8,117 @@
 #include "all-declarations-9.h"
 
 //----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_divEqualExpressionInstructionAST_2D_weak::objectCompare (const GALGAS_divEqualExpressionInstructionAST_2D_weak & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_divEqualExpressionInstructionAST_2D_weak::GALGAS_divEqualExpressionInstructionAST_2D_weak (void) :
+GALGAS_semanticInstructionAST_2D_weak () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_divEqualExpressionInstructionAST_2D_weak & GALGAS_divEqualExpressionInstructionAST_2D_weak::operator = (const GALGAS_divEqualExpressionInstructionAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = NULL ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != NULL) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_divEqualExpressionInstructionAST_2D_weak::GALGAS_divEqualExpressionInstructionAST_2D_weak (const GALGAS_divEqualExpressionInstructionAST & inSource) :
+GALGAS_semanticInstructionAST_2D_weak (inSource) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_divEqualExpressionInstructionAST_2D_weak GALGAS_divEqualExpressionInstructionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
+  GALGAS_divEqualExpressionInstructionAST_2D_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_divEqualExpressionInstructionAST GALGAS_divEqualExpressionInstructionAST_2D_weak::bang_divEqualExpressionInstructionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_divEqualExpressionInstructionAST result ;
+  if (mProxyPtr != NULL) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == NULL) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_divEqualExpressionInstructionAST) ;
+      result = GALGAS_divEqualExpressionInstructionAST ((cPtr_divEqualExpressionInstructionAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//     @divEqualExpressionInstructionAST-weak generic code implementation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_divEqualExpressionInstructionAST_2D_weak ("divEqualExpressionInstructionAST-weak",
+                                                                 & kTypeDescriptor_GALGAS_semanticInstructionAST_2D_weak) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_divEqualExpressionInstructionAST_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_divEqualExpressionInstructionAST_2D_weak ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_divEqualExpressionInstructionAST_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_divEqualExpressionInstructionAST_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_divEqualExpressionInstructionAST_2D_weak GALGAS_divEqualExpressionInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                                C_Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_divEqualExpressionInstructionAST_2D_weak result ;
+  const GALGAS_divEqualExpressionInstructionAST_2D_weak * p = (const GALGAS_divEqualExpressionInstructionAST_2D_weak *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_divEqualExpressionInstructionAST_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("divEqualExpressionInstructionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 // @plusEqualnstructionForGeneration reference class
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -223,7 +334,7 @@ acPtr_class * cPtr_plusEqualnstructionForGeneration::duplicate (LOCATION_ARGS) c
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@plusEqualnstructionForGeneration type
+//     @plusEqualnstructionForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -334,7 +445,7 @@ GALGAS_plusEqualnstructionForGeneration GALGAS_plusEqualnstructionForGeneration_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@plusEqualnstructionForGeneration-weak type
+//     @plusEqualnstructionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -445,7 +556,7 @@ GALGAS_opEqualInstructionForGeneration GALGAS_opEqualInstructionForGeneration_2D
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@opEqualInstructionForGeneration-weak type
+//     @opEqualInstructionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -612,7 +723,7 @@ acPtr_class * cPtr_dropInstructionAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@dropInstructionAST type
+//     @dropInstructionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -723,7 +834,7 @@ GALGAS_dropInstructionAST GALGAS_dropInstructionAST_2D_weak::bang_dropInstructio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@dropInstructionAST-weak type
+//     @dropInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1099,7 +1210,7 @@ typeComparisonResult GALGAS_fixitElementAST::objectCompare (const GALGAS_fixitEl
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@fixitElementAST type
+//     @fixitElementAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1516,7 +1627,7 @@ GALGAS_fixitElementAST cEnumerator_fixitListAST::current_mElement (LOCATION_ARGS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@fixitListAST type
+//     @fixitListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1738,7 +1849,7 @@ acPtr_class * cPtr_errorInstructionAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@errorInstructionAST type
+//     @errorInstructionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1849,7 +1960,7 @@ GALGAS_errorInstructionAST GALGAS_errorInstructionAST_2D_weak::bang_errorInstruc
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@errorInstructionAST-weak type
+//     @errorInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2236,7 +2347,7 @@ typeComparisonResult GALGAS_fixitElementForGeneration::objectCompare (const GALG
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@fixitElementForGeneration type
+//     @fixitElementForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2639,7 +2750,7 @@ GALGAS_fixitElementForGeneration cEnumerator_fixitListForGeneration::current_mEl
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@fixitListForGeneration type
+//     @fixitListForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2813,7 +2924,7 @@ GALGAS_errorInstructionForGeneration GALGAS_errorInstructionForGeneration_2D_wea
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@errorInstructionForGeneration-weak type
+//     @errorInstructionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3360,7 +3471,7 @@ GALGAS_lstring cEnumerator_forInstructionEnumeratedObjectElementListAST::current
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@forInstructionEnumeratedObjectElementListAST type
+//     @forInstructionEnumeratedObjectElementListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3454,7 +3565,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@abstractEnumeratedCollectionAST type
+//     @abstractEnumeratedCollectionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3565,7 +3676,7 @@ GALGAS_abstractEnumeratedCollectionAST GALGAS_abstractEnumeratedCollectionAST_2D
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@abstractEnumeratedCollectionAST-weak type
+//     @abstractEnumeratedCollectionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3676,7 +3787,7 @@ GALGAS_enumeratedCollectionImplicitVarInExpAST GALGAS_enumeratedCollectionImplic
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@enumeratedCollectionImplicitVarInExpAST-weak type
+//     @enumeratedCollectionImplicitVarInExpAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3787,7 +3898,7 @@ GALGAS_enumeratedCollectionVarInExpAST GALGAS_enumeratedCollectionVarInExpAST_2D
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@enumeratedCollectionVarInExpAST-weak type
+//     @enumeratedCollectionVarInExpAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4002,7 +4113,7 @@ acPtr_class * cPtr_enumeratedCollectionCstListInExpAST::duplicate (LOCATION_ARGS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@enumeratedCollectionCstListInExpAST type
+//     @enumeratedCollectionCstListInExpAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4113,7 +4224,7 @@ GALGAS_enumeratedCollectionCstListInExpAST GALGAS_enumeratedCollectionCstListInE
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@enumeratedCollectionCstListInExpAST-weak type
+//     @enumeratedCollectionCstListInExpAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4567,7 +4678,7 @@ GALGAS_abstractEnumeratedCollectionAST cEnumerator_forInstructionEnumeratedObjec
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@forInstructionEnumeratedObjectListAST type
+//     @forInstructionEnumeratedObjectListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4678,7 +4789,7 @@ GALGAS_forInstructionAST GALGAS_forInstructionAST_2D_weak::bang_forInstructionAS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@forInstructionAST-weak type
+//     @forInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5268,7 +5379,7 @@ GALGAS_string cEnumerator_forInstructionEnumeratedObjectListForGeneration::curre
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@forInstructionEnumeratedObjectListForGeneration type
+//     @forInstructionEnumeratedObjectListForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5379,7 +5490,7 @@ GALGAS_forInstructionForGeneration GALGAS_forInstructionForGeneration_2D_weak::b
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@forInstructionForGeneration-weak type
+//     @forInstructionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5490,7 +5601,7 @@ GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult GALGAS_abstract
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@abstractGrammarInstructionSyntaxDirectedTranslationResult-weak type
+//     @abstractGrammarInstructionSyntaxDirectedTranslationResult-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5622,7 +5733,7 @@ acPtr_class * cPtr_grammarInstructionSyntaxDirectedTranslationResultNone::duplic
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@grammarInstructionSyntaxDirectedTranslationResultNone type
+//     @grammarInstructionSyntaxDirectedTranslationResultNone generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5733,7 +5844,7 @@ GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone GALGAS_grammarInstr
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@grammarInstructionSyntaxDirectedTranslationResultNone-weak type
+//     @grammarInstructionSyntaxDirectedTranslationResultNone-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5892,7 +6003,7 @@ acPtr_class * cPtr_grammarInstructionSyntaxDirectedTranslationDropResult::duplic
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@grammarInstructionSyntaxDirectedTranslationDropResult type
+//     @grammarInstructionSyntaxDirectedTranslationDropResult generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6003,7 +6114,7 @@ GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult GALGAS_grammarInstr
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@grammarInstructionSyntaxDirectedTranslationDropResult-weak type
+//     @grammarInstructionSyntaxDirectedTranslationDropResult-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6114,7 +6225,7 @@ GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar GALGAS_grammarInst
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@grammarInstructionSyntaxDirectedTranslationResultInVar-weak type
+//     @grammarInstructionSyntaxDirectedTranslationResultInVar-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6225,7 +6336,7 @@ GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar GALGAS_gra
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar-weak type
+//     @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6336,7 +6447,7 @@ GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst GALGAS_g
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst-weak type
+//     @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6447,7 +6558,7 @@ GALGAS_grammarInFileInstructionAST GALGAS_grammarInFileInstructionAST_2D_weak::b
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@grammarInFileInstructionAST-weak type
+//     @grammarInFileInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6558,7 +6669,7 @@ GALGAS_grammarInStringInstructionAST GALGAS_grammarInStringInstructionAST_2D_wea
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@grammarInStringInstructionAST-weak type
+//     @grammarInStringInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6669,7 +6780,7 @@ GALGAS_grammarInstructionWithSourceFileForGeneration GALGAS_grammarInstructionWi
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@grammarInstructionWithSourceFileForGeneration-weak type
+//     @grammarInstructionWithSourceFileForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6780,7 +6891,7 @@ GALGAS_grammarInstructionWithSourceExpressionForGeneration GALGAS_grammarInstruc
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@grammarInstructionWithSourceExpressionForGeneration-weak type
+//     @grammarInstructionWithSourceExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6903,7 +7014,7 @@ typeComparisonResult GALGAS_incDecKind::objectCompare (const GALGAS_incDecKind &
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@incDecKind type
+//     @incDecKind generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7014,7 +7125,7 @@ GALGAS_incDecInstructionAST GALGAS_incDecInstructionAST_2D_weak::bang_incDecInst
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@incDecInstructionAST-weak type
+//     @incDecInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7125,7 +7236,7 @@ GALGAS_incDecNoOVFInstructionAST GALGAS_incDecNoOVFInstructionAST_2D_weak::bang_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@incDecNoOVFInstructionAST-weak type
+//     @incDecNoOVFInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7295,7 +7406,7 @@ acPtr_class * cPtr_selfIncDecInstructionAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@selfIncDecInstructionAST type
+//     @selfIncDecInstructionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7406,7 +7517,7 @@ GALGAS_selfIncDecInstructionAST GALGAS_selfIncDecInstructionAST_2D_weak::bang_se
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@selfIncDecInstructionAST-weak type
+//     @selfIncDecInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7576,7 +7687,7 @@ acPtr_class * cPtr_selfIncDecNoOVFInstructionAST::duplicate (LOCATION_ARGS) cons
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@selfIncDecNoOVFInstructionAST type
+//     @selfIncDecNoOVFInstructionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7687,7 +7798,7 @@ GALGAS_selfIncDecNoOVFInstructionAST GALGAS_selfIncDecNoOVFInstructionAST_2D_wea
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@selfIncDecNoOVFInstructionAST-weak type
+//     @selfIncDecNoOVFInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7978,7 +8089,7 @@ acPtr_class * cPtr_incDecInstructionForGeneration::duplicate (LOCATION_ARGS) con
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@incDecInstructionForGeneration type
+//     @incDecInstructionForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8089,7 +8200,7 @@ GALGAS_incDecInstructionForGeneration GALGAS_incDecInstructionForGeneration_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@incDecInstructionForGeneration-weak type
+//     @incDecInstructionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8380,7 +8491,7 @@ acPtr_class * cPtr_incDecNoOVFInstructionForGeneration::duplicate (LOCATION_ARGS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@incDecNoOVFInstructionForGeneration type
+//     @incDecNoOVFInstructionForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8491,7 +8602,7 @@ GALGAS_incDecNoOVFInstructionForGeneration GALGAS_incDecNoOVFInstructionForGener
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@incDecNoOVFInstructionForGeneration-weak type
+//     @incDecNoOVFInstructionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8869,7 +8980,7 @@ typeComparisonResult GALGAS_ifExpressionKind::objectCompare (const GALGAS_ifExpr
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@ifExpressionKind type
+//     @ifExpressionKind generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9326,7 +9437,7 @@ typeComparisonResult GALGAS_optionalMethodActualArgument::objectCompare (const G
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@optionalMethodActualArgument type
+//     @optionalMethodActualArgument generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9808,7 +9919,7 @@ GALGAS_optionalMethodActualArgument cEnumerator_optionalMethodActualArgumentList
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@optionalMethodActualArgumentList type
+//     @optionalMethodActualArgumentList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10225,7 +10336,7 @@ GALGAS_ifExpressionKind cEnumerator_ifExpressionList::current_mExpression (LOCAT
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@ifExpressionList type
+//     @ifExpressionList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10535,7 +10646,7 @@ acPtr_class * cPtr_ifInstructionAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@ifInstructionAST type
+//     @ifInstructionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10646,7 +10757,7 @@ GALGAS_ifInstructionAST GALGAS_ifInstructionAST_2D_weak::bang_ifInstructionAST_2
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@ifInstructionAST-weak type
+//     @ifInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11024,7 +11135,7 @@ typeComparisonResult GALGAS_ifTestForGeneration::objectCompare (const GALGAS_ifT
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@ifTestForGeneration type
+//     @ifTestForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11366,7 +11477,7 @@ typeComparisonResult GALGAS_optionalMethodActualArgumentForGeneration::objectCom
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@optionalMethodActualArgumentForGeneration type
+//     @optionalMethodActualArgumentForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11783,7 +11894,7 @@ GALGAS_optionalMethodActualArgumentForGeneration cEnumerator_optionalMethodActua
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@optionalMethodActualArgumentListForGeneration type
+//     @optionalMethodActualArgumentListForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12200,7 +12311,7 @@ GALGAS_ifTestForGeneration cEnumerator_ifTestListForGeneration::current_mExpress
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@ifTestListForGeneration type
+//     @ifTestListForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12469,7 +12580,7 @@ acPtr_class * cPtr_ifInstructionForGeneration::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@ifInstructionForGeneration type
+//     @ifInstructionForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12580,7 +12691,7 @@ GALGAS_ifInstructionForGeneration GALGAS_ifInstructionForGeneration_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@ifInstructionForGeneration-weak type
+//     @ifInstructionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12691,7 +12802,7 @@ GALGAS_localVariableOrConstantDeclarationWithAssignmentAST GALGAS_localVariableO
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@localVariableOrConstantDeclarationWithAssignmentAST-weak type
+//     @localVariableOrConstantDeclarationWithAssignmentAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12802,7 +12913,7 @@ GALGAS_undefinedLocalConstantDeclarationAST GALGAS_undefinedLocalConstantDeclara
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@undefinedLocalConstantDeclarationAST-weak type
+//     @undefinedLocalConstantDeclarationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12913,7 +13024,7 @@ GALGAS_localConstantDeclarationWithAssignmentAST GALGAS_localConstantDeclaration
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@localConstantDeclarationWithAssignmentAST-weak type
+//     @localConstantDeclarationWithAssignmentAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13086,7 +13197,7 @@ acPtr_class * cPtr_undefinedLocalConstantDeclarationForGeneration::duplicate (LO
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@undefinedLocalConstantDeclarationForGeneration type
+//     @undefinedLocalConstantDeclarationForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13197,7 +13308,7 @@ GALGAS_undefinedLocalConstantDeclarationForGeneration GALGAS_undefinedLocalConst
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@undefinedLocalConstantDeclarationForGeneration-weak type
+//     @undefinedLocalConstantDeclarationForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13308,7 +13419,7 @@ GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration GALGA
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@localVariableOrConstantDeclarationWithSourceExpressionForGeneration-weak type
+//     @localVariableOrConstantDeclarationWithSourceExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13790,7 +13901,7 @@ GALGAS_semanticExpressionAST cEnumerator_logListAST::current_mLogExpression (LOC
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@logListAST type
+//     @logListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13968,7 +14079,7 @@ acPtr_class * cPtr_logInstructionAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@logInstructionAST type
+//     @logInstructionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14079,7 +14190,7 @@ GALGAS_logInstructionAST GALGAS_logInstructionAST_2D_weak::bang_logInstructionAS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@logInstructionAST-weak type
+//     @logInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14190,7 +14301,7 @@ GALGAS_logInstructionForGeneration GALGAS_logInstructionForGeneration_2D_weak::b
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@logInstructionForGeneration-weak type
+//     @logInstructionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14616,7 +14727,7 @@ acPtr_class * cPtr_loopInstructionWithVariantAST::duplicate (LOCATION_ARGS) cons
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@loopInstructionWithVariantAST type
+//     @loopInstructionWithVariantAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14727,7 +14838,7 @@ GALGAS_loopInstructionWithVariantAST GALGAS_loopInstructionWithVariantAST_2D_wea
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@loopInstructionWithVariantAST-weak type
+//     @loopInstructionWithVariantAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14763,479 +14874,6 @@ GALGAS_loopInstructionWithVariantAST_2D_weak GALGAS_loopInstructionWithVariantAS
       result = *p ;
     }else{
       inCompiler->castError ("loopInstructionWithVariantAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_loopInstructionWithVariantForGeneration_2D_weak::objectCompare (const GALGAS_loopInstructionWithVariantForGeneration_2D_weak & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = kOperandEqual ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_loopInstructionWithVariantForGeneration_2D_weak::GALGAS_loopInstructionWithVariantForGeneration_2D_weak (void) :
-GALGAS_semanticInstructionForGeneration_2D_weak () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_loopInstructionWithVariantForGeneration_2D_weak & GALGAS_loopInstructionWithVariantForGeneration_2D_weak::operator = (const GALGAS_loopInstructionWithVariantForGeneration & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = NULL ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != NULL) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_loopInstructionWithVariantForGeneration_2D_weak::GALGAS_loopInstructionWithVariantForGeneration_2D_weak (const GALGAS_loopInstructionWithVariantForGeneration & inSource) :
-GALGAS_semanticInstructionForGeneration_2D_weak (inSource) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_loopInstructionWithVariantForGeneration_2D_weak GALGAS_loopInstructionWithVariantForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
-  GALGAS_loopInstructionWithVariantForGeneration_2D_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_loopInstructionWithVariantForGeneration GALGAS_loopInstructionWithVariantForGeneration_2D_weak::bang_loopInstructionWithVariantForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_loopInstructionWithVariantForGeneration result ;
-  if (mProxyPtr != NULL) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == NULL) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_loopInstructionWithVariantForGeneration) ;
-      result = GALGAS_loopInstructionWithVariantForGeneration ((cPtr_loopInstructionWithVariantForGeneration *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@loopInstructionWithVariantForGeneration-weak type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_loopInstructionWithVariantForGeneration_2D_weak ("loopInstructionWithVariantForGeneration-weak",
-                                                                        & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2D_weak) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_loopInstructionWithVariantForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_loopInstructionWithVariantForGeneration_2D_weak ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_loopInstructionWithVariantForGeneration_2D_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_loopInstructionWithVariantForGeneration_2D_weak (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_loopInstructionWithVariantForGeneration_2D_weak GALGAS_loopInstructionWithVariantForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                              C_Compiler * inCompiler
-                                                                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_loopInstructionWithVariantForGeneration_2D_weak result ;
-  const GALGAS_loopInstructionWithVariantForGeneration_2D_weak * p = (const GALGAS_loopInstructionWithVariantForGeneration_2D_weak *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_loopInstructionWithVariantForGeneration_2D_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("loopInstructionWithVariantForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-// @loopInstructionWithoutVariantAST reference class
-//----------------------------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_loopInstructionWithoutVariantAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mFirstInstructions.printNonNullClassInstanceProperties ("mFirstInstructions") ;
-    mProperty_mEndOfFirstInstructions.printNonNullClassInstanceProperties ("mEndOfFirstInstructions") ;
-    mProperty_mLoopExpression.printNonNullClassInstanceProperties ("mLoopExpression") ;
-    mProperty_mEndOfLoopExpression.printNonNullClassInstanceProperties ("mEndOfLoopExpression") ;
-    mProperty_mSecondInstructions.printNonNullClassInstanceProperties ("mSecondInstructions") ;
-    mProperty_mEndOfSecondInstructions.printNonNullClassInstanceProperties ("mEndOfSecondInstructions") ;
-    mProperty_mEndOfLoopInstruction.printNonNullClassInstanceProperties ("mEndOfLoopInstruction") ;
-  }
-#endif
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult cPtr_loopInstructionWithoutVariantAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_loopInstructionWithoutVariantAST * p = (const cPtr_loopInstructionWithoutVariantAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mInstructionLocation.objectCompare (p->mProperty_mInstructionLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mFirstInstructions.objectCompare (p->mProperty_mFirstInstructions) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mEndOfFirstInstructions.objectCompare (p->mProperty_mEndOfFirstInstructions) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLoopExpression.objectCompare (p->mProperty_mLoopExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mEndOfLoopExpression.objectCompare (p->mProperty_mEndOfLoopExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mSecondInstructions.objectCompare (p->mProperty_mSecondInstructions) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mEndOfSecondInstructions.objectCompare (p->mProperty_mEndOfSecondInstructions) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mEndOfLoopInstruction.objectCompare (p->mProperty_mEndOfLoopInstruction) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-typeComparisonResult GALGAS_loopInstructionWithoutVariantAST::objectCompare (const GALGAS_loopInstructionWithoutVariantAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_loopInstructionWithoutVariantAST::GALGAS_loopInstructionWithoutVariantAST (void) :
-GALGAS_semanticInstructionAST () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_loopInstructionWithoutVariantAST::GALGAS_loopInstructionWithoutVariantAST (const cPtr_loopInstructionWithoutVariantAST * inSourcePtr) :
-GALGAS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_loopInstructionWithoutVariantAST) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_loopInstructionWithoutVariantAST GALGAS_loopInstructionWithoutVariantAST::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                  const GALGAS_semanticInstructionListAST & inAttribute_mFirstInstructions,
-                                                                                                  const GALGAS_location & inAttribute_mEndOfFirstInstructions,
-                                                                                                  const GALGAS_semanticExpressionAST & inAttribute_mLoopExpression,
-                                                                                                  const GALGAS_location & inAttribute_mEndOfLoopExpression,
-                                                                                                  const GALGAS_semanticInstructionListAST & inAttribute_mSecondInstructions,
-                                                                                                  const GALGAS_location & inAttribute_mEndOfSecondInstructions,
-                                                                                                  const GALGAS_location & inAttribute_mEndOfLoopInstruction
-                                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_loopInstructionWithoutVariantAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mFirstInstructions.isValid () && inAttribute_mEndOfFirstInstructions.isValid () && inAttribute_mLoopExpression.isValid () && inAttribute_mEndOfLoopExpression.isValid () && inAttribute_mSecondInstructions.isValid () && inAttribute_mEndOfSecondInstructions.isValid () && inAttribute_mEndOfLoopInstruction.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_loopInstructionWithoutVariantAST (inAttribute_mInstructionLocation, inAttribute_mFirstInstructions, inAttribute_mEndOfFirstInstructions, inAttribute_mLoopExpression, inAttribute_mEndOfLoopExpression, inAttribute_mSecondInstructions, inAttribute_mEndOfSecondInstructions, inAttribute_mEndOfLoopInstruction COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_loopInstructionWithoutVariantAST::setter_setMFirstInstructions (GALGAS_semanticInstructionListAST inValue
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    p->mProperty_mFirstInstructions = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_loopInstructionWithoutVariantAST::setter_setMEndOfFirstInstructions (GALGAS_location inValue
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    p->mProperty_mEndOfFirstInstructions = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_loopInstructionWithoutVariantAST::setter_setMLoopExpression (GALGAS_semanticExpressionAST inValue
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    p->mProperty_mLoopExpression = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_loopInstructionWithoutVariantAST::setter_setMEndOfLoopExpression (GALGAS_location inValue
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    p->mProperty_mEndOfLoopExpression = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_loopInstructionWithoutVariantAST::setter_setMSecondInstructions (GALGAS_semanticInstructionListAST inValue
-                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    p->mProperty_mSecondInstructions = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_loopInstructionWithoutVariantAST::setter_setMEndOfSecondInstructions (GALGAS_location inValue
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    p->mProperty_mEndOfSecondInstructions = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_loopInstructionWithoutVariantAST::setter_setMEndOfLoopInstruction (GALGAS_location inValue
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    p->mProperty_mEndOfLoopInstruction = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_semanticInstructionListAST GALGAS_loopInstructionWithoutVariantAST::readProperty_mFirstInstructions (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_semanticInstructionListAST () ;
-  }else{
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    return p->mProperty_mFirstInstructions ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_loopInstructionWithoutVariantAST::readProperty_mEndOfFirstInstructions (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_location () ;
-  }else{
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    return p->mProperty_mEndOfFirstInstructions ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_semanticExpressionAST GALGAS_loopInstructionWithoutVariantAST::readProperty_mLoopExpression (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_semanticExpressionAST () ;
-  }else{
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    return p->mProperty_mLoopExpression ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_loopInstructionWithoutVariantAST::readProperty_mEndOfLoopExpression (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_location () ;
-  }else{
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    return p->mProperty_mEndOfLoopExpression ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_semanticInstructionListAST GALGAS_loopInstructionWithoutVariantAST::readProperty_mSecondInstructions (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_semanticInstructionListAST () ;
-  }else{
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    return p->mProperty_mSecondInstructions ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_loopInstructionWithoutVariantAST::readProperty_mEndOfSecondInstructions (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_location () ;
-  }else{
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    return p->mProperty_mEndOfSecondInstructions ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_loopInstructionWithoutVariantAST::readProperty_mEndOfLoopInstruction (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_location () ;
-  }else{
-    cPtr_loopInstructionWithoutVariantAST * p = (cPtr_loopInstructionWithoutVariantAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_loopInstructionWithoutVariantAST) ;
-    return p->mProperty_mEndOfLoopInstruction ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//Pointer class for @loopInstructionWithoutVariantAST class
-//----------------------------------------------------------------------------------------------------------------------
-
-cPtr_loopInstructionWithoutVariantAST::cPtr_loopInstructionWithoutVariantAST (const GALGAS_location & in_mInstructionLocation,
-                                                                              const GALGAS_semanticInstructionListAST & in_mFirstInstructions,
-                                                                              const GALGAS_location & in_mEndOfFirstInstructions,
-                                                                              const GALGAS_semanticExpressionAST & in_mLoopExpression,
-                                                                              const GALGAS_location & in_mEndOfLoopExpression,
-                                                                              const GALGAS_semanticInstructionListAST & in_mSecondInstructions,
-                                                                              const GALGAS_location & in_mEndOfSecondInstructions,
-                                                                              const GALGAS_location & in_mEndOfLoopInstruction
-                                                                              COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
-mProperty_mFirstInstructions (in_mFirstInstructions),
-mProperty_mEndOfFirstInstructions (in_mEndOfFirstInstructions),
-mProperty_mLoopExpression (in_mLoopExpression),
-mProperty_mEndOfLoopExpression (in_mEndOfLoopExpression),
-mProperty_mSecondInstructions (in_mSecondInstructions),
-mProperty_mEndOfSecondInstructions (in_mEndOfSecondInstructions),
-mProperty_mEndOfLoopInstruction (in_mEndOfLoopInstruction) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_loopInstructionWithoutVariantAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_loopInstructionWithoutVariantAST ;
-}
-
-void cPtr_loopInstructionWithoutVariantAST::description (C_String & ioString,
-                                                         const int32_t inIndentation) const {
-  ioString << "[@loopInstructionWithoutVariantAST:" ;
-  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mFirstInstructions.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mEndOfFirstInstructions.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLoopExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mEndOfLoopExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mSecondInstructions.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mEndOfSecondInstructions.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mEndOfLoopInstruction.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_loopInstructionWithoutVariantAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_loopInstructionWithoutVariantAST (mProperty_mInstructionLocation, mProperty_mFirstInstructions, mProperty_mEndOfFirstInstructions, mProperty_mLoopExpression, mProperty_mEndOfLoopExpression, mProperty_mSecondInstructions, mProperty_mEndOfSecondInstructions, mProperty_mEndOfLoopInstruction COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@loopInstructionWithoutVariantAST type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_loopInstructionWithoutVariantAST ("loopInstructionWithoutVariantAST",
-                                                         & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_loopInstructionWithoutVariantAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_loopInstructionWithoutVariantAST ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_loopInstructionWithoutVariantAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_loopInstructionWithoutVariantAST (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_loopInstructionWithoutVariantAST GALGAS_loopInstructionWithoutVariantAST::extractObject (const GALGAS_object & inObject,
-                                                                                                C_Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_loopInstructionWithoutVariantAST result ;
-  const GALGAS_loopInstructionWithoutVariantAST * p = (const GALGAS_loopInstructionWithoutVariantAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_loopInstructionWithoutVariantAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("loopInstructionWithoutVariantAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -320,7 +320,7 @@ void GALGAS_XcodeProjectDescriptor::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@XcodeProjectDescriptor type
+//     @XcodeProjectDescriptor generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1154,7 +1154,7 @@ void GALGAS_templateExpressionListAST_2D_element::description (C_String & ioStri
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateExpressionListAST-element type
+//     @templateExpressionListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1270,7 +1270,7 @@ void GALGAS_templateInstructionIfBranchListForGeneration_2D_element::description
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionIfBranchListForGeneration-element type
+//     @templateInstructionIfBranchListForGeneration-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1396,7 +1396,7 @@ void GALGAS_templateVariableMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateVariableMap-element type
+//     @templateVariableMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1530,7 +1530,7 @@ void GALGAS_templateDelimitorListAST_2D_element::description (C_String & ioStrin
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateDelimitorListAST-element type
+//     @templateDelimitorListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1664,7 +1664,7 @@ void GALGAS_templateReplacementListAST_2D_element::description (C_String & ioStr
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateReplacementListAST-element type
+//     @templateReplacementListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1787,7 +1787,7 @@ void GALGAS_lexicalMessageDeclarationListAST_2D_element::description (C_String &
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalMessageDeclarationListAST-element type
+//     @lexicalMessageDeclarationListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1910,7 +1910,7 @@ void GALGAS_lexicalAttributeListAST_2D_element::description (C_String & ioString
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalAttributeListAST-element type
+//     @lexicalAttributeListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2033,7 +2033,7 @@ void GALGAS_lexicalStyleListAST_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalStyleListAST-element type
+//     @lexicalStyleListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2189,7 +2189,7 @@ void GALGAS_terminalDeclarationListAST_2D_element::description (C_String & ioStr
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@terminalDeclarationListAST-element type
+//     @terminalDeclarationListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2323,7 +2323,7 @@ void GALGAS_lexicalListEntryListAST_2D_element::description (C_String & ioString
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalListEntryListAST-element type
+//     @lexicalListEntryListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2446,7 +2446,7 @@ void GALGAS_sentLexicalAttributeListAST_2D_element::description (C_String & ioSt
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@sentLexicalAttributeListAST-element type
+//     @sentLexicalAttributeListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2602,7 +2602,7 @@ void GALGAS_lexicalListDeclarationListAST_2D_element::description (C_String & io
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalListDeclarationListAST-element type
+//     @lexicalListDeclarationListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2725,7 +2725,7 @@ void GALGAS_lexicalSendSearchListAST_2D_element::description (C_String & ioStrin
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalSendSearchListAST-element type
+//     @lexicalSendSearchListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2848,7 +2848,7 @@ void GALGAS_indexingListAST_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@indexingListAST-element type
+//     @indexingListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2974,7 +2974,7 @@ void GALGAS_lexicalSentValueList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalSentValueList-element type
+//     @lexicalSentValueList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3097,7 +3097,7 @@ void GALGAS_terminalMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@terminalMap-element type
+//     @terminalMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3213,7 +3213,7 @@ void GALGAS_lexicalTypeMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalTypeMap-element type
+//     @lexicalTypeMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3329,7 +3329,7 @@ void GALGAS_lexicalAttributeMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalAttributeMap-element type
+//     @lexicalAttributeMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3496,7 +3496,7 @@ void GALGAS_terminalList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@terminalList-element type
+//     @terminalList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3630,7 +3630,7 @@ void GALGAS_lexicalExplicitTokenListMap_2D_element::description (C_String & ioSt
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalExplicitTokenListMap-element type
+//     @lexicalExplicitTokenListMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3775,7 +3775,7 @@ void GALGAS_lexicalExplicitTokenListMapMap_2D_element::description (C_String & i
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalExplicitTokenListMapMap-element type
+//     @lexicalExplicitTokenListMapMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3909,7 +3909,7 @@ void GALGAS_lexicalMessageMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalMessageMap-element type
+//     @lexicalMessageMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4054,7 +4054,7 @@ void GALGAS_lexicalRoutineMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalRoutineMap-element type
+//     @lexicalRoutineMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4200,7 +4200,7 @@ void GALGAS_lexicalFunctionMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalFunctionMap-element type
+//     @lexicalFunctionMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4334,7 +4334,7 @@ void GALGAS_templateDelimitorList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateDelimitorList-element type
+//     @templateDelimitorList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4468,7 +4468,7 @@ void GALGAS_styleMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@styleMap-element type
+//     @styleMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4580,7 +4580,7 @@ void GALGAS_lexicalTagMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalTagMap-element type
+//     @lexicalTagMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4746,7 +4746,7 @@ void GALGAS_commandLineOptionListAST_2D_element::description (C_String & ioStrin
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@commandLineOptionListAST-element type
+//     @commandLineOptionListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4902,7 +4902,7 @@ void GALGAS_commandLineOptionMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@commandLineOptionMap-element type
+//     @commandLineOptionMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5025,7 +5025,7 @@ void GALGAS_guiSimpleAttributeListAST_2D_element::description (C_String & ioStri
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@guiSimpleAttributeListAST-element type
+//     @guiSimpleAttributeListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5159,7 +5159,7 @@ void GALGAS_guiCompoundAttributeListAST_2D_element::description (C_String & ioSt
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@guiCompoundAttributeListAST-element type
+//     @guiCompoundAttributeListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5282,7 +5282,7 @@ void GALGAS_terminalLabelListAST_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@terminalLabelListAST-element type
+//     @terminalLabelListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5427,7 +5427,7 @@ void GALGAS_withLexiqueListAST_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@withLexiqueListAST-element type
+//     @withLexiqueListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5561,7 +5561,7 @@ void GALGAS_extensionMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionMap-element type
+//     @extensionMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5706,7 +5706,7 @@ void GALGAS_galgas_33_GUIComponentListAST_2D_element::description (C_String & io
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@galgas3GUIComponentListAST-element type
+//     @galgas3GUIComponentListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5829,7 +5829,7 @@ void GALGAS_optionComponentMapForGeneration_2D_element::description (C_String & 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@optionComponentMapForGeneration-element type
+//     @optionComponentMapForGeneration-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5952,7 +5952,7 @@ void GALGAS_enumConstantList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@enumConstantList-element type
+//     @enumConstantList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6086,7 +6086,7 @@ void GALGAS_typeNameFormalParameterNameList_2D_element::description (C_String & 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeNameFormalParameterNameList-element type
+//     @typeNameFormalParameterNameList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6220,7 +6220,7 @@ void GALGAS_externTypeConstructorList_2D_element::description (C_String & ioStri
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@externTypeConstructorList-element type
+//     @externTypeConstructorList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6354,7 +6354,7 @@ void GALGAS_externTypeGetterList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@externTypeGetterList-element type
+//     @externTypeGetterList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6477,7 +6477,7 @@ void GALGAS_externTypeSetterList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@externTypeSetterList-element type
+//     @externTypeSetterList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6611,7 +6611,7 @@ void GALGAS_externTypeMethodList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@externTypeMethodList-element type
+//     @externTypeMethodList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6734,7 +6734,7 @@ void GALGAS_graphInsertModifierList_2D_element::description (C_String & ioString
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@graphInsertModifierList-element type
+//     @graphInsertModifierList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6868,7 +6868,7 @@ void GALGAS_insertMethodListAST_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@insertMethodListAST-element type
+//     @insertMethodListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7002,7 +7002,7 @@ void GALGAS_mapSearchMethodListAST_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@mapSearchMethodListAST-element type
+//     @mapSearchMethodListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7125,7 +7125,7 @@ void GALGAS_mapRemoveMethodListAST_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@mapRemoveMethodListAST-element type
+//     @mapRemoveMethodListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7237,7 +7237,7 @@ void GALGAS_insertMethodMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@insertMethodMap-element type
+//     @insertMethodMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7349,7 +7349,7 @@ void GALGAS_searchMethodMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@searchMethodMap-element type
+//     @searchMethodMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7472,7 +7472,7 @@ void GALGAS_sortedListSortDescriptorListAST_2D_element::description (C_String & 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@sortedListSortDescriptorListAST-element type
+//     @sortedListSortDescriptorListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7618,7 +7618,7 @@ void GALGAS_formalParameterListAST_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formalParameterListAST-element type
+//     @formalParameterListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7774,7 +7774,7 @@ void GALGAS_formalInputParameterListAST_2D_element::description (C_String & ioSt
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formalInputParameterListAST-element type
+//     @formalInputParameterListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7890,7 +7890,7 @@ void GALGAS_actualInputParameterListAST_2D_element::description (C_String & ioSt
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@actualInputParameterListAST-element type
+//     @actualInputParameterListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7935,7 +7935,7 @@ GALGAS_actualInputParameterListAST_2D_element GALGAS_actualInputParameterListAST
 
 GALGAS_propertyInCollectionListAST_2D_element::GALGAS_propertyInCollectionListAST_2D_element (void) :
 mProperty_isConstant (),
-mProperty_mPropertyQualifiedTypeAST (),
+mProperty_mPropertyTypeName (),
 mProperty_mPropertyName (),
 mProperty_mIsPublic (),
 mProperty_mAttributeList (),
@@ -7950,13 +7950,13 @@ GALGAS_propertyInCollectionListAST_2D_element::~ GALGAS_propertyInCollectionList
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_propertyInCollectionListAST_2D_element::GALGAS_propertyInCollectionListAST_2D_element (const GALGAS_bool & inOperand0,
-                                                                                              const GALGAS_QualifiedTypeAST & inOperand1,
+                                                                                              const GALGAS_lstring & inOperand1,
                                                                                               const GALGAS_lstring & inOperand2,
                                                                                               const GALGAS_bool & inOperand3,
                                                                                               const GALGAS_lstringlist & inOperand4,
                                                                                               const GALGAS_propertyInCollectionInitializationAST & inOperand5) :
 mProperty_isConstant (inOperand0),
-mProperty_mPropertyQualifiedTypeAST (inOperand1),
+mProperty_mPropertyTypeName (inOperand1),
 mProperty_mPropertyName (inOperand2),
 mProperty_mIsPublic (inOperand3),
 mProperty_mAttributeList (inOperand4),
@@ -7966,15 +7966,15 @@ mProperty_mInitialization (inOperand5) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_propertyInCollectionListAST_2D_element GALGAS_propertyInCollectionListAST_2D_element::constructor_new (const GALGAS_bool & in_isConstant,
-                                                                                                              const GALGAS_QualifiedTypeAST & in_mPropertyQualifiedTypeAST,
+                                                                                                              const GALGAS_lstring & in_mPropertyTypeName,
                                                                                                               const GALGAS_lstring & in_mPropertyName,
                                                                                                               const GALGAS_bool & in_mIsPublic,
                                                                                                               const GALGAS_lstringlist & in_mAttributeList,
                                                                                                               const GALGAS_propertyInCollectionInitializationAST & in_mInitialization 
                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_propertyInCollectionListAST_2D_element result ;
-  if (in_isConstant.isValid () && in_mPropertyQualifiedTypeAST.isValid () && in_mPropertyName.isValid () && in_mIsPublic.isValid () && in_mAttributeList.isValid () && in_mInitialization.isValid ()) {
-    result = GALGAS_propertyInCollectionListAST_2D_element (in_isConstant, in_mPropertyQualifiedTypeAST, in_mPropertyName, in_mIsPublic, in_mAttributeList, in_mInitialization) ;
+  if (in_isConstant.isValid () && in_mPropertyTypeName.isValid () && in_mPropertyName.isValid () && in_mIsPublic.isValid () && in_mAttributeList.isValid () && in_mInitialization.isValid ()) {
+    result = GALGAS_propertyInCollectionListAST_2D_element (in_isConstant, in_mPropertyTypeName, in_mPropertyName, in_mIsPublic, in_mAttributeList, in_mInitialization) ;
   }
   return result ;
 }
@@ -7987,7 +7987,7 @@ typeComparisonResult GALGAS_propertyInCollectionListAST_2D_element::objectCompar
     result = mProperty_isConstant.objectCompare (inOperand.mProperty_isConstant) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mPropertyQualifiedTypeAST.objectCompare (inOperand.mProperty_mPropertyQualifiedTypeAST) ;
+    result = mProperty_mPropertyTypeName.objectCompare (inOperand.mProperty_mPropertyTypeName) ;
   }
   if (result == kOperandEqual) {
     result = mProperty_mPropertyName.objectCompare (inOperand.mProperty_mPropertyName) ;
@@ -8007,14 +8007,14 @@ typeComparisonResult GALGAS_propertyInCollectionListAST_2D_element::objectCompar
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_propertyInCollectionListAST_2D_element::isValid (void) const {
-  return mProperty_isConstant.isValid () && mProperty_mPropertyQualifiedTypeAST.isValid () && mProperty_mPropertyName.isValid () && mProperty_mIsPublic.isValid () && mProperty_mAttributeList.isValid () && mProperty_mInitialization.isValid () ;
+  return mProperty_isConstant.isValid () && mProperty_mPropertyTypeName.isValid () && mProperty_mPropertyName.isValid () && mProperty_mIsPublic.isValid () && mProperty_mAttributeList.isValid () && mProperty_mInitialization.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_propertyInCollectionListAST_2D_element::drop (void) {
   mProperty_isConstant.drop () ;
-  mProperty_mPropertyQualifiedTypeAST.drop () ;
+  mProperty_mPropertyTypeName.drop () ;
   mProperty_mPropertyName.drop () ;
   mProperty_mIsPublic.drop () ;
   mProperty_mAttributeList.drop () ;
@@ -8031,7 +8031,7 @@ void GALGAS_propertyInCollectionListAST_2D_element::description (C_String & ioSt
   }else{
     mProperty_isConstant.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mPropertyQualifiedTypeAST.description (ioString, inIndentation+1) ;
+    mProperty_mPropertyTypeName.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mPropertyName.description (ioString, inIndentation+1) ;
     ioString << ", " ;
@@ -8046,7 +8046,7 @@ void GALGAS_propertyInCollectionListAST_2D_element::description (C_String & ioSt
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@propertyInCollectionListAST-element type
+//     @propertyInCollectionListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8191,7 +8191,7 @@ void GALGAS_formalTemplateInputParameterListAST_2D_element::description (C_Strin
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formalTemplateInputParameterListAST-element type
+//     @formalTemplateInputParameterListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8325,7 +8325,7 @@ void GALGAS_filewrapperTemplateListAST_2D_element::description (C_String & ioStr
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@filewrapperTemplateListAST-element type
+//     @filewrapperTemplateListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8459,7 +8459,7 @@ void GALGAS_nonTerminalLabelListAST_2D_element::description (C_String & ioString
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@nonTerminalLabelListAST-element type
+//     @nonTerminalLabelListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8582,7 +8582,7 @@ void GALGAS_nonterminalDeclarationListAST_2D_element::description (C_String & io
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@nonterminalDeclarationListAST-element type
+//     @nonterminalDeclarationListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8738,7 +8738,7 @@ void GALGAS_syntaxRuleLabelListAST_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@syntaxRuleLabelListAST-element type
+//     @syntaxRuleLabelListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8861,7 +8861,7 @@ void GALGAS_syntaxRuleListAST_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@syntaxRuleListAST-element type
+//     @syntaxRuleListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9017,7 +9017,7 @@ void GALGAS_galgas_33_SyntaxComponentListAST_2D_element::description (C_String &
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@galgas3SyntaxComponentListAST-element type
+//     @galgas3SyntaxComponentListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9151,7 +9151,7 @@ void GALGAS_galgas_33_SyntaxExtensionListAST_2D_element::description (C_String &
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@galgas3SyntaxExtensionListAST-element type
+//     @galgas3SyntaxExtensionListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9329,7 +9329,7 @@ void GALGAS_programRuleList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@programRuleList-element type
+//     @programRuleList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9455,7 +9455,7 @@ void GALGAS_functionSignature_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@functionSignature-element type
+//     @functionSignature-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9591,7 +9591,7 @@ void GALGAS_constructorMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@constructorMap-element type
+//     @constructorMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9727,7 +9727,7 @@ void GALGAS_optionalMethodSignature_2D_element::description (C_String & ioString
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@optionalMethodSignature-element type
+//     @optionalMethodSignature-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9850,7 +9850,7 @@ void GALGAS_optionalMethodMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@optionalMethodMap-element type
+//     @optionalMethodMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10026,7 +10026,7 @@ void GALGAS_getterMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@getterMap-element type
+//     @getterMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10162,7 +10162,7 @@ void GALGAS_formalParameterSignature_2D_element::description (C_String & ioStrin
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formalParameterSignature-element type
+//     @formalParameterSignature-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10318,7 +10318,7 @@ void GALGAS_setterMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@setterMap-element type
+//     @setterMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10484,7 +10484,7 @@ void GALGAS_instanceMethodMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@instanceMethodMap-element type
+//     @instanceMethodMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10618,7 +10618,7 @@ void GALGAS_classMethodMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@classMethodMap-element type
+//     @classMethodMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10754,7 +10754,7 @@ void GALGAS_typedPropertyList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typedPropertyList-element type
+//     @typedPropertyList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10890,7 +10890,7 @@ void GALGAS_propertyMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@propertyMap-element type
+//     @propertyMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11024,7 +11024,7 @@ void GALGAS_constantIndexMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@constantIndexMap-element type
+//     @constantIndexMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11147,7 +11147,7 @@ void GALGAS_grammarLabelMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@grammarLabelMap-element type
+//     @grammarLabelMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11292,7 +11292,7 @@ void GALGAS_grammarMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@grammarMap-element type
+//     @grammarMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11426,7 +11426,7 @@ void GALGAS_routineMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@routineMap-element type
+//     @routineMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11562,7 +11562,7 @@ void GALGAS_functionMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@functionMap-element type
+//     @functionMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11718,7 +11718,7 @@ void GALGAS_wrapperFileMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@wrapperFileMap-element type
+//     @wrapperFileMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11863,7 +11863,7 @@ void GALGAS_wrapperDirectoryMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@wrapperDirectoryMap-element type
+//     @wrapperDirectoryMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11997,7 +11997,7 @@ void GALGAS_filewrapperTemplateMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@filewrapperTemplateMap-element type
+//     @filewrapperTemplateMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12175,7 +12175,7 @@ void GALGAS_filewrapperMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@filewrapperMap-element type
+//     @filewrapperMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12342,7 +12342,7 @@ void GALGAS_optionComponentMapForSemanticAnalysis_2D_element::description (C_Str
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@optionComponentMapForSemanticAnalysis-element type
+//     @optionComponentMapForSemanticAnalysis-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12542,7 +12542,7 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::description (C_St
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexiqueComponentMapForSemanticAnalysis-element type
+//     @lexiqueComponentMapForSemanticAnalysis-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12698,7 +12698,7 @@ void GALGAS_syntaxComponentMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@syntaxComponentMap-element type
+//     @syntaxComponentMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12824,7 +12824,7 @@ void GALGAS_extensionMethodMapForType_2D_element::description (C_String & ioStri
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionMethodMapForType-element type
+//     @extensionMethodMapForType-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12947,7 +12947,7 @@ void GALGAS_extensionMethodMapForBuildingContext_2D_element::description (C_Stri
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionMethodMapForBuildingContext-element type
+//     @extensionMethodMapForBuildingContext-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13070,7 +13070,7 @@ void GALGAS_extensionSetterMapForType_2D_element::description (C_String & ioStri
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionSetterMapForType-element type
+//     @extensionSetterMapForType-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13193,7 +13193,7 @@ void GALGAS_extensionSetterMapForBuildingContext_2D_element::description (C_Stri
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionSetterMapForBuildingContext-element type
+//     @extensionSetterMapForBuildingContext-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13329,7 +13329,7 @@ void GALGAS_extensionGetterMapForType_2D_element::description (C_String & ioStri
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionGetterMapForType-element type
+//     @extensionGetterMapForType-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13452,7 +13452,7 @@ void GALGAS_extensionGetterMapForBuildingContext_2D_element::description (C_Stri
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionGetterMapForBuildingContext-element type
+//     @extensionGetterMapForBuildingContext-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13564,7 +13564,7 @@ void GALGAS_wrapperExtensionMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@wrapperExtensionMap-element type
+//     @wrapperExtensionMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13670,7 +13670,7 @@ void GALGAS_semanticExpressionListForGeneration_2D_element::description (C_Strin
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticExpressionListForGeneration-element type
+//     @semanticExpressionListForGeneration-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13816,7 +13816,7 @@ void GALGAS_formalParameterListForGeneration_2D_element::description (C_String &
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formalParameterListForGeneration-element type
+//     @formalParameterListForGeneration-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13962,7 +13962,7 @@ void GALGAS_formalInputParameterListForGeneration_2D_element::description (C_Str
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formalInputParameterListForGeneration-element type
+//     @formalInputParameterListForGeneration-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14078,7 +14078,7 @@ void GALGAS_signatureForGrammarAnalysis_2D_element::description (C_String & ioSt
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@signatureForGrammarAnalysis-element type
+//     @signatureForGrammarAnalysis-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14201,7 +14201,7 @@ void GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element::description 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@nonterminalSymbolLabelMapForGrammarAnalysis-element type
+//     @nonterminalSymbolLabelMapForGrammarAnalysis-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14335,7 +14335,7 @@ void GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element::description (C_St
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@nonTerminalSymbolMapForGrammarAnalysis-element type
+//     @nonTerminalSymbolMapForGrammarAnalysis-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14471,7 +14471,7 @@ void GALGAS_localConstantList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@localConstantList-element type
+//     @localConstantList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14597,7 +14597,7 @@ void GALGAS_localInitializedVariableList_2D_element::description (C_String & ioS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@localInitializedVariableList-element type
+//     @localInitializedVariableList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14713,7 +14713,7 @@ void GALGAS_propertyIndexMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@propertyIndexMap-element type
+//     @propertyIndexMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14858,7 +14858,7 @@ void GALGAS_nonterminalLabelMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@nonterminalLabelMap-element type
+//     @nonterminalLabelMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14981,7 +14981,7 @@ void GALGAS_nonterminalMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@nonterminalMap-element type
+//     @nonterminalMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15017,162 +15017,6 @@ GALGAS_nonterminalMap_2D_element GALGAS_nonterminalMap_2D_element::extractObject
       result = *p ;
     }else{
       inCompiler->castError ("nonterminalMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_ruleLabelImplementationList_2D_element::GALGAS_ruleLabelImplementationList_2D_element (void) :
-mProperty_mLabelName (),
-mProperty_mSignatureForGeneration (),
-mProperty_mSignature (),
-mProperty_mEndOfArgumentLocation (),
-mProperty_mInstructionListForGeneration () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_ruleLabelImplementationList_2D_element::~ GALGAS_ruleLabelImplementationList_2D_element (void) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_ruleLabelImplementationList_2D_element::GALGAS_ruleLabelImplementationList_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                              const GALGAS_formalParameterListForGeneration & inOperand1,
-                                                                                              const GALGAS_formalParameterSignature & inOperand2,
-                                                                                              const GALGAS_location & inOperand3,
-                                                                                              const GALGAS_semanticInstructionListForGeneration & inOperand4) :
-mProperty_mLabelName (inOperand0),
-mProperty_mSignatureForGeneration (inOperand1),
-mProperty_mSignature (inOperand2),
-mProperty_mEndOfArgumentLocation (inOperand3),
-mProperty_mInstructionListForGeneration (inOperand4) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_ruleLabelImplementationList_2D_element GALGAS_ruleLabelImplementationList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_ruleLabelImplementationList_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                        GALGAS_formalParameterListForGeneration::constructor_emptyList (HERE),
-                                                        GALGAS_formalParameterSignature::constructor_emptyList (HERE),
-                                                        GALGAS_location::constructor_nowhere (HERE),
-                                                        GALGAS_semanticInstructionListForGeneration::constructor_emptyList (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_ruleLabelImplementationList_2D_element GALGAS_ruleLabelImplementationList_2D_element::constructor_new (const GALGAS_lstring & in_mLabelName,
-                                                                                                              const GALGAS_formalParameterListForGeneration & in_mSignatureForGeneration,
-                                                                                                              const GALGAS_formalParameterSignature & in_mSignature,
-                                                                                                              const GALGAS_location & in_mEndOfArgumentLocation,
-                                                                                                              const GALGAS_semanticInstructionListForGeneration & in_mInstructionListForGeneration 
-                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_ruleLabelImplementationList_2D_element result ;
-  if (in_mLabelName.isValid () && in_mSignatureForGeneration.isValid () && in_mSignature.isValid () && in_mEndOfArgumentLocation.isValid () && in_mInstructionListForGeneration.isValid ()) {
-    result = GALGAS_ruleLabelImplementationList_2D_element (in_mLabelName, in_mSignatureForGeneration, in_mSignature, in_mEndOfArgumentLocation, in_mInstructionListForGeneration) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_ruleLabelImplementationList_2D_element::objectCompare (const GALGAS_ruleLabelImplementationList_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mProperty_mLabelName.objectCompare (inOperand.mProperty_mLabelName) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mSignatureForGeneration.objectCompare (inOperand.mProperty_mSignatureForGeneration) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mSignature.objectCompare (inOperand.mProperty_mSignature) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mEndOfArgumentLocation.objectCompare (inOperand.mProperty_mEndOfArgumentLocation) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mInstructionListForGeneration.objectCompare (inOperand.mProperty_mInstructionListForGeneration) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_ruleLabelImplementationList_2D_element::isValid (void) const {
-  return mProperty_mLabelName.isValid () && mProperty_mSignatureForGeneration.isValid () && mProperty_mSignature.isValid () && mProperty_mEndOfArgumentLocation.isValid () && mProperty_mInstructionListForGeneration.isValid () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_ruleLabelImplementationList_2D_element::drop (void) {
-  mProperty_mLabelName.drop () ;
-  mProperty_mSignatureForGeneration.drop () ;
-  mProperty_mSignature.drop () ;
-  mProperty_mEndOfArgumentLocation.drop () ;
-  mProperty_mInstructionListForGeneration.drop () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_ruleLabelImplementationList_2D_element::description (C_String & ioString,
-                                                                 const int32_t inIndentation) const {
-  ioString << "<struct @ruleLabelImplementationList-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mProperty_mLabelName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mSignatureForGeneration.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mSignature.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mEndOfArgumentLocation.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mInstructionListForGeneration.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@ruleLabelImplementationList-element type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_ruleLabelImplementationList_2D_element ("ruleLabelImplementationList-element",
-                                                               NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_ruleLabelImplementationList_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ruleLabelImplementationList_2D_element ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_ruleLabelImplementationList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_ruleLabelImplementationList_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_ruleLabelImplementationList_2D_element GALGAS_ruleLabelImplementationList_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                            C_Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_ruleLabelImplementationList_2D_element result ;
-  const GALGAS_ruleLabelImplementationList_2D_element * p = (const GALGAS_ruleLabelImplementationList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_ruleLabelImplementationList_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("ruleLabelImplementationList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

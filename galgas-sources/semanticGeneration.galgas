@@ -879,6 +879,12 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@typedPropertyList ALL_PROPERTY_LIST
     ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
     ?@bool HAS_DEFAULT_CONSTRUCTOR
+
+
+#---------- Type alias
+  template typeAliasTypeHeader1 "GALGAS_type_alias.h1.galgasTemplate"
+    ?@string ALIAS_TYPE_IDENTIFIER
+    ?@string REFERENCED_TYPE_IDENTIFIER
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1125,7 +1131,7 @@ override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @s
   let selfTypeDefinition = [self.mSelfTypeEntry  definition]
   result = [filewrapper typeGenerationTemplate.genericTypeImplementation
     !selfTypeDefinition.mTypeName.string
-    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mSelfTypeEntry identifierRepresentation]
     !selfTypeDefinition.mSuperType
     !selfTypeDefinition.mHandledOperatorFlags
   ]

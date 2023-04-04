@@ -8,6 +8,277 @@
 #include "all-declarations-16.h"
 
 //----------------------------------------------------------------------------------------------------------------------
+// @extensionSetterForGeneration reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_extensionSetterForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
+    mProperty_mExtensionSetterName.printNonNullClassInstanceProperties ("mExtensionSetterName") ;
+    mProperty_mImplementedAsFunction.printNonNullClassInstanceProperties ("mImplementedAsFunction") ;
+    mProperty_mExtensionSetterFormalParameterList.printNonNullClassInstanceProperties ("mExtensionSetterFormalParameterList") ;
+    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
+    mProperty_mSemanticInstructionListForGeneration.printNonNullClassInstanceProperties ("mSemanticInstructionListForGeneration") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_extensionSetterForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_extensionSetterForGeneration * p = (const cPtr_extensionSetterForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_extensionSetterForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mHasHeader.objectCompare (p->mProperty_mHasHeader) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mImplementationCppFileName.objectCompare (p->mProperty_mImplementationCppFileName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mReceiverType.objectCompare (p->mProperty_mReceiverType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mExtensionSetterName.objectCompare (p->mProperty_mExtensionSetterName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mImplementedAsFunction.objectCompare (p->mProperty_mImplementedAsFunction) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mExtensionSetterFormalParameterList.objectCompare (p->mProperty_mExtensionSetterFormalParameterList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mTypedAttributeList.objectCompare (p->mProperty_mTypedAttributeList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mSemanticInstructionListForGeneration.objectCompare (p->mProperty_mSemanticInstructionListForGeneration) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_extensionSetterForGeneration::objectCompare (const GALGAS_extensionSetterForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterForGeneration::GALGAS_extensionSetterForGeneration (void) :
+GALGAS_semanticDeclarationWithHeaderForGeneration () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterForGeneration::GALGAS_extensionSetterForGeneration (const cPtr_extensionSetterForGeneration * inSourcePtr) :
+GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionSetterForGeneration) ;
+}
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterForGeneration GALGAS_extensionSetterForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
+                                                                                          const GALGAS_string & inAttribute_mImplementationCppFileName,
+                                                                                          const GALGAS_unifiedTypeMapEntry & inAttribute_mReceiverType,
+                                                                                          const GALGAS_string & inAttribute_mExtensionSetterName,
+                                                                                          const GALGAS_bool & inAttribute_mImplementedAsFunction,
+                                                                                          const GALGAS_formalParameterListForGeneration & inAttribute_mExtensionSetterFormalParameterList,
+                                                                                          const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
+                                                                                          const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_extensionSetterForGeneration result ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mExtensionSetterName.isValid () && inAttribute_mImplementedAsFunction.isValid () && inAttribute_mExtensionSetterFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_extensionSetterForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mExtensionSetterName, inAttribute_mImplementedAsFunction, inAttribute_mExtensionSetterFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMapEntry GALGAS_extensionSetterForGeneration::readProperty_mReceiverType (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_unifiedTypeMapEntry () ;
+  }else{
+    cPtr_extensionSetterForGeneration * p = (cPtr_extensionSetterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionSetterForGeneration) ;
+    return p->mProperty_mReceiverType ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_extensionSetterForGeneration::readProperty_mExtensionSetterName (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_string () ;
+  }else{
+    cPtr_extensionSetterForGeneration * p = (cPtr_extensionSetterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionSetterForGeneration) ;
+    return p->mProperty_mExtensionSetterName ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_extensionSetterForGeneration::readProperty_mImplementedAsFunction (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_bool () ;
+  }else{
+    cPtr_extensionSetterForGeneration * p = (cPtr_extensionSetterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionSetterForGeneration) ;
+    return p->mProperty_mImplementedAsFunction ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_formalParameterListForGeneration GALGAS_extensionSetterForGeneration::readProperty_mExtensionSetterFormalParameterList (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_formalParameterListForGeneration () ;
+  }else{
+    cPtr_extensionSetterForGeneration * p = (cPtr_extensionSetterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionSetterForGeneration) ;
+    return p->mProperty_mExtensionSetterFormalParameterList ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_typedPropertyList GALGAS_extensionSetterForGeneration::readProperty_mTypedAttributeList (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_typedPropertyList () ;
+  }else{
+    cPtr_extensionSetterForGeneration * p = (cPtr_extensionSetterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionSetterForGeneration) ;
+    return p->mProperty_mTypedAttributeList ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_semanticInstructionListForGeneration GALGAS_extensionSetterForGeneration::readProperty_mSemanticInstructionListForGeneration (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_semanticInstructionListForGeneration () ;
+  }else{
+    cPtr_extensionSetterForGeneration * p = (cPtr_extensionSetterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionSetterForGeneration) ;
+    return p->mProperty_mSemanticInstructionListForGeneration ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//Pointer class for @extensionSetterForGeneration class
+//----------------------------------------------------------------------------------------------------------------------
+
+cPtr_extensionSetterForGeneration::cPtr_extensionSetterForGeneration (const GALGAS_bool & in_mHasHeader,
+                                                                      const GALGAS_string & in_mImplementationCppFileName,
+                                                                      const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                      const GALGAS_string & in_mExtensionSetterName,
+                                                                      const GALGAS_bool & in_mImplementedAsFunction,
+                                                                      const GALGAS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
+                                                                      const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                                      const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
+                                                                      COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
+mProperty_mReceiverType (in_mReceiverType),
+mProperty_mExtensionSetterName (in_mExtensionSetterName),
+mProperty_mImplementedAsFunction (in_mImplementedAsFunction),
+mProperty_mExtensionSetterFormalParameterList (in_mExtensionSetterFormalParameterList),
+mProperty_mTypedAttributeList (in_mTypedAttributeList),
+mProperty_mSemanticInstructionListForGeneration (in_mSemanticInstructionListForGeneration) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_extensionSetterForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionSetterForGeneration ;
+}
+
+void cPtr_extensionSetterForGeneration::description (C_String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString << "[@extensionSetterForGeneration:" ;
+  mProperty_mHasHeader.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mReceiverType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mExtensionSetterName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mImplementedAsFunction.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_extensionSetterForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_extensionSetterForGeneration (mProperty_mHasHeader, mProperty_mImplementationCppFileName, mProperty_mReceiverType, mProperty_mExtensionSetterName, mProperty_mImplementedAsFunction, mProperty_mExtensionSetterFormalParameterList, mProperty_mTypedAttributeList, mProperty_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//     @extensionSetterForGeneration generic code implementation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_extensionSetterForGeneration ("extensionSetterForGeneration",
+                                                     & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_extensionSetterForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionSetterForGeneration ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_extensionSetterForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_extensionSetterForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterForGeneration GALGAS_extensionSetterForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_extensionSetterForGeneration result ;
+  const GALGAS_extensionSetterForGeneration * p = (const GALGAS_extensionSetterForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_extensionSetterForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("extensionSetterForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_extensionSetterForGeneration_2D_weak::objectCompare (const GALGAS_extensionSetterForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -77,7 +348,7 @@ GALGAS_extensionSetterForGeneration GALGAS_extensionSetterForGeneration_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionSetterForGeneration-weak type
+//     @extensionSetterForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -310,7 +581,7 @@ acPtr_class * cPtr_overridingAbstractExtensionGetterAST::duplicate (LOCATION_ARG
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overridingAbstractExtensionGetterAST type
+//     @overridingAbstractExtensionGetterAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -554,7 +825,7 @@ acPtr_class * cPtr_overridingAbstractExtensionMethodAST::duplicate (LOCATION_ARG
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overridingAbstractExtensionMethodAST type
+//     @overridingAbstractExtensionMethodAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -765,7 +1036,7 @@ acPtr_class * cPtr_overridingAbstractExtensionSetterAST::duplicate (LOCATION_ARG
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overridingAbstractExtensionSetterAST type
+//     @overridingAbstractExtensionSetterAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1086,7 +1357,7 @@ acPtr_class * cPtr_overridingExtensionGetterAST::duplicate (LOCATION_ARGS) const
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overridingExtensionGetterAST type
+//     @overridingExtensionGetterAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1399,7 +1670,7 @@ acPtr_class * cPtr_overrideExtensionGetterForGeneration::duplicate (LOCATION_ARG
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overrideExtensionGetterForGeneration type
+//     @overrideExtensionGetterForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1510,7 +1781,7 @@ GALGAS_overrideExtensionGetterForGeneration GALGAS_overrideExtensionGetterForGen
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overrideExtensionGetterForGeneration-weak type
+//     @overrideExtensionGetterForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1787,7 +2058,7 @@ acPtr_class * cPtr_overridingExtensionMethodAST::duplicate (LOCATION_ARGS) const
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overridingExtensionMethodAST type
+//     @overridingExtensionMethodAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2058,7 +2329,7 @@ acPtr_class * cPtr_overridingExtensionMethodForGeneration::duplicate (LOCATION_A
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overridingExtensionMethodForGeneration type
+//     @overridingExtensionMethodForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2169,7 +2440,7 @@ GALGAS_overridingExtensionMethodForGeneration GALGAS_overridingExtensionMethodFo
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overridingExtensionMethodForGeneration-weak type
+//     @overridingExtensionMethodForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2446,7 +2717,7 @@ acPtr_class * cPtr_overridingExtensionSetterAST::duplicate (LOCATION_ARGS) const
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overridingExtensionSetterAST type
+//     @overridingExtensionSetterAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2717,7 +2988,7 @@ acPtr_class * cPtr_overridingExtensionSetterForGeneration::duplicate (LOCATION_A
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overridingExtensionSetterForGeneration type
+//     @overridingExtensionSetterForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2828,7 +3099,7 @@ GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterFo
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overridingExtensionSetterForGeneration-weak type
+//     @overridingExtensionSetterForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3055,7 +3326,7 @@ acPtr_class * cPtr_outputActualParameterAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@outputActualParameterAST type
+//     @outputActualParameterAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3291,7 +3562,7 @@ acPtr_class * cPtr_outputInputActualParameterAST::duplicate (LOCATION_ARGS) cons
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@outputInputActualParameterAST type
+//     @outputInputActualParameterAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3461,7 +3732,7 @@ acPtr_class * cPtr_outputInputSingleJokerParameterAST::duplicate (LOCATION_ARGS)
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@outputInputSingleJokerParameterAST type
+//     @outputInputSingleJokerParameterAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3631,7 +3902,7 @@ acPtr_class * cPtr_outputInputSelfParameterAST::duplicate (LOCATION_ARGS) const 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@outputInputSelfParameterAST type
+//     @outputInputSelfParameterAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3867,7 +4138,7 @@ acPtr_class * cPtr_inputActualExistingVariableParameterAST::duplicate (LOCATION_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputActualExistingVariableParameterAST type
+//     @inputActualExistingVariableParameterAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4103,7 +4374,7 @@ acPtr_class * cPtr_inputActualSelfPropertyParameterAST::duplicate (LOCATION_ARGS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputActualSelfPropertyParameterAST type
+//     @inputActualSelfPropertyParameterAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4339,7 +4610,7 @@ acPtr_class * cPtr_inputActualSelfParameterAST::duplicate (LOCATION_ARGS) const 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputActualSelfParameterAST type
+//     @inputActualSelfParameterAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4608,7 +4879,7 @@ acPtr_class * cPtr_inputActualNewVariableParameterAST::duplicate (LOCATION_ARGS)
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputActualNewVariableParameterAST type
+//     @inputActualNewVariableParameterAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4910,7 +5181,7 @@ acPtr_class * cPtr_inputActualNewConstantParameterAST::duplicate (LOCATION_ARGS)
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputActualNewConstantParameterAST type
+//     @inputActualNewConstantParameterAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5113,7 +5384,7 @@ acPtr_class * cPtr_inputSingleJokerActualParameterAST::duplicate (LOCATION_ARGS)
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputSingleJokerActualParameterAST type
+//     @inputSingleJokerActualParameterAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5283,7 +5554,7 @@ acPtr_class * cPtr_inputParameterVariable::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputParameterVariable type
+//     @inputParameterVariable generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5486,7 +5757,7 @@ acPtr_class * cPtr_inputParameterDeclaredVariable::duplicate (LOCATION_ARGS) con
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputParameterDeclaredVariable type
+//     @inputParameterDeclaredVariable generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5689,7 +5960,7 @@ acPtr_class * cPtr_inputParameterDeclaredConstant::duplicate (LOCATION_ARGS) con
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputParameterDeclaredConstant type
+//     @inputParameterDeclaredConstant generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5933,7 +6204,7 @@ acPtr_class * cPtr_externRoutineDeclarationAST::duplicate (LOCATION_ARGS) const 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@externRoutineDeclarationAST type
+//     @externRoutineDeclarationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6168,7 +6439,7 @@ acPtr_class * cPtr_procDeclarationAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@procDeclarationAST type
+//     @procDeclarationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6412,7 +6683,7 @@ acPtr_class * cPtr_externFunctionDeclarationAST::duplicate (LOCATION_ARGS) const
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@externFunctionDeclarationAST type
+//     @externFunctionDeclarationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6746,7 +7017,7 @@ acPtr_class * cPtr_functionDeclarationAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@functionDeclarationAST type
+//     @functionDeclarationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7122,7 +7393,7 @@ acPtr_class * cPtr_onceFunctionDeclarationAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@onceFunctionDeclarationAST type
+//     @onceFunctionDeclarationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7498,7 +7769,7 @@ acPtr_class * cPtr_filewrapperDeclarationAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@filewrapperDeclarationAST type
+//     @filewrapperDeclarationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7808,7 +8079,7 @@ acPtr_class * cPtr_galgas_33_SyntaxComponentAST::duplicate (LOCATION_ARGS) const
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@galgas3SyntaxComponentAST type
+//     @galgas3SyntaxComponentAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8217,7 +8488,7 @@ acPtr_class * cPtr_galgas_33_GrammarComponentAST::duplicate (LOCATION_ARGS) cons
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@galgas3GrammarComponentAST type
+//     @galgas3GrammarComponentAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8480,7 +8751,7 @@ acPtr_class * cPtr_castInExpressionForGeneration::duplicate (LOCATION_ARGS) cons
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@castInExpressionForGeneration type
+//     @castInExpressionForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8650,7 +8921,7 @@ acPtr_class * cPtr_outputActualParameterForGeneration::duplicate (LOCATION_ARGS)
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@outputActualParameterForGeneration type
+//     @outputActualParameterForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8852,7 +9123,7 @@ acPtr_class * cPtr_inputActualParameterForGeneration::duplicate (LOCATION_ARGS) 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputActualParameterForGeneration type
+//     @inputActualParameterForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9236,7 +9507,7 @@ acPtr_class * cPtr_lexiqueDeclarationForGeneration::duplicate (LOCATION_ARGS) co
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexiqueDeclarationForGeneration type
+//     @lexiqueDeclarationForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9347,7 +9618,7 @@ GALGAS_lexiqueDeclarationForGeneration GALGAS_lexiqueDeclarationForGeneration_2D
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexiqueDeclarationForGeneration-weak type
+//     @lexiqueDeclarationForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9797,7 +10068,7 @@ acPtr_class * cPtr_grammarForGeneration::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@grammarForGeneration type
+//     @grammarForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9908,7 +10179,7 @@ GALGAS_grammarForGeneration GALGAS_grammarForGeneration_2D_weak::bang_grammarFor
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@grammarForGeneration-weak type
+//     @grammarForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10127,7 +10398,7 @@ acPtr_class * cPtr_routinePrototypeDeclarationForGeneration::duplicate (LOCATION
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@routinePrototypeDeclarationForGeneration type
+//     @routinePrototypeDeclarationForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10238,7 +10509,7 @@ GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarati
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@routinePrototypeDeclarationForGeneration-weak type
+//     @routinePrototypeDeclarationForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10473,7 +10744,7 @@ acPtr_class * cPtr_routineImplementationForGeneration::duplicate (LOCATION_ARGS)
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@routineImplementationForGeneration type
+//     @routineImplementationForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10584,7 +10855,7 @@ GALGAS_routineImplementationForGeneration GALGAS_routineImplementationForGenerat
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@routineImplementationForGeneration-weak type
+//     @routineImplementationForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10825,7 +11096,7 @@ acPtr_class * cPtr_functionPrototypeDeclarationForGeneration::duplicate (LOCATIO
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@functionPrototypeDeclarationForGeneration type
+//     @functionPrototypeDeclarationForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10936,7 +11207,7 @@ GALGAS_functionPrototypeDeclarationForGeneration GALGAS_functionPrototypeDeclara
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@functionPrototypeDeclarationForGeneration-weak type
+//     @functionPrototypeDeclarationForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11166,7 +11437,7 @@ acPtr_class * cPtr_functionImplementationForGeneration::duplicate (LOCATION_ARGS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@functionImplementationForGeneration type
+//     @functionImplementationForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11277,7 +11548,7 @@ GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGener
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@functionImplementationForGeneration-weak type
+//     @functionImplementationForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11550,7 +11821,7 @@ acPtr_class * cPtr_onceFunctionDeclarationForGeneration::duplicate (LOCATION_ARG
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@onceFunctionDeclarationForGeneration type
+//     @onceFunctionDeclarationForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11661,7 +11932,7 @@ GALGAS_onceFunctionDeclarationForGeneration GALGAS_onceFunctionDeclarationForGen
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@onceFunctionDeclarationForGeneration-weak type
+//     @onceFunctionDeclarationForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11863,7 +12134,7 @@ acPtr_class * cPtr_primitiveTypeForGeneration::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@primitiveTypeForGeneration type
+//     @primitiveTypeForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11974,7 +12245,7 @@ GALGAS_primitiveTypeForGeneration GALGAS_primitiveTypeForGeneration_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@primitiveTypeForGeneration-weak type
+//     @primitiveTypeForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12292,7 +12563,7 @@ acPtr_class * cPtr_filewrapperDeclarationForGeneration::duplicate (LOCATION_ARGS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@filewrapperDeclarationForGeneration type
+//     @filewrapperDeclarationForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12403,7 +12674,7 @@ GALGAS_filewrapperDeclarationForGeneration GALGAS_filewrapperDeclarationForGener
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@filewrapperDeclarationForGeneration-weak type
+//     @filewrapperDeclarationForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12622,7 +12893,7 @@ acPtr_class * cPtr_programComponentForGeneration::duplicate (LOCATION_ARGS) cons
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@programComponentForGeneration type
+//     @programComponentForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12733,7 +13004,7 @@ GALGAS_programComponentForGeneration GALGAS_programComponentForGeneration_2D_wea
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@programComponentForGeneration-weak type
+//     @programComponentForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12878,7 +13149,7 @@ void GALGAS_localVarManager::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@localVarManager type
+//     @localVarManager generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13765,7 +14036,7 @@ void GALGAS_unifiedTypeDefinition::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@unifiedTypeDefinition type
+//     @unifiedTypeDefinition generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13801,486 +14072,6 @@ GALGAS_unifiedTypeDefinition GALGAS_unifiedTypeDefinition::extractObject (const 
       result = *p ;
     }else{
       inCompiler->castError ("unifiedTypeDefinition", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@unifiedTypeMap unsolvedEntryList'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lstringlist extensionGetter_unsolvedEntryList (const GALGAS_unifiedTypeMap & inObject,
-                                                      C_Compiler *
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_lstringlist result_result ; // Returned variable
-  result_result = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("unified-type-map.galgas", 19)) ;
-  const GALGAS_unifiedTypeMap temp_0 = inObject ;
-  cEnumerator_unifiedTypeMap enumerator_1193 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_1193.hasCurrentObject ()) {
-    enumGalgasBool test_1 = kBoolTrue ;
-    if (kBoolTrue == test_1) {
-      test_1 = enumerator_1193.current_mElement (HERE).readProperty_mDefinition ().getter_isUnsolved (SOURCE_FILE ("unified-type-map.galgas", 21)).boolEnum () ;
-      if (kBoolTrue == test_1) {
-        result_result.addAssign_operation (enumerator_1193.current_lkey (HERE)  COMMA_SOURCE_FILE ("unified-type-map.galgas", 22)) ;
-      }
-    }
-    enumerator_1193.gotoNextObject () ;
-  }
-//---
-  return result_result ;
-}
-
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
-// @unifiedTypeMapElementClass reference class
-//----------------------------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_unifiedTypeMapElementClass::printNonNullClassInstanceProperties (void) const {
-    acStrongPtr_class::printNonNullClassInstanceProperties () ;
-    mProperty_mDefinition.printNonNullClassInstanceProperties ("mDefinition") ;
-  }
-#endif
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult cPtr_unifiedTypeMapElementClass::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_unifiedTypeMapElementClass * p = (const cPtr_unifiedTypeMapElementClass *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_unifiedTypeMapElementClass) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mDefinition.objectCompare (p->mProperty_mDefinition) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-typeComparisonResult GALGAS_unifiedTypeMapElementClass::objectCompare (const GALGAS_unifiedTypeMapElementClass & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeMapElementClass::GALGAS_unifiedTypeMapElementClass (void) :
-AC_GALGAS_reference_class () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeMapElementClass::GALGAS_unifiedTypeMapElementClass (const cPtr_unifiedTypeMapElementClass * inSourcePtr) :
-AC_GALGAS_reference_class (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_unifiedTypeMapElementClass) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeMapElementClass GALGAS_unifiedTypeMapElementClass::constructor_new (const GALGAS_typeDefinition & inAttribute_mDefinition
-                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapElementClass result ;
-  if (inAttribute_mDefinition.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_unifiedTypeMapElementClass (inAttribute_mDefinition COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_unifiedTypeMapElementClass::setter_setMDefinition (GALGAS_typeDefinition inValue
-                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_unifiedTypeMapElementClass * p = (cPtr_unifiedTypeMapElementClass *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_unifiedTypeMapElementClass) ;
-    p->mProperty_mDefinition = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_typeDefinition GALGAS_unifiedTypeMapElementClass::readProperty_mDefinition (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_typeDefinition () ;
-  }else{
-    cPtr_unifiedTypeMapElementClass * p = (cPtr_unifiedTypeMapElementClass *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_unifiedTypeMapElementClass) ;
-    return p->mProperty_mDefinition ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//Pointer class for @unifiedTypeMapElementClass class
-//----------------------------------------------------------------------------------------------------------------------
-
-cPtr_unifiedTypeMapElementClass::cPtr_unifiedTypeMapElementClass (const GALGAS_typeDefinition & in_mDefinition
-                                                                  COMMA_LOCATION_ARGS) :
-acStrongPtr_class (THERE),
-mProperty_mDefinition (in_mDefinition) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_unifiedTypeMapElementClass::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_unifiedTypeMapElementClass ;
-}
-
-void cPtr_unifiedTypeMapElementClass::description (C_String & ioString,
-                                                   const int32_t inIndentation) const {
-  ioString << "[@unifiedTypeMapElementClass:" ;
-  mProperty_mDefinition.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_unifiedTypeMapElementClass::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_unifiedTypeMapElementClass (mProperty_mDefinition COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@unifiedTypeMapElementClass type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_unifiedTypeMapElementClass ("unifiedTypeMapElementClass",
-                                                   NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_unifiedTypeMapElementClass::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_unifiedTypeMapElementClass ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_unifiedTypeMapElementClass::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_unifiedTypeMapElementClass (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeMapElementClass GALGAS_unifiedTypeMapElementClass::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapElementClass result ;
-  const GALGAS_unifiedTypeMapElementClass * p = (const GALGAS_unifiedTypeMapElementClass *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_unifiedTypeMapElementClass *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("unifiedTypeMapElementClass", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapElementClass definition'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeDefinition cPtr_unifiedTypeMapElementClass::getter_definition (C_Compiler * inCompiler
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeDefinition result_result ; // Returned variable
-  const GALGAS_unifiedTypeMapElementClass temp_0 = this ;
-  switch (temp_0.readProperty_mDefinition ().enumValue ()) {
-  case GALGAS_typeDefinition::kNotBuilt:
-    break ;
-  case GALGAS_typeDefinition::kEnum_unsolved:
-    {
-      TC_Array <C_FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (GALGAS_location::constructor_nowhere (SOURCE_FILE ("unified-type-map.galgas", 136)), GALGAS_string ("unsolved type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 136)) ;
-      result_result.drop () ; // Release error dropped variable
-    }
-    break ;
-  case GALGAS_typeDefinition::kEnum_solved:
-    {
-      const cEnumAssociatedValues_typeDefinition_solved * extractPtr_5773 = (const cEnumAssociatedValues_typeDefinition_solved *) (temp_0.readProperty_mDefinition ().unsafePointer ()) ;
-      const GALGAS_unifiedTypeDefinition extractedValue_5746_definition = extractPtr_5773->mAssociatedValue0 ;
-      result_result = extractedValue_5746_definition ;
-    }
-    break ;
-  }
-//---
-  return result_result ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeDefinition callExtensionGetter_definition (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  GALGAS_unifiedTypeDefinition result ;
-  if (nullptr != inObject) {
-    result = inObject->getter_definition (inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-// @ifExpressionForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_ifExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mIfExpression.printNonNullClassInstanceProperties ("mIfExpression") ;
-    mProperty_mThenExpression.printNonNullClassInstanceProperties ("mThenExpression") ;
-    mProperty_mElseExpression.printNonNullClassInstanceProperties ("mElseExpression") ;
-  }
-#endif
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult cPtr_ifExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_ifExpressionForGeneration * p = (const cPtr_ifExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_ifExpressionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mIfExpression.objectCompare (p->mProperty_mIfExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mThenExpression.objectCompare (p->mProperty_mThenExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mElseExpression.objectCompare (p->mProperty_mElseExpression) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-typeComparisonResult GALGAS_ifExpressionForGeneration::objectCompare (const GALGAS_ifExpressionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_ifExpressionForGeneration::GALGAS_ifExpressionForGeneration (void) :
-GALGAS_semanticExpressionForGeneration () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_ifExpressionForGeneration::GALGAS_ifExpressionForGeneration (const cPtr_ifExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_ifExpressionForGeneration) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_ifExpressionForGeneration GALGAS_ifExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                    const GALGAS_location & inAttribute_mLocation,
-                                                                                    const GALGAS_semanticExpressionForGeneration & inAttribute_mIfExpression,
-                                                                                    const GALGAS_semanticExpressionForGeneration & inAttribute_mThenExpression,
-                                                                                    const GALGAS_semanticExpressionForGeneration & inAttribute_mElseExpression
-                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_ifExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mIfExpression.isValid () && inAttribute_mThenExpression.isValid () && inAttribute_mElseExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_ifExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mIfExpression, inAttribute_mThenExpression, inAttribute_mElseExpression COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_ifExpressionForGeneration::setter_setMIfExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_ifExpressionForGeneration * p = (cPtr_ifExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_ifExpressionForGeneration) ;
-    p->mProperty_mIfExpression = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_ifExpressionForGeneration::setter_setMThenExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_ifExpressionForGeneration * p = (cPtr_ifExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_ifExpressionForGeneration) ;
-    p->mProperty_mThenExpression = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_ifExpressionForGeneration::setter_setMElseExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_ifExpressionForGeneration * p = (cPtr_ifExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_ifExpressionForGeneration) ;
-    p->mProperty_mElseExpression = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_semanticExpressionForGeneration GALGAS_ifExpressionForGeneration::readProperty_mIfExpression (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_semanticExpressionForGeneration () ;
-  }else{
-    cPtr_ifExpressionForGeneration * p = (cPtr_ifExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_ifExpressionForGeneration) ;
-    return p->mProperty_mIfExpression ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_semanticExpressionForGeneration GALGAS_ifExpressionForGeneration::readProperty_mThenExpression (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_semanticExpressionForGeneration () ;
-  }else{
-    cPtr_ifExpressionForGeneration * p = (cPtr_ifExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_ifExpressionForGeneration) ;
-    return p->mProperty_mThenExpression ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_semanticExpressionForGeneration GALGAS_ifExpressionForGeneration::readProperty_mElseExpression (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_semanticExpressionForGeneration () ;
-  }else{
-    cPtr_ifExpressionForGeneration * p = (cPtr_ifExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_ifExpressionForGeneration) ;
-    return p->mProperty_mElseExpression ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//Pointer class for @ifExpressionForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
-
-cPtr_ifExpressionForGeneration::cPtr_ifExpressionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mResultType,
-                                                                const GALGAS_location & in_mLocation,
-                                                                const GALGAS_semanticExpressionForGeneration & in_mIfExpression,
-                                                                const GALGAS_semanticExpressionForGeneration & in_mThenExpression,
-                                                                const GALGAS_semanticExpressionForGeneration & in_mElseExpression
-                                                                COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mIfExpression (in_mIfExpression),
-mProperty_mThenExpression (in_mThenExpression),
-mProperty_mElseExpression (in_mElseExpression) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_ifExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ifExpressionForGeneration ;
-}
-
-void cPtr_ifExpressionForGeneration::description (C_String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString << "[@ifExpressionForGeneration:" ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mIfExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mThenExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mElseExpression.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_ifExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_ifExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mIfExpression, mProperty_mThenExpression, mProperty_mElseExpression COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@ifExpressionForGeneration type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_ifExpressionForGeneration ("ifExpressionForGeneration",
-                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_ifExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ifExpressionForGeneration ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_ifExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_ifExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_ifExpressionForGeneration GALGAS_ifExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_ifExpressionForGeneration result ;
-  const GALGAS_ifExpressionForGeneration * p = (const GALGAS_ifExpressionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_ifExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("ifExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

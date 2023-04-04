@@ -81,9 +81,8 @@ override method @listDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + self.mListTypeName !self.mListTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for (* qualifiedTypeAST 4*) in self.mPropertyList do
-    let typeName = [qualifiedTypeAST typeName]
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + typeName !typeName.location}]
+  for (* propertyTypeName 4*) in self.mPropertyList do
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + propertyTypeName !propertyTypeName.location}]
   end
 }
 
@@ -100,11 +99,11 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
 {
 #--- Handle attributes
   var @typedPropertyList typedAttributeList = {}
-  for (* qualifiedTypeAST mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
+  for (* propertyTypeName mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
     if [initExpression isSome] then
       error mPropertyName : "property initialization is not handled for a list"
     end
-    [!?ioTypeMap makeEntry  ![qualifiedTypeAST typeName] ?let attributeTypeIndex]
+    [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
     var hasSelector = false
     for (mValue) in mAttributeList do
       if mValue.string == "setter" then
@@ -395,13 +394,13 @@ override method @listDeclarationAST semanticAnalysis
 #---
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (* qualifiedTypeAST mPropertyName mIsPublic mAttributeList initExpression) in self.mPropertyList do
+  for (* propertyTypeName mPropertyName mIsPublic mAttributeList initExpression) in self.mPropertyList do
     if [initExpression isSome] then
       error mPropertyName : "property initialization is not handled for a list"
     end
-    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (![qualifiedTypeAST typeName])
+    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    let t = [ioTypeMap searchKey ![qualifiedTypeAST typeName]]
+    let t = [ioTypeMap searchKey !propertyTypeName]
     let hasSetter = mIsPublic
     var hasSelector = false
     for (mValue) in mAttributeList do

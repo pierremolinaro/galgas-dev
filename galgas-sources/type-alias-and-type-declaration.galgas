@@ -92,7 +92,6 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
     let aliasKey = @lstring.new {!"@" + self.mAliasTypeName !self.mAliasTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !aliasKey !self]
     let referenceKey = @lstring.new {!"@" + self.mDefinedTypeName !self.mDefinedTypeName.location}
-    [!?ioSemanticTypePrecedenceGraph noteNode !referenceKey]
     [!?ioSemanticTypePrecedenceGraph addEdge !aliasKey !referenceKey]
   }
 
@@ -112,7 +111,10 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
       switch weakElement.bang.mDefinition
       case unsolved :
         error self.mDefinedTypeName : "Undefined type"
-      case solved (@unifiedTypeDefinition definition) :
+      case solved (@unifiedTypeDefinition def) :
+        var definition = def
+        definition.mHeaderFileName = "typealias-" + [self.mAliasTypeName fileNameRepresentation]
+        definition.mHeaderKind = .oneHeader
         [!?ioTypeMap insertType !self.mAliasTypeName !definition]
       end
     end
@@ -124,18 +126,60 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
                                     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                     ?let @string unused inProductDirectory
                                     ?let @semanticContext unused inSemanticContext
-                                    ?!@unifiedTypeMap unused ioTypeMap
+                                    ?!@unifiedTypeMap ioTypeMap
                                     ?let @predefinedTypes unused inPredefinedTypes
-                                    ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration  {
+                                    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
   #--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mAliasTypeName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
     let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mDefinedTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
+  #--- Enter type alias declaration
+    let @unifiedTypeMapEntry t = [ioTypeMap searchKey !self.mDefinedTypeName]
+    ioSemanticDeclarationListForGeneration +=
+      !"typealias " + self.mAliasTypeName
+      !@aliasTypeForGeneration.new {![ioTypeMap searchKey !self.mAliasTypeName] !self.mAliasTypeName !t}
   }
 
   #·····················································································································
 
 }
  
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   CODE GENERATION                         
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @aliasTypeForGeneration : @semanticTypeForGeneration {
+  private let @string mAliasTypeName
+  private let @unifiedTypeMapEntry mReferencedType
+
+  #·····················································································································
+
+  override method appendDeclaration1 ?!@stringset ioInclusionSet
+                                     !@string outHeader {
+    [self.mReferencedType addHeaderFileName1 !?ioInclusionSet]
+    outHeader = [filewrapper typeGenerationTemplate.typeAliasTypeHeader1
+      ![self.mAliasTypeName identifierRepresentation]
+      ![self.mReferencedType identifierRepresentation]
+    ]
+  }
+
+  #·····················································································································
+
+  override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
+                                                ?!@stringset unused ioInclusionSet
+                                                !@string outImplementation {
+    outImplementation = ""
+  }
+
+  #·····················································································································
+
+  override getter appendTypeGenericImplementation -> @string {
+    result = ""
+  }
+  
+  #·····················································································································
+
+}
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

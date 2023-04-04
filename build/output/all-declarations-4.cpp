@@ -8,6 +8,488 @@
 #include "all-declarations-4.h"
 
 //----------------------------------------------------------------------------------------------------------------------
+//
+//Class for element of '@sortedListSortDescriptorListAST' list
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cCollectionElement_sortedListSortDescriptorListAST : public cCollectionElement {
+  public: GALGAS_sortedListSortDescriptorListAST_2D_element mObject ;
+
+//--- Constructors
+  public: cCollectionElement_sortedListSortDescriptorListAST (const GALGAS_lstring & in_mSortedAttributeName,
+                                                              const GALGAS_bool & in_mAscending
+                                                              COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_sortedListSortDescriptorListAST (const GALGAS_sortedListSortDescriptorListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public: virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public: virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cCollectionElement_sortedListSortDescriptorListAST::cCollectionElement_sortedListSortDescriptorListAST (const GALGAS_lstring & in_mSortedAttributeName,
+                                                                                                        const GALGAS_bool & in_mAscending
+                                                                                                        COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mSortedAttributeName, in_mAscending) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cCollectionElement_sortedListSortDescriptorListAST::cCollectionElement_sortedListSortDescriptorListAST (const GALGAS_sortedListSortDescriptorListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mSortedAttributeName, inElement.mProperty_mAscending) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool cCollectionElement_sortedListSortDescriptorListAST::isValid (void) const {
+  return true ; // return mObject.isValid () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cCollectionElement * cCollectionElement_sortedListSortDescriptorListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_sortedListSortDescriptorListAST (mObject.mProperty_mSortedAttributeName, mObject.mProperty_mAscending COMMA_HERE)) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cCollectionElement_sortedListSortDescriptorListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mSortedAttributeName" ":" ;
+  mObject.mProperty_mSortedAttributeName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mAscending" ":" ;
+  mObject.mProperty_mAscending.description (ioString, inIndentation) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cCollectionElement_sortedListSortDescriptorListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_sortedListSortDescriptorListAST * operand = (cCollectionElement_sortedListSortDescriptorListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_sortedListSortDescriptorListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_sortedListSortDescriptorListAST::GALGAS_sortedListSortDescriptorListAST (void) :
+AC_GALGAS_list () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_sortedListSortDescriptorListAST::GALGAS_sortedListSortDescriptorListAST (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list (inSharedArray) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_sortedListSortDescriptorListAST GALGAS_sortedListSortDescriptorListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_sortedListSortDescriptorListAST  (capCollectionElementArray ()) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_sortedListSortDescriptorListAST GALGAS_sortedListSortDescriptorListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                                          const GALGAS_bool & inOperand1
+                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_sortedListSortDescriptorListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result = GALGAS_sortedListSortDescriptorListAST (capCollectionElementArray ()) ;
+    capCollectionElement attributes ;
+    GALGAS_sortedListSortDescriptorListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    result.appendObject (attributes) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_sortedListSortDescriptorListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                        const GALGAS_lstring & in_mSortedAttributeName,
+                                                                        const GALGAS_bool & in_mAscending
+                                                                        COMMA_LOCATION_ARGS) {
+  cCollectionElement_sortedListSortDescriptorListAST * p = NULL ;
+  macroMyNew (p, cCollectionElement_sortedListSortDescriptorListAST (in_mSortedAttributeName,
+                                                                     in_mAscending COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_sortedListSortDescriptorListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
+                                                                  const GALGAS_bool & inOperand1
+                                                                  COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid ()) {
+      cCollectionElement * p = NULL ;
+      macroMyNew (p, cCollectionElement_sortedListSortDescriptorListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+      capCollectionElement attributes ;
+      attributes.setPointer (p) ;
+      macroDetachSharedObject (p) ;
+      appendObject (attributes) ;
+    }else{ // Destroy receiver
+      drop () ;
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_sortedListSortDescriptorListAST::setter_append (GALGAS_sortedListSortDescriptorListAST_2D_element inElement,
+                                                            C_Compiler * /* inCompiler */
+                                                            COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    if (inElement.isValid ()) {
+      cCollectionElement * p = NULL ;
+      macroMyNew (p, cCollectionElement_sortedListSortDescriptorListAST (inElement COMMA_THERE)) ;
+      capCollectionElement attributes ;
+      attributes.setPointer (p) ;
+      macroDetachSharedObject (p) ;
+      appendObject (attributes) ;
+    }else{
+      drop () ;
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_sortedListSortDescriptorListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                                   const GALGAS_bool inOperand1,
+                                                                   const GALGAS_uint inInsertionIndex,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+      cCollectionElement * p = NULL ;
+      macroMyNew (p, cCollectionElement_sortedListSortDescriptorListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+      capCollectionElement attributes ;
+      attributes.setPointer (p) ;
+      macroDetachSharedObject (p) ;
+      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+    }else{
+      drop () ;
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_sortedListSortDescriptorListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                                   GALGAS_bool & outOperand1,
+                                                                   const GALGAS_uint inRemoveIndex,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    if (inRemoveIndex.isValid ()) {
+      capCollectionElement attributes ;
+      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+      cCollectionElement_sortedListSortDescriptorListAST * p = (cCollectionElement_sortedListSortDescriptorListAST *) attributes.ptr () ;
+      if (NULL == p) {
+        outOperand0.drop () ;
+        outOperand1.drop () ;
+        drop () ;
+      }else{
+        macroValidSharedObject (p, cCollectionElement_sortedListSortDescriptorListAST) ;
+        outOperand0 = p->mObject.mProperty_mSortedAttributeName ;
+        outOperand1 = p->mObject.mProperty_mAscending ;
+      }
+    }else{
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      drop () ;    
+    }
+  }else{
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_sortedListSortDescriptorListAST::setter_popFirst (GALGAS_lstring & outOperand0,
+                                                              GALGAS_bool & outOperand1,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_sortedListSortDescriptorListAST * p = (cCollectionElement_sortedListSortDescriptorListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_sortedListSortDescriptorListAST) ;
+    outOperand0 = p->mObject.mProperty_mSortedAttributeName ;
+    outOperand1 = p->mObject.mProperty_mAscending ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_sortedListSortDescriptorListAST::setter_popLast (GALGAS_lstring & outOperand0,
+                                                             GALGAS_bool & outOperand1,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_sortedListSortDescriptorListAST * p = (cCollectionElement_sortedListSortDescriptorListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_sortedListSortDescriptorListAST) ;
+    outOperand0 = p->mObject.mProperty_mSortedAttributeName ;
+    outOperand1 = p->mObject.mProperty_mAscending ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_sortedListSortDescriptorListAST::method_first (GALGAS_lstring & outOperand0,
+                                                           GALGAS_bool & outOperand1,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_sortedListSortDescriptorListAST * p = (cCollectionElement_sortedListSortDescriptorListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_sortedListSortDescriptorListAST) ;
+    outOperand0 = p->mObject.mProperty_mSortedAttributeName ;
+    outOperand1 = p->mObject.mProperty_mAscending ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_sortedListSortDescriptorListAST::method_last (GALGAS_lstring & outOperand0,
+                                                          GALGAS_bool & outOperand1,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_sortedListSortDescriptorListAST * p = (cCollectionElement_sortedListSortDescriptorListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_sortedListSortDescriptorListAST) ;
+    outOperand0 = p->mObject.mProperty_mSortedAttributeName ;
+    outOperand1 = p->mObject.mProperty_mAscending ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_sortedListSortDescriptorListAST GALGAS_sortedListSortDescriptorListAST::add_operation (const GALGAS_sortedListSortDescriptorListAST & inOperand,
+                                                                                              C_Compiler * /* inCompiler */
+                                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_sortedListSortDescriptorListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_sortedListSortDescriptorListAST GALGAS_sortedListSortDescriptorListAST::getter_subListWithRange (const GALGAS_range & inRange,
+                                                                                                        C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_sortedListSortDescriptorListAST result = GALGAS_sortedListSortDescriptorListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_sortedListSortDescriptorListAST GALGAS_sortedListSortDescriptorListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                                        C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_sortedListSortDescriptorListAST result = GALGAS_sortedListSortDescriptorListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_sortedListSortDescriptorListAST GALGAS_sortedListSortDescriptorListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                                      C_Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) const {
+  GALGAS_sortedListSortDescriptorListAST result = GALGAS_sortedListSortDescriptorListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_sortedListSortDescriptorListAST::plusAssign_operation (const GALGAS_sortedListSortDescriptorListAST inOperand,
+                                                                   C_Compiler * /* inCompiler */
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_sortedListSortDescriptorListAST::setter_setMSortedAttributeNameAtIndex (GALGAS_lstring inOperand,
+                                                                                    GALGAS_uint inIndex,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  cCollectionElement_sortedListSortDescriptorListAST * p = (cCollectionElement_sortedListSortDescriptorListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_sortedListSortDescriptorListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mSortedAttributeName = inOperand ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_sortedListSortDescriptorListAST::getter_mSortedAttributeNameAtIndex (const GALGAS_uint & inIndex,
+                                                                                           C_Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_sortedListSortDescriptorListAST * p = (cCollectionElement_sortedListSortDescriptorListAST *) attributes.ptr () ;
+  GALGAS_lstring result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_sortedListSortDescriptorListAST) ;
+    result = p->mObject.mProperty_mSortedAttributeName ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_sortedListSortDescriptorListAST::setter_setMAscendingAtIndex (GALGAS_bool inOperand,
+                                                                          GALGAS_uint inIndex,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  cCollectionElement_sortedListSortDescriptorListAST * p = (cCollectionElement_sortedListSortDescriptorListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_sortedListSortDescriptorListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mAscending = inOperand ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_sortedListSortDescriptorListAST::getter_mAscendingAtIndex (const GALGAS_uint & inIndex,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_sortedListSortDescriptorListAST * p = (cCollectionElement_sortedListSortDescriptorListAST *) attributes.ptr () ;
+  GALGAS_bool result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_sortedListSortDescriptorListAST) ;
+    result = p->mObject.mProperty_mAscending ;
+  }
+  return result ;
+}
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cEnumerator_sortedListSortDescriptorListAST::cEnumerator_sortedListSortDescriptorListAST (const GALGAS_sortedListSortDescriptorListAST & inEnumeratedObject,
+                                                                                          const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator (inOrder) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_sortedListSortDescriptorListAST_2D_element cEnumerator_sortedListSortDescriptorListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_sortedListSortDescriptorListAST * p = (const cCollectionElement_sortedListSortDescriptorListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_sortedListSortDescriptorListAST) ;
+  return p->mObject ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lstring cEnumerator_sortedListSortDescriptorListAST::current_mSortedAttributeName (LOCATION_ARGS) const {
+  const cCollectionElement_sortedListSortDescriptorListAST * p = (const cCollectionElement_sortedListSortDescriptorListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_sortedListSortDescriptorListAST) ;
+  return p->mObject.mProperty_mSortedAttributeName ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool cEnumerator_sortedListSortDescriptorListAST::current_mAscending (LOCATION_ARGS) const {
+  const cCollectionElement_sortedListSortDescriptorListAST * p = (const cCollectionElement_sortedListSortDescriptorListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_sortedListSortDescriptorListAST) ;
+  return p->mObject.mProperty_mAscending ;
+}
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//     @sortedListSortDescriptorListAST generic code implementation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST ("sortedListSortDescriptorListAST",
+                                                        NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_sortedListSortDescriptorListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_sortedListSortDescriptorListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_sortedListSortDescriptorListAST (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_sortedListSortDescriptorListAST GALGAS_sortedListSortDescriptorListAST::extractObject (const GALGAS_object & inObject,
+                                                                                              C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_sortedListSortDescriptorListAST result ;
+  const GALGAS_sortedListSortDescriptorListAST * p = (const GALGAS_sortedListSortDescriptorListAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_sortedListSortDescriptorListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("sortedListSortDescriptorListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_sortedListDeclarationAST_2D_weak::objectCompare (const GALGAS_sortedListDeclarationAST_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -77,7 +559,7 @@ GALGAS_sortedListDeclarationAST GALGAS_sortedListDeclarationAST_2D_weak::bang_so
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@sortedListDeclarationAST-weak type
+//     @sortedListDeclarationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -624,7 +1106,7 @@ GALGAS_bool cEnumerator_sortDescriptorListForGeneration::current_mAscendingOrder
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@sortDescriptorListForGeneration type
+//     @sortDescriptorListForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -735,7 +1217,7 @@ GALGAS_structDeclarationAST GALGAS_structDeclarationAST_2D_weak::bang_structDecl
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@structDeclarationAST-weak type
+//     @structDeclarationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -846,7 +1328,7 @@ GALGAS_typealiasDeclarationAST GALGAS_typealiasDeclarationAST_2D_weak::bang_type
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typealiasDeclarationAST-weak type
+//     @typealiasDeclarationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1523,7 +2005,7 @@ GALGAS_bool cEnumerator_formalInputParameterListAST::current_mIsConstant (LOCATI
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formalInputParameterListAST type
+//     @formalInputParameterListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1634,7 +2116,7 @@ GALGAS_abstractExtensionGetterAST GALGAS_abstractExtensionGetterAST_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@abstractExtensionGetterAST-weak type
+//     @abstractExtensionGetterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2311,7 +2793,7 @@ GALGAS_bool cEnumerator_formalInputParameterListForGeneration::current_mIsConsta
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formalInputParameterListForGeneration type
+//     @formalInputParameterListForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2422,7 +2904,7 @@ GALGAS_abstractExtensionMethodAST GALGAS_abstractExtensionMethodAST_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@abstractExtensionMethodAST-weak type
+//     @abstractExtensionMethodAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3099,7 +3581,7 @@ GALGAS_string cEnumerator_formalParameterListForGeneration::current_mFormalArgum
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formalParameterListForGeneration type
+//     @formalParameterListForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3210,7 +3692,7 @@ GALGAS_abstractExtensionSetterAST GALGAS_abstractExtensionSetterAST_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@abstractExtensionSetterAST-weak type
+//     @abstractExtensionSetterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3627,7 +4109,7 @@ GALGAS_semanticInstructionAST cEnumerator_semanticInstructionListAST::current_mI
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticInstructionListAST type
+//     @semanticInstructionListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3738,7 +4220,7 @@ GALGAS_extensionGetterAST GALGAS_extensionGetterAST_2D_weak::bang_extensionGette
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionGetterAST-weak type
+//     @extensionGetterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4155,7 +4637,7 @@ GALGAS_semanticInstructionForGeneration cEnumerator_semanticInstructionListForGe
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticInstructionListForGeneration type
+//     @semanticInstructionListForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4266,7 +4748,7 @@ GALGAS_extensionMethodAST GALGAS_extensionMethodAST_2D_weak::bang_extensionMetho
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionMethodAST-weak type
+//     @extensionMethodAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4377,7 +4859,7 @@ GALGAS_extensionSetterAST GALGAS_extensionSetterAST_2D_weak::bang_extensionSette
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionSetterAST-weak type
+//     @extensionSetterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4488,7 +4970,7 @@ GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGe
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overridingAbstractExtensionGetterAST-weak type
+//     @overridingAbstractExtensionGetterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4599,7 +5081,7 @@ GALGAS_overridingAbstractExtensionMethodAST GALGAS_overridingAbstractExtensionMe
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overridingAbstractExtensionMethodAST-weak type
+//     @overridingAbstractExtensionMethodAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4710,7 +5192,7 @@ GALGAS_overridingAbstractExtensionSetterAST GALGAS_overridingAbstractExtensionSe
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overridingAbstractExtensionSetterAST-weak type
+//     @overridingAbstractExtensionSetterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4821,7 +5303,7 @@ GALGAS_overridingExtensionGetterAST GALGAS_overridingExtensionGetterAST_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overridingExtensionGetterAST-weak type
+//     @overridingExtensionGetterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4932,7 +5414,7 @@ GALGAS_overridingExtensionMethodAST GALGAS_overridingExtensionMethodAST_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overridingExtensionMethodAST-weak type
+//     @overridingExtensionMethodAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5043,7 +5525,7 @@ GALGAS_overridingExtensionSetterAST GALGAS_overridingExtensionSetterAST_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overridingExtensionSetterAST-weak type
+//     @overridingExtensionSetterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5137,7 +5619,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticExpressionAST type
+//     @semanticExpressionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5248,7 +5730,7 @@ GALGAS_semanticExpressionAST GALGAS_semanticExpressionAST_2D_weak::bang_semantic
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticExpressionAST-weak type
+//     @semanticExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5415,7 +5897,7 @@ typeComparisonResult GALGAS_formalArgumentPassingModeAST::objectCompare (const G
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formalArgumentPassingModeAST type
+//     @formalArgumentPassingModeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5593,7 +6075,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@actualParameterAST type
+//     @actualParameterAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5704,7 +6186,7 @@ GALGAS_actualParameterAST GALGAS_actualParameterAST_2D_weak::bang_actualParamete
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@actualParameterAST-weak type
+//     @actualParameterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5815,7 +6297,7 @@ GALGAS_outputActualParameterAST GALGAS_outputActualParameterAST_2D_weak::bang_ou
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@outputActualParameterAST-weak type
+//     @outputActualParameterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5926,7 +6408,7 @@ GALGAS_outputInputActualParameterAST GALGAS_outputInputActualParameterAST_2D_wea
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@outputInputActualParameterAST-weak type
+//     @outputInputActualParameterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6037,7 +6519,7 @@ GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameter
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@outputInputSingleJokerParameterAST-weak type
+//     @outputInputSingleJokerParameterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6148,7 +6630,7 @@ GALGAS_outputInputSelfParameterAST GALGAS_outputInputSelfParameterAST_2D_weak::b
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@outputInputSelfParameterAST-weak type
+//     @outputInputSelfParameterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6351,7 +6833,7 @@ acPtr_class * cPtr_outputInputJokerParameterAST::duplicate (LOCATION_ARGS) const
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@outputInputJokerParameterAST type
+//     @outputInputJokerParameterAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6462,7 +6944,7 @@ GALGAS_outputInputJokerParameterAST GALGAS_outputInputJokerParameterAST_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@outputInputJokerParameterAST-weak type
+//     @outputInputJokerParameterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6573,7 +7055,7 @@ GALGAS_inputActualExistingVariableParameterAST GALGAS_inputActualExistingVariabl
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputActualExistingVariableParameterAST-weak type
+//     @inputActualExistingVariableParameterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6684,7 +7166,7 @@ GALGAS_inputActualSelfPropertyParameterAST GALGAS_inputActualSelfPropertyParamet
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputActualSelfPropertyParameterAST-weak type
+//     @inputActualSelfPropertyParameterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6795,7 +7277,7 @@ GALGAS_inputActualSelfParameterAST GALGAS_inputActualSelfParameterAST_2D_weak::b
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputActualSelfParameterAST-weak type
+//     @inputActualSelfParameterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6906,7 +7388,7 @@ GALGAS_inputActualNewVariableParameterAST GALGAS_inputActualNewVariableParameter
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputActualNewVariableParameterAST-weak type
+//     @inputActualNewVariableParameterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7017,7 +7499,7 @@ GALGAS_inputActualNewConstantParameterAST GALGAS_inputActualNewConstantParameter
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputActualNewConstantParameterAST-weak type
+//     @inputActualNewConstantParameterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7128,7 +7610,7 @@ GALGAS_inputSingleJokerActualParameterAST GALGAS_inputSingleJokerActualParameter
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputSingleJokerActualParameterAST-weak type
+//     @inputSingleJokerActualParameterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7331,7 +7813,7 @@ acPtr_class * cPtr_inputJokerActualParameterAST::duplicate (LOCATION_ARGS) const
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputJokerActualParameterAST type
+//     @inputJokerActualParameterAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7442,7 +7924,7 @@ GALGAS_inputJokerActualParameterAST GALGAS_inputJokerActualParameterAST_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputJokerActualParameterAST-weak type
+//     @inputJokerActualParameterAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7859,7 +8341,7 @@ GALGAS_actualParameterAST cEnumerator_actualParameterListAST::current_mActualPar
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@actualParameterListAST type
+//     @actualParameterListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7953,7 +8435,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@abstractInputParameter type
+//     @abstractInputParameter generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8064,7 +8546,7 @@ GALGAS_abstractInputParameter GALGAS_abstractInputParameter_2D_weak::bang_abstra
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@abstractInputParameter-weak type
+//     @abstractInputParameter-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8196,7 +8678,7 @@ acPtr_class * cPtr_inputParameterAnonymousVariable::duplicate (LOCATION_ARGS) co
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputParameterAnonymousVariable type
+//     @inputParameterAnonymousVariable generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8307,7 +8789,7 @@ GALGAS_inputParameterAnonymousVariable GALGAS_inputParameterAnonymousVariable_2D
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputParameterAnonymousVariable-weak type
+//     @inputParameterAnonymousVariable-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8418,7 +8900,7 @@ GALGAS_inputParameterVariable GALGAS_inputParameterVariable_2D_weak::bang_inputP
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputParameterVariable-weak type
+//     @inputParameterVariable-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8529,7 +9011,7 @@ GALGAS_inputParameterDeclaredVariable GALGAS_inputParameterDeclaredVariable_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputParameterDeclaredVariable-weak type
+//     @inputParameterDeclaredVariable-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8640,7 +9122,7 @@ GALGAS_inputParameterDeclaredConstant GALGAS_inputParameterDeclaredConstant_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@inputParameterDeclaredConstant-weak type
+//     @inputParameterDeclaredConstant-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9122,7 +9604,7 @@ GALGAS_abstractInputParameter cEnumerator_actualInputParameterListAST::current_m
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@actualInputParameterListAST type
+//     @actualInputParameterListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9242,7 +9724,7 @@ mProperty_mInstructionLocation (in_mInstructionLocation) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@syntaxInstructionAST type
+//     @syntaxInstructionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9353,7 +9835,7 @@ GALGAS_syntaxInstructionAST GALGAS_syntaxInstructionAST_2D_weak::bang_syntaxInst
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@syntaxInstructionAST-weak type
+//     @syntaxInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9448,7 +9930,7 @@ cPtr_syntaxInstructionAST (in_mInstructionLocation COMMA_THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticInstructionAST type
+//     @semanticInstructionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9559,7 +10041,7 @@ GALGAS_semanticInstructionAST GALGAS_semanticInstructionAST_2D_weak::bang_semant
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticInstructionAST-weak type
+//     @semanticInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9976,7 +10458,7 @@ GALGAS_semanticDeclarationAST cEnumerator_semanticDeclarationListAST::current_mS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@semanticDeclarationListAST type
+//     @semanticDeclarationListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10087,7 +10569,7 @@ GALGAS_externRoutineDeclarationAST GALGAS_externRoutineDeclarationAST_2D_weak::b
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@externRoutineDeclarationAST-weak type
+//     @externRoutineDeclarationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10198,7 +10680,7 @@ GALGAS_procDeclarationAST GALGAS_procDeclarationAST_2D_weak::bang_procDeclaratio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@procDeclarationAST-weak type
+//     @procDeclarationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10309,7 +10791,7 @@ GALGAS_externFunctionDeclarationAST GALGAS_externFunctionDeclarationAST_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@externFunctionDeclarationAST-weak type
+//     @externFunctionDeclarationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10420,7 +10902,7 @@ GALGAS_functionDeclarationAST GALGAS_functionDeclarationAST_2D_weak::bang_functi
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@functionDeclarationAST-weak type
+//     @functionDeclarationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10531,7 +11013,7 @@ GALGAS_onceFunctionDeclarationAST GALGAS_onceFunctionDeclarationAST_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@onceFunctionDeclarationAST-weak type
+//     @onceFunctionDeclarationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10567,245 +11049,6 @@ GALGAS_onceFunctionDeclarationAST_2D_weak GALGAS_onceFunctionDeclarationAST_2D_w
       result = *p ;
     }else{
       inCompiler->castError ("onceFunctionDeclarationAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-cEnumAssociatedValues_QualifiedTypeAST_simpleType::cEnumAssociatedValues_QualifiedTypeAST_simpleType (const GALGAS_lstring inAssociatedValue0
-                                                                                                      COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0) {
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_QualifiedTypeAST_simpleType::description (C_String & ioString,
-                                                                     const int32_t inIndentation) const {
-  ioString << "(\n" ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString << ")" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult cEnumAssociatedValues_QualifiedTypeAST_simpleType::compare (const cEnumAssociatedValues * inOperand) const {
-  const cEnumAssociatedValues_QualifiedTypeAST_simpleType * ptr = dynamic_cast<const cEnumAssociatedValues_QualifiedTypeAST_simpleType *> (inOperand) ;
-  macroValidPointer (ptr) ;
-  typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-cEnumAssociatedValues_QualifiedTypeAST_optionalType2::cEnumAssociatedValues_QualifiedTypeAST_optionalType2 (const GALGAS_lstring inAssociatedValue0
-                                                                                                            COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0) {
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_QualifiedTypeAST_optionalType2::description (C_String & ioString,
-                                                                        const int32_t inIndentation) const {
-  ioString << "(\n" ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString << ")" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult cEnumAssociatedValues_QualifiedTypeAST_optionalType2::compare (const cEnumAssociatedValues * inOperand) const {
-  const cEnumAssociatedValues_QualifiedTypeAST_optionalType2 * ptr = dynamic_cast<const cEnumAssociatedValues_QualifiedTypeAST_optionalType2 *> (inOperand) ;
-  macroValidPointer (ptr) ;
-  typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_QualifiedTypeAST::GALGAS_QualifiedTypeAST (void) :
-mAssociatedValues (),
-mEnum (kNotBuilt) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_QualifiedTypeAST GALGAS_QualifiedTypeAST::constructor_simpleType (const GALGAS_lstring & inAssociatedValue0
-                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_QualifiedTypeAST result ;
-  if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_simpleType ;
-    cEnumAssociatedValues * ptr = NULL ;
-    macroMyNew (ptr, cEnumAssociatedValues_QualifiedTypeAST_simpleType (inAssociatedValue0 COMMA_THERE)) ;
-    result.mAssociatedValues.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_QualifiedTypeAST GALGAS_QualifiedTypeAST::constructor_optionalType_32_ (const GALGAS_lstring & inAssociatedValue0
-                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_QualifiedTypeAST result ;
-  if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_optionalType_32_ ;
-    cEnumAssociatedValues * ptr = NULL ;
-    macroMyNew (ptr, cEnumAssociatedValues_QualifiedTypeAST_optionalType2 (inAssociatedValue0 COMMA_THERE)) ;
-    result.mAssociatedValues.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_QualifiedTypeAST::method_simpleType (GALGAS_lstring & outAssociatedValue0,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_simpleType) {
-    outAssociatedValue0.drop () ;
-    C_String s ;
-    s << "method @QualifiedTypeAST simpleType invoked with an invalid enum value" ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const cEnumAssociatedValues_QualifiedTypeAST_simpleType * ptr = (const cEnumAssociatedValues_QualifiedTypeAST_simpleType *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_QualifiedTypeAST::method_optionalType_32_ (GALGAS_lstring & outAssociatedValue0,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_optionalType_32_) {
-    outAssociatedValue0.drop () ;
-    C_String s ;
-    s << "method @QualifiedTypeAST optionalType2 invoked with an invalid enum value" ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const cEnumAssociatedValues_QualifiedTypeAST_optionalType2 * ptr = (const cEnumAssociatedValues_QualifiedTypeAST_optionalType2 *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_QualifiedTypeAST::optional_simpleType (GALGAS_lstring & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_simpleType ;
-  if (ok) {
-    const auto * ptr = (const cEnumAssociatedValues_QualifiedTypeAST_simpleType *) unsafePointer () ;
-    // const cEnumAssociatedValues_QualifiedTypeAST_simpleType * ptr = (const cEnumAssociatedValues_QualifiedTypeAST_simpleType *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-  }
-  return ok ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool GALGAS_QualifiedTypeAST::optional_optionalType_32_ (GALGAS_lstring & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_optionalType_32_ ;
-  if (ok) {
-    const auto * ptr = (const cEnumAssociatedValues_QualifiedTypeAST_optionalType2 *) unsafePointer () ;
-    // const cEnumAssociatedValues_QualifiedTypeAST_optionalType2 * ptr = (const cEnumAssociatedValues_QualifiedTypeAST_optionalType2 *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-  }
-  return ok ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_QualifiedTypeAST [3] = {
-  "(not built)",
-  "simpleType",
-  "optionalType2"
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_QualifiedTypeAST::getter_isSimpleType (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_simpleType == mEnum) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_QualifiedTypeAST::getter_isOptionalType_32_ (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_optionalType_32_ == mEnum) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_QualifiedTypeAST::description (C_String & ioString,
-                                           const int32_t inIndentation) const {
-  ioString << "<enum @QualifiedTypeAST: " << gEnumNameArrayFor_QualifiedTypeAST [mEnum] ;
-  mAssociatedValues.description (ioString, inIndentation) ;
-  ioString << ">" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_QualifiedTypeAST::objectCompare (const GALGAS_QualifiedTypeAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    if (mEnum < inOperand.mEnum) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mEnum > inOperand.mEnum) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mAssociatedValues.objectCompare (inOperand.mAssociatedValues) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@QualifiedTypeAST type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_QualifiedTypeAST ("QualifiedTypeAST",
-                                         NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_QualifiedTypeAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_QualifiedTypeAST ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_QualifiedTypeAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_QualifiedTypeAST (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_QualifiedTypeAST GALGAS_QualifiedTypeAST::extractObject (const GALGAS_object & inObject,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_QualifiedTypeAST result ;
-  const GALGAS_QualifiedTypeAST * p = (const GALGAS_QualifiedTypeAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_QualifiedTypeAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("QualifiedTypeAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -10952,7 +11195,7 @@ typeComparisonResult GALGAS_propertyInCollectionInitializationAST::objectCompare
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@propertyInCollectionInitializationAST type
+//     @propertyInCollectionInitializationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11564,7 +11807,7 @@ GALGAS_bool cEnumerator_formalTemplateInputParameterListAST::current_mIsUnused (
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formalTemplateInputParameterListAST type
+//     @formalTemplateInputParameterListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12111,7 +12354,7 @@ GALGAS_formalTemplateInputParameterListAST cEnumerator_filewrapperTemplateListAS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@filewrapperTemplateListAST type
+//     @filewrapperTemplateListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12222,7 +12465,7 @@ GALGAS_filewrapperDeclarationAST GALGAS_filewrapperDeclarationAST_2D_weak::bang_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@filewrapperDeclarationAST-weak type
+//     @filewrapperDeclarationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12639,7 +12882,7 @@ GALGAS_syntaxInstructionAST cEnumerator_syntaxInstructionList::current_mInstruct
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@syntaxInstructionList type
+//     @syntaxInstructionList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13186,7 +13429,7 @@ GALGAS_location cEnumerator_nonTerminalLabelListAST::current_mEndOfArgumentLocat
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@nonTerminalLabelListAST type
+//     @nonTerminalLabelListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13668,7 +13911,7 @@ GALGAS_nonTerminalLabelListAST cEnumerator_nonterminalDeclarationListAST::curren
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@nonterminalDeclarationListAST type
+//     @nonterminalDeclarationListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14345,7 +14588,7 @@ GALGAS_location cEnumerator_syntaxRuleLabelListAST::current_mEndOfInstructionLis
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@syntaxRuleLabelListAST type
+//     @syntaxRuleLabelListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14827,7 +15070,7 @@ GALGAS_syntaxRuleLabelListAST cEnumerator_syntaxRuleListAST::current_mLabelList 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@syntaxRuleListAST type
+//     @syntaxRuleListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15309,7 +15552,7 @@ GALGAS_location cEnumerator_listOfSyntaxInstructionList::current_mEndOf_5F_instr
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@listOfSyntaxInstructionList type
+//     @listOfSyntaxInstructionList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 

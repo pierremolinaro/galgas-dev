@@ -10,6 +10,243 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+// Phase 1: @sortedListSortDescriptorListAST list
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_sortedListSortDescriptorListAST : public AC_GALGAS_list {
+//--------------------------------- Default constructor
+  public: GALGAS_sortedListSortDescriptorListAST (void) ;
+
+//--------------------------------- List constructor used by listmap
+  public: GALGAS_sortedListSortDescriptorListAST (const capCollectionElementArray & inSharedArray) ;
+
+//--------------------------------- Element constructor
+  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                 const class GALGAS_lstring & in_mSortedAttributeName,
+                                                 const class GALGAS_bool & in_mAscending
+                                                 COMMA_LOCATION_ARGS) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_sortedListSortDescriptorListAST extractObject (const GALGAS_object & inObject,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_sortedListSortDescriptorListAST constructor_emptyList (LOCATION_ARGS) ;
+
+  public: static class GALGAS_sortedListSortDescriptorListAST constructor_listWithValue (const class GALGAS_lstring & inOperand0,
+                                                                                         const class GALGAS_bool & inOperand1
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_sortedListSortDescriptorListAST inOperand,
+                                                       class C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
+                                                     const class GALGAS_bool & inOperand1
+                                                     COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: VIRTUAL_IN_DEBUG GALGAS_sortedListSortDescriptorListAST add_operation (const GALGAS_sortedListSortDescriptorListAST & inOperand,
+                                                                                 C_Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_sortedListSortDescriptorListAST_2D_element inArgument0,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
+                                                      class GALGAS_bool constinArgument1,
+                                                      class GALGAS_uint constinArgument2,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
+                                                 class GALGAS_bool & outArgument1,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
+                                                class GALGAS_bool & outArgument1,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
+                                                      class GALGAS_bool & outArgument1,
+                                                      class GALGAS_uint constinArgument2,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMAscendingAtIndex (class GALGAS_bool constinArgument0,
+                                                             class GALGAS_uint constinArgument1,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMSortedAttributeNameAtIndex (class GALGAS_lstring constinArgument0,
+                                                                       class GALGAS_uint constinArgument1,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
+                                              class GALGAS_bool & outArgument1,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
+                                             class GALGAS_bool & outArgument1,
+                                             C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mAscendingAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mSortedAttributeNameAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_sortedListSortDescriptorListAST getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                 C_Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_sortedListSortDescriptorListAST getter_subListToIndex (const class GALGAS_uint & constinOperand0,
+                                                                                               C_Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_sortedListSortDescriptorListAST getter_subListWithRange (const class GALGAS_range & constinOperand0,
+                                                                                                 C_Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+
+  friend class cEnumerator_sortedListSortDescriptorListAST ;
+ 
+} ; // End of GALGAS_sortedListSortDescriptorListAST class
+
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
+
+class cEnumerator_sortedListSortDescriptorListAST : public cGenericAbstractEnumerator {
+  public: cEnumerator_sortedListSortDescriptorListAST (const GALGAS_sortedListSortDescriptorListAST & inEnumeratedObject,
+                                                       const typeEnumerationOrder inOrder) ;
+
+//--- Current element access
+  public: class GALGAS_lstring current_mSortedAttributeName (LOCATION_ARGS) const ;
+  public: class GALGAS_bool current_mAscending (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GALGAS_sortedListSortDescriptorListAST_2D_element current (LOCATION_ARGS) const ;
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @sortedListSortDescriptorListAST_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_sortedListSortDescriptorListAST_2D_element : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GALGAS_lstring mProperty_mSortedAttributeName ;
+  public: inline GALGAS_lstring readProperty_mSortedAttributeName (void) const {
+    return mProperty_mSortedAttributeName ;
+  }
+
+  public: GALGAS_bool mProperty_mAscending ;
+  public: inline GALGAS_bool readProperty_mAscending (void) const {
+    return mProperty_mAscending ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_sortedListSortDescriptorListAST_2D_element constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_sortedListSortDescriptorListAST_2D_element (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMSortedAttributeName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mSortedAttributeName = inValue ;
+  }
+
+  public: inline void setter_setMAscending (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mAscending = inValue ;
+  }
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public: virtual ~ GALGAS_sortedListSortDescriptorListAST_2D_element (void) ;
+
+//--------------------------------- Native constructor
+  public: GALGAS_sortedListSortDescriptorListAST_2D_element (const GALGAS_lstring & in_mSortedAttributeName,
+                                                             const GALGAS_bool & in_mAscending) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_sortedListSortDescriptorListAST_2D_element extractObject (const GALGAS_object & inObject,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_sortedListSortDescriptorListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                          const class GALGAS_bool & inOperand1
+                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const override ;
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_sortedListSortDescriptorListAST_2D_element & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_sortedListSortDescriptorListAST_2D_element class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST_2D_element ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 // Phase 1: @sortedListDeclarationAST reference class
 //
 //----------------------------------------------------------------------------------------------------------------------

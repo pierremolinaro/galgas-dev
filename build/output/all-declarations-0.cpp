@@ -4462,7 +4462,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionAST type
+//     @templateInstructionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4573,7 +4573,7 @@ GALGAS_templateInstructionAST GALGAS_templateInstructionAST_2D_weak::bang_templa
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionAST-weak type
+//     @templateInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4990,7 +4990,7 @@ GALGAS_templateInstructionAST cEnumerator_templateInstructionListAST::current_mI
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionListAST type
+//     @templateInstructionListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5084,7 +5084,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateExpressionAST type
+//     @templateExpressionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5195,7 +5195,7 @@ GALGAS_templateExpressionAST GALGAS_templateExpressionAST_2D_weak::bang_template
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateExpressionAST-weak type
+//     @templateExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5742,7 +5742,7 @@ GALGAS_location cEnumerator_templateExpressionListAST::current_mEndOfExpressionL
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateExpressionListAST type
+//     @templateExpressionListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5853,7 +5853,7 @@ GALGAS_templateConstructorAST GALGAS_templateConstructorAST_2D_weak::bang_templa
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateConstructorAST-weak type
+//     @templateConstructorAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5964,7 +5964,7 @@ GALGAS_templateFileWrapperTemplateCallAST GALGAS_templateFileWrapperTemplateCall
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateFileWrapperTemplateCallAST-weak type
+//     @templateFileWrapperTemplateCallAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6075,7 +6075,7 @@ GALGAS_templateExtensionTemplateCallAST GALGAS_templateExtensionTemplateCallAST_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateExtensionTemplateCallAST-weak type
+//     @templateExtensionTemplateCallAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6269,7 +6269,7 @@ acPtr_class * cPtr_templateAndOperationAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateAndOperationAST type
+//     @templateAndOperationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6380,7 +6380,7 @@ GALGAS_templateAndOperationAST GALGAS_templateAndOperationAST_2D_weak::bang_temp
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateAndOperationAST-weak type
+//     @templateAndOperationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6574,7 +6574,7 @@ acPtr_class * cPtr_templateOrOperationAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateOrOperationAST type
+//     @templateOrOperationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6685,7 +6685,7 @@ GALGAS_templateOrOperationAST GALGAS_templateOrOperationAST_2D_weak::bang_templa
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateOrOperationAST-weak type
+//     @templateOrOperationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6879,7 +6879,7 @@ acPtr_class * cPtr_templateXorOperationAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateXorOperationAST type
+//     @templateXorOperationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6990,7 +6990,7 @@ GALGAS_templateXorOperationAST GALGAS_templateXorOperationAST_2D_weak::bang_temp
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateXorOperationAST-weak type
+//     @templateXorOperationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7149,7 +7149,7 @@ acPtr_class * cPtr_templateTrueBoolAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateTrueBoolAST type
+//     @templateTrueBoolAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7260,7 +7260,7 @@ GALGAS_templateTrueBoolAST GALGAS_templateTrueBoolAST_2D_weak::bang_templateTrue
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateTrueBoolAST-weak type
+//     @templateTrueBoolAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7419,7 +7419,7 @@ acPtr_class * cPtr_templateFalseBoolAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateFalseBoolAST type
+//     @templateFalseBoolAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7530,7 +7530,7 @@ GALGAS_templateFalseBoolAST GALGAS_templateFalseBoolAST_2D_weak::bang_templateFa
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateFalseBoolAST-weak type
+//     @templateFalseBoolAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7641,7 +7641,7 @@ GALGAS_templateLiteralStringExpressionAST GALGAS_templateLiteralStringExpression
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateLiteralStringExpressionAST-weak type
+//     @templateLiteralStringExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7752,7 +7752,7 @@ GALGAS_templateLiteralUIntExpressionAST GALGAS_templateLiteralUIntExpressionAST_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateLiteralUIntExpressionAST-weak type
+//     @templateLiteralUIntExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7863,7 +7863,7 @@ GALGAS_templateLiteralCharExpressionAST GALGAS_templateLiteralCharExpressionAST_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateLiteralCharExpressionAST-weak type
+//     @templateLiteralCharExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7974,7 +7974,7 @@ GALGAS_templateLiteralDoubleExpressionAST GALGAS_templateLiteralDoubleExpression
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateLiteralDoubleExpressionAST-weak type
+//     @templateLiteralDoubleExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8085,7 +8085,7 @@ GALGAS_structFieldAccessTemplateExpressionAST GALGAS_structFieldAccessTemplateEx
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@structFieldAccessTemplateExpressionAST-weak type
+//     @structFieldAccessTemplateExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8258,7 +8258,7 @@ acPtr_class * cPtr_templateNotOperatorAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateNotOperatorAST type
+//     @templateNotOperatorAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8369,7 +8369,7 @@ GALGAS_templateNotOperatorAST GALGAS_templateNotOperatorAST_2D_weak::bang_templa
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateNotOperatorAST-weak type
+//     @templateNotOperatorAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8542,7 +8542,7 @@ acPtr_class * cPtr_templateLogicalNegateAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateLogicalNegateAST type
+//     @templateLogicalNegateAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8653,7 +8653,7 @@ GALGAS_templateLogicalNegateAST GALGAS_templateLogicalNegateAST_2D_weak::bang_te
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateLogicalNegateAST-weak type
+//     @templateLogicalNegateAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8764,7 +8764,7 @@ GALGAS_templateOptionAccessAST GALGAS_templateOptionAccessAST_2D_weak::bang_temp
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateOptionAccessAST-weak type
+//     @templateOptionAccessAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8909,7 +8909,7 @@ typeComparisonResult GALGAS_dynamicTypeComparisonKind::objectCompare (const GALG
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@dynamicTypeComparisonKind type
+//     @dynamicTypeComparisonKind generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9020,7 +9020,7 @@ GALGAS_templateTestDynamicClassAST GALGAS_templateTestDynamicClassAST_2D_weak::b
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateTestDynamicClassAST-weak type
+//     @templateTestDynamicClassAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9131,7 +9131,7 @@ GALGAS_templateFunctionCallAST GALGAS_templateFunctionCallAST_2D_weak::bang_temp
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateFunctionCallAST-weak type
+//     @templateFunctionCallAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9242,7 +9242,7 @@ GALGAS_templateVarInExpressionAST GALGAS_templateVarInExpressionAST_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateVarInExpressionAST-weak type
+//     @templateVarInExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9436,7 +9436,7 @@ acPtr_class * cPtr_templateAddOperationAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateAddOperationAST type
+//     @templateAddOperationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9547,7 +9547,7 @@ GALGAS_templateAddOperationAST GALGAS_templateAddOperationAST_2D_weak::bang_temp
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateAddOperationAST-weak type
+//     @templateAddOperationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9741,7 +9741,7 @@ acPtr_class * cPtr_templateSubOperationAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateSubOperationAST type
+//     @templateSubOperationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9852,7 +9852,7 @@ GALGAS_templateSubOperationAST GALGAS_templateSubOperationAST_2D_weak::bang_temp
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateSubOperationAST-weak type
+//     @templateSubOperationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10046,7 +10046,7 @@ acPtr_class * cPtr_templateMultiplyOperationAST::duplicate (LOCATION_ARGS) const
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateMultiplyOperationAST type
+//     @templateMultiplyOperationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10157,7 +10157,7 @@ GALGAS_templateMultiplyOperationAST GALGAS_templateMultiplyOperationAST_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateMultiplyOperationAST-weak type
+//     @templateMultiplyOperationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10351,7 +10351,7 @@ acPtr_class * cPtr_templateDivideOperationAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateDivideOperationAST type
+//     @templateDivideOperationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10462,7 +10462,7 @@ GALGAS_templateDivideOperationAST GALGAS_templateDivideOperationAST_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateDivideOperationAST-weak type
+//     @templateDivideOperationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10656,7 +10656,7 @@ acPtr_class * cPtr_templateModuloOperationAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateModuloOperationAST type
+//     @templateModuloOperationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10767,7 +10767,7 @@ GALGAS_templateModuloOperationAST GALGAS_templateModuloOperationAST_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateModuloOperationAST-weak type
+//     @templateModuloOperationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10940,7 +10940,7 @@ acPtr_class * cPtr_templateUnaryMinusOperationAST::duplicate (LOCATION_ARGS) con
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateUnaryMinusOperationAST type
+//     @templateUnaryMinusOperationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11051,7 +11051,7 @@ GALGAS_templateUnaryMinusOperationAST GALGAS_templateUnaryMinusOperationAST_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateUnaryMinusOperationAST-weak type
+//     @templateUnaryMinusOperationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11245,7 +11245,7 @@ acPtr_class * cPtr_templateEqualTestAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateEqualTestAST type
+//     @templateEqualTestAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11356,7 +11356,7 @@ GALGAS_templateEqualTestAST GALGAS_templateEqualTestAST_2D_weak::bang_templateEq
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateEqualTestAST-weak type
+//     @templateEqualTestAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11550,7 +11550,7 @@ acPtr_class * cPtr_templateNonEqualTestAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateNonEqualTestAST type
+//     @templateNonEqualTestAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11661,7 +11661,7 @@ GALGAS_templateNonEqualTestAST GALGAS_templateNonEqualTestAST_2D_weak::bang_temp
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateNonEqualTestAST-weak type
+//     @templateNonEqualTestAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11855,7 +11855,7 @@ acPtr_class * cPtr_templateStrictInfTestAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateStrictInfTestAST type
+//     @templateStrictInfTestAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11966,7 +11966,7 @@ GALGAS_templateStrictInfTestAST GALGAS_templateStrictInfTestAST_2D_weak::bang_te
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateStrictInfTestAST-weak type
+//     @templateStrictInfTestAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12160,7 +12160,7 @@ acPtr_class * cPtr_templateInfOrEqualTestAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInfOrEqualTestAST type
+//     @templateInfOrEqualTestAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12271,7 +12271,7 @@ GALGAS_templateInfOrEqualTestAST GALGAS_templateInfOrEqualTestAST_2D_weak::bang_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInfOrEqualTestAST-weak type
+//     @templateInfOrEqualTestAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12465,7 +12465,7 @@ acPtr_class * cPtr_templateStrictSupTestAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateStrictSupTestAST type
+//     @templateStrictSupTestAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12576,7 +12576,7 @@ GALGAS_templateStrictSupTestAST GALGAS_templateStrictSupTestAST_2D_weak::bang_te
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateStrictSupTestAST-weak type
+//     @templateStrictSupTestAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12770,7 +12770,7 @@ acPtr_class * cPtr_templateSupOrEqualTestAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateSupOrEqualTestAST type
+//     @templateSupOrEqualTestAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12881,7 +12881,7 @@ GALGAS_templateSupOrEqualTestAST GALGAS_templateSupOrEqualTestAST_2D_weak::bang_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateSupOrEqualTestAST-weak type
+//     @templateSupOrEqualTestAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13075,7 +13075,7 @@ acPtr_class * cPtr_templateLeftShiftOperationAST::duplicate (LOCATION_ARGS) cons
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateLeftShiftOperationAST type
+//     @templateLeftShiftOperationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13186,7 +13186,7 @@ GALGAS_templateLeftShiftOperationAST GALGAS_templateLeftShiftOperationAST_2D_wea
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateLeftShiftOperationAST-weak type
+//     @templateLeftShiftOperationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13380,7 +13380,7 @@ acPtr_class * cPtr_templateRightShiftOperationAST::duplicate (LOCATION_ARGS) con
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateRightShiftOperationAST type
+//     @templateRightShiftOperationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13491,7 +13491,7 @@ GALGAS_templateRightShiftOperationAST GALGAS_templateRightShiftOperationAST_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateRightShiftOperationAST-weak type
+//     @templateRightShiftOperationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13602,7 +13602,7 @@ GALGAS_templateInstructionStringAST GALGAS_templateInstructionStringAST_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionStringAST-weak type
+//     @templateInstructionStringAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13775,7 +13775,7 @@ acPtr_class * cPtr_templateInstructionExpressionAST::duplicate (LOCATION_ARGS) c
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionExpressionAST type
+//     @templateInstructionExpressionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13886,7 +13886,7 @@ GALGAS_templateInstructionExpressionAST GALGAS_templateInstructionExpressionAST_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionExpressionAST-weak type
+//     @templateInstructionExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14080,7 +14080,7 @@ acPtr_class * cPtr_templateBlockInstructionAST::duplicate (LOCATION_ARGS) const 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateBlockInstructionAST type
+//     @templateBlockInstructionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14191,7 +14191,7 @@ GALGAS_templateBlockInstructionAST GALGAS_templateBlockInstructionAST_2D_weak::b
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateBlockInstructionAST-weak type
+//     @templateBlockInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14323,7 +14323,7 @@ acPtr_class * cPtr_templateInstructionGetColumnLocationAST::duplicate (LOCATION_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionGetColumnLocationAST type
+//     @templateInstructionGetColumnLocationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14434,7 +14434,7 @@ GALGAS_templateInstructionGetColumnLocationAST GALGAS_templateInstructionGetColu
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionGetColumnLocationAST-weak type
+//     @templateInstructionGetColumnLocationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14566,7 +14566,7 @@ acPtr_class * cPtr_templateInstructionGotoColumnLocationAST::duplicate (LOCATION
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionGotoColumnLocationAST type
+//     @templateInstructionGotoColumnLocationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14677,7 +14677,7 @@ GALGAS_templateInstructionGotoColumnLocationAST GALGAS_templateInstructionGotoCo
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionGotoColumnLocationAST-weak type
+//     @templateInstructionGotoColumnLocationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15159,7 +15159,7 @@ GALGAS_templateInstructionListAST cEnumerator_templateInstructionIfBranchListAST
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionIfBranchListAST type
+//     @templateInstructionIfBranchListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15340,7 +15340,7 @@ acPtr_class * cPtr_templateInstructionIfAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionIfAST type
+//     @templateInstructionIfAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15451,7 +15451,7 @@ GALGAS_templateInstructionIfAST GALGAS_templateInstructionIfAST_2D_weak::bang_te
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionIfAST-weak type
+//     @templateInstructionIfAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15545,7 +15545,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionForGeneration type
+//     @templateInstructionForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15656,7 +15656,7 @@ GALGAS_templateInstructionForGeneration GALGAS_templateInstructionForGeneration_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionForGeneration-weak type
+//     @templateInstructionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15767,7 +15767,7 @@ GALGAS_templateInstructionExpressionForGeneration GALGAS_templateInstructionExpr
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionExpressionForGeneration-weak type
+//     @templateInstructionExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -16184,7 +16184,7 @@ GALGAS_templateInstructionForGeneration cEnumerator_templateInstructionListForGe
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionListForGeneration type
+//     @templateInstructionListForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -16295,7 +16295,7 @@ GALGAS_templateBlockInstructionForGeneration GALGAS_templateBlockInstructionForG
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateBlockInstructionForGeneration-weak type
+//     @templateBlockInstructionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -16331,138 +16331,6 @@ GALGAS_templateBlockInstructionForGeneration_2D_weak GALGAS_templateBlockInstruc
       result = *p ;
     }else{
       inCompiler->castError ("templateBlockInstructionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-// @templateInstructionGetColumnLocationForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateInstructionGetColumnLocationForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateInstructionForGeneration::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult cPtr_templateInstructionGetColumnLocationForGeneration::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
-  return kOperandEqual ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-typeComparisonResult GALGAS_templateInstructionGetColumnLocationForGeneration::objectCompare (const GALGAS_templateInstructionGetColumnLocationForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionGetColumnLocationForGeneration::GALGAS_templateInstructionGetColumnLocationForGeneration (void) :
-GALGAS_templateInstructionForGeneration () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionGetColumnLocationForGeneration GALGAS_templateInstructionGetColumnLocationForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_templateInstructionGetColumnLocationForGeneration::constructor_new (THERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionGetColumnLocationForGeneration::GALGAS_templateInstructionGetColumnLocationForGeneration (const cPtr_templateInstructionGetColumnLocationForGeneration * inSourcePtr) :
-GALGAS_templateInstructionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionGetColumnLocationForGeneration) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionGetColumnLocationForGeneration GALGAS_templateInstructionGetColumnLocationForGeneration::constructor_new (LOCATION_ARGS) {
-  GALGAS_templateInstructionGetColumnLocationForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_templateInstructionGetColumnLocationForGeneration (THERE)) ;
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//Pointer class for @templateInstructionGetColumnLocationForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
-
-cPtr_templateInstructionGetColumnLocationForGeneration::cPtr_templateInstructionGetColumnLocationForGeneration (LOCATION_ARGS) :
-cPtr_templateInstructionForGeneration (THERE) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_templateInstructionGetColumnLocationForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration ;
-}
-
-void cPtr_templateInstructionGetColumnLocationForGeneration::description (C_String & ioString,
-                                                                          const int32_t /* inIndentation */) const {
-  ioString << "[@templateInstructionGetColumnLocationForGeneration]" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_templateInstructionGetColumnLocationForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateInstructionGetColumnLocationForGeneration (THERE)) ;
-  return ptr ;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@templateInstructionGetColumnLocationForGeneration type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration ("templateInstructionGetColumnLocationForGeneration",
-                                                                          & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_templateInstructionGetColumnLocationForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_templateInstructionGetColumnLocationForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_templateInstructionGetColumnLocationForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionGetColumnLocationForGeneration GALGAS_templateInstructionGetColumnLocationForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                                                  C_Compiler * inCompiler
-                                                                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_templateInstructionGetColumnLocationForGeneration result ;
-  const GALGAS_templateInstructionGetColumnLocationForGeneration * p = (const GALGAS_templateInstructionGetColumnLocationForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_templateInstructionGetColumnLocationForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateInstructionGetColumnLocationForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

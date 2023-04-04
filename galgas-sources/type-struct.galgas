@@ -83,9 +83,8 @@ override method @structDeclarationAST enterDeclarationInGraph
 {
   let key = @lstring.new {!"@" + self.mStructTypeName !self.mStructTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for (* qualifiedTypeAST 4*) in self.mStructurePropertyList do
-    let typeName = [qualifiedTypeAST typeName]
-    let propertyKey = @lstring.new {!"@" + typeName !typeName.location}
+  for (* propertyTypeName 4*) in self.mStructurePropertyList do
+    let propertyKey = @lstring.new {!"@" + propertyTypeName !propertyTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
   end
 }
@@ -124,9 +123,8 @@ override method @structDeclarationAST enterDeclarationInSemanticContext
   var @functionSignature constructorPropertyTypeList = {}
   var @typedPropertyList typedPropertyList = {}
   var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
-  for (isConstant qualifiedTypeAST mPropertyName isPublic mAttributeList initExpression) in self.mStructurePropertyList do
-    let typeName = [qualifiedTypeAST typeName]
-    [!?ioTypeMap makeEntry  !typeName ?let propertyTypeEntry]
+  for (isConstant propertyTypeName mPropertyName isPublic mAttributeList initExpression) in self.mStructurePropertyList do
+    [!?ioTypeMap makeEntry  !propertyTypeName ?let propertyTypeEntry]
     var @lstring selector = ["" nowhere]
     for (mValue) in mAttributeList do
       if mValue.string == selectorFeatureForNewConstructor () then
@@ -250,11 +248,10 @@ override method @structDeclarationAST semanticAnalysis
   var @typedPropertyList typedPropertyList = {}
   var @typedPropertyList constructorArgumentList = {}
   var @propertyIndexMap propertyMap = {}
-  for (* qualifiedTypeAST mPropertyName * mAttributeList initExpression) in self.mStructurePropertyList do
-    let typeName = [qualifiedTypeAST typeName]
-    let propertyTypeNameForUsefulness = [qualifiedTypeAST typeNameForUsefulEntitiesGraph]
+  for (* propertyTypeName mPropertyName * mAttributeList initExpression) in self.mStructurePropertyList do
+    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
-    let t = [ioTypeMap searchKey !typeName]
+    let t = [ioTypeMap searchKey !propertyTypeName]
     var hasSelector = false
     for (mValue) in mAttributeList do
       if mValue.string != selectorFeatureForNewConstructor () then
@@ -296,7 +293,7 @@ override method @structDeclarationAST semanticAnalysis
   var @uint temporaryVariableIndex = 0
   var unusedVariableCppNameSet = @stringset {}
   var @usefulEntitiesGraph usefulEntitiesGraph = .emptyGraph
-  for (* qualifiedTypeAST propertyName 2* initExpression) in self.mStructurePropertyList do
+  for (* propertyTypeName propertyName 2* initExpression) in self.mStructurePropertyList do
    switch initExpression
     case none :
     case some (expressionAST) :
@@ -309,7 +306,7 @@ override method @structDeclarationAST semanticAnalysis
         !""
         !requiresSelfForAccessingProperty: true
       }
-      let propertyType = [ioTypeMap searchKey ![qualifiedTypeAST typeName]]
+      let propertyType = [ioTypeMap searchKey !propertyTypeName]
       [expressionAST analyzeSemanticExpression
         !["" nowhere]
         !?usefulEntitiesGraph

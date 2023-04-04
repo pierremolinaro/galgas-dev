@@ -448,7 +448,7 @@ GALGAS_lexicalInstructionListAST cEnumerator_lexicalSelectBranchListAST::current
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalSelectBranchListAST type
+//     @lexicalSelectBranchListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -542,7 +542,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalRoutineOrFunctionFormalInputArgumentAST type
+//     @lexicalRoutineOrFunctionFormalInputArgumentAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -653,7 +653,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST GALGAS_lexicalRoutineOrFun
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalRoutineOrFunctionFormalInputArgumentAST-weak type
+//     @lexicalRoutineOrFunctionFormalInputArgumentAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1070,7 +1070,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST cEnumerator_lexicalFunctio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalFunctionCallActualArgumentListAST type
+//     @lexicalFunctionCallActualArgumentListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1181,7 +1181,7 @@ GALGAS_lexicalAttributeInputArgumentAST GALGAS_lexicalAttributeInputArgumentAST_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalAttributeInputArgumentAST-weak type
+//     @lexicalAttributeInputArgumentAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1292,7 +1292,7 @@ GALGAS_lexicalCharacterInputArgumentAST GALGAS_lexicalCharacterInputArgumentAST_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalCharacterInputArgumentAST-weak type
+//     @lexicalCharacterInputArgumentAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1403,7 +1403,7 @@ GALGAS_lexicalUnsignedInputArgumentAST GALGAS_lexicalUnsignedInputArgumentAST_2D
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalUnsignedInputArgumentAST-weak type
+//     @lexicalUnsignedInputArgumentAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1562,7 +1562,7 @@ acPtr_class * cPtr_lexicalCurrentCharacterInputArgumentAST::duplicate (LOCATION_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalCurrentCharacterInputArgumentAST type
+//     @lexicalCurrentCharacterInputArgumentAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1673,7 +1673,7 @@ GALGAS_lexicalCurrentCharacterInputArgumentAST GALGAS_lexicalCurrentCharacterInp
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalCurrentCharacterInputArgumentAST-weak type
+//     @lexicalCurrentCharacterInputArgumentAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1784,7 +1784,7 @@ GALGAS_lexicalFunctionInputArgumentAST GALGAS_lexicalFunctionInputArgumentAST_2D
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalFunctionInputArgumentAST-weak type
+//     @lexicalFunctionInputArgumentAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1907,7 +1907,7 @@ typeComparisonResult GALGAS_lexicalArgumentModeAST::objectCompare (const GALGAS_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalArgumentModeAST type
+//     @lexicalArgumentModeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2290,7 +2290,7 @@ typeComparisonResult GALGAS_lexicalTypeEnum::objectCompare (const GALGAS_lexical
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalTypeEnum type
+//     @lexicalTypeEnum generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2837,7 +2837,7 @@ GALGAS_lexicalTypeEnum cEnumerator_lexicalSentValueList::current_mLexicalType (L
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalSentValueList type
+//     @lexicalSentValueList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3109,7 +3109,7 @@ bool GALGAS_terminalMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@terminalMap type
+//     @terminalMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3381,7 +3381,7 @@ bool GALGAS_lexicalTypeMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalTypeMap type
+//     @lexicalTypeMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3653,7 +3653,7 @@ bool GALGAS_lexicalAttributeMap::optional_searchKey (const GALGAS_string & inKey
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalAttributeMap type
+//     @lexicalAttributeMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4395,7 +4395,7 @@ GALGAS_uint cEnumerator_terminalList::current_mStyleIndex (LOCATION_ARGS) const 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@terminalList type
+//     @terminalList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4721,7 +4721,7 @@ bool GALGAS_lexicalExplicitTokenListMap::optional_searchKey (const GALGAS_string
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalExplicitTokenListMap type
+//     @lexicalExplicitTokenListMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5045,7 +5045,7 @@ GALGAS_string cEnumerator_tokenSortedlist::current_mTerminalName (LOCATION_ARGS)
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@tokenSortedlist type
+//     @tokenSortedlist generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5425,7 +5425,7 @@ bool GALGAS_lexicalExplicitTokenListMapMap::optional_searchKey (const GALGAS_str
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalExplicitTokenListMapMap type
+//     @lexicalExplicitTokenListMapMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5751,7 +5751,7 @@ bool GALGAS_lexicalMessageMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalMessageMap type
+//     @lexicalMessageMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6298,7 +6298,7 @@ GALGAS_string cEnumerator_lexicalRoutineFormalArgumentList::current_mArgumentNam
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalRoutineFormalArgumentList type
+//     @lexicalRoutineFormalArgumentList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6678,7 +6678,7 @@ bool GALGAS_lexicalRoutineMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalRoutineMap type
+//     @lexicalRoutineMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7160,7 +7160,7 @@ GALGAS_string cEnumerator_lexicalFunctionFormalArgumentList::current_mArgumentNa
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalFunctionFormalArgumentList type
+//     @lexicalFunctionFormalArgumentList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7594,7 +7594,7 @@ bool GALGAS_lexicalFunctionMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalFunctionMap type
+//     @lexicalFunctionMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8141,7 +8141,7 @@ GALGAS_bool cEnumerator_templateDelimitorList::current_mPreservesStartDelimiter 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateDelimitorList type
+//     @templateDelimitorList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8467,7 +8467,7 @@ bool GALGAS_styleMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@styleMap type
+//     @styleMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8685,7 +8685,7 @@ bool GALGAS_lexicalTagMap::optional_searchKey (const GALGAS_string & inKey) cons
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalTagMap type
+//     @lexicalTagMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9997,7 +9997,7 @@ acPtr_class * cPtr_lexicalStructuredSendInstructionAST::duplicate (LOCATION_ARGS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalStructuredSendInstructionAST type
+//     @lexicalStructuredSendInstructionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10108,7 +10108,7 @@ GALGAS_lexicalStructuredSendInstructionAST GALGAS_lexicalStructuredSendInstructi
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalStructuredSendInstructionAST-weak type
+//     @lexicalStructuredSendInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10219,7 +10219,7 @@ GALGAS_lexicalDropInstructionAST GALGAS_lexicalDropInstructionAST_2D_weak::bang_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalDropInstructionAST-weak type
+//     @lexicalDropInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10330,7 +10330,7 @@ GALGAS_lexicalErrorInstructionAST GALGAS_lexicalErrorInstructionAST_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalErrorInstructionAST-weak type
+//     @lexicalErrorInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10462,7 +10462,7 @@ acPtr_class * cPtr_lexicalLogInstructionAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalLogInstructionAST type
+//     @lexicalLogInstructionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10573,7 +10573,7 @@ GALGAS_lexicalLogInstructionAST GALGAS_lexicalLogInstructionAST_2D_weak::bang_le
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalLogInstructionAST-weak type
+//     @lexicalLogInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10754,7 +10754,7 @@ acPtr_class * cPtr_lexicalRepeatInstructionAST::duplicate (LOCATION_ARGS) const 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalRepeatInstructionAST type
+//     @lexicalRepeatInstructionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10865,7 +10865,7 @@ GALGAS_lexicalRepeatInstructionAST GALGAS_lexicalRepeatInstructionAST_2D_weak::b
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalRepeatInstructionAST-weak type
+//     @lexicalRepeatInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10976,7 +10976,7 @@ GALGAS_lexicalRewindInstructionAST GALGAS_lexicalRewindInstructionAST_2D_weak::b
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalRewindInstructionAST-weak type
+//     @lexicalRewindInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11085,7 +11085,7 @@ mProperty_mActualPassingModeLocation (in_mActualPassingModeLocation) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@abstractLexicalRoutineActualArgumentAST type
+//     @abstractLexicalRoutineActualArgumentAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11196,7 +11196,7 @@ GALGAS_abstractLexicalRoutineActualArgumentAST GALGAS_abstractLexicalRoutineActu
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@abstractLexicalRoutineActualArgumentAST-weak type
+//     @abstractLexicalRoutineActualArgumentAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11307,7 +11307,7 @@ GALGAS_lexicalAttributeInputOutputArgumentAST GALGAS_lexicalAttributeInputOutput
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalAttributeInputOutputArgumentAST-weak type
+//     @lexicalAttributeInputOutputArgumentAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11466,7 +11466,7 @@ acPtr_class * cPtr_lexicalFormalInputArgumentAST::duplicate (LOCATION_ARGS) cons
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalFormalInputArgumentAST type
+//     @lexicalFormalInputArgumentAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11577,7 +11577,7 @@ GALGAS_lexicalFormalInputArgumentAST GALGAS_lexicalFormalInputArgumentAST_2D_wea
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalFormalInputArgumentAST-weak type
+//     @lexicalFormalInputArgumentAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11994,7 +11994,7 @@ GALGAS_abstractLexicalRoutineActualArgumentAST cEnumerator_lexicalRoutineCallAct
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalRoutineCallActualArgumentListAST type
+//     @lexicalRoutineCallActualArgumentListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12105,7 +12105,7 @@ GALGAS_lexicalRoutineCallInstructionAST GALGAS_lexicalRoutineCallInstructionAST_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalRoutineCallInstructionAST-weak type
+//     @lexicalRoutineCallInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12355,7 +12355,7 @@ acPtr_class * cPtr_lexicalSelectInstructionAST::duplicate (LOCATION_ARGS) const 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalSelectInstructionAST type
+//     @lexicalSelectInstructionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12466,7 +12466,7 @@ GALGAS_lexicalSelectInstructionAST GALGAS_lexicalSelectInstructionAST_2D_weak::b
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalSelectInstructionAST-weak type
+//     @lexicalSelectInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12577,7 +12577,7 @@ GALGAS_lexicalSimpleSendInstructionAST GALGAS_lexicalSimpleSendInstructionAST_2D
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalSimpleSendInstructionAST-weak type
+//     @lexicalSimpleSendInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12688,7 +12688,7 @@ GALGAS_lexicalTagInstructionAST GALGAS_lexicalTagInstructionAST_2D_weak::bang_le
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalTagInstructionAST-weak type
+//     @lexicalTagInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12799,7 +12799,7 @@ GALGAS_lexicalWarningInstructionAST GALGAS_lexicalWarningInstructionAST_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@lexicalWarningInstructionAST-weak type
+//     @lexicalWarningInstructionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12944,7 +12944,7 @@ typeComparisonResult GALGAS_optionDefaultValueEnumAST::objectCompare (const GALG
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@optionDefaultValueEnumAST type
+//     @optionDefaultValueEnumAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13751,7 +13751,7 @@ GALGAS_optionDefaultValueEnumAST cEnumerator_commandLineOptionListAST::current_m
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@commandLineOptionListAST type
+//     @commandLineOptionListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13862,7 +13862,7 @@ GALGAS_optionComponentDeclarationAST GALGAS_optionComponentDeclarationAST_2D_wea
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@optionComponentDeclarationAST-weak type
+//     @optionComponentDeclarationAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14296,7 +14296,7 @@ bool GALGAS_commandLineOptionMap::optional_searchKey (const GALGAS_string & inKe
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@commandLineOptionMap type
+//     @commandLineOptionMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14778,7 +14778,7 @@ GALGAS_lstring cEnumerator_guiSimpleAttributeListAST::current_mValue (LOCATION_A
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@guiSimpleAttributeListAST type
+//     @guiSimpleAttributeListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15325,7 +15325,7 @@ GALGAS_lstring cEnumerator_guiCompoundAttributeListAST::current_mValue (LOCATION
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@guiCompoundAttributeListAST type
+//     @guiCompoundAttributeListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15361,488 +15361,6 @@ GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::extractOb
       result = *p ;
     }else{
       inCompiler->castError ("guiCompoundAttributeListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Class for element of '@terminalLabelListAST' list
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class cCollectionElement_terminalLabelListAST : public cCollectionElement {
-  public: GALGAS_terminalLabelListAST_2D_element mObject ;
-
-//--- Constructors
-  public: cCollectionElement_terminalLabelListAST (const GALGAS_lstring & in_mTerminal,
-                                                   const GALGAS_uint & in_mDisplayFlags
-                                                   COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_terminalLabelListAST (const GALGAS_terminalLabelListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-cCollectionElement_terminalLabelListAST::cCollectionElement_terminalLabelListAST (const GALGAS_lstring & in_mTerminal,
-                                                                                  const GALGAS_uint & in_mDisplayFlags
-                                                                                  COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (in_mTerminal, in_mDisplayFlags) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-cCollectionElement_terminalLabelListAST::cCollectionElement_terminalLabelListAST (const GALGAS_terminalLabelListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (inElement.mProperty_mTerminal, inElement.mProperty_mDisplayFlags) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-bool cCollectionElement_terminalLabelListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-cCollectionElement * cCollectionElement_terminalLabelListAST::copy (void) {
-  cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_terminalLabelListAST (mObject.mProperty_mTerminal, mObject.mProperty_mDisplayFlags COMMA_HERE)) ;
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void cCollectionElement_terminalLabelListAST::description (C_String & ioString, const int32_t inIndentation) const {
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mTerminal" ":" ;
-  mObject.mProperty_mTerminal.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mDisplayFlags" ":" ;
-  mObject.mProperty_mDisplayFlags.description (ioString, inIndentation) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult cCollectionElement_terminalLabelListAST::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_terminalLabelListAST * operand = (cCollectionElement_terminalLabelListAST *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_terminalLabelListAST) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_terminalLabelListAST::GALGAS_terminalLabelListAST (void) :
-AC_GALGAS_list () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_terminalLabelListAST::GALGAS_terminalLabelListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_terminalLabelListAST  (capCollectionElementArray ()) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                                    const GALGAS_uint & inOperand1
-                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_terminalLabelListAST result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_terminalLabelListAST (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GALGAS_terminalLabelListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
-    result.appendObject (attributes) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_terminalLabelListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                             const GALGAS_lstring & in_mTerminal,
-                                                             const GALGAS_uint & in_mDisplayFlags
-                                                             COMMA_LOCATION_ARGS) {
-  cCollectionElement_terminalLabelListAST * p = NULL ;
-  macroMyNew (p, cCollectionElement_terminalLabelListAST (in_mTerminal,
-                                                          in_mDisplayFlags COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_terminalLabelListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
-                                                       const GALGAS_uint & inOperand1
-                                                       COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inOperand0.isValid () && inOperand1.isValid ()) {
-      cCollectionElement * p = NULL ;
-      macroMyNew (p, cCollectionElement_terminalLabelListAST (inOperand0, inOperand1 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{ // Destroy receiver
-      drop () ;
-    }
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_terminalLabelListAST::setter_append (GALGAS_terminalLabelListAST_2D_element inElement,
-                                                 C_Compiler * /* inCompiler */
-                                                 COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inElement.isValid ()) {
-      cCollectionElement * p = NULL ;
-      macroMyNew (p, cCollectionElement_terminalLabelListAST (inElement COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{
-      drop () ;
-    }
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_terminalLabelListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
-                                                        const GALGAS_uint inOperand1,
-                                                        const GALGAS_uint inInsertionIndex,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-      cCollectionElement * p = NULL ;
-      macroMyNew (p, cCollectionElement_terminalLabelListAST (inOperand0, inOperand1 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_terminalLabelListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
-                                                        GALGAS_uint & outOperand1,
-                                                        const GALGAS_uint inRemoveIndex,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_terminalLabelListAST * p = (cCollectionElement_terminalLabelListAST *) attributes.ptr () ;
-      if (NULL == p) {
-        outOperand0.drop () ;
-        outOperand1.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_terminalLabelListAST) ;
-        outOperand0 = p->mObject.mProperty_mTerminal ;
-        outOperand1 = p->mObject.mProperty_mDisplayFlags ;
-      }
-    }else{
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      drop () ;    
-    }
-  }else{
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_terminalLabelListAST::setter_popFirst (GALGAS_lstring & outOperand0,
-                                                   GALGAS_uint & outOperand1,
-                                                   C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_terminalLabelListAST * p = (cCollectionElement_terminalLabelListAST *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_terminalLabelListAST) ;
-    outOperand0 = p->mObject.mProperty_mTerminal ;
-    outOperand1 = p->mObject.mProperty_mDisplayFlags ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_terminalLabelListAST::setter_popLast (GALGAS_lstring & outOperand0,
-                                                  GALGAS_uint & outOperand1,
-                                                  C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_terminalLabelListAST * p = (cCollectionElement_terminalLabelListAST *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_terminalLabelListAST) ;
-    outOperand0 = p->mObject.mProperty_mTerminal ;
-    outOperand1 = p->mObject.mProperty_mDisplayFlags ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_terminalLabelListAST::method_first (GALGAS_lstring & outOperand0,
-                                                GALGAS_uint & outOperand1,
-                                                C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_terminalLabelListAST * p = (cCollectionElement_terminalLabelListAST *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_terminalLabelListAST) ;
-    outOperand0 = p->mObject.mProperty_mTerminal ;
-    outOperand1 = p->mObject.mProperty_mDisplayFlags ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_terminalLabelListAST::method_last (GALGAS_lstring & outOperand0,
-                                               GALGAS_uint & outOperand1,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_terminalLabelListAST * p = (cCollectionElement_terminalLabelListAST *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_terminalLabelListAST) ;
-    outOperand0 = p->mObject.mProperty_mTerminal ;
-    outOperand1 = p->mObject.mProperty_mDisplayFlags ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::add_operation (const GALGAS_terminalLabelListAST & inOperand,
-                                                                        C_Compiler * /* inCompiler */
-                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_terminalLabelListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                  C_Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) const {
-  GALGAS_terminalLabelListAST result = GALGAS_terminalLabelListAST::constructor_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                  C_Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) const {
-  GALGAS_terminalLabelListAST result = GALGAS_terminalLabelListAST::constructor_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) const {
-  GALGAS_terminalLabelListAST result = GALGAS_terminalLabelListAST::constructor_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_terminalLabelListAST::plusAssign_operation (const GALGAS_terminalLabelListAST inOperand,
-                                                        C_Compiler * /* inCompiler */
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_terminalLabelListAST::setter_setMTerminalAtIndex (GALGAS_lstring inOperand,
-                                                              GALGAS_uint inIndex,
-                                                              C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement_terminalLabelListAST * p = (cCollectionElement_terminalLabelListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_terminalLabelListAST) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mTerminal = inOperand ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_terminalLabelListAST::getter_mTerminalAtIndex (const GALGAS_uint & inIndex,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_terminalLabelListAST * p = (cCollectionElement_terminalLabelListAST *) attributes.ptr () ;
-  GALGAS_lstring result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_terminalLabelListAST) ;
-    result = p->mObject.mProperty_mTerminal ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_terminalLabelListAST::setter_setMDisplayFlagsAtIndex (GALGAS_uint inOperand,
-                                                                  GALGAS_uint inIndex,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  cCollectionElement_terminalLabelListAST * p = (cCollectionElement_terminalLabelListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_terminalLabelListAST) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mDisplayFlags = inOperand ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint GALGAS_terminalLabelListAST::getter_mDisplayFlagsAtIndex (const GALGAS_uint & inIndex,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_terminalLabelListAST * p = (cCollectionElement_terminalLabelListAST *) attributes.ptr () ;
-  GALGAS_uint result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_terminalLabelListAST) ;
-    result = p->mObject.mProperty_mDisplayFlags ;
-  }
-  return result ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-cEnumerator_terminalLabelListAST::cEnumerator_terminalLabelListAST (const GALGAS_terminalLabelListAST & inEnumeratedObject,
-                                                                    const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_terminalLabelListAST_2D_element cEnumerator_terminalLabelListAST::current (LOCATION_ARGS) const {
-  const cCollectionElement_terminalLabelListAST * p = (const cCollectionElement_terminalLabelListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_terminalLabelListAST) ;
-  return p->mObject ;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lstring cEnumerator_terminalLabelListAST::current_mTerminal (LOCATION_ARGS) const {
-  const cCollectionElement_terminalLabelListAST * p = (const cCollectionElement_terminalLabelListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_terminalLabelListAST) ;
-  return p->mObject.mProperty_mTerminal ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint cEnumerator_terminalLabelListAST::current_mDisplayFlags (LOCATION_ARGS) const {
-  const cCollectionElement_terminalLabelListAST * p = (const cCollectionElement_terminalLabelListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_terminalLabelListAST) ;
-  return p->mObject.mProperty_mDisplayFlags ;
-}
-
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@terminalLabelListAST type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_terminalLabelListAST ("terminalLabelListAST",
-                                             NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_terminalLabelListAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_terminalLabelListAST ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_terminalLabelListAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_terminalLabelListAST (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_terminalLabelListAST result ;
-  const GALGAS_terminalLabelListAST * p = (const GALGAS_terminalLabelListAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_terminalLabelListAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("terminalLabelListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

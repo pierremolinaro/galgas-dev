@@ -22,8 +22,6 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
   rule <start_symbol> ?!@galgasDeclarationAST ioDeclarations {
     repeat
     while
-      $;$
-    while
       <declaration> !?ioDeclarations
     end
   }
@@ -40,21 +38,6 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
 
   rule <expression> !@semanticExpressionAST outExpression
 
-  #·····················································································································
-
-  rule <type_with_optional_qualifier> !@QualifiedTypeAST outQualifiedType {
-    $@type$ ?let propertyTypeName
-    select
-      outQualifiedType = @QualifiedTypeAST.simpleType {!typeName: propertyTypeName}
-    or
-     $?$ ?let selector
-     if selector.string != "" then
-       error selector : "only '?' is allowed here"
-     end
-     outQualifiedType = @QualifiedTypeAST.optionalType2 {!typeName: propertyTypeName}
-    end
-  }
-  
   #·····················································································································
   #    A T T R I B U T E    I N    C O L L E C T I O N
   #·····················································································································
@@ -78,7 +61,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
       $let$
       isConstant = true
     end
-    <type_with_optional_qualifier> ?let @QualifiedTypeAST qualifiedTypeAST
+    $@type$ ?let propertyTypeName
     $identifier$ ?let propertyName
     var featureList = @lstringlist {}
     repeat
@@ -96,7 +79,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
     end
     ioAttributeInCollectionList +=
       !isConstant: isConstant
-      !qualifiedTypeAST
+      !propertyTypeName
       !propertyName
       !isPublic
       !featureList
@@ -106,7 +89,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
   #·····················································································································
 
   rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
-    <type_with_optional_qualifier> ?let @QualifiedTypeAST qualifiedTypeAST
+    $@type$ ?let propertyTypeName
     $identifier$ ?let propertyName
     var featureList = @lstringlist {}
     repeat
@@ -124,13 +107,13 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
     end
     ioAttributeInCollectionList +=
       !isConstant: false
-      !qualifiedTypeAST
+      !propertyTypeName
       !propertyName
       !true
       !featureList
       !initialization
     if [option galgas_cli_options.errorOldStylePropertyDeclaration value] then
-      let errorLocation = [[qualifiedTypeAST location] union !propertyName.location]
+      let errorLocation = [propertyTypeName.location union !propertyName.location]
       error errorLocation
       : "old style property declaration (due to '--error-old-style-property-declaration' option)"
 #      fixit { replace "public let @" + propertyTypeName + " " + propertyName }
@@ -266,8 +249,6 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
   rule <start_symbol> ?!@galgasDeclarationAST ioDeclarations {
     repeat
     while
-      $;$
-    while
       <declaration> !?ioDeclarations
     end
   }
@@ -284,21 +265,6 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
 
   rule <expression> !@semanticExpressionAST outExpression
 
-  #·····················································································································
-
-  rule <type_with_optional_qualifier> !@QualifiedTypeAST outQualifiedType {
-    $@type$ ?let propertyTypeName
-    select
-      outQualifiedType = @QualifiedTypeAST.simpleType {!typeName: propertyTypeName}
-    or
-     $?$ ?let selector
-     if selector.string != "" then
-       error selector : "only '?' is allowed here"
-     end
-     outQualifiedType = @QualifiedTypeAST.optionalType2 {!typeName: propertyTypeName}
-    end
-  }
-  
   #·····················································································································
   #    A T T R I B U T E    I N    C O L L E C T I O N
   #·····················································································································
@@ -322,7 +288,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
       $let$
       isConstant = true
     end
-    <type_with_optional_qualifier> ?let @QualifiedTypeAST qualifiedTypeAST
+    $@type$ ?let propertyTypeName
     $identifier$ ?let propertyName
     var featureList = @lstringlist {}
     repeat
@@ -340,7 +306,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
     end
     ioAttributeInCollectionList +=
       !isConstant: isConstant
-      !qualifiedTypeAST
+      !propertyTypeName
       !propertyName
       !isPublic
       !featureList
@@ -463,47 +429,6 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
   #·····················································································································
 
 }
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum @QualifiedTypeAST {
-  case simpleType (@lstring typeName)
-  case optionalType2 (@lstring typeName)
-}
-  #·····················································································································
-
-  getter @QualifiedTypeAST location -> @location {
-    switch self
-    case simpleType   (@lstring typeName) : result = typeName.location
-    case optionalType2 (@lstring typeName) : result = typeName.location
-    end
-  }
-
-  #·····················································································································
-  
-  getter @QualifiedTypeAST typeNameForUsefulEntitiesGraph -> @lstring {
-    switch self
-    case simpleType   (@lstring typeName) :
-      result = typeNameForUsefulEntitiesGraph (!typeName)
-    case optionalType2 (@lstring typeName) :
-      result = typeNameForUsefulEntitiesGraph (!typeName)
-      result.string += "?"
-    end
-  }
-  
-  #·····················································································································
-  
-  getter @QualifiedTypeAST typeName -> @lstring {
-    switch self
-    case simpleType   (@lstring typeName) :
-      result = typeName
-    case optionalType2 (@lstring typeName) :
-      result = typeName
-      result.string += "?"
-    end
-  }
-  
-  #·····················································································································
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

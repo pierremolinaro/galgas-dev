@@ -41,8 +41,8 @@ struct @unifiedTypeDefinition {
   public let @bool mGenerateHeaderInSeparateFile # Significant only for classes
   public let @unifiedTypeMapEntry mTypeForEnumeratedElement
   public let @string mDefaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
-  public let @string mHeaderFileName # Name of C++ header file that contains type declaration
-  public let @headerKind mHeaderKind
+  public var @string mHeaderFileName # Name of C++ header file that contains type declaration
+  public var @headerKind mHeaderKind
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

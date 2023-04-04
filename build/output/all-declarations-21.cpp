@@ -9,6 +9,162 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
+GALGAS_ruleLabelImplementationList_2D_element::GALGAS_ruleLabelImplementationList_2D_element (void) :
+mProperty_mLabelName (),
+mProperty_mSignatureForGeneration (),
+mProperty_mSignature (),
+mProperty_mEndOfArgumentLocation (),
+mProperty_mInstructionListForGeneration () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_ruleLabelImplementationList_2D_element::~ GALGAS_ruleLabelImplementationList_2D_element (void) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_ruleLabelImplementationList_2D_element::GALGAS_ruleLabelImplementationList_2D_element (const GALGAS_lstring & inOperand0,
+                                                                                              const GALGAS_formalParameterListForGeneration & inOperand1,
+                                                                                              const GALGAS_formalParameterSignature & inOperand2,
+                                                                                              const GALGAS_location & inOperand3,
+                                                                                              const GALGAS_semanticInstructionListForGeneration & inOperand4) :
+mProperty_mLabelName (inOperand0),
+mProperty_mSignatureForGeneration (inOperand1),
+mProperty_mSignature (inOperand2),
+mProperty_mEndOfArgumentLocation (inOperand3),
+mProperty_mInstructionListForGeneration (inOperand4) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_ruleLabelImplementationList_2D_element GALGAS_ruleLabelImplementationList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_ruleLabelImplementationList_2D_element (GALGAS_lstring::constructor_default (HERE),
+                                                        GALGAS_formalParameterListForGeneration::constructor_emptyList (HERE),
+                                                        GALGAS_formalParameterSignature::constructor_emptyList (HERE),
+                                                        GALGAS_location::constructor_nowhere (HERE),
+                                                        GALGAS_semanticInstructionListForGeneration::constructor_emptyList (HERE)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_ruleLabelImplementationList_2D_element GALGAS_ruleLabelImplementationList_2D_element::constructor_new (const GALGAS_lstring & in_mLabelName,
+                                                                                                              const GALGAS_formalParameterListForGeneration & in_mSignatureForGeneration,
+                                                                                                              const GALGAS_formalParameterSignature & in_mSignature,
+                                                                                                              const GALGAS_location & in_mEndOfArgumentLocation,
+                                                                                                              const GALGAS_semanticInstructionListForGeneration & in_mInstructionListForGeneration 
+                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_ruleLabelImplementationList_2D_element result ;
+  if (in_mLabelName.isValid () && in_mSignatureForGeneration.isValid () && in_mSignature.isValid () && in_mEndOfArgumentLocation.isValid () && in_mInstructionListForGeneration.isValid ()) {
+    result = GALGAS_ruleLabelImplementationList_2D_element (in_mLabelName, in_mSignatureForGeneration, in_mSignature, in_mEndOfArgumentLocation, in_mInstructionListForGeneration) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_ruleLabelImplementationList_2D_element::objectCompare (const GALGAS_ruleLabelImplementationList_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mProperty_mLabelName.objectCompare (inOperand.mProperty_mLabelName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mSignatureForGeneration.objectCompare (inOperand.mProperty_mSignatureForGeneration) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mSignature.objectCompare (inOperand.mProperty_mSignature) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mEndOfArgumentLocation.objectCompare (inOperand.mProperty_mEndOfArgumentLocation) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mInstructionListForGeneration.objectCompare (inOperand.mProperty_mInstructionListForGeneration) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_ruleLabelImplementationList_2D_element::isValid (void) const {
+  return mProperty_mLabelName.isValid () && mProperty_mSignatureForGeneration.isValid () && mProperty_mSignature.isValid () && mProperty_mEndOfArgumentLocation.isValid () && mProperty_mInstructionListForGeneration.isValid () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_ruleLabelImplementationList_2D_element::drop (void) {
+  mProperty_mLabelName.drop () ;
+  mProperty_mSignatureForGeneration.drop () ;
+  mProperty_mSignature.drop () ;
+  mProperty_mEndOfArgumentLocation.drop () ;
+  mProperty_mInstructionListForGeneration.drop () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_ruleLabelImplementationList_2D_element::description (C_String & ioString,
+                                                                 const int32_t inIndentation) const {
+  ioString << "<struct @ruleLabelImplementationList-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mProperty_mLabelName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mSignatureForGeneration.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mSignature.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mEndOfArgumentLocation.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mInstructionListForGeneration.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//     @ruleLabelImplementationList-element generic code implementation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_ruleLabelImplementationList_2D_element ("ruleLabelImplementationList-element",
+                                                               NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_ruleLabelImplementationList_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ruleLabelImplementationList_2D_element ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_ruleLabelImplementationList_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_ruleLabelImplementationList_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_ruleLabelImplementationList_2D_element GALGAS_ruleLabelImplementationList_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                            C_Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_ruleLabelImplementationList_2D_element result ;
+  const GALGAS_ruleLabelImplementationList_2D_element * p = (const GALGAS_ruleLabelImplementationList_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_ruleLabelImplementationList_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("ruleLabelImplementationList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 GALGAS_uselessEntityLocationMap_2D_element::GALGAS_uselessEntityLocationMap_2D_element (void) :
 mProperty_lkey (),
 mProperty_mLocation () {
@@ -89,7 +245,7 @@ void GALGAS_uselessEntityLocationMap_2D_element::description (C_String & ioStrin
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@uselessEntityLocationMap-element type
+//     @uselessEntityLocationMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -245,7 +401,7 @@ void GALGAS_scopeLocalVarMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@scopeLocalVarMap-element type
+//     @scopeLocalVarMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -361,7 +517,7 @@ void GALGAS_unifiedTypeMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@unifiedTypeMap-element type
+//     @unifiedTypeMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -487,7 +643,7 @@ void GALGAS_actualOutputExpressionList_2D_element::description (C_String & ioStr
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@actualOutputExpressionList-element type
+//     @actualOutputExpressionList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -633,7 +789,7 @@ void GALGAS_castInstructionBranchListAST_2D_element::description (C_String & ioS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@castInstructionBranchListAST-element type
+//     @castInstructionBranchListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -767,7 +923,7 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element::description
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@forInstructionEnumeratedObjectElementListAST-element type
+//     @forInstructionEnumeratedObjectElementListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -893,7 +1049,7 @@ void GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element::descript
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@forInstructionEnumeratedObjectListForGeneration-element type
+//     @forInstructionEnumeratedObjectListForGeneration-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1009,7 +1165,7 @@ void GALGAS_optionalMethodActualArgumentList_2D_element::description (C_String &
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@optionalMethodActualArgumentList-element type
+//     @optionalMethodActualArgumentList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1125,7 +1281,7 @@ void GALGAS_logListAST_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@logListAST-element type
+//     @logListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1259,7 +1415,7 @@ void GALGAS_switchExtractedValuesListAST_2D_element::description (C_String & ioS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@switchExtractedValuesListAST-element type
+//     @switchExtractedValuesListAST-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1382,7 +1538,7 @@ void GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element::description
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@unusedNonTerminalSymbolMapForGrammarAnalysis-element type
+//     @unusedNonTerminalSymbolMapForGrammarAnalysis-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1516,7 +1672,7 @@ void GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2D_element::descriptio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@nonTerminalSymbolSortedListForGrammarAnalysis-element type
+//     @nonTerminalSymbolSortedListForGrammarAnalysis-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1639,7 +1795,7 @@ void GALGAS_syntaxComponentListForGrammarAnalysis_2D_element::description (C_Str
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@syntaxComponentListForGrammarAnalysis-element type
+//     @syntaxComponentListForGrammarAnalysis-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1762,7 +1918,7 @@ void GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element::description (C_Stri
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@terminalSymbolsMapForGrammarAnalysis-element type
+//     @terminalSymbolsMapForGrammarAnalysis-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1874,7 +2030,7 @@ void GALGAS_extensionMethodMapForGlobalCheckings_2D_element::description (C_Stri
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionMethodMapForGlobalCheckings-element type
+//     @extensionMethodMapForGlobalCheckings-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1986,7 +2142,7 @@ void GALGAS_extensionSetterMapForGlobalCheckings_2D_element::description (C_Stri
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionSetterMapForGlobalCheckings-element type
+//     @extensionSetterMapForGlobalCheckings-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2098,7 +2254,7 @@ void GALGAS_extensionGetterMapForGlobalCheckings_2D_element::description (C_Stri
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@extensionGetterMapForGlobalCheckings-element type
+//     @extensionGetterMapForGlobalCheckings-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2221,7 +2377,7 @@ void GALGAS_galgas_33_QualifiedFeatureList_2D_element::description (C_String & i
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@galgas3QualifiedFeatureList-element type
+//     @galgas3QualifiedFeatureList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2355,7 +2511,7 @@ void GALGAS_headerCompositionMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@headerCompositionMap-element type
+//     @headerCompositionMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2478,7 +2634,7 @@ void GALGAS_headerRepartitionMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@headerRepartitionMap-element type
+//     @headerRepartitionMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2601,7 +2757,7 @@ void GALGAS_projectQualifiedFeatureMap_2D_element::description (C_String & ioStr
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@projectQualifiedFeatureMap-element type
+//     @projectQualifiedFeatureMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2760,7 +2916,7 @@ acPtr_class * cPtr_templateLiteralUIntExpressionAST::duplicate (LOCATION_ARGS) c
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateLiteralUIntExpressionAST type
+//     @templateLiteralUIntExpressionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2919,7 +3075,7 @@ acPtr_class * cPtr_templateLiteralCharExpressionAST::duplicate (LOCATION_ARGS) c
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateLiteralCharExpressionAST type
+//     @templateLiteralCharExpressionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3078,7 +3234,7 @@ acPtr_class * cPtr_templateLiteralDoubleExpressionAST::duplicate (LOCATION_ARGS)
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateLiteralDoubleExpressionAST type
+//     @templateLiteralDoubleExpressionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8707,7 +8863,7 @@ acPtr_class * cPtr_templateInstructionExpressionForGeneration::duplicate (LOCATI
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateInstructionExpressionForGeneration type
+//     @templateInstructionExpressionForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8833,7 +8989,7 @@ void GALGAS_templateAnalysisContext::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@templateAnalysisContext type
+//     @templateAnalysisContext generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9184,7 +9340,7 @@ acPtr_class * cPtr_optionComponentForGeneration::duplicate (LOCATION_ARGS) const
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@optionComponentForGeneration type
+//     @optionComponentForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9295,7 +9451,7 @@ GALGAS_optionComponentForGeneration GALGAS_optionComponentForGeneration_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@optionComponentForGeneration-weak type
+//     @optionComponentForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9475,7 +9631,7 @@ acPtr_class * cPtr_arrayTypeForGeneration::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@arrayTypeForGeneration type
+//     @arrayTypeForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9586,7 +9742,7 @@ GALGAS_arrayTypeForGeneration GALGAS_arrayTypeForGeneration_2D_weak::bang_arrayT
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@arrayTypeForGeneration-weak type
+//     @arrayTypeForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12435,456 +12591,4 @@ void cPtr_templateInstructionSwitchForGeneration::method_templateCodeGeneration 
     enumerator_10620.gotoNextObject () ;
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 292)) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension getter '@lexiqueComponentAST keyRepresentation'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string cPtr_lexiqueComponentAST::getter_keyRepresentation (C_Compiler * inCompiler
-                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result_result ; // Returned variable
-  const GALGAS_lexiqueComponentAST temp_0 = this ;
-  result_result = GALGAS_string ("lexique ").add_operation (temp_0.readProperty_mLexiqueComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 797)) ;
-//---
-  return result_result ;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@lexiqueComponentAST enterDeclarationInGraph'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void cPtr_lexiqueComponentAST::method_enterDeclarationInGraph (GALGAS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
-                                                               GALGAS_extensionMethodMapForBuildingContext & /* ioArgument_ioExtensionMethodMapForBuildingContext */,
-                                                               GALGAS_extensionGetterMapForBuildingContext & /* ioArgument_ioExtensionGetterMapForBuildingContext */,
-                                                               GALGAS_extensionSetterMapForBuildingContext & /* ioArgument_ioExtensionSetterMapForBuildingContext */,
-                                                               GALGAS_semanticDeclarationListAST & /* ioArgument_ioExtensionOverrideDefinitionList */,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_lexiqueComponentAST temp_0 = this ;
-  const GALGAS_lexiqueComponentAST temp_1 = this ;
-  GALGAS_lstring var_key_30137 = GALGAS_lstring::constructor_new (GALGAS_string ("lexique ").add_operation (temp_0.readProperty_mLexiqueComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 808)), temp_1.readProperty_mLexiqueComponentName ().readProperty_location ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 808)) ;
-  {
-  const GALGAS_lexiqueComponentAST temp_2 = this ;
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_30137, temp_2, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 809)) ;
-  }
-}
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@lexiqueComponentAST enterDeclarationInSemanticContext'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void cPtr_lexiqueComponentAST::method_enterDeclarationInSemanticContext (const GALGAS_extensionMethodMapForBuildingContext /* constinArgument_inExtensionMethodMapForBuildingContext */,
-                                                                         const GALGAS_extensionGetterMapForBuildingContext /* constinArgument_inExtensionGetterMapForBuildingContext */,
-                                                                         const GALGAS_extensionSetterMapForBuildingContext /* constinArgument_inExtensionSetterMapForBuildingContext */,
-                                                                         GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                         GALGAS_semanticContext & ioArgument_ioSemanticContext,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_lexicalTypeMap var_lexicalTypeMap_30970 = function_buildLexicalTypeMap (inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 821)) ;
-  GALGAS_lexicalAttributeMap var_lexicalAttributeMap_31042 = GALGAS_lexicalAttributeMap::constructor_emptyMap (SOURCE_FILE ("lexique-component.galgas", 822)) ;
-  {
-  const GALGAS_lexiqueComponentAST temp_0 = this ;
-  routine_buildLexicalAttributeMap (var_lexicalTypeMap_30970, temp_0.readProperty_mLexicalAttributeListAST (), var_lexicalAttributeMap_31042, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 823)) ;
-  }
-  GALGAS_terminalMap var_terminalMap_31231 = GALGAS_terminalMap::constructor_emptyMap (SOURCE_FILE ("lexique-component.galgas", 829)) ;
-  const GALGAS_lexiqueComponentAST temp_1 = this ;
-  cEnumerator_terminalDeclarationListAST enumerator_31272 (temp_1.readProperty_mTerminalDeclarationListAST (), kENUMERATION_UP) ;
-  while (enumerator_31272.hasCurrentObject ()) {
-    GALGAS_lexicalSentValueList var_argumentTypeList_31337 = GALGAS_lexicalSentValueList::constructor_emptyList (SOURCE_FILE ("lexique-component.galgas", 831)) ;
-    cEnumerator_sentLexicalAttributeListAST enumerator_31404 (enumerator_31272.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
-    while (enumerator_31404.hasCurrentObject ()) {
-      GALGAS_lexicalTypeEnum var_attributeLexicalType_31508 ;
-      var_lexicalAttributeMap_31042.method_searchKey (enumerator_31404.current_mAttributeName (HERE), var_attributeLexicalType_31508, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 833)) ;
-      var_argumentTypeList_31337.addAssign_operation (enumerator_31404.current_mFormalSelector (HERE), enumerator_31404.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_31508  COMMA_SOURCE_FILE ("lexique-component.galgas", 834)) ;
-      enumerator_31404.gotoNextObject () ;
-    }
-    {
-    var_terminalMap_31231.setter_insertKey (enumerator_31272.current_mName (HERE), var_argumentTypeList_31337, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 836)) ;
-    }
-    enumerator_31272.gotoNextObject () ;
-  }
-  const GALGAS_lexiqueComponentAST temp_2 = this ;
-  cEnumerator_lexicalListDeclarationListAST enumerator_31713 (temp_2.readProperty_mLexicalListDeclarationListAST (), kENUMERATION_UP) ;
-  while (enumerator_31713.hasCurrentObject ()) {
-    GALGAS_lexicalSentValueList var_argumentTypeList_31781 = GALGAS_lexicalSentValueList::constructor_emptyList (SOURCE_FILE ("lexique-component.galgas", 840)) ;
-    cEnumerator_sentLexicalAttributeListAST enumerator_31848 (enumerator_31713.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
-    while (enumerator_31848.hasCurrentObject ()) {
-      GALGAS_lexicalTypeEnum var_attributeLexicalType_31953 ;
-      var_lexicalAttributeMap_31042.method_searchKey (enumerator_31848.current_mAttributeName (HERE), var_attributeLexicalType_31953, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 842)) ;
-      var_argumentTypeList_31781.addAssign_operation (enumerator_31848.current_mFormalSelector (HERE), enumerator_31848.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_31953  COMMA_SOURCE_FILE ("lexique-component.galgas", 843)) ;
-      enumerator_31848.gotoNextObject () ;
-    }
-    cEnumerator_lexicalListEntryListAST enumerator_32081 (enumerator_31713.current_mEntryList (HERE), kENUMERATION_UP) ;
-    while (enumerator_32081.hasCurrentObject ()) {
-      {
-      var_terminalMap_31231.setter_insertKey (enumerator_32081.current_mTerminalSpelling (HERE), var_argumentTypeList_31781, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 846)) ;
-      }
-      enumerator_32081.gotoNextObject () ;
-    }
-    enumerator_31713.gotoNextObject () ;
-  }
-  {
-  const GALGAS_lexiqueComponentAST temp_3 = this ;
-  const GALGAS_lexiqueComponentAST temp_4 = this ;
-  const GALGAS_lexiqueComponentAST temp_5 = this ;
-  const GALGAS_lexiqueComponentAST temp_6 = this ;
-  const GALGAS_lexiqueComponentAST temp_7 = this ;
-  const GALGAS_lexiqueComponentAST temp_8 = this ;
-  const GALGAS_lexiqueComponentAST temp_9 = this ;
-  ioArgument_ioSemanticContext.mProperty_mLexiqueComponentMapForSemanticAnalysis.setter_insertKey (temp_3.readProperty_mLexiqueComponentName (), this->mProperty_mIsTemplate, var_terminalMap_31231, temp_4.readProperty_mIndexingListAST (), temp_5.readProperty_mIndexingDirectoryAST (), temp_6.readProperty_mTerminalDeclarationListAST (), temp_7.readProperty_mLexicalAttributeListAST (), temp_8.readProperty_mLexicalStyleListAST (), temp_9.readProperty_mLexicalListDeclarationListAST (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 850)) ;
-  }
-}
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@lexiqueComponentAST semanticAnalysis'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void cPtr_lexiqueComponentAST::method_semanticAnalysis (GALGAS_lstringlist & /* ioArgument_ioUsefulnessRootEntities */,
-                                                        GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                        const GALGAS_string /* constinArgument_inProductDirectory */,
-                                                        const GALGAS_semanticContext /* constinArgument_inSemanticContext */,
-                                                        GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                        const GALGAS_predefinedTypes /* constinArgument_inPredefinedTypes */,
-                                                        GALGAS_semanticDeclarationListForGeneration & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_lexiqueComponentAST temp_0 = this ;
-  GALGAS_lstring var_nameForUsefulness_33381 = function_lexiqueNameForUsefulEntitiesGraph (temp_0.readProperty_mLexiqueComponentName (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 874)) ;
-  {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_33381, var_nameForUsefulness_33381, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 875)) ;
-  }
-  GALGAS_lexicalTypeMap var_lexicalTypeMap_33631 = function_buildLexicalTypeMap (inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 877)) ;
-  GALGAS_lexicalRoutineMap var_lexicalRoutineMap_33772 ;
-  {
-  routine_buildLexicalRoutineMap (var_lexicalRoutineMap_33772, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 879)) ;
-  }
-  GALGAS_lexicalFunctionMap var_lexicalFunctionMap_33892 ;
-  {
-  routine_buildLexicalFunctionMap (var_lexicalFunctionMap_33892, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 881)) ;
-  }
-  GALGAS_stringset var_unicodeTestFunctions_34021 ;
-  {
-  routine_lexicalUnicodeTestFunctionAnalysis (var_unicodeTestFunctions_34021, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 883)) ;
-  }
-  const GALGAS_lexiqueComponentAST temp_1 = this ;
-  GALGAS_lexiqueAnalysisContext var_lexiqueAnalysisContext_34116 = GALGAS_lexiqueAnalysisContext::constructor_new (temp_1.readProperty_mLexiqueComponentName ().readProperty_string (), var_lexicalRoutineMap_33772, var_lexicalFunctionMap_33892, GALGAS_lexicalMessageMap::constructor_emptyMap (SOURCE_FILE ("lexique-component.galgas", 889)), GALGAS_terminalMap::constructor_emptyMap (SOURCE_FILE ("lexique-component.galgas", 890)), GALGAS_terminalList::constructor_emptyList (SOURCE_FILE ("lexique-component.galgas", 891)), GALGAS_lexicalAttributeMap::constructor_emptyMap (SOURCE_FILE ("lexique-component.galgas", 892)), GALGAS_lexicalExplicitTokenListMapMap::constructor_emptyMap (SOURCE_FILE ("lexique-component.galgas", 893)), GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("lexique-component.galgas", 894)), GALGAS_templateDelimitorList::constructor_emptyList (SOURCE_FILE ("lexique-component.galgas", 895)), GALGAS_styleMap::constructor_emptyMap (SOURCE_FILE ("lexique-component.galgas", 896)), var_unicodeTestFunctions_34021  COMMA_SOURCE_FILE ("lexique-component.galgas", 885)) ;
-  GALGAS_bigint var_styleIndex_34511 = GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 900)) ;
-  const GALGAS_lexiqueComponentAST temp_2 = this ;
-  cEnumerator_lexicalStyleListAST enumerator_34537 (temp_2.readProperty_mLexicalStyleListAST (), kENUMERATION_UP) ;
-  while (enumerator_34537.hasCurrentObject ()) {
-    {
-    var_lexiqueAnalysisContext_34116.mProperty_mStyleMap.setter_insertKey (enumerator_34537.current_mName (HERE), enumerator_34537.current_mComment (HERE), var_styleIndex_34511.getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 902)), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 902)) ;
-    }
-    var_styleIndex_34511.plusAssign_operation(GALGAS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 903)), inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 903)) ;
-    enumerator_34537.gotoNextObject () ;
-  }
-  {
-  const GALGAS_lexiqueComponentAST temp_3 = this ;
-  routine_buildLexicalAttributeMap (var_lexicalTypeMap_33631, temp_3.readProperty_mLexicalAttributeListAST (), var_lexiqueAnalysisContext_34116.mProperty_mLexicalAttributeMap, inCompiler  COMMA_SOURCE_FILE ("lexique-component.galgas", 906)) ;
-  }
-  const GALGAS_lexiqueComponentAST temp_4 = this ;
-  cEnumerator_terminalDeclarationListAST enumerator_35011 (temp_4.readProperty_mTerminalDeclarationListAST (), kENUMERATION_UP) ;
-  while (enumerator_35011.hasCurrentObject ()) {
-    GALGAS_uint var_terminalStyleIndex_35084 = GALGAS_uint (uint32_t (0U)) ;
-    enumGalgasBool test_5 = kBoolTrue ;
-    if (kBoolTrue == test_5) {
-      test_5 = GALGAS_bool (kIsStrictSup, enumerator_35011.current_mStyle (HERE).readProperty_string ().getter_length (SOURCE_FILE ("lexique-component.galgas", 914)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-      if (kBoolTrue == test_5) {
-        GALGAS_lstring joker_35187 ; // Joker input parameter
-        var_lexiqueAnalysisContext_34116.readProperty_mStyleMap ().method_searchKey (enumerator_35011.current_mStyle (HERE), joker_35187, var_terminalStyleIndex_35084, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 915)) ;
-      }
-    }
-    GALGAS_lexicalSentValueList var_argumentTypeList_35242 = GALGAS_lexicalSentValueList::constructor_emptyList (SOURCE_FILE ("lexique-component.galgas", 917)) ;
-    cEnumerator_sentLexicalAttributeListAST enumerator_35309 (enumerator_35011.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
-    while (enumerator_35309.hasCurrentObject ()) {
-      GALGAS_lexicalTypeEnum var_attributeLexicalType_35438 ;
-      var_lexiqueAnalysisContext_34116.readProperty_mLexicalAttributeMap ().method_searchKey (enumerator_35309.current_mAttributeName (HERE), var_attributeLexicalType_35438, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 919)) ;
-      var_argumentTypeList_35242.addAssign_operation (enumerator_35309.current_mFormalSelector (HERE), enumerator_35309.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_35438  COMMA_SOURCE_FILE ("lexique-component.galgas", 920)) ;
-      enumerator_35309.gotoNextObject () ;
-    }
-    {
-    var_lexiqueAnalysisContext_34116.mProperty_mTerminalMap.setter_insertKey (enumerator_35011.current_mName (HERE), var_argumentTypeList_35242, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 922)) ;
-    }
-    GALGAS_bool var_isEndOfTemplateMark_35642 = GALGAS_bool (false) ;
-    GALGAS_bool var_atomicSelection_35674 = GALGAS_bool (true) ;
-    cEnumerator_lstringlist enumerator_35697 (enumerator_35011.current_mOptionList (HERE), kENUMERATION_UP) ;
-    while (enumerator_35697.hasCurrentObject ()) {
-      enumGalgasBool test_6 = kBoolTrue ;
-      if (kBoolTrue == test_6) {
-        test_6 = GALGAS_bool (kIsEqual, enumerator_35697.current_mValue (HERE).readProperty_string ().objectCompare (GALGAS_string ("nonAtomicSelection"))).boolEnum () ;
-        if (kBoolTrue == test_6) {
-          enumGalgasBool test_7 = kBoolTrue ;
-          if (kBoolTrue == test_7) {
-            test_7 = var_atomicSelection_35674.boolEnum () ;
-            if (kBoolTrue == test_7) {
-              var_atomicSelection_35674 = GALGAS_bool (false) ;
-            }
-          }
-          if (kBoolFalse == test_7) {
-            TC_Array <C_FixItDescription> fixItArray8 ;
-            inCompiler->emitSemanticError (enumerator_35697.current_mValue (HERE).readProperty_location (), GALGAS_string ("the 'nonAtomicSelection' attribute is already set"), fixItArray8  COMMA_SOURCE_FILE ("lexique-component.galgas", 930)) ;
-          }
-        }
-      }
-      if (kBoolFalse == test_6) {
-        enumGalgasBool test_9 = kBoolTrue ;
-        if (kBoolTrue == test_9) {
-          test_9 = GALGAS_bool (kIsNotEqual, enumerator_35697.current_mValue (HERE).readProperty_string ().objectCompare (GALGAS_string ("templateEndMark"))).boolEnum () ;
-          if (kBoolTrue == test_9) {
-            TC_Array <C_FixItDescription> fixItArray10 ;
-            inCompiler->emitSemanticError (enumerator_35697.current_mValue (HERE).readProperty_location (), GALGAS_string ("only the 'templateEndMark' and 'nonAtomicSelection' attributes are allowed here"), fixItArray10  COMMA_SOURCE_FILE ("lexique-component.galgas", 933)) ;
-          }
-        }
-        if (kBoolFalse == test_9) {
-          enumGalgasBool test_11 = kBoolTrue ;
-          if (kBoolTrue == test_11) {
-            test_11 = var_isEndOfTemplateMark_35642.boolEnum () ;
-            if (kBoolTrue == test_11) {
-              TC_Array <C_FixItDescription> fixItArray12 ;
-              inCompiler->emitSemanticError (enumerator_35697.current_mValue (HERE).readProperty_location (), GALGAS_string ("the 'templateEndMark' attribute is already set"), fixItArray12  COMMA_SOURCE_FILE ("lexique-component.galgas", 935)) ;
-            }
-          }
-          if (kBoolFalse == test_11) {
-            var_isEndOfTemplateMark_35642 = GALGAS_bool (true) ;
-          }
-        }
-      }
-      enumerator_35697.gotoNextObject () ;
-    }
-    var_lexiqueAnalysisContext_34116.mProperty_mTerminalList.addAssign_operation (enumerator_35011.current_mName (HERE), var_argumentTypeList_35242, enumerator_35011.current_mSyntaxErrorMessage (HERE).readProperty_string (), var_isEndOfTemplateMark_35642, var_atomicSelection_35674, var_terminalStyleIndex_35084  COMMA_SOURCE_FILE ("lexique-component.galgas", 940)) ;
-    enumerator_35011.gotoNextObject () ;
-  }
-  const GALGAS_lexiqueComponentAST temp_13 = this ;
-  cEnumerator_lexicalListDeclarationListAST enumerator_36528 (temp_13.readProperty_mLexicalListDeclarationListAST (), kENUMERATION_UP) ;
-  while (enumerator_36528.hasCurrentObject ()) {
-    GALGAS_uint var_terminalStyleIndex_36604 = GALGAS_uint (uint32_t (0U)) ;
-    enumGalgasBool test_14 = kBoolTrue ;
-    if (kBoolTrue == test_14) {
-      test_14 = GALGAS_bool (kIsStrictSup, enumerator_36528.current_mStyle (HERE).readProperty_string ().getter_length (SOURCE_FILE ("lexique-component.galgas", 950)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-      if (kBoolTrue == test_14) {
-        GALGAS_lstring joker_36707 ; // Joker input parameter
-        var_lexiqueAnalysisContext_34116.readProperty_mStyleMap ().method_searchKey (enumerator_36528.current_mStyle (HERE), joker_36707, var_terminalStyleIndex_36604, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 951)) ;
-      }
-    }
-    GALGAS_lexicalSentValueList var_argumentTypeList_36762 = GALGAS_lexicalSentValueList::constructor_emptyList (SOURCE_FILE ("lexique-component.galgas", 953)) ;
-    cEnumerator_sentLexicalAttributeListAST enumerator_36829 (enumerator_36528.current_mSentAttributeList (HERE), kENUMERATION_UP) ;
-    while (enumerator_36829.hasCurrentObject ()) {
-      GALGAS_lexicalTypeEnum var_attributeLexicalType_36958 ;
-      var_lexiqueAnalysisContext_34116.readProperty_mLexicalAttributeMap ().method_searchKey (enumerator_36829.current_mAttributeName (HERE), var_attributeLexicalType_36958, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 955)) ;
-      var_argumentTypeList_36762.addAssign_operation (enumerator_36829.current_mFormalSelector (HERE), enumerator_36829.current_mAttributeName (HERE).readProperty_string (), var_attributeLexicalType_36958  COMMA_SOURCE_FILE ("lexique-component.galgas", 956)) ;
-      enumerator_36829.gotoNextObject () ;
-    }
-    GALGAS_lexicalExplicitTokenListMap var_lexicalTokenListMap_37112 = GALGAS_lexicalExplicitTokenListMap::constructor_emptyMap (SOURCE_FILE ("lexique-component.galgas", 958)) ;
-    GALGAS_tokenSortedlist var_tokenSortedlist_37141 = GALGAS_tokenSortedlist::constructor_emptySortedList (SOURCE_FILE ("lexique-component.galgas", 959)) ;
-    cEnumerator_lexicalListEntryListAST enumerator_37220 (enumerator_36528.current_mEntryList (HERE), kENUMERATION_UP) ;
-    while (enumerator_37220.hasCurrentObject ()) {
-      GALGAS_string var_syntaxErrorMessage_37267 = enumerator_36528.current_mSyntaxErrorMessage (HERE).readProperty_string ().getter_stringByReplacingStringByString (GALGAS_string ("%K"), enumerator_37220.current_mTerminalSpelling (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 961)) ;
-      GALGAS_bool var_isEndOfTemplateMark_37392 = GALGAS_bool (false) ;
-      GALGAS_bool var_atomicSelection_37426 = GALGAS_bool (true) ;
-      cEnumerator_lstringlist enumerator_37451 (enumerator_37220.current_mAttributeList (HERE), kENUMERATION_UP) ;
-      while (enumerator_37451.hasCurrentObject ()) {
-        enumGalgasBool test_15 = kBoolTrue ;
-        if (kBoolTrue == test_15) {
-          test_15 = GALGAS_bool (kIsEqual, enumerator_37451.current_mValue (HERE).readProperty_string ().objectCompare (GALGAS_string ("nonAtomicSelection"))).boolEnum () ;
-          if (kBoolTrue == test_15) {
-            enumGalgasBool test_16 = kBoolTrue ;
-            if (kBoolTrue == test_16) {
-              test_16 = var_atomicSelection_37426.boolEnum () ;
-              if (kBoolTrue == test_16) {
-                var_atomicSelection_37426 = GALGAS_bool (false) ;
-              }
-            }
-            if (kBoolFalse == test_16) {
-              TC_Array <C_FixItDescription> fixItArray17 ;
-              inCompiler->emitSemanticError (enumerator_37451.current_mValue (HERE).readProperty_location (), GALGAS_string ("the 'nonAtomicSelection' attribute is already set"), fixItArray17  COMMA_SOURCE_FILE ("lexique-component.galgas", 969)) ;
-            }
-          }
-        }
-        if (kBoolFalse == test_15) {
-          enumGalgasBool test_18 = kBoolTrue ;
-          if (kBoolTrue == test_18) {
-            test_18 = GALGAS_bool (kIsNotEqual, enumerator_37451.current_mValue (HERE).readProperty_string ().objectCompare (GALGAS_string ("templateEndMark"))).boolEnum () ;
-            if (kBoolTrue == test_18) {
-              TC_Array <C_FixItDescription> fixItArray19 ;
-              inCompiler->emitSemanticError (enumerator_37451.current_mValue (HERE).readProperty_location (), GALGAS_string ("only the 'templateEndMark' and 'nonAtomicSelection' attributes are allowed here"), fixItArray19  COMMA_SOURCE_FILE ("lexique-component.galgas", 972)) ;
-            }
-          }
-          if (kBoolFalse == test_18) {
-            enumGalgasBool test_20 = kBoolTrue ;
-            if (kBoolTrue == test_20) {
-              test_20 = var_isEndOfTemplateMark_37392.boolEnum () ;
-              if (kBoolTrue == test_20) {
-                TC_Array <C_FixItDescription> fixItArray21 ;
-                inCompiler->emitSemanticError (enumerator_37451.current_mValue (HERE).readProperty_location (), GALGAS_string ("the 'templateEndMark' attribute is already set"), fixItArray21  COMMA_SOURCE_FILE ("lexique-component.galgas", 974)) ;
-              }
-            }
-            if (kBoolFalse == test_20) {
-              var_isEndOfTemplateMark_37392 = GALGAS_bool (true) ;
-            }
-          }
-        }
-        enumerator_37451.gotoNextObject () ;
-      }
-      var_lexiqueAnalysisContext_34116.mProperty_mTerminalList.addAssign_operation (enumerator_37220.current_mTerminalSpelling (HERE), var_argumentTypeList_36762, var_syntaxErrorMessage_37267, var_isEndOfTemplateMark_37392, var_atomicSelection_37426, var_terminalStyleIndex_36604  COMMA_SOURCE_FILE ("lexique-component.galgas", 979)) ;
-      {
-      var_lexiqueAnalysisContext_34116.mProperty_mTerminalMap.setter_insertKey (enumerator_37220.current_mTerminalSpelling (HERE), var_argumentTypeList_36762, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 986)) ;
-      }
-      {
-      var_lexicalTokenListMap_37112.setter_insertKey (enumerator_37220.current_mEntrySpelling (HERE), enumerator_37220.current_mTerminalSpelling (HERE), enumerator_37220.current_mAttributeList (HERE), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 987)) ;
-      }
-      var_tokenSortedlist_37141.addAssign_operation (enumerator_37220.current_mEntrySpelling (HERE).readProperty_string ().getter_length (SOURCE_FILE ("lexique-component.galgas", 988)), enumerator_37220.current_mEntrySpelling (HERE).readProperty_string (), enumerator_37220.current_mTerminalSpelling (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 988)) ;
-      var_lexiqueAnalysisContext_34116.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_37220.current_mEntrySpelling (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 989)) ;
-      enumerator_37220.gotoNextObject () ;
-    }
-    {
-    var_lexiqueAnalysisContext_34116.mProperty_mLexicalTokenListMap.setter_insertKey (enumerator_36528.current_mName (HERE), var_lexicalTokenListMap_37112, var_tokenSortedlist_37141, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 991)) ;
-    }
-    enumerator_36528.gotoNextObject () ;
-  }
-  const GALGAS_lexiqueComponentAST temp_22 = this ;
-  cEnumerator_lexicalMessageDeclarationListAST enumerator_38846 (temp_22.readProperty_mLexicalMessageDeclarationListAST (), kENUMERATION_UP) ;
-  while (enumerator_38846.hasCurrentObject ()) {
-    {
-    var_lexiqueAnalysisContext_34116.mProperty_mLexicalMessageMap.setter_insertKey (enumerator_38846.current_mMessageName (HERE), enumerator_38846.current_mMessageValue (HERE), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 995)) ;
-    }
-    enumerator_38846.gotoNextObject () ;
-  }
-  const GALGAS_lexiqueComponentAST temp_23 = this ;
-  cEnumerator_lexicalRuleListAST enumerator_39067 (temp_23.readProperty_mLexicalRuleListAST (), kENUMERATION_UP) ;
-  while (enumerator_39067.hasCurrentObject ()) {
-    callExtensionMethod_checkLexicalRule ((cPtr_abstractLexicalRuleAST *) enumerator_39067.current_mLexicalRule (HERE).ptr (), var_lexiqueAnalysisContext_34116, inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 999)) ;
-    enumerator_39067.gotoNextObject () ;
-  }
-  cEnumerator_lexicalMessageMap enumerator_39261 (var_lexiqueAnalysisContext_34116.readProperty_mLexicalMessageMap (), kENUMERATION_UP) ;
-  while (enumerator_39261.hasCurrentObject ()) {
-    enumGalgasBool test_24 = kBoolTrue ;
-    if (kBoolTrue == test_24) {
-      test_24 = enumerator_39261.current_mMessageIsUsed (HERE).operator_not (SOURCE_FILE ("lexique-component.galgas", 1003)).boolEnum () ;
-      if (kBoolTrue == test_24) {
-        TC_Array <C_FixItDescription> fixItArray25 ;
-        inCompiler->emitSemanticWarning (enumerator_39261.current_lkey (HERE).readProperty_location (), GALGAS_string ("unused message"), fixItArray25  COMMA_SOURCE_FILE ("lexique-component.galgas", 1004)) ;
-      }
-    }
-    enumerator_39261.gotoNextObject () ;
-  }
-  const GALGAS_lexiqueComponentAST temp_26 = this ;
-  cEnumerator_templateDelimitorListAST enumerator_39495 (temp_26.readProperty_mTemplateDelimitorListAST (), kENUMERATION_UP) ;
-  while (enumerator_39495.hasCurrentObject ()) {
-    var_lexiqueAnalysisContext_34116.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_39495.current_mStartString (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1009)) ;
-    var_lexiqueAnalysisContext_34116.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_39495.current_mEndString (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1010)) ;
-    GALGAS_bool var_preservesStartDelimiter_39712 = GALGAS_bool (false) ;
-    cEnumerator_lstringlist enumerator_39735 (enumerator_39495.current_mOptionList (HERE), kENUMERATION_UP) ;
-    while (enumerator_39735.hasCurrentObject ()) {
-      enumGalgasBool test_27 = kBoolTrue ;
-      if (kBoolTrue == test_27) {
-        test_27 = GALGAS_bool (kIsNotEqual, enumerator_39735.current_mValue (HERE).readProperty_string ().objectCompare (GALGAS_string ("preserved"))).boolEnum () ;
-        if (kBoolTrue == test_27) {
-          TC_Array <C_FixItDescription> fixItArray28 ;
-          inCompiler->emitSemanticError (enumerator_39735.current_mValue (HERE).readProperty_location (), GALGAS_string ("only the 'preserved' attribute is allowed here"), fixItArray28  COMMA_SOURCE_FILE ("lexique-component.galgas", 1014)) ;
-        }
-      }
-      if (kBoolFalse == test_27) {
-        enumGalgasBool test_29 = kBoolTrue ;
-        if (kBoolTrue == test_29) {
-          test_29 = var_preservesStartDelimiter_39712.boolEnum () ;
-          if (kBoolTrue == test_29) {
-            TC_Array <C_FixItDescription> fixItArray30 ;
-            inCompiler->emitSemanticError (enumerator_39735.current_mValue (HERE).readProperty_location (), GALGAS_string ("the 'preserved' attribute is already set"), fixItArray30  COMMA_SOURCE_FILE ("lexique-component.galgas", 1016)) ;
-          }
-        }
-        if (kBoolFalse == test_29) {
-          var_preservesStartDelimiter_39712 = GALGAS_bool (true) ;
-        }
-      }
-      enumerator_39735.gotoNextObject () ;
-    }
-    var_lexiqueAnalysisContext_34116.mProperty_mTemplateDelimitorList.addAssign_operation (enumerator_39495.current_mStartString (HERE), enumerator_39495.current_mEndString (HERE), var_preservesStartDelimiter_39712  COMMA_SOURCE_FILE ("lexique-component.galgas", 1021)) ;
-    enumerator_39495.gotoNextObject () ;
-  }
-  enumGalgasBool test_31 = kBoolTrue ;
-  if (kBoolTrue == test_31) {
-    const GALGAS_lexiqueComponentAST temp_32 = this ;
-    test_31 = temp_32.readProperty_mIndexingDirectoryAST ().readProperty_location ().getter_isNowhere (SOURCE_FILE ("lexique-component.galgas", 1024)).boolEnum () ;
-    if (kBoolTrue == test_31) {
-      const GALGAS_lexiqueComponentAST temp_33 = this ;
-      cEnumerator_indexingListAST enumerator_40283 (temp_33.readProperty_mIndexingListAST (), kENUMERATION_UP) ;
-      while (enumerator_40283.hasCurrentObject ()) {
-        TC_Array <C_FixItDescription> fixItArray34 ;
-        inCompiler->emitSemanticError (enumerator_40283.current_mIndexName (HERE).readProperty_location (), GALGAS_string ("indexing declaration requires one 'indexing in \"path\";' declaration"), fixItArray34  COMMA_SOURCE_FILE ("lexique-component.galgas", 1026)) ;
-        enumerator_40283.gotoNextObject () ;
-      }
-    }
-  }
-  GALGAS_stringset var_indexNameSet_40453 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("lexique-component.galgas", 1029)) ;
-  const GALGAS_lexiqueComponentAST temp_35 = this ;
-  cEnumerator_indexingListAST enumerator_40478 (temp_35.readProperty_mIndexingListAST (), kENUMERATION_UP) ;
-  while (enumerator_40478.hasCurrentObject ()) {
-    enumGalgasBool test_36 = kBoolTrue ;
-    if (kBoolTrue == test_36) {
-      test_36 = var_indexNameSet_40453.getter_hasKey (enumerator_40478.current_mIndexName (HERE).readProperty_string () COMMA_SOURCE_FILE ("lexique-component.galgas", 1031)).boolEnum () ;
-      if (kBoolTrue == test_36) {
-        TC_Array <C_FixItDescription> fixItArray37 ;
-        inCompiler->emitSemanticError (enumerator_40478.current_mIndexName (HERE).readProperty_location (), GALGAS_string ("the '").add_operation (enumerator_40478.current_mIndexName (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1032)).add_operation (GALGAS_string ("' index is already declared"), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1032)), fixItArray37  COMMA_SOURCE_FILE ("lexique-component.galgas", 1032)) ;
-      }
-    }
-    var_indexNameSet_40453.addAssign_operation (enumerator_40478.current_mIndexName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1034)) ;
-    enumerator_40478.gotoNextObject () ;
-  }
-  const GALGAS_lexiqueComponentAST temp_38 = this ;
-  cEnumerator_templateReplacementListAST enumerator_40795 (temp_38.readProperty_mTemplateReplacementListAST (), kENUMERATION_UP) ;
-  while (enumerator_40795.hasCurrentObject ()) {
-    var_lexiqueAnalysisContext_34116.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_40795.current_mMatchString (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1038)) ;
-    var_lexiqueAnalysisContext_34116.mProperty_mUnicodeStringToGenerate.addAssign_operation (enumerator_40795.current_mReplacementString (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("lexique-component.galgas", 1039)) ;
-    enumerator_40795.gotoNextObject () ;
-  }
-  enumGalgasBool test_39 = kBoolTrue ;
-  if (kBoolTrue == test_39) {
-    test_39 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("lexique-component.galgas", 1043)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-    if (kBoolTrue == test_39) {
-      const GALGAS_lexiqueComponentAST temp_40 = this ;
-      const GALGAS_lexiqueComponentAST temp_41 = this ;
-      const GALGAS_lexiqueComponentAST temp_42 = this ;
-      const GALGAS_lexiqueComponentAST temp_43 = this ;
-      GALGAS_string var_headerContents_41176 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (inCompiler, temp_40.readProperty_mLexiqueComponentName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique-component.galgas", 1046)), temp_41.readProperty_mLexicalListDeclarationListAST (), var_lexiqueAnalysisContext_34116, temp_42.readProperty_mTemplateDelimitorListAST (), temp_43.readProperty_mIndexingListAST () COMMA_SOURCE_FILE ("lexique-component.galgas", 1045))) ;
-      const GALGAS_lexiqueComponentAST temp_44 = this ;
-      const GALGAS_lexiqueComponentAST temp_45 = this ;
-      const GALGAS_lexiqueComponentAST temp_46 = this ;
-      const GALGAS_lexiqueComponentAST temp_47 = this ;
-      const GALGAS_lexiqueComponentAST temp_48 = this ;
-      const GALGAS_lexiqueComponentAST temp_49 = this ;
-      const GALGAS_lexiqueComponentAST temp_50 = this ;
-      const GALGAS_lexiqueComponentAST temp_51 = this ;
-      GALGAS_string var_cppContents_41480 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_32_Galgas_33_ (inCompiler, temp_44.readProperty_mLexiqueComponentName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique-component.galgas", 1054)), extensionGetter_useLoopLocalVar (temp_45.readProperty_mLexicalRuleListAST (), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1055)), var_lexiqueAnalysisContext_34116.readProperty_mLexicalAttributeMap (), var_lexiqueAnalysisContext_34116.readProperty_mLexicalMessageMap (), var_lexiqueAnalysisContext_34116.readProperty_mTerminalList (), var_lexiqueAnalysisContext_34116.readProperty_mLexicalTokenListMap (), var_lexiqueAnalysisContext_34116.readProperty_mUnicodeStringToGenerate (), temp_46.readProperty_mLexicalRuleListAST (), var_lexiqueAnalysisContext_34116, temp_47.readProperty_mIndexingDirectoryAST ().readProperty_string (), temp_48.readProperty_mTemplateDelimitorListAST (), temp_49.readProperty_mLexiqueComponentName ().readProperty_string (), temp_50.readProperty_mTemplateReplacementListAST (), temp_51.readProperty_mLexicalStyleListAST () COMMA_SOURCE_FILE ("lexique-component.galgas", 1053))) ;
-      const GALGAS_lexiqueComponentAST temp_52 = this ;
-      GALGAS_string var_objCocoaHeader_42222 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_cocoaHeaderZone_32_ (inCompiler, temp_52.readProperty_mLexiqueComponentName ().readProperty_string (), var_lexiqueAnalysisContext_34116 COMMA_SOURCE_FILE ("lexique-component.galgas", 1070))) ;
-      const GALGAS_lexiqueComponentAST temp_53 = this ;
-      const GALGAS_lexiqueComponentAST temp_54 = this ;
-      const GALGAS_lexiqueComponentAST temp_55 = this ;
-      const GALGAS_lexiqueComponentAST temp_56 = this ;
-      const GALGAS_lexiqueComponentAST temp_57 = this ;
-      const GALGAS_lexiqueComponentAST temp_58 = this ;
-      const GALGAS_lexiqueComponentAST temp_59 = this ;
-      const GALGAS_lexiqueComponentAST temp_60 = this ;
-      GALGAS_string var_objCocoaImplementation_42422 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementationZone_32_ (inCompiler, GALGAS_string ("lexique-").add_operation (temp_53.readProperty_mLexiqueComponentName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("lexique-component.galgas", 1076)), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1076)).add_operation (GALGAS_string ("-cocoa"), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1076)), temp_54.readProperty_mLexiqueComponentName ().readProperty_string (), var_lexiqueAnalysisContext_34116.readProperty_mLexicalAttributeMap (), var_lexiqueAnalysisContext_34116.readProperty_mLexicalMessageMap (), var_lexiqueAnalysisContext_34116.readProperty_mTerminalList (), var_lexiqueAnalysisContext_34116.readProperty_mUnicodeStringToGenerate (), temp_55.readProperty_mLexicalRuleListAST (), var_lexiqueAnalysisContext_34116, temp_56.readProperty_mTemplateReplacementListAST (), temp_57.readProperty_mIndexingDirectoryAST ().readProperty_string (), temp_58.readProperty_mIndexingListAST (), temp_59.readProperty_mLexicalStyleListAST (), temp_60.readProperty_mTemplateDelimitorListAST () COMMA_SOURCE_FILE ("lexique-component.galgas", 1075))) ;
-      const GALGAS_lexiqueComponentAST temp_61 = this ;
-      const GALGAS_lexiqueComponentAST temp_62 = this ;
-      const GALGAS_lexiqueComponentAST temp_63 = this ;
-      const GALGAS_lexiqueComponentAST temp_64 = this ;
-      const GALGAS_lexiqueComponentAST temp_65 = this ;
-      const GALGAS_lexiqueComponentAST temp_66 = this ;
-      const GALGAS_lexiqueComponentAST temp_67 = this ;
-      const GALGAS_lexiqueComponentAST temp_68 = this ;
-      GALGAS_string var_swiftCocoaImplementation_43135 = GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementationZone_32_ (inCompiler, GALGAS_string ("lexique-").add_operation (temp_61.readProperty_mLexiqueComponentName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("lexique-component.galgas", 1092)), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1092)).add_operation (GALGAS_string ("-cocoa"), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1092)), temp_62.readProperty_mLexiqueComponentName ().readProperty_string (), var_lexiqueAnalysisContext_34116.readProperty_mLexicalAttributeMap (), var_lexiqueAnalysisContext_34116.readProperty_mLexicalMessageMap (), var_lexiqueAnalysisContext_34116.readProperty_mTerminalList (), var_lexiqueAnalysisContext_34116.readProperty_mUnicodeStringToGenerate (), temp_63.readProperty_mLexicalRuleListAST (), var_lexiqueAnalysisContext_34116, temp_64.readProperty_mTemplateReplacementListAST (), temp_65.readProperty_mIndexingDirectoryAST ().readProperty_string (), temp_66.readProperty_mIndexingListAST (), temp_67.readProperty_mLexicalStyleListAST (), temp_68.readProperty_mTemplateDelimitorListAST () COMMA_SOURCE_FILE ("lexique-component.galgas", 1091))) ;
-      const GALGAS_lexiqueComponentAST temp_69 = this ;
-      const GALGAS_lexiqueComponentAST temp_70 = this ;
-      ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string::makeEmptyString (), GALGAS_lexiqueDeclarationForGeneration::constructor_new (GALGAS_bool (true), GALGAS_string ("lexique-").add_operation (temp_69.readProperty_mLexiqueComponentName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("lexique-component.galgas", 1111)), inCompiler COMMA_SOURCE_FILE ("lexique-component.galgas", 1111)), temp_70.readProperty_mLexiqueComponentName ().readProperty_string (), GALGAS_string::makeEmptyString (), var_headerContents_41176, var_cppContents_41480, var_objCocoaHeader_42222, var_objCocoaImplementation_42422, var_swiftCocoaImplementation_43135  COMMA_SOURCE_FILE ("lexique-component.galgas", 1109))  COMMA_SOURCE_FILE ("lexique-component.galgas", 1107)) ;
-    }
-  }
 }

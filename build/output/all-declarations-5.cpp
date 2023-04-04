@@ -77,7 +77,7 @@ GALGAS_galgas_33_SyntaxComponentAST GALGAS_galgas_33_SyntaxComponentAST_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@galgas3SyntaxComponentAST-weak type
+//     @galgas3SyntaxComponentAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -188,7 +188,7 @@ GALGAS_galgas_33_GrammarComponentAST GALGAS_galgas_33_GrammarComponentAST_2D_wea
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@galgas3GrammarComponentAST-weak type
+//     @galgas3GrammarComponentAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -865,7 +865,7 @@ GALGAS_bool cEnumerator_galgas_33_SyntaxComponentListAST::current_mHasTranslateF
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@galgas3SyntaxComponentListAST type
+//     @galgas3SyntaxComponentListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1412,7 +1412,7 @@ GALGAS_syntaxRuleListAST cEnumerator_galgas_33_SyntaxExtensionListAST::current_m
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@galgas3SyntaxExtensionListAST type
+//     @galgas3SyntaxExtensionListAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1522,7 +1522,7 @@ GALGAS_galgas_33_SyntaxExtensionListAST cEnumerator_syntaxExtensions::current_mL
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@syntaxExtensions type
+//     @syntaxExtensions generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2004,7 +2004,7 @@ GALGAS_location cEnumerator_prologueEpilogueList::current_mEndOfInstructionList 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@prologueEpilogueList type
+//     @prologueEpilogueList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2811,7 +2811,7 @@ GALGAS_location cEnumerator_programRuleList::current_mEndOfInstructionList (LOCA
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@programRuleList type
+//     @programRuleList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3000,7 +3000,7 @@ void GALGAS_galgasDeclarationAST::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@galgasDeclarationAST type
+//     @galgasDeclarationAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3547,7 +3547,7 @@ GALGAS_string cEnumerator_functionSignature::current_mFormalArgumentName (LOCATI
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@functionSignature type
+//     @functionSignature generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3942,7 +3942,7 @@ bool GALGAS_constructorMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@constructorMap type
+//     @constructorMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4175,7 +4175,7 @@ typeComparisonResult GALGAS_methodQualifier::objectCompare (const GALGAS_methodQ
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@methodQualifier type
+//     @methodQualifier generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4298,7 +4298,7 @@ typeComparisonResult GALGAS_methodKind::objectCompare (const GALGAS_methodKind &
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@methodKind type
+//     @methodKind generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4910,7 +4910,7 @@ GALGAS_string cEnumerator_optionalMethodSignature::current_mFormalArgumentName (
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@optionalMethodSignature type
+//     @optionalMethodSignature generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5182,7 +5182,7 @@ bool GALGAS_optionalMethodMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@optionalMethodMap type
+//     @optionalMethodMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5797,7 +5797,7 @@ bool GALGAS_getterMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@getterMap type
+//     @getterMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6409,7 +6409,7 @@ GALGAS_string cEnumerator_formalParameterSignature::current_mFormalArgumentName 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@formalParameterSignature type
+//     @formalParameterSignature generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6914,7 +6914,7 @@ bool GALGAS_setterMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@setterMap type
+//     @setterMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7493,7 +7493,7 @@ bool GALGAS_instanceMethodMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@instanceMethodMap type
+//     @instanceMethodMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7833,7 +7833,7 @@ bool GALGAS_classMethodMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@classMethodMap type
+//     @classMethodMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8315,7 +8315,7 @@ GALGAS_string cEnumerator_enumerationDescriptorList::current_mEnumerationName (L
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@enumerationDescriptorList type
+//     @enumerationDescriptorList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8812,7 +8812,7 @@ typeComparisonResult GALGAS_predefinedTypeKindEnum::objectCompare (const GALGAS_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@predefinedTypeKindEnum type
+//     @predefinedTypeKindEnum generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9337,7 +9337,7 @@ typeComparisonResult GALGAS_typeKindEnum::objectCompare (const GALGAS_typeKindEn
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeKindEnum type
+//     @typeKindEnum generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10230,7 +10230,7 @@ GALGAS_bool GALGAS_operators::getter_generateCopyConstructorAndAssignmentOperato
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@operators type
+//     @operators generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10610,7 +10610,7 @@ bool GALGAS_propertyMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@propertyMap type
+//     @propertyMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10755,7 +10755,7 @@ typeComparisonResult GALGAS_headerKind::objectCompare (const GALGAS_headerKind &
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@headerKind type
+//     @headerKind generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11081,7 +11081,7 @@ bool GALGAS_constantIndexMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@constantIndexMap type
+//     @constantIndexMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11228,7 +11228,7 @@ mProperty_mKind (in_mKind) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@predefinedTypeAST type
+//     @predefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11339,7 +11339,7 @@ GALGAS_predefinedTypeAST GALGAS_predefinedTypeAST_2D_weak::bang_predefinedTypeAS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@predefinedTypeAST-weak type
+//     @predefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11491,7 +11491,7 @@ acPtr_class * cPtr_applicationPredefinedTypeAST::duplicate (LOCATION_ARGS) const
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@applicationPredefinedTypeAST type
+//     @applicationPredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11602,7 +11602,7 @@ GALGAS_applicationPredefinedTypeAST GALGAS_applicationPredefinedTypeAST_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@applicationPredefinedTypeAST-weak type
+//     @applicationPredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11754,7 +11754,7 @@ acPtr_class * cPtr_bigintPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@bigintPredefinedTypeAST type
+//     @bigintPredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11865,7 +11865,7 @@ GALGAS_bigintPredefinedTypeAST GALGAS_bigintPredefinedTypeAST_2D_weak::bang_bigi
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@bigintPredefinedTypeAST-weak type
+//     @bigintPredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12017,7 +12017,7 @@ acPtr_class * cPtr_objectPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@objectPredefinedTypeAST type
+//     @objectPredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12128,7 +12128,7 @@ GALGAS_objectPredefinedTypeAST GALGAS_objectPredefinedTypeAST_2D_weak::bang_obje
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@objectPredefinedTypeAST-weak type
+//     @objectPredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12280,7 +12280,7 @@ acPtr_class * cPtr_filewrapperPredefinedTypeAST::duplicate (LOCATION_ARGS) const
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@filewrapperPredefinedTypeAST type
+//     @filewrapperPredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12391,7 +12391,7 @@ GALGAS_filewrapperPredefinedTypeAST GALGAS_filewrapperPredefinedTypeAST_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@filewrapperPredefinedTypeAST-weak type
+//     @filewrapperPredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12543,7 +12543,7 @@ acPtr_class * cPtr_binarysetPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@binarysetPredefinedTypeAST type
+//     @binarysetPredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12654,7 +12654,7 @@ GALGAS_binarysetPredefinedTypeAST GALGAS_binarysetPredefinedTypeAST_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@binarysetPredefinedTypeAST-weak type
+//     @binarysetPredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12806,7 +12806,7 @@ acPtr_class * cPtr_boolPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@boolPredefinedTypeAST type
+//     @boolPredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12917,7 +12917,7 @@ GALGAS_boolPredefinedTypeAST GALGAS_boolPredefinedTypeAST_2D_weak::bang_boolPred
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@boolPredefinedTypeAST-weak type
+//     @boolPredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13069,7 +13069,7 @@ acPtr_class * cPtr_uintPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@uintPredefinedTypeAST type
+//     @uintPredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13180,7 +13180,7 @@ GALGAS_uintPredefinedTypeAST GALGAS_uintPredefinedTypeAST_2D_weak::bang_uintPred
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@uintPredefinedTypeAST-weak type
+//     @uintPredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13332,7 +13332,7 @@ acPtr_class * cPtr_uint_36__34_PredefinedTypeAST::duplicate (LOCATION_ARGS) cons
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@uint64PredefinedTypeAST type
+//     @uint64PredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13443,7 +13443,7 @@ GALGAS_uint_36__34_PredefinedTypeAST GALGAS_uint_36__34_PredefinedTypeAST_2D_wea
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@uint64PredefinedTypeAST-weak type
+//     @uint64PredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13595,7 +13595,7 @@ acPtr_class * cPtr_sintPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@sintPredefinedTypeAST type
+//     @sintPredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13706,7 +13706,7 @@ GALGAS_sintPredefinedTypeAST GALGAS_sintPredefinedTypeAST_2D_weak::bang_sintPred
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@sintPredefinedTypeAST-weak type
+//     @sintPredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13858,7 +13858,7 @@ acPtr_class * cPtr_sint_36__34_PredefinedTypeAST::duplicate (LOCATION_ARGS) cons
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@sint64PredefinedTypeAST type
+//     @sint64PredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13969,7 +13969,7 @@ GALGAS_sint_36__34_PredefinedTypeAST GALGAS_sint_36__34_PredefinedTypeAST_2D_wea
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@sint64PredefinedTypeAST-weak type
+//     @sint64PredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14121,7 +14121,7 @@ acPtr_class * cPtr_charPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@charPredefinedTypeAST type
+//     @charPredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14232,7 +14232,7 @@ GALGAS_charPredefinedTypeAST GALGAS_charPredefinedTypeAST_2D_weak::bang_charPred
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@charPredefinedTypeAST-weak type
+//     @charPredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14384,7 +14384,7 @@ acPtr_class * cPtr_doublePredefinedTypeAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@doublePredefinedTypeAST type
+//     @doublePredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14495,7 +14495,7 @@ GALGAS_doublePredefinedTypeAST GALGAS_doublePredefinedTypeAST_2D_weak::bang_doub
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@doublePredefinedTypeAST-weak type
+//     @doublePredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14647,7 +14647,7 @@ acPtr_class * cPtr_stringPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@stringPredefinedTypeAST type
+//     @stringPredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14758,7 +14758,7 @@ GALGAS_stringPredefinedTypeAST GALGAS_stringPredefinedTypeAST_2D_weak::bang_stri
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@stringPredefinedTypeAST-weak type
+//     @stringPredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14910,7 +14910,7 @@ acPtr_class * cPtr_locationPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@locationPredefinedTypeAST type
+//     @locationPredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15021,7 +15021,7 @@ GALGAS_locationPredefinedTypeAST GALGAS_locationPredefinedTypeAST_2D_weak::bang_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@locationPredefinedTypeAST-weak type
+//     @locationPredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15173,7 +15173,7 @@ acPtr_class * cPtr_stringsetPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@stringsetPredefinedTypeAST type
+//     @stringsetPredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15284,7 +15284,7 @@ GALGAS_stringsetPredefinedTypeAST GALGAS_stringsetPredefinedTypeAST_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@stringsetPredefinedTypeAST-weak type
+//     @stringsetPredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15436,7 +15436,7 @@ acPtr_class * cPtr_functionPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@functionPredefinedTypeAST type
+//     @functionPredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15547,7 +15547,7 @@ GALGAS_functionPredefinedTypeAST GALGAS_functionPredefinedTypeAST_2D_weak::bang_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@functionPredefinedTypeAST-weak type
+//     @functionPredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15699,7 +15699,7 @@ acPtr_class * cPtr_typePredefinedTypeAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typePredefinedTypeAST type
+//     @typePredefinedTypeAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15810,7 +15810,7 @@ GALGAS_typePredefinedTypeAST GALGAS_typePredefinedTypeAST_2D_weak::bang_typePred
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typePredefinedTypeAST-weak type
+//     @typePredefinedTypeAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 

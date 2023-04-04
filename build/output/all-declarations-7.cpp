@@ -736,7 +736,7 @@ GALGAS_string cEnumerator_localConstantList::current_mCppName (LOCATION_ARGS) co
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@localConstantList type
+//     @localConstantList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1283,7 +1283,7 @@ GALGAS_string cEnumerator_localInitializedVariableList::current_mCppName (LOCATI
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@localInitializedVariableList type
+//     @localInitializedVariableList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1463,7 +1463,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@abstractGrammarInstructionSyntaxDirectedTranslationResult type
+//     @abstractGrammarInstructionSyntaxDirectedTranslationResult generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1758,7 +1758,7 @@ bool GALGAS_propertyIndexMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@propertyIndexMap type
+//     @propertyIndexMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2138,7 +2138,7 @@ bool GALGAS_nonterminalLabelMap::optional_searchKey (const GALGAS_string & inKey
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@nonterminalLabelMap type
+//     @nonterminalLabelMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2410,7 +2410,7 @@ bool GALGAS_nonterminalMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@nonterminalMap type
+//     @nonterminalMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3087,7 +3087,7 @@ GALGAS_semanticInstructionListForGeneration cEnumerator_ruleLabelImplementationL
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@ruleLabelImplementationList type
+//     @ruleLabelImplementationList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3634,7 +3634,7 @@ GALGAS_ruleLabelImplementationList cEnumerator_ruleDeclarationList::current_mLab
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@ruleDeclarationList type
+//     @ruleDeclarationList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4002,7 +4002,7 @@ acPtr_class * cPtr_syntaxDeclarationForGeneration::duplicate (LOCATION_ARGS) con
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@syntaxDeclarationForGeneration type
+//     @syntaxDeclarationForGeneration generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4113,7 +4113,7 @@ GALGAS_syntaxDeclarationForGeneration GALGAS_syntaxDeclarationForGeneration_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@syntaxDeclarationForGeneration-weak type
+//     @syntaxDeclarationForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4387,7 +4387,7 @@ GALGAS_lstringlist GALGAS_usefulEntitiesGraph::getter_accessibleNodesFrom (const
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@usefulEntitiesGraph type
+//     @usefulEntitiesGraph generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4637,7 +4637,7 @@ bool GALGAS_uselessEntityLocationMap::optional_searchKey (const GALGAS_string & 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@uselessEntityLocationMap type
+//     @uselessEntityLocationMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4930,7 +4930,7 @@ GALGAS_bool GALGAS_localVariableAttributes::getter_suggestDeclareUnusedParameter
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@localVariableAttributes type
+//     @localVariableAttributes generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5178,7 +5178,7 @@ typeComparisonResult GALGAS_localVarValuation::objectCompare (const GALGAS_local
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@localVarValuation type
+//     @localVarValuation generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5696,7 +5696,7 @@ bool GALGAS_scopeLocalVarMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@scopeLocalVarMap type
+//     @scopeLocalVarMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6113,7 +6113,7 @@ GALGAS_scopeLocalVarMap cEnumerator_localVarMapListForLLVM::current_mMap (LOCATI
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@localVarMapListForLLVM type
+//     @localVarMapListForLLVM generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6386,7 +6386,7 @@ typeComparisonResult GALGAS_overrideKind::objectCompare (const GALGAS_overrideKi
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@overrideKind type
+//     @overrideKind generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6803,7 +6803,7 @@ GALGAS_overrideKind cEnumerator_openedOverrideList::current_mOverrideKind (LOCAT
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@openedOverrideList type
+//     @openedOverrideList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6926,7 +6926,7 @@ void GALGAS_currentVarManager::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@currentVarManager type
+//     @currentVarManager generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8483,7 +8483,7 @@ bool GALGAS_unifiedTypeMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@unifiedTypeMap type
+//     @unifiedTypeMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8891,7 +8891,7 @@ typeComparisonResult GALGAS_typeDefinition::objectCompare (const GALGAS_typeDefi
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeDefinition type
+//     @typeDefinition generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9002,7 +9002,7 @@ GALGAS_unifiedTypeMapElementClass GALGAS_unifiedTypeMapElementClass_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@unifiedTypeMapElementClass-weak type
+//     @unifiedTypeMapElementClass-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9328,7 +9328,7 @@ acPtr_class * cPtr_ifExpressionAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@ifExpressionAST type
+//     @ifExpressionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9439,7 +9439,7 @@ GALGAS_ifExpressionAST GALGAS_ifExpressionAST_2D_weak::bang_ifExpressionAST_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@ifExpressionAST-weak type
+//     @ifExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9550,7 +9550,7 @@ GALGAS_ifExpressionForGeneration GALGAS_ifExpressionForGeneration_2D_weak::bang_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@ifExpressionForGeneration-weak type
+//     @ifExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9723,7 +9723,7 @@ acPtr_class * cPtr_unaryPlusExpressionAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@unaryPlusExpressionAST type
+//     @unaryPlusExpressionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9834,7 +9834,7 @@ GALGAS_unaryPlusExpressionAST GALGAS_unaryPlusExpressionAST_2D_weak::bang_unaryP
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@unaryPlusExpressionAST-weak type
+//     @unaryPlusExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10007,7 +10007,7 @@ acPtr_class * cPtr_unaryMinusExpressionAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@unaryMinusExpressionAST type
+//     @unaryMinusExpressionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10118,7 +10118,7 @@ GALGAS_unaryMinusExpressionAST GALGAS_unaryMinusExpressionAST_2D_weak::bang_unar
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@unaryMinusExpressionAST-weak type
+//     @unaryMinusExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10229,7 +10229,7 @@ GALGAS_unaryMinusExpressionForGeneration GALGAS_unaryMinusExpressionForGeneratio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@unaryMinusExpressionForGeneration-weak type
+//     @unaryMinusExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10340,7 +10340,7 @@ GALGAS_varInExpressionAST GALGAS_varInExpressionAST_2D_weak::bang_varInExpressio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@varInExpressionAST-weak type
+//     @varInExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10451,7 +10451,7 @@ GALGAS_varInExpressionForGeneration GALGAS_varInExpressionForGeneration_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@varInExpressionForGeneration-weak type
+//     @varInExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10998,7 +10998,7 @@ GALGAS_location cEnumerator_actualOutputExpressionList::current_mEndOfExpression
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@actualOutputExpressionList type
+//     @actualOutputExpressionList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11176,7 +11176,7 @@ acPtr_class * cPtr_trueExpressionAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@trueExpressionAST type
+//     @trueExpressionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11287,7 +11287,7 @@ GALGAS_trueExpressionAST GALGAS_trueExpressionAST_2D_weak::bang_trueExpressionAS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@trueExpressionAST-weak type
+//     @trueExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11446,7 +11446,7 @@ acPtr_class * cPtr_falseExpressionAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@falseExpressionAST type
+//     @falseExpressionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11557,7 +11557,7 @@ GALGAS_falseExpressionAST GALGAS_falseExpressionAST_2D_weak::bang_falseExpressio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@falseExpressionAST-weak type
+//     @falseExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11668,7 +11668,7 @@ GALGAS_trueExpressionForGeneration GALGAS_trueExpressionForGeneration_2D_weak::b
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@trueExpressionForGeneration-weak type
+//     @trueExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11779,7 +11779,7 @@ GALGAS_falseExpressionForGeneration GALGAS_falseExpressionForGeneration_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@falseExpressionForGeneration-weak type
+//     @falseExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11960,7 +11960,7 @@ acPtr_class * cPtr_literalStringExpressionAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@literalStringExpressionAST type
+//     @literalStringExpressionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12071,7 +12071,7 @@ GALGAS_literalStringExpressionAST GALGAS_literalStringExpressionAST_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@literalStringExpressionAST-weak type
+//     @literalStringExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12182,7 +12182,7 @@ GALGAS_literalStringExpressionForGeneration GALGAS_literalStringExpressionForGen
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@literalStringExpressionForGeneration-weak type
+//     @literalStringExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12293,7 +12293,7 @@ GALGAS_literalCharExpressionAST GALGAS_literalCharExpressionAST_2D_weak::bang_li
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@literalCharExpressionAST-weak type
+//     @literalCharExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12404,7 +12404,7 @@ GALGAS_literalCharExpressionForGeneration GALGAS_literalCharExpressionForGenerat
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@literalCharExpressionForGeneration-weak type
+//     @literalCharExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12515,7 +12515,7 @@ GALGAS_literalDoubleExpressionAST GALGAS_literalDoubleExpressionAST_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@literalDoubleExpressionAST-weak type
+//     @literalDoubleExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12626,7 +12626,7 @@ GALGAS_literalDoubleExpressionForGeneration GALGAS_literalDoubleExpressionForGen
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@literalDoubleExpressionForGeneration-weak type
+//     @literalDoubleExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12737,7 +12737,7 @@ GALGAS_literalBigIntExpressionAST GALGAS_literalBigIntExpressionAST_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@literalBigIntExpressionAST-weak type
+//     @literalBigIntExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12848,7 +12848,7 @@ GALGAS_literalUIntExpressionForGeneration GALGAS_literalUIntExpressionForGenerat
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@literalUIntExpressionForGeneration-weak type
+//     @literalUIntExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12959,7 +12959,7 @@ GALGAS_literalUInt_36__34_ExpressionForGeneration GALGAS_literalUInt_36__34_Expr
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@literalUInt64ExpressionForGeneration-weak type
+//     @literalUInt64ExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13070,7 +13070,7 @@ GALGAS_literalSIntExpressionForGeneration GALGAS_literalSIntExpressionForGenerat
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@literalSIntExpressionForGeneration-weak type
+//     @literalSIntExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13181,7 +13181,7 @@ GALGAS_literalSInt_36__34_ExpressionForGeneration GALGAS_literalSInt_36__34_Expr
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@literalSInt64ExpressionForGeneration-weak type
+//     @literalSInt64ExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13292,7 +13292,7 @@ GALGAS_literalBigIntExpressionForGeneration GALGAS_literalBigIntExpressionForGen
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@literalBigIntExpressionForGeneration-weak type
+//     @literalBigIntExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13547,7 +13547,7 @@ typeComparisonResult GALGAS_comparison::objectCompare (const GALGAS_comparison &
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@comparison type
+//     @comparison generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13806,7 +13806,7 @@ acPtr_class * cPtr_comparisonExpressionAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@comparisonExpressionAST type
+//     @comparisonExpressionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13917,7 +13917,7 @@ GALGAS_comparisonExpressionAST GALGAS_comparisonExpressionAST_2D_weak::bang_comp
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@comparisonExpressionAST-weak type
+//     @comparisonExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14028,7 +14028,7 @@ GALGAS_comparisonExpressionForGeneration GALGAS_comparisonExpressionForGeneratio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@comparisonExpressionForGeneration-weak type
+//     @comparisonExpressionForGeneration-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14222,7 +14222,7 @@ acPtr_class * cPtr_rightShiftExpressionAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@rightShiftExpressionAST type
+//     @rightShiftExpressionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14333,7 +14333,7 @@ GALGAS_rightShiftExpressionAST GALGAS_rightShiftExpressionAST_2D_weak::bang_righ
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@rightShiftExpressionAST-weak type
+//     @rightShiftExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14527,7 +14527,7 @@ acPtr_class * cPtr_leftShiftExpressionAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@leftShiftExpressionAST type
+//     @leftShiftExpressionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14638,7 +14638,7 @@ GALGAS_leftShiftExpressionAST GALGAS_leftShiftExpressionAST_2D_weak::bang_leftSh
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@leftShiftExpressionAST-weak type
+//     @leftShiftExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14832,7 +14832,7 @@ acPtr_class * cPtr_addExpressionAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@addExpressionAST type
+//     @addExpressionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14943,7 +14943,7 @@ GALGAS_addExpressionAST GALGAS_addExpressionAST_2D_weak::bang_addExpressionAST_2
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@addExpressionAST-weak type
+//     @addExpressionAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15137,7 +15137,7 @@ acPtr_class * cPtr_addExpressionNoOverflowAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@addExpressionNoOverflowAST type
+//     @addExpressionNoOverflowAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15248,7 +15248,7 @@ GALGAS_addExpressionNoOverflowAST GALGAS_addExpressionNoOverflowAST_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@addExpressionNoOverflowAST-weak type
+//     @addExpressionNoOverflowAST-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15442,7 +15442,7 @@ acPtr_class * cPtr_subExpressionAST::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@subExpressionAST type
+//     @subExpressionAST generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15478,117 +15478,6 @@ GALGAS_subExpressionAST GALGAS_subExpressionAST::extractObject (const GALGAS_obj
       result = *p ;
     }else{
       inCompiler->castError ("subExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_subExpressionAST_2D_weak::objectCompare (const GALGAS_subExpressionAST_2D_weak & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = kOperandEqual ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_subExpressionAST_2D_weak::GALGAS_subExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_subExpressionAST_2D_weak & GALGAS_subExpressionAST_2D_weak::operator = (const GALGAS_subExpressionAST & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = NULL ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != NULL) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_subExpressionAST_2D_weak::GALGAS_subExpressionAST_2D_weak (const GALGAS_subExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_subExpressionAST_2D_weak GALGAS_subExpressionAST_2D_weak::constructor_nil (LOCATION_ARGS) {
-  GALGAS_subExpressionAST_2D_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_subExpressionAST GALGAS_subExpressionAST_2D_weak::bang_subExpressionAST_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_subExpressionAST result ;
-  if (mProxyPtr != NULL) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == NULL) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_subExpressionAST) ;
-      result = GALGAS_subExpressionAST ((cPtr_subExpressionAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@subExpressionAST-weak type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_subExpressionAST_2D_weak ("subExpressionAST-weak",
-                                                 & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_subExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_subExpressionAST_2D_weak ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_subExpressionAST_2D_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_subExpressionAST_2D_weak (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_subExpressionAST_2D_weak GALGAS_subExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_subExpressionAST_2D_weak result ;
-  const GALGAS_subExpressionAST_2D_weak * p = (const GALGAS_subExpressionAST_2D_weak *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_subExpressionAST_2D_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("subExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
