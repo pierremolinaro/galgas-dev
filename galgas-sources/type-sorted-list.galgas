@@ -300,7 +300,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !"-sortedlist-" + [self.mSortedListTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -416,7 +416,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       !"class-" + [self.mClassTypeName fileNameRepresentation]
       !@headerKind.twoHeaders
     }
-    [!?ioTypeMap insertType !typeDefinition]
+    [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
   }
 
   #·····················································································································

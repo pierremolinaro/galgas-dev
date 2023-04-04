@@ -66,18 +66,18 @@ getter @unifiedTypeMap searchKey ?let @lstring inLKey -> @unifiedTypeMapEntry {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-setter @unifiedTypeMap insertType ?let @unifiedTypeDefinition inTypeDefinition {
-  if let [self searchKey !inTypeDefinition.mTypeName ?let @unifiedTypeMapElementClass element] then
+setter @unifiedTypeMap insertType ?let @lstring inTypeName ?let @unifiedTypeDefinition inTypeDefinition {
+  if let [self searchKey !inTypeName ?let @unifiedTypeMapElementClass element] then
     switch element.mDefinition
     case solved (*) :
-      error inTypeDefinition.mTypeName : "type already defined"
+      error inTypeName : "type already defined"
     case unsolved :
       var e = element
       e.mDefinition = .solved {!definition: inTypeDefinition}
     end
   else
     let newElement = @unifiedTypeMapElementClass.new {!.solved {!definition: inTypeDefinition}}
-    [!?self internalInsertKey !inTypeDefinition.mTypeName !newElement]
+    [!?self internalInsertKey !inTypeName !newElement]
   end
 }
 

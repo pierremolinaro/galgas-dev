@@ -327,7 +327,7 @@ override method @predefinedTypeAST enterDeclarationInSemanticContext
     !"galgas2/predefined-types"
     !@headerKind.twoHeaders
   }
-  [!?ioTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

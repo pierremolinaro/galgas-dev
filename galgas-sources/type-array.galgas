@@ -250,7 +250,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
     !"array-" + [self.mArrayTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -329,7 +329,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !"dict-" + [self.mDictTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

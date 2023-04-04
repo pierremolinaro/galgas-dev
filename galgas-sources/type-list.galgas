@@ -347,7 +347,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !"list-" + [self.mListTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
 }
 
 #·······················································································································

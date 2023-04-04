@@ -8642,40 +8642,41 @@ GALGAS_unifiedTypeMapEntry extensionGetter_searchKey (const GALGAS_unifiedTypeMa
 //----------------------------------------------------------------------------------------------------------------------
 
 void extensionSetter_insertType (GALGAS_unifiedTypeMap & ioObject,
+                                 const GALGAS_lstring constinArgument_inTypeName,
                                  const GALGAS_unifiedTypeDefinition constinArgument_inTypeDefinition,
                                  C_Compiler * inCompiler
                                  COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_unifiedTypeMap temp_1 = ioObject ;
-    GALGAS_unifiedTypeMapElementClass var_element_3213 ;
-    const bool optionalResult3144 = temp_1.optional_searchKey (constinArgument_inTypeDefinition.readProperty_mTypeName ().readProperty_string (), var_element_3213) ;
-    if (!optionalResult3144) {
+    GALGAS_unifiedTypeMapElementClass var_element_3222 ;
+    const bool optionalResult3169 = temp_1.optional_searchKey (constinArgument_inTypeName.readProperty_string (), var_element_3222) ;
+    if (!optionalResult3169) {
       test_0 = kBoolFalse ;
     }
     if (kBoolTrue == test_0) {
-      switch (var_element_3213.readProperty_mDefinition ().enumValue ()) {
+      switch (var_element_3222.readProperty_mDefinition ().enumValue ()) {
       case GALGAS_typeDefinition::kNotBuilt:
         break ;
       case GALGAS_typeDefinition::kEnum_solved:
         {
           TC_Array <C_FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticError (constinArgument_inTypeDefinition.readProperty_mTypeName ().readProperty_location (), GALGAS_string ("type already defined"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 73)) ;
+          inCompiler->emitSemanticError (constinArgument_inTypeName.readProperty_location (), GALGAS_string ("type already defined"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 73)) ;
         }
         break ;
       case GALGAS_typeDefinition::kEnum_unsolved:
         {
-          GALGAS_unifiedTypeMapElementClass var_e_3368 = var_element_3213 ;
-          var_e_3368.setter_setMDefinition (GALGAS_typeDefinition::constructor_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 76)) COMMA_SOURCE_FILE ("unified-type-map.galgas", 76)) ;
+          GALGAS_unifiedTypeMapElementClass var_e_3361 = var_element_3222 ;
+          var_e_3361.setter_setMDefinition (GALGAS_typeDefinition::constructor_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 76)) COMMA_SOURCE_FILE ("unified-type-map.galgas", 76)) ;
         }
         break ;
       }
     }
   }
   if (kBoolFalse == test_0) {
-    GALGAS_unifiedTypeMapElementClass var_newElement_3474 = GALGAS_unifiedTypeMapElementClass::constructor_new (GALGAS_typeDefinition::constructor_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 79))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 79)) ;
+    GALGAS_unifiedTypeMapElementClass var_newElement_3467 = GALGAS_unifiedTypeMapElementClass::constructor_new (GALGAS_typeDefinition::constructor_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 79))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 79)) ;
     {
-    ioObject.setter_internalInsertKey (constinArgument_inTypeDefinition.readProperty_mTypeName (), var_newElement_3474, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 80)) ;
+    ioObject.setter_internalInsertKey (constinArgument_inTypeName, var_newElement_3467, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 80)) ;
     }
   }
 }
@@ -8696,20 +8697,20 @@ void extensionMethod_searchType (const GALGAS_unifiedTypeMap inObject,
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_unifiedTypeMap temp_1 = inObject ;
-    GALGAS_unifiedTypeMapElementClass var_element_3960 ;
-    const bool optionalResult3911 = temp_1.optional_searchKey (constinArgument_inLKey.readProperty_string (), var_element_3960) ;
-    if (!optionalResult3911) {
+    GALGAS_unifiedTypeMapElementClass var_element_3937 ;
+    const bool optionalResult3888 = temp_1.optional_searchKey (constinArgument_inLKey.readProperty_string (), var_element_3937) ;
+    if (!optionalResult3888) {
       test_0 = kBoolFalse ;
     }
     if (kBoolTrue == test_0) {
-      switch (var_element_3960.readProperty_mDefinition ().enumValue ()) {
+      switch (var_element_3937.readProperty_mDefinition ().enumValue ()) {
       case GALGAS_typeDefinition::kNotBuilt:
         break ;
       case GALGAS_typeDefinition::kEnum_solved:
         {
-          const cEnumAssociatedValues_typeDefinition_solved * extractPtr_4065 = (const cEnumAssociatedValues_typeDefinition_solved *) (var_element_3960.readProperty_mDefinition ().unsafePointer ()) ;
-          const GALGAS_unifiedTypeDefinition extractedValue_4025_definition = extractPtr_4065->mAssociatedValue0 ;
-          outArgument_outTypeDefinition = extractedValue_4025_definition ;
+          const cEnumAssociatedValues_typeDefinition_solved * extractPtr_4042 = (const cEnumAssociatedValues_typeDefinition_solved *) (var_element_3937.readProperty_mDefinition ().unsafePointer ()) ;
+          const GALGAS_unifiedTypeDefinition extractedValue_4002_definition = extractPtr_4042->mAssociatedValue0 ;
+          outArgument_outTypeDefinition = extractedValue_4002_definition ;
         }
         break ;
       case GALGAS_typeDefinition::kEnum_unsolved:
@@ -9046,16 +9047,16 @@ GALGAS_unifiedTypeDefinition extensionGetter_definition (const GALGAS_unifiedTyp
     break ;
   case GALGAS_unifiedTypeMapEntry::kEnum_element:
     {
-      const cEnumAssociatedValues_unifiedTypeMapEntry_element * extractPtr_6516 = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) (temp_0.unsafePointer ()) ;
-      const GALGAS_unifiedTypeMapElementClass_2D_weak extractedValue_6245_weakElement = extractPtr_6516->mAssociatedValue0 ;
+      const cEnumAssociatedValues_unifiedTypeMapEntry_element * extractPtr_6493 = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) (temp_0.unsafePointer ()) ;
+      const GALGAS_unifiedTypeMapElementClass_2D_weak extractedValue_6222_weakElement = extractPtr_6493->mAssociatedValue0 ;
       enumGalgasBool test_2 = kBoolTrue ;
       if (kBoolTrue == test_2) {
-        GALGAS_unifiedTypeMapElementClass var_type_6264 (dynamic_cast <const cPtr_unifiedTypeMapElementClass *> (extractedValue_6245_weakElement.ptr ())) ;
-        if (NULL == var_type_6264.ptr ()) {
+        GALGAS_unifiedTypeMapElementClass var_type_6241 (dynamic_cast <const cPtr_unifiedTypeMapElementClass *> (extractedValue_6222_weakElement.ptr ())) ;
+        if (NULL == var_type_6241.ptr ()) {
           test_2 = kBoolFalse ;
         }
         if (kBoolTrue == test_2) {
-          switch (var_type_6264.readProperty_mDefinition ().enumValue ()) {
+          switch (var_type_6241.readProperty_mDefinition ().enumValue ()) {
           case GALGAS_typeDefinition::kNotBuilt:
             break ;
           case GALGAS_typeDefinition::kEnum_unsolved:
@@ -9067,9 +9068,9 @@ GALGAS_unifiedTypeDefinition extensionGetter_definition (const GALGAS_unifiedTyp
             break ;
           case GALGAS_typeDefinition::kEnum_solved:
             {
-              const cEnumAssociatedValues_typeDefinition_solved * extractPtr_6446 = (const cEnumAssociatedValues_typeDefinition_solved *) (var_type_6264.readProperty_mDefinition ().unsafePointer ()) ;
-              const GALGAS_unifiedTypeDefinition extractedValue_6415_definition = extractPtr_6446->mAssociatedValue0 ;
-              result_result = extractedValue_6415_definition ;
+              const cEnumAssociatedValues_typeDefinition_solved * extractPtr_6423 = (const cEnumAssociatedValues_typeDefinition_solved *) (var_type_6241.readProperty_mDefinition ().unsafePointer ()) ;
+              const GALGAS_unifiedTypeDefinition extractedValue_6392_definition = extractPtr_6423->mAssociatedValue0 ;
+              result_result = extractedValue_6392_definition ;
             }
             break ;
           }

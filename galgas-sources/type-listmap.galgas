@@ -230,7 +230,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !"listmap-" + [self.mListmapTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

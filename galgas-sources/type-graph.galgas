@@ -465,7 +465,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !"graph-" + [self.mGraphTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

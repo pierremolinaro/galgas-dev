@@ -1,0 +1,269 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   SYNTAX                                  
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3DeclarationsSyntax {
+
+  #·····················································································································
+  
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+    $typealias$
+    $@type$ ?let aliasTypeName indexing dictionaryDefinition
+    $=$
+    <type_definition> !?ioDeclarations ?let @lstring definedTypeName
+    ioDeclarations.mDeclarationList += !@typealiasDeclarationAST.new {
+      !false # Is not predefined
+      !aliasTypeName
+      !definedTypeName
+    }
+  }
+  
+  #·····················································································································
+  # DICTIONARY
+  #·····················································································································
+  
+  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations !@lstring outTypeName {
+    $[$
+    $@type$ ?let keyTypeName
+    $:$
+    $@type$ ?let elementTypeName
+    $]$
+    outTypeName = @lstring.new {!"[" + keyTypeName + ":" + elementTypeName + "]" !keyTypeName.location}
+    ioDeclarations.mDeclarationList += !@dictDeclarationAST.new {
+      !false # Is not predefined
+      !outTypeName
+      !keyTypeName
+      !elementTypeName
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+  
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+    $typealias$
+    $@type$ ?let aliasTypeName indexing dictionaryDefinition
+    $=$
+    <type_definition> !?ioDeclarations ?let @lstring definedTypeName
+    ioDeclarations.mDeclarationList += !@typealiasDeclarationAST.new {
+      !false # Is not predefined
+      !aliasTypeName
+      !definedTypeName
+    }
+  }
+  
+  #·····················································································································
+  # DICTIONARY
+  #·····················································································································
+  
+  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations !@lstring outTypeName {
+    $[$
+    $@type$ ?let keyTypeName
+    $:$
+    $@type$ ?let elementTypeName
+    $]$
+    outTypeName = @lstring.new {!"[" + keyTypeName + ":" + elementTypeName + "]" !keyTypeName.location}
+    ioDeclarations.mDeclarationList += !@dictDeclarationAST.new {
+      !false # Is not predefined
+      !outTypeName
+      !keyTypeName
+      !elementTypeName
+    }
+  }
+  
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   AST                                     
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @typealiasDeclarationAST : @semanticDeclarationAST {
+  private let @lstring mAliasTypeName
+  private let @lstring mDefinedTypeName
+
+  #·····················································································································
+
+  override getter keyRepresentation -> @string {
+    result = "typealias @" + self.mAliasTypeName
+  }
+
+  #·····················································································································
+
+  override method addAssociatedElement ?!@semanticDeclarationListAST unused ioSemanticDeclarationList {
+  }
+
+  #·····················································································································
+
+  override method enterDeclarationInGraph
+    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+   {
+    let aliasKey = @lstring.new {!"@" + self.mAliasTypeName !self.mAliasTypeName.location}
+    [!?ioSemanticTypePrecedenceGraph addNode !aliasKey !self]
+    let referenceKey = @lstring.new {!"@" + self.mDefinedTypeName !self.mDefinedTypeName.location}
+    [!?ioSemanticTypePrecedenceGraph noteNode !referenceKey]
+    [!?ioSemanticTypePrecedenceGraph addEdge !aliasKey !referenceKey]
+  }
+
+  #·····················································································································
+
+  override method enterDeclarationInSemanticContext
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+    ?!@unifiedTypeMap ioTypeMap
+    ?!@semanticContext unused ioSemanticContext {
+  #--- Defined type
+    [!?ioTypeMap makeEntryFromString !self.mDefinedTypeName ?let definedTypeEntry]
+    switch definedTypeEntry
+    case null :
+      error self.mDefinedTypeName : "Undefined type"
+    case element (@unifiedTypeMapElementClass-weak weakElement) :
+      switch weakElement.bang.mDefinition
+      case unsolved :
+        error self.mDefinedTypeName : "Undefined type"
+      case solved (@unifiedTypeDefinition definition) :
+      #--- Enter in type map
+#        let aliasTypeDefinition = @unifiedTypeDefinition.new {
+#          !self.mAliasTypeName
+#          !definedType.isPredefined
+#          !true # Concrete Type
+#          !@unifiedTypeMapEntry.null
+#          !@typeKindEnum.mapType
+#          !true # Support collection value
+#          !@typedPropertyList {}
+#          !{}
+#          !typedPropertyList
+#          !constructorMap
+#          !getterMap
+#          !setterMap
+#          !instanceMethodMap
+#          !{}
+#          !optionalMethodMap
+#          !enumerationDescriptor
+#          !.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg
+#          !argumentTypeListForAddAssignWithFieldExpressionList
+#          !{}
+#          !{}
+#          !{}
+#          !{}
+#          !false # Do not generate header in separate file
+#          !elementTypeEntry # Type for enumerated element for "for" instruction
+#          !"emptyDict"
+#          !"dict-" + [self.mDictTypeName fileNameRepresentation]
+#          !@headerKind.oneHeader
+#        }
+        [!?ioTypeMap insertType !self.mAliasTypeName !definition]
+      end
+    end
+  }
+
+  #·····················································································································
+
+  override method semanticAnalysis
+    ?!@lstringlist unused ioUsefulnessRootEntities 
+    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+    ?let @string unused inProductDirectory
+    ?let @semanticContext unused inSemanticContext
+                                  ?!@unifiedTypeMap unused ioTypeMap
+    ?let @predefinedTypes unused inPredefinedTypes
+    ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration  {
+  #--- Useful entities graph
+    let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mAliasTypeName)
+    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+    let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mDefinedTypeName)
+    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
+#  #------ Enter attributes
+#    var @typedPropertyList typedAttributeList = {}
+#    let @unifiedTypeMapEntry t = [ioTypeMap searchKey !self.mElementTypeName]
+#    let hasSetter = false
+#    let hasSelector = false
+#    typedAttributeList +=
+#      !t
+#      !["element" nowhere]
+#      !hasSetter
+#      !hasSelector
+# #--- Enter map declaration
+#  ioSemanticDeclarationListForGeneration +=
+#    !"dict " + self.mDictTypeName
+#    !@dictTypeForGeneration.new {
+#      ![ioTypeMap searchKey !self.mDictTypeName]
+#      ![ioTypeMap searchKey !@lstring.new {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}]
+#      !self.mDictTypeName
+#      !typedAttributeList
+#      !self.mKeyTypeName
+#    }
+  }
+
+  #·····················································································································
+
+}
+ 
+##———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+##   CODE GENERATION                         
+##———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#refclass @dictTypeForGeneration : @semanticTypeForGeneration {
+#  private let @unifiedTypeMapEntry mElementTypeEntry
+#  private let @lstring mDictTypeName
+#  private let @typedPropertyList mTypedAttributeList
+#  private let @lstring mKeyTypeName
+#}
+#
+##———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#override method @dictTypeForGeneration appendDeclaration1
+#  ?!@stringset unused ioInclusionSet
+#  !@string outHeader
+#{
+#  let selfTypedefinition = [self.mSelfTypeEntry definition]
+#  outHeader = [filewrapper typeGenerationTemplate.dictTypeHeader1
+#    !selfTypedefinition.mTypeName.string
+#    ![self.mSelfTypeEntry  identifierRepresentation]
+#    !self.mTypedAttributeList
+#  ]
+#  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+#    !selfTypedefinition.mTypeName.string
+#    ![self.mSelfTypeEntry identifierRepresentation]
+#    !selfTypedefinition.mIsConcrete
+#    !selfTypedefinition.mConstructorMap
+#    !selfTypedefinition.mGetterMap
+#    !selfTypedefinition.mSetterMap
+#    !selfTypedefinition.mInstanceMethodMap
+#    !selfTypedefinition.mClassMethodMap
+#    !selfTypedefinition.mOptionalMethodMap
+#    !selfTypedefinition.mEnumerationDescriptor
+#    !selfTypedefinition.mHandledOperatorFlags
+#    !selfTypedefinition.mAddAssignOperatorArguments
+#    !selfTypedefinition.mTypeForEnumeratedElement
+#  ]
+#}
+#
+##———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#override method @dictTypeForGeneration appendSpecificImplementation
+#  ?let @unifiedTypeMap unused inTypeMap
+#  ?!@stringset ioInclusionSet
+#  !@string outImplementation {
+#  [self.mElementTypeEntry addHeaderFileName !?ioInclusionSet]
+#  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
+#  outImplementation = [filewrapper typeGenerationTemplate.dictTypeSpecificImplementation
+#    ![self.mSelfTypeEntry  identifierRepresentation]
+#    !self.mTypedAttributeList
+#    ![self.mKeyTypeName identifierRepresentation]
+#  ]
+#}
+#
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -299,7 +299,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !"enum-" + [self.mEnumTypeName fileNameRepresentation]
     !if hasAssociatedValues then @headerKind.twoHeaders else @headerKind.oneHeader end
   }
-  [!?ioTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

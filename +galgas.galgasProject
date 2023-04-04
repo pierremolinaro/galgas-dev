@@ -92,6 +92,7 @@ project (3:6:0) -> "galgas" {
   "galgas-sources/type-map.galgas"
   "galgas-sources/type-sorted-list.galgas"
   "galgas-sources/type-struct.galgas"
+  "galgas-sources/type-alias-and-type-declaration.galgas"
 
 #--- Extensions
   "galgas-sources/extension-abstract-getter.galgas"

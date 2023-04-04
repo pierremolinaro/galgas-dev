@@ -438,7 +438,7 @@ override method @externTypeDeclarationAST enterDeclarationInSemanticContext
     !"externtype-" + [self.mExternTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioTypeMap insertType !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -397,6 +397,9 @@ static const char * gSyntaxErrorMessage_galgasScanner_then = "the 'then' keyword
 //--- Syntax error message for terminal '$true$' :
 static const char * gSyntaxErrorMessage_galgasScanner_true = "the 'true' keyword" ;
 
+//--- Syntax error message for terminal '$typealias$' :
+static const char * gSyntaxErrorMessage_galgasScanner_typealias = "the 'typealias' keyword" ;
+
 //--- Syntax error message for terminal '$unused$' :
 static const char * gSyntaxErrorMessage_galgasScanner_unused = "the 'unused' keyword" ;
 
@@ -553,8 +556,8 @@ static const char * gSyntaxErrorMessage_galgasScanner__21__5E_ = "the '!^' delim
 
 C_String C_Lexique_galgasScanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
   C_String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 154)) {
-    static const char * syntaxErrorMessageArray [154] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 155)) {
+    static const char * syntaxErrorMessageArray [155] = {kEndOfSourceLexicalErrorMessage,
         gSyntaxErrorMessage_galgasScanner_identifier,
         gSyntaxErrorMessage_galgasScanner_double_2E_xxx,
         gSyntaxErrorMessage_galgasScanner_literalInt,
@@ -658,6 +661,7 @@ C_String C_Lexique_galgasScanner::getMessageForTerminal (const int16_t inTermina
         gSyntaxErrorMessage_galgasScanner_template,
         gSyntaxErrorMessage_galgasScanner_then,
         gSyntaxErrorMessage_galgasScanner_true,
+        gSyntaxErrorMessage_galgasScanner_typealias,
         gSyntaxErrorMessage_galgasScanner_unused,
         gSyntaxErrorMessage_galgasScanner_var,
         gSyntaxErrorMessage_galgasScanner_valueclass,
@@ -1857,6 +1861,20 @@ static const utf32 kUnicodeString_galgasScanner_true [] = {
   TO_UNICODE (0)
 } ;
 
+//--- Unicode string for '$typealias$'
+static const utf32 kUnicodeString_galgasScanner_typealias [] = {
+  TO_UNICODE ('t'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('s'),
+  TO_UNICODE (0)
+} ;
+
 //--- Unicode string for '$unused$'
 static const utf32 kUnicodeString_galgasScanner_unused [] = {
   TO_UNICODE ('u'),
@@ -2014,7 +2032,7 @@ int16_t C_Lexique_galgasScanner::search_into_galgasDelimitorsList (const C_Strin
 //             Key words table 'galgasKeyWordList'      
 //----------------------------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_galgasKeyWordList = 88 ;
+static const int32_t ktable_size_galgasScanner_galgasKeyWordList = 89 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_galgasKeyWordList [ktable_size_galgasScanner_galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_as, 2, C_Lexique_galgasScanner::kToken_as),
@@ -2101,6 +2119,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_galgasKeyWor
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_refclass, 8, C_Lexique_galgasScanner::kToken_refclass),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_template, 8, C_Lexique_galgasScanner::kToken_template),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_extension, 9, C_Lexique_galgasScanner::kToken_extension),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_typealias, 9, C_Lexique_galgasScanner::kToken_typealias),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_sortedlist, 10, C_Lexique_galgasScanner::kToken_sortedlist),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_valueclass, 10, C_Lexique_galgasScanner::kToken_valueclass),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_constructor, 11, C_Lexique_galgasScanner::kToken_constructor),
@@ -2667,6 +2686,11 @@ C_String C_Lexique_galgasScanner::getCurrentTokenString (const cToken * inTokenP
     case kToken_true:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("true") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken_typealias:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("typealias") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_unused:
@@ -3978,6 +4002,7 @@ GALGAS_stringlist C_Lexique_galgasScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("template") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("then") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("true") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("typealias") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("unused") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("var") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("valueclass") COMMA_THERE) ;
@@ -4177,6 +4202,7 @@ static void getKeywordsForIdentifier_galgasScanner (const C_String & inIdentifie
     ioList.appendObject ("refclass") ;
     ioList.appendObject ("template") ;
     ioList.appendObject ("extension") ;
+    ioList.appendObject ("typealias") ;
     ioList.appendObject ("sortedlist") ;
     ioList.appendObject ("valueclass") ;
     ioList.appendObject ("constructor") ;
@@ -4196,7 +4222,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner, getKeywordsForIdentifie
 //----------------------------------------------------------------------------------------------------------------------
 
 uint32_t C_Lexique_galgasScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [154] = {0,
+  static const uint32_t kTerminalSymbolStyles [155] = {0,
     0 /* galgasScanner_1_identifier */,
     8 /* galgasScanner_1_double_2E_xxx */,
     7 /* galgasScanner_1_literalInt */,
@@ -4300,6 +4326,7 @@ uint32_t C_Lexique_galgasScanner::styleIndexForTerminal (const int32_t inTermina
     1 /* galgasScanner_1_template */,
     1 /* galgasScanner_1_then */,
     1 /* galgasScanner_1_true */,
+    1 /* galgasScanner_1_typealias */,
     1 /* galgasScanner_1_unused */,
     1 /* galgasScanner_1_var */,
     1 /* galgasScanner_1_valueclass */,

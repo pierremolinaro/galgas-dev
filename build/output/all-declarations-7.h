@@ -4547,6 +4547,7 @@ class GALGAS_unifiedTypeMapEntry extensionGetter_searchKey (const class GALGAS_u
 //----------------------------------------------------------------------------------------------------------------------
 
 void extensionSetter_insertType (class GALGAS_unifiedTypeMap & ioObject,
+                                 const class GALGAS_lstring constin_inTypeName,
                                  const class GALGAS_unifiedTypeDefinition constin_inTypeDefinition,
                                  class C_Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
