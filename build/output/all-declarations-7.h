@@ -4394,6 +4394,16 @@ class GALGAS_unifiedTypeDefinition extensionGetter_definition (const class GALGA
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Extension getter '@unifiedTypeMapEntry typeName' (as function)
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string extensionGetter_typeName (const class GALGAS_unifiedTypeMapEntry & inObject,
+                                              class C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Extension getter '@unifiedTypeMapEntry baseType' (as function)
 //
 //----------------------------------------------------------------------------------------------------------------------

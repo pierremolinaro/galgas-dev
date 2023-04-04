@@ -53,6 +53,12 @@ getter @unifiedTypeMapEntry identifierRepresentation -> @string {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+getter @unifiedTypeMapEntry typeName -> @string {
+  result = [self definition].mTypeName.string
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 getter @unifiedTypeMapEntry baseType -> @unifiedTypeMapEntry outBaseType {
   outBaseType = self
   loop while not [[outBaseType definition].mSuperType isNull] do

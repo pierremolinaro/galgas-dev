@@ -51,7 +51,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
      if selector.string != "" then
        error selector : "only '?' is allowed here"
      end
-     outQualifiedType = @QualifiedTypeAST.optionalType {!typeName: propertyTypeName}
+     outQualifiedType = @QualifiedTypeAST.optionalType2 {!typeName: propertyTypeName}
     end
   }
   
@@ -295,7 +295,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
      if selector.string != "" then
        error selector : "only '?' is allowed here"
      end
-     outQualifiedType = @QualifiedTypeAST.optionalType {!typeName: propertyTypeName}
+     outQualifiedType = @QualifiedTypeAST.optionalType2 {!typeName: propertyTypeName}
     end
   }
   
@@ -468,14 +468,14 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
 
 enum @QualifiedTypeAST {
   case simpleType (@lstring typeName)
-  case optionalType (@lstring typeName)
+  case optionalType2 (@lstring typeName)
 }
   #·····················································································································
 
   getter @QualifiedTypeAST location -> @location {
     switch self
     case simpleType   (@lstring typeName) : result = typeName.location
-    case optionalType (@lstring typeName) : result = typeName.location
+    case optionalType2 (@lstring typeName) : result = typeName.location
     end
   }
 
@@ -485,7 +485,7 @@ enum @QualifiedTypeAST {
     switch self
     case simpleType   (@lstring typeName) :
       result = typeNameForUsefulEntitiesGraph (!typeName)
-    case optionalType (@lstring typeName) :
+    case optionalType2 (@lstring typeName) :
       result = typeNameForUsefulEntitiesGraph (!typeName)
       result.string += "?"
     end
@@ -497,7 +497,7 @@ enum @QualifiedTypeAST {
     switch self
     case simpleType   (@lstring typeName) :
       result = typeName
-    case optionalType (@lstring typeName) :
+    case optionalType2 (@lstring typeName) :
       result = typeName
       result.string += "?"
     end

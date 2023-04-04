@@ -1834,6 +1834,11 @@ class GALGAS_galgasDeclarationAST : public AC_GALGAS_root {
     return mProperty_mDeclarationList ;
   }
 
+  public: GALGAS_stringset mProperty_mImplicitTypeDeclarationSet ;
+  public: inline GALGAS_stringset readProperty_mImplicitTypeDeclarationSet (void) const {
+    return mProperty_mImplicitTypeDeclarationSet ;
+  }
+
   public: GALGAS_galgas_33_SyntaxComponentListAST mProperty_mSyntaxComponentList ;
   public: inline GALGAS_galgas_33_SyntaxComponentListAST readProperty_mSyntaxComponentList (void) const {
     return mProperty_mSyntaxComponentList ;
@@ -1879,6 +1884,10 @@ class GALGAS_galgasDeclarationAST : public AC_GALGAS_root {
     mProperty_mDeclarationList = inValue ;
   }
 
+  public: inline void setter_setMImplicitTypeDeclarationSet (const GALGAS_stringset & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mImplicitTypeDeclarationSet = inValue ;
+  }
+
   public: inline void setter_setMSyntaxComponentList (const GALGAS_galgas_33_SyntaxComponentListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mSyntaxComponentList = inValue ;
   }
@@ -1908,6 +1917,7 @@ class GALGAS_galgasDeclarationAST : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public: GALGAS_galgasDeclarationAST (const GALGAS_semanticDeclarationListAST & in_mDeclarationList,
+                                       const GALGAS_stringset & in_mImplicitTypeDeclarationSet,
                                        const GALGAS_galgas_33_SyntaxComponentListAST & in_mSyntaxComponentList,
                                        const GALGAS_syntaxExtensions & in_mSyntaxExtensions,
                                        const GALGAS_galgas_33_GUIComponentListAST & in_mGUIComponentList,
@@ -1927,12 +1937,13 @@ class GALGAS_galgasDeclarationAST : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_galgasDeclarationAST constructor_new (const class GALGAS_semanticDeclarationListAST & inOperand0,
-                                                                    const class GALGAS_galgas_33_SyntaxComponentListAST & inOperand1,
-                                                                    const class GALGAS_syntaxExtensions & inOperand2,
-                                                                    const class GALGAS_galgas_33_GUIComponentListAST & inOperand3,
-                                                                    const class GALGAS_prologueEpilogueList & inOperand4,
-                                                                    const class GALGAS_programRuleList & inOperand5,
-                                                                    const class GALGAS_prologueEpilogueList & inOperand6
+                                                                    const class GALGAS_stringset & inOperand1,
+                                                                    const class GALGAS_galgas_33_SyntaxComponentListAST & inOperand2,
+                                                                    const class GALGAS_syntaxExtensions & inOperand3,
+                                                                    const class GALGAS_galgas_33_GUIComponentListAST & inOperand4,
+                                                                    const class GALGAS_prologueEpilogueList & inOperand5,
+                                                                    const class GALGAS_programRuleList & inOperand6,
+                                                                    const class GALGAS_prologueEpilogueList & inOperand7
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'

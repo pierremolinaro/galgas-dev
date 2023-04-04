@@ -3026,7 +3026,7 @@ class GALGAS_QualifiedTypeAST : public AC_GALGAS_root {
   public: typedef enum {
     kNotBuilt,
     kEnum_simpleType,
-    kEnum_optionalType
+    kEnum_optionalType_32_
   } enumeration ;
   
 //--------------------------------- Private data member
@@ -3053,8 +3053,8 @@ class GALGAS_QualifiedTypeAST : public AC_GALGAS_root {
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_QualifiedTypeAST constructor_optionalType (const class GALGAS_lstring & inOperand0
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_QualifiedTypeAST constructor_optionalType_32_ (const class GALGAS_lstring & inOperand0
+                                                                             COMMA_LOCATION_ARGS) ;
 
   public: static class GALGAS_QualifiedTypeAST constructor_simpleType (const class GALGAS_lstring & inOperand0
                                                                        COMMA_LOCATION_ARGS) ;
@@ -3068,9 +3068,9 @@ class GALGAS_QualifiedTypeAST : public AC_GALGAS_root {
 //--------------------------------- Setters
 
 //--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_optionalType (class GALGAS_lstring & outArgument0,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG void method_optionalType_32_ (class GALGAS_lstring & outArgument0,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_simpleType (class GALGAS_lstring & outArgument0,
                                                    C_Compiler * inCompiler
@@ -3079,13 +3079,13 @@ class GALGAS_QualifiedTypeAST : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isOptionalType (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isOptionalType_32_ (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isSimpleType (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_optionalType (class GALGAS_lstring & outOperand0) const ;
+  public: VIRTUAL_IN_DEBUG bool optional_optionalType_32_ (class GALGAS_lstring & outOperand0) const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_simpleType (class GALGAS_lstring & outOperand0) const ;
 
@@ -3122,18 +3122,18 @@ class cEnumAssociatedValues_QualifiedTypeAST_simpleType : public cEnumAssociated
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class cEnumAssociatedValues_QualifiedTypeAST_optionalType : public cEnumAssociatedValues {
+class cEnumAssociatedValues_QualifiedTypeAST_optionalType2 : public cEnumAssociatedValues {
   public: const GALGAS_lstring mAssociatedValue0 ;
 
 //--- Constructor
-  public: cEnumAssociatedValues_QualifiedTypeAST_optionalType (const GALGAS_lstring inAssociatedValue0
-                                                               COMMA_LOCATION_ARGS) ;
+  public: cEnumAssociatedValues_QualifiedTypeAST_optionalType2 (const GALGAS_lstring inAssociatedValue0
+                                                                COMMA_LOCATION_ARGS) ;
 
   public: virtual void description (C_String & ioString,
                                     const int32_t inIndentation) const ;
   public: virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_QualifiedTypeAST_optionalType (void) {}
+  public: virtual ~ cEnumAssociatedValues_QualifiedTypeAST_optionalType2 (void) {}
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------

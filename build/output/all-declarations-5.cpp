@@ -2856,6 +2856,7 @@ GALGAS_programRuleList GALGAS_programRuleList::extractObject (const GALGAS_objec
 
 GALGAS_galgasDeclarationAST::GALGAS_galgasDeclarationAST (void) :
 mProperty_mDeclarationList (),
+mProperty_mImplicitTypeDeclarationSet (),
 mProperty_mSyntaxComponentList (),
 mProperty_mSyntaxExtensions (),
 mProperty_mGUIComponentList (),
@@ -2872,25 +2873,28 @@ GALGAS_galgasDeclarationAST::~ GALGAS_galgasDeclarationAST (void) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_galgasDeclarationAST::GALGAS_galgasDeclarationAST (const GALGAS_semanticDeclarationListAST & inOperand0,
-                                                          const GALGAS_galgas_33_SyntaxComponentListAST & inOperand1,
-                                                          const GALGAS_syntaxExtensions & inOperand2,
-                                                          const GALGAS_galgas_33_GUIComponentListAST & inOperand3,
-                                                          const GALGAS_prologueEpilogueList & inOperand4,
-                                                          const GALGAS_programRuleList & inOperand5,
-                                                          const GALGAS_prologueEpilogueList & inOperand6) :
+                                                          const GALGAS_stringset & inOperand1,
+                                                          const GALGAS_galgas_33_SyntaxComponentListAST & inOperand2,
+                                                          const GALGAS_syntaxExtensions & inOperand3,
+                                                          const GALGAS_galgas_33_GUIComponentListAST & inOperand4,
+                                                          const GALGAS_prologueEpilogueList & inOperand5,
+                                                          const GALGAS_programRuleList & inOperand6,
+                                                          const GALGAS_prologueEpilogueList & inOperand7) :
 mProperty_mDeclarationList (inOperand0),
-mProperty_mSyntaxComponentList (inOperand1),
-mProperty_mSyntaxExtensions (inOperand2),
-mProperty_mGUIComponentList (inOperand3),
-mProperty_mPrologueDeclarationList (inOperand4),
-mProperty_mSourceRuleList (inOperand5),
-mProperty_mEpilogueDeclarationList (inOperand6) {
+mProperty_mImplicitTypeDeclarationSet (inOperand1),
+mProperty_mSyntaxComponentList (inOperand2),
+mProperty_mSyntaxExtensions (inOperand3),
+mProperty_mGUIComponentList (inOperand4),
+mProperty_mPrologueDeclarationList (inOperand5),
+mProperty_mSourceRuleList (inOperand6),
+mProperty_mEpilogueDeclarationList (inOperand7) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_galgasDeclarationAST GALGAS_galgasDeclarationAST::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_galgasDeclarationAST (GALGAS_semanticDeclarationListAST::constructor_emptyList (HERE),
+                                      GALGAS_stringset::constructor_emptySet (HERE),
                                       GALGAS_galgas_33_SyntaxComponentListAST::constructor_emptyList (HERE),
                                       GALGAS_syntaxExtensions::constructor_emptyMap (HERE),
                                       GALGAS_galgas_33_GUIComponentListAST::constructor_emptyList (HERE),
@@ -2902,6 +2906,7 @@ GALGAS_galgasDeclarationAST GALGAS_galgasDeclarationAST::constructor_default (UN
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_galgasDeclarationAST GALGAS_galgasDeclarationAST::constructor_new (const GALGAS_semanticDeclarationListAST & in_mDeclarationList,
+                                                                          const GALGAS_stringset & in_mImplicitTypeDeclarationSet,
                                                                           const GALGAS_galgas_33_SyntaxComponentListAST & in_mSyntaxComponentList,
                                                                           const GALGAS_syntaxExtensions & in_mSyntaxExtensions,
                                                                           const GALGAS_galgas_33_GUIComponentListAST & in_mGUIComponentList,
@@ -2910,8 +2915,8 @@ GALGAS_galgasDeclarationAST GALGAS_galgasDeclarationAST::constructor_new (const 
                                                                           const GALGAS_prologueEpilogueList & in_mEpilogueDeclarationList 
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_galgasDeclarationAST result ;
-  if (in_mDeclarationList.isValid () && in_mSyntaxComponentList.isValid () && in_mSyntaxExtensions.isValid () && in_mGUIComponentList.isValid () && in_mPrologueDeclarationList.isValid () && in_mSourceRuleList.isValid () && in_mEpilogueDeclarationList.isValid ()) {
-    result = GALGAS_galgasDeclarationAST (in_mDeclarationList, in_mSyntaxComponentList, in_mSyntaxExtensions, in_mGUIComponentList, in_mPrologueDeclarationList, in_mSourceRuleList, in_mEpilogueDeclarationList) ;
+  if (in_mDeclarationList.isValid () && in_mImplicitTypeDeclarationSet.isValid () && in_mSyntaxComponentList.isValid () && in_mSyntaxExtensions.isValid () && in_mGUIComponentList.isValid () && in_mPrologueDeclarationList.isValid () && in_mSourceRuleList.isValid () && in_mEpilogueDeclarationList.isValid ()) {
+    result = GALGAS_galgasDeclarationAST (in_mDeclarationList, in_mImplicitTypeDeclarationSet, in_mSyntaxComponentList, in_mSyntaxExtensions, in_mGUIComponentList, in_mPrologueDeclarationList, in_mSourceRuleList, in_mEpilogueDeclarationList) ;
   }
   return result ;
 }
@@ -2922,6 +2927,9 @@ typeComparisonResult GALGAS_galgasDeclarationAST::objectCompare (const GALGAS_ga
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mProperty_mDeclarationList.objectCompare (inOperand.mProperty_mDeclarationList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mImplicitTypeDeclarationSet.objectCompare (inOperand.mProperty_mImplicitTypeDeclarationSet) ;
   }
   if (result == kOperandEqual) {
     result = mProperty_mSyntaxComponentList.objectCompare (inOperand.mProperty_mSyntaxComponentList) ;
@@ -2947,13 +2955,14 @@ typeComparisonResult GALGAS_galgasDeclarationAST::objectCompare (const GALGAS_ga
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_galgasDeclarationAST::isValid (void) const {
-  return mProperty_mDeclarationList.isValid () && mProperty_mSyntaxComponentList.isValid () && mProperty_mSyntaxExtensions.isValid () && mProperty_mGUIComponentList.isValid () && mProperty_mPrologueDeclarationList.isValid () && mProperty_mSourceRuleList.isValid () && mProperty_mEpilogueDeclarationList.isValid () ;
+  return mProperty_mDeclarationList.isValid () && mProperty_mImplicitTypeDeclarationSet.isValid () && mProperty_mSyntaxComponentList.isValid () && mProperty_mSyntaxExtensions.isValid () && mProperty_mGUIComponentList.isValid () && mProperty_mPrologueDeclarationList.isValid () && mProperty_mSourceRuleList.isValid () && mProperty_mEpilogueDeclarationList.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_galgasDeclarationAST::drop (void) {
   mProperty_mDeclarationList.drop () ;
+  mProperty_mImplicitTypeDeclarationSet.drop () ;
   mProperty_mSyntaxComponentList.drop () ;
   mProperty_mSyntaxExtensions.drop () ;
   mProperty_mGUIComponentList.drop () ;
@@ -2971,6 +2980,8 @@ void GALGAS_galgasDeclarationAST::description (C_String & ioString,
     ioString << " not built" ;
   }else{
     mProperty_mDeclarationList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mImplicitTypeDeclarationSet.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mSyntaxComponentList.description (ioString, inIndentation+1) ;
     ioString << ", " ;
