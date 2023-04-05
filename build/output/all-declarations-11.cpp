@@ -13038,19 +13038,21 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_typ
                                                                                                       C_Lexique_galgasScanner * inCompiler) {
   outArgument_outTypeName.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__5B_ COMMA_SOURCE_FILE ("type-dict.galgas", 13)) ;
-  GALGAS_lstring var_keyTypeName_744 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__40_type COMMA_SOURCE_FILE ("type-dict.galgas", 14)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__3A_ COMMA_SOURCE_FILE ("type-dict.galgas", 15)) ;
-  GALGAS_lstring var_elementTypeName_785 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__40_type COMMA_SOURCE_FILE ("type-dict.galgas", 16)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__5D_ COMMA_SOURCE_FILE ("type-dict.galgas", 17)) ;
-  outArgument_outTypeName = GALGAS_lstring::constructor_new (GALGAS_string ("[").add_operation (var_keyTypeName_744.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-dict.galgas", 18)).add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("type-dict.galgas", 18)).add_operation (var_elementTypeName_785.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-dict.galgas", 18)).add_operation (GALGAS_string ("]"), inCompiler COMMA_SOURCE_FILE ("type-dict.galgas", 18)), var_keyTypeName_744.readProperty_location ()  COMMA_SOURCE_FILE ("type-dict.galgas", 18)) ;
+  GALGAS_location var_startLocation_737 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-dict.galgas", 14)) ;
+  GALGAS_lstring var_keyTypeName_783 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__40_type COMMA_SOURCE_FILE ("type-dict.galgas", 15)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__3A_ COMMA_SOURCE_FILE ("type-dict.galgas", 16)) ;
+  GALGAS_lstring var_elementTypeName_824 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__40_type COMMA_SOURCE_FILE ("type-dict.galgas", 17)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__5D_ COMMA_SOURCE_FILE ("type-dict.galgas", 18)) ;
+  GALGAS_location var_endLocation_852 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-dict.galgas", 19)) ;
+  outArgument_outTypeName = GALGAS_lstring::constructor_new (GALGAS_string ("[").add_operation (var_keyTypeName_783.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-dict.galgas", 20)).add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("type-dict.galgas", 20)).add_operation (var_elementTypeName_824.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-dict.galgas", 20)).add_operation (GALGAS_string ("]"), inCompiler COMMA_SOURCE_FILE ("type-dict.galgas", 20)), var_startLocation_737.getter_union (var_endLocation_852, inCompiler COMMA_SOURCE_FILE ("type-dict.galgas", 20))  COMMA_SOURCE_FILE ("type-dict.galgas", 20)) ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
-    test_0 = ioArgument_ioDeclarations.readProperty_mImplicitTypeDeclarationSet ().getter_hasKey (outArgument_outTypeName.readProperty_string () COMMA_SOURCE_FILE ("type-dict.galgas", 19)).operator_not (SOURCE_FILE ("type-dict.galgas", 19)).boolEnum () ;
+    test_0 = ioArgument_ioDeclarations.readProperty_mImplicitTypeDeclarationSet ().getter_hasKey (outArgument_outTypeName.readProperty_string () COMMA_SOURCE_FILE ("type-dict.galgas", 21)).operator_not (SOURCE_FILE ("type-dict.galgas", 21)).boolEnum () ;
     if (kBoolTrue == test_0) {
-      ioArgument_ioDeclarations.mProperty_mImplicitTypeDeclarationSet.addAssign_operation (outArgument_outTypeName.readProperty_string ()  COMMA_SOURCE_FILE ("type-dict.galgas", 20)) ;
-      ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_dictDeclarationAST::constructor_new (GALGAS_bool (false), outArgument_outTypeName, var_keyTypeName_744, var_elementTypeName_785  COMMA_SOURCE_FILE ("type-dict.galgas", 21))  COMMA_SOURCE_FILE ("type-dict.galgas", 21)) ;
+      ioArgument_ioDeclarations.mProperty_mImplicitTypeDeclarationSet.addAssign_operation (outArgument_outTypeName.readProperty_string ()  COMMA_SOURCE_FILE ("type-dict.galgas", 22)) ;
+      ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_dictDeclarationAST::constructor_new (GALGAS_bool (false), outArgument_outTypeName, var_keyTypeName_783, var_elementTypeName_824  COMMA_SOURCE_FILE ("type-dict.galgas", 23))  COMMA_SOURCE_FILE ("type-dict.galgas", 23)) ;
     }
   }
 }
@@ -13059,10 +13061,10 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_typ
 
 void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_type_5F_definition_i22_parse (C_Lexique_galgasScanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__5B_ COMMA_SOURCE_FILE ("type-dict.galgas", 13)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__40_type COMMA_SOURCE_FILE ("type-dict.galgas", 14)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__3A_ COMMA_SOURCE_FILE ("type-dict.galgas", 15)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__40_type COMMA_SOURCE_FILE ("type-dict.galgas", 16)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__5D_ COMMA_SOURCE_FILE ("type-dict.galgas", 17)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__40_type COMMA_SOURCE_FILE ("type-dict.galgas", 15)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__3A_ COMMA_SOURCE_FILE ("type-dict.galgas", 16)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__40_type COMMA_SOURCE_FILE ("type-dict.galgas", 17)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__5D_ COMMA_SOURCE_FILE ("type-dict.galgas", 18)) ;
   inCompiler->resetTemplateString () ;
 }
 
@@ -13070,10 +13072,10 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_typ
 
 void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_type_5F_definition_i22_indexing (C_Lexique_galgasScanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__5B_ COMMA_SOURCE_FILE ("type-dict.galgas", 13)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__40_type COMMA_SOURCE_FILE ("type-dict.galgas", 14)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__3A_ COMMA_SOURCE_FILE ("type-dict.galgas", 15)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__40_type COMMA_SOURCE_FILE ("type-dict.galgas", 16)) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__5D_ COMMA_SOURCE_FILE ("type-dict.galgas", 17)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__40_type COMMA_SOURCE_FILE ("type-dict.galgas", 15)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__3A_ COMMA_SOURCE_FILE ("type-dict.galgas", 16)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__40_type COMMA_SOURCE_FILE ("type-dict.galgas", 17)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__5D_ COMMA_SOURCE_FILE ("type-dict.galgas", 18)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

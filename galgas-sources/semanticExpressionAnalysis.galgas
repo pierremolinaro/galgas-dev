@@ -102,17 +102,17 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
   end
   if not handled then
     var @unifiedTypeMapEntry sourceType = inSourceType
-    var @bool ok = inTargetType == inSourceType
+    var @bool ok = [inTargetType typeName] == [inSourceType typeName]
     loop (@uint.max) while (not ok) & (not [[sourceType definition].mSuperType isNull]) do
       sourceType = [sourceType definition].mSuperType
       ok = inTargetType == sourceType
     end
     if not ok, let [[inTargetType definition].mTypeKindEnum weakReferenceType ?referenceType: let targetType] then
       sourceType = inSourceType
-      ok = targetType == sourceType
+      ok = [targetType typeName] == [sourceType typeName]
       loop (@uint.max) while (not ok) & (not [[sourceType definition].mSuperType isNull]) do
         sourceType = [sourceType definition].mSuperType
-        ok = targetType == sourceType
+        ok = [targetType typeName] == [sourceType typeName]
       end
     end
   #--- Check for a direct property access or for a conversion getter

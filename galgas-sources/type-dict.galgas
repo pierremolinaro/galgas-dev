@@ -11,11 +11,13 @@ syntax extension galgas3DeclarationsSyntax {
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
                          !@lstring outTypeName {
     $[$
+    let startLocation = @location.here
     $@type$ ?let keyTypeName
     $:$
     $@type$ ?let elementTypeName
     $]$
-    outTypeName = @lstring.new {!"[" + keyTypeName + ":" + elementTypeName + "]" !keyTypeName.location}
+    let endLocation = @location.here
+    outTypeName = @lstring.new {!"[" + keyTypeName + ":" + elementTypeName + "]" ![startLocation union !endLocation]}
     if not [ioDeclarations.mImplicitTypeDeclarationSet hasKey !outTypeName.string] then
       ioDeclarations.mImplicitTypeDeclarationSet += !outTypeName.string
       ioDeclarations.mDeclarationList += !@dictDeclarationAST.new {
@@ -42,11 +44,13 @@ syntax extension galgas4DeclarationsSyntax {
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
                          !@lstring outTypeName {
     $[$
+    let startLocation = @location.here
     $@type$ ?let keyTypeName
     $:$
     $@type$ ?let elementTypeName
     $]$
-    outTypeName = @lstring.new {!"[" + keyTypeName + ":" + elementTypeName + "]" !keyTypeName.location}
+    let endLocation = @location.here
+    outTypeName = @lstring.new {!"[" + keyTypeName + ":" + elementTypeName + "]" ![startLocation union !endLocation]}
     if not [ioDeclarations.mImplicitTypeDeclarationSet hasKey !outTypeName.string] then
       ioDeclarations.mImplicitTypeDeclarationSet += !outTypeName.string
       ioDeclarations.mDeclarationList += !@dictDeclarationAST.new {
@@ -99,12 +103,6 @@ refclass @dictDeclarationAST : @semanticDeclarationAST {
                                   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
     let dictNodeName = @lstring.new {!"@" + self.mDictTypeName !self.mDictTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !dictNodeName !self]
-#    let elementNodeName = @lstring.new {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}
-#    [!?ioSemanticTypePrecedenceGraph noteNode !elementNodeName]
-#    [!?ioSemanticTypePrecedenceGraph addEdge !dictNodeName !elementNodeName]
-
-#    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + self.mKeyTypeName !self.mKeyTypeName}]
-#    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + self.mElementTypeName !self.mElementTypeName}]
   }
 
   #·····················································································································
