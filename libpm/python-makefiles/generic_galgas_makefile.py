@@ -135,7 +135,7 @@ class GenericGalgasMakefile :
     make.addRule (rule) ;
   #--------------------------------------------------------------------------- Add Compile rule for sources (debug)
   #--- Object file directory
-    debugObjectDirectory = "../build/cli-objects/makefile-" + self.mTargetName + "-debug-objects"
+    debugObjectDirectory = "../" + self.mBuildDirName + "/cli-objects/makefile-" + self.mTargetName + "-debug-objects"
   #---
     debugObjectFileList = []
     for source in SOURCES:
@@ -174,7 +174,7 @@ class GenericGalgasMakefile :
     make.addRule (rule) ;
   #--------------------------------------------------------------------------- Add Compile rule for sources (lto)
   #--- Object file directory
-    objectLTODirectory = "../build/cli-objects/makefile-" + self.mTargetName + "-objects-lto"
+    objectLTODirectory = "../" + self.mBuildDirName + "/cli-objects/makefile-" + self.mTargetName + "-objects-lto"
   #---
     ltoObjectFileList = []
     for source in SOURCES:
