@@ -1105,21 +1105,11 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
   }
 //  NSLog (@"PROJECT %@", projectFilePath) ;
 //--- index directory
-//  NSString * indexingDirectory = [mTokenizer indexingDirectory] ;
-//  NSLog (@"Indexing dir '%@'", indexingDirectory) ;
   if (projectFilePath.length > 0) {
     NSString * buildDirectory = [projectFilePath stringByReplacingOccurrencesOfString: @"." withString: @"-"] ;
     NSString * indexingDirectory = [buildDirectory stringByAppendingString: indexingPathSuffix ()] ;
     [fm createDirectoryAtPath: indexingDirectory withIntermediateDirectories: YES attributes: nil error: nil] ;
-    NSLog (@"indexingDirectory '%@'", indexingDirectory) ;
-//    if ([indexingDirectory characterAtIndex:0] != '/') {
-//      NSMutableString * s = [NSMutableString new] ;
-//      [s appendString: buildDirectory] ;
-//      [s appendString: @"/"] ;
-//      [s appendString: indexingDirectory] ;
-//      indexingDirectory = s ;
-//      [fm createDirectoryAtPath: indexingDirectory withIntermediateDirectories: YES attributes: nil error: nil] ;
-//    }
+    // NSLog (@"indexingDirectory '%@'", indexingDirectory) ;
   //--- Handled extensions
     NSSet * handledExtensions = gCocoaApplicationDelegate.allExtensionsOfCurrentApplication ;
     // NSLog (@"***** handledExtensions '%@'", handledExtensions) ;
@@ -1132,7 +1122,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
       if ([handledExtensions containsObject:[filePath pathExtension]]) {
       //--- Index file path
         NSString * indexFileFullPath = [NSString stringWithFormat:@"%@/%@.plist", indexingDirectory, [filePath lastPathComponent]] ;
-        NSLog (@"  indexFileFullPath '%@'", indexFileFullPath) ;
+//        NSLog (@"  indexFileFullPath '%@'", indexFileFullPath) ;
       //--- Parse source file ?
         if (! [fm fileExistsAtPath: indexFileFullPath]) { // Parse source file
           NSNumber * toolIndexNumber = [NSNumber numberWithInteger: gCocoaApplicationDelegate.selectedToolIndex] ;

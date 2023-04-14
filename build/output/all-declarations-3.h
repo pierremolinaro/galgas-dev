@@ -2016,7 +2016,8 @@ class GALGAS_galgas_33_GUIComponentListAST : public AC_GALGAS_list {
                                                  const class GALGAS_lstring & in_mGUIComponentName,
                                                  const class GALGAS_lstringlist & in_mImportedOptionList,
                                                  const class GALGAS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
-                                                 const class GALGAS_withLexiqueListAST & in_mWithLexiqueList
+                                                 const class GALGAS_withLexiqueListAST & in_mWithLexiqueList,
+                                                 const class GALGAS_lstringlist & in_mProjectFileExtensionList
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of generic part --*
@@ -2035,7 +2036,8 @@ class GALGAS_galgas_33_GUIComponentListAST : public AC_GALGAS_list {
   public: static class GALGAS_galgas_33_GUIComponentListAST constructor_listWithValue (const class GALGAS_lstring & inOperand0,
                                                                                        const class GALGAS_lstringlist & inOperand1,
                                                                                        const class GALGAS_guiSimpleAttributeListAST & inOperand2,
-                                                                                       const class GALGAS_withLexiqueListAST & inOperand3
+                                                                                       const class GALGAS_withLexiqueListAST & inOperand3,
+                                                                                       const class GALGAS_lstringlist & inOperand4
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
@@ -2047,7 +2049,8 @@ class GALGAS_galgas_33_GUIComponentListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
                                                      const class GALGAS_lstringlist & inOperand1,
                                                      const class GALGAS_guiSimpleAttributeListAST & inOperand2,
-                                                     const class GALGAS_withLexiqueListAST & inOperand3
+                                                     const class GALGAS_withLexiqueListAST & inOperand3,
+                                                     const class GALGAS_lstringlist & inOperand4
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_galgas_33_GUIComponentListAST add_operation (const GALGAS_galgas_33_GUIComponentListAST & inOperand,
@@ -2064,7 +2067,8 @@ class GALGAS_galgas_33_GUIComponentListAST : public AC_GALGAS_list {
                                                       class GALGAS_lstringlist constinArgument1,
                                                       class GALGAS_guiSimpleAttributeListAST constinArgument2,
                                                       class GALGAS_withLexiqueListAST constinArgument3,
-                                                      class GALGAS_uint constinArgument4,
+                                                      class GALGAS_lstringlist constinArgument4,
+                                                      class GALGAS_uint constinArgument5,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
@@ -2072,6 +2076,7 @@ class GALGAS_galgas_33_GUIComponentListAST : public AC_GALGAS_list {
                                                  class GALGAS_lstringlist & outArgument1,
                                                  class GALGAS_guiSimpleAttributeListAST & outArgument2,
                                                  class GALGAS_withLexiqueListAST & outArgument3,
+                                                 class GALGAS_lstringlist & outArgument4,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -2079,6 +2084,7 @@ class GALGAS_galgas_33_GUIComponentListAST : public AC_GALGAS_list {
                                                 class GALGAS_lstringlist & outArgument1,
                                                 class GALGAS_guiSimpleAttributeListAST & outArgument2,
                                                 class GALGAS_withLexiqueListAST & outArgument3,
+                                                class GALGAS_lstringlist & outArgument4,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
@@ -2086,7 +2092,8 @@ class GALGAS_galgas_33_GUIComponentListAST : public AC_GALGAS_list {
                                                       class GALGAS_lstringlist & outArgument1,
                                                       class GALGAS_guiSimpleAttributeListAST & outArgument2,
                                                       class GALGAS_withLexiqueListAST & outArgument3,
-                                                      class GALGAS_uint constinArgument4,
+                                                      class GALGAS_lstringlist & outArgument4,
+                                                      class GALGAS_uint constinArgument5,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
@@ -2105,6 +2112,11 @@ class GALGAS_galgas_33_GUIComponentListAST : public AC_GALGAS_list {
                                                                       C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
+  public: VIRTUAL_IN_DEBUG void setter_setMProjectFileExtensionListAtIndex (class GALGAS_lstringlist constinArgument0,
+                                                                            class GALGAS_uint constinArgument1,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
+
   public: VIRTUAL_IN_DEBUG void setter_setMWithLexiqueListAtIndex (class GALGAS_withLexiqueListAST constinArgument0,
                                                                    class GALGAS_uint constinArgument1,
                                                                    C_Compiler * inCompiler
@@ -2116,6 +2128,7 @@ class GALGAS_galgas_33_GUIComponentListAST : public AC_GALGAS_list {
                                               class GALGAS_lstringlist & outArgument1,
                                               class GALGAS_guiSimpleAttributeListAST & outArgument2,
                                               class GALGAS_withLexiqueListAST & outArgument3,
+                                              class GALGAS_lstringlist & outArgument4,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
@@ -2123,6 +2136,7 @@ class GALGAS_galgas_33_GUIComponentListAST : public AC_GALGAS_list {
                                              class GALGAS_lstringlist & outArgument1,
                                              class GALGAS_guiSimpleAttributeListAST & outArgument2,
                                              class GALGAS_withLexiqueListAST & outArgument3,
+                                             class GALGAS_lstringlist & outArgument4,
                                              C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
@@ -2140,6 +2154,10 @@ class GALGAS_galgas_33_GUIComponentListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mImportedOptionListAtIndex (const class GALGAS_uint & constinOperand0,
                                                                                        C_Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mProjectFileExtensionListAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                             C_Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_withLexiqueListAST getter_mWithLexiqueListAtIndex (const class GALGAS_uint & constinOperand0,
                                                                                            C_Compiler * inCompiler
@@ -2181,6 +2199,7 @@ class cEnumerator_galgas_33_GUIComponentListAST : public cGenericAbstractEnumera
   public: class GALGAS_lstringlist current_mImportedOptionList (LOCATION_ARGS) const ;
   public: class GALGAS_guiSimpleAttributeListAST current_mGlobalSimpleAttributeList (LOCATION_ARGS) const ;
   public: class GALGAS_withLexiqueListAST current_mWithLexiqueList (LOCATION_ARGS) const ;
+  public: class GALGAS_lstringlist current_mProjectFileExtensionList (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GALGAS_galgas_33_GUIComponentListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
@@ -2217,6 +2236,11 @@ class GALGAS_galgas_33_GUIComponentListAST_2D_element : public AC_GALGAS_root {
     return mProperty_mWithLexiqueList ;
   }
 
+  public: GALGAS_lstringlist mProperty_mProjectFileExtensionList ;
+  public: inline GALGAS_lstringlist readProperty_mProjectFileExtensionList (void) const {
+    return mProperty_mProjectFileExtensionList ;
+  }
+
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
@@ -2244,6 +2268,10 @@ class GALGAS_galgas_33_GUIComponentListAST_2D_element : public AC_GALGAS_root {
     mProperty_mWithLexiqueList = inValue ;
   }
 
+  public: inline void setter_setMProjectFileExtensionList (const GALGAS_lstringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mProjectFileExtensionList = inValue ;
+  }
+
 //--------------------------------- Virtual destructor (in debug mode)
   public: virtual ~ GALGAS_galgas_33_GUIComponentListAST_2D_element (void) ;
 
@@ -2251,7 +2279,8 @@ class GALGAS_galgas_33_GUIComponentListAST_2D_element : public AC_GALGAS_root {
   public: GALGAS_galgas_33_GUIComponentListAST_2D_element (const GALGAS_lstring & in_mGUIComponentName,
                                                            const GALGAS_lstringlist & in_mImportedOptionList,
                                                            const GALGAS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
-                                                           const GALGAS_withLexiqueListAST & in_mWithLexiqueList) ;
+                                                           const GALGAS_withLexiqueListAST & in_mWithLexiqueList,
+                                                           const GALGAS_lstringlist & in_mProjectFileExtensionList) ;
 
 //-- Start of generic part --*
 
@@ -2267,7 +2296,8 @@ class GALGAS_galgas_33_GUIComponentListAST_2D_element : public AC_GALGAS_root {
   public: static class GALGAS_galgas_33_GUIComponentListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                                         const class GALGAS_lstringlist & inOperand1,
                                                                                         const class GALGAS_guiSimpleAttributeListAST & inOperand2,
-                                                                                        const class GALGAS_withLexiqueListAST & inOperand3
+                                                                                        const class GALGAS_withLexiqueListAST & inOperand3,
+                                                                                        const class GALGAS_lstringlist & inOperand4
                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -2343,6 +2373,11 @@ class GALGAS_guiAnalysisContext : public AC_GALGAS_root {
     return mProperty_mBuildRunOption ;
   }
 
+  public: GALGAS_lstringlist mProperty_mProjectFileExtensionList ;
+  public: inline GALGAS_lstringlist readProperty_mProjectFileExtensionList (void) const {
+    return mProperty_mProjectFileExtensionList ;
+  }
+
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
@@ -2386,6 +2421,10 @@ class GALGAS_guiAnalysisContext : public AC_GALGAS_root {
     mProperty_mBuildRunOption = inValue ;
   }
 
+  public: inline void setter_setMProjectFileExtensionList (const GALGAS_lstringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mProjectFileExtensionList = inValue ;
+  }
+
 //--------------------------------- Virtual destructor (in debug mode)
   public: virtual ~ GALGAS_guiAnalysisContext (void) ;
 
@@ -2397,7 +2436,8 @@ class GALGAS_guiAnalysisContext : public AC_GALGAS_root {
                                      const GALGAS_stringlist & in_mNibAndClassList,
                                      const GALGAS_extensionMap & in_mExtensionMap,
                                      const GALGAS_importedLexiqueList & in_mWithLexiqueList,
-                                     const GALGAS_string & in_mBuildRunOption) ;
+                                     const GALGAS_string & in_mBuildRunOption,
+                                     const GALGAS_lstringlist & in_mProjectFileExtensionList) ;
 
 //-- Start of generic part --*
 
@@ -2417,7 +2457,8 @@ class GALGAS_guiAnalysisContext : public AC_GALGAS_root {
                                                                   const class GALGAS_stringlist & inOperand4,
                                                                   const class GALGAS_extensionMap & inOperand5,
                                                                   const class GALGAS_importedLexiqueList & inOperand6,
-                                                                  const class GALGAS_string & inOperand7
+                                                                  const class GALGAS_string & inOperand7,
+                                                                  const class GALGAS_lstringlist & inOperand8
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'

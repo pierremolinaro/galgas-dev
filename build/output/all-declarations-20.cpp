@@ -5608,7 +5608,8 @@ GALGAS_galgas_33_GUIComponentListAST_2D_element::GALGAS_galgas_33_GUIComponentLi
 mProperty_mGUIComponentName (),
 mProperty_mImportedOptionList (),
 mProperty_mGlobalSimpleAttributeList (),
-mProperty_mWithLexiqueList () {
+mProperty_mWithLexiqueList (),
+mProperty_mProjectFileExtensionList () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5621,11 +5622,13 @@ GALGAS_galgas_33_GUIComponentListAST_2D_element::~ GALGAS_galgas_33_GUIComponent
 GALGAS_galgas_33_GUIComponentListAST_2D_element::GALGAS_galgas_33_GUIComponentListAST_2D_element (const GALGAS_lstring & inOperand0,
                                                                                                   const GALGAS_lstringlist & inOperand1,
                                                                                                   const GALGAS_guiSimpleAttributeListAST & inOperand2,
-                                                                                                  const GALGAS_withLexiqueListAST & inOperand3) :
+                                                                                                  const GALGAS_withLexiqueListAST & inOperand3,
+                                                                                                  const GALGAS_lstringlist & inOperand4) :
 mProperty_mGUIComponentName (inOperand0),
 mProperty_mImportedOptionList (inOperand1),
 mProperty_mGlobalSimpleAttributeList (inOperand2),
-mProperty_mWithLexiqueList (inOperand3) {
+mProperty_mWithLexiqueList (inOperand3),
+mProperty_mProjectFileExtensionList (inOperand4) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5634,7 +5637,8 @@ GALGAS_galgas_33_GUIComponentListAST_2D_element GALGAS_galgas_33_GUIComponentLis
   return GALGAS_galgas_33_GUIComponentListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
                                                           GALGAS_lstringlist::constructor_emptyList (HERE),
                                                           GALGAS_guiSimpleAttributeListAST::constructor_emptyList (HERE),
-                                                          GALGAS_withLexiqueListAST::constructor_emptyList (HERE)) ;
+                                                          GALGAS_withLexiqueListAST::constructor_emptyList (HERE),
+                                                          GALGAS_lstringlist::constructor_emptyList (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5642,11 +5646,12 @@ GALGAS_galgas_33_GUIComponentListAST_2D_element GALGAS_galgas_33_GUIComponentLis
 GALGAS_galgas_33_GUIComponentListAST_2D_element GALGAS_galgas_33_GUIComponentListAST_2D_element::constructor_new (const GALGAS_lstring & in_mGUIComponentName,
                                                                                                                   const GALGAS_lstringlist & in_mImportedOptionList,
                                                                                                                   const GALGAS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
-                                                                                                                  const GALGAS_withLexiqueListAST & in_mWithLexiqueList 
+                                                                                                                  const GALGAS_withLexiqueListAST & in_mWithLexiqueList,
+                                                                                                                  const GALGAS_lstringlist & in_mProjectFileExtensionList 
                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_galgas_33_GUIComponentListAST_2D_element result ;
-  if (in_mGUIComponentName.isValid () && in_mImportedOptionList.isValid () && in_mGlobalSimpleAttributeList.isValid () && in_mWithLexiqueList.isValid ()) {
-    result = GALGAS_galgas_33_GUIComponentListAST_2D_element (in_mGUIComponentName, in_mImportedOptionList, in_mGlobalSimpleAttributeList, in_mWithLexiqueList) ;
+  if (in_mGUIComponentName.isValid () && in_mImportedOptionList.isValid () && in_mGlobalSimpleAttributeList.isValid () && in_mWithLexiqueList.isValid () && in_mProjectFileExtensionList.isValid ()) {
+    result = GALGAS_galgas_33_GUIComponentListAST_2D_element (in_mGUIComponentName, in_mImportedOptionList, in_mGlobalSimpleAttributeList, in_mWithLexiqueList, in_mProjectFileExtensionList) ;
   }
   return result ;
 }
@@ -5667,13 +5672,16 @@ typeComparisonResult GALGAS_galgas_33_GUIComponentListAST_2D_element::objectComp
   if (result == kOperandEqual) {
     result = mProperty_mWithLexiqueList.objectCompare (inOperand.mProperty_mWithLexiqueList) ;
   }
+  if (result == kOperandEqual) {
+    result = mProperty_mProjectFileExtensionList.objectCompare (inOperand.mProperty_mProjectFileExtensionList) ;
+  }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_galgas_33_GUIComponentListAST_2D_element::isValid (void) const {
-  return mProperty_mGUIComponentName.isValid () && mProperty_mImportedOptionList.isValid () && mProperty_mGlobalSimpleAttributeList.isValid () && mProperty_mWithLexiqueList.isValid () ;
+  return mProperty_mGUIComponentName.isValid () && mProperty_mImportedOptionList.isValid () && mProperty_mGlobalSimpleAttributeList.isValid () && mProperty_mWithLexiqueList.isValid () && mProperty_mProjectFileExtensionList.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5683,6 +5691,7 @@ void GALGAS_galgas_33_GUIComponentListAST_2D_element::drop (void) {
   mProperty_mImportedOptionList.drop () ;
   mProperty_mGlobalSimpleAttributeList.drop () ;
   mProperty_mWithLexiqueList.drop () ;
+  mProperty_mProjectFileExtensionList.drop () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5700,6 +5709,8 @@ void GALGAS_galgas_33_GUIComponentListAST_2D_element::description (C_String & io
     mProperty_mGlobalSimpleAttributeList.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mWithLexiqueList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mProjectFileExtensionList.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }

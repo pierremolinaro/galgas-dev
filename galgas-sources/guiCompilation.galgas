@@ -82,6 +82,7 @@ list @galgas3GUIComponentListAST {
   public let @lstringlist mImportedOptionList
   public let @guiSimpleAttributeListAST mGlobalSimpleAttributeList
   public let @withLexiqueListAST mWithLexiqueList
+  public let @lstringlist mProjectFileExtensionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -99,7 +100,16 @@ syntax galgas3GuiComponentSyntax (galgasScanner) {
     var @lstringlist importedOptionList = {}
     var @guiSimpleAttributeListAST simpleGlobalAttributes = {}
     var @withLexiqueListAST withLexiqueList = {}
+    var @lstringlist projectExtensionList = {}
     repeat
+    while
+      $project$
+      repeat
+        $"string"$ ?let fileExtension
+        projectExtensionList += !fileExtension
+      while
+        $,$
+      end
     while
       <gui_attributes> !?simpleGlobalAttributes
     while
@@ -114,6 +124,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner) {
       !importedOptionList
       !simpleGlobalAttributes
       !withLexiqueList
+      !projectExtensionList
   }
   
   #·····················································································································
@@ -225,7 +236,16 @@ syntax galgas4GuiComponentSyntax (galgasScanner) {
     var @lstringlist importedOptionList = {}
     var @guiSimpleAttributeListAST simpleGlobalAttributes = {}
     var @withLexiqueListAST withLexiqueList = {}
+    var @lstringlist projectExtensionList = {}
     repeat
+    while
+      $project$
+      repeat
+        $"string"$ ?let fileExtension
+        projectExtensionList += !fileExtension
+      while
+        $,$
+      end
     while
       <gui_attributes> !?simpleGlobalAttributes
     while
@@ -240,6 +260,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner) {
       !importedOptionList
       !simpleGlobalAttributes
       !withLexiqueList
+      !projectExtensionList
   }
   
   #·····················································································································
@@ -351,6 +372,7 @@ struct @guiAnalysisContext {
   public var @extensionMap mExtensionMap
   public var @importedLexiqueList mWithLexiqueList
   public var @string mBuildRunOption
+  public var @lstringlist mProjectFileExtensionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -387,6 +409,7 @@ private proc guiComponentSemanticAnalysis ?let @galgas3GUIComponentListAST-eleme
   end
 #--- 
   var @guiAnalysisContext context = .default
+  context.mProjectFileExtensionList = inGUIComponentAST.mProjectFileExtensionList
 #--- Check imported options components
   for (mValue) in inGUIComponentAST.mImportedOptionList do
     [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
@@ -504,21 +527,18 @@ private proc guiComponentSemanticAnalysis ?let @galgas3GUIComponentListAST-eleme
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc generateAllGuiComponentsGalgas3
-  ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
-  ?let @string inOutputDirectory
-  ?let @bool inQuietOutputByDefault
-  ?!@stringlist ioApplicationSourceSet
-  ?!@stringset ioAllProductFileSet
-{
-  for (lkey mGuiComponentContext) in inOptionComponentMapForGeneration do
+proc generateAllGuiComponentsGalgas3 ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
+                                      ?let @string inOutputDirectory
+                                      ?let @bool inQuietOutputByDefault
+                                      ?!@stringlist ioApplicationSourceSet
+                                      ?!@stringset ioAllProductFileSet {
+  for (lkey guiComponentContext) in inOptionComponentMapForGeneration do
     let swiftFileName = "gui-" + lkey + ".swift"
     ioApplicationSourceSet += !swiftFileName
     ioAllProductFileSet += !swiftFileName
     let @string swift_string = [filewrapper guiGenerationTemplates.swift_gui_implementation
-      !mGuiComponentContext
+      !guiComponentContext
       !inQuietOutputByDefault
-      !mGuiComponentContext.mBuildRunOption
     ]
     [@string generateFileWithPattern
       !startPath:inOutputDirectory
@@ -535,9 +555,8 @@ proc generateAllGuiComponentsGalgas3
     ioApplicationSourceSet += !objcFileName
     ioAllProductFileSet += !objcFileName
     let @string objc_string = [filewrapper guiGenerationTemplates.objc_gui_implementation
-      !mGuiComponentContext
+      !guiComponentContext
       !inQuietOutputByDefault
-      !mGuiComponentContext.mBuildRunOption
     ]
     [@string generateFileWithPattern
       !startPath:inOutputDirectory
@@ -563,11 +582,10 @@ filewrapper guiGenerationTemplates in "+generation-templates/gui_generation" {
   template objc_gui_implementation "gui-implementation.m.galgasTemplate"
     ?@guiAnalysisContext GUI_CONTEXT
     ?@bool QUIET_OUTPUT_BY_DEFAULT
-    ?@string BUILD_RUN_OPTION
 
   template swift_gui_implementation "gui-implementation.swift.galgasTemplate"
     ?@guiAnalysisContext GUI_CONTEXT
     ?@bool QUIET_OUTPUT_BY_DEFAULT
-    ?@string BUILD_RUN_OPTION
 }
 
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

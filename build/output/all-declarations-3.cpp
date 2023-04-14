@@ -3928,7 +3928,8 @@ class cCollectionElement_galgas_33_GUIComponentListAST : public cCollectionEleme
   public: cCollectionElement_galgas_33_GUIComponentListAST (const GALGAS_lstring & in_mGUIComponentName,
                                                             const GALGAS_lstringlist & in_mImportedOptionList,
                                                             const GALGAS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
-                                                            const GALGAS_withLexiqueListAST & in_mWithLexiqueList
+                                                            const GALGAS_withLexiqueListAST & in_mWithLexiqueList,
+                                                            const GALGAS_lstringlist & in_mProjectFileExtensionList
                                                             COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_galgas_33_GUIComponentListAST (const GALGAS_galgas_33_GUIComponentListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
@@ -3950,17 +3951,18 @@ class cCollectionElement_galgas_33_GUIComponentListAST : public cCollectionEleme
 cCollectionElement_galgas_33_GUIComponentListAST::cCollectionElement_galgas_33_GUIComponentListAST (const GALGAS_lstring & in_mGUIComponentName,
                                                                                                     const GALGAS_lstringlist & in_mImportedOptionList,
                                                                                                     const GALGAS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
-                                                                                                    const GALGAS_withLexiqueListAST & in_mWithLexiqueList
+                                                                                                    const GALGAS_withLexiqueListAST & in_mWithLexiqueList,
+                                                                                                    const GALGAS_lstringlist & in_mProjectFileExtensionList
                                                                                                     COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mGUIComponentName, in_mImportedOptionList, in_mGlobalSimpleAttributeList, in_mWithLexiqueList) {
+mObject (in_mGUIComponentName, in_mImportedOptionList, in_mGlobalSimpleAttributeList, in_mWithLexiqueList, in_mProjectFileExtensionList) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_galgas_33_GUIComponentListAST::cCollectionElement_galgas_33_GUIComponentListAST (const GALGAS_galgas_33_GUIComponentListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (inElement.mProperty_mGUIComponentName, inElement.mProperty_mImportedOptionList, inElement.mProperty_mGlobalSimpleAttributeList, inElement.mProperty_mWithLexiqueList) {
+mObject (inElement.mProperty_mGUIComponentName, inElement.mProperty_mImportedOptionList, inElement.mProperty_mGlobalSimpleAttributeList, inElement.mProperty_mWithLexiqueList, inElement.mProperty_mProjectFileExtensionList) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3973,7 +3975,7 @@ bool cCollectionElement_galgas_33_GUIComponentListAST::isValid (void) const {
 
 cCollectionElement * cCollectionElement_galgas_33_GUIComponentListAST::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_galgas_33_GUIComponentListAST (mObject.mProperty_mGUIComponentName, mObject.mProperty_mImportedOptionList, mObject.mProperty_mGlobalSimpleAttributeList, mObject.mProperty_mWithLexiqueList COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_galgas_33_GUIComponentListAST (mObject.mProperty_mGUIComponentName, mObject.mProperty_mImportedOptionList, mObject.mProperty_mGlobalSimpleAttributeList, mObject.mProperty_mWithLexiqueList, mObject.mProperty_mProjectFileExtensionList COMMA_HERE)) ;
   return result ;
 }
 
@@ -3996,6 +3998,10 @@ void cCollectionElement_galgas_33_GUIComponentListAST::description (C_String & i
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mWithLexiqueList" ":" ;
   mObject.mProperty_mWithLexiqueList.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mProjectFileExtensionList" ":" ;
+  mObject.mProperty_mProjectFileExtensionList.description (ioString, inIndentation) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4029,13 +4035,14 @@ GALGAS_galgas_33_GUIComponentListAST GALGAS_galgas_33_GUIComponentListAST::const
 GALGAS_galgas_33_GUIComponentListAST GALGAS_galgas_33_GUIComponentListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                                       const GALGAS_lstringlist & inOperand1,
                                                                                                       const GALGAS_guiSimpleAttributeListAST & inOperand2,
-                                                                                                      const GALGAS_withLexiqueListAST & inOperand3
+                                                                                                      const GALGAS_withLexiqueListAST & inOperand3,
+                                                                                                      const GALGAS_lstringlist & inOperand4
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_galgas_33_GUIComponentListAST result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
     result = GALGAS_galgas_33_GUIComponentListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
-    GALGAS_galgas_33_GUIComponentListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
+    GALGAS_galgas_33_GUIComponentListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE) ;
     result.appendObject (attributes) ;
   }
   return result ;
@@ -4047,13 +4054,15 @@ void GALGAS_galgas_33_GUIComponentListAST::makeAttributesFromObjects (capCollect
                                                                       const GALGAS_lstring & in_mGUIComponentName,
                                                                       const GALGAS_lstringlist & in_mImportedOptionList,
                                                                       const GALGAS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
-                                                                      const GALGAS_withLexiqueListAST & in_mWithLexiqueList
+                                                                      const GALGAS_withLexiqueListAST & in_mWithLexiqueList,
+                                                                      const GALGAS_lstringlist & in_mProjectFileExtensionList
                                                                       COMMA_LOCATION_ARGS) {
   cCollectionElement_galgas_33_GUIComponentListAST * p = NULL ;
   macroMyNew (p, cCollectionElement_galgas_33_GUIComponentListAST (in_mGUIComponentName,
                                                                    in_mImportedOptionList,
                                                                    in_mGlobalSimpleAttributeList,
-                                                                   in_mWithLexiqueList COMMA_THERE)) ;
+                                                                   in_mWithLexiqueList,
+                                                                   in_mProjectFileExtensionList COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -4063,12 +4072,13 @@ void GALGAS_galgas_33_GUIComponentListAST::makeAttributesFromObjects (capCollect
 void GALGAS_galgas_33_GUIComponentListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                                 const GALGAS_lstringlist & inOperand1,
                                                                 const GALGAS_guiSimpleAttributeListAST & inOperand2,
-                                                                const GALGAS_withLexiqueListAST & inOperand3
+                                                                const GALGAS_withLexiqueListAST & inOperand3,
+                                                                const GALGAS_lstringlist & inOperand4
                                                                 COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
       cCollectionElement * p = NULL ;
-      macroMyNew (p, cCollectionElement_galgas_33_GUIComponentListAST (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_galgas_33_GUIComponentListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -4104,13 +4114,14 @@ void GALGAS_galgas_33_GUIComponentListAST::setter_insertAtIndex (const GALGAS_ls
                                                                  const GALGAS_lstringlist inOperand1,
                                                                  const GALGAS_guiSimpleAttributeListAST inOperand2,
                                                                  const GALGAS_withLexiqueListAST inOperand3,
+                                                                 const GALGAS_lstringlist inOperand4,
                                                                  const GALGAS_uint inInsertionIndex,
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
+    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
       cCollectionElement * p = NULL ;
-      macroMyNew (p, cCollectionElement_galgas_33_GUIComponentListAST (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_galgas_33_GUIComponentListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -4127,6 +4138,7 @@ void GALGAS_galgas_33_GUIComponentListAST::setter_removeAtIndex (GALGAS_lstring 
                                                                  GALGAS_lstringlist & outOperand1,
                                                                  GALGAS_guiSimpleAttributeListAST & outOperand2,
                                                                  GALGAS_withLexiqueListAST & outOperand3,
+                                                                 GALGAS_lstringlist & outOperand4,
                                                                  const GALGAS_uint inRemoveIndex,
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
@@ -4140,6 +4152,7 @@ void GALGAS_galgas_33_GUIComponentListAST::setter_removeAtIndex (GALGAS_lstring 
         outOperand1.drop () ;
         outOperand2.drop () ;
         outOperand3.drop () ;
+        outOperand4.drop () ;
         drop () ;
       }else{
         macroValidSharedObject (p, cCollectionElement_galgas_33_GUIComponentListAST) ;
@@ -4147,12 +4160,14 @@ void GALGAS_galgas_33_GUIComponentListAST::setter_removeAtIndex (GALGAS_lstring 
         outOperand1 = p->mObject.mProperty_mImportedOptionList ;
         outOperand2 = p->mObject.mProperty_mGlobalSimpleAttributeList ;
         outOperand3 = p->mObject.mProperty_mWithLexiqueList ;
+        outOperand4 = p->mObject.mProperty_mProjectFileExtensionList ;
       }
     }else{
       outOperand0.drop () ;
       outOperand1.drop () ;
       outOperand2.drop () ;
       outOperand3.drop () ;
+      outOperand4.drop () ;
       drop () ;    
     }
   }else{
@@ -4160,6 +4175,7 @@ void GALGAS_galgas_33_GUIComponentListAST::setter_removeAtIndex (GALGAS_lstring 
     outOperand1.drop () ;
     outOperand2.drop () ;
     outOperand3.drop () ;
+    outOperand4.drop () ;
   }
 }
 
@@ -4169,6 +4185,7 @@ void GALGAS_galgas_33_GUIComponentListAST::setter_popFirst (GALGAS_lstring & out
                                                             GALGAS_lstringlist & outOperand1,
                                                             GALGAS_guiSimpleAttributeListAST & outOperand2,
                                                             GALGAS_withLexiqueListAST & outOperand3,
+                                                            GALGAS_lstringlist & outOperand4,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -4179,12 +4196,14 @@ void GALGAS_galgas_33_GUIComponentListAST::setter_popFirst (GALGAS_lstring & out
     outOperand1.drop () ;
     outOperand2.drop () ;
     outOperand3.drop () ;
+    outOperand4.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_galgas_33_GUIComponentListAST) ;
     outOperand0 = p->mObject.mProperty_mGUIComponentName ;
     outOperand1 = p->mObject.mProperty_mImportedOptionList ;
     outOperand2 = p->mObject.mProperty_mGlobalSimpleAttributeList ;
     outOperand3 = p->mObject.mProperty_mWithLexiqueList ;
+    outOperand4 = p->mObject.mProperty_mProjectFileExtensionList ;
   }
 }
 
@@ -4194,6 +4213,7 @@ void GALGAS_galgas_33_GUIComponentListAST::setter_popLast (GALGAS_lstring & outO
                                                            GALGAS_lstringlist & outOperand1,
                                                            GALGAS_guiSimpleAttributeListAST & outOperand2,
                                                            GALGAS_withLexiqueListAST & outOperand3,
+                                                           GALGAS_lstringlist & outOperand4,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -4204,12 +4224,14 @@ void GALGAS_galgas_33_GUIComponentListAST::setter_popLast (GALGAS_lstring & outO
     outOperand1.drop () ;
     outOperand2.drop () ;
     outOperand3.drop () ;
+    outOperand4.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_galgas_33_GUIComponentListAST) ;
     outOperand0 = p->mObject.mProperty_mGUIComponentName ;
     outOperand1 = p->mObject.mProperty_mImportedOptionList ;
     outOperand2 = p->mObject.mProperty_mGlobalSimpleAttributeList ;
     outOperand3 = p->mObject.mProperty_mWithLexiqueList ;
+    outOperand4 = p->mObject.mProperty_mProjectFileExtensionList ;
   }
 }
 
@@ -4219,6 +4241,7 @@ void GALGAS_galgas_33_GUIComponentListAST::method_first (GALGAS_lstring & outOpe
                                                          GALGAS_lstringlist & outOperand1,
                                                          GALGAS_guiSimpleAttributeListAST & outOperand2,
                                                          GALGAS_withLexiqueListAST & outOperand3,
+                                                         GALGAS_lstringlist & outOperand4,
                                                          C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -4229,12 +4252,14 @@ void GALGAS_galgas_33_GUIComponentListAST::method_first (GALGAS_lstring & outOpe
     outOperand1.drop () ;
     outOperand2.drop () ;
     outOperand3.drop () ;
+    outOperand4.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_galgas_33_GUIComponentListAST) ;
     outOperand0 = p->mObject.mProperty_mGUIComponentName ;
     outOperand1 = p->mObject.mProperty_mImportedOptionList ;
     outOperand2 = p->mObject.mProperty_mGlobalSimpleAttributeList ;
     outOperand3 = p->mObject.mProperty_mWithLexiqueList ;
+    outOperand4 = p->mObject.mProperty_mProjectFileExtensionList ;
   }
 }
 
@@ -4244,6 +4269,7 @@ void GALGAS_galgas_33_GUIComponentListAST::method_last (GALGAS_lstring & outOper
                                                         GALGAS_lstringlist & outOperand1,
                                                         GALGAS_guiSimpleAttributeListAST & outOperand2,
                                                         GALGAS_withLexiqueListAST & outOperand3,
+                                                        GALGAS_lstringlist & outOperand4,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -4254,12 +4280,14 @@ void GALGAS_galgas_33_GUIComponentListAST::method_last (GALGAS_lstring & outOper
     outOperand1.drop () ;
     outOperand2.drop () ;
     outOperand3.drop () ;
+    outOperand4.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_galgas_33_GUIComponentListAST) ;
     outOperand0 = p->mObject.mProperty_mGUIComponentName ;
     outOperand1 = p->mObject.mProperty_mImportedOptionList ;
     outOperand2 = p->mObject.mProperty_mGlobalSimpleAttributeList ;
     outOperand3 = p->mObject.mProperty_mWithLexiqueList ;
+    outOperand4 = p->mObject.mProperty_mProjectFileExtensionList ;
   }
 }
 
@@ -4430,6 +4458,35 @@ GALGAS_withLexiqueListAST GALGAS_galgas_33_GUIComponentListAST::getter_mWithLexi
   return result ;
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_galgas_33_GUIComponentListAST::setter_setMProjectFileExtensionListAtIndex (GALGAS_lstringlist inOperand,
+                                                                                       GALGAS_uint inIndex,
+                                                                                       C_Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) {
+  cCollectionElement_galgas_33_GUIComponentListAST * p = (cCollectionElement_galgas_33_GUIComponentListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_galgas_33_GUIComponentListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mProjectFileExtensionList = inOperand ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lstringlist GALGAS_galgas_33_GUIComponentListAST::getter_mProjectFileExtensionListAtIndex (const GALGAS_uint & inIndex,
+                                                                                                  C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_galgas_33_GUIComponentListAST * p = (cCollectionElement_galgas_33_GUIComponentListAST *) attributes.ptr () ;
+  GALGAS_lstringlist result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_galgas_33_GUIComponentListAST) ;
+    result = p->mObject.mProperty_mProjectFileExtensionList ;
+  }
+  return result ;
+}
+
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4479,6 +4536,14 @@ GALGAS_withLexiqueListAST cEnumerator_galgas_33_GUIComponentListAST::current_mWi
   const cCollectionElement_galgas_33_GUIComponentListAST * p = (const cCollectionElement_galgas_33_GUIComponentListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_galgas_33_GUIComponentListAST) ;
   return p->mObject.mProperty_mWithLexiqueList ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lstringlist cEnumerator_galgas_33_GUIComponentListAST::current_mProjectFileExtensionList (LOCATION_ARGS) const {
+  const cCollectionElement_galgas_33_GUIComponentListAST * p = (const cCollectionElement_galgas_33_GUIComponentListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_galgas_33_GUIComponentListAST) ;
+  return p->mObject.mProperty_mProjectFileExtensionList ;
 }
 
 
@@ -4537,7 +4602,8 @@ mProperty_mStringOptionList (),
 mProperty_mNibAndClassList (),
 mProperty_mExtensionMap (),
 mProperty_mWithLexiqueList (),
-mProperty_mBuildRunOption () {
+mProperty_mBuildRunOption (),
+mProperty_mProjectFileExtensionList () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4554,7 +4620,8 @@ GALGAS_guiAnalysisContext::GALGAS_guiAnalysisContext (const GALGAS_stringlist & 
                                                       const GALGAS_stringlist & inOperand4,
                                                       const GALGAS_extensionMap & inOperand5,
                                                       const GALGAS_importedLexiqueList & inOperand6,
-                                                      const GALGAS_string & inOperand7) :
+                                                      const GALGAS_string & inOperand7,
+                                                      const GALGAS_lstringlist & inOperand8) :
 mProperty_mImportedOptionComponentList (inOperand0),
 mProperty_mBoolOptionList (inOperand1),
 mProperty_mUIntOptionList (inOperand2),
@@ -4562,7 +4629,8 @@ mProperty_mStringOptionList (inOperand3),
 mProperty_mNibAndClassList (inOperand4),
 mProperty_mExtensionMap (inOperand5),
 mProperty_mWithLexiqueList (inOperand6),
-mProperty_mBuildRunOption (inOperand7) {
+mProperty_mBuildRunOption (inOperand7),
+mProperty_mProjectFileExtensionList (inOperand8) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4575,7 +4643,8 @@ GALGAS_guiAnalysisContext GALGAS_guiAnalysisContext::constructor_default (UNUSED
                                     GALGAS_stringlist::constructor_emptyList (HERE),
                                     GALGAS_extensionMap::constructor_emptyMap (HERE),
                                     GALGAS_importedLexiqueList::constructor_emptyList (HERE),
-                                    GALGAS_string::constructor_default (HERE)) ;
+                                    GALGAS_string::constructor_default (HERE),
+                                    GALGAS_lstringlist::constructor_emptyList (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4587,11 +4656,12 @@ GALGAS_guiAnalysisContext GALGAS_guiAnalysisContext::constructor_new (const GALG
                                                                       const GALGAS_stringlist & in_mNibAndClassList,
                                                                       const GALGAS_extensionMap & in_mExtensionMap,
                                                                       const GALGAS_importedLexiqueList & in_mWithLexiqueList,
-                                                                      const GALGAS_string & in_mBuildRunOption 
+                                                                      const GALGAS_string & in_mBuildRunOption,
+                                                                      const GALGAS_lstringlist & in_mProjectFileExtensionList 
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_guiAnalysisContext result ;
-  if (in_mImportedOptionComponentList.isValid () && in_mBoolOptionList.isValid () && in_mUIntOptionList.isValid () && in_mStringOptionList.isValid () && in_mNibAndClassList.isValid () && in_mExtensionMap.isValid () && in_mWithLexiqueList.isValid () && in_mBuildRunOption.isValid ()) {
-    result = GALGAS_guiAnalysisContext (in_mImportedOptionComponentList, in_mBoolOptionList, in_mUIntOptionList, in_mStringOptionList, in_mNibAndClassList, in_mExtensionMap, in_mWithLexiqueList, in_mBuildRunOption) ;
+  if (in_mImportedOptionComponentList.isValid () && in_mBoolOptionList.isValid () && in_mUIntOptionList.isValid () && in_mStringOptionList.isValid () && in_mNibAndClassList.isValid () && in_mExtensionMap.isValid () && in_mWithLexiqueList.isValid () && in_mBuildRunOption.isValid () && in_mProjectFileExtensionList.isValid ()) {
+    result = GALGAS_guiAnalysisContext (in_mImportedOptionComponentList, in_mBoolOptionList, in_mUIntOptionList, in_mStringOptionList, in_mNibAndClassList, in_mExtensionMap, in_mWithLexiqueList, in_mBuildRunOption, in_mProjectFileExtensionList) ;
   }
   return result ;
 }
@@ -4624,13 +4694,16 @@ typeComparisonResult GALGAS_guiAnalysisContext::objectCompare (const GALGAS_guiA
   if (result == kOperandEqual) {
     result = mProperty_mBuildRunOption.objectCompare (inOperand.mProperty_mBuildRunOption) ;
   }
+  if (result == kOperandEqual) {
+    result = mProperty_mProjectFileExtensionList.objectCompare (inOperand.mProperty_mProjectFileExtensionList) ;
+  }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_guiAnalysisContext::isValid (void) const {
-  return mProperty_mImportedOptionComponentList.isValid () && mProperty_mBoolOptionList.isValid () && mProperty_mUIntOptionList.isValid () && mProperty_mStringOptionList.isValid () && mProperty_mNibAndClassList.isValid () && mProperty_mExtensionMap.isValid () && mProperty_mWithLexiqueList.isValid () && mProperty_mBuildRunOption.isValid () ;
+  return mProperty_mImportedOptionComponentList.isValid () && mProperty_mBoolOptionList.isValid () && mProperty_mUIntOptionList.isValid () && mProperty_mStringOptionList.isValid () && mProperty_mNibAndClassList.isValid () && mProperty_mExtensionMap.isValid () && mProperty_mWithLexiqueList.isValid () && mProperty_mBuildRunOption.isValid () && mProperty_mProjectFileExtensionList.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4644,6 +4717,7 @@ void GALGAS_guiAnalysisContext::drop (void) {
   mProperty_mExtensionMap.drop () ;
   mProperty_mWithLexiqueList.drop () ;
   mProperty_mBuildRunOption.drop () ;
+  mProperty_mProjectFileExtensionList.drop () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4669,6 +4743,8 @@ void GALGAS_guiAnalysisContext::description (C_String & ioString,
     mProperty_mWithLexiqueList.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mBuildRunOption.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mProjectFileExtensionList.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }

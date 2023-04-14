@@ -2102,7 +2102,6 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSLog (@"%s", __PRETTY_FUNCTION__) ;
 //--- file pathes
   NSArray * pathClassArray = [NSArray arrayWithObject:[NSString class]]; // types of objects you are looking for
   NSArray * arrayOfPathes = [inDraggingInfo.draggingPasteboard readObjectsForClasses:pathClassArray options:nil]; // read objects of those classes
