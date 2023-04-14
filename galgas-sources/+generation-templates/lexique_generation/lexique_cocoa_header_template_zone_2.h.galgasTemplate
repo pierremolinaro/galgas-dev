@@ -78,8 +78,6 @@ enum {%!LEXIQUE_CLASS_NAME%_1_%
 
 - (NSString *) styleIdentifierForStyleIndex: (NSInteger) inIndex ;
 
-- (NSString *) indexingDirectory ;
-
 - (NSArray *) indexingTitles ; // Array of NSString
 
 - (BOOL) isTemplateLexique ;

@@ -706,12 +706,6 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func indexingDirectory () -> String {
-    return "/Volumes/dev-git/galgas-dev/build/indexes"
-  }
-
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   func indexingTitles () -> [String] {
     return [
       "Class Definition" /* classDefinition */,

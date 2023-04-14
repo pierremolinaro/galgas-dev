@@ -225,12 +225,6 @@ end
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func indexingDirectory () -> String {
-    return %![INDEXING_DIRECTORY utf8RepresentationEscapingQuestionMark]%
-  }
-
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   func indexingTitles () -> [String] {
 %
 if [INDEXING_LIST length] > 0 then
