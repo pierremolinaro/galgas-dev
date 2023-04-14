@@ -119,9 +119,6 @@ class C_Lexique_%!LEXIQUE_IDENTIFIER% : public C_Lexique {
   after %\n  } ;\n%
   end
 %
-//--- Indexing directory
-  protected: virtual C_String indexingDirectory (void) const override  ;
-
 //--- Parse lexical token
   protected: void internalParseLexicalToken (cTokenFor_%!LEXIQUE_IDENTIFIER% & token) ;
   protected: virtual bool parseLexicalToken (void) override ;

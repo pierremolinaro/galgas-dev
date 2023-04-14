@@ -374,7 +374,7 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_compileAllGuiComponentFromASTGalgas_33_ (const class GALGAS_galgas_33_GUIComponentListAST constinArgument0,
+void routine_compileAllGuiComponentFromASTGalgas_33_ (const class GALGAS_galgasGUIComponentListAST constinArgument0,
                                                       const class GALGAS_semanticContext constinArgument1,
                                                       class GALGAS_optionComponentMapForGeneration & outArgument2,
                                                       class C_Compiler * inCompiler
@@ -386,7 +386,7 @@ void routine_compileAllGuiComponentFromASTGalgas_33_ (const class GALGAS_galgas_
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_guiComponentSemanticAnalysis (const class GALGAS_galgas_33_GUIComponentListAST_2D_element constinArgument0,
+void routine_guiComponentSemanticAnalysis (const class GALGAS_galgasGUIComponentListAST_2D_element constinArgument0,
                                            const class GALGAS_semanticContext constinArgument1,
                                            class GALGAS_optionComponentMapForGeneration & ioArgument2,
                                            class C_Compiler * inCompiler

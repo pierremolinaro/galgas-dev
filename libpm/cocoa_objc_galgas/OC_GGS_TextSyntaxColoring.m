@@ -1095,19 +1095,26 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 //--- Source directory
   NSString * sourceDirectory = documentData.fileURL.path.stringByDeletingLastPathComponent ;
 //--- Project file path directory
-  NSSet * pfe = projectFileExtensions () ;
+  NSDictionary * indexingDescriptors = indexingDescriptorDictionary () ;
   NSString * projectFilePath = nil ;
+  NSString * indexingSuffix = nil ;
   NSArray * allDocuments = [OC_GGS_DocumentData allDocuments] ;
   for (NSDocument * document in allDocuments) {
-    if ([pfe containsObject: document.fileURL.path.pathExtension]) {
+    NSString * possibleIndexingSuffix = [indexingDescriptors valueForKey: document.fileURL.path.pathExtension] ;
+    if (possibleIndexingSuffix != nil) {
       projectFilePath = document.fileURL.path ;
+      indexingSuffix = possibleIndexingSuffix ;
     }
   }
 //  NSLog (@"PROJECT %@", projectFilePath) ;
 //--- index directory
   if (projectFilePath.length > 0) {
-    NSString * buildDirectory = [projectFilePath stringByReplacingOccurrencesOfString: @"." withString: @"-"] ;
-    NSString * indexingDirectory = [buildDirectory stringByAppendingString: indexingPathSuffix ()] ;
+    NSString * projectFileDirectory = [projectFilePath stringByDeletingLastPathComponent] ;
+    NSString * projectFileName = [projectFilePath lastPathComponent] ;
+    NSString * projectFileNameModified = [projectFileName stringByReplacingOccurrencesOfString: @"." withString: @"-"] ;
+    NSString * modifiedIndexingSuffix = [indexingSuffix stringByReplacingOccurrencesOfString: @"*" withString: projectFileNameModified] ;
+//    NSString * indexingDirectory = [NSString stringWithFormat: @"%@/%@", projectFileDirectory, indexingPathSuffix (projectFileNameModified)] ;
+    NSString * indexingDirectory = [NSString stringWithFormat: @"%@/%@", projectFileDirectory, modifiedIndexingSuffix] ;
     [fm createDirectoryAtPath: indexingDirectory withIntermediateDirectories: YES attributes: nil error: nil] ;
     // NSLog (@"indexingDirectory '%@'", indexingDirectory) ;
   //--- Handled extensions

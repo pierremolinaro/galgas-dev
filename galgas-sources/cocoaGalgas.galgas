@@ -19,7 +19,9 @@ gui cocoa {
 
   #·····················································································································
 
-  project "ggsproject", "galgasProject"
+  project "galgasProject" indexing in "build/indexes"
+  
+  project "ggsproject" indexing in "*-build/indexes"
  
   #·····················································································································
 

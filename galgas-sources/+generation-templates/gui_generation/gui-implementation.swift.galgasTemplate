@@ -2,9 +2,7 @@
 import AppKit
 
 //----------------------------------------------------------------------------------------------------------------------
-//
 //          N I B S   A N D   T H E I R   M A I N   C L A S S E S                                
-//
 //----------------------------------------------------------------------------------------------------------------------
 
 /*
@@ -27,6 +25,24 @@ end
 %
 
 */
+//----------------------------------------------------------------------------------------------------------------------
+//    Project file extensions
+//----------------------------------------------------------------------------------------------------------------------
+
+NSDictionary * indexingDescriptorDictionary (void) {
+%if [GUI_CONTEXT.mProjectIndexingDescriptorList length] == 0 then
+% return [NSDictionary dictionary] ;
+%
+else
+%  return [NSDictionary dictionaryWithObjectsAndKeys: %
+for (projectFileExtension indexingPathSuffix) in GUI_CONTEXT.mProjectIndexingDescriptorList do
+  %@"%!indexingPathSuffix.string%", @"%!projectFileExtension.string%", %
+end  
+%nil] ;
+%
+end
+%}
+
 //----------------------------------------------------------------------------------------------------------------------
 //
 //                       Command Line Options                                                    

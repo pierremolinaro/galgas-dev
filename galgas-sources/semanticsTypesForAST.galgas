@@ -498,7 +498,7 @@ struct @galgasDeclarationAST {
   public var @stringset mImplicitTypeDeclarationSet
   public var @galgas3SyntaxComponentListAST mSyntaxComponentList
   public var @syntaxExtensions mSyntaxExtensions
-  public var @galgas3GUIComponentListAST mGUIComponentList
+  public var @galgasGUIComponentListAST mGUIComponentList
   public var @prologueEpilogueList mPrologueDeclarationList
   public var @programRuleList mSourceRuleList
   public var @prologueEpilogueList mEpilogueDeclarationList

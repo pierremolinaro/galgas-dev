@@ -1250,8 +1250,6 @@ class cParser_galgas_34_GuiComponentSyntax {
 
   protected: virtual int32_t select_galgas_34_GuiComponentSyntax_6 (C_Lexique_galgasScanner *) = 0 ;
 
-  protected: virtual int32_t select_galgas_34_GuiComponentSyntax_7 (C_Lexique_galgasScanner *) = 0 ;
-
 
 } ;
 

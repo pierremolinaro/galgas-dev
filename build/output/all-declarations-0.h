@@ -316,9 +316,6 @@ class C_Lexique_galgasScanner : public C_Lexique {
     kIndexing_indexingNameReference
   } ;
 
-//--- Indexing directory
-  protected: virtual C_String indexingDirectory (void) const override  ;
-
 //--- Parse lexical token
   protected: void internalParseLexicalToken (cTokenFor_galgasScanner & token) ;
   protected: virtual bool parseLexicalToken (void) override ;

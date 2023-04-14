@@ -77,12 +77,19 @@ list @importedLexiqueList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-list @galgas3GUIComponentListAST {
+list @projectIndexingDescriptorList {
+  let @lstring mProjectFileExtension
+  let @lstring indexingPathSuffix
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @galgasGUIComponentListAST {
   public let @lstring mGUIComponentName
   public let @lstringlist mImportedOptionList
   public let @guiSimpleAttributeListAST mGlobalSimpleAttributeList
   public let @withLexiqueListAST mWithLexiqueList
-  public let @lstringlist mProjectFileExtensionList
+  public let @projectIndexingDescriptorList mProjectIndexingDescriptorList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -100,16 +107,15 @@ syntax galgas3GuiComponentSyntax (galgasScanner) {
     var @lstringlist importedOptionList = {}
     var @guiSimpleAttributeListAST simpleGlobalAttributes = {}
     var @withLexiqueListAST withLexiqueList = {}
-    var @lstringlist projectExtensionList = {}
+    var @projectIndexingDescriptorList projectExtensionList = {}
     repeat
     while
       $project$
-      repeat
-        $"string"$ ?let fileExtension
-        projectExtensionList += !fileExtension
-      while
-        $,$
-      end
+      $"string"$ ?let fileExtension
+      $indexing$
+      $in$
+      $"string"$ ?let indexingPathSuffix
+      projectExtensionList += !fileExtension !indexingPathSuffix
     while
       <gui_attributes> !?simpleGlobalAttributes
     while
@@ -236,16 +242,15 @@ syntax galgas4GuiComponentSyntax (galgasScanner) {
     var @lstringlist importedOptionList = {}
     var @guiSimpleAttributeListAST simpleGlobalAttributes = {}
     var @withLexiqueListAST withLexiqueList = {}
-    var @lstringlist projectExtensionList = {}
+    var @projectIndexingDescriptorList projectExtensionList = {}
     repeat
     while
       $project$
-      repeat
-        $"string"$ ?let fileExtension
-        projectExtensionList += !fileExtension
-      while
-        $,$
-      end
+      $"string"$ ?let fileExtension
+      $indexing$
+      $in$
+      $"string"$ ?let indexingPathSuffix
+      projectExtensionList += !fileExtension !indexingPathSuffix
     while
       <gui_attributes> !?simpleGlobalAttributes
     while
@@ -372,7 +377,7 @@ struct @guiAnalysisContext {
   public var @extensionMap mExtensionMap
   public var @importedLexiqueList mWithLexiqueList
   public var @string mBuildRunOption
-  public var @lstringlist mProjectFileExtensionList
+  public var @projectIndexingDescriptorList mProjectIndexingDescriptorList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -385,7 +390,7 @@ map @optionComponentMapForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc compileAllGuiComponentFromASTGalgas3
-  ?let @galgas3GUIComponentListAST inGuiComponentListAST
+  ?let @galgasGUIComponentListAST inGuiComponentListAST
   ?let @semanticContext inSemanticContext
   !@optionComponentMapForGeneration outOptionComponentMapForGeneration
 {
@@ -401,7 +406,7 @@ proc compileAllGuiComponentFromASTGalgas3
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc guiComponentSemanticAnalysis ?let @galgas3GUIComponentListAST-element inGUIComponentAST
+private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST-element inGUIComponentAST
                                           ?let @semanticContext inSemanticContext
                                           ?!@optionComponentMapForGeneration ioOptionComponentMapForGeneration {
   if inGUIComponentAST.mGUIComponentName.string != "cocoa" then
@@ -409,7 +414,7 @@ private proc guiComponentSemanticAnalysis ?let @galgas3GUIComponentListAST-eleme
   end
 #--- 
   var @guiAnalysisContext context = .default
-  context.mProjectFileExtensionList = inGUIComponentAST.mProjectFileExtensionList
+  context.mProjectIndexingDescriptorList = inGUIComponentAST.mProjectIndexingDescriptorList
 #--- Check imported options components
   for (mValue) in inGUIComponentAST.mImportedOptionList do
     [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey

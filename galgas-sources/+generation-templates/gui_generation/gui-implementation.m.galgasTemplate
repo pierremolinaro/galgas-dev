@@ -41,21 +41,19 @@ end
 //    Project file extensions
 //----------------------------------------------------------------------------------------------------------------------
 
-NSSet * projectFileExtensions (void) {
-  return [NSSet setWithObjects: %
-for (projectFileExtension) in GUI_CONTEXT.mProjectFileExtensionList do
-  %@"%!projectFileExtension.string%", %
+NSDictionary * indexingDescriptorDictionary (void) {
+%if [GUI_CONTEXT.mProjectIndexingDescriptorList length] == 0 then
+% return [NSDictionary dictionary] ;
+%
+else
+%  return [NSDictionary dictionaryWithObjectsAndKeys: %
+for (projectFileExtension indexingPathSuffix) in GUI_CONTEXT.mProjectIndexingDescriptorList do
+  %@"%!indexingPathSuffix.string%", @"%!projectFileExtension.string%", %
 end  
 %nil] ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//    indexingPathSuffix
-//----------------------------------------------------------------------------------------------------------------------
-
-NSString * indexingPathSuffix (void) {
-  return @"-build/indexes" ;
-}
+%
+end
+%}
 
 //----------------------------------------------------------------------------------------------------------------------
 

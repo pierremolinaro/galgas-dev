@@ -33,16 +33,8 @@ NSArray * nibsAndClasses (void) {
 //    Project file extensions
 //----------------------------------------------------------------------------------------------------------------------
 
-NSSet * projectFileExtensions (void) {
-  return [NSSet setWithObjects: @"ggsproject", @"galgasProject", nil] ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//    indexingPathSuffix
-//----------------------------------------------------------------------------------------------------------------------
-
-NSString * indexingPathSuffix (void) {
-  return @"-build/indexes" ;
+NSDictionary * indexingDescriptorDictionary (void) {
+  return [NSDictionary dictionaryWithObjectsAndKeys: @"build/indexes", @"galgasProject", @"*-build/indexes", @"ggsproject", nil] ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -81,105 +73,105 @@ void enterOptions (NSMutableArray * ioBoolOptionArray,
 //                     P O P    U P    L I S T    D A T A
 //----------------------------------------------------------------------------------------------------------------------
 
-static const UInt16 gPopUpData_0_galgasScanner_1777 [6] = {
+static const UInt16 gPopUpData_0_galgasScanner_1847 [6] = {
   0, // Leading character count to strip
   galgasScanner_1_before, 0,
   galgasScanner_1__7B_, 0,
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_1800 [6] = {
+static const UInt16 gPopUpData_0_galgasScanner_1870 [6] = {
   0, // Leading character count to strip
   galgasScanner_1_after, 0,
   galgasScanner_1__7B_, 0,
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_1825 [6] = {
+static const UInt16 gPopUpData_0_galgasScanner_1895 [6] = {
   0, // Leading character count to strip
   galgasScanner_1_map, 0,
   galgasScanner_1__40_type, 0,
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_1854 [6] = {
+static const UInt16 gPopUpData_0_galgasScanner_1924 [6] = {
   0, // Leading character count to strip
   galgasScanner_1_boolset, 0,
   galgasScanner_1__40_type, 0,
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_1880 [6] = {
+static const UInt16 gPopUpData_0_galgasScanner_1950 [6] = {
   0, // Leading character count to strip
   galgasScanner_1_list, 0,
   galgasScanner_1__40_type, 0,
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_1912 [6] = {
+static const UInt16 gPopUpData_0_galgasScanner_1982 [6] = {
   0, // Leading character count to strip
   galgasScanner_1_sortedlist, 0,
   galgasScanner_1__40_type, 0,
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_1938 [6] = {
+static const UInt16 gPopUpData_0_galgasScanner_2008 [6] = {
   0, // Leading character count to strip
   galgasScanner_1_enum, 0,
   galgasScanner_1__40_type, 0,
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_1965 [6] = {
+static const UInt16 gPopUpData_0_galgasScanner_2035 [6] = {
   0, // Leading character count to strip
   galgasScanner_1_class, 0,
   galgasScanner_1__40_type, 0,
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_1995 [6] = {
+static const UInt16 gPopUpData_0_galgasScanner_2065 [6] = {
   0, // Leading character count to strip
   galgasScanner_1_refclass, 0,
   galgasScanner_1__40_type, 0,
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2023 [6] = {
+static const UInt16 gPopUpData_0_galgasScanner_2093 [6] = {
   0, // Leading character count to strip
   galgasScanner_1_extern, 0,
   galgasScanner_1__40_type, 0,
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2051 [6] = {
+static const UInt16 gPopUpData_0_galgasScanner_2121 [6] = {
   0, // Leading character count to strip
   galgasScanner_1_struct, 0,
   galgasScanner_1__40_type, 0,
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2086 [6] = {
+static const UInt16 gPopUpData_0_galgasScanner_2156 [6] = {
   0, // Leading character count to strip
   galgasScanner_1_rule, 0,
   galgasScanner_1__3C_non_5F_terminal_3E_, 0,
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2117 [6] = {
+static const UInt16 gPopUpData_0_galgasScanner_2187 [6] = {
   0, // Leading character count to strip
   galgasScanner_1_proc, 0,
   galgasScanner_1_identifier, 0,
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2148 [6] = {
+static const UInt16 gPopUpData_0_galgasScanner_2218 [6] = {
   0, // Leading character count to strip
   galgasScanner_1_func, 0,
   galgasScanner_1_identifier, 0,
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2193 [8] = {
+static const UInt16 gPopUpData_0_galgasScanner_2263 [8] = {
   0, // Leading character count to strip
   galgasScanner_1_func, 0,
   galgasScanner_1__25_attribute, 0,
@@ -187,7 +179,7 @@ static const UInt16 gPopUpData_0_galgasScanner_2193 [8] = {
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2237 [8] = {
+static const UInt16 gPopUpData_0_galgasScanner_2307 [8] = {
   0, // Leading character count to strip
   galgasScanner_1_filewrapper, 0,
   galgasScanner_1_identifier, 0,
@@ -195,7 +187,7 @@ static const UInt16 gPopUpData_0_galgasScanner_2237 [8] = {
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2294 [10] = {
+static const UInt16 gPopUpData_0_galgasScanner_2364 [10] = {
   0, // Leading character count to strip
   galgasScanner_1_abstract, 0,
   galgasScanner_1_method, 0,
@@ -204,7 +196,7 @@ static const UInt16 gPopUpData_0_galgasScanner_2294 [10] = {
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2348 [10] = {
+static const UInt16 gPopUpData_0_galgasScanner_2418 [10] = {
   0, // Leading character count to strip
   galgasScanner_1_override, 0,
   galgasScanner_1_method, 0,
@@ -213,7 +205,7 @@ static const UInt16 gPopUpData_0_galgasScanner_2348 [10] = {
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2390 [8] = {
+static const UInt16 gPopUpData_0_galgasScanner_2460 [8] = {
   0, // Leading character count to strip
   galgasScanner_1_method, 0,
   galgasScanner_1__40_type, 0,
@@ -221,7 +213,7 @@ static const UInt16 gPopUpData_0_galgasScanner_2390 [8] = {
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2447 [10] = {
+static const UInt16 gPopUpData_0_galgasScanner_2517 [10] = {
   0, // Leading character count to strip
   galgasScanner_1_abstract, 0,
   galgasScanner_1_getter, 0,
@@ -230,7 +222,7 @@ static const UInt16 gPopUpData_0_galgasScanner_2447 [10] = {
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2502 [10] = {
+static const UInt16 gPopUpData_0_galgasScanner_2572 [10] = {
   0, // Leading character count to strip
   galgasScanner_1_override, 0,
   galgasScanner_1_getter, 0,
@@ -239,7 +231,7 @@ static const UInt16 gPopUpData_0_galgasScanner_2502 [10] = {
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2544 [8] = {
+static const UInt16 gPopUpData_0_galgasScanner_2614 [8] = {
   0, // Leading character count to strip
   galgasScanner_1_getter, 0,
   galgasScanner_1__40_type, 0,
@@ -247,7 +239,7 @@ static const UInt16 gPopUpData_0_galgasScanner_2544 [8] = {
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2601 [10] = {
+static const UInt16 gPopUpData_0_galgasScanner_2671 [10] = {
   0, // Leading character count to strip
   galgasScanner_1_abstract, 0,
   galgasScanner_1_setter, 0,
@@ -256,7 +248,7 @@ static const UInt16 gPopUpData_0_galgasScanner_2601 [10] = {
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2656 [10] = {
+static const UInt16 gPopUpData_0_galgasScanner_2726 [10] = {
   0, // Leading character count to strip
   galgasScanner_1_override, 0,
   galgasScanner_1_setter, 0,
@@ -265,7 +257,7 @@ static const UInt16 gPopUpData_0_galgasScanner_2656 [10] = {
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2698 [8] = {
+static const UInt16 gPopUpData_0_galgasScanner_2768 [8] = {
   0, // Leading character count to strip
   galgasScanner_1_setter, 0,
   galgasScanner_1__40_type, 0,
@@ -273,7 +265,7 @@ static const UInt16 gPopUpData_0_galgasScanner_2698 [8] = {
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2747 [8] = {
+static const UInt16 gPopUpData_0_galgasScanner_2817 [8] = {
   0, // Leading character count to strip
   galgasScanner_1_syntax, 0,
   galgasScanner_1_extension, 0,
@@ -281,7 +273,7 @@ static const UInt16 gPopUpData_0_galgasScanner_2747 [8] = {
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2784 [8] = {
+static const UInt16 gPopUpData_0_galgasScanner_2854 [8] = {
   0, // Leading character count to strip
   galgasScanner_1_case, 0,
   galgasScanner_1__2E_, 0,
@@ -289,20 +281,20 @@ static const UInt16 gPopUpData_0_galgasScanner_2784 [8] = {
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2817 [4] = {
+static const UInt16 gPopUpData_0_galgasScanner_2887 [4] = {
   1, // Leading character count to strip
   galgasScanner_1_commentMark, 32,
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2849 [6] = {
+static const UInt16 gPopUpData_0_galgasScanner_2919 [6] = {
   0, // Leading character count to strip
   galgasScanner_1__24_terminal_24_, 0,
   galgasScanner_1__21_, 65535,
   0
 } ;
 
-static const UInt16 gPopUpData_0_galgasScanner_2885 [6] = {
+static const UInt16 gPopUpData_0_galgasScanner_2955 [6] = {
   0, // Leading character count to strip
   galgasScanner_1__24_terminal_24_, 0,
   galgasScanner_1_error, 65535,
@@ -310,36 +302,36 @@ static const UInt16 gPopUpData_0_galgasScanner_2885 [6] = {
 } ;
 
 static const UInt16 * gPopUpData_0_galgasScanner [31] = {
-  gPopUpData_0_galgasScanner_1777,
-  gPopUpData_0_galgasScanner_1800,
-  gPopUpData_0_galgasScanner_1825,
-  gPopUpData_0_galgasScanner_1854,
-  gPopUpData_0_galgasScanner_1880,
-  gPopUpData_0_galgasScanner_1912,
-  gPopUpData_0_galgasScanner_1938,
-  gPopUpData_0_galgasScanner_1965,
-  gPopUpData_0_galgasScanner_1995,
-  gPopUpData_0_galgasScanner_2023,
-  gPopUpData_0_galgasScanner_2051,
-  gPopUpData_0_galgasScanner_2086,
-  gPopUpData_0_galgasScanner_2117,
-  gPopUpData_0_galgasScanner_2148,
-  gPopUpData_0_galgasScanner_2193,
-  gPopUpData_0_galgasScanner_2237,
-  gPopUpData_0_galgasScanner_2294,
-  gPopUpData_0_galgasScanner_2348,
-  gPopUpData_0_galgasScanner_2390,
-  gPopUpData_0_galgasScanner_2447,
-  gPopUpData_0_galgasScanner_2502,
-  gPopUpData_0_galgasScanner_2544,
-  gPopUpData_0_galgasScanner_2601,
-  gPopUpData_0_galgasScanner_2656,
-  gPopUpData_0_galgasScanner_2698,
-  gPopUpData_0_galgasScanner_2747,
-  gPopUpData_0_galgasScanner_2784,
+  gPopUpData_0_galgasScanner_1847,
+  gPopUpData_0_galgasScanner_1870,
+  gPopUpData_0_galgasScanner_1895,
+  gPopUpData_0_galgasScanner_1924,
+  gPopUpData_0_galgasScanner_1950,
+  gPopUpData_0_galgasScanner_1982,
+  gPopUpData_0_galgasScanner_2008,
+  gPopUpData_0_galgasScanner_2035,
+  gPopUpData_0_galgasScanner_2065,
+  gPopUpData_0_galgasScanner_2093,
+  gPopUpData_0_galgasScanner_2121,
+  gPopUpData_0_galgasScanner_2156,
+  gPopUpData_0_galgasScanner_2187,
+  gPopUpData_0_galgasScanner_2218,
+  gPopUpData_0_galgasScanner_2263,
+  gPopUpData_0_galgasScanner_2307,
+  gPopUpData_0_galgasScanner_2364,
+  gPopUpData_0_galgasScanner_2418,
+  gPopUpData_0_galgasScanner_2460,
+  gPopUpData_0_galgasScanner_2517,
+  gPopUpData_0_galgasScanner_2572,
+  gPopUpData_0_galgasScanner_2614,
+  gPopUpData_0_galgasScanner_2671,
+  gPopUpData_0_galgasScanner_2726,
+  gPopUpData_0_galgasScanner_2768,
   gPopUpData_0_galgasScanner_2817,
-  gPopUpData_0_galgasScanner_2849,
-  gPopUpData_0_galgasScanner_2885,
+  gPopUpData_0_galgasScanner_2854,
+  gPopUpData_0_galgasScanner_2887,
+  gPopUpData_0_galgasScanner_2919,
+  gPopUpData_0_galgasScanner_2955,
   NULL
 } ;
 
