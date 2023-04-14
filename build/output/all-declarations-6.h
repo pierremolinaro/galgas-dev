@@ -2293,7 +2293,6 @@ class cMapElement_lexiqueComponentMapForSemanticAnalysis : public cMapElement {
   public: GALGAS_bool mProperty_mIsTemplate ;
   public: GALGAS_terminalMap mProperty_mTerminalMap ;
   public: GALGAS_indexingListAST mProperty_mIndexingListAST ;
-  public: GALGAS_lstring mProperty_mIndexingDirectory ;
   public: GALGAS_terminalDeclarationListAST mProperty_mTerminalListAST ;
   public: GALGAS_lexicalAttributeListAST mProperty_mLexicalAttributeListAST ;
   public: GALGAS_lexicalStyleListAST mProperty_mLexicalStyleListAST ;
@@ -2304,7 +2303,6 @@ class cMapElement_lexiqueComponentMapForSemanticAnalysis : public cMapElement {
                                                               const GALGAS_bool & in_mIsTemplate,
                                                               const GALGAS_terminalMap & in_mTerminalMap,
                                                               const GALGAS_indexingListAST & in_mIndexingListAST,
-                                                              const GALGAS_lstring & in_mIndexingDirectory,
                                                               const GALGAS_terminalDeclarationListAST & in_mTerminalListAST,
                                                               const GALGAS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
                                                               const GALGAS_lexicalStyleListAST & in_mLexicalStyleListAST,
@@ -2350,11 +2348,6 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element : public AC_GALGA
   public: GALGAS_indexingListAST mProperty_mIndexingListAST ;
   public: inline GALGAS_indexingListAST readProperty_mIndexingListAST (void) const {
     return mProperty_mIndexingListAST ;
-  }
-
-  public: GALGAS_lstring mProperty_mIndexingDirectory ;
-  public: inline GALGAS_lstring readProperty_mIndexingDirectory (void) const {
-    return mProperty_mIndexingDirectory ;
   }
 
   public: GALGAS_terminalDeclarationListAST mProperty_mTerminalListAST ;
@@ -2404,10 +2397,6 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element : public AC_GALGA
     mProperty_mIndexingListAST = inValue ;
   }
 
-  public: inline void setter_setMIndexingDirectory (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mIndexingDirectory = inValue ;
-  }
-
   public: inline void setter_setMTerminalListAST (const GALGAS_terminalDeclarationListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mTerminalListAST = inValue ;
   }
@@ -2432,7 +2421,6 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element : public AC_GALGA
                                                                     const GALGAS_bool & in_mIsTemplate,
                                                                     const GALGAS_terminalMap & in_mTerminalMap,
                                                                     const GALGAS_indexingListAST & in_mIndexingListAST,
-                                                                    const GALGAS_lstring & in_mIndexingDirectory,
                                                                     const GALGAS_terminalDeclarationListAST & in_mTerminalListAST,
                                                                     const GALGAS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
                                                                     const GALGAS_lexicalStyleListAST & in_mLexicalStyleListAST,
@@ -2453,11 +2441,10 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element : public AC_GALGA
                                                                                                  const class GALGAS_bool & inOperand1,
                                                                                                  const class GALGAS_terminalMap & inOperand2,
                                                                                                  const class GALGAS_indexingListAST & inOperand3,
-                                                                                                 const class GALGAS_lstring & inOperand4,
-                                                                                                 const class GALGAS_terminalDeclarationListAST & inOperand5,
-                                                                                                 const class GALGAS_lexicalAttributeListAST & inOperand6,
-                                                                                                 const class GALGAS_lexicalStyleListAST & inOperand7,
-                                                                                                 const class GALGAS_lexicalListDeclarationListAST & inOperand8
+                                                                                                 const class GALGAS_terminalDeclarationListAST & inOperand4,
+                                                                                                 const class GALGAS_lexicalAttributeListAST & inOperand5,
+                                                                                                 const class GALGAS_lexicalStyleListAST & inOperand6,
+                                                                                                 const class GALGAS_lexicalListDeclarationListAST & inOperand7
                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'

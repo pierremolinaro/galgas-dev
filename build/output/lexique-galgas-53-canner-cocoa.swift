@@ -707,7 +707,7 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func indexingDirectory () -> String {
-    return "../build/indexes"
+    return "/Volumes/dev-git/galgas-dev/build/indexes"
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

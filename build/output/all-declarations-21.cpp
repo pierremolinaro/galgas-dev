@@ -8091,7 +8091,7 @@ void cGrammar_templateGrammar::nt_template_5F_parser_5F_start_5F_symbol_ (GALGAS
 
 void cGrammar_templateGrammar::performIndexing (C_Compiler * inCompiler,
              const C_String & inSourceFilePath) {
-  C_Lexique_galgasTemplateScanner * scanner = NULL ;
+  C_Lexique_galgasTemplateScanner * scanner = nullptr ;
   macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   scanner->enableIndexing () ;
   if (scanner->sourceText ().isValid ()) {

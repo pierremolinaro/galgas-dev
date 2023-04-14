@@ -25,7 +25,7 @@ refclass @lexiqueComponentAST : @semanticDeclarationAST {
   private let @lexicalListDeclarationListAST mLexicalListDeclarationListAST
   private let @lexicalRuleListAST mLexicalRuleListAST
   private let @indexingListAST mIndexingListAST
-  private let @lstring mIndexingDirectoryAST
+#  private let @lstring mIndexingDirectoryAST
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -38,15 +38,6 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
     $lexique$
   #--- Lexique Component Name
     $identifier$ ?let @lstring lexiqueComponentName
-  #--- Enable indexing ?
-    let @lstring indexingDirectory
-    select
-      indexingDirectory = ["" nowhere]
-    or
-      $indexing$
-      $in$
-      $"string"$ ? indexingDirectory
-    end
     ${$
   #--- Parse lexique body
     var @templateDelimitorListAST templateDelimitorList = {}
@@ -94,7 +85,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
       !lexicalListDeclarationList
       !lexicalRuleList
       !indexingListAST
-      !indexingDirectory
+#      !indexingDirectory
     }
   }
 
@@ -105,15 +96,6 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
     $lexique$
   #--- Lexique Component Name
     $identifier$ ?let @lstring lexiqueComponentName
-  #--- Enable indexing ?
-    let @lstring indexingDirectory
-    select
-      indexingDirectory = ["" nowhere]
-    or
-      $indexing$
-      $in$
-      $"string"$ ? indexingDirectory
-    end
     ${$
   #--- Parse lexique body
     var @templateDelimitorListAST templateDelimitorList = {}
@@ -161,7 +143,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
       !lexicalListDeclarationList
       !lexicalRuleList
       !indexingListAST
-      !indexingDirectory
+#      !indexingDirectory
     }
   }
 
@@ -453,15 +435,6 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner) {
     $lexique$
   #--- Lexique Component Name
     $identifier$ ?let @lstring lexiqueComponentName
-  #--- Enable indexing ?
-    let @lstring indexingDirectory
-    select
-      indexingDirectory = ["" nowhere]
-    or
-      $indexing$
-      $in$
-      $"string"$ ? indexingDirectory
-    end
     ${$
   #--- Parse lexique body
     var @templateDelimitorListAST templateDelimitorList = {}
@@ -509,7 +482,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner) {
       !lexicalListDeclarationList
       !lexicalRuleList
       !indexingListAST
-      !indexingDirectory
+#      !indexingDirectory
     }
   }
 
@@ -852,7 +825,7 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
      !mIsTemplate
      !terminalMap
      !self.mIndexingListAST
-     !self.mIndexingDirectoryAST
+#     !self.mIndexingDirectoryAST
      !self.mTerminalDeclarationListAST
      !self.mLexicalAttributeListAST
      !self.mLexicalStyleListAST
@@ -865,7 +838,7 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
 override method @lexiqueComponentAST semanticAnalysis
                                       ?!@lstringlist unused ioUsefulnessRootEntities 
                                       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                      ?let @string unused inProductDirectory
+                                      ?let @string inProductDirectory
                                       ?let @semanticContext unused inSemanticContext
                                       ?!@unifiedTypeMap unused ioTypeMap
                                       ?let @predefinedTypes unused inPredefinedTypes
@@ -1021,11 +994,11 @@ override method @lexiqueComponentAST semanticAnalysis
    lexiqueAnalysisContext.mTemplateDelimitorList += !mStartString !mEndString !preservesStartDelimiter
   end
 #--------------------------------------- Check "indexing" declarations
-  if [self.mIndexingDirectoryAST isNowhere] then
-    for (mIndexName *) in self.mIndexingListAST do
-      error mIndexName : "indexing declaration requires one 'indexing in \"path\";' declaration"
-    end
-  end
+#  if [self.mIndexingDirectoryAST isNowhere] then
+#    for (mIndexName *) in self.mIndexingListAST do
+#      error mIndexName : "indexing declaration requires one 'indexing in \"path\";' declaration"
+#    end
+#  end
   var @stringset indexNameSet = {}
   for (mIndexName *) in self.mIndexingListAST do
     if [indexNameSet hasKey !mIndexName.string] then
@@ -1039,6 +1012,9 @@ override method @lexiqueComponentAST semanticAnalysis
    lexiqueAnalysisContext.mUnicodeStringToGenerate += !mReplacementString.string
    # § TODO Check replacement function
   end
+#--------------------------------------- Indexing directory
+  let indexingDirectory = [inProductDirectory + "/../indexes" stringByStandardizingPath]
+  message "INDEXING DIR '" + indexingDirectory + "'\n"
 #--------------------------------------- Build header and Cpp contents
   if @uint.errorCount == 0 then
   #--- Header
@@ -1060,7 +1036,7 @@ override method @lexiqueComponentAST semanticAnalysis
       !lexiqueAnalysisContext.mUnicodeStringToGenerate
       !self.mLexicalRuleListAST
       !lexiqueAnalysisContext
-      !self.mIndexingDirectoryAST.string
+      !indexingDirectory # "../build/indexes" # § self.mIndexingDirectoryAST.string
       !self.mTemplateDelimitorListAST
       !self.mLexiqueComponentName.string
       !self.mTemplateReplacementListAST
@@ -1082,7 +1058,7 @@ override method @lexiqueComponentAST semanticAnalysis
       !self.mLexicalRuleListAST
       !lexiqueAnalysisContext
       !self.mTemplateReplacementListAST
-      !self.mIndexingDirectoryAST.string
+      !indexingDirectory # "../build/indexes" # § self.mIndexingDirectoryAST.string
       !self.mIndexingListAST
       !self.mLexicalStyleListAST
       !self.mTemplateDelimitorListAST
@@ -1098,7 +1074,7 @@ override method @lexiqueComponentAST semanticAnalysis
       !self.mLexicalRuleListAST
       !lexiqueAnalysisContext
       !self.mTemplateReplacementListAST
-      !self.mIndexingDirectoryAST.string
+      !indexingDirectory # "../build/indexes" # § self.mIndexingDirectoryAST.string
       !self.mIndexingListAST
       !self.mLexicalStyleListAST
       !self.mTemplateDelimitorListAST

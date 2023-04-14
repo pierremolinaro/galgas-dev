@@ -140,10 +140,9 @@ void routine_grammarAnalysisAndGeneration (const class GALGAS_lstring constinArg
                                            const class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis constinArgument6,
                                            const class GALGAS_string constinArgument7,
                                            const class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis constinArgument8,
-                                           const class GALGAS_bool constinArgument9,
-                                           const class GALGAS_string constinArgument10,
+                                           const class GALGAS_string constinArgument9,
+                                           class GALGAS_string & outArgument10,
                                            class GALGAS_string & outArgument11,
-                                           class GALGAS_string & outArgument12,
                                            class C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
@@ -324,7 +323,6 @@ GALGAS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_Heade
                                                                                              const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
                                                                                              const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis & in_NON_5F_TERMINAL_5F_MAP,
                                                                                              const class GALGAS_nonTerminalToAddList & in_ADDED_5F_NON_5F_TERMINAL_5F_LIST,
-                                                                                             const class GALGAS_bool & in_HAS_5F_INDEXING,
                                                                                              const class GALGAS_string & in_START_5F_SYMBOL_5F_NAME,
                                                                                              const class GALGAS_bool & in_HAS_5F_TRANSLATE_5F_FEATURE,
                                                                                              const class GALGAS_string & in_GRAMMAR_5F_NAME,

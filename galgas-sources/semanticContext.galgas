@@ -181,7 +181,7 @@ map @lexiqueComponentMapForSemanticAnalysis {
   public let @bool mIsTemplate
   public let @terminalMap mTerminalMap
   public let @indexingListAST mIndexingListAST
-  public let @lstring mIndexingDirectory
+#  public let @lstring mIndexingDirectory
   public let @terminalDeclarationListAST mTerminalListAST
   private let @lexicalAttributeListAST mLexicalAttributeListAST
   private let @lexicalStyleListAST mLexicalStyleListAST
@@ -522,15 +522,6 @@ proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodM
         !@methodQualifier.isBasic
         !"" # No Error message
       ]
-#      [!?ioInstanceMethodMap insertKey
-#        !lkey
-#        !@methodKind.definedAsExtension
-#        !formalArgumentList
-#        !lkey.location
-#        !true
-#        !@methodQualifier.isBasic
-#        !"" # No Error message
-#      ]
       if not inAcceptSetters then
         error lkey : "a refclass does not accept any setter; use method instead"
       end
@@ -539,9 +530,7 @@ proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodM
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 #! enterInSemanticContext
-
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @semanticDeclarationAST enterDeclarationInSemanticContext

@@ -58,7 +58,7 @@
     #endif
     noteObjectAllocation (self) ;
     mSourceDisplayArrayControllerHigh = [NSArrayController new] ;
-    mDisplayDescriptorArrayHigh = [NSMutableArray new] ;
+    mDisplayDescriptorArray = [NSMutableArray new] ;
     self.undoManager = nil ;
     self.hasUndoManager = NO ;
   //---
@@ -184,7 +184,7 @@
   [mSourceDisplayArrayControllerHigh
     bind:@"contentArray"
     toObject:self
-    withKeyPath:@"mDisplayDescriptorArrayHigh"
+    withKeyPath:@"mDisplayDescriptorArray"
     options:nil
   ] ;
 //---
@@ -511,7 +511,7 @@
   ] ;
 //---
   mSourceDisplayArrayControllerHigh = nil ;
-  mDisplayDescriptorArrayHigh = nil ;
+  mDisplayDescriptorArray = nil ;
 //---
   [mRemoveExcludedDirectoryButton unbind:@"enabled"] ;
   [[mExcludedDirectoryTableView tableColumnWithIdentifier:@"path"] unbind:@"value"] ;
@@ -833,8 +833,8 @@
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   if (nil == mBuildTask) {
-    OC_GGS_TextDisplayDescriptor * tdd = [mDisplayDescriptorArrayHigh objectAtIndex:0] ;
-    [self compileFileAtPath:tdd.sourceURL.path isBuildRun:NO] ;
+    OC_GGS_TextDisplayDescriptor * tdd = [mDisplayDescriptorArray objectAtIndex: 0] ;
+    [self compileFileAtPath: tdd.sourceURL.path isBuildRun: NO] ;
   }
 }
 
@@ -845,7 +845,7 @@
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   if (nil == mBuildTask) {
-    OC_GGS_TextDisplayDescriptor * tdd = [mDisplayDescriptorArrayHigh objectAtIndex:0] ;
+    OC_GGS_TextDisplayDescriptor * tdd = [mDisplayDescriptorArray objectAtIndex:0] ;
     [self compileFileAtPath:tdd.sourceURL.path isBuildRun:YES] ;
   }
 }
@@ -2068,7 +2068,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 //    NSLog (@"%s, inRowIndex %d", __PRETTY_FUNCTION__, inRowIndex) ;
 //  #endif
 //  id <NSPasteboardWriting> result = nil ;
-//  if ((inRowIndex >= 0) && (inRowIndex < (NSInteger) mDisplayDescriptorArrayHigh.count)) {
+//  if ((inRowIndex >= 0) && (inRowIndex < (NSInteger) mDisplayDescriptorArray.count)) {
 //    OC_GGS_TextDisplayDescriptor * tdd = [mSourceDisplayArrayControllerHigh.selectedObjects objectAtIndex:0] ;
 //    NSPasteboardItem * pasteboardItem = [[NSPasteboardItem alloc] init] ;
 //    [pasteboardItem

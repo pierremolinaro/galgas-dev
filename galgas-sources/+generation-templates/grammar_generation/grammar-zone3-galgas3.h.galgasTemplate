@@ -18,11 +18,9 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
       %C_String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
     end
     %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
-  #--- indexing ?
-    if HAS_INDEXING then
-      %//--- indexing\n%
-      %  public: virtual void nt_%![lkey identifierRepresentation]%_indexing (C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
-    end
+  #--- indexing
+    %//--- indexing\n%
+    %  public: virtual void nt_%![lkey identifierRepresentation]%_indexing (C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
   for (label_lkey label_mFormalParametersList) in mNonterminalSymbolParametersMap do
   %//----------- '%!label_lkey.string%' label\n%
   #--- Non terminal declaration

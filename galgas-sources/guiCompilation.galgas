@@ -422,7 +422,7 @@ private proc guiComponentSemanticAnalysis ?let @galgas3GUIComponentListAST-eleme
       !lexiqueFileName
       ?*
       ?let @terminalMap terminalMap
-      ?4*
+      ?3*
       ?let lexicalStyleListAST
       ?*
     ]

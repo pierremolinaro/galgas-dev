@@ -200,7 +200,7 @@ override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
      ?let superLexiqueIsTemplate
      ?let terminalMap
      ?let indexingListAST
-     ?let indexingDirectory
+#     ?let indexingDirectory
      ?let terminalListAST
      ?let lexicalAttributeListAST
      ?let lexicalStyleListAST
@@ -215,7 +215,7 @@ override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
      !true
      !terminalMap
      !indexingListAST
-     !indexingDirectory
+#     !indexingDirectory
      !terminalListAST
      !lexicalAttributeListAST
      !lexicalStyleListAST
@@ -241,7 +241,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
      !self.mLexiqueSuperComponentName
      ?* #let superLexiqueIsTemplate
      ?* #let terminalMap
-     ?* #let indexingListAST
+#     ?* #let indexingListAST
      ?* #let indexingDirectory
      ?let terminalListAST
      ?let lexicalAttributeListAST

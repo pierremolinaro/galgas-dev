@@ -653,7 +653,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                                const C_String & inLexiqueName,
                                const C_String & inTargetFileName,
                                C_String & ioCppFileContents,
-                               const bool inHasIndexing,
+//                               const bool inHasIndexing,
                                const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Generate header file inclusion -----------------------------------------
   ioCppFileContents.appendCppHyphenLineComment () ;
@@ -845,7 +845,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                       "  }\n"
                       "}\n\n" ;
   //--- Indexing
-    if (inHasIndexing) {
+//    if (inHasIndexing) {
       ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                    << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()
                    << "_indexing (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
@@ -871,7 +871,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                         "    break ;\n"
                         "  }\n"
                         "}\n\n" ;
-    }
+//    }
     cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kENUMERATION_UP) ;
     while (currentAltForNonTerminal2.hasCurrentObject ()) {
       ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
@@ -936,11 +936,11 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
     }
     //--- Engendrer l'axiome ?
     if (nonTerminal.current_mNonTerminalIndex (HERE).uintValue () == inOriginalGrammarStartSymbol) {
-      if (inHasIndexing) {
+//      if (inHasIndexing) {
         ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                           << "::performIndexing (C_Compiler * inCompiler,\n"
                              "             const C_String & inSourceFilePath) {\n"
-                             "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
+                             "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = nullptr ;\n"
                              "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
                              "  scanner->enableIndexing () ;\n"
                              "  if (scanner->sourceText ().isValid ()) {\n"
@@ -955,12 +955,12 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                              "  }\n"
                              "  macroDetachSharedObject (scanner) ;\n"
                              "}\n\n" ;
-      }else{
-        ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                          << "::performIndexing (C_Compiler * /* inCompiler */,\n"
-                             "             const C_String & /* inSourceFilePath */) {\n"
-                             "}\n\n" ;
-      }
+//      }else{
+//        ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+//                          << "::performIndexing (C_Compiler * /* inCompiler */,\n"
+//                             "             const C_String & /* inSourceFilePath */) {\n"
+//                             "}\n\n" ;
+//      }
       ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                         << "::performOnlyLexicalAnalysis (C_Compiler * inCompiler,\n"
                            "             const C_String & inSourceFilePath) {\n"
@@ -1238,7 +1238,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
                   const C_String & inLexiqueName,
                   bool & outOk,
                   const bool inVerboseOptionOn,
-                  const bool inHasIndexing,
+//                  const bool inHasIndexing,
                   const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Console display
   if (inVerboseOptionOn) {
@@ -1454,7 +1454,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
                                    inLexiqueName,
                                    inTargetFileName,
                                    ioCppFileContents,
-                                   inHasIndexing,
+//                                   inHasIndexing,
                                    inSyntaxDirectedTranslationVarName) ;
   }
   outOk = conflictCount == 0 ;

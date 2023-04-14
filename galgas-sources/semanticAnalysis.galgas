@@ -678,7 +678,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
     ?*
     ?let @terminalMap terminalMap
     ?let @indexingListAST indexingListAST
-    ?let @lstring indexingDirectory
+#    ?let @lstring indexingDirectory
     ?4*
   ]
 #--------------------------------------- Build "indexing" set
@@ -686,7 +686,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
   for (mIndexName *) in indexingListAST do
     indexNameSet += !mIndexName.string
   end
-  let @bool hasIndexing = not [indexingDirectory isNowhere]
+  let @bool hasIndexing = true # not [indexingDirectory isNowhere]
 #--- Build semantic context from rule headers and non terminal declaration
   if @uint. errorCount == 0 then
     let lexiqueName = self.mLexiqueName.string
@@ -790,20 +790,20 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     end
   end
 #------------------------ Get lexique component, for knowing if there are "indexing" declaration
-  [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
-    !lexiqueComponentName
-    ?*
-    ?* # @terminalMap inTerminalMap
-    ?* # @indexingListAST inIndexingListAST
-    ?let @lstring inIndexingDirectory
-    ?4*
-  ]
-  let @bool hasIndexing = not [inIndexingDirectory isNowhere]
-  if hasIndexing & not self.mHasIndexing.bool then
-    error self.mGrammarComponentName : "the grammar does not enable indexing, but the '" + lexiqueComponentName + "' does"
-  elsif (not hasIndexing) & self.mHasIndexing.bool then
-    error self.mHasIndexing : "the grammar enables indexing, but the '" + lexiqueComponentName + "' does not"
-  end
+#  [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
+#    !lexiqueComponentName
+#    ?*
+#    ?* # @terminalMap inTerminalMap
+#    ?* # @indexingListAST inIndexingListAST
+##    ?let @lstring inIndexingDirectory
+#    ?4*
+#  ]
+#  let @bool hasIndexing = true # not [inIndexingDirectory isNowhere]
+#  if hasIndexing & not self.mHasIndexing.bool then
+#    error self.mGrammarComponentName : "the grammar does not enable indexing, but the '" + lexiqueComponentName + "' does"
+#  elsif (not hasIndexing) & self.mHasIndexing.bool then
+#    error self.mHasIndexing : "the grammar enables indexing, but the '" + lexiqueComponentName + "' does not"
+#  end
 #---------------------------------------------------------- Start symbol
 #--- Search start symbol in non terminal map
   [nonTerminalMapForGrammarAnalysis searchKey
@@ -880,7 +880,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     !unusedNonTerminalSymbolsForGrammar
     !HTMLFilePath
     !nonTerminalSymbolSortedListForGrammarAnalysis
-    !hasIndexing
+#    !hasIndexing
     !if self.mHasTranslateFeature then syntaxDirectedTranslationResultVarName () else "" end
     ?let @string grammarCppFile
     ?let @string grammarHTMLHelperContents
@@ -902,7 +902,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       !lexiqueComponentName.string
       !nonTerminalMapForGrammarAnalysis
       !nonTerminalToAddList
-      !hasIndexing
+#      !hasIndexing
       !self.mSyntaxComponents
       !self.mStartSymbolName.string
       !self.mHasTranslateFeature

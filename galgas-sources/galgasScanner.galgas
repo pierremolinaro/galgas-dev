@@ -14,7 +14,7 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-lexique galgasScanner indexing in "../build/indexes" {
+lexique galgasScanner {
 #--- Indexing keys
 indexing classDefinition : "Class Definition"
 indexing enumDefinition : "Enum Definition"

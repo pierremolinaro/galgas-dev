@@ -31,6 +31,10 @@ OC_Lexique * tokenizerForExtension (const NSString * inExtension) ;
 
 NSArray * tokenizers (void) ;
 
+NSSet * projectFileExtensions (void) ;
+
+NSString * indexingPathSuffix (void) ;
+
 NSString * buildRunOption (void) ;
 
 //----------------------------------------------------------------------------------------------------------------------

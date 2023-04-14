@@ -56,7 +56,7 @@
 //---  
   @private NSArrayController * mSourceDisplayArrayControllerHigh ;
   @private IBOutlet NSTableView * mDisplayDescriptorTableViewHigh ;
-  @private NSMutableArray * mDisplayDescriptorArrayHigh ;
+  @private NSMutableArray * mDisplayDescriptorArray ;
 //---  
   @private OC_GGS_DocumentData * mDocumentData ;
   @private IBOutlet NSPathControl * mSourceFilePathControl ;
@@ -101,8 +101,6 @@
   @private IBOutlet NSButton * mRemoveExplicitSearchDirectoryButton ;
 
   @private NSString * mBaseFilePreferenceKey ;
-  
-//  @private BOOL mHasSpoken ;
 }
 
 @property (assign, atomic) BOOL mBuildTaskIsRunning ;

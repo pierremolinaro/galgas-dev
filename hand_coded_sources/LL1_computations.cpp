@@ -440,7 +440,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                                const C_String & inLexiqueName,
                                const cVocabulary & inVocabulary,
                                const cPureBNFproductionsList & inPureBNFproductions,
-                               const bool inHasIndexing,
+//                               const bool inHasIndexing,
                                const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Generate header file inclusion --------------------------------------------------------------
   ioCppFileContents.appendCppHyphenLineComment () ;
@@ -585,7 +585,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                                       inSyntaxDirectedTranslationVarName) ;
     ioCppFileContents << "}\n\n" ;
   //--- Indexing ? 
-    if (inHasIndexing) {
+//    if (inHasIndexing) {
       ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                    << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()
                    << "_indexing (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * " << (existeProduction ? "inLexique" : "")
@@ -595,7 +595,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                                        "indexing",
                                        "") ;
       ioCppFileContents << "}\n\n" ;
-    }
+//    }
     cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kENUMERATION_UP) ;
     while (currentAltForNonTerminal.hasCurrentObject ()) {
       ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
@@ -646,7 +646,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
     }
   //--- Generate 'startParsing' method ?
     if (nonTerminal.current_mNonTerminalIndex (HERE).uintValue () == inOriginalGrammarStartSymbol) {
-      if (inHasIndexing) {
+//      if (inHasIndexing) {
         ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                           << "::performIndexing (C_Compiler * inCompiler,\n"
                              "             const C_String & inSourceFilePath) {\n"
@@ -666,12 +666,12 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                              "  }\n"
                              "  macroDetachSharedObject (scanner) ;\n"
                              "}\n\n" ;
-      }else{
-        ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                          << "::performIndexing (C_Compiler * /* inCompiler */,\n"
-                             "             const C_String & /* inSourceFilePath */) {\n"
-                             "}\n\n" ;
-      }
+//      }else{
+//        ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+//                          << "::performIndexing (C_Compiler * /* inCompiler */,\n"
+//                             "             const C_String & /* inSourceFilePath */) {\n"
+//                             "}\n\n" ;
+//      }
       ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                         << "::performOnlyLexicalAnalysis (C_Compiler * inCompiler,\n"
                            "             const C_String & inSourceFilePath) {\n"
@@ -897,7 +897,7 @@ LL1_computations (const cPureBNFproductionsList & inPureBNFproductions,
                   const C_String & inLexiqueName,
                   bool & outOk,
                   const bool inVerboseOptionOn,
-                  const bool inHasIndexing,
+//                  const bool inHasIndexing,
                   const C_String & inSyntaxDirectedTranslationVarName) {
 
 //--- Console display
@@ -927,7 +927,7 @@ LL1_computations (const cPureBNFproductionsList & inPureBNFproductions,
                                    inLexiqueName,
                                    inVocabulary,
                                    inPureBNFproductions,
-                                   inHasIndexing,
+//                                   inHasIndexing,
                                    inSyntaxDirectedTranslationVarName) ;
   }
 }

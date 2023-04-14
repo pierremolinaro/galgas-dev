@@ -1963,11 +1963,10 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_map {
                                                      const class GALGAS_bool & inOperand1,
                                                      const class GALGAS_terminalMap & inOperand2,
                                                      const class GALGAS_indexingListAST & inOperand3,
-                                                     const class GALGAS_lstring & inOperand4,
-                                                     const class GALGAS_terminalDeclarationListAST & inOperand5,
-                                                     const class GALGAS_lexicalAttributeListAST & inOperand6,
-                                                     const class GALGAS_lexicalStyleListAST & inOperand7,
-                                                     const class GALGAS_lexicalListDeclarationListAST & inOperand8,
+                                                     const class GALGAS_terminalDeclarationListAST & inOperand4,
+                                                     const class GALGAS_lexicalAttributeListAST & inOperand5,
+                                                     const class GALGAS_lexicalStyleListAST & inOperand6,
+                                                     const class GALGAS_lexicalListDeclarationListAST & inOperand7,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
@@ -1976,18 +1975,12 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_map {
                                                   class GALGAS_bool constinArgument1,
                                                   class GALGAS_terminalMap constinArgument2,
                                                   class GALGAS_indexingListAST constinArgument3,
-                                                  class GALGAS_lstring constinArgument4,
-                                                  class GALGAS_terminalDeclarationListAST constinArgument5,
-                                                  class GALGAS_lexicalAttributeListAST constinArgument6,
-                                                  class GALGAS_lexicalStyleListAST constinArgument7,
-                                                  class GALGAS_lexicalListDeclarationListAST constinArgument8,
+                                                  class GALGAS_terminalDeclarationListAST constinArgument4,
+                                                  class GALGAS_lexicalAttributeListAST constinArgument5,
+                                                  class GALGAS_lexicalStyleListAST constinArgument6,
+                                                  class GALGAS_lexicalListDeclarationListAST constinArgument7,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMIndexingDirectoryForKey (class GALGAS_lstring constinArgument0,
-                                                                    class GALGAS_string constinArgument1,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMIndexingListASTForKey (class GALGAS_indexingListAST constinArgument0,
                                                                   class GALGAS_string constinArgument1,
@@ -2030,21 +2023,16 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_map {
                                                   class GALGAS_bool & outArgument1,
                                                   class GALGAS_terminalMap & outArgument2,
                                                   class GALGAS_indexingListAST & outArgument3,
-                                                  class GALGAS_lstring & outArgument4,
-                                                  class GALGAS_terminalDeclarationListAST & outArgument5,
-                                                  class GALGAS_lexicalAttributeListAST & outArgument6,
-                                                  class GALGAS_lexicalStyleListAST & outArgument7,
-                                                  class GALGAS_lexicalListDeclarationListAST & outArgument8,
+                                                  class GALGAS_terminalDeclarationListAST & outArgument4,
+                                                  class GALGAS_lexicalAttributeListAST & outArgument5,
+                                                  class GALGAS_lexicalStyleListAST & outArgument6,
+                                                  class GALGAS_lexicalListDeclarationListAST & outArgument7,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mIndexingDirectoryForKey (const class GALGAS_string & constinOperand0,
-                                                                                 C_Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const ;
-
   public: VIRTUAL_IN_DEBUG class GALGAS_indexingListAST getter_mIndexingListASTForKey (const class GALGAS_string & constinOperand0,
                                                                                        C_Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
@@ -2082,11 +2070,10 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_map {
                                                     class GALGAS_bool & outOperand1,
                                                     class GALGAS_terminalMap & outOperand2,
                                                     class GALGAS_indexingListAST & outOperand3,
-                                                    class GALGAS_lstring & outOperand4,
-                                                    class GALGAS_terminalDeclarationListAST & outOperand5,
-                                                    class GALGAS_lexicalAttributeListAST & outOperand6,
-                                                    class GALGAS_lexicalStyleListAST & outOperand7,
-                                                    class GALGAS_lexicalListDeclarationListAST & outOperand8) const ;
+                                                    class GALGAS_terminalDeclarationListAST & outOperand4,
+                                                    class GALGAS_lexicalAttributeListAST & outOperand5,
+                                                    class GALGAS_lexicalStyleListAST & outOperand6,
+                                                    class GALGAS_lexicalListDeclarationListAST & outOperand7) const ;
 
 
 //--------------------------------- Introspection
@@ -2114,7 +2101,6 @@ class cEnumerator_lexiqueComponentMapForSemanticAnalysis : public cGenericAbstra
   public: class GALGAS_bool current_mIsTemplate (LOCATION_ARGS) const ;
   public: class GALGAS_terminalMap current_mTerminalMap (LOCATION_ARGS) const ;
   public: class GALGAS_indexingListAST current_mIndexingListAST (LOCATION_ARGS) const ;
-  public: class GALGAS_lstring current_mIndexingDirectory (LOCATION_ARGS) const ;
   public: class GALGAS_terminalDeclarationListAST current_mTerminalListAST (LOCATION_ARGS) const ;
   public: class GALGAS_lexicalAttributeListAST current_mLexicalAttributeListAST (LOCATION_ARGS) const ;
   public: class GALGAS_lexicalStyleListAST current_mLexicalStyleListAST (LOCATION_ARGS) const ;

@@ -862,7 +862,7 @@ method @localVarValuation combineValuationWith ?let @localVarValuation inOther
     case invalid :
       outResult = inOther
     case declared (*) :
-      outResult = .declared {!usedInSubscope: true} # § inOther
+      outResult = .declared {!usedInSubscope: true}
     case initialized :
       outResult = self
     case read, mutated :
@@ -873,7 +873,7 @@ method @localVarValuation combineValuationWith ?let @localVarValuation inOther
     case invalid :
       outResult = inOther
     case declared (*) :
-      outResult = .declared {!usedInSubscope: true} # § inOther
+      outResult = .declared {!usedInSubscope: true}
     case initialized, read, mutated :
       outResult = self
     end

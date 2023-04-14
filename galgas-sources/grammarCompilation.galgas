@@ -221,7 +221,7 @@ filewrapper grammarGenerationTemplate in "+generation-templates/grammar_generati
     ?@string LEXIQUE_IDENTIFIER
     ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP
     ?@nonTerminalToAddList ADDED_NON_TERMINAL_LIST
-    ?@bool HAS_INDEXING
+#    ?@bool HAS_INDEXING
     ?@string START_SYMBOL_NAME
     ?@bool HAS_TRANSLATE_FEATURE
     ?@string GRAMMAR_NAME
@@ -244,7 +244,7 @@ extern proc grammarAnalysisAndGeneration
   ?let @unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar
   ?let @string inHTMLfilePath
   ?let @nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis
-  ?let @bool inHasIndexing
+#  ?let @bool inHasIndexing
   ?let @string inSyntaxDirectedTranslationVarName # Empty if not syntax directed translation
   !@string outGrammarCppFile
   !@string outGrammarHTMLHelperContents

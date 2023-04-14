@@ -74,7 +74,7 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
 #--- Check  lexique is declared
   [inAnalysisContext.mSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
     !self.mLexiqueComponentName
-    ?8*
+    ?7*
   ]
 #--- Check getter name
   if self.mLexiqueGetterName.string != "symbols" then

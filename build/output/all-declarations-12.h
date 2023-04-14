@@ -472,10 +472,6 @@ class cParser_galgas_33_LexiqueComponentSyntax {
 
   protected: virtual int32_t select_galgas_33_LexiqueComponentSyntax_27 (C_Lexique_galgasScanner *) = 0 ;
 
-  protected: virtual int32_t select_galgas_33_LexiqueComponentSyntax_28 (C_Lexique_galgasScanner *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_LexiqueComponentSyntax_29 (C_Lexique_galgasScanner *) = 0 ;
-
 
 } ;
 
@@ -518,8 +514,6 @@ class GALGAS_lexiqueComponentAST : public GALGAS_semanticDeclarationAST {
 
   public: class GALGAS_indexingListAST readProperty_mIndexingListAST (void) const ;
 
-  public: class GALGAS_lstring readProperty_mIndexingDirectoryAST (void) const ;
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -542,8 +536,7 @@ class GALGAS_lexiqueComponentAST : public GALGAS_semanticDeclarationAST {
                                                                    const class GALGAS_lexicalMessageDeclarationListAST & inOperand8,
                                                                    const class GALGAS_lexicalListDeclarationListAST & inOperand9,
                                                                    const class GALGAS_lexicalRuleListAST & inOperand10,
-                                                                   const class GALGAS_indexingListAST & inOperand11,
-                                                                   const class GALGAS_lstring & inOperand12
+                                                                   const class GALGAS_indexingListAST & inOperand11
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -620,7 +613,6 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_lexicalListDeclarationListAST mProperty_mLexicalListDeclarationListAST ;
   public: GALGAS_lexicalRuleListAST mProperty_mLexicalRuleListAST ;
   public: GALGAS_indexingListAST mProperty_mIndexingListAST ;
-  public: GALGAS_lstring mProperty_mIndexingDirectoryAST ;
 
 //--- Constructor
   public: cPtr_lexiqueComponentAST (const GALGAS_bool & in_mIsPredefined,
@@ -634,8 +626,7 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
                                     const GALGAS_lexicalMessageDeclarationListAST & in_mLexicalMessageDeclarationListAST,
                                     const GALGAS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST,
                                     const GALGAS_lexicalRuleListAST & in_mLexicalRuleListAST,
-                                    const GALGAS_indexingListAST & in_mIndexingListAST,
-                                    const GALGAS_lstring & in_mIndexingDirectoryAST
+                                    const GALGAS_indexingListAST & in_mIndexingListAST
                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

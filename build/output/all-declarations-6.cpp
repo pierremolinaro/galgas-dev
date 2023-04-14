@@ -4409,7 +4409,6 @@ cMapElement_lexiqueComponentMapForSemanticAnalysis::cMapElement_lexiqueComponent
                                                                                                         const GALGAS_bool & in_mIsTemplate,
                                                                                                         const GALGAS_terminalMap & in_mTerminalMap,
                                                                                                         const GALGAS_indexingListAST & in_mIndexingListAST,
-                                                                                                        const GALGAS_lstring & in_mIndexingDirectory,
                                                                                                         const GALGAS_terminalDeclarationListAST & in_mTerminalListAST,
                                                                                                         const GALGAS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
                                                                                                         const GALGAS_lexicalStyleListAST & in_mLexicalStyleListAST,
@@ -4419,7 +4418,6 @@ cMapElement (inKey COMMA_THERE),
 mProperty_mIsTemplate (in_mIsTemplate),
 mProperty_mTerminalMap (in_mTerminalMap),
 mProperty_mIndexingListAST (in_mIndexingListAST),
-mProperty_mIndexingDirectory (in_mIndexingDirectory),
 mProperty_mTerminalListAST (in_mTerminalListAST),
 mProperty_mLexicalAttributeListAST (in_mLexicalAttributeListAST),
 mProperty_mLexicalStyleListAST (in_mLexicalStyleListAST),
@@ -4429,7 +4427,7 @@ mProperty_mLexicalListDeclarationListAST (in_mLexicalListDeclarationListAST) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_lexiqueComponentMapForSemanticAnalysis::isValid (void) const {
-  /* return mProperty_lkey.isValid () && mProperty_mIsTemplate.isValid () && mProperty_mTerminalMap.isValid () && mProperty_mIndexingListAST.isValid () && mProperty_mIndexingDirectory.isValid () && mProperty_mTerminalListAST.isValid () && mProperty_mLexicalAttributeListAST.isValid () && mProperty_mLexicalStyleListAST.isValid () && mProperty_mLexicalListDeclarationListAST.isValid () ; */
+  /* return mProperty_lkey.isValid () && mProperty_mIsTemplate.isValid () && mProperty_mTerminalMap.isValid () && mProperty_mIndexingListAST.isValid () && mProperty_mTerminalListAST.isValid () && mProperty_mLexicalAttributeListAST.isValid () && mProperty_mLexicalStyleListAST.isValid () && mProperty_mLexicalListDeclarationListAST.isValid () ; */
   return mProperty_lkey.isValid () ;
 }
 
@@ -4437,7 +4435,7 @@ bool cMapElement_lexiqueComponentMapForSemanticAnalysis::isValid (void) const {
 
 cMapElement * cMapElement_lexiqueComponentMapForSemanticAnalysis::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_lexiqueComponentMapForSemanticAnalysis (mProperty_lkey, mProperty_mIsTemplate, mProperty_mTerminalMap, mProperty_mIndexingListAST, mProperty_mIndexingDirectory, mProperty_mTerminalListAST, mProperty_mLexicalAttributeListAST, mProperty_mLexicalStyleListAST, mProperty_mLexicalListDeclarationListAST COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_lexiqueComponentMapForSemanticAnalysis (mProperty_lkey, mProperty_mIsTemplate, mProperty_mTerminalMap, mProperty_mIndexingListAST, mProperty_mTerminalListAST, mProperty_mLexicalAttributeListAST, mProperty_mLexicalStyleListAST, mProperty_mLexicalListDeclarationListAST COMMA_HERE)) ;
   return result ;
 }
 
@@ -4456,10 +4454,6 @@ void cMapElement_lexiqueComponentMapForSemanticAnalysis::description (C_String &
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mIndexingListAST" ":" ;
   mProperty_mIndexingListAST.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mIndexingDirectory" ":" ;
-  mProperty_mIndexingDirectory.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mTerminalListAST" ":" ;
@@ -4491,9 +4485,6 @@ typeComparisonResult cMapElement_lexiqueComponentMapForSemanticAnalysis::compare
   }
   if (kOperandEqual == result) {
     result = mProperty_mIndexingListAST.objectCompare (operand->mProperty_mIndexingListAST) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mIndexingDirectory.objectCompare (operand->mProperty_mIndexingDirectory) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mTerminalListAST.objectCompare (operand->mProperty_mTerminalListAST) ;
@@ -4561,15 +4552,14 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis::addAssign_operation (const G
                                                                          const GALGAS_bool & inArgument0,
                                                                          const GALGAS_terminalMap & inArgument1,
                                                                          const GALGAS_indexingListAST & inArgument2,
-                                                                         const GALGAS_lstring & inArgument3,
-                                                                         const GALGAS_terminalDeclarationListAST & inArgument4,
-                                                                         const GALGAS_lexicalAttributeListAST & inArgument5,
-                                                                         const GALGAS_lexicalStyleListAST & inArgument6,
-                                                                         const GALGAS_lexicalListDeclarationListAST & inArgument7,
+                                                                         const GALGAS_terminalDeclarationListAST & inArgument3,
+                                                                         const GALGAS_lexicalAttributeListAST & inArgument4,
+                                                                         const GALGAS_lexicalStyleListAST & inArgument5,
+                                                                         const GALGAS_lexicalListDeclarationListAST & inArgument6,
                                                                          C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   cMapElement_lexiqueComponentMapForSemanticAnalysis * p = NULL ;
-  macroMyNew (p, cMapElement_lexiqueComponentMapForSemanticAnalysis (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6, inArgument7 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_lexiqueComponentMapForSemanticAnalysis (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -4584,15 +4574,14 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis::setter_insertKey (GALGAS_lst
                                                                       GALGAS_bool inArgument0,
                                                                       GALGAS_terminalMap inArgument1,
                                                                       GALGAS_indexingListAST inArgument2,
-                                                                      GALGAS_lstring inArgument3,
-                                                                      GALGAS_terminalDeclarationListAST inArgument4,
-                                                                      GALGAS_lexicalAttributeListAST inArgument5,
-                                                                      GALGAS_lexicalStyleListAST inArgument6,
-                                                                      GALGAS_lexicalListDeclarationListAST inArgument7,
+                                                                      GALGAS_terminalDeclarationListAST inArgument3,
+                                                                      GALGAS_lexicalAttributeListAST inArgument4,
+                                                                      GALGAS_lexicalStyleListAST inArgument5,
+                                                                      GALGAS_lexicalListDeclarationListAST inArgument6,
                                                                       C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) {
   cMapElement_lexiqueComponentMapForSemanticAnalysis * p = NULL ;
-  macroMyNew (p, cMapElement_lexiqueComponentMapForSemanticAnalysis (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6, inArgument7 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_lexiqueComponentMapForSemanticAnalysis (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -4611,11 +4600,10 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis::method_searchKey (GALGAS_lst
                                                                       GALGAS_bool & outArgument0,
                                                                       GALGAS_terminalMap & outArgument1,
                                                                       GALGAS_indexingListAST & outArgument2,
-                                                                      GALGAS_lstring & outArgument3,
-                                                                      GALGAS_terminalDeclarationListAST & outArgument4,
-                                                                      GALGAS_lexicalAttributeListAST & outArgument5,
-                                                                      GALGAS_lexicalStyleListAST & outArgument6,
-                                                                      GALGAS_lexicalListDeclarationListAST & outArgument7,
+                                                                      GALGAS_terminalDeclarationListAST & outArgument3,
+                                                                      GALGAS_lexicalAttributeListAST & outArgument4,
+                                                                      GALGAS_lexicalStyleListAST & outArgument5,
+                                                                      GALGAS_lexicalListDeclarationListAST & outArgument6,
                                                                       C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
   const cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (const cMapElement_lexiqueComponentMapForSemanticAnalysis *) performSearch (inKey,
@@ -4630,17 +4618,15 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis::method_searchKey (GALGAS_lst
     outArgument4.drop () ;
     outArgument5.drop () ;
     outArgument6.drop () ;
-    outArgument7.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
     outArgument0 = p->mProperty_mIsTemplate ;
     outArgument1 = p->mProperty_mTerminalMap ;
     outArgument2 = p->mProperty_mIndexingListAST ;
-    outArgument3 = p->mProperty_mIndexingDirectory ;
-    outArgument4 = p->mProperty_mTerminalListAST ;
-    outArgument5 = p->mProperty_mLexicalAttributeListAST ;
-    outArgument6 = p->mProperty_mLexicalStyleListAST ;
-    outArgument7 = p->mProperty_mLexicalListDeclarationListAST ;
+    outArgument3 = p->mProperty_mTerminalListAST ;
+    outArgument4 = p->mProperty_mLexicalAttributeListAST ;
+    outArgument5 = p->mProperty_mLexicalStyleListAST ;
+    outArgument6 = p->mProperty_mLexicalListDeclarationListAST ;
   }
 }
 
@@ -4685,21 +4671,6 @@ GALGAS_indexingListAST GALGAS_lexiqueComponentMapForSemanticAnalysis::getter_mIn
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
     result = p->mProperty_mIndexingListAST ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_lexiqueComponentMapForSemanticAnalysis::getter_mIndexingDirectoryForKey (const GALGAS_string & inKey,
-                                                                                               C_Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (const cMapElement_lexiqueComponentMapForSemanticAnalysis *) attributes ;
-  GALGAS_lstring result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
-    result = p->mProperty_mIndexingDirectory ;
   }
   return result ;
 }
@@ -4808,20 +4779,6 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis::setter_setMIndexingListASTFo
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_lexiqueComponentMapForSemanticAnalysis::setter_setMIndexingDirectoryForKey (GALGAS_lstring inAttributeValue,
-                                                                                        GALGAS_string inKey,
-                                                                                        C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (cMapElement_lexiqueComponentMapForSemanticAnalysis *) attributes ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
-    p->mProperty_mIndexingDirectory = inAttributeValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 void GALGAS_lexiqueComponentMapForSemanticAnalysis::setter_setMTerminalListASTForKey (GALGAS_terminalDeclarationListAST inAttributeValue,
                                                                                       GALGAS_string inKey,
                                                                                       C_Compiler * inCompiler
@@ -4899,7 +4856,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element cEnumerator_lexiqueComponentMapForSemanticAnalysis::current (LOCATION_ARGS) const {
   const cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (const cMapElement_lexiqueComponentMapForSemanticAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
-  return GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (p->mProperty_lkey, p->mProperty_mIsTemplate, p->mProperty_mTerminalMap, p->mProperty_mIndexingListAST, p->mProperty_mIndexingDirectory, p->mProperty_mTerminalListAST, p->mProperty_mLexicalAttributeListAST, p->mProperty_mLexicalStyleListAST, p->mProperty_mLexicalListDeclarationListAST) ;
+  return GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (p->mProperty_lkey, p->mProperty_mIsTemplate, p->mProperty_mTerminalMap, p->mProperty_mIndexingListAST, p->mProperty_mTerminalListAST, p->mProperty_mLexicalAttributeListAST, p->mProperty_mLexicalStyleListAST, p->mProperty_mLexicalListDeclarationListAST) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4932,14 +4889,6 @@ GALGAS_indexingListAST cEnumerator_lexiqueComponentMapForSemanticAnalysis::curre
   const cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (const cMapElement_lexiqueComponentMapForSemanticAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
   return p->mProperty_mIndexingListAST ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lstring cEnumerator_lexiqueComponentMapForSemanticAnalysis::current_mIndexingDirectory (LOCATION_ARGS) const {
-  const cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (const cMapElement_lexiqueComponentMapForSemanticAnalysis *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
-  return p->mProperty_mIndexingDirectory ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4980,11 +4929,10 @@ bool GALGAS_lexiqueComponentMapForSemanticAnalysis::optional_searchKey (const GA
                                                                         GALGAS_bool & outArgument0,
                                                                         GALGAS_terminalMap & outArgument1,
                                                                         GALGAS_indexingListAST & outArgument2,
-                                                                        GALGAS_lstring & outArgument3,
-                                                                        GALGAS_terminalDeclarationListAST & outArgument4,
-                                                                        GALGAS_lexicalAttributeListAST & outArgument5,
-                                                                        GALGAS_lexicalStyleListAST & outArgument6,
-                                                                        GALGAS_lexicalListDeclarationListAST & outArgument7) const {
+                                                                        GALGAS_terminalDeclarationListAST & outArgument3,
+                                                                        GALGAS_lexicalAttributeListAST & outArgument4,
+                                                                        GALGAS_lexicalStyleListAST & outArgument5,
+                                                                        GALGAS_lexicalListDeclarationListAST & outArgument6) const {
   const cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (const cMapElement_lexiqueComponentMapForSemanticAnalysis *) searchForKey (inKey) ;
   const bool result = NULL != p ;
   if (result) {
@@ -4992,11 +4940,10 @@ bool GALGAS_lexiqueComponentMapForSemanticAnalysis::optional_searchKey (const GA
     outArgument0 = p->mProperty_mIsTemplate ;
     outArgument1 = p->mProperty_mTerminalMap ;
     outArgument2 = p->mProperty_mIndexingListAST ;
-    outArgument3 = p->mProperty_mIndexingDirectory ;
-    outArgument4 = p->mProperty_mTerminalListAST ;
-    outArgument5 = p->mProperty_mLexicalAttributeListAST ;
-    outArgument6 = p->mProperty_mLexicalStyleListAST ;
-    outArgument7 = p->mProperty_mLexicalListDeclarationListAST ;
+    outArgument3 = p->mProperty_mTerminalListAST ;
+    outArgument4 = p->mProperty_mLexicalAttributeListAST ;
+    outArgument5 = p->mProperty_mLexicalStyleListAST ;
+    outArgument6 = p->mProperty_mLexicalListDeclarationListAST ;
   }else{
     outArgument0.drop () ;
     outArgument1.drop () ;
@@ -5005,7 +4952,6 @@ bool GALGAS_lexiqueComponentMapForSemanticAnalysis::optional_searchKey (const GA
     outArgument4.drop () ;
     outArgument5.drop () ;
     outArgument6.drop () ;
-    outArgument7.drop () ;
   }
   return result ;
 }

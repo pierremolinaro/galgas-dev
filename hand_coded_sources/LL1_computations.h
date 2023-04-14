@@ -48,7 +48,7 @@ LL1_computations (const cPureBNFproductionsList & inPureBNFproductions,
                   const C_String & inLexiqueName,
                   bool & outOk,
                   const bool inVerboseOptionOn,
-                  const bool inHasIndexing,
+//                  const bool inHasIndexing,
                   const C_String & inSyntaxDirectedTranslationVarName) ;
 
 //----------------------------------------------------------------------------------------------------------------------

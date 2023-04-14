@@ -377,7 +377,7 @@ refclass @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mLexiqueName
   public let @nonTerminalSymbolMapForGrammarAnalysis mNonTerminalMapForGrammarAnalysis
   public let @nonTerminalToAddList mNonTerminalToAddList
-  public let @bool mHasIndexing
+#  public let @bool mHasIndexing
   public let @lstringlist mSyntaxComponents
   public let @string mStartSymbolName
   public let @bool mHasTranslateFeature

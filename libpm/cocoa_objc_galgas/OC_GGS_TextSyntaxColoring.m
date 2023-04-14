@@ -28,6 +28,7 @@
 #import "PMUndoManager.h"
 #import "OC_GGS_Document.h"
 #import "OC_GGS_TextView.h"
+#import "F_CocoaWrapperForGalgas.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1059,17 +1060,20 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
   #endif
   NSString * sourceFileFullPath = [inArray objectAtIndex: 0] ;
   const NSInteger selectedToolIndex = [[inArray objectAtIndex: 1] integerValue] ;
+  NSString * indexFileFullPath = [inArray objectAtIndex: 2] ;
   NSString * compilerToolPath = [gCocoaApplicationDelegate compilerToolPath: selectedToolIndex] ;
 //--- Command line tool does actually exist ? (First argument is not "?")
-  if (! [compilerToolPath isEqualToString:@"?"]) {
+  if (! [compilerToolPath isEqualToString: @"?"]) {
   //--- Build argument array
     NSMutableArray * arguments = [NSMutableArray new] ;
     [arguments addObject: sourceFileFullPath] ;
-    [arguments addObject: @"--mode=indexing"] ;
+    NSString * indexArgument = [NSString stringWithFormat: @"--mode=indexing:%@", indexFileFullPath] ;
+    [arguments addObject: indexArgument] ;
+//    NSLog (@"ARGS %@ %@ %@", compilerToolPath, sourceFileFullPath, indexArgument) ;
   //--- Create task
     NSTask * task = [NSTask new] ;
-    [task setLaunchPath:compilerToolPath] ;
-    [task setArguments:arguments] ;
+    [task setLaunchPath: compilerToolPath] ;
+    [task setArguments: arguments] ;
     // NSLog (@"'%@' %@", [task launchPath], arguments) ;
   //--- Start task
     [task launch] ;
@@ -1084,28 +1088,43 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
+  NSFileManager * fm = [NSFileManager new] ;
   NSMutableArray * result = nil ;
 //--- Save all sources
   [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
 //--- Source directory
   NSString * sourceDirectory = documentData.fileURL.path.stringByDeletingLastPathComponent ;
-//--- index directory
-  NSString * indexingDirectory = [mTokenizer indexingDirectory] ;
-  if (indexingDirectory.length > 0) {
-    if ([indexingDirectory characterAtIndex:0] != '/') {
-      NSMutableString * s = [NSMutableString new] ;
-      [s appendString:sourceDirectory] ;
-      [s appendString:@"/"] ;
-      [s appendString:indexingDirectory] ;
-      indexingDirectory = s ;
-      // NSLog (@"indexingDirectory '%@'", indexingDirectory) ;
+//--- Project file path directory
+  NSSet * pfe = projectFileExtensions () ;
+  NSString * projectFilePath = nil ;
+  NSArray * allDocuments = [OC_GGS_DocumentData allDocuments] ;
+  for (NSDocument * document in allDocuments) {
+    if ([pfe containsObject: document.fileURL.path.pathExtension]) {
+      projectFilePath = document.fileURL.path ;
     }
+  }
+//  NSLog (@"PROJECT %@", projectFilePath) ;
+//--- index directory
+//  NSString * indexingDirectory = [mTokenizer indexingDirectory] ;
+//  NSLog (@"Indexing dir '%@'", indexingDirectory) ;
+  if (projectFilePath.length > 0) {
+    NSString * buildDirectory = [projectFilePath stringByReplacingOccurrencesOfString: @"." withString: @"-"] ;
+    NSString * indexingDirectory = [buildDirectory stringByAppendingString: indexingPathSuffix ()] ;
+    [fm createDirectoryAtPath: indexingDirectory withIntermediateDirectories: YES attributes: nil error: nil] ;
+    NSLog (@"indexingDirectory '%@'", indexingDirectory) ;
+//    if ([indexingDirectory characterAtIndex:0] != '/') {
+//      NSMutableString * s = [NSMutableString new] ;
+//      [s appendString: buildDirectory] ;
+//      [s appendString: @"/"] ;
+//      [s appendString: indexingDirectory] ;
+//      indexingDirectory = s ;
+//      [fm createDirectoryAtPath: indexingDirectory withIntermediateDirectories: YES attributes: nil error: nil] ;
+//    }
   //--- Handled extensions
     NSSet * handledExtensions = gCocoaApplicationDelegate.allExtensionsOfCurrentApplication ;
     // NSLog (@"***** handledExtensions '%@'", handledExtensions) ;
   //--- All files in source directory
-    NSFileManager * fm = [[NSFileManager alloc] init] ;
-    NSArray * files = [fm contentsOfDirectoryAtPath:sourceDirectory error:NULL] ;
+    NSArray * files = [fm contentsOfDirectoryAtPath: sourceDirectory error:NULL] ;
     NSMutableArray * availableDictionaryPathArray = [NSMutableArray new] ;
     NSOperationQueue * opq = [NSOperationQueue new] ;
     for (NSString * filePath in files) {
@@ -1113,23 +1132,24 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
       if ([handledExtensions containsObject:[filePath pathExtension]]) {
       //--- Index file path
         NSString * indexFileFullPath = [NSString stringWithFormat:@"%@/%@.plist", indexingDirectory, [filePath lastPathComponent]] ;
+        NSLog (@"  indexFileFullPath '%@'", indexFileFullPath) ;
       //--- Parse source file ?
-        if (! [fm fileExistsAtPath:indexFileFullPath]) { // Parse source file
+        if (! [fm fileExistsAtPath: indexFileFullPath]) { // Parse source file
           NSNumber * toolIndexNumber = [NSNumber numberWithInteger: gCocoaApplicationDelegate.selectedToolIndex] ;
           NSInvocationOperation * op = [[NSInvocationOperation alloc] 
             initWithTarget:self
-            selector:@selector (parseSourceFileForBuildingIndexFile:)
-            object:[NSArray arrayWithObjects: fullFilePath, toolIndexNumber, nil]
+            selector: @selector (parseSourceFileForBuildingIndexFile:)
+            object: [NSArray arrayWithObjects: fullFilePath, toolIndexNumber, indexFileFullPath, nil]
           ] ;
-          [opq addOperation:op] ;
+          [opq addOperation: op] ;
           [availableDictionaryPathArray addObject:indexFileFullPath] ;
-        }else if ([self sourceFile:fullFilePath newerThanFile:indexFileFullPath]) {
+        }else if ([self sourceFile: fullFilePath newerThanFile: indexFileFullPath]) {
           NSNumber * toolIndexNumber = [NSNumber numberWithInteger: gCocoaApplicationDelegate.selectedToolIndex] ;
-          [fm removeItemAtPath:indexFileFullPath error:NULL] ;
+          [fm removeItemAtPath: indexFileFullPath error:NULL] ;
           NSInvocationOperation * op = [[NSInvocationOperation alloc] 
             initWithTarget:self
             selector:@selector (parseSourceFileForBuildingIndexFile:)
-            object:[NSArray arrayWithObjects: fullFilePath, toolIndexNumber, nil]
+            object:[NSArray arrayWithObjects: fullFilePath, toolIndexNumber, indexFileFullPath, nil]
           ] ;
           [opq addOperation:op] ;
           [availableDictionaryPathArray addObject:indexFileFullPath] ;

@@ -27,7 +27,7 @@ override method @grammarForGeneration appendDeclaration1
     ![self.mLexiqueName identifierRepresentation]
     !self.mNonTerminalMapForGrammarAnalysis
     !self.mNonTerminalToAddList
-    !self.mHasIndexing
+#    !self.mHasIndexing
     !self.mStartSymbolName
     !self.mHasTranslateFeature
     !self.mGrammarName
