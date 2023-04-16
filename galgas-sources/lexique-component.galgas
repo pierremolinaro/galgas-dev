@@ -25,7 +25,6 @@ refclass @lexiqueComponentAST : @semanticDeclarationAST {
   private let @lexicalListDeclarationListAST mLexicalListDeclarationListAST
   private let @lexicalRuleListAST mLexicalRuleListAST
   private let @indexingListAST mIndexingListAST
-#  private let @lstring mIndexingDirectoryAST
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -85,7 +84,6 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
       !lexicalListDeclarationList
       !lexicalRuleList
       !indexingListAST
-#      !indexingDirectory
     }
   }
 
@@ -143,7 +141,6 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
       !lexicalListDeclarationList
       !lexicalRuleList
       !indexingListAST
-#      !indexingDirectory
     }
   }
 
@@ -482,7 +479,6 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner) {
       !lexicalListDeclarationList
       !lexicalRuleList
       !indexingListAST
-#      !indexingDirectory
     }
   }
 
@@ -825,7 +821,6 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
      !mIsTemplate
      !terminalMap
      !self.mIndexingListAST
-#     !self.mIndexingDirectoryAST
      !self.mTerminalDeclarationListAST
      !self.mLexicalAttributeListAST
      !self.mLexicalStyleListAST
@@ -838,7 +833,7 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
 override method @lexiqueComponentAST semanticAnalysis
                                       ?!@lstringlist unused ioUsefulnessRootEntities 
                                       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                      ?let @string inProductDirectory
+                                      ?let @string unused inProductDirectory
                                       ?let @semanticContext unused inSemanticContext
                                       ?!@unifiedTypeMap unused ioTypeMap
                                       ?let @predefinedTypes unused inPredefinedTypes
@@ -993,12 +988,6 @@ override method @lexiqueComponentAST semanticAnalysis
    end
    lexiqueAnalysisContext.mTemplateDelimitorList += !mStartString !mEndString !preservesStartDelimiter
   end
-#--------------------------------------- Check "indexing" declarations
-#  if [self.mIndexingDirectoryAST isNowhere] then
-#    for (mIndexName *) in self.mIndexingListAST do
-#      error mIndexName : "indexing declaration requires one 'indexing in \"path\";' declaration"
-#    end
-#  end
   var @stringset indexNameSet = {}
   for (mIndexName *) in self.mIndexingListAST do
     if [indexNameSet hasKey !mIndexName.string] then
@@ -1012,9 +1001,6 @@ override method @lexiqueComponentAST semanticAnalysis
    lexiqueAnalysisContext.mUnicodeStringToGenerate += !mReplacementString.string
    # § TODO Check replacement function
   end
-#--------------------------------------- Indexing directory
-  let indexingDirectory = [inProductDirectory + "/../indexes" stringByStandardizingPath]
-  message "INDEXING DIR '" + indexingDirectory + "'\n"
 #--------------------------------------- Build header and Cpp contents
   if @uint.errorCount == 0 then
   #--- Header
@@ -1036,7 +1022,6 @@ override method @lexiqueComponentAST semanticAnalysis
       !lexiqueAnalysisContext.mUnicodeStringToGenerate
       !self.mLexicalRuleListAST
       !lexiqueAnalysisContext
-      !indexingDirectory # "../build/indexes" # § self.mIndexingDirectoryAST.string
       !self.mTemplateDelimitorListAST
       !self.mLexiqueComponentName.string
       !self.mTemplateReplacementListAST
@@ -1058,7 +1043,6 @@ override method @lexiqueComponentAST semanticAnalysis
       !self.mLexicalRuleListAST
       !lexiqueAnalysisContext
       !self.mTemplateReplacementListAST
-      !indexingDirectory # "../build/indexes" # § self.mIndexingDirectoryAST.string
       !self.mIndexingListAST
       !self.mLexicalStyleListAST
       !self.mTemplateDelimitorListAST
@@ -1074,7 +1058,6 @@ override method @lexiqueComponentAST semanticAnalysis
       !self.mLexicalRuleListAST
       !lexiqueAnalysisContext
       !self.mTemplateReplacementListAST
-      !indexingDirectory # "../build/indexes" # § self.mIndexingDirectoryAST.string
       !self.mIndexingListAST
       !self.mLexicalStyleListAST
       !self.mTemplateDelimitorListAST
@@ -1120,7 +1103,6 @@ filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generat
     ?@stringset STRINGS_IN_EXPLICIT_RULES
     ?@lexicalRuleListAST LEXICAL_RULE_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-    ?@string INDEXING_DIRECTORY
     ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST
     ?@string LEXIQUE_COMPONENT_NAME
     ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
@@ -1140,7 +1122,6 @@ filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generat
     ?@lexicalRuleListAST LEXICAL_RULE_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
     ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
-    ?@string INDEXING_DIRECTORY
     ?@indexingListAST INDEXING_LIST
     ?@lexicalStyleListAST LEXICAL_STYLE_LIST
     ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST
@@ -1155,7 +1136,6 @@ filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generat
     ?@lexicalRuleListAST LEXICAL_RULE_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
     ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
-    ?@string INDEXING_DIRECTORY
     ?@indexingListAST INDEXING_LIST
     ?@lexicalStyleListAST LEXICAL_STYLE_LIST
     ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST

@@ -4181,7 +4181,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeHeader_31_ (C_
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " & inObject) ;\n\n//--- Insulate\n  private: VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;\n\n//--- isValid\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {\n    return NULL != mSharedObject ;\n  }\n\n//--- Drop\n  public: VIRTUAL_IN_DEBUG void drop (void) override ;\n\n//--- Private attribute\n  private: cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
-  result << " * mSharedObject ;\n\n//--- Drop\n  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,\n                                              const int32_t inIndentation) const ;\n\n" ;
+  result << " * mSharedObject ;\n\n//--- Drop\n  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,\n                                             const int32_t inIndentation) const override ;\n\n" ;
   return GALGAS_string (result) ;
 }
 

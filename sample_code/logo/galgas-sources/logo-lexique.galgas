@@ -1,4 +1,4 @@
-lexique logo_lexique indexing in "INDEXING" {
+lexique logo_lexique {
 
 indexing routineDefinition : "Routine Definition"
 indexing routineCall : "Routine call"

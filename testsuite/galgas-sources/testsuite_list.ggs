@@ -1,6 +1,6 @@
 
 
-extern proc testsuite_hand_coded(())
+extern proc testsuite_hand_coded ()
 
 list @myList {
   public let @string mValue
