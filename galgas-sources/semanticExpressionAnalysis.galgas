@@ -116,10 +116,11 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
       end
     end
   #--- Check for a direct property access or for a conversion getter
-    if not ok, let [[inSourceType definition].mPropertyMap searchKey ![inTargetType definition].mTypeName.string ?let isPublic ?* ?let propertyType] then
-      if not isPublic then
-        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
-      end
+    if not ok, let [[inSourceType definition].mPropertyMap searchKey ![inTargetType definition].mTypeName.string ?let accessControl ?* ?let propertyType] then
+      [accessControl checkSetAccess !.none !inErrorLocation]
+#      if not isPublic then
+#        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
+#      end
       let conversionExpression = @structPropertyAccessExpressionForGeneration.new {
         !propertyType
         !inErrorLocation
@@ -247,10 +248,11 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
       end
     end
   #--- Check for a direct property access or for a conversion getter
-    if not ok, let [[rightType definition].mPropertyMap searchKey ![leftType definition].mTypeName.string ?let isPublic ?* ?let propertyType] then
-      if not isPublic then
-        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
-      end
+    if not ok, let [[rightType definition].mPropertyMap searchKey ![leftType definition].mTypeName.string ?let accessControl ?* ?let propertyType] then
+      [accessControl checkSetAccess !.none !inErrorLocation]
+#      if not isPublic then
+#        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
+#      end
       let conversionExpression = @structPropertyAccessExpressionForGeneration.new {
         !propertyType
         !inErrorLocation

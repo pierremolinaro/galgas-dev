@@ -82,13 +82,14 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
   #--------------------------------------- Property ?
   if [[receiverType definition].mTypeKindEnum isStructType] || [[receiverType definition].mTypeKindEnum isClassType],
      [self.mExpressionList length] == 0,
-     let [[receiverType definition].mPropertyMap searchKey !self.mGetterName ?let isPublic ?* ?let propertyType] then
+     let [[receiverType definition].mPropertyMap searchKey !self.mGetterName ?let accessControl ?* ?let propertyType] then
     if [option galgas_cli_options.errorPropertyGetterCall value] then
       error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
     end
-    if not isPublic then
-      error self.mGetterName : "inaccessible property (due to 'private' qualifier)"
-    end
+    [accessControl checkSetAccess !.none !self.mGetterName]
+#    if not isPublic then
+#      error self.mGetterName : "inaccessible property (due to 'private' qualifier)"
+#    end
     outExpression = @structPropertyAccessExpressionForGeneration.new {
       !propertyType
       !self.mGetterName.location
@@ -1132,10 +1133,11 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
     error self.mStructFieldName:"the '.' operator requires the receiver to be a struct ou a class"
   end
   let propertyMap = [type definition].mPropertyMap
-  [propertyMap searchKey !self.mStructFieldName ?let isPublic ?* ?type]
-  if not isPublic then
-    error self.mStructFieldName : " inaccessible property (due to its 'private' qualifier)"
-  end
+  [propertyMap searchKey !self.mStructFieldName ?let accessControl ?* ?type]
+  [accessControl checkSetAccess !.none !self.mStructFieldName]
+#  if not isPublic then
+#    error self.self.mStructFieldName : " inaccessible property (due to its 'private' qualifier)"
+#  end
 #--- Generate expression
   outExpression = @structPropertyAccessExpressionForGeneration.new {
     !type

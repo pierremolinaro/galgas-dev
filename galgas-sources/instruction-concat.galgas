@@ -323,14 +323,15 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
       ?nameForCheckingFormalParameterUsing
     ]
   end
-  for (mValue) in self.mStructAttributeList do
+  for (value) in self.mStructAttributeList do
     let propertyMap = [targetType definition].mPropertyMap
-    [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
-    if not isPublic then
-      error mValue : " inaccessible property (due to its 'private' qualifier)"
-    end
+    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
+    [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
+#    if not isPublic then
+#      error mValue : " inaccessible property (due to its 'private' qualifier)"
+#    end
     if isConstant then
-      error mValue : "a constant property cannot be modified"
+      error value : "a constant property cannot be modified"
     end
   end
 #--- Check target variable type support '+= exp' operator
@@ -404,14 +405,15 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
       ?nameForCheckingFormalParameterUsing
     ]
   end
-  for (mValue) in self.mStructAttributeList do
+  for (value) in self.mStructAttributeList do
     let propertyMap = [targetType definition].mPropertyMap
-    [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
-    if not isPublic then
-      error mValue : " inaccessible property (due to its 'private' qualifier)"
-    end
+    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
+    [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
+#    if not isPublic then
+#      error mValue : " inaccessible property (due to its 'private' qualifier)"
+#    end
     if isConstant then
-      error mValue : "a constant property cannot be modified"
+      error value : "a constant property cannot be modified"
     end
   end
 #--- Check target variable type support '-= exp' operator
@@ -486,14 +488,15 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
     ]
   end
 #--- Check target variable
-  for (mValue) in self.mStructAttributeList do
+  for (value) in self.mStructAttributeList do
     let propertyMap = [targetType definition].mPropertyMap
-    [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
-    if not isPublic then
-      error mValue : " inaccessible property (due to its 'private' qualifier)"
-    end
+    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
+    [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
+#    if not isPublic then
+#      error mValue : " inaccessible property (due to its 'private' qualifier)"
+#    end
     if isConstant then
-      error mValue : "a constant property cannot be modified"
+      error value : "a constant property cannot be modified"
     end
   end
 #--- Check target variable type support '*= exp' operator
@@ -568,12 +571,13 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
     ]
   end
 #--- Check target variable
-  for (mValue) in self.mStructAttributeList do
+  for (value) in self.mStructAttributeList do
     let propertyMap = [targetType definition].mPropertyMap
-    [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
-    if not isPublic then
-      error mValue : " inaccessible property (due to its 'private' qualifier)"
-    end
+    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
+    [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
+#    if not isPublic then
+#      error mValue : " inaccessible property (due to its 'private' qualifier)"
+#    end
     if isConstant then
       error self.mReceiverName : "a constant property cannot be modified"
     end
@@ -650,25 +654,23 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
     ]
   end
 #--- Check target variable
-  for (mValue) in self.mStructAttributeList do
+  for (value) in self.mStructAttributeList do
     let propertyMap = [targetType definition].mPropertyMap
-    let previousTargetType = targetType
-    [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
-    if not isPublic  then
-      switch inAnalysisContext.selfType
-      case none :
-        error mValue : " inaccessible property (due to its 'private' qualifier)"
-      case available (selfType 2*) :
-        if previousTargetType != selfType then
-          error mValue : " inaccessible property (due to its 'private' qualifier)"
-        end
-      end
-    end
-#    if not isPublic && inAnalysisContext.selfType  then
-#      error mValue : " inaccessible property (due to its 'private' qualifier)"
+#    let previousTargetType = targetType
+    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
+    [accessControl checkSetAccess !inAnalysisContext.selfType !value]
+#    if not isPublic  then
+#      switch inAnalysisContext.selfType
+#      case none :
+#        error value : " inaccessible property (due to its 'private' qualifier)"
+#      case available (selfType 2*) :
+#        if previousTargetType != selfType then
+#          error value : " inaccessible property (due to its 'private' qualifier)"
+#        end
+#      end
 #    end
     if isConstant then
-      error mValue : "a constant property cannot be modified"
+      error value : "a constant property cannot be modified"
     end
   end
 #--- Check target variable type support '+=' operator

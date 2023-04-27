@@ -65,14 +65,14 @@ override method @listmapDeclarationAST addAssociatedElement
     !isConstant: false
     !["string" nowhere]
     !["key" nowhere]
-    !true
+    !.publicAccess
     !{}
     !.none
   structAttributeList +=
     !isConstant: false
     !self.mAssociatedListTypeName
     !["mList" nowhere]
-    !true
+    !.publicAccess
     !{}
     !.none
 #---

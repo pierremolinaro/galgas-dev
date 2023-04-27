@@ -563,10 +563,11 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   end
   for (value) in self.mFieldList do
     let propertyMap = [targetType definition].mPropertyMap
-    [propertyMap searchKey !value ?let isPublic ?let isConstant ?targetType]
-    if not isPublic then
-      error value : "inaccessible property (due to 'private' qualifier)"
-    end
+    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
+    [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
+#    if not isPublic then
+#      error value : "inaccessible property (due to 'private' qualifier)"
+#    end
     if isConstant then
       error value: "a constant property cannot be modified"
     end

@@ -43,15 +43,18 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
   #·····················································································································
 
   rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
-    let @bool isPublic
+    let @AccessControlAST accessControl
     select
-      isPublic = true
+      accessControl = .publicAccess
     or
       $public$
-      isPublic = true
+      accessControl = .publicAccess
     or
       $private$
-      isPublic = false
+      accessControl = .privateAccess
+    or
+      $privateset$
+      accessControl = .privateSetAccess
     end
     let @bool isConstant
     select
@@ -59,6 +62,9 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
       isConstant = false
     or
       $let$
+      if accessControl == .privateSetAccess then
+        error .here : "'privateset' and 'let' are incompatible"
+      end
       isConstant = true
     end
     $@type$ ?let propertyTypeName
@@ -81,7 +87,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
       !isConstant: isConstant
       !propertyTypeName
       !propertyName
-      !isPublic
+      !accessControl
       !featureList
       !initialization
   }
@@ -109,7 +115,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
       !isConstant: false
       !propertyTypeName
       !propertyName
-      !true
+      !.publicAccess
       !featureList
       !initialization
     if [option galgas_cli_options.errorOldStylePropertyDeclaration value] then
@@ -270,15 +276,18 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
   #·····················································································································
 
   rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
-    let @bool isPublic
+    let @AccessControlAST accessControl
     select
-      isPublic = true
+      accessControl = .publicAccess
     or
       $public$
-      isPublic = true
+      accessControl = .publicAccess
     or
       $private$
-      isPublic = false
+      accessControl = .privateAccess
+    or
+      $privateset$
+      accessControl = .privateSetAccess
     end
     let @bool isConstant
     select
@@ -286,6 +295,9 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
       isConstant = false
     or
       $let$
+      if accessControl == .privateSetAccess then
+        error .here : "'privateset' and 'let' are incompatible"
+      end
       isConstant = true
     end
     $@type$ ?let propertyTypeName
@@ -308,7 +320,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
       !isConstant: isConstant
       !propertyTypeName
       !propertyName
-      !isPublic
+      !accessControl
       !featureList
       !initialization
   }
@@ -431,4 +443,3 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-

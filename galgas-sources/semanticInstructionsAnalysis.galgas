@@ -196,7 +196,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
 override method @outputInputActualParameterAST checkAgainstFormalArgument
                             ?let @lstring unused inUsefulnessCallerEntityName
                             ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-                            ?let @analysisContext unused inAnalysisContext
+                            ?let @analysisContext inAnalysisContext
                             ?!@unifiedTypeMap unused ioTypeMap
                             ?let @lstring inFormalSelector
                             ?let @unifiedTypeMapEntry inFormalArgumentType
@@ -222,19 +222,20 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
     ?*
   ]
   var typeList = @unifiedTypeMapEntryList.listWithValue {!parameterType}
-  for (mValue) in self.mStructAttributeList do
+  for (value) in self.mStructAttributeList do
     let propertyMap = [parameterType definition].mPropertyMap
     [propertyMap searchKey
-      !mValue
-      ?let isPublic
+      !value
+      ?let accessControl
       ?let isConstant
       ?parameterType
     ]
-    if not isPublic then
-      error mValue : " inaccessible property (due to its 'private' qualifier)"
-    end
+    [accessControl checkSetAccess !inAnalysisContext.selfType !value]
+#    if not isPublic then
+#      error value : " inaccessible property (due to its 'private' qualifier)"
+#    end
     if isConstant then
-      error mValue : "a constant property cannot be modified"
+      error value : "a constant property cannot be modified"
     end
     typeList += !parameterType
   end
@@ -916,13 +917,14 @@ proc checkExpressionIsBoolean
     if [[expressionType definition].mPropertyMap hasKey !"bool"] then
       [[expressionType definition].mPropertyMap searchKey
         !@lstring.new {!"bool" !inErrorLocation}
-        ?let isPublic 
+        ?let accessControl 
         ?*
         ?let @unifiedTypeMapEntry attributeType
       ]
-      if not isPublic then
-        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
-      end
+      [accessControl checkSetAccess !inAnalysisContext.selfType !inErrorLocation]
+#      if not isPublic then
+#        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
+#      end
       if attributeType == boolType then
         outExpression = @structPropertyAccessExpressionForGeneration.new {
           !boolType

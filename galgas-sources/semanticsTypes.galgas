@@ -182,7 +182,7 @@ list @enumerationDescriptorList {
 list @typedPropertyList {
   public let @unifiedTypeMapEntry mPropertyTypeEntry
   public let @lstring mPropertyName
-  public let @bool mHasSetter
+  public let @bool hasSetter %selector
   public let @bool mHasSelector
 }
 
@@ -310,8 +310,107 @@ boolset @operators {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+enum @AccessControlAST {
+  case publicAccess
+  case privateAccess
+  case privateSetAccess  
+
+  #·····················································································································
+
+  getter accessControl ?forDeclaringType: let @unifiedTypeMapEntry inDeclaringType -> @AccessControl {
+    switch self
+    case publicAccess :
+      result = .publicAccess
+    case privateAccess :
+      result = .privateAccess {!declaringType: inDeclaringType}
+    case privateSetAccess :
+      result = .privateSetAccess {!declaringType: inDeclaringType}
+    end
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum @AccessControl {
+  case publicAccess
+  case privateAccess (@unifiedTypeMapEntry declaringType)
+  case privateSetAccess (@unifiedTypeMapEntry declaringType)
+
+  #·····················································································································
+
+  method checkSetAccess ?let @selfAvailability inOptionalCurrentType
+                        ?let @location inErrorLocation {
+    switch self
+    case publicAccess :
+    case privateAccess (declaringType) :
+      switch inOptionalCurrentType
+      case none :
+        error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
+      case available (t 2*) :
+        var currentType = t
+        var ok = [declaringType typeName] == [currentType typeName]
+        loop while (not ok) && (not [[currentType definition].mSuperType isNull]) do
+          currentType = [currentType definition].mSuperType
+          ok = [declaringType typeName] == [currentType typeName]
+        end
+        if not ok then
+          error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
+        end
+      end
+    case privateSetAccess (declaringType) :
+      switch inOptionalCurrentType
+      case none :
+         warning inErrorLocation : "inaccessible property (due to 'privateset' qualifier)"
+      case available (t 2*) :
+        var currentType = t
+        var ok = [declaringType typeName] == [currentType typeName]
+        loop while (not ok) && (not [[currentType definition].mSuperType isNull]) do
+          currentType = [currentType definition].mSuperType
+          ok = [declaringType typeName] == [currentType typeName]
+        end
+        if not ok then
+          warning inErrorLocation : "inaccessible property (due to 'privateset' qualifier)"
+        end
+      end
+    end
+  }
+
+  #·····················································································································
+
+  method checkGetAccess ?let @selfAvailability inOptionalCurrentType
+                        ?let @location inErrorLocation {
+    switch self
+    case publicAccess :
+    case privateSetAccess (*) :
+    case privateAccess (declaringType) :
+      switch inOptionalCurrentType
+      case none :
+        error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
+      case available (t 2*) :
+        var currentType = t
+        var ok = [declaringType typeName] == [currentType typeName]
+        loop while (not ok) && (not [[currentType definition].mSuperType isNull]) do
+          currentType = [currentType definition].mSuperType
+          ok = [declaringType typeName] == [currentType typeName]
+        end
+        if not ok then
+          error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
+        end
+      end
+    end
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 map @propertyMap {
-  public let @bool mIsPublic
+  public let @AccessControl mAccessControl
   public let @bool mIsConstant
   public let @unifiedTypeMapEntry mPropertyType
   insert insertKey error message "the '%K' property has been already declared in %L"
@@ -321,7 +420,9 @@ map @propertyMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @headerKind {
-  case noHeader  case oneHeader  case twoHeaders
+  case noHeader
+  case oneHeader
+  case twoHeaders
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

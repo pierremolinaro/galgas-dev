@@ -325,7 +325,7 @@ list @propertyInCollectionListAST {
   public let @bool isConstant %selector
   public let @lstring mPropertyTypeName
   public let @lstring mPropertyName
-  public let @bool mIsPublic
+  public let @AccessControlAST mAccessControl
   public let @lstringlist mAttributeList
   public let @propertyInCollectionInitializationAST mInitialization
 }

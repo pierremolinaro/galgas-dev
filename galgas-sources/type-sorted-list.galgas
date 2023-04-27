@@ -151,7 +151,7 @@ override method @sortedListDeclarationAST addAssociatedElement
       !isConstant: isConstant 
       !qualifiedTypeAST
       !mPropertyName
-      !true
+      !.publicAccess
       !{}
       !initExpression
   end
@@ -187,9 +187,8 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   var @typedPropertyList typedAttributeList = {}
   for (* propertyTypeName mPropertyName 3*) in self.mPropertyList do
     [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
-    let hasSetter = true
     let hasSelector = false
-    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasSelector
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter: true !hasSelector
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
     setterFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST.argumentOut !mPropertyName.string
@@ -328,12 +327,11 @@ override method @sortedListDeclarationAST semanticAnalysis
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !propertyTypeNameForUsefulness]
     let t = [ioTypeMap searchKey !propertyTypeName]
-    let hasSetter = true
     let hasSelector = true
     typedAttributeList +=
       !t
       !mPropertyName
-      !hasSetter
+      !hasSetter: true
       !hasSelector
     [!?attributeMap insertKey !mPropertyName !t]
   end

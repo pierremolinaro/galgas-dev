@@ -236,19 +236,20 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
 #--- Get target variable type
   var ok = true
   var errorLocation = self.mReceiverName.location
-  for (mValue) in self.mReceiverStructProperties while ok do
+  for (value) in self.mReceiverStructProperties while ok do
     ok = [[receiverType definition].mTypeKindEnum isStructType]
     if not ok then
       error errorLocation : "a structure is required for '.' access"
     else
       let propertyMap = [receiverType definition].mPropertyMap
-      [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?receiverType]
-      errorLocation = mValue.location
-      if not isPublic then
-        error mValue : " inaccessible property (due to its 'private' qualifier)"
-      end
+      [propertyMap searchKey !value ?let accessControl ?let isConstant ?receiverType]
+      [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
+      errorLocation = value.location
+#      if not isPublic then
+#        error value : " inaccessible property (due to its 'private' qualifier)"
+#      end
       if isConstant then
-        error mValue : "a constant property cannot be modified"
+        error value : "a constant property cannot be modified"
       end
     end
   end

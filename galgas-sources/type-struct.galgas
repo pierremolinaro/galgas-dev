@@ -123,22 +123,26 @@ override method @structDeclarationAST enterDeclarationInSemanticContext
   var @functionSignature constructorPropertyTypeList = {}
   var @typedPropertyList typedPropertyList = {}
   var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
-  for (isConstant propertyTypeName mPropertyName isPublic mAttributeList initExpression) in self.mStructurePropertyList do
+  for (isConstant propertyTypeName propertyName accessControlAST attributeList initExpression) in self.mStructurePropertyList do
     [!?ioTypeMap makeEntry  !propertyTypeName ?let propertyTypeEntry]
     var @lstring selector = ["" nowhere]
-    for (mValue) in mAttributeList do
+    for (mValue) in attributeList do
       if mValue.string == selectorFeatureForNewConstructor () then
-        selector = mPropertyName
+        selector = propertyName
       end
     end
     if [initExpression isNone] then
-      constructorPropertyTypeList += !selector !propertyTypeEntry !mPropertyName.string
+      constructorPropertyTypeList += !selector !propertyTypeEntry !propertyName.string
     end
     typesToIncludeInHeaderCompilation += !propertyTypeEntry
-    let hasSetter = isPublic && not isConstant
     let hasSelector = false
-    typedPropertyList += !propertyTypeEntry !mPropertyName !hasSetter !hasSelector
-    [!?propertyMap insertKey !mPropertyName !isPublic !isConstant !propertyTypeEntry]
+    typedPropertyList += !propertyTypeEntry !propertyName !hasSetter: not isConstant !hasSelector
+    [!?propertyMap insertKey
+      !propertyName
+      ![accessControlAST accessControl !forDeclaringType: structTypeIndex]
+      !isConstant
+      !propertyTypeEntry
+    ]
   end
   [!?constructorMap insertKey
     !@lstring.new {!"new" !.here}
@@ -248,7 +252,7 @@ override method @structDeclarationAST semanticAnalysis
   var @typedPropertyList typedPropertyList = {}
   var @typedPropertyList constructorArgumentList = {}
   var @propertyIndexMap propertyMap = {}
-  for (* propertyTypeName mPropertyName * mAttributeList initExpression) in self.mStructurePropertyList do
+  for (isConstant propertyTypeName mPropertyName * mAttributeList initExpression) in self.mStructurePropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
     let t = [ioTypeMap searchKey !propertyTypeName]
@@ -262,7 +266,6 @@ override method @structDeclarationAST semanticAnalysis
         hasSelector = true
       end
     end
-    let hasSetter = true
     if [forbiddenKeysForStruct () hasKey !mPropertyName.string] then
       var @string m = "an property cannot be named:"
       for s in forbiddenKeysForStruct () do
@@ -277,14 +280,14 @@ override method @structDeclarationAST semanticAnalysis
       constructorArgumentList +=
         !t
         !mPropertyName
-        !hasSetter
+        !hasSetter: not isConstant
         !hasSelector
     case some (*) :
     end
     typedPropertyList +=
       !t
       !mPropertyName
-      !hasSetter
+      !hasSetter: not isConstant
       !hasSelector
   end
 #--- Build property initialzation code

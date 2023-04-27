@@ -25,7 +25,7 @@ private proc appendPredefinedListTypeAST
     !isConstant: false 
     !@lstring.new {!inElementTypeName !@location.here}
     !@lstring.new {!"mValue" !@location.here}
-    !true
+    !.publicAccess
     !{}
     !.none
   ioDeclarationListASTs += !@listDeclarationAST.new {
@@ -47,14 +47,14 @@ private proc appendPredefined2StringListTypeAST
     !isConstant: false 
     !@lstring.new {!"string" !@location.here}
     !@lstring.new {!"mValue0" !@location.here}
-    !true
+    !.publicAccess
     !{}
     !.none
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"string" !@location.here}
     !@lstring.new {!"mValue1" !@location.here}
-    !true
+    !.publicAccess
     !{}
     !.none
 
@@ -77,14 +77,14 @@ private proc appendPredefined2LStringListTypeAST
     !isConstant: false 
     !@lstring.new {!"lstring" !@location.here}
     !@lstring.new {!"mValue0" !@location.here}
-    !true
+    !.publicAccess
     !{}
     !.none
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"lstring" !@location.here}
     !@lstring.new {!"mValue1" !@location.here}
-    !true
+    !.publicAccess
     !{}
     !.none
   ioDeclarationListASTs += !@listDeclarationAST.new {
@@ -107,14 +107,14 @@ private proc appendStructASTForTypeWithLocation
     !isConstant: false 
     !@lstring.new {!inElementTypeName !@location.here}
     !@lstring.new {!inElementTypeName !@location.here}
-    !true
+    !.publicAccess
     !{}
     !.none
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"location" !@location.here}
     !@lstring.new {!"location" !@location.here}
-    !true
+    !.publicAccess
     !{}
     !.none
   ioDeclarationListASTs += !@structDeclarationAST.new {
@@ -137,14 +137,14 @@ private proc appendStructASTForRangeType
     !isConstant: false 
     !@lstring.new {!"uint" !@location.here}
     !@lstring.new {!"start" !@location.here}
-    !true
+    !.publicAccess
     !{}
     !.none
   attributeList +=
     !isConstant: false 
     ! @lstring.new {!"uint" !@location.here}
     !@lstring.new {!"length" !@location.here}
-    !true
+    !.publicAccess
     !{}
     !.none
   ioDeclarationListASTs += !@structDeclarationAST.new {

@@ -99,7 +99,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
 {
 #--- Handle attributes
   var @typedPropertyList typedAttributeList = {}
-  for (* propertyTypeName mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
+  for (* propertyTypeName mPropertyName unused accessControl mAttributeList initExpression) in self.mPropertyList do
     if [initExpression isSome] then
       error mPropertyName : "property initialization is not handled for a list"
     end
@@ -121,7 +121,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
         fixit { replace {!"%selector"} }
       end
     end
-    typedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter: true !hasSelector
   end
 #--- uint type index
   [!?ioTypeMap makeEntryFromString !"uint" ?let uintType]
@@ -360,7 +360,7 @@ override method @listDeclarationAST addAssociatedElement
       !isConstant: isConstant
       !qualifiedTypeAST
       !mPropertyName
-      !true
+      !.publicAccess
       !{}
       !initExpression
   end
@@ -394,16 +394,15 @@ override method @listDeclarationAST semanticAnalysis
 #---
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (* propertyTypeName mPropertyName mIsPublic mAttributeList initExpression) in self.mPropertyList do
+  for (* propertyTypeName propertyName unused accessControl attributeList initExpression) in self.mPropertyList do
     if [initExpression isSome] then
-      error mPropertyName : "property initialization is not handled for a list"
+      error propertyName : "property initialization is not handled for a list"
     end
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let t = [ioTypeMap searchKey !propertyTypeName]
-    let hasSetter = mIsPublic
     var hasSelector = false
-    for (mValue) in mAttributeList do
+    for (mValue) in attributeList do
       if mValue.string == "setter" then
         warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
       elsif mValue.string == "nogetter" then
@@ -421,10 +420,10 @@ override method @listDeclarationAST semanticAnalysis
     end
     typedAttributeList +=
       !t
-      !mPropertyName
-      !hasSetter
+      !propertyName
+      !hasSetter: true # not isConstant
       !hasSelector
-    [!?attributeMap insertKey !mPropertyName !t]
+    [!?attributeMap insertKey !propertyName !t]
   end
 #---
   let selfType = [ioTypeMap searchKey !self.mListTypeName]

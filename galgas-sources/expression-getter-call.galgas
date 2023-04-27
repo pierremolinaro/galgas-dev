@@ -160,10 +160,11 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       }
     end
 #--------------------------------------- The getter does not exist, it is a property ?
-  elsif [self.mExpressions length] == 0, let [[receiverType definition].mPropertyMap searchKey !self.mGetterName.string ?let isPublic ?* ?let propertyType] then
-    if not isPublic then
-      error self.mGetterName : " inaccessible property (due to its 'private' qualifier)"
-    end
+  elsif [self.mExpressions length] == 0, let [[receiverType definition].mPropertyMap searchKey !self.mGetterName.string ?let accessControl ?* ?let propertyType] then
+    [accessControl checkGetAccess !inAnalysisContext.selfType !self.mGetterName]
+#    if not isPublic then
+#      error self.mGetterName : " inaccessible property (due to its 'private' qualifier)"
+#    end
     outExpression = @structPropertyAccessExpressionForGeneration.new {
       !propertyType
       !self.mGetterName.location

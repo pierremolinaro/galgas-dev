@@ -23,8 +23,6 @@ syntax extension galgas3DeclarationsSyntax {
       $class$
       if [option galgas_cli_options.errorClassDeclaration value] then
         error .here : "'class' declaration is obsolete, use 'valueclass'"
-#      else
-#        warning .here : "'class' declaration is obsolete, use 'valueclass'"
       end
       isReference = false
     or
@@ -280,6 +278,8 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         ] 
       end
     end
+  #--- Current class Index
+    [!?ioTypeMap makeEntry !self.mClassTypeName ?let @unifiedTypeMapEntry classIndex]
   #--- Build attribute Map and constructor argument list
     var @functionSignature constructorPropertyTypeList = {}
     for (mPropertyTypeEntry mPropertyName * mHasSelector) in inheritedTypedPropertyList do
@@ -288,7 +288,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         !mPropertyTypeEntry
         !mPropertyName.string
     end
-    for (isConstant propertyTypeName mPropertyName mIsPublic mAttributeList initExpression) in self.mPropertyList do
+    for (isConstant propertyTypeName mPropertyName accessControlAST mAttributeList initExpression) in self.mPropertyList do
       if [initExpression isSome] then
         error mPropertyName : "property initialization is not handled for a class"
       end
@@ -308,7 +308,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         !mPropertyName.string
       [!?attributeMap insertKey
         !mPropertyName
-        !mIsPublic
+        ![accessControlAST accessControl !forDeclaringType: classIndex]
         !isConstant
         !attributeTypeIndex
       ]
@@ -316,11 +316,6 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         error mPropertyName: "'" + mPropertyName + "' is the name of a prefefined or a user defined getter"
       end
     end
-  #--- Current class Index
-    [!?ioTypeMap makeEntry
-       !self.mClassTypeName
-       ?let @unifiedTypeMapEntry classIndex
-    ]
   #--- Constructors
     var @constructorMap constructorMap = {}
     if not self.mIsAbstract then
@@ -334,7 +329,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   #--- Typed attribute list
     var @typedPropertyList currentClassTypedPropertyList = {}
     var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
-    for (* propertyTypeName mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
+    for (isConstant propertyTypeName mPropertyName unused accessControl mAttributeList initExpression) in self.mPropertyList do
       if [initExpression isSome] then
         error mPropertyName : "property initialization is not handled for a class"
       end
@@ -349,8 +344,8 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
           hasSelector = true
         end
       end
-      currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
-      allTypedAttributeList += !attributeTypeIndex !mPropertyName !isPublic !hasSelector
+      currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter: not isConstant !hasSelector
+      allTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter: not isConstant !hasSelector
     end
   #--- set...attribute setter
     for (mPropertyTypeEntry mPropertyName mHasSetter *) in currentClassTypedPropertyList do
@@ -487,7 +482,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   #------ Enter attributes
     var @typedPropertyList typedAttributeList = {}
     var @propertyIndexMap attributeMap = {}
-    for (* propertyTypeName mPropertyName isPublic mAttributeList initExpression) in self.mPropertyList do
+    for (isConstant propertyTypeName mPropertyName unused accessControl mAttributeList initExpression) in self.mPropertyList do
       if [initExpression isSome] then
         error mPropertyName : "property initialization is not handled for a class"
       end
@@ -501,12 +496,12 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       typedAttributeList +=
         !t
         !mPropertyName
-        !isPublic
+        !hasSetter: not isConstant
         !hasSelector
       allAttributeList +=
         !t
         !mPropertyName
-        !isPublic
+        !hasSetter: not isConstant
         !hasSelector
       [!?attributeMap insertKey !mPropertyName !t]
     end

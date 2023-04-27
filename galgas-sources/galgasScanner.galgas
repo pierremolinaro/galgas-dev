@@ -167,6 +167,7 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "parse",
   "public",
   "private",
+  "privateset",
   "proc",
   "project",
   "refclass",

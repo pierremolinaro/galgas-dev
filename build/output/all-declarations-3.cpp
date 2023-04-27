@@ -5759,7 +5759,7 @@ class cCollectionElement_propertyInCollectionListAST : public cCollectionElement
   public: cCollectionElement_propertyInCollectionListAST (const GALGAS_bool & in_isConstant,
                                                           const GALGAS_lstring & in_mPropertyTypeName,
                                                           const GALGAS_lstring & in_mPropertyName,
-                                                          const GALGAS_bool & in_mIsPublic,
+                                                          const GALGAS_AccessControlAST & in_mAccessControl,
                                                           const GALGAS_lstringlist & in_mAttributeList,
                                                           const GALGAS_propertyInCollectionInitializationAST & in_mInitialization
                                                           COMMA_LOCATION_ARGS) ;
@@ -5783,19 +5783,19 @@ class cCollectionElement_propertyInCollectionListAST : public cCollectionElement
 cCollectionElement_propertyInCollectionListAST::cCollectionElement_propertyInCollectionListAST (const GALGAS_bool & in_isConstant,
                                                                                                 const GALGAS_lstring & in_mPropertyTypeName,
                                                                                                 const GALGAS_lstring & in_mPropertyName,
-                                                                                                const GALGAS_bool & in_mIsPublic,
+                                                                                                const GALGAS_AccessControlAST & in_mAccessControl,
                                                                                                 const GALGAS_lstringlist & in_mAttributeList,
                                                                                                 const GALGAS_propertyInCollectionInitializationAST & in_mInitialization
                                                                                                 COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_isConstant, in_mPropertyTypeName, in_mPropertyName, in_mIsPublic, in_mAttributeList, in_mInitialization) {
+mObject (in_isConstant, in_mPropertyTypeName, in_mPropertyName, in_mAccessControl, in_mAttributeList, in_mInitialization) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_propertyInCollectionListAST::cCollectionElement_propertyInCollectionListAST (const GALGAS_propertyInCollectionListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (inElement.mProperty_isConstant, inElement.mProperty_mPropertyTypeName, inElement.mProperty_mPropertyName, inElement.mProperty_mIsPublic, inElement.mProperty_mAttributeList, inElement.mProperty_mInitialization) {
+mObject (inElement.mProperty_isConstant, inElement.mProperty_mPropertyTypeName, inElement.mProperty_mPropertyName, inElement.mProperty_mAccessControl, inElement.mProperty_mAttributeList, inElement.mProperty_mInitialization) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5808,7 +5808,7 @@ bool cCollectionElement_propertyInCollectionListAST::isValid (void) const {
 
 cCollectionElement * cCollectionElement_propertyInCollectionListAST::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_propertyInCollectionListAST (mObject.mProperty_isConstant, mObject.mProperty_mPropertyTypeName, mObject.mProperty_mPropertyName, mObject.mProperty_mIsPublic, mObject.mProperty_mAttributeList, mObject.mProperty_mInitialization COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_propertyInCollectionListAST (mObject.mProperty_isConstant, mObject.mProperty_mPropertyTypeName, mObject.mProperty_mPropertyName, mObject.mProperty_mAccessControl, mObject.mProperty_mAttributeList, mObject.mProperty_mInitialization COMMA_HERE)) ;
   return result ;
 }
 
@@ -5829,8 +5829,8 @@ void cCollectionElement_propertyInCollectionListAST::description (C_String & ioS
   mObject.mProperty_mPropertyName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mIsPublic" ":" ;
-  mObject.mProperty_mIsPublic.description (ioString, inIndentation) ;
+  ioString << "mAccessControl" ":" ;
+  mObject.mProperty_mAccessControl.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mAttributeList" ":" ;
@@ -5872,7 +5872,7 @@ GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::construct
 GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::constructor_listWithValue (const GALGAS_bool & inOperand0,
                                                                                                   const GALGAS_lstring & inOperand1,
                                                                                                   const GALGAS_lstring & inOperand2,
-                                                                                                  const GALGAS_bool & inOperand3,
+                                                                                                  const GALGAS_AccessControlAST & inOperand3,
                                                                                                   const GALGAS_lstringlist & inOperand4,
                                                                                                   const GALGAS_propertyInCollectionInitializationAST & inOperand5
                                                                                                   COMMA_LOCATION_ARGS) {
@@ -5892,7 +5892,7 @@ void GALGAS_propertyInCollectionListAST::makeAttributesFromObjects (capCollectio
                                                                     const GALGAS_bool & in_isConstant,
                                                                     const GALGAS_lstring & in_mPropertyTypeName,
                                                                     const GALGAS_lstring & in_mPropertyName,
-                                                                    const GALGAS_bool & in_mIsPublic,
+                                                                    const GALGAS_AccessControlAST & in_mAccessControl,
                                                                     const GALGAS_lstringlist & in_mAttributeList,
                                                                     const GALGAS_propertyInCollectionInitializationAST & in_mInitialization
                                                                     COMMA_LOCATION_ARGS) {
@@ -5900,7 +5900,7 @@ void GALGAS_propertyInCollectionListAST::makeAttributesFromObjects (capCollectio
   macroMyNew (p, cCollectionElement_propertyInCollectionListAST (in_isConstant,
                                                                  in_mPropertyTypeName,
                                                                  in_mPropertyName,
-                                                                 in_mIsPublic,
+                                                                 in_mAccessControl,
                                                                  in_mAttributeList,
                                                                  in_mInitialization COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
@@ -5912,7 +5912,7 @@ void GALGAS_propertyInCollectionListAST::makeAttributesFromObjects (capCollectio
 void GALGAS_propertyInCollectionListAST::addAssign_operation (const GALGAS_bool & inOperand0,
                                                               const GALGAS_lstring & inOperand1,
                                                               const GALGAS_lstring & inOperand2,
-                                                              const GALGAS_bool & inOperand3,
+                                                              const GALGAS_AccessControlAST & inOperand3,
                                                               const GALGAS_lstringlist & inOperand4,
                                                               const GALGAS_propertyInCollectionInitializationAST & inOperand5
                                                               COMMA_LOCATION_ARGS) {
@@ -5954,7 +5954,7 @@ void GALGAS_propertyInCollectionListAST::setter_append (GALGAS_propertyInCollect
 void GALGAS_propertyInCollectionListAST::setter_insertAtIndex (const GALGAS_bool inOperand0,
                                                                const GALGAS_lstring inOperand1,
                                                                const GALGAS_lstring inOperand2,
-                                                               const GALGAS_bool inOperand3,
+                                                               const GALGAS_AccessControlAST inOperand3,
                                                                const GALGAS_lstringlist inOperand4,
                                                                const GALGAS_propertyInCollectionInitializationAST inOperand5,
                                                                const GALGAS_uint inInsertionIndex,
@@ -5979,7 +5979,7 @@ void GALGAS_propertyInCollectionListAST::setter_insertAtIndex (const GALGAS_bool
 void GALGAS_propertyInCollectionListAST::setter_removeAtIndex (GALGAS_bool & outOperand0,
                                                                GALGAS_lstring & outOperand1,
                                                                GALGAS_lstring & outOperand2,
-                                                               GALGAS_bool & outOperand3,
+                                                               GALGAS_AccessControlAST & outOperand3,
                                                                GALGAS_lstringlist & outOperand4,
                                                                GALGAS_propertyInCollectionInitializationAST & outOperand5,
                                                                const GALGAS_uint inRemoveIndex,
@@ -6003,7 +6003,7 @@ void GALGAS_propertyInCollectionListAST::setter_removeAtIndex (GALGAS_bool & out
         outOperand0 = p->mObject.mProperty_isConstant ;
         outOperand1 = p->mObject.mProperty_mPropertyTypeName ;
         outOperand2 = p->mObject.mProperty_mPropertyName ;
-        outOperand3 = p->mObject.mProperty_mIsPublic ;
+        outOperand3 = p->mObject.mProperty_mAccessControl ;
         outOperand4 = p->mObject.mProperty_mAttributeList ;
         outOperand5 = p->mObject.mProperty_mInitialization ;
       }
@@ -6031,7 +6031,7 @@ void GALGAS_propertyInCollectionListAST::setter_removeAtIndex (GALGAS_bool & out
 void GALGAS_propertyInCollectionListAST::setter_popFirst (GALGAS_bool & outOperand0,
                                                           GALGAS_lstring & outOperand1,
                                                           GALGAS_lstring & outOperand2,
-                                                          GALGAS_bool & outOperand3,
+                                                          GALGAS_AccessControlAST & outOperand3,
                                                           GALGAS_lstringlist & outOperand4,
                                                           GALGAS_propertyInCollectionInitializationAST & outOperand5,
                                                           C_Compiler * inCompiler
@@ -6051,7 +6051,7 @@ void GALGAS_propertyInCollectionListAST::setter_popFirst (GALGAS_bool & outOpera
     outOperand0 = p->mObject.mProperty_isConstant ;
     outOperand1 = p->mObject.mProperty_mPropertyTypeName ;
     outOperand2 = p->mObject.mProperty_mPropertyName ;
-    outOperand3 = p->mObject.mProperty_mIsPublic ;
+    outOperand3 = p->mObject.mProperty_mAccessControl ;
     outOperand4 = p->mObject.mProperty_mAttributeList ;
     outOperand5 = p->mObject.mProperty_mInitialization ;
   }
@@ -6062,7 +6062,7 @@ void GALGAS_propertyInCollectionListAST::setter_popFirst (GALGAS_bool & outOpera
 void GALGAS_propertyInCollectionListAST::setter_popLast (GALGAS_bool & outOperand0,
                                                          GALGAS_lstring & outOperand1,
                                                          GALGAS_lstring & outOperand2,
-                                                         GALGAS_bool & outOperand3,
+                                                         GALGAS_AccessControlAST & outOperand3,
                                                          GALGAS_lstringlist & outOperand4,
                                                          GALGAS_propertyInCollectionInitializationAST & outOperand5,
                                                          C_Compiler * inCompiler
@@ -6082,7 +6082,7 @@ void GALGAS_propertyInCollectionListAST::setter_popLast (GALGAS_bool & outOperan
     outOperand0 = p->mObject.mProperty_isConstant ;
     outOperand1 = p->mObject.mProperty_mPropertyTypeName ;
     outOperand2 = p->mObject.mProperty_mPropertyName ;
-    outOperand3 = p->mObject.mProperty_mIsPublic ;
+    outOperand3 = p->mObject.mProperty_mAccessControl ;
     outOperand4 = p->mObject.mProperty_mAttributeList ;
     outOperand5 = p->mObject.mProperty_mInitialization ;
   }
@@ -6093,7 +6093,7 @@ void GALGAS_propertyInCollectionListAST::setter_popLast (GALGAS_bool & outOperan
 void GALGAS_propertyInCollectionListAST::method_first (GALGAS_bool & outOperand0,
                                                        GALGAS_lstring & outOperand1,
                                                        GALGAS_lstring & outOperand2,
-                                                       GALGAS_bool & outOperand3,
+                                                       GALGAS_AccessControlAST & outOperand3,
                                                        GALGAS_lstringlist & outOperand4,
                                                        GALGAS_propertyInCollectionInitializationAST & outOperand5,
                                                        C_Compiler * inCompiler
@@ -6113,7 +6113,7 @@ void GALGAS_propertyInCollectionListAST::method_first (GALGAS_bool & outOperand0
     outOperand0 = p->mObject.mProperty_isConstant ;
     outOperand1 = p->mObject.mProperty_mPropertyTypeName ;
     outOperand2 = p->mObject.mProperty_mPropertyName ;
-    outOperand3 = p->mObject.mProperty_mIsPublic ;
+    outOperand3 = p->mObject.mProperty_mAccessControl ;
     outOperand4 = p->mObject.mProperty_mAttributeList ;
     outOperand5 = p->mObject.mProperty_mInitialization ;
   }
@@ -6124,7 +6124,7 @@ void GALGAS_propertyInCollectionListAST::method_first (GALGAS_bool & outOperand0
 void GALGAS_propertyInCollectionListAST::method_last (GALGAS_bool & outOperand0,
                                                       GALGAS_lstring & outOperand1,
                                                       GALGAS_lstring & outOperand2,
-                                                      GALGAS_bool & outOperand3,
+                                                      GALGAS_AccessControlAST & outOperand3,
                                                       GALGAS_lstringlist & outOperand4,
                                                       GALGAS_propertyInCollectionInitializationAST & outOperand5,
                                                       C_Compiler * inCompiler
@@ -6144,7 +6144,7 @@ void GALGAS_propertyInCollectionListAST::method_last (GALGAS_bool & outOperand0,
     outOperand0 = p->mObject.mProperty_isConstant ;
     outOperand1 = p->mObject.mProperty_mPropertyTypeName ;
     outOperand2 = p->mObject.mProperty_mPropertyName ;
-    outOperand3 = p->mObject.mProperty_mIsPublic ;
+    outOperand3 = p->mObject.mProperty_mAccessControl ;
     outOperand4 = p->mObject.mProperty_mAttributeList ;
     outOperand5 = p->mObject.mProperty_mInitialization ;
   }
@@ -6290,29 +6290,29 @@ GALGAS_lstring GALGAS_propertyInCollectionListAST::getter_mPropertyNameAtIndex (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_propertyInCollectionListAST::setter_setMIsPublicAtIndex (GALGAS_bool inOperand,
-                                                                     GALGAS_uint inIndex,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_propertyInCollectionListAST::setter_setMAccessControlAtIndex (GALGAS_AccessControlAST inOperand,
+                                                                          GALGAS_uint inIndex,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mIsPublic = inOperand ;
+    p->mObject.mProperty_mAccessControl = inOperand ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_propertyInCollectionListAST::getter_mIsPublicAtIndex (const GALGAS_uint & inIndex,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const {
+GALGAS_AccessControlAST GALGAS_propertyInCollectionListAST::getter_mAccessControlAtIndex (const GALGAS_uint & inIndex,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
-  GALGAS_bool result ;
+  GALGAS_AccessControlAST result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-    result = p->mObject.mProperty_mIsPublic ;
+    result = p->mObject.mProperty_mAccessControl ;
   }
   return result ;
 }
@@ -6420,10 +6420,10 @@ GALGAS_lstring cEnumerator_propertyInCollectionListAST::current_mPropertyName (L
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool cEnumerator_propertyInCollectionListAST::current_mIsPublic (LOCATION_ARGS) const {
+GALGAS_AccessControlAST cEnumerator_propertyInCollectionListAST::current_mAccessControl (LOCATION_ARGS) const {
   const cCollectionElement_propertyInCollectionListAST * p = (const cCollectionElement_propertyInCollectionListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-  return p->mObject.mProperty_mIsPublic ;
+  return p->mObject.mProperty_mAccessControl ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6611,7 +6611,7 @@ class cCollectionElement_typedPropertyList : public cCollectionElement {
 //--- Constructors
   public: cCollectionElement_typedPropertyList (const GALGAS_unifiedTypeMapEntry & in_mPropertyTypeEntry,
                                                 const GALGAS_lstring & in_mPropertyName,
-                                                const GALGAS_bool & in_mHasSetter,
+                                                const GALGAS_bool & in_hasSetter,
                                                 const GALGAS_bool & in_mHasSelector
                                                 COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_typedPropertyList (const GALGAS_typedPropertyList_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -6633,18 +6633,18 @@ class cCollectionElement_typedPropertyList : public cCollectionElement {
 
 cCollectionElement_typedPropertyList::cCollectionElement_typedPropertyList (const GALGAS_unifiedTypeMapEntry & in_mPropertyTypeEntry,
                                                                             const GALGAS_lstring & in_mPropertyName,
-                                                                            const GALGAS_bool & in_mHasSetter,
+                                                                            const GALGAS_bool & in_hasSetter,
                                                                             const GALGAS_bool & in_mHasSelector
                                                                             COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mPropertyTypeEntry, in_mPropertyName, in_mHasSetter, in_mHasSelector) {
+mObject (in_mPropertyTypeEntry, in_mPropertyName, in_hasSetter, in_mHasSelector) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_typedPropertyList::cCollectionElement_typedPropertyList (const GALGAS_typedPropertyList_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (inElement.mProperty_mPropertyTypeEntry, inElement.mProperty_mPropertyName, inElement.mProperty_mHasSetter, inElement.mProperty_mHasSelector) {
+mObject (inElement.mProperty_mPropertyTypeEntry, inElement.mProperty_mPropertyName, inElement.mProperty_hasSetter, inElement.mProperty_mHasSelector) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6657,7 +6657,7 @@ bool cCollectionElement_typedPropertyList::isValid (void) const {
 
 cCollectionElement * cCollectionElement_typedPropertyList::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_typedPropertyList (mObject.mProperty_mPropertyTypeEntry, mObject.mProperty_mPropertyName, mObject.mProperty_mHasSetter, mObject.mProperty_mHasSelector COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_typedPropertyList (mObject.mProperty_mPropertyTypeEntry, mObject.mProperty_mPropertyName, mObject.mProperty_hasSetter, mObject.mProperty_mHasSelector COMMA_HERE)) ;
   return result ;
 }
 
@@ -6674,8 +6674,8 @@ void cCollectionElement_typedPropertyList::description (C_String & ioString, con
   mObject.mProperty_mPropertyName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mHasSetter" ":" ;
-  mObject.mProperty_mHasSetter.description (ioString, inIndentation) ;
+  ioString << "hasSetter" ":" ;
+  mObject.mProperty_hasSetter.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mHasSelector" ":" ;
@@ -6730,13 +6730,13 @@ GALGAS_typedPropertyList GALGAS_typedPropertyList::constructor_listWithValue (co
 void GALGAS_typedPropertyList::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                           const GALGAS_unifiedTypeMapEntry & in_mPropertyTypeEntry,
                                                           const GALGAS_lstring & in_mPropertyName,
-                                                          const GALGAS_bool & in_mHasSetter,
+                                                          const GALGAS_bool & in_hasSetter,
                                                           const GALGAS_bool & in_mHasSelector
                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement_typedPropertyList * p = NULL ;
   macroMyNew (p, cCollectionElement_typedPropertyList (in_mPropertyTypeEntry,
                                                        in_mPropertyName,
-                                                       in_mHasSetter,
+                                                       in_hasSetter,
                                                        in_mHasSelector COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -6829,7 +6829,7 @@ void GALGAS_typedPropertyList::setter_removeAtIndex (GALGAS_unifiedTypeMapEntry 
         macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
         outOperand0 = p->mObject.mProperty_mPropertyTypeEntry ;
         outOperand1 = p->mObject.mProperty_mPropertyName ;
-        outOperand2 = p->mObject.mProperty_mHasSetter ;
+        outOperand2 = p->mObject.mProperty_hasSetter ;
         outOperand3 = p->mObject.mProperty_mHasSelector ;
       }
     }else{
@@ -6867,7 +6867,7 @@ void GALGAS_typedPropertyList::setter_popFirst (GALGAS_unifiedTypeMapEntry & out
     macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
     outOperand0 = p->mObject.mProperty_mPropertyTypeEntry ;
     outOperand1 = p->mObject.mProperty_mPropertyName ;
-    outOperand2 = p->mObject.mProperty_mHasSetter ;
+    outOperand2 = p->mObject.mProperty_hasSetter ;
     outOperand3 = p->mObject.mProperty_mHasSelector ;
   }
 }
@@ -6892,7 +6892,7 @@ void GALGAS_typedPropertyList::setter_popLast (GALGAS_unifiedTypeMapEntry & outO
     macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
     outOperand0 = p->mObject.mProperty_mPropertyTypeEntry ;
     outOperand1 = p->mObject.mProperty_mPropertyName ;
-    outOperand2 = p->mObject.mProperty_mHasSetter ;
+    outOperand2 = p->mObject.mProperty_hasSetter ;
     outOperand3 = p->mObject.mProperty_mHasSelector ;
   }
 }
@@ -6917,7 +6917,7 @@ void GALGAS_typedPropertyList::method_first (GALGAS_unifiedTypeMapEntry & outOpe
     macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
     outOperand0 = p->mObject.mProperty_mPropertyTypeEntry ;
     outOperand1 = p->mObject.mProperty_mPropertyName ;
-    outOperand2 = p->mObject.mProperty_mHasSetter ;
+    outOperand2 = p->mObject.mProperty_hasSetter ;
     outOperand3 = p->mObject.mProperty_mHasSelector ;
   }
 }
@@ -6942,7 +6942,7 @@ void GALGAS_typedPropertyList::method_last (GALGAS_unifiedTypeMapEntry & outOper
     macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
     outOperand0 = p->mObject.mProperty_mPropertyTypeEntry ;
     outOperand1 = p->mObject.mProperty_mPropertyName ;
-    outOperand2 = p->mObject.mProperty_mHasSetter ;
+    outOperand2 = p->mObject.mProperty_hasSetter ;
     outOperand3 = p->mObject.mProperty_mHasSelector ;
   }
 }
@@ -7058,29 +7058,29 @@ GALGAS_lstring GALGAS_typedPropertyList::getter_mPropertyNameAtIndex (const GALG
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_typedPropertyList::setter_setMHasSetterAtIndex (GALGAS_bool inOperand,
-                                                            GALGAS_uint inIndex,
-                                                            C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
+void GALGAS_typedPropertyList::setter_setHasSetterAtIndex (GALGAS_bool inOperand,
+                                                           GALGAS_uint inIndex,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement_typedPropertyList * p = (cCollectionElement_typedPropertyList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mHasSetter = inOperand ;
+    p->mObject.mProperty_hasSetter = inOperand ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_typedPropertyList::getter_mHasSetterAtIndex (const GALGAS_uint & inIndex,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_typedPropertyList::getter_hasSetterAtIndex (const GALGAS_uint & inIndex,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_typedPropertyList * p = (cCollectionElement_typedPropertyList *) attributes.ptr () ;
   GALGAS_bool result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
-    result = p->mObject.mProperty_mHasSetter ;
+    result = p->mObject.mProperty_hasSetter ;
   }
   return result ;
 }
@@ -7151,10 +7151,10 @@ GALGAS_lstring cEnumerator_typedPropertyList::current_mPropertyName (LOCATION_AR
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool cEnumerator_typedPropertyList::current_mHasSetter (LOCATION_ARGS) const {
+GALGAS_bool cEnumerator_typedPropertyList::current_hasSetter (LOCATION_ARGS) const {
   const cCollectionElement_typedPropertyList * p = (const cCollectionElement_typedPropertyList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
-  return p->mObject.mProperty_mHasSetter ;
+  return p->mObject.mProperty_hasSetter ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

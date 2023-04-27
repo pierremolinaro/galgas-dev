@@ -306,24 +306,6 @@ override method @incDecInstructionAST analyzeSemanticInstruction
       error self.mInstructionLocation : "'self' not available in this context"
       : targetType, targetVariableCppName #, nameForCheckingFormalParameterUsing
     end
-
-  
-#    if [inAnalysisContext.nonMutableSelfType isNull] then
-#      error self.mReceiverName: "'self' cannot be used in this context"
-#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-#    elsif [inAnalysisContext.mutableSelfType isNull] then
-#      error self.mReceiverName: "'self' object is not mutable"
-#      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
-#    else
-#      let propertyMap = [inAnalysisContext.mutableSelfType mPropertyMap]
-#      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
-#      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
-#      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
-#       + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
-#      if isConstant then
-#        error self.mReceiverName : "a constant property cannot be modified"
-#      end
-#    end
   else
     [!?ioVariableMap searchForReadWriteAccess
        !self.mReceiverName
@@ -333,14 +315,15 @@ override method @incDecInstructionAST analyzeSemanticInstruction
     ]  
   end
 #---
-  for (mValue) in self.mStructAttributeList do
+  for (value) in self.mStructAttributeList do
     let propertyMap = [targetType definition].mPropertyMap
-    [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
-    if not isPublic then
-      error mValue : " inaccessible property (due to its 'private' qualifier)"
-    end
+    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
+    [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
+#    if not isPublic then
+#      error mValue : " inaccessible property (due to its 'private' qualifier)"
+#    end
     if isConstant then
-      error mValue : "a constant property cannot be modified"
+      error value : "a constant property cannot be modified"
     end
   end
 #--- Check target type accepts incrementation
@@ -363,7 +346,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
 override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?let @analysisContext unused inAnalysisContext
+  ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap unused ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
@@ -371,14 +354,15 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
 #--- Check target variable
   var @unifiedTypeMapEntry targetType
   [!?ioVariableMap searchForReadWriteAccess !self.mReceiverName ?targetType ?let targetVariableCppName ?*]
-  for (mValue) in self.mStructAttributeList do
+  for (value) in self.mStructAttributeList do
     let propertyMap = [targetType definition].mPropertyMap
-    [propertyMap searchKey !mValue ?let isPublic ?let isConstant ?targetType]
-    if not isPublic then
-      error mValue : " inaccessible property (due to its 'private' qualifier)"
-    end
+    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
+    [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
+#    if not isPublic then
+#      error mValue : " inaccessible property (due to its 'private' qualifier)"
+#    end
     if isConstant then
-      error mValue : "a constant property cannot be modified"
+      error value : "a constant property cannot be modified"
     end
   end
 #--- Check target type accepts incrementation

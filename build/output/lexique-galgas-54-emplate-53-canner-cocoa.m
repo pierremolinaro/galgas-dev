@@ -66,7 +66,7 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [154] = {
+static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [155] = {
   NO /* identifier */,
   NO /* double.xxx */,
   NO /* literalInt */,
@@ -147,6 +147,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [154] = {
   NO /* parse */,
   NO /* public */,
   NO /* private */,
+  NO /* privateset */,
   NO /* proc */,
   NO /* project */,
   NO /* refclass */,

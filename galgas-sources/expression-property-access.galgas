@@ -93,12 +93,13 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
     error self.mPropertyName: "the '.' operator requires the receiver to be a struct or a class"
   end
   let propertyMap = [expressionType definition].mPropertyMap
-  [propertyMap searchKey !self.mPropertyName ?let isPublic ?* ?let type]
-  if isPublic then
-    # Ok
-  elsif let [inAnalysisContext.selfType available ?type: let selfType ?2*], expressionType != selfType then
-    error self.mPropertyName : "inaccessible property (due to its 'private' qualifier)"
-  end
+  [propertyMap searchKey !self.mPropertyName ?let accessControl ?* ?let type]
+  [accessControl checkGetAccess !inAnalysisContext.selfType !self.mPropertyName]
+#  if isPublic then
+#    # Ok
+#  elsif let [inAnalysisContext.selfType available ?type: let selfType ?2*], expressionType != selfType then
+#    error self.mPropertyName : "inaccessible property (due to its 'private' qualifier)"
+#  end
 #--- Generate expression
   outExpression = @structPropertyAccessExpressionForGeneration.new {
     !type

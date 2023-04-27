@@ -83,8 +83,8 @@ refclass @dictDeclarationAST : @semanticDeclarationAST {
 
   override method addAssociatedElement ?!@semanticDeclarationListAST ioSemanticDeclarationList {
     var @propertyInCollectionListAST structAttributeList = {}
-    structAttributeList += !isConstant: true !self.mKeyTypeName !["key" nowhere] !true ! {} !.none
-    structAttributeList += !isConstant: true !self.mElementTypeName !["value" nowhere] !true ! {} !.none
+    structAttributeList += !isConstant: true !self.mKeyTypeName !["key" nowhere] !.publicAccess ! {} !.none
+    structAttributeList += !isConstant: true !self.mElementTypeName !["value" nowhere] !.publicAccess ! {} !.none
     ioSemanticDeclarationList += !@structDeclarationAST.new {
       !self.mIsPredefined
       !.new {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}
@@ -176,10 +176,9 @@ refclass @dictDeclarationAST : @semanticDeclarationAST {
     var typesToIncludeInHeaderCompilation = @unifiedTypeMapEntryList {}
     [!?ioTypeMap makeEntry !self.mElementTypeName ?let attributeTypeIndex]
     let elementPropertyName = ["value" nowhere]
-    let hasSetter = false
     let hasSelector = false
     argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !elementPropertyName.string
-    typedPropertyList += !attributeTypeIndex !elementPropertyName !hasSetter !hasSelector
+    typedPropertyList += !attributeTypeIndex !elementPropertyName !hasSetter: false !hasSelector
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     enumerationDescriptor += !attributeTypeIndex !elementPropertyName.string
     insertMethodFormalArgumentList +=
@@ -295,12 +294,11 @@ refclass @dictDeclarationAST : @semanticDeclarationAST {
   #------ Enter attributes
     var @typedPropertyList typedAttributeList = {}
     let @unifiedTypeMapEntry t = [ioTypeMap searchKey !self.mElementTypeName]
-    let hasSetter = false
     let hasSelector = false
     typedAttributeList +=
       !t
       !["value" nowhere]
-      !hasSetter
+      !hasSetter: false
       !hasSelector
   #--- Enter map declaration
     ioSemanticDeclarationListForGeneration +=

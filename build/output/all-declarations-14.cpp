@@ -8307,7 +8307,7 @@ static const cTemplateDelimiter galgasTemplateScanner_kTemplateReplacementArray 
 //            Terminal Symbols as end of script in template mark
 //----------------------------------------------------------------------------------------------------------------------
 
-static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [154] = {
+static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [155] = {
   false /* identifier */,
   false /* double.xxx */,
   false /* literalInt */,
@@ -8388,6 +8388,7 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [154] = {
   false /* parse */,
   false /* public */,
   false /* private */,
+  false /* privateset */,
   false /* proc */,
   false /* project */,
   false /* refclass */,
@@ -8607,6 +8608,7 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("parse") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("public") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("private") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("privateset") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("proc") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("project") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("refclass") COMMA_THERE) ;
@@ -13415,28 +13417,6 @@ GALGAS_semanticExpressionForGeneration::GALGAS_semanticExpressionForGeneration (
 AC_GALGAS_reference_class (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_semanticExpressionForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_semanticExpressionForGeneration::setter_setMResultType (GALGAS_unifiedTypeMapEntry inValue
-                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_semanticExpressionForGeneration * p = (cPtr_semanticExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_semanticExpressionForGeneration) ;
-    p->mProperty_mResultType = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_semanticExpressionForGeneration::setter_setMLocation (GALGAS_location inValue
-                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_semanticExpressionForGeneration * p = (cPtr_semanticExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_semanticExpressionForGeneration) ;
-    p->mProperty_mLocation = inValue ;
-  }
-}
-
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_semanticExpressionForGeneration::readProperty_mResultType (void) const {
