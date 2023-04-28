@@ -22,6 +22,17 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
                                    public cParser_galgas_34_SyntaxComponentSyntax,
                                    public cParser_galgas_34_GrammarComponentSyntax,
                                    public cParser_galgas_34_ProgramDeclarations {
+//------------------------------------- 'acces_control' non terminal
+//--- 'parse' label
+  public: virtual void nt_acces_5F_control_parse (C_Lexique_galgasScanner * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_acces_5F_control_indexing (C_Lexique_galgasScanner * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_acces_5F_control_ (GALGAS_AccessControlAST & outArgument0,
+                                             C_Lexique_galgasScanner * inCompiler) ;
+
 //------------------------------------- 'actual_input_parameter_list' non terminal
 //--- 'parse' label
   public: virtual void nt_actual_5F_input_5F_parameter_5F_list_parse (C_Lexique_galgasScanner * inCompiler) ;
@@ -1236,6 +1247,10 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual int32_t select_galgas_34_DeclarationsSyntax_42 (C_Lexique_galgasScanner *) ;
 
   public: virtual int32_t select_galgas_34_DeclarationsSyntax_43 (C_Lexique_galgasScanner *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_44 (C_Lexique_galgasScanner *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_45 (C_Lexique_galgasScanner *) ;
 
   public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_0 (C_Lexique_galgasScanner *) ;
 

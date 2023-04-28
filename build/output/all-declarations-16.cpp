@@ -7424,123 +7424,6 @@ GALGAS_galgas_33_GrammarComponentAST GALGAS_galgas_33_GrammarComponentAST::extra
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension method '@AccessControl checkSetAccess'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
-                                     const GALGAS_selfAvailability constinArgument_inOptionalCurrentType,
-                                     const GALGAS_location constinArgument_inErrorLocation,
-                                     C_Compiler * inCompiler
-                                     COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_AccessControl temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GALGAS_AccessControl::kNotBuilt:
-    break ;
-  case GALGAS_AccessControl::kEnum_publicAccess:
-    {
-    }
-    break ;
-  case GALGAS_AccessControl::kEnum_privateAccess:
-    {
-      const cEnumAssociatedValues_AccessControl_privateAccess * extractPtr_14721 = (const cEnumAssociatedValues_AccessControl_privateAccess *) (temp_0.unsafePointer ()) ;
-      const GALGAS_unifiedTypeMapEntry extractedValue_14099_declaringType = extractPtr_14721->mAssociatedValue0 ;
-      switch (constinArgument_inOptionalCurrentType.enumValue ()) {
-      case GALGAS_selfAvailability::kNotBuilt:
-        break ;
-      case GALGAS_selfAvailability::kEnum_none:
-        {
-          TC_Array <C_FixItDescription> fixItArray1 ;
-          inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray1  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 351)) ;
-        }
-        break ;
-      case GALGAS_selfAvailability::kEnum_available:
-        {
-          const cEnumAssociatedValues_selfAvailability_available * extractPtr_14711 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
-          const GALGAS_unifiedTypeMapEntry extractedValue_14264_t = extractPtr_14711->mAssociatedValue0 ;
-          GALGAS_unifiedTypeMapEntry var_currentType_14294 = extractedValue_14264_t ;
-          GALGAS_bool var_ok_14313 = GALGAS_bool (kIsEqual, extensionGetter_typeName (extractedValue_14099_declaringType, inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 354)).objectCompare (extensionGetter_typeName (var_currentType_14294, inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 354)))) ;
-          bool loop_14379 = true ;
-          while (loop_14379) {
-            GALGAS_bool test_2 = var_ok_14313.operator_not (SOURCE_FILE ("semanticsTypes.galgas", 355)) ;
-            if (kBoolTrue == test_2.boolEnum ()) {
-              test_2 = extensionGetter_definition (var_currentType_14294, inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 355)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 355)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 355)) ;
-            }
-            loop_14379 = test_2.isValid () ;
-            if (loop_14379) {
-              loop_14379 = test_2.boolValue () ;
-            }
-            if (loop_14379) {
-              var_currentType_14294 = extensionGetter_definition (var_currentType_14294, inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 356)).readProperty_mSuperType () ;
-              var_ok_14313 = GALGAS_bool (kIsEqual, extensionGetter_typeName (extractedValue_14099_declaringType, inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 357)).objectCompare (extensionGetter_typeName (var_currentType_14294, inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 357)))) ;
-            }
-          }
-          enumGalgasBool test_3 = kBoolTrue ;
-          if (kBoolTrue == test_3) {
-            test_3 = var_ok_14313.operator_not (SOURCE_FILE ("semanticsTypes.galgas", 359)).boolEnum () ;
-            if (kBoolTrue == test_3) {
-              TC_Array <C_FixItDescription> fixItArray4 ;
-              inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray4  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 360)) ;
-            }
-          }
-        }
-        break ;
-      }
-    }
-    break ;
-  case GALGAS_AccessControl::kEnum_privateSetAccess:
-    {
-      const cEnumAssociatedValues_AccessControl_privateSetAccess * extractPtr_15395 = (const cEnumAssociatedValues_AccessControl_privateSetAccess *) (temp_0.unsafePointer ()) ;
-      const GALGAS_unifiedTypeMapEntry extractedValue_14762_declaringType = extractPtr_15395->mAssociatedValue0 ;
-      switch (constinArgument_inOptionalCurrentType.enumValue ()) {
-      case GALGAS_selfAvailability::kNotBuilt:
-        break ;
-      case GALGAS_selfAvailability::kEnum_none:
-        {
-          TC_Array <C_FixItDescription> fixItArray5 ;
-          inCompiler->emitSemanticWarning (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'privateset' qualifier)"), fixItArray5  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 366)) ;
-        }
-        break ;
-      case GALGAS_selfAvailability::kEnum_available:
-        {
-          const cEnumAssociatedValues_selfAvailability_available * extractPtr_15385 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
-          const GALGAS_unifiedTypeMapEntry extractedValue_14933_t = extractPtr_15385->mAssociatedValue0 ;
-          GALGAS_unifiedTypeMapEntry var_currentType_14963 = extractedValue_14933_t ;
-          GALGAS_bool var_ok_14982 = GALGAS_bool (kIsEqual, extensionGetter_typeName (extractedValue_14762_declaringType, inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 369)).objectCompare (extensionGetter_typeName (var_currentType_14963, inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 369)))) ;
-          bool loop_15048 = true ;
-          while (loop_15048) {
-            GALGAS_bool test_6 = var_ok_14982.operator_not (SOURCE_FILE ("semanticsTypes.galgas", 370)) ;
-            if (kBoolTrue == test_6.boolEnum ()) {
-              test_6 = extensionGetter_definition (var_currentType_14963, inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 370)).readProperty_mSuperType ().getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 370)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 370)) ;
-            }
-            loop_15048 = test_6.isValid () ;
-            if (loop_15048) {
-              loop_15048 = test_6.boolValue () ;
-            }
-            if (loop_15048) {
-              var_currentType_14963 = extensionGetter_definition (var_currentType_14963, inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 371)).readProperty_mSuperType () ;
-              var_ok_14982 = GALGAS_bool (kIsEqual, extensionGetter_typeName (extractedValue_14762_declaringType, inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 372)).objectCompare (extensionGetter_typeName (var_currentType_14963, inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 372)))) ;
-            }
-          }
-          enumGalgasBool test_7 = kBoolTrue ;
-          if (kBoolTrue == test_7) {
-            test_7 = var_ok_14982.operator_not (SOURCE_FILE ("semanticsTypes.galgas", 374)).boolEnum () ;
-            if (kBoolTrue == test_7) {
-              TC_Array <C_FixItDescription> fixItArray8 ;
-              inCompiler->emitSemanticWarning (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'privateset' qualifier)"), fixItArray8  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 375)) ;
-            }
-          }
-        }
-        break ;
-      }
-    }
-    break ;
-  }
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Abstract extension method '@semanticExpressionForGeneration generateExpression'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -14178,6 +14061,172 @@ GALGAS_literalCharExpressionAST GALGAS_literalCharExpressionAST::extractObject (
       result = *p ;
     }else{
       inCompiler->castError ("literalCharExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+// @literalCharExpressionForGeneration reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_literalCharExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mCharacter.printNonNullClassInstanceProperties ("mCharacter") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_literalCharExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_literalCharExpressionForGeneration * p = (const cPtr_literalCharExpressionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_literalCharExpressionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mCharacter.objectCompare (p->mProperty_mCharacter) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_literalCharExpressionForGeneration::objectCompare (const GALGAS_literalCharExpressionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_literalCharExpressionForGeneration::GALGAS_literalCharExpressionForGeneration (void) :
+GALGAS_semanticExpressionForGeneration () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_literalCharExpressionForGeneration::GALGAS_literalCharExpressionForGeneration (const cPtr_literalCharExpressionForGeneration * inSourcePtr) :
+GALGAS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalCharExpressionForGeneration) ;
+}
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_literalCharExpressionForGeneration GALGAS_literalCharExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
+                                                                                                      const GALGAS_location & inAttribute_mLocation,
+                                                                                                      const GALGAS_char & inAttribute_mCharacter
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_literalCharExpressionForGeneration result ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mCharacter.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_literalCharExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mCharacter COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_char GALGAS_literalCharExpressionForGeneration::readProperty_mCharacter (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_char () ;
+  }else{
+    cPtr_literalCharExpressionForGeneration * p = (cPtr_literalCharExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_literalCharExpressionForGeneration) ;
+    return p->mProperty_mCharacter ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//Pointer class for @literalCharExpressionForGeneration class
+//----------------------------------------------------------------------------------------------------------------------
+
+cPtr_literalCharExpressionForGeneration::cPtr_literalCharExpressionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mResultType,
+                                                                                  const GALGAS_location & in_mLocation,
+                                                                                  const GALGAS_char & in_mCharacter
+                                                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
+mProperty_mCharacter (in_mCharacter) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_literalCharExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalCharExpressionForGeneration ;
+}
+
+void cPtr_literalCharExpressionForGeneration::description (C_String & ioString,
+                                                           const int32_t inIndentation) const {
+  ioString << "[@literalCharExpressionForGeneration:" ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mCharacter.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_literalCharExpressionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_literalCharExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mCharacter COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//     @literalCharExpressionForGeneration generic code implementation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_literalCharExpressionForGeneration ("literalCharExpressionForGeneration",
+                                                           & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_literalCharExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalCharExpressionForGeneration ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_literalCharExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_literalCharExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_literalCharExpressionForGeneration GALGAS_literalCharExpressionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                    C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_literalCharExpressionForGeneration result ;
+  const GALGAS_literalCharExpressionForGeneration * p = (const GALGAS_literalCharExpressionForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_literalCharExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("literalCharExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

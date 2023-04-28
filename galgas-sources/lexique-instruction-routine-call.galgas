@@ -3,7 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @abstractLexicalRoutineActualArgumentAST {
-  private let @location mActualPassingModeLocation
+  protected let @location mActualPassingModeLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

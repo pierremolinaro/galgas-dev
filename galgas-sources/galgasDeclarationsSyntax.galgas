@@ -43,28 +43,14 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
   #·····················································································································
 
   rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
-    let @AccessControlAST accessControl
-    select
-      accessControl = .publicAccess
-    or
-      $public$
-      accessControl = .publicAccess
-    or
-      $private$
-      accessControl = .privateAccess
-    or
-      $privateset$
-      accessControl = .privateSetAccess
-    end
+    <acces_control> ?let accessControl
     let @bool isConstant
     select
       $var$
       isConstant = false
     or
       $let$
-      if accessControl == .privateSetAccess then
-        error .here : "'privateset' and 'let' are incompatible"
-      end
+      [accessControl checkCompatibilityWithLet !.here]
       isConstant = true
     end
     $@type$ ?let propertyTypeName
@@ -276,28 +262,14 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
   #·····················································································································
 
   rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
-    let @AccessControlAST accessControl
-    select
-      accessControl = .publicAccess
-    or
-      $public$
-      accessControl = .publicAccess
-    or
-      $private$
-      accessControl = .privateAccess
-    or
-      $privateset$
-      accessControl = .privateSetAccess
-    end
+    <acces_control> ?let accessControl
     let @bool isConstant
     select
       $var$
       isConstant = false
     or
       $let$
-      if accessControl == .privateSetAccess then
-        error .here : "'privateset' and 'let' are incompatible"
-      end
+      [accessControl checkCompatibilityWithLet !.here]
       isConstant = true
     end
     $@type$ ?let propertyTypeName

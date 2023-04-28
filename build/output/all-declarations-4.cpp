@@ -11524,6 +11524,22 @@ GALGAS_AccessControlAST GALGAS_AccessControlAST::constructor_publicAccess (UNUSE
 
 //----------------------------------------------------------------------------------------------------------------------
 
+GALGAS_AccessControlAST GALGAS_AccessControlAST::constructor_protectedAccess (UNUSED_LOCATION_ARGS) {
+  GALGAS_AccessControlAST result ;
+  result.mEnum = kEnum_protectedAccess ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_AccessControlAST GALGAS_AccessControlAST::constructor_protectedSetAccess (UNUSED_LOCATION_ARGS) {
+  GALGAS_AccessControlAST result ;
+  result.mEnum = kEnum_protectedSetAccess ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 GALGAS_AccessControlAST GALGAS_AccessControlAST::constructor_privateAccess (UNUSED_LOCATION_ARGS) {
   GALGAS_AccessControlAST result ;
   result.mEnum = kEnum_privateAccess ;
@@ -11547,6 +11563,20 @@ bool GALGAS_AccessControlAST::optional_publicAccess () const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+bool GALGAS_AccessControlAST::optional_protectedAccess () const {
+  const bool ok = mEnum == kEnum_protectedAccess ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_AccessControlAST::optional_protectedSetAccess () const {
+  const bool ok = mEnum == kEnum_protectedSetAccess ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 bool GALGAS_AccessControlAST::optional_privateAccess () const {
   const bool ok = mEnum == kEnum_privateAccess ;
   return ok ;
@@ -11561,9 +11591,11 @@ bool GALGAS_AccessControlAST::optional_privateSetAccess () const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-static const char * gEnumNameArrayFor_AccessControlAST [4] = {
+static const char * gEnumNameArrayFor_AccessControlAST [6] = {
   "(not built)",
   "publicAccess",
+  "protectedAccess",
+  "protectedSetAccess",
   "privateAccess",
   "privateSetAccess"
 } ;
@@ -11572,6 +11604,18 @@ static const char * gEnumNameArrayFor_AccessControlAST [4] = {
 
 GALGAS_bool GALGAS_AccessControlAST::getter_isPublicAccess (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_publicAccess == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_AccessControlAST::getter_isProtectedAccess (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_protectedAccess == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_AccessControlAST::getter_isProtectedSetAccess (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_protectedSetAccess == mEnum) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

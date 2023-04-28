@@ -228,6 +228,7 @@ project (3:6:0) -> "galgas" {
 #--- GALGAS File
   "galgas-sources/galgasParameterArgumentSyntax.galgas"
   "galgas-sources/galgasInstructionsSyntax.galgas"
+  "galgas-sources/accessControl.galgas"
   "galgas-sources/galgasDeclarationsSyntax.galgas"
   "galgas-sources/galgasSyntaxComponentSyntax.galgas"
   "galgas-sources/galgasGrammarComponentSyntax.galgas"

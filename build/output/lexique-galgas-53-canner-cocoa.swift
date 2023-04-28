@@ -180,8 +180,8 @@ let galgasScanner_1_or : UInt16 = 76
 let galgasScanner_1_override : UInt16 = 77
 let galgasScanner_1_parse : UInt16 = 78
 let galgasScanner_1_public : UInt16 = 79
-let galgasScanner_1_private : UInt16 = 80
-let galgasScanner_1_privateset : UInt16 = 81
+let galgasScanner_1_protected : UInt16 = 80
+let galgasScanner_1_private : UInt16 = 81
 let galgasScanner_1_proc : UInt16 = 82
 let galgasScanner_1_project : UInt16 = 83
 let galgasScanner_1_refclass : UInt16 = 84
@@ -459,8 +459,8 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
       1, // 77 : galgasScanner_1_override
       1, // 78 : galgasScanner_1_parse
       1, // 79 : galgasScanner_1_public
-      1, // 80 : galgasScanner_1_private
-      1, // 81 : galgasScanner_1_privateset
+      1, // 80 : galgasScanner_1_protected
+      1, // 81 : galgasScanner_1_private
       1, // 82 : galgasScanner_1_proc
       1, // 83 : galgasScanner_1_project
       1, // 84 : galgasScanner_1_refclass
@@ -625,8 +625,8 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
       true, // 77 : galgasScanner_1_override
       true, // 78 : galgasScanner_1_parse
       true, // 79 : galgasScanner_1_public
-      true, // 80 : galgasScanner_1_private
-      true, // 81 : galgasScanner_1_privateset
+      true, // 80 : galgasScanner_1_protected
+      true, // 81 : galgasScanner_1_private
       true, // 82 : galgasScanner_1_proc
       true, // 83 : galgasScanner_1_project
       true, // 84 : galgasScanner_1_refclass
@@ -1543,8 +1543,8 @@ fileprivate func search_into_galgasScanner_galgasKeyWordList (_ inSearchedString
     "refclass" : galgasScanner_1_refclass,
     "template" : galgasScanner_1_template,
     "extension" : galgasScanner_1_extension,
+    "protected" : galgasScanner_1_protected,
     "typealias" : galgasScanner_1_typealias,
-    "privateset" : galgasScanner_1_privateset,
     "sortedlist" : galgasScanner_1_sortedlist,
     "valueclass" : galgasScanner_1_valueclass,
     "constructor" : galgasScanner_1_constructor,

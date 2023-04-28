@@ -317,11 +317,11 @@ static const char * gSyntaxErrorMessage_galgasScanner_parse = "the 'parse' keywo
 //--- Syntax error message for terminal '$public$' :
 static const char * gSyntaxErrorMessage_galgasScanner_public = "the 'public' keyword" ;
 
+//--- Syntax error message for terminal '$protected$' :
+static const char * gSyntaxErrorMessage_galgasScanner_protected = "the 'protected' keyword" ;
+
 //--- Syntax error message for terminal '$private$' :
 static const char * gSyntaxErrorMessage_galgasScanner_private = "the 'private' keyword" ;
-
-//--- Syntax error message for terminal '$privateset$' :
-static const char * gSyntaxErrorMessage_galgasScanner_privateset = "the 'privateset' keyword" ;
 
 //--- Syntax error message for terminal '$proc$' :
 static const char * gSyntaxErrorMessage_galgasScanner_proc = "the 'proc' keyword" ;
@@ -632,8 +632,8 @@ C_String C_Lexique_galgasScanner::getMessageForTerminal (const int16_t inTermina
         gSyntaxErrorMessage_galgasScanner_override,
         gSyntaxErrorMessage_galgasScanner_parse,
         gSyntaxErrorMessage_galgasScanner_public,
+        gSyntaxErrorMessage_galgasScanner_protected,
         gSyntaxErrorMessage_galgasScanner_private,
-        gSyntaxErrorMessage_galgasScanner_privateset,
         gSyntaxErrorMessage_galgasScanner_proc,
         gSyntaxErrorMessage_galgasScanner_project,
         gSyntaxErrorMessage_galgasScanner_refclass,
@@ -1600,21 +1600,6 @@ static const utf32 kUnicodeString_galgasScanner_private [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$privateset$'
-static const utf32 kUnicodeString_galgasScanner_privateset [] = {
-  TO_UNICODE ('p'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('v'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
 //--- Unicode string for '$proc$'
 static const utf32 kUnicodeString_galgasScanner_proc [] = {
   TO_UNICODE ('p'),
@@ -1633,6 +1618,20 @@ static const utf32 kUnicodeString_galgasScanner_project [] = {
   TO_UNICODE ('e'),
   TO_UNICODE ('c'),
   TO_UNICODE ('t'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$protected$'
+static const utf32 kUnicodeString_galgasScanner_protected [] = {
+  TO_UNICODE ('p'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('d'),
   TO_UNICODE (0)
 } ;
 
@@ -2130,8 +2129,8 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_galgasKeyWor
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_refclass, 8, C_Lexique_galgasScanner::kToken_refclass),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_template, 8, C_Lexique_galgasScanner::kToken_template),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_extension, 9, C_Lexique_galgasScanner::kToken_extension),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_protected, 9, C_Lexique_galgasScanner::kToken_protected),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_typealias, 9, C_Lexique_galgasScanner::kToken_typealias),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_privateset, 10, C_Lexique_galgasScanner::kToken_privateset),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_sortedlist, 10, C_Lexique_galgasScanner::kToken_sortedlist),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_valueclass, 10, C_Lexique_galgasScanner::kToken_valueclass),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_constructor, 11, C_Lexique_galgasScanner::kToken_constructor),
@@ -2580,14 +2579,14 @@ C_String C_Lexique_galgasScanner::getCurrentTokenString (const cToken * inTokenP
       s.appendCString ("public") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
+    case kToken_protected:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("protected") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
     case kToken_private:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("private") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_privateset:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("privateset") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_proc:
@@ -3995,8 +3994,8 @@ GALGAS_stringlist C_Lexique_galgasScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("override") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("parse") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("public") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("protected") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("private") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("privateset") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("proc") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("project") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("refclass") COMMA_THERE) ;
@@ -4220,8 +4219,8 @@ static void getKeywordsForIdentifier_galgasScanner (const C_String & inIdentifie
     ioList.appendObject ("refclass") ;
     ioList.appendObject ("template") ;
     ioList.appendObject ("extension") ;
+    ioList.appendObject ("protected") ;
     ioList.appendObject ("typealias") ;
-    ioList.appendObject ("privateset") ;
     ioList.appendObject ("sortedlist") ;
     ioList.appendObject ("valueclass") ;
     ioList.appendObject ("constructor") ;
@@ -4321,8 +4320,8 @@ uint32_t C_Lexique_galgasScanner::styleIndexForTerminal (const int32_t inTermina
     1 /* galgasScanner_1_override */,
     1 /* galgasScanner_1_parse */,
     1 /* galgasScanner_1_public */,
+    1 /* galgasScanner_1_protected */,
     1 /* galgasScanner_1_private */,
-    1 /* galgasScanner_1_privateset */,
     1 /* galgasScanner_1_proc */,
     1 /* galgasScanner_1_project */,
     1 /* galgasScanner_1_refclass */,

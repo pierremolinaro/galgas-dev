@@ -11845,6 +11845,30 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andShortExpressionF
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+// Phase 2: @selfAvailability enum, associated values
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cEnumAssociatedValues_selfAvailability_available : public cEnumAssociatedValues {
+  public: const GALGAS_unifiedTypeMapEntry mAssociatedValue0 ;
+  public: const GALGAS_bool mAssociatedValue1 ;
+  public: const GALGAS_bool mAssociatedValue2 ;
+
+//--- Constructor
+  public: cEnumAssociatedValues_selfAvailability_available (const GALGAS_unifiedTypeMapEntry inAssociatedValue0,
+                                                            const GALGAS_bool inAssociatedValue1,
+                                                            const GALGAS_bool inAssociatedValue2
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+  public: virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
+
+  public: virtual ~ cEnumAssociatedValues_selfAvailability_available (void) {}
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Abstract extension method '@semanticExpressionAST analyzeSemanticExpression'
 //
 //----------------------------------------------------------------------------------------------------------------------

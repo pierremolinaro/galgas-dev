@@ -1560,6 +1560,52 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_ProjectCo
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Extension method '@AccessControlAST checkCompatibilityWithLet'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionMethod_checkCompatibilityWithLet (const class GALGAS_AccessControlAST inObject,
+                                                const class GALGAS_location constin_inLocation,
+                                                class C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension getter '@AccessControlAST accessControl' (as function)
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_AccessControl extensionGetter_accessControl (const class GALGAS_AccessControlAST & inObject,
+                                                          const class GALGAS_unifiedTypeMapEntry & constinArgument0,
+                                                          class C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension method '@AccessControl checkSetAccess'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionMethod_checkSetAccess (const class GALGAS_AccessControl inObject,
+                                     const class GALGAS_selfAvailability constin_inOptionalCurrentType,
+                                     const class GALGAS_location constin_inErrorLocation,
+                                     class C_Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension method '@AccessControl checkGetAccess'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionMethod_checkGetAccess (const class GALGAS_AccessControl inObject,
+                                     const class GALGAS_selfAvailability constin_inOptionalCurrentType,
+                                     const class GALGAS_location constin_inErrorLocation,
+                                     class C_Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Parser class 'galgas3ExpressionSyntax' declaration
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -3015,6 +3061,13 @@ class cParser_galgas_33_DeclarationsSyntax {
   public: virtual ~ cParser_galgas_33_DeclarationsSyntax (void) {}
 
 //--- Non terminal declarations
+  protected: virtual void nt_acces_5F_control_ (class GALGAS_AccessControlAST & outArgument0,
+                                                class C_Lexique_galgasScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_acces_5F_control_parse (class C_Lexique_galgasScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_acces_5F_control_indexing (class C_Lexique_galgasScanner * inLexique) = 0 ;
+
   protected: virtual void nt_declaration_ (class GALGAS_galgasDeclarationAST & ioArgument0,
                                            class C_Lexique_galgasScanner * inLexique) = 0 ;
 
@@ -3614,6 +3667,13 @@ class cParser_galgas_33_DeclarationsSyntax {
 
   protected: void rule_galgas_33_DeclarationsSyntax_semantic_5F_instruction_i58_indexing (C_Lexique_galgasScanner * inLexique) ;
 
+  protected: void rule_galgas_33_DeclarationsSyntax_acces_5F_control_i59_ (GALGAS_AccessControlAST & outArgument0,
+                                                                           C_Lexique_galgasScanner * inLexique) ;
+
+  protected: void rule_galgas_33_DeclarationsSyntax_acces_5F_control_i59_parse (C_Lexique_galgasScanner * inLexique) ;
+
+  protected: void rule_galgas_33_DeclarationsSyntax_acces_5F_control_i59_indexing (C_Lexique_galgasScanner * inLexique) ;
+
 
 
 //--- Select methods
@@ -3714,6 +3774,10 @@ class cParser_galgas_33_DeclarationsSyntax {
   protected: virtual int32_t select_galgas_33_DeclarationsSyntax_47 (C_Lexique_galgasScanner *) = 0 ;
 
   protected: virtual int32_t select_galgas_33_DeclarationsSyntax_48 (C_Lexique_galgasScanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_33_DeclarationsSyntax_49 (C_Lexique_galgasScanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_33_DeclarationsSyntax_50 (C_Lexique_galgasScanner *) = 0 ;
 
 
 } ;

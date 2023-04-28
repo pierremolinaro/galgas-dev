@@ -8387,8 +8387,8 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [155] = {
   false /* override */,
   false /* parse */,
   false /* public */,
+  false /* protected */,
   false /* private */,
-  false /* privateset */,
   false /* proc */,
   false /* project */,
   false /* refclass */,
@@ -8607,8 +8607,8 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("override") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("parse") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("public") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("protected") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("private") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("privateset") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("proc") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("project") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("refclass") COMMA_THERE) ;

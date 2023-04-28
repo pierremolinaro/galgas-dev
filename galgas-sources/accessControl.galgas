@@ -1,0 +1,253 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#                                           
+#  Copyright (C) 2023, ..., 2023 Pierre Molinaro.
+#                                           
+#  e-mail : pierre@pcmolinaro.name          
+#                                           
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+#  License as published by the Free Software Foundation.
+#                                           
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+#  details.                                 
+#                                           
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <acces_control> !@AccessControlAST outAccessControl {
+    select
+      outAccessControl = .publicAccess
+    or
+      $public$
+      outAccessControl = .publicAccess
+    or
+      $protected$
+      select
+        outAccessControl = .protectedAccess
+      or
+        $($
+        $identifier$ ?let value
+        if value.string != "set" then
+          error value.location : "only 'set' is allowed here"
+        end
+        $)$
+        outAccessControl = .protectedSetAccess
+      end
+    or
+      $private$
+      select
+        outAccessControl = .privateAccess
+      or
+        $($
+        $identifier$ ?let value
+        if value.string != "set" then
+          error value.location : "only 'set' is allowed here"
+        end
+        $)$
+        outAccessControl = .privateSetAccess
+      end
+    end
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <acces_control> !@AccessControlAST outAccessControl {
+    select
+      outAccessControl = .publicAccess
+    or
+      $public$
+      outAccessControl = .publicAccess
+    or
+      $protected$
+      select
+        outAccessControl = .protectedAccess
+      or
+        $($
+        $identifier$ ?let value
+        if value.string != "set" then
+          error value.location : "only 'set' is allowed here"
+        end
+        $)$
+        outAccessControl = .protectedSetAccess
+      end
+    or
+      $private$
+      select
+        outAccessControl = .privateAccess
+      or
+        $($
+        $identifier$ ?let value
+        if value.string != "set" then
+          error value.location : "only 'set' is allowed here"
+        end
+        $)$
+        outAccessControl = .privateSetAccess
+      end
+    end
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum @AccessControlAST {
+  case publicAccess
+  case protectedAccess
+  case protectedSetAccess  
+  case privateAccess
+  case privateSetAccess  
+
+  #·····················································································································
+
+  method checkCompatibilityWithLet ?let @location inLocation {
+    switch self
+    case publicAccess :
+    case protectedAccess :
+    case protectedSetAccess :
+      error inLocation : "'protected(set)' and 'let' are incompatible"
+    case privateAccess :
+    case privateSetAccess :
+      error inLocation : "'private(set)' and 'let' are incompatible"
+    end
+  }
+  
+  #·····················································································································
+
+  getter accessControl ?forDeclaringType: let @unifiedTypeMapEntry inDeclaringType -> @AccessControl {
+    switch self
+    case publicAccess :
+      result = .publicAccess
+    case protectedAccess :
+      result = .protectedAccess {!declaringType: inDeclaringType}
+    case protectedSetAccess :
+      result = .protectedSetAccess {!declaringType: inDeclaringType}
+    case privateAccess :
+      result = .privateAccess {!declaringType: inDeclaringType}
+    case privateSetAccess :
+      result = .privateSetAccess {!declaringType: inDeclaringType}
+    end
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum @AccessControl {
+  case publicAccess
+  case protectedAccess (@unifiedTypeMapEntry declaringType)
+  case protectedSetAccess (@unifiedTypeMapEntry declaringType) 
+  case privateAccess (@unifiedTypeMapEntry declaringType)
+  case privateSetAccess (@unifiedTypeMapEntry declaringType)
+
+  #·····················································································································
+
+  method checkSetAccess ?let @selfAvailability inOptionalCurrentType
+                        ?let @location inErrorLocation {
+    switch self
+    case publicAccess :
+    case protectedAccess (declaringType) :
+      switch inOptionalCurrentType
+      case none :
+        error inErrorLocation : "inaccessible property (due to 'protected' qualifier)"
+      case available (t 2*) :
+        var currentType = t
+        var ok = [declaringType typeName] == [currentType typeName]
+        loop while (not ok) && (not [[currentType definition].mSuperType isNull]) do
+          currentType = [currentType definition].mSuperType
+          ok = [declaringType typeName] == [currentType typeName]
+        end
+        if not ok then
+          error inErrorLocation : "inaccessible property (due to 'protected' qualifier)"
+        end
+      end
+    case protectedSetAccess (declaringType) :
+      switch inOptionalCurrentType
+      case none :
+         warning inErrorLocation : "inaccessible property (due to 'protected(set)' qualifier)"
+      case available (t 2*) :
+        var currentType = t
+        var ok = [declaringType typeName] == [currentType typeName]
+        loop while (not ok) && (not [[currentType definition].mSuperType isNull]) do
+          currentType = [currentType definition].mSuperType
+          ok = [declaringType typeName] == [currentType typeName]
+        end
+        if not ok then
+          warning inErrorLocation : "inaccessible property (due to 'protected(set)' qualifier)"
+        end
+      end
+    case privateAccess (declaringType) :
+      switch inOptionalCurrentType
+      case none :
+        error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
+      case available (currentType 2*) :
+        if [declaringType typeName] != [currentType typeName] then
+          error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
+        end
+      end
+    case privateSetAccess (declaringType) :
+      switch inOptionalCurrentType
+      case none :
+         warning inErrorLocation : "inaccessible property (due to 'private(set)' qualifier)"
+      case available (currentType 2*) :
+        if [declaringType typeName] != [currentType typeName] then
+          error inErrorLocation : "inaccessible property (due to 'private(set)' qualifier)"
+        end
+      end
+    end
+  }
+
+  #·····················································································································
+
+  method checkGetAccess ?let @selfAvailability inOptionalCurrentType
+                        ?let @location inErrorLocation {
+    switch self
+    case publicAccess :
+    case protectedSetAccess (*) :
+    case privateSetAccess (*) :
+    case protectedAccess (declaringType) :
+      switch inOptionalCurrentType
+      case none :
+        error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
+      case available (t 2*) :
+        var currentType = t
+        var ok = [declaringType typeName] == [currentType typeName]
+        loop while (not ok) && (not [[currentType definition].mSuperType isNull]) do
+          currentType = [currentType definition].mSuperType
+          ok = [declaringType typeName] == [currentType typeName]
+        end
+        if not ok then
+          error inErrorLocation : "inaccessible property (due to 'protected' qualifier)"
+        end
+      end
+    case privateAccess (declaringType) :
+      switch inOptionalCurrentType
+      case none :
+        error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
+      case available (currentType 2*) :
+        if [declaringType typeName] != [currentType typeName] then
+          error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
+        end
+      end
+    end
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

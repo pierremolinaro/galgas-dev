@@ -3541,6 +3541,8 @@ class GALGAS_AccessControlAST : public AC_GALGAS_root {
   public: typedef enum {
     kNotBuilt,
     kEnum_publicAccess,
+    kEnum_protectedAccess,
+    kEnum_protectedSetAccess,
     kEnum_privateAccess,
     kEnum_privateSetAccess
   } enumeration ;
@@ -3568,6 +3570,10 @@ class GALGAS_AccessControlAST : public AC_GALGAS_root {
 
   public: static class GALGAS_AccessControlAST constructor_privateSetAccess (LOCATION_ARGS) ;
 
+  public: static class GALGAS_AccessControlAST constructor_protectedAccess (LOCATION_ARGS) ;
+
+  public: static class GALGAS_AccessControlAST constructor_protectedSetAccess (LOCATION_ARGS) ;
+
   public: static class GALGAS_AccessControlAST constructor_publicAccess (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -3586,6 +3592,10 @@ class GALGAS_AccessControlAST : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isPrivateSetAccess (LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isProtectedAccess (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isProtectedSetAccess (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isPublicAccess (LOCATION_ARGS) const ;
 
 
@@ -3593,6 +3603,10 @@ class GALGAS_AccessControlAST : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG bool optional_privateAccess () const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_privateSetAccess () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_protectedAccess () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_protectedSetAccess () const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_publicAccess () const ;
 

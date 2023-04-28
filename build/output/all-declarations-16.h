@@ -610,18 +610,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtension
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Extension method '@AccessControl checkSetAccess'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void extensionMethod_checkSetAccess (const class GALGAS_AccessControl inObject,
-                                     const class GALGAS_selfAvailability constin_inOptionalCurrentType,
-                                     const class GALGAS_location constin_inErrorLocation,
-                                     class C_Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexiqueDeclarationForGeneration reference class
 //
 //----------------------------------------------------------------------------------------------------------------------
