@@ -133,6 +133,7 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "extension",
   "extern",
   "false",
+  "fileprivate",
   "filewrapper",
   "for",
   "fixit",

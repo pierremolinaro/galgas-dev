@@ -11510,7 +11510,66 @@ GALGAS_onceFunctionDeclarationAST_2D_weak GALGAS_onceFunctionDeclarationAST_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 
+cEnumAssociatedValues_AccessControlAST_fileprivateAccess::cEnumAssociatedValues_AccessControlAST_fileprivateAccess (const GALGAS_location inAssociatedValue0
+                                                                                                                    COMMA_LOCATION_ARGS) :
+cEnumAssociatedValues (THERE),
+mAssociatedValue0 (inAssociatedValue0) {
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cEnumAssociatedValues_AccessControlAST_fileprivateAccess::description (C_String & ioString,
+                                                                            const int32_t inIndentation) const {
+  ioString << "(\n" ;
+  mAssociatedValue0.description (ioString, inIndentation) ;
+  ioString << ")" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cEnumAssociatedValues_AccessControlAST_fileprivateAccess::compare (const cEnumAssociatedValues * inOperand) const {
+  const cEnumAssociatedValues_AccessControlAST_fileprivateAccess * ptr = dynamic_cast<const cEnumAssociatedValues_AccessControlAST_fileprivateAccess *> (inOperand) ;
+  macroValidPointer (ptr) ;
+  typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess::cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess (const GALGAS_location inAssociatedValue0
+                                                                                                                          COMMA_LOCATION_ARGS) :
+cEnumAssociatedValues (THERE),
+mAssociatedValue0 (inAssociatedValue0) {
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess::description (C_String & ioString,
+                                                                               const int32_t inIndentation) const {
+  ioString << "(\n" ;
+  mAssociatedValue0.description (ioString, inIndentation) ;
+  ioString << ")" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess::compare (const cEnumAssociatedValues * inOperand) const {
+  const cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess * ptr = dynamic_cast<const cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess *> (inOperand) ;
+  macroValidPointer (ptr) ;
+  typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 GALGAS_AccessControlAST::GALGAS_AccessControlAST (void) :
+mAssociatedValues (),
 mEnum (kNotBuilt) {
 }
 
@@ -11556,6 +11615,68 @@ GALGAS_AccessControlAST GALGAS_AccessControlAST::constructor_privateSetAccess (U
 
 //----------------------------------------------------------------------------------------------------------------------
 
+GALGAS_AccessControlAST GALGAS_AccessControlAST::constructor_fileprivateAccess (const GALGAS_location & inAssociatedValue0
+                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_AccessControlAST result ;
+  if (inAssociatedValue0.isValid ()) {
+    result.mEnum = kEnum_fileprivateAccess ;
+    cEnumAssociatedValues * ptr = NULL ;
+    macroMyNew (ptr, cEnumAssociatedValues_AccessControlAST_fileprivateAccess (inAssociatedValue0 COMMA_THERE)) ;
+    result.mAssociatedValues.setPointer (ptr) ;
+    macroDetachSharedObject (ptr) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_AccessControlAST GALGAS_AccessControlAST::constructor_fileprivateSetAccess (const GALGAS_location & inAssociatedValue0
+                                                                                   COMMA_LOCATION_ARGS) {
+  GALGAS_AccessControlAST result ;
+  if (inAssociatedValue0.isValid ()) {
+    result.mEnum = kEnum_fileprivateSetAccess ;
+    cEnumAssociatedValues * ptr = NULL ;
+    macroMyNew (ptr, cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess (inAssociatedValue0 COMMA_THERE)) ;
+    result.mAssociatedValues.setPointer (ptr) ;
+    macroDetachSharedObject (ptr) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_AccessControlAST::method_fileprivateAccess (GALGAS_location & outAssociatedValue0,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  if (mEnum != kEnum_fileprivateAccess) {
+    outAssociatedValue0.drop () ;
+    C_String s ;
+    s << "method @AccessControlAST fileprivateAccess invoked with an invalid enum value" ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const cEnumAssociatedValues_AccessControlAST_fileprivateAccess * ptr = (const cEnumAssociatedValues_AccessControlAST_fileprivateAccess *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_AccessControlAST::method_fileprivateSetAccess (GALGAS_location & outAssociatedValue0,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
+  if (mEnum != kEnum_fileprivateSetAccess) {
+    outAssociatedValue0.drop () ;
+    C_String s ;
+    s << "method @AccessControlAST fileprivateSetAccess invoked with an invalid enum value" ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess * ptr = (const cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 bool GALGAS_AccessControlAST::optional_publicAccess () const {
   const bool ok = mEnum == kEnum_publicAccess ;
   return ok ;
@@ -11591,13 +11712,39 @@ bool GALGAS_AccessControlAST::optional_privateSetAccess () const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-static const char * gEnumNameArrayFor_AccessControlAST [6] = {
+bool GALGAS_AccessControlAST::optional_fileprivateAccess (GALGAS_location & outAssociatedValue0) const {
+  const bool ok = mEnum == kEnum_fileprivateAccess ;
+  if (ok) {
+    const auto * ptr = (const cEnumAssociatedValues_AccessControlAST_fileprivateAccess *) unsafePointer () ;
+    // const cEnumAssociatedValues_AccessControlAST_fileprivateAccess * ptr = (const cEnumAssociatedValues_AccessControlAST_fileprivateAccess *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_AccessControlAST::optional_fileprivateSetAccess (GALGAS_location & outAssociatedValue0) const {
+  const bool ok = mEnum == kEnum_fileprivateSetAccess ;
+  if (ok) {
+    const auto * ptr = (const cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess *) unsafePointer () ;
+    // const cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess * ptr = (const cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_AccessControlAST [8] = {
   "(not built)",
   "publicAccess",
   "protectedAccess",
   "protectedSetAccess",
   "privateAccess",
-  "privateSetAccess"
+  "privateSetAccess",
+  "fileprivateAccess",
+  "fileprivateSetAccess"
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -11632,9 +11779,22 @@ GALGAS_bool GALGAS_AccessControlAST::getter_isPrivateSetAccess (UNUSED_LOCATION_
 
 //----------------------------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_AccessControlAST::getter_isFileprivateAccess (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_fileprivateAccess == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_AccessControlAST::getter_isFileprivateSetAccess (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_fileprivateSetAccess == mEnum) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 void GALGAS_AccessControlAST::description (C_String & ioString,
-                                           const int32_t /* inIndentation */) const {
+                                           const int32_t inIndentation) const {
   ioString << "<enum @AccessControlAST: " << gEnumNameArrayFor_AccessControlAST [mEnum] ;
+  mAssociatedValues.description (ioString, inIndentation) ;
   ioString << ">" ;
 }
 
@@ -11648,7 +11808,7 @@ typeComparisonResult GALGAS_AccessControlAST::objectCompare (const GALGAS_Access
     }else if (mEnum > inOperand.mEnum) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = kOperandEqual ;
+      result = mAssociatedValues.objectCompare (inOperand.mAssociatedValues) ;
     }
   }
   return result ;

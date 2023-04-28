@@ -49,6 +49,19 @@ syntax extension galgas3DeclarationsSyntax {
         $)$
         outAccessControl = .privateSetAccess
       end
+    or
+      $fileprivate$
+      select
+        outAccessControl = .fileprivateAccess {!declarationLocation: .here}
+      or
+        $($
+        outAccessControl = .fileprivateSetAccess {!declarationLocation: .here}
+        $identifier$ ?let value
+        if value.string != "set" then
+          error value.location : "only 'set' is allowed here"
+        end
+        $)$
+      end
     end
   }
 
@@ -94,6 +107,19 @@ syntax extension galgas4DeclarationsSyntax {
         $)$
         outAccessControl = .privateSetAccess
       end
+    or
+      $fileprivate$
+      select
+        outAccessControl = .fileprivateSetAccess {!declarationLocation: .here}
+      or
+        $($
+        $identifier$ ?let value
+        outAccessControl = .fileprivateSetAccess {!declarationLocation: .here}
+        if value.string != "set" then
+          error value.location : "only 'set' is allowed here"
+        end
+        $)$
+      end
     end
   }
 
@@ -109,6 +135,8 @@ enum @AccessControlAST {
   case protectedSetAccess  
   case privateAccess
   case privateSetAccess  
+  case fileprivateAccess (@location declarationLocation)
+  case fileprivateSetAccess (@location declarationLocation)
 
   #·····················································································································
 
@@ -120,6 +148,9 @@ enum @AccessControlAST {
       error inLocation : "'protected(set)' and 'let' are incompatible"
     case privateAccess :
     case privateSetAccess :
+      error inLocation : "'private(set)' and 'let' are incompatible"
+    case fileprivateAccess (*) :
+    case fileprivateSetAccess (*) :
       error inLocation : "'private(set)' and 'let' are incompatible"
     end
   }
@@ -138,6 +169,10 @@ enum @AccessControlAST {
       result = .privateAccess {!declaringType: inDeclaringType}
     case privateSetAccess :
       result = .privateSetAccess {!declaringType: inDeclaringType}
+    case fileprivateAccess (declarationLocation) :
+      result = .fileprivateAccess {!declarationLocation: declarationLocation}
+    case fileprivateSetAccess (declarationLocation) :
+      result = .fileprivateSetAccess {!declarationLocation: declarationLocation}
     end
   }
 
@@ -153,6 +188,8 @@ enum @AccessControl {
   case protectedSetAccess (@unifiedTypeMapEntry declaringType) 
   case privateAccess (@unifiedTypeMapEntry declaringType)
   case privateSetAccess (@unifiedTypeMapEntry declaringType)
+  case fileprivateAccess (@location declarationLocation)
+  case fileprivateSetAccess (@location declarationLocation)
 
   #·····················································································································
 
@@ -208,6 +245,14 @@ enum @AccessControl {
           error inErrorLocation : "inaccessible property (due to 'private(set)' qualifier)"
         end
       end
+    case fileprivateAccess (declaringLocation) :
+      if [declaringLocation sourceFile] != [inErrorLocation sourceFile] then
+        error inErrorLocation : "inaccessible property (due to 'fileprivate' qualifier)"
+      end
+    case fileprivateSetAccess (declaringLocation) :
+      if [declaringLocation sourceFile] != [inErrorLocation sourceFile] then
+        error inErrorLocation : "inaccessible property (due to 'fileprivate(set)' qualifier)"
+      end
     end
   }
 
@@ -243,6 +288,11 @@ enum @AccessControl {
           error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
         end
       end
+    case fileprivateAccess (declaringLocation) :
+      if [declaringLocation sourceFile] != [inErrorLocation sourceFile] then
+        error inErrorLocation : "inaccessible property (due to 'fileprivate' qualifier)"
+      end
+    case fileprivateSetAccess (*) :
     end
   }
 

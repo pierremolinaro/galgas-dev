@@ -747,17 +747,17 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     ] ;
     r.size.width = [title sizeWithAttributes:d].width + 30.0 ;
     r.origin.y -= 25.0 ;
-    [cb setFrame:r] ;
+    [cb setFrame: r] ;
     [cb setTitle: title] ;
     [cb setButtonType: NSSwitchButton] ;
     [cb setAutoresizingMask: mask] ;
     [cb
-      bind:@"value"
-      toObject:udc
-      withKeyPath:[NSString stringWithFormat:@"values.%@_%@", GGS_bool_build_option, [option identifier]]
-      options:nil
+      bind: NSValueBinding // @"value"
+      toObject: udc
+      withKeyPath: [NSString stringWithFormat: @"values.%@_%@", GGS_bool_build_option, [option identifier]]
+      options: nil
     ] ;
-    [inView addSubview:cb] ;
+    [inView addSubview: cb] ;
     *ioRect = NSUnionRect (*ioRect, r) ;
   }
 }
@@ -800,10 +800,10 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     [tx setFrame: r] ;
     [tx setTag: (NSInteger) i] ;
     [tx
-      bind:@"value"
-      toObject:udc
-      withKeyPath:[NSString stringWithFormat:@"values.%@_%@", GGS_uint_build_option, [option identifier]]
-      options:optionDictionary
+      bind: NSValueBinding // @"value"
+      toObject: udc
+      withKeyPath: [NSString stringWithFormat: @"values.%@_%@", GGS_uint_build_option, [option identifier]]
+      options: optionDictionary
     ] ;
     [inView addSubview: tx] ;
     *ioRect = NSUnionRect (*ioRect, r) ;
@@ -861,10 +861,10 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     r.size.width = 280.0 ;
     [tx setFrame: r] ;
     [tx
-      bind:@"value"
-      toObject:udc
-      withKeyPath:[NSString stringWithFormat:@"values.%@_%@", GGS_string_build_option, [option identifier]]
-      options:optionDictionary
+      bind: NSValueBinding // @"value"
+      toObject: udc
+      withKeyPath: [NSString stringWithFormat:@"values.%@_%@", GGS_string_build_option, [option identifier]]
+      options: optionDictionary
     ] ;
     [inView addSubview:tx] ;
     viewFrame = NSUnionRect (viewFrame, r) ;

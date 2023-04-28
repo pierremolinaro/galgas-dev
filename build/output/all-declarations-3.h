@@ -3544,10 +3544,17 @@ class GALGAS_AccessControlAST : public AC_GALGAS_root {
     kEnum_protectedAccess,
     kEnum_protectedSetAccess,
     kEnum_privateAccess,
-    kEnum_privateSetAccess
+    kEnum_privateSetAccess,
+    kEnum_fileprivateAccess,
+    kEnum_fileprivateSetAccess
   } enumeration ;
   
 //--------------------------------- Private data member
+  private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;
+  public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
+    return mAssociatedValues.unsafePointer () ;
+  }
+
   private: enumeration mEnum ;
 
 //--------------------------------- Accessors
@@ -3566,6 +3573,12 @@ class GALGAS_AccessControlAST : public AC_GALGAS_root {
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
+  public: static class GALGAS_AccessControlAST constructor_fileprivateAccess (const class GALGAS_location & inOperand0
+                                                                              COMMA_LOCATION_ARGS) ;
+
+  public: static class GALGAS_AccessControlAST constructor_fileprivateSetAccess (const class GALGAS_location & inOperand0
+                                                                                 COMMA_LOCATION_ARGS) ;
+
   public: static class GALGAS_AccessControlAST constructor_privateAccess (LOCATION_ARGS) ;
 
   public: static class GALGAS_AccessControlAST constructor_privateSetAccess (LOCATION_ARGS) ;
@@ -3585,9 +3598,21 @@ class GALGAS_AccessControlAST : public AC_GALGAS_root {
 //--------------------------------- Setters
 
 //--------------------------------- Instance Methods
+  public: VIRTUAL_IN_DEBUG void method_fileprivateAccess (class GALGAS_location & outArgument0,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG void method_fileprivateSetAccess (class GALGAS_location & outArgument0,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isFileprivateAccess (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isFileprivateSetAccess (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isPrivateAccess (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isPrivateSetAccess (LOCATION_ARGS) const ;
@@ -3600,6 +3625,10 @@ class GALGAS_AccessControlAST : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public: VIRTUAL_IN_DEBUG bool optional_fileprivateAccess (class GALGAS_location & outOperand0) const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_fileprivateSetAccess (class GALGAS_location & outOperand0) const ;
+
   public: VIRTUAL_IN_DEBUG bool optional_privateAccess () const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_privateSetAccess () const ;
@@ -3620,6 +3649,42 @@ class GALGAS_AccessControlAST : public AC_GALGAS_root {
 //----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControlAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: @AccessControlAST enum, associated values
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cEnumAssociatedValues_AccessControlAST_fileprivateAccess : public cEnumAssociatedValues {
+  public: const GALGAS_location mAssociatedValue0 ;
+
+//--- Constructor
+  public: cEnumAssociatedValues_AccessControlAST_fileprivateAccess (const GALGAS_location inAssociatedValue0
+                                                                    COMMA_LOCATION_ARGS) ;
+
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+  public: virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
+
+  public: virtual ~ cEnumAssociatedValues_AccessControlAST_fileprivateAccess (void) {}
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+class cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess : public cEnumAssociatedValues {
+  public: const GALGAS_location mAssociatedValue0 ;
+
+//--- Constructor
+  public: cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess (const GALGAS_location inAssociatedValue0
+                                                                       COMMA_LOCATION_ARGS) ;
+
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
+  public: virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
+
+  public: virtual ~ cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess (void) {}
+} ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //

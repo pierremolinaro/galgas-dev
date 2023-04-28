@@ -43,22 +43,22 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-    $array$
-  #--- Map type name
-    $@type$ ?let @lstring arrayTypeName indexing arrayTypeDefinition
-    $:$
-    $@type$ ?let @lstring elementListTypeName indexing arrayElementTypeReference
-    $[$
-    $literalInt$ ?let dimension
-    $]$
-    ioDeclarations.mDeclarationList += !@arrayDeclarationAST.new {
-      !false # Is not predefined
-      !arrayTypeName
-      !elementListTypeName
-      !dimension
-    }
-  }
+#  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+#    $array$
+#  #--- Map type name
+#    $@type$ ?let @lstring arrayTypeName indexing arrayTypeDefinition
+#    $:$
+#    $@type$ ?let @lstring elementListTypeName indexing arrayElementTypeReference
+#    $[$
+#    $literalInt$ ?let dimension
+#    $]$
+#    ioDeclarations.mDeclarationList += !@arrayDeclarationAST.new {
+#      !false # Is not predefined
+#      !arrayTypeName
+#      !elementListTypeName
+#      !dimension
+#    }
+#  }
 
   #·····················································································································
 

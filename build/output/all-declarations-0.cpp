@@ -218,6 +218,9 @@ static const char * gSyntaxErrorMessage_galgasScanner_extern = "the 'extern' key
 //--- Syntax error message for terminal '$false$' :
 static const char * gSyntaxErrorMessage_galgasScanner_false = "the 'false' keyword" ;
 
+//--- Syntax error message for terminal '$fileprivate$' :
+static const char * gSyntaxErrorMessage_galgasScanner_fileprivate = "the 'fileprivate' keyword" ;
+
 //--- Syntax error message for terminal '$filewrapper$' :
 static const char * gSyntaxErrorMessage_galgasScanner_filewrapper = "the 'filewrapper' keyword" ;
 
@@ -551,8 +554,8 @@ static const char * gSyntaxErrorMessage_galgasScanner__21__5E_ = "the '!^' delim
 
 C_String C_Lexique_galgasScanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
   C_String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 156)) {
-    static const char * syntaxErrorMessageArray [156] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 157)) {
+    static const char * syntaxErrorMessageArray [157] = {kEndOfSourceLexicalErrorMessage,
         gSyntaxErrorMessage_galgasScanner_identifier,
         gSyntaxErrorMessage_galgasScanner_double_2E_xxx,
         gSyntaxErrorMessage_galgasScanner_literalInt,
@@ -599,6 +602,7 @@ C_String C_Lexique_galgasScanner::getMessageForTerminal (const int16_t inTermina
         gSyntaxErrorMessage_galgasScanner_extension,
         gSyntaxErrorMessage_galgasScanner_extern,
         gSyntaxErrorMessage_galgasScanner_false,
+        gSyntaxErrorMessage_galgasScanner_fileprivate,
         gSyntaxErrorMessage_galgasScanner_filewrapper,
         gSyntaxErrorMessage_galgasScanner_for,
         gSyntaxErrorMessage_galgasScanner_fixit,
@@ -1266,6 +1270,22 @@ static const utf32 kUnicodeString_galgasScanner_false [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('l'),
   TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$fileprivate$'
+static const utf32 kUnicodeString_galgasScanner_fileprivate [] = {
+  TO_UNICODE ('f'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('v'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('t'),
   TO_UNICODE ('e'),
   TO_UNICODE (0)
 } ;
@@ -2042,7 +2062,7 @@ int16_t C_Lexique_galgasScanner::search_into_galgasDelimitorsList (const C_Strin
 //             Key words table 'galgasKeyWordList'      
 //----------------------------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_galgasKeyWordList = 90 ;
+static const int32_t ktable_size_galgasScanner_galgasKeyWordList = 91 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_galgasKeyWordList [ktable_size_galgasScanner_galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_as, 2, C_Lexique_galgasScanner::kToken_as),
@@ -2134,6 +2154,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_galgasKeyWor
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_sortedlist, 10, C_Lexique_galgasScanner::kToken_sortedlist),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_valueclass, 10, C_Lexique_galgasScanner::kToken_valueclass),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_constructor, 11, C_Lexique_galgasScanner::kToken_constructor),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_fileprivate, 11, C_Lexique_galgasScanner::kToken_fileprivate),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_filewrapper, 11, C_Lexique_galgasScanner::kToken_filewrapper)
 } ;
 
@@ -2412,6 +2433,11 @@ C_String C_Lexique_galgasScanner::getCurrentTokenString (const cToken * inTokenP
     case kToken_false:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("false") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken_fileprivate:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("fileprivate") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_filewrapper:
@@ -3961,6 +3987,7 @@ GALGAS_stringlist C_Lexique_galgasScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("extension") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("extern") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("false") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("fileprivate") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("filewrapper") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("for") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("fixit") COMMA_THERE) ;
@@ -4224,6 +4251,7 @@ static void getKeywordsForIdentifier_galgasScanner (const C_String & inIdentifie
     ioList.appendObject ("sortedlist") ;
     ioList.appendObject ("valueclass") ;
     ioList.appendObject ("constructor") ;
+    ioList.appendObject ("fileprivate") ;
     ioList.appendObject ("filewrapper") ;
     ioList.sortArrayUsingCompareMethod() ;
   }
@@ -4240,7 +4268,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner, getKeywordsForIdentifie
 //----------------------------------------------------------------------------------------------------------------------
 
 uint32_t C_Lexique_galgasScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [156] = {0,
+  static const uint32_t kTerminalSymbolStyles [157] = {0,
     0 /* galgasScanner_1_identifier */,
     8 /* galgasScanner_1_double_2E_xxx */,
     7 /* galgasScanner_1_literalInt */,
@@ -4287,6 +4315,7 @@ uint32_t C_Lexique_galgasScanner::styleIndexForTerminal (const int32_t inTermina
     1 /* galgasScanner_1_extension */,
     1 /* galgasScanner_1_extern */,
     1 /* galgasScanner_1_false */,
+    1 /* galgasScanner_1_fileprivate */,
     1 /* galgasScanner_1_filewrapper */,
     1 /* galgasScanner_1_for */,
     1 /* galgasScanner_1_fixit */,
