@@ -6,13 +6,13 @@ class cNode_%!TYPE_IDENTIFIER% : public GALGAS_%!TYPE_IDENTIFIER%_2D_element {
   public: int32_t mBalance ;
 
   public: cNode_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & in_key%
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
-  do %,\n%!^%const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inProperty_%![mPropertyName identifierRepresentation]
+for (propertyTypeEntry propertyName 2*) in CURRENT_PROPERTY_LIST
+  do %,\n%!^%const GALGAS_%![propertyTypeEntry identifierRepresentation]% & inProperty_%![propertyName identifierRepresentation]
 end
 %) :
   GALGAS_%!TYPE_IDENTIFIER%_2D_element (in_key%
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
-  do %, inProperty_%![mPropertyName identifierRepresentation]
+for (* propertyName 2*) in CURRENT_PROPERTY_LIST
+  do %, inProperty_%![propertyName identifierRepresentation]
 end
 %),
   mInfPtr (NULL),
@@ -159,8 +159,8 @@ end
         outEntryAlreadyPresent = true ;
         if (inEntryOverrideAllowed) {
 %
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
-  do %          ioRootPtr->mProperty_%![mPropertyName identifierRepresentation]% = inNewNode.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+for (* propertyName 2*) in CURRENT_PROPERTY_LIST
+  do %          ioRootPtr->mProperty_%![propertyName identifierRepresentation]% = inNewNode.mProperty_%![propertyName identifierRepresentation]% ;\n%
 end
 %        }
       }
@@ -446,8 +446,8 @@ GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const
 
 cNode_%!TYPE_IDENTIFIER%::cNode_%!TYPE_IDENTIFIER% (cNode_%!TYPE_IDENTIFIER% * inNode) :
 GALGAS_%!TYPE_IDENTIFIER%_2D_element (inNode->mProperty_key%
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
-  do %, inNode->mProperty_%![mPropertyName identifierRepresentation]
+for (* propertyName 2*) in CURRENT_PROPERTY_LIST
+  do %, inNode->mProperty_%![propertyName identifierRepresentation]
 end
 %),
 mInfPtr (NULL),
@@ -499,13 +499,13 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey%
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
-  do (IDX) %,\n%!^%const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inArgument%![IDX string]
+for (propertyTypeEntry 3*) in CURRENT_PROPERTY_LIST
+  do (IDX) %,\n%!^%const GALGAS_%![propertyTypeEntry identifierRepresentation]% & inArgument%![IDX string]
 end
 %,\n %!^%C_Compiler * /* inCompiler */%
 %\n %!^%COMMA_LOCATION_ARGS) {\n%
 %  GALGAS_%!TYPE_IDENTIFIER%_2D_element newElement (inKey%
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
+for (4*) in CURRENT_PROPERTY_LIST
   do (IDX) %, inArgument%![IDX string]
 end
 %) ;
@@ -532,8 +532,8 @@ GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_hasKey (%?^%const GALGAS_%!KEY_TYP
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_searchKey (%?^%GALGAS_%!KEY_TYPE_IDENTIFIER% inKey%
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
-  do (IDX) %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
+for (propertyTypeEntry 3*) in CURRENT_PROPERTY_LIST
+  do (IDX) %,\n%!^%GALGAS_%![propertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
 end
 %,\n %!^%C_Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) const {
@@ -550,22 +550,22 @@ end
   }
   if (NULL == p) {
 %
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do (IDX)
+for (4*) in CURRENT_PROPERTY_LIST do (IDX)
   %    outArgument%![IDX string]%.drop () ;\n%
 end
 %  }else{
     macroValidSharedObject (p, cNode_%!TYPE_IDENTIFIER%) ;
 %
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do (IDX)
-  %    outArgument%![IDX string]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+for (* propertyName 2*) in CURRENT_PROPERTY_LIST do (IDX)
+  %    outArgument%![IDX string]% = p->mProperty_%![propertyName identifierRepresentation]% ;\n%
 end
 %  }
 }
 
 //----------------------------------------------------------------------------------------------------------------------\n\n%
 %void GALGAS_%!TYPE_IDENTIFIER%::setter_removeKey (%?^%GALGAS_%!KEY_TYPE_IDENTIFIER% inKey%
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
-  do (IDX) %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
+for (propertyTypeEntry 3*) in CURRENT_PROPERTY_LIST
+  do (IDX) %,\n%!^%GALGAS_%![propertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
 end
 %,\n %!^%C_Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) {
@@ -584,38 +584,62 @@ end
   }
   if (NULL == p) {
 %
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do (IDX)
+for (4*) in CURRENT_PROPERTY_LIST do (IDX)
   %    outArgument%![IDX string]%.drop () ;\n%
 end
 %  }else{
     macroValidSharedObject (p, cNode_%!TYPE_IDENTIFIER%) ;
 %
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do (IDX)
-  %    outArgument%![IDX string]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+for (* propertyName 2*) in CURRENT_PROPERTY_LIST do (IDX)
+  %    outArgument%![IDX string]% = p->mProperty_%![propertyName identifierRepresentation]% ;\n%
 end
 %  }
 }
 
-%for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do
+%for (propertyTypeEntry propertyName 2*) in CURRENT_PROPERTY_LIST do
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
-  %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%ForKey (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey,\n%
+  %GALGAS_%![propertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![propertyName identifierRepresentation]%ForKey (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey,\n%
   %                                               %!^%C_Compiler * inCompiler\n%
   %                                               %!^%COMMA_LOCATION_ARGS) const {\n%
-  %  GALGAS_%![mPropertyTypeEntry identifierRepresentation]% result ;\n%
+  %  GALGAS_%![propertyTypeEntry identifierRepresentation]% result ;\n%
   %  if (isValid () && inKey.isValid ()) {\n%
   %  const cNode_%!TYPE_IDENTIFIER% * p = mSharedDict->findEntryInDict (inKey) ;\n%
   %   if (NULL == p) {\n%
   %    //--- Build error message\n%
   %      C_String message ;\n%
-  %      message << "cannot get %![mPropertyName identifierRepresentation]% ForKey in dict: the key does not exist" ;\n%
+  %      message << "cannot get %![propertyName identifierRepresentation]% ForKey in dict: the key does not exist" ;\n%
   %    //--- Emit error message\n%
   %      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;\n%
   %    }else{\n%
   %      macroValidSharedObject (p, cNode_%!TYPE_IDENTIFIER%) ;\n%
-  %      result = p->mProperty_%![mPropertyName identifierRepresentation]%  ;\n%
+  %      result = p->mProperty_%![propertyName identifierRepresentation]%  ;\n%
   %    }\n%
   %  }\n%
   %  return result ;\n%
+  %}\n\n%
+end 
+
+
+for (propertyTypeEntry propertyName 2*) in CURRENT_PROPERTY_LIST do
+  %//----------------------------------------------------------------------------------------------------------------------\n\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[propertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGAS_%![propertyTypeEntry identifierRepresentation]% inPropertyValue,\n%
+  %                           %!^%GALGAS_%!KEY_TYPE_IDENTIFIER% inKey,\n%
+  %                           %!^%C_Compiler * inCompiler\n%
+  %                           %!^%COMMA_LOCATION_ARGS) {\n%
+  %  if (isValid () && inKey.isValid ()) {\n%
+  %    insulate (THERE) ;\n%
+  %    macroUniqueSharedObject (mSharedDict) ;\n%
+  %    cNode_%!TYPE_IDENTIFIER% * p = mSharedDict->findEntryInDict (inKey) ;\n%
+  %    if (NULL == p) {\n%
+  %    //--- Build error message\n%
+  %      C_String message ;\n%
+  %      message << "cannot set%![[propertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey in dict: the key does not exist" ;\n%
+  %    //--- Emit error message\n%
+  %      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;\n%
+  %    }else{\n%
+  %      p->mProperty_%![propertyName identifierRepresentation]% = inPropertyValue ;\n%
+  %    }\n%
+  %  }\n%
   %}\n\n%
 end 
 
@@ -737,18 +761,18 @@ GALGAS_%!KEY_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current_key (LOCAT
   return p->mElement.mProperty_key ;
 }
 
-%for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do (IDX)
+%for (propertyTypeEntry propertyName 2*) in CURRENT_PROPERTY_LIST do (IDX)
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
-  %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %GALGAS_%![propertyTypeEntry identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![propertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cCollectionElement_%!TYPE_IDENTIFIER%* p = dynamic_cast  <const cCollectionElement_%!TYPE_IDENTIFIER%*> (currentObjectPtr (THERE)) ;\n%
   %  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
-  %  return p->mElement.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+  %  return p->mElement.mProperty_%![propertyName identifierRepresentation]% ;\n%
   %}\n\n%
 end 
 %//----------------------------------------------------------------------------------------------------------------------\n\n%
 %bool GALGAS_%!TYPE_IDENTIFIER%::optional_searchKey (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey%
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
-  do (IDX) %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
+for (propertyTypeEntry 3*) in CURRENT_PROPERTY_LIST
+  do (IDX) %,\n%!^%GALGAS_%![propertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
 end
 %) const {\n%
 %  const cNode_%!TYPE_IDENTIFIER% * p = NULL ;\n%
@@ -758,11 +782,11 @@ end
 %  const bool result = NULL != p ;\n%
 %  if (result) {\n%
 %    macroValidSharedObject (p, cNode_%!TYPE_IDENTIFIER%) ;\n%
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do (IDX)
-  %    outArgument%![IDX string]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+for (propertyTypeEntry propertyName hasSetter hasSelector) in CURRENT_PROPERTY_LIST do (IDX)
+  %    outArgument%![IDX string]% = p->mProperty_%![propertyName identifierRepresentation]% ;\n%
 end
 %  }else{\n%
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do (IDX)
+for (propertyTypeEntry propertyName hasSetter hasSelector) in CURRENT_PROPERTY_LIST do (IDX)
   %    outArgument%![IDX string]%.drop () ;\n%
 end
 %  }\n%

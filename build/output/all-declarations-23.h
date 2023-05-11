@@ -1290,34 +1290,3 @@ void routine_generateFunction (const class GALGAS_string constinArgument0,
                                class C_Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Function 'methodNameForUsefulEntitiesGraph'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_lstring function_methodNameForUsefulEntitiesGraph (const class GALGAS_string & constinArgument0,
-                                                                const class GALGAS_lstring & constinArgument1,
-                                                                class C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'analyzeRoutineBody'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_analyzeRoutineBody (const class GALGAS_lstring constinArgument0,
-                                 class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                 const class GALGAS_analysisContext constinArgument2,
-                                 class GALGAS_unifiedTypeMap & ioArgument3,
-                                 const class GALGAS_formalParameterListAST constinArgument4,
-                                 const class GALGAS_typedPropertyList constinArgument5,
-                                 const class GALGAS_typedPropertyList constinArgument6,
-                                 const class GALGAS_semanticInstructionListAST constinArgument7,
-                                 const class GALGAS_location constinArgument8,
-                                 class GALGAS_semanticInstructionListForGeneration & outArgument9,
-                                 class GALGAS_formalParameterListForGeneration & outArgument10,
-                                 class C_Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
-

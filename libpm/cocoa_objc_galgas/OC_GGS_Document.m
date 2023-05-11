@@ -157,13 +157,13 @@
     context:NULL
   ] ;
   [[mResultOutlineView tableColumnWithIdentifier:@"count"]
-    bind:@"value"
-    toObject:mFoundEntryTreeController
-    withKeyPath:@"arrangedObjects.countString"
-    options:nil
+    bind: NSValueBinding
+    toObject: mFoundEntryTreeController
+    withKeyPath: @"arrangedObjects.countString"
+    options: nil
   ] ;
   [[mResultOutlineView tableColumnWithIdentifier:@"result"]
-    bind:@"value"
+    bind: NSValueBinding
     toObject:mFoundEntryTreeController
     withKeyPath:@"arrangedObjects.foundItem"
     options:nil
@@ -196,14 +196,14 @@
   ] ;
 //---
   [mSourceFilePathControl
-    bind:@"value"
+    bind: NSValueBinding
     toObject:mSourceDisplayArrayControllerHigh
     withKeyPath:@"selection.sourceURL.path"
     options:nil    
   ] ;
 //---
   [[mDisplayDescriptorTableViewHigh tableColumnWithIdentifier:@"source"]
-    bind:@"value"
+    bind: NSValueBinding
     toObject:mSourceDisplayArrayControllerHigh
     withKeyPath:@"arrangedObjects.title"
     options:nil    
@@ -217,7 +217,7 @@
   ] ;
 //---
   [[mDisplayDescriptorTableViewHigh tableColumnWithIdentifier:@"remove"]
-    bind:@"value"
+    bind: NSValueBinding
     toObject:mSourceDisplayArrayControllerHigh
     withKeyPath:@"arrangedObjects.imageForClosingInUserInterface"
     options:nil    
@@ -227,8 +227,8 @@
   mDisplayDescriptorTableViewHigh.action = @selector (clickOnSourceTableViewHigh:) ;
   mDisplayDescriptorTableViewHigh.dataSource = self ;
   [mDisplayDescriptorTableViewHigh
-    registerForDraggedTypes: [NSArray arrayWithObject: (NSString*) kUTTypeFileURL]
-//    registerForDraggedTypes: [NSArray arrayWithObjects: (NSString*) kPasteboardTypeFileURLPromise, @"source.path.molinaro.name", nil]
+//    registerForDraggedTypes: [NSArray arrayWithObject: (NSString*) kUTTypeFileURL]
+    registerForDraggedTypes: [NSArray arrayWithObjects: (NSString*) kPasteboardTypeFileURLPromise, @"source.path.molinaro.name", nil]
   ] ;
 //---
   [mBuildProgressIndicator startAnimation:nil] ;
@@ -237,13 +237,13 @@
     forKey:@"NSValueTransformerName"
   ] ;
   [mStartBuildButton
-    bind:@"hidden"
+    bind: NSHiddenBinding
     toObject:self
     withKeyPath:@"mBuildTaskIsRunning"
     options:nil
   ] ;
   [mBuildProgressIndicator
-    bind:@"hidden"
+    bind: NSHiddenBinding
     toObject:self
     withKeyPath:@"mBuildTaskIsRunning"
     options:negateTransformer    
@@ -255,7 +255,7 @@
     options:nil    
   ] ;
   [mStopBuildButton
-    bind:@"hidden"
+    bind: NSHiddenBinding
     toObject:self
     withKeyPath:@"mBuildTaskIsRunning"
     options:negateTransformer    
@@ -302,36 +302,30 @@
   // NSLog (@"DONE") ;
 //---
   [mCaseSensitiveSearchCheckbox
-    bind:@"value"
-    toObject:[NSUserDefaultsController sharedUserDefaultsController] 
-    withKeyPath:@"values.SENSITIVE-SEARCH" 
-    options:nil
+    bind: NSValueBinding
+    toObject: [NSUserDefaultsController sharedUserDefaultsController]
+    withKeyPath: @"values.SENSITIVE-SEARCH"
+    options: nil
   ] ;
   [mGlobalReplaceTextField
-    bind:@"value"
-    toObject:[NSUserDefaultsController sharedUserDefaultsController] 
-    withKeyPath:@"values.GLOBAL-REPLACE-FIELD" 
-    options:nil
+    bind: NSValueBinding
+    toObject: [NSUserDefaultsController sharedUserDefaultsController]
+    withKeyPath: @"values.GLOBAL-REPLACE-FIELD"
+    options: nil
   ] ;
-//  [mSearchMatrix
-//    bind:@"selectedIndex"
-//    toObject:[NSUserDefaultsController sharedUserDefaultsController]
-//    withKeyPath:[NSString stringWithFormat:@"values.searchMatrixFor:%@", mBaseFilePreferenceKey]
-//    options:nil
-//  ] ;
   [[NSUserDefaults standardUserDefaults]
-    addObserver:self
-    forKeyPath:[NSString stringWithFormat:@"searchMatrixFor:%@", mBaseFilePreferenceKey]
-    options:NSKeyValueObservingOptionNew
-    context:NULL
+    addObserver: self
+    forKeyPath: [NSString stringWithFormat:@"searchMatrixFor:%@", mBaseFilePreferenceKey]
+    options: NSKeyValueObservingOptionNew
+    context :NULL
   ] ;
 //  [self updateDirectoryListVisibility] ;
 //--- Configuring recent search menu
   NSMenu * cellMenu = [[NSMenu alloc]
-    initWithTitle:NSLocalizedString(@"Search Menu", @"Search Menu title")
+    initWithTitle: NSLocalizedString(@"Search Menu", @"Search Menu title")
   ] ;
   NSMenuItem * item = [[NSMenuItem alloc]
-    initWithTitle:NSLocalizedString(@"Clear", @"Clear menu title")
+    initWithTitle: NSLocalizedString(@"Clear", @"Clear menu title")
     action:NULL
     keyEquivalent:@""
   ];
@@ -342,7 +336,8 @@
   [cellMenu insertItem:item atIndex:1];
   item = [[NSMenuItem alloc]
     initWithTitle:NSLocalizedString(@"Recent Searches", @"Recent Searches menu title")
-    action:NULL keyEquivalent:@""
+    action:NULL
+    keyEquivalent:@""
   ];
   [item setTag:NSSearchFieldRecentsTitleMenuItemTag];
   [cellMenu insertItem:item atIndex:2];
@@ -355,56 +350,6 @@
   [cellMenu insertItem:item atIndex:3];
   id searchCell = [mGlobalSearchTextField cell];
   [searchCell setSearchMenuTemplate:cellMenu];
-
-//--- Excluded directories
-//  mExcludedDirectoryArrayController = [NSArrayController new] ;
-//  mAddExcludedDirectoryButton.action = @selector (addExcludedDirectoryAction:) ;
-//  mAddExcludedDirectoryButton.target = self ;
-//  mRemoveExcludedDirectoryButton.action = @selector (remove:) ;
-//  mRemoveExcludedDirectoryButton.target = mExcludedDirectoryArrayController ;
-//  [mExcludedDirectoryArrayController
-//    bind:@"contentArray"
-//    toObject:[NSUserDefaultsController sharedUserDefaultsController]
-//    withKeyPath:[NSString stringWithFormat:@"values.excludedDirectoryArray:%@", mBaseFilePreferenceKey] // self.fileURL.absoluteString.identifierRepresentation]
-//    options:nil
-//  ] ;
-//  [mRemoveExcludedDirectoryButton
-//    bind:@"enabled"
-//    toObject:mExcludedDirectoryArrayController
-//    withKeyPath:@"canRemove"
-//    options:nil
-//  ] ;
-//  [[mExcludedDirectoryTableView tableColumnWithIdentifier:@"path"]
-//    bind:@"value"
-//    toObject:mExcludedDirectoryArrayController
-//    withKeyPath:@"arrangedObjects"
-//    options:nil
-//  ] ;
-
-//--- Excplicit search in directories
-//  mExplicitSearchDirectoryArrayController = [NSArrayController new] ;
-//  mAddExplicitSearchDirectoryButton.action = @selector (addExplicitSearchDirectoryAction:) ;
-//  mAddExplicitSearchDirectoryButton.target = self ;
-//  mRemoveExplicitSearchDirectoryButton.action = @selector (remove:) ;
-//  mRemoveExplicitSearchDirectoryButton.target = mExplicitSearchDirectoryArrayController ;
-//  [mExplicitSearchDirectoryArrayController
-//    bind:@"contentArray"
-//    toObject:[NSUserDefaultsController sharedUserDefaultsController]
-//    withKeyPath:[NSString stringWithFormat:@"values.searchDirectoryArray:%@", mBaseFilePreferenceKey] // self.fileURL.absoluteString.identifierRepresentation]
-//    options:nil
-//  ] ;
-//  [mRemoveExplicitSearchDirectoryButton
-//    bind:@"enabled"
-//    toObject:mExplicitSearchDirectoryArrayController
-//    withKeyPath:@"canRemove"
-//    options:nil
-//  ] ;
-//  [[mExplicitSearchDirectoryTableView tableColumnWithIdentifier:@"path"]
-//    bind:@"value"
-//    toObject:mExplicitSearchDirectoryArrayController
-//    withKeyPath:@"arrangedObjects"
-//    options:nil
-//  ] ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -448,16 +393,16 @@
   ] ;
 //---
   [mStartBuildButton
-    unbind:@"hidden"
+    unbind: NSHiddenBinding
   ] ;
   [mBuildProgressIndicator
-    unbind:@"hidden"
+    unbind: NSHiddenBinding
   ] ;
   [mStopBuildButton
-    unbind:@"enabled"
+    unbind: NSEnabledBinding
   ] ;
   [mStopBuildButton
-    unbind:@"hidden"
+    unbind: NSHiddenBinding
   ] ;
 //---
   [[mDisplayDescriptorTableViewHigh tableColumnWithIdentifier:@"source"]
@@ -1892,49 +1837,48 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-- (BOOL) tableView: (NSTableView *) inTableView
-         writeRowsWithIndexes: (NSIndexSet *) inRowIndexes
-         toPasteboard: (NSPasteboard*) inPasteboard {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s, inRowIndexes %@", __PRETTY_FUNCTION__, inRowIndexes) ;
-  #endif
-  [inPasteboard declareTypes:[NSArray arrayWithObject:(NSString *) kPasteboardTypeFileURLPromise] owner:self] ;
-  OC_GGS_TextDisplayDescriptor * tdd = [mSourceDisplayArrayControllerHigh.selectedObjects objectAtIndex:0] ;
-  [inPasteboard clearContents] ; // clear pasteboard to take ownership
-  [inPasteboard writeObjects:[NSArray arrayWithObject:tdd.sourceURL]] ;
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"tdd.sourceURL %@", tdd.sourceURL) ;
-  #endif
-  return YES;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-//- (id <NSPasteboardWriting>) tableView: (NSTableView *) inTableView
-//                             pasteboardWriterForRow: (NSInteger) inRowIndex {
+//- (BOOL) tableView: (NSTableView *) inTableView
+//         writeRowsWithIndexes: (NSIndexSet *) inRowIndexes
+//         toPasteboard: (NSPasteboard*) inPasteboard {
 //  #ifdef DEBUG_MESSAGES
-//    NSLog (@"%s, inRowIndex %d", __PRETTY_FUNCTION__, inRowIndex) ;
+//    NSLog (@"%s, inRowIndexes %@", __PRETTY_FUNCTION__, inRowIndexes) ;
 //  #endif
-//  id <NSPasteboardWriting> result = nil ;
-//  if ((inRowIndex >= 0) && (inRowIndex < (NSInteger) mDisplayDescriptorArray.count)) {
-//    OC_GGS_TextDisplayDescriptor * tdd = [mSourceDisplayArrayControllerHigh.selectedObjects objectAtIndex:0] ;
-//    NSPasteboardItem * pasteboardItem = [[NSPasteboardItem alloc] init] ;
-//    [pasteboardItem
-////      setPropertyList:@{ @"index": @(inRowIndex), @"item": tdd.sourceURL.path }
-//      setString: tdd.sourceURL.path
-//      forType: @"source.path.molinaro.name"
-//    ] ;
-//    result = pasteboardItem ;
-//  }
-//  return result ;
+//  [inPasteboard declareTypes: [NSArray arrayWithObject:(NSString *) kPasteboardTypeFileURLPromise] owner: self] ;
+//  OC_GGS_TextDisplayDescriptor * tdd = [mSourceDisplayArrayControllerHigh.selectedObjects objectAtIndex: 0] ;
+//  [inPasteboard clearContents] ; // clear pasteboard to take ownership
+//  [inPasteboard writeObjects: [NSArray arrayWithObject: tdd.sourceURL]] ;
+//  #ifdef DEBUG_MESSAGES
+//    NSLog (@"tdd.sourceURL %@", tdd.sourceURL) ;
+//  #endif
+//  return YES;
 //}
 
 //----------------------------------------------------------------------------------------------------------------------
 
-- (NSDragOperation) tableView: (NSTableView*)tv
-                    validateDrop:(id <NSDraggingInfo>)info
-                    proposedRow:(NSInteger)row
-                    proposedDropOperation:(NSTableViewDropOperation)op {
+- (id <NSPasteboardWriting>) tableView: (NSTableView *) inTableView
+                             pasteboardWriterForRow: (NSInteger) inRowIndex {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s, inRowIndex %ld", __PRETTY_FUNCTION__, inRowIndex) ;
+  #endif
+  id <NSPasteboardWriting> result = nil ;
+  if ((inRowIndex >= 0) && (inRowIndex < (NSInteger) mDisplayDescriptorArray.count)) {
+    OC_GGS_TextDisplayDescriptor * tdd = [mSourceDisplayArrayControllerHigh.selectedObjects objectAtIndex:0] ;
+    NSPasteboardItem * pasteboardItem = [[NSPasteboardItem alloc] init] ;
+    [pasteboardItem
+      setString: tdd.sourceURL.path
+      forType: @"source.path.molinaro.name"
+    ] ;
+    result = pasteboardItem ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+- (NSDragOperation) tableView: (NSTableView*) tv
+                    validateDrop: (id <NSDraggingInfo>) info
+                    proposedRow: (NSInteger) row
+                    proposedDropOperation: (NSTableViewDropOperation) op {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -1946,13 +1890,28 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 - (BOOL) tableView: (NSTableView *) inTableView
          acceptDrop: (id <NSDraggingInfo>) inDraggingInfo
          row: (NSInteger) inRow
-         dropOperation:(NSTableViewDropOperation)operation {
+         dropOperation: (NSTableViewDropOperation)operation {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
+//---
+  NSString * filePath = [inDraggingInfo.draggingPasteboard stringForType: @"source.path.molinaro.name"] ;
+  if (filePath != nil) {
+    OC_GGS_DocumentData * documentData = [self findOrAddDocumentWithPath: filePath] ;
+    if (nil != documentData) { // Find a text display descriptor
+      OC_GGS_TextDisplayDescriptor * tdd = [[OC_GGS_TextDisplayDescriptor alloc]
+        initWithDocumentData: documentData
+        displayDocument: self
+      ] ;
+      // NSLog (@"Inserted %@", tdd) ;
+      [mSourceDisplayArrayControllerHigh insertObject: tdd atArrangedObjectIndex: (NSUInteger) inRow] ;
+      [mSourceDisplayArrayControllerHigh setSelectedObjects: [NSArray arrayWithObject:tdd]] ;
+      [self registerConfigurationInPreferences] ;
+    }
+  }
 //--- file pathes
-  NSArray * pathClassArray = [NSArray arrayWithObject:[NSString class]]; // types of objects you are looking for
-  NSArray * arrayOfPathes = [inDraggingInfo.draggingPasteboard readObjectsForClasses:pathClassArray options:nil]; // read objects of those classes
+  NSArray * pathClassArray = [NSArray arrayWithObject: [NSString class]]; // types of objects you are looking for
+  NSArray * arrayOfPathes = [inDraggingInfo.draggingPasteboard readObjectsForClasses: pathClassArray options: nil] ; // read objects of those classes
 //---
   for (NSString * path in arrayOfPathes) {
     OC_GGS_DocumentData * documentData = [self findOrAddDocumentWithPath: path] ;
@@ -1969,7 +1928,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   }
 //--- URLs
   NSArray * urlClassArray = [NSArray arrayWithObject:[NSURL class]]; // types of objects you are looking for
-  NSArray * arrayOfURLs = [inDraggingInfo.draggingPasteboard readObjectsForClasses:urlClassArray options:nil]; // read objects of those classes
+  NSArray * arrayOfURLs = [inDraggingInfo.draggingPasteboard readObjectsForClasses: urlClassArray options: nil]; // read objects of those classes
 //---
   for (NSURL * url in arrayOfURLs) {
     OC_GGS_DocumentData * documentData = [self findOrAddDocumentWithPath:url.path] ;
@@ -1980,7 +1939,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
       ] ;
       // NSLog (@"Inserted %@", tdd) ;
       [mSourceDisplayArrayControllerHigh insertObject: tdd atArrangedObjectIndex: (NSUInteger) inRow] ;
-      [mSourceDisplayArrayControllerHigh setSelectedObjects: [NSArray arrayWithObject:tdd]] ;
+      [mSourceDisplayArrayControllerHigh setSelectedObjects: [NSArray arrayWithObject: tdd]] ;
       [self registerConfigurationInPreferences] ;
     }
   }

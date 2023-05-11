@@ -275,7 +275,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   [colorWell setToolTip: @"Background Color"] ;
   [colorWell setAutoresizingMask: mask] ;
   [colorWell
-    bind:@"value"
+    bind: NSValueBinding
     toObject:udc
     withKeyPath:inBackgroundBindingPath
     options:[NSDictionary dictionaryWithObject:colorTransformer forKey:NSValueTransformerBindingOption]
@@ -290,7 +290,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   [cb setButtonType: NSSwitchButton] ;
   [cb setAutoresizingMask: mask] ;
   [cb
-    bind:@"value"
+    bind: NSValueBinding
     toObject:udc
     withKeyPath:inBackgroundActivationBindingPath
     options:NULL
@@ -329,7 +329,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   [colorWell setToolTip: @"Foreground Color"] ;
   [colorWell setAutoresizingMask: mask] ;
   [colorWell
-    bind:@"value"
+    bind: NSValueBinding
     toObject:udc
     withKeyPath:inForegroundBindingPath
     options:[NSDictionary dictionaryWithObject:colorTransformer forKey:NSValueTransformerBindingOption]
@@ -582,14 +582,14 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     }
   }
 //--- Set up font panel
-  [fontManager setAction:@selector (changeFont:)] ;
+  [fontManager setAction:@selector (changeFontAction:)] ;
   [fontManager setTarget:self] ;
   [fontManager orderFrontFontPanel:self] ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-- (void) changeFont: (id) inSender {
+- (void) changeFontAction: (id) inSender {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -951,7 +951,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     [ud setBool:YES forKey:GGS_uses_page_guide] ;
   }
   [mPageGuideCheckbox
-    bind:@"value"
+    bind: NSValueBinding
     toObject:udc
     withKeyPath:@"values." GGS_uses_page_guide
     options:nil
@@ -966,7 +966,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     [ud setInteger:80 forKey:GGS_page_guide_column] ;
   }
   [mPageGuideColumnTextField
-    bind:@"value"
+    bind: NSValueBinding
     toObject:udc
     withKeyPath:@"values." GGS_page_guide_column
     options:nil
@@ -985,7 +985,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     [ud setValue: archiveData forKey: GGS_editor_background_color] ;
   }
   [mEditorBackgroundColorWell
-    bind:@"value"
+    bind: NSValueBinding
     toObject:udc
     withKeyPath:@"values." GGS_editor_background_color
     options:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -995,7 +995,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   ] ;
 //--- Bind « Prefix by time Utility » checkbox
   [mPrefixByTimeUtilityCheckBox
-    bind:@"value"
+    bind: NSValueBinding
     toObject:udc
     withKeyPath:@"values." GGS_prefix_by_tool_utility
     options:nil
@@ -1021,7 +1021,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     [defaults setInteger:2 forKey:GGS_editor_space_for_tab] ;
   }
   [mTabInsertsSpacesTextField
-    bind:@"value"
+    bind: NSValueBinding
     toObject:udc
     withKeyPath:@"values." GGS_editor_space_for_tab
     options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:NSContinuouslyUpdatesValueBindingOption]
@@ -1056,7 +1056,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     [defaults setBool:YES forKey:GGS_enable_completion] ;
   }
   [mEnableCompletionCheckBox
-    bind:@"value"
+    bind: NSValueBinding
     toObject:udc
     withKeyPath:@"values." GGS_enable_completion
     options:nil
@@ -1103,7 +1103,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     [ud setObject:[NSNumber numberWithBool:YES] forKey:@"PMConvert_CRLF_And_CR_To_LF_AtStartUp"] ;
   }
   [mConvert_CRLF_And_CR_To_LF_AtStartUpButton
-    bind:@"value"
+    bind: NSValueBinding
     toObject:udc
     withKeyPath:@"values.PMConvert_CRLF_And_CR_To_LF_AtStartUp"
     options:NULL
@@ -1113,21 +1113,21 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     [ud setObject:[NSNumber numberWithBool:YES] forKey:@"PMConvert_HTAB_To_SPACE_AtStartUp"] ;
   }
   [mConvert_HTAB_To_SPACE_AtStartUpButton
-    bind:@"value"
+    bind: NSValueBinding
     toObject:udc
     withKeyPath:@"values.PMConvert_HTAB_To_SPACE_AtStartUp"
     options:NULL
   ] ;
 //--- Show Invisible Characters Checkbox
  [mShowInvisibleCharactersCheckBox
-    bind:@"value"
+    bind: NSValueBinding
     toObject:udc
     withKeyPath:@"values.PMShowInvisibleCharacters"
     options:NULL
   ] ;
 //--- Bind command line option text view
   [mCommandLineOptionTextView setFont:[NSFont boldSystemFontOfSize:[NSFont smallSystemFontSize]]] ;
-  [mCommandLineOptionTextView bind:@"value" toObject:self withKeyPath:@"commandLineString" options:nil] ;
+  [mCommandLineOptionTextView bind: NSValueBinding toObject:self withKeyPath:@"commandLineString" options:nil] ;
   [self willChangeValueForKey:@"commandLineString"] ;
   [self  didChangeValueForKey:@"commandLineString"] ;
   [mCommandLineOptionTextView setEditable:NO] ;
