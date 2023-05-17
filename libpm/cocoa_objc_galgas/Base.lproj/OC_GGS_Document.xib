@@ -103,7 +103,7 @@ Gw
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="17" y="719" width="880" height="691"/>
-            <rect key="screenRect" x="0.0" y="967" width="1920" height="1055"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1496" height="933"/>
             <value key="minSize" type="size" width="500" height="350"/>
             <view key="contentView" id="48">
                 <rect key="frame" x="0.0" y="0.0" width="880" height="691"/>
@@ -151,7 +151,7 @@ Gw
                                         <autoresizingMask key="autoresizingMask"/>
                                         <clipView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="mzG-Gg-tSf">
                                             <rect key="frame" x="1" y="1" width="233" height="186"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" translatesAutoresizingMaskIntoConstraints="NO" id="735" customClass="PMTableViewHandlesContextualMenu">
                                                     <rect key="frame" x="0.0" y="0.0" width="233" height="186"/>
@@ -174,10 +174,10 @@ Gw
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView translatesAutoresizingMaskIntoConstraints="NO" id="mWo-ix-8ZB">
-                                                                    <rect key="frame" x="1" y="1" width="203" height="17"/>
+                                                                    <rect key="frame" x="1" y="1" width="203" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S4J-MC-scF">
+                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="S4J-MC-scF">
                                                                             <rect key="frame" x="0.0" y="1" width="203" height="14"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                             <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Sn6-7l-VAs">
@@ -209,8 +209,8 @@ Gw
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4bj-Lp-4cc">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="24" height="14"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                                             <imageCell key="cell" controlSize="small" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Eur-iy-Zfa">
                                                                                 <connections>
                                                                                     <binding destination="7yx-af-30z" name="value" keyPath="objectValue.imageForClosingInUserInterface" id="q9g-E4-VSc"/>
@@ -244,7 +244,7 @@ Gw
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" id="0Yx-gl-pYu">
                                             <rect key="frame" x="1" y="1" width="233" height="463"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesRuler="YES" spellingCorrection="YES" id="704">
                                                     <rect key="frame" x="0.0" y="0.0" width="234" height="463"/>

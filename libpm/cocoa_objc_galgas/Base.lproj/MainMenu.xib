@@ -73,7 +73,7 @@
                         <items>
                             <menuItem title="New…" keyEquivalent="n" id="82">
                                 <connections>
-                                    <action selector="newDocument:" target="-1" id="194"/>
+                                    <action selector="newDocument:" target="411" id="wQ3-1j-npz"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Open…" keyEquivalent="o" id="72">

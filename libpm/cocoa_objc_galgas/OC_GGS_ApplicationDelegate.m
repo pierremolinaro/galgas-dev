@@ -1250,13 +1250,8 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     if (fileExtensions.count > 0) {
       [extensionSet addObjectsFromArray: fileExtensions] ;
     }
-//    for (NSString * extension in fileExtensions) {
-//      NSLog (@"  extension %@", extension) ;
-//    }
-//    [allTypes addObjectsFromArray:a] ;
   }
   return extensionSet ;
-//  return allTypes ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1269,68 +1264,47 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-//--- Get Info.plist file
-  NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
-  // NSLog (@"infoDictionary '%@'", infoDictionary) ;
-  NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
-  // NSLog (@"allDocumentTypes '%@'", allDocumentTypes) ;
-  NSDictionary * docTypeDict = [allDocumentTypes objectAtIndex: (NSUInteger) [inSender tag]] ;
-  NSArray * documentTypeExtensions = [docTypeDict objectForKey:@"CFBundleTypeExtensions"] ;
-  NSString * extension = [documentTypeExtensions objectAtIndex:0] ;
-  // NSLog (@"extension '%@'", extension) ;
+  NSString * extension = [inSender title] ;
+//  // NSLog (@"extension '%@'", extension) ;
   NSSavePanel * savePanel = [inSender representedObject] ;
-//  [savePanel setRequiredFileType:extension] ;
-  [savePanel setAllowedFileTypes:[NSArray arrayWithObject:extension]] ;
+////  [savePanel setRequiredFileType:extension] ;
+  [savePanel setAllowedFileTypes: [NSArray arrayWithObject: extension]] ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-- (void) newDocument: (id) inSender {
+- (IBAction) newDocument: (id) inSender {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   NSSavePanel * savePanel = [NSSavePanel savePanel] ;
   [mNewDocumentTypePopUpButton removeAllItems] ;
-//--- Get Info.plist file
-  NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
-  // NSLog (@"infoDictionary '%@'", infoDictionary) ;
-  NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
-  // NSLog (@"allDocumentTypes '%@'", allDocumentTypes) ;
-  for (NSUInteger i=0 ; i<[allDocumentTypes count] ; i++) {
-    NSDictionary * docTypeDict = [allDocumentTypes objectAtIndex:i] ;
-    // NSLog (@"docTypeDict '%@'", docTypeDict) ;
-    NSArray * documentTypeExtensions = [docTypeDict objectForKey:@"CFBundleTypeExtensions"] ;
-    // NSLog (@"documentTypeExtensions '%@'", documentTypeExtensions) ;
-    NSString * documentTypeRole = [docTypeDict objectForKey:@"CFBundleTypeRole"] ;
-    // NSLog (@"documentTypeRole '%@'", documentTypeRole) ;
-    if ([documentTypeRole isEqualToString:@"Editor"] && ([documentTypeExtensions count] > 0)) {
-      NSString * documentTypeName = [docTypeDict objectForKey:@"CFBundleTypeName"] ;
-      // NSLog (@"documentTypeName '%@'", documentTypeName) ;
-      [mNewDocumentTypePopUpButton addItemWithTitle:documentTypeName] ;
-      NSMenuItem * item = [mNewDocumentTypePopUpButton lastItem] ;
-      [item setTarget:self] ;
-      [item setAction:@selector (changeNewDocumentTypeAction:)] ;
-      [item setTag:(NSInteger) i] ;
-      [item setRepresentedObject:savePanel] ;
-    }
+  NSSet * extensionSet = [self allExtensionsOfCurrentApplication] ;
+ // NSLog (@"extensionArray '%@'", extensionArray) ;
+  for (NSString * extension in extensionSet) {
+    // NSLog (@"  extension '%@'", extension) ;
+    [mNewDocumentTypePopUpButton addItemWithTitle: extension] ;
+    NSMenuItem * item = [mNewDocumentTypePopUpButton lastItem] ;
+    [item setTarget: self] ;
+    [item setAction: @selector (changeNewDocumentTypeAction:)] ;
+    [item setRepresentedObject: savePanel] ;
   }
 //--- Present save panel
-  [savePanel setAllowsOtherFileTypes:NO] ;
-  [savePanel setCanSelectHiddenExtension:YES] ;
-  [savePanel setAccessoryView:mNewDocumentAccessoryView] ;
-  [self changeNewDocumentTypeAction:[mNewDocumentTypePopUpButton itemAtIndex:0]] ;
-//  const NSInteger result = [savePanel runModalForDirectory:nil file:nil] ;
+  [savePanel setAllowsOtherFileTypes: NO] ;
+  [savePanel setCanSelectHiddenExtension: YES] ;
+  [savePanel setAccessoryView: mNewDocumentAccessoryView] ;
+  [self changeNewDocumentTypeAction: [mNewDocumentTypePopUpButton itemAtIndex: 0]] ;
   const NSInteger result = [savePanel runModal] ;
   // NSLog (@"result %d", result) ;
   if (result == NSOKButton) {
     NSString * path = savePanel.URL.path ;
     // NSLog (@"path '%@'", path) ;
     NSError * error = nil ;
-    if ([[NSData data] writeToFile:path options:NSAtomicWrite error:& error]) {
+    if ([[NSData data] writeToFile: path options: NSAtomicWrite error: &error]) {
       NSDocumentController * dc = [NSDocumentController sharedDocumentController] ;
-      [dc openDocumentWithContentsOfURL:[NSURL fileURLWithPath:path] display:YES error:nil] ;
+      [dc openDocumentWithContentsOfURL: [NSURL fileURLWithPath: path] display: YES error: nil] ;
     }else{
-      [NSApp presentError:error] ;
+      [NSApp presentError: error] ;
     }
   }
 }
