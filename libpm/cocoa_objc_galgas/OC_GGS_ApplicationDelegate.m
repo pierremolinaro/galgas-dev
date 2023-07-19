@@ -1265,9 +1265,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   NSString * extension = [inSender title] ;
-//  // NSLog (@"extension '%@'", extension) ;
   NSSavePanel * savePanel = [inSender representedObject] ;
-////  [savePanel setRequiredFileType:extension] ;
   [savePanel setAllowedFileTypes: [NSArray arrayWithObject: extension]] ;
 }
 

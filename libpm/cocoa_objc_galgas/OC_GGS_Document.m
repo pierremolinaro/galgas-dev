@@ -376,7 +376,7 @@
   }
 //---
   [mSourceFilePathControl
-    unbind:@"value"
+    unbind: NSValueBinding
   ] ;
 //---
   [mSourceDisplayArrayControllerHigh
@@ -388,7 +388,7 @@
   ] ;
 //---
   [mSourceDisplayArrayControllerHigh
-    removeObserver:self 
+    removeObserver: self
     forKeyPath:@"selection.textSelectionStart"
   ] ;
 //---
@@ -406,13 +406,13 @@
   ] ;
 //---
   [[mDisplayDescriptorTableViewHigh tableColumnWithIdentifier:@"source"]
-    unbind:@"value"
+    unbind: NSValueBinding
   ] ;
   [[mDisplayDescriptorTableViewHigh tableColumnWithIdentifier:@"source"]
     unbind:@"fontBold"
   ] ;
   [[mDisplayDescriptorTableViewHigh tableColumnWithIdentifier:@"remove"]
-    unbind:@"value"
+    unbind: NSValueBinding
   ] ;
 //---
   [mFoundEntryTreeController
@@ -423,10 +423,10 @@
     forKeyPath:@"selectionIndexPath"
   ] ;
   [[mResultOutlineView tableColumnWithIdentifier:@"count"]
-    unbind:@"value"
+    unbind: NSValueBinding
   ] ;
   [[mResultOutlineView tableColumnWithIdentifier:@"result"]
-    unbind:@"value"
+    unbind: NSValueBinding
   ] ;
   [[mResultOutlineView tableColumnWithIdentifier:@"result"]
     unbind:@"fontBold"
@@ -442,10 +442,10 @@
   ] ;
 //---
   [mCaseSensitiveSearchCheckbox
-    unbind:@"value"
+    unbind: NSValueBinding
   ] ;
   [mGlobalReplaceTextField
-    unbind:@"value"
+    unbind: NSValueBinding
   ] ;
 //  [mSearchMatrix
 //    unbind:@"selectedIndex"
@@ -457,13 +457,8 @@
 //---
   mSourceDisplayArrayControllerHigh = nil ;
   mDisplayDescriptorArray = nil ;
-//---
-//  [mRemoveExcludedDirectoryButton unbind:@"enabled"] ;
-//  [[mExcludedDirectoryTableView tableColumnWithIdentifier:@"path"] unbind:@"value"] ;
-//  [mExcludedDirectoryArrayController unbind:@"contentArray"] ;
-//  mExcludedDirectoryArrayController = nil ;
 //--- Last call
-  [OC_GGS_DocumentData cocoaDocumentWillClose:mDocumentData] ;
+  [OC_GGS_DocumentData cocoaDocumentWillClose: mDocumentData] ;
 //---
   [super removeWindowController:inWindowController] ;
 }

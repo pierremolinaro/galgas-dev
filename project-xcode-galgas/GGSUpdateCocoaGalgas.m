@@ -62,13 +62,18 @@
       [ud setObject: @"/usr/local/bin/" forKey: @"GGS_cli_installation_path"] ;
     }
     [mCLIToolInstallationPath
-      bind: @"value"
+      bind: NSValueBinding
       toObject: ud
       withKeyPath: @"GGS_cli_installation_path"
       options: nil
     ] ;
   //--- Check at startup checkbox
-    [mCheckUpdateAtStartUpCheckBox bind: @"value" toObject: mSparkleUpdater withKeyPath: @"automaticallyChecksForUpdates" options: nil] ;
+    [mCheckUpdateAtStartUpCheckBox
+      bind: NSValueBinding
+      toObject: mSparkleUpdater
+      withKeyPath: @"automaticallyChecksForUpdates"
+      options: nil
+    ] ;
   //--- Populate WebView
     NSURL * url = [NSURL URLWithString: @"https://pierremolinaro.github.io/galgas-distribution/release-notes.html"] ;
     NSURLRequest * request = [[NSURLRequest alloc] initWithURL: url] ;
