@@ -52,7 +52,7 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
 
-  rule <expression_or> !@semanticExpressionAST outExpression
+  rule <expression_or_ggs3> !@semanticExpressionAST outExpression
 
   #·····················································································································
 
@@ -113,7 +113,7 @@ syntax extension galgas3InstructionsSyntax {
           constantName = ["" here]
         end
         $=$
-        <expression_or> ?let expression
+        <expression_or_ggs3> ?let expression
         let endOfReceiverExpression = @location.here
         select
           outExpressionList += !.letExp {
@@ -135,13 +135,13 @@ syntax extension galgas3InstructionsSyntax {
       or
         $let$
         $[$
-        <expression> ?let @semanticExpressionAST receiverExpression
+        <expression_ggs3> ?let @semanticExpressionAST receiverExpression
         $identifier$ ?let @lstring optionalMethodName
         var @optionalMethodActualArgumentList optionalMethodActualArgumentList = {}
         repeat
         while
           $!$ ?let selector
-          <expression> ?let expression
+          <expression_ggs3> ?let expression
           optionalMethodActualArgumentList += !selector !.actualOutput {!expression: expression !location: .here}
         while
           $?$ ?let selector
@@ -189,7 +189,7 @@ syntax extension galgas3InstructionsSyntax {
           !parameters: optionalMethodActualArgumentList
         }
       or
-        <expression> ?let expression
+        <expression_ggs3> ?let expression
         outExpressionList += !.regularExp {!exp: expression}
       end
     while

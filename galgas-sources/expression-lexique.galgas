@@ -15,7 +15,7 @@ syntax extension galgas3ExpressionSyntax {
 
   #·····················································································································
   
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> !@semanticExpressionAST outExpression {
     $[$
     $lexique$
     $identifier$ ?let lexiqueName

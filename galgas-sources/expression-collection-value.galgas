@@ -40,7 +40,7 @@ syntax extension galgas3ExpressionSyntax {
 
   #·····················································································································
   
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> !@semanticExpressionAST outExpression {
     <optional_type> ?let @lstring typeName
     ${$
     var @collectionValueElementList elementList = {}
@@ -67,7 +67,7 @@ syntax extension galgas3ExpressionSyntax {
     var @actualOutputExpressionList expressionList = {}
     repeat
       $!$ ?let selector
-      <expression> ?let @semanticExpressionAST expression
+      <expression_ggs3> ?let @semanticExpressionAST expression
       expressionList += !selector !expression !@location.here
     while
     end
@@ -77,7 +77,7 @@ syntax extension galgas3ExpressionSyntax {
   #·····················································································································
   
   rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
-    <expression> ?let @semanticExpressionAST expression
+    <expression_ggs3> ?let @semanticExpressionAST expression
     outValueElement = @expressionCollectionValue.new {!expression !@location.here}
   }
 

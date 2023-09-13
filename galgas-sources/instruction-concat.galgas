@@ -81,7 +81,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     select
       $-=$
-      <expression> ?let @semanticExpressionAST expression
+      <expression_ggs3> ?let @semanticExpressionAST expression
       outInstruction = @minusEqualExpressionInstructionAST.new {
         !instructionLocation
         !inHasSelfPrefix
@@ -101,7 +101,7 @@ syntax extension galgas3InstructionsSyntax {
           !expressionList
         }
       or
-        <expression> ?let @semanticExpressionAST expression
+        <expression_ggs3> ?let @semanticExpressionAST expression
         outInstruction = @plusEqualExpressionInstructionAST.new {
           !instructionLocation
           !inHasSelfPrefix
@@ -112,7 +112,7 @@ syntax extension galgas3InstructionsSyntax {
       end
     or
       $*=$
-      <expression> ?let @semanticExpressionAST expression
+      <expression_ggs3> ?let @semanticExpressionAST expression
       outInstruction = @mulEqualExpressionInstructionAST.new {
         !instructionLocation
         !inHasSelfPrefix
@@ -122,7 +122,7 @@ syntax extension galgas3InstructionsSyntax {
       }
     or
       $/=$
-      <expression> ?let @semanticExpressionAST expression
+      <expression_ggs3> ?let @semanticExpressionAST expression
       outInstruction = @divEqualExpressionInstructionAST.new {
         !instructionLocation
         !inHasSelfPrefix
@@ -139,7 +139,7 @@ syntax extension galgas3InstructionsSyntax {
     outExpressionList = {}
     repeat
       $!$ ?let selector
-      <expression> ?let @semanticExpressionAST expression
+      <expression_ggs3> ?let @semanticExpressionAST expression
       outExpressionList += !selector !expression !@location.here
     while
     end

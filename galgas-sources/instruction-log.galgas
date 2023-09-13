@@ -40,7 +40,7 @@ syntax extension galgas3InstructionsSyntax {
       or
         $"string"$ ?let logMessage
         $:$
-        <expression> ?let logExpression
+        <expression_ggs3> ?let logExpression
         logList += !logMessage !logExpression
       end
     while

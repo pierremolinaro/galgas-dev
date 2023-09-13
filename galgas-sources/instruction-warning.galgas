@@ -20,9 +20,9 @@ syntax extension galgas3InstructionsSyntax {
     !@semanticInstructionAST outInstruction {
     $warning$
     let instructionLocation = @location.here
-    <expression> ?let @semanticExpressionAST mReceiverExpression
+    <expression_ggs3> ?let @semanticExpressionAST mReceiverExpression
     $:$
-    <expression> ?let @semanticExpressionAST mWarningExpression
+    <expression_ggs3> ?let @semanticExpressionAST mWarningExpression
     <issue_fixit> ?let @fixitListAST fixitListAST
     outInstruction = @warningInstructionAST.new {
       !instructionLocation

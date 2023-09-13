@@ -36,7 +36,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
   
   rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
 
-  rule <expression> !@semanticExpressionAST outExpression
+  rule <expression_ggs3> !@semanticExpressionAST outExpression
 
   #·····················································································································
   #    A T T R I B U T E    I N    C O L L E C T I O N
@@ -66,7 +66,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
       initialization = .none
     or
       $=$
-      <expression> ?let expression
+      <expression_ggs3> ?let expression
       initialization = .some {!expression: expression}
     end
     ioAttributeInCollectionList +=
@@ -94,7 +94,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
       initialization = .none
     or
       $=$
-      <expression> ?let expression
+      <expression_ggs3> ?let expression
       initialization = .some {!expression: expression}
     end
     ioAttributeInCollectionList +=

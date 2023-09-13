@@ -17,7 +17,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <expression> !@semanticExpressionAST outExpressionAST
+  rule <expression_ggs3> !@semanticExpressionAST outExpressionAST
 
   #·····················································································································
   #          F O R M A L    P A R A M E T E R    L I S T
@@ -70,7 +70,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner) {
     repeat
     while
       $!$ ?let selector
-      <expression> ?let @semanticExpressionAST e
+      <expression_ggs3> ?let @semanticExpressionAST e
       let @location endOfExpressionLocation = @location.here
       outActualParameterList += !@outputActualParameterAST.new {
         !selector

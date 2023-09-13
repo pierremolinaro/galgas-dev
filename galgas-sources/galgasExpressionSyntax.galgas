@@ -19,9 +19,9 @@ syntax galgas3ExpressionSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> !@semanticExpressionAST outExpression {
     $($
-    <expression> ? outExpression
+    <expression_ggs3> ? outExpression
     $)$
   }
 

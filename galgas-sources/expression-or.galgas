@@ -48,38 +48,38 @@ syntax extension galgas3ExpressionSyntax {
 
   #·····················································································································
   
-  rule <expression_or> !@semanticExpressionAST outExpression {
-    <expression_and> ? outExpression
+  rule <expression_or_ggs3> !@semanticExpressionAST outExpression {
+    <expression_and_ggs3> ? outExpression
     repeat
     while
       let operatorLocation = @location.here
       $|$
       let leftOperand = outExpression
-      <expression_and> ?let rightOperand
+      <expression_and_ggs3> ?let rightOperand
       outExpression = @orExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $||$
       let leftOperand = outExpression
-      <expression_and> ?let rightOperand
+      <expression_and_ggs3> ?let rightOperand
       outExpression = @orShortExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $^$
       let leftOperand = outExpression
-      <expression_and> ?let rightOperand
+      <expression_and_ggs3> ?let rightOperand
       outExpression = @xorExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $...$
       let leftOperand = outExpression
-      <expression_and> ?let rightOperand
+      <expression_and_ggs3> ?let rightOperand
       outExpression = @closedSliceExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $..<$
       let leftOperand = outExpression
-      <expression_and> ?let rightOperand
+      <expression_and_ggs3> ?let rightOperand
       outExpression = @openedSliceExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     end
   }

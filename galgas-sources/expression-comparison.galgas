@@ -30,56 +30,56 @@ syntax extension galgas3ExpressionSyntax {
 
   #·····················································································································
   
-  rule <relation_factor> !@semanticExpressionAST outExpression {
-    <simple_expression> ? outExpression
+  rule <relation_factor_ggs3> !@semanticExpressionAST outExpression {
+    <simple_expression_ggs3> ? outExpression
     repeat
     while
       let operatorLocation = @location.here
       $==$
       let leftOperand = outExpression
-      <simple_expression> ?let rightOperand
+      <simple_expression_ggs3> ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.equal !rightOperand}
     while
       let operatorLocation = @location.here
       $!=$
       let leftOperand = outExpression
-      <simple_expression> ?let rightOperand
+      <simple_expression_ggs3> ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.notEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $<=$
       let leftOperand = outExpression
-      <simple_expression> ?let rightOperand
+      <simple_expression_ggs3> ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.lowerOrEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $>=$
       let leftOperand = outExpression
-      <simple_expression> ?let rightOperand
+      <simple_expression_ggs3> ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.greaterOrEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $>$
       let leftOperand = outExpression
-      <simple_expression> ?let rightOperand
+      <simple_expression_ggs3> ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.greaterThan !rightOperand}
     while
       let operatorLocation = @location.here
       $<$
       let leftOperand = outExpression
-      <simple_expression> ?let rightOperand
+      <simple_expression_ggs3> ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.lowerThan !rightOperand}
     while
       let operatorLocation = @location.here
       $===$
       let leftOperand = outExpression
-      <simple_expression> ?let rightOperand
+      <simple_expression_ggs3> ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.sameInstance !rightOperand}
     while
       let operatorLocation = @location.here
       $!==$
       let leftOperand = outExpression
-      <simple_expression> ?let rightOperand
+      <simple_expression_ggs3> ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.differentInstances !rightOperand}
     end
   }

@@ -20,14 +20,14 @@ syntax extension galgas3ExpressionSyntax {
 
   #·····················································································································
   
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> !@semanticExpressionAST outExpression {
     $true$
     outExpression = @trueExpressionAST.new {!.here}
   }
 
   #·····················································································································
   
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> !@semanticExpressionAST outExpression {
     $false$
     outExpression = @falseExpressionAST.new {!.here}
   }

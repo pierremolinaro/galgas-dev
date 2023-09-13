@@ -14,7 +14,7 @@ syntax extension galgas3ExpressionSyntax {
 
   #·····················································································································
   
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> !@semanticExpressionAST outExpression {
     $identifier$ ?let identifier
     outExpression = @varInExpressionAST.new {!identifier}
   }

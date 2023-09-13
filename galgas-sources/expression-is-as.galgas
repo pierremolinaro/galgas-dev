@@ -34,8 +34,8 @@ syntax extension galgas3ExpressionSyntax {
 
   #·····················································································································
   
-  rule <expression> !@semanticExpressionAST outExpression {
-    <expression_or> ?outExpression
+  rule <expression_ggs3> !@semanticExpressionAST outExpression {
+    <expression_or_ggs3> ?outExpression
     select
     or
       let endOfReceiverExpression = @location.here

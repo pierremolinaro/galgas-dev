@@ -69,7 +69,7 @@ syntax extension galgas3InstructionsSyntax {
       $default$
       let instructionLocation = @location.here
       $error$
-      <expression> ?let @semanticExpressionAST errorLocationExpression
+      <expression_ggs3> ?let @semanticExpressionAST errorLocationExpression
       outElseOrDefault = {}
       outElseOrDefault += !@errorInstructionAST.new {
         !instructionLocation
@@ -89,7 +89,7 @@ syntax extension galgas3InstructionsSyntax {
       warning .here : "This instruction is not handled in GALGAS 4"
     end
     let instructionLocation = @location.here
-    <expression> ?let @semanticExpressionAST expression
+    <expression_ggs3> ?let @semanticExpressionAST expression
     var mCastInstructionBranchList = @castInstructionBranchListAST {}
     repeat
       <cast_instruction_branch> !? mCastInstructionBranchList

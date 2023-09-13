@@ -33,7 +33,7 @@ syntax extension galgas3ExpressionSyntax {
   
   #·····················································································································
   
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> !@semanticExpressionAST outExpression {
   #--- Type name
     <optional_type> ?let @lstring typeName
     $.$
@@ -60,7 +60,7 @@ syntax extension galgas3ExpressionSyntax {
   
   #·····················································································································
   
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> !@semanticExpressionAST outExpression {
     <optional_type> ?let @lstring typeName
     $.$
     $default$
@@ -144,12 +144,12 @@ syntax extension galgas4ExpressionSyntax {
   
   #·····················································································································
   
-  rule <primary> !@semanticExpressionAST outExpression {
-    <optional_type> ?let @lstring typeName
-    $.$
-    $default$
-    outExpression = @defaultConstructorExpressionAST.new {!typeName}
-  }
+#  rule <primary> !@semanticExpressionAST outExpression {
+#    <optional_type> ?let @lstring typeName
+#    $.$
+#    $default$
+#    outExpression = @defaultConstructorExpressionAST.new {!typeName}
+#  }
 
   #·····················································································································
 

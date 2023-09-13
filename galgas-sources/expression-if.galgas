@@ -17,14 +17,14 @@ syntax extension galgas3ExpressionSyntax {
 
   #·····················································································································
 
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> !@semanticExpressionAST outExpression {
     $if$
-    <expression> ?let ifExpression
+    <expression_ggs3> ?let ifExpression
     let operatorLocation = @location.here
     $then$
-    <expression> ?let thenExpression
+    <expression_ggs3> ?let thenExpression
     $else$
-    <expression> ?let elseExpression
+    <expression_ggs3> ?let elseExpression
     $end$
     outExpression = @ifExpressionAST.new {
       !operatorLocation

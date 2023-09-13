@@ -2567,9 +2567,9 @@ void extensionMethod_enterFixItListInSemanticContext (const GALGAS_fixitListAST 
                                                       C_Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_fixitListAST temp_0 = inObject ;
-  cEnumerator_fixitListAST enumerator_6718 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_6718.hasCurrentObject ()) {
-    switch (enumerator_6718.current_mElement (HERE).enumValue ()) {
+  cEnumerator_fixitListAST enumerator_6743 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_6743.hasCurrentObject ()) {
+    switch (enumerator_6743.current_mElement (HERE).enumValue ()) {
     case GALGAS_fixitElementAST::kNotBuilt:
       break ;
     case GALGAS_fixitElementAST::kEnum_fixItRemove:
@@ -2578,27 +2578,27 @@ void extensionMethod_enterFixItListInSemanticContext (const GALGAS_fixitListAST 
       break ;
     case GALGAS_fixitElementAST::kEnum_fixItReplace:
       {
-        const cEnumAssociatedValues_fixitElementAST_fixItReplace * extractPtr_6885 = (const cEnumAssociatedValues_fixitElementAST_fixItReplace *) (enumerator_6718.current_mElement (HERE).unsafePointer ()) ;
-        const GALGAS_semanticExpressionAST extractedValue_6823_exp = extractPtr_6885->mAssociatedValue0 ;
-        callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) extractedValue_6823_exp.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 196)) ;
+        const cEnumAssociatedValues_fixitElementAST_fixItReplace * extractPtr_6910 = (const cEnumAssociatedValues_fixitElementAST_fixItReplace *) (enumerator_6743.current_mElement (HERE).unsafePointer ()) ;
+        const GALGAS_semanticExpressionAST extractedValue_6848_exp = extractPtr_6910->mAssociatedValue0 ;
+        callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) extractedValue_6848_exp.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 196)) ;
       }
       break ;
     case GALGAS_fixitElementAST::kEnum_fixItInsertBefore:
       {
-        const cEnumAssociatedValues_fixitElementAST_fixItInsertBefore * extractPtr_7002 = (const cEnumAssociatedValues_fixitElementAST_fixItInsertBefore *) (enumerator_6718.current_mElement (HERE).unsafePointer ()) ;
-        const GALGAS_semanticExpressionAST extractedValue_6940_exp = extractPtr_7002->mAssociatedValue0 ;
-        callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) extractedValue_6940_exp.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 198)) ;
+        const cEnumAssociatedValues_fixitElementAST_fixItInsertBefore * extractPtr_7027 = (const cEnumAssociatedValues_fixitElementAST_fixItInsertBefore *) (enumerator_6743.current_mElement (HERE).unsafePointer ()) ;
+        const GALGAS_semanticExpressionAST extractedValue_6965_exp = extractPtr_7027->mAssociatedValue0 ;
+        callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) extractedValue_6965_exp.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 198)) ;
       }
       break ;
     case GALGAS_fixitElementAST::kEnum_fixItInsertAfter:
       {
-        const cEnumAssociatedValues_fixitElementAST_fixItInsertAfter * extractPtr_7118 = (const cEnumAssociatedValues_fixitElementAST_fixItInsertAfter *) (enumerator_6718.current_mElement (HERE).unsafePointer ()) ;
-        const GALGAS_semanticExpressionAST extractedValue_7056_exp = extractPtr_7118->mAssociatedValue0 ;
-        callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) extractedValue_7056_exp.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 200)) ;
+        const cEnumAssociatedValues_fixitElementAST_fixItInsertAfter * extractPtr_7143 = (const cEnumAssociatedValues_fixitElementAST_fixItInsertAfter *) (enumerator_6743.current_mElement (HERE).unsafePointer ()) ;
+        const GALGAS_semanticExpressionAST extractedValue_7081_exp = extractPtr_7143->mAssociatedValue0 ;
+        callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) extractedValue_7081_exp.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 200)) ;
       }
       break ;
     }
-    enumerator_6718.gotoNextObject () ;
+    enumerator_6743.gotoNextObject () ;
   }
 }
 
@@ -3380,9 +3380,9 @@ void extensionMethod_generateFixIt (const GALGAS_fixitListForGeneration inObject
   ioArgument_ioTemporaryVariableIndex.plusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 391)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("TC_Array <C_FixItDescription> ").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 392)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 392)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 392)) ;
   const GALGAS_fixitListForGeneration temp_0 = inObject ;
-  cEnumerator_fixitListForGeneration enumerator_14872 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_14872.hasCurrentObject ()) {
-    switch (enumerator_14872.current_mElement (HERE).enumValue ()) {
+  cEnumerator_fixitListForGeneration enumerator_14897 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_14897.hasCurrentObject ()) {
+    switch (enumerator_14897.current_mElement (HERE).enumValue ()) {
     case GALGAS_fixitElementForGeneration::kNotBuilt:
       break ;
     case GALGAS_fixitElementForGeneration::kEnum_fixItRemove:
@@ -3392,33 +3392,33 @@ void extensionMethod_generateFixIt (const GALGAS_fixitListForGeneration inObject
       break ;
     case GALGAS_fixitElementForGeneration::kEnum_fixItReplace:
       {
-        const cEnumAssociatedValues_fixitElementForGeneration_fixItReplace * extractPtr_15418 = (const cEnumAssociatedValues_fixitElementForGeneration_fixItReplace *) (enumerator_14872.current_mElement (HERE).unsafePointer ()) ;
-        const GALGAS_semanticExpressionForGeneration extractedValue_15098_exp = extractPtr_15418->mAssociatedValue0 ;
-        GALGAS_string var_receiverCppVarName_15286 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_15098_exp.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_15286, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 398)) ;
-        ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 405)).add_operation (GALGAS_string (", kFixItReplace, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 405)).add_operation (var_receiverCppVarName_15286, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 405)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 405)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 405)) ;
+        const cEnumAssociatedValues_fixitElementForGeneration_fixItReplace * extractPtr_15443 = (const cEnumAssociatedValues_fixitElementForGeneration_fixItReplace *) (enumerator_14897.current_mElement (HERE).unsafePointer ()) ;
+        const GALGAS_semanticExpressionForGeneration extractedValue_15123_exp = extractPtr_15443->mAssociatedValue0 ;
+        GALGAS_string var_receiverCppVarName_15311 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_15123_exp.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_15311, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 398)) ;
+        ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 405)).add_operation (GALGAS_string (", kFixItReplace, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 405)).add_operation (var_receiverCppVarName_15311, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 405)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 405)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 405)) ;
       }
       break ;
     case GALGAS_fixitElementForGeneration::kEnum_fixItInsertBefore:
       {
-        const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertBefore * extractPtr_15808 = (const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertBefore *) (enumerator_14872.current_mElement (HERE).unsafePointer ()) ;
-        const GALGAS_semanticExpressionForGeneration extractedValue_15483_exp = extractPtr_15808->mAssociatedValue0 ;
-        GALGAS_string var_receiverCppVarName_15671 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_15483_exp.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_15671, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 407)) ;
-        ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 414)).add_operation (GALGAS_string (", kFixItInsertBefore, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 414)).add_operation (var_receiverCppVarName_15671, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 414)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 414)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 414)) ;
+        const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertBefore * extractPtr_15833 = (const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertBefore *) (enumerator_14897.current_mElement (HERE).unsafePointer ()) ;
+        const GALGAS_semanticExpressionForGeneration extractedValue_15508_exp = extractPtr_15833->mAssociatedValue0 ;
+        GALGAS_string var_receiverCppVarName_15696 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_15508_exp.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_15696, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 407)) ;
+        ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 414)).add_operation (GALGAS_string (", kFixItInsertBefore, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 414)).add_operation (var_receiverCppVarName_15696, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 414)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 414)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 414)) ;
       }
       break ;
     case GALGAS_fixitElementForGeneration::kEnum_fixItInsertAfter:
       {
-        const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertAfter * extractPtr_16196 = (const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertAfter *) (enumerator_14872.current_mElement (HERE).unsafePointer ()) ;
-        const GALGAS_semanticExpressionForGeneration extractedValue_15872_exp = extractPtr_16196->mAssociatedValue0 ;
-        GALGAS_string var_receiverCppVarName_16060 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_15872_exp.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_16060, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 416)) ;
-        ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 423)).add_operation (GALGAS_string (", kFixItInsertAfter, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 423)).add_operation (var_receiverCppVarName_16060, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 423)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 423)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 423)) ;
+        const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertAfter * extractPtr_16221 = (const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertAfter *) (enumerator_14897.current_mElement (HERE).unsafePointer ()) ;
+        const GALGAS_semanticExpressionForGeneration extractedValue_15897_exp = extractPtr_16221->mAssociatedValue0 ;
+        GALGAS_string var_receiverCppVarName_16085 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_15897_exp.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_16085, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 416)) ;
+        ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 423)).add_operation (GALGAS_string (", kFixItInsertAfter, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 423)).add_operation (var_receiverCppVarName_16085, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 423)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 423)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 423)) ;
       }
       break ;
     }
-    enumerator_14872.gotoNextObject () ;
+    enumerator_14897.gotoNextObject () ;
   }
 }
 

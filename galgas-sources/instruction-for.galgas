@@ -134,7 +134,7 @@ syntax extension galgas3InstructionsSyntax {
     let location = @location.here
     $)$
     $in$
-    <expression> ?let @semanticExpressionAST enumeratedExpression
+    <expression_ggs3> ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionCstListInExpAST.new {
       !elementList
       !mEndsWithEllipsis: endsWithEllipsis
@@ -160,7 +160,7 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ?enumerationVariable
     end
     $in$
-    <expression> ?let @semanticExpressionAST enumeratedExpression
+    <expression_ggs3> ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionVarInExpAST.new {
       !typeName
       !enumerationVariable
@@ -183,7 +183,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     let endLocation = @location.here
     $in$
-    <expression> ?let @semanticExpressionAST enumeratedExpression
+    <expression_ggs3> ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionImplicitVarInExpAST.new {
       !prefix
       !enumeratedExpression
@@ -215,7 +215,7 @@ syntax extension galgas3InstructionsSyntax {
       mWhileExpression = @trueExpressionAST.new {!@location.here}
     or
       $while$
-      <expression> ? mWhileExpression
+      <expression_ggs3> ? mWhileExpression
     end
     let endof_while_expression = @location.here
     let @semanticInstructionListAST mBeforeInstructionList

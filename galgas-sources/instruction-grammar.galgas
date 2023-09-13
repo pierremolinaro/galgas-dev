@@ -100,7 +100,7 @@ syntax extension galgas3InstructionsSyntax {
                                   ?let @lstring inLabelName
                                   !@semanticInstructionAST outInstruction {
     $in$
-    <expression> ?let @semanticExpressionAST sourceExpression
+    <expression_ggs3> ?let @semanticExpressionAST sourceExpression
     let endOfSourceExpression = @location.here
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
@@ -129,10 +129,10 @@ syntax extension galgas3InstructionsSyntax {
                                   ?let @lstring inLabelName
                                   !@semanticInstructionAST outInstruction {
     $on$
-    <expression> ?let @semanticExpressionAST sourceExpression
+    <expression_ggs3> ?let @semanticExpressionAST sourceExpression
     let @location endOfSourceExpression = .here
     $:$
-    <expression> ?let @semanticExpressionAST nameExpression
+    <expression_ggs3> ?let @semanticExpressionAST nameExpression
     let @location endOfNameExpression = .here
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
@@ -183,7 +183,7 @@ syntax extension galgas3InstructionsSyntax {
                                            ?let @lstring inLabelName
                                            !@semanticInstructionAST outInstruction {
     $in$
-    <expression> ?let @semanticExpressionAST mSourceExpression
+    <expression_ggs3> ?let @semanticExpressionAST mSourceExpression
     let endOfSourceExpression = @location.here
     <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   #--- Get syntax directed translation result string
@@ -213,10 +213,10 @@ syntax extension galgas3InstructionsSyntax {
                                            !@semanticInstructionAST outInstruction {
     $on$
     $($
-    <expression> ?let @semanticExpressionAST sourceExpression
+    <expression_ggs3> ?let @semanticExpressionAST sourceExpression
     let @location endOfSourceExpression = .here
     $,$
-    <expression> ?let @semanticExpressionAST nameExpression
+    <expression_ggs3> ?let @semanticExpressionAST nameExpression
     let @location endOfNameExpression = .here
     $)$
     <actual_parameter_list> ?let @actualParameterListAST actualParameterList

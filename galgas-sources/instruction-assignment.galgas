@@ -35,7 +35,7 @@ syntax extension galgas3InstructionsSyntax {
       optionalProperty = attributeName
     end
     $=$
-    <expression> ?let @semanticExpressionAST mSourceExpression
+    <expression_ggs3> ?let @semanticExpressionAST mSourceExpression
     outInstruction = @assignmentInstructionAST.new {
       !mTargetVariableName.location
       !mTargetVariableName
@@ -59,7 +59,7 @@ syntax extension galgas3InstructionsSyntax {
       optionalProperty = attributeName
     end
     $=$
-    <expression> ?let @semanticExpressionAST mSourceExpression
+    <expression_ggs3> ?let @semanticExpressionAST mSourceExpression
     outInstruction = @selfPropertyAssignmentInstructionAST.new {
       !mTargetVariableName.location
       !mTargetVariableName

@@ -21,7 +21,7 @@ syntax extension galgas3ExpressionSyntax {
     repeat
     while
       $!$ ?let selector
-      <expression> ?let @semanticExpressionAST expression
+      <expression_ggs3> ?let @semanticExpressionAST expression
       outExpressionList += !selector !expression !.here
     end
   }

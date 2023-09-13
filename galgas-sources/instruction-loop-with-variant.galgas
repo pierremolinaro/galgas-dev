@@ -27,7 +27,7 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
   #--- Variant
     $($
-    <expression> ?let @semanticExpressionAST variantExpression
+    <expression_ggs3> ?let @semanticExpressionAST variantExpression
     let endOfVariantExpression = @location.here
     $)$
   #---
@@ -35,7 +35,7 @@ syntax extension galgas3InstructionsSyntax {
   #---
     let endOfFirstInstructions = @location.here
     $while$
-    <expression> ?let @semanticExpressionAST loopExpression
+    <expression_ggs3> ?let @semanticExpressionAST loopExpression
     let endOfLoopExpression = @location.here
     $do$
     <semantic_instruction_list> ?let @semanticInstructionListAST secondInstructions

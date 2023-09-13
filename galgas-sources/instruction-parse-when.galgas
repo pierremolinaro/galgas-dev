@@ -29,7 +29,7 @@ syntax extension galgas3SyntaxComponentSyntax {
   rule <branchOfParseWhithInstruction> !@syntaxInstructionList outElseInstructionList {
     $case$
     let instructionLocation = @location.here
-    <expression> ?let whenExpression
+    <expression_ggs3> ?let whenExpression
     let endOfWhenExpression = @location.here
     $:$
     <syntax_instruction_list> ?let whenInstructionList
@@ -55,7 +55,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     $parse$
     let instructionLocation = @location.here
     $with$
-    <expression> ?let @semanticExpressionAST whenExpression
+    <expression_ggs3> ?let @semanticExpressionAST whenExpression
     let endOfWhenExpression = @location.here
     $:$
     <syntax_instruction_list> ?let @syntaxInstructionList whenInstructionList

@@ -18,11 +18,11 @@ syntax extension galgas3ExpressionSyntax {
 
   #·····················································································································
   
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> !@semanticExpressionAST outExpression {
     $[$
   #--- Get source identity characteristics
     let startLocation = @location.here
-    <expression> ?let @semanticExpressionAST receiverExpression
+    <expression_ggs3> ?let @semanticExpressionAST receiverExpression
   #--- Get getter name
     $identifier$ ?let @lstring getterName
   #--- Actual parameters

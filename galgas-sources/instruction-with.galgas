@@ -43,7 +43,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $with$
     let instructionLocation = @location.here
-    <expression> ?let @semanticExpressionAST keyExpression
+    <expression_ggs3> ?let @semanticExpressionAST keyExpression
     let endOfKeyExpression = @location.here
     let @lstring withPrefix
     select
@@ -73,7 +73,7 @@ syntax extension galgas3InstructionsSyntax {
     ?let @lstring inWithPrefix
     !@semanticInstructionAST outInstruction
   {
-    <expression> ?let @semanticExpressionAST receiverExpression
+    <expression_ggs3> ?let @semanticExpressionAST receiverExpression
     let endOfReceiverExpression = @location.here
     let @lstring searchMethodNameForErrorSignaling
     select

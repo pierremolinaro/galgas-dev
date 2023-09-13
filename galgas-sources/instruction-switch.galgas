@@ -37,7 +37,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $switch$
     let instructionLocation = @location.here
-    <expression> ?let switchExpression
+    <expression_ggs3> ?let switchExpression
     let endOfSwitchExpression = @location.here
     var @switchBranchesAST switchBranches = {}
     repeat

@@ -16,7 +16,7 @@ syntax extension galgas3ExpressionSyntax {
 
   #·····················································································································
 
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> !@semanticExpressionAST outExpression {
     $[$
     $option$
     $identifier$ ?let optionComponentName indexing optionComponentReference
@@ -29,7 +29,7 @@ syntax extension galgas3ExpressionSyntax {
   
   #·····················································································································
   
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> !@semanticExpressionAST outExpression {
     $[$
     $option$
     $.$

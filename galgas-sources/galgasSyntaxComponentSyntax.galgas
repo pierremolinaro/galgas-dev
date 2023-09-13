@@ -19,7 +19,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner) {
   #          Rules prototypes                 
   #·····················································································································
 
-  rule <expression> !@semanticExpressionAST outExpression
+  rule <expression_ggs3> !@semanticExpressionAST outExpression
   
   rule <semantic_instruction> !@semanticInstructionAST outInstruction
   

@@ -49,7 +49,7 @@ syntax extension galgas3InstructionsSyntax {
     $@type$ ?let typeName
     $identifier$ ?let variableName
     $=$
-    <expression> ?let @semanticExpressionAST sourceExpression
+    <expression_ggs3> ?let @semanticExpressionAST sourceExpression
     outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
       !typeName.location
       !true # Is Constant
@@ -64,7 +64,7 @@ syntax extension galgas3InstructionsSyntax {
     $let$
     $identifier$ ?let variableName
     $=$
-    <expression> ?let @semanticExpressionAST sourceExpression
+    <expression_ggs3> ?let @semanticExpressionAST sourceExpression
     outInstruction = @localConstantDeclarationWithAssignmentAST.new {
       !variableName.location
       !variableName

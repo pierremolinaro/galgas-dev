@@ -12243,10 +12243,10 @@ void extensionMethod_enterInSemanticContext (const GALGAS_actualOutputExpression
                                              C_Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_actualOutputExpressionList temp_0 = inObject ;
-  cEnumerator_actualOutputExpressionList enumerator_2460 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_2460.hasCurrentObject ()) {
-    callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_2460.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 70)) ;
-    enumerator_2460.gotoNextObject () ;
+  cEnumerator_actualOutputExpressionList enumerator_2465 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_2465.hasCurrentObject ()) {
+    callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_2465.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 70)) ;
+    enumerator_2465.gotoNextObject () ;
   }
 }
 
