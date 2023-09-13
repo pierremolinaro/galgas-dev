@@ -995,7 +995,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-- (void) buildCompleted {
+- (void) buildCompletedWithStatus: (int) inTerminationStatus {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -1004,18 +1004,42 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   [self enterOutputData:mBufferedOutputData] ;
   mBufferedOutputData = nil ;
 //---
-  [OC_GGS_DocumentData broadcastIssueArray:mIssueArray] ;
+  [OC_GGS_DocumentData broadcastIssueArray: mIssueArray] ;
 //---
-  NSDictionary * defaultDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-    mBuildTextFont, NSFontAttributeName,
-    [NSColor orangeColor], NSForegroundColorAttributeName,
-    nil
-  ] ;
-  NSAttributedString * attributedString = [[NSAttributedString alloc]
-    initWithString:mBuildTaskHasBeenAborted ? @"Aborted.\n" : @"Done.\n"
-    attributes:defaultDictionary
-  ] ;
-  [mOutputTextView.textStorage appendAttributedString:attributedString] ;
+  if (mBuildTaskHasBeenAborted) {
+    NSDictionary * defaultDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+      mBuildTextFont, NSFontAttributeName,
+      [NSColor redColor], NSForegroundColorAttributeName,
+      nil
+    ] ;
+    NSAttributedString * attributedString = [[NSAttributedString alloc]
+      initWithString: @"Aborted.\n"
+      attributes: defaultDictionary
+    ] ;
+    [mOutputTextView.textStorage appendAttributedString:attributedString] ;
+  }else if (inTerminationStatus == 0) {
+    NSDictionary * defaultDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+      mBuildTextFont, NSFontAttributeName,
+      [NSColor blueColor], NSForegroundColorAttributeName,
+      nil
+    ] ;
+    NSAttributedString * attributedString = [[NSAttributedString alloc]
+      initWithString: @"Done.\n"
+      attributes: defaultDictionary
+    ] ;
+    [mOutputTextView.textStorage appendAttributedString:attributedString] ;
+  }else{
+    NSDictionary * defaultDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+      mBuildTextFont, NSFontAttributeName,
+      [NSColor redColor], NSForegroundColorAttributeName,
+      nil
+    ] ;
+    NSAttributedString * attributedString = [[NSAttributedString alloc]
+      initWithString: [NSString stringWithFormat: @"Error, termination status %d.\n", inTerminationStatus]
+      attributes: defaultDictionary
+    ] ;
+    [mOutputTextView.textStorage appendAttributedString:attributedString] ;
+  }
 //---
   [[NSRunLoop mainRunLoop]
     performSelector:@selector (pmReleaseBuildTask)

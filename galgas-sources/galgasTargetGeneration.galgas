@@ -1337,13 +1337,32 @@ proc updateGalgasTargets
       ?groupRef:let @string frameworkGroupRef
     ]
     [!?xcodeProject placeGroupAsMainGroup !groupRef:frameworkGroupRef]
+  #--- Code signing identity
+    let @stringlist codeSigningSettingList
+    if macCodeSign.string == "" then
+      codeSigningSettingList = {!"CODE_SIGN_IDENTITY = \"-\""}
+    else
+      let components = [macCodeSign.string componentsSeparatedByString !":"] ;
+      if [components length] != 2 then
+        error macCodeSign : "the %macCodeSign attribute associated string should be \"key:value\"" : codeSigningSettingList
+      elsif [components mValueAtIndex !0] == "MacDeveloper" then
+        codeSigningSettingList = {
+          !"CODE_SIGN_IDENTITY = \"Mac Developer\"",
+          !"DEVELOPMENT_TEAM = \"" + [components mValueAtIndex !1] + "\""
+        }
+      elsif [components mValueAtIndex !0] == "Certificate" then
+        codeSigningSettingList = {!"CODE_SIGN_IDENTITY = \"" + [components mValueAtIndex !1] + "\""}
+      else
+        error macCodeSign : "the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'" : codeSigningSettingList
+      end
+    end
   #--- Add Mach O release target
     var @stringlist settingList = {
-      !"CODE_SIGN_IDENTITY = \"-\"",
       !"GCC_OPTIMIZATION_LEVEL = 2",
       !"GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)",
-      !"GCC_WARN_UNUSED_PARAMETER = YES"
-    }
+      !"GCC_WARN_UNUSED_PARAMETER = YES",
+      !"PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tool\""
+    } + codeSigningSettingList
     if [inHandCodedLinkToolFileList length] > 0 then
       var s = "OTHER_LDFLAGS=("
       for (toolLink) in inHandCodedLinkToolFileList
@@ -1364,12 +1383,12 @@ proc updateGalgasTargets
     ]
   #--- Add Mach O debug target
     settingList = {
-      !"CODE_SIGN_IDENTITY = \"-\"",
       !"GCC_OPTIMIZATION_LEVEL = 0",
       !"GCC_GENERATE_DEBUGGING_SYMBOLS = YES",
       !"GCC_PREPROCESSOR_DEFINITIONS = ()",
-      !"GCC_WARN_UNUSED_PARAMETER = YES"
-    }
+      !"GCC_WARN_UNUSED_PARAMETER = YES",
+      !"PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tooldebug\""
+    } + codeSigningSettingList
     if [inHandCodedLinkToolFileList length] > 0 then
       var s = "OTHER_LDFLAGS=("
       for (toolLink) in inHandCodedLinkToolFileList
@@ -1389,31 +1408,17 @@ proc updateGalgasTargets
       ?productFileRef:let debugProductFileRef
     ]
   #--- Add Cocoa target
-    var @stringlist configurationSettingList = {
-      !"CODE_SIGN_IDENTITY = \"-\"",
+    let @stringlist cocoaConfigurationSettingList = {
       !"GCC_OPTIMIZATION_LEVEL = 0",
       !"GCC_PREPROCESSOR_DEFINITIONS = ()"
-    }
-    if macCodeSign.string != "" then
-      let components = [macCodeSign.string componentsSeparatedByString !":"] ;
-      if [components length] != 2 then
-        error macCodeSign : "the %macCodeSign attribute associated string should be \"key:value\""
-      elsif [components mValueAtIndex !0] == "MacDeveloper" then
-        configurationSettingList += !"CODE_SIGN_IDENTITY = \"Mac Developer\""
-        configurationSettingList += !"DEVELOPMENT_TEAM = \"" + [components mValueAtIndex !1] + "\""
-      elsif [components mValueAtIndex !0] == "Certificate" then
-        configurationSettingList += !"CODE_SIGN_IDENTITY = \"" + [components mValueAtIndex !1] + "\""
-      else
-        error macCodeSign : "the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'"
-      end
-    end
+    } + codeSigningSettingList
     [!?xcodeProject addAppTarget
       !targetName:"Cocoa " + inTargetName
       !productFileName:"Cocoa" + [inTargetName stringByCapitalizingFirstCharacter]
       !sources:m_FileRefList + m_HandCodedSourceFileRefForAppList
       !frameworkFileRefs:frameworksFileRefList + appFrameworksFileRefList
       !resourceFileRefs:resourceFileBuildRefs + m_HandCodedResourceFileRefForAppList
-      !buildConfigurationSettingList:configurationSettingList
+      !buildConfigurationSettingList: cocoaConfigurationSettingList
       !dependantTargetList:{!releaseTargetRef, !debugTargetRef}
       !productCopyList:{!releaseProductFileRef !inTargetName, !debugProductFileRef !inTargetName + "-debug"}
       ?productFileRef:*

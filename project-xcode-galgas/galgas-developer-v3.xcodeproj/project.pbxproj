@@ -2738,6 +2738,7 @@
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PREPROCESSOR_DEFINITIONS = DO_NOT_GENERATE_CHECKINGS;
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.ec-nantes.irccyn.molinaro.galgas.tool";
 				PRODUCT_NAME = galgas;
 			};
 			name = Default;
@@ -2755,6 +2756,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				LD_OPENMP_FLAGS = "";
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.ec-nantes.irccyn.molinaro.galgas.tooldebug";
 				PRODUCT_NAME = "galgas-debug";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				STRIP_INSTALLED_PRODUCT = NO;

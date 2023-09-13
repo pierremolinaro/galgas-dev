@@ -139,7 +139,7 @@
          atLine: (NSUInteger) inLine ;
 
 - (void) appendBuildOutputData: (NSData *) inData ;
-- (void) buildCompleted ;
+- (void) buildCompletedWithStatus: (int) inTerminationStatus ;
 @end
 
 //----------------------------------------------------------------------------------------------------------------------

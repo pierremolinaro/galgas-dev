@@ -38,11 +38,20 @@ syntax extension galgas4ExpressionSyntax {
   
   rule <output_expression_list> !@actualOutputExpressionList outExpressionList {
     outExpressionList = {}
-    repeat
-    while
-      $!$ ?let selector
-      <expression> ?let @semanticExpressionAST expression
-      outExpressionList += !selector !expression !.here
+    select
+      repeat
+        let @lstring selector
+        select
+          $!$ ?selector
+        or
+          selector = ["" here]
+        end
+        <expression> ?let @semanticExpressionAST expression
+        outExpressionList += !selector !expression !.here
+      while
+        $,$
+      end
+    or
     end
   }
 
