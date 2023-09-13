@@ -21,7 +21,7 @@ syntax extension galgas3DeclarationsSyntax {
     $method$
     $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionMethod
     $identifier$ ?let @lstring mMethodName indexing abstractExtensionMethodDefinition
-    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list_ggs3> ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST.new {
       !false # Is not predefined
       !className
@@ -36,7 +36,7 @@ syntax extension galgas3DeclarationsSyntax {
     $abstract$
     $method$
     $identifier$ ?let @lstring mMethodName indexing abstractExtensionMethodDefinition
-    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list_ggs3> ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST.new {
       !false # Is not predefined
       !inClassName

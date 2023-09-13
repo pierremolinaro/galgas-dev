@@ -15,7 +15,7 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
     $var$
     $identifier$ ?let variableName
     $=$
@@ -29,7 +29,7 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
     $var$
     $@type$ ?let typeName
     $identifier$ ?let variableName
@@ -46,7 +46,7 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
     $@type$ ?let typeName
     $identifier$ ?let variableName
     $=$

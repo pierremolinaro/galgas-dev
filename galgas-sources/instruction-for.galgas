@@ -193,7 +193,7 @@ syntax extension galgas3InstructionsSyntax {
   
   #·····················································································································
   
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
     $for$
     let instructionLocation = @location.here
     var mEnumeratedObjectList = @forInstructionEnumeratedObjectListAST {}
@@ -223,7 +223,7 @@ syntax extension galgas3InstructionsSyntax {
       mBeforeInstructionList = @semanticInstructionListAST {}
     or
       $before$
-      <semantic_instruction_list> ? mBeforeInstructionList
+      <semantic_instruction_list_ggs3> ? mBeforeInstructionList
     end
     let endof_before_branch = @location.here
     $do$
@@ -235,14 +235,14 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ? indexVariableName
       $)$
     end
-    <semantic_instruction_list> ?let mDoInstructionList
+    <semantic_instruction_list_ggs3> ?let mDoInstructionList
     let endof_do_branch = @location.here
     let @semanticInstructionListAST mBetweenInstructionList
     select
       mBetweenInstructionList = @semanticInstructionListAST {}
     or
       $between$
-      <semantic_instruction_list> ? mBetweenInstructionList
+      <semantic_instruction_list_ggs3> ? mBetweenInstructionList
     end
     let endof_between_branch = @location.here
     let @semanticInstructionListAST mAfterInstructionList
@@ -250,7 +250,7 @@ syntax extension galgas3InstructionsSyntax {
       mAfterInstructionList = @semanticInstructionListAST {}
     or
       $after$
-      <semantic_instruction_list> ? mAfterInstructionList
+      <semantic_instruction_list_ggs3> ? mAfterInstructionList
     end
     let endof_after_branch = @location.here
     $end$

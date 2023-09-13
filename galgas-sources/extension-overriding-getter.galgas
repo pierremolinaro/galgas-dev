@@ -36,7 +36,7 @@ syntax extension galgas3DeclarationsSyntax {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST.new {
@@ -68,7 +68,7 @@ syntax extension galgas3DeclarationsSyntax {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST.new {

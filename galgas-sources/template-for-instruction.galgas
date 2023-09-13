@@ -64,7 +64,7 @@ syntax extension templateSyntax {
     $)$
     let endLocation = @location.here
     $in$
-    <expression> ?outExpression
+    <expression_tpl> ?outExpression
     let @string foreachPrefix
     select
       foreachPrefix = ""
@@ -89,7 +89,7 @@ syntax extension templateSyntax {
     let endOfProperties = @location.here
     $)$
     $in$
-    <expression> ?outExpression
+    <expression_tpl> ?outExpression
     select
     or
       $:$

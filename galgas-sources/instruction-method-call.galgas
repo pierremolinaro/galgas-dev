@@ -16,12 +16,12 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
     $[$
     let instructionLocation = @location.here
     <expression_ggs3> ?let @semanticExpressionAST mReceiverExpression
     $identifier$ ?let mMethodName
-    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+    <actual_parameter_list_ggs3> ?let @actualParameterListAST actualParameterList
     $]$
     outInstruction = @methodCallInstructionAST.new {
       !instructionLocation

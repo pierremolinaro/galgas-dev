@@ -28,7 +28,7 @@ syntax extension templateSyntax {
   rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
     $switch$
   #--- Switch expression
-    <expression> ?let switchExpression
+    <expression_tpl> ?let switchExpression
     let @location endOfSwitchExpression = .here
   #--- Loop on "case" clauses
     var @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList = {}

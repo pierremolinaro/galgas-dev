@@ -14,7 +14,7 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
     $drop$
     let instructionLocation = @location.here
     var @lstringlist dropList = {}

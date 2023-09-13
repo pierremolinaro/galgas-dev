@@ -58,16 +58,16 @@ syntax extension galgas3InstructionsSyntax {
 
   rule <if_instruction_core> !@semanticInstructionAST outInstruction {
     let instructionLocation = @location.here
-    <if_expression> ?let testExpression
+    <if_expression_ggs3> ?let testExpression
     $then$
-    <semantic_instruction_list> ?let then_instructionList
+    <semantic_instruction_list_ggs3> ?let then_instructionList
     let endOf_then_branchLocation = @location.here
     let @semanticInstructionListAST else_instructionList
     select
       else_instructionList = @semanticInstructionListAST {}
     or
       $else$
-      <semantic_instruction_list> ? else_instructionList
+      <semantic_instruction_list_ggs3> ? else_instructionList
     or
       $elsif$
       <if_instruction_core> ?let instruction
@@ -85,7 +85,7 @@ syntax extension galgas3InstructionsSyntax {
   
   #·····················································································································
   
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
     $if$
     <if_instruction_core> ?outInstruction
     $end$
@@ -100,7 +100,7 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
 
-  rule <if_expression> !@ifExpressionList outExpressionList {
+  rule <if_expression_ggs3> !@ifExpressionList outExpressionList {
     outExpressionList = {}
     repeat
       select

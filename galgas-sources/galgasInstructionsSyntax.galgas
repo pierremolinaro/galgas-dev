@@ -21,9 +21,9 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
 
   rule <expression_ggs3> !@semanticExpressionAST outExpression
   
-  rule <if_expression> !@ifExpressionList outExpressionList
+  rule <if_expression_ggs3> !@ifExpressionList outExpressionList
   
-  rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
+  rule <formal_parameter_list_ggs3> !@formalParameterListAST outFormalParameterList
   
   rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
 
@@ -31,13 +31,13 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
   #    S E M A N T I C    I N S T R U C T I O N    L I S T
   #·····················································································································
 
-  rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList {
+  rule <semantic_instruction_list_ggs3> !@semanticInstructionListAST outInstructionsList {
     outInstructionsList = @semanticInstructionListAST {}
     repeat
     while
       $;$
     while
-      <semantic_instruction> ?let @semanticInstructionAST instruction
+      <semantic_instruction_ggs3> ?let @semanticInstructionAST instruction
       outInstructionsList += !instruction
     end
   }
@@ -50,7 +50,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
     $extern$
     $proc$
     $identifier$ ?let @lstring mActionName indexing routineDefinition
-    <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list_ggs3> ?let @formalParameterListAST mFormalParameterList
     ioDeclarations.mDeclarationList += !@externRoutineDeclarationAST.new {
       !false # Is not predefined
       !false # Is not internal
@@ -66,9 +66,9 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $proc$
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list_ggs3> ?let @formalParameterListAST mFormalParameterList
     ${$
-    <semantic_instruction_list> ?let @semanticInstructionListAST mRoutineInstructionList
+    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
@@ -86,9 +86,9 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
     $private$
     $proc$
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list_ggs3> ?let @formalParameterListAST mFormalParameterList
     ${$
-    <semantic_instruction_list> ?let @semanticInstructionListAST mRoutineInstructionList
+    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
@@ -140,7 +140,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> ?let @semanticInstructionListAST functionInstructionList
+    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST functionInstructionList
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then
@@ -207,7 +207,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> ?let @semanticInstructionListAST functionInstructionList
+    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST functionInstructionList
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then
@@ -259,7 +259,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
   #    M E T H O D    C A L L    I N S T R U C T I O N
   #·····················································································································
 
-  rule <actual_parameter_list> !@actualParameterListAST outActualParameterList
+  rule <actual_parameter_list_ggs3> !@actualParameterListAST outActualParameterList
 
   #·····················································································································
 
@@ -355,8 +355,6 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
   rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList {
     outInstructionsList = @semanticInstructionListAST {}
     repeat
-    while
-      $;$
     while
       <semantic_instruction> ?let @semanticInstructionAST instruction
       outInstructionsList += !instruction

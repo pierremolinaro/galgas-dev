@@ -23,7 +23,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner) {
   #          F O R M A L    P A R A M E T E R    L I S T
   #·····················································································································
 
-  rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList {
+  rule <formal_parameter_list_ggs3> !@formalParameterListAST outFormalParameterList {
     outFormalParameterList = {}
     repeat
     while
@@ -65,7 +65,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner) {
   #  A C T U A L    P A R A M E T E R    L I S T
   #·····················································································································
 
-  rule <actual_parameter_list> !@actualParameterListAST outActualParameterList {
+  rule <actual_parameter_list_ggs3> !@actualParameterListAST outActualParameterList {
     outActualParameterList = {}
     repeat
     while

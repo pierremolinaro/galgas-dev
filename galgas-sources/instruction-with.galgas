@@ -40,7 +40,7 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
     $with$
     let instructionLocation = @location.here
     <expression_ggs3> ?let @semanticExpressionAST keyExpression
@@ -84,7 +84,7 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ?searchMethodNameForErrorSignaling
     end
     $do$
-    <semantic_instruction_list> ?let @semanticInstructionListAST mDoBranchInstructions
+    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mDoBranchInstructions
     let endOfDoInstructions = @location.here
     let @semanticInstructionListAST mElseBranchInstructions
     select
@@ -94,7 +94,7 @@ syntax extension galgas3InstructionsSyntax {
       if searchMethodNameForErrorSignaling.string != "" then
         error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
       end
-      <semantic_instruction_list> ?mElseBranchInstructions
+      <semantic_instruction_list_ggs3> ?mElseBranchInstructions
     end
     outInstruction = @readAccessWithInstructionAST.new {
       !inInstructionLocation
@@ -162,7 +162,7 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ?searchMethodNameForErrorSignaling
     end
     $do$
-    <semantic_instruction_list> ?let @semanticInstructionListAST mDoBranchInstructions
+    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mDoBranchInstructions
     let endOf_do_instructions = @location.here
     let @semanticInstructionListAST mElseBranchInstructions
     select
@@ -172,7 +172,7 @@ syntax extension galgas3InstructionsSyntax {
       if searchMethodNameForErrorSignaling.string != "" then
         error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
       end
-      <semantic_instruction_list> ? mElseBranchInstructions
+      <semantic_instruction_list_ggs3> ? mElseBranchInstructions
     end
     let endOf_else_instructions = @location.here
     outInstruction = @readWriteAccessWithInstructionAST.new {

@@ -30,9 +30,9 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
   #          Rules prototypes                 
   #·····················································································································
 
-  rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
+  rule <formal_parameter_list_ggs3> !@formalParameterListAST outFormalParameterList
   
-  rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList
+  rule <semantic_instruction_list_ggs3> !@semanticInstructionListAST outInstructionsList
   
   rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
 

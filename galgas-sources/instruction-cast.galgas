@@ -48,7 +48,7 @@ syntax extension galgas3InstructionsSyntax {
       mConstantVarName = @lstring.new {!"" !@location.here}
     end
     $:$
-    <semantic_instruction_list> ?let @semanticInstructionListAST mCastBranchInstructionList
+    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mCastBranchInstructionList
     ioCastInstructionBranchList +=
       !mTypeName
       !mConstantVarName
@@ -64,7 +64,7 @@ syntax extension galgas3InstructionsSyntax {
       outElseOrDefault = {}
     or
       $else$
-      <semantic_instruction_list> ? outElseOrDefault
+      <semantic_instruction_list_ggs3> ? outElseOrDefault
     or
       $default$
       let instructionLocation = @location.here
@@ -83,7 +83,7 @@ syntax extension galgas3InstructionsSyntax {
   
   #·····················································································································
   
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
     $cast$
     if [option galgas_cli_options.errorOldStylePropertyDeclaration value] then
       warning .here : "This instruction is not handled in GALGAS 4"

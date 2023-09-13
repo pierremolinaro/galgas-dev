@@ -22,7 +22,7 @@ syntax extension galgas3DeclarationsSyntax {
     $setter$
     $@type$ ?let @lstring className indexing typeReferenceOverrideAbstractExtensionSetter
     $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
-    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list_ggs3> ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST.new {
       !false # Is not predefined
       !className
@@ -37,7 +37,7 @@ syntax extension galgas3DeclarationsSyntax {
     $abstract$
     $setter$
     $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
-    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list_ggs3> ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST.new {
       !false # Is not predefined
       !inClassName

@@ -24,9 +24,9 @@ syntax extension galgas3DeclarationsSyntax {
     $setter$
     $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionSetterDefinition
     $identifier$ ?let @lstring setterName indexing overrideExtensionSetterDefinition
-    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list_ggs3> ?let @formalParameterListAST formalParameterList
     ${$
-    <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST routineInstructionList
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST.new {
@@ -46,9 +46,9 @@ syntax extension galgas3DeclarationsSyntax {
     $override$
     $setter$
     $identifier$ ?let @lstring setterName indexing overrideExtensionSetterDefinition
-    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list_ggs3> ?let @formalParameterListAST formalParameterList
     ${$
-    <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST routineInstructionList
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST.new {

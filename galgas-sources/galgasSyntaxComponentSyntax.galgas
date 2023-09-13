@@ -21,11 +21,11 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner) {
 
   rule <expression_ggs3> !@semanticExpressionAST outExpression
   
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction
+  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction
   
-  rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
+  rule <formal_parameter_list_ggs3> !@formalParameterListAST outFormalParameterList
   
-  rule <actual_parameter_list> !@actualParameterListAST outActualParameterList
+  rule <actual_parameter_list_ggs3> !@actualParameterListAST outActualParameterList
 
   #·····················································································································
   #      S Y N T A X    C O M P O N E N T     
@@ -109,13 +109,13 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner) {
     $rule$
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
     var @nonTerminalLabelListAST labels = {}
-    <formal_parameter_list> ?let @formalParameterListAST firstBranchFormalParameters
+    <formal_parameter_list_ggs3> ?let @formalParameterListAST firstBranchFormalParameters
     labels += !.new {!"" !.here} !firstBranchFormalParameters !.here
     repeat
     while
       $label$
       $identifier$ ?let @lstring labelName
-      <formal_parameter_list> ?let @formalParameterListAST formalParameters
+      <formal_parameter_list_ggs3> ?let @formalParameterListAST formalParameters
       labels += !labelName !formalParameters !.here
     end
     ioNonterminalDeclarationList += !mNonterminalName !labels
@@ -126,7 +126,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner) {
   #·····················································································································
 
   rule <syntax_rule_label> ?let @lstring inLabelName ?!@syntaxRuleLabelListAST ioLabelList {
-    <formal_parameter_list> ?let mFormalParameters
+    <formal_parameter_list_ggs3> ?let mFormalParameters
     let endOfArguments = @location.here
     ${$
     <syntax_instruction_list> ?let @syntaxInstructionList mSyntaxInstructionList
@@ -167,7 +167,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner) {
     while 
       $;$
     while
-      <semantic_instruction> ?let @semanticInstructionAST instruction
+      <semantic_instruction_ggs3> ?let @semanticInstructionAST instruction
       outSyntaxInstructionList += !instruction
     while
       <syntax_instruction> ?let instruction
@@ -344,8 +344,6 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner) {
   rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList {
     outSyntaxInstructionList = {}
     repeat
-    while 
-      $;$
     while
       <semantic_instruction> ?let @semanticInstructionAST instruction
       outSyntaxInstructionList += !instruction

@@ -16,7 +16,7 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction>
+  rule <semantic_instruction_ggs3>
     !@semanticInstructionAST outInstruction {
     $warning$
     let instructionLocation = @location.here

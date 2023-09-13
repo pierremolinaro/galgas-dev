@@ -75,7 +75,7 @@ syntax extension galgas3InstructionsSyntax {
   # NEW GRAMMAR INSTRUCTION, COMPATIBLE WITH GALGAS 4
   #·····················································································································
 
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
     $grammar$
     let instructionLocation = @location.here
     $identifier$ ?let @lstring grammarComponentName indexing grammarComponentReference
@@ -87,7 +87,7 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ?labelName
     end
     $($
-    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+    <actual_parameter_list_ggs3> ?let @actualParameterListAST actualParameterList
     $)$
     <grammar_instruction_core> !instructionLocation !actualParameterList !grammarComponentName !labelName ?outInstruction
   }
@@ -159,7 +159,7 @@ syntax extension galgas3InstructionsSyntax {
   # OBSOLETE GRAMMAR INSTRUCTION, NOT COMPATIBLE WITH GALGAS 4
   #·····················································································································
 
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction { #obsolete
+  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction { #obsolete
     $grammar$
     let instructionLocation = @location.here
     if [option galgas_cli_options.errorOldStyleCollectionInitializer value] then
@@ -185,7 +185,7 @@ syntax extension galgas3InstructionsSyntax {
     $in$
     <expression_ggs3> ?let @semanticExpressionAST mSourceExpression
     let endOfSourceExpression = @location.here
-    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+    <actual_parameter_list_ggs3> ?let @actualParameterListAST actualParameterList
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
@@ -219,7 +219,7 @@ syntax extension galgas3InstructionsSyntax {
     <expression_ggs3> ?let @semanticExpressionAST nameExpression
     let @location endOfNameExpression = .here
     $)$
-    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+    <actual_parameter_list_ggs3> ?let @actualParameterListAST actualParameterList
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
