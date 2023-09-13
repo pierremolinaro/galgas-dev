@@ -16,7 +16,7 @@ syntax extension galgas3ExpressionSyntax {
 
   #·····················································································································
   
-  rule <factor> !@semanticExpressionAST outExpression {
+  rule <factor_ggs3> !@semanticExpressionAST outExpression {
     <primary_ggs3> ? outExpression
     repeat
     while

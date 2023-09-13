@@ -15,10 +15,10 @@ syntax extension galgas3ExpressionSyntax {
 
   #·····················································································································
 
-  rule <factor> !@semanticExpressionAST outExpression {
+  rule <factor_ggs3> !@semanticExpressionAST outExpression {
     let operatorLocation = @location.here
     $-$
-    <factor> ? outExpression
+    <factor_ggs3> ? outExpression
     outExpression = @unaryMinusExpressionAST.new {!operatorLocation !outExpression}
   }
 

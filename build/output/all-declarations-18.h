@@ -291,16 +291,16 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public: virtual void nt_externtype_5F_setter_ (GALGAS_externTypeSetterList & ioArgument0,
                                                  C_Lexique_galgasScanner * inCompiler) ;
 
-//------------------------------------- 'factor' non terminal
+//------------------------------------- 'factor_ggs3' non terminal
 //--- 'parse' label
-  public: virtual void nt_factor_parse (C_Lexique_galgasScanner * inCompiler) ;
+  public: virtual void nt_factor_5F_ggs_33__parse (C_Lexique_galgasScanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_factor_indexing (C_Lexique_galgasScanner * inCompiler) ;
+  public: virtual void nt_factor_5F_ggs_33__indexing (C_Lexique_galgasScanner * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_factor_ (GALGAS_semanticExpressionAST & outArgument0,
-                                   C_Lexique_galgasScanner * inCompiler) ;
+  public: virtual void nt_factor_5F_ggs_33__ (GALGAS_semanticExpressionAST & outArgument0,
+                                              C_Lexique_galgasScanner * inCompiler) ;
 
 //------------------------------------- 'filewrapper_binary_files' non terminal
 //--- 'parse' label
@@ -1011,16 +1011,16 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public: virtual void nt_template_5F_replacement_ (GALGAS_templateReplacementListAST & ioArgument0,
                                                     C_Lexique_galgasScanner * inCompiler) ;
 
-//------------------------------------- 'term' non terminal
+//------------------------------------- 'term_ggs3' non terminal
 //--- 'parse' label
-  public: virtual void nt_term_parse (C_Lexique_galgasScanner * inCompiler) ;
+  public: virtual void nt_term_5F_ggs_33__parse (C_Lexique_galgasScanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_term_indexing (C_Lexique_galgasScanner * inCompiler) ;
+  public: virtual void nt_term_5F_ggs_33__indexing (C_Lexique_galgasScanner * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_term_ (GALGAS_semanticExpressionAST & outArgument0,
-                                 C_Lexique_galgasScanner * inCompiler) ;
+  public: virtual void nt_term_5F_ggs_33__ (GALGAS_semanticExpressionAST & outArgument0,
+                                            C_Lexique_galgasScanner * inCompiler) ;
 
 //------------------------------------- 'terminal_declaration' non terminal
 //--- 'parse' label

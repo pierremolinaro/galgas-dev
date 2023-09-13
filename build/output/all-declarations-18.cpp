@@ -9284,11 +9284,11 @@ int32_t cGrammar_galgas_33_ProjectGrammar::select_galgas_33_ProjectSyntax_1 (C_L
 
 static const char * gNonTerminalNames_galgas3Grammar [326] = {
   "<primary_ggs3>",// Index 0
-  "<factor>",// Index 1
+  "<factor_ggs3>",// Index 1
   "<output_expression_list>",// Index 2
   "<relation_factor_ggs3>",// Index 3
   "<simple_expression_ggs3>",// Index 4
-  "<term>",// Index 5
+  "<term_ggs3>",// Index 5
   "<expression_ggs3>",// Index 6
   "<optional_type>",// Index 7
   "<collection_value_element>",// Index 8
@@ -45828,29 +45828,29 @@ void cGrammar_galgas_33_Grammar::nt_primary_5F_ggs_33__ (GALGAS_semanticExpressi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                      
-//                                        'factor' non terminal implementation                                          
+//                                     'factor_ggs3' non terminal implementation                                        
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cGrammar_galgas_33_Grammar::nt_factor_parse (C_Lexique_galgasScanner * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_factor_5F_ggs_33__parse (C_Lexique_galgasScanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 2 :
-      rule_galgas_33_ExpressionSyntax_factor_i2_parse(inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i2_parse(inLexique) ;
     break ;
   case 3 :
-      rule_galgas_33_ExpressionSyntax_factor_i3_parse(inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i3_parse(inLexique) ;
     break ;
   case 30 :
-      rule_galgas_33_ExpressionSyntax_factor_i30_parse(inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i30_parse(inLexique) ;
     break ;
   case 31 :
-      rule_galgas_33_ExpressionSyntax_factor_i31_parse(inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i31_parse(inLexique) ;
     break ;
   case 32 :
-      rule_galgas_33_ExpressionSyntax_factor_i32_parse(inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i32_parse(inLexique) ;
     break ;
   case 34 :
-      rule_galgas_33_ExpressionSyntax_factor_i34_parse(inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i34_parse(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -45858,25 +45858,25 @@ void cGrammar_galgas_33_Grammar::nt_factor_parse (C_Lexique_galgasScanner * inLe
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_factor_indexing (C_Lexique_galgasScanner * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_factor_5F_ggs_33__indexing (C_Lexique_galgasScanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 2 :
-      rule_galgas_33_ExpressionSyntax_factor_i2_indexing(inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i2_indexing(inLexique) ;
     break ;
   case 3 :
-      rule_galgas_33_ExpressionSyntax_factor_i3_indexing(inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i3_indexing(inLexique) ;
     break ;
   case 30 :
-      rule_galgas_33_ExpressionSyntax_factor_i30_indexing(inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i30_indexing(inLexique) ;
     break ;
   case 31 :
-      rule_galgas_33_ExpressionSyntax_factor_i31_indexing(inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i31_indexing(inLexique) ;
     break ;
   case 32 :
-      rule_galgas_33_ExpressionSyntax_factor_i32_indexing(inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i32_indexing(inLexique) ;
     break ;
   case 34 :
-      rule_galgas_33_ExpressionSyntax_factor_i34_indexing(inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i34_indexing(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -45884,26 +45884,26 @@ void cGrammar_galgas_33_Grammar::nt_factor_indexing (C_Lexique_galgasScanner * i
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_factor_ (GALGAS_semanticExpressionAST &  parameter_1,
+void cGrammar_galgas_33_Grammar::nt_factor_5F_ggs_33__ (GALGAS_semanticExpressionAST &  parameter_1,
                                 C_Lexique_galgasScanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 2 :
-      rule_galgas_33_ExpressionSyntax_factor_i2_(parameter_1, inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i2_(parameter_1, inLexique) ;
     break ;
   case 3 :
-      rule_galgas_33_ExpressionSyntax_factor_i3_(parameter_1, inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i3_(parameter_1, inLexique) ;
     break ;
   case 30 :
-      rule_galgas_33_ExpressionSyntax_factor_i30_(parameter_1, inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i30_(parameter_1, inLexique) ;
     break ;
   case 31 :
-      rule_galgas_33_ExpressionSyntax_factor_i31_(parameter_1, inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i31_(parameter_1, inLexique) ;
     break ;
   case 32 :
-      rule_galgas_33_ExpressionSyntax_factor_i32_(parameter_1, inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i32_(parameter_1, inLexique) ;
     break ;
   case 34 :
-      rule_galgas_33_ExpressionSyntax_factor_i34_(parameter_1, inLexique) ;
+      rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i34_(parameter_1, inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -46029,14 +46029,14 @@ void cGrammar_galgas_33_Grammar::nt_simple_5F_expression_5F_ggs_33__ (GALGAS_sem
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                      
-//                                         'term' non terminal implementation                                           
+//                                      'term_ggs3' non terminal implementation                                         
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cGrammar_galgas_33_Grammar::nt_term_parse (C_Lexique_galgasScanner * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_term_5F_ggs_33__parse (C_Lexique_galgasScanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 14 :
-      rule_galgas_33_ExpressionSyntax_term_i14_parse(inLexique) ;
+      rule_galgas_33_ExpressionSyntax_term_5F_ggs_33__i14_parse(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -46044,10 +46044,10 @@ void cGrammar_galgas_33_Grammar::nt_term_parse (C_Lexique_galgasScanner * inLexi
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_term_indexing (C_Lexique_galgasScanner * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_term_5F_ggs_33__indexing (C_Lexique_galgasScanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 14 :
-      rule_galgas_33_ExpressionSyntax_term_i14_indexing(inLexique) ;
+      rule_galgas_33_ExpressionSyntax_term_5F_ggs_33__i14_indexing(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -46055,11 +46055,11 @@ void cGrammar_galgas_33_Grammar::nt_term_indexing (C_Lexique_galgasScanner * inL
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_term_ (GALGAS_semanticExpressionAST &  parameter_1,
+void cGrammar_galgas_33_Grammar::nt_term_5F_ggs_33__ (GALGAS_semanticExpressionAST &  parameter_1,
                                 C_Lexique_galgasScanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 14 :
-      rule_galgas_33_ExpressionSyntax_term_i14_(parameter_1, inLexique) ;
+      rule_galgas_33_ExpressionSyntax_term_5F_ggs_33__i14_(parameter_1, inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
