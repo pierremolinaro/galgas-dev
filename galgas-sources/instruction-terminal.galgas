@@ -20,7 +20,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
     $\$terminal\$$ ?let @lstring terminalName indexing terminalReference
-    <actual_input_parameter_list> ?let @actualInputParameterListAST actualInputParameterList
+    <actual_input_parameter_list_ggs3> ?let @actualInputParameterListAST actualInputParameterList
     <terminal_instruction_indexing> ?let indexNameList
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor

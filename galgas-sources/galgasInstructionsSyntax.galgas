@@ -25,7 +25,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
   
   rule <formal_parameter_list_ggs3> !@formalParameterListAST outFormalParameterList
   
-  rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
+  rule <formal_input_parameter_list_ggs3> !@formalInputParameterListAST outFormalInputParameterList
 
   #·····················································································································
   #    S E M A N T I C    I N S T R U C T I O N    L I S T
@@ -127,7 +127,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
       end
     end
     $identifier$ ?let functionName indexing functionDefinition
-    <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
+    <formal_input_parameter_list_ggs3> ?let @formalInputParameterListAST formalInputParameterList
     if isOnce, ([formalInputParameterList length] > 0) then
       error functionName: "an 'once' function should has no argument"
     end
@@ -194,7 +194,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
       end
     end
     $identifier$ ?let functionName indexing functionDefinition
-    <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
+    <formal_input_parameter_list_ggs3> ?let @formalInputParameterListAST formalInputParameterList
     if isOnce, ([formalInputParameterList length] > 0) then
       error functionName: "an 'once' function should has no argument"
     end
@@ -244,7 +244,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
     $extern$
     $func$
     $identifier$ ?let mActionName indexing functionDefinition
-    <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
+    <formal_input_parameter_list_ggs3> ?let @formalInputParameterListAST formalInputParameterList
     $->$
     $@type$ ?let resultTypeName
     ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST.new {
@@ -288,7 +288,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <actual_input_parameter_list> !@actualInputParameterListAST outActualInputParameterList {
+  rule <actual_input_parameter_list_ggs3> !@actualInputParameterListAST outActualInputParameterList {
     outActualInputParameterList = @actualInputParameterListAST {}
     repeat
     while
@@ -612,41 +612,48 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
 
   rule <actual_input_parameter_list> !@actualInputParameterListAST outActualInputParameterList {
     outActualInputParameterList = @actualInputParameterListAST {}
-    repeat
-    while
-      $?$ ?let selector
-      $*$
-      outActualInputParameterList += !selector !@inputParameterAnonymousVariable.new
-    while
-      $?$ ?let selector
-      $var$
-      let @lstring actualParameterTypeName
-      select
-        actualParameterTypeName = ["" nowhere]
-      or
-        $@type$ ?actualParameterTypeName
+    outActualInputParameterList = @actualInputParameterListAST {}
+    select
+    or
+      repeat
+        select
+          $?$ ?let selector
+          $*$
+          outActualInputParameterList += !selector !@inputParameterAnonymousVariable.new
+        or
+          $?$ ?let selector
+          $var$
+          let @lstring actualParameterTypeName
+          select
+            actualParameterTypeName = ["" nowhere]
+          or
+            $@type$ ?actualParameterTypeName
+          end
+          $identifier$ ?let actualParameterName
+          outActualInputParameterList +=
+            !selector
+            !@inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
+        or
+          $?$ ?let selector
+          $let$
+          let @lstring actualParameterTypeName
+          select
+            actualParameterTypeName = ["" nowhere]
+          or
+            $@type$ ?actualParameterTypeName
+          end
+          $identifier$ ?let actualParameterName
+          outActualInputParameterList +=
+            !selector
+            !@inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
+        or
+          $?$ ?let selector
+          $identifier$ ?let actualParameterName
+          outActualInputParameterList += !selector !@inputParameterVariable.new {!actualParameterName}
+        end
+      while
+        $,$
       end
-      $identifier$ ?let actualParameterName
-      outActualInputParameterList +=
-        !selector
-        !@inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
-    while
-      $?$ ?let selector
-      $let$
-      let @lstring actualParameterTypeName
-      select
-        actualParameterTypeName = ["" nowhere]
-      or
-        $@type$ ?actualParameterTypeName
-      end
-      $identifier$ ?let actualParameterName
-      outActualInputParameterList +=
-        !selector
-        !@inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
-    while
-      $?$ ?let selector
-      $identifier$ ?let actualParameterName
-      outActualInputParameterList += !selector !@inputParameterVariable.new {!actualParameterName}
     end
   }  
 

@@ -179,7 +179,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner) {
   #   T E R M I N A L    C H E C K    I N S T R U C T I O N                                                      
   #·····················································································································
 
-  rule <actual_input_parameter_list> !@actualInputParameterListAST outActualInputParameterList
+  rule <actual_input_parameter_list_ggs3> !@actualInputParameterListAST outActualInputParameterList
 
   #·····················································································································
 

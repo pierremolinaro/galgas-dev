@@ -32,7 +32,7 @@ syntax extension galgas3DeclarationsSyntax {
     var @propertyInCollectionListAST attributeList = {}
     repeat
     while
-      <property_declaration> !? attributeList
+      <property_declaration_ggs3> !? attributeList
     end
     $}$
     ${$

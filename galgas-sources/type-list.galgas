@@ -21,7 +21,7 @@ syntax extension galgas3DeclarationsSyntax {
     ${$
     var @propertyInCollectionListAST propertyList = {}
     repeat
-      <property_declaration> !?propertyList
+      <property_declaration_ggs3> !?propertyList
       select
       or
         $;$

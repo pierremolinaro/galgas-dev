@@ -36,8 +36,8 @@ syntax extension galgas4ExpressionSyntax {
   #·····················································································································
   
   rule <primary> !@semanticExpressionAST outExpression {
-    $[$
     $lexique$
+    $[$
     $identifier$ ?let lexiqueName
     $:$
     $identifier$ ?let getterName

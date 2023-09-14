@@ -39,14 +39,25 @@ syntax extension galgas4ExpressionSyntax {
   rule <factor> !@semanticExpressionAST outExpression {
     <primary> ? outExpression
     repeat
-#    while
-#      $($
-#      <expression> ?let unused expression
-#      $)$
     while
       $.$
       $identifier$ ?let structFieldName
-      outExpression = @structPropertyAccessExpressionAST.new {!structFieldName.location !outExpression !structFieldName}
+      select
+        outExpression = @structPropertyAccessExpressionAST.new {!structFieldName.location !outExpression !structFieldName}
+      or #--- Getter call ?
+        let getterName = structFieldName
+        $($
+        <output_expression_list> ?let @actualOutputExpressionList expressionList
+        $)$
+        let endLocation = @location.here
+        outExpression = @getterCallExpressionAST.new {
+          !errorOnGetterCallInsteadOfPropertyRead: true
+          !outExpression
+          !getterName 
+          !expressionList
+          !endLocation # [startLocation union !endLocation]
+        }
+      end
     end
   }
 

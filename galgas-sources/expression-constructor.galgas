@@ -46,7 +46,7 @@ syntax extension galgas3ExpressionSyntax {
       expressionList = {}
     or
       ${$
-      <output_expression_list> ?expressionList
+      <output_expression_list_ggs3> ?expressionList
       $}$
     end
     let endOfExpression = @location.here

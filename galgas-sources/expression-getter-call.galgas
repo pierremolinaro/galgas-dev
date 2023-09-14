@@ -26,7 +26,7 @@ syntax extension galgas3ExpressionSyntax {
   #--- Get getter name
     $identifier$ ?let @lstring getterName
   #--- Actual parameters
-    <output_expression_list> ?let @actualOutputExpressionList expressionList
+    <output_expression_list_ggs3> ?let @actualOutputExpressionList expressionList
     $]$
     let endLocation = @location.here
     outExpression = @getterCallExpressionAST.new {
@@ -47,40 +47,19 @@ syntax extension galgas3ExpressionSyntax {
 syntax extension galgas4ExpressionSyntax {
 
   #·····················································································································
-  
-  rule <primary> !@semanticExpressionAST outExpression {
-    $[$
-  #--- Get source identity characteristics
-    let startLocation = @location.here
-    <expression> ?let @semanticExpressionAST receiverExpression
-  #--- Get getter name
-    $identifier$ ?let @lstring getterName
-  #--- Actual parameters
-    <output_expression_list> ?let @actualOutputExpressionList expressionList
-    $]$
-    let endLocation = @location.here
-    outExpression = @getterCallExpressionAST.new {
-      !errorOnGetterCallInsteadOfPropertyRead: true
-      !receiverExpression
-      !getterName
-      !expressionList
-      ![startLocation union !endLocation]
-    }
-  }
-
+  #  OLD STYLE GETTER CALL
   #·····················································································································
   
 #  rule <primary> !@semanticExpressionAST outExpression {
+#    $[$
 #  #--- Get source identity characteristics
 #    let startLocation = @location.here
 #    <expression> ?let @semanticExpressionAST receiverExpression
 #  #--- Get getter name
-#    $.$
 #    $identifier$ ?let @lstring getterName
 #  #--- Actual parameters
-#    $($
 #    <output_expression_list> ?let @actualOutputExpressionList expressionList
-#    $)$
+#    $]$
 #    let endLocation = @location.here
 #    outExpression = @getterCallExpressionAST.new {
 #      !errorOnGetterCallInsteadOfPropertyRead: true

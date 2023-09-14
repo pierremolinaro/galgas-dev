@@ -34,7 +34,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
   
   rule <semantic_instruction_list_ggs3> !@semanticInstructionListAST outInstructionsList
   
-  rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
+  rule <formal_input_parameter_list_ggs3> !@formalInputParameterListAST outFormalInputParameterList
 
   rule <expression_ggs3> !@semanticExpressionAST outExpression
 
@@ -42,7 +42,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
   #    A T T R I B U T E    I N    C O L L E C T I O N
   #·····················································································································
 
-  rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
+  rule <property_declaration_ggs3> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
     <acces_control> ?let accessControl
     let @bool isConstant
     select
@@ -80,7 +80,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
+  rule <property_declaration_ggs3> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
     $@type$ ?let propertyTypeName
     $identifier$ ?let propertyName
     var featureList = @lstringlist {}

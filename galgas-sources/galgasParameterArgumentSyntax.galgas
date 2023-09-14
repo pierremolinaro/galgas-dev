@@ -229,7 +229,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner) {
   #  F O R M A L    I N P U T    P A R A M E T E R S 
   #·····················································································································
 
-  rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList {
+  rule <formal_input_parameter_list_ggs3> !@formalInputParameterListAST outFormalInputParameterList {
     outFormalInputParameterList = {}
     repeat
     while
@@ -297,39 +297,50 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
   rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList {
     outFormalParameterList = {}
     $($
-    repeat
-    while
-      let @lstring selector
-      let @formalArgumentPassingModeAST mFormalParameterPassingMode
-      select
-        $?$ ?selector
-        mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentIn
-      or
-        $?$ ?selector
-        $let$
-        mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentConstantIn
-      or
-        $?!$ ?selector
-        mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentInOut
-      or
-        $!$ ?selector
-        mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentOut
+    select
+    or
+      repeat
+        let @lstring selector
+        let @formalArgumentPassingModeAST mFormalParameterPassingMode
+        select
+          $?$ ?selector
+          mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentIn
+        or
+          selector = ["" here]
+          mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentIn
+        or
+          $?$ ?selector
+          $let$
+          mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
+        or
+          $let$
+          selector = ["" here]
+          mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
+        or
+          $?!$ ?selector
+          mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentInOut
+        or
+          $!$ ?selector
+          mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentOut
+        end
+        $@type$ ?let @lstring mFormalParameterTypeName
+        let @bool mIsUnused
+        select
+          mIsUnused = false
+        or
+          $unused$
+          mIsUnused = true
+        end
+        $identifier$ ?let @lstring mFormalParameterName
+        outFormalParameterList +=
+          !selector
+          !mFormalParameterPassingMode
+          !mFormalParameterTypeName
+          !mFormalParameterName
+          !mIsUnused
+      while
+        $,$
       end
-      $@type$ ?let @lstring mFormalParameterTypeName
-      let @bool mIsUnused
-      select
-        mIsUnused = false
-      or
-        $unused$
-        mIsUnused = true
-      end
-      $identifier$ ?let @lstring mFormalParameterName
-      outFormalParameterList +=
-        !selector
-        !mFormalParameterPassingMode
-        !mFormalParameterTypeName
-        !mFormalParameterName
-        !mIsUnused
     end
     $)$
   }
@@ -513,31 +524,40 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
   rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList {
     outFormalInputParameterList = {}
     $($
-    repeat
-    while
-      let @bool isConstant
-      $?$ ?let selector
-      select
-        isConstant = false
-      or
-        $let$
-        isConstant = true
+    select
+    or
+      repeat
+        let @lstring selector
+        select
+          $?$ ?selector
+        or
+          selector = ["" here]
+        end
+        let @bool isConstant
+        select
+          isConstant = false
+        or
+          $let$
+          isConstant = true
+        end
+        $@type$ ?let @lstring mFormalParameterTypeName
+        let @bool mIsUnused
+        select
+          mIsUnused = false
+        or
+          $unused$
+          mIsUnused = true
+        end
+        $identifier$ ?let @lstring mFormalParameterName
+        outFormalInputParameterList +=
+          !selector
+          !mFormalParameterTypeName
+          !mFormalParameterName
+          !mIsUnused
+          !isConstant
+      while
+        $,$
       end
-      $@type$ ?let @lstring mFormalParameterTypeName
-      let @bool mIsUnused
-      select
-        mIsUnused = false
-      or
-        $unused$
-        mIsUnused = true
-      end
-      $identifier$ ?let @lstring mFormalParameterName
-      outFormalInputParameterList +=
-        !selector
-        !mFormalParameterTypeName
-        !mFormalParameterName
-        !mIsUnused
-        !isConstant
     end
     $)$
   }

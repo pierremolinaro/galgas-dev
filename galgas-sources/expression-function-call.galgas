@@ -18,7 +18,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> !@semanticExpressionAST outExpression {
     $identifier$ ?let @lstring functionName indexing functionCall
     $($
-    <output_expression_list> ?let @actualOutputExpressionList expressionList
+    <output_expression_list_ggs3> ?let @actualOutputExpressionList expressionList
     $)$
     outExpression = @functionCallExpressionAST.new {
       !functionName

@@ -25,7 +25,7 @@ syntax extension galgas3DeclarationsSyntax {
     $getter$
     $@type$ ?let @lstring className indexing typeReferenceExtensionGetter
     $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
-    <formal_input_parameter_list> ?let mFormalInputParameterList
+    <formal_input_parameter_list_ggs3> ?let mFormalInputParameterList
     $->$
     $@type$ ?let @lstring mReturnedTypeName
     let @lstring resultVariableName
@@ -56,7 +56,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
     $getter$
     $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
-    <formal_input_parameter_list> ?let mFormalInputParameterList
+    <formal_input_parameter_list_ggs3> ?let mFormalInputParameterList
     $->$
     $@type$ ?let @lstring mReturnedTypeName
     let @lstring resultVariableName
