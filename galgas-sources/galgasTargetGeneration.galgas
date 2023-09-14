@@ -1208,7 +1208,9 @@ proc updateGalgasTargets
         !"unicode_character_m.h",
         !"unicode_character_m.m",
         !"unicode_string_routines.cpp",
-        !"unicode_string_routines.h"
+        !"unicode_string_routines.h",
+        !"print.cpp",
+        !"print.h"
       }
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool

@@ -383,8 +383,7 @@ override getter @onceFunctionDeclarationAST keyRepresentation
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @externFunctionDeclarationAST keyRepresentation
-  ->@string {
+override getter @externFunctionDeclarationAST keyRepresentation -> @string {
   result = "extern function " + self.mFunctionName
 }
 

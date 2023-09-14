@@ -199,6 +199,17 @@ private proc compileProject ?let @lstring inProjectSourceFile
       error mValue: "only \".galgas\" or \".ggs\" extensions are allowed here"
     end
   end
+#---------------------------------- Add 'print' proc
+  var @formalParameterListAST formalParameterList = {}
+  formalParameterList += !["" nowhere] !.argumentConstantIn !["string" nowhere] !["inMessage" nowhere] !false
+  declarationAST.mDeclarationList += !@externRoutineDeclarationAST.new {
+    !false # Is not predefined
+    !false # Is not internal
+    !["print" nowhere]
+    !formalParameterList
+  }
+  var @lstringlist usefulnessRootEntities = {}
+  usefulnessRootEntities += !procedureNameForUsefulEntitiesGraph (!["print" nowhere])
 #---------------------------------- Hand coded source files
   var @stringlist handCodedLinkToolFileList = {}
   var @stringlist handCodedLinkAppFileList = {}
@@ -260,7 +271,6 @@ private proc compileProject ?let @lstring inProjectSourceFile
   )
 #---------------------------------- Compile semantic declarations
   var @usefulEntitiesGraph usefulEntitiesGraph = .emptyGraph
-  var @lstringlist usefulnessRootEntities = {}
   let @string buildDirectoryName
   if inGalgas4 then
     buildDirectoryName = [[inProjectSourceFile lastPathComponent] stringByReplacingStringByString !"." !"-"] + "-build"

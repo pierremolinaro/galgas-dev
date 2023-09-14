@@ -359,32 +359,48 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
 
   rule <actual_parameter_list> !@actualParameterListAST outActualParameterList {
     outActualParameterList = {}
-    repeat
-    while
-      $?$ ?let selector
-      select
-        $*$
-        <poisoned_var_list> ?let poisonedVarNameList
-        outActualParameterList += !@inputSingleJokerActualParameterAST.new {!selector !poisonedVarNameList}
-      or
-        $literalInt$ ?let count
-        $*$
-        var n = [count.bigint uint]
-        if selector.string != "" then
-          error selector : "the selector should be '?'" fixit { replace "?" }
-        end
-       if n == 0 then
-          error count: "the count value should be > 0"
-        else
-          loop (n)
-          while n > 0 do
-            outActualParameterList += !@inputJokerActualParameterAST.new {!selector.location !n}
-            n -= 1
-          end
+    select
+    or
+      repeat
+         <actual_parameter> !?outActualParameterList
+       while
+#         $,$
+      end
+    end
+  }
+
+  #·····················································································································
+
+  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
+    $?$ ?let selector
+    select
+      $*$
+      <poisoned_var_list> ?let poisonedVarNameList
+      ioActualParameterList += !@inputSingleJokerActualParameterAST.new {!selector !poisonedVarNameList}
+    or
+      $literalInt$ ?let count
+      $*$
+      var n = [count.bigint uint]
+      if selector.string != "" then
+        error selector : "the selector should be '?'" fixit { replace "?" }
+      end
+     if n == 0 then
+        error count: "the count value should be > 0"
+      else
+        loop (n)
+        while n > 0 do
+          ioActualParameterList += !@inputJokerActualParameterAST.new {!selector.location !n}
+          n -= 1
         end
       end
-    while
-      $!?$ ?let selector
+    end
+  }
+
+  #·····················································································································
+
+  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
+    $!?$ ?let selector
+    select
       $identifier$ ?let outputInputActualParameterName
       var structAttributeList = @lstringlist {}
       repeat
@@ -393,20 +409,25 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
         $identifier$ ?let structAttributeName
         structAttributeList += !structAttributeName
       end
-      outActualParameterList += !@outputInputActualParameterAST.new { 
+      ioActualParameterList += !@outputInputActualParameterAST.new { 
         !selector
         !outputInputActualParameterName
         !structAttributeList
       }
-    while
-      $!?$ ?let selector
+    or
       $*$
-      outActualParameterList += !@outputInputSingleJokerParameterAST.new {!selector}
-    while
-      $!?$ ?let selector
+      ioActualParameterList += !@outputInputSingleJokerParameterAST.new {!selector}
+    end
+  }
+
+  #·····················································································································
+
+  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
+    $!?$ ?let selector
+    select
       $self$
-      outActualParameterList += !@outputInputSelfParameterAST.new {!selector}
-    while
+      ioActualParameterList += !@outputInputSelfParameterAST.new {!selector}
+    or
       $!?$ ?let selector
       $literalInt$ ?let count
       $*$
@@ -419,50 +440,70 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
       else
         loop (n)
         while n > 0 do
-          outActualParameterList += !@outputInputJokerParameterAST.new {!selector.location !n}
+          ioActualParameterList += !@outputInputJokerParameterAST.new {!selector.location !n}
           n -= 1
         end
       end
-    while
-      $!$ ?let selector
-      <expression> ?let @semanticExpressionAST e
-      let @location endOfExpressionLocation = @location.here
-      outActualParameterList += !@outputActualParameterAST.new {
-        !selector
-        !e
-        !endOfExpressionLocation
-      }
-    while # input parameter, existing variable
-      $?$ ?let selector
+    end
+  }
+
+  #·····················································································································
+
+  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
+    $!$ ?let selector
+    <expression> ?let @semanticExpressionAST e
+    let @location endOfExpressionLocation = @location.here
+    ioActualParameterList += !@outputActualParameterAST.new {
+      !selector
+      !e
+      !endOfExpressionLocation
+    }
+  }
+
+  #·····················································································································
+
+#  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
+#    let selector = ["" here]
+#    <expression> ?let @semanticExpressionAST e
+#    let @location endOfExpressionLocation = @location.here
+#    ioActualParameterList += !@outputActualParameterAST.new {
+#      !selector
+#      !e
+#      !endOfExpressionLocation
+#    }
+#  }
+
+  #·····················································································································
+
+  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
+    $?$ ?let selector
+    select
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list> ?let poisonedVarNameList
-      outActualParameterList += !@inputActualExistingVariableParameterAST.new {
+      ioActualParameterList += !@inputActualExistingVariableParameterAST.new {
         !selector
         !inputActualParameterName
         !poisonedVarNameList
       }
-    while # input parameter, self.property
-      $?$ ?let selector
+    or # input parameter, self.property
       $self$
       $.$
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list> ?let poisonedVarNameList
-      outActualParameterList += !@inputActualSelfPropertyParameterAST.new {
+      ioActualParameterList += !@inputActualSelfPropertyParameterAST.new {
         !selector
         !inputActualParameterName
         !poisonedVarNameList
       }
-    while # input parameter, self
-      $?$ ?let selector
+    or # input parameter, self
       $self$
       <poisoned_var_list> ?let poisonedVarNameList
-      outActualParameterList += !@inputActualSelfParameterAST.new {
+      ioActualParameterList += !@inputActualSelfParameterAST.new {
         !selector
         !.here
         !poisonedVarNameList
       }
-    while  # input parameter, new variable
-      $?$ ?let selector
+    or # input parameter, new variable
       $var$
       let @lstring declarationTypeName
       select
@@ -472,25 +513,23 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
       end
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list> ?let poisonedVarNameList
-      outActualParameterList += !@inputActualNewVariableParameterAST.new {
+      ioActualParameterList += !@inputActualNewVariableParameterAST.new {
         !selector
         !declarationTypeName
         !inputActualParameterName
         !poisonedVarNameList
       }
-    while  # input parameter, new variable, explicit type
-      $?$ ?let selector
+    or # input parameter, new variable, explicit type
       $@type$ ?let @lstring declarationTypeName
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list> ?let poisonedVarNameList
-      outActualParameterList += !@inputActualNewVariableParameterAST.new {
+      ioActualParameterList += !@inputActualNewVariableParameterAST.new {
         !selector
         !declarationTypeName
         !inputActualParameterName
         !poisonedVarNameList
       }
-    while # input parameter, new constant
-      $?$ ?let selector
+    or # input parameter, new constant
       $let$
       let @lstring declarationTypeName
       select
@@ -507,7 +546,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
       end
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list> ?let poisonedVarNameList
-      outActualParameterList += !@inputActualNewConstantParameterAST.new {
+      ioActualParameterList += !@inputActualNewConstantParameterAST.new {
         !selector
         !declarationTypeName
         !inputActualParameterName
@@ -516,6 +555,166 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
       }
     end
   }
+
+#  rule <actual_parameter_list> !@actualParameterListAST outActualParameterList {
+#    outActualParameterList = {}
+#    repeat
+#    while
+#      $!$ ?let selector
+#      <expression> ?let @semanticExpressionAST e
+#      let @location endOfExpressionLocation = @location.here
+#      outActualParameterList += !@outputActualParameterAST.new {
+#        !selector
+#        !e
+#        !endOfExpressionLocation
+#      }
+#    while
+#      $?$ ?let selector
+#      select
+#        $*$
+#        <poisoned_var_list> ?let poisonedVarNameList
+#        outActualParameterList += !@inputSingleJokerActualParameterAST.new {!selector !poisonedVarNameList}
+#      or
+#        $literalInt$ ?let count
+#        $*$
+#        var n = [count.bigint uint]
+#        if selector.string != "" then
+#          error selector : "the selector should be '?'" fixit { replace "?" }
+#        end
+#       if n == 0 then
+#          error count: "the count value should be > 0"
+#        else
+#          loop (n)
+#          while n > 0 do
+#            outActualParameterList += !@inputJokerActualParameterAST.new {!selector.location !n}
+#            n -= 1
+#          end
+#        end
+#      end
+#    while
+#      $!?$ ?let selector
+#      $self$
+#      outActualParameterList += !@outputInputSelfParameterAST.new {!selector}
+#    while
+#      $!?$ ?let selector
+#      $identifier$ ?let outputInputActualParameterName
+#      var structAttributeList = @lstringlist {}
+#      repeat
+#      while
+#        $.$
+#        $identifier$ ?let structAttributeName
+#        structAttributeList += !structAttributeName
+#      end
+#      outActualParameterList += !@outputInputActualParameterAST.new { 
+#        !selector
+#        !outputInputActualParameterName
+#        !structAttributeList
+#      }
+#    while
+#      $!?$ ?let selector
+#      $*$
+#      outActualParameterList += !@outputInputSingleJokerParameterAST.new {!selector}
+#    while
+#      $!?$ ?let selector
+#      $literalInt$ ?let count
+#      $*$
+#      var n = [count.bigint uint]
+#      if selector.string != "" then
+#        error selector : "the selector should be '!?'" fixit { replace "!?" }
+#      end
+#      if n == 0 then
+#        error count: "the count value should be > 0"
+#      else
+#        loop (n)
+#        while n > 0 do
+#          outActualParameterList += !@outputInputJokerParameterAST.new {!selector.location !n}
+#          n -= 1
+#        end
+#      end
+#    while # input parameter, existing variable
+#      $?$ ?let selector
+#      $identifier$ ?let inputActualParameterName
+#      <poisoned_var_list> ?let poisonedVarNameList
+#      outActualParameterList += !@inputActualExistingVariableParameterAST.new {
+#        !selector
+#        !inputActualParameterName
+#        !poisonedVarNameList
+#      }
+#    while # input parameter, self.property
+#      $?$ ?let selector
+#      $self$
+#      $.$
+#      $identifier$ ?let inputActualParameterName
+#      <poisoned_var_list> ?let poisonedVarNameList
+#      outActualParameterList += !@inputActualSelfPropertyParameterAST.new {
+#        !selector
+#        !inputActualParameterName
+#        !poisonedVarNameList
+#      }
+#    while # input parameter, self
+#      $?$ ?let selector
+#      $self$
+#      <poisoned_var_list> ?let poisonedVarNameList
+#      outActualParameterList += !@inputActualSelfParameterAST.new {
+#        !selector
+#        !.here
+#        !poisonedVarNameList
+#      }
+#    while  # input parameter, new variable
+#      $?$ ?let selector
+#      $var$
+#      let @lstring declarationTypeName
+#      select
+#        declarationTypeName = ["" nowhere]
+#      or
+#        $@type$ ?declarationTypeName
+#      end
+#      $identifier$ ?let inputActualParameterName
+#      <poisoned_var_list> ?let poisonedVarNameList
+#      outActualParameterList += !@inputActualNewVariableParameterAST.new {
+#        !selector
+#        !declarationTypeName
+#        !inputActualParameterName
+#        !poisonedVarNameList
+#      }
+#    while  # input parameter, new variable, explicit type
+#      $?$ ?let selector
+#      $@type$ ?let @lstring declarationTypeName
+#      $identifier$ ?let inputActualParameterName
+#      <poisoned_var_list> ?let poisonedVarNameList
+#      outActualParameterList += !@inputActualNewVariableParameterAST.new {
+#        !selector
+#        !declarationTypeName
+#        !inputActualParameterName
+#        !poisonedVarNameList
+#      }
+#    while # input parameter, new constant
+#      $?$ ?let selector
+#      $let$
+#      let @lstring declarationTypeName
+#      select
+#        declarationTypeName = ["" nowhere]
+#      or
+#        $@type$ ?declarationTypeName
+#      end
+#      let @bool markedAsUnused
+#      select
+#        markedAsUnused = false
+#      or
+#        $unused$
+#        markedAsUnused = true
+#      end
+#      $identifier$ ?let inputActualParameterName
+#      <poisoned_var_list> ?let poisonedVarNameList
+#      outActualParameterList += !@inputActualNewConstantParameterAST.new {
+#        !selector
+#        !declarationTypeName
+#        !inputActualParameterName
+#        !markedAsUnused
+#        !poisonedVarNameList
+#      }
+#    end
+#  }
 
   #·····················································································································
   #  F O R M A L    I N P U T    P A R A M E T E R S 

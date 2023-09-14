@@ -659,3 +659,13 @@ void routine_generateGalgas_33_Linux_36__34_OnMacOSXTarget (const class GALGAS_s
                                                             class C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'print'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_print (const class GALGAS_string constinArgument0,
+                    class C_Compiler * inCompiler
+                    COMMA_LOCATION_ARGS) ;
+
