@@ -612,7 +612,6 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
 
   rule <actual_input_parameter_list> !@actualInputParameterListAST outActualInputParameterList {
     outActualInputParameterList = @actualInputParameterListAST {}
-    outActualInputParameterList = @actualInputParameterListAST {}
     select
     or
       repeat

@@ -1045,6 +1045,8 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 
   public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_19 (C_Lexique_galgasScanner *) ;
 
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_20 (C_Lexique_galgasScanner *) ;
+
   public: virtual int32_t select_galgas_34_InstructionsSyntax_0 (C_Lexique_galgasScanner *) ;
 
   public: virtual int32_t select_galgas_34_InstructionsSyntax_1 (C_Lexique_galgasScanner *) ;
@@ -1194,6 +1196,8 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual int32_t select_galgas_34_InstructionsSyntax_73 (C_Lexique_galgasScanner *) ;
 
   public: virtual int32_t select_galgas_34_InstructionsSyntax_74 (C_Lexique_galgasScanner *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_75 (C_Lexique_galgasScanner *) ;
 
   public: virtual int32_t select_galgas_34_DeclarationsSyntax_0 (C_Lexique_galgasScanner *) ;
 

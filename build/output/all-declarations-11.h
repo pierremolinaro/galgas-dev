@@ -2107,12 +2107,12 @@ class cParser_galgas_33_ParameterArgumentSyntax {
 
   protected: virtual void nt_formal_5F_parameter_5F_list_5F_ggs_33__indexing (class C_Lexique_galgasScanner * inLexique) = 0 ;
 
-  protected: virtual void nt_poisoned_5F_var_5F_list_ (class GALGAS_lstringlist & outArgument0,
-                                                       class C_Lexique_galgasScanner * inLexique) = 0 ;
+  protected: virtual void nt_poisoned_5F_var_5F_list_5F_ggs_33__ (class GALGAS_lstringlist & outArgument0,
+                                                                  class C_Lexique_galgasScanner * inLexique) = 0 ;
 
-  protected: virtual void nt_poisoned_5F_var_5F_list_parse (class C_Lexique_galgasScanner * inLexique) = 0 ;
+  protected: virtual void nt_poisoned_5F_var_5F_list_5F_ggs_33__parse (class C_Lexique_galgasScanner * inLexique) = 0 ;
 
-  protected: virtual void nt_poisoned_5F_var_5F_list_indexing (class C_Lexique_galgasScanner * inLexique) = 0 ;
+  protected: virtual void nt_poisoned_5F_var_5F_list_5F_ggs_33__indexing (class C_Lexique_galgasScanner * inLexique) = 0 ;
 
 
 //--- Rule declarations
@@ -2137,19 +2137,19 @@ class cParser_galgas_33_ParameterArgumentSyntax {
 
   protected: void rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__i2_indexing (C_Lexique_galgasScanner * inLexique) ;
 
-  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_i3_ (GALGAS_lstringlist & outArgument0,
-                                                                                      C_Lexique_galgasScanner * inLexique) ;
+  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_5F_ggs_33__i3_ (GALGAS_lstringlist & outArgument0,
+                                                                                                 C_Lexique_galgasScanner * inLexique) ;
 
-  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_i3_parse (C_Lexique_galgasScanner * inLexique) ;
+  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_5F_ggs_33__i3_parse (C_Lexique_galgasScanner * inLexique) ;
 
-  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_i3_indexing (C_Lexique_galgasScanner * inLexique) ;
+  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_5F_ggs_33__i3_indexing (C_Lexique_galgasScanner * inLexique) ;
 
-  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_i4_ (GALGAS_lstringlist & outArgument0,
-                                                                                      C_Lexique_galgasScanner * inLexique) ;
+  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_5F_ggs_33__i4_ (GALGAS_lstringlist & outArgument0,
+                                                                                                 C_Lexique_galgasScanner * inLexique) ;
 
-  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_i4_parse (C_Lexique_galgasScanner * inLexique) ;
+  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_5F_ggs_33__i4_parse (C_Lexique_galgasScanner * inLexique) ;
 
-  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_i4_indexing (C_Lexique_galgasScanner * inLexique) ;
+  protected: void rule_galgas_33_ParameterArgumentSyntax_poisoned_5F_var_5F_list_5F_ggs_33__i4_indexing (C_Lexique_galgasScanner * inLexique) ;
 
 
 

@@ -1733,19 +1733,19 @@ class cParser_galgas_34_ParameterArgumentSyntax {
 
   protected: void rule_galgas_34_ParameterArgumentSyntax_actual_5F_parameter_i6_indexing (C_Lexique_galgasScanner * inLexique) ;
 
-  protected: void rule_galgas_34_ParameterArgumentSyntax_actual_5F_parameter_i7_ (GALGAS_actualParameterListAST & ioArgument0,
-                                                                                  C_Lexique_galgasScanner * inLexique) ;
-
-  protected: void rule_galgas_34_ParameterArgumentSyntax_actual_5F_parameter_i7_parse (C_Lexique_galgasScanner * inLexique) ;
-
-  protected: void rule_galgas_34_ParameterArgumentSyntax_actual_5F_parameter_i7_indexing (C_Lexique_galgasScanner * inLexique) ;
-
-  protected: void rule_galgas_34_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_i8_ (GALGAS_formalInputParameterListAST & outArgument0,
+  protected: void rule_galgas_34_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_i7_ (GALGAS_formalInputParameterListAST & outArgument0,
                                                                                                    C_Lexique_galgasScanner * inLexique) ;
 
-  protected: void rule_galgas_34_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_i8_parse (C_Lexique_galgasScanner * inLexique) ;
+  protected: void rule_galgas_34_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_i7_parse (C_Lexique_galgasScanner * inLexique) ;
 
-  protected: void rule_galgas_34_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_i8_indexing (C_Lexique_galgasScanner * inLexique) ;
+  protected: void rule_galgas_34_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_i7_indexing (C_Lexique_galgasScanner * inLexique) ;
+
+  protected: void rule_galgas_34_ParameterArgumentSyntax_poisoned_5F_var_5F_list_i8_ (GALGAS_lstringlist & outArgument0,
+                                                                                      C_Lexique_galgasScanner * inLexique) ;
+
+  protected: void rule_galgas_34_ParameterArgumentSyntax_poisoned_5F_var_5F_list_i8_parse (C_Lexique_galgasScanner * inLexique) ;
+
+  protected: void rule_galgas_34_ParameterArgumentSyntax_poisoned_5F_var_5F_list_i8_indexing (C_Lexique_galgasScanner * inLexique) ;
 
   protected: void rule_galgas_34_ParameterArgumentSyntax_poisoned_5F_var_5F_list_i9_ (GALGAS_lstringlist & outArgument0,
                                                                                       C_Lexique_galgasScanner * inLexique) ;
@@ -1753,13 +1753,6 @@ class cParser_galgas_34_ParameterArgumentSyntax {
   protected: void rule_galgas_34_ParameterArgumentSyntax_poisoned_5F_var_5F_list_i9_parse (C_Lexique_galgasScanner * inLexique) ;
 
   protected: void rule_galgas_34_ParameterArgumentSyntax_poisoned_5F_var_5F_list_i9_indexing (C_Lexique_galgasScanner * inLexique) ;
-
-  protected: void rule_galgas_34_ParameterArgumentSyntax_poisoned_5F_var_5F_list_i10_ (GALGAS_lstringlist & outArgument0,
-                                                                                       C_Lexique_galgasScanner * inLexique) ;
-
-  protected: void rule_galgas_34_ParameterArgumentSyntax_poisoned_5F_var_5F_list_i10_parse (C_Lexique_galgasScanner * inLexique) ;
-
-  protected: void rule_galgas_34_ParameterArgumentSyntax_poisoned_5F_var_5F_list_i10_indexing (C_Lexique_galgasScanner * inLexique) ;
 
 
 
@@ -1803,6 +1796,8 @@ class cParser_galgas_34_ParameterArgumentSyntax {
   protected: virtual int32_t select_galgas_34_ParameterArgumentSyntax_18 (C_Lexique_galgasScanner *) = 0 ;
 
   protected: virtual int32_t select_galgas_34_ParameterArgumentSyntax_19 (C_Lexique_galgasScanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_ParameterArgumentSyntax_20 (C_Lexique_galgasScanner *) = 0 ;
 
 
 } ;
@@ -2532,6 +2527,8 @@ class cParser_galgas_34_InstructionsSyntax {
   protected: virtual int32_t select_galgas_34_InstructionsSyntax_73 (C_Lexique_galgasScanner *) = 0 ;
 
   protected: virtual int32_t select_galgas_34_InstructionsSyntax_74 (C_Lexique_galgasScanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_InstructionsSyntax_75 (C_Lexique_galgasScanner *) = 0 ;
 
 
 } ;

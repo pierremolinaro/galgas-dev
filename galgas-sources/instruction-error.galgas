@@ -112,34 +112,37 @@ syntax extension galgas4InstructionsSyntax {
     select
     or
       $fixit$
-      ${$
+      $($
       var hasFixItRemove = false
       repeat
-      while
-        $remove$
-        if hasFixItRemove then
-          warning .here : "duplicated action" fixit { remove }
-        else
-          outFixitListAST += !.fixItRemove
-          hasFixItRemove = true
+        select
+          $remove$
+          if hasFixItRemove then
+            warning .here : "duplicated action" fixit { remove }
+          else
+            outFixitListAST += !.fixItRemove
+            hasFixItRemove = true
+          end
+        or
+          $replace$
+          let errorLocation = @location.here
+          <expression> ?let @semanticExpressionAST expression
+          outFixitListAST += !.fixItReplace {!exp:expression !errorLocation:errorLocation}
+        or
+          $after$
+          let errorLocation = @location.here
+          <expression> ?let @semanticExpressionAST expression
+          outFixitListAST += !.fixItInsertAfter {!exp:expression !errorLocation:errorLocation}
+        or
+          $before$
+          let errorLocation = @location.here
+          <expression> ?let @semanticExpressionAST expression
+          outFixitListAST += !.fixItInsertBefore {!exp:expression !errorLocation:errorLocation}
         end
       while
-        $replace$
-        let errorLocation = @location.here
-        <expression> ?let @semanticExpressionAST expression
-        outFixitListAST += !.fixItReplace {!exp:expression !errorLocation:errorLocation}
-      while
-        $after$
-        let errorLocation = @location.here
-        <expression> ?let @semanticExpressionAST expression
-        outFixitListAST += !.fixItInsertAfter {!exp:expression !errorLocation:errorLocation}
-      while
-        $before$
-        let errorLocation = @location.here
-        <expression> ?let @semanticExpressionAST expression
-        outFixitListAST += !.fixItInsertBefore {!exp:expression !errorLocation:errorLocation}
+        $,$
       end
-      $}$
+      $)$
     end
   }
 
@@ -155,12 +158,14 @@ syntax extension galgas4InstructionsSyntax {
     select
     or
       $spoil$
+      $($
       repeat
        $identifier$ ?let builtVariableName
        mBuiltVariableList += !builtVariableName
       while
         $,$
       end
+      $)$
     end
     <issue_fixit> ?let @fixitListAST fixitListAST
     outInstruction = @errorInstructionAST.new {
