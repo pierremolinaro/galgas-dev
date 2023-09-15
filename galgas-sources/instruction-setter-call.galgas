@@ -100,55 +100,42 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-    $[$
-    let instructionLocation = @location.here
-    $!?$ ?let selector
-    if selector.string != "" then
-      error selector : "an empty selector '!?' is required here"
-    end
-    let @bool prefixedBySelf
-    select
-      prefixedBySelf = false
-    or
-      $self$
-      $.$
-      prefixedBySelf = true
-    end
-    $identifier$ ?let mReceiverName
-#    select
-      var mReceiverStructAttributes = @lstringlist {}
-      repeat
-      while
-        $.$
-        $identifier$ ?let structAttribute
-        mReceiverStructAttributes += !structAttribute
-      end
-      $identifier$ ?let mSetterName
-      <actual_parameter_list> ?let @actualParameterListAST actualParameterList
-      outInstruction = @setterCallInstructionAST.new {
-        !instructionLocation
-        !prefixedBySelf
-        !mReceiverName
-        !mReceiverStructAttributes
-        !["" here] # typeNameForCasting
-        !mSetterName
-        !actualParameterList
-      }
-#    or
-#      <actual_parameter_list> ?let @actualParameterListAST actualParameterList
-#      if prefixedBySelf then
-#        outInstruction = @selfSetterCallInstructionAST.new {
-#          !instructionLocation
-#          !mReceiverName # mSetterName
-#          !actualParameterList
-#        }
-#      else
-#        error .here : "invalid setter call" : outInstruction
-#      end
+#  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+#    $[$
+#    let instructionLocation = @location.here
+#    $!?$ ?let selector
+#    if selector.string != "" then
+#      error selector : "an empty selector '!?' is required here"
 #    end
-    $]$
-  }
+#    let @bool prefixedBySelf
+#    select
+#      prefixedBySelf = false
+#    or
+#      $self$
+#      $.$
+#      prefixedBySelf = true
+#    end
+#    $identifier$ ?let mReceiverName
+#    var mReceiverStructAttributes = @lstringlist {}
+#    repeat
+#    while
+#      $.$
+#      $identifier$ ?let structAttribute
+#      mReceiverStructAttributes += !structAttribute
+#    end
+#    $identifier$ ?let mSetterName
+#    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+#    outInstruction = @setterCallInstructionAST.new {
+#      !instructionLocation
+#      !prefixedBySelf
+#      !mReceiverName
+#      !mReceiverStructAttributes
+#      !["" here] # typeNameForCasting
+#      !mSetterName
+#      !actualParameterList
+#    }
+#    $]$
+#  }
 
   #·····················································································································
 
@@ -199,26 +186,6 @@ syntax extension galgas4InstructionsSyntax {
       }
     end
   }
-
-  #·····················································································································
-
-#  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-#    $[$
-#    let instructionLocation = @location.here
-#    $!?$ ?let selector
-#    if selector.string != "" then
-#      error selector : "an empty selector '!?' is required here"
-#    end
-#    $self$
-#    $identifier$ ?let mSetterName
-#    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
-#    $]$
-#    outInstruction = @selfSetterCallInstructionAST.new {
-#      !instructionLocation
-#      !mSetterName
-#      !actualParameterList
-#    }
-#  }  
 
   #·····················································································································
 
