@@ -76,7 +76,111 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
 
 //----------------------------------------------------------------------------------------
 
+protocol Correcteur : AnyObject {
+  var préfixeMessageErreur : String { get }
+  func corriger (_ lignesDuFichier : inout [String],
+                 _ ligne : Int,
+                 _ premierCaractère : Int,
+                 _ dernierCaractère : Int)
+}
+
+//----------------------------------------------------------------------------------------
+
+class CorrigerPointInterrogation : Correcteur {
+  var préfixeMessageErreur : String { "syntax error #1: found the '?' or '?selector:' delimitor, expected:" }
+
+  func corriger (_ lignesDuFichier : inout [String],
+                 _ ligne : Int,
+                 _ premierCaractère : Int,
+                 _ dernierCaractère : Int) {
+    let ligneConcernée = lignesDuFichier [ligne - 1]
+    print ("  line concernée '\(ligneConcernée)'")
+    var préfixe = ligneConcernée
+    préfixe.removeLast (ligneConcernée.count - premierCaractère)
+    while préfixe.hasSuffix (" ") {
+      préfixe.removeLast ()
+    }
+    if préfixe.isEmpty {
+      print ("  Préfixe vide, ajout en fin de ligne précédente")
+      lignesDuFichier [ligne - 2] += ","
+    }else{
+      print ("  Préfixe '\(préfixe)'")
+      var suffixe = ligneConcernée
+      suffixe.removeFirst (premierCaractère)
+      print ("  Suffixe '\(suffixe)'")
+      let ligneModifiée = préfixe + ", " + suffixe
+      print ("  ligne modifiée '\(ligneModifiée)'")
+      lignesDuFichier [ligne - 1] = ligneModifiée
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------
+
+class CorrigerPointExclamationInterrogation : Correcteur {
+  var préfixeMessageErreur : String { "syntax error #1: found the '!?' or '!?selector:' delimitor, expected:" }
+
+  func corriger (_ lignesDuFichier : inout [String],
+                 _ ligne : Int,
+                 _ premierCaractère : Int,
+                 _ dernierCaractère : Int) {
+    let ligneConcernée = lignesDuFichier [ligne - 1]
+    print ("  line concernée '\(ligneConcernée)'")
+    var préfixe = ligneConcernée
+    préfixe.removeLast (ligneConcernée.count - premierCaractère)
+    while préfixe.hasSuffix (" ") {
+      préfixe.removeLast ()
+    }
+    if préfixe.isEmpty {
+      print ("  Préfixe vide, ajout en fin de ligne précédente")
+      lignesDuFichier [ligne - 2] += ","
+    }else{
+      print ("  Préfixe '\(préfixe)'")
+      var suffixe = ligneConcernée
+      suffixe.removeFirst (premierCaractère)
+      print ("  Suffixe '\(suffixe)'")
+      let ligneModifiée = préfixe + ", " + suffixe
+      print ("  ligne modifiée '\(ligneModifiée)'")
+      lignesDuFichier [ligne - 1] = ligneModifiée
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------
+
+class CorrigerPointExclamation : Correcteur {
+  var préfixeMessageErreur : String { "syntax error #1: found the '!' or '!selector:' delimitor, expected:" }
+
+  func corriger (_ lignesDuFichier : inout [String],
+                 _ ligne : Int,
+                 _ premierCaractère : Int,
+                 _ dernierCaractère : Int) {
+    let ligneConcernée = lignesDuFichier [ligne - 1]
+    print ("  line concernée '\(ligneConcernée)'")
+    var préfixe = ligneConcernée
+    préfixe.removeLast (ligneConcernée.count - premierCaractère)
+    while préfixe.hasSuffix (" ") {
+      préfixe.removeLast ()
+    }
+    if préfixe.isEmpty {
+      print ("  Préfixe vide, ajout en fin de ligne précédente")
+      lignesDuFichier [ligne - 2] += ","
+    }else{
+      print ("  Préfixe '\(préfixe)'")
+      var suffixe = ligneConcernée
+      suffixe.removeFirst (premierCaractère)
+      print ("  Suffixe '\(suffixe)'")
+      let ligneModifiée = préfixe + ", " + suffixe
+      print ("  ligne modifiée '\(ligneModifiée)'")
+      lignesDuFichier [ligne - 1] = ligneModifiée
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------
+
   func traduire (projetGALGAS inCheminFichierGALGAS : String) -> (Bool, Int) {
+    let correcteurs : [Correcteur] = [CorrigerPointInterrogation (), CorrigerPointExclamationInterrogation (), CorrigerPointExclamation ()]
     let débutConstruction = Date ()
   //-------------------- Chemin absolu vers projet galgas
     print ("projetGALGAS \(inCheminFichierGALGAS)")
@@ -92,13 +196,19 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
         loop = false
         ok = true
       }else if status == 1 {
-    //    print (CYAN + s + ENDC)
         let lines = s.components (separatedBy: "\n")
         var lineIndex = 0
+        var indiceCorrecteur = 0
         var found = false
-        while (lineIndex < lines.count) && !found {
-          found = lines [lineIndex].hasPrefix ("syntax error #1: found the '!' or '!selector:' delimitor, expected:")
-          lineIndex += 1
+        while (indiceCorrecteur < correcteurs.count) && !found {
+          lineIndex = 0
+          while (lineIndex < lines.count) && !found {
+            found = lines [lineIndex].hasPrefix (correcteurs [indiceCorrecteur].préfixeMessageErreur)
+            lineIndex += 1
+          }
+          if !found {
+            indiceCorrecteur += 1
+          }
         }
         loop = found
         if !loop {
@@ -111,33 +221,20 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
           let fichier = c [0]
           let ligne = Int (c [1])!
           let premierCaractère = Int (c[2])! - 1
-          print (BOLD_BLUE + "  Erreur détectée : ligne \(ligne), premier caractère \(premierCaractère)" + ENDC)
+          let dernierCaractère = Int (c[3])! - 1
+          print (BOLD_BLUE + "  Erreur détectée : ligne \(ligne), premier caractère \(premierCaractère), dernier \(dernierCaractère)" + ENDC)
           let contents = try! String (contentsOf: URL (fileURLWithPath: fichier), encoding: .utf8)
           var lignesDuFichier = contents.components (separatedBy: "\n")
-          let ligneConcernée = lignesDuFichier [ligne - 1]
-          print ("  line concernée '\(ligneConcernée)'")
-          var préfixe = ligneConcernée
-          préfixe.removeLast (ligneConcernée.count - premierCaractère)
-          print ("  Préfixe '\(préfixe)'")
-          var préfixePourTestUniquementEspaces = préfixe
-          while préfixePourTestUniquementEspaces.hasPrefix (" ") {
-            préfixePourTestUniquementEspaces.removeFirst (1)
+          let referenceLignesDuFichier = lignesDuFichier
+          correcteurs [indiceCorrecteur].corriger (&lignesDuFichier, ligne, premierCaractère, dernierCaractère)
+          loop = referenceLignesDuFichier != lignesDuFichier
+          if loop {
+            let newContents = lignesDuFichier.joined (separator: "\n")
+            let data : Data = newContents.data (using: .utf8, allowLossyConversion: false)!
+            try! data.write (to: URL (fileURLWithPath: fichier), options: .atomic)
+            nombreModifications += 1
+            print ("Nombre modifications: \(nombreModifications)")
           }
-          if préfixePourTestUniquementEspaces.isEmpty {
-            lignesDuFichier [ligne - 2] += ","
-          }else{
-            var suffixe = ligneConcernée
-            suffixe.removeFirst (premierCaractère)
-            print ("  Suffixe '\(suffixe)'")
-            let ligneModifiée = préfixe + "," + suffixe
-            print ("  ligne modifiée '\(ligneModifiée)'")
-            lignesDuFichier [ligne - 1] = ligneModifiée
-          }
-          let newContents = lignesDuFichier.joined (separator: "\n")
-          let data : Data = newContents.data (using: .utf8, allowLossyConversion: false)!
-          try! data.write (to: URL (fileURLWithPath: fichier), options: .atomic)
-          nombreModifications += 1
-          print ("Nombre modifications: \(nombreModifications)")
         }
       }else{
         print (BOLD_RED + "Status \(status) non géré" + ENDC)

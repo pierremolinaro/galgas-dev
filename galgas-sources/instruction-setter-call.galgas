@@ -116,33 +116,76 @@ syntax extension galgas4InstructionsSyntax {
       prefixedBySelf = true
     end
     $identifier$ ?let mReceiverName
-    var mReceiverStructAttributes = @lstringlist {}
-    repeat
-    while
-      $.$
-      $identifier$ ?let structAttribute
-      mReceiverStructAttributes += !structAttribute
-    end
-    let @lstring typeNameForCasting
-    select
-      typeNameForCasting = ["" nowhere]
-    or
-      $as$
-      $@type$ ?typeNameForCasting
-    end
-    $identifier$ ?let mSetterName
-    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+#    select
+      var mReceiverStructAttributes = @lstringlist {}
+      repeat
+      while
+        $.$
+        $identifier$ ?let structAttribute
+        mReceiverStructAttributes += !structAttribute
+      end
+      $identifier$ ?let mSetterName
+      <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+      outInstruction = @setterCallInstructionAST.new {
+        !instructionLocation
+        !prefixedBySelf
+        !mReceiverName
+        !mReceiverStructAttributes
+        !["" here] # typeNameForCasting
+        !mSetterName
+        !actualParameterList
+      }
+#    or
+#      <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+#      if prefixedBySelf then
+#        outInstruction = @selfSetterCallInstructionAST.new {
+#          !instructionLocation
+#          !mReceiverName # mSetterName
+#          !actualParameterList
+#        }
+#      else
+#        error .here : "invalid setter call" : outInstruction
+#      end
+#    end
     $]$
-    outInstruction = @setterCallInstructionAST.new {
-      !instructionLocation
-      !prefixedBySelf
-      !mReceiverName
-      !mReceiverStructAttributes
-      !typeNameForCasting
-      !mSetterName
-      !actualParameterList
-    }
   }
+
+  #·····················································································································
+
+#  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+#    let instructionLocation = @location.here
+#    $!?$ ?let selector
+#    if selector.string != "" then
+#      error selector : "an empty selector '!?' is required here"
+#    end
+#    let @bool prefixedBySelf
+#    select
+#      prefixedBySelf = false
+#    or
+#      $self$
+#      $.$
+#      prefixedBySelf = true
+#    end
+#    $identifier$ ?let mReceiverName
+#    var receiverStructProperties = @lstringlist {}
+#    repeat
+#      $.$
+#      $identifier$ ?let structProperty
+#      receiverStructProperties += !structProperty
+#    while
+#    end
+#    [!?receiverStructProperties popLast ?let setterName]
+#    <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST actualParameterList
+#    outInstruction = @setterCallInstructionAST.new {
+#      !instructionLocation
+#      !prefixedBySelf
+#      !mReceiverName
+#      !receiverStructProperties
+#      !["" here] # typeNameForCasting
+#      !setterName
+#      !actualParameterList
+#    }
+#  }
 
   #·····················································································································
 
@@ -163,6 +206,25 @@ syntax extension galgas4InstructionsSyntax {
       !actualParameterList
     }
   }  
+
+  #·····················································································································
+
+#  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+#    let instructionLocation = @location.here
+#    $!?$ ?let selector
+#    if selector.string != "" then
+#      error selector : "an empty selector '!?' is required here"
+#    end
+#    $self$
+#    $.$
+#    $identifier$ ?let mSetterName
+#    <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST actualParameterList
+#    outInstruction = @selfSetterCallInstructionAST.new {
+#      !instructionLocation
+#      !mSetterName
+#      !actualParameterList
+#    }
+#  }  
 
   #·····················································································································
 

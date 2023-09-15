@@ -357,7 +357,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
       repeat
          <actual_parameter> !?outActualParameterList
        while
-#         $,$
+         $,$
       end
     end
     $)$
@@ -372,7 +372,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
       repeat
          <actual_parameter> !?outActualParameterList
        while
-#         $,$
+         $,$
       end
     end
   }
@@ -463,16 +463,16 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
 
   #·····················································································································
 
-#  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
-#    let selector = ["" here]
-#    <expression> ?let @semanticExpressionAST e
-#    let @location endOfExpressionLocation = @location.here
-#    ioActualParameterList += !@outputActualParameterAST.new {
-#      !selector
-#      !e
-#      !endOfExpressionLocation
-#    }
-#  }
+  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
+    let selector = ["" here]
+    <expression> ?let @semanticExpressionAST e
+    let @location endOfExpressionLocation = @location.here
+    ioActualParameterList += !@outputActualParameterAST.new {
+      !selector
+      !e
+      !endOfExpressionLocation
+    }
+  }
 
   #·····················································································································
 

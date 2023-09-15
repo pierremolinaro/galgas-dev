@@ -212,17 +212,6 @@ class CorrigerIdfAuLieuDePoint : Correcteur {
           var lignesDuFichier = contents.components (separatedBy: "\n")
           let referenceLignesDuFichier = lignesDuFichier
           correcteurs [indiceCorrecteur].corriger (&lignesDuFichier, ligne, premierCaractère, dernierCaractère)
-//          let ligneConcernée = lignesDuFichier [ligne - 1]
-//          print ("  line concernée '\(ligneConcernée)'")
-//          var préfixe = ligneConcernée
-//          préfixe.removeLast (ligneConcernée.count - premierCaractère)
-//          print ("  Préfixe '\(préfixe)'")
-//          var suffixe = ligneConcernée
-//          suffixe.removeFirst (premierCaractère + 1)
-//          print ("  Suffixe '\(suffixe)'")
-//          let ligneModifiée = préfixe + suffixe
-//          print ("  ligne modifiée '\(ligneModifiée)'")
-//          lignesDuFichier [ligne - 1] = ligneModifiée
           loop = referenceLignesDuFichier != lignesDuFichier
           if loop {
             let newContents = lignesDuFichier.joined (separator: "\n")
