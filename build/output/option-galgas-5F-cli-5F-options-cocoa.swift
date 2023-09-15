@@ -19,6 +19,14 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
+    identifier: "checkNoUselessSelector",
+    commandChar: "",
+    commandString: "check-no-useless-selector",
+    comment: "Check no useless selector (GGS4)",
+    defaultValue: ""
+  ))
+  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
     identifier: "check_gmp",
     commandChar: "",
     commandString: "check-gmp",

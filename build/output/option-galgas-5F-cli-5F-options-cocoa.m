@@ -25,6 +25,15 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
+    identifier:@"checkNoUselessSelector"
+    commandChar:0
+    commandString:@"check-no-useless-selector"
+    comment:@"Check no useless selector (GGS4)"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
     identifier:@"check_gmp"
     commandChar:0
     commandString:@"check-gmp"

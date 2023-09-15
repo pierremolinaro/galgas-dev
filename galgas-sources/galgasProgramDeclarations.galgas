@@ -25,7 +25,7 @@ syntax galgas3ProgramDeclarations (galgasScanner) {
   #   P R O L O G U E                         
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $before$
     ${$
     <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST prologueInstructionList
@@ -40,7 +40,7 @@ syntax galgas3ProgramDeclarations (galgasScanner) {
   #   E P I L O G U E                         
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $after$
     ${$
     <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST prologueInstructionList
@@ -55,7 +55,7 @@ syntax galgas3ProgramDeclarations (galgasScanner) {
   #   S O U R C E    R U L E                  
   #·····················································································································
 
-  rule <declaration>
+  rule <declaration_ggs3>
    ?!@galgasDeclarationAST ioDeclarations {
     $case$
     $.$

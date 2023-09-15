@@ -9951,6 +9951,12 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness (
                                          "check-usefulness",
                                          "Check Entity Usefulness") ;
 
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkNoUselessSelector ("galgas_cli_options",
+                                         "checkNoUselessSelector",
+                                         0,
+                                         "check-no-useless-selector",
+                                         "Check no useless selector (GGS4)") ;
+
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_gmp ("galgas_cli_options",
                                          "check_gmp",
                                          0,

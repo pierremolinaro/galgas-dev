@@ -33,7 +33,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $lexique$
   #--- Lexique Component Name
     $identifier$ ?let @lstring lexiqueComponentName
@@ -89,7 +89,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
 
  #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $template$
     $lexique$
   #--- Lexique Component Name

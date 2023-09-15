@@ -16,7 +16,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $setter$
     $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionSetter
@@ -47,31 +47,6 @@ syntax extension galgas3DeclarationsSyntax {
   #·····················································································································
 
 }
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#syntax extension galgas4DeclarationsSyntax {
-#
-#  #·····················································································································
-#
-#  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-#    $abstract$
-#    $setter$
-#    $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionSetter
-#    error className : "ABSTRACT SETTER"
-#    $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
-#    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
-#    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST.new {
-#      !false # Is not predefined
-#      !className
-#      !setterName
-#      !formalParameterList
-#    }
-#  }
-#
-#  #·····················································································································
-#
-#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH                          

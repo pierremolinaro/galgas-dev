@@ -22,7 +22,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
   rule <start_symbol> ?!@galgasDeclarationAST ioDeclarations {
     repeat
     while
-      <declaration> !?ioDeclarations
+      <declaration_ggs3> !?ioDeclarations
     end
   }
 
@@ -117,7 +117,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
   #! Filewrapper Declaration
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $filewrapper$
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
     $in$
@@ -138,7 +138,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
   }
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $private$
     $filewrapper$
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition

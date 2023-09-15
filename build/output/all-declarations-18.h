@@ -181,16 +181,16 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public: virtual void nt_collection_5F_value_5F_element_ (GALGAS_abstractCollectionValueElement & outArgument0,
                                                            C_Lexique_galgasScanner * inCompiler) ;
 
-//------------------------------------- 'declaration' non terminal
+//------------------------------------- 'declaration_ggs3' non terminal
 //--- 'parse' label
-  public: virtual void nt_declaration_parse (C_Lexique_galgasScanner * inCompiler) ;
+  public: virtual void nt_declaration_5F_ggs_33__parse (C_Lexique_galgasScanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_declaration_indexing (C_Lexique_galgasScanner * inCompiler) ;
+  public: virtual void nt_declaration_5F_ggs_33__indexing (C_Lexique_galgasScanner * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_declaration_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                        C_Lexique_galgasScanner * inCompiler) ;
+  public: virtual void nt_declaration_5F_ggs_33__ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                   C_Lexique_galgasScanner * inCompiler) ;
 
 //------------------------------------- 'expression_and_ggs3' non terminal
 //--- 'parse' label

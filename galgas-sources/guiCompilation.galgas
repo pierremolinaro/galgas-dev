@@ -100,7 +100,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $gui$
     $identifier$ ?let @lstring mGUIName
     ${$

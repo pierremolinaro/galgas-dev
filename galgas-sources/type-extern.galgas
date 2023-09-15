@@ -60,7 +60,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
     $@type$ ?let @lstring externTypeName indexing externTypeDefinition
     <externtype_cpp_predeclaration> ?let cppPredeclarationCode

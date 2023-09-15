@@ -6,7 +6,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $method$
     $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionMethodDefinition

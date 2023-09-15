@@ -9300,7 +9300,7 @@ static const char * gNonTerminalNames_galgas3Grammar [326] = {
   "<poisoned_var_list_ggs3>",// Index 14
   "<if_expression_ggs3>",// Index 15
   "<semantic_instruction_list_ggs3>",// Index 16
-  "<declaration>",// Index 17
+  "<declaration_ggs3>",// Index 17
   "<syntax_directed_translation_result>",// Index 18
   "<actual_input_parameter_list_ggs3>",// Index 19
   "<semantic_instruction_ggs3>",// Index 20
@@ -46515,143 +46515,143 @@ void cGrammar_galgas_33_Grammar::nt_semantic_5F_instruction_5F_list_5F_ggs_33__ 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                      
-//                                     'declaration' non terminal implementation                                        
+//                                   'declaration_ggs3' non terminal implementation                                     
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cGrammar_galgas_33_Grammar::nt_declaration_parse (C_Lexique_galgasScanner * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_declaration_5F_ggs_33__parse (C_Lexique_galgasScanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 43 :
-      rule_galgas_33_InstructionsSyntax_declaration_i1_parse(inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i1_parse(inLexique) ;
     break ;
   case 44 :
-      rule_galgas_33_InstructionsSyntax_declaration_i2_parse(inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i2_parse(inLexique) ;
     break ;
   case 45 :
-      rule_galgas_33_InstructionsSyntax_declaration_i3_parse(inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i3_parse(inLexique) ;
     break ;
   case 46 :
-      rule_galgas_33_InstructionsSyntax_declaration_i4_parse(inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i4_parse(inLexique) ;
     break ;
   case 47 :
-      rule_galgas_33_InstructionsSyntax_declaration_i5_parse(inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i5_parse(inLexique) ;
     break ;
   case 48 :
-      rule_galgas_33_InstructionsSyntax_declaration_i6_parse(inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i6_parse(inLexique) ;
     break ;
   case 112 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i3_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i3_parse(inLexique) ;
     break ;
   case 113 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i4_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i4_parse(inLexique) ;
     break ;
   case 117 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i8_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i8_parse(inLexique) ;
     break ;
   case 118 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i9_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i9_parse(inLexique) ;
     break ;
   case 119 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i10_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i10_parse(inLexique) ;
     break ;
   case 120 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i11_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i11_parse(inLexique) ;
     break ;
   case 121 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i12_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i12_parse(inLexique) ;
     break ;
   case 128 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i19_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i19_parse(inLexique) ;
     break ;
   case 129 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i20_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i20_parse(inLexique) ;
     break ;
   case 130 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i21_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i21_parse(inLexique) ;
     break ;
   case 131 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i22_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i22_parse(inLexique) ;
     break ;
   case 132 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i23_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i23_parse(inLexique) ;
     break ;
   case 137 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i28_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i28_parse(inLexique) ;
     break ;
   case 139 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i30_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i30_parse(inLexique) ;
     break ;
   case 140 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i31_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i31_parse(inLexique) ;
     break ;
   case 142 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i33_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i33_parse(inLexique) ;
     break ;
   case 144 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i35_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i35_parse(inLexique) ;
     break ;
   case 146 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i37_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i37_parse(inLexique) ;
     break ;
   case 148 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i39_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i39_parse(inLexique) ;
     break ;
   case 150 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i41_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i41_parse(inLexique) ;
     break ;
   case 152 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i43_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i43_parse(inLexique) ;
     break ;
   case 154 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i45_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i45_parse(inLexique) ;
     break ;
   case 156 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i47_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i47_parse(inLexique) ;
     break ;
   case 158 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i49_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i49_parse(inLexique) ;
     break ;
   case 160 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i51_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i51_parse(inLexique) ;
     break ;
   case 162 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i53_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i53_parse(inLexique) ;
     break ;
   case 164 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i55_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i55_parse(inLexique) ;
     break ;
   case 169 :
-      rule_galgas_33_LexiqueComponentSyntax_declaration_i0_parse(inLexique) ;
+      rule_galgas_33_LexiqueComponentSyntax_declaration_5F_ggs_33__i0_parse(inLexique) ;
     break ;
   case 170 :
-      rule_galgas_33_LexiqueComponentSyntax_declaration_i1_parse(inLexique) ;
+      rule_galgas_33_LexiqueComponentSyntax_declaration_5F_ggs_33__i1_parse(inLexique) ;
     break ;
   case 192 :
-      rule_galgas_33_LexiqueComponentSyntax_declaration_i23_parse(inLexique) ;
+      rule_galgas_33_LexiqueComponentSyntax_declaration_5F_ggs_33__i23_parse(inLexique) ;
     break ;
   case 206 :
-      rule_galgas_33_OptionComponentSyntax_declaration_i0_parse(inLexique) ;
+      rule_galgas_33_OptionComponentSyntax_declaration_5F_ggs_33__i0_parse(inLexique) ;
     break ;
   case 208 :
-      rule_galgas_33_GuiComponentSyntax_declaration_i0_parse(inLexique) ;
+      rule_galgas_33_GuiComponentSyntax_declaration_5F_ggs_33__i0_parse(inLexique) ;
     break ;
   case 212 :
-      rule_galgas_33_SyntaxComponentSyntax_declaration_i0_parse(inLexique) ;
+      rule_galgas_33_SyntaxComponentSyntax_declaration_5F_ggs_33__i0_parse(inLexique) ;
     break ;
   case 213 :
-      rule_galgas_33_SyntaxComponentSyntax_declaration_i1_parse(inLexique) ;
+      rule_galgas_33_SyntaxComponentSyntax_declaration_5F_ggs_33__i1_parse(inLexique) ;
     break ;
   case 229 :
-      rule_galgas_33_GrammarComponentSyntax_declaration_i0_parse(inLexique) ;
+      rule_galgas_33_GrammarComponentSyntax_declaration_5F_ggs_33__i0_parse(inLexique) ;
     break ;
   case 235 :
-      rule_galgas_33_ProgramDeclarations_declaration_i0_parse(inLexique) ;
+      rule_galgas_33_ProgramDeclarations_declaration_5F_ggs_33__i0_parse(inLexique) ;
     break ;
   case 236 :
-      rule_galgas_33_ProgramDeclarations_declaration_i1_parse(inLexique) ;
+      rule_galgas_33_ProgramDeclarations_declaration_5F_ggs_33__i1_parse(inLexique) ;
     break ;
   case 237 :
-      rule_galgas_33_ProgramDeclarations_declaration_i2_parse(inLexique) ;
+      rule_galgas_33_ProgramDeclarations_declaration_5F_ggs_33__i2_parse(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -46659,139 +46659,139 @@ void cGrammar_galgas_33_Grammar::nt_declaration_parse (C_Lexique_galgasScanner *
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_declaration_indexing (C_Lexique_galgasScanner * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_declaration_5F_ggs_33__indexing (C_Lexique_galgasScanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 43 :
-      rule_galgas_33_InstructionsSyntax_declaration_i1_indexing(inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i1_indexing(inLexique) ;
     break ;
   case 44 :
-      rule_galgas_33_InstructionsSyntax_declaration_i2_indexing(inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i2_indexing(inLexique) ;
     break ;
   case 45 :
-      rule_galgas_33_InstructionsSyntax_declaration_i3_indexing(inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i3_indexing(inLexique) ;
     break ;
   case 46 :
-      rule_galgas_33_InstructionsSyntax_declaration_i4_indexing(inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i4_indexing(inLexique) ;
     break ;
   case 47 :
-      rule_galgas_33_InstructionsSyntax_declaration_i5_indexing(inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i5_indexing(inLexique) ;
     break ;
   case 48 :
-      rule_galgas_33_InstructionsSyntax_declaration_i6_indexing(inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i6_indexing(inLexique) ;
     break ;
   case 112 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i3_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i3_indexing(inLexique) ;
     break ;
   case 113 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i4_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i4_indexing(inLexique) ;
     break ;
   case 117 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i8_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i8_indexing(inLexique) ;
     break ;
   case 118 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i9_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i9_indexing(inLexique) ;
     break ;
   case 119 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i10_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i10_indexing(inLexique) ;
     break ;
   case 120 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i11_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i11_indexing(inLexique) ;
     break ;
   case 121 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i12_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i12_indexing(inLexique) ;
     break ;
   case 128 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i19_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i19_indexing(inLexique) ;
     break ;
   case 129 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i20_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i20_indexing(inLexique) ;
     break ;
   case 130 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i21_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i21_indexing(inLexique) ;
     break ;
   case 131 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i22_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i22_indexing(inLexique) ;
     break ;
   case 132 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i23_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i23_indexing(inLexique) ;
     break ;
   case 137 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i28_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i28_indexing(inLexique) ;
     break ;
   case 139 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i30_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i30_indexing(inLexique) ;
     break ;
   case 140 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i31_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i31_indexing(inLexique) ;
     break ;
   case 142 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i33_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i33_indexing(inLexique) ;
     break ;
   case 144 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i35_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i35_indexing(inLexique) ;
     break ;
   case 146 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i37_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i37_indexing(inLexique) ;
     break ;
   case 148 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i39_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i39_indexing(inLexique) ;
     break ;
   case 150 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i41_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i41_indexing(inLexique) ;
     break ;
   case 152 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i43_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i43_indexing(inLexique) ;
     break ;
   case 154 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i45_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i45_indexing(inLexique) ;
     break ;
   case 156 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i47_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i47_indexing(inLexique) ;
     break ;
   case 158 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i49_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i49_indexing(inLexique) ;
     break ;
   case 160 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i51_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i51_indexing(inLexique) ;
     break ;
   case 162 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i53_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i53_indexing(inLexique) ;
     break ;
   case 164 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i55_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i55_indexing(inLexique) ;
     break ;
   case 169 :
-      rule_galgas_33_LexiqueComponentSyntax_declaration_i0_indexing(inLexique) ;
+      rule_galgas_33_LexiqueComponentSyntax_declaration_5F_ggs_33__i0_indexing(inLexique) ;
     break ;
   case 170 :
-      rule_galgas_33_LexiqueComponentSyntax_declaration_i1_indexing(inLexique) ;
+      rule_galgas_33_LexiqueComponentSyntax_declaration_5F_ggs_33__i1_indexing(inLexique) ;
     break ;
   case 192 :
-      rule_galgas_33_LexiqueComponentSyntax_declaration_i23_indexing(inLexique) ;
+      rule_galgas_33_LexiqueComponentSyntax_declaration_5F_ggs_33__i23_indexing(inLexique) ;
     break ;
   case 206 :
-      rule_galgas_33_OptionComponentSyntax_declaration_i0_indexing(inLexique) ;
+      rule_galgas_33_OptionComponentSyntax_declaration_5F_ggs_33__i0_indexing(inLexique) ;
     break ;
   case 208 :
-      rule_galgas_33_GuiComponentSyntax_declaration_i0_indexing(inLexique) ;
+      rule_galgas_33_GuiComponentSyntax_declaration_5F_ggs_33__i0_indexing(inLexique) ;
     break ;
   case 212 :
-      rule_galgas_33_SyntaxComponentSyntax_declaration_i0_indexing(inLexique) ;
+      rule_galgas_33_SyntaxComponentSyntax_declaration_5F_ggs_33__i0_indexing(inLexique) ;
     break ;
   case 213 :
-      rule_galgas_33_SyntaxComponentSyntax_declaration_i1_indexing(inLexique) ;
+      rule_galgas_33_SyntaxComponentSyntax_declaration_5F_ggs_33__i1_indexing(inLexique) ;
     break ;
   case 229 :
-      rule_galgas_33_GrammarComponentSyntax_declaration_i0_indexing(inLexique) ;
+      rule_galgas_33_GrammarComponentSyntax_declaration_5F_ggs_33__i0_indexing(inLexique) ;
     break ;
   case 235 :
-      rule_galgas_33_ProgramDeclarations_declaration_i0_indexing(inLexique) ;
+      rule_galgas_33_ProgramDeclarations_declaration_5F_ggs_33__i0_indexing(inLexique) ;
     break ;
   case 236 :
-      rule_galgas_33_ProgramDeclarations_declaration_i1_indexing(inLexique) ;
+      rule_galgas_33_ProgramDeclarations_declaration_5F_ggs_33__i1_indexing(inLexique) ;
     break ;
   case 237 :
-      rule_galgas_33_ProgramDeclarations_declaration_i2_indexing(inLexique) ;
+      rule_galgas_33_ProgramDeclarations_declaration_5F_ggs_33__i2_indexing(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -46799,140 +46799,140 @@ void cGrammar_galgas_33_Grammar::nt_declaration_indexing (C_Lexique_galgasScanne
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_declaration_ (GALGAS_galgasDeclarationAST &  parameter_1,
+void cGrammar_galgas_33_Grammar::nt_declaration_5F_ggs_33__ (GALGAS_galgasDeclarationAST &  parameter_1,
                                 C_Lexique_galgasScanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 43 :
-      rule_galgas_33_InstructionsSyntax_declaration_i1_(parameter_1, inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i1_(parameter_1, inLexique) ;
     break ;
   case 44 :
-      rule_galgas_33_InstructionsSyntax_declaration_i2_(parameter_1, inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i2_(parameter_1, inLexique) ;
     break ;
   case 45 :
-      rule_galgas_33_InstructionsSyntax_declaration_i3_(parameter_1, inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i3_(parameter_1, inLexique) ;
     break ;
   case 46 :
-      rule_galgas_33_InstructionsSyntax_declaration_i4_(parameter_1, inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i4_(parameter_1, inLexique) ;
     break ;
   case 47 :
-      rule_galgas_33_InstructionsSyntax_declaration_i5_(parameter_1, inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i5_(parameter_1, inLexique) ;
     break ;
   case 48 :
-      rule_galgas_33_InstructionsSyntax_declaration_i6_(parameter_1, inLexique) ;
+      rule_galgas_33_InstructionsSyntax_declaration_5F_ggs_33__i6_(parameter_1, inLexique) ;
     break ;
   case 112 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i3_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i3_(parameter_1, inLexique) ;
     break ;
   case 113 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i4_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i4_(parameter_1, inLexique) ;
     break ;
   case 117 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i8_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i8_(parameter_1, inLexique) ;
     break ;
   case 118 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i9_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i9_(parameter_1, inLexique) ;
     break ;
   case 119 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i10_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i10_(parameter_1, inLexique) ;
     break ;
   case 120 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i11_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i11_(parameter_1, inLexique) ;
     break ;
   case 121 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i12_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i12_(parameter_1, inLexique) ;
     break ;
   case 128 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i19_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i19_(parameter_1, inLexique) ;
     break ;
   case 129 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i20_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i20_(parameter_1, inLexique) ;
     break ;
   case 130 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i21_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i21_(parameter_1, inLexique) ;
     break ;
   case 131 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i22_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i22_(parameter_1, inLexique) ;
     break ;
   case 132 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i23_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i23_(parameter_1, inLexique) ;
     break ;
   case 137 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i28_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i28_(parameter_1, inLexique) ;
     break ;
   case 139 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i30_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i30_(parameter_1, inLexique) ;
     break ;
   case 140 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i31_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i31_(parameter_1, inLexique) ;
     break ;
   case 142 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i33_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i33_(parameter_1, inLexique) ;
     break ;
   case 144 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i35_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i35_(parameter_1, inLexique) ;
     break ;
   case 146 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i37_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i37_(parameter_1, inLexique) ;
     break ;
   case 148 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i39_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i39_(parameter_1, inLexique) ;
     break ;
   case 150 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i41_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i41_(parameter_1, inLexique) ;
     break ;
   case 152 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i43_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i43_(parameter_1, inLexique) ;
     break ;
   case 154 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i45_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i45_(parameter_1, inLexique) ;
     break ;
   case 156 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i47_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i47_(parameter_1, inLexique) ;
     break ;
   case 158 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i49_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i49_(parameter_1, inLexique) ;
     break ;
   case 160 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i51_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i51_(parameter_1, inLexique) ;
     break ;
   case 162 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i53_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i53_(parameter_1, inLexique) ;
     break ;
   case 164 :
-      rule_galgas_33_DeclarationsSyntax_declaration_i55_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_declaration_5F_ggs_33__i55_(parameter_1, inLexique) ;
     break ;
   case 169 :
-      rule_galgas_33_LexiqueComponentSyntax_declaration_i0_(parameter_1, inLexique) ;
+      rule_galgas_33_LexiqueComponentSyntax_declaration_5F_ggs_33__i0_(parameter_1, inLexique) ;
     break ;
   case 170 :
-      rule_galgas_33_LexiqueComponentSyntax_declaration_i1_(parameter_1, inLexique) ;
+      rule_galgas_33_LexiqueComponentSyntax_declaration_5F_ggs_33__i1_(parameter_1, inLexique) ;
     break ;
   case 192 :
-      rule_galgas_33_LexiqueComponentSyntax_declaration_i23_(parameter_1, inLexique) ;
+      rule_galgas_33_LexiqueComponentSyntax_declaration_5F_ggs_33__i23_(parameter_1, inLexique) ;
     break ;
   case 206 :
-      rule_galgas_33_OptionComponentSyntax_declaration_i0_(parameter_1, inLexique) ;
+      rule_galgas_33_OptionComponentSyntax_declaration_5F_ggs_33__i0_(parameter_1, inLexique) ;
     break ;
   case 208 :
-      rule_galgas_33_GuiComponentSyntax_declaration_i0_(parameter_1, inLexique) ;
+      rule_galgas_33_GuiComponentSyntax_declaration_5F_ggs_33__i0_(parameter_1, inLexique) ;
     break ;
   case 212 :
-      rule_galgas_33_SyntaxComponentSyntax_declaration_i0_(parameter_1, inLexique) ;
+      rule_galgas_33_SyntaxComponentSyntax_declaration_5F_ggs_33__i0_(parameter_1, inLexique) ;
     break ;
   case 213 :
-      rule_galgas_33_SyntaxComponentSyntax_declaration_i1_(parameter_1, inLexique) ;
+      rule_galgas_33_SyntaxComponentSyntax_declaration_5F_ggs_33__i1_(parameter_1, inLexique) ;
     break ;
   case 229 :
-      rule_galgas_33_GrammarComponentSyntax_declaration_i0_(parameter_1, inLexique) ;
+      rule_galgas_33_GrammarComponentSyntax_declaration_5F_ggs_33__i0_(parameter_1, inLexique) ;
     break ;
   case 235 :
-      rule_galgas_33_ProgramDeclarations_declaration_i0_(parameter_1, inLexique) ;
+      rule_galgas_33_ProgramDeclarations_declaration_5F_ggs_33__i0_(parameter_1, inLexique) ;
     break ;
   case 236 :
-      rule_galgas_33_ProgramDeclarations_declaration_i1_(parameter_1, inLexique) ;
+      rule_galgas_33_ProgramDeclarations_declaration_5F_ggs_33__i1_(parameter_1, inLexique) ;
     break ;
   case 237 :
-      rule_galgas_33_ProgramDeclarations_declaration_i2_(parameter_1, inLexique) ;
+      rule_galgas_33_ProgramDeclarations_declaration_5F_ggs_33__i2_(parameter_1, inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;

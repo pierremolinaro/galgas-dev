@@ -19,7 +19,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $setter$
     $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionSetterDefinition
@@ -65,38 +65,6 @@ syntax extension galgas3DeclarationsSyntax {
   #·····················································································································
 
 }
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#syntax extension galgas4DeclarationsSyntax {
-#
-#  #·····················································································································
-#
-#  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-#    $override$
-#    $setter$
-#    $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionSetterDefinition
-#    error className : "OVERRIDE SETTER"
-#    $identifier$ ?let @lstring setterName indexing overrideExtensionSetterDefinition
-#    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
-#    ${$
-#    <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
-#    let @location endOfSetterLocation = @location.here
-#    $}$
-#    ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST.new {
-#      !false # Is not predefined
-#      !requiresSelfForAccessingProperty: true
-#      !className
-#      !setterName
-#      !formalParameterList
-#      !routineInstructionList
-#      !endOfSetterLocation
-#    }
-#  }
-#
-#  #·····················································································································
-#
-#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH                          

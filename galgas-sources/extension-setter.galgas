@@ -19,7 +19,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $setter$
     $@type$ ?let @lstring className indexing typeReferenceExtensionSetter
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition

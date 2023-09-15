@@ -46,7 +46,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
   #    E X T E R N    R O U T I N E    D E C L A R A T I O N
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
     $proc$
     $identifier$ ?let @lstring mActionName indexing routineDefinition
@@ -63,7 +63,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
   #    R O U T I N E    D E C L A R A T I O N 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $proc$
     $identifier$ ?let mRoutineName indexing routineDefinition
     <formal_parameter_list_ggs3> ?let @formalParameterListAST mFormalParameterList
@@ -82,7 +82,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
   }
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $private$
     $proc$
     $identifier$ ?let mRoutineName indexing routineDefinition
@@ -105,7 +105,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
   #    F U N C T I O N    D E C L A R A T I O N    
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $func$
     var isOnce = false
     var isUsefull = false
@@ -171,7 +171,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $private$
     $func$
     var isOnce = false
@@ -240,7 +240,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
   #    E X T E R N    F U N C T I O N    D E C L A R A T I O N                                                   
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
     $func$
     $identifier$ ?let mActionName indexing functionDefinition

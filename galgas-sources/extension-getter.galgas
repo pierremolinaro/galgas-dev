@@ -21,7 +21,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $getter$
     $@type$ ?let @lstring className indexing typeReferenceExtensionGetter
     $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
