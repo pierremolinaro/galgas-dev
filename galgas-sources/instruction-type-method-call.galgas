@@ -41,12 +41,11 @@ syntax extension galgas4InstructionsSyntax {
   #·····················································································································
 
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-    $[$
     let instructionLocation = @location.here
     $@type$ ?let @lstring mTypeName indexing typeReferenceInTypeMethod
+    $.$
     $identifier$ ?let @lstring mMethodName
-    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
-    $]$
+    <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST actualParameterList
     outInstruction = @typeMethodCallInstructionAST.new {
       !instructionLocation
       !mTypeName
