@@ -1281,7 +1281,6 @@ mProperty_mCppName (in_mCppName) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_templateVariableMap::isValid (void) const {
-  /* return mProperty_lkey.isValid () && mProperty_mType.isValid () && mProperty_mCppName.isValid () ; */
   return mProperty_lkey.isValid () ;
 }
 
@@ -1380,6 +1379,20 @@ void GALGAS_templateVariableMap::addAssign_operation (const GALGAS_lstring & inK
   const char * kInsertErrorMessage = "@templateVariableMap insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateVariableMap GALGAS_templateVariableMap::add_operation (const GALGAS_templateVariableMap & inOperand,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const {
+  GALGAS_templateVariableMap result = *this ;
+  cEnumerator_templateVariableMap enumerator (inOperand, kENUMERATION_UP) ;
+  while (enumerator.hasCurrentObject ()) {
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mType (HERE), enumerator.current_mCppName (HERE), inCompiler COMMA_THERE) ;
+    enumerator.gotoNextObject () ;
+  }
+  return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -8810,7 +8810,6 @@ mProperty_mHeaderString (in_mHeaderString) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_headerCompositionMap::isValid (void) const {
-  /* return mProperty_lkey.isValid () && mProperty_mInclusion.isValid () && mProperty_mHeaderString.isValid () ; */
   return mProperty_lkey.isValid () ;
 }
 
@@ -8909,6 +8908,20 @@ void GALGAS_headerCompositionMap::addAssign_operation (const GALGAS_lstring & in
   const char * kInsertErrorMessage = "@headerCompositionMap insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_headerCompositionMap GALGAS_headerCompositionMap::add_operation (const GALGAS_headerCompositionMap & inOperand,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_headerCompositionMap result = *this ;
+  cEnumerator_headerCompositionMap enumerator (inOperand, kENUMERATION_UP) ;
+  while (enumerator.hasCurrentObject ()) {
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mInclusion (HERE), enumerator.current_mHeaderString (HERE), inCompiler COMMA_THERE) ;
+    enumerator.gotoNextObject () ;
+  }
+  return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -9134,7 +9147,6 @@ mProperty_mHeaderFileName (in_mHeaderFileName) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_headerRepartitionMap::isValid (void) const {
-  /* return mProperty_lkey.isValid () && mProperty_mHeaderFileName.isValid () ; */
   return mProperty_lkey.isValid () ;
 }
 
@@ -9225,6 +9237,20 @@ void GALGAS_headerRepartitionMap::addAssign_operation (const GALGAS_lstring & in
   const char * kInsertErrorMessage = "@headerRepartitionMap insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_headerRepartitionMap GALGAS_headerRepartitionMap::add_operation (const GALGAS_headerRepartitionMap & inOperand,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_headerRepartitionMap result = *this ;
+  cEnumerator_headerRepartitionMap enumerator (inOperand, kENUMERATION_UP) ;
+  while (enumerator.hasCurrentObject ()) {
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mHeaderFileName (HERE), inCompiler COMMA_THERE) ;
+    enumerator.gotoNextObject () ;
+  }
+  return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -9406,7 +9432,6 @@ mProperty_mFeatureValue (in_mFeatureValue) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_projectQualifiedFeatureMap::isValid (void) const {
-  /* return mProperty_lkey.isValid () && mProperty_mFeatureValue.isValid () ; */
   return mProperty_lkey.isValid () ;
 }
 
@@ -9497,6 +9522,20 @@ void GALGAS_projectQualifiedFeatureMap::addAssign_operation (const GALGAS_lstrin
   const char * kInsertErrorMessage = "@projectQualifiedFeatureMap insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_projectQualifiedFeatureMap GALGAS_projectQualifiedFeatureMap::add_operation (const GALGAS_projectQualifiedFeatureMap & inOperand,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const {
+  GALGAS_projectQualifiedFeatureMap result = *this ;
+  cEnumerator_projectQualifiedFeatureMap enumerator (inOperand, kENUMERATION_UP) ;
+  while (enumerator.hasCurrentObject ()) {
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mFeatureValue (HERE), inCompiler COMMA_THERE) ;
+    enumerator.gotoNextObject () ;
+  }
+  return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

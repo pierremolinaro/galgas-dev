@@ -16,11 +16,6 @@ end
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_%!TYPE_IDENTIFIER%::isValid (void) const {
-  /* return mProperty_lkey.isValid ()%
-    for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
-      do % && mProperty_%![mPropertyName identifierRepresentation]%.isValid ()%
-    end
-  % ; */
   return mProperty_lkey.isValid () ;
 }
 
@@ -29,7 +24,7 @@ bool cMapElement_%!TYPE_IDENTIFIER%::isValid (void) const {
 cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
   cMapElement * result = NULL ;
   macroMyNew (result, cMapElement_%!TYPE_IDENTIFIER% (mProperty_lkey%
-    for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
+    for (* mPropertyName 2*) in ATTRIBUTE_LIST
       do %, mProperty_%![mPropertyName identifierRepresentation]
     end
   % COMMA_HERE)) ;
@@ -132,6 +127,24 @@ block 2 :
   %performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
 end
 %}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
+   !^%C_Compiler * inCompiler%
+   %\n %!^%COMMA_LOCATION_ARGS) const {
+  GALGAS_%!TYPE_IDENTIFIER% result = *this ;
+  cEnumerator_%!TYPE_IDENTIFIER% enumerator (inOperand, kENUMERATION_UP) ;
+  while (enumerator.hasCurrentObject ()) {
+    result.addAssign_operation (enumerator.current_lkey (HERE)%
+for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
+  do %, enumerator.current_%![mPropertyName identifierRepresentation]% (HERE)%
+end
+%, inCompiler COMMA_THERE) ;
+    enumerator.gotoNextObject () ;
+  }
+  return result ;
+}
 
 %for (insertMethodName errorMessage shadowErrorMessage) in INSERT_METHOD_LIST do
   %//----------------------------------------------------------------------------------------------------------------------\n\n%

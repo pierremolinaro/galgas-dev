@@ -93,7 +93,7 @@ syntax extension galgas4ExpressionSyntax {
   
   rule <primary> !@semanticExpressionAST outExpression {
     <optional_type> ?let @lstring typeName
-    ${$
+    $[$
     var @collectionValueElementList elementList = {}
     select
     or
@@ -101,7 +101,7 @@ syntax extension galgas4ExpressionSyntax {
         <collection_value_element> ?let @abstractCollectionValueElement element
         elementList += !element
       while
-        $,$
+        $:$
       end
     end
     outExpression = @collectionValueAST.new {
@@ -109,7 +109,7 @@ syntax extension galgas4ExpressionSyntax {
       !elementList
       !.here
     }  
-    $}$
+    $]$
   }
   
   #·····················································································································
@@ -117,20 +117,30 @@ syntax extension galgas4ExpressionSyntax {
   rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
     var @actualOutputExpressionList expressionList = {}
     repeat
-      $!$ ?let selector
-      <expression> ?let @semanticExpressionAST expression
-      expressionList += !selector !expression !@location.here
+      select
+        $!$ ?let selector
+        if [option galgas_cli_options.checkNoUselessSelector value] && (selector.string == "") then
+          error selector.location : "check no useless selector: this selector should be removed"
+        end
+        <expression> ?let @semanticExpressionAST expression
+        expressionList += !selector !expression !@location.here
+      or
+        let selector = ["" here]
+        <expression> ?let @semanticExpressionAST expression
+        expressionList += !selector !expression !@location.here
+      end
     while
+      $,$
     end
     outValueElement = @expressionListCollectionValue.new {!expressionList !@location.here}
   }
   
   #·····················································································································
   
-  rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
-    <expression> ?let @semanticExpressionAST expression
-    outValueElement = @expressionCollectionValue.new {!expression !@location.here}
-  }
+#  rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
+#    <expression> ?let @semanticExpressionAST expression
+#    outValueElement = @expressionCollectionValue.new {!expression !@location.here}
+#  }
 
   #·····················································································································
 

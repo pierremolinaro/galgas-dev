@@ -653,7 +653,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !{}
     !optionalMethodMap
     !enumerationDescriptor
-    !.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg | .supportWithAccessor | .isComparable
+    !.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg | .supportWithAccessor | .isComparable | .infixAddOperator
     !argumentTypeListForAddAssignWithFieldExpressionList
     !{}
     !{}
