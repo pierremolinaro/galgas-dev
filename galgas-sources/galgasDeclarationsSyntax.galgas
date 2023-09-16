@@ -386,22 +386,37 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
     while
       $template$
       $identifier$ ?let mFilewrapperTemplateName
+      $:$
       $"string"$ ?let mFilewrapperTemplatePath
       var @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters = {}
-      repeat
-      while
-        $?$ ?let selector
-        $@type$ ?let @lstring typeName
-        let @bool isUnused
-        select
-          isUnused = false
-        or
-          $unused$
-          isUnused = true
+      $($
+      select
+      or
+        repeat
+          let @lstring selector
+          select
+            selector = ["" nowhere]
+          or
+            $?$ ?selector
+            if [option galgas_cli_options.checkNoUselessSelector value] && (selector.string == "") then
+              error selector.location : "check no useless selector: this selector should be removed"
+            end
+          end
+          $@type$ ?let @lstring typeName
+          let @bool isUnused
+          select
+            isUnused = false
+          or
+            $unused$
+            isUnused = true
+          end
+          $identifier$ ?let argumentName
+          filewrapperTemplateFormalInputParameters += !selector !typeName !argumentName !isUnused
+        while
+          $,$
         end
-        $identifier$ ?let argumentName
-        filewrapperTemplateFormalInputParameters += !selector !typeName !argumentName !isUnused
       end
+      $)$
       outFilewrapperTemplateList +=
         !mFilewrapperTemplateName
         !mFilewrapperTemplatePath
