@@ -14,7 +14,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   #·····················································································································
   
-  rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction_ggs3> !@syntaxInstructionAST outInstruction {
     $send$
     let instructionLocation = @location.here
     <expression_ggs3> ?let @semanticExpressionAST sentExpression

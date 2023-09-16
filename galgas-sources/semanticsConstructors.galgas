@@ -115,42 +115,42 @@ proc enterConstructorWith3Arguments
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc enterConstructorWith4Arguments
-  ?!@constructorMap ioConstructorMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?name:let @string inConstructorName
-  ?argSelector1:let @string inArgument1SelectorName
-  ?argTypeName1:let @string inArgument1TypeName
-  ?argName1:let @string inArgument1Name
-  ?argSelector2:let @string inArgument2SelectorName
-  ?argTypeName2:let @string inArgument2TypeName
-  ?argName2:let @string inArgument2Name
-  ?argSelector3:let @string inArgument3SelectorName
-  ?argTypeName3:let @string inArgument3TypeName
-  ?argName3:let @string inArgument3Name
-  ?argSelector4:let @string inArgument4SelectorName
-  ?argTypeName4:let @string inArgument4TypeName
-  ?argName4:let @string inArgument4Name
-  ?resultTypeName:let @string inReturnedTypeName
-  ?hasLexiqueArg:let @bool inHasLexiqueArgument
-{
-  [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
-  [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?var t]
-  var @functionSignature argumentTypeList = {}
-  argumentTypeList += ![inArgument1SelectorName nowhere] !t !inArgument1Name
-  [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
-  argumentTypeList += ![inArgument2SelectorName nowhere] !t !inArgument2Name
-  [!?ioUnifiedTypeMap makeEntryFromString !inArgument3TypeName ?t]
-  argumentTypeList += ![inArgument3SelectorName nowhere] !t !inArgument3Name
-  [!?ioUnifiedTypeMap makeEntryFromString !inArgument4TypeName ?t]
-  argumentTypeList += ![inArgument4SelectorName nowhere] !t !inArgument4Name
-  [!?ioConstructorMap insertOrReplace
-    !@lstring.new {!inConstructorName !@location.here}
-    !argumentTypeList
-    !inHasLexiqueArgument
-    !returnedTypeIndex
-  ]
-}
+#proc enterConstructorWith4Arguments
+#  ?!@constructorMap ioConstructorMap
+#  ?!@unifiedTypeMap ioUnifiedTypeMap
+#  ?name:let @string inConstructorName
+#  ?argSelector1:let @string inArgument1SelectorName
+#  ?argTypeName1:let @string inArgument1TypeName
+#  ?argName1:let @string inArgument1Name
+#  ?argSelector2:let @string inArgument2SelectorName
+#  ?argTypeName2:let @string inArgument2TypeName
+#  ?argName2:let @string inArgument2Name
+#  ?argSelector3:let @string inArgument3SelectorName
+#  ?argTypeName3:let @string inArgument3TypeName
+#  ?argName3:let @string inArgument3Name
+#  ?argSelector4:let @string inArgument4SelectorName
+#  ?argTypeName4:let @string inArgument4TypeName
+#  ?argName4:let @string inArgument4Name
+#  ?resultTypeName:let @string inReturnedTypeName
+#  ?hasLexiqueArg:let @bool inHasLexiqueArgument
+#{
+#  [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
+#  [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?var t]
+#  var @functionSignature argumentTypeList = {}
+#  argumentTypeList += ![inArgument1SelectorName nowhere] !t !inArgument1Name
+#  [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
+#  argumentTypeList += ![inArgument2SelectorName nowhere] !t !inArgument2Name
+#  [!?ioUnifiedTypeMap makeEntryFromString !inArgument3TypeName ?t]
+#  argumentTypeList += ![inArgument3SelectorName nowhere] !t !inArgument3Name
+#  [!?ioUnifiedTypeMap makeEntryFromString !inArgument4TypeName ?t]
+#  argumentTypeList += ![inArgument4SelectorName nowhere] !t !inArgument4Name
+#  [!?ioConstructorMap insertOrReplace
+#    !@lstring.new {!inConstructorName !@location.here}
+#    !argumentTypeList
+#    !inHasLexiqueArgument
+#    !returnedTypeIndex
+#  ]
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -176,29 +176,36 @@ override method @locationPredefinedTypeAST getConstructorMap
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !name:"next"
-    !resultTypeName:"location"
-    !hasLexiqueArg:true
+    !name: "next"
+    !resultTypeName: "location"
+    !hasLexiqueArg: true
   )
-  enterConstructorWith4Arguments (
+  enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !name: "location"
-    !argSelector1: "fromFilePath"
-    !argTypeName1: "string"
-    !argName1: "inFile"
-    !argSelector2: "line"
-    !argTypeName2: "uint"
-    !argName2: "inLine"
-    !argSelector3: "startColumn"
-    !argTypeName3: "uint"
-    !argName3: "inStartColumn"
-    !argSelector4: "lastColumn"
-    !argTypeName4: "uint"
-    !argName4: "inLastColumn"
-    !resultTypeName:"location"
-    !hasLexiqueArg:true
+    !name: "separator"
+    !resultTypeName: "location"
+    !hasLexiqueArg: true
   )
+#  enterConstructorWith4Arguments (
+#    !?outMap
+#    !?ioUnifiedTypeMap
+#    !name: "location"
+#    !argSelector1: "fromFilePath"
+#    !argTypeName1: "string"
+#    !argName1: "inFile"
+#    !argSelector2: "line"
+#    !argTypeName2: "uint"
+#    !argName2: "inLine"
+#    !argSelector3: "startColumn"
+#    !argTypeName3: "uint"
+#    !argName3: "inStartColumn"
+#    !argSelector4: "lastColumn"
+#    !argTypeName4: "uint"
+#    !argName4: "inLastColumn"
+#    !resultTypeName:"location"
+#    !hasLexiqueArg:true
+#  )
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

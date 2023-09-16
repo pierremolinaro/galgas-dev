@@ -77,6 +77,11 @@ C_LocationInSource & C_LocationInSource::operator = (const C_LocationInSource & 
 
 //----------------------------------------------------------------------------------------------------------------------
 
+C_LocationInSource::~C_LocationInSource (void) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 void C_LocationInSource::gotoNextLocation (const bool inPreviousCharWasEndOfLine) {
   mIndex ++ ;
   if (inPreviousCharWasEndOfLine) {
@@ -112,7 +117,12 @@ C_String C_LocationInSource::sourceFilePath (void) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-C_LocationInSource::~C_LocationInSource (void) {
+LineColumn C_LocationInSource::lineColumnNumber (void) const {
+  int32_t lineNumber = 0 ;
+  int32_t columnNumber = 0 ;
+  C_String lineContents ;
+  mSourceText.sourceString ().lineAndColumnFromIndex (mIndex, lineNumber, columnNumber, lineContents) ;
+  return LineColumn (lineNumber, columnNumber, lineContents) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

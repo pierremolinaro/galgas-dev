@@ -102,17 +102,13 @@ class GALGAS_location : public AC_GALGAS_root {
   public: static class GALGAS_location constructor_here (C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
-  public: static class GALGAS_location constructor_location (const class GALGAS_string & inOperand0,
-                                                             const class GALGAS_uint & inOperand1,
-                                                             const class GALGAS_uint & inOperand2,
-                                                             const class GALGAS_uint & inOperand3,
-                                                             class C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
   public: static class GALGAS_location constructor_next (C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
   public: static class GALGAS_location constructor_nowhere (LOCATION_ARGS) ;
+
+  public: static class GALGAS_location constructor_separator (C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (C_String & ioString,

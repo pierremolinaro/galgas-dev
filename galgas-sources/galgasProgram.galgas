@@ -417,7 +417,7 @@ private proc projectGeneration
   var @stringset allProductFileSet = {}
 #---------------------------------- Create build/user-headers if does not exist
   let userHeadersDir = inAbsoluteBuildDirectory + "/user-headers"
-  [userHeadersDir makeDirectory] ;
+  [userHeadersDir makeDirectory]
 #---------------------------------- %quietOutputByDefault
   let quietOutputByDefault = [@stringset.setWithLStringList {!inProjectComponentAST.mGenerationFeatureList} hasKey !"quietOutputByDefault"]
 #---------------------------------- Generate GUI components

@@ -260,7 +260,8 @@ override method @structDeclarationAST semanticAnalysis
     for (mValue) in mAttributeList do
       if mValue.string != selectorFeatureForNewConstructor () then
         error mValue : "a struct property accepts only the %" + selectorFeatureForNewConstructor () + " feature"
-      end if hasSelector then
+      end
+      if hasSelector then
         error mValue : "duplicated %" + selectorFeatureForNewConstructor () + " feature"
       else
         hasSelector = true

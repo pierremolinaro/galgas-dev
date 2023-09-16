@@ -497,13 +497,17 @@ GALGAS_location C_Compiler::here (void) const {
   return GALGAS_location (mStartLocationForHere, mEndLocationForHere, mSourceText) ;
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_location C_Compiler::separator (void) const {
+  return GALGAS_location (mEndLocationForHere, mStartLocationForNext, mSourceText) ;
+}
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_location C_Compiler::next (void) const {
   return GALGAS_location (mStartLocationForNext, mEndLocationForNext, mSourceText) ;
 }
-
 
 //----------------------------------------------------------------------------------------------------------------------
 

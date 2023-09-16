@@ -21,7 +21,7 @@ syntax extension galgas3SyntaxComponentSyntax {
   
   rule <branchOfParseWhithInstruction> !@syntaxInstructionList outElseInstructionList {
     $else$
-    <syntax_instruction_list> ? outElseInstructionList
+    <syntax_instruction_list_ggs3> ? outElseInstructionList
   }
   
   #·····················································································································
@@ -32,7 +32,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     <expression_ggs3> ?let whenExpression
     let endOfWhenExpression = @location.here
     $:$
-    <syntax_instruction_list> ?let whenInstructionList
+    <syntax_instruction_list_ggs3> ?let whenInstructionList
     let endOfWhenInstructions = @location.here
   #--- Else part
     <branchOfParseWhithInstruction> ?let elseInstructionList
@@ -51,14 +51,14 @@ syntax extension galgas3SyntaxComponentSyntax {
   
   #·····················································································································
   
-  rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction_ggs3> !@syntaxInstructionAST outInstruction {
     $parse$
     let instructionLocation = @location.here
     $with$
     <expression_ggs3> ?let @semanticExpressionAST whenExpression
     let endOfWhenExpression = @location.here
     $:$
-    <syntax_instruction_list> ?let @syntaxInstructionList whenInstructionList
+    <syntax_instruction_list_ggs3> ?let @syntaxInstructionList whenInstructionList
     let endOfWhenInstructions = @location.here
   #--- Else part
     <branchOfParseWhithInstruction> ?let @syntaxInstructionList elseInstructionList

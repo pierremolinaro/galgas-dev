@@ -48,9 +48,9 @@ syntax logo_syntax (logo_lexique) {
 
   rule <instruction_list> ?!@routineMap ioTableRoutines ?!@instructionList il {
     repeat
-      while
-        <instruction> !? ioTableRoutines !? il
-    end %repeat
+    while
+      <instruction> !? ioTableRoutines !? il
+    end
   }
 
   #--------------------------------------------------------------------------------------------------------------------*

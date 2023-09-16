@@ -316,11 +316,6 @@ rule '@' {
       end
     default
     end
-#    select
-#    case '?' :
-#      enterCharacterIntoString (!?tokenString !*)
-#    default
-#    end
   default
     error incorrectTypeNameError
   end
@@ -483,8 +478,9 @@ rule '\'' {
 
 #----------------------- Grammar terminal symbol ---------------------------
 $\$terminal\$$ ! tokenString  style terminalStyle error message "a terminal symbol ($...$)"
+$separator-string$ style terminalStyle error message "a separator string terminal symbol ($$)"
 
-message incorrect_terminal_start : "incorrect terminal start"
+#message incorrect_terminal_start : "incorrect terminal start"
 
 message incorrect_terminal_end : "terminal does not end with '$'"
 
@@ -500,6 +496,12 @@ rule '$' {
     while '!' -> '#' | '%' -> '\uFFFD' :
       enterCharacterIntoString (!?tokenString !* )
     end
+    select
+    case '$' :
+    default
+      error incorrect_terminal_end
+    end
+    send $\$terminal\$$ 
   case "\\$" :
     enterCharacterIntoString (!?tokenString !'$')
     repeat
@@ -510,6 +512,12 @@ rule '$' {
     while '!' -> '#' | '%' -> '\uFFFD' :
       enterCharacterIntoString (!?tokenString !* )
     end
+    select
+    case '$' :
+    default
+      error incorrect_terminal_end
+    end
+    send $\$terminal\$$ 
   case '!' -> '#' | '%' -> '\uFFFD'  : # All printable characters, but '$'
     enterCharacterIntoString (!?tokenString !* )
     repeat
@@ -520,15 +528,16 @@ rule '$' {
     while '!' -> '#' | '%' -> '\uFFFD' :
       enterCharacterIntoString (!?tokenString !* )
     end
+    select
+    case '$' :
+    default
+      error incorrect_terminal_end
+    end
+    send $\$terminal\$$ 
   default
-    error incorrect_terminal_start
+    send $separator-string$
+#    error incorrect_terminal_start
   end
-  select
-  case '$' :
-  default
-    error incorrect_terminal_end
-  end
-  send $\$terminal\$$ 
 }
 
 # ----------------------------- Delimitors ---------------------------------------

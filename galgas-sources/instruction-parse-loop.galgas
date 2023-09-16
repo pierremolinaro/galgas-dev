@@ -19,7 +19,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   #·····················································································································
 
-  rule <syntax_instruction>
+  rule <syntax_instruction_ggs3>
     !@syntaxInstructionAST outInstruction {
     $parse$
     let instructionLocation = @location.here
@@ -30,7 +30,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     <expression_ggs3> ?let @semanticExpressionAST whileExpression
     let endOfWhileExpression = @location.here
     $do$
-    <syntax_instruction_list> ?let @syntaxInstructionList instructionList
+    <syntax_instruction_list_ggs3> ?let @syntaxInstructionList instructionList
     $end$
     let endOfInstructionList = @location.here
     select

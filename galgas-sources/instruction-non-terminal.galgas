@@ -17,7 +17,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   #·····················································································································
 
-  rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction_ggs3> !@syntaxInstructionAST outInstruction {
     let @lstring mLabelName # No label : empty string
     select
       mLabelName = @lstring.new {!"" !@location.here}

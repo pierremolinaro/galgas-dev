@@ -33,12 +33,22 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
 
   rule <semantic_instruction_list_ggs3> !@semanticInstructionListAST outInstructionsList {
     outInstructionsList = @semanticInstructionListAST {}
-    repeat
-    while
-      $;$
-    while
-      <semantic_instruction_ggs3> ?let @semanticInstructionAST instruction
-      outInstructionsList += !instruction
+    select
+    or
+      repeat
+        <semantic_instruction_ggs3> ?let @semanticInstructionAST instruction
+        outInstructionsList += !instruction
+      while
+        select
+          $;$
+        or
+#          $$ ?let @lstring separatorString
+          let separator = @string.separatorString
+          if not [separator containsCharacter !'\n'] then
+            error .separator : "instructions on same line should be separated by ';'"
+          end
+        end
+      end
     end
   }
 
@@ -354,10 +364,21 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
 
   rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList {
     outInstructionsList = @semanticInstructionListAST {}
-    repeat
-    while
-      <semantic_instruction> ?let @semanticInstructionAST instruction
-      outInstructionsList += !instruction
+    select
+    or
+      repeat
+        <semantic_instruction> ?let @semanticInstructionAST instruction
+        outInstructionsList += !instruction
+      while
+        select
+          $;$
+        or
+          let separator = @string.separatorString
+          if not [separator containsCharacter !'\n'] then
+            error .separator : "instructions on same line should be separated by ';'"
+          end
+        end
+      end
     end
   }
 

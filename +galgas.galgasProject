@@ -201,6 +201,7 @@ project (3:6:0) -> "galgas" {
   "galgas-sources/instruction-parse-rewind.galgas"
   "galgas-sources/instruction-parse-when.galgas"
   "galgas-sources/instruction-syntax-send.galgas"
+  "galgas-sources/instruction-separator-string.galgas"
 
 #--- Syntax Component
   "galgas-sources/syntaxSignature.galgas"

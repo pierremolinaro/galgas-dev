@@ -1344,7 +1344,7 @@ proc updateGalgasTargets
     if macCodeSign.string == "" then
       codeSigningSettingList = {!"CODE_SIGN_IDENTITY = \"-\""}
     else
-      let components = [macCodeSign.string componentsSeparatedByString !":"] ;
+      let components = [macCodeSign.string componentsSeparatedByString !":"]
       if [components length] != 2 then
         error macCodeSign : "the %macCodeSign attribute associated string should be \"key:value\"" : codeSigningSettingList
       elsif [components mValueAtIndex !0] == "MacDeveloper" then

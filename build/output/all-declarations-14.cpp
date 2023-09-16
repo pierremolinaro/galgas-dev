@@ -8307,7 +8307,7 @@ static const cTemplateDelimiter galgasTemplateScanner_kTemplateReplacementArray 
 //            Terminal Symbols as end of script in template mark
 //----------------------------------------------------------------------------------------------------------------------
 
-static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [156] = {
+static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [157] = {
   false /* identifier */,
   false /* double.xxx */,
   false /* literalInt */,
@@ -8318,6 +8318,7 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [156] = {
   false /* %attribute */,
   false /* 'char' */,
   false /* $terminal$ */,
+  false /* separator-string */,
   false /* ? */,
   false /* ?! */,
   false /* ! */,
@@ -8539,6 +8540,7 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("%attribute") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("'char'") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("$terminal$") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("separator-string") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("\?") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("\?!") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("!") COMMA_THERE) ;

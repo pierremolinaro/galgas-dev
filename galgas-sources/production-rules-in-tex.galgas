@@ -76,7 +76,7 @@ proc emitProductionRulesInTexFile
   [document writeToFileWhenDifferentContents !texDocumentFilePath ?*]
   let texFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".tex"
   var s = ""
-  [inNonTerminalMapForGrammarAnalysis searchKey !inStartSymbol ?let startSymbolIndex ?*] ;
+  [inNonTerminalMapForGrammarAnalysis searchKey !inStartSymbol ?let startSymbolIndex ?*]
   s += "\\startSymbol{" + escapeForTex (!inStartSymbol) + "}{" + startSymbolIndex + "}\n\n"
   s += "\\nonTerminalSummaryStart "
   for nonterminal in inNonTerminalMapForGrammarAnalysis
