@@ -57,8 +57,13 @@ option galgas_cli_options {
   @uint macosxSDK : '\0', "macosx"
     -> "Generate an Xcode project for OS X"
 
-  @bool checkNoUselessSelector : '\0', "check-no-useless-selector"
-    -> "Check no useless selector (GGS4)"
+#--- GGS4 optimization
+
+  @bool errorOnUselessSelector : '\0', "error-on-useless-selector"
+    -> "Error on useless selector (GGS4)"
+
+  @bool errorOnGetterCallWithNoArgument : '\0', "error-on-getter-call-with-no-argument"
+    -> "Error on getter call; with no argument (GGS4, suppress parenthesis)"
   
 #--- Deprecated constructions
   @bool propertyAccessRequiresSelf : '\0', "error-property-access-without-self"

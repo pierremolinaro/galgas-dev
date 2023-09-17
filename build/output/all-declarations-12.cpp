@@ -5154,26 +5154,26 @@ void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_d
 void cParser_galgas_34_ExpressionSyntax::rule_galgas_34_ExpressionSyntax_primary_i0_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                       C_Lexique_galgasScanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__28_ COMMA_SOURCE_FILE ("galgasExpressionSyntax.galgas", 39)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__28_ COMMA_SOURCE_FILE ("galgasExpressionSyntax.galgas", 43)) ;
   nt_expression_ (outArgument_outExpression, inCompiler) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__29_ COMMA_SOURCE_FILE ("galgasExpressionSyntax.galgas", 41)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__29_ COMMA_SOURCE_FILE ("galgasExpressionSyntax.galgas", 45)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_34_ExpressionSyntax::rule_galgas_34_ExpressionSyntax_primary_i0_parse (C_Lexique_galgasScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__28_ COMMA_SOURCE_FILE ("galgasExpressionSyntax.galgas", 39)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__28_ COMMA_SOURCE_FILE ("galgasExpressionSyntax.galgas", 43)) ;
   nt_expression_parse (inCompiler) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__29_ COMMA_SOURCE_FILE ("galgasExpressionSyntax.galgas", 41)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__29_ COMMA_SOURCE_FILE ("galgasExpressionSyntax.galgas", 45)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_34_ExpressionSyntax::rule_galgas_34_ExpressionSyntax_primary_i0_indexing (C_Lexique_galgasScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__28_ COMMA_SOURCE_FILE ("galgasExpressionSyntax.galgas", 39)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__28_ COMMA_SOURCE_FILE ("galgasExpressionSyntax.galgas", 43)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__29_ COMMA_SOURCE_FILE ("galgasExpressionSyntax.galgas", 41)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__29_ COMMA_SOURCE_FILE ("galgasExpressionSyntax.galgas", 45)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5312,7 +5312,7 @@ void cParser_galgas_34_ExpressionSyntax::rule_galgas_34_ExpressionSyntax_output_
         inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__21_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 45)) ;
         enumGalgasBool test_1 = kBoolTrue ;
         if (kBoolTrue == test_1) {
-          GALGAS_bool test_2 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_checkNoUselessSelector.readProperty_value ()) ;
+          GALGAS_bool test_2 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOnUselessSelector.readProperty_value ()) ;
           if (kBoolTrue == test_2.boolEnum ()) {
             test_2 = GALGAS_bool (kIsEqual, var_selector_1703.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())) ;
           }
@@ -6740,7 +6740,7 @@ void cParser_galgas_34_ExpressionSyntax::rule_galgas_34_ExpressionSyntax_collect
       inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__21_ COMMA_SOURCE_FILE ("expression-collection-value.galgas", 121)) ;
       enumGalgasBool test_1 = kBoolTrue ;
       if (kBoolTrue == test_1) {
-        GALGAS_bool test_2 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_checkNoUselessSelector.readProperty_value ()) ;
+        GALGAS_bool test_2 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOnUselessSelector.readProperty_value ()) ;
         if (kBoolTrue == test_2.boolEnum ()) {
           test_2 = GALGAS_bool (kIsEqual, var_selector_4420.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())) ;
         }
@@ -6871,12 +6871,11 @@ void cParser_galgas_34_ExpressionSyntax::rule_galgas_34_ExpressionSyntax_factor_
       } break ;
       case 2: {
         GALGAS_lstring var_getterName_1921 = var_structFieldName_1729 ;
-        inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__28_ COMMA_SOURCE_FILE ("expression-property-access.galgas", 49)) ;
-        GALGAS_actualOutputExpressionList var_expressionList_2028 ;
-        nt_output_5F_expression_5F_list_ (var_expressionList_2028, inCompiler) ;
-        inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__29_ COMMA_SOURCE_FILE ("expression-property-access.galgas", 51)) ;
-        GALGAS_location var_endLocation_2067 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-property-access.galgas", 52)) ;
-        outArgument_outExpression = GALGAS_getterCallExpressionAST::constructor_new (GALGAS_bool (true), outArgument_outExpression, var_getterName_1921, var_expressionList_2028, var_endLocation_2067  COMMA_SOURCE_FILE ("expression-property-access.galgas", 53)) ;
+        GALGAS_location var_startLocation_1962 = GALGAS_location::constructor_next (inCompiler  COMMA_SOURCE_FILE ("expression-property-access.galgas", 49)) ;
+        GALGAS_actualParameterListAST var_expressionList_2073 ;
+        nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_ (var_expressionList_2073, inCompiler) ;
+        GALGAS_location var_endLocation_2100 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-property-access.galgas", 51)) ;
+        outArgument_outExpression = GALGAS_getterCallExpressionGGS_34_AST::constructor_new (GALGAS_bool (true), outArgument_outExpression, var_getterName_1921, var_expressionList_2073, var_startLocation_1962.getter_union (var_endLocation_2100, inCompiler COMMA_SOURCE_FILE ("expression-property-access.galgas", 57))  COMMA_SOURCE_FILE ("expression-property-access.galgas", 52)) ;
       } break ;
       default:
         break ;
@@ -6903,9 +6902,7 @@ void cParser_galgas_34_ExpressionSyntax::rule_galgas_34_ExpressionSyntax_factor_
       case 1: {
       } break ;
       case 2: {
-        inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__28_ COMMA_SOURCE_FILE ("expression-property-access.galgas", 49)) ;
-        nt_output_5F_expression_5F_list_parse (inCompiler) ;
-        inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__29_ COMMA_SOURCE_FILE ("expression-property-access.galgas", 51)) ;
+        nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_parse (inCompiler) ;
       } break ;
       default:
         break ;
@@ -6933,9 +6930,7 @@ void cParser_galgas_34_ExpressionSyntax::rule_galgas_34_ExpressionSyntax_factor_
       case 1: {
       } break ;
       case 2: {
-        inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__28_ COMMA_SOURCE_FILE ("expression-property-access.galgas", 49)) ;
-        nt_output_5F_expression_5F_list_indexing (inCompiler) ;
-        inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__29_ COMMA_SOURCE_FILE ("expression-property-access.galgas", 51)) ;
+        nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_indexing (inCompiler) ;
       } break ;
       default:
         break ;
@@ -7280,7 +7275,7 @@ void cParser_galgas_34_ParameterArgumentSyntax::rule_galgas_34_ParameterArgument
         inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__3F_ COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 306)) ;
         enumGalgasBool test_1 = kBoolTrue ;
         if (kBoolTrue == test_1) {
-          GALGAS_bool test_2 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_checkNoUselessSelector.readProperty_value ()) ;
+          GALGAS_bool test_2 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOnUselessSelector.readProperty_value ()) ;
           if (kBoolTrue == test_2.boolEnum ()) {
             test_2 = GALGAS_bool (kIsEqual, var_selector_10512.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())) ;
           }
@@ -7301,7 +7296,7 @@ void cParser_galgas_34_ParameterArgumentSyntax::rule_galgas_34_ParameterArgument
         inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__3F_ COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 315)) ;
         enumGalgasBool test_4 = kBoolTrue ;
         if (kBoolTrue == test_4) {
-          GALGAS_bool test_5 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_checkNoUselessSelector.readProperty_value ()) ;
+          GALGAS_bool test_5 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOnUselessSelector.readProperty_value ()) ;
           if (kBoolTrue == test_5.boolEnum ()) {
             test_5 = GALGAS_bool (kIsEqual, var_selector_10512.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())) ;
           }
@@ -7914,7 +7909,7 @@ void cParser_galgas_34_ParameterArgumentSyntax::rule_galgas_34_ParameterArgument
   inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__21_ COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 460)) ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
-    GALGAS_bool test_1 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_checkNoUselessSelector.readProperty_value ()) ;
+    GALGAS_bool test_1 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOnUselessSelector.readProperty_value ()) ;
     if (kBoolTrue == test_1.boolEnum ()) {
       test_1 = GALGAS_bool (kIsEqual, var_selector_15656.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())) ;
     }
@@ -8217,7 +8212,7 @@ void cParser_galgas_34_ParameterArgumentSyntax::rule_galgas_34_ParameterArgument
         inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__3F_ COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 581)) ;
         enumGalgasBool test_1 = kBoolTrue ;
         if (kBoolTrue == test_1) {
-          GALGAS_bool test_2 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_checkNoUselessSelector.readProperty_value ()) ;
+          GALGAS_bool test_2 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOnUselessSelector.readProperty_value ()) ;
           if (kBoolTrue == test_2.boolEnum ()) {
             test_2 = GALGAS_bool (kIsEqual, var_selector_19668.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())) ;
           }

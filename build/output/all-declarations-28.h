@@ -250,12 +250,13 @@ class GALGAS_string function_linkForType (const class GALGAS_string & constinArg
 
 void routine_compileSemanticDeclarationsGalgas (class GALGAS_lstringlist & ioArgument0,
                                                 class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                                const class GALGAS_string constinArgument2,
-                                                const class GALGAS_location constinArgument3,
-                                                const class GALGAS_semanticDeclarationListAST constinArgument4,
-                                                class GALGAS_semanticContext & outArgument5,
-                                                class GALGAS_unifiedTypeMap & outArgument6,
-                                                class GALGAS_semanticDeclarationListForGeneration & outArgument7,
+                                                const class GALGAS_bool constinArgument2,
+                                                const class GALGAS_string constinArgument3,
+                                                const class GALGAS_location constinArgument4,
+                                                const class GALGAS_semanticDeclarationListAST constinArgument5,
+                                                class GALGAS_semanticContext & outArgument6,
+                                                class GALGAS_unifiedTypeMap & outArgument7,
+                                                class GALGAS_semanticDeclarationListForGeneration & outArgument8,
                                                 class C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 

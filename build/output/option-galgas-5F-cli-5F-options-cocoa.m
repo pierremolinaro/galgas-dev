@@ -25,15 +25,6 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
-    identifier:@"checkNoUselessSelector"
-    commandChar:0
-    commandString:@"check-no-useless-selector"
-    comment:@"Check no useless selector (GGS4)"
-    defaultValue:@""
-  ] ;
-  [ioBoolOptionArray addObject:option] ;
-  option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"galgas_cli_options"
     identifier:@"check_gmp"
     commandChar:0
     commandString:@"check-gmp"
@@ -128,6 +119,24 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
     commandChar:0
     commandString:@"error-old-style-property-declaration"
     comment:@"error on old style property declaration"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
+    identifier:@"errorOnGetterCallWithNoArgument"
+    commandChar:0
+    commandString:@"error-on-getter-call-with-no-argument"
+    comment:@"Error on getter call; with no argument (GGS4, suppress parenthesis)"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
+    identifier:@"errorOnUselessSelector"
+    commandChar:0
+    commandString:@"error-on-useless-selector"
+    comment:@"Error on useless selector (GGS4)"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;

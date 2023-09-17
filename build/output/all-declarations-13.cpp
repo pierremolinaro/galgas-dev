@@ -499,7 +499,7 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_fil
             inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__3F_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas", 400)) ;
             enumGalgasBool test_2 = kBoolTrue ;
             if (kBoolTrue == test_2) {
-              GALGAS_bool test_3 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_checkNoUselessSelector.readProperty_value ()) ;
+              GALGAS_bool test_3 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOnUselessSelector.readProperty_value ()) ;
               if (kBoolTrue == test_3.boolEnum ()) {
                 test_3 = GALGAS_bool (kIsEqual, var_selector_14345.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())) ;
               }

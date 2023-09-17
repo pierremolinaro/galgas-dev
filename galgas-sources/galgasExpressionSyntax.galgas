@@ -35,6 +35,10 @@ syntax galgas4ExpressionSyntax (galgasScanner) {
 
   #·····················································································································
 
+  rule <actual_parameter_list_within_parenthesis> !@actualParameterListAST outActualParameterList
+
+  #·····················································································································
+
   rule <primary> !@semanticExpressionAST outExpression {
     $($
     <expression> ? outExpression

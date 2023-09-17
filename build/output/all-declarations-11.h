@@ -2514,8 +2514,6 @@ class cParser_galgas_33_ExpressionSyntax {
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness ;
 
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkNoUselessSelector ;
-
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_gmp ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLexicalTestFunctions ;
@@ -2537,6 +2535,10 @@ extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStyleCol
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStyleLocalVarDeclaration ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStylePropertyDeclaration ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOnGetterCallWithNoArgument ;
+
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOnUselessSelector ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorPropertyGetterCall ;
 

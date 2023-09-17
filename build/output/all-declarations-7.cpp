@@ -3149,6 +3149,23 @@ void callExtensionMethod_checkAgainstFormalArgument (cPtr_actualParameterAST * i
 }
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Abstract extension method '@actualParameterAST enterInActualOutputParameterList'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_enterInActualOutputParameterList (cPtr_actualParameterAST * inObject,
+                                                           GALGAS_actualOutputExpressionList & io_ioActualOutputArgumentList,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
+//--- Drop output arguments
+//--- Find method
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_actualParameterAST) ;
+    inObject->method_enterInActualOutputParameterList (io_ioActualOutputArgumentList, inCompiler COMMA_THERE) ;
+  }
+}
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Extension Getter '@formalArgumentPassingModeAST correspondingEffectiveParameterString'
 //
 //----------------------------------------------------------------------------------------------------------------------

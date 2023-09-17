@@ -61,15 +61,7 @@ syntax extension galgas4InstructionsSyntax {
 #  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 #    let instructionLocation = @location.here
 #    <expression> ?let @semanticExpressionAST mReceiverExpression
-#    $.$
-#    $identifier$ ?let mMethodName
-#    <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST actualParameterList
-#    outInstruction = @methodCallInstructionAST.new {
-#      !instructionLocation
-#      !mReceiverExpression
-#      !mMethodName
-#      !actualParameterList
-#    }
+#    error .here : "YES" : outInstruction
 #  }
 
   #·····················································································································

@@ -138,6 +138,10 @@ abstract method @actualParameterAST checkAgainstFormalArgument
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+abstract method @actualParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList ioActualOutputArgumentList
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 getter @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @string {
   switch self
     case argumentConstantIn : result = "!"
@@ -145,6 +149,15 @@ getter @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @s
     case argumentOut : result = "?"
     case argumentInOut : result = "!?"
   end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @outputActualParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList ioActualOutputArgumentList {
+  ioActualOutputArgumentList +=
+    !self.mActualSelector
+    !self.mOutputActualParameterExpression
+    !self.mEndOfExpressionLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -162,7 +175,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
   ?!@stringset unused ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
 {
-  if (inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentIn)
+  if (inFormalArgumentPassingMode != @formalArgumentPassingModeAST.argumentIn)
    & (inFormalArgumentPassingMode != @formalArgumentPassingModeAST.argumentConstantIn) then
     error self.mActualSelector
     :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
@@ -189,6 +202,12 @@ override method @outputActualParameterAST checkAgainstFormalArgument
       !inFormalArgumentType
       !expression}
   end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @outputInputActualParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  error self.mActualSelector : "a getter does not support output/input parameter"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -263,6 +282,12 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override method @outputInputSingleJokerParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  error self.mActualSelector : "a getter does not support output/input parameter"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
@@ -301,6 +326,12 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
     !{}
     !@unifiedTypeMapEntryList.listWithValue {!inFormalArgumentType}
   }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @outputInputSelfParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  error self.mActualSelector : "a getter does not support output/input parameter"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -357,6 +388,12 @@ override method @outputInputSelfParameterAST checkAgainstFormalArgument
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override method @outputInputJokerParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  error self.mQualifierLocation : "a getter does not support output/input parameter"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 override method @outputInputJokerParameterAST checkAgainstFormalArgument
                                             ?let @lstring unused inUsefulnessCallerEntityName
                                             ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
@@ -390,6 +427,12 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
     !cppVarName
     !{}
     !@unifiedTypeMapEntryList. listWithValue {!inFormalArgumentType}}
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @inputActualExistingVariableParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  error self.mActualSelector : "a getter does not support input parameter"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -449,6 +492,12 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
     !targetVariableCppName
     !poisonedVarCppNameList
   }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @inputActualSelfPropertyParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  error self.mActualSelector : "a getter does not support input parameter"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -513,6 +562,12 @@ override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override method @inputActualSelfParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  error self.mActualSelector : "a getter does not support input parameter"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 override method @inputActualSelfParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
@@ -570,6 +625,12 @@ override method @inputActualSelfParameterAST checkAgainstFormalArgument
   else
     error self.mSelfLocation : "'self' not available in this context"
   end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @inputActualNewVariableParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  error self.mActualSelector : "a getter does not support input parameter"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -642,6 +703,12 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
     !targetVariableCppName
     !poisonedVarCppNameList
   }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @inputActualNewConstantParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  error self.mActualSelector : "a getter does not support input parameter"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -726,6 +793,12 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override method @inputSingleJokerActualParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  error self.mActualSelector : "a getter does not support input parameter"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
@@ -765,6 +838,12 @@ override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
       !poisonedVarCppNameList
     }
   end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @inputJokerActualParameterAST enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  error self.mQualifierLocation : "a getter does not support input parameter"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

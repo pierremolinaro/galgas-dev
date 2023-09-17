@@ -9951,12 +9951,6 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness (
                                          "check-usefulness",
                                          "Check Entity Usefulness") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkNoUselessSelector ("galgas_cli_options",
-                                         "checkNoUselessSelector",
-                                         0,
-                                         "check-no-useless-selector",
-                                         "Check no useless selector (GGS4)") ;
-
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_gmp ("galgas_cli_options",
                                          "check_gmp",
                                          0,
@@ -10022,6 +10016,18 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStylePropertyDe
                                          0,
                                          "error-old-style-property-declaration",
                                          "error on old style property declaration") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOnGetterCallWithNoArgument ("galgas_cli_options",
+                                         "errorOnGetterCallWithNoArgument",
+                                         0,
+                                         "error-on-getter-call-with-no-argument",
+                                         "Error on getter call; with no argument (GGS4, suppress parenthesis)") ;
+
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOnUselessSelector ("galgas_cli_options",
+                                         "errorOnUselessSelector",
+                                         0,
+                                         "error-on-useless-selector",
+                                         "Error on useless selector (GGS4)") ;
 
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorPropertyGetterCall ("galgas_cli_options",
                                          "errorPropertyGetterCall",

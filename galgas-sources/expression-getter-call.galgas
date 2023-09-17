@@ -1,16 +1,4 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#!   AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @getterCallExpressionAST : @semanticExpressionAST {
-  private let @bool errorOnGetterCallInsteadOfPropertyRead %selector
-  private let @semanticExpressionAST mReceiver
-  private let @lstring mGetterName
-  private let @actualOutputExpressionList mExpressions
-  private let @location mExpressionLocation
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -29,7 +17,7 @@ syntax extension galgas3ExpressionSyntax {
     <output_expression_list_ggs3> ?let @actualOutputExpressionList expressionList
     $]$
     let endLocation = @location.here
-    outExpression = @getterCallExpressionAST.new {
+    outExpression = @getterCallExpressionGGS3AST.new {
       !errorOnGetterCallInsteadOfPropertyRead: [option galgas_cli_options.errorPropertyGetterCall value]
       !receiverExpression
       !getterName
@@ -44,192 +32,66 @@ syntax extension galgas3ExpressionSyntax {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas4ExpressionSyntax {
-
-  #·····················································································································
-  #  OLD STYLE GETTER CALL
-  #·····················································································································
-  
-#  rule <primary> !@semanticExpressionAST outExpression {
-#    $[$
-#  #--- Get source identity characteristics
-#    let startLocation = @location.here
-#    <expression> ?let @semanticExpressionAST receiverExpression
-#  #--- Get getter name
-#    $identifier$ ?let @lstring getterName
-#  #--- Actual parameters
-#    <output_expression_list> ?let @actualOutputExpressionList expressionList
-#    $]$
-#    let endLocation = @location.here
-#    outExpression = @getterCallExpressionAST.new {
-#      !errorOnGetterCallInsteadOfPropertyRead: true
-#      !receiverExpression
-#      !getterName
-#      !expressionList
-#      ![startLocation union !endLocation]
-#    }
-#  }
+refclass @getterCallExpressionGGS3AST : @semanticExpressionAST {
+  private let @bool errorOnGetterCallInsteadOfPropertyRead %selector
+  private let @semanticExpressionAST mReceiver
+  private let @lstring mGetterName
+  private let @actualOutputExpressionList mActualArgumentList
+  private let @location mExpressionLocation
 
   #·····················································································································
 
-}
+  override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    [self.mReceiver enterExpressionInSemanticContext !?ioTypeMap]
+    [self.mActualArgumentList enterInSemanticContext !?ioTypeMap]
+  }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+  #·····················································································································
 
-override method @getterCallExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  [self.mReceiver enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mExpressions enterInSemanticContext !?ioTypeMap]
-}
-
-#·····················································································································
-
-override method @getterCallExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMapEntry unused inType
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@localVarManager ioVariableMap
-  !@semanticExpressionForGeneration outExpression
-{
-#--------------------------------------- Expression analysis
-  [self.mReceiver analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMapEntry.null
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration receiverExpression
-  ]
-  let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
-#--------------------------------------- Search getter
-  if let [[receiverType definition].mGetterMap searchKey
-      !self.mGetterName.string
-      ?let kind
-      ?let getterFormalArgumentTypeList
-      ?*
-      ?let @bool hasCompilerArgument
-      ?let @unifiedTypeMapEntry returnedType
-      ?*
-      ?let replacementGetter] then
-    if (replacementGetter != "") && [option galgas_cli_options.errorObsoleteGetterCall value] then
-      error self.mGetterName : "obsolete getter" fixit { replace replacementGetter }
-    end
-    if self.errorOnGetterCallInsteadOfPropertyRead # [option galgas_cli_options.errorPropertyGetterCall value]
-      && [[receiverType definition].mPropertyMap hasKey !self.mGetterName.string]
-      && ([self.mExpressions count] == 0) then
-      error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
-    end
-  #--- Analysis arguments
-    if [self.mExpressions count] != [getterFormalArgumentTypeList count] then
-      error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType definition].mTypeName.string + "' requires "
-      + [getterFormalArgumentTypeList count] + " parameter(s), while this call has "
-      + [self.mExpressions count] + " parameter(s)" : outExpression
-    else
-      var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
-      for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions,
-          (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
-        [mExpression analyzeSemanticExpression
-          !inUsefulnessCallerEntityName
-          !?ioUsefulEntitiesGraph
-          !inferenceType: mFormalArgumentType
-          !inAnalysisContext
-          !?ioTypeMap
-          !?ioVariableMap
-          ?@semanticExpressionForGeneration exp
-        ]
-        if mFormalSelector.string != mActualSelector.string then
-          let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-          error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
-        end
-        checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
-        constructorEffectiveParameterList += !exp
+  override method analyzeSemanticExpression ?let @lstring inUsefulnessCallerEntityName
+                                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                            ?inferenceType: let @unifiedTypeMapEntry unused inType
+                                            ?let @analysisContext inAnalysisContext
+                                            ?!@unifiedTypeMap ioTypeMap
+                                            ?!@localVarManager ioVariableMap
+                                            !@semanticExpressionForGeneration outExpression {
+  #--------------------------------------- Expression analysis
+    [self.mReceiver analyzeSemanticExpression
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inferenceType: @unifiedTypeMapEntry.null
+      !inAnalysisContext
+      !?ioTypeMap
+      !?ioVariableMap
+      ?@semanticExpressionForGeneration receiverExpression
+    ]
+    let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
+  #--------------------------------------- Search getter
+    if let [[receiverType definition].mGetterMap searchKey
+        !self.mGetterName.string
+        ?let kind
+        ?let getterFormalArgumentTypeList
+        ?*
+        ?let @bool hasCompilerArgument
+        ?let @unifiedTypeMapEntry returnedType
+        ?*
+        ?let replacementGetter] then
+      if (replacementGetter != "") && [option galgas_cli_options.errorObsoleteGetterCall value] then
+        error self.mGetterName : "obsolete getter" fixit { replace replacementGetter }
       end
-      outExpression = @getterCallExpressionForGeneration.new {
-        !returnedType
-        !self.mGetterName.location
-        !kind
-        !receiverExpression
-        !{}
-        !if replacementGetter == "" then self.mGetterName.string else replacementGetter end
-        !constructorEffectiveParameterList
-        !hasCompilerArgument
-      }
-    end
-#--------------------------------------- The getter does not exist, it is a property ?
-  elsif [self.mExpressions count] == 0, let [[receiverType definition].mPropertyMap searchKey !self.mGetterName.string ?let accessControl ?* ?let propertyType] then
-    [accessControl checkGetAccess !inAnalysisContext.selfType !self.mGetterName]
-#    if not isPublic then
-#      error self.mGetterName : " inaccessible property (due to its 'private' qualifier)"
-#    end
-    outExpression = @structPropertyAccessExpressionForGeneration.new {
-      !propertyType
-      !self.mGetterName.location
-      !receiverExpression
-      !self.mGetterName.string
-    }
-    if self.errorOnGetterCallInsteadOfPropertyRead then # [option galgas_cli_options.errorPropertyGetterCall value] then
-      error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
-    end
-#--------------------------------------- not found, old style search
-  else
-    var @uint matchingReaderCount = 0
-    if [receiverType definition].mTypeKindEnum == .structType then
-      var @functionSignature getterFormalArgumentTypeList = {}
-      var hasCompilerArgument = true
-      var returnedType = @unifiedTypeMapEntry.null
-      var kind = @methodKind.definedAsExtension
-      let @stringlist fieldList = {}
-      var obsoletedByGetter = ""
-      for (propertyTypeEntry propertyName 2*) in [receiverType definition].mCurrentTypedPropertyList do
-        let propertyType = [ioTypeMap searchKey !.new {![propertyTypeEntry definition].mTypeName.string !.here}]
-        let aMap = [propertyType definition].mGetterMap
-        with self.mGetterName.string in aMap do
-          if [propertyType definition].mTypeName.string == propertyName.string then
-            matchingReaderCount += 1
-            getterFormalArgumentTypeList = mArgumentTypeList
-            hasCompilerArgument = mHasCompilerArgument
-            returnedType = mReturnedType
-            receiverExpression = @structPropertyAccessExpressionForGeneration.new {
-              !returnedType
-              !self.mGetterName.location
-              !receiverExpression
-              !propertyName.string
-            }
-            kind = mKind
-            obsoletedByGetter = mGetterNameThatObsoletesInvokationName
-          end
-        end
-      end
-      if matchingReaderCount == 0 then
-        error self.mGetterName
-        : "the '@"+ [receiverType definition].mTypeName.string + "' struct type does not define the '" + self.mGetterName.string
-        + "' getter, and none of its fields defines it"
-        : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
-      elsif matchingReaderCount > 1 then
-        var @string s = ""
-        for (mValue) in fieldList
-          do s += mValue
-          between s += ", "
-        end
-        error self.mGetterName
-        : "the '@"+ [receiverType definition].mTypeName.string + "' struct type does not define the '" + self.mGetterName.string
-        + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
-        : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+      if self.errorOnGetterCallInsteadOfPropertyRead
+        && [[receiverType definition].mPropertyMap hasKey !self.mGetterName.string]
+        && ([self.mActualArgumentList count] == 0) then
+        error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
       end
     #--- Analysis arguments
-      if [self.mExpressions count] != [getterFormalArgumentTypeList count] then
+      if [self.mActualArgumentList count] != [getterFormalArgumentTypeList count] then
         error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType definition].mTypeName.string + "' requires "
-        + [[getterFormalArgumentTypeList count] string] + " parameter(s), while this call has "
-        + [[self.mExpressions count] string] + " parameter(s)" : outExpression
+        + [getterFormalArgumentTypeList count] + " parameter(s), while this call has "
+        + [self.mActualArgumentList count] + " parameter(s)" : outExpression
       else
         var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
-        for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions,
+        for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
             (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
           [mExpression analyzeSemanticExpression
             !inUsefulnessCallerEntityName
@@ -247,31 +109,137 @@ override method @getterCallExpressionAST analyzeSemanticExpression
           checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
           constructorEffectiveParameterList += !exp
         end
-        if (obsoletedByGetter != "") && [option galgas_cli_options.errorObsoleteGetterCall value] then
-          error self.mGetterName : "obsolete getter" fixit { replace obsoletedByGetter }
-        end
         outExpression = @getterCallExpressionForGeneration.new {
           !returnedType
           !self.mGetterName.location
           !kind
           !receiverExpression
-          !fieldList
-          !if obsoletedByGetter == "" then self.mGetterName.string else obsoletedByGetter end
+          !{}
+          !if replacementGetter == "" then self.mGetterName.string else replacementGetter end
           !constructorEffectiveParameterList
           !hasCompilerArgument
         }
+        if inAnalysisContext.mSemanticContext.galgas4
+         && ([self.mActualArgumentList count] == 0)
+         && [option galgas_cli_options.errorOnGetterCallWithNoArgument value] then
+          error self.mExpressionLocation : "getter with no argument, remove parenthesis" fixit { remove }
+        end
       end
-    elsif [[receiverType definition].mGetterMap count] == 0 then
-      error self.mGetterName
-      : "the '@"+ [receiverType definition].mTypeName.string + "' type does not define any getter"
-      : outExpression
+  #--------------------------------------- The getter does not exist, it is a property ?
+    elsif [self.mActualArgumentList count] == 0, let [[receiverType definition].mPropertyMap searchKey !self.mGetterName.string ?let accessControl ?* ?let propertyType] then
+      [accessControl checkGetAccess !inAnalysisContext.selfType !self.mGetterName]
+  #    if not isPublic then
+  #      error self.mGetterName : " inaccessible property (due to its 'private' qualifier)"
+  #    end
+      outExpression = @structPropertyAccessExpressionForGeneration.new {
+        !propertyType
+        !self.mGetterName.location
+        !receiverExpression
+        !self.mGetterName.string
+      }
+      if self.errorOnGetterCallInsteadOfPropertyRead then # [option galgas_cli_options.errorPropertyGetterCall value] then
+        error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
+      end
+  #--------------------------------------- not found, old style search
     else
-      error self.mGetterName
-      : "the '@"+ [receiverType definition].mTypeName.string + "' type does not define the '" + self.mGetterName + "' getter "
-      : outExpression
-      fixit { replace [[receiverType definition].mGetterMap keyList] }
+      var @uint matchingReaderCount = 0
+      if [receiverType definition].mTypeKindEnum == .structType then
+        var @functionSignature getterFormalArgumentTypeList = {}
+        var hasCompilerArgument = true
+        var returnedType = @unifiedTypeMapEntry.null
+        var kind = @methodKind.definedAsExtension
+        let @stringlist fieldList = {}
+        var obsoletedByGetter = ""
+        for (propertyTypeEntry propertyName 2*) in [receiverType definition].mCurrentTypedPropertyList do
+          let propertyType = [ioTypeMap searchKey !.new {![propertyTypeEntry definition].mTypeName.string !.here}]
+          let aMap = [propertyType definition].mGetterMap
+          with self.mGetterName.string in aMap do
+            if [propertyType definition].mTypeName.string == propertyName.string then
+              matchingReaderCount += 1
+              getterFormalArgumentTypeList = mArgumentTypeList
+              hasCompilerArgument = mHasCompilerArgument
+              returnedType = mReturnedType
+              receiverExpression = @structPropertyAccessExpressionForGeneration.new {
+                !returnedType
+                !self.mGetterName.location
+                !receiverExpression
+                !propertyName.string
+              }
+              kind = mKind
+              obsoletedByGetter = mGetterNameThatObsoletesInvokationName
+            end
+          end
+        end
+        if matchingReaderCount == 0 then
+          error self.mGetterName
+          : "the '@"+ [receiverType definition].mTypeName.string + "' struct type does not define the '" + self.mGetterName.string
+          + "' getter, and none of its fields defines it"
+          : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+        elsif matchingReaderCount > 1 then
+          var @string s = ""
+          for (mValue) in fieldList
+            do s += mValue
+            between s += ", "
+          end
+          error self.mGetterName
+          : "the '@"+ [receiverType definition].mTypeName.string + "' struct type does not define the '" + self.mGetterName.string
+          + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
+          : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+        end
+      #--- Analysis arguments
+        if [self.mActualArgumentList count] != [getterFormalArgumentTypeList count] then
+          error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType definition].mTypeName.string + "' requires "
+          + [[getterFormalArgumentTypeList count] string] + " parameter(s), while this call has "
+          + [[self.mActualArgumentList count] string] + " parameter(s)" : outExpression
+        else
+          var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
+          for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
+              (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
+            [mExpression analyzeSemanticExpression
+              !inUsefulnessCallerEntityName
+              !?ioUsefulEntitiesGraph
+              !inferenceType: mFormalArgumentType
+              !inAnalysisContext
+              !?ioTypeMap
+              !?ioVariableMap
+              ?@semanticExpressionForGeneration exp
+            ]
+            if mFormalSelector.string != mActualSelector.string then
+              let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+              error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+            end
+            checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
+            constructorEffectiveParameterList += !exp
+          end
+          if (obsoletedByGetter != "") && [option galgas_cli_options.errorObsoleteGetterCall value] then
+            error self.mGetterName : "obsolete getter" fixit { replace obsoletedByGetter }
+          end
+          outExpression = @getterCallExpressionForGeneration.new {
+            !returnedType
+            !self.mGetterName.location
+            !kind
+            !receiverExpression
+            !fieldList
+            !if obsoletedByGetter == "" then self.mGetterName.string else obsoletedByGetter end
+            !constructorEffectiveParameterList
+            !hasCompilerArgument
+          }
+        end
+      elsif [[receiverType definition].mGetterMap count] == 0 then
+        error self.mGetterName
+        : "the '@"+ [receiverType definition].mTypeName.string + "' type does not define any getter"
+        : outExpression
+      else
+        error self.mGetterName
+        : "the '@"+ [receiverType definition].mTypeName.string + "' type does not define the '" + self.mGetterName + "' getter "
+        : outExpression
+        fixit { replace [[receiverType definition].mGetterMap keyList] }
+      end
     end
-  end
+  }
+
+  #·····················································································································
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -283,91 +251,94 @@ refclass @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
   public let @semanticExpressionForGeneration mReceiverExpression
   public let @stringlist mFieldList
   public let @string mGetterName
-  public let @semanticExpressionListForGeneration mExpressions
+  public let @semanticExpressionListForGeneration mActualArgumentList
   public let @bool mHasCompilerArgument
-}
 
-#·····················································································································
+  #·····················································································································
 
-override method @getterCallExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression
-{
-#--- Add return type header
-  [self.mResultType addHeaderFileName !?ioInclusionSet]
-#--- Receiver expression
-  [self.mReceiverExpression generateExpression
-    !?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    ?let @string receiverCppName
-  ]
-#--- Reader operands
-  var @stringlist getterArgumentCppNameList = {}
-  for (mExpression) in self.mExpressions do
-    [mExpression generateExpression
+  override method generateExpression
+    ?!@string ioGeneratedCode
+    ?!@stringset ioInclusionSet
+    ?!@uint ioTemporaryVariableIndex
+    ?!@stringset ioUnusedVariableCppNameSet
+    !@string outCppExpression
+  {
+  #--- Add return type header
+    [self.mResultType addHeaderFileName !?ioInclusionSet]
+  #--- Receiver expression
+    [self.mReceiverExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
-      ?let argumentCppName
+      ?let @string receiverCppName
     ]
-    getterArgumentCppNameList += !argumentCppName
-  end
-#--- Generate Reader call
-  switch self.mKind
-  case definedAsExtension :
-    var @unifiedTypeMapEntry baseType = self.mReceiverExpression.mResultType
-   [baseType addHeaderFileName !?ioInclusionSet]
-    var @bool searching = true
-    loop (@uint.max) while searching do
-      if not [[baseType definition].mSuperType isNull] then
-        if [[[baseType definition].mSuperType definition].mGetterMap hasKey !self.mGetterName] then
-          baseType = [baseType definition].mSuperType
+  #--- Reader operands
+    var @stringlist getterArgumentCppNameList = {}
+    for (mExpression) in self.mActualArgumentList do
+      [mExpression generateExpression
+        !?ioGeneratedCode
+        !?ioInclusionSet
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        ?let argumentCppName
+      ]
+      getterArgumentCppNameList += !argumentCppName
+    end
+  #--- Generate Reader call
+    switch self.mKind
+    case definedAsExtension :
+      var @unifiedTypeMapEntry baseType = self.mReceiverExpression.mResultType
+     [baseType addHeaderFileName !?ioInclusionSet]
+      var @bool searching = true
+      loop (@uint.max) while searching do
+        if not [[baseType definition].mSuperType isNull] then
+          if [[[baseType definition].mSuperType definition].mGetterMap hasKey !self.mGetterName] then
+            baseType = [baseType definition].mSuperType
+          else
+            searching = false
+          end
         else
           searching = false
-        end
+        end  
+      end
+      ioInclusionSet += !"getter-" + [[baseType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mGetterName fileNameRepresentation]
+      [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
+      if [[self.mReceiverExpression.mResultType definition].mTypeKindEnum isClassType] then
+        outCppExpression = "callExtensionGetter_" + [self.mGetterName identifierRepresentation]
+           + " ((const cPtr_" + [self.mReceiverExpression.mResultType identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
       else
-        searching = false
-      end  
+        [self.mReceiverExpression.mResultType addHeaderFileName !?ioInclusionSet]
+        outCppExpression = "extensionGetter_" + [self.mGetterName identifierRepresentation] + " (" + receiverCppName + ", "
+      end
+    case definedAsMember :
+      outCppExpression = receiverCppName
+      for (mValue) in self.mFieldList do
+        outCppExpression += ".readProperty_" + [mValue identifierRepresentation] + " ()"
+      end
+      [self.mResultType addHeaderFileName !?ioInclusionSet]
+      outCppExpression +=  ".getter_" + [self.mGetterName identifierRepresentation] + " ("
     end
-    ioInclusionSet += !"getter-" + [[baseType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mGetterName fileNameRepresentation]
-    [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
-    if [[self.mReceiverExpression.mResultType definition].mTypeKindEnum isClassType] then
-      outCppExpression = "callExtensionGetter_" + [self.mGetterName identifierRepresentation]
-         + " ((const cPtr_" + [self.mReceiverExpression.mResultType identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
-    else
-      [self.mReceiverExpression.mResultType addHeaderFileName !?ioInclusionSet]
-      outCppExpression = "extensionGetter_" + [self.mGetterName identifierRepresentation] + " (" + receiverCppName + ", "
+    for (mValue) in getterArgumentCppNameList
+      do outCppExpression += mValue
+      between outCppExpression += ", "
     end
-  case definedAsMember :
-    outCppExpression = receiverCppName
-    for (mValue) in self.mFieldList do
-      outCppExpression += ".readProperty_" + [mValue identifierRepresentation] + " ()"
-    end
-    [self.mResultType addHeaderFileName !?ioInclusionSet]
-    outCppExpression +=  ".getter_" + [self.mGetterName identifierRepresentation] + " ("
-  end
-  for (mValue) in getterArgumentCppNameList
-    do outCppExpression += mValue
-    between outCppExpression += ", "
-  end
-  if [getterArgumentCppNameList count] == 0 then
-    if self.mHasCompilerArgument then
+    if [getterArgumentCppNameList count] == 0 then
+      if self.mHasCompilerArgument then
+        [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+        outCppExpression += compilerCppName () + " COMMA_"
+      end
+    elsif self.mHasCompilerArgument then
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-      outCppExpression += compilerCppName () + " COMMA_"
+      outCppExpression += ", " + compilerCppName () + " COMMA_"
+    else
+      outCppExpression += " COMMA_"
     end
-  elsif self.mHasCompilerArgument then
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-    outCppExpression += ", " + compilerCppName () + " COMMA_"
-  else
-    outCppExpression += " COMMA_"
-  end
-  outCppExpression += [self.mLocation sourceFile] + ")"
+    outCppExpression += [self.mLocation sourceFile] + ")"
+  }
+
+  #·····················································································································
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

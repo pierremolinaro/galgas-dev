@@ -15,6 +15,7 @@
 
 proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities 
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                            ?galgas4: let @bool inGalgas4
                             ?let @string inProductDirectory
                             ?let @location inEndOfProjectSourceFile
                             ?let @semanticDeclarationListAST inSemanticDeclarationList
@@ -70,6 +71,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
   buildGalgasSemanticContext (
     !semanticDeclarationListWithPredefinedTypes
     !inEndOfProjectSourceFile
+    !galgas4: inGalgas4
     ?outSemanticContext
     ?outTypeMap
     ?let @semanticDeclarationListAST sortedSemanticDeclarationListAST
@@ -108,6 +110,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
 
 private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSemanticDeclarationList
                                         ?let @location inEndOfProjectSourceFile
+                                        ?galgas4: let @bool inGalgas4
                                         !@semanticContext outSemanticContext
                                         !@unifiedTypeMap outTypeMap
                                         !@semanticDeclarationListAST outSortedSemanticDeclarationListAST {
@@ -175,6 +178,7 @@ private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSeman
         !mOptionComponentMapForSemanticAnalysis: {}
         !mLexiqueComponentMapForSemanticAnalysis: {}
         !mSyntaxComponentMapForSemanticAnalysis: {}
+        !galgas4: inGalgas4
       }
     #--- Loop throught all declarations
       for declaration in outSortedSemanticDeclarationListAST do

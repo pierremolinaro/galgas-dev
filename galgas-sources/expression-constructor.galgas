@@ -143,15 +143,6 @@ syntax extension galgas4ExpressionSyntax {
   }
   
   #·····················································································································
-  
-#  rule <primary> !@semanticExpressionAST outExpression {
-#    <optional_type> ?let @lstring typeName
-#    $.$
-#    $default$
-#    outExpression = @defaultConstructorExpressionAST.new {!typeName}
-#  }
-
-  #·····················································································································
 
 }
 

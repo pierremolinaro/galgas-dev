@@ -212,7 +212,6 @@ map @syntaxComponentMap {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @semanticContext {
-#  public var @unifiedTypeMap mTypeMap %selector
   public var @routineMap mRoutineMap %selector
   public var @functionMap mFunctionMap %selector
   public var @filewrapperMap mFilewrapperMap %selector
@@ -220,6 +219,7 @@ struct @semanticContext {
   public var @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis %selector
   public var @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis %selector
   public var @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis %selector
+  public var @bool galgas4 %selector
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

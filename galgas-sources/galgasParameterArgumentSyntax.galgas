@@ -304,7 +304,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
         let @formalArgumentPassingModeAST mFormalParameterPassingMode
         select
           $?$ ?selector
-          if [option galgas_cli_options.checkNoUselessSelector value] && (selector.string == "") then
+          if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
             error selector.location : "check no useless selector: this selector should be removed"
           end
           mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentIn
@@ -313,7 +313,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
           mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentIn
         or
           $?$ ?selector
-          if [option galgas_cli_options.checkNoUselessSelector value] && (selector.string == "") then
+          if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
             error selector.location : "check no useless selector: this selector should be removed"
           end
           $let$
@@ -458,7 +458,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
 
   rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
     $!$ ?let selector
-    if [option galgas_cli_options.checkNoUselessSelector value] && (selector.string == "") then
+    if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
       error selector.location : "check no useless selector: this selector should be removed"
     end
     <expression> ?let @semanticExpressionAST e
@@ -579,7 +579,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
         let @lstring selector
         select
           $?$ ?selector
-          if [option galgas_cli_options.checkNoUselessSelector value] && (selector.string == "") then
+          if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
             error selector.location : "check no useless selector: this selector should be removed"
           end
         or

@@ -398,7 +398,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
             selector = ["" nowhere]
           or
             $?$ ?selector
-            if [option galgas_cli_options.checkNoUselessSelector value] && (selector.string == "") then
+            if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
               error selector.location : "check no useless selector: this selector should be removed"
             end
           end

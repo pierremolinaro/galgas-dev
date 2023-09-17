@@ -6240,6 +6240,10 @@ class cPtr_actualParameterAST : public acStrongPtr_class {
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
+//--- Extension method enterInActualOutputParameterList
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+           C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
+
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
            C_Compiler * COMMA_LOCATION_ARGS) = 0 ;
@@ -6397,6 +6401,10 @@ class cPtr_outputActualParameterAST : public cPtr_actualParameterAST {
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method enterInActualOutputParameterList
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
@@ -6570,6 +6578,10 @@ class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
+//--- Extension method enterInActualOutputParameterList
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
+
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -6735,6 +6747,10 @@ class cPtr_outputInputSingleJokerParameterAST : public cPtr_actualParameterAST {
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
+//--- Extension method enterInActualOutputParameterList
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
+
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -6894,6 +6910,10 @@ class cPtr_outputInputSelfParameterAST : public cPtr_actualParameterAST {
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method enterInActualOutputParameterList
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
@@ -7058,6 +7078,10 @@ class cPtr_outputInputJokerParameterAST : public cPtr_actualParameterAST {
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method enterInActualOutputParameterList
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
@@ -7227,6 +7251,10 @@ class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameter
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method enterInActualOutputParameterList
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
@@ -7400,6 +7428,10 @@ class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST 
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
+//--- Extension method enterInActualOutputParameterList
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
+
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -7569,6 +7601,10 @@ class cPtr_inputActualSelfParameterAST : public cPtr_actualParameterAST {
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method enterInActualOutputParameterList
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
@@ -7743,6 +7779,10 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method enterInActualOutputParameterList
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
@@ -7924,6 +7964,10 @@ class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
+//--- Extension method enterInActualOutputParameterList
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
+
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8096,6 +8140,10 @@ class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
+//--- Extension method enterInActualOutputParameterList
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
+
 //--- Extension method enterParameterInSemanticContext
   public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8260,6 +8308,10 @@ class cPtr_inputJokerActualParameterAST : public cPtr_actualParameterAST {
            class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
            class GALGAS_stringset & ioExclusiveVariableSet,
            class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+           C_Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method enterInActualOutputParameterList
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext

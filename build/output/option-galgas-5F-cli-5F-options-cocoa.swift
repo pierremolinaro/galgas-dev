@@ -19,14 +19,6 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
-    identifier: "checkNoUselessSelector",
-    commandChar: "",
-    commandString: "check-no-useless-selector",
-    comment: "Check no useless selector (GGS4)",
-    defaultValue: ""
-  ))
-  ioBoolOptionArray.append (SWIFT_CommandLineOption (
-    domainName: "galgas_cli_options",
     identifier: "check_gmp",
     commandChar: "",
     commandString: "check-gmp",
@@ -111,6 +103,22 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
     commandChar: "",
     commandString: "error-old-style-property-declaration",
     comment: "error on old style property declaration",
+    defaultValue: ""
+  ))
+  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    identifier: "errorOnGetterCallWithNoArgument",
+    commandChar: "",
+    commandString: "error-on-getter-call-with-no-argument",
+    comment: "Error on getter call; with no argument (GGS4, suppress parenthesis)",
+    defaultValue: ""
+  ))
+  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    identifier: "errorOnUselessSelector",
+    commandChar: "",
+    commandString: "error-on-useless-selector",
+    comment: "Error on useless selector (GGS4)",
     defaultValue: ""
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
