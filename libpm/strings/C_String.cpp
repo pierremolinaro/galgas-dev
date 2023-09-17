@@ -778,15 +778,12 @@ void C_String::linesArray (TC_UniqueArray <C_String> & outStringArray) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void C_String::lineAndColumnFromIndex (const int32_t inIndex,
-                                       int32_t & outLineNumber,
-                                       int32_t & outColumnNumber,
-                                       C_String & outLineContents) const {
+LineColumnContents C_String::lineAndColumnFromIndex (const int32_t inIndex) const {
+  LineColumnContents result ;
   const int32_t receiverLength = length () ;
   if (inIndex < receiverLength) {
     const utf32 * ptr = utf32String (HERE) ;
-    outLineNumber = 0 ;
-    outColumnNumber = 0 ;
+    int32_t lineNumber = 0 ;
     int32_t startOfLineIndex = 0 ;
     int32_t idx = 0 ;
     bool parseLine = true ;
@@ -799,13 +796,15 @@ void C_String::lineAndColumnFromIndex (const int32_t inIndex,
         parseLine = true ;
         idx ++ ; // Pass '\n'
         startOfLineIndex = idx ;
-        outLineNumber ++ ;
+        lineNumber ++ ;
       }
     }
   //---
-    outColumnNumber = inIndex - startOfLineIndex ;
-    outLineContents = subString (startOfLineIndex, idx - startOfLineIndex) ;
+    const int32_t columnNumber = inIndex - startOfLineIndex ;
+    const C_String lineContents = subString (startOfLineIndex, idx - startOfLineIndex) ;
+    result = LineColumnContents (lineNumber, columnNumber, lineContents) ;
   }
+  return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

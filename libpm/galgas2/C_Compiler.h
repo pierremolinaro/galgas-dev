@@ -119,9 +119,9 @@ class C_Compiler : public C_SharedObject {
     return mCurrentLocation.lineNumber () ;
   }
 
-  public: inline int32_t columnNumber (void) const {
-    return mCurrentLocation.columnNumber () ;
-  }
+//  public: inline int32_t columnNumber (void) const {
+//    return mCurrentLocation.columnNumber () ;
+//  }
 
 //--- Get separator string
   public: virtual C_String separatorString (void) const { return "" ; }

@@ -325,7 +325,7 @@ void C_Lexique::advance (void) {
   mTokenEndLocation = mCurrentLocation ;
   mPreviousChar = mCurrentChar ;
   if (UNICODE_VALUE (mCurrentChar) != '\0') {
-    mCurrentLocation.gotoNextLocation (UNICODE_VALUE (mPreviousChar) == '\n') ;
+    mCurrentLocation.gotoNextLocation () ;
     mCurrentChar = sourceText ().readCharOrNul (mCurrentLocation.index () COMMA_HERE) ;
   }
   // printf ("END ADVANCE\n") ;

@@ -83,32 +83,6 @@ GALGAS_location GALGAS_location::constructor_separator (C_Compiler * inCompiler
 
 //------------------------------------------------------------------------------------------------------------------------------------------
 
-//GALGAS_location GALGAS_location::constructor_location (const GALGAS_string & inFilePath,
-//                                                       const GALGAS_uint & inLine,
-//                                                       const GALGAS_uint & inStartColumn,
-//                                                       const GALGAS_uint & inLastColumn,
-//                                                       class C_Compiler * inCompiler
-//                                                       COMMA_LOCATION_ARGS) {
-//  GALGAS_location result ;
-//  if (inFilePath.isValid () && inLine.isValid() && inStartColumn.isValid() && inLastColumn.isValid()) {
-//    try {
-//      const C_String fileContents = C_FileManager::stringWithContentOfFile (inFilePath.stringValue ()) ;
-//      const C_SourceTextInString sourceTextInString (fileContents, inFilePath.stringValue (), true) ;
-//      const int32_t line = int32_t (inLine.uintValue()) ;
-//      const int32_t startColumn = int32_t (inStartColumn.uintValue()) ;
-//      const int32_t lastColumn = int32_t (inLastColumn.uintValue()) ;
-//      const C_LocationInSource startLocationInSource (sourceTextInString, line, startColumn) ;
-//      const C_LocationInSource endLocationInSource (sourceTextInString, line, lastColumn) ;
-//      result = GALGAS_location (startLocationInSource, endLocationInSource, sourceTextInString) ;
-//    }catch (C_TextReadException & e) {
-//      inCompiler->onTheFlyRunTimeError (e.what () COMMA_THERE) ;
-//    }
-//  }
-//  return result ;
-//}
-
-//------------------------------------------------------------------------------------------------------------------------------------------
-
 bool GALGAS_location::isValidAndNotNowhere (void) const {
   return mIsValid && mSourceText.isValid () ;
 }
