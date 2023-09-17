@@ -7,7 +7,7 @@ import AppKit
 
 /*
 %
-if [GUI_CONTEXT.mNibAndClassList length] == 0 then
+if [GUI_CONTEXT.mNibAndClassList count] == 0 then
 %NSArray * nibsAndClasses (void) {
   return [NSArray array] ;
 }
@@ -30,7 +30,7 @@ end
 //----------------------------------------------------------------------------------------------------------------------
 
 NSDictionary * indexingDescriptorDictionary (void) {
-%if [GUI_CONTEXT.mProjectIndexingDescriptorList length] == 0 then
+%if [GUI_CONTEXT.mProjectIndexingDescriptorList count] == 0 then
 % return [NSDictionary dictionary] ;
 %
 else
@@ -165,12 +165,12 @@ class SWIFT_Tokenizer_%![lexiqueIndex string]%_%!lexiqueClassName% : SWIFT_Lexiq
   %/* @implementation OC_Tokenizer_%![lexiqueIndex string]%_%!lexiqueClassName%\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %- (NSUInteger) textMacroCount {\n%
-  %  return %![[textMacroList length] string]% ;\n%
+  %  return %![[textMacroList count] string]% ;\n%
   %}\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {\n%
-  %  static NSString * kTextMacroTitle [%![[textMacroList length] + 1 string]%] = {\n%
+  %  static NSString * kTextMacroTitle [%![[textMacroList count] + 1 string]%] = {\n%
   for (mKey mContents) in textMacroList do
     %    @%![mKey utf8RepresentationEscapingQuestionMark]%,\n%
   end
@@ -180,7 +180,7 @@ class SWIFT_Tokenizer_%![lexiqueIndex string]%_%!lexiqueClassName% : SWIFT_Lexiq
   %}\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {\n%
-  %  static NSString * kTextMacroContent [%![[textMacroList length] + 1 string]%] = {\n%
+  %  static NSString * kTextMacroContent [%![[textMacroList count] + 1 string]%] = {\n%
   for (mKey mContents) in textMacroList do
     %    @%![mContents utf8RepresentationEscapingQuestionMark]%,\n%
   end
@@ -212,7 +212,7 @@ end
 //----------------------------------------------------------------------------------------------------------------------
 
 func tokenizers () -> [SWIFT_Tokenizer_Protocol] {%
-if [GUI_CONTEXT.mWithLexiqueList length] == 0 then%
+if [GUI_CONTEXT.mWithLexiqueList count] == 0 then%
   return []
 %else%
   return [

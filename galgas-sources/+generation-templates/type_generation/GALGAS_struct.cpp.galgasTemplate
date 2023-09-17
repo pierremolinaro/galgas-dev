@@ -42,7 +42,7 @@ end%) ;
 %//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
-if [CONSTRUCTOR_ARGUMENT_LIST length] == 0 then
+if [CONSTRUCTOR_ARGUMENT_LIST count] == 0 then
   %UNUSED_LOCATION_ARGS) {
 %else
 for (propertyTypeEntry propertyName 2*) in CONSTRUCTOR_ARGUMENT_LIST

@@ -136,7 +136,7 @@ end
 
 %
 for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRefList mBuildPhaseRef mBuildConfigurationListRef mBuildConfigurationSettingList mBuildConfigurationRef mFrameworksFileRefList mFrameworkBuildPhaseRef) in TOOL_TARGET_LIST do
-  if [mFrameworksFileRefList length] > 0 then
+  if [mFrameworksFileRefList count] > 0 then
     %  %!mFrameworkBuildPhaseRef% = {\n%
     %    isa = PBXFrameworksBuildPhase;\n%
     %    buildActionMask = 2147483647;\n%
@@ -197,7 +197,7 @@ for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRe
     buildPhases = (
       %!mBuildPhaseRef% ,
 %
-  if [mFrameworksFileRefList length] > 0 then
+  if [mFrameworksFileRefList count] > 0 then
     %      %!mFrameworkBuildPhaseRef% , /* Frameworks */\n%
   end
 %    );

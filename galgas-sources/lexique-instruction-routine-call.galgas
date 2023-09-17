@@ -255,11 +255,11 @@ override method @lexicalRoutineCallInstructionAST checkLexicalInstruction
     ?*
   ]
 #--- Check actual argument count
-  if [lexicalRoutineFormalArgumentList length] != [self.mActualArgumentList length] then
+  if [lexicalRoutineFormalArgumentList count] != [self.mActualArgumentList count] then
     error self.mRoutineName : "this lexical routine call names "
-    + [[self.mActualArgumentList length] string]
+    + [[self.mActualArgumentList count] string]
     + " actual argument(s), but the lexical routine prototype requires "
-    + [lexicalRoutineFormalArgumentList length] + " actual argument(s)"
+    + [lexicalRoutineFormalArgumentList count] + " actual argument(s)"
   end
 #--- Check actual argument against formal parameters
   for (mLexicalFormalArgumentMode mLexicalFormalArgumentType *) in lexicalRoutineFormalArgumentList, (mLexicalRoutineActualArgument) in self.mActualArgumentList do
@@ -270,11 +270,11 @@ override method @lexicalRoutineCallInstructionAST checkLexicalInstruction
     ]
   end
 #--- Check error message count
-  if [routineErrorMessageList length] != [self.mErrorMessageList length] then
+  if [routineErrorMessageList count] != [self.mErrorMessageList count] then
     error self.mRoutineName: "this lexical routine call names "
-    + [[self.mErrorMessageList length] string]
+    + [[self.mErrorMessageList count] string]
     + " error message(s), but the lexical routine prototype requires "
-    + [[routineErrorMessageList length] string] + " error message(s)"
+    + [[routineErrorMessageList count] string] + " error message(s)"
   end
 #--- Check error messages are actually defined
   for (mValue) in self.mErrorMessageList do

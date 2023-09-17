@@ -77,7 +77,7 @@ class C_Lexique_%!LEXIQUE_IDENTIFIER% : public C_Lexique {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     protected: virtual ~ C_Lexique_%!LEXIQUE_IDENTIFIER% (void) {}
   #endif
-%if [TEMPLATE_DELIMITOR_LIST length] > 0 then%
+%if [TEMPLATE_DELIMITOR_LIST count] > 0 then%
 //--- Scanner mode for template scanner
   private: int32_t mMatchedTemplateDelimiterIndex ;
 %end%
@@ -127,7 +127,7 @@ class C_Lexique_%!LEXIQUE_IDENTIFIER% : public C_Lexique {
   protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int16_t terminalVocabularyCount (void) const override { return %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList length] string]% ; }
+  public: virtual int16_t terminalVocabularyCount (void) const override { return %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count] string]% ; }
 
 //--- Get Token String
   public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const override ;

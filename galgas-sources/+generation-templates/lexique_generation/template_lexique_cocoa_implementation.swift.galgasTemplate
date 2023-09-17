@@ -5,7 +5,7 @@ import AppKit
 //                           Template Replacements
 //----------------------------------------------------------------------------------------------------------------------
 
-%if [TEMPLATE_REPLACEMENT_LIST length] > 0 then
+%if [TEMPLATE_REPLACEMENT_LIST count] > 0 then
 %fileprivate let kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [String] = [
 %
 for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST
@@ -18,7 +18,7 @@ end%
 //                           Template Delimiters
 //----------------------------------------------------------------------------------------------------------------------
 
-%if [TEMPLATE_DELIMITOR_LIST length] > 0 then
+%if [TEMPLATE_DELIMITOR_LIST count] > 0 then
 %fileprivate let kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [SWIFT_TemplateDelimiter] = [
 %
 for (mStartString mEndString mPreservesStartDelimiter) in TEMPLATE_DELIMITOR_LIST
@@ -146,7 +146,7 @@ class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_
   if (self) {
     noteObjectAllocation (self) ;
   }
-% if [TEMPLATE_DELIMITOR_LIST length] > 0 then
+% if [TEMPLATE_DELIMITOR_LIST count] > 0 then
 %  if (nil == kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n%
 %    kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
   for (mStartString mEndString mPreservesStartDelimiter) in TEMPLATE_DELIMITOR_LIST do
@@ -164,7 +164,7 @@ class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_
   %    ] ;\n%
   %  }\n%
   end
-  if [TEMPLATE_REPLACEMENT_LIST length] > 0 then
+  if [TEMPLATE_REPLACEMENT_LIST count] > 0 then
   %  if (nil == kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n%
   %    kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
   for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST do
@@ -192,7 +192,7 @@ class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_
 
 /*
 % for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST
-    before %static const BOOL kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [%![[TERMINAL_LIST length] string]%] = {\n%
+    before %static const BOOL kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [%![[TERMINAL_LIST count] string]%] = {\n%
     do %  %![mIsEndOfTemplateMark ocString]% /* %!mTerminalName.string% */%
     between %,\n%
     after %\n} ;\n%

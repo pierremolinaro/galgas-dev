@@ -181,7 +181,7 @@ override method @collectionValueAST analyzeSemanticExpression
   else
     let usefulnessName = typeNameForUsefulEntitiesGraph (!.new {![targetType definition].mTypeName.string !self.mEndOfCollectionValue})
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
-    if [self.mElementList length] == 0 then
+    if [self.mElementList count] == 0 then
       outExpression = @defaultConstructorExpressionForGeneration.new {
         !targetType
         !self.mTypeName.location
@@ -274,10 +274,10 @@ override method @expressionListCollectionValue analyze
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration {
   let @functionSignature formalParameterTypeList = [inElementType definition].mAddAssignOperatorArguments
   var @semanticExpressionListForGeneration semanticExpressionListForGeneration
-  if [formalParameterTypeList length] != [self.mExpressionList length] then
+  if [formalParameterTypeList count] != [self.mExpressionList count] then
     error self.mEndOfExpressionLocation: "element of of '@" + [inElementType definition].mTypeName.string + "' requires "
-    + [formalParameterTypeList length] + " parameter(s), while this list has "
-    + [self.mExpressionList length] + " element(s)" : semanticExpressionListForGeneration
+    + [formalParameterTypeList count] + " parameter(s), while this list has "
+    + [self.mExpressionList count] + " element(s)" : semanticExpressionListForGeneration
   else
     semanticExpressionListForGeneration = @semanticExpressionListForGeneration {}
     for expression in self.mExpressionList, (mFormalSelector mFormalArgumentType *) in formalParameterTypeList do

@@ -86,7 +86,7 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
     identifier: "errorObsoleteGetterCall",
     commandChar: "",
     commandString: "error-on-obsolete-getter-call",
-    comment: "error on obsolete getter call",
+    comment: "error on call of an obsolete getter",
     defaultValue: ""
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (

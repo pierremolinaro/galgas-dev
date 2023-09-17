@@ -175,7 +175,8 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioTypeMap
-    !getterName:"length"
+    !getterName:"count"
+    !obsoleteName: "length"
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -183,6 +184,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName:"range"
+    !obsoleteName: ""
     !returnedTypeName:"range"
     !hasCompilerArgument:false
   )

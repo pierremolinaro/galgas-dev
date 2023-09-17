@@ -220,7 +220,7 @@ override method @methodCallInstructionForGeneration generateInstruction
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
-  if [parameterCppNameList length] == 0 then
+  if [parameterCppNameList count] == 0 then
     if self.mHasCompilerArgument then
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
       ioGeneratedCode += compilerCppName ()

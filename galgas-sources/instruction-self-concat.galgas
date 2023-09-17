@@ -240,15 +240,15 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
 #  end
   #--- Check target variable type support '+=' operator
     let addAssignOperatorArguments= [selfType definition].mAddAssignOperatorArguments # Empty list if += operator is not supported
-    if [addAssignOperatorArguments length] == 0 then
+    if [addAssignOperatorArguments count] == 0 then
       error self.mInstructionLocation
       :"the target object has the '@" + [selfType definition].mTypeName.string + "' type, but this type does not support the '+=' operator"
   #--- Analyze source expressions
-    elsif [self.mExpressions length] != [addAssignOperatorArguments length] then
+    elsif [self.mExpressions count] != [addAssignOperatorArguments count] then
       error self.mInstructionLocation
       : "calling the '+=' operator on an '@" + [selfType definition].mTypeName.string + "' object requires "
-      + [[addAssignOperatorArguments length] string] + " parameter(s), while this invocation has "
-      + [[self.mExpressions length] string] + " parameter(s)"
+      + [[addAssignOperatorArguments count] string] + " parameter(s), while this invocation has "
+      + [[self.mExpressions count] string] + " parameter(s)"
     else
       var effectiveParameterList = @semanticExpressionListForGeneration {}
       for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType *) in addAssignOperatorArguments do

@@ -25,7 +25,7 @@ C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%C_Compiler
                 %!^%const C_String & inSourceFileName
                 %!^%COMMA_LOCATION_ARGS) :
 C_Lexique (inCallerCompiler, inSourceFileName COMMA_THERE)%
-  if [TEMPLATE_DELIMITOR_LIST length] > 0 then
+  if [TEMPLATE_DELIMITOR_LIST count] > 0 then
     %,\nmMatchedTemplateDelimiterIndex (-1)%
   end
 % {
@@ -38,7 +38,7 @@ C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%C_Compiler
                 %!^%const C_String & inStringForError
                 %!^%COMMA_LOCATION_ARGS) :
 C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
-  if [TEMPLATE_DELIMITOR_LIST length] > 0 then
+  if [TEMPLATE_DELIMITOR_LIST count] > 0 then
     %,\nmMatchedTemplateDelimiterIndex (-1)%
   end
 % {
@@ -67,8 +67,8 @@ C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
 
 C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t inTerminalIndex) const {
   C_String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < %![[TERMINAL_LIST length] + 1 string]%)) {
-    static const char * syntaxErrorMessageArray [%![[TERMINAL_LIST length] + 1 string]%] = {kEndOfSourceLexicalErrorMessage%
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < %![[TERMINAL_LIST count] + 1 string]%)) {
+    static const char * syntaxErrorMessageArray [%![[TERMINAL_LIST count] + 1 string]%] = {kEndOfSourceLexicalErrorMessage%
   for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST do
    %,\n        gSyntaxErrorMessage_%!LEXIQUE_IDENTIFIER%_%![mTerminalName.string identifierRepresentation]
   end
@@ -143,7 +143,7 @@ end
 //----------------------------------------------------------------------------------------------------------------------
 
 % for (mStartString mEndString mPreservesStartDelimiter) in LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList
-    before %static const cTemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [%![[TEMPLATE_DELIMITOR_LIST length] string]%] = {\n%
+    before %static const cTemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [%![[TEMPLATE_DELIMITOR_LIST count] string]%] = {\n%
     do %  cTemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mStartString identifierRepresentation]%, %![[mStartString count] string]%, %
       if [mEndString count] == 0 then
         %NULL, 0,%
@@ -162,7 +162,7 @@ end
 //----------------------------------------------------------------------------------------------------------------------
 
 % for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST
-    before %static const cTemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [%![[TEMPLATE_REPLACEMENT_LIST length] string]%] = {\n%
+    before %static const cTemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [%![[TEMPLATE_REPLACEMENT_LIST count] string]%] = {\n%
     do
       %  cTemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mMatchString identifierRepresentation]%, %![[mMatchString count] string]%, %
       %kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mReplacementString identifierRepresentation]%, %![[mReplacementString count] string]%, %
@@ -180,9 +180,9 @@ end
 //            Terminal Symbols as end of script in template mark                                 
 //----------------------------------------------------------------------------------------------------------------------
 
-% if [TEMPLATE_DELIMITOR_LIST length] > 0 then
+% if [TEMPLATE_DELIMITOR_LIST count] > 0 then
     for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
-      before %static const bool %!LEXIQUE_IDENTIFIER%_kEndOfScriptInTemplateArray [%![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList length] string]%] = {\n%
+      before %static const bool %!LEXIQUE_IDENTIFIER%_kEndOfScriptInTemplateArray [%![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count] string]%] = {\n%
       do %  %![mIsEndOfTemplateMark cString]% /* %!mTerminalName.string% */%
       between %,\n%
       after %\n} ;\n%
@@ -231,7 +231,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
   token.mTokenCode = -1 ;
   while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
 %
-  if [TEMPLATE_DELIMITOR_LIST length] > 0 then
+  if [TEMPLATE_DELIMITOR_LIST count] > 0 then
 %    if ((mMatchedTemplateDelimiterIndex >= 0)
      && (%!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength > 0)
      && (UNICODE_VALUE (mCurrentChar) != '\0')) {
@@ -245,7 +245,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
     while ((mMatchedTemplateDelimiterIndex < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
       int32_t replacementIndex = 0 ;
       while (replacementIndex >= 0) {
-        replacementIndex = findTemplateDelimiterIndex (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray, %![[TEMPLATE_REPLACEMENT_LIST length] string]%) ;
+        replacementIndex = findTemplateDelimiterIndex (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray, %![[TEMPLATE_REPLACEMENT_LIST count] string]%) ;
         if (replacementIndex >= 0) {
           if (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mReplacementFunction == NULL) {
             token.mTemplateStringBeforeToken << %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndString ;
@@ -261,7 +261,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
           }
         }
       }
-      mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (%!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray, %![[TEMPLATE_DELIMITOR_LIST length] string]%) ;
+      mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (%!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray, %![[TEMPLATE_DELIMITOR_LIST count] string]%) ;
       if (mMatchedTemplateDelimiterIndex < 0) {
         token.mTemplateStringBeforeToken.appendUnicodeCharacter (mCurrentChar COMMA_HERE) ;
         advance () ;
@@ -380,7 +380,7 @@ __attribute__ ((unused)) (getKeywordLists_%!LEXIQUE_IDENTIFIER%, getKeywordsForI
 //----------------------------------------------------------------------------------------------------------------------
 
 uint32_t C_Lexique_%!LEXIQUE_IDENTIFIER%::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [%![[TERMINAL_LIST length] + 1 string]%] = {0%
+  static const uint32_t kTerminalSymbolStyles [%![[TERMINAL_LIST count] + 1 string]%] = {0%
 for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST do
   %,\n    %![mStyleIndex string]% /* %!LEXIQUE_COMPONENT_NAME%_1_%![mTerminalName.string identifierRepresentation]% */%
 end%\n  } ;
@@ -393,8 +393,8 @@ end%\n  } ;
 
 C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::styleNameForIndex (const uint32_t inStyleIndex) const {
   C_String result ;
-  if (inStyleIndex < %![[LEXICAL_STYLE_LIST length] + 1 string]%) {
-    static const char * kStyleArray [%![[LEXICAL_STYLE_LIST length] + 1 string]%] = {
+  if (inStyleIndex < %![[LEXICAL_STYLE_LIST count] + 1 string]%) {
+    static const char * kStyleArray [%![[LEXICAL_STYLE_LIST count] + 1 string]%] = {
       ""%
 for (mName mComment) in LEXICAL_STYLE_LIST do
   %,\n      %![mName.string utf8RepresentationEscapingQuestionMark]

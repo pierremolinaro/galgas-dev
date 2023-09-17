@@ -43,14 +43,14 @@ proc checkLabelMap
   for (mLabelName mFormalArgumentList *) in inLabels do
     labelStringSet += !mLabelName.string
     [inNonterminalSymbolLabelMapForGrammarAnalysis searchKey !mLabelName ?let formalParametersList]
-    if [mFormalArgumentList length] != [formalParametersList length] then
-      error mLabelName: [[mFormalArgumentList length] string]
+    if [mFormalArgumentList count] != [formalParametersList count] then
+      error mLabelName: [[mFormalArgumentList count] string]
         + " formal parameter"
-        + if [mFormalArgumentList length] > 1 then "s" else "" end
+        + if [mFormalArgumentList count] > 1 then "s" else "" end
         + " declared here, but declaration at "
         + [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey !mLabelName.string] startLocationString]
-        + " names " + [[formalParametersList length] string] + " parameter"
-        + if [formalParametersList length] > 1 then "s" else "" end
+        + " names " + [[formalParametersList count] string] + " parameter"
+        + if [formalParametersList count] > 1 then "s" else "" end
     else
       for (* mFormalArgumentPassingMode mFormalArgumentTypeName * *) in mFormalArgumentList, (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in formalParametersList do
         if mFormalArgumentPassingModeForGrammarAnalysis != mFormalArgumentPassingMode then
@@ -202,7 +202,7 @@ proc buildRuleList
       !mNonterminalName
       !nonTerminalIndex
       !instructionList
-      ![productionRulesList length]
+      ![productionRulesList count]
   end
   ioSyntaxComponentListForGrammarAnalysis +=
     !productionRulesList

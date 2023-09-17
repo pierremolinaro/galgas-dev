@@ -257,12 +257,12 @@ override getter @repeatInstructionForGeneration compareInstructionSyntaxSignatur
 #  cast inTestedInstruction
 #  case >= @repeatInstructionForGeneration si :
     result = compareSyntaxSignature (!self.m_repeated_instructionList !si.m_repeated_instructionList !si.mEndOfRepeatedInstructions)
-    if result & ([self.mListOfSemanticInstructionListForGeneration length] != [si.mListOfSemanticInstructionListForGeneration length]) then
+    if result & ([self.mListOfSemanticInstructionListForGeneration count] != [si.mListOfSemanticInstructionListForGeneration count]) then
       error si.mInstructionLocation
         :"syntax signature error; the reference 'repeat' instruction has "
-        + [[self.mListOfSemanticInstructionListForGeneration length] string]
+        + [[self.mListOfSemanticInstructionListForGeneration count] string]
         + " 'while' branche(s), but this instruction has "
-        + [[si.mListOfSemanticInstructionListForGeneration length] string]
+        + [[si.mListOfSemanticInstructionListForGeneration count] string]
       result = false
     end
     for (ref_mInstructionList *) in self.mListOfSemanticInstructionListForGeneration, (test_mInstructionList test_mEndOfInstructionList) in si.mListOfSemanticInstructionListForGeneration while result do

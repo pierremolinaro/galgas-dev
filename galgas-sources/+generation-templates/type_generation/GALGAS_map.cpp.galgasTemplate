@@ -33,7 +33,7 @@ cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-%if [ATTRIBUTE_LIST length] == 0 then
+%if [ATTRIBUTE_LIST count] == 0 then
   %void cMapElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {\n%
 else
   %void cMapElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, const int32_t inIndentation) const {\n%

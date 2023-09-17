@@ -148,12 +148,12 @@ override method @typeMethodCallInstructionForGeneration generateInstruction
   end
   if self.mHasCompilerArgument then
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-    if [parameterCppNameList length] > 0 then
+    if [parameterCppNameList count] > 0 then
       ioGeneratedCode += ", "
     end
     ioGeneratedCode +=  compilerCppName ()
   end
-  if self.mHasCompilerArgument | ([parameterCppNameList length] > 0) then
+  if self.mHasCompilerArgument | ([parameterCppNameList count] > 0) then
     ioGeneratedCode += " COMMA_"
   end
   ioGeneratedCode += [self.mMethodName.location sourceFile] + ") ;\n"

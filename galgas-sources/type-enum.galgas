@@ -214,7 +214,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
   end
 #--- Optional methods
   for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
-    if [mAssociatedValueDefinitionList length] > 0 then
+    if [mAssociatedValueDefinitionList count] > 0 then
       var @unifiedTypeMapEntryList associatedTypeList = {}
       var @formalParameterSignature argumentTypeList = {}
       for (typeName selectorName) in mAssociatedValueDefinitionList do
@@ -264,7 +264,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
   var defaultConstructorName = "" # No default contructor
   if self.mDefaultConstantName.string != "" then
     [constantMap searchKey !self.mDefaultConstantName ?* ?let associatedTypeList]
-    if [associatedTypeList length] == 0 then
+    if [associatedTypeList count] == 0 then
       defaultConstructorName = self.mDefaultConstantName.string
     else
       error self.mDefaultConstantName : "the default constant should have no associated values"
@@ -398,7 +398,7 @@ override method @enumTypeForGeneration appendDeclaration1
 {
   var @bool hasAssociatedValues = false
   for (* mAssociatedValueTypeList) in self.mConstantList while not hasAssociatedValues do
-    hasAssociatedValues = [mAssociatedValueTypeList length] > 0
+    hasAssociatedValues = [mAssociatedValueTypeList count] > 0
   end
   let selfTypedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper enumGenerationTemplate.enumTypeHeader1
@@ -433,7 +433,7 @@ override method @enumTypeForGeneration appendDeclaration2
 {
   var @bool hasAssociatedValues = false
   for (* mAssociatedValueTypeList) in self.mConstantList while not hasAssociatedValues do
-    hasAssociatedValues = [mAssociatedValueTypeList length] > 0
+    hasAssociatedValues = [mAssociatedValueTypeList count] > 0
   end
   for (* mAssociatedValueTypeList) in self.mConstantList do
     for (mType) in mAssociatedValueTypeList do
@@ -458,7 +458,7 @@ override method @enumTypeForGeneration appendSpecificImplementation
 {
   var @bool hasAssociatedValues = false
   for (* mAssociatedValueTypeList) in self.mConstantList while not hasAssociatedValues do
-    hasAssociatedValues = [mAssociatedValueTypeList length] > 0
+    hasAssociatedValues = [mAssociatedValueTypeList count] > 0
   end
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
   let selfTypedefinition = [self.mSelfTypeEntry definition]

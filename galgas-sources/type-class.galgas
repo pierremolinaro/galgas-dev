@@ -459,7 +459,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     if superClassEntry == .null then
       allAttributeList = {}
       var @bool generatedInSeparateFileFeature = false
-      if [self.mClassFeatureList length] > 0 then
+      if [self.mClassFeatureList count] > 0 then
         for (mValue) in self.mClassFeatureList do
           if mValue.string == "generatedInSeparateFile" then
             if generatedInSeparateFileFeature then
@@ -473,7 +473,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       end
     else
       allAttributeList = [superClassEntry definition].mAllTypedPropertyList
-      if [self.mClassFeatureList length] > 0 then
+      if [self.mClassFeatureList count] > 0 then
         for (mValue) in self.mClassFeatureList do
           error mValue:"a class that has a super class does not accept any feature"
         end
@@ -706,7 +706,7 @@ override method @classTypeForGeneration appendSpecificImplementation ?let @unifi
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
   let typedefinition = [self.mSelfTypeEntry definition]
   let at = [self.mAllTypedAttributeList subListWithRange
-    !.new {!0 ![self.mAllTypedAttributeList length] - [self.mCurrentTypedAttributeList length]}
+    !.new {!0 ![self.mAllTypedAttributeList count] - [self.mCurrentTypedAttributeList count]}
   ]
   if self.mIsReference then
     outImplementation = [filewrapper typeGenerationTemplate.referenceClassTypeSpecificImplementation

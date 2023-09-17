@@ -138,6 +138,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap 
     !getterName:"count"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -145,6 +146,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName:"allKeys"
+    !obsoleteName: ""
     !returnedTypeName:"stringset"
     !hasCompilerArgument:false
   )
@@ -152,6 +154,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName:"keyList"
+    !obsoleteName: ""
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false
   )

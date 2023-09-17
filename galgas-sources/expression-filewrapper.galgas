@@ -185,11 +185,11 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   [filewrapperTemplateMap searchKey !self.mFilewrapperTemplateName ?let @functionSignature templateSignature ?*]
 #--- Analysis arguments
   var @semanticExpressionListForGeneration effectiveParameterList
-  if [self.mExpressions length] != [templateSignature length] then
+  if [self.mExpressions count] != [templateSignature count] then
     error self.mFilewrapperTemplateName
     : "calling the '" + self.mFilewrapperTemplateName + "' template of '" + self.mFilewrapperName + "' filewrapper requires "
-    + [[templateSignature length] string] + " parameter(s), while this call has "
-    + [[self.mExpressions length] string] + " parameter(s)" 
+    + [[templateSignature count] string] + " parameter(s), while this call has "
+    + [[self.mExpressions count] string] + " parameter(s)" 
     : effectiveParameterList
   else
     effectiveParameterList = {}
@@ -272,7 +272,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
 #--- Search for file
   var @string builtPath = ""
   loop ([filewrapperDirectoryMap count] + 1)
-  while [directoryList length] > 0 do
+  while [directoryList count] > 0 do
     [!?directoryList popFirst ?let directoryName]
     builtPath += directoryName + "/"
     if [filewrapperDirectoryMap hasKey !directoryName] then

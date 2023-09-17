@@ -246,7 +246,7 @@ override method @structDeclarationAST semanticAnalysis
   let structNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mStructTypeName)
   [!?ioUsefulEntitiesGraph addNode !structNameForUsefulness !structNameForUsefulness]
 #---
-  if [self.mStructurePropertyList length] == 0 then
+  if [self.mStructurePropertyList count] == 0 then
     error self.mStructTypeName: "a structure cannot be empty: it must have at least one property" 
   end
   var @typedPropertyList typedPropertyList = {}

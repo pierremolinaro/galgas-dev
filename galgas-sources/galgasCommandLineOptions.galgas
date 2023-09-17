@@ -92,7 +92,7 @@ option galgas_cli_options {
     -> "warns on feature not handled in galgas 4"
 
   @bool errorObsoleteGetterCall : '\0', "error-on-obsolete-getter-call"
-    -> "error on obsolete getter call"
+    -> "error on call of an obsolete getter"
 
 #  @bool warningOnPropertyMethodCollision : '\0', "warning-on-property-method-collision"
 #    -> "warning on property, method, getter and setter name collisions"

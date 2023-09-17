@@ -725,7 +725,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
     !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
   )
-  if [self.mElseBranchInstructions length] > 0 then
+  if [self.mElseBranchInstructions count] > 0 then
     ioGeneratedCode += "}else{\n"
     generateInstructionList (
       !?ioInclusionSet
@@ -784,7 +784,7 @@ override method @readWriteWithInstructionForGeneration generateInstruction
     !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
   )
-  if [self.mElseBranchInstructions length] > 0 then
+  if [self.mElseBranchInstructions count] > 0 then
     ioGeneratedCode += "}else{\n"
     generateInstructionList (
       !?ioInclusionSet

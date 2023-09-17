@@ -874,11 +874,11 @@ proc analyzeRoutineArguments  ?let @lstring inUsefulnessCallerEntityName
                               ?!@localVarManager ioVariableMap
                               ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                               !@actualParameterListForGeneration outActualParameterListForGeneration {
-  if [inRoutineSignature length] != [inActualParameterList length] then
+  if [inRoutineSignature count] != [inActualParameterList count] then
     error inRoutineName
-    :"the " + inInvokedEntityName + " defines " + [[inRoutineSignature length] string] 
+    :"the " + inInvokedEntityName + " defines " + [[inRoutineSignature count] string] 
     + " formal argument(s), but this invocation names "
-    + [[inActualParameterList length] string] + " argument(s)"
+    + [[inActualParameterList count] string] + " argument(s)"
     : outActualParameterListForGeneration
   else
     outActualParameterListForGeneration = {}
@@ -946,7 +946,7 @@ proc checkExpressionIsBoolean
     with "bool" in [expressionType definition].mGetterMap do
       if mReturnedType != boolType then
         error inErrorLocation: "the expression type is not @bool, it handles a 'bool' getter, but it does not return a '@bool' value" : outExpression
-      elsif [mArgumentTypeList length] > 0 then
+      elsif [mArgumentTypeList count] > 0 then
         error inErrorLocation: "the expression type is not @bool, it handles a 'bool' getter that requires argument(s)" : outExpression
       else
         outExpression = @getterCallExpressionForGeneration.new {

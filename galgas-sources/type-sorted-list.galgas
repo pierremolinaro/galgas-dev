@@ -213,7 +213,8 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioTypeMap
-    !getterName:"length"
+    !getterName:"count"
+    !obsoleteName: "length"
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )

@@ -216,12 +216,12 @@ override getter @selectInstructionForGeneration compareInstructionSyntaxSignatur
 #  cast inTestedInstruction
 #  case >= @selectInstructionForGeneration si :
     result = true
-    if result & ([self.mListOfSemanticInstructionListForGeneration length] != [si.mListOfSemanticInstructionListForGeneration length]) then
+    if result & ([self.mListOfSemanticInstructionListForGeneration count] != [si.mListOfSemanticInstructionListForGeneration count]) then
       error si.mInstructionLocation
         :"syntax signature error; the reference 'select' instruction has "
-        + [[self.mListOfSemanticInstructionListForGeneration length] string]
+        + [[self.mListOfSemanticInstructionListForGeneration count] string]
         + " 'while' branche(s), but this instruction has "
-        + [[si.mListOfSemanticInstructionListForGeneration length] string]
+        + [[si.mListOfSemanticInstructionListForGeneration count] string]
       result = false
     end
     for (ref_mInstructionList *) in self.mListOfSemanticInstructionListForGeneration,

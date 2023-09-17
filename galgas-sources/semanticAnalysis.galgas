@@ -23,9 +23,9 @@ proc checkMethodSignatures
   ?let @formalParameterSignature inReferenceSignature
   ?let @location inReferenceLocation
 {
-  if [inTestedSignature length] != [inReferenceSignature length] then
-    error inErrorLocation:"this method declares " + [[inTestedSignature length] string]
-    + " formal parameter(s), but overriden method declares " + [[inReferenceSignature length] string]
+  if [inTestedSignature count] != [inReferenceSignature count] then
+    error inErrorLocation:"this method declares " + [[inTestedSignature count] string]
+    + " formal parameter(s), but overriden method declares " + [[inReferenceSignature count] string]
     error inReferenceLocation:"overriden method is declared here"
   else
     for (ref_mFormalSelector ref_mFormalArgumentType ref_mFormalArgumentPassingMode *) in inReferenceSignature, (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName *) in inTestedSignature do
@@ -78,9 +78,9 @@ proc checkGetterSignatures
     + [inInheritedReturnType definition].mTypeName.string + "' as return type"
     error inReferenceLocation:"overriden getter is declared here"
   end
-  if [inTestedSignature length] != [inReferenceSignature length] then
-    error inErrorLocation:"this getter declares " + [[inTestedSignature length] string]
-    + " formal parameter(s), but overriden getter declares " + [[inReferenceSignature length] string]
+  if [inTestedSignature count] != [inReferenceSignature count] then
+    error inErrorLocation:"this getter declares " + [[inTestedSignature count] string]
+    + " formal parameter(s), but overriden getter declares " + [[inReferenceSignature count] string]
     error inReferenceLocation:"overriden getter is declared here"
   else
     for (ref_mFormalSelector ref_mFormalArgumentType *) in inReferenceSignature, (mFormalSelector mFormalArgumentType * mFormalArgumentName *) in inTestedSignature do

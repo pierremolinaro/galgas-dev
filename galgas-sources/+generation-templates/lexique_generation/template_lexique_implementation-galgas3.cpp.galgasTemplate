@@ -43,7 +43,7 @@ mMatchedTemplateDelimiterIndex (-1) {
 //----------------------------------------------------------------------------------------------------------------------
 
 % for (mStartString mEndString mPreservesStartDelimiter) in TEMPLATE_DELIMITOR_LIST
-    before %static const cTemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [%![[TEMPLATE_DELIMITOR_LIST length] string]%] = {\n%
+    before %static const cTemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [%![[TEMPLATE_DELIMITOR_LIST count] string]%] = {\n%
     do %  cTemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mStartString identifierRepresentation]%, %![[mStartString count] string]%, %
       if [mEndString count] == 0 then
         %NULL, 0,%
@@ -62,7 +62,7 @@ mMatchedTemplateDelimiterIndex (-1) {
 //----------------------------------------------------------------------------------------------------------------------
 
 % for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST
-    before %static const cTemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [%![[TEMPLATE_REPLACEMENT_LIST length] string]%] = {\n%
+    before %static const cTemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [%![[TEMPLATE_REPLACEMENT_LIST count] string]%] = {\n%
     do
       %  cTemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mMatchString identifierRepresentation]%, %![[mMatchString count] string]%, %
       %kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mReplacementString identifierRepresentation]%, %![[mReplacementString count] string]%, %
@@ -81,7 +81,7 @@ mMatchedTemplateDelimiterIndex (-1) {
 //----------------------------------------------------------------------------------------------------------------------
 
 % for (mTerminalName * * mIsEndOfTemplateMark * *) in TERMINAL_LIST
-    before %static const bool %!LEXIQUE_IDENTIFIER%_kEndOfScriptInTemplateArray [%![[TERMINAL_LIST length] string]%] = {\n%
+    before %static const bool %!LEXIQUE_IDENTIFIER%_kEndOfScriptInTemplateArray [%![[TERMINAL_LIST count] string]%] = {\n%
     do %  %![mIsEndOfTemplateMark cString]% /* %!mTerminalName.string% */%
     between %,\n%
     after %\n} ;\n%
@@ -108,7 +108,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
     while ((mMatchedTemplateDelimiterIndex < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
       int32_t replacementIndex = 0 ;
       while (replacementIndex >= 0) {
-        replacementIndex = findTemplateDelimiterIndex (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray, %![[TEMPLATE_REPLACEMENT_LIST length] string]%) ;
+        replacementIndex = findTemplateDelimiterIndex (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray, %![[TEMPLATE_REPLACEMENT_LIST count] string]%) ;
         if (replacementIndex >= 0) {
           if (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mReplacementFunction == NULL) {
             token.mTemplateStringBeforeToken << %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndString ;
@@ -124,7 +124,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
           }
         }
       }
-      mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (%!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray, %![[TEMPLATE_DELIMITOR_LIST length] string]%) ;
+      mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (%!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray, %![[TEMPLATE_DELIMITOR_LIST count] string]%) ;
       if (mMatchedTemplateDelimiterIndex < 0) {
         token.mTemplateStringBeforeToken.appendUnicodeCharacter (mCurrentChar COMMA_HERE) ;
         advance () ;

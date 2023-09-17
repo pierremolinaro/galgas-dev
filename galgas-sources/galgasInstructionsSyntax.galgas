@@ -138,7 +138,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
     end
     $identifier$ ?let functionName indexing functionDefinition
     <formal_input_parameter_list_ggs3> ?let @formalInputParameterListAST formalInputParameterList
-    if isOnce, ([formalInputParameterList length] > 0) then
+    if isOnce, ([formalInputParameterList count] > 0) then
       error functionName: "an 'once' function should has no argument"
     end
     $->$
@@ -205,7 +205,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
     end
     $identifier$ ?let functionName indexing functionDefinition
     <formal_input_parameter_list_ggs3> ?let @formalInputParameterListAST formalInputParameterList
-    if isOnce, ([formalInputParameterList length] > 0) then
+    if isOnce, ([formalInputParameterList count] > 0) then
       error functionName: "an 'once' function should has no argument"
     end
     $->$
@@ -469,7 +469,7 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
     end
     $identifier$ ?let functionName indexing functionDefinition
     <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
-    if isOnce, ([formalInputParameterList length] > 0) then
+    if isOnce, ([formalInputParameterList count] > 0) then
       error functionName: "an 'once' function should has no argument"
     end
     $->$
@@ -536,7 +536,7 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
     end
     $identifier$ ?let functionName indexing functionDefinition
     <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
-    if isOnce, ([formalInputParameterList length] > 0) then
+    if isOnce, ([formalInputParameterList count] > 0) then
       error functionName: "an 'once' function should has no argument"
     end
     $->$

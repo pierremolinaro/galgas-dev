@@ -69,9 +69,9 @@ grammar galgas3Grammar
 #--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
   let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !{!"galgasProject"}]
-  if [candidateProjectFiles length] == 0 then
+  if [candidateProjectFiles count] == 0 then
     error inSourceFile : "no project file in parent directory of source file"
-  elsif [candidateProjectFiles length] > 1 then
+  elsif [candidateProjectFiles count] > 1 then
     var s = "several project files in source file parent directory:"
     for (mValue) in candidateProjectFiles do
       s += "\n  - " + mValue
@@ -95,9 +95,9 @@ grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 #--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
   let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !{!"ggsProject"}]
-  if [candidateProjectFiles length] == 0 then
+  if [candidateProjectFiles count] == 0 then
     error inSourceFile : "no project file in parent directory of source file"
-  elsif [candidateProjectFiles length] > 1 then
+  elsif [candidateProjectFiles count] > 1 then
     var s = "several project files in source file parent directory:"
     for (mValue) in candidateProjectFiles do
       s += "\n  - " + mValue
@@ -256,12 +256,12 @@ private proc compileProject ?let @lstring inProjectSourceFile
   end
 #---------------------------------- Display result
 #  if @uint.errorCount == 0 then
-#    message "  Declarations: " + [declarationAST.mDeclarationList length] + "\n"
-#    message "  Syntax components: " + [declarationAST.mSyntaxComponentList length] + "\n" ;
-#    message "  GUI components: " + [declarationAST.mGUIComponentList length] + "\n"
-#    message "  Source rules: " + [declarationAST.mSourceRuleList length] + "\n" ;
-#    message "  Prologue procs: " + [declarationAST.mPrologueDeclarationList length] + "\n"
-#    message "  Epilogue procs: " + [declarationAST.mEpilogueDeclarationList length] + "\n"
+#    message "  Declarations: " + [declarationAST.mDeclarationList count] + "\n"
+#    message "  Syntax components: " + [declarationAST.mSyntaxComponentList count] + "\n" ;
+#    message "  GUI components: " + [declarationAST.mGUIComponentList count] + "\n"
+#    message "  Source rules: " + [declarationAST.mSourceRuleList count] + "\n" ;
+#    message "  Prologue procs: " + [declarationAST.mPrologueDeclarationList count] + "\n"
+#    message "  Epilogue procs: " + [declarationAST.mEpilogueDeclarationList count] + "\n"
 #  end
 #---------------------------------- Group syntax components and their extensions
   groupSyntaxComponentsGalgas3 (

@@ -204,7 +204,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
   ]
 #--- Check expression is enumerable (empty List if cannot be enumerated)
   let @enumerationDescriptorList enumerationDescriptor = [expression.mResultType definition].mEnumerationDescriptor
-  if [enumerationDescriptor length] == 0 then
+  if [enumerationDescriptor count] == 0 then
     error expression.mLocation : "expression of '@" + [expression.mResultType definition].mTypeName.string + "' cannot be enumerated"
   end
 #--- Before instructions
@@ -246,10 +246,10 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
       fixit { replace suggestion }
     end
   case explicit (@lstringlist enumeration @location errorLocation) :
-    if [enumeration length] != [enumerationDescriptor length] then
+    if [enumeration count] != [enumerationDescriptor count] then
       error errorLocation 
-      : [[enumerationDescriptor length] string] + " variables are required here ("
-      + [enumeration length] + " provided)"
+      : [[enumerationDescriptor count] string] + " variables are required here ("
+      + [enumeration count] + " provided)"
     else
       for (enumeratedType enumerationName) in enumerationDescriptor,
           (optionalConstantName) in enumeration do
@@ -344,10 +344,10 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
   ioGeneratedCode += "cEnumerator_" + [self.mExpression.mResultType identifierRepresentation] + " " + self.mEnumeratorCppName + " (" + foreachVarCppName + ", "
                   + if self.mIsAscending then "kENUMERATION_UP" else "kENUMERATION_DOWN" end + ") ;\n"
 #--- Before
-  if ([self.mBeforeInstructionList length] + [self.mAfterInstructionList length]) > 0 then
+  if ([self.mBeforeInstructionList count] + [self.mAfterInstructionList count]) > 0 then
     ioGeneratedCode += "const bool nonEmpty_" + self.mEnumeratorCppName + " = " + self.mEnumeratorCppName + ".hasCurrentObject () ;\n"
   end
-  if [self.mBeforeInstructionList length] > 0 then
+  if [self.mBeforeInstructionList count] > 0 then
     ioGeneratedCode += "if (nonEmpty_" + self.mEnumeratorCppName + ") {\n"
     [!?ioGeneratedCode incIndentation !2]
     templateCodeGenerationForListInstruction (
@@ -373,7 +373,7 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
     !?ioUseColumnMarker
   )
 #--- Between
-  if [self.mBetweenInstructionList length] > 0 then
+  if [self.mBetweenInstructionList count] > 0 then
     ioGeneratedCode += "if (" + self.mEnumeratorCppName + ".hasNextObject ()) {\n"
     [!?ioGeneratedCode incIndentation !2]
     templateCodeGenerationForListInstruction (
@@ -396,7 +396,7 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
   [!?ioGeneratedCode decIndentation !2]
   ioGeneratedCode += "}\n"
 #--- After
-  if [self.mAfterInstructionList length] > 0 then
+  if [self.mAfterInstructionList count] > 0 then
     ioGeneratedCode += "if (nonEmpty_" + self.mEnumeratorCppName + ") {\n"
     [!?ioGeneratedCode incIndentation !2]
     templateCodeGenerationForListInstruction (

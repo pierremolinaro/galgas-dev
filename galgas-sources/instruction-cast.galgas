@@ -392,7 +392,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
   between ioGeneratedCode += "}else "
   end
 #--- 'else' branch
-  if [self.mElseInstructionList length] > 0 then
+  if [self.mElseInstructionList count] > 0 then
     ioGeneratedCode += "}else{\n"
     generateInstructionList (
       !?ioInclusionSet

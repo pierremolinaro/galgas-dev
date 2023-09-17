@@ -187,7 +187,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
   if superClassEntry == .null then
     allAttributeList = {}
     var @bool generatedInSeparateFileFeature = false
-    if [self.mClassFeatureList length] > 0 then
+    if [self.mClassFeatureList count] > 0 then
       for (mValue) in self.mClassFeatureList do
         if mValue.string == "generatedInSeparateFile" then
           if generatedInSeparateFileFeature then
@@ -201,7 +201,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
     end
   else
     allAttributeList = [superClassEntry definition].mAllTypedPropertyList
-    if [self.mClassFeatureList length] > 0 then
+    if [self.mClassFeatureList count] > 0 then
       for (mValue) in self.mClassFeatureList do
         error mValue:"a class that has a super class does not accept any feature"
       end
@@ -303,7 +303,7 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
     !self.mTypedAttributeList
     !self.mAllTypedPropertyList
-    ![self.mAllTypedPropertyList subListWithRange !.new {!0 ![self.mAllTypedPropertyList length] - [self.mTypedAttributeList length]}]
+    ![self.mAllTypedPropertyList subListWithRange !.new {!0 ![self.mAllTypedPropertyList count] - [self.mTypedAttributeList count]}]
     !typedefinition.mDefaultConstructorName != ""
   ]
 }

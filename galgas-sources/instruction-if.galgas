@@ -624,11 +624,11 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
     error inOptionalMethodName : s : optionalMethodSignature
   end
 #--- Analysis actual parameters, test for matching formam arguments
-  if [inActualParameters length] != [optionalMethodSignature length] then
+  if [inActualParameters count] != [optionalMethodSignature count] then
     error inOptionalMethodName
     : "calling the '" + inOptionalMethodName + "' optional method of '@" + [receiverType definition].mTypeName.string + "' requires "
-    + [optionalMethodSignature length] + " parameter(s), while this call has "
-    + [inActualParameters length] + " parameter(s)"
+    + [optionalMethodSignature count] + " parameter(s), while this call has "
+    + [inActualParameters count] + " parameter(s)"
   else
     var @optionalMethodActualArgumentListForGeneration actualParameterList = {}
     for (actualSelector actualParameter) in inActualParameters,
@@ -868,7 +868,7 @@ override method @ifInstructionForGeneration generateInstruction
     ioGeneratedCode += "}\n"
   end
 #--- else branch
-  if [self.m_else_instructionList length] > 0 then
+  if [self.m_else_instructionList count] > 0 then
     ioGeneratedCode += "if (kBoolFalse == " + testVar + ") {\n"
     generateInstructionList (
       !?ioInclusionSet

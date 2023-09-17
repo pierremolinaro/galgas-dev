@@ -81,7 +81,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
   let receiverTypeName = [receiverType definition].mTypeName.string
   #--------------------------------------- Property ?
   if [[receiverType definition].mTypeKindEnum isStructType] || [[receiverType definition].mTypeKindEnum isClassType],
-     [self.mExpressionList length] == 0,
+     [self.mExpressionList count] == 0,
      let [[receiverType definition].mPropertyMap searchKey !self.mGetterName ?let accessControl ?* ?let propertyType] then
     if [option galgas_cli_options.errorPropertyGetterCall value] then
       error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
@@ -171,10 +171,10 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
       end
     end
   #--- Analysis arguments
-    if [self.mExpressionList length] != [getterFormalArgumentTypeList length] then
+    if [self.mExpressionList count] != [getterFormalArgumentTypeList count] then
       error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + receiverTypeName + "' requires "
-      + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
-      + [[self.mExpressionList length] string] + " parameter(s)" : outExpression
+      + [[getterFormalArgumentTypeList count] string] + " parameter(s), while this call has "
+      + [[self.mExpressionList count] string] + " parameter(s)" : outExpression
     else
       var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
       for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList,
@@ -246,11 +246,11 @@ override method @templateConstructorAST templateExpressionAnalysis
   end
 #--- Analysis arguments
   var @semanticExpressionListForGeneration constructorEffectiveParameterList
-  if [self.mExpressionList length] != [constructorFormalArgumentTypeList length] then
+  if [self.mExpressionList count] != [constructorFormalArgumentTypeList count] then
     error self.mConstructorName
     : "calling the '" + self.mConstructorName + "' constructor of '@" + [constructorType definition].mTypeName.string + "' requires "
-    + [[constructorFormalArgumentTypeList length] string] + " parameter(s), while this call has "
-    + [[self.mExpressionList length] string] + " parameter(s)" 
+    + [[constructorFormalArgumentTypeList count] string] + " parameter(s), while this call has "
+    + [[self.mExpressionList count] string] + " parameter(s)" 
     : constructorEffectiveParameterList
   else
     constructorEffectiveParameterList = @semanticExpressionListForGeneration {}
@@ -782,10 +782,10 @@ override method @templateFunctionCallAST templateExpressionAnalysis
     end
   end
 #--- Analyze effective parameters
-  if [functionSignature length] != [self.mExpressionList length] then
+  if [functionSignature count] != [self.mExpressionList count] then
     error self.mFunctionName
-    :"the '" + self.mFunctionName + "' function header declares " + [[functionSignature length] string]
-      + " formal parameter(s), but this function call names " + [[self.mExpressionList length] string]
+    :"the '" + self.mFunctionName + "' function header declares " + [[functionSignature count] string]
+      + " formal parameter(s), but this function call names " + [[self.mExpressionList count] string]
       + " effective argument(s)"
     : outExpression
   else

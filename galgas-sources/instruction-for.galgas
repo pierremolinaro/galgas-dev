@@ -566,7 +566,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
 #--- Check object can be enumerated
   outEnumeratorCppName = "enumerator_" + [self.mEndOfAnonymousEnumeration startLocationIndex]
   let enumerationDescriptorList = [outEnumerationExpression.mResultType definition].mEnumerationDescriptor
-  if [enumerationDescriptorList length] == 0 then
+  if [enumerationDescriptorList count] == 0 then
     error self.mEndOfAnonymousEnumeration : "an '@" + [outEnumerationExpression.mResultType definition].mTypeName.string + "' object cannot be enumerated"
   end
 #--- Declare implicit constants
@@ -614,11 +614,11 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
 #--- Check object can be enumerated
   outEnumeratorCppName = "enumerator_" + [self.mEndOfEnumerationExpression startLocationIndex]
   let enumerationDescriptorList = [outEnumerationExpression.mResultType definition].mEnumerationDescriptor
-  if [enumerationDescriptorList length] == 0 then
+  if [enumerationDescriptorList count] == 0 then
     error self.mEndOfEnumerationExpression : "an '@" + [outEnumerationExpression.mResultType definition].mTypeName.string + "' object cannot be enumerated"
   else
 #--- Arguments
-    if ([self.mElementList length] == 0) & not self.mEndsWithEllipsis then
+    if ([self.mElementList count] == 0) & not self.mEndsWithEllipsis then
       let currentTypedAttributeList = [outEnumerationExpression.mResultType definition].mEnumerationDescriptor
       for (mEnumeratedType mEnumerationName) in currentTypedAttributeList do 
        [!?ioVariableMap insertUsedLocalConstant
@@ -628,23 +628,23 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
          !outEnumeratorCppName +".current_" + [mEnumerationName identifierRepresentation] + " (HERE)"
        ]
       end
-    elsif (not self.mEndsWithEllipsis) & ([self.mElementList length] != [enumerationDescriptorList length]) then
+    elsif (not self.mEndsWithEllipsis) & ([self.mElementList count] != [enumerationDescriptorList count]) then
       error self.mEndOfEnumerationExpression
       :"the '@" + [outEnumerationExpression.mResultType definition].mTypeName.string + "' type requires "
-      + [[enumerationDescriptorList length] string] + " argument"
-      + if ([enumerationDescriptorList length] > 1) then "s" else "" end
+      + [[enumerationDescriptorList count] string] + " argument"
+      + if ([enumerationDescriptorList count] > 1) then "s" else "" end
       + " for enumeration: this list provides "
-      + [[self.mElementList length] string]
-    elsif (self.mEndsWithEllipsis) & ([self.mElementList length] > [enumerationDescriptorList length]) then
+      + [[self.mElementList count] string]
+    elsif (self.mEndsWithEllipsis) & ([self.mElementList count] > [enumerationDescriptorList count]) then
       error self.mEndOfEnumerationExpression
       :"the '@" + [outEnumerationExpression.mResultType definition].mTypeName.string + "' type requires "
-      + [[enumerationDescriptorList length] string] + " argument"
-      + if ([enumerationDescriptorList length] > 1) then "s" else "" end
+      + [[enumerationDescriptorList count] string] + " argument"
+      + if ([enumerationDescriptorList count] > 1) then "s" else "" end
       + " or less for enumeration: this list provides "
-      + [[self.mElementList length] string]
+      + [[self.mElementList count] string]
     else
-      if [option galgas_cli_options.errorEllipsisInEnumeratedObject value] && ([enumerationDescriptorList length] > [self.mElementList length]) then
-        let missingArgumentCount = [enumerationDescriptorList length] - [self.mElementList length]
+      if [option galgas_cli_options.errorEllipsisInEnumeratedObject value] && ([enumerationDescriptorList count] > [self.mElementList count]) then
+        let missingArgumentCount = [enumerationDescriptorList count] - [self.mElementList count]
         error self.mEndOfEnumerationExpression
         : "enumerated object ends with '...' (due to '--error-ellipsis-in-for-instruction' option)"
         fixit { replace if missingArgumentCount == 1 then "*" else " " + missingArgumentCount + "*" end }
@@ -915,7 +915,7 @@ override method @forInstructionForGeneration generateInstruction
 #--- Analyse 'while' expression
   let whileExpressionIsAllwaysTrue = [self.mWhileExpression isTrueExpression]
 #--- Has 'before', 'after' or expression ? If yes, generate 'before' instructions
-  if (([self.mBeforeInstructionList length] + [self.mAfterInstructionList length]) > 0) | not whileExpressionIsAllwaysTrue then
+  if (([self.mBeforeInstructionList count] + [self.mAfterInstructionList count]) > 0) | not whileExpressionIsAllwaysTrue then
   #--- Index
     if self.mIndexVariableCppName != "" then
       ioGeneratedCode += "GALGAS_uint " + self.mIndexVariableCppName + " ((uint32_t) 0) ;\n"
@@ -982,7 +982,7 @@ override method @forInstructionForGeneration generateInstruction
       ioGeneratedCode += "  }\n"
     end
   #--- Generate 'between' instruction
-    if [self.mBetweenInstructionList length] > 0 then
+    if [self.mBetweenInstructionList count] > 0 then
       [!?ioGeneratedCode incIndentation !2]
       ioGeneratedCode += "if ("
       for (* * mEnumeratorCppName) in self.mEnumeratedObjectList do
@@ -1033,7 +1033,7 @@ override method @forInstructionForGeneration generateInstruction
       !?ioGeneratedCode
     )
   #--- Generate 'between' instruction
-    if [self.mBetweenInstructionList length] > 0 then
+    if [self.mBetweenInstructionList count] > 0 then
       [!?ioGeneratedCode incIndentation !2]
       ioGeneratedCode += "if ("
       for (* * mEnumeratorCppName) in self.mEnumeratedObjectList

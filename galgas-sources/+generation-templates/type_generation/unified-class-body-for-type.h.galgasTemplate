@@ -17,13 +17,13 @@ if [CONSTRUCTOR_MAP count] > 0 then
       do (IDX) %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]
       between %,\n%!^
     end
-    if mHasCompilerArgument & ([mArgumentTypeList length] > 0) then
+    if mHasCompilerArgument & ([mArgumentTypeList count] > 0) then
       %,\n%!^%class C_Compiler * inCompiler%
       %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
     elsif mHasCompilerArgument then
       %C_Compiler * inCompiler%
       %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
-    elsif [mArgumentTypeList length] > 0 then
+    elsif [mArgumentTypeList count] > 0 then
       %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
     else
       %LOCATION_ARGS) ;\n\n%
@@ -81,7 +81,7 @@ if [SUPPORTED_OPERATORS divEqualOperatorWithExpression] then
   %                                                      COMMA_LOCATION_ARGS) ;\n\n%
 end
 
-if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
+if [ADD_ASSIGN_ARGUMENT_LIST count] > 0 then
 %//--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (%?^
   for (mFormalSelector mFormalArgumentType mFormalArgumentName) in ADD_ASSIGN_ARGUMENT_LIST
@@ -232,7 +232,7 @@ for (lkey mKind mParameterList mHasCompilerArgument mQualifier mErrorMessage) in
         end
       between %,\n%!^
       end
-      if [mParameterList length] == 0 then
+      if [mParameterList count] == 0 then
         if mHasCompilerArgument then
           %C_Compiler * inCompiler\n%
           !^%COMMA_LOCATION_ARGS%
@@ -270,7 +270,7 @@ for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument mQualif
         end
       between %,\n%!^
       end
-      if [mParameterList length] == 0 then
+      if [mParameterList count] == 0 then
         if mHasCompilerArgument then
           %C_Compiler * inCompiler\n%
           !^%COMMA_LOCATION_ARGS%
@@ -305,7 +305,7 @@ for (lkey mParameterList mHasCompilerArgument) in CLASS_METHOD_MAP do
     end
   between %,\n%!^
   end
-  if [mParameterList length] == 0 then
+  if [mParameterList count] == 0 then
     if mHasCompilerArgument then
       %C_Compiler * inCompiler\n%
       !^%COMMA_LOCATION_ARGS%
@@ -336,7 +336,7 @@ for (lkey kind argumentTypeList * hasCompilerArgument returnedType qualifier rep
           do (IDX) %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & constinOperand% ![IDX string]
           between %,\n% !^
         end
-        if [argumentTypeList length] == 0 then
+        if [argumentTypeList count] == 0 then
           if hasCompilerArgument then
             %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
           else
@@ -389,14 +389,14 @@ if [SUPPORTED_OPERATORS supportWithAccessor] then
   !^%COMMA_LOCATION_ARGS) ;\n\n%
 end
 
-if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
+if [ENUMERATION_DESCRIPTOR_LIST count] > 0 then
 %//--------------------------------- Friend\n
   friend class cEnumerator_%!TYPE_IDENTIFIER% ;
 %end
 % 
 } ; // End of GALGAS_%!TYPE_IDENTIFIER% class
 
-%if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
+%if [ENUMERATION_DESCRIPTOR_LIST count] > 0 then
 %//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                      
 //----------------------------------------------------------------------------------------------------------------------

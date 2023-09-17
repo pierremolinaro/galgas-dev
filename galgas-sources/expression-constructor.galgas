@@ -216,11 +216,11 @@ private proc analyzeConstructorInvocation
       end
     end
   #--- Analysis arguments
-    if [inInitializerEffectiveParameterExpressions length] != [constructorFormalArgumentTypeList length] then
+    if [inInitializerEffectiveParameterExpressions count] != [constructorFormalArgumentTypeList count] then
       error inConstructorName
       : "calling the '" + inConstructorName + "' constructor of '@" + [outConstructorType definition].mTypeName.string + "' requires "
-      + [[constructorFormalArgumentTypeList length] string] + " parameter(s), while this call has "
-      + [[inInitializerEffectiveParameterExpressions length] string] + " parameter(s)"
+      + [[constructorFormalArgumentTypeList count] string] + " parameter(s), while this call has "
+      + [[inInitializerEffectiveParameterExpressions count] string] + " parameter(s)"
     end
     outConstructorEffectiveParameterList = {}
     for (mActualSelector mExpression mEndOfExpressionLocation) in inInitializerEffectiveParameterExpressions,
@@ -243,7 +243,7 @@ private proc analyzeConstructorInvocation
     end
   end
 #---
-  if [option galgas_cli_options.errorOldStyleCollectionInitializer value] && ([inInitializerEffectiveParameterExpressions length] == 0) then
+  if [option galgas_cli_options.errorOldStyleCollectionInitializer value] && ([inInitializerEffectiveParameterExpressions count] == 0) then
     let oldInitializers = @stringset {!"emptyList", !"emptyMap", !"emptySortedList", !"emptyDict"}
     if [oldInitializers hasKey !inConstructorName.string] then
       error inLocationForOldStyleCollectionInitializerError
@@ -379,7 +379,7 @@ override method @constructorExpressionForGeneration generateExpression
     do outCppExpression += mValue
     between outCppExpression += ", "
   end
-  var @bool needsComma = [parameterList length] > 0
+  var @bool needsComma = [parameterList count] > 0
   if self.mHasCompilerArgument then
     if needsComma then
       outCppExpression += ", "

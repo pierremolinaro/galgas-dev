@@ -43,6 +43,16 @@ Ce constructeur instancie un objet \ggs=@data= vide.
 \section{Getters}
 
 
+
+\subsectionGetter{count}{data}
+
+\begin{galgas}
+getter count -> @uint
+\end{galgas}
+
+Ce \emph{getter} renvoie le nombre d'octets du récepteur.
+
+
 \subsectionGetter{cStringRepresentation}{data}
 
 \begin{galgas}
@@ -56,7 +66,7 @@ Ce \emph{getter} renvoie la valeur du récepteur sous la forme d'une liste d'oct
 \subsectionGetter{length}{data}
 
 \begin{galgas}
-getter length -> @uint
+getter length -> @uint # Obsolète, utiliser count
 \end{galgas}
 
 Ce \emph{getter} renvoie le nombre d'octets du récepteur.

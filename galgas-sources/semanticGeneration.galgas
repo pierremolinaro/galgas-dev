@@ -1337,9 +1337,9 @@ proc recursivlyEnumerateRegularFile
   ?!@stringlist ioDirectoryIndexStringList
   ?!@stringlist ioRegularTextContentIndexStringList
   ?!@stringlist ioRegularBinaryContentIndexStringList {
-  ioDirectoryIndexStringList += ![[ioDirectoryIndexStringList length] string]
+  ioDirectoryIndexStringList += ![[ioDirectoryIndexStringList count] string]
   for (* * mIsTextFile * mWrapperFileIndex) in inFilewrapperFileMap do
-    ioRegularFileIndexStringList += ![[ioRegularFileIndexStringList length] string]
+    ioRegularFileIndexStringList += ![[ioRegularFileIndexStringList count] string]
     if mIsTextFile then
       ioRegularTextContentIndexStringList += ![mWrapperFileIndex string]
     else
@@ -1423,14 +1423,14 @@ proc generateWrapperContents
       ioImplementation += "//--- File '" + inFilewrapperDirectory + "/" + lkey + "'\n\n"
       +  "const uint8_t gWrapperFileContent_"
       + [mWrapperFileIndex string] + "_"
-      + [inFilewrapperName identifierRepresentation] + " [" + [contents length] + "] = {"
+      + [inFilewrapperName identifierRepresentation] + " [" + [contents count] + "] = {"
       + [contents cStringRepresentation] + "} ;\n\n"
       + "const cRegularFileWrapper gWrapperFile_" + [mWrapperFileIndex string]+ "_"
       + [inFilewrapperName identifierRepresentation] + " (\n"
       + "  " + [lkey utf8RepresentationEscapingQuestionMark] + ",\n"
       + "  " + [[lkey pathExtension] utf8RepresentationEscapingQuestionMark] + ",\n"
       + "  false, // binary file\n"
-      + "  " + [contents length] + ", // Length\n"
+      + "  " + [contents count] + ", // Length\n"
       + "  (const char *) gWrapperFileContent_" + [mWrapperFileIndex string] + "_" + [inFilewrapperName identifierRepresentation] +"\n"
       + ") ;\n\n"
     end

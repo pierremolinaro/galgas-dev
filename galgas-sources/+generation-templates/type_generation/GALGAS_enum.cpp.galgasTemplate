@@ -1,6 +1,6 @@
 %
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
-  if [mAssociatedValueTypeList length] > 0 then
+  if [mAssociatedValueTypeList count] > 0 then
     %//----------------------------------------------------------------------------------------------------------------------\n\n%
     %cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName%::cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% (%?^
     for (mType) in mAssociatedValueTypeList
@@ -52,7 +52,7 @@ end
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_%![mConstantName identifierRepresentation]% (%?^
-  if [mAssociatedValueTypeList length] == 0 then
+  if [mAssociatedValueTypeList count] == 0 then
     %UNUSED_LOCATION_ARGS%
   else
     for (mType) in mAssociatedValueTypeList
@@ -63,7 +63,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   end
   %) {\n%
   %  GALGAS_%!TYPE_IDENTIFIER% result ;\n%
-  if [mAssociatedValueTypeList length] == 0 then
+  if [mAssociatedValueTypeList count] == 0 then
     %  result.mEnum = kEnum_%![mConstantName identifierRepresentation]% ;\n%
   else
     %  if (%
@@ -89,7 +89,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
 end
 
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
-  if [mAssociatedValueTypeList length] > 0 then
+  if [mAssociatedValueTypeList count] > 0 then
     %//----------------------------------------------------------------------------------------------------------------------\n\n%
     %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mConstantName identifierRepresentation]% (%?^
     for (mType) in mAssociatedValueTypeList do (idx)
@@ -126,7 +126,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     end
     %) const {\n%
     %  const bool ok = mEnum == kEnum_%![mConstantName identifierRepresentation]% ;\n%
-    if [mAssociatedValueTypeList length] > 0 then
+    if [mAssociatedValueTypeList count] > 0 then
       %  if (ok) {\n%
       %    const auto * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
       %    // const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
@@ -141,7 +141,7 @@ end
 
 %//----------------------------------------------------------------------------------------------------------------------
 
-static const char * gEnumNameArrayFor_%!TYPE_IDENTIFIER% [%![[CONSTANT_LIST length] + 1 string]%] = {
+static const char * gEnumNameArrayFor_%!TYPE_IDENTIFIER% [%![[CONSTANT_LIST count] + 1 string]%] = {
   "(not built)"%
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST
    do %,\n  %![mConstantName utf8RepresentationEscapingQuestionMark]

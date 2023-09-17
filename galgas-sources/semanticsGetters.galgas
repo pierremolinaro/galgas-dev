@@ -48,12 +48,12 @@ proc enterBaseFinalGetterWithoutArgument ?!@getterMap ioGetterMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc enterInheritedGetterWithoutArgument
-  ?!@getterMap ioGetterMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?getterName:let @string inGetterName
-  ?returnedTypeName:let @string inReturnedTypeName
-  ?hasCompilerArgument:let @bool inHasCompilerArgument {
+proc enterInheritedGetterWithoutArgument ?!@getterMap ioGetterMap
+                                          ?!@unifiedTypeMap ioUnifiedTypeMap
+                                          ?getterName:let @string inGetterName
+                                          ?obsoleteName: let @string inObsoleteGetterName
+                                          ?returnedTypeName:let @string inReturnedTypeName
+                                          ?hasCompilerArgument:let @bool inHasCompilerArgument {
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
@@ -65,6 +65,18 @@ proc enterInheritedGetterWithoutArgument
     !@methodQualifier. isInherited
     !"" # getter name is not obsolete, no replacement getter
   ]
+  if inObsoleteGetterName != "" then
+    [!?ioGetterMap insertOrReplace
+      !.new {!inObsoleteGetterName !.here}
+      !@methodKind.definedAsMember
+      !@functionSignature {}
+      !@location.here
+      !inHasCompilerArgument
+      !returnedTypeIndex
+      !@methodQualifier. isInherited
+      !inGetterName
+    ]
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -318,23 +330,26 @@ proc commonGetterMapForAllTypes ?!@unifiedTypeMap ioUnifiedTypeMap
                                 !@getterMap outMap {
   outMap = {}
   enterInheritedGetterWithoutArgument (
-   !?outMap
-   !?ioUnifiedTypeMap
-   !getterName:"description"
-   !returnedTypeName:"string"
-   !hasCompilerArgument:false
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"description"
+    !obsoleteName: ""
+    !returnedTypeName:"string"
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
-   !?outMap
-   !?ioUnifiedTypeMap
-   !getterName:"staticType"
-   !returnedTypeName:"type"
-   !hasCompilerArgument:false
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"staticType"
+    !obsoleteName: ""
+    !returnedTypeName:"type"
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"dynamicType"
+    !obsoleteName: ""
     !returnedTypeName:"type"
     !hasCompilerArgument:false
   )
@@ -342,6 +357,7 @@ proc commonGetterMapForAllTypes ?!@unifiedTypeMap ioUnifiedTypeMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"object"
+    !obsoleteName: ""
     !returnedTypeName:"object"
     !hasCompilerArgument:false
   )
@@ -2354,8 +2370,8 @@ override method @dataPredefinedTypeAST getGetterMap
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName:"length"
-    !obsoleteName: ""
+    !getterName:"count"
+    !obsoleteName: "length"
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )

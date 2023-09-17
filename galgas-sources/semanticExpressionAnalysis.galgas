@@ -139,7 +139,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
         ?let returnedType
         ?2*
       ]
-      ok = ([argumentTypeList length] == 0) & (returnedType == inTargetType)
+      ok = ([argumentTypeList count] == 0) & (returnedType == inTargetType)
    #--- Add conversion expression
       let conversionExpression = @getterCallExpressionForGeneration.new {
         !inTargetType
@@ -271,7 +271,7 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
         ?let returnedType
         ?2*
       ]
-      ok = ([argumentTypeList length] == 0) & (returnedType == leftType)
+      ok = ([argumentTypeList count] == 0) & (returnedType == leftType)
    #--- Add conversion expression
       let conversionExpression = @getterCallExpressionForGeneration.new {
         !leftType

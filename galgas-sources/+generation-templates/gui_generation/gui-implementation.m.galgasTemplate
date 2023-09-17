@@ -21,7 +21,7 @@ end%
 //----------------------------------------------------------------------------------------------------------------------
 
 %
-if [GUI_CONTEXT.mNibAndClassList length] == 0 then
+if [GUI_CONTEXT.mNibAndClassList count] == 0 then
 %NSArray * nibsAndClasses (void) {
   return [NSArray array] ;
 }
@@ -42,7 +42,7 @@ end
 //----------------------------------------------------------------------------------------------------------------------
 
 NSDictionary * indexingDescriptorDictionary (void) {
-%if [GUI_CONTEXT.mProjectIndexingDescriptorList length] == 0 then
+%if [GUI_CONTEXT.mProjectIndexingDescriptorList count] == 0 then
 % return [NSDictionary dictionary] ;
 %
 else
@@ -108,7 +108,7 @@ end
   %//                     P O P    U P    L I S T    D A T A\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   for (mLeadingCharacterStrippedCount mTerminalList mLocation) in mLabels do
-    %static const UInt16 gPopUpData_%![mIndex string]%_%![mLexiqueClassName identifierRepresentation]%_%![[mLocation startLocationIndex] string]% [%![ 2 * [mTerminalList length] + 2 string]%] = {\n%
+    %static const UInt16 gPopUpData_%![mIndex string]%_%![mLexiqueClassName identifierRepresentation]%_%![[mLocation startLocationIndex] string]% [%![ 2 * [mTerminalList count] + 2 string]%] = {\n%
     %  %![mLeadingCharacterStrippedCount string]%, // Leading character count to strip\n%
       for (mTerminal mDisplayFlags) in mTerminalList do
         %  %!mLexiqueClassName%_1_%![mTerminal identifierRepresentation]%, %![mDisplayFlags string]%,\n%
@@ -116,7 +116,7 @@ end
     %  0\n%
     %} ;\n\n%
   end
-  %static const UInt16 * gPopUpData_%![mIndex string]%_%![mLexiqueClassName identifierRepresentation]% [%![[mLabels length] + 1 string]%] = {\n%
+  %static const UInt16 * gPopUpData_%![mIndex string]%_%![mLexiqueClassName identifierRepresentation]% [%![[mLabels count] + 1 string]%] = {\n%
   for (mLeadingCharacterStrippedCount mTerminalList mLocation) in mLabels do
     %  gPopUpData_%![mIndex string]%_%![mLexiqueClassName identifierRepresentation]%_%![[mLocation startLocationIndex] string]%,\n%
   end
@@ -146,7 +146,7 @@ end
   %}\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %- (NSUInteger) textMacroCount {\n%
-  %  return %![[mTextMacroList length] string]% ;\n%
+  %  return %![[mTextMacroList count] string]% ;\n%
   %}\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %- (NSString *) tabItemTitle {\n%
@@ -154,7 +154,7 @@ end
   %}\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {\n%
-  %  static NSString * kTextMacroTitle [%![[mTextMacroList length] + 1 string]%] = {\n%
+  %  static NSString * kTextMacroTitle [%![[mTextMacroList count] + 1 string]%] = {\n%
   for (mKey mContents) in mTextMacroList do
     %    @%![mKey utf8RepresentationEscapingQuestionMark]%,\n%
   end
@@ -164,7 +164,7 @@ end
   %}\n\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {\n%
-  %  static NSString * kTextMacroContent [%![[mTextMacroList length] + 1 string]%] = {\n%
+  %  static NSString * kTextMacroContent [%![[mTextMacroList count] + 1 string]%] = {\n%
   for (mKey mContents) in mTextMacroList do
     %    @%![mContents utf8RepresentationEscapingQuestionMark]%,\n%
   end
@@ -194,7 +194,7 @@ end
 //----------------------------------------------------------------------------------------------------------------------
 
 NSArray * tokenizers (void) {%
-if [GUI_CONTEXT.mWithLexiqueList length] == 0 then%
+if [GUI_CONTEXT.mWithLexiqueList count] == 0 then%
   return [NSArray array] ;
 %else%
   return [NSArray arrayWithObjects:

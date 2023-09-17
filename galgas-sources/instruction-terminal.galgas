@@ -176,13 +176,13 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
   ?!@uint unused ioSelectMethodCount {
   [inTerminalMap searchKey !self.mTerminalName ?let @lexicalSentValueList sentAttributeList]
 #---
-  if [self.mActualInputParameterList length] != [sentAttributeList length] then
+  if [self.mActualInputParameterList count] != [sentAttributeList count] then
     error self.mTerminalName
-    : "naming the '$" + self.mTerminalName + "$' terminal requires " + [[sentAttributeList length] string]
-    + " input parameter" + if [sentAttributeList length] > 1 then "s" else "" end
+    : "naming the '$" + self.mTerminalName + "$' terminal requires " + [[sentAttributeList count] string]
+    + " input parameter" + if [sentAttributeList count] > 1 then "s" else "" end
     + ", but this instruction names "
-    + [[self.mActualInputParameterList length] string] + " input parameter" 
-    + if [self.mActualInputParameterList length] > 1 then "s" else "" end
+    + [[self.mActualInputParameterList count] string] + " input parameter" 
+    + if [self.mActualInputParameterList count] > 1 then "s" else "" end
   end
 #---
   var terminalCheckAssignementList = @terminalCheckAssignementList {}

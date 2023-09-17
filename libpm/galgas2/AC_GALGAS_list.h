@@ -58,7 +58,7 @@ class AC_GALGAS_list : public AC_GALGAS_root {
   public: typeComparisonResult objectCompare (const AC_GALGAS_list & inOperand) const ;
 
 //--- Readers
-  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_count (LOCATION_ARGS) const ;
   public: VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
 
 //--- Description

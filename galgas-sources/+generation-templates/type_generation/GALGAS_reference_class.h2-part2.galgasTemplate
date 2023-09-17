@@ -10,7 +10,7 @@
     do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
-  if [ALL_PROPERTY_LIST length] > 0 then
+  if [ALL_PROPERTY_LIST count] > 0 then
     %\n%!^%COMMA_LOCATION_ARGS%
   else
     %LOCATION_ARGS%

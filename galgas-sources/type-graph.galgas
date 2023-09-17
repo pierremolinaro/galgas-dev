@@ -250,6 +250,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName:"undefinedNodeCount"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false # No compiler argument
   )
@@ -258,6 +259,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName:"undefinedNodeKeyList"
+    !obsoleteName: ""
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false # No compiler argument
   )
@@ -266,6 +268,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName:"undefinedNodeReferenceList"
+    !obsoleteName: ""
     !returnedTypeName:"lstringlist"
     !hasCompilerArgument:false # No compiler argument
   )
@@ -274,6 +277,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName:"graphviz"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false # No compiler argument
   )
@@ -302,6 +306,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName:"keyList"
+    !obsoleteName: ""
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false # No compiler argument
   )
@@ -310,6 +315,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName:"lkeyList"
+    !obsoleteName: ""
     !returnedTypeName:"lstringlist"
     !hasCompilerArgument:false # No compiler argument
   )
@@ -318,6 +324,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName:"edges"
+    !obsoleteName: ""
     !returnedTypeName:"2stringlist"
     !hasCompilerArgument:false # No compiler argument
   )

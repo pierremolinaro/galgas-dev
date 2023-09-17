@@ -163,14 +163,14 @@ method @productionRuleListForGrammarAnalysis-element displayRuleVertically
 {
   var @string currentNode = "P0start"
   var @rowList rowArray = {}
-  for * in 1 ..< [self.mInstructionList length] do
+  for * in 1 ..< [self.mInstructionList count] do
     rowArray += !{!"" !""}
   end
   rowArray += !{!currentNode !"[firstPoint] {}"}
   var @string arrows = ""
   var @string arrowStyle = "--"
   var @uint unusedMaxUsedRowIndex = 0 # Unused
-  var row = [self.mInstructionList length]
+  var row = [self.mInstructionList count]
   for (instruction) in self.mInstructionList do
     row -= 1
     var @uint column = 1
@@ -229,7 +229,7 @@ method @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@uint ioMaxUsedRowIndex
   ?debug:let @bool inDebug
 {
-  if [self length] == 0 then
+  if [self count] == 0 then
     [!?ioRowList appendRow
       !nodeDefinition:"[point] {}"
       !row:inRow
@@ -271,7 +271,7 @@ setter @rowList appendRow
   !nodeName:@string outNodeName
 {
 #--- Add rows ?
-  let length = [self length]
+  let length = [self count]
   if length <= inRow then
     for * in length ... inRow do
       self += !{}
@@ -280,13 +280,13 @@ setter @rowList appendRow
 #--- Get row
   var cols = [self columnsAtIndex !inRow]
 #--- add column pads in row
-  if [cols length] <= inColumn then
-    for * in [cols length] ... inColumn do
+  if [cols count] <= inColumn then
+    for * in [cols count] ... inColumn do
       cols += !"" !""
     end
   end
 #--- Add node
-  outNodeName = "p" + inRow + "-" + [cols length]
+  outNodeName = "p" + inRow + "-" + [cols count]
   cols += !outNodeName !inNodeDefinition
 #--- Set new row
   [!?self setColumnsAtIndex !cols !inRow]
@@ -369,7 +369,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 #--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
-      !nodeDefinition:"[nonterminal] {SS" + [self.mSelectBranchList length] + "}"
+      !nodeDefinition:"[nonterminal] {SS" + [self.mSelectBranchList count] + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerStartNodeName
@@ -437,7 +437,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 #--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
-      !nodeDefinition:"[nonterminal] {SE" + [self.mSelectBranchList length] + "}"
+      !nodeDefinition:"[nonterminal] {SE" + [self.mSelectBranchList count] + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerEndNodeName
@@ -463,7 +463,7 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 #--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
-      !nodeDefinition:"[nonterminal] {RS" + [self.mRepeatBranchList length] + "}"
+      !nodeDefinition:"[nonterminal] {RS" + [self.mRepeatBranchList count] + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerStartNodeName
@@ -495,10 +495,10 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   [!?ioRowList appendRow !nodeDefinition:"[point] {}" !row:inRow !column:ioColumn ?nodeName:let startNodeName]
   ioColumn += 1
 #--- Enter following branches; particular case: one empty branch
-  var oneEmptyBranch = [branches length] == 1
+  var oneEmptyBranch = [branches count] == 1
   if oneEmptyBranch then
     [branches first ?let firstBranch]
-    oneEmptyBranch = [firstBranch length] == 0
+    oneEmptyBranch = [firstBranch count] == 0
   end
 #--- Enter branches
   var @stringlist endingNodes = {}
@@ -545,7 +545,7 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 #--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
-      !nodeDefinition:"[nonterminal] {RE" + [self.mRepeatBranchList length] + "}"
+      !nodeDefinition:"[nonterminal] {RE" + [self.mRepeatBranchList count] + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerEndNodeName
@@ -561,7 +561,7 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @syntaxInstructionListForGrammarAnalysis displayVertically -> @bool {
-  result = [self length] > 4
+  result = [self count] > 4
   for (instruction) in self while result do
     result = [instruction isLinear]
   end

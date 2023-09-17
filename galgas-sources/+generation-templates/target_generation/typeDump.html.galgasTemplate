@@ -162,7 +162,7 @@ end%
   %
 </td></tr>
 % 
-if [[element definition].mAddAssignOperatorArguments length] > 0 then
+if [[element definition].mAddAssignOperatorArguments count] > 0 then
   %<tr class="result_line"><td>+= !... !...</td><td>%
   for (mFormalSelector mFormalArgumentType mFormalArgumentName) in [element definition].mAddAssignOperatorArguments do
     %<span class="selecteur">?%if mFormalSelector.string != "" then !mFormalSelector.string + ":" end%</span>%
@@ -170,7 +170,7 @@ if [[element definition].mAddAssignOperatorArguments length] > 0 then
   end
   %</td></tr>%
 end
-if [[element definition].mEnumerationDescriptor length] > 0 then
+if [[element definition].mEnumerationDescriptor count] > 0 then
   %<tr class="result_line"><td><b>for</b> constants</td><td>%
   for (mEnumeratedType mEnumerationName) in [element definition].mEnumerationDescriptor do
     !linkForType (![mEnumeratedType definition].mTypeName.string)% %!mEnumerationName%<br>%

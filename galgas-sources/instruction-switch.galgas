@@ -273,16 +273,16 @@ override method @switchInstructionAST analyzeSemanticInstruction
         end
         constantsNamedInSwitchInstruction += !mValue.string
         [enumConstantMap searchKey !mValue ?* ?let @unifiedTypeMapEntryList associatedTypeList]
-        if ([associatedTypeList length] > 0) & ([mAssociatedValuesExtraction length] == 0) then
+        if ([associatedTypeList count] > 0) & ([mAssociatedValuesExtraction count] == 0) then
           error mValue
             :"the associated values of '" + mValue + "' constant should be extracted"
-        elsif ([associatedTypeList length] == 0) & ([mAssociatedValuesExtraction length] > 0) then
+        elsif ([associatedTypeList count] == 0) & ([mAssociatedValuesExtraction count] > 0) then
           error mValue
             :"the '" + mValue + "' constant has no associated value"
-        elsif [associatedTypeList length]  != [mAssociatedValuesExtraction length] then
+        elsif [associatedTypeList count]  != [mAssociatedValuesExtraction count] then
           error mValue
-            :"the '" + mValue + "' constant requires " + [associatedTypeList length] + "  associated value"
-            + if [associatedTypeList length] > 1 then "s" else "" end
+            :"the '" + mValue + "' constant requires " + [associatedTypeList count] + "  associated value"
+            + if [associatedTypeList count] > 1 then "s" else "" end
         else
           var associatedValueIndex = 0
           for (mType) in associatedTypeList, (mExtractedValueTypeName mExtractedValueName mMarkedAsUnused) in mAssociatedValuesExtraction do
@@ -395,7 +395,7 @@ override method @switchInstructionForGeneration generateInstruction
     end
     [!?ioGeneratedCode incIndentation !2]
     ioGeneratedCode += "{\n"
-    if [mExtractedAssociatedValuesForGeneration length] > 0 then
+    if [mExtractedAssociatedValuesForGeneration count] > 0 then
       let type = "const cEnumAssociatedValues_" + [self.mEnumType identifierRepresentation]
         + "_" + [mSwitchConstantList mValueAtIndex!0].string + " *"
       let varPtr = "extractPtr_" + mEndOfBranchLocationIndex

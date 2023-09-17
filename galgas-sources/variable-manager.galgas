@@ -267,7 +267,7 @@ setter @localVarManager openOverrideForRepeatBlock {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager closeOverride ?let @location unused inEndOfBranchLocation {
-  if [self.mOverridenManagers length] > 0 then
+  if [self.mOverridenManagers count] > 0 then
     [!?self.mOverridenManagers popLast ?let savedManager]
     switch savedManager
     case selectOverrideFirstBranch (@currentVarManager unused savedManager) :
@@ -289,7 +289,7 @@ setter @localVarManager openBranch {
 setter @localVarManager closeBranch ?let @location inEndOfBranchLocation {
   [!?self.mCurrentManager closeScope !inEndOfBranchLocation]
 #---
-  if [self.mOverridenManagers length] > 0 then
+  if [self.mOverridenManagers count] > 0 then
     [!?self.mOverridenManagers popLast ?let savedManager]
     switch savedManager
     case selectOverrideFirstBranch (@currentVarManager savedManager) :
@@ -409,7 +409,7 @@ setter @localVarMapListForLLVM neutralAccess ?let @lstring inVarName
                                              !@unifiedTypeMapEntry outType
                                              !@string outCppName
                                              !@string outNameForCheckingFormalParameterUsing {
-  if inIndex >= [self length] then
+  if inIndex >= [self count] then
     error inVarName : "Undefined variable" : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     let localMap = [self mMapAtIndex !inIndex]
@@ -498,7 +498,7 @@ setter @localVarMapListForLLVM writeAccessInSubMap ?let @lstring inVarName
                                                    !@unifiedTypeMapEntry outType
                                                    !@string outCppName
                                                    !@string outNameForCheckingFormalParameterUsing {
-  if inIndex >= [self length] then
+  if inIndex >= [self count] then
     error inVarName : "Undefined variable" : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     var localMap = [self mMapAtIndex !inIndex]
@@ -608,7 +608,7 @@ setter @localVarMapListForLLVM readAccess ?let @lstring inVarName
                                           !@unifiedTypeMapEntry outType
                                           !@string outCppName
                                           !@string outNameForCheckingFormalParameterUsing {
-  if inIndex >= [self length] then
+  if inIndex >= [self count] then
     error inVarName : "Undefined variable" : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     var localMap = [self mMapAtIndex !inIndex]
@@ -703,7 +703,7 @@ setter @localVarMapListForLLVM readWriteAccess ?let @lstring inVarName
                                                !@unifiedTypeMapEntry outType
                                                !@string outCppName
                                                !@string outNameForCheckingFormalParameterUsing {
-  if inIndex >= [self length] then
+  if inIndex >= [self count] then
     error inVarName : "Undefined variable" : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     var localMap = [self mMapAtIndex !inIndex]
@@ -751,10 +751,10 @@ setter @currentVarManager openScope {
 
 setter @currentVarManager closeScope ?let @location inErrorLocation {
   [self.mLocalVarMap checkFinalStates !inErrorLocation]
-  if [self.mSubMaps length] == 0 then
+  if [self.mSubMaps count] == 0 then
     error inErrorLocation : "EMPTY SUBMAPS"
   end
-  if [self.mSubMaps length] > 0 then
+  if [self.mSubMaps count] > 0 then
     [!?self.mSubMaps popFirst ?self.mLocalVarMap]
   end
 }
@@ -915,8 +915,8 @@ setter @currentVarManager combineManagerWith ?otherManager: let @currentVarManag
     !otherMap: inOtherManager.mLocalVarMap
     !?s
   ]
-  if [self.mSubMaps length] != [inOtherManager.mSubMaps length] then
-    s += "Scope deepth error, " + [self.mSubMaps length] + " != " + [inOtherManager.mSubMaps length]
+  if [self.mSubMaps count] != [inOtherManager.mSubMaps count] then
+    s += "Scope deepth error, " + [self.mSubMaps count] + " != " + [inOtherManager.mSubMaps count]
   else
     var @localVarMapListForLLVM newSubMapList = {}
     for (subMap) in self.mSubMaps, (otherSubMap) in inOtherManager.mSubMaps do

@@ -605,7 +605,8 @@ void routine_enterInheritedGetterWithoutArgument (class GALGAS_getterMap & ioArg
                                                   class GALGAS_unifiedTypeMap & ioArgument1,
                                                   const class GALGAS_string constinArgument2,
                                                   const class GALGAS_string constinArgument3,
-                                                  const class GALGAS_bool constinArgument4,
+                                                  const class GALGAS_string constinArgument4,
+                                                  const class GALGAS_bool constinArgument5,
                                                   class C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 

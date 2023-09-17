@@ -100,7 +100,7 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
     identifier:@"errorObsoleteGetterCall"
     commandChar:0
     commandString:@"error-on-obsolete-getter-call"
-    comment:@"error on obsolete getter call"
+    comment:@"error on call of an obsolete getter"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;

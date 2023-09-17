@@ -5,7 +5,7 @@
 //
 %
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
-  if [mAssociatedValueTypeList length] > 0 then
+  if [mAssociatedValueTypeList count] > 0 then
     %//----------------------------------------------------------------------------------------------------------------------\n\n%
     %class cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% : public cEnumAssociatedValues {\n%
     for (mType) in mAssociatedValueTypeList do (idx)

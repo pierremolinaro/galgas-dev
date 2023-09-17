@@ -397,6 +397,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName:"levels"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -415,6 +416,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName:"keySet"
+    !obsoleteName: ""
     !returnedTypeName:"stringset"
     !hasCompilerArgument:false
   )
@@ -422,6 +424,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName:"keyList"
+    !obsoleteName: ""
     !returnedTypeName:"lstringlist"
     !hasCompilerArgument:false
   )
@@ -455,6 +458,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName:"count"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -581,7 +585,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     ]
   end
 #---------- Handle "insertOrReplace" setter
-  if [self.mInsertOrReplaceDeclarationListAST length] >= 1 then
+  if [self.mInsertOrReplaceDeclarationListAST count] >= 1 then
     [self.mInsertOrReplaceDeclarationListAST first ?let insertOrReplaceLocation]
     [!?setterMap insertOrReplace
       !@lstring.new {!"insertOrReplace" !insertOrReplaceLocation}
@@ -756,7 +760,7 @@ override method @mapDeclarationAST semanticAnalysis
       warning mInsertOrReplaceDeclarationLocation: "the 'insertOrReplace' setter is already declared"
     end
   end
-  let @bool hasInsertOrReplaceModifier = [self.mInsertOrReplaceDeclarationListAST length] > 0
+  let @bool hasInsertOrReplaceModifier = [self.mInsertOrReplaceDeclarationListAST count] > 0
   if hasInsertOrReplaceModifier & [insertMethodMap hasKey !"insertOrReplace"] then
     [self.mInsertOrReplaceDeclarationListAST first ?let insertOrReplaceDeclarationLocation]
     error insertOrReplaceDeclarationLocation 

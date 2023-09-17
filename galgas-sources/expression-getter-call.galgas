@@ -122,14 +122,14 @@ override method @getterCallExpressionAST analyzeSemanticExpression
     end
     if self.errorOnGetterCallInsteadOfPropertyRead # [option galgas_cli_options.errorPropertyGetterCall value]
       && [[receiverType definition].mPropertyMap hasKey !self.mGetterName.string]
-      && ([self.mExpressions length] == 0) then
+      && ([self.mExpressions count] == 0) then
       error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
     end
   #--- Analysis arguments
-    if [self.mExpressions length] != [getterFormalArgumentTypeList length] then
+    if [self.mExpressions count] != [getterFormalArgumentTypeList count] then
       error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType definition].mTypeName.string + "' requires "
-      + [getterFormalArgumentTypeList length] + " parameter(s), while this call has "
-      + [self.mExpressions length] + " parameter(s)" : outExpression
+      + [getterFormalArgumentTypeList count] + " parameter(s), while this call has "
+      + [self.mExpressions count] + " parameter(s)" : outExpression
     else
       var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
       for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions,
@@ -162,7 +162,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       }
     end
 #--------------------------------------- The getter does not exist, it is a property ?
-  elsif [self.mExpressions length] == 0, let [[receiverType definition].mPropertyMap searchKey !self.mGetterName.string ?let accessControl ?* ?let propertyType] then
+  elsif [self.mExpressions count] == 0, let [[receiverType definition].mPropertyMap searchKey !self.mGetterName.string ?let accessControl ?* ?let propertyType] then
     [accessControl checkGetAccess !inAnalysisContext.selfType !self.mGetterName]
 #    if not isPublic then
 #      error self.mGetterName : " inaccessible property (due to its 'private' qualifier)"
@@ -223,10 +223,10 @@ override method @getterCallExpressionAST analyzeSemanticExpression
         : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       end
     #--- Analysis arguments
-      if [self.mExpressions length] != [getterFormalArgumentTypeList length] then
+      if [self.mExpressions count] != [getterFormalArgumentTypeList count] then
         error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType definition].mTypeName.string + "' requires "
-        + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
-        + [[self.mExpressions length] string] + " parameter(s)" : outExpression
+        + [[getterFormalArgumentTypeList count] string] + " parameter(s), while this call has "
+        + [[self.mExpressions count] string] + " parameter(s)" : outExpression
       else
         var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
         for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions,
@@ -356,7 +356,7 @@ override method @getterCallExpressionForGeneration generateExpression
     do outCppExpression += mValue
     between outCppExpression += ", "
   end
-  if [getterArgumentCppNameList length] == 0 then
+  if [getterArgumentCppNameList count] == 0 then
     if self.mHasCompilerArgument then
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
       outCppExpression += compilerCppName () + " COMMA_"

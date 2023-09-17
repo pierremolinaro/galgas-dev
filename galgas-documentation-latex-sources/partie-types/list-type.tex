@@ -204,13 +204,23 @@ If the list is empty when \ggs+last+ is invoked, a run-time error is raised and 
 
 \section{Getters}
 
+\subsection{Le getter \texttt{count}}
+
+\begin{galgas}
+getter count -> @uint
+\end{galgas}
+
+Le \emph{getter} \ggs+count+ retourne le nombre d'éléments du récepteur.
+
+
+
 \subsection{Le getter \texttt{length}}
 
 \begin{galgas}
 getter length -> @uint
 \end{galgas}
 
-Le \emph{getter} \ggs+length+ retourne le nombre d'éléments du récepteur.
+Le \emph{getter} \ggs+length+ retourne le nombre d'éléments du récepteur. Obsolète : utiliser \ggs+count+.
 
 
 \subsection{Le getter \texttt{range}}

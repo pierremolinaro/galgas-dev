@@ -232,9 +232,9 @@ override method @boolsetDeclarationAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Check flags count
-  if [self.mFlagList length] > 64 then
+  if [self.mFlagList count] > 64 then
     let @location s = [self.mFlagList mValueAtIndex !64]
-    error s : "max flags count is 64 (here: " + [self.mFlagList length] + ")"
+    error s : "max flags count is 64 (here: " + [self.mFlagList count] + ")"
   end
 #--- Useful entities graph
   let boolsetNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mBoolsetTypeName)
@@ -313,7 +313,7 @@ override method @boolsetTypeForGeneration appendSpecificImplementation
     ![self.mSelfTypeEntry  definition].mTypeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mFlagList
-    !(1 << [self.mFlagList length]) - 1
+    !(1 << [self.mFlagList count]) - 1
   ]
  }
 

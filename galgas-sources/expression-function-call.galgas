@@ -88,10 +88,10 @@ override method @functionCallExpressionAST analyzeSemanticExpression
     end
   end
 #--- Analyze effective parameters
-  if [functionSignature length] != [self.mExpressionList length] then
+  if [functionSignature count] != [self.mExpressionList count] then
     error self.mFunctionName
-    :"the '" + self.mFunctionName + "' function header declares " + [[functionSignature length] string]
-      + " formal parameter(s), but this function call names " + [[self.mExpressionList length] string]
+    :"the '" + self.mFunctionName + "' function header declares " + [[functionSignature count] string]
+      + " formal parameter(s), but this function call names " + [[self.mExpressionList count] string]
       + " effective argument(s)"
     : outExpression
   else

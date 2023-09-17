@@ -473,7 +473,7 @@ proc updateGalgasTargets
   end
 #--- Frameworks to link with tool
   var @stringlist linkOptionForLinkingFrameworkWithTool = {}
-  if [inFrameworkToolFileList length] > 0 then
+  if [inFrameworkToolFileList count] > 0 then
     if SDK != "macosx" then
       linkOptionForLinkingFrameworkWithTool += !"-isysroot"
       linkOptionForLinkingFrameworkWithTool += !"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/" + SDK + ".sdk"
@@ -620,7 +620,7 @@ proc updateGalgasTargets
   #--- Add "Hand coded sources (App)" group
     var @stringlist m_HandCodedSourceFileRefForAppList = {}
     var @stringlist m_HandCodedResourceFileRefForAppList = {}
-    if [inHandCodedSourceAppFileList length] > 0 then
+    if [inHandCodedSourceAppFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName:"Hand Coded Sources (App)"
         !groupPath:"../"
@@ -637,7 +637,7 @@ proc updateGalgasTargets
     end
   #--- Add "Frameworks for App" group
     var @stringlist appFrameworksFileRefList = {}
-    if [inHandCodedLinkAppFileList length] > 0 then
+    if [inHandCodedLinkAppFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName: "Frameworks (App)"
         !groupPath: "/System/Library/Frameworks"
@@ -660,7 +660,7 @@ proc updateGalgasTargets
     var @stringlist frameworksFileRefList = {}
     var @stringlist resourceFileBuildRefs = {}
   #--- Add "Hand coded sources (Tool)" group
-    if [inHandCodedSourceToolFileList length] > 0 then
+    if [inHandCodedSourceToolFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName:"Hand Coded Sources (Tool)"
         !groupPath:"../"
@@ -677,7 +677,7 @@ proc updateGalgasTargets
     end
   #--- Add "Frameworks for tool" group
     var @stringlist toolFrameworksFileRefList = {}
-    if [inFrameworkToolFileList length] > 0 then
+    if [inFrameworkToolFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName:"Frameworks (Tool)"
         !groupPath:"/System/Library/Frameworks"
@@ -1345,7 +1345,7 @@ proc updateGalgasTargets
       codeSigningSettingList = {!"CODE_SIGN_IDENTITY = \"-\""}
     else
       let components = [macCodeSign.string componentsSeparatedByString !":"]
-      if [components length] != 2 then
+      if [components count] != 2 then
         error macCodeSign : "the %macCodeSign attribute associated string should be \"key:value\"" : codeSigningSettingList
       elsif [components mValueAtIndex !0] == "MacDeveloper" then
         codeSigningSettingList = {
@@ -1365,7 +1365,7 @@ proc updateGalgasTargets
       !"GCC_WARN_UNUSED_PARAMETER = YES",
       !"PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tool\""
     } + codeSigningSettingList
-    if [inHandCodedLinkToolFileList length] > 0 then
+    if [inHandCodedLinkToolFileList count] > 0 then
       var s = "OTHER_LDFLAGS=("
       for (toolLink) in inHandCodedLinkToolFileList
         do s += "\"" + toolLink + "\""
@@ -1391,7 +1391,7 @@ proc updateGalgasTargets
       !"GCC_WARN_UNUSED_PARAMETER = YES",
       !"PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tooldebug\""
     } + codeSigningSettingList
-    if [inHandCodedLinkToolFileList length] > 0 then
+    if [inHandCodedLinkToolFileList count] > 0 then
       var s = "OTHER_LDFLAGS=("
       for (toolLink) in inHandCodedLinkToolFileList
         do s += "\"" + toolLink + "\""
