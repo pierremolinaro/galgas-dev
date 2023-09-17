@@ -335,7 +335,7 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
 #---
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let foreachVarCppName]
 #--- Index
-  if [self.mIndexCppName length] > 0 then
+  if [self.mIndexCppName count] > 0 then
     ioGeneratedCode += "GALGAS_uint " + self.mIndexCppName + " (0) ;\n"
   end
 #---
@@ -388,7 +388,7 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
     ioGeneratedCode += "}\n"
   end
 #--- Index
-  if [self.mIndexCppName length] > 0 then
+  if [self.mIndexCppName count] > 0 then
     ioGeneratedCode += self.mIndexCppName + ".increment () ;\n"
   end
 #---

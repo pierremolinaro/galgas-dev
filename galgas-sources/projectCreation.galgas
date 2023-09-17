@@ -54,14 +54,14 @@ proc performProjectCreation ?let @string inProjectPath {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc projectCreation ?let @string inProjectPath {
-  if [inProjectPath length] > 0 then
+  if [inProjectPath count] > 0 then
     message "*** PERFORM PROJECT CREATION (--create-project=" + inProjectPath +" option) ***\n"
   #--- First check the project name is correct (not empty, only letters, digits and '_')
     let @string projectName = [inProjectPath lastPathComponent]
     var @bool ok = [[projectName characterAtIndex !0] isalpha]
     var @uint idx = 1
-    loop ([projectName length])
-    while (idx < [projectName length]) & ok do
+    loop ([projectName count])
+    while (idx < [projectName count]) & ok do
       let @char c = [projectName characterAtIndex !idx]
       ok = [c isalnum] | (c == '_')
       idx += 1

@@ -252,7 +252,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
         ?*
         ?inheritedReturnType
         ?let @methodQualifier qualifier
-        ?2*
+        ?*
       ]
       if qualifier <= @methodQualifier.isBasicFinal then
         baseTypeName = [superType definition].mTypeName.string

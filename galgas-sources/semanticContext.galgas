@@ -19,7 +19,7 @@ getter @location sourceFile -> @string {
   if [self isNowhere] then
     result = "SOURCE_FILE (\"\", 0)"
   else
-    result = "SOURCE_FILE (" + [[[self file] lastPathComponent] utf8RepresentationEscapingQuestionMark] + ", " +  [[self line] string] + ")"
+    result = "SOURCE_FILE (" + [[[self file] lastPathComponent] utf8RepresentationEscapingQuestionMark] + ", " + [self startLine] + ")"
   end
 }
 
@@ -437,7 +437,6 @@ proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodM
           !true
           !returnedType
           !.isVirtual
-          !"" # No Error message
           !"" # getter name is not obsolete, no replacement getter
         ]
       else
@@ -449,7 +448,6 @@ proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodM
           !true
           !returnedType
           !qualifier
-          !"" # No Error message
           !"" # getter name is not obsolete, no replacement getter
         ]
       end

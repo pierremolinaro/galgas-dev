@@ -505,6 +505,21 @@ let c = ["abcdef" containsCharacterInRange !'x' !'z'] # false
 
 
 
+\subsectionGetter{count}{string}
+
+\begin{galgasbox}
+getter @string count -> @uint
+\end{galgasbox}
+
+Retourne le nombre de caractères UTF-32 du récepteur. Si le récepteur n'est pas une chaîne ASCII, ce getter ne donne pas le nombre d'octets de sa représentation en UTF-8~: pour cela utiliser le \refGetterPage{string}{utf8Length}.
+
+
+
+
+
+
+
+
 
 \subsectionGetter{cStringRepresentation}{string}
 \begin{galgasbox}
@@ -1083,10 +1098,10 @@ Retourne la sous-chaîne constituée des \ggs!inLength! derniers caractères du 
 \subsectionGetter{length}{string}
 
 \begin{galgasbox}
-getter @string length -> @uint
+getter @string length -> @uint # Obsolete, utiliser count
 \end{galgasbox}
 
-Retourne le nombre de caractères UTF-32 du récepteur. Si le récepteur n'est pas une chaîne ASCII, ce getter ne donne pas le nombre d'octets de sa représentation en UTF-8~: pour cela utilser le \refGetterPage{string}{utf8Length}.
+Retourne le nombre de caractères UTF-32 du récepteur. Si le récepteur n'est pas une chaîne ASCII, ce getter ne donne pas le nombre d'octets de sa représentation en UTF-8~: pour cela utiliser le \refGetterPage{string}{utf8Length}.
 
 
 

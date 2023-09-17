@@ -29,7 +29,7 @@ filewrapper grammarRulesInTexDocumentTemplate in "+generation-templates/grammar_
 
 private func escapeForTex ?let @string inString -> @string result {
   result = ""
-  for @uint idx in 0 ..< [inString length] do
+  for @uint idx in 0 ..< [inString count] do
     let c = [inString characterAtIndex !idx]
     if c == '_' then
       result += "\\_"
@@ -134,7 +134,7 @@ method @productionRuleListForGrammarAnalysis-element displayRule
     + escapeForTex (!inSyntaxCompnentName)
     + "}{"
     + escapeForTex (![[[loc file] lastPathComponent] stringByDeletingPathExtension])
-    + "}{" + escapeForTex (![loc line])
+    + "}{" + escapeForTex (![loc startLine])
     + "}\n\n"
     + "\\begin{tikzpicture}\n"
     + "  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"
@@ -194,7 +194,7 @@ method @productionRuleListForGrammarAnalysis-element displayRuleVertically
     + escapeForTex (!inSyntaxCompnentName)
     + "}{"
     + escapeForTex (![[[loc file] lastPathComponent] stringByDeletingPathExtension])
-    + "}{" + escapeForTex (![loc line])
+    + "}{" + escapeForTex (![loc startLine])
     + "}\n\n"
     + "\\begin{tikzpicture}\n"
     + "  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"

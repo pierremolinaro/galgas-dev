@@ -577,7 +577,6 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
       !true
       !attributeTypeIndex
       !.isBasic
-      !"" # No Error message
       !"" # getter name is not obsolete, no replacement getter
     ]
   end

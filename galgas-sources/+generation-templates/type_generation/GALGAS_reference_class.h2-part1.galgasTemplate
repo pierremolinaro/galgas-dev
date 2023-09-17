@@ -10,7 +10,7 @@ class cPtr_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %acS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 %
-for (lkey * argumentTypeList * hasCompilerArgument returnedType qualifier * replacementGetter) in GETTER_MAP do
+for (lkey * argumentTypeList * hasCompilerArgument returnedType qualifier replacementGetter) in GETTER_MAP do
   if replacementGetter == "" then
     !generateClassGetterDeclaration (!lkey !argumentTypeList !hasCompilerArgument !returnedType !qualifier)
   end

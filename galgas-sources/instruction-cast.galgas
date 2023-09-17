@@ -268,7 +268,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   #--- Declare a local constant ?
     let @string localConstantName
     var localConstantList = @localConstantList {}
-    if [mConstantVarName length] > 0 then
+    if [mConstantVarName count] > 0 then
       localConstantName = "cast_" + [mConstantVarName.location startLocationIndex] + "_" + mConstantVarName
       localConstantList +=
         !type
@@ -375,7 +375,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
       + [mType identifierRepresentation]
       + " *> (" + castCppVarName + ".ptr ()))) {\n"
     end
-    if [mCastedVarCppName length] > 0 then
+    if [mCastedVarCppName count] > 0 then
       ioGeneratedCode +=
         "  GALGAS_" + [mType identifierRepresentation]
       + " " + mCastedVarCppName + " ((cPtr_" + [mType identifierRepresentation]

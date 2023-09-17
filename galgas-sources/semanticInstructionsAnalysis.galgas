@@ -948,8 +948,6 @@ proc checkExpressionIsBoolean
         error inErrorLocation: "the expression type is not @bool, it handles a 'bool' getter, but it does not return a '@bool' value" : outExpression
       elsif [mArgumentTypeList length] > 0 then
         error inErrorLocation: "the expression type is not @bool, it handles a 'bool' getter that requires argument(s)" : outExpression
-      elsif mErrorMessage != "" then
-        error inErrorLocation : mErrorMessage : outExpression
       else
         outExpression = @getterCallExpressionForGeneration.new {
           !boolType

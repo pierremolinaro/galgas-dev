@@ -116,17 +116,10 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       ?let @bool hasCompilerArgument
       ?let @unifiedTypeMapEntry returnedType
       ?*
-      ?let @string getterErrorMessage
       ?let replacementGetter] then
-    if getterErrorMessage != "" then
-      error self.mGetterName : getterErrorMessage
-    end
     if (replacementGetter != "") && [option galgas_cli_options.errorObsoleteGetterCall value] then
       error self.mGetterName : "obsolete getter" fixit { replace replacementGetter }
     end
-#    if replacementGetter != "" then
-#      warning self.mGetterName : "obsolete getter" fixit { replace replacementGetter }
-#    end
     if self.errorOnGetterCallInsteadOfPropertyRead # [option galgas_cli_options.errorPropertyGetterCall value]
       && [[receiverType definition].mPropertyMap hasKey !self.mGetterName.string]
       && ([self.mExpressions length] == 0) then
@@ -209,10 +202,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
               !propertyName.string
             }
             kind = mKind
-            obsoletedByGetter = mObsoletedByGetter
-            if mErrorMessage != "" then
-              error self.mGetterName : mErrorMessage
-            end
+            obsoletedByGetter = mGetterNameThatObsoletesInvokationName
           end
         end
       end
@@ -257,6 +247,9 @@ override method @getterCallExpressionAST analyzeSemanticExpression
           checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
           constructorEffectiveParameterList += !exp
         end
+        if (obsoletedByGetter != "") && [option galgas_cli_options.errorObsoleteGetterCall value] then
+          error self.mGetterName : "obsolete getter" fixit { replace obsoletedByGetter }
+        end
         outExpression = @getterCallExpressionForGeneration.new {
           !returnedType
           !self.mGetterName.location
@@ -264,7 +257,6 @@ override method @getterCallExpressionAST analyzeSemanticExpression
           !receiverExpression
           !fieldList
           !if obsoletedByGetter == "" then self.mGetterName.string else obsoletedByGetter end
-#          !self.mGetterName.string
           !constructorEffectiveParameterList
           !hasCompilerArgument
         }

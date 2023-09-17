@@ -879,7 +879,7 @@ override method @lexiqueComponentAST semanticAnalysis
 #--------------------------------------- Build terminal map
   for (mName mSentAttributeList mSyntaxErrorMessage mStyle mOptionList) in self.mTerminalDeclarationListAST do
     var @uint terminalStyleIndex = 0
-    if [mStyle.string length] > 0 then
+    if [mStyle.string count] > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
     end
     var argumentTypeList = @lexicalSentValueList {}
@@ -915,7 +915,7 @@ override method @lexiqueComponentAST semanticAnalysis
   end
   for (mName mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in self.mLexicalListDeclarationListAST do
     var @uint terminalStyleIndex = 0
-    if [mStyle.string length] > 0 then
+    if [mStyle.string count] > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
     end
     var argumentTypeList = @lexicalSentValueList {}
@@ -953,7 +953,7 @@ override method @lexiqueComponentAST semanticAnalysis
         !terminalStyleIndex
       [!?lexiqueAnalysisContext.mTerminalMap insertKey !mTerminalSpelling !argumentTypeList]
       [!?lexicalTokenListMap insertKey !mEntrySpelling !mTerminalSpelling !mAttributeList]
-      tokenSortedlist += ![mEntrySpelling.string length] !mEntrySpelling.string !mTerminalSpelling.string
+      tokenSortedlist += ![mEntrySpelling.string count] !mEntrySpelling.string !mTerminalSpelling.string
       lexiqueAnalysisContext.mUnicodeStringToGenerate += !mEntrySpelling.string
     end
     [!?lexiqueAnalysisContext.mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist !false]

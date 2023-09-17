@@ -10035,8 +10035,7 @@ mProperty_mDeclarationLocation (),
 mProperty_mHasCompilerArgument (),
 mProperty_mReturnedType (),
 mProperty_mQualifier (),
-mProperty_mErrorMessage (),
-mProperty_mObsoletedByGetter () {
+mProperty_mGetterNameThatObsoletesInvokationName () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10053,8 +10052,7 @@ GALGAS_getterMap_2D_element::GALGAS_getterMap_2D_element (const GALGAS_lstring &
                                                           const GALGAS_bool & inOperand4,
                                                           const GALGAS_unifiedTypeMapEntry & inOperand5,
                                                           const GALGAS_methodQualifier & inOperand6,
-                                                          const GALGAS_string & inOperand7,
-                                                          const GALGAS_string & inOperand8) :
+                                                          const GALGAS_string & inOperand7) :
 mProperty_lkey (inOperand0),
 mProperty_mKind (inOperand1),
 mProperty_mArgumentTypeList (inOperand2),
@@ -10062,8 +10060,7 @@ mProperty_mDeclarationLocation (inOperand3),
 mProperty_mHasCompilerArgument (inOperand4),
 mProperty_mReturnedType (inOperand5),
 mProperty_mQualifier (inOperand6),
-mProperty_mErrorMessage (inOperand7),
-mProperty_mObsoletedByGetter (inOperand8) {
+mProperty_mGetterNameThatObsoletesInvokationName (inOperand7) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10075,12 +10072,11 @@ GALGAS_getterMap_2D_element GALGAS_getterMap_2D_element::constructor_new (const 
                                                                           const GALGAS_bool & in_mHasCompilerArgument,
                                                                           const GALGAS_unifiedTypeMapEntry & in_mReturnedType,
                                                                           const GALGAS_methodQualifier & in_mQualifier,
-                                                                          const GALGAS_string & in_mErrorMessage,
-                                                                          const GALGAS_string & in_mObsoletedByGetter 
+                                                                          const GALGAS_string & in_mGetterNameThatObsoletesInvokationName 
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_getterMap_2D_element result ;
-  if (in_lkey.isValid () && in_mKind.isValid () && in_mArgumentTypeList.isValid () && in_mDeclarationLocation.isValid () && in_mHasCompilerArgument.isValid () && in_mReturnedType.isValid () && in_mQualifier.isValid () && in_mErrorMessage.isValid () && in_mObsoletedByGetter.isValid ()) {
-    result = GALGAS_getterMap_2D_element (in_lkey, in_mKind, in_mArgumentTypeList, in_mDeclarationLocation, in_mHasCompilerArgument, in_mReturnedType, in_mQualifier, in_mErrorMessage, in_mObsoletedByGetter) ;
+  if (in_lkey.isValid () && in_mKind.isValid () && in_mArgumentTypeList.isValid () && in_mDeclarationLocation.isValid () && in_mHasCompilerArgument.isValid () && in_mReturnedType.isValid () && in_mQualifier.isValid () && in_mGetterNameThatObsoletesInvokationName.isValid ()) {
+    result = GALGAS_getterMap_2D_element (in_lkey, in_mKind, in_mArgumentTypeList, in_mDeclarationLocation, in_mHasCompilerArgument, in_mReturnedType, in_mQualifier, in_mGetterNameThatObsoletesInvokationName) ;
   }
   return result ;
 }
@@ -10111,10 +10107,7 @@ typeComparisonResult GALGAS_getterMap_2D_element::objectCompare (const GALGAS_ge
     result = mProperty_mQualifier.objectCompare (inOperand.mProperty_mQualifier) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mErrorMessage.objectCompare (inOperand.mProperty_mErrorMessage) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mObsoletedByGetter.objectCompare (inOperand.mProperty_mObsoletedByGetter) ;
+    result = mProperty_mGetterNameThatObsoletesInvokationName.objectCompare (inOperand.mProperty_mGetterNameThatObsoletesInvokationName) ;
   }
   return result ;
 }
@@ -10122,7 +10115,7 @@ typeComparisonResult GALGAS_getterMap_2D_element::objectCompare (const GALGAS_ge
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_getterMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mKind.isValid () && mProperty_mArgumentTypeList.isValid () && mProperty_mDeclarationLocation.isValid () && mProperty_mHasCompilerArgument.isValid () && mProperty_mReturnedType.isValid () && mProperty_mQualifier.isValid () && mProperty_mErrorMessage.isValid () && mProperty_mObsoletedByGetter.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mKind.isValid () && mProperty_mArgumentTypeList.isValid () && mProperty_mDeclarationLocation.isValid () && mProperty_mHasCompilerArgument.isValid () && mProperty_mReturnedType.isValid () && mProperty_mQualifier.isValid () && mProperty_mGetterNameThatObsoletesInvokationName.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10135,8 +10128,7 @@ void GALGAS_getterMap_2D_element::drop (void) {
   mProperty_mHasCompilerArgument.drop () ;
   mProperty_mReturnedType.drop () ;
   mProperty_mQualifier.drop () ;
-  mProperty_mErrorMessage.drop () ;
-  mProperty_mObsoletedByGetter.drop () ;
+  mProperty_mGetterNameThatObsoletesInvokationName.drop () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10161,9 +10153,7 @@ void GALGAS_getterMap_2D_element::description (C_String & ioString,
     ioString << ", " ;
     mProperty_mQualifier.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mErrorMessage.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mObsoletedByGetter.description (ioString, inIndentation+1) ;
+    mProperty_mGetterNameThatObsoletesInvokationName.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }

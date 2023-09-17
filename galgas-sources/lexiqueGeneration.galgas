@@ -51,7 +51,7 @@ override getter @lexicalStringMatchAST generateConditionCode
   -> @string {
   result = "testForInputUTF32String (kUnicodeString_" + [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_" + [self.mString.string identifierRepresentation]
   result += ", "
-  result += [[self.mString length] string]
+  result += [[self.mString count] string]
   result += ", true)"
 }
 
@@ -63,7 +63,7 @@ override getter @lexicalStringNotMatchAST generateConditionCode
   result = "notTestForInputUTF32String (kUnicodeString_" + [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_"
   result += [self.mString identifierRepresentation]
   result += ", "
-  result += [[self.mString length] string]
+  result += [[self.mString count] string]
   result += ", gLexicalMessage_"
   result += [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_"
   result += self.mErrorMessage.string
@@ -198,7 +198,7 @@ override getter @lexicalImplicitRuleAST generateLexicalRuleCode
     result += "if (testForInputUTF32String (kUnicodeString_" + inScannerClassName + "_"
     result += [mName identifierRepresentation]
     result += ", "
-    result += [[mName length] string]
+    result += [[mName count] string]
     result += ", true)) {\n"
     result += "  token.mTokenCode = kToken_" + [mTerminalName identifierRepresentation] + " ;\n"
     result += "  enterToken (token) ;\n"

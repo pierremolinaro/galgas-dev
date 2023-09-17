@@ -287,7 +287,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
   @terminalList terminalList = {}
   for (mName mSentAttributeList mSyntaxErrorMessage mStyle mOptionList) in terminalListAST do
     var @uint terminalStyleIndex = 0
-    if [mStyle.string length] > 0 then
+    if [mStyle.string count] > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
     end
     var argumentTypeList = @lexicalSentValueList {}
@@ -323,7 +323,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
   end
   for (* mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in lexicalListDeclarationListAST do
     var @uint terminalStyleIndex = 0
-    if [mStyle.string length] > 0 then
+    if [mStyle.string count] > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
     end
     var argumentTypeList = @lexicalSentValueList {}

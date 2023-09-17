@@ -32,7 +32,7 @@ mMatchedTemplateDelimiterIndex (-1) {
 //----------------------------------------------------------------------------------------------------------------------
 %
   for (key) in STRINGS_IN_EXPLICIT_RULES do
-   if [key length] > 0 then
+   if [key count] > 0 then
    %\n//--- Unicode string for '$%![key identifierRepresentation]%$'\n%
    %static const utf32 kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![key identifierRepresentation]% [] = % ![key utf32Representation]% ;\n%
    end
@@ -44,11 +44,11 @@ mMatchedTemplateDelimiterIndex (-1) {
 
 % for (mStartString mEndString mPreservesStartDelimiter) in TEMPLATE_DELIMITOR_LIST
     before %static const cTemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [%![[TEMPLATE_DELIMITOR_LIST length] string]%] = {\n%
-    do %  cTemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mStartString identifierRepresentation]%, %![[mStartString length] string]%, %
-      if [mEndString length] == 0 then
+    do %  cTemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mStartString identifierRepresentation]%, %![[mStartString count] string]%, %
+      if [mEndString count] == 0 then
         %NULL, 0,%
       else
-        %kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mEndString identifierRepresentation]%, %![[mEndString length] string]%,%
+        %kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mEndString identifierRepresentation]%, %![[mEndString count] string]%,%
       end
       % NULL, %
       ![not mPreservesStartDelimiter cString]
@@ -64,9 +64,9 @@ mMatchedTemplateDelimiterIndex (-1) {
 % for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST
     before %static const cTemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [%![[TEMPLATE_REPLACEMENT_LIST length] string]%] = {\n%
     do
-      %  cTemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mMatchString identifierRepresentation]%, %![[mMatchString length] string]%, %
-      %kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mReplacementString identifierRepresentation]%, %![[mReplacementString length] string]%, %
-      if [mReplacementFunction length] == 0 then
+      %  cTemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mMatchString identifierRepresentation]%, %![[mMatchString count] string]%, %
+      %kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mReplacementString identifierRepresentation]%, %![[mReplacementString count] string]%, %
+      if [mReplacementFunction count] == 0 then
         %NULL%
       else
         %scanner_routine_%!mReplacementFunction.string

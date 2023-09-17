@@ -226,12 +226,27 @@ GALGAS_uint GALGAS_location::getter_endLocationIndex (C_Compiler * inCompiler
 
 //------------------------------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_location::getter_column (C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_location::getter_startColumn (C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
     if (!mSourceText.isValid ()) {
-      inCompiler->onTheFlyRunTimeError ("'column' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("'startColumn' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
+    }else{
+      result = GALGAS_uint ((uint32_t) mStartLocationInSource.columnNumber ()) ;
+    }
+  }
+  return result ;
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+GALGAS_uint GALGAS_location::getter_endColumn (C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (isValid ()) {
+    if (!mSourceText.isValid ()) {
+      inCompiler->onTheFlyRunTimeError ("'endColumn' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
       result = GALGAS_uint ((uint32_t) mEndLocationInSource.columnNumber ()) ;
     }
@@ -241,12 +256,27 @@ GALGAS_uint GALGAS_location::getter_column (C_Compiler * inCompiler
 
 //------------------------------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_location::getter_line (C_Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_location::getter_startLine (C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
     if (!mSourceText.isValid ()) {
-      inCompiler->onTheFlyRunTimeError ("'line' getter cannot be called on a nowhere @location object" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("'startLine' getter cannot be called on a nowhere @location object" COMMA_THERE) ;
+    }else{
+      result = GALGAS_uint ((uint32_t) mEndLocationInSource.lineNumber ()) ;
+    }
+  }
+  return result ;
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+GALGAS_uint GALGAS_location::getter_endLine (C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (isValid ()) {
+    if (!mSourceText.isValid ()) {
+      inCompiler->onTheFlyRunTimeError ("'endLine' getter cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
       result = GALGAS_uint ((uint32_t) mEndLocationInSource.lineNumber ()) ;
     }

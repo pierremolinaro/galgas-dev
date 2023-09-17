@@ -3234,8 +3234,7 @@ class cMapElement_getterMap : public cMapElement {
   public: GALGAS_bool mProperty_mHasCompilerArgument ;
   public: GALGAS_unifiedTypeMapEntry mProperty_mReturnedType ;
   public: GALGAS_methodQualifier mProperty_mQualifier ;
-  public: GALGAS_string mProperty_mErrorMessage ;
-  public: GALGAS_string mProperty_mObsoletedByGetter ;
+  public: GALGAS_string mProperty_mGetterNameThatObsoletesInvokationName ;
 
 //--- Constructor
   public: cMapElement_getterMap (const GALGAS_lstring & inKey,
@@ -3245,8 +3244,7 @@ class cMapElement_getterMap : public cMapElement {
                                  const GALGAS_bool & in_mHasCompilerArgument,
                                  const GALGAS_unifiedTypeMapEntry & in_mReturnedType,
                                  const GALGAS_methodQualifier & in_mQualifier,
-                                 const GALGAS_string & in_mErrorMessage,
-                                 const GALGAS_string & in_mObsoletedByGetter
+                                 const GALGAS_string & in_mGetterNameThatObsoletesInvokationName
                                  COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
@@ -3305,14 +3303,9 @@ class GALGAS_getterMap_2D_element : public AC_GALGAS_root {
     return mProperty_mQualifier ;
   }
 
-  public: GALGAS_string mProperty_mErrorMessage ;
-  public: inline GALGAS_string readProperty_mErrorMessage (void) const {
-    return mProperty_mErrorMessage ;
-  }
-
-  public: GALGAS_string mProperty_mObsoletedByGetter ;
-  public: inline GALGAS_string readProperty_mObsoletedByGetter (void) const {
-    return mProperty_mObsoletedByGetter ;
+  public: GALGAS_string mProperty_mGetterNameThatObsoletesInvokationName ;
+  public: inline GALGAS_string readProperty_mGetterNameThatObsoletesInvokationName (void) const {
+    return mProperty_mGetterNameThatObsoletesInvokationName ;
   }
 
 //--------------------------------- Accessors
@@ -3351,12 +3344,8 @@ class GALGAS_getterMap_2D_element : public AC_GALGAS_root {
     mProperty_mQualifier = inValue ;
   }
 
-  public: inline void setter_setMErrorMessage (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mErrorMessage = inValue ;
-  }
-
-  public: inline void setter_setMObsoletedByGetter (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mObsoletedByGetter = inValue ;
+  public: inline void setter_setMGetterNameThatObsoletesInvokationName (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mGetterNameThatObsoletesInvokationName = inValue ;
   }
 
 //--------------------------------- Virtual destructor (in debug mode)
@@ -3370,8 +3359,7 @@ class GALGAS_getterMap_2D_element : public AC_GALGAS_root {
                                        const GALGAS_bool & in_mHasCompilerArgument,
                                        const GALGAS_unifiedTypeMapEntry & in_mReturnedType,
                                        const GALGAS_methodQualifier & in_mQualifier,
-                                       const GALGAS_string & in_mErrorMessage,
-                                       const GALGAS_string & in_mObsoletedByGetter) ;
+                                       const GALGAS_string & in_mGetterNameThatObsoletesInvokationName) ;
 
 //-- Start of generic part --*
 
@@ -3391,8 +3379,7 @@ class GALGAS_getterMap_2D_element : public AC_GALGAS_root {
                                                                     const class GALGAS_bool & inOperand4,
                                                                     const class GALGAS_unifiedTypeMapEntry & inOperand5,
                                                                     const class GALGAS_methodQualifier & inOperand6,
-                                                                    const class GALGAS_string & inOperand7,
-                                                                    const class GALGAS_string & inOperand8
+                                                                    const class GALGAS_string & inOperand7
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'

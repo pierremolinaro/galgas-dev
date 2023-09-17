@@ -1415,7 +1415,7 @@ proc generateWrapperContents
       + "  " + [lkey utf8RepresentationEscapingQuestionMark] + ",\n"
       + "  " + [[lkey pathExtension] utf8RepresentationEscapingQuestionMark] + ",\n"
       + "  true, // Text file\n"
-      + "  " + [contents length] + ", // Text length\n"
+      + "  " + [contents count] + ", // Text length\n"
       + "  gWrapperFileContent_" + [mWrapperFileIndex string] + "_" + [inFilewrapperName identifierRepresentation] +"\n"
       + ") ;\n\n"
     else

@@ -23,7 +23,7 @@ end%
 %
 for (mStartString mEndString mPreservesStartDelimiter) in TEMPLATE_DELIMITOR_LIST
   do  %  SWIFT_TemplateDelimiter (startString: %![mStartString utf8RepresentationEscapingQuestionMark]%, endString: %
-      if [mEndString length] == 0 then
+      if [mEndString count] == 0 then
         %nil%
       else
         ![mEndString utf8RepresentationEscapingQuestionMark]
@@ -151,7 +151,7 @@ class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_
 %    kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
   for (mStartString mEndString mPreservesStartDelimiter) in TEMPLATE_DELIMITOR_LIST do
   %      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@%![mStartString utf8RepresentationEscapingQuestionMark]% endString:%
-      if [mEndString length] == 0 then
+      if [mEndString count] == 0 then
         %nil%
       else
         %@%![mEndString utf8RepresentationEscapingQuestionMark]

@@ -196,7 +196,7 @@ end
 #--- Readers
 if [[element definition].mGetterMap count] > 0 then
   %<tr class="result_line"><td>Getters</td><td>%
-  for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType mQualifier mErrorMessage replacementGetter) in [element definition].mGetterMap do
+  for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType mQualifier replacementGetter) in [element definition].mGetterMap do
     switch mKind
     case definedAsMember :
     case definedAsExtension : %(extension) %

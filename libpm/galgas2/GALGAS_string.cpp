@@ -505,7 +505,7 @@ GALGAS_bool GALGAS_string::getter_directoryExists (UNUSED_LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_string::getter_length (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_string::getter_count (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
     result = GALGAS_uint ((uint32_t) mString.length ()) ;

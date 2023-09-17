@@ -41,7 +41,7 @@ end%
 %    kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
   for (mStartString mEndString mPreservesStartDelimiter) in TEMPLATE_DELIMITOR_LIST do
   %      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@%![mStartString utf8RepresentationEscapingQuestionMark]% endString:%
-      if [mEndString length] == 0 then
+      if [mEndString count] == 0 then
         %nil%
       else
         %@%![mEndString utf8RepresentationEscapingQuestionMark]

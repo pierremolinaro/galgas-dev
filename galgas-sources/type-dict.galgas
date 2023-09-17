@@ -275,7 +275,6 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
       !true
       !attributeTypeIndex
       !@methodQualifier.isBasic
-      !"" # No Error message
       !"" # getter name is not obsolete, no replacement getter
     ]
   end
@@ -365,7 +364,7 @@ proc check_K_escapeCharacters ?let @lstring inString {  #--- Check escape sequen
     var @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
     [!?explodedArray popFirst ?*]
     for (mValue) in explodedArray do
-      if [mValue length] > 0 then
+      if [mValue count] > 0 then
         let @char c = [mValue characterAtIndex !0]
         if c != 'K' then
           error inString: "only '%K' and '%%' escape sequences are allowed in this error message"
@@ -382,7 +381,7 @@ proc check_K_L_escapeCharacters ?let @lstring inString {  #--- Check escape sequ
     var @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
     [!?explodedArray popFirst ?*]
     for (mValue) in explodedArray do
-      if [mValue length] > 0 then
+      if [mValue count] > 0 then
         let @char c = [mValue characterAtIndex !0]
         if (c != 'K') & (c != 'L') then
           error inString: "only '%K', '%L' and '%%' escape sequences are allowed in this error message"

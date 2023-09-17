@@ -364,7 +364,6 @@ override method @externTypeDeclarationAST enterDeclarationInSemanticContext
       !true #inHasLexiqueAndLocationArguments
       !returnedTypeEntry
       !@methodQualifier.isBasicFinal
-      !"" # No Error message
       !"" # getter name is not obsolete, no replacement getter
     ]
   end

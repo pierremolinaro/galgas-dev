@@ -130,7 +130,6 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
     !true
     !boolType
     !@methodQualifier.isBasicFinal
-    !"" # No Error message
     !"" # getter name is not obsolete, no replacement getter
   ]
   [!?getterMap insertOrReplace
@@ -141,7 +140,6 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
     !true
     !elementTypeIndex
     !@methodQualifier.isBasicFinal
-    !"" # No Error message
     !"" # getter name is not obsolete, no replacement getter
   ]
 #--- Modifiers

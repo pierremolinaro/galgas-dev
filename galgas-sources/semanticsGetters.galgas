@@ -30,7 +30,6 @@ proc enterBaseFinalGetterWithoutArgument ?!@getterMap ioGetterMap
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier.isBasicFinal
-    !"" # No Error message
     !"" # getter name is not obsolete, no replacement getter
   ]
   if inObsoleteGetterName != "" then
@@ -42,7 +41,6 @@ proc enterBaseFinalGetterWithoutArgument ?!@getterMap ioGetterMap
       !inHasCompilerArgument
       !returnedTypeIndex
       !@methodQualifier.isBasicFinal
-      !"" # No Error message
       !inGetterName # getter name is obsolete, replacement getter
     ]
   end
@@ -65,7 +63,6 @@ proc enterInheritedGetterWithoutArgument
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isInherited
-    !"" # No Error message
     !"" # getter name is not obsolete, no replacement getter
   ]
 }
@@ -93,7 +90,6 @@ proc enterInheritedGetterWithArgument
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isInherited
-    !"" # No Error message
     !"" # getter name is not obsolete, no replacement getter
   ]
 }
@@ -125,7 +121,6 @@ proc enterInheritedGetterWith2Arguments
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isInherited
-    !"" # No Error message
     !"" # getter name is not obsolete, no replacement getter
   ]
 }
@@ -147,7 +142,6 @@ proc enterBaseGetterWithoutArgument ?!@getterMap ioGetterMap
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isBasic
-    !"" # No Error message
     !"" # getter name is not obsolete, no replacement getter
   ]
   if inObsoleteGetterName != "" then
@@ -159,7 +153,6 @@ proc enterBaseGetterWithoutArgument ?!@getterMap ioGetterMap
       !inHasCompilerArgument
       !returnedTypeIndex
       !@methodQualifier.isBasicFinal
-      !"" # No Error message
       !inGetterName # getter name is obsolete, replacement getter
     ]
   end
@@ -189,7 +182,6 @@ proc enterBaseGetterWithArgument
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isBasic
-    !"" # No Error message
     !"" # getter name is not obsolete, no replacement getter
   ]
 }
@@ -217,7 +209,6 @@ proc enterBaseFinalGetterWithArgument
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isBasicFinal
-    !"" # No Error message
     !"" # getter name is not obsolete, no replacement getter
   ]
 }
@@ -251,7 +242,6 @@ proc enterBaseGetterWith2Arguments
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isBasic
-    !"" # No Error message
     !"" # getter name is not obsolete, no replacement getter
   ]
 }
@@ -283,7 +273,6 @@ proc enterBaseFinalGetterWith2Arguments
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isBasicFinal
-    !"" # No Error message
     !"" # getter name is not obsolete, no replacement getter
   ]
 }
@@ -319,7 +308,6 @@ proc enterBaseFinalGetterWith3Arguments
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isBasicFinal
-    !"" # No Error message
     !"" # getter name is not obsolete, no replacement getter
   ]
 }
@@ -408,7 +396,7 @@ override method @locationPredefinedTypeAST getGetterMap
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "line"
+    !getterName: "startLine"
     !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
@@ -416,8 +404,24 @@ override method @locationPredefinedTypeAST getGetterMap
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "column"
+    !getterName: "endLine"
+    !obsoleteName: "line"
+    !returnedTypeName:"uint"
+    !hasCompilerArgument:true
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName: "startColumn"
     !obsoleteName: ""
+    !returnedTypeName:"uint"
+    !hasCompilerArgument:true
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName: "endColumn"
+    !obsoleteName: "column"
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
@@ -480,10 +484,10 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "length"
-    !obsoleteName: ""
+    !getterName: "count"
+    !obsoleteName: "length"
     !returnedTypeName:"uint"
-    !hasCompilerArgument:false
+    !hasCompilerArgument: false
   )
   enterBaseGetterWithoutArgument (
     !?outMap

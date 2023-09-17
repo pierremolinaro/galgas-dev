@@ -108,7 +108,7 @@ end
   %//                     P O P    U P    L I S T    D A T A\n%
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   for (mLeadingCharacterStrippedCount mTerminalList mLocation) in mLabels do
-    %static const UInt16 gPopUpData_%![mIndex string]%_%![mLexiqueClassName identifierRepresentation]%_%![[mLocation locationIndex] string]% [%![ 2 * [mTerminalList length] + 2 string]%] = {\n%
+    %static const UInt16 gPopUpData_%![mIndex string]%_%![mLexiqueClassName identifierRepresentation]%_%![[mLocation startLocationIndex] string]% [%![ 2 * [mTerminalList length] + 2 string]%] = {\n%
     %  %![mLeadingCharacterStrippedCount string]%, // Leading character count to strip\n%
       for (mTerminal mDisplayFlags) in mTerminalList do
         %  %!mLexiqueClassName%_1_%![mTerminal identifierRepresentation]%, %![mDisplayFlags string]%,\n%
@@ -118,7 +118,7 @@ end
   end
   %static const UInt16 * gPopUpData_%![mIndex string]%_%![mLexiqueClassName identifierRepresentation]% [%![[mLabels length] + 1 string]%] = {\n%
   for (mLeadingCharacterStrippedCount mTerminalList mLocation) in mLabels do
-    %  gPopUpData_%![mIndex string]%_%![mLexiqueClassName identifierRepresentation]%_%![[mLocation locationIndex] string]%,\n%
+    %  gPopUpData_%![mIndex string]%_%![mLexiqueClassName identifierRepresentation]%_%![[mLocation startLocationIndex] string]%,\n%
   end
     %  NULL\n%
     %} ;\n\n%
