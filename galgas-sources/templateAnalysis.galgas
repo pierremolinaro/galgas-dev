@@ -119,6 +119,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
     var @bool hasCompilerArgument
     var @unifiedTypeMapEntry returnedType
     var fieldList = @stringlist {}
+    var actualGetterName = self.mGetterName.string
     if [getterMap hasKey !self.mGetterName.string] then
       [getterMap searchKey !self.mGetterName
         ?kind
@@ -127,7 +128,11 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
         ?hasCompilerArgument
         ?returnedType
         ?2*
+        ?let actualGetterNameString
       ]
+      if actualGetterNameString != "" then
+        actualGetterName = actualGetterNameString
+      end
     else
       var @uint matchingReaderCount = 0
       if [receiverType definition].mTypeKindEnum == @typeKindEnum. structType then
@@ -202,7 +207,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
         !kind
         !receiverExpression
         !fieldList
-        !self.mGetterName.string
+        !actualGetterName
         !constructorEffectiveParameterList
         !hasCompilerArgument
       }

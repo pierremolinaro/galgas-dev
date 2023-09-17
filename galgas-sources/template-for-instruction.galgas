@@ -218,9 +218,9 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !?beforeInstructionList
   )
 #--- Do instructions
-  let enumeratorCppName = "enumerator_" + [[self.mIndexIdentifier.location locationIndex] string]
+  let enumeratorCppName = "enumerator_" + [[self.mIndexIdentifier.location startLocationIndex] string]
   var doVariableMap = inAnalysisContext.mTemplateVariableMap
-  let cppIndexVarName = "index_" + [[self.mIndexIdentifier.location locationIndex] string]
+  let cppIndexVarName = "index_" + [[self.mIndexIdentifier.location startLocationIndex] string]
     + "_" + [self.mIndexIdentifier.string identifierRepresentation]
   if self.mIndexIdentifier.string != "" then
     [!?doVariableMap insertKey !self.mIndexIdentifier !inAnalysisContext.mPredefinedTypes.mUIntType !cppIndexVarName]

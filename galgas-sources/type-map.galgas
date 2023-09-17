@@ -447,6 +447,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName: "overriddenMap"
+    !obsoleteName: ""
     !returnedTypeName:self.mMapTypeName.string
     !hasCompilerArgument:true
   )
@@ -577,6 +578,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
       !attributeTypeIndex
       !.isBasic
       !"" # No Error message
+      !"" # getter name is not obsolete, no replacement getter
     ]
   end
 #---------- Handle "insertOrReplace" setter

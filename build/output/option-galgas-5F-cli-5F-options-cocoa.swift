@@ -83,6 +83,14 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
+    identifier: "errorObsoleteGetterCall",
+    commandChar: "",
+    commandString: "error-on-obsolete-getter-call",
+    comment: "error on obsolete getter call",
+    defaultValue: ""
+  ))
+  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
     identifier: "errorOldStyleCollectionInitializer",
     commandChar: "",
     commandString: "error-old-syle-collection-initializer",

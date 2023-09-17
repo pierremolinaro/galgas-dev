@@ -92,6 +92,16 @@ getter column -> @uint
 Returns an \ggs+@uint+ value containing the column of the receiver's value ; this getter raises a run-time error if the receiver's value responds \ggs+true+ to the \refGetterPage{location}{isNowhere}.
 
 
+
+\subsectionGetter{endLocationString}{location}
+
+\begin{galgas}
+getter endLocationString -> @string
+\end{galgas}
+
+Returns an \ggs+@string+ object that contains a string representation of the end location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggs+true+ to the \refGetterPage{location}{isNowhere}.
+
+
 \subsectionGetter{isNowhere}{location}
 
 \begin{galgas}
@@ -119,13 +129,24 @@ getter locationIndex -> @uint
 Returns an \ggs+@uint+ value containing the the offset from the the beginning of the source of the location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggs+true+ to the \refGetterPage{location}{isNowhere}.
 
 
+
 \subsectionGetter{locationString}{location}
 
 \begin{galgas}
-getter locationString -> @string
+getter locationString -> @string # Obsolete use endLocationString
 \end{galgas}
 
-Returns an \ggs+@string+ object that contains a string representation of the location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggs+true+ to the \refGetterPage{location}{isNowhere}.
+Returns an \ggs+@string+ object that contains a string representation of the end location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggs+true+ to the \refGetterPage{location}{isNowhere}.
+
+
+\subsectionGetter{startLocationString}{location}
+
+\begin{galgas}
+getter startLocationString -> @string
+\end{galgas}
+
+
+Returns an \ggs+@string+ object that contains a string representation of the start location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggs+true+ to the \refGetterPage{location}{isNowhere}.
 
 
 \subsectionGetter{union}{location}

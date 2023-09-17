@@ -435,7 +435,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     : "the key type is '@" + [keyExpression.mResultType definition].mTypeName.string + "', it should be @lstring"
   end
 #--- Object Array cpp name
-  let objectArrayCppName = "objectArray_" + [self.mInstructionLocation locationIndex]
+  let objectArrayCppName = "objectArray_" + [self.mInstructionLocation startLocationIndex]
 #--- Check this type handle 'with' access
   if not [[receiverType definition].mHandledOperatorFlags supportWithAccessor] then
     error self.mEndOfReceiverExpression : "the '@"+ [receiverType definition].mTypeName.string + "' type cannot be used in a 'with' instruction"
@@ -527,7 +527,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     : "the key type is '@" + [keyExpression.mResultType definition].mTypeName.string + "', it should be @lstring"
   end
 #--- Object Array cpp name
-  let objectArrayCppName = "objectArray_" + [self.mInstructionLocation locationIndex]
+  let objectArrayCppName = "objectArray_" + [self.mInstructionLocation startLocationIndex]
 #--- Read/write access to receiver variable
   var @unifiedTypeMapEntry targetType
   let @string receiverVariableCppName

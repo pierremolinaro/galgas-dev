@@ -564,7 +564,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
     ?outEnumerationExpression
   ]
 #--- Check object can be enumerated
-  outEnumeratorCppName = "enumerator_" + [self.mEndOfAnonymousEnumeration locationIndex]
+  outEnumeratorCppName = "enumerator_" + [self.mEndOfAnonymousEnumeration startLocationIndex]
   let enumerationDescriptorList = [outEnumerationExpression.mResultType definition].mEnumerationDescriptor
   if [enumerationDescriptorList length] == 0 then
     error self.mEndOfAnonymousEnumeration : "an '@" + [outEnumerationExpression.mResultType definition].mTypeName.string + "' object cannot be enumerated"
@@ -612,7 +612,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
     ?outEnumerationExpression
   ]
 #--- Check object can be enumerated
-  outEnumeratorCppName = "enumerator_" + [self.mEndOfEnumerationExpression locationIndex]
+  outEnumeratorCppName = "enumerator_" + [self.mEndOfEnumerationExpression startLocationIndex]
   let enumerationDescriptorList = [outEnumerationExpression.mResultType definition].mEnumerationDescriptor
   if [enumerationDescriptorList length] == 0 then
     error self.mEndOfEnumerationExpression : "an '@" + [outEnumerationExpression.mResultType definition].mTypeName.string + "' object cannot be enumerated"
@@ -690,7 +690,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
     ?outEnumerationExpression
   ]
 #--- Check object can be enumerated
-  outEnumeratorCppName = "enumerator_" + [self.mEndOfEnumerationExpression locationIndex]
+  outEnumeratorCppName = "enumerator_" + [self.mEndOfEnumerationExpression startLocationIndex]
   let enumeratedElementType = [outEnumerationExpression.mResultType definition].mTypeForEnumeratedElement
   if [enumeratedElementType isNull] then
     error self.mEndOfEnumerationExpression : "an '@" + [outEnumerationExpression.mResultType definition].mTypeName.string + "' object cannot be enumerated"
@@ -823,7 +823,7 @@ override method @forInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForRepeatBlock]
   var @string indexCppName = ""
   if self.mIndexVariableName.string != "" then
-    indexCppName = "index_" + [self.mInstructionLocation locationIndex]
+    indexCppName = "index_" + [self.mInstructionLocation startLocationIndex]
     localConstantListForDoBranch +=
       !inAnalysisContext.mPredefinedTypes.mUIntType
       !self.mIndexVariableName

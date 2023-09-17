@@ -289,7 +289,7 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
     error self.mActualSelector : "the formal parameter type @" + [inFormalArgumentType definition].mTypeName.string + " should support the default constructor"
   end
 #--- Generate actual parameter
-  let cppVarName = "joker_" + [self.mActualSelector.location locationIndex]
+  let cppVarName = "joker_" + [self.mActualSelector.location startLocationIndex]
   ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
     !inFormalArgumentType
     !false # Is not constant
@@ -379,7 +379,7 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
     error self.mQualifierLocation : "the formal parameter type @" + [inFormalArgumentType definition].mTypeName.string + " should support the default constructor"
   end
 #--- Generate actual parameter
-  let cppVarName = "joker_" + [self.mQualifierLocation locationIndex] + "_" + self.mJokerIndex
+  let cppVarName = "joker_" + [self.mQualifierLocation startLocationIndex] + "_" + self.mJokerIndex
   ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
     !inFormalArgumentType
     !false # Is not constant
@@ -608,7 +608,7 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
     end
   end
 #--- Declare local variable
-  let targetVariableCppName = "var_" + [self.mInputActualParameterName identifierRepresentation] + "_" + [self.mInputActualParameterName.location locationIndex]
+  let targetVariableCppName = "var_" + [self.mInputActualParameterName identifierRepresentation] + "_" + [self.mInputActualParameterName.location startLocationIndex]
   [!?ioVariableMap insertInitializedLocalVariable
     !self.mInputActualParameterName
     !warnsIfNotMutated: true
@@ -679,7 +679,7 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
     end
   end
 #--- Declare local constant
-  let targetVariableCppName = "var_" + [self.mInputActualParameterName identifierRepresentation] + "_" + [self.mInputActualParameterName.location locationIndex]
+  let targetVariableCppName = "var_" + [self.mInputActualParameterName identifierRepresentation] + "_" + [self.mInputActualParameterName.location startLocationIndex]
   if self.mMarkedAsUnused then
     [!?ioVariableMap insertUsedLocalConstant
       !self.mInputActualParameterName
@@ -747,7 +747,7 @@ override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
     error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
 #     error self.mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   else
-    let cppVarName = "joker_" + [self.mActualSelector.location locationIndex]
+    let cppVarName = "joker_" + [self.mActualSelector.location startLocationIndex]
   #--- Generate actual parameter
     var @2stringlist poisonedVarCppNameList = {}
     for (varName) in self.mPoisonedVarNameList do
@@ -786,7 +786,7 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
     :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
     + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   else
-    let cppVarName = "joker_" + [self.mQualifierLocation locationIndex] + "_" + self.mJokerIndex
+    let cppVarName = "joker_" + [self.mQualifierLocation startLocationIndex] + "_" + self.mJokerIndex
   #--- Generate actual parameter
     ioActualParameterListForGeneration += !@inputJokerParameterForGeneration.new {
       !inFormalArgumentType
@@ -1046,7 +1046,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   if not inHasTranslateFeature then
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
-  let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location locationIndex]
+  let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
   let type = [ioTypeMap searchKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalVariable !self.mActualParameterName !warnsIfNotMutated: true !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
@@ -1070,7 +1070,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   if not inHasTranslateFeature then
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
-  let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location locationIndex]
+  let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
   let type = [ioTypeMap searchKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalConstant !self.mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType

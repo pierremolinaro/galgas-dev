@@ -77,7 +77,7 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
 {
 #--- Check target variable
   let targetType = [ioTypeMap searchKey !self.mTypeName]
-  let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location locationIndex]
+  let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location startLocationIndex]
   [!?ioVariableMap insertDeclaredLocalVariable
     !self.mVariableName
     !targetType

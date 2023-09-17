@@ -269,7 +269,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     let @string localConstantName
     var localConstantList = @localConstantList {}
     if [mConstantVarName length] > 0 then
-      localConstantName = "cast_" + [mConstantVarName.location locationIndex] + "_" + mConstantVarName
+      localConstantName = "cast_" + [mConstantVarName.location startLocationIndex] + "_" + mConstantVarName
       localConstantList +=
         !type
         !mConstantVarName

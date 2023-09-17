@@ -292,7 +292,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
               end
             end
             if firstConstant & (mExtractedValueName.string != "") then
-              let cppName = "extractedValue_" + [mExtractedValueName.location locationIndex] + "_" + mExtractedValueName
+              let cppName = "extractedValue_" + [mExtractedValueName.location startLocationIndex] + "_" + mExtractedValueName
               extractedAssociatedValuesForGeneration += !mType !cppName !associatedValueIndex
               if mMarkedAsUnused then
                 [!?ioVariableMap insertUsedLocalConstant !mExtractedValueName !mType !cppName !cppName]
@@ -322,7 +322,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
       ?let @semanticInstructionListForGeneration instructionList
     )
     [!?ioVariableMap closeBranch !mEndOfBranch]
-    switchBranchesForGeneration += !mSwitchConstantList !extractedAssociatedValuesForGeneration ![mEndOfBranch locationIndex] !instructionList
+    switchBranchesForGeneration += !mSwitchConstantList !extractedAssociatedValuesForGeneration ![mEndOfBranch startLocationIndex] !instructionList
   end
   [!?ioVariableMap closeOverride !self.mEndOf_switch_instruction]
 #--- Check all constants have been named

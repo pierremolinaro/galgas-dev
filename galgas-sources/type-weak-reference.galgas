@@ -110,7 +110,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !?instanceMethodMap
     !acceptSetters: true
   )
-  for (lkey 7*) in getterMap do
+  for (lkey 8*) in getterMap do
     error lkey : "a weak reference does not support extension"
   end
   for (lkey 5*) in setterMap do

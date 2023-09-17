@@ -232,6 +232,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName: "nodeList"
+    !obsoleteName: ""
     !returnedTypeName: self.mAssociatedListTypeName
     !hasCompilerArgument: false # No compiler argument
   )
@@ -240,6 +241,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName:"reversedGraph"
+    !obsoleteName: ""
     !returnedTypeName: self.mGraphTypeName.string
     !hasCompilerArgument:false # No compiler argument
   )

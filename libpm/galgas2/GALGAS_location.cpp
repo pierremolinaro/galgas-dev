@@ -196,12 +196,27 @@ GALGAS_string GALGAS_location::getter_file (C_Compiler * inCompiler
 
 //------------------------------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_location::getter_locationIndex (C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const {
+GALGAS_uint GALGAS_location::getter_startLocationIndex (C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
     if (!mSourceText.isValid ()) {
-      inCompiler->onTheFlyRunTimeError ("'locationIndex' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("'startLocationIndex' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
+    }else{
+      result = GALGAS_uint ((uint32_t) mStartLocationInSource.index ()) ;
+    }
+  }
+  return result ;
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+GALGAS_uint GALGAS_location::getter_endLocationIndex (C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (isValid ()) {
+    if (!mSourceText.isValid ()) {
+      inCompiler->onTheFlyRunTimeError ("'endLocationIndex' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
       result = GALGAS_uint ((uint32_t) mEndLocationInSource.index ()) ;
     }

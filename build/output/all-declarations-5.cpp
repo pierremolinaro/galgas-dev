@@ -6222,7 +6222,8 @@ cMapElement_getterMap::cMapElement_getterMap (const GALGAS_lstring & inKey,
                                               const GALGAS_bool & in_mHasCompilerArgument,
                                               const GALGAS_unifiedTypeMapEntry & in_mReturnedType,
                                               const GALGAS_methodQualifier & in_mQualifier,
-                                              const GALGAS_string & in_mErrorMessage
+                                              const GALGAS_string & in_mErrorMessage,
+                                              const GALGAS_string & in_mObsoletedByGetter
                                               COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
 mProperty_mKind (in_mKind),
@@ -6231,7 +6232,8 @@ mProperty_mDeclarationLocation (in_mDeclarationLocation),
 mProperty_mHasCompilerArgument (in_mHasCompilerArgument),
 mProperty_mReturnedType (in_mReturnedType),
 mProperty_mQualifier (in_mQualifier),
-mProperty_mErrorMessage (in_mErrorMessage) {
+mProperty_mErrorMessage (in_mErrorMessage),
+mProperty_mObsoletedByGetter (in_mObsoletedByGetter) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6244,7 +6246,7 @@ bool cMapElement_getterMap::isValid (void) const {
 
 cMapElement * cMapElement_getterMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_getterMap (mProperty_lkey, mProperty_mKind, mProperty_mArgumentTypeList, mProperty_mDeclarationLocation, mProperty_mHasCompilerArgument, mProperty_mReturnedType, mProperty_mQualifier, mProperty_mErrorMessage COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_getterMap (mProperty_lkey, mProperty_mKind, mProperty_mArgumentTypeList, mProperty_mDeclarationLocation, mProperty_mHasCompilerArgument, mProperty_mReturnedType, mProperty_mQualifier, mProperty_mErrorMessage, mProperty_mObsoletedByGetter COMMA_HERE)) ;
   return result ;
 }
 
@@ -6279,6 +6281,10 @@ void cMapElement_getterMap::description (C_String & ioString, const int32_t inIn
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mErrorMessage" ":" ;
   mProperty_mErrorMessage.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mObsoletedByGetter" ":" ;
+  mProperty_mObsoletedByGetter.description (ioString, inIndentation) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6306,6 +6312,9 @@ typeComparisonResult cMapElement_getterMap::compare (const cCollectionElement * 
   }
   if (kOperandEqual == result) {
     result = mProperty_mErrorMessage.objectCompare (operand->mProperty_mErrorMessage) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mObsoletedByGetter.objectCompare (operand->mProperty_mObsoletedByGetter) ;
   }
   return result ;
 }
@@ -6365,10 +6374,11 @@ void GALGAS_getterMap::addAssign_operation (const GALGAS_lstring & inKey,
                                             const GALGAS_unifiedTypeMapEntry & inArgument4,
                                             const GALGAS_methodQualifier & inArgument5,
                                             const GALGAS_string & inArgument6,
+                                            const GALGAS_string & inArgument7,
                                             C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {
   cMapElement_getterMap * p = NULL ;
-  macroMyNew (p, cMapElement_getterMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_getterMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6, inArgument7 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -6385,7 +6395,7 @@ GALGAS_getterMap GALGAS_getterMap::add_operation (const GALGAS_getterMap & inOpe
   GALGAS_getterMap result = *this ;
   cEnumerator_getterMap enumerator (inOperand, kENUMERATION_UP) ;
   while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mKind (HERE), enumerator.current_mArgumentTypeList (HERE), enumerator.current_mDeclarationLocation (HERE), enumerator.current_mHasCompilerArgument (HERE), enumerator.current_mReturnedType (HERE), enumerator.current_mQualifier (HERE), enumerator.current_mErrorMessage (HERE), inCompiler COMMA_THERE) ;
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mKind (HERE), enumerator.current_mArgumentTypeList (HERE), enumerator.current_mDeclarationLocation (HERE), enumerator.current_mHasCompilerArgument (HERE), enumerator.current_mReturnedType (HERE), enumerator.current_mQualifier (HERE), enumerator.current_mErrorMessage (HERE), enumerator.current_mObsoletedByGetter (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
   }
   return result ;
@@ -6401,10 +6411,11 @@ void GALGAS_getterMap::setter_insertKey (GALGAS_lstring inKey,
                                          GALGAS_unifiedTypeMapEntry inArgument4,
                                          GALGAS_methodQualifier inArgument5,
                                          GALGAS_string inArgument6,
+                                         GALGAS_string inArgument7,
                                          C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
   cMapElement_getterMap * p = NULL ;
-  macroMyNew (p, cMapElement_getterMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_getterMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6, inArgument7 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -6427,6 +6438,7 @@ void GALGAS_getterMap::method_searchKey (GALGAS_lstring inKey,
                                          GALGAS_unifiedTypeMapEntry & outArgument4,
                                          GALGAS_methodQualifier & outArgument5,
                                          GALGAS_string & outArgument6,
+                                         GALGAS_string & outArgument7,
                                          C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) const {
   const cMapElement_getterMap * p = (const cMapElement_getterMap *) performSearch (inKey,
@@ -6441,6 +6453,7 @@ void GALGAS_getterMap::method_searchKey (GALGAS_lstring inKey,
     outArgument4.drop () ;
     outArgument5.drop () ;
     outArgument6.drop () ;
+    outArgument7.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_getterMap) ;
     outArgument0 = p->mProperty_mKind ;
@@ -6450,6 +6463,7 @@ void GALGAS_getterMap::method_searchKey (GALGAS_lstring inKey,
     outArgument4 = p->mProperty_mReturnedType ;
     outArgument5 = p->mProperty_mQualifier ;
     outArgument6 = p->mProperty_mErrorMessage ;
+    outArgument7 = p->mProperty_mObsoletedByGetter ;
   }
 }
 
@@ -6462,10 +6476,11 @@ void GALGAS_getterMap::setter_insertOrReplace (GALGAS_lstring inKey,
                                                GALGAS_bool inArgument3,
                                                GALGAS_unifiedTypeMapEntry inArgument4,
                                                GALGAS_methodQualifier inArgument5,
-                                               GALGAS_string inArgument6
+                                               GALGAS_string inArgument6,
+                                               GALGAS_string inArgument7
                                                COMMA_UNUSED_LOCATION_ARGS) {
   cMapElement_getterMap * p = NULL ;
-  macroMyNew (p, cMapElement_getterMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_getterMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6, inArgument7 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -6579,6 +6594,21 @@ GALGAS_string GALGAS_getterMap::getter_mErrorMessageForKey (const GALGAS_string 
 
 //----------------------------------------------------------------------------------------------------------------------
 
+GALGAS_string GALGAS_getterMap::getter_mObsoletedByGetterForKey (const GALGAS_string & inKey,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) attributes ;
+  GALGAS_string result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_getterMap) ;
+    result = p->mProperty_mObsoletedByGetter ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 void GALGAS_getterMap::setter_setMKindForKey (GALGAS_methodKind inAttributeValue,
                                               GALGAS_string inKey,
                                               C_Compiler * inCompiler
@@ -6677,6 +6707,20 @@ void GALGAS_getterMap::setter_setMErrorMessageForKey (GALGAS_string inAttributeV
 
 //----------------------------------------------------------------------------------------------------------------------
 
+void GALGAS_getterMap::setter_setMObsoletedByGetterForKey (GALGAS_string inAttributeValue,
+                                                           GALGAS_string inKey,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
+  cMapElement_getterMap * p = (cMapElement_getterMap *) attributes ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_getterMap) ;
+    p->mProperty_mObsoletedByGetter = inAttributeValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 cMapElement_getterMap * GALGAS_getterMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                              const GALGAS_string & inKey
                                                                              COMMA_LOCATION_ARGS) {
@@ -6698,7 +6742,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_getterMap_2D_element cEnumerator_getterMap::current (LOCATION_ARGS) const {
   const cMapElement_getterMap * p = (const cMapElement_getterMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_getterMap) ;
-  return GALGAS_getterMap_2D_element (p->mProperty_lkey, p->mProperty_mKind, p->mProperty_mArgumentTypeList, p->mProperty_mDeclarationLocation, p->mProperty_mHasCompilerArgument, p->mProperty_mReturnedType, p->mProperty_mQualifier, p->mProperty_mErrorMessage) ;
+  return GALGAS_getterMap_2D_element (p->mProperty_lkey, p->mProperty_mKind, p->mProperty_mArgumentTypeList, p->mProperty_mDeclarationLocation, p->mProperty_mHasCompilerArgument, p->mProperty_mReturnedType, p->mProperty_mQualifier, p->mProperty_mErrorMessage, p->mProperty_mObsoletedByGetter) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6767,6 +6811,14 @@ GALGAS_string cEnumerator_getterMap::current_mErrorMessage (LOCATION_ARGS) const
 
 //----------------------------------------------------------------------------------------------------------------------
 
+GALGAS_string cEnumerator_getterMap::current_mObsoletedByGetter (LOCATION_ARGS) const {
+  const cMapElement_getterMap * p = (const cMapElement_getterMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_getterMap) ;
+  return p->mProperty_mObsoletedByGetter ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 bool GALGAS_getterMap::optional_searchKey (const GALGAS_string & inKey,
                                            GALGAS_methodKind & outArgument0,
                                            GALGAS_functionSignature & outArgument1,
@@ -6774,7 +6826,8 @@ bool GALGAS_getterMap::optional_searchKey (const GALGAS_string & inKey,
                                            GALGAS_bool & outArgument3,
                                            GALGAS_unifiedTypeMapEntry & outArgument4,
                                            GALGAS_methodQualifier & outArgument5,
-                                           GALGAS_string & outArgument6) const {
+                                           GALGAS_string & outArgument6,
+                                           GALGAS_string & outArgument7) const {
   const cMapElement_getterMap * p = (const cMapElement_getterMap *) searchForKey (inKey) ;
   const bool result = NULL != p ;
   if (result) {
@@ -6786,6 +6839,7 @@ bool GALGAS_getterMap::optional_searchKey (const GALGAS_string & inKey,
     outArgument4 = p->mProperty_mReturnedType ;
     outArgument5 = p->mProperty_mQualifier ;
     outArgument6 = p->mProperty_mErrorMessage ;
+    outArgument7 = p->mProperty_mObsoletedByGetter ;
   }else{
     outArgument0.drop () ;
     outArgument1.drop () ;
@@ -6794,6 +6848,7 @@ bool GALGAS_getterMap::optional_searchKey (const GALGAS_string & inKey,
     outArgument4.drop () ;
     outArgument5.drop () ;
     outArgument6.drop () ;
+    outArgument7.drop () ;
   }
   return result ;
 }
@@ -10436,10 +10491,10 @@ GALGAS_string extensionGetter_string (const GALGAS_typeKindEnum & inObject,
     break ;
   case GALGAS_typeKindEnum::kEnum_classType:
     {
-      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_10484 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
-      const GALGAS_bool extractedValue_10411_isReference = extractPtr_10484->mAssociatedValue0 ;
+      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_10577 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
+      const GALGAS_bool extractedValue_10496_isReference = extractPtr_10577->mAssociatedValue0 ;
       GALGAS_string temp_1 ;
-      const enumGalgasBool test_2 = extractedValue_10411_isReference.boolEnum () ;
+      const enumGalgasBool test_2 = extractedValue_10496_isReference.boolEnum () ;
       if (kBoolTrue == test_2) {
         temp_1 = GALGAS_string ("reference class") ;
       }else if (kBoolFalse == test_2) {

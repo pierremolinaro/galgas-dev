@@ -325,30 +325,32 @@ end
 %
 //--------------------------------- Getters
 %
-for (lkey kind argumentTypeList * hasCompilerArgument returnedType qualifier errorMessage) in GETTER_MAP do
-  switch kind 
-  case definedAsExtension :
-  case definedAsMember :
-    if (errorMessage == "") & ((qualifier == [@methodQualifier isVirtualAbstract]) | (qualifier == [@methodQualifier isBasic]) | (qualifier == [@methodQualifier isBasicFinal])) then
-      %  public: VIRTUAL_IN_DEBUG class GALGAS_% ![returnedType identifierRepresentation] % getter_% ![lkey.string identifierRepresentation] % (%?^
-      for (mFormalSelector mFormalArgumentType mFormalArgumentName) in argumentTypeList
-        do (IDX) %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & constinOperand% ![IDX string]
-        between %,\n% !^
-      end
-      if [argumentTypeList length] == 0 then
-        if hasCompilerArgument then
-          %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
-        else
-          %LOCATION_ARGS%
+for (lkey kind argumentTypeList * hasCompilerArgument returnedType qualifier errorMessage replacementGetter) in GETTER_MAP do
+  if replacementGetter == "" then
+    switch kind 
+    case definedAsExtension :
+    case definedAsMember :
+      if (errorMessage == "") & ((qualifier == [@methodQualifier isVirtualAbstract]) | (qualifier == [@methodQualifier isBasic]) | (qualifier == [@methodQualifier isBasicFinal])) then
+        %  public: VIRTUAL_IN_DEBUG class GALGAS_% ![returnedType identifierRepresentation] % getter_% ![lkey.string identifierRepresentation] % (%?^
+        for (mFormalSelector mFormalArgumentType mFormalArgumentName) in argumentTypeList
+          do (IDX) %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & constinOperand% ![IDX string]
+          between %,\n% !^
         end
-      else
-        if hasCompilerArgument then
-          %,\n% !^ %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
+        if [argumentTypeList length] == 0 then
+          if hasCompilerArgument then
+            %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
+          else
+            %LOCATION_ARGS%
+          end
         else
-          %\n% !^ %COMMA_LOCATION_ARGS%
+          if hasCompilerArgument then
+            %,\n% !^ %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
+          else
+            %\n% !^ %COMMA_LOCATION_ARGS%
+          end
         end
+        %) const ;\n\n%
       end
-      %) const ;\n\n%
     end
   end
 end

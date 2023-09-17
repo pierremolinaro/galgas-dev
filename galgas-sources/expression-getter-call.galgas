@@ -116,10 +116,17 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       ?let @bool hasCompilerArgument
       ?let @unifiedTypeMapEntry returnedType
       ?*
-      ?let @string getterErrorMessage] then
+      ?let @string getterErrorMessage
+      ?let replacementGetter] then
     if getterErrorMessage != "" then
       error self.mGetterName : getterErrorMessage
     end
+    if (replacementGetter != "") && [option galgas_cli_options.errorObsoleteGetterCall value] then
+      error self.mGetterName : "obsolete getter" fixit { replace replacementGetter }
+    end
+#    if replacementGetter != "" then
+#      warning self.mGetterName : "obsolete getter" fixit { replace replacementGetter }
+#    end
     if self.errorOnGetterCallInsteadOfPropertyRead # [option galgas_cli_options.errorPropertyGetterCall value]
       && [[receiverType definition].mPropertyMap hasKey !self.mGetterName.string]
       && ([self.mExpressions length] == 0) then
@@ -128,8 +135,8 @@ override method @getterCallExpressionAST analyzeSemanticExpression
   #--- Analysis arguments
     if [self.mExpressions length] != [getterFormalArgumentTypeList length] then
       error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType definition].mTypeName.string + "' requires "
-      + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
-      + [[self.mExpressions length] string] + " parameter(s)" : outExpression
+      + [getterFormalArgumentTypeList length] + " parameter(s), while this call has "
+      + [self.mExpressions length] + " parameter(s)" : outExpression
     else
       var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
       for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions,
@@ -156,7 +163,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
         !kind
         !receiverExpression
         !{}
-        !self.mGetterName.string
+        !if replacementGetter == "" then self.mGetterName.string else replacementGetter end
         !constructorEffectiveParameterList
         !hasCompilerArgument
       }
@@ -185,10 +192,11 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       var returnedType = @unifiedTypeMapEntry.null
       var kind = @methodKind.definedAsExtension
       let @stringlist fieldList = {}
+      var obsoletedByGetter = ""
       for (propertyTypeEntry propertyName 2*) in [receiverType definition].mCurrentTypedPropertyList do
         let propertyType = [ioTypeMap searchKey !.new {![propertyTypeEntry definition].mTypeName.string !.here}]
         let aMap = [propertyType definition].mGetterMap
-        with self.mGetterName.string in aMap  do
+        with self.mGetterName.string in aMap do
           if [propertyType definition].mTypeName.string == propertyName.string then
             matchingReaderCount += 1
             getterFormalArgumentTypeList = mArgumentTypeList
@@ -201,6 +209,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
               !propertyName.string
             }
             kind = mKind
+            obsoletedByGetter = mObsoletedByGetter
             if mErrorMessage != "" then
               error self.mGetterName : mErrorMessage
             end
@@ -254,7 +263,8 @@ override method @getterCallExpressionAST analyzeSemanticExpression
           !kind
           !receiverExpression
           !fieldList
-          !self.mGetterName.string
+          !if obsoletedByGetter == "" then self.mGetterName.string else obsoletedByGetter end
+#          !self.mGetterName.string
           !constructorEffectiveParameterList
           !hasCompilerArgument
         }

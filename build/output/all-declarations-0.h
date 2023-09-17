@@ -9650,6 +9650,7 @@ class GALGAS_getterMap : public AC_GALGAS_map {
                                                      const class GALGAS_unifiedTypeMapEntry & inOperand5,
                                                      const class GALGAS_methodQualifier & inOperand6,
                                                      const class GALGAS_string & inOperand7,
+                                                     const class GALGAS_string & inOperand8,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -9667,6 +9668,7 @@ class GALGAS_getterMap : public AC_GALGAS_map {
                                                   class GALGAS_unifiedTypeMapEntry constinArgument5,
                                                   class GALGAS_methodQualifier constinArgument6,
                                                   class GALGAS_string constinArgument7,
+                                                  class GALGAS_string constinArgument8,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
@@ -9677,7 +9679,8 @@ class GALGAS_getterMap : public AC_GALGAS_map {
                                                         class GALGAS_bool constinArgument4,
                                                         class GALGAS_unifiedTypeMapEntry constinArgument5,
                                                         class GALGAS_methodQualifier constinArgument6,
-                                                        class GALGAS_string constinArgument7
+                                                        class GALGAS_string constinArgument7,
+                                                        class GALGAS_string constinArgument8
                                                         COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMArgumentTypeListForKey (class GALGAS_functionSignature constinArgument0,
@@ -9705,6 +9708,11 @@ class GALGAS_getterMap : public AC_GALGAS_map {
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
+  public: VIRTUAL_IN_DEBUG void setter_setMObsoletedByGetterForKey (class GALGAS_string constinArgument0,
+                                                                    class GALGAS_string constinArgument1,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
   public: VIRTUAL_IN_DEBUG void setter_setMQualifierForKey (class GALGAS_methodQualifier constinArgument0,
                                                             class GALGAS_string constinArgument1,
                                                             C_Compiler * inCompiler
@@ -9725,6 +9733,7 @@ class GALGAS_getterMap : public AC_GALGAS_map {
                                                   class GALGAS_unifiedTypeMapEntry & outArgument5,
                                                   class GALGAS_methodQualifier & outArgument6,
                                                   class GALGAS_string & outArgument7,
+                                                  class GALGAS_string & outArgument8,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const ;
 
@@ -9751,6 +9760,10 @@ class GALGAS_getterMap : public AC_GALGAS_map {
                                                                        C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG class GALGAS_string getter_mObsoletedByGetterForKey (const class GALGAS_string & constinOperand0,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_methodQualifier getter_mQualifierForKey (const class GALGAS_string & constinOperand0,
                                                                                  C_Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const ;
@@ -9771,7 +9784,8 @@ class GALGAS_getterMap : public AC_GALGAS_map {
                                                     class GALGAS_bool & outOperand4,
                                                     class GALGAS_unifiedTypeMapEntry & outOperand5,
                                                     class GALGAS_methodQualifier & outOperand6,
-                                                    class GALGAS_string & outOperand7) const ;
+                                                    class GALGAS_string & outOperand7,
+                                                    class GALGAS_string & outOperand8) const ;
 
 
 //--------------------------------- Introspection
@@ -9803,6 +9817,7 @@ class cEnumerator_getterMap : public cGenericAbstractEnumerator {
   public: class GALGAS_unifiedTypeMapEntry current_mReturnedType (LOCATION_ARGS) const ;
   public: class GALGAS_methodQualifier current_mQualifier (LOCATION_ARGS) const ;
   public: class GALGAS_string current_mErrorMessage (LOCATION_ARGS) const ;
+  public: class GALGAS_string current_mObsoletedByGetter (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GALGAS_getterMap_2D_element current (LOCATION_ARGS) const ;
 } ;

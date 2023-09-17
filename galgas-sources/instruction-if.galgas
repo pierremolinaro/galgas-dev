@@ -511,7 +511,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
       [!?ioVariableMap openOverrideForSelectBlock]
       [!?ioVariableMap openBranch]
       let targetVariableCppName = "var_" + [constantName identifierRepresentation]
-            + "_" + [constantName.location locationIndex]
+            + "_" + [constantName.location startLocationIndex]
       if constantName.string != "" then
         [!?ioVariableMap insertInitializedLocalConstant
           !constantName
@@ -657,7 +657,7 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
            fixit { replace "@" + [formalType definition].mTypeName.string }
         end
         let targetVariableCppName = "var_" + [constantName identifierRepresentation]
-         + "_" + [constantName.location locationIndex]
+         + "_" + [constantName.location startLocationIndex]
         [!?ioVariableMap insertInitializedLocalConstant
           !constantName
           !formalType
@@ -676,7 +676,7 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
            fixit { replace "@" + [formalType definition].mTypeName.string }
         end
         let targetVariableCppName = "var_" + [variableName identifierRepresentation]
-         + "_" + [variableName.location locationIndex]
+         + "_" + [variableName.location startLocationIndex]
         [!?ioVariableMap insertInitializedLocalVariable
           !variableName
           !warnsIfNotMutated: true
@@ -690,7 +690,7 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
           error actualSelector : "the selector should be '" + s + "'" fixit { replace s }
         end
       case actualInputJoker (checkSelector location idx) :
-        let targetVariableCppName = "var_unused_" + idx + "_" + [location locationIndex]
+        let targetVariableCppName = "var_unused_" + idx + "_" + [location startLocationIndex]
         actualParameterList += !.actualVarInput {!typeName: [formalType definition].mTypeName.string !variableName: targetVariableCppName}
         if checkSelector && (formalSelector.string != actualSelector.string) then
           let @string s = "?" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
@@ -837,7 +837,7 @@ override method @ifInstructionForGeneration generateInstruction
           ioGeneratedCode += "GALGAS_" + [typeName identifierRepresentation] + " " + variableName + " ;\n"
         end
       end
-      let boolResultName = "optionalResult" + [optionalMethodName locationIndex]
+      let boolResultName = "optionalResult" + [optionalMethodName startLocationIndex]
       ioGeneratedCode += "const bool " + boolResultName + " = " + cppVarName
       ioGeneratedCode += ".optional_" + optionalMethodName + " ("
       for (parameterName) in actualParameterNameList

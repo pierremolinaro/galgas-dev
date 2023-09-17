@@ -168,7 +168,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
               end
             end
             if firstConstant & (mExtractedValueName.string != "") then
-              let cppName = "extractedValue_" + [mExtractedValueName.location locationIndex] + "_" + mExtractedValueName
+              let cppName = "extractedValue_" + [mExtractedValueName.location startLocationIndex] + "_" + mExtractedValueName
               extractedAssociatedValuesForGeneration += !mType !cppName !associatedValueIndex
               [!?analysisContext.mTemplateVariableMap insertKey !mExtractedValueName !mType !cppName]
             end
@@ -193,7 +193,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     templateInstructionSwitchBranchList +=
       !mConstantList
       !extractedAssociatedValuesForGeneration
-      ![mEndOfBranch locationIndex]
+      ![mEndOfBranch startLocationIndex]
       !instructionList
   end
 #--- Check all constants have been named

@@ -438,6 +438,7 @@ proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodM
           !returnedType
           !.isVirtual
           !"" # No Error message
+          !"" # getter name is not obsolete, no replacement getter
         ]
       else
         [!?ioGetterMap insertKey
@@ -449,6 +450,7 @@ proc addExtensions ?let @extensionMethodMapForBuildingContext inExtensionMethodM
           !returnedType
           !qualifier
           !"" # No Error message
+          !"" # getter name is not obsolete, no replacement getter
         ]
       end
     end

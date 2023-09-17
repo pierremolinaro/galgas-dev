@@ -138,6 +138,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap 
     !getterName:"none"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -145,6 +146,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap 
     !getterName:"all"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -155,6 +157,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
         !?getterMap
         !?ioTypeMap 
         !getterName:slotName.string
+        !obsoleteName: ""
         !returnedTypeName:"bool"
         !hasCompilerArgument:false
       )

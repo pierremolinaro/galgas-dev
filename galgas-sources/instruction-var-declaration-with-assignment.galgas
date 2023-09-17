@@ -140,7 +140,7 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
     ?let @semanticExpressionForGeneration expression
   ]
 #--- Check target variable
-  let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location locationIndex]
+  let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location startLocationIndex]
   [!?ioVariableMap insertInitializedLocalVariable
     !self.mVariableName
     !warnsIfNotMutated: true

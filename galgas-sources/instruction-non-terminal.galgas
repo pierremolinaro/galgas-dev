@@ -248,7 +248,7 @@ override method @nonterminalInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName
   end
 #--- Generate method call
-  let sdtResultVarName = "syntaxDirectedTranslationResult_" + [self.mInstructionLocation locationIndex]
+  let sdtResultVarName = "syntaxDirectedTranslationResult_" + [self.mInstructionLocation startLocationIndex]
   if inGenerateSyntaxDirectedTranslationString then
     ioGeneratedCode += "C_String " + sdtResultVarName + " ;\n"
   end

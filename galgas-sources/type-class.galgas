@@ -250,7 +250,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       end
     #--- Mark all getters as inherited
       getterMap = {}
-      for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType * mErrorMessage)
+      for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType * errorMessage replacementGetter)
             in superTypeDefinition.mGetterMap do
         [!?getterMap insertKey
           !lkey
@@ -260,7 +260,8 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
           !mHasCompilerArgument
           !mReturnedType
           !.isInherited
-          !mErrorMessage
+          !errorMessage
+          !replacementGetter
         ] 
       end
     #--- Mark all methods as inherited

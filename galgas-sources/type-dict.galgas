@@ -193,6 +193,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName:"count"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -275,6 +276,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
       !attributeTypeIndex
       !@methodQualifier.isBasic
       !"" # No Error message
+      !"" # getter name is not obsolete, no replacement getter
     ]
   end
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor

@@ -3235,6 +3235,7 @@ class cMapElement_getterMap : public cMapElement {
   public: GALGAS_unifiedTypeMapEntry mProperty_mReturnedType ;
   public: GALGAS_methodQualifier mProperty_mQualifier ;
   public: GALGAS_string mProperty_mErrorMessage ;
+  public: GALGAS_string mProperty_mObsoletedByGetter ;
 
 //--- Constructor
   public: cMapElement_getterMap (const GALGAS_lstring & inKey,
@@ -3244,7 +3245,8 @@ class cMapElement_getterMap : public cMapElement {
                                  const GALGAS_bool & in_mHasCompilerArgument,
                                  const GALGAS_unifiedTypeMapEntry & in_mReturnedType,
                                  const GALGAS_methodQualifier & in_mQualifier,
-                                 const GALGAS_string & in_mErrorMessage
+                                 const GALGAS_string & in_mErrorMessage,
+                                 const GALGAS_string & in_mObsoletedByGetter
                                  COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
@@ -3308,6 +3310,11 @@ class GALGAS_getterMap_2D_element : public AC_GALGAS_root {
     return mProperty_mErrorMessage ;
   }
 
+  public: GALGAS_string mProperty_mObsoletedByGetter ;
+  public: inline GALGAS_string readProperty_mObsoletedByGetter (void) const {
+    return mProperty_mObsoletedByGetter ;
+  }
+
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
@@ -3348,6 +3355,10 @@ class GALGAS_getterMap_2D_element : public AC_GALGAS_root {
     mProperty_mErrorMessage = inValue ;
   }
 
+  public: inline void setter_setMObsoletedByGetter (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mObsoletedByGetter = inValue ;
+  }
+
 //--------------------------------- Virtual destructor (in debug mode)
   public: virtual ~ GALGAS_getterMap_2D_element (void) ;
 
@@ -3359,7 +3370,8 @@ class GALGAS_getterMap_2D_element : public AC_GALGAS_root {
                                        const GALGAS_bool & in_mHasCompilerArgument,
                                        const GALGAS_unifiedTypeMapEntry & in_mReturnedType,
                                        const GALGAS_methodQualifier & in_mQualifier,
-                                       const GALGAS_string & in_mErrorMessage) ;
+                                       const GALGAS_string & in_mErrorMessage,
+                                       const GALGAS_string & in_mObsoletedByGetter) ;
 
 //-- Start of generic part --*
 
@@ -3379,7 +3391,8 @@ class GALGAS_getterMap_2D_element : public AC_GALGAS_root {
                                                                     const class GALGAS_bool & inOperand4,
                                                                     const class GALGAS_unifiedTypeMapEntry & inOperand5,
                                                                     const class GALGAS_methodQualifier & inOperand6,
-                                                                    const class GALGAS_string & inOperand7
+                                                                    const class GALGAS_string & inOperand7,
+                                                                    const class GALGAS_string & inOperand8
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'

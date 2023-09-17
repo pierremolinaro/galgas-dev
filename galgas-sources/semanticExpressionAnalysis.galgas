@@ -138,6 +138,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
         ?let hasCompilerArgument
         ?let returnedType
         ?2*
+        ?let unused replacementGetter
       ]
       ok = ([argumentTypeList length] == 0) & (returnedType == inTargetType)
    #--- Add conversion expression
@@ -270,6 +271,7 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
         ?let hasCompilerArgument
         ?let returnedType
         ?2*
+        ?let unused replacementGetter
       ]
       ok = ([argumentTypeList length] == 0) & (returnedType == leftType)
    #--- Add conversion expression

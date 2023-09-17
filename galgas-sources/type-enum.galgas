@@ -241,6 +241,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
       !?getterMap
       !?ioTypeMap
       !getterName: "is" + [mConstantName stringByCapitalizingFirstCharacter]
+      !obsoleteName: ""
       !returnedTypeName:"bool"
       !hasCompilerArgument:false
     )

@@ -248,9 +248,9 @@ override method @loopInstructionWithVariantForGeneration generateInstruction
   ]
   ioGeneratedCode += "if (" + variantCppVarName + ".isValid ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
-  let @string variantVar = "variant_" + [[self.mInstructionLocation locationIndex] string]
+  let @string variantVar = "variant_" + [[self.mInstructionLocation startLocationIndex] string]
   ioGeneratedCode += "uint32_t " + variantVar + " = " + variantCppVarName + ".uintValue () ;\n"
-  let @string loopVar = "loop_" + [[self.mInstructionLocation locationIndex] string]
+  let @string loopVar = "loop_" + [[self.mInstructionLocation startLocationIndex] string]
   ioGeneratedCode += "bool " + loopVar + " = true ;\n"
                   + "while (" + loopVar + ") {\n"
   [!?ioGeneratedCode incIndentation !2]

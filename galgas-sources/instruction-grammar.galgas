@@ -414,7 +414,7 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
      + [sourceExpression.mResultType definition].mTypeName.string + "'"
   end
 #--- Check syntax directed translation result parameter
-  let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [self.mGrammarComponentName.location locationIndex]
+  let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [self.mGrammarComponentName.location startLocationIndex]
   var assignementList = @stringlist {}
   [self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
     !inAnalysisContext
@@ -508,7 +508,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
      + [sourceExpression.mResultType definition].mTypeName.string + "'"
   end
 #--- Check syntax directed translation result parameter
-  let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [self.mGrammarComponentName.location locationIndex]
+  let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [self.mGrammarComponentName.location startLocationIndex]
   var assignementList = @stringlist {}
   [self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
     !inAnalysisContext

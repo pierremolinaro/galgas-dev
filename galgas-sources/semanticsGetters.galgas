@@ -2,7 +2,7 @@
 #                                           
 #  semantics definitions for semantics component 
 #                                           
-#  Copyright (C) 2009, ..., 2020 Pierre Molinaro.
+#  Copyright (C) 2009, ..., 2023 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
@@ -18,11 +18,12 @@
 proc enterBaseFinalGetterWithoutArgument ?!@getterMap ioGetterMap
                                          ?!@unifiedTypeMap ioUnifiedTypeMap
                                          ?getterName:let @string inGetterName
+                                         ?obsoleteName: let @string inObsoleteGetterName
                                          ?returnedTypeName:let @string inReturnedTypeName
                                          ?hasCompilerArgument:let @bool inHasCompilerArgument {
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   [!?ioGetterMap insertOrReplace
-    !@lstring.new {!inGetterName !@location.here}
+    !@lstring.new {!inGetterName !.here}
     !@methodKind.definedAsMember
     !@functionSignature {}
     !@location.here
@@ -30,7 +31,21 @@ proc enterBaseFinalGetterWithoutArgument ?!@getterMap ioGetterMap
     !returnedTypeIndex
     !@methodQualifier.isBasicFinal
     !"" # No Error message
+    !"" # getter name is not obsolete, no replacement getter
   ]
+  if inObsoleteGetterName != "" then
+    [!?ioGetterMap insertOrReplace
+      !@lstring.new {!inObsoleteGetterName !.here}
+      !@methodKind.definedAsMember
+      !@functionSignature {}
+      !@location.here
+      !inHasCompilerArgument
+      !returnedTypeIndex
+      !@methodQualifier.isBasicFinal
+      !"" # No Error message
+      !inGetterName # getter name is obsolete, replacement getter
+    ]
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -44,13 +59,14 @@ proc enterInheritedGetterWithoutArgument
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !@functionSignature {}
     !@location.here
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isInherited
     !"" # No Error message
+    !"" # getter name is not obsolete, no replacement getter
   ]
 }
 
@@ -78,6 +94,7 @@ proc enterInheritedGetterWithArgument
     !returnedTypeIndex
     !@methodQualifier. isInherited
     !"" # No Error message
+    !"" # getter name is not obsolete, no replacement getter
   ]
 }
 
@@ -109,29 +126,43 @@ proc enterInheritedGetterWith2Arguments
     !returnedTypeIndex
     !@methodQualifier. isInherited
     !"" # No Error message
+    !"" # getter name is not obsolete, no replacement getter
   ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc enterBaseGetterWithoutArgument
-  ?!@getterMap ioGetterMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?getterName: let @string inGetterName
-  ?returnedTypeName:let @string inReturnedTypeName
-  ?hasCompilerArgument:let @bool inHasCompilerArgument
-{
+proc enterBaseGetterWithoutArgument ?!@getterMap ioGetterMap
+                                    ?!@unifiedTypeMap ioUnifiedTypeMap
+                                    ?getterName: let @string inGetterName
+                                    ?obsoleteName: let @string inObsoleteGetterName
+                                    ?returnedTypeName:let @string inReturnedTypeName
+                                    ?hasCompilerArgument:let @bool inHasCompilerArgument {
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !@functionSignature {}
     !@location.here
     !inHasCompilerArgument
     !returnedTypeIndex
     !@methodQualifier. isBasic
     !"" # No Error message
+    !"" # getter name is not obsolete, no replacement getter
   ]
+  if inObsoleteGetterName != "" then
+    [!?ioGetterMap insertOrReplace
+      !@lstring.new {!inObsoleteGetterName !.here}
+      !@methodKind.definedAsMember
+      !@functionSignature {}
+      !@location.here
+      !inHasCompilerArgument
+      !returnedTypeIndex
+      !@methodQualifier.isBasicFinal
+      !"" # No Error message
+      !inGetterName # getter name is obsolete, replacement getter
+    ]
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -159,6 +190,7 @@ proc enterBaseGetterWithArgument
     !returnedTypeIndex
     !@methodQualifier. isBasic
     !"" # No Error message
+    !"" # getter name is not obsolete, no replacement getter
   ]
 }
 
@@ -186,6 +218,7 @@ proc enterBaseFinalGetterWithArgument
     !returnedTypeIndex
     !@methodQualifier. isBasicFinal
     !"" # No Error message
+    !"" # getter name is not obsolete, no replacement getter
   ]
 }
 
@@ -219,6 +252,7 @@ proc enterBaseGetterWith2Arguments
     !returnedTypeIndex
     !@methodQualifier. isBasic
     !"" # No Error message
+    !"" # getter name is not obsolete, no replacement getter
   ]
 }
 
@@ -250,6 +284,7 @@ proc enterBaseFinalGetterWith2Arguments
     !returnedTypeIndex
     !@methodQualifier. isBasicFinal
     !"" # No Error message
+    !"" # getter name is not obsolete, no replacement getter
   ]
 }
 
@@ -285,6 +320,7 @@ proc enterBaseFinalGetterWith3Arguments
     !returnedTypeIndex
     !@methodQualifier. isBasicFinal
     !"" # No Error message
+    !"" # getter name is not obsolete, no replacement getter
   ]
 }
 
@@ -333,6 +369,7 @@ override method @locationPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "startLocationString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:true
   )
@@ -340,13 +377,23 @@ override method @locationPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "endLocationString"
+    !obsoleteName: "locationString"
     !returnedTypeName:"string"
     !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "locationIndex"
+    !getterName: "startLocationIndex"
+    !obsoleteName: ""
+    !returnedTypeName:"uint"
+    !hasCompilerArgument:true
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName: "endLocationIndex"
+    !obsoleteName: "locationIndex"
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
@@ -354,6 +401,7 @@ override method @locationPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "file"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:true
   )
@@ -361,6 +409,7 @@ override method @locationPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "line"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
@@ -368,6 +417,7 @@ override method @locationPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "column"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
@@ -375,6 +425,7 @@ override method @locationPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "isNowhere"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -398,6 +449,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "lastCharacter"
+    !obsoleteName: ""
     !returnedTypeName:"char"
     !hasCompilerArgument:true
   )
@@ -405,6 +457,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "nowhere"
+    !obsoleteName: ""
     !returnedTypeName:"lstring"
     !hasCompilerArgument:false
   )
@@ -412,6 +465,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "here"
+    !obsoleteName: ""
     !returnedTypeName:"lstring"
     !hasCompilerArgument:true
   )
@@ -419,6 +473,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "doesEnvironmentVariableExist"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -426,6 +481,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "length"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -433,6 +489,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "range"
+    !obsoleteName: ""
     !returnedTypeName:"range"
     !hasCompilerArgument:false
   )
@@ -440,6 +497,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "utf8RepresentationWithUnicodeEscaping"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -447,6 +505,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "assemblerRepresentation"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -454,6 +513,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "fileNameRepresentation"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -461,6 +521,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "nameRepresentation"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -468,6 +529,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "cStringRepresentation"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -475,6 +537,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "identifierRepresentation"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -482,6 +545,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "decodedStringFromRepresentation"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:true
   )
@@ -489,6 +553,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "HTMLRepresentation"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -496,6 +561,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "utf8RepresentationEscapingQuestionMark"
+    !obsoleteName: ""
     !returnedTypeName: "string"
     !hasCompilerArgument:false
   )
@@ -503,6 +569,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "utf8Representation"
+    !obsoleteName: ""
     !returnedTypeName: "string"
     !hasCompilerArgument:false
   )
@@ -510,6 +577,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "utf8RepresentationWithoutDelimiters"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -517,6 +585,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "utf8Length"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -524,6 +593,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "utf32Representation"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -531,6 +601,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "stringByTrimmingWhiteSpaces"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -538,6 +609,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "md5"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -545,6 +617,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "decimalUnsignedNumber"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
@@ -552,6 +625,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "isDecimalUnsignedNumber"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -559,6 +633,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "decimalUnsigned64Number"
+    !obsoleteName: ""
     !returnedTypeName:"uint64"
     !hasCompilerArgument:true
   )
@@ -566,6 +641,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "isDecimalUnsigned64Number"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -573,6 +649,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "decimalSignedNumber"
+    !obsoleteName: ""
     !returnedTypeName:"sint"
     !hasCompilerArgument:true
   )
@@ -580,6 +657,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "isDecimalSignedNumber"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -587,6 +665,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "decimalSigned64Number"
+    !obsoleteName: ""
     !returnedTypeName:"sint64"
     !hasCompilerArgument:true
   )
@@ -594,6 +673,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "isDecimalSigned64Number"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -601,6 +681,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "decimalSignedBigInt"
+    !obsoleteName: ""
     !returnedTypeName:"bigint"
     !hasCompilerArgument:true
   )
@@ -608,6 +689,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "isDecimalSignedBigInt"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -615,6 +697,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "isDoubleNumber"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -622,6 +705,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "doubleNumber"
+    !obsoleteName: ""
     !returnedTypeName:"double"
     !hasCompilerArgument:true
   )
@@ -629,6 +713,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "capacity"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -636,6 +721,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "isSymbolicLink"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -643,6 +729,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "fileExists"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -650,6 +737,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "directoryExists"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -657,6 +745,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "pathExtension"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -664,6 +753,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "nativePathWithUnixPath"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -671,6 +761,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "unixPathWithNativePath"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -678,6 +769,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "lastPathComponent"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -685,6 +777,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "stringByDeletingPathExtension"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -692,6 +785,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "stringByCapitalizingFirstCharacter"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -699,6 +793,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "firstCharacterOrNul"
+    !obsoleteName: ""
     !returnedTypeName:"char"
     !hasCompilerArgument:false
   )
@@ -706,6 +801,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "stringByDeletingLastPathComponent"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -713,6 +809,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "stringByStandardizingPath"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -720,6 +817,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "lowercaseString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -727,6 +825,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "uppercaseString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -734,6 +833,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "reversedString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -741,6 +841,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "currentColumn"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -748,6 +849,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "system"
+    !obsoleteName: ""
     !returnedTypeName:"sint"
     !hasCompilerArgument:false
   )
@@ -755,6 +857,7 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName: "popen"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:true
   )
@@ -968,6 +1071,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"string"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -975,6 +1079,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"utf8Length"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -982,6 +1087,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"utf32CharConstantRepresentation"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -989,6 +1095,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"uint"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -996,6 +1103,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"isalnum"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -1003,6 +1111,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"isalpha"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -1010,6 +1119,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"iscntrl"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -1017,6 +1127,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"isdigit"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -1024,6 +1135,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"islower"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -1031,6 +1143,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"isupper"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -1038,6 +1151,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"isxdigit"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -1045,6 +1159,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"isUnicodeLetter"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -1052,6 +1167,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"isUnicodeMark"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -1059,6 +1175,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"isUnicodeNumber"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -1066,6 +1183,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"isUnicodeSeparator"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -1073,6 +1191,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"isUnicodeCommand"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -1080,6 +1199,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"isUnicodePunctuation"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -1087,6 +1207,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"isUnicodeSymbol"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -1094,6 +1215,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"unicodeName"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1101,6 +1223,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"unicodeToLower"
+    !obsoleteName: ""
     !returnedTypeName:"char"
     !hasCompilerArgument:false
   )
@@ -1108,6 +1231,7 @@ override method @charPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"unicodeToUpper"
+    !obsoleteName: ""
     !returnedTypeName:"char"
     !hasCompilerArgument:false
   )
@@ -1123,6 +1247,7 @@ override method @boolPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"cString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1130,6 +1255,7 @@ override method @boolPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"ocString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1137,6 +1263,7 @@ override method @boolPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"uint"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -1144,6 +1271,7 @@ override method @boolPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"sint"
+    !obsoleteName: ""
     !returnedTypeName:"sint"
     !hasCompilerArgument:false
   )
@@ -1151,6 +1279,7 @@ override method @boolPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"uint64"
+    !obsoleteName: ""
     !returnedTypeName:"uint64"
     !hasCompilerArgument:false
   )
@@ -1158,6 +1287,7 @@ override method @boolPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"sint64"
+    !obsoleteName: ""
     !returnedTypeName:"sint64"
     !hasCompilerArgument:false
   )
@@ -1165,6 +1295,7 @@ override method @boolPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"bigint"
+    !obsoleteName: ""
     !returnedTypeName:"bigint"
     !hasCompilerArgument:false
   )
@@ -1180,6 +1311,7 @@ override method @uintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"double"
+    !obsoleteName: ""
     !returnedTypeName:"double"
     !hasCompilerArgument:false
   )
@@ -1187,6 +1319,7 @@ override method @uintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"sint"
+    !obsoleteName: ""
     !returnedTypeName:"sint"
     !hasCompilerArgument:true
   )
@@ -1194,6 +1327,7 @@ override method @uintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"sint64"
+    !obsoleteName: ""
     !returnedTypeName:"sint64"
     !hasCompilerArgument:false
   )
@@ -1201,6 +1335,7 @@ override method @uintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"bigint"
+    !obsoleteName: ""
     !returnedTypeName:"bigint"
     !hasCompilerArgument:false
   )
@@ -1208,6 +1343,7 @@ override method @uintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"uint64"
+    !obsoleteName: ""
     !returnedTypeName:"uint64"
     !hasCompilerArgument:false
   )
@@ -1215,6 +1351,7 @@ override method @uintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"lsbIndex"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
@@ -1222,6 +1359,7 @@ override method @uintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"significantBitCount"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -1229,6 +1367,7 @@ override method @uintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"oneBitCount"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -1236,6 +1375,7 @@ override method @uintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"string"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1243,6 +1383,7 @@ override method @uintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"alphaString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1250,6 +1391,7 @@ override method @uintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"hexString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1268,6 +1410,7 @@ override method @uintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"xString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1275,6 +1418,7 @@ override method @uintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"isUnicodeValueAssigned"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -1326,6 +1470,7 @@ override method @sintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"double"
+    !obsoleteName: ""
     !returnedTypeName:"double"
     !hasCompilerArgument:false
   )
@@ -1333,6 +1478,7 @@ override method @sintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"uint64"
+    !obsoleteName: ""
     !returnedTypeName:"uint64"
     !hasCompilerArgument:true
   )
@@ -1340,6 +1486,7 @@ override method @sintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"sint64"
+    !obsoleteName: ""
     !returnedTypeName:"sint64"
     !hasCompilerArgument:false
   )
@@ -1347,6 +1494,7 @@ override method @sintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"uint"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
@@ -1354,6 +1502,7 @@ override method @sintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"bigint"
+    !obsoleteName: ""
     !returnedTypeName:"bigint"
     !hasCompilerArgument:false
   )
@@ -1361,6 +1510,7 @@ override method @sintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"string"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1368,6 +1518,7 @@ override method @sintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"hexString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1386,6 +1537,7 @@ override method @sintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"xString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1431,6 +1583,7 @@ override method @uint64PredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"double"
+    !obsoleteName: ""
     !returnedTypeName:"double"
     !hasCompilerArgument:false
   )
@@ -1438,6 +1591,7 @@ override method @uint64PredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"bigint"
+    !obsoleteName: ""
     !returnedTypeName:"bigint"
     !hasCompilerArgument:false
   )
@@ -1445,12 +1599,14 @@ override method @uint64PredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"sint"
+    !obsoleteName: ""
     !returnedTypeName:"sint"
     !hasCompilerArgument:true)
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"sint64"
+    !obsoleteName: ""
     !returnedTypeName:"sint64"
     !hasCompilerArgument:true
   )
@@ -1458,6 +1614,7 @@ override method @uint64PredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"uint"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
@@ -1474,6 +1631,7 @@ override method @uint64PredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"alphaString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1481,6 +1639,7 @@ override method @uint64PredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"string"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1488,6 +1647,7 @@ override method @uint64PredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"hexString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1506,6 +1666,7 @@ override method @uint64PredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"xString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1550,6 +1711,7 @@ override method @sint64PredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"double"
+    !obsoleteName: ""
     !returnedTypeName:"double"
     !hasCompilerArgument:false
   )
@@ -1557,6 +1719,7 @@ override method @sint64PredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"uint64"
+    !obsoleteName: ""
     !returnedTypeName:"uint64"
     !hasCompilerArgument:true
   )
@@ -1564,6 +1727,7 @@ override method @sint64PredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"sint"
+    !obsoleteName: ""
     !returnedTypeName:"sint"
     !hasCompilerArgument:true
   )
@@ -1571,6 +1735,7 @@ override method @sint64PredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"uint"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
@@ -1578,6 +1743,7 @@ override method @sint64PredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"bigint"
+    !obsoleteName: ""
     !returnedTypeName:"bigint"
     !hasCompilerArgument:false
   )
@@ -1585,6 +1751,7 @@ override method @sint64PredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"string"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1592,6 +1759,7 @@ override method @sint64PredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"hexString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1610,6 +1778,7 @@ override method @sint64PredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"xString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1654,6 +1823,7 @@ override method @doublePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"string"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1661,6 +1831,7 @@ override method @doublePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"uint"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
@@ -1668,6 +1839,7 @@ override method @doublePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"sint"
+    !obsoleteName: ""
     !returnedTypeName:"sint"
     !hasCompilerArgument:true
   )
@@ -1675,6 +1847,7 @@ override method @doublePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"uint64"
+    !obsoleteName: ""
     !returnedTypeName:"uint64"
     !hasCompilerArgument:true
   )
@@ -1682,6 +1855,7 @@ override method @doublePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"sint64"
+    !obsoleteName: ""
     !returnedTypeName:"sint64"
     !hasCompilerArgument:true
   )
@@ -1689,6 +1863,7 @@ override method @doublePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"cos"
+    !obsoleteName: ""
     !returnedTypeName:"double"
     !hasCompilerArgument:false
   )
@@ -1696,6 +1871,7 @@ override method @doublePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"sin"
+    !obsoleteName: ""
     !returnedTypeName:"double"
     !hasCompilerArgument:false
   )
@@ -1703,6 +1879,7 @@ override method @doublePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"tan"
+    !obsoleteName: ""
     !returnedTypeName:"double"
     !hasCompilerArgument:false
   )
@@ -1710,6 +1887,7 @@ override method @doublePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"log10"
+    !obsoleteName: ""
     !returnedTypeName:"double"
     !hasCompilerArgument:true
   )
@@ -1717,6 +1895,7 @@ override method @doublePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"log2"
+    !obsoleteName: ""
     !returnedTypeName:"double"
     !hasCompilerArgument:true
   )
@@ -1724,6 +1903,7 @@ override method @doublePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"logn"
+    !obsoleteName: ""
     !returnedTypeName:"double"
     !hasCompilerArgument:true
   )
@@ -1731,6 +1911,7 @@ override method @doublePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"exp"
+    !obsoleteName: ""
     !returnedTypeName:"double"
     !hasCompilerArgument:false
   )
@@ -1738,6 +1919,7 @@ override method @doublePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"cosDegree"
+    !obsoleteName: ""
     !returnedTypeName:"double"
     !hasCompilerArgument:false
   )
@@ -1745,6 +1927,7 @@ override method @doublePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"sinDegree"
+    !obsoleteName: ""
     !returnedTypeName:"double"
     !hasCompilerArgument:false
   )
@@ -1752,6 +1935,7 @@ override method @doublePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"tanDegree"
+    !obsoleteName: ""
     !returnedTypeName:"double"
     !hasCompilerArgument:false
   )
@@ -1759,6 +1943,7 @@ override method @doublePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"sqrt"
+    !obsoleteName: ""
     !returnedTypeName:"double"
     !hasCompilerArgument:true
   )
@@ -1773,6 +1958,7 @@ override method @doublePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"binaryImage"
+    !obsoleteName: ""
     !returnedTypeName:"uint64"
     !hasCompilerArgument:false
   )
@@ -1795,6 +1981,7 @@ override method @stringsetPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"count"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -1802,6 +1989,7 @@ override method @stringsetPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"anyString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:true
   )
@@ -1809,6 +1997,7 @@ override method @stringsetPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"stringList"
+    !obsoleteName: ""
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false
   )
@@ -1824,6 +2013,7 @@ override method @binarysetPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"isFull"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -1831,6 +2021,7 @@ override method @binarysetPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"nodeCount"
+    !obsoleteName: ""
     !returnedTypeName:"uint64"
     !hasCompilerArgument:false
   )
@@ -1838,6 +2029,7 @@ override method @binarysetPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"isEmpty"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -1845,6 +2037,7 @@ override method @binarysetPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"significantVariableCount"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -1870,6 +2063,7 @@ override method @binarysetPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"graphvizDump"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -1940,6 +2134,7 @@ override method @binarysetPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"compressedValueCount"
+    !obsoleteName: ""
     !returnedTypeName:"uint64"
     !hasCompilerArgument:false
   )
@@ -1968,6 +2163,7 @@ override method @binarysetPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"predicateStringValue"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -2123,6 +2319,7 @@ override method @typePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"name"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -2130,6 +2327,7 @@ override method @typePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"hasSuperclass"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -2137,6 +2335,7 @@ override method @typePredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"superclass"
+    !obsoleteName: ""
     !returnedTypeName:"type"
     !hasCompilerArgument:true
   )
@@ -2152,6 +2351,7 @@ override method @dataPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"length"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -2159,6 +2359,7 @@ override method @dataPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"cStringRepresentation"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -2174,6 +2375,7 @@ override method @functionPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"name"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -2181,6 +2383,7 @@ override method @functionPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"resultType"
+    !obsoleteName: ""
     !returnedTypeName:"type"
     !hasCompilerArgument:false
   )
@@ -2188,6 +2391,7 @@ override method @functionPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"formalParameterTypeList"
+    !obsoleteName: ""
     !returnedTypeName:"typelist"
     !hasCompilerArgument:false
   )
@@ -2210,6 +2414,7 @@ override method @objectPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"objectStaticType"
+    !obsoleteName: ""
     !returnedTypeName:"type"
     !hasCompilerArgument:false
   )
@@ -2217,6 +2422,7 @@ override method @objectPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"objectDynamicType"
+    !obsoleteName: ""
     !returnedTypeName:"type"
     !hasCompilerArgument:false
   )
@@ -2232,6 +2438,7 @@ override method @filewrapperPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"allTextFilePathes"
+    !obsoleteName: ""
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false
   )
@@ -2239,6 +2446,7 @@ override method @filewrapperPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"allBinaryFilePathes"
+    !obsoleteName: ""
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false
   )
@@ -2246,6 +2454,7 @@ override method @filewrapperPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"allDirectoryPathes"
+    !obsoleteName: ""
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false
   )
@@ -2253,6 +2462,7 @@ override method @filewrapperPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"currentDirectory"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -2332,6 +2542,7 @@ override method @timerPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"msFromStart"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -2339,6 +2550,7 @@ override method @timerPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"string"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -2346,6 +2558,7 @@ override method @timerPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"isRunning"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -2362,6 +2575,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"fitsInUInt"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -2369,6 +2583,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"fitsInSInt"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -2376,6 +2591,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"fitsInUInt64"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -2383,6 +2599,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"fitsInSInt64"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -2390,6 +2607,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"string"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -2405,6 +2623,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"hexString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -2423,6 +2642,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"xString"
+    !obsoleteName: ""
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
@@ -2430,6 +2650,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"bitCountForSignedRepresentation"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -2437,6 +2658,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"bitCountForUnsignedRepresentation"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -2444,6 +2666,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"uint"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
@@ -2451,6 +2674,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"sint"
+    !obsoleteName: ""
     !returnedTypeName:"sint"
     !hasCompilerArgument:true
   )
@@ -2458,6 +2682,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"uint64"
+    !obsoleteName: ""
     !returnedTypeName:"uint64"
     !hasCompilerArgument:true
   )
@@ -2465,6 +2690,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"sint64"
+    !obsoleteName: ""
     !returnedTypeName:"sint64"
     !hasCompilerArgument:true
   )
@@ -2472,6 +2698,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"abs"
+    !obsoleteName: ""
     !returnedTypeName:"bigint"
     !hasCompilerArgument:false
   )
@@ -2487,6 +2714,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"isZero"
+    !obsoleteName: ""
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -2494,6 +2722,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"sign"
+    !obsoleteName: ""
     !returnedTypeName:"sint"
     !hasCompilerArgument:false
   )
@@ -2501,6 +2730,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"extract8ForUnsignedRepresentation"
+    !obsoleteName: ""
     !returnedTypeName:"uintlist"
     !hasCompilerArgument:false
   )
@@ -2508,6 +2738,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"extract8ForSignedRepresentation"
+    !obsoleteName: ""
     !returnedTypeName:"uintlist"
     !hasCompilerArgument:false
   )
@@ -2515,6 +2746,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"extract32ForUnsignedRepresentation"
+    !obsoleteName: ""
     !returnedTypeName:"uintlist"
     !hasCompilerArgument:false
   )
@@ -2522,6 +2754,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"extract32ForSignedRepresentation"
+    !obsoleteName: ""
     !returnedTypeName:"uintlist"
     !hasCompilerArgument:false
   )
@@ -2529,6 +2762,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"extract64ForUnsignedRepresentation"
+    !obsoleteName: ""
     !returnedTypeName:"uint64list"
     !hasCompilerArgument:false
   )
@@ -2536,6 +2770,7 @@ override method @bigintPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !getterName:"extract64ForSignedRepresentation"
+    !obsoleteName: ""
     !returnedTypeName:"uint64list"
     !hasCompilerArgument:false
   )

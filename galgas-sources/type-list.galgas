@@ -220,6 +220,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
       !mPropertyTypeEntry
       !@methodQualifier.isBasic
       !"" # No Error message
+      !"" # getter name is not obsolete, no replacement getter
     ]
   end
 #------------------------- Instance methods

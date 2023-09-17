@@ -195,7 +195,7 @@ override method @loopInstructionWithoutVariantForGeneration generateInstruction 
                                                                                 ?!@stringset ioUnusedVariableCppNameSet
                                                                                 ?let @bool inGenerateSyntaxDirectedTranslationString
                                                                                 ?!@string ioGeneratedCode {
-  let @string loopVar = "loop_" + [[self.mInstructionLocation locationIndex] string]
+  let @string loopVar = "loop_" + [[self.mInstructionLocation startLocationIndex] string]
   ioGeneratedCode += "bool " + loopVar + " = true ;\n"
   ioGeneratedCode += "while (" + loopVar + ") {\n"
   [!?ioGeneratedCode incIndentation !2]

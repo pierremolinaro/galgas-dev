@@ -102,6 +102,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName: "axisCount"
+    !obsoleteName: ""
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
@@ -130,6 +131,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
     !boolType
     !@methodQualifier.isBasicFinal
     !"" # No Error message
+    !"" # getter name is not obsolete, no replacement getter
   ]
   [!?getterMap insertOrReplace
     !@lstring.new {!"valueAtIndex" !@location.here}
@@ -140,6 +142,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
     !elementTypeIndex
     !@methodQualifier.isBasicFinal
     !"" # No Error message
+    !"" # getter name is not obsolete, no replacement getter
   ]
 #--- Modifiers
   var setterFormalArgumentList = @formalParameterSignature {}
