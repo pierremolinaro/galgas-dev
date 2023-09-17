@@ -48,7 +48,7 @@ proc checkLabelMap
         + " formal parameter"
         + if [mFormalArgumentList length] > 1 then "s" else "" end
         + " declared here, but declaration at "
-        + [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey !mLabelName.string] locationString]
+        + [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey !mLabelName.string] startLocationString]
         + " names " + [[formalParametersList length] string] + " parameter"
         + if [formalParametersList length] > 1 then "s" else "" end
     else
@@ -58,7 +58,7 @@ proc checkLabelMap
             " this formal parameter is declared with '"
           + mFormalArgumentPassingModeForGrammarAnalysis
           + "' passing mode, but declaration at "
-          + [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey !mLabelName.string] locationString]
+          + [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey !mLabelName.string] startLocationString]
           + " is declared with '" + mFormalArgumentPassingMode + "' passing mode"
         end
         if mGalgasTypeNameForGrammarAnalysis.string != mFormalArgumentTypeName.string then
@@ -66,7 +66,7 @@ proc checkLabelMap
             " this formal parameter is declared of '@"
           + mGalgasTypeNameForGrammarAnalysis
           + "' type, but declaration at "
-          + [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey !mLabelName.string] locationString]
+          + [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey !mLabelName.string] startLocationString]
           + " is declared with '@" + mFormalArgumentTypeName + "' type"
         end
       end
@@ -77,7 +77,7 @@ proc checkLabelMap
     if not [labelStringSet hasKey !lkey.string] then
       error inNonTerminalLocation :
         "this non terminal does not declare the '" + lkey + "' label, but declaration at "
-          + [inOriginalNonTerminalLocation locationString]
+          + [inOriginalNonTerminalLocation startLocationString]
           + " does"
     end
   end

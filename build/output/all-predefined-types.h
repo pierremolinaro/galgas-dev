@@ -125,6 +125,9 @@ class GALGAS_location : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG class GALGAS_uint getter_column (C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG class GALGAS_string getter_endLocationString (C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_string getter_file (C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const ;
 
@@ -136,8 +139,8 @@ class GALGAS_location : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG class GALGAS_uint getter_locationIndex (C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_string getter_locationString (C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_string getter_startLocationString (C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_location getter_union (const class GALGAS_location & constinOperand0,
                                                                C_Compiler * inCompiler

@@ -141,12 +141,32 @@ void GALGAS_location::description (C_String & ioString,
 
 //------------------------------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_location::getter_locationString (C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
+GALGAS_string GALGAS_location::getter_startLocationString (C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     if (!mSourceText.isValid ()) {
-      inCompiler->onTheFlyRunTimeError ("'locationString' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("'startLocationString' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
+    }else{
+      C_String s ;
+      s << "file '" << mSourceText.sourceFilePath ()
+        << "', line " << cStringWithSigned (mStartLocationInSource.lineNumber ())
+        << ":" << cStringWithSigned (mStartLocationInSource.columnNumber ()) ;
+      result = GALGAS_string (s) ;
+    }
+  }
+  return result ;
+}
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_location::getter_endLocationString (C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    if (!mSourceText.isValid ()) {
+      inCompiler->onTheFlyRunTimeError ("'endLocationString' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
       C_String s ;
       s << "file '" << mSourceText.sourceFilePath ()

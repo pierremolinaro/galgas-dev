@@ -1574,21 +1574,21 @@ void routine_checkUsefulEntities (const GALGAS_usefulEntitiesGraph constinArgume
             if (kBoolFalse == test_3) {
               enumGalgasBool test_5 = kBoolTrue ;
               if (kBoolTrue == test_5) {
-                test_5 = var_uselessEntityLocationMap_2578.getter_hasKey (var_l_2643.getter_locationString (inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 57)) COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 57)).operator_not (SOURCE_FILE ("useful-entities-computation.galgas", 57)).boolEnum () ;
+                test_5 = var_uselessEntityLocationMap_2578.getter_hasKey (var_l_2643.getter_startLocationString (inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 57)) COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 57)).operator_not (SOURCE_FILE ("useful-entities-computation.galgas", 57)).boolEnum () ;
                 if (kBoolTrue == test_5) {
                   {
-                  var_uselessEntityLocationMap_2578.setter_insertKey (var_l_2643.getter_locationString (inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 58)).getter_nowhere (SOURCE_FILE ("useful-entities-computation.galgas", 58)), var_l_2643, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 58)) ;
+                  var_uselessEntityLocationMap_2578.setter_insertKey (var_l_2643.getter_startLocationString (inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 58)).getter_nowhere (SOURCE_FILE ("useful-entities-computation.galgas", 58)), var_l_2643, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 58)) ;
                   }
                 }
               }
             }
             enumerator_2607.gotoNextObject () ;
           }
-          cEnumerator_uselessEntityLocationMap enumerator_3090 (var_uselessEntityLocationMap_2578, kENUMERATION_UP) ;
-          while (enumerator_3090.hasCurrentObject ()) {
+          cEnumerator_uselessEntityLocationMap enumerator_3100 (var_uselessEntityLocationMap_2578, kENUMERATION_UP) ;
+          while (enumerator_3100.hasCurrentObject ()) {
             TC_Array <C_FixItDescription> fixItArray6 ;
-            inCompiler->emitSemanticWarning (enumerator_3090.current_mLocation (HERE), GALGAS_string ("unused entity, due to option --").add_operation (GALGAS_string (gOption_galgas_5F_cli_5F_options_checkEntityUsefulness.readProperty_string ()), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 62)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 62)), fixItArray6  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 62)) ;
-            enumerator_3090.gotoNextObject () ;
+            inCompiler->emitSemanticWarning (enumerator_3100.current_mLocation (HERE), GALGAS_string ("unused entity, due to option --").add_operation (GALGAS_string (gOption_galgas_5F_cli_5F_options_checkEntityUsefulness.readProperty_string ()), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 62)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 62)), fixItArray6  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 62)) ;
+            enumerator_3100.gotoNextObject () ;
           }
         }
       }

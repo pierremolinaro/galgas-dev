@@ -332,7 +332,14 @@ override method @locationPredefinedTypeAST getGetterMap
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !getterName: "locationString"
+    !getterName: "startLocationString"
+    !returnedTypeName:"string"
+    !hasCompilerArgument:true
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName: "endLocationString"
     !returnedTypeName:"string"
     !hasCompilerArgument:true
   )
