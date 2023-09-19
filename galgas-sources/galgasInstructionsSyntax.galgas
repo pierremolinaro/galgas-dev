@@ -600,7 +600,7 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
   #    M E T H O D    C A L L    I N S T R U C T I O N
   #·····················································································································
 
-  rule <actual_parameter_list> !@actualParameterListAST outActualParameterList
+#  rule <actual_parameter_list> !@actualParameterListAST outActualParameterList
 
   rule <actual_parameter_list_within_parenthesis> !@actualParameterListAST outActualParameterList
 

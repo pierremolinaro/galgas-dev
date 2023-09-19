@@ -68,8 +68,7 @@ syntax extension galgas3InstructionsSyntax {
 
   rule <semantic_instruction_beginning_with_identifier>
         ?prefixedBySelf: let @bool inHasSelfPrefix
-        !@semanticInstructionAST outInstruction
-  {
+        !@semanticInstructionAST outInstruction {
     $identifier$ ?let @lstring receiverName
     let instructionLocation = @location.here
     var @lstringlist mStructAttributeList = {}
@@ -168,17 +167,17 @@ syntax extension galgas4InstructionsSyntax {
 
   rule <semantic_instruction_beginning_with_identifier>
         ?prefixedBySelf: let @bool inHasSelfPrefix
-        !@semanticInstructionAST outInstruction
-  {
+        !@semanticInstructionAST outInstruction {
     $identifier$ ?let @lstring receiverName
     let instructionLocation = @location.here
-    var @lstringlist mStructAttributeList = {}
+    var @lstringlist propertyList = {}
     repeat
     while
       $.$
       $identifier$ ?let attributeName
-      mStructAttributeList += !attributeName
+      propertyList += !attributeName
     end
+  #---
     select
       $-=$
       <expression> ?let @semanticExpressionAST expression
@@ -186,7 +185,7 @@ syntax extension galgas4InstructionsSyntax {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
-        !mStructAttributeList
+        !propertyList
         !expression
       }
     or
@@ -197,7 +196,7 @@ syntax extension galgas4InstructionsSyntax {
           !instructionLocation
           !inHasSelfPrefix
           !receiverName
-          !mStructAttributeList
+          !propertyList
           !expressionList
         }
       or
@@ -206,7 +205,7 @@ syntax extension galgas4InstructionsSyntax {
           !instructionLocation
           !inHasSelfPrefix
           !receiverName
-          !mStructAttributeList
+          !propertyList
           !expression
         }
       end
@@ -217,7 +216,7 @@ syntax extension galgas4InstructionsSyntax {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
-        !mStructAttributeList
+        !propertyList
         !expression
       }
     or
@@ -227,9 +226,52 @@ syntax extension galgas4InstructionsSyntax {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
-        !mStructAttributeList
+        !propertyList
         !expression
       }
+    or
+      <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST actualParameterList
+      if inHasSelfPrefix then
+        if [propertyList length] == 0 then
+          outInstruction = @methodCallInstructionAST.new {
+            !instructionLocation
+            !@selfInExpressionAST.new {!instructionLocation}
+            !receiverName # Method name
+            !actualParameterList
+          }
+        else
+          [!?propertyList popLast ?let methodName]
+          var @semanticExpressionAST receiverExpression = @selfInExpressionAST.new {!@location.here}
+          receiverExpression = @structPropertyAccessExpressionAST.new {!receiverName.location !receiverExpression !receiverName}
+          for (propertyName) in propertyList do
+            receiverExpression = @structPropertyAccessExpressionAST.new {!propertyName.location !receiverExpression !propertyName}
+          end
+          outInstruction = @methodCallInstructionAST.new {
+            !instructionLocation
+            !receiverExpression
+            !methodName
+            !actualParameterList
+          }
+        end
+      elsif [propertyList length] == 0 then
+        outInstruction = @procCallInstructionAST.new {
+          !receiverName.location
+          !receiverName # Proc name
+          !actualParameterList
+        }
+      else
+        [!?propertyList popLast ?let methodName]
+        var @semanticExpressionAST receiverExpression = @varInExpressionAST.new {!receiverName}
+        for (propertyName) in propertyList do
+          receiverExpression = @structPropertyAccessExpressionAST.new {!propertyName.location !receiverExpression !propertyName}
+        end
+        outInstruction = @methodCallInstructionAST.new {
+          !instructionLocation
+          !receiverExpression
+          !methodName
+          !actualParameterList
+        }
+      end
     end
   }  
 

@@ -80,7 +80,6 @@ class C_Lexique_galgasScanner : public C_Lexique {
    kToken__25_attribute,
    kToken__27_char_27_,
    kToken__24_terminal_24_,
-   kToken_separator_2D_string,
    kToken__3F_,
    kToken__3F__21_,
    kToken__21_,
@@ -327,7 +326,7 @@ class C_Lexique_galgasScanner : public C_Lexique {
   protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int16_t terminalVocabularyCount (void) const override { return 157 ; }
+  public: virtual int16_t terminalVocabularyCount (void) const override { return 156 ; }
 
 //--- Get Token String
   public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const override ;

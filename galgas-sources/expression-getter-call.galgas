@@ -17,7 +17,7 @@ syntax extension galgas3ExpressionSyntax {
     <output_expression_list_ggs3> ?let @actualOutputExpressionList expressionList
     $]$
     let endLocation = @location.here
-    outExpression = @getterCallExpressionGGS3AST.new {
+    outExpression = @getterCallExpressionAST.new {
       !errorOnGetterCallInsteadOfPropertyRead: [option galgas_cli_options.errorPropertyGetterCall value]
       !receiverExpression
       !getterName
@@ -32,7 +32,7 @@ syntax extension galgas3ExpressionSyntax {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @getterCallExpressionGGS3AST : @semanticExpressionAST {
+refclass @getterCallExpressionAST : @semanticExpressionAST {
   private let @bool errorOnGetterCallInsteadOfPropertyRead %selector
   private let @semanticExpressionAST mReceiver
   private let @lstring mGetterName

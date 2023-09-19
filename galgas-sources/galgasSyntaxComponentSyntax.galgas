@@ -214,7 +214,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner) {
   
   rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
   
-  rule <actual_parameter_list> !@actualParameterListAST outActualParameterList
+#  rule <actual_parameter_list> !@actualParameterListAST outActualParameterList
 
   rule <actual_parameter_list_within_parenthesis> !@actualParameterListAST outActualParameterList
   

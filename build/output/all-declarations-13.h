@@ -1291,13 +1291,6 @@ class cParser_galgas_34_SyntaxComponentSyntax {
 
   protected: virtual void nt_actual_5F_input_5F_parameter_5F_list_indexing (class C_Lexique_galgasScanner * inLexique) = 0 ;
 
-  protected: virtual void nt_actual_5F_parameter_5F_list_ (class GALGAS_actualParameterListAST & outArgument0,
-                                                           class C_Lexique_galgasScanner * inLexique) = 0 ;
-
-  protected: virtual void nt_actual_5F_parameter_5F_list_parse (class C_Lexique_galgasScanner * inLexique) = 0 ;
-
-  protected: virtual void nt_actual_5F_parameter_5F_list_indexing (class C_Lexique_galgasScanner * inLexique) = 0 ;
-
   protected: virtual void nt_actual_5F_parameter_5F_list_5F_within_5F_parenthesis_ (class GALGAS_actualParameterListAST & outArgument0,
                                                                                     class C_Lexique_galgasScanner * inLexique) = 0 ;
 
