@@ -8318,6 +8318,8 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [156] = {
   false /* %attribute */,
   false /* 'char' */,
   false /* $terminal$ */,
+  false /* comment */,
+  false /* commentMark */,
   false /* ? */,
   false /* ?! */,
   false /* ! */,
@@ -8327,8 +8329,6 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [156] = {
   false /* << */,
   false /* <non_terminal> */,
   false /* "string" */,
-  false /* comment */,
-  false /* commentMark */,
   false /* abstract */,
   false /* after */,
   false /* array */,
@@ -8539,6 +8539,8 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("%attribute") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("'char'") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("$terminal$") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("comment") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("commentMark") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("\?") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("\?!") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("!") COMMA_THERE) ;
@@ -8548,8 +8550,6 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("<<") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("<non_terminal>") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("\"string\"") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("comment") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("commentMark") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("abstract") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("after") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("array") COMMA_THERE) ;

@@ -111,17 +111,17 @@ let galgasScanner_1__40_type : UInt16 = 7
 let galgasScanner_1__25_attribute : UInt16 = 8
 let galgasScanner_1__27_char_27_ : UInt16 = 9
 let galgasScanner_1__24_terminal_24_ : UInt16 = 10
-let galgasScanner_1__3F_ : UInt16 = 11
-let galgasScanner_1__3F__21_ : UInt16 = 12
-let galgasScanner_1__21_ : UInt16 = 13
-let galgasScanner_1__21__3F_ : UInt16 = 14
-let galgasScanner_1__3C_ : UInt16 = 15
-let galgasScanner_1__3C__3D_ : UInt16 = 16
-let galgasScanner_1__3C__3C_ : UInt16 = 17
-let galgasScanner_1__3C_non_5F_terminal_3E_ : UInt16 = 18
-let galgasScanner_1__22_string_22_ : UInt16 = 19
-let galgasScanner_1_comment : UInt16 = 20
-let galgasScanner_1_commentMark : UInt16 = 21
+let galgasScanner_1_comment : UInt16 = 11
+let galgasScanner_1_commentMark : UInt16 = 12
+let galgasScanner_1__3F_ : UInt16 = 13
+let galgasScanner_1__3F__21_ : UInt16 = 14
+let galgasScanner_1__21_ : UInt16 = 15
+let galgasScanner_1__21__3F_ : UInt16 = 16
+let galgasScanner_1__3C_ : UInt16 = 17
+let galgasScanner_1__3C__3D_ : UInt16 = 18
+let galgasScanner_1__3C__3C_ : UInt16 = 19
+let galgasScanner_1__3C_non_5F_terminal_3E_ : UInt16 = 20
+let galgasScanner_1__22_string_22_ : UInt16 = 21
 let galgasScanner_1_abstract : UInt16 = 22
 let galgasScanner_1_after : UInt16 = 23
 let galgasScanner_1_array : UInt16 = 24
@@ -391,17 +391,17 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
       12, // 8 : galgasScanner_1__25_attribute
       9, // 9 : galgasScanner_1__27_char_27_
       4, // 10 : galgasScanner_1__24_terminal_24_
-      3, // 11 : galgasScanner_1__3F_
-      3, // 12 : galgasScanner_1__3F__21_
-      3, // 13 : galgasScanner_1__21_
-      3, // 14 : galgasScanner_1__21__3F_
-      2, // 15 : galgasScanner_1__3C_
-      2, // 16 : galgasScanner_1__3C__3D_
-      2, // 17 : galgasScanner_1__3C__3C_
-      5, // 18 : galgasScanner_1__3C_non_5F_terminal_3E_
-      10, // 19 : galgasScanner_1__22_string_22_
-      13, // 20 : galgasScanner_1_comment
-      13, // 21 : galgasScanner_1_commentMark
+      13, // 11 : galgasScanner_1_comment
+      13, // 12 : galgasScanner_1_commentMark
+      3, // 13 : galgasScanner_1__3F_
+      3, // 14 : galgasScanner_1__3F__21_
+      3, // 15 : galgasScanner_1__21_
+      3, // 16 : galgasScanner_1__21__3F_
+      2, // 17 : galgasScanner_1__3C_
+      2, // 18 : galgasScanner_1__3C__3D_
+      2, // 19 : galgasScanner_1__3C__3C_
+      5, // 20 : galgasScanner_1__3C_non_5F_terminal_3E_
+      10, // 21 : galgasScanner_1__22_string_22_
       1, // 22 : galgasScanner_1_abstract
       1, // 23 : galgasScanner_1_after
       1, // 24 : galgasScanner_1_array
@@ -558,17 +558,17 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
       true, // 8 : galgasScanner_1__25_attribute
       true, // 9 : galgasScanner_1__27_char_27_
       true, // 10 : galgasScanner_1__24_terminal_24_
-      true, // 11 : galgasScanner_1__3F_
-      true, // 12 : galgasScanner_1__3F__21_
-      true, // 13 : galgasScanner_1__21_
-      true, // 14 : galgasScanner_1__21__3F_
-      true, // 15 : galgasScanner_1__3C_
-      true, // 16 : galgasScanner_1__3C__3D_
-      true, // 17 : galgasScanner_1__3C__3C_
-      true, // 18 : galgasScanner_1__3C_non_5F_terminal_3E_
-      false, // 19 : galgasScanner_1__22_string_22_
-      false, // 20 : galgasScanner_1_comment
-      false, // 21 : galgasScanner_1_commentMark
+      false, // 11 : galgasScanner_1_comment
+      false, // 12 : galgasScanner_1_commentMark
+      true, // 13 : galgasScanner_1__3F_
+      true, // 14 : galgasScanner_1__3F__21_
+      true, // 15 : galgasScanner_1__21_
+      true, // 16 : galgasScanner_1__21__3F_
+      true, // 17 : galgasScanner_1__3C_
+      true, // 18 : galgasScanner_1__3C__3D_
+      true, // 19 : galgasScanner_1__3C__3C_
+      true, // 20 : galgasScanner_1__3C_non_5F_terminal_3E_
+      false, // 21 : galgasScanner_1__22_string_22_
       true, // 22 : galgasScanner_1_abstract
       true, // 23 : galgasScanner_1_after
       true, // 24 : galgasScanner_1_array
@@ -1088,6 +1088,46 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
         scanningOk = false
       }
       tokenCode = galgasScanner_1__24_terminal_24_
+    }else if scanningOk && (self.testForInputChar (35)) {
+      if scanningOk && (self.testForInputChar (33)) {
+        while (loop && scanningOk) {
+          if scanningOk && (self.testForInputFromChar (1, toChar:9) || self.testForInputChar (11) || self.testForInputChar (12) || self.testForInputFromChar (14, toChar:65533)) {
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+        tokenCode = galgasScanner_1_commentMark
+      }else{
+        while (loop && scanningOk) {
+          if scanningOk && (self.testForInputFromChar (1, toChar:9) || self.testForInputChar (11) || self.testForInputChar (12) || self.testForInputFromChar (14, toChar:1114111)) {
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+        tokenCode = galgasScanner_1_comment
+      }
+    }else if scanningOk && (self.testForInputString ("//", advance: true)) {
+      if scanningOk && (self.testForInputChar (33)) {
+        while (loop && scanningOk) {
+          if scanningOk && (self.testForInputFromChar (1, toChar:9) || self.testForInputChar (11) || self.testForInputChar (12) || self.testForInputFromChar (14, toChar:65533)) {
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+        tokenCode = galgasScanner_1_commentMark
+      }else{
+        while (loop && scanningOk) {
+          if scanningOk && (self.testForInputFromChar (1, toChar:9) || self.testForInputChar (11) || self.testForInputChar (12) || self.testForInputFromChar (14, toChar:1114111)) {
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+        tokenCode = galgasScanner_1_comment
+      }
     }else if scanningOk && self.testForInputString ("===", advance: true) {
       tokenCode = galgasScanner_1__3D__3D__3D_
     }else if scanningOk && self.testForInputString ("&--", advance: true) {
@@ -1385,26 +1425,6 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
         tokenCode = galgasScanner_1__22_string_22_
       }else{
         scanningOk = false
-      }
-    }else if scanningOk && (self.testForInputChar (35)) {
-      if scanningOk && (self.testForInputChar (33)) {
-        while (loop && scanningOk) {
-          if scanningOk && (self.testForInputFromChar (1, toChar:9) || self.testForInputChar (11) || self.testForInputChar (12) || self.testForInputFromChar (14, toChar:65533)) {
-          }else{
-            loop = false
-          }
-        }
-        loop = true
-        tokenCode = galgasScanner_1_commentMark
-      }else{
-        while (loop && scanningOk) {
-          if scanningOk && (self.testForInputFromChar (1, toChar:9) || self.testForInputChar (11) || self.testForInputChar (12) || self.testForInputFromChar (14, toChar:1114111)) {
-          }else{
-            loop = false
-          }
-        }
-        loop = true
-        tokenCode = galgasScanner_1_comment
       }
     }else if scanningOk && (self.testForInputFromChar (1, toChar:32)) {
     }else if self.testForInputChar (0) { // End of source text ?

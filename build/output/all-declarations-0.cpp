@@ -110,6 +110,12 @@ static const char * gSyntaxErrorMessage_galgasScanner__27_char_27_ = "a characte
 //--- Syntax error message for terminal '$$terminal$$' :
 static const char * gSyntaxErrorMessage_galgasScanner__24_terminal_24_ = "a terminal symbol ($...$)" ;
 
+//--- Syntax error message for terminal '$comment$' :
+static const char * gSyntaxErrorMessage_galgasScanner_comment = "a comment" ;
+
+//--- Syntax error message for terminal '$commentMark$' :
+static const char * gSyntaxErrorMessage_galgasScanner_commentMark = "a comment" ;
+
 //--- Syntax error message for terminal '$?$' :
 static const char * gSyntaxErrorMessage_galgasScanner__3F_ = "the '\?' or '\?selector:' delimitor" ;
 
@@ -136,12 +142,6 @@ static const char * gSyntaxErrorMessage_galgasScanner__3C_non_5F_terminal_3E_ = 
 
 //--- Syntax error message for terminal '$"string"$' :
 static const char * gSyntaxErrorMessage_galgasScanner__22_string_22_ = "a character string constant \"...\"" ;
-
-//--- Syntax error message for terminal '$comment$' :
-static const char * gSyntaxErrorMessage_galgasScanner_comment = "a comment" ;
-
-//--- Syntax error message for terminal '$commentMark$' :
-static const char * gSyntaxErrorMessage_galgasScanner_commentMark = "a comment" ;
 
 //--- Syntax error message for terminal '$abstract$' :
 static const char * gSyntaxErrorMessage_galgasScanner_abstract = "the 'abstract' keyword" ;
@@ -566,6 +566,8 @@ C_String C_Lexique_galgasScanner::getMessageForTerminal (const int16_t inTermina
         gSyntaxErrorMessage_galgasScanner__25_attribute,
         gSyntaxErrorMessage_galgasScanner__27_char_27_,
         gSyntaxErrorMessage_galgasScanner__24_terminal_24_,
+        gSyntaxErrorMessage_galgasScanner_comment,
+        gSyntaxErrorMessage_galgasScanner_commentMark,
         gSyntaxErrorMessage_galgasScanner__3F_,
         gSyntaxErrorMessage_galgasScanner__3F__21_,
         gSyntaxErrorMessage_galgasScanner__21_,
@@ -575,8 +577,6 @@ C_String C_Lexique_galgasScanner::getMessageForTerminal (const int16_t inTermina
         gSyntaxErrorMessage_galgasScanner__3C__3C_,
         gSyntaxErrorMessage_galgasScanner__3C_non_5F_terminal_3E_,
         gSyntaxErrorMessage_galgasScanner__22_string_22_,
-        gSyntaxErrorMessage_galgasScanner_comment,
-        gSyntaxErrorMessage_galgasScanner_commentMark,
         gSyntaxErrorMessage_galgasScanner_abstract,
         gSyntaxErrorMessage_galgasScanner_after,
         gSyntaxErrorMessage_galgasScanner_array,
@@ -895,6 +895,13 @@ static const utf32 kUnicodeString_galgasScanner__2E__3C_ [] = {
 
 //--- Unicode string for '$_2F_$'
 static const utf32 kUnicodeString_galgasScanner__2F_ [] = {
+  TO_UNICODE ('/'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$_2F__2F_$'
+static const utf32 kUnicodeString_galgasScanner__2F__2F_ [] = {
+  TO_UNICODE ('/'),
   TO_UNICODE ('/'),
   TO_UNICODE (0)
 } ;
@@ -2243,6 +2250,16 @@ C_String C_Lexique_galgasScanner::getCurrentTokenString (const cToken * inTokenP
       s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
       s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
+    case kToken_comment:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("comment") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken_commentMark:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("commentMark") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
     case kToken__3F_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("\?") ;
@@ -2299,16 +2316,6 @@ C_String C_Lexique_galgasScanner::getCurrentTokenString (const cToken * inTokenP
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
       s.appendCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
-    case kToken_comment:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("comment") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_commentMark:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("commentMark") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_abstract:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
@@ -3313,6 +3320,46 @@ void C_Lexique_galgasScanner::internalParseLexicalToken (cTokenFor_galgasScanner
       }
       token.mTokenCode = kToken__24_terminal_24_ ;
       enterToken (token) ;
+    }else if (testForInputUTF32Char (TO_UNICODE ('#'))) {
+      if (testForInputUTF32Char (TO_UNICODE ('!'))) {
+        do {
+          if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE ('\t')) || testForInputUTF32Char (TO_UNICODE ('\v')) || testForInputUTF32Char (TO_UNICODE ('\f')) || testForInputUTF32CharRange (TO_UNICODE (14), TO_UNICODE (65533))) {
+          }else{
+            loop = false ;
+          }
+        }while (loop) ;
+        loop = true ;
+        enterDroppedTerminal (kToken_commentMark) ;
+      }else{
+        do {
+          if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE ('\t')) || testForInputUTF32Char (TO_UNICODE ('\v')) || testForInputUTF32Char (TO_UNICODE ('\f')) || testForInputUTF32CharRange (TO_UNICODE (14), TO_UNICODE (1114111))) {
+          }else{
+            loop = false ;
+          }
+        }while (loop) ;
+        loop = true ;
+        enterDroppedTerminal (kToken_comment) ;
+      }
+    }else if (testForInputUTF32String (kUnicodeString_galgasScanner__2F__2F_, 2, true)) {
+      if (testForInputUTF32Char (TO_UNICODE ('!'))) {
+        do {
+          if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE ('\t')) || testForInputUTF32Char (TO_UNICODE ('\v')) || testForInputUTF32Char (TO_UNICODE ('\f')) || testForInputUTF32CharRange (TO_UNICODE (14), TO_UNICODE (65533))) {
+          }else{
+            loop = false ;
+          }
+        }while (loop) ;
+        loop = true ;
+        enterDroppedTerminal (kToken_commentMark) ;
+      }else{
+        do {
+          if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE ('\t')) || testForInputUTF32Char (TO_UNICODE ('\v')) || testForInputUTF32Char (TO_UNICODE ('\f')) || testForInputUTF32CharRange (TO_UNICODE (14), TO_UNICODE (1114111))) {
+          }else{
+            loop = false ;
+          }
+        }while (loop) ;
+        loop = true ;
+        enterDroppedTerminal (kToken_comment) ;
+      }
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner__3D__3D__3D_, 3, true)) {
       token.mTokenCode = kToken__3D__3D__3D_ ;
       enterToken (token) ;
@@ -3693,26 +3740,6 @@ void C_Lexique_galgasScanner::internalParseLexicalToken (cTokenFor_galgasScanner
       }else{
         lexicalError (gLexicalMessage_galgasScanner_incorrectStringEnd COMMA_LINE_AND_SOURCE_FILE) ;
       }
-    }else if (testForInputUTF32Char (TO_UNICODE ('#'))) {
-      if (testForInputUTF32Char (TO_UNICODE ('!'))) {
-        do {
-          if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE ('\t')) || testForInputUTF32Char (TO_UNICODE ('\v')) || testForInputUTF32Char (TO_UNICODE ('\f')) || testForInputUTF32CharRange (TO_UNICODE (14), TO_UNICODE (65533))) {
-          }else{
-            loop = false ;
-          }
-        }while (loop) ;
-        loop = true ;
-        enterDroppedTerminal (kToken_commentMark) ;
-      }else{
-        do {
-          if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE ('\t')) || testForInputUTF32Char (TO_UNICODE ('\v')) || testForInputUTF32Char (TO_UNICODE ('\f')) || testForInputUTF32CharRange (TO_UNICODE (14), TO_UNICODE (1114111))) {
-          }else{
-            loop = false ;
-          }
-        }while (loop) ;
-        loop = true ;
-        enterDroppedTerminal (kToken_comment) ;
-      }
     }else if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE (' '))) {
     }else if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
       token.mTokenCode = kToken_ ; // Empty string code
@@ -3951,6 +3978,8 @@ GALGAS_stringlist C_Lexique_galgasScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("%attribute") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("'char'") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("$terminal$") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("comment") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("commentMark") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("\?") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("\?!") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("!") COMMA_THERE) ;
@@ -3960,8 +3989,6 @@ GALGAS_stringlist C_Lexique_galgasScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("<<") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("<non_terminal>") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("\"string\"") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("comment") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("commentMark") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("abstract") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("after") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("array") COMMA_THERE) ;
@@ -4279,6 +4306,8 @@ uint32_t C_Lexique_galgasScanner::styleIndexForTerminal (const int32_t inTermina
     12 /* galgasScanner_1__25_attribute */,
     9 /* galgasScanner_1__27_char_27_ */,
     4 /* galgasScanner_1__24_terminal_24_ */,
+    13 /* galgasScanner_1_comment */,
+    13 /* galgasScanner_1_commentMark */,
     3 /* galgasScanner_1__3F_ */,
     3 /* galgasScanner_1__3F__21_ */,
     3 /* galgasScanner_1__21_ */,
@@ -4288,8 +4317,6 @@ uint32_t C_Lexique_galgasScanner::styleIndexForTerminal (const int32_t inTermina
     2 /* galgasScanner_1__3C__3C_ */,
     5 /* galgasScanner_1__3C_non_5F_terminal_3E_ */,
     10 /* galgasScanner_1__22_string_22_ */,
-    13 /* galgasScanner_1_comment */,
-    13 /* galgasScanner_1_commentMark */,
     1 /* galgasScanner_1_abstract */,
     1 /* galgasScanner_1_after */,
     1 /* galgasScanner_1_array */,

@@ -527,6 +527,46 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
       scanningOk = NO ;
     }
     mTokenCode = galgasScanner_1__24_terminal_24_ ;
+  }else if (scanningOk && ([self testForInputChar:35])) {
+    if (scanningOk && ([self testForInputChar:33])) {
+      do {
+        if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:65533])) {
+        }else{
+          loop = NO ;
+        }
+      }while (loop && scanningOk) ;
+      loop = YES ;
+      mTokenCode = galgasScanner_1_commentMark ;
+    }else{
+      do {
+        if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:1114111])) {
+        }else{
+          loop = NO ;
+        }
+      }while (loop && scanningOk) ;
+      loop = YES ;
+      mTokenCode = galgasScanner_1_comment ;
+    }
+  }else if (scanningOk && ([self testForInputString:@"//" advance:YES])) {
+    if (scanningOk && ([self testForInputChar:33])) {
+      do {
+        if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:65533])) {
+        }else{
+          loop = NO ;
+        }
+      }while (loop && scanningOk) ;
+      loop = YES ;
+      mTokenCode = galgasScanner_1_commentMark ;
+    }else{
+      do {
+        if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:1114111])) {
+        }else{
+          loop = NO ;
+        }
+      }while (loop && scanningOk) ;
+      loop = YES ;
+      mTokenCode = galgasScanner_1_comment ;
+    }
   }else if (scanningOk && [self testForInputString:@"===" advance:YES]) {
     mTokenCode = galgasScanner_1__3D__3D__3D_ ;
   }else if (scanningOk && [self testForInputString:@"&--" advance:YES]) {
@@ -830,26 +870,6 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
     }else{
       scanningOk = NO ;
     }
-  }else if (scanningOk && ([self testForInputChar:35])) {
-    if (scanningOk && ([self testForInputChar:33])) {
-      do {
-        if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:65533])) {
-        }else{
-          loop = NO ;
-        }
-      }while (loop && scanningOk) ;
-      loop = YES ;
-      mTokenCode = galgasScanner_1_commentMark ;
-    }else{
-      do {
-        if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:1114111])) {
-        }else{
-          loop = NO ;
-        }
-      }while (loop && scanningOk) ;
-      loop = YES ;
-      mTokenCode = galgasScanner_1_comment ;
-    }
   }else if (scanningOk && ([self testForInputFromChar:1 toChar:32])) {
   }else   if ([self testForInputChar:'\0']) { // End of source text ?
     mTokenCode = galgasScanner_1_ ; // Empty string code
@@ -926,6 +946,8 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
     12 /* galgasScanner_1__25_attribute */,
     9 /* galgasScanner_1__27_char_27_ */,
     4 /* galgasScanner_1__24_terminal_24_ */,
+    13 /* galgasScanner_1_comment */,
+    13 /* galgasScanner_1_commentMark */,
     3 /* galgasScanner_1__3F_ */,
     3 /* galgasScanner_1__3F__21_ */,
     3 /* galgasScanner_1__21_ */,
@@ -935,8 +957,6 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
     2 /* galgasScanner_1__3C__3C_ */,
     5 /* galgasScanner_1__3C_non_5F_terminal_3E_ */,
     10 /* galgasScanner_1__22_string_22_ */,
-    13 /* galgasScanner_1_comment */,
-    13 /* galgasScanner_1_commentMark */,
     1 /* galgasScanner_1_abstract */,
     1 /* galgasScanner_1_after */,
     1 /* galgasScanner_1_array */,
@@ -1094,6 +1114,8 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
     YES /* galgasScanner_1__25_attribute */,
     YES /* galgasScanner_1__27_char_27_ */,
     YES /* galgasScanner_1__24_terminal_24_ */,
+    NO /* galgasScanner_1_comment */,
+    NO /* galgasScanner_1_commentMark */,
     YES /* galgasScanner_1__3F_ */,
     YES /* galgasScanner_1__3F__21_ */,
     YES /* galgasScanner_1__21_ */,
@@ -1103,8 +1125,6 @@ static NSInteger search_into_galgasScanner_galgasKeyWordList (NSString * inSearc
     YES /* galgasScanner_1__3C__3C_ */,
     YES /* galgasScanner_1__3C_non_5F_terminal_3E_ */,
     NO /* galgasScanner_1__22_string_22_ */,
-    NO /* galgasScanner_1_comment */,
-    NO /* galgasScanner_1_commentMark */,
     YES /* galgasScanner_1_abstract */,
     YES /* galgasScanner_1_after */,
     YES /* galgasScanner_1_array */,
