@@ -308,12 +308,12 @@
     withKeyPath: @"values.SENSITIVE-SEARCH"
     options: nil
   ] ;
-  [mGlobalReplaceTextField
-    bind: NSValueBinding
-    toObject: udc
-    withKeyPath: @"values.GLOBAL-REPLACE-FIELD"
-    options: nil
-  ] ;
+//  [mGlobalReplaceTextField
+//    bind: NSValueBinding
+//    toObject: udc
+//    withKeyPath: @"values.GLOBAL-REPLACE-FIELD"
+//    options: nil
+//  ] ;
   [[NSUserDefaults standardUserDefaults]
     addObserver: self
     forKeyPath: [NSString stringWithFormat:@"searchMatrixFor:%@", mBaseFilePreferenceKey]
@@ -445,9 +445,9 @@
   [mCaseSensitiveSearchCheckbox
     unbind: NSValueBinding
   ] ;
-  [mGlobalReplaceTextField
-    unbind: NSValueBinding
-  ] ;
+//  [mGlobalReplaceTextField
+//    unbind: NSValueBinding
+//  ] ;
 //  [mSearchMatrix
 //    unbind:@"selectedIndex"
 //  ] ;

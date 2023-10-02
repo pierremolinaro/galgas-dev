@@ -1,10 +1,10 @@
 
 
 proc testsuite_strings() {
-  message "*************************************** begin of string test\n"
+  print ("*************************************** begin of string test")
   let @string command = "echo accentué"
   log command
-  let @string result = [command popen]
+  let @string result = command.popen
   log result
 }
 

@@ -6,11 +6,11 @@ map @myMap {
 # Version avant 3.2.13 : bug, « log a » affiche "World"
 # Version après 3.2.13 : pas de bug, « log a » affiche "Hello"
 proc bugMap() {
-  var @myMap a = {}
-  [!?a put !.new(!"var" !.here) !"Hello"]
+  var @myMap a = []
+  !?a.put (!.new(!"var", !.here), !"Hello")
   let @myMap b = a
   var @myMap c = @myMap.mapWithMapToOverride(!b)
-  [!?c setValueForKey !"World" !@lstring.new(!"var" !.here)]
+  !?c.setValueForKey (!"World", !@lstring.new(!"var", !.here))
   log a 
 }
 

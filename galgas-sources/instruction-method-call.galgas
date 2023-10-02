@@ -57,6 +57,24 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
+#  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+#    $($
+#    let instructionLocation = @location.here
+#    <expression> ?let @semanticExpressionAST receiverExpression
+#    $)$
+#    $.$
+#    $identifier$ ?let methodName
+#    <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST actualParameterList
+#    outInstruction = @methodCallInstructionAST.new {
+#      !instructionLocation
+#      !receiverExpression
+#      !methodName
+#      !actualParameterList
+#    }
+#  }
+
+  #·····················································································································
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,351 +1,351 @@
 
 
 proc testsuite_bigint_type() {
-  message "*************************************** begin of @bigint test\n"
-  message "--- construction\n"
-  message [@bigint.zero string] + "\n"
-  message [1234 string] + "\n"
-  message [-1234 string] + "\n"
-  message [[1234 sint] string] + "\n"
-  message [-1234 string] + "\n"
-  message "--- getter string\n"
-  message [-1234567890_1234567890_1234567890 string] + "\n"
-  message "--- getter hexString\n"
-  message [-1234567890_1234567890_1234567890 hexString] + "\n"
-  message "--- getter xString\n"
-  message [-1234567890_1234567890_1234567890 xString] + "\n"
-  message [123_456_789_012_345_678 spacedString !3] + "\n"
-  message [-123_456_789_012_345_678 spacedString !3] + "\n"
-  message "--- extract8ForUnsignedRepresentation\n"
+  print ("*************************************** begin of @bigint test")
+  print ("--- construction")
+  print (@bigint.zero.string)
+  print ((1234).string)
+  print ((-1234).string)
+  print ((1234).sint.string)
+  print ((-1234).string)
+  print ("--- getter string")
+  print ((-1234567890_1234567890_1234567890).string)
+  print ("--- getter hexString")
+  print ((-1234567890_1234567890_1234567890).hexString)
+  print ("--- getter xString")
+  print ((-1234567890_1234567890_1234567890).xString)
+  print ((123_456_789_012_345_678).spacedString (3))
+  print ((-123_456_789_012_345_678).spacedString (3))
+  print ("--- extract8ForUnsignedRepresentation")
 # Parcours dans le sens des indices croissants : little endian
-  var @uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211 extract8ForUnsignedRepresentation]
+  var @uintlist a = (0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211).extract8ForUnsignedRepresentation
   var s = ""
   for (n) in a
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0x11 0x22 0x33 0x44 ...0xAA 0xBB 0xCC 0xDD 0xEE 0xFF 
+  print (s) # 0x11 0x22 0x33 0x44 ...0xAA 0xBB 0xCC 0xDD 0xEE 0xFF 
 # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in a
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA ...0x44 0x33 0x22 0x11
-  a = [0 extract8ForUnsignedRepresentation]
+  print (s) # 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA ...0x44 0x33 0x22 0x11
+  a = (0).extract8ForUnsignedRepresentation
   s = ""
   for (n) in a
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0x0
-  message "--- extract8ForSignedRepresentation\n"
+  print (s) # 0x0
+  print ("--- extract8ForSignedRepresentation")
 # Parcours dans le sens des indices croissants : little endian
-  a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211 extract8ForSignedRepresentation]
+  a = (0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211).extract8ForSignedRepresentation
   s = ""
   for (n) in a
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0x11 0x22 0x33 0x44 ...0xAA 0xBB 0xCC 0xDD 0xEE 0xFF 0x00
+  print (s) # 0x11 0x22 0x33 0x44 ...0xAA 0xBB 0xCC 0xDD 0xEE 0xFF 0x00
   # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in a
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0x00 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA ...0x44 0x33 0x22 0x11
+  print (s) # 0x00 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA ...0x44 0x33 0x22 0x11
   # Parcours dans le sens des indices croissants : little endian
-  a = [-0x4433_2211 extract8ForSignedRepresentation]
+  a = (-0x4433_2211).extract8ForSignedRepresentation
   s = ""
   for (n) in a
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0xEF 0xDD 0xCC 0xBB
+  print (s) # 0xEF 0xDD 0xCC 0xBB
   # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in a
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0xBB 0xCC 0xDD 0xEF
-  message "--- extract32ForUnsignedRepresentation\n"
+  print (s) # 0xBB 0xCC 0xDD 0xEF
+  print ("--- extract32ForUnsignedRepresentation")
   # Parcours dans le sens des indices croissants : little endian
-  a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211 extract32ForUnsignedRepresentation]
+  a = (0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211).extract32ForUnsignedRepresentation
   s = ""
   for (n) in a
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0x44332211 0x88776655 0xCCBBAA99 0x00FFEEDD 
+  print (s) # 0x44332211 0x88776655 0xCCBBAA99 0x00FFEEDD 
   # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in a
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0x00FFEEDD 0xCCBBAA99 0x88776655 0x44332211
-  a = [0 extract32ForUnsignedRepresentation]
+  print (s) # 0x00FFEEDD 0xCCBBAA99 0x88776655 0x44332211
+  a = (0).extract32ForUnsignedRepresentation
   s = ""
   for (n) in a
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0x0
-  message "--- extract32ForSignedRepresentation\n"
+  print (s) # 0x0
+  print ("--- extract32ForSignedRepresentation")
   # Parcours dans le sens des indices croissants : little endian
-  a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211 extract32ForSignedRepresentation]
+  a = (0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211).extract32ForSignedRepresentation
   s = ""
   for (n) in a
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0x44332211 0x88776655 0xCCBBAA99 0x00FFEEDD
+  print (s) # 0x44332211 0x88776655 0xCCBBAA99 0x00FFEEDD
   # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in a
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0x00FFEEDD 0xCCBBAA99 0x88776655 0x44332211
+  print (s) # 0x00FFEEDD 0xCCBBAA99 0x88776655 0x44332211
   # Parcours dans le sens des indices croissants : little endian
-  a = [-0x55_4433_2211 extract32ForSignedRepresentation]
+  a = (-0x55_4433_2211).extract32ForSignedRepresentation
   s = ""
   for (n) in a
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0xBBCCDDEF 0xFFFFFFAA
+  print (s) # 0xBBCCDDEF 0xFFFFFFAA
   # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in a
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
   drop a
-  message s + "\n" # 0xFFFFFFAA 0xBBCCDDEF
-  message "--- extract64ForUnsignedRepresentation\n"
+  print (s) # 0xFFFFFFAA 0xBBCCDDEF
+  print ("--- extract64ForUnsignedRepresentation")
   # Parcours dans le sens des indices croissants : little endian
-  var @uint64list aa = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211 extract64ForUnsignedRepresentation]
+  var @uint64list aa = (0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211).extract64ForUnsignedRepresentation
   s = ""
   for (n) in aa
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0x8877665544332211 0xFFEEDDCCBBAA99
+  print (s) # 0x8877665544332211 0xFFEEDDCCBBAA99
   # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in aa
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0xFFEEDDCCBBAA99 0x8877665544332211
-  aa = [0 extract64ForUnsignedRepresentation]
+  print (s) # 0xFFEEDDCCBBAA99 0x8877665544332211
+  aa = (0).extract64ForUnsignedRepresentation
   s = ""
   for (n) in aa
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0x0
-  message "--- extract64ForSignedRepresentation\n"
+  print (s) # 0x0
+  print ("--- extract64ForSignedRepresentation")
   # Parcours dans le sens des indices croissants : little endian
-  aa = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211 extract64ForSignedRepresentation]
+  aa = (0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211).extract64ForSignedRepresentation
   s = ""
   for (n) in aa
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0x8877665544332211 0xFFEEDDCCBBAA99
+  print (s) # 0x8877665544332211 0xFFEEDDCCBBAA99
   # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in aa
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0xFFEEDDCCBBAA99 0x8877665544332211
+  print (s) # 0xFFEEDDCCBBAA99 0x8877665544332211
   # Parcours dans le sens des indices croissants : little endian
-  aa = [-0x55_4433_2211 extract64ForSignedRepresentation]
+  aa = (-0x55_4433_2211).extract64ForSignedRepresentation
   s = ""
   for (n) in aa
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0xFFFFFFAABBCCDDEF
+  print (s) # 0xFFFFFFAABBCCDDEF
   # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in aa
-    do s += [n hexString]
+    do s += n.hexString
     between s += " "
   end
-  message s + "\n" # 0xFFFFFFAABBCCDDEF
-  message "--- Addition\n"
-  message [12345_67890_12345_67890 + 98765_43210_98765_43210 string] + "\n"
-  message "--- Subtract\n"
-  message [12345_67890_12345_67890 - 98765_43210_98765_43210 string] + "\n"
-  message "--- Multiply\n"
-  message [12345_67890_12345_67890 * 98765_43210_98765_43210 string] + "\n"
-  message "--- Divide\n"
-  message [98765_43210_98765_43210 / 12345_67890_12345_67890 string] + "\n"
-  message [(-98765_43210_98765_43210) / 12345_67890_12345_67890 string] + "\n"
-  message [(-98765_43210_98765_43210) / (-12345_67890_12345_67890) string] + "\n"
-  message [98765_43210_98765_43210 / (-12345_67890_12345_67890) string] + "\n"
-  message [(-7) / 2 string] + "\n" # -3
-  message [(-7) / (-2) string] + "\n" # 3
-  message [7 / (-2) string] + "\n" # -3
-  message "--- mod\n"
-  message [9876543210 mod 1234567890 string] + "\n" # 90
-  message [(-9876543210) mod 1234567890 string] + "\n" # -90
-  message [(-9876543210) mod (-1234567890) string] + "\n"  # -90
-  message [9876543210 mod (-1234567890) string] + "\n"  # 90
-  message [2000 mod 183 string] + "\n" # 170
-  message [(-2000) mod 183 string] + "\n" # -170
-  message [(-2000) mod (-183) string] + "\n" # -170
-  message [2000 mod (-183) string] + "\n" # 170
-  message "--- divideBy\n"
+  print (s) # 0xFFFFFFAABBCCDDEF
+  print ("--- Addition")
+  print ((12345_67890_12345_67890 + 98765_43210_98765_43210).string)
+  print ("--- Subtract")
+  print ((12345_67890_12345_67890 - 98765_43210_98765_43210).string)
+  print ("--- Multiply")
+  print ((12345_67890_12345_67890 * 98765_43210_98765_43210).string)
+  print ("--- Divide")
+  print ((98765_43210_98765_43210 / 12345_67890_12345_67890).string)
+  print (((-98765_43210_98765_43210) / 12345_67890_12345_67890).string)
+  print (((-98765_43210_98765_43210) / (-12345_67890_12345_67890)).string)
+  print ((98765_43210_98765_43210 / (-12345_67890_12345_67890)).string)
+  print (((-7) / 2).string) # -3
+  print (((-7) / (-2)).string) # 3
+  print ((7 / (-2)).string) # -3
+  print ("--- mod")
+  print ((9876543210 mod 1234567890).string) # 90
+  print (((-9876543210) mod 1234567890).string) # -90
+  print (((-9876543210) mod (-1234567890)).string)  # -90
+  print ((9876543210 mod (-1234567890)).string)  # 90
+  print ((2000 mod 183).string) # 170
+  print (((-2000) mod 183).string) # -170
+  print (((-2000) mod (-183)).string) # -170
+  print ((2000 mod (-183)).string) # 170
+  print ("--- divideBy")
   var @bigint quotient
   var @bigint remainder
-  [9876543210_9876543210 divideBy
-    !1234567890
-    ?quotient:quotient
+  let cst1 = 9876543210_9876543210 ; cst1.divideBy (
+    !1234567890,
+    ?quotient:quotient,
     ?remainder:remainder
-  ]
-  message [quotient string] + " " + remainder + "\n" # 80000000737 8280
-  [-9876543210_9876543210 divideBy
-    !1234567890
-    ?quotient:quotient
+  )
+  print (quotient.string + " " + remainder) # 80000000737 8280
+  let cst2 = -9876543210_9876543210 ; cst2.divideBy (
+    !1234567890,
+    ?quotient:quotient,
     ?remainder:remainder
-  ]
-  message [quotient string] + " " + remainder + "\n" # -80000000737 -8280
-  [-9876543210_9876543210 divideBy
-    !-1234567890
-    ?quotient:quotient
+  )
+  print (quotient.string + " " + remainder) # -80000000737 -8280
+  let cst3 = -9876543210_9876543210 ; cst3.divideBy (
+    !-1234567890,
+    ?quotient:quotient,
     ?remainder:remainder
-  ]
-  message [quotient string] + " " + remainder + "\n" # 80000000737 -8280
-  [9876543210_9876543210 divideBy
-    !-1234567890
-    ?quotient:quotient
+  )
+  print (quotient.string + " " + remainder) # 80000000737 -8280
+  let cst4 = 9876543210_9876543210 ; cst4.divideBy (
+    !-1234567890,
+    ?quotient:quotient,
     ?remainder:remainder
-  ]
-  message [quotient string] + " " + remainder + "\n" # -80000000737 8280
-  message "--- floorDivideBy\n"
-  [9876543210_9876543210 floorDivideBy
-    !1234567890
-    ?quotient:quotient
+  )
+  print (quotient.string + " " + remainder) # -80000000737 8280
+  print ("--- floorDivideBy")
+  let cst5 = 9876543210_9876543210 ; cst5.floorDivideBy (
+    !1234567890,
+    ?quotient:quotient,
     ?remainder:remainder
-  ]
-  message [quotient string] + " " + remainder + "\n" # 80000000737 8280
-  [-9876543210_9876543210 floorDivideBy
-    !1234567890
-    ?quotient:quotient
+  )
+  print (quotient.string + " " + remainder) # 80000000737 8280
+  let cst6 = -9876543210_9876543210 ; cst6.floorDivideBy (
+    !1234567890,
+    ?quotient:quotient,
     ?remainder:remainder
-  ]
-  message [quotient string] + " " + remainder + "\n" # -80000000738 1234559610
-  [-9876543210_9876543210 floorDivideBy
-    !-1234567890
-    ?quotient:quotient
+  )
+  print (quotient.string + " " + remainder) # -80000000738 1234559610
+  let cst7 = -9876543210_9876543210 ; cst7.floorDivideBy (
+    !-1234567890,
+    ?quotient:quotient,
     ?remainder:remainder
-  ]
-  message [quotient string] + " " + remainder + "\n" # 80000000737 -8280
-  [9876543210_9876543210 floorDivideBy
-    !-1234567890
-    ?quotient:quotient
+  )
+  print (quotient.string + " " + remainder) # 80000000737 -8280
+  let cst8 = 9876543210_9876543210 ; cst8.floorDivideBy (
+    !-1234567890,
+    ?quotient:quotient,
     ?remainder:remainder
-  ]
-  message [quotient string] + " " + remainder + "\n" # -80000000738 -1234559610
-  message "--- ceilDivideBy\n"
-  [9876543210_9876543210 ceilDivideBy
-    !1234567890
-    ?quotient:quotient
+  )
+  print (quotient.string + " " + remainder) # -80000000738 -1234559610
+  print ("--- ceilDivideBy")
+  let cst9 = 9876543210_9876543210 ; cst9.ceilDivideBy (
+    !1234567890,
+    ?quotient:quotient,
     ?remainder:remainder
-  ]
-  message [quotient string] + " " + remainder + "\n" # 80000000738 -1234559610
-  [-9876543210_9876543210 ceilDivideBy
-    !1234567890
-    ?quotient:quotient
+  )
+  print (quotient.string + " " + remainder) # 80000000738 -1234559610
+  let cstA = -9876543210_9876543210 ; cstA.ceilDivideBy (
+    !1234567890,
+    ?quotient:quotient,
     ?remainder:remainder
-  ]
-  message [quotient string] + " " + remainder + "\n" # -80000000737 -8280
-  [-9876543210_9876543210 ceilDivideBy
-    !-1234567890
-    ?quotient:quotient
+  )
+  print (quotient.string + " " + remainder) # -80000000737 -8280
+  let cstB = -9876543210_9876543210 ; cstB.ceilDivideBy (
+    !-1234567890,
+    ?quotient:quotient,
     ?remainder:remainder
-  ]
-  message [quotient string] + " " + remainder + "\n" # 80000000738 1234559610
-  [9876543210_9876543210 ceilDivideBy
-    !-1234567890
-    ?quotient:quotient
+  )
+  print (quotient.string + " " + remainder) # 80000000738 1234559610
+  let cstC = 9876543210_9876543210 ; cstC.ceilDivideBy (
+    !-1234567890,
+    ?quotient:quotient,
     ?remainder:remainder
-  ]
-  message [quotient string] + " " + remainder + "\n" # -80000000737 8280
-  message "--- operator <<\n"
-  message [0x1234567890 << 12 hexString] + "\n" # 0x1234567890000
-  message [(-0x1234567890) << 12 hexString] + "\n" # -0x1234567890000
-  message [2000 << 2 string] + "\n" # 8000
-  message [(-2000) << 2 string] + "\n" # -8000
-  message "--- operator >>\n"
-  message [0x1234567890 >> 12 hexString] + "\n" # 0x1234567
-  message [(-0x1234567890) >> 12 hexString] + "\n" # -0x1234567
-  message [2000 >> 2 string] + "\n" # 500
-  message [(-2000) >> 2 string] + "\n" # -500
-  message [9 >> 1 string] + "\n" # 4
-  message [9 >> 1 string] + "\n" # 4
-  message [7 >> 1 string] + "\n" # 3
-  message [7 >> 1 string] + "\n" # 3
-  message [3 >> 1 string] + "\n" # 1
-  message [3 >> 1 string] + "\n" # 1
-  message [1 >> 1 string] + "\n" # 0
-  message [1 >> 1 string] + "\n" # 0
-  message [-9 >> 1 string] + "\n" # -5
-  message [-9 >> 1 string] + "\n" # -5
-  message [-7 >> 1 string] + "\n" # -4
-  message [-7 >> 1 string] + "\n" # -4
-  message [-3 >> 1 string] + "\n" # -2
-  message [-3 >> 1 string] + "\n" # -2
-  message [-1 >> 1 string] + "\n" # -1
-  message [-1 >> 1 string] + "\n" # -1
-  message "--- operator &\n"
-  message [0x1234 & 0x4321 hexString] + "\n" # 0x220
-  message [-0x1234 & 0x4321 hexString] + "\n" # 0x4100
-  message [-0x80 & 0xFF hexString] + "\n" # 0x80
-  message "--- operator |\n"
-  message [0x1234 | 0x4321 hexString] + "\n" # 0x5335
-  message [-0x1234 | 0x4321 hexString] + "\n" # -0x1013
-  message [-0x80 | 0xFF hexString] + "\n" # -0x1
-  message "--- operator ^\n"
-  message [0x1234 ^ 0x4321 hexString] + "\n" # 0x5115
-  message [-0x1234 ^ 0x4321 hexString] + "\n" # -0x5113
-  message [-0x80 ^ 0xFF hexString] + "\n" # -0x81
-  message [-0x80 ^ -0xFF hexString] + "\n" # 0x81
-  message "--- operator ~\n"
-  message [~  0x1234 hexString] + "\n" # -0x1235
-  message [~ -0x1234 hexString] + "\n" # 0x1233
-  message "--- bitAtIndex\n"
-  message [[0x1234 bitAtIndex !7] ocString] + "\n" # NO
-  message [[0x1234 bitAtIndex !5] ocString] + "\n" # YES
-  message [[0x1234 bitAtIndex !25] ocString] + "\n" # NO
-  message [[-0x1234 bitAtIndex !7] ocString] + "\n" # YES
-  message [[-0x1234 bitAtIndex !5] ocString] + "\n" # NO
-  message [[-0x1234 bitAtIndex !25] ocString] + "\n" # YES
-  message "--- setBitAtIndex\n"
+  )
+  print (quotient.string + " " + remainder) # -80000000737 8280
+  print ("--- operator <<")
+  print ((0x1234567890 << 12).hexString) # 0x1234567890000
+  print (((-0x1234567890) << 12).hexString) # -0x1234567890000
+  print ((2000 << 2).string) # 8000
+  print (((-2000) << 2).string) # -8000
+  print ("--- operator >>")
+  print ((0x1234567890 >> 12).hexString) # 0x1234567
+  print (((-0x1234567890) >> 12).hexString) # -0x1234567
+  print ((2000 >> 2).string) # 500
+  print (((-2000) >> 2).string) # -500
+  print ((9 >> 1).string) # 4
+  print ((9 >> 1).string) # 4
+  print ((7 >> 1).string) # 3
+  print ((7 >> 1).string) # 3
+  print ((3 >> 1).string) # 1
+  print ((3 >> 1).string) # 1
+  print ((1 >> 1).string) # 0
+  print ((1 >> 1).string) # 0
+  print ((-9 >> 1).string) # -5
+  print ((-9 >> 1).string) # -5
+  print ((-7 >> 1).string) # -4
+  print ((-7 >> 1).string) # -4
+  print ((-3 >> 1).string) # -2
+  print ((-3 >> 1).string) # -2
+  print ((-1 >> 1).string) # -1
+  print ((-1 >> 1).string) # -1
+  print ("--- operator &")
+  print ((0x1234 & 0x4321).hexString) # 0x220
+  print ((-0x1234 & 0x4321).hexString) # 0x4100
+  print ((-0x80 & 0xFF).hexString) # 0x80
+  print ("--- operator |")
+  print ((0x1234 | 0x4321).hexString) # 0x5335
+  print ((-0x1234 | 0x4321).hexString) # -0x1013
+  print ((-0x80 | 0xFF).hexString) # -0x1
+  print ("--- operator ^")
+  print ((0x1234 ^ 0x4321).hexString) # 0x5115
+  print ((-0x1234 ^ 0x4321).hexString) # -0x5113
+  print ((-0x80 ^ 0xFF).hexString) # -0x81
+  print ((-0x80 ^ -0xFF).hexString) # 0x81
+  print ("--- operator ~")
+  print ((~  0x1234).hexString) # -0x1235
+  print ((~ -0x1234).hexString) # 0x1233
+  print ("--- bitAtIndex")
+  print ((0x1234).bitAtIndex (7).ocString) # NO
+  print ((0x1234).bitAtIndex (5).ocString) # YES
+  print ((0x1234).bitAtIndex (25).ocString) # NO
+  print ((-0x1234).bitAtIndex (7).ocString) # YES
+  print ((-0x1234).bitAtIndex (5).ocString) # NO
+  print ((-0x1234).bitAtIndex (25).ocString) # YES
+  print ("--- setBitAtIndex")
   var b = 0x1234
-  [!?b setBitAtIndex !true !14]
-  message [b hexString] + "\n" # 0x5234
-  [!?b setBitAtIndex !true !40]
-  message [b hexString] + "\n" # 0x10000005234
+  !?b.setBitAtIndex (true, !14)
+  print (b.hexString) # 0x5234
+  !?b.setBitAtIndex (true, !40)
+  print (b.hexString) # 0x10000005234
   b = -0x1234
-  [!?b setBitAtIndex !false !14]
-  message [b hexString] + "\n" # -0x5234
-  [!?b setBitAtIndex !false !40] # -0x10000005234
-  message [b hexString] + "\n"
-  message "--- complementBitAtIndex\n"
+  !?b.setBitAtIndex (false, !14)
+  print (b.hexString) # -0x5234
+  !?b.setBitAtIndex (false, !40) # -0x10000005234
+  print (b.hexString)
+  print ("--- complementBitAtIndex")
   b = 0x1234
-  [!?b complementBitAtIndex !14]
-  message [b hexString] + "\n" # 0x5234
+  !?b.complementBitAtIndex (14)
+  print (b.hexString) # 0x5234
   b = -0x1234
-  [!?b complementBitAtIndex !40]
-  message [b hexString] + "\n" # -0x10000005234
+  !?b.complementBitAtIndex (40)
+  print (b.hexString) # -0x10000005234
 }
 
 

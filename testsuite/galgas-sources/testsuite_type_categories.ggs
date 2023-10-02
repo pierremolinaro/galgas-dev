@@ -1,31 +1,32 @@
 
 
 proc testsuite_type_categories() {
-  message "*************************************** begin of type extension test\n"
-  log "Square of 7" : [[7 uint64] square]
-  var aList = @uintlist {}
+  print ("*************************************** begin of type extension test")
+  log "Square of 7" : 7 .uint64.square
+  var aList = @uintlist []
   aList += !1
   aList += !2
   aList += !3
   aList += !4
-  log "Sum 1 + 2 + 3 + 4" : [aList sum]
-  log "Hello !" : [@lstring.new (!"Hello" !.here) op]
+  log "Sum 1 + 2 + 3 + 4" : aList.sum
+  log "Hello !" : @lstring.new (!"Hello", !.here).op
   let @uint64 v
-  [[7 uint64] square ?v]
+  let cst = 7
+  cst.uint64.square (?v)
   log v
   let @uint u
-  [aList sum ?u]
+  aList.sum (?u)
   log u
   let @string s
-  [@lstring.new (!"Hello" !.here) op ?s]
+  let strcst = @lstring.new (!"Hello", !.here) ; strcst.op (?s)
   log s
-  var ls = @lstring.new (!"Hello" !.here)
-  [!?ls appendInt !3]
+  var ls = @lstring.new (!"Hello", !.here)
+  !?ls.appendInt (!3)
   log ls
-  [!?aList appendSquare!9]
+  !?aList.appendSquare (9)
   log aList
-  var aList64 = @uint64list {!7}
-  [!?aList64 prependSquare !5]
+  var aList64 = @uint64list [7]
+  !?aList64.prependSquare (!5)
 }
 
 #----------- Extension readers
@@ -62,7 +63,7 @@ proc @lstring.op (!@string outResult) {
 
 #------------ Extension setters
 mutating proc @lstring.appendInt (?let@uint inValue) {
-  self.string += [inValue string]
+  self.string += inValue.string
 }
 
 mutating proc @uintlist.appendSquare (?let@uint inValue) {
@@ -70,7 +71,7 @@ mutating proc @uintlist.appendSquare (?let@uint inValue) {
 }
 
 mutating proc @uint64list.prependSquare (?let@uint64 inValue) {
-  [!?self insertAtIndex ![inValue square] !0]
+  !?self.insertAtIndex (inValue.square, !0)
 }
 
 mutating proc @string.concatList (?let@stringlist inList) {

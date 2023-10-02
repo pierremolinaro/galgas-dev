@@ -10,13 +10,13 @@ func @TestExtensionMethod.reader1() -> @uint result {
 }
 
 proc @TestExtensionMethod.method2 (!@uint result) {
-  result = [self reader1]
+  result = self.reader1
 }
 
 proc testsuite_extension_methods () {
-  message "*************************************** begin of extension procs\n"
+  print ("*************************************** begin of extension procs")
   let c = @TestExtensionMethod.new
-  [c method1]
-  [c method2 ?let v]
-  message [v string] + "\n"
+  c.method1 ()
+  c.method2 (?let v)
+  print (v.string)
 }

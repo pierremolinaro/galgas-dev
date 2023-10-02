@@ -1,14 +1,14 @@
 
 
 proc testsuite_extension_mutating_proc () {
-  message "*************************************** begin of mutating proc test\n"
+  print ("*************************************** begin of mutating proc test")
   var @uint v = 12
-  [!?v init !179]
-  message "v = " + v + "\n"
-  [!?v autreInit !183]
-  message "v = " + v + "\n"
-  [!?v init3 !752]
-  message "v = " + v + "\n"
+  !?v.init (179)
+  print ("v = " + v + "")
+  !?v.autreInit (183)
+  print ("v = " + v + "")
+  !?v.init3 (752)
+  print ("v = " + v + "")
 }
 
 mutating proc @uint.init (?let @uint inValue) {
@@ -16,14 +16,14 @@ mutating proc @uint.init (?let @uint inValue) {
 }
 
 mutating proc @uint.autreInit (?let @uint inValue) {
-  [!?self init !inValue]
+  !?self.init (!inValue)
 }
 
 mutating proc @uint.init3 (?let @uint inValue) {
-  myInitProc (?self !inValue)
+  myInitProc (?self, !inValue)
 }
 
-proc myInitProc (!@uint outValue ?let @uint inValue) {
+proc myInitProc (!@uint outValue, ?let @uint inValue) {
   outValue = inValue
 }
 

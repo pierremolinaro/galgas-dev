@@ -1,77 +1,77 @@
 
 
 proc testsuite_foreach_instruction() {
-  var strList = @stringlist {}
+  var strList = @stringlist []
   strList += !"a"
   strList += !"b"
   strList += !"c"
   strList += !"d"
-  message "*************************************** begin of foreach instruction test 1\n"
+  print ("*************************************** begin of foreach instruction test 1")
   for (@string s) in strList
   before
-    message "  before\n"
+    print ("  before")
   do
-    message "  do '" + s + "'\n"
+    print ("  do '" + s + "'")
   between
-    message "  between\n"
+    print ("  between")
   after
-    message "  after\n"
+    print ("  after")
   end
-  message "--- begin of foreach instruction test 2\n"
+  print ("--- begin of foreach instruction test 2")
   for (@string s) in strList
   while false
   before
-    message "  before\n"
+    print ("  before")
   do
-    message "  do '" + s + "'\n"
+    print ("  do '" + s + "'")
   between
-    message "  between\n"
+    print ("  between")
   after
-    message "  after\n"
+    print ("  after")
   end
-  message "--- begin of foreach instruction test 3\n"
+  print ("--- begin of foreach instruction test 3")
   var @uint n = 0
   for (@string s) in strList
   while n < 2
   before
-    message "  before\n"
+    print ("  before")
   do
-    message "  do '" + s + "', n: " + [n string] + "\n"
+    print ("  do '" + s + "', n: " + n.string)
     n += 1
   between
-    message "  between\n"
+    print ("  between")
   after
-    message "  after\n"
+    print ("  after")
   end
-  message "--- begin of foreach instruction test 4\n"
+  print ("--- begin of foreach instruction test 4")
   for (mValue) in strList while mValue != "c"
   before
-    message "  before\n"
+    print ("  before")
   do
-    message "  do '" + mValue + "'\n"
+    print ("  do '" + mValue + "'")
   between
-    message "  between\n"
+    print ("  between")
   after
-    message "  after\n"
+    print ("  after")
   end
-  message "--- begin of foreach instruction test 5\n"
+  print ("--- begin of foreach instruction test 5")
   for (@string s) in strList
   before
-    message "  before\n"
+    print ("  before")
   do (idx)
-    message "  do '" + s + "' (idx: " + [idx string] + ")\n"
+    print ("  do '" + s + "' (idx: " + idx.string + ")")
   between
-    message "  between\n"
+    print ("  between")
   after
-    message "  after\n"
+    print ("  after")
   end
-  message "--- begin of foreach instruction test 6\n"
+  print ("--- begin of foreach instruction test 6")
   for (@string s) in strList
   do (idx)
-    message "  do '" + s + "' (idx: " + [idx string] + ")\n"
+    print ("  do '" + s + "' (idx: " + idx.string + ")")
   end
-  message "--- begin of foreach instruction test 7\n"
-  var @stringset set = {}
+  print ("--- begin of foreach instruction test 7")
+  var @stringset set = []
   set += !"A"
   set += !"B"
   set += !"C"
@@ -82,26 +82,26 @@ proc testsuite_foreach_instruction() {
   set += !"H"
   for (key) in set
   do (idx)
-    message "  do '" + key + "' (idx: " + [idx string] + ")\n"
+    print ("  do '" + key + "' (idx: " + idx.string + ")")
   end
-  message "--- begin of foreach instruction test 8\n"
+  print ("--- begin of foreach instruction test 8")
   for > (key) in set
   do (idx)
-    message "  do '" + key + "' (idx: " + [idx string] + ")\n"
+    print ("  do '" + key + "' (idx: " + idx.string + ")")
   end
-  message "--- begin of foreach instruction test 9\n"
+  print ("--- begin of foreach instruction test 9")
   var myData = @data.emptyData
-  [!?myData appendByte !1]
-  [!?myData appendByte !2]
-  [!?myData appendByte !3]
-  [!?myData appendByte !4]
-  [!?myData appendByte !5]
-  [!?myData appendByte !6]
-  [!?myData appendByte !7]
-  [!?myData appendByte !8]
+  !?myData.appendByte (1)
+  !?myData.appendByte (2)
+  !?myData.appendByte (3)
+  !?myData.appendByte (4)
+  !?myData.appendByte (5)
+  !?myData.appendByte (6)
+  !?myData.appendByte (7)
+  !?myData.appendByte (8)
   for (data) in myData
   do (idx)
-    message "  do '" + data + "' (idx: " + [idx string] + ")\n"
+    print ("  do '" + data + "' (idx: " + idx.string + ")")
   end
 }
 

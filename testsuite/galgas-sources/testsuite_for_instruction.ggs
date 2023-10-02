@@ -1,83 +1,83 @@
 
 
 proc testsuite_for_instruction() {
-  message "*************************************** begin of for instruction test 1\n"
-  var strList = @stringlist {}
+  print ("*************************************** begin of for instruction test 1")
+  var strList = @stringlist []
   strList += !"a"
   strList += !"b"
   strList += !"c"
   strList += !"d"
   for (s) in strList 
   before
-    message "  before\n"
+    print ("  before")
   do
-    message "  do '" + s + "'\n"
+    print ("  do '" + s + "'")
   between
-    message "  between\n"
+    print ("  between")
   after
-    message "  after\n"
+    print ("  after")
   end
 
-  message "--- begin of for instruction test 2\n"
+  print ("--- begin of for instruction test 2")
   for (mValue) in strList
   while false
   before
-    message "  before\n"
+    print ("  before")
   do
-    message "  do '" + mValue + "'\n"
+    print ("  do '" + mValue + "'")
   between
-    message "  between\n"
+    print ("  between")
   after
-    message "  after\n"
+    print ("  after")
   end
 
-  message "--- begin of for instruction test 3\n"
+  print ("--- begin of for instruction test 3")
   var @uint n = 0
   for (xyz_mValue) in strList
   while n < 2
   before
-    message "  before\n"
+    print ("  before")
   do
-    message "  do '" + xyz_mValue + "', n: " + [n string] + "\n"
+    print ("  do '" + xyz_mValue + "', n: " + n.string + "")
     n += 1
   between
-    message "  between\n"
+    print ("  between")
   after
-    message "  after\n"
+    print ("  after")
   end
 
-  message "--- begin of for instruction test 4\n"
+  print ("--- begin of for instruction test 4")
   for @stringlist-element s in strList while s.mValue != "c"
   before
-    message "  before\n"
+    print ("  before")
   do
-    message "  do '" + s.mValue + "'\n"
+    print ("  do '" + s.mValue + "'")
   between
-    message "  between\n"
+    print ("  between")
   after
-    message "  after\n"
+    print ("  after")
   end
 
-  message "--- begin of for instruction test 5\n"
+  print ("--- begin of for instruction test 5")
   for s in strList
   before
-    message "  before\n"
+    print ("  before")
   do (idx)
-    message "  do '" + s.mValue + "' (idx: " + [idx string] + ")\n"
+    print ("  do '" + s.mValue + "' (idx: " + idx.string + ")")
   between
-    message "  between\n"
+    print ("  between")
   after
-    message "  after\n"
+    print ("  after")
   end
 
-  message "--- begin of for instruction test 6\n"
+  print ("--- begin of for instruction test 6")
   for s in strList
   do (idx)
-    message "  do '" + s.mValue + "' (idx: " + [idx string] + ")\n"
+    print ("  do '" + s.mValue + "' (idx: " + idx.string + ")")
   end
 
-  message "--- begin of for instruction test 7\n"
-  var @stringset set = {}
+  print ("--- begin of for instruction test 7")
+  var @stringset set = []
   set += !"A"
   set += !"B"
   set += !"C"
@@ -87,26 +87,26 @@ proc testsuite_for_instruction() {
   set += !"G"
   set += !"H"
   for s in set do (idx)
-    message "  do '" + s + "' (idx: " + [idx string] + ")\n"
+    print ("  do '" + s + "' (idx: " + idx.string + ")")
   end
 
-  message "--- begin of for instruction test 8\n"
+  print ("--- begin of for instruction test 8")
   for > s in set do (idx)
-    message "  do '" + s + "' (idx: " + [idx string] + ")\n"
+    print ("  do '" + s + "' (idx: " + idx.string + ")")
   end
 
-  message "--- begin of for instruction test 9\n"
+  print ("--- begin of for instruction test 9")
   var data = @data.emptyData
-  [!?data appendByte !1]
-  [!?data appendByte !2]
-  [!?data appendByte !3]
-  [!?data appendByte !4]
-  [!?data appendByte !5]
-  [!?data appendByte !6]
-  [!?data appendByte !7]
-  [!?data appendByte !8]
+  !?data.appendByte (1)
+  !?data.appendByte (2)
+  !?data.appendByte (3)
+  !?data.appendByte (4)
+  !?data.appendByte (5)
+  !?data.appendByte (6)
+  !?data.appendByte (7)
+  !?data.appendByte (8)
   for d in data do (idx)
-    message "  do '" + d + "' (idx: " + [idx string] + ")\n"
+    print ("  do '" + d + "' (idx: " + idx.string + ")")
   end
 }
 

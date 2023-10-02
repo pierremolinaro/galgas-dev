@@ -1,14 +1,14 @@
 
 
 proc testsuite_extension_setters() {
-  message "*************************************** begin of extension setter test\n"
-  let v = @TestExtensionSetter.new (!1 !"Hello")
+  print ("*************************************** begin of extension setter test")
+  let v = @TestExtensionSetter.new (!1, !"Hello")
   var @uint u = 2
   let @string s = " World"
-  [v setter2 !?u !s]
+  v.setter2 (!?u, !s)
   log u, v
-  let w = @overridingTestExtensionSetter.new (!1 !"" !"" !2)
-  [w m]
+  let w = @overridingTestExtensionSetter.new (!1, !"", !"", !2)
+  w.m ()
 #--- Test type cast in setter call
   typeCastInSetterCall ()
 }
@@ -22,7 +22,7 @@ class @TestExtensionSetter : @abstractTestExtensionSetter {
 }
 
 proc @TestExtensionSetter.setter3 (?let @uint inArg) {
-  [!?self.mString appendSpacesUntilColumn !inArg]
+  !?self.mString.appendSpacesUntilColumn (inArg)
 }
 
 
@@ -47,8 +47,8 @@ class @overridingTestExtensionSetter : @abstractOverridingTestExtensionSetter {
 }
 
 
-proc @TestExtensionSetter.setter2 (?!@uint ioArg ?let@string inS) {
-  [self setter1 !?ioArg]
+proc @TestExtensionSetter.setter2 (?!@uint ioArg, ?let@string inS) {
+  self.setter1 (!?ioArg)
   self.mString += inS
 }
 
@@ -78,9 +78,9 @@ abstract class @abstractOverridingTestExtensionSetter : @TestExtensionSetter {
 #   TYPE CAST IN SETTER CALL                
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc typeCastInSetterCall() {
-  let @baseClassForTypeCastInSetterCall object = @inheritedClassForTypeCastInSetterCall.new
-  [object as @inheritedClassForTypeCastInSetterCall unSetter]
+private proc typeCastInSetterCall () {
+  let @baseClassForTypeCastInSetterCall object = @inheritedClassForTypeCastInSetterCall.new ()
+  let x = object as @inheritedClassForTypeCastInSetterCall ; x.unSetter ()
 
 }
 
@@ -89,7 +89,7 @@ class @baseClassForTypeCastInSetterCall {}
 class @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall {}
 
 proc @inheritedClassForTypeCastInSetterCall.unSetter() {
-  message "Appel @inheritedClassForTypeCastInSetterCall unSetter\n"
+  print ("Appel @inheritedClassForTypeCastInSetterCall unSetter")
 }
 
 
