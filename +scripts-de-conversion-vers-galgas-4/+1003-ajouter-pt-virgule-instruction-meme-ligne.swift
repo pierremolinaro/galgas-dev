@@ -123,7 +123,7 @@ class AjouterPointVirguleEntreInstructions : Correcteur {
       print (String (repeating: "-", count: 79))
       let (s, status) = runHiddenCommand (
         "/usr/local/bin/galgas",
-        ["--no-color", "--max-errors=1", "--max-warnings=1", "--check-no-useless-selector", inCheminFichierGALGAS]
+        ["--no-color", "--max-errors=1", "--max-warnings=1", inCheminFichierGALGAS]
       )
       if status == 0 {
         print (BOLD_GREEN + "Succès !" + ENDC)

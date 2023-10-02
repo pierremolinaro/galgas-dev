@@ -149,7 +149,8 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     [mEnclosingView addSubview: mScrollView] ;
     [mEnclosingView addSubview: mEntryListPopUpButton] ;
   //--- Add "Show Invisible Character" preference observer
-    [[NSUserDefaultsController sharedUserDefaultsController]
+    NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
+    [udc
       addObserver:self
       forKeyPath:@"values.PMShowInvisibleCharacters"
       options:NSKeyValueObservingOptionNew
@@ -200,7 +201,8 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 //----------------------------------------------------------------------------------------------------------------------
 
 - (void) detachTextDisplayDescriptor {
-  [[NSUserDefaultsController sharedUserDefaultsController]
+  NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
+  [udc
     removeObserver:self
     forKeyPath:@"values.PMShowInvisibleCharacters"
   ] ;

@@ -301,15 +301,16 @@
   mSourceDisplayArrayControllerHigh.selectionIndex = (selectedTab < sourceDisplayArray.count) ? selectedTab : 0 ;
   // NSLog (@"DONE") ;
 //---
+  NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
   [mCaseSensitiveSearchCheckbox
     bind: NSValueBinding
-    toObject: [NSUserDefaultsController sharedUserDefaultsController]
+    toObject: udc
     withKeyPath: @"values.SENSITIVE-SEARCH"
     options: nil
   ] ;
   [mGlobalReplaceTextField
     bind: NSValueBinding
-    toObject: [NSUserDefaultsController sharedUserDefaultsController]
+    toObject: udc
     withKeyPath: @"values.GLOBAL-REPLACE-FIELD"
     options: nil
   ] ;

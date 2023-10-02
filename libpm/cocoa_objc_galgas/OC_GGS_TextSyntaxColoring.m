@@ -126,22 +126,22 @@
     mTextDisplayDescriptorSet = [NSMutableSet new] ;
   //---
     [[NSNotificationCenter defaultCenter]
-      addObserver:self
+      addObserver: self
       selector:@selector (undoManagerCheckPointNotification:)
-      name:NSUndoManagerCheckpointNotification
-      object:mUndoManager
+      name: NSUndoManagerCheckpointNotification
+      object: mUndoManager
     ] ;
     [[NSNotificationCenter defaultCenter]
-      addObserver:self
-      selector:@selector (undoManagerCheckPointNotification:)
-      name:NSUndoManagerDidUndoChangeNotification
-      object:mUndoManager
+      addObserver: self
+      selector: @selector (undoManagerCheckPointNotification:)
+      name: NSUndoManagerDidUndoChangeNotification
+      object: mUndoManager
     ] ;
     [[NSNotificationCenter defaultCenter]
-      addObserver:self
-      selector:@selector (undoManagerCheckPointNotification:)
-      name:NSUndoManagerDidRedoChangeNotification
-      object:mUndoManager
+      addObserver: self
+      selector: @selector (undoManagerCheckPointNotification:)
+      name: NSUndoManagerDidRedoChangeNotification
+      object: mUndoManager
     ] ;
   //--------------------------------------------------- Add foreground color observers
     NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
@@ -798,18 +798,18 @@
 //                       U N C O M M E N T R A N G E                                             
 //
 // Cette méthode a plusieurs rôles :                                                             
-//   - supprimer les marques de commentaires des lignes concernées par la sélection, uniquement quand le               *
+//   - supprimer les marques de commentaires des lignes concernées par la sélection, uniquement quand le
 //     commentaire commence une ligne ;                                                          
-//   - ajuster la sélection en conséquence ; en effet, dès que la méthode replaceCharactersInRange:withString: est     *
-//     appelée, Cocoa ramène la sélection à un point d'insertion. La sélection est ajustée et maintenue dans la        *
+//   - ajuster la sélection en conséquence ; en effet, dès que la méthode replaceCharactersInRange:withString: est
+//     appelée, Cocoa ramène la sélection à un point d'insertion. La sélection est ajustée et maintenue dans la
 //     variable finalSelectedRange.                                                              
 //
 // Le plus difficile est l'ajustement de la sélection. Pour cela, on calcule :                   
-//   - le nombre beforeSelectionCharacterCount de caractères du commentaire supprimé qui sont avant la sélection ; si  *
-//     ce nombre est > 0, on le début de la sélection du min entre ce nombre et le nombre de caractères du             *
+//   - le nombre beforeSelectionCharacterCount de caractères du commentaire supprimé qui sont avant la sélection ; si
+//     ce nombre est > 0, on le début de la sélection du min entre ce nombre et le nombre de caractères du
 //     commentaire ;                                                                             
-//   - le nombre withinSelectionCharacterCount de caractères du commentaire supprimé qui sont à l'intérieur de la      *
-//     sélection ; si ce nombre est > 0, on le retranche de la longueur de la sélection.         
+//   - le nombre withinSelectionCharacterCount de caractères du commentaire supprimé qui sont à l'intérieur de la
+//     sélection ; si ce nombre est > 0, on le retranche de la longueur de la sélection.          
 //
 //----------------------------------------------------------------------------------------------------------------------
 

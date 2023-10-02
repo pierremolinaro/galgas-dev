@@ -277,7 +277,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   [colorWell
     bind: NSValueBinding
     toObject:udc
-    withKeyPath:inBackgroundBindingPath
+    withKeyPath: inBackgroundBindingPath
     options:[NSDictionary dictionaryWithObject:colorTransformer forKey:NSValueTransformerBindingOption]
   ] ;
   [ioView addSubview:colorWell] ;
@@ -752,7 +752,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     [cb setButtonType: NSSwitchButton] ;
     [cb setAutoresizingMask: mask] ;
     [cb
-      bind: NSValueBinding // @"value"
+      bind: NSValueBinding
       toObject: udc
       withKeyPath: [NSString stringWithFormat: @"values.%@_%@", GGS_bool_build_option, [option identifier]]
       options: nil
@@ -800,7 +800,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     [tx setFrame: r] ;
     [tx setTag: (NSInteger) i] ;
     [tx
-      bind: NSValueBinding // @"value"
+      bind: NSValueBinding
       toObject: udc
       withKeyPath: [NSString stringWithFormat: @"values.%@_%@", GGS_uint_build_option, [option identifier]]
       options: optionDictionary
@@ -861,7 +861,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     r.size.width = 280.0 ;
     [tx setFrame: r] ;
     [tx
-      bind: NSValueBinding // @"value"
+      bind: NSValueBinding
       toObject: udc
       withKeyPath: [NSString stringWithFormat:@"values.%@_%@", GGS_string_build_option, [option identifier]]
       options: optionDictionary
