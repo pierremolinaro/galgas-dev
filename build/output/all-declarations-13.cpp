@@ -5570,23 +5570,24 @@ void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSy
 
 void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i29_ (GALGAS_lexicalInstructionListAST & ioArgument_ioInstructionList,
                                                                                                                   C_Lexique_galgasScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken_repeat COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 48)) ;
-  GALGAS_lexicalInstructionListAST var_repeatedInstructionList_1945 = GALGAS_lexicalInstructionListAST::constructor_emptyList (SOURCE_FILE ("lexique-instruction-repeat.galgas", 49)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken_repeat COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 51)) ;
+  GALGAS_location var_location_2002 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 52)) ;
+  GALGAS_lexicalInstructionListAST var_repeatedInstructionList_2063 = GALGAS_lexicalInstructionListAST::constructor_emptyList (SOURCE_FILE ("lexique-instruction-repeat.galgas", 53)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_34_LexiqueComponentSyntax_19 (inCompiler)) {
     case 2: {
-      nt_lexical_5F_instruction_ (var_repeatedInstructionList_1945, inCompiler) ;
+      nt_lexical_5F_instruction_ (var_repeatedInstructionList_2063, inCompiler) ;
     } break ;
     default:
       repeatFlag_0 = false ;
       break ;
     }
   }
-  GALGAS_lexicalWhileBranchListAST var_lexicalWhileBranchList_2092 = GALGAS_lexicalWhileBranchListAST::constructor_emptyList (SOURCE_FILE ("lexique-instruction-repeat.galgas", 54)) ;
+  GALGAS_lexicalWhileBranchListAST var_lexicalWhileBranchList_2210 = GALGAS_lexicalWhileBranchListAST::constructor_emptyList (SOURCE_FILE ("lexique-instruction-repeat.galgas", 58)) ;
   bool repeatFlag_1 = true ;
   while (repeatFlag_1) {
-    nt_repeat_5F_while_5F_branch_ (var_lexicalWhileBranchList_2092, inCompiler) ;
+    nt_repeat_5F_while_5F_branch_ (var_lexicalWhileBranchList_2210, inCompiler) ;
     switch (select_galgas_34_LexiqueComponentSyntax_20 (inCompiler)) {
     case 2: {
     } break ;
@@ -5595,14 +5596,14 @@ void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSy
       break ;
     }
   }
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken_end COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 59)) ;
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_lexicalRepeatInstructionAST::constructor_new (var_repeatedInstructionList_1945, var_lexicalWhileBranchList_2092  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 60))  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 60)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken_end COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 63)) ;
+  ioArgument_ioInstructionList.addAssign_operation (GALGAS_lexicalRepeatInstructionAST::constructor_new (var_repeatedInstructionList_2063, var_lexicalWhileBranchList_2210, var_location_2002  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 64))  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 64)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i29_parse (C_Lexique_galgasScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken_repeat COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 48)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken_repeat COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 51)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_34_LexiqueComponentSyntax_19 (inCompiler)) {
@@ -5625,14 +5626,14 @@ void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSy
       break ;
     }
   }
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken_end COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 59)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken_end COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 63)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i29_indexing (C_Lexique_galgasScanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken_repeat COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 48)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken_repeat COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 51)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_34_LexiqueComponentSyntax_19 (inCompiler)) {
@@ -5655,7 +5656,7 @@ void cParser_galgas_34_LexiqueComponentSyntax::rule_galgas_34_LexiqueComponentSy
       break ;
     }
   }
-  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken_end COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 59)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken_end COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 63)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

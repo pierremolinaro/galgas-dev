@@ -1,4 +1,4 @@
-project (1:0:0) -> "all_dangling_else_solution" {
+project (1:0:0) -> "allDanglingElseSolution" {
 #--- Targets
   %makefile-unix
   %MacOS

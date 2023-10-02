@@ -1,4 +1,4 @@
-project (1:0:0) -> "LR1_grammar"{
+project (1:0:0) -> "LR1Grammar"{
 #--- Targets
   %makefile-unix
   %MacOS

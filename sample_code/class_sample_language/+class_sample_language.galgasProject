@@ -1,4 +1,4 @@
-project (1:0:0) -> "class_sample_language" {
+project (1:0:0) -> "classSampleLanguage" {
 #--- Targets
   %makefile-unix
   %MacOS

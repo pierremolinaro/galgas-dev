@@ -9,7 +9,7 @@
  <key>CFBundleIconFile</key>
  <string>application_icns</string>
  <key>CFBundleIdentifier</key>
- <string>fr.what.LR1_grammar</string>
+ <string>fr.what.LR1Grammar</string>
  <key>CFBundleInfoDictionaryVersion</key>
  <string>6.0</string>
  <key>CFBundleName</key>
@@ -32,7 +32,7 @@
       <key>CFBundleTypeIconSystemGenerated</key>
       <integer>0</integer>
       <key>CFBundleTypeName</key>
-      <string>LR1_grammar Source</string>
+      <string>LR1Grammar Source</string>
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>LSHandlerRank</key>

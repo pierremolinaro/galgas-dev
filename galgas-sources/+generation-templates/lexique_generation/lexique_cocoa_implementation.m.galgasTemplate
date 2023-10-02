@@ -139,7 +139,6 @@ end
 //----------------------------------------------------------------------------------------------------------------------
 
 - (BOOL) internalParseLexicalTokenForLexicalColoring {
-  BOOL loop = YES ;
   BOOL scanningOk = YES ;
 %  for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
     %  %![mLexicalType cocoaResetPrefix]%mLexicalAttribute_%!lkey.string ![mLexicalType cocoaReset] % ;\n%

@@ -7189,6 +7189,8 @@ class GALGAS_lexicalRepeatInstructionAST : public GALGAS_lexicalInstructionAST {
 
   public: class GALGAS_lexicalWhileBranchListAST readProperty_mLexicalWhileBranchList (void) const ;
 
+  public: class GALGAS_location readProperty_mLocation (void) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -7201,7 +7203,8 @@ class GALGAS_lexicalRepeatInstructionAST : public GALGAS_lexicalInstructionAST {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_lexicalRepeatInstructionAST constructor_new (const class GALGAS_lexicalInstructionListAST & inOperand0,
-                                                                           const class GALGAS_lexicalWhileBranchListAST & inOperand1
+                                                                           const class GALGAS_lexicalWhileBranchListAST & inOperand1,
+                                                                           const class GALGAS_location & inOperand2
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7263,10 +7266,12 @@ class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Properties
   public: GALGAS_lexicalInstructionListAST mProperty_mRepeatedInstructionList ;
   public: GALGAS_lexicalWhileBranchListAST mProperty_mLexicalWhileBranchList ;
+  public: GALGAS_location mProperty_mLocation ;
 
 //--- Constructor
   public: cPtr_lexicalRepeatInstructionAST (const GALGAS_lexicalInstructionListAST & in_mRepeatedInstructionList,
-                                            const GALGAS_lexicalWhileBranchListAST & in_mLexicalWhileBranchList
+                                            const GALGAS_lexicalWhileBranchListAST & in_mLexicalWhileBranchList,
+                                            const GALGAS_location & in_mLocation
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

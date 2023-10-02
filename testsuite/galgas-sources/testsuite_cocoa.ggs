@@ -1,0 +1,10 @@
+gui cocoa {
+ // with option easyBindings_options
+
+  with lexique testsuite_lexique {
+    fileExtension: "xxx"
+    title: "Source"
+    blockComment : "//"
+  }
+
+}

@@ -1,4 +1,4 @@
-project (1:0:0) -> "xml_parsing" {
+project (1:0:0) -> "XMLParsing" {
 #--- Targets
   %makefile-unix
   %MacOS

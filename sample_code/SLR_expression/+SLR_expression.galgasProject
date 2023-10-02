@@ -1,4 +1,4 @@
-project (1:0:0) -> "SLR_expression" {
+project (1:0:0) -> "SLRExpression" {
 #--- Targets
   %makefile-unix
   %MacOS

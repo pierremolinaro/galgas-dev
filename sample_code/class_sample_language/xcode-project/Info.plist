@@ -9,7 +9,7 @@
  <key>CFBundleIconFile</key>
  <string>application_icns</string>
  <key>CFBundleIdentifier</key>
- <string>fr.what.class_sample_language</string>
+ <string>fr.what.classSampleLanguage</string>
  <key>CFBundleInfoDictionaryVersion</key>
  <string>6.0</string>
  <key>CFBundleName</key>
@@ -32,7 +32,7 @@
       <key>CFBundleTypeIconSystemGenerated</key>
       <integer>0</integer>
       <key>CFBundleTypeName</key>
-      <string>class_sample_language Source</string>
+      <string>classSampleLanguage Source</string>
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>LSHandlerRank</key>

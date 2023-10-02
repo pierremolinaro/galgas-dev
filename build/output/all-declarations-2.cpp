@@ -11235,6 +11235,7 @@ GALGAS_lexicalLogInstructionAST_2D_weak GALGAS_lexicalLogInstructionAST_2D_weak:
     cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
     mProperty_mRepeatedInstructionList.printNonNullClassInstanceProperties ("mRepeatedInstructionList") ;
     mProperty_mLexicalWhileBranchList.printNonNullClassInstanceProperties ("mLexicalWhileBranchList") ;
+    mProperty_mLocation.printNonNullClassInstanceProperties ("mLocation") ;
   }
 #endif
 
@@ -11249,6 +11250,9 @@ typeComparisonResult cPtr_lexicalRepeatInstructionAST::dynamicObjectCompare (con
   }
   if (kOperandEqual == result) {
     result = mProperty_mLexicalWhileBranchList.objectCompare (p->mProperty_mLexicalWhileBranchList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
   }
   return result ;
 }
@@ -11282,7 +11286,8 @@ GALGAS_lexicalInstructionAST () {
 
 GALGAS_lexicalRepeatInstructionAST GALGAS_lexicalRepeatInstructionAST::constructor_default (LOCATION_ARGS) {
   return GALGAS_lexicalRepeatInstructionAST::constructor_new (GALGAS_lexicalInstructionListAST::constructor_emptyList (HERE),
-                                                              GALGAS_lexicalWhileBranchListAST::constructor_emptyList (HERE)
+                                                              GALGAS_lexicalWhileBranchListAST::constructor_emptyList (HERE),
+                                                              GALGAS_location::constructor_nowhere (HERE)
                                                               COMMA_THERE) ;
 }
 
@@ -11295,11 +11300,12 @@ GALGAS_lexicalInstructionAST (inSourcePtr) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRepeatInstructionAST GALGAS_lexicalRepeatInstructionAST::constructor_new (const GALGAS_lexicalInstructionListAST & inAttribute_mRepeatedInstructionList,
-                                                                                        const GALGAS_lexicalWhileBranchListAST & inAttribute_mLexicalWhileBranchList
+                                                                                        const GALGAS_lexicalWhileBranchListAST & inAttribute_mLexicalWhileBranchList,
+                                                                                        const GALGAS_location & inAttribute_mLocation
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_lexicalRepeatInstructionAST result ;
-  if (inAttribute_mRepeatedInstructionList.isValid () && inAttribute_mLexicalWhileBranchList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_lexicalRepeatInstructionAST (inAttribute_mRepeatedInstructionList, inAttribute_mLexicalWhileBranchList COMMA_THERE)) ;
+  if (inAttribute_mRepeatedInstructionList.isValid () && inAttribute_mLexicalWhileBranchList.isValid () && inAttribute_mLocation.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_lexicalRepeatInstructionAST (inAttribute_mRepeatedInstructionList, inAttribute_mLexicalWhileBranchList, inAttribute_mLocation COMMA_THERE)) ;
   }
   return result ;
 }
@@ -11329,15 +11335,29 @@ GALGAS_lexicalWhileBranchListAST GALGAS_lexicalRepeatInstructionAST::readPropert
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_location GALGAS_lexicalRepeatInstructionAST::readProperty_mLocation (void) const {
+  if (NULL == mObjectPtr) {
+    return GALGAS_location () ;
+  }else{
+    cPtr_lexicalRepeatInstructionAST * p = (cPtr_lexicalRepeatInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexicalRepeatInstructionAST) ;
+    return p->mProperty_mLocation ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @lexicalRepeatInstructionAST class
 //----------------------------------------------------------------------------------------------------------------------
 
 cPtr_lexicalRepeatInstructionAST::cPtr_lexicalRepeatInstructionAST (const GALGAS_lexicalInstructionListAST & in_mRepeatedInstructionList,
-                                                                    const GALGAS_lexicalWhileBranchListAST & in_mLexicalWhileBranchList
+                                                                    const GALGAS_lexicalWhileBranchListAST & in_mLexicalWhileBranchList,
+                                                                    const GALGAS_location & in_mLocation
                                                                     COMMA_LOCATION_ARGS) :
 cPtr_lexicalInstructionAST (THERE),
 mProperty_mRepeatedInstructionList (in_mRepeatedInstructionList),
-mProperty_mLexicalWhileBranchList (in_mLexicalWhileBranchList) {
+mProperty_mLexicalWhileBranchList (in_mLexicalWhileBranchList),
+mProperty_mLocation (in_mLocation) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -11352,6 +11372,8 @@ void cPtr_lexicalRepeatInstructionAST::description (C_String & ioString,
   mProperty_mRepeatedInstructionList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mLexicalWhileBranchList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -11359,7 +11381,7 @@ void cPtr_lexicalRepeatInstructionAST::description (C_String & ioString,
 
 acPtr_class * cPtr_lexicalRepeatInstructionAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_lexicalRepeatInstructionAST (mProperty_mRepeatedInstructionList, mProperty_mLexicalWhileBranchList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexicalRepeatInstructionAST (mProperty_mRepeatedInstructionList, mProperty_mLexicalWhileBranchList, mProperty_mLocation COMMA_THERE)) ;
   return ptr ;
 }
 

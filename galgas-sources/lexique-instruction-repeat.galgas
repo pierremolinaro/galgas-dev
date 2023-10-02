@@ -5,6 +5,7 @@
 refclass @lexicalRepeatInstructionAST : @lexicalInstructionAST {
   private let @lexicalInstructionListAST mRepeatedInstructionList
   private let @lexicalWhileBranchListAST mLexicalWhileBranchList
+  private let @location mLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -18,6 +19,7 @@ syntax extension galgas3LexiqueComponentSyntax {
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $repeat$
     var @lexicalInstructionListAST repeatedInstructionList = {}
+    let location = @location.here
     repeat
     while
       <lexical_instruction> !?repeatedInstructionList
@@ -31,6 +33,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     ioInstructionList += !@lexicalRepeatInstructionAST.new {
       !repeatedInstructionList
       !lexicalWhileBranchList
+      !location
     }
   }
 
@@ -46,6 +49,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $repeat$
+    let location = @location.here
     var @lexicalInstructionListAST repeatedInstructionList = {}
     repeat
     while
@@ -60,6 +64,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     ioInstructionList += !@lexicalRepeatInstructionAST.new {
       !repeatedInstructionList
       !lexicalWhileBranchList
+      !location
     }
   }
 
@@ -92,10 +97,12 @@ override method @lexicalRepeatInstructionAST checkLexicalInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalRepeatInstructionAST generateObjcCocoaInstructionCode
-  ?let @string inScannerClassName
-  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
-  outGeneratedCode = "do {\n"
+                                      ?let @string inScannerClassName
+                                      ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
+                                      -> @string outGeneratedCode {
+  let loopVarName = "loop" + [self.mLocation locationIndex]
+  outGeneratedCode = "BOOL " + loopVarName + " = YES ;\n"
+  outGeneratedCode += "do {\n"
   [!?outGeneratedCode incIndentation !2]
 #--- Repeated instruction
   for (mInstruction) in self.mRepeatedInstructionList do
@@ -116,11 +123,11 @@ override getter @lexicalRepeatInstructionAST generateObjcCocoaInstructionCode
     outGeneratedCode += "}else "
   end
   outGeneratedCode += "}else{\n"
-                      "  loop = NO ;\n"
+                      "  " + loopVarName + " = NO ;\n"
                       "}\n"
   [!?outGeneratedCode decIndentation !2]
-  outGeneratedCode += "}while (loop && scanningOk) ;\n"
-                      "loop = YES ;\n"
+  outGeneratedCode += "}while (" + loopVarName + " && scanningOk) ;\n"
+//                      "loop = YES ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
