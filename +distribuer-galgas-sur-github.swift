@@ -28,11 +28,13 @@ let BUILD_KIND = ProductKind.release
 // Infos de version
 //--------------------------------------------------------------------------------------------------
 
-let NOTES : [String] = []
-let BUGFIXES : [String] = []
+let NOTES : [String] = [
+]
+let BUGFIXES : [String] = [
+  "Correction bug du constructeur @uint uint64WithBitString"
+]
 let CHANGES : [String] = [
-  "Nouvelle gestion des constantes",
-  "les suffixes des constantes littérales sont obsolètes et sans effet, une constante littérale est toujours du type @lbigint"
+  "le délimiteur ';' est nécessaire pour séparer les instructions sur une même ligne"
 ]
 let NEWS : [String] = [
 ]
