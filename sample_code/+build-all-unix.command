@@ -23,7 +23,7 @@ ${DIR}/logo/makefile-unix/logo  ${DIR}/logo/exemples-logo/pentagone.logo &&
 #----------------- class_sample_language
 $DIR/../makefile-unix/galgas --generate-many-cpp-files --Werror ${DIR}/class_sample_language/+class_sample_language.galgasProject &&
 /usr/bin/python3 ${DIR}/class_sample_language/makefile-unix/build.py &&
-time ${DIR}/class_sample_language/makefile-unix/classSampleLanguage ${DIR}/class_sample_language/samples/100000-classes.class_sample_language &&
+time ${DIR}/class_sample_language/makefile-unix/classSampleLanguage ${DIR}/class_sample_language/samples/100000-classes.classSampleLanguage &&
 cd ${DIR}/class_sample_language/samples &&
 time gcc -c 100000-classes.cpp -o 100000-classes.o &&
 #----------------- dangling_else_solution
