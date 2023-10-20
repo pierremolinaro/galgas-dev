@@ -9,8 +9,8 @@ before {
 }
 
 #--- 'when' clauses
-case . "xml_file"
-message "an XML text file with the .xml_file extension"
+case . "XMLParsing"
+message "an XML text file with the .XMLParsing extension"
 ?sourceFilePath:@lstring inSourceFile {
   grammar xml_parsing_grammar (
     ?let rootNodes
