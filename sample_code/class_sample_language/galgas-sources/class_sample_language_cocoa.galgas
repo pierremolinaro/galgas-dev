@@ -1,7 +1,7 @@
 gui cocoa {
 
 with lexique class_sample_language_lexique {
-  fileExtension: "class_sample_language"
+  fileExtension: "classSampleLanguage"
   title:"Source"
 }
 }
