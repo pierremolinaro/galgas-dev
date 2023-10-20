@@ -41,7 +41,7 @@ $DIR/../makefile-unix/galgas --generate-many-cpp-files --Werror ${DIR}/LR1_gramm
 #----------------- XML Parsing
 $DIR/../makefile-unix/galgas --generate-many-cpp-files --Werror ${DIR}/xml_parsing/+xml_parsing.galgasProject &&
 /usr/bin/python3 ${DIR}/xml_parsing/makefile-unix/build.py &&
-${DIR}/xml_parsing/makefile-unix/xml_parsing --help &&
-${DIR}/xml_parsing/makefile-unix/xml_parsing ${DIR}/xml_parsing/example.xml_file &&
-${DIR}/xml_parsing/makefile-unix/xml_parsing ${DIR}/xml_parsing/utf8test.xml_file &&
+${DIR}/xml_parsing/makefile-unix/XMLParsing --help &&
+${DIR}/xml_parsing/makefile-unix/XMLParsing ${DIR}/xml_parsing/example.XMLParsing &&
+${DIR}/xml_parsing/makefile-unix/XMLParsing ${DIR}/xml_parsing/utf8test.XMLParsing &&
 echo "------------ SUCCESS ----------------------------"
