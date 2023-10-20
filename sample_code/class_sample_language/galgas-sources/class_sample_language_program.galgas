@@ -3,7 +3,7 @@
 before {
 }
 
-case . "class_sample_language"
+case . "classSampleLanguage"
 message "an '.class_sample_language' source file"
 grammar class_sample_language_grammar
 ?sourceFilePath:@lstring inSourceFile {

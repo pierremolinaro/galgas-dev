@@ -28,7 +28,7 @@
  <array>
   <dict>
       <key>CFBundleTypeIconFile</key>
-      <string>class_sample_language_icns</string>
+      <string>classSampleLanguage_icns</string>
       <key>CFBundleTypeIconSystemGenerated</key>
       <integer>0</integer>
       <key>CFBundleTypeName</key>
@@ -39,7 +39,7 @@
       <string>Default</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>$(PRODUCT_BUNDLE_IDENTIFIER).class_sample_language</string>
+        <string>$(PRODUCT_BUNDLE_IDENTIFIER).classSampleLanguage</string>
       </array>
       <key>NSDocumentClass</key>
       <string>OC_GGS_Document</string>
@@ -54,19 +54,19 @@
       <string>public.text</string>
     </array>
     <key>UTTypeDescription</key>
-    <string>class_sample_language</string>
+    <string>classSampleLanguage</string>
     <key>UTTypeIcons</key>
     <dict>
       <key>UTTypeIconBadgeName</key>
       <string>galgasDocuments</string>
     </dict>
     <key>UTTypeIdentifier</key>
-    <string>$(PRODUCT_BUNDLE_IDENTIFIER).class_sample_language</string>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER).classSampleLanguage</string>
     <key>UTTypeTagSpecification</key>
     <dict>
       <key>public.filename-extension</key>
       <array>
-        <string>class_sample_language</string>
+        <string>classSampleLanguage</string>
       </array>
     </dict>
   </dict>
