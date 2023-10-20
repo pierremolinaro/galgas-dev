@@ -86,6 +86,7 @@
   @private NSMutableArray * mResultArray ;
   @private NSUInteger mResultCount ;
   @private NSTreeController * mFoundEntryTreeController ;
+  @private NSMutableDictionary * mBuildStringAttributeDictionary ;
 
   @private NSString * mBaseFilePreferenceKey ;
 }

@@ -77,7 +77,11 @@
       options:NSKeyValueObservingOptionNew
       context:NULL
     ] ;
-   }
+    mBuildStringAttributeDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+      mBuildTextFont, NSFontAttributeName,
+      nil
+    ].mutableCopy ;
+  }
   return self;
 }
 
@@ -900,17 +904,13 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   #endif
   NSString * message = [[NSString alloc] initWithData:inData encoding: NSUTF8StringEncoding] ;
   NSArray * messageArray = [message componentsSeparatedByString:[NSString stringWithFormat: @"%c", 0x1B]] ;
-//--- Default attributes dictionary
-  NSDictionary * defaultDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-    mBuildTextFont, NSFontAttributeName,
-    nil
-  ] ;
+//--- Enter first component with current attributes
   NSMutableAttributedString * outputAttributedString = [[NSMutableAttributedString alloc]
-    initWithString:[messageArray objectAtIndex:0]
-    attributes:defaultDictionary
+    initWithString: [messageArray objectAtIndex:0]
+    attributes: mBuildStringAttributeDictionary
   ] ;
 //--- Send other components
-  NSMutableDictionary * componentAttributeDictionary = defaultDictionary.mutableCopy ;
+ // NSMutableDictionary * componentAttributeDictionary = defaultDictionary.mutableCopy ;
   for (NSUInteger i=1 ; i<messageArray.count ; i++) {
     NSString * component = [messageArray objectAtIndex:i] ;
     NSUInteger idx = 0 ;
@@ -926,23 +926,28 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
         idx ++ ;
       }
       switch (code) {
-      case  0 : componentAttributeDictionary = defaultDictionary.mutableCopy ; break ;
-      case 30 : [componentAttributeDictionary setValue:[NSColor blackColor]   forKey:NSForegroundColorAttributeName] ; break ;
-      case 31 : [componentAttributeDictionary setValue:[NSColor redColor]     forKey:NSForegroundColorAttributeName] ; break ;
-      case 32 : [componentAttributeDictionary setValue:[NSColor colorWithCalibratedRed:0.0 green:0.5 blue:0.0 alpha:1.0] forKey:NSForegroundColorAttributeName] ; break ;
-      case 33 : [componentAttributeDictionary setValue:[NSColor orangeColor]  forKey:NSForegroundColorAttributeName] ; break ;
-      case 34 : [componentAttributeDictionary setValue:[NSColor blueColor]    forKey:NSForegroundColorAttributeName] ; break ;
-      case 35 : [componentAttributeDictionary setValue:[NSColor magentaColor] forKey:NSForegroundColorAttributeName] ; break ;
-      case 36 : [componentAttributeDictionary setValue:[NSColor cyanColor]    forKey:NSForegroundColorAttributeName] ; break ;
-      case 37 : [componentAttributeDictionary setValue:[NSColor whiteColor]   forKey:NSForegroundColorAttributeName] ; break ;
-      case 40 : [componentAttributeDictionary setValue:[NSColor whiteColor]   forKey:NSBackgroundColorAttributeName] ; break ;
-      case 41 : [componentAttributeDictionary setValue:[NSColor redColor]     forKey:NSBackgroundColorAttributeName] ; break ;
-      case 42 : [componentAttributeDictionary setValue:[NSColor colorWithCalibratedRed:0.0 green:0.5 blue:0.0 alpha:1.0] forKey:NSBackgroundColorAttributeName] ; break ;
-      case 43 : [componentAttributeDictionary setValue:[NSColor orangeColor]  forKey:NSBackgroundColorAttributeName] ; break ;
-      case 44 : [componentAttributeDictionary setValue:[NSColor blueColor]    forKey:NSBackgroundColorAttributeName] ; break ;
-      case 45 : [componentAttributeDictionary setValue:[NSColor magentaColor] forKey:NSBackgroundColorAttributeName] ; break ;
-      case 46 : [componentAttributeDictionary setValue:[NSColor cyanColor]    forKey:NSBackgroundColorAttributeName] ; break ;
-      case 47 : [componentAttributeDictionary setValue:[NSColor whiteColor]   forKey:NSBackgroundColorAttributeName] ; break ;
+      case  0 :
+        mBuildStringAttributeDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+          mBuildTextFont, NSFontAttributeName,
+          nil
+        ].mutableCopy ;
+        break ;
+      case 30 : [mBuildStringAttributeDictionary setValue:[NSColor blackColor]   forKey:NSForegroundColorAttributeName] ; break ;
+      case 31 : [mBuildStringAttributeDictionary setValue:[NSColor redColor]     forKey:NSForegroundColorAttributeName] ; break ;
+      case 32 : [mBuildStringAttributeDictionary setValue:[NSColor colorWithCalibratedRed:0.0 green:0.5 blue:0.0 alpha:1.0] forKey:NSForegroundColorAttributeName] ; break ;
+      case 33 : [mBuildStringAttributeDictionary setValue:[NSColor orangeColor]  forKey:NSForegroundColorAttributeName] ; break ;
+      case 34 : [mBuildStringAttributeDictionary setValue:[NSColor blueColor]    forKey:NSForegroundColorAttributeName] ; break ;
+      case 35 : [mBuildStringAttributeDictionary setValue:[NSColor magentaColor] forKey:NSForegroundColorAttributeName] ; break ;
+      case 36 : [mBuildStringAttributeDictionary setValue:[NSColor cyanColor]    forKey:NSForegroundColorAttributeName] ; break ;
+      case 37 : [mBuildStringAttributeDictionary setValue:[NSColor whiteColor]   forKey:NSForegroundColorAttributeName] ; break ;
+      case 40 : [mBuildStringAttributeDictionary setValue:[NSColor whiteColor]   forKey:NSBackgroundColorAttributeName] ; break ;
+      case 41 : [mBuildStringAttributeDictionary setValue:[NSColor redColor]     forKey:NSBackgroundColorAttributeName] ; break ;
+      case 42 : [mBuildStringAttributeDictionary setValue:[NSColor colorWithCalibratedRed:0.0 green:0.5 blue:0.0 alpha:1.0] forKey:NSBackgroundColorAttributeName] ; break ;
+      case 43 : [mBuildStringAttributeDictionary setValue:[NSColor orangeColor]  forKey:NSBackgroundColorAttributeName] ; break ;
+      case 44 : [mBuildStringAttributeDictionary setValue:[NSColor blueColor]    forKey:NSBackgroundColorAttributeName] ; break ;
+      case 45 : [mBuildStringAttributeDictionary setValue:[NSColor magentaColor] forKey:NSBackgroundColorAttributeName] ; break ;
+      case 46 : [mBuildStringAttributeDictionary setValue:[NSColor cyanColor]    forKey:NSBackgroundColorAttributeName] ; break ;
+      case 47 : [mBuildStringAttributeDictionary setValue:[NSColor whiteColor]   forKey:NSBackgroundColorAttributeName] ; break ;
       default: break ;
       }
     }
@@ -965,8 +970,8 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
         ] ;
       }
       NSAttributedString * as = [[NSAttributedString alloc]
-        initWithString:s
-        attributes:componentAttributeDictionary
+        initWithString: s
+        attributes: mBuildStringAttributeDictionary
       ] ;
       [outputAttributedString appendAttributedString:as] ;
     }
@@ -1002,7 +1007,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   #endif
   self.mBuildTaskIsRunning = NO ;
 //---
-  [self enterOutputData:mBufferedOutputData] ;
+  [self enterOutputData: mBufferedOutputData] ;
   mBufferedOutputData = nil ;
 //---
   [OC_GGS_DocumentData broadcastIssueArray: mIssueArray] ;
@@ -1067,7 +1072,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  [mBufferedOutputData appendData:inData] ;
+  [mBufferedOutputData appendData: inData] ;
 //--- Look for line feed
   BOOL ok = NO ;
   NSUInteger idx = mBufferedOutputData.length ;
@@ -1080,17 +1085,11 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   }
 //--- If found, extract data
   if (ok) {
-    idx ++ ;
+    idx += 1 ;
     NSData * data = [mBufferedOutputData subdataWithRange: NSMakeRange (0, idx)] ;
     NSData * remainingData = [mBufferedOutputData subdataWithRange: NSMakeRange (idx, mBufferedOutputData.length - idx)] ;
     [mBufferedOutputData setData: remainingData] ;
     [self enterOutputData: data] ;
-  }
-//--- Remaining data is a valid UFT8 string ?
-  NSString * s = [[NSString alloc] initWithData: mBufferedOutputData encoding: NSUTF8StringEncoding] ;
-  if (s != nil) { // Valid UFT8 string
-    [self enterOutputData: mBufferedOutputData] ;
-    [mBufferedOutputData setData: [NSData data]] ;
   }
 }
 
