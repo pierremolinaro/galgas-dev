@@ -10,14 +10,6 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
  "bat", "rtf", "py"
 }{
 }{
-  template build_macosx "makefile-macosx/build.py.galgasTemplate" ?@string PROJECT_NAME ?@string BUILD_DIR_NAME
-  template build_verbose_macosx "makefile-macosx/verbose-build.py.galgasTemplate"
-  template build_debug_macosx "makefile-macosx/build+debug.py.galgasTemplate"
-  template build_release_macosx "makefile-macosx/build+release.py.galgasTemplate"
-  template build_lto_macosx "makefile-macosx/build+lto.py.galgasTemplate"
-  template install_macosx "makefile-macosx/install.py.galgasTemplate"
-  template clean_macosx "makefile-macosx/clean.py.galgasTemplate" ?@string PROJECT_NAME
-
   template clean_unix "makefile-unix/clean.py.galgasTemplate" ?@string PROJECT_NAME
   template build_unix "makefile-unix/build.py.galgasTemplate" ?@string PROJECT_NAME ?@string BUILD_DIR_NAME
   template build_verbose_unix "makefile-unix/verbose-build.py.galgasTemplate"
@@ -215,24 +207,6 @@ private proc generateGalgas3MinGWOnMacOSXTarget
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc generateGalgas3MakefileMacOSXTarget
-  ?let @string inProjectDirectory
-  ?buildDirName: let @string inBuildDirectoryName
-  ?let @string inProjectName {
-  let @string dir = inProjectDirectory + "/makefile-macosx"
-  [dir makeDirectory]
-  [[filewrapper targetGalgas3GenerationFileWrapper.build_macosx !inProjectName !inBuildDirectoryName] writeToExecutableFileWhenDifferentContents !dir +"/build.py" ?*]
-  [[filewrapper targetGalgas3GenerationFileWrapper.build_verbose_macosx] writeToExecutableFileWhenDifferentContents !dir +"/verbose-build.py" ?*]
-  [[filewrapper targetGalgas3GenerationFileWrapper.build_debug_macosx] writeToExecutableFileWhenDifferentContents !dir +"/build+debug.py" ?*]
-  [[filewrapper targetGalgas3GenerationFileWrapper.build_release_macosx] writeToExecutableFileWhenDifferentContents !dir +"/build+release.py" ?*]
-  [[filewrapper targetGalgas3GenerationFileWrapper.build_lto_macosx] writeToExecutableFileWhenDifferentContents !dir +"/build+lto.py" ?*]
-  [[filewrapper targetGalgas3GenerationFileWrapper.install_macosx] writeToExecutableFileWhenDifferentContents !dir +"/install.py" ?*]
-  [[filewrapper targetGalgas3GenerationFileWrapper.clean_macosx !inProjectName] writeToExecutableFileWhenDifferentContents !dir +"/clean.py" ?*]
-  [@string deleteFileIfExists !dir + "/makefile"]
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 private proc generateGalgas3MakefileUnixTarget
   ?let @string inProjectDirectory
   ?buildDirName: let @string inBuildDirectoryName
@@ -363,7 +337,6 @@ proc updateGalgasTargets
   availableGenerationFeatures += !"codeblocks-linux32"
   availableGenerationFeatures += !"codeblocks-linux64"
   availableGenerationFeatures += !"codeblocks-mac"
-  availableGenerationFeatures += !"makefile-macosx"
   availableGenerationFeatures += !"makefile-unix"
   availableGenerationFeatures += !"makefile-x86linux32-on-macosx"
   availableGenerationFeatures += !"makefile-x86linux64-on-macosx"
@@ -408,9 +381,6 @@ proc updateGalgasTargets
     warning @location.here: "For a Cocoa project, the \"applicationBundleBase\" feature should be set; for example: '%applicationBundleBase : \"fr.what\" ;'"
   end
 #--- Generation
-  if [generationFeatures hasKey !"makefile-macosx"] then
-    generateGalgas3MakefileMacOSXTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName)
-  end
   if [generationFeatures hasKey !"makefile-unix"] then
     generateGalgas3MakefileUnixTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
   end

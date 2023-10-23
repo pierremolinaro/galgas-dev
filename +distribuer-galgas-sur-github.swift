@@ -31,10 +31,9 @@ let BUILD_KIND = ProductKind.release
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Correction bug du constructeur @uint uint64WithBitString"
 ]
 let CHANGES : [String] = [
-  "le délimiteur ';' est nécessaire pour séparer les instructions sur une même ligne"
+  "Suppression du makefile pour OSX (utiliser le makefile-unix)"
 ]
 let NEWS : [String] = [
 ]
