@@ -4,6 +4,6 @@ ROOT_DIR=$PWD
 
 cd "$ROOT_DIR/makefile-unix/"
 
-python3 clean.py
+./clean.py
 
-python3 build+release.py
+./build+release.py
