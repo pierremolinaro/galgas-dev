@@ -267,9 +267,6 @@ void C_DirectedGraph::getNodesInvolvedInCircularities (TC_UniqueArray <uint32_t>
 //----------------------------------------------------------------------------------------------------------------------
 
 C_DirectedGraph C_DirectedGraph::subGraphFromNodes (const C_UIntSet & inStartNodes,
-                                                    #ifdef USE_NODE_NAMES_WITH_SUBGRAPH_COMPUTATION
-                                                      const TC_UniqueArray <C_String> & inNodeNames,
-                                                    #endif
                                                     const C_UIntSet & inNodesToExclude) const {
   TC_UniqueArray <bool> nodeBoolArray ; mNodes.getBoolValueArray (nodeBoolArray) ;
   C_DirectedGraph result ;
@@ -277,27 +274,13 @@ C_DirectedGraph C_DirectedGraph::subGraphFromNodes (const C_UIntSet & inStartNod
     nodeSet -= inNodesToExclude ;
     result.addNodes (nodeSet) ;
   }
-  #ifdef USE_NODE_NAMES_WITH_SUBGRAPH_COMPUTATION
-    { TC_UniqueArray <uint32_t> sourceNodeArray ; result.getNodeValueArray (sourceNodeArray) ;
-      printf ("START NODES (%d):\n", sourceNodeArray.count ()) ;
-      for (int32_t i=0 ; i<sourceNodeArray.count () ; i++) {
-        printf ("  - %d (%s)\n", sourceNodeArray (i COMMA_HERE), inNodeNames ((int32_t) sourceNodeArray (i COMMA_HERE) COMMA_HERE).cString (HERE)) ;
-      }
-    }
-  #endif
   bool loop = true ;
   while (loop) {
     loop = false ;
     TC_UniqueArray <uint32_t> sourceNodeArray ; result.getNodeValueArray (sourceNodeArray) ;
-    #ifdef USE_NODE_NAMES_WITH_SUBGRAPH_COMPUTATION
-      printf ("********************* NODE COUNT %d\n", sourceNodeArray.count ()) ;
-    #endif
     for (int32_t i=0 ; i<sourceNodeArray.count () ; i++) {
       const uint32_t sourceNodeIndex = sourceNodeArray (i COMMA_HERE) ;
       if (nodeBoolArray ((int32_t) sourceNodeIndex COMMA_HERE)) {
-        #ifdef USE_NODE_NAMES_WITH_SUBGRAPH_COMPUTATION
-          printf ("NEW NODE %d (%s):\n", sourceNodeIndex, inNodeNames ((int32_t) sourceNodeIndex COMMA_HERE).cString (HERE)) ;
-        #endif
         loop = true ;
         nodeBoolArray.setObjectAtIndex (false, (int32_t) sourceNodeIndex COMMA_HERE) ;
         C_UIntSet s = mEdges ((int32_t) sourceNodeIndex COMMA_HERE) ;
@@ -305,9 +288,6 @@ C_DirectedGraph C_DirectedGraph::subGraphFromNodes (const C_UIntSet & inStartNod
         TC_UniqueArray <uint32_t> targetNodeArray ; s.getValueArray (targetNodeArray) ;
         for (int32_t j=0 ; j<targetNodeArray.count () ; j++) {
           result.addEdge (sourceNodeIndex, targetNodeArray (j COMMA_HERE)) ;
-          #ifdef USE_NODE_NAMES_WITH_SUBGRAPH_COMPUTATION
-            printf ("  edge %d (%s)\n", targetNodeArray (j COMMA_HERE), inNodeNames ((int32_t) targetNodeArray (j COMMA_HERE) COMMA_HERE).cString (HERE)) ;
-          #endif
         }
       }
     }

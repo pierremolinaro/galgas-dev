@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2009, ..., 2009 Pierre Molinaro.
+//  Copyright (C) 2009, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -120,14 +120,12 @@ typeComparisonResult GALGAS_type::objectCompare (const GALGAS_type & inOperand) 
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     const ptrdiff_t diff = mTypeDescriptor - inOperand.mTypeDescriptor ;
-    // printf ("GALGAS_type::objectCompare %p, %p, diff %d\n", inOperand1.mTypeDescriptor, inOperand2.mTypeDescriptor, diff) ;
     if (diff < 0) {
       result = kFirstOperandLowerThanSecond ;
     }else if (diff > 0) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
       result = kOperandEqual ;
-      // printf ("EQUAL\n") ;
     }
   }
   return result ;

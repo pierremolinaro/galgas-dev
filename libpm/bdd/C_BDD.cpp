@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -239,21 +239,6 @@ C_BDD C_BDD::bddWithConstants (const uint32_t inValues [],
       idx ++ ;
     }
   }
-//--- Check
-/*  C_BDD r ; r.setToTrue () ;
-  idx = 0 ;
-  for (int32_t i=0 ; i<inEntryCount ; i++) {
-    uint32_t v = inValues [i] ;
-    for (uint32_t j=0 ; j<inBitCount [i] ; j++) {
-      r &= C_BDD (idx, ((v & 1) == 0) ? false : true) ;
-      v >>= 1 ;
-      idx ++ ;
-    }
-  }
-  if (r.mBDDvalue != result) {
-    printf ("[ERROR bddWithConstants]") ;
-  }*/
-//---- 
   return C_BDD (result) ;
 }
 
@@ -423,8 +408,8 @@ uint32_t C_BDD::significantVariableCount (void) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-//#define DEBUG_CONTAINS_VALUE
- 
+//    #define DEBUG_CONTAINS_VALUE
+
 //----------------------------------------------------------------------------------------------------------------------
 
 static bool recursiveContainsValue64 (const uint32_t inBDD,
@@ -1467,7 +1452,6 @@ updateRelation (const uint32_t inRelationBitNeededCount [],
   }
 //--- Perform updating
   if (updateIsNeeded) {
-    //printf ("BEFORE '%s'\n", queryStringValue ().cString (HERE)) ;
     uint32_t totalCurrentBitCount = 0 ;
     uint32_t newNeededTotalBitCount = 0 ;
     for (int32_t i=0 ; i<inRelationCardinality ; i++) {
@@ -1495,12 +1479,9 @@ updateRelation (const uint32_t inRelationBitNeededCount [],
       + (* (inRelationBitCurrentCount [inRelationCardinality - 1]))
       - inRelationBitNeededCount [inRelationCardinality - 1]) ;
     while (finalTranslatedIndex < newNeededTotalBitCount) {
-     // printf ("finalTranslatedIndex %u\n", finalTranslatedIndex) ;
-     // result = internalITEoperation (find_or_add (finalTranslatedIndex, 1, 0), result, 0) ;
       result = find_or_add (finalTranslatedIndex, result, 0 COMMA_HERE) ;
       finalTranslatedIndex ++ ;
     }
-    // printf ("AFTER '%s'\n", C_BDD (result).queryStringValue ().cString (HERE)) ;
     macroMyDeleteArray (translationVector) ;
   }
 //--- Register updating
@@ -2309,7 +2290,7 @@ static void sortValueArray (uint64_t ioValueArray [],
 
 //----------------------------------------------------------------
 
-//#define CHECK_WITH_TRIVIAL_BDD_COMPUTING
+//    #define CHECK_WITH_TRIVIAL_BDD_COMPUTING
 
 //----------------------------------------------------------------
 
@@ -2330,10 +2311,6 @@ C_BDD C_BDD::buildBDDFromValueList (uint64_t ioValueList [],
   if (inValueCount > 0) {
   //--- Sort value list in ascending order
     sortValueArray (ioValueList, 0, (int32_t) (inValueCount - 1)) ;
-  //--- Check values are sorted
-  //  for (uint32_t i=1 ; i<inValueCount ; i++) {
-  //    MF_Assert (ioValueList [i-1] < ioValueList [i], "ioValueList [i-1] < ioValueList [i] for i=%lld, inValueCount:%lld", i, inValueCount) ;
-  //  }
   //--- Search for duplicates
     uint32_t duplicates = 0 ;
     for (uint32_t i=1 ; i<inValueCount ; i++) {

@@ -326,7 +326,6 @@ static void analyze_one_option (const char * inCommand,
     const char zero = '\0' ;
     snprintf (filter, 999, "%c%s%c", zero, filterString, zero) ;
     ofn.lpstrFilter = filter ;
-  //  ofn.lpstrFilter = "All\0*.*\0Text\0*.TXT\0";
     ofn.nFilterIndex = 1;
     ofn.lpstrFileTitle = NULL;
     ofn.nMaxFileTitle = 0 ;

@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2010, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -167,7 +167,6 @@ void capCollectionElementArray::setCapacity (const uint32_t inNewCapacity) {
     while (newCapacity < inNewCapacity) {
       newCapacity <<= 1 ;
     }
-    // printf ("inNewCapacity %u, current %u, new %u\n", inNewCapacity, mCapacity, newCapacity) ;
     capCollectionElement * newArray = NULL ;
     macroMyNewArray (newArray, capCollectionElement, newCapacity) ;
     for (uint32_t i=0 ; i<count () ; i++) {

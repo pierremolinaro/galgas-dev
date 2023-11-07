@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2005, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 2005, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -524,7 +524,6 @@ void cSharedStringsetRoot::copyFrom (const cSharedStringsetRoot * inSharedRootTo
 //----------------------------------------------------------------------------------------------------------------------
 
 void cSharedStringsetRoot::removeKey (const C_String & inKey) {
-  // printf ("OPERATION -=\n") ; fflush (stdout) ;
   macroUniqueSharedObject (this) ;
   bool branchHasBeenRemoved = false ;
   bool keyHasBeenRemoved = false ;

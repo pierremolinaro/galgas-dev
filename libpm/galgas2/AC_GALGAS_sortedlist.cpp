@@ -199,7 +199,6 @@ cSharedSortedListRoot::~ cSharedSortedListRoot (void) {
     if (NULL != inNode) {
       macroValidSharedObject (inNode, cSortedListNode) ;
       populateCheckArray (inNode->mInfPtr, ioIndex, ioArray) ;
-      // printf ("Node %p at index %u\n", inNode, ioIndex) ;
       ioArray [ioIndex] = inNode ;
       ioIndex ++ ;
       populateCheckArray (inNode->mSupPtr, ioIndex, ioArray) ;
@@ -218,7 +217,6 @@ cSharedSortedListRoot::~ cSharedSortedListRoot (void) {
     const cSortedListNode * * array = NULL ;
     macroMyNewPODArray (array, const cSortedListNode *, inCount) ; 
     uint32_t idx = 0 ;
-    // printf ("-----\n") ;
     populateCheckArray (inRoot, idx, array) ;
     MF_AssertThere (idx == inCount, "a: idx (%lld) != inCount (%lld)", idx, inCount) ;
 
@@ -458,21 +456,6 @@ void cSharedSortedListRoot::addEntry (cSortedListNode * & ioRootPtr,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-/* static void imprimerArbre (cSortedListNode * inRoot,
-                           const uint32_t inElementSize) {
-  if (inRoot != NULL) {
-    imprimerArbre (inRoot->mInfPtr, inElementSize) ;
-    C_String s ;
-    for (uint32_t i=0 ; i<inElementSize ; i++) {
-      inRoot->mProperties [i]->description (s, 0) ;
-    }
-    printf ("%s\n", s.cString (HERE)) ;
-    imprimerArbre (inRoot->mSupPtr, inElementSize) ;
-  }
-} */
-
-//----------------------------------------------------------------------------------------------------------------------
-
 void cSharedSortedListRoot::appendObject (capSortedListElement & inAttributes) {
   if (inAttributes.isValid ()) {
     bool extension = false ; // Unused here
@@ -481,9 +464,6 @@ void cSharedSortedListRoot::appendObject (capSortedListElement & inAttributes) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkSortedList (mRoot, mCount, mFirst, mLast COMMA_HERE) ;
   #endif
-//  printf ("*** ARBRE\n") ;
-//  imprimerArbre (mRoot, mElementSize) ;
-//  printf ("*** FIN\n") ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

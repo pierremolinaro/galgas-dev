@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2009, ..., 2012 Pierre Molinaro.
+//  Copyright (C) 2009, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -27,10 +27,6 @@
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "files/C_BinaryFileWrite.h"
 #include "galgas2/F_verbose_output.h"
-
-//----------------------------------------------------------------------------------------------------------------------
-
-// #include <ctype.h>
 
 //----------------------------------------------------------------------------------------------------------------------
 //   GALGAS_data                                                                                 

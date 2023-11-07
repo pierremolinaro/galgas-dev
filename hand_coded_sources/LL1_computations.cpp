@@ -2,7 +2,7 @@
 //
 //  Routines for checking LL(1) condition                                                        
 //
-//  Copyright (C) 1994, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 1994, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -88,9 +88,6 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
                    "for inPureBNFproductions numbering) :\n\n" ;
     ioHTMLFileContents.outputRawData ("</p>") ;
   }
-  
-//  C_Relation tr (inFOLLOWsets.configuration(), false) ;
-  
   int32_t nombreDeConflits = 0 ;
   const int32_t nombreNonTerminaux = inVocabulary.getNonTerminalSymbolsCount () ;
   const int32_t terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
@@ -585,17 +582,15 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                                       inSyntaxDirectedTranslationVarName) ;
     ioCppFileContents << "}\n\n" ;
   //--- Indexing ? 
-//    if (inHasIndexing) {
-      ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                   << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()
-                   << "_indexing (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * " << (existeProduction ? "inLexique" : "")
-                   << ") {\n" ; 
-      engendrerAiguillageNonTerminaux (inVocabulary, (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), 0,
-                                       inPureBNFproductions, ioCppFileContents,
-                                       "indexing",
-                                       "") ;
-      ioCppFileContents << "}\n\n" ;
-//    }
+    ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+                 << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()
+                 << "_indexing (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * " << (existeProduction ? "inLexique" : "")
+                 << ") {\n" ;
+    engendrerAiguillageNonTerminaux (inVocabulary, (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), 0,
+                                     inPureBNFproductions, ioCppFileContents,
+                                     "indexing",
+                                     "") ;
+    ioCppFileContents << "}\n\n" ;
     cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kENUMERATION_UP) ;
     while (currentAltForNonTerminal.hasCurrentObject ()) {
       ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
@@ -646,32 +641,25 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
     }
   //--- Generate 'startParsing' method ?
     if (nonTerminal.current_mNonTerminalIndex (HERE).uintValue () == inOriginalGrammarStartSymbol) {
-//      if (inHasIndexing) {
-        ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                          << "::performIndexing (C_Compiler * inCompiler,\n"
-                             "             const C_String & inSourceFilePath) {\n"
-                             "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
-                             "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
-                             "  scanner->enableIndexing () ;\n"
-                             "  if (scanner->sourceText ().isValid ()) {\n"
-                             "    const bool ok = scanner->performTopDownParsing (gProductions_" << inTargetFileName << ", gProductionNames_" << inTargetFileName << ", gProductionIndexes_" << inTargetFileName << ",\n"
-                             "                                                    gFirstProductionIndexes_" << inTargetFileName << ", gDecision_" << inTargetFileName << ", gDecisionIndexes_" << inTargetFileName << ", "
-                          << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
-                          << ") ;\n"
-                             "    if (ok) {\n"
-                             "      cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
-                             "      grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation () << "_indexing (scanner) ;\n"
-                             "    }\n"
-                             "    scanner->generateIndexFile () ;\n"
-                             "  }\n"
-                             "  macroDetachSharedObject (scanner) ;\n"
-                             "}\n\n" ;
-//      }else{
-//        ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-//                          << "::performIndexing (C_Compiler * /* inCompiler */,\n"
-//                             "             const C_String & /* inSourceFilePath */) {\n"
-//                             "}\n\n" ;
-//      }
+      ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+                        << "::performIndexing (C_Compiler * inCompiler,\n"
+                           "             const C_String & inSourceFilePath) {\n"
+                           "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
+                           "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
+                           "  scanner->enableIndexing () ;\n"
+                           "  if (scanner->sourceText ().isValid ()) {\n"
+                           "    const bool ok = scanner->performTopDownParsing (gProductions_" << inTargetFileName << ", gProductionNames_" << inTargetFileName << ", gProductionIndexes_" << inTargetFileName << ",\n"
+                           "                                                    gFirstProductionIndexes_" << inTargetFileName << ", gDecision_" << inTargetFileName << ", gDecisionIndexes_" << inTargetFileName << ", "
+                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
+                        << ") ;\n"
+                           "    if (ok) {\n"
+                           "      cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
+                           "      grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation () << "_indexing (scanner) ;\n"
+                           "    }\n"
+                           "    scanner->generateIndexFile () ;\n"
+                           "  }\n"
+                           "  macroDetachSharedObject (scanner) ;\n"
+                           "}\n\n" ;
       ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                         << "::performOnlyLexicalAnalysis (C_Compiler * inCompiler,\n"
                            "             const C_String & inSourceFilePath) {\n"

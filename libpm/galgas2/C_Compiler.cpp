@@ -154,7 +154,6 @@ GALGAS_string C_Compiler::sentString (void) const {
 
 GALGAS_string C_Compiler::retrieveAndResetTemplateString (void) {
   const C_String s = mTemplateString ;
-  // printf ("TEMPLATE '%s'\n", s.cString (HERE)) ;
   mTemplateString.setLengthToZero () ;
   return GALGAS_string (s) ;
 }
@@ -568,8 +567,6 @@ void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
     C_String fileName = startPath ;
     fileName.appendString ("/") ;
     fileName.appendString (inFileName) ;
-    //printf ("inFileName '%s'\n", inFileName.cString (HERE)) ;
-    //printf ("fileName '%s'\n", fileName.cString (HERE)) ;
     const C_String directory = fileName.stringByDeletingLastPathComponent () ;
     C_FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (performGeneration ()) {
@@ -643,8 +640,6 @@ void C_Compiler::generateFileWithPatternFromPathes (
     C_String fileName = startPath ;
     fileName.appendString ("/") ;
     fileName.appendString (inFileName) ;
-    //printf ("inFileName '%s'\n", inFileName.cString (HERE)) ;
-    //printf ("fileName '%s'\n", fileName.cString (HERE)) ;
     const C_String directory = fileName.stringByDeletingLastPathComponent () ;
     C_FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (performGeneration ()) {
@@ -667,7 +662,6 @@ void C_Compiler::generateFileWithPatternFromPathes (
         #if COMPILE_FOR_WINDOWS == 0
           struct stat fileStat ;
           ::stat (fileName.cString (HERE), & fileStat) ;
-            // printf ("FILE MODE 0x%X\n", fileStat.st_mode) ;
           ::chmod (fileName.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
         #endif
       }
@@ -731,7 +725,6 @@ void C_Compiler::generateFileWithPatternFromPathes (
         #if COMPILE_FOR_WINDOWS == 0
           struct stat fileStat ;
           ::stat (fullPathName.cString (HERE), & fileStat) ;
-            // printf ("FILE MODE 0x%X\n", fileStat.st_mode) ;
           ::chmod (fullPathName.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
         #endif
       }
@@ -740,6 +733,5 @@ void C_Compiler::generateFileWithPatternFromPathes (
     }
   }
 }
-
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -2,7 +2,7 @@
 //
 //  Pure BNF grammar vocabulary                                                                  
 //
-//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.
+//  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -54,7 +54,6 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
   }
   t.rewind () ;
   while (t.hasCurrentObject ()) {
-   // printf ("ENTER TERMINAL: %u '%s'\n", t.current_mTerminalIndex ().uintValue (), t.current_lkey (HERE).mProperty_string.stringValue ().cString (HERE)) ;
     const int32_t idx = (int32_t) t.current_mTerminalIndex (HERE).uintValue () ;
     mStringsArray (idx COMMA_HERE) = t.current_lkey (HERE).mProperty_string.stringValue () ;  
     t.gotoNextObject () ;
@@ -68,11 +67,6 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
     mStringsArray.appendObject (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ()) ;  
     nonTerminal.gotoNextObject () ;
   }
-/* for (int32_t i=0 ; i<mStringsArray.count () ; i++) {
-    printf ("VOCABULARY '%s'\n", mStringsArray (i COMMA_HERE).cString (HERE));
-  }
-  printf ("----------------\n") ;
-*/
   mOriginalGrammarSymbolsCount = mStringsArray.count () ;
 //--- For all symbols of original grammar, don't generate choice
   mGenerateChoiceArray.setCountToZero () ;

@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.
+//  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -100,8 +100,8 @@ uint32_t C_Timer::msFromStart (void) const {
 C_String C_Timer::timeString (void) const {
   const uint32_t d = msFromStart () ;
   const uint32_t ms = d % 1000 ;
-  const uint32_t secondes = (d / 1000) % 60 ; // (uint32_t) ((((uint32_t) duration.tv_sec) % 60) & UINT32_MAX) ;
-  const uint32_t minutes  = d / 60000 ; // (uint32_t) ((((uint32_t) duration.tv_sec) / 60) & UINT32_MAX) ;
+  const uint32_t secondes = (d / 1000) % 60 ;
+  const uint32_t minutes  = d / 60000 ;
   C_String result ;
   if (minutes > 0) {
     result.appendUnsigned (minutes) ;

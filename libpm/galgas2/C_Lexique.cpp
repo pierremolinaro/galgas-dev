@@ -321,14 +321,12 @@ void C_Lexique::performLexicalAnalysis (void) {
 //----------------------------------------------------------------------------------------------------------------------
 
 void C_Lexique::advance (void) {
- // printf ("START ADVANCE\n") ;
   mTokenEndLocation = mCurrentLocation ;
   mPreviousChar = mCurrentChar ;
   if (UNICODE_VALUE (mCurrentChar) != '\0') {
     mCurrentLocation.gotoNextLocation () ;
     mCurrentChar = sourceText ().readCharOrNul (mCurrentLocation.index () COMMA_HERE) ;
   }
-  // printf ("END ADVANCE\n") ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -546,7 +544,7 @@ void C_Lexique::lexicalWarning (const C_String & inLexicalWarningMessage
 
 //----------------------------------------------------------------------------------------------------------------------
 
-//#define TRACE_LL1_PARSING
+//   #define TRACE_LL1_PARSING
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -1049,7 +1047,6 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
     if (produceSyntaxTree) {
       syntaxTreeDescriptionString << "}\n" ;
       const C_String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + ".dot" ;
-      // printf ("sourceFilePath: '%s', dotFilePath: '%s'\n", sourceFilePath ().cString (HERE), dotFilePath.cString (HERE)) ;
       GALGAS_bool fileWritten ;
       GALGAS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GALGAS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
     }
@@ -1061,7 +1058,6 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
          << (result ? "yes" : "no")
          << ") ***\n" ;
     }
-    // printf ("stack capacity: %u, %u %d\n", stack.capacity (), errorStack.capacity (), mArrayForSecondPassParsing.count ()) ;
   }
 //---
   return result ;
@@ -1240,7 +1236,6 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
              << getCurrentTokenString (tokenPtr)
              << "] |- Shift -> S" << cStringWithSigned (actionCode) << "\n" ;
         }
-        // co <<  "EXTENSION executionList: " << executionList.count () << "\n" ;
       }else if (actionCode < 0) {
       //--- Reduce action ------------------------------------
         actionCode = int16_t (- actionCode - 1) ;
@@ -1316,11 +1311,9 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
         loop = false ;
       //--- Build error stack
         TC_Array <int16_t> actualErrorStack (stack.count () + poppedErrors.count () COMMA_HERE) ;
-        // printf ("errorSignalingUselessEntryOnTopOfStack, %d stack.count () %d\n", errorSignalingUselessEntryOnTopOfStack, stack.count ()) ;
         for (int32_t i=0 ; i<(stack.count () - errorSignalingUselessEntryOnTopOfStack) ; i++) {
           actualErrorStack.appendObject (stack (i COMMA_HERE)) ;
         }
-        // printf ("poppedErrors.count () %d\n", poppedErrors.count ()) ;
         for (int32_t i=poppedErrors.count () - 1 ; i>=0 ; i--) {
           actualErrorStack.appendObject (poppedErrors (i COMMA_HERE)) ;
         }
@@ -1356,7 +1349,6 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
     if (produceSyntaxTree) {
       syntaxTreeDescriptionString << "}\n" ;
       const C_String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + ".dot" ;
-      // printf ("sourceFilePath: '%s', dotFilePath: '%s'\n", sourceFilePath ().cString (HERE), dotFilePath.cString (HERE)) ;
       GALGAS_bool fileWritten ;
       GALGAS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GALGAS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
     }
@@ -1486,10 +1478,6 @@ void C_Lexique::enableIndexing (void) {
 
 void C_Lexique::generateIndexFile (void) {
   if (nullptr != mIndexingDictionary) {
-//    const C_String source_file_path = sourceText ().sourceFilePath () ;
-//    C_String indexFilePath = C_FileManager::absolutePathFromPath (indexingDirectory (), source_file_path.stringByDeletingLastPathComponent ()) ;
-//    indexFilePath << "/" << source_file_path.lastPathComponent () << ".plist" ;
-//    mIndexingDictionary->generateIndexFile (indexFilePath) ;
     mIndexingDictionary->generateIndexFile (indexingModeOutputFilePath ()) ;
   }
 }
@@ -1500,10 +1488,6 @@ void C_Lexique::generateIndexFile (void) {
   #pragma mark Handling Parsing context
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Handling parsing context (for parse ... rewind ... end parse ; instruction)                    
-//
 //----------------------------------------------------------------------------------------------------------------------
 
 C_parsingContext C_Lexique::parsingContext (void) const {

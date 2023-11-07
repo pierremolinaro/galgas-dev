@@ -2270,7 +2270,6 @@ static void generateFile (const C_String & inStartPath,
     #if COMPILE_FOR_WINDOWS == 0
       struct stat fileStat ;
       ::stat (fullPathName.cString (HERE), & fileStat) ;
-      // printf ("FILE MODE 0x%X\n", fileStat.st_mode) ;
       ::chmod (fullPathName.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
     #endif
   }

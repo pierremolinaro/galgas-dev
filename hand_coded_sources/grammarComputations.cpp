@@ -2,7 +2,7 @@
 //
 //  This file handles all computations performed on grammars                                     
 //
-//  Copyright (C) 1999, ..., 2012 Pierre Molinaro.
+//  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -13,10 +13,6 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
-
-// #define LOG_GRAMMAR_COMPUTATIONS
-
 //----------------------------------------------------------------------------------------------------------------------
 
 #include "files/C_TextFileWrite.h"
@@ -350,18 +346,9 @@ analyzeGrammar (C_Compiler * inCompiler,
 //--- Print original grammar in BNF file
   if ((errorFlag == 0) && (grammarClass != kGrammarClassError)) {
     outHTMLHelperFileContents.appendCppTitleComment ("Original grammar", "title") ;
-    #ifdef LOG_GRAMMAR_COMPUTATIONS
-      printf ("PRINT ORIGINAL GRAMMAR IN HTML FILE\n") ; fflush (stdout) ;
-    #endif
     printOriginalGrammar (outHTMLHelperFileContents, inSyntaxComponentsList) ;
-    #ifdef LOG_GRAMMAR_COMPUTATIONS
-      printf ("PRINT ORIGINAL GRAMMAR IN HTML FILE DONE \n") ; fflush (stdout) ;
-    #endif
   }
 //--- Building pure BNF productions ---------------------------------------------------------------------
-  #ifdef LOG_GRAMMAR_COMPUTATIONS
-    printf ("BUILD PURE BNF PRODUCTIONS\n") ; fflush (stdout) ;
-  #endif
   cVocabulary vocabulary ;
   cPureBNFproductionsList pureBNFproductions ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
@@ -387,16 +374,9 @@ analyzeGrammar (C_Compiler * inCompiler,
       co.flush () ;
     }
   }
-  #ifdef LOG_GRAMMAR_COMPUTATIONS
-    printf ("BUILD PURE BNF PRODUCTIONS DONE\n") ; fflush (stdout) ;
-  #endif
-
 //--- Define vocabulary BDD sets descriptor
   const C_RelationSingleType vocabularyBDDType = vocabulary.getVocabularyBDDType () ;
 //--- Search for identical productions -----------------------------------------------------------
-  #ifdef LOG_GRAMMAR_COMPUTATIONS
-    printf ("SEARCH FOR IDENTICAL PRODUCTIONS\n") ; fflush (stdout) ;
-  #endif
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     if (verboseOptionOn) {
       co << "  Identical productions... " ;
@@ -437,13 +417,7 @@ analyzeGrammar (C_Compiler * inCompiler,
               << " bits for BDDs." ;
     outHTMLHelperFileContents.outputRawData ("</li>\n</ul>\n") ;
   }
-  #ifdef LOG_GRAMMAR_COMPUTATIONS
-    printf ("SEARCH FOR IDENTICAL PRODUCTIONS DONE\n") ; fflush (stdout) ;
-  #endif
 //--- Getting useful symbols ---------------------------------------------------------------------
-  #ifdef LOG_GRAMMAR_COMPUTATIONS
-    printf ("GETTING USEFUL SYMBOLS\n") ; fflush (stdout) ;
-  #endif
   C_Relation usefulSymbols ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     useful_symbols_computations (inCompiler,
@@ -458,9 +432,6 @@ analyzeGrammar (C_Compiler * inCompiler,
                                  warningFlag,
                                  verboseOptionOn) ;
   }
-  #ifdef LOG_GRAMMAR_COMPUTATIONS
-    printf ("GETTING USEFUL SYMBOLS DONE\n") ; fflush (stdout) ;
-  #endif
 //--- Calculer l'ensemble des non terminaux pouvant se dériver en vide --------------------------------
   TC_UniqueArray <bool> vocabularyDerivingToEmpty_Array ;
   C_Relation vocabularyDerivingToEmpty ;
@@ -664,14 +635,8 @@ routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
                                       C_Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (totalErrorCount () == 0) {
-    #ifdef LOG_GRAMMAR_COMPUTATIONS
-      printf ("MARK AND SWEEP BDD NODES\n") ; fflush (stdout) ;
-    #endif
     C_BDD::markAndSweepUnusedNodes () ;
     C_BDD::checkAllBDDsAreWellFormed (HERE) ;
-    #ifdef LOG_GRAMMAR_COMPUTATIONS
-      printf ("MARK AND SWEEP BDD NODES DONE\n") ; fflush (stdout) ;
-    #endif
 
     const GALGAS_location inErrorLocation = inTargetFileName.mProperty_location ;
 

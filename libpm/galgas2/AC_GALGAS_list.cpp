@@ -623,17 +623,11 @@ myList () {
 //----------------------------------------------------------------------------------------------------------------------
 
 void cSharedListMapRoot::copyFrom (const cSharedListMapRoot * inSource) {
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    // inSource->checkMap (HERE) ;
-  #endif
   macroValidSharedObject (inSource, cSharedListMapRoot) ;
   mCount = inSource->mCount ;
   if (NULL != inSource->mRoot) {
     macroMyNew (mRoot, cListMapNode (inSource->mRoot)) ;
   }
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    // checkMap (HERE) ;
-  #endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -891,7 +885,6 @@ static void enterAscendingEnumeration (const cListMapNode * inNode,
 //----------------------------------------------------------------------------------------------------------------------
 
 void cSharedListMapRoot::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
-  // printf ("MAP COUNT %u\n", count ()) ;
   ioEnumerationArray.setCapacity (mCount) ;
   enterAscendingEnumeration (mRoot, ioEnumerationArray) ;
   MF_Assert (mCount == ioEnumerationArray.count (), "mCount (%lld) != ioEnumerationArray.count () (%lld)", mCount, ioEnumerationArray.count ()) ;

@@ -78,7 +78,7 @@ override method @templateBlockInstructionForGeneration templateCodeGeneration
 #--- Expression
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let indendationVarCppName]
   ioGeneratedCode += "if (" + indendationVarCppName + ".isValid ()) {\n"
-  ioGeneratedCode += "  result.incIndentation ((int32_t) " + indendationVarCppName + ".uintValue ()) ;\n"
+  ioGeneratedCode += "  result.incIndentation (int32_t (" + indendationVarCppName + ".uintValue ())) ;\n"
   ioGeneratedCode += "}\n"
   templateCodeGenerationForListInstruction (
     !self.mBlockInstructionList
@@ -89,7 +89,7 @@ override method @templateBlockInstructionForGeneration templateCodeGeneration
     !?ioUseColumnMarker
   )
   ioGeneratedCode += "if (" + indendationVarCppName + ".isValid ()) {\n"
-  ioGeneratedCode += "  result.incIndentation (- ((int32_t) " + indendationVarCppName + ".uintValue ())) ;\n"
+  ioGeneratedCode += "  result.incIndentation (- int32_t (" + indendationVarCppName + ".uintValue ())) ;\n"
   ioGeneratedCode += "}\n"
 }
 
@@ -120,14 +120,20 @@ override method @templateInstructionGotoColumnLocationForGeneration templateCode
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionIfForGeneration templateCodeGeneration
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?!@bool ioUseColumnMarker {
+                                                        ?!@string ioGeneratedCode
+                                                        ?!@stringset ioInclusionSet
+                                                        ?!@uint ioTemporaryVariableIndex
+                                                        ?!@stringset ioUnusedVariableCppNameSet
+                                                        ?!@bool ioUseColumnMarker {
   for (mExpression mInstructionList) in self.mTemplateInstructionIfBranchList do
   #--- IF expression
-    [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let ifVarCppName]
+    [mExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ?let ifVarCppName
+    ]
     let @string testVar = "test_" + [ioTemporaryVariableIndex string]
     ioTemporaryVariableIndex += 1
     ioGeneratedCode += "const enumGalgasBool " + testVar + " = " + ifVarCppName + ".boolEnum () ;\n"

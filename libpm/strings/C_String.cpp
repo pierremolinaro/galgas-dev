@@ -975,9 +975,6 @@ C_String C_String::stringByReplacingStringByString (const C_String inSearchedStr
   outReplacementCount = 0 ;
   outOk = inSearchedString.length () != 0 ;
   if (outOk) {
-    //printf ("SOURCE STRING: '%s' (length %d)\n", cString (HERE), length ()) ; 
-    //printf ("SEARCHED STRING: '%s' (length %d)\n", inSearchedString.cString (HERE), inSearchedString.length (HERE)) ; 
-    //printf ("REPLACEMENT STRING '%s'\n", inReplacementString.cString (HERE)) ; 
     const utf32 * sourceString = utf32String (HERE) ;
     const int32_t sourceLength = length () ;
     const utf32 * searchedString = inSearchedString.utf32String (HERE) ;
@@ -985,7 +982,6 @@ C_String C_String::stringByReplacingStringByString (const C_String inSearchedStr
     int32_t index = 0 ;
     while (index <= (sourceLength - searchedStringLength)) {
       const bool found = utf32_strncmp (& sourceString [index], searchedString, searchedStringLength) == 0 ;
-      //printf ("AT INDEX %d, found: %d\n", index, found) ;
       if (found) {
         result << (inReplacementString) ;
         index += searchedStringLength ;
@@ -1865,8 +1861,6 @@ C_String C_String::md5 (void) const {
   MD5_Init (&context) ;
   MD5_Update(&context, (uint8_t *) cString (HERE), (uint32_t) length ()) ;
   MD5_Final (digest, &context);
-
-//  ::md5 ((uint8_t *) cString (HERE), (uint32_t) length (), digest);
   char s [40] ;
   for (uint32_t i=0 ; i<16 ; i++) {
     snprintf (s, 40, "%02X", digest [i]) ;

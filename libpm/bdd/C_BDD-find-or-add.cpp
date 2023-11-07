@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 1999, ..., 2019 Pierre Molinaro.
+//  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -347,7 +347,6 @@ void C_BDD::markAndSweepUnusedNodes (void) {
       }
     }
   }
-  // printf ("********************************************** %u nodes inchanges\n", unchangedNodeCount) ;
   for (uint32_t i=1 ; i<=unchangedNodeCount ; i++) {
     gNodeArray [i].mAuxiliary = i ;
   }
@@ -368,7 +367,6 @@ void C_BDD::markAndSweepUnusedNodes (void) {
       gNodeArray [nodeIndex].mAuxiliary = newNodeCount ;
     }
   }
-  // printf ("gCurrentNodeCount %u -> %u\n", gCurrentNodeCount, newNodeCount) ;
   const uint32_t previousNodeCount = gCurrentNodeCount ;
   if (gNodeArraySize > 0) {
     gCurrentNodeCount = newNodeCount ;
@@ -380,12 +378,6 @@ void C_BDD::markAndSweepUnusedNodes (void) {
       p = p->mPtrToNextBDD ;
     }
   }
-//--- Check for node unicity
-  /* for (uint32_t nodeIndex=1 ; nodeIndex<=gCurrentNodeCount ; nodeIndex++) {
-    for (uint32_t idx=1 ; idx<nodeIndex ; idx++) {
-      MF_Assert (gNodeArray [nodeIndex] != gNodeArray [idx], "(gNodeArray [nodeIndex]  (%lld) != gNodeArray [idx] [%lld]", nodeIndex, idx) ;
-    }
-  } */
 //--- Rebuilt collision map
   for (uint32_t i=0 ; i<gCollisionMapSize ; i++) {
     gCollisionMap [i] = 0 ;
@@ -458,13 +450,6 @@ void C_BDD::initLinks (void) {
   }
   mPtrToNextBDD = gFirstBDD ;
   gFirstBDD = this ;
-
-//  mPtrToPreviousBDD = this ;
-//  C_BDD * suivantRacine = gBDDinstancesListRoot.mPtrToNextBDD ;
-//  mPtrToPreviousBDD = & gBDDinstancesListRoot ;
-//  suivantRacine->mPtrToPreviousBDD = this ;
-//  mPtrToNextBDD = suivantRacine ;
-//  gBDDinstancesListRoot.mPtrToNextBDD = this ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -481,10 +466,6 @@ C_BDD::~C_BDD (void) {
   }else{
     mPtrToNextBDD->mPtrToPreviousBDD = mPtrToPreviousBDD ;
   }
-//  C_BDD * suivant = mPtrToNextBDD ;
-//  C_BDD * precedent = mPtrToPreviousBDD ;
-//  precedent->mPtrToNextBDD = suivant ;
-//  suivant->mPtrToPreviousBDD = precedent ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

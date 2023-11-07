@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.
+//  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -193,20 +193,16 @@ internalForAllOnBitRange (const uint32_t inValue,
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     if (var >= (inFirstBit + inBitCount)) {
       bool cacheSuccess = false ;
-      // int32_t hashCode ;
-      // const uint32_t key = ((uint32_t) inBitCount) | (((uint32_t) inFirstBit) << 16) ;
-  //    gForAllOperationCache.getCacheEntry (inValue, key, cacheSuccess, hashCode, result) ;
       if (! cacheSuccess) {
         result = find_or_add (var,
           internalForAllOnBitRange (gNodeArray [nodeIndex].mELSE ^ complement, inFirstBit, inBitCount),
           internalForAllOnBitRange (gNodeArray [nodeIndex].mTHEN ^ complement, inFirstBit, inBitCount) COMMA_HERE) ;
-  //      gForAllOperationCache.writeCacheEntry (inValue, key, hashCode, result) ;
       }
     }else if (var >= inFirstBit) {
       result = internalANDoperation (
          internalForAllOnBitRange (gNodeArray [nodeIndex].mELSE ^ complement, inFirstBit, inBitCount),
          internalForAllOnBitRange (gNodeArray [nodeIndex].mTHEN ^ complement, inFirstBit, inBitCount)) ;
-    }else{ // var < numeroBit
+    }else{
       result = inValue ;
       gSingleOperandOperationCacheTrivialOperationCount ++ ;
     }

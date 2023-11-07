@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2009, ..., 2018 Pierre Molinaro.
+//  Copyright (C) 2009, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -56,7 +56,6 @@ void C_StringCommandLineOption::setStringOptionForCommandChar (const char * inCo
                                                                bool & outFound,
                                                                bool & outCommandLineOptionStringIsValid) {
   outCommandLineOptionStringIsValid = (strlen (inCommandString) > 2) && (inCommandString [1] == '=') ;
-  // printf ("[COMMAND STRING '%s', valid %d]\n", inCommandString, outCommandLineOptionStringIsValid) ;
   outFound = false ;
   if (outCommandLineOptionStringIsValid) {
     C_StringCommandLineOption * p = gFirstStringOption ;
@@ -65,7 +64,6 @@ void C_StringCommandLineOption::setStringOptionForCommandChar (const char * inCo
       if (outFound) {
         p->mValue.setLengthToZero () ;
         p->mValue << & inCommandString [2] ;
-        // printf ("VALUE SET '%s'\n", & inCommandString [2]) ;
       }
       p = p->mNext ;
     }

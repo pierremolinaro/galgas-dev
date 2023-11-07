@@ -6,7 +6,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2008, ..., 2015 Pierre Molinaro.
+//  Copyright (C) 2008, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -291,14 +291,12 @@ static const cDirectoryWrapper * findDirectoryInDirectory (const cDirectoryWrapp
 static const cRegularFileWrapper * findFileInDirectory (const cDirectoryWrapper * inDir,
                                                         const C_String & inSearchedFile) {
   const cRegularFileWrapper * result = NULL ;
-  // printf ("    Searching '%s'\n", inSearchedDir.cString (HERE)) ;
   if (inDir != NULL) {
     int32_t first = 0 ;
     int32_t last = (int32_t) inDir->mFileCount - 1 ;
     bool found = false ;
     while ((first <= last) && ! found) {
       const int32_t mid = (first + last) / 2 ;
-      // printf ("*** Trying index %d: '%s'\n", mid, inDir->mDirectories [mid]->mDirectoryName) ;
       const int32_t c = inSearchedFile.compare (inDir->mFiles [mid]->mName) ;
       if (c > 0) {
         first = mid + 1 ;
