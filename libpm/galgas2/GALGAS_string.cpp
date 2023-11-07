@@ -355,19 +355,26 @@ GALGAS_string GALGAS_string::constructor_componentsJoinedByString (const GALGAS_
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_string::constructor_stringWithCurrentDateTime (UNUSED_LOCATION_ARGS) {
-  const time_t currentTime = ::time (NULL) ;
-  char * timeString = NULL ;
+  time_t currentTime = ::time (nullptr) ;
+  struct tm currentTimeTM ;
+  #if COMPILE_FOR_WINDOWS == 0
+   ::localtime_r (&currentTime, &currentTimeTM) ; // Mac, Linux
+  #else
+   ::localtime_s (&currentTimeTM, &currentTime) ; // Windows
+  #endif
+  char timeString [128] ;
   bool ok = currentTime >= 0 ;
   if (ok) {
-    timeString = ::ctime (& currentTime) ;
-    ok = timeString != NULL ;
-    if (ok) {
-      const size_t length = ::strlen (timeString) ;
-      ok = length > 0 ;
-      if (ok) {
-        timeString [length - 1] = '\0' ; // Suppress trailing '\n'
-      }
-    }
+    ::strftime (timeString, sizeof (timeString), "Www Mmm dd hh:mm:ss yyyy", & currentTimeTM) ;
+//    timeString = ::ctime (& currentTime) ;
+//    ok = timeString != NULL ;
+//    if (ok) {
+//      const size_t length = ::strlen (timeString) ;
+//      ok = length > 0 ;
+//      if (ok) {
+//        timeString [length - 1] = '\0' ; // Suppress trailing '\n'
+//      }
+//    }
   }
   return GALGAS_string (ok ? timeString : "") ;
 }
