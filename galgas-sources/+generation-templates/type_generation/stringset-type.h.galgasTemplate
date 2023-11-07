@@ -9,7 +9,7 @@ class GALGAS_stringset : public AC_GALGAS_root {
   private: class cSharedStringsetRoot * mSharedRoot ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedRoot != NULL ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedRoot != nullptr ; }
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor

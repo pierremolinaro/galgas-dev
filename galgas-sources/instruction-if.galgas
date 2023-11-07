@@ -806,7 +806,7 @@ override method @ifInstructionForGeneration generateInstruction
       ]
       ioGeneratedCode += "GALGAS_" + targetTypeName + " " + targetVarCppName
       ioGeneratedCode += " (dynamic_cast <const cPtr_" + testTypeName + " *> (" + cppVarName + ".ptr ())) ;\n"
-      ioGeneratedCode += "if (NULL == " + targetVarCppName + ".ptr ()) {\n"
+      ioGeneratedCode += "if (nullptr == " + targetVarCppName + ".ptr ()) {\n"
       ioGeneratedCode += "  " + testVar + " = kBoolFalse ;\n"
       ioGeneratedCode += "}\n"
     case optionalMethodCall (receiverExpression optionalMethodName parameters) :

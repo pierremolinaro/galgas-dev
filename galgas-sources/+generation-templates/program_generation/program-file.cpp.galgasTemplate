@@ -26,7 +26,7 @@ static const char * kSourceFileExtensions [] = {
 for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in PROGRAM_RULE_LIST do
   %  %![mSourceFileExtension utf8RepresentationEscapingQuestionMark]%,\n%
 end
-%  NULL
+%  nullptr
 } ;    
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ static const char * kSourceFileHelpMessages [] = {
 for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in PROGRAM_RULE_LIST do
   %  %![mSourceFileHelp utf8RepresentationEscapingQuestionMark]%,\n%
 end
-%  NULL
+%  nullptr
 } ;    
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -70,8 +70,8 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
     returnCode = 1 ;
   }else{
   //--- Common lexique object
-    C_Compiler * commonCompiler = NULL ;
-    macroMyNew (commonCompiler, C_Compiler (NULL COMMA_HERE)) ;
+    C_Compiler * commonCompiler = nullptr ;
+    macroMyNew (commonCompiler, C_Compiler (nullptr COMMA_HERE)) ;
     try{
       routine_before (commonCompiler COMMA_HERE) ;
       cLexiqueIntrospection::handleGetKeywordListOption (commonCompiler) ;

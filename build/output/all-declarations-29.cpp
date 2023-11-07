@@ -651,7 +651,7 @@ static void releaseOnceFunctionResult_definitionGroupAmount (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gEpilogueForOnceFunction_definitionGroupAmount (NULL,
+C_PrologueEpilogue gEpilogueForOnceFunction_definitionGroupAmount (nullptr,
                                                                    releaseOnceFunctionResult_definitionGroupAmount) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -659,7 +659,7 @@ C_PrologueEpilogue gEpilogueForOnceFunction_definitionGroupAmount (NULL,
 //----------------------------------------------------------------------------------------------------------------------
 
 static const C_galgas_type_descriptor * functionArgs_definitionGroupAmount [1] = {
-  NULL
+  nullptr
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1033,13 +1033,13 @@ void routine_generateManyImplementationFiles (const GALGAS_unifiedTypeMap consti
 //--- All files of 'Base.lproj' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_xcodeProjectGenerationFilewrapper_1 [1] = {
-  NULL
+  nullptr
 } ;
 
 //--- All sub-directories of 'Base.lproj' directory
 
 static const cDirectoryWrapper * gWrapperAllDirectories_xcodeProjectGenerationFilewrapper_1 [1] = {
-  NULL
+  nullptr
 } ;
 
 //--- Directory 'Base.lproj'
@@ -1055,14 +1055,14 @@ const cDirectoryWrapper gWrapperDirectory_1_xcodeProjectGenerationFilewrapper (
 //--- All files of '' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_xcodeProjectGenerationFilewrapper_0 [1] = {
-  NULL
+  nullptr
 } ;
 
 //--- All sub-directories of '' directory
 
 static const cDirectoryWrapper * gWrapperAllDirectories_xcodeProjectGenerationFilewrapper_0 [2] = {
   & gWrapperDirectory_1_xcodeProjectGenerationFilewrapper,
-  NULL
+  nullptr
 } ;
 
 //--- Directory ''
@@ -1715,13 +1715,13 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
 //--- All files of 'makefile-unix' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_4 [1] = {
-  NULL
+  nullptr
 } ;
 
 //--- All sub-directories of 'makefile-unix' directory
 
 static const cDirectoryWrapper * gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_4 [1] = {
-  NULL
+  nullptr
 } ;
 
 //--- Directory 'makefile-unix'
@@ -1737,13 +1737,13 @@ const cDirectoryWrapper gWrapperDirectory_4_targetGalgas_33_GenerationFileWrappe
 //--- All files of 'makefile-win32-on-macosx' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_1 [1] = {
-  NULL
+  nullptr
 } ;
 
 //--- All sub-directories of 'makefile-win32-on-macosx' directory
 
 static const cDirectoryWrapper * gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_1 [1] = {
-  NULL
+  nullptr
 } ;
 
 //--- Directory 'makefile-win32-on-macosx'
@@ -1759,13 +1759,13 @@ const cDirectoryWrapper gWrapperDirectory_1_targetGalgas_33_GenerationFileWrappe
 //--- All files of 'makefile-x86linux32-on-macosx' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_6 [1] = {
-  NULL
+  nullptr
 } ;
 
 //--- All sub-directories of 'makefile-x86linux32-on-macosx' directory
 
 static const cDirectoryWrapper * gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_6 [1] = {
-  NULL
+  nullptr
 } ;
 
 //--- Directory 'makefile-x86linux32-on-macosx'
@@ -1781,13 +1781,13 @@ const cDirectoryWrapper gWrapperDirectory_6_targetGalgas_33_GenerationFileWrappe
 //--- All files of 'makefile-x86linux64-on-macosx' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_5 [1] = {
-  NULL
+  nullptr
 } ;
 
 //--- All sub-directories of 'makefile-x86linux64-on-macosx' directory
 
 static const cDirectoryWrapper * gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_5 [1] = {
-  NULL
+  nullptr
 } ;
 
 //--- Directory 'makefile-x86linux64-on-macosx'
@@ -1828,13 +1828,13 @@ const cRegularFileWrapper gWrapperFile_1_targetGalgas_33_GenerationFileWrapper (
 
 static const cRegularFileWrapper * gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_3 [2] = {
   & gWrapperFile_1_targetGalgas_33_GenerationFileWrapper,
-  NULL
+  nullptr
 } ;
 
 //--- All sub-directories of 'Base.lproj' directory
 
 static const cDirectoryWrapper * gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_3 [1] = {
-  NULL
+  nullptr
 } ;
 
 //--- Directory 'Base.lproj'
@@ -1851,14 +1851,14 @@ const cDirectoryWrapper gWrapperDirectory_3_targetGalgas_33_GenerationFileWrappe
 
 static const cRegularFileWrapper * gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_2 [2] = {
   & gWrapperFile_0_targetGalgas_33_GenerationFileWrapper,
-  NULL
+  nullptr
 } ;
 
 //--- All sub-directories of 'project-xcode-objc' directory
 
 static const cDirectoryWrapper * gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_2 [2] = {
   & gWrapperDirectory_3_targetGalgas_33_GenerationFileWrapper,
-  NULL
+  nullptr
 } ;
 
 //--- Directory 'project-xcode-objc'
@@ -1874,7 +1874,7 @@ const cDirectoryWrapper gWrapperDirectory_2_targetGalgas_33_GenerationFileWrappe
 //--- All files of '' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_0 [1] = {
-  NULL
+  nullptr
 } ;
 
 //--- All sub-directories of '' directory
@@ -1885,7 +1885,7 @@ static const cDirectoryWrapper * gWrapperAllDirectories_targetGalgas_33_Generati
   & gWrapperDirectory_6_targetGalgas_33_GenerationFileWrapper,
   & gWrapperDirectory_5_targetGalgas_33_GenerationFileWrapper,
   & gWrapperDirectory_2_targetGalgas_33_GenerationFileWrapper,
-  NULL
+  nullptr
 } ;
 
 //--- Directory ''
@@ -3049,7 +3049,7 @@ void routine_updateGalgasTargets (const GALGAS_string constinArgument_inAbsolute
   }
   GALGAS_lstring var_macCodeSign_15684 ;
   const cMapElement_projectQualifiedFeatureMap * objectArray_15698 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("macCodeSign")) ;
-  if (NULL != objectArray_15698) {
+  if (nullptr != objectArray_15698) {
       macroValidSharedObject (objectArray_15698, cMapElement_projectQualifiedFeatureMap) ;
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
@@ -3068,7 +3068,7 @@ void routine_updateGalgasTargets (const GALGAS_string constinArgument_inAbsolute
   }
   GALGAS_string var_MACOSX_5F_DEPLOYMENT_5F_TARGET_16067 ;
   const cMapElement_projectQualifiedFeatureMap * objectArray_16094 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("MacOSDeployment")) ;
-  if (NULL != objectArray_16094) {
+  if (nullptr != objectArray_16094) {
       macroValidSharedObject (objectArray_16094, cMapElement_projectQualifiedFeatureMap) ;
     enumGalgasBool test_3 = kBoolTrue ;
     if (kBoolTrue == test_3) {
@@ -3087,7 +3087,7 @@ void routine_updateGalgasTargets (const GALGAS_string constinArgument_inAbsolute
   }
   GALGAS_string var_libpmPath_16510 ;
   const cMapElement_projectQualifiedFeatureMap * objectArray_16522 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("libpmAtPath")) ;
-  if (NULL != objectArray_16522) {
+  if (nullptr != objectArray_16522) {
       macroValidSharedObject (objectArray_16522, cMapElement_projectQualifiedFeatureMap) ;
     enumGalgasBool test_5 = kBoolTrue ;
     if (kBoolTrue == test_5) {
@@ -3308,7 +3308,7 @@ void routine_updateGalgasTargets (const GALGAS_string constinArgument_inAbsolute
       var_dir_22613.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 477)) ;
       GALGAS_string var_applicationBundleBase_22713 ;
       const cMapElement_projectQualifiedFeatureMap * objectArray_22739 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("applicationBundleBase")) ;
-      if (NULL != objectArray_22739) {
+      if (nullptr != objectArray_22739) {
           macroValidSharedObject (objectArray_22739, cMapElement_projectQualifiedFeatureMap) ;
         var_applicationBundleBase_22713 = objectArray_22739->mProperty_mFeatureValue.readProperty_string () ;
       }else{
@@ -4165,7 +4165,7 @@ static const char * kSourceFileExtensions [] = {
   "galgasTemplate",
   "galgasProject",
   "ggsproject",
-  NULL
+  nullptr
 } ;    
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4176,7 +4176,7 @@ static const char * kSourceFileHelpMessages [] = {
   "a GALGAS Template source file",
   "a GALGAS project source file",
   "a GALGAS project source file",
-  NULL
+  nullptr
 } ;    
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4417,8 +4417,8 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
     returnCode = 1 ;
   }else{
   //--- Common lexique object
-    C_Compiler * commonCompiler = NULL ;
-    macroMyNew (commonCompiler, C_Compiler (NULL COMMA_HERE)) ;
+    C_Compiler * commonCompiler = nullptr ;
+    macroMyNew (commonCompiler, C_Compiler (nullptr COMMA_HERE)) ;
     try{
       routine_before (commonCompiler COMMA_HERE) ;
       cLexiqueIntrospection::handleGetKeywordListOption (commonCompiler) ;

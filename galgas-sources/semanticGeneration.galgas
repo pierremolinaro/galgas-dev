@@ -1454,7 +1454,7 @@ proc generateWrapperContents
   for (* * * * mWrapperFileIndex) in inFilewrapperRegularFileMap do
     ioImplementation += "  & gWrapperFile_" + [mWrapperFileIndex string] + "_" + [inFilewrapperName identifierRepresentation] + ",\n"
   end  
-  ioImplementation += "  NULL\n"
+  ioImplementation += "  nullptr\n"
   +"} ;\n\n"
 #--- Generate all directory wrapper list
   ioImplementation += "//--- All sub-directories of '" + inFilewrapperDirectory + "' directory\n\n"
@@ -1464,7 +1464,7 @@ proc generateWrapperContents
   for (* * * mWrapperDirectoryIndex) in inFilewrapperDirectoryMap do
     ioImplementation += "  & gWrapperDirectory_" + [mWrapperDirectoryIndex string] + "_" + [inFilewrapperName identifierRepresentation] + ",\n"
   end
-  ioImplementation += "  NULL\n"
+  ioImplementation += "  nullptr\n"
   + "} ;\n\n"
 #--- Generate directory wrapper
   ioImplementation += "//--- Directory '" + inFilewrapperDirectory + "'\n\n"

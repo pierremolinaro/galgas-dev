@@ -13,7 +13,7 @@ class GALGAS_object : public AC_GALGAS_root {
   private: cPtr_object * mSharedObject ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedObject != NULL ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedObject != nullptr ; }
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor

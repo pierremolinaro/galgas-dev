@@ -8969,7 +8969,7 @@ bool cMapElement_headerCompositionMap::isValid (void) const {
 //----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_headerCompositionMap::copy (void) {
-  cMapElement * result = NULL ;
+  cMapElement * result = nullptr ;
   macroMyNew (result, cMapElement_headerCompositionMap (mProperty_lkey, mProperty_mInclusion, mProperty_mHeaderString COMMA_HERE)) ;
   return result ;
 }
@@ -9053,7 +9053,7 @@ void GALGAS_headerCompositionMap::addAssign_operation (const GALGAS_lstring & in
                                                        const GALGAS_string & inArgument1,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
-  cMapElement_headerCompositionMap * p = NULL ;
+  cMapElement_headerCompositionMap * p = nullptr ;
   macroMyNew (p, cMapElement_headerCompositionMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
@@ -9084,7 +9084,7 @@ void GALGAS_headerCompositionMap::setter_insertKey (GALGAS_lstring inKey,
                                                     GALGAS_string inArgument1,
                                                     C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
-  cMapElement_headerCompositionMap * p = NULL ;
+  cMapElement_headerCompositionMap * p = nullptr ;
   macroMyNew (p, cMapElement_headerCompositionMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
@@ -9109,7 +9109,7 @@ void GALGAS_headerCompositionMap::method_searchKey (GALGAS_lstring inKey,
                                                                                                          inCompiler,
                                                                                                          kSearchErrorMessage_headerCompositionMap_searchKey
                                                                                                          COMMA_THERE) ;
-  if (NULL == p) {
+  if (nullptr == p) {
     outArgument0.drop () ;
     outArgument1.drop () ;
   }else{
@@ -9127,7 +9127,7 @@ GALGAS_stringset GALGAS_headerCompositionMap::getter_mInclusionForKey (const GAL
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
   const cMapElement_headerCompositionMap * p = (const cMapElement_headerCompositionMap *) attributes ;
   GALGAS_stringset result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cMapElement_headerCompositionMap) ;
     result = p->mProperty_mInclusion ;
   }
@@ -9142,7 +9142,7 @@ GALGAS_string GALGAS_headerCompositionMap::getter_mHeaderStringForKey (const GAL
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
   const cMapElement_headerCompositionMap * p = (const cMapElement_headerCompositionMap *) attributes ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cMapElement_headerCompositionMap) ;
     result = p->mProperty_mHeaderString ;
   }
@@ -9157,7 +9157,7 @@ void GALGAS_headerCompositionMap::setter_setMInclusionForKey (GALGAS_stringset i
                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_headerCompositionMap * p = (cMapElement_headerCompositionMap *) attributes ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cMapElement_headerCompositionMap) ;
     p->mProperty_mInclusion = inAttributeValue ;
   }
@@ -9171,7 +9171,7 @@ void GALGAS_headerCompositionMap::setter_setMHeaderStringForKey (GALGAS_string i
                                                                  COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_headerCompositionMap * p = (cMapElement_headerCompositionMap *) attributes ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cMapElement_headerCompositionMap) ;
     p->mProperty_mHeaderString = inAttributeValue ;
   }
@@ -9233,7 +9233,7 @@ bool GALGAS_headerCompositionMap::optional_searchKey (const GALGAS_string & inKe
                                                       GALGAS_stringset & outArgument0,
                                                       GALGAS_string & outArgument1) const {
   const cMapElement_headerCompositionMap * p = (const cMapElement_headerCompositionMap *) searchForKey (inKey) ;
-  const bool result = NULL != p ;
+  const bool result = nullptr != p ;
   if (result) {
     macroValidSharedObject (p, cMapElement_headerCompositionMap) ;
     outArgument0 = p->mProperty_mInclusion ;
@@ -9253,7 +9253,7 @@ bool GALGAS_headerCompositionMap::optional_searchKey (const GALGAS_string & inKe
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_headerCompositionMap ("headerCompositionMap",
-                                             NULL) ;
+                                             nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9264,7 +9264,7 @@ const C_galgas_type_descriptor * GALGAS_headerCompositionMap::staticTypeDescript
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_headerCompositionMap::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_headerCompositionMap (*this)) ;
   }
@@ -9278,8 +9278,8 @@ GALGAS_headerCompositionMap GALGAS_headerCompositionMap::extractObject (const GA
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_headerCompositionMap result ;
   const GALGAS_headerCompositionMap * p = (const GALGAS_headerCompositionMap *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_headerCompositionMap *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_headerCompositionMap *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("headerCompositionMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -9306,7 +9306,7 @@ bool cMapElement_headerRepartitionMap::isValid (void) const {
 //----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_headerRepartitionMap::copy (void) {
-  cMapElement * result = NULL ;
+  cMapElement * result = nullptr ;
   macroMyNew (result, cMapElement_headerRepartitionMap (mProperty_lkey, mProperty_mHeaderFileName COMMA_HERE)) ;
   return result ;
 }
@@ -9382,7 +9382,7 @@ void GALGAS_headerRepartitionMap::addAssign_operation (const GALGAS_lstring & in
                                                        const GALGAS_string & inArgument0,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
-  cMapElement_headerRepartitionMap * p = NULL ;
+  cMapElement_headerRepartitionMap * p = nullptr ;
   macroMyNew (p, cMapElement_headerRepartitionMap (inKey, inArgument0 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
@@ -9412,7 +9412,7 @@ void GALGAS_headerRepartitionMap::setter_insertKey (GALGAS_lstring inKey,
                                                     GALGAS_string inArgument0,
                                                     C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
-  cMapElement_headerRepartitionMap * p = NULL ;
+  cMapElement_headerRepartitionMap * p = nullptr ;
   macroMyNew (p, cMapElement_headerRepartitionMap (inKey, inArgument0 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
@@ -9436,7 +9436,7 @@ void GALGAS_headerRepartitionMap::method_searchKey (GALGAS_lstring inKey,
                                                                                                          inCompiler,
                                                                                                          kSearchErrorMessage_headerRepartitionMap_searchKey
                                                                                                          COMMA_THERE) ;
-  if (NULL == p) {
+  if (nullptr == p) {
     outArgument0.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_headerRepartitionMap) ;
@@ -9452,7 +9452,7 @@ GALGAS_string GALGAS_headerRepartitionMap::getter_mHeaderFileNameForKey (const G
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
   const cMapElement_headerRepartitionMap * p = (const cMapElement_headerRepartitionMap *) attributes ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cMapElement_headerRepartitionMap) ;
     result = p->mProperty_mHeaderFileName ;
   }
@@ -9467,7 +9467,7 @@ void GALGAS_headerRepartitionMap::setter_setMHeaderFileNameForKey (GALGAS_string
                                                                    COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_headerRepartitionMap * p = (cMapElement_headerRepartitionMap *) attributes ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cMapElement_headerRepartitionMap) ;
     p->mProperty_mHeaderFileName = inAttributeValue ;
   }
@@ -9520,7 +9520,7 @@ GALGAS_string cEnumerator_headerRepartitionMap::current_mHeaderFileName (LOCATIO
 bool GALGAS_headerRepartitionMap::optional_searchKey (const GALGAS_string & inKey,
                                                       GALGAS_string & outArgument0) const {
   const cMapElement_headerRepartitionMap * p = (const cMapElement_headerRepartitionMap *) searchForKey (inKey) ;
-  const bool result = NULL != p ;
+  const bool result = nullptr != p ;
   if (result) {
     macroValidSharedObject (p, cMapElement_headerRepartitionMap) ;
     outArgument0 = p->mProperty_mHeaderFileName ;
@@ -9538,7 +9538,7 @@ bool GALGAS_headerRepartitionMap::optional_searchKey (const GALGAS_string & inKe
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_headerRepartitionMap ("headerRepartitionMap",
-                                             NULL) ;
+                                             nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9549,7 +9549,7 @@ const C_galgas_type_descriptor * GALGAS_headerRepartitionMap::staticTypeDescript
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_headerRepartitionMap::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_headerRepartitionMap (*this)) ;
   }
@@ -9563,8 +9563,8 @@ GALGAS_headerRepartitionMap GALGAS_headerRepartitionMap::extractObject (const GA
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_headerRepartitionMap result ;
   const GALGAS_headerRepartitionMap * p = (const GALGAS_headerRepartitionMap *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_headerRepartitionMap *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_headerRepartitionMap *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("headerRepartitionMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -9591,7 +9591,7 @@ bool cMapElement_projectQualifiedFeatureMap::isValid (void) const {
 //----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_projectQualifiedFeatureMap::copy (void) {
-  cMapElement * result = NULL ;
+  cMapElement * result = nullptr ;
   macroMyNew (result, cMapElement_projectQualifiedFeatureMap (mProperty_lkey, mProperty_mFeatureValue COMMA_HERE)) ;
   return result ;
 }
@@ -9667,7 +9667,7 @@ void GALGAS_projectQualifiedFeatureMap::addAssign_operation (const GALGAS_lstrin
                                                              const GALGAS_lstring & inArgument0,
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
-  cMapElement_projectQualifiedFeatureMap * p = NULL ;
+  cMapElement_projectQualifiedFeatureMap * p = nullptr ;
   macroMyNew (p, cMapElement_projectQualifiedFeatureMap (inKey, inArgument0 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
@@ -9697,7 +9697,7 @@ void GALGAS_projectQualifiedFeatureMap::setter_insertKey (GALGAS_lstring inKey,
                                                           GALGAS_lstring inArgument0,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
-  cMapElement_projectQualifiedFeatureMap * p = NULL ;
+  cMapElement_projectQualifiedFeatureMap * p = nullptr ;
   macroMyNew (p, cMapElement_projectQualifiedFeatureMap (inKey, inArgument0 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
@@ -9721,7 +9721,7 @@ void GALGAS_projectQualifiedFeatureMap::method_searchKey (GALGAS_lstring inKey,
                                                                                                                      inCompiler,
                                                                                                                      kSearchErrorMessage_projectQualifiedFeatureMap_searchKey
                                                                                                                      COMMA_THERE) ;
-  if (NULL == p) {
+  if (nullptr == p) {
     outArgument0.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_projectQualifiedFeatureMap) ;
@@ -9737,7 +9737,7 @@ GALGAS_lstring GALGAS_projectQualifiedFeatureMap::getter_mFeatureValueForKey (co
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
   const cMapElement_projectQualifiedFeatureMap * p = (const cMapElement_projectQualifiedFeatureMap *) attributes ;
   GALGAS_lstring result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cMapElement_projectQualifiedFeatureMap) ;
     result = p->mProperty_mFeatureValue ;
   }
@@ -9752,7 +9752,7 @@ void GALGAS_projectQualifiedFeatureMap::setter_setMFeatureValueForKey (GALGAS_ls
                                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_projectQualifiedFeatureMap * p = (cMapElement_projectQualifiedFeatureMap *) attributes ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cMapElement_projectQualifiedFeatureMap) ;
     p->mProperty_mFeatureValue = inAttributeValue ;
   }
@@ -9805,7 +9805,7 @@ GALGAS_lstring cEnumerator_projectQualifiedFeatureMap::current_mFeatureValue (LO
 bool GALGAS_projectQualifiedFeatureMap::optional_searchKey (const GALGAS_string & inKey,
                                                             GALGAS_lstring & outArgument0) const {
   const cMapElement_projectQualifiedFeatureMap * p = (const cMapElement_projectQualifiedFeatureMap *) searchForKey (inKey) ;
-  const bool result = NULL != p ;
+  const bool result = nullptr != p ;
   if (result) {
     macroValidSharedObject (p, cMapElement_projectQualifiedFeatureMap) ;
     outArgument0 = p->mProperty_mFeatureValue ;
@@ -9823,7 +9823,7 @@ bool GALGAS_projectQualifiedFeatureMap::optional_searchKey (const GALGAS_string 
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_projectQualifiedFeatureMap ("projectQualifiedFeatureMap",
-                                                   NULL) ;
+                                                   nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9834,7 +9834,7 @@ const C_galgas_type_descriptor * GALGAS_projectQualifiedFeatureMap::staticTypeDe
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_projectQualifiedFeatureMap::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_projectQualifiedFeatureMap (*this)) ;
   }
@@ -9848,8 +9848,8 @@ GALGAS_projectQualifiedFeatureMap GALGAS_projectQualifiedFeatureMap::extractObje
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_projectQualifiedFeatureMap result ;
   const GALGAS_projectQualifiedFeatureMap * p = (const GALGAS_projectQualifiedFeatureMap *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_projectQualifiedFeatureMap *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_projectQualifiedFeatureMap *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("projectQualifiedFeatureMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -9915,7 +9915,7 @@ bool cCollectionElement_XCodeGroupList::isValid (void) const {
 //----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_XCodeGroupList::copy (void) {
-  cCollectionElement * result = NULL ;
+  cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_XCodeGroupList (mObject.mProperty_mGroupReference, mObject.mProperty_mGroupName, mObject.mProperty_mGroupPath, mObject.mProperty_mChildrenRefs COMMA_HERE)) ;
   return result ;
 }
@@ -9992,7 +9992,7 @@ void GALGAS_XCodeGroupList::makeAttributesFromObjects (capCollectionElement & ou
                                                        const GALGAS_string & in_mGroupPath,
                                                        const GALGAS_stringlist & in_mChildrenRefs
                                                        COMMA_LOCATION_ARGS) {
-  cCollectionElement_XCodeGroupList * p = NULL ;
+  cCollectionElement_XCodeGroupList * p = nullptr ;
   macroMyNew (p, cCollectionElement_XCodeGroupList (in_mGroupReference,
                                                     in_mGroupName,
                                                     in_mGroupPath,
@@ -10010,7 +10010,7 @@ void GALGAS_XCodeGroupList::addAssign_operation (const GALGAS_string & inOperand
                                                  COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-      cCollectionElement * p = NULL ;
+      cCollectionElement * p = nullptr ;
       macroMyNew (p, cCollectionElement_XCodeGroupList (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
@@ -10029,7 +10029,7 @@ void GALGAS_XCodeGroupList::setter_append (GALGAS_XCodeGroupList_2D_element inEl
                                            COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inElement.isValid ()) {
-      cCollectionElement * p = NULL ;
+      cCollectionElement * p = nullptr ;
       macroMyNew (p, cCollectionElement_XCodeGroupList (inElement COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
@@ -10052,7 +10052,7 @@ void GALGAS_XCodeGroupList::setter_insertAtIndex (const GALGAS_string inOperand0
                                                   COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-      cCollectionElement * p = NULL ;
+      cCollectionElement * p = nullptr ;
       macroMyNew (p, cCollectionElement_XCodeGroupList (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
@@ -10078,7 +10078,7 @@ void GALGAS_XCodeGroupList::setter_removeAtIndex (GALGAS_string & outOperand0,
       capCollectionElement attributes ;
       removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
       cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
-      if (NULL == p) {
+      if (nullptr == p) {
         outOperand0.drop () ;
         outOperand1.drop () ;
         outOperand2.drop () ;
@@ -10117,7 +10117,7 @@ void GALGAS_XCodeGroupList::setter_popFirst (GALGAS_string & outOperand0,
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -10142,7 +10142,7 @@ void GALGAS_XCodeGroupList::setter_popLast (GALGAS_string & outOperand0,
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -10167,7 +10167,7 @@ void GALGAS_XCodeGroupList::method_first (GALGAS_string & outOperand0,
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -10192,7 +10192,7 @@ void GALGAS_XCodeGroupList::method_last (GALGAS_string & outOperand0,
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -10264,7 +10264,7 @@ void GALGAS_XCodeGroupList::setter_setMGroupReferenceAtIndex (GALGAS_string inOp
                                                               C_Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mGroupReference = inOperand ;
@@ -10279,7 +10279,7 @@ GALGAS_string GALGAS_XCodeGroupList::getter_mGroupReferenceAtIndex (const GALGAS
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
     result = p->mObject.mProperty_mGroupReference ;
   }
@@ -10293,7 +10293,7 @@ void GALGAS_XCodeGroupList::setter_setMGroupNameAtIndex (GALGAS_string inOperand
                                                          C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mGroupName = inOperand ;
@@ -10308,7 +10308,7 @@ GALGAS_string GALGAS_XCodeGroupList::getter_mGroupNameAtIndex (const GALGAS_uint
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
     result = p->mObject.mProperty_mGroupName ;
   }
@@ -10322,7 +10322,7 @@ void GALGAS_XCodeGroupList::setter_setMGroupPathAtIndex (GALGAS_string inOperand
                                                          C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mGroupPath = inOperand ;
@@ -10337,7 +10337,7 @@ GALGAS_string GALGAS_XCodeGroupList::getter_mGroupPathAtIndex (const GALGAS_uint
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
     result = p->mObject.mProperty_mGroupPath ;
   }
@@ -10351,7 +10351,7 @@ void GALGAS_XCodeGroupList::setter_setMChildrenRefsAtIndex (GALGAS_stringlist in
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mChildrenRefs = inOperand ;
@@ -10366,7 +10366,7 @@ GALGAS_stringlist GALGAS_XCodeGroupList::getter_mChildrenRefsAtIndex (const GALG
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
   GALGAS_stringlist result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
     result = p->mObject.mProperty_mChildrenRefs ;
   }
@@ -10435,7 +10435,7 @@ GALGAS_stringlist cEnumerator_XCodeGroupList::current_mChildrenRefs (LOCATION_AR
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_XCodeGroupList ("XCodeGroupList",
-                                       NULL) ;
+                                       nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10446,7 +10446,7 @@ const C_galgas_type_descriptor * GALGAS_XCodeGroupList::staticTypeDescriptor (vo
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_XCodeGroupList::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_XCodeGroupList (*this)) ;
   }
@@ -10460,8 +10460,8 @@ GALGAS_XCodeGroupList GALGAS_XCodeGroupList::extractObject (const GALGAS_object 
                                                             COMMA_LOCATION_ARGS) {
   GALGAS_XCodeGroupList result ;
   const GALGAS_XCodeGroupList * p = (const GALGAS_XCodeGroupList *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_XCodeGroupList *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_XCodeGroupList *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("XCodeGroupList", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -10541,7 +10541,7 @@ bool cCollectionElement_XCodeToolTargetList::isValid (void) const {
 //----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_XCodeToolTargetList::copy (void) {
-  cCollectionElement * result = NULL ;
+  cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_XCodeToolTargetList (mObject.mProperty_mTargetRef, mObject.mProperty_mTargetName, mObject.mProperty_mProductFileReference, mObject.mProperty_mProductFileName, mObject.mProperty_mBuildPhaseRefList, mObject.mProperty_mBuildPhaseRef, mObject.mProperty_mBuildConfigurationListRef, mObject.mProperty_mBuildConfigurationSettingList, mObject.mProperty_mBuildConfigurationRef, mObject.mProperty_mFrameworksFileRefList, mObject.mProperty_mFrameworkBuildPhaseRef COMMA_HERE)) ;
   return result ;
 }
@@ -10660,7 +10660,7 @@ void GALGAS_XCodeToolTargetList::makeAttributesFromObjects (capCollectionElement
                                                             const GALGAS_stringlist & in_mFrameworksFileRefList,
                                                             const GALGAS_string & in_mFrameworkBuildPhaseRef
                                                             COMMA_LOCATION_ARGS) {
-  cCollectionElement_XCodeToolTargetList * p = NULL ;
+  cCollectionElement_XCodeToolTargetList * p = nullptr ;
   macroMyNew (p, cCollectionElement_XCodeToolTargetList (in_mTargetRef,
                                                          in_mTargetName,
                                                          in_mProductFileReference,
@@ -10692,7 +10692,7 @@ void GALGAS_XCodeToolTargetList::addAssign_operation (const GALGAS_string & inOp
                                                       COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid ()) {
-      cCollectionElement * p = NULL ;
+      cCollectionElement * p = nullptr ;
       macroMyNew (p, cCollectionElement_XCodeToolTargetList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
@@ -10711,7 +10711,7 @@ void GALGAS_XCodeToolTargetList::setter_append (GALGAS_XCodeToolTargetList_2D_el
                                                 COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inElement.isValid ()) {
-      cCollectionElement * p = NULL ;
+      cCollectionElement * p = nullptr ;
       macroMyNew (p, cCollectionElement_XCodeToolTargetList (inElement COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
@@ -10741,7 +10741,7 @@ void GALGAS_XCodeToolTargetList::setter_insertAtIndex (const GALGAS_string inOpe
                                                        COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid ()) {
-      cCollectionElement * p = NULL ;
+      cCollectionElement * p = nullptr ;
       macroMyNew (p, cCollectionElement_XCodeToolTargetList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
@@ -10774,7 +10774,7 @@ void GALGAS_XCodeToolTargetList::setter_removeAtIndex (GALGAS_string & outOperan
       capCollectionElement attributes ;
       removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
       cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
-      if (NULL == p) {
+      if (nullptr == p) {
         outOperand0.drop () ;
         outOperand1.drop () ;
         outOperand2.drop () ;
@@ -10848,7 +10848,7 @@ void GALGAS_XCodeToolTargetList::setter_popFirst (GALGAS_string & outOperand0,
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -10894,7 +10894,7 @@ void GALGAS_XCodeToolTargetList::setter_popLast (GALGAS_string & outOperand0,
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -10940,7 +10940,7 @@ void GALGAS_XCodeToolTargetList::method_first (GALGAS_string & outOperand0,
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -10986,7 +10986,7 @@ void GALGAS_XCodeToolTargetList::method_last (GALGAS_string & outOperand0,
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -11072,7 +11072,7 @@ void GALGAS_XCodeToolTargetList::setter_setMTargetRefAtIndex (GALGAS_string inOp
                                                               C_Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mTargetRef = inOperand ;
@@ -11087,7 +11087,7 @@ GALGAS_string GALGAS_XCodeToolTargetList::getter_mTargetRefAtIndex (const GALGAS
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     result = p->mObject.mProperty_mTargetRef ;
   }
@@ -11101,7 +11101,7 @@ void GALGAS_XCodeToolTargetList::setter_setMTargetNameAtIndex (GALGAS_string inO
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mTargetName = inOperand ;
@@ -11116,7 +11116,7 @@ GALGAS_string GALGAS_XCodeToolTargetList::getter_mTargetNameAtIndex (const GALGA
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     result = p->mObject.mProperty_mTargetName ;
   }
@@ -11130,7 +11130,7 @@ void GALGAS_XCodeToolTargetList::setter_setMProductFileReferenceAtIndex (GALGAS_
                                                                          C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mProductFileReference = inOperand ;
@@ -11145,7 +11145,7 @@ GALGAS_string GALGAS_XCodeToolTargetList::getter_mProductFileReferenceAtIndex (c
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     result = p->mObject.mProperty_mProductFileReference ;
   }
@@ -11159,7 +11159,7 @@ void GALGAS_XCodeToolTargetList::setter_setMProductFileNameAtIndex (GALGAS_strin
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mProductFileName = inOperand ;
@@ -11174,7 +11174,7 @@ GALGAS_string GALGAS_XCodeToolTargetList::getter_mProductFileNameAtIndex (const 
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     result = p->mObject.mProperty_mProductFileName ;
   }
@@ -11188,7 +11188,7 @@ void GALGAS_XCodeToolTargetList::setter_setMBuildPhaseRefListAtIndex (GALGAS_str
                                                                       C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mBuildPhaseRefList = inOperand ;
@@ -11203,7 +11203,7 @@ GALGAS_stringlist GALGAS_XCodeToolTargetList::getter_mBuildPhaseRefListAtIndex (
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_stringlist result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     result = p->mObject.mProperty_mBuildPhaseRefList ;
   }
@@ -11217,7 +11217,7 @@ void GALGAS_XCodeToolTargetList::setter_setMBuildPhaseRefAtIndex (GALGAS_string 
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mBuildPhaseRef = inOperand ;
@@ -11232,7 +11232,7 @@ GALGAS_string GALGAS_XCodeToolTargetList::getter_mBuildPhaseRefAtIndex (const GA
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     result = p->mObject.mProperty_mBuildPhaseRef ;
   }
@@ -11246,7 +11246,7 @@ void GALGAS_XCodeToolTargetList::setter_setMBuildConfigurationListRefAtIndex (GA
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mBuildConfigurationListRef = inOperand ;
@@ -11261,7 +11261,7 @@ GALGAS_string GALGAS_XCodeToolTargetList::getter_mBuildConfigurationListRefAtInd
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     result = p->mObject.mProperty_mBuildConfigurationListRef ;
   }
@@ -11275,7 +11275,7 @@ void GALGAS_XCodeToolTargetList::setter_setMBuildConfigurationSettingListAtIndex
                                                                                   C_Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mBuildConfigurationSettingList = inOperand ;
@@ -11290,7 +11290,7 @@ GALGAS_stringlist GALGAS_XCodeToolTargetList::getter_mBuildConfigurationSettingL
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_stringlist result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     result = p->mObject.mProperty_mBuildConfigurationSettingList ;
   }
@@ -11304,7 +11304,7 @@ void GALGAS_XCodeToolTargetList::setter_setMBuildConfigurationRefAtIndex (GALGAS
                                                                           C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mBuildConfigurationRef = inOperand ;
@@ -11319,7 +11319,7 @@ GALGAS_string GALGAS_XCodeToolTargetList::getter_mBuildConfigurationRefAtIndex (
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     result = p->mObject.mProperty_mBuildConfigurationRef ;
   }
@@ -11333,7 +11333,7 @@ void GALGAS_XCodeToolTargetList::setter_setMFrameworksFileRefListAtIndex (GALGAS
                                                                           C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mFrameworksFileRefList = inOperand ;
@@ -11348,7 +11348,7 @@ GALGAS_stringlist GALGAS_XCodeToolTargetList::getter_mFrameworksFileRefListAtInd
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_stringlist result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     result = p->mObject.mProperty_mFrameworksFileRefList ;
   }
@@ -11362,7 +11362,7 @@ void GALGAS_XCodeToolTargetList::setter_setMFrameworkBuildPhaseRefAtIndex (GALGA
                                                                            C_Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mFrameworkBuildPhaseRef = inOperand ;
@@ -11377,7 +11377,7 @@ GALGAS_string GALGAS_XCodeToolTargetList::getter_mFrameworkBuildPhaseRefAtIndex 
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
     result = p->mObject.mProperty_mFrameworkBuildPhaseRef ;
   }
@@ -11502,7 +11502,7 @@ GALGAS_string cEnumerator_XCodeToolTargetList::current_mFrameworkBuildPhaseRef (
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_XCodeToolTargetList ("XCodeToolTargetList",
-                                            NULL) ;
+                                            nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11513,7 +11513,7 @@ const C_galgas_type_descriptor * GALGAS_XCodeToolTargetList::staticTypeDescripto
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_XCodeToolTargetList::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_XCodeToolTargetList (*this)) ;
   }
@@ -11527,8 +11527,8 @@ GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::extractObject (const GALG
                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_XCodeToolTargetList result ;
   const GALGAS_XCodeToolTargetList * p = (const GALGAS_XCodeToolTargetList *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_XCodeToolTargetList *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_XCodeToolTargetList *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("XCodeToolTargetList", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -11614,7 +11614,7 @@ bool cCollectionElement_XCodeAppTargetList::isValid (void) const {
 //----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_XCodeAppTargetList::copy (void) {
-  cCollectionElement * result = NULL ;
+  cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_XCodeAppTargetList (mObject.mProperty_mTargetRef, mObject.mProperty_mTargetName, mObject.mProperty_mProductFileReference, mObject.mProperty_mProductFileName, mObject.mProperty_mBuildPhaseRefList, mObject.mProperty_mBuildPhaseRef, mObject.mProperty_mBuildConfigurationListRef, mObject.mProperty_mBuildConfigurationSettingList, mObject.mProperty_mBuildConfigurationRef, mObject.mProperty_mFrameworksFileRefList, mObject.mProperty_mFrameworkBuildPhaseRef, mObject.mProperty_mDependentTargets, mObject.mProperty_mResourceBuildRef, mObject.mProperty_mResourceFileBuildRefs COMMA_HERE)) ;
   return result ;
 }
@@ -11751,7 +11751,7 @@ void GALGAS_XCodeAppTargetList::makeAttributesFromObjects (capCollectionElement 
                                                            const GALGAS_string & in_mResourceBuildRef,
                                                            const GALGAS_stringlist & in_mResourceFileBuildRefs
                                                            COMMA_LOCATION_ARGS) {
-  cCollectionElement_XCodeAppTargetList * p = NULL ;
+  cCollectionElement_XCodeAppTargetList * p = nullptr ;
   macroMyNew (p, cCollectionElement_XCodeAppTargetList (in_mTargetRef,
                                                         in_mTargetName,
                                                         in_mProductFileReference,
@@ -11789,7 +11789,7 @@ void GALGAS_XCodeAppTargetList::addAssign_operation (const GALGAS_string & inOpe
                                                      COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid ()) {
-      cCollectionElement * p = NULL ;
+      cCollectionElement * p = nullptr ;
       macroMyNew (p, cCollectionElement_XCodeAppTargetList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
@@ -11808,7 +11808,7 @@ void GALGAS_XCodeAppTargetList::setter_append (GALGAS_XCodeAppTargetList_2D_elem
                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inElement.isValid ()) {
-      cCollectionElement * p = NULL ;
+      cCollectionElement * p = nullptr ;
       macroMyNew (p, cCollectionElement_XCodeAppTargetList (inElement COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
@@ -11841,7 +11841,7 @@ void GALGAS_XCodeAppTargetList::setter_insertAtIndex (const GALGAS_string inOper
                                                       COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid ()) {
-      cCollectionElement * p = NULL ;
+      cCollectionElement * p = nullptr ;
       macroMyNew (p, cCollectionElement_XCodeAppTargetList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
@@ -11877,7 +11877,7 @@ void GALGAS_XCodeAppTargetList::setter_removeAtIndex (GALGAS_string & outOperand
       capCollectionElement attributes ;
       removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
       cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
-      if (NULL == p) {
+      if (nullptr == p) {
         outOperand0.drop () ;
         outOperand1.drop () ;
         outOperand2.drop () ;
@@ -11966,7 +11966,7 @@ void GALGAS_XCodeAppTargetList::setter_popFirst (GALGAS_string & outOperand0,
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -12021,7 +12021,7 @@ void GALGAS_XCodeAppTargetList::setter_popLast (GALGAS_string & outOperand0,
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -12076,7 +12076,7 @@ void GALGAS_XCodeAppTargetList::method_first (GALGAS_string & outOperand0,
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -12131,7 +12131,7 @@ void GALGAS_XCodeAppTargetList::method_last (GALGAS_string & outOperand0,
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
@@ -12223,7 +12223,7 @@ void GALGAS_XCodeAppTargetList::setter_setMTargetRefAtIndex (GALGAS_string inOpe
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mTargetRef = inOperand ;
@@ -12238,7 +12238,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mTargetRefAtIndex (const GALGAS_
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     result = p->mObject.mProperty_mTargetRef ;
   }
@@ -12252,7 +12252,7 @@ void GALGAS_XCodeAppTargetList::setter_setMTargetNameAtIndex (GALGAS_string inOp
                                                               C_Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mTargetName = inOperand ;
@@ -12267,7 +12267,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mTargetNameAtIndex (const GALGAS
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     result = p->mObject.mProperty_mTargetName ;
   }
@@ -12281,7 +12281,7 @@ void GALGAS_XCodeAppTargetList::setter_setMProductFileReferenceAtIndex (GALGAS_s
                                                                         C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mProductFileReference = inOperand ;
@@ -12296,7 +12296,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mProductFileReferenceAtIndex (co
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     result = p->mObject.mProperty_mProductFileReference ;
   }
@@ -12310,7 +12310,7 @@ void GALGAS_XCodeAppTargetList::setter_setMProductFileNameAtIndex (GALGAS_string
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mProductFileName = inOperand ;
@@ -12325,7 +12325,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mProductFileNameAtIndex (const G
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     result = p->mObject.mProperty_mProductFileName ;
   }
@@ -12339,7 +12339,7 @@ void GALGAS_XCodeAppTargetList::setter_setMBuildPhaseRefListAtIndex (GALGAS_stri
                                                                      C_Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mBuildPhaseRefList = inOperand ;
@@ -12354,7 +12354,7 @@ GALGAS_stringlist GALGAS_XCodeAppTargetList::getter_mBuildPhaseRefListAtIndex (c
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_stringlist result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     result = p->mObject.mProperty_mBuildPhaseRefList ;
   }
@@ -12368,7 +12368,7 @@ void GALGAS_XCodeAppTargetList::setter_setMBuildPhaseRefAtIndex (GALGAS_string i
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mBuildPhaseRef = inOperand ;
@@ -12383,7 +12383,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mBuildPhaseRefAtIndex (const GAL
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     result = p->mObject.mProperty_mBuildPhaseRef ;
   }
@@ -12397,7 +12397,7 @@ void GALGAS_XCodeAppTargetList::setter_setMBuildConfigurationListRefAtIndex (GAL
                                                                              C_Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mBuildConfigurationListRef = inOperand ;
@@ -12412,7 +12412,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mBuildConfigurationListRefAtInde
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     result = p->mObject.mProperty_mBuildConfigurationListRef ;
   }
@@ -12426,7 +12426,7 @@ void GALGAS_XCodeAppTargetList::setter_setMBuildConfigurationSettingListAtIndex 
                                                                                  C_Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mBuildConfigurationSettingList = inOperand ;
@@ -12441,7 +12441,7 @@ GALGAS_stringlist GALGAS_XCodeAppTargetList::getter_mBuildConfigurationSettingLi
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_stringlist result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     result = p->mObject.mProperty_mBuildConfigurationSettingList ;
   }
@@ -12455,7 +12455,7 @@ void GALGAS_XCodeAppTargetList::setter_setMBuildConfigurationRefAtIndex (GALGAS_
                                                                          C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mBuildConfigurationRef = inOperand ;
@@ -12470,7 +12470,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mBuildConfigurationRefAtIndex (c
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     result = p->mObject.mProperty_mBuildConfigurationRef ;
   }
@@ -12484,7 +12484,7 @@ void GALGAS_XCodeAppTargetList::setter_setMFrameworksFileRefListAtIndex (GALGAS_
                                                                          C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mFrameworksFileRefList = inOperand ;
@@ -12499,7 +12499,7 @@ GALGAS_stringlist GALGAS_XCodeAppTargetList::getter_mFrameworksFileRefListAtInde
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_stringlist result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     result = p->mObject.mProperty_mFrameworksFileRefList ;
   }
@@ -12513,7 +12513,7 @@ void GALGAS_XCodeAppTargetList::setter_setMFrameworkBuildPhaseRefAtIndex (GALGAS
                                                                           C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mFrameworkBuildPhaseRef = inOperand ;
@@ -12528,7 +12528,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mFrameworkBuildPhaseRefAtIndex (
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     result = p->mObject.mProperty_mFrameworkBuildPhaseRef ;
   }
@@ -12542,7 +12542,7 @@ void GALGAS_XCodeAppTargetList::setter_setMDependentTargetsAtIndex (GALGAS__32_s
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mDependentTargets = inOperand ;
@@ -12557,7 +12557,7 @@ GALGAS__32_stringlist GALGAS_XCodeAppTargetList::getter_mDependentTargetsAtIndex
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS__32_stringlist result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     result = p->mObject.mProperty_mDependentTargets ;
   }
@@ -12571,7 +12571,7 @@ void GALGAS_XCodeAppTargetList::setter_setMResourceBuildRefAtIndex (GALGAS_strin
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mResourceBuildRef = inOperand ;
@@ -12586,7 +12586,7 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mResourceBuildRefAtIndex (const 
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     result = p->mObject.mProperty_mResourceBuildRef ;
   }
@@ -12600,7 +12600,7 @@ void GALGAS_XCodeAppTargetList::setter_setMResourceFileBuildRefsAtIndex (GALGAS_
                                                                          C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     macroUniqueSharedObject (p) ;
     p->mObject.mProperty_mResourceFileBuildRefs = inOperand ;
@@ -12615,7 +12615,7 @@ GALGAS_stringlist GALGAS_XCodeAppTargetList::getter_mResourceFileBuildRefsAtInde
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_stringlist result ;
-  if (NULL != p) {
+  if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
     result = p->mObject.mProperty_mResourceFileBuildRefs ;
   }
@@ -12764,7 +12764,7 @@ GALGAS_stringlist cEnumerator_XCodeAppTargetList::current_mResourceFileBuildRefs
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_XCodeAppTargetList ("XCodeAppTargetList",
-                                           NULL) ;
+                                           nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12775,7 +12775,7 @@ const C_galgas_type_descriptor * GALGAS_XCodeAppTargetList::staticTypeDescriptor
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_XCodeAppTargetList::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_XCodeAppTargetList (*this)) ;
   }
@@ -12789,8 +12789,8 @@ GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::extractObject (const GALGAS
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_XCodeAppTargetList result ;
   const GALGAS_XCodeAppTargetList * p = (const GALGAS_XCodeAppTargetList *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_XCodeAppTargetList *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_XCodeAppTargetList *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("XCodeAppTargetList", p->dynamicTypeDescriptor () COMMA_THERE) ;

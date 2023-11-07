@@ -288,13 +288,13 @@ override method @testDynamicClassInExpressionForGeneration generateExpression
       + ".dynamicTypeDescriptor () == & kTypeDescriptor_GALGAS_"
       + typeNameRepresentation + ")"
   case inherited :
-    outCppExpression = "GALGAS_bool (NULL != dynamic_cast <const cPtr_"
+    outCppExpression = "GALGAS_bool (nullptr != dynamic_cast <const cPtr_"
     + typeNameRepresentation
     + " *> (" + receiverExpression + ".ptr ()))"
   case strictlyInherited :
     outCppExpression = "GALGAS_bool ((" + receiverExpression
       + ".dynamicTypeDescriptor () != & kTypeDescriptor_GALGAS_"
-      + typeNameRepresentation + ") && (NULL != dynamic_cast <const cPtr_"
+      + typeNameRepresentation + ") && (nullptr != dynamic_cast <const cPtr_"
     + typeNameRepresentation
     + " *> (" + receiverExpression + ".ptr ())))"
   end
@@ -327,7 +327,7 @@ override method @castInExpressionForGeneration generateExpression
   [!?ioGeneratedCode incIndentation !2]
 #--- 
   ioGeneratedCode +=
-    "if (NULL != dynamic_cast <const cPtr_"
+    "if (nullptr != dynamic_cast <const cPtr_"
   + [self.mTypeName identifierRepresentation]
   + " *> (" + receiverExpression + ".ptr ())) {\n"
   + "  " + outCppExpression + " = (cPtr_" + [self.mTypeName identifierRepresentation] + " *) "

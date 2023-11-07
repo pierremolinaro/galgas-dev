@@ -11,7 +11,7 @@ class cPtr_%!TYPE_IDENTIFIER% ;
 class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: inline GALGAS_%!TYPE_IDENTIFIER% (void) :
-  mSharedObject (NULL) {
+  mSharedObject (nullptr) {
   }
 
 //--------------------------------- Virtual destructor
@@ -26,7 +26,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 
 //--- isValid
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
-    return NULL != mSharedObject ;
+    return nullptr != mSharedObject ;
   }
 
 //--- Drop

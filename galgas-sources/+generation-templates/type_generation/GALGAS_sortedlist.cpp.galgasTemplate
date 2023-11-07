@@ -59,7 +59,7 @@ bool cSortedListElement_%!TYPE_IDENTIFIER%::isValid (void) const {
 //----------------------------------------------------------------------------------------------------------------------
 
 cSortedListElement * cSortedListElement_%!TYPE_IDENTIFIER%::copy (void) {
-  cSortedListElement * result = NULL ;
+  cSortedListElement * result = nullptr ;
   macroMyNew (result, cSortedListElement_%!TYPE_IDENTIFIER% (%
     for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
       do %mObject.mProperty_%![mPropertyName identifierRepresentation]
@@ -132,7 +132,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWithV
   end
   %\n%!^%COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result = constructor_emptySortedList (THERE) ;
-  cSortedListElement * p = NULL ;
+  cSortedListElement * p = nullptr ;
   macroMyNew (p, cSortedListElement_%!TYPE_IDENTIFIER% (%
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
   do (IDX) %inOperand%![IDX string]
@@ -156,7 +156,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
 %
     %!^%COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    cSortedListElement * p = NULL ;
+    cSortedListElement * p = nullptr ;
     macroMyNew (p, cSortedListElement_%!TYPE_IDENTIFIER% (%
     for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
     do (IDX) %inOperand%![IDX string]
@@ -191,7 +191,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popSmallest (%?^
   capSortedListElement attributes ;
   removeSmallestObject (attributes, inCompiler COMMA_THERE) ;
   cSortedListElement_%!TYPE_IDENTIFIER% * p = (cSortedListElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
 %
  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
@@ -216,7 +216,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popGreatest (%?^
   capSortedListElement attributes ;
   removeGreatestObject (attributes, inCompiler COMMA_THERE) ;
   cSortedListElement_%!TYPE_IDENTIFIER% * p = (cSortedListElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
 %
  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
@@ -241,7 +241,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
   capSortedListElement attributes ;
   smallestObjectAttributeList (attributes, inCompiler COMMA_THERE) ;
   cSortedListElement_%!TYPE_IDENTIFIER% * p = (cSortedListElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
 %
  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
@@ -266,7 +266,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_greatest (%?^
   capSortedListElement attributes ;
   greatestObjectAttributeList (attributes, inCompiler COMMA_THERE) ;
   cSortedListElement_%!TYPE_IDENTIFIER% * p = (cSortedListElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
 %
  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%

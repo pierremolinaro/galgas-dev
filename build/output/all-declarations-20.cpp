@@ -326,7 +326,7 @@ void GALGAS_XcodeProjectDescriptor::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_XcodeProjectDescriptor ("XcodeProjectDescriptor",
-                                               NULL) ;
+                                               nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -337,7 +337,7 @@ const C_galgas_type_descriptor * GALGAS_XcodeProjectDescriptor::staticTypeDescri
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_XcodeProjectDescriptor::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_XcodeProjectDescriptor (*this)) ;
   }
@@ -351,8 +351,8 @@ GALGAS_XcodeProjectDescriptor GALGAS_XcodeProjectDescriptor::extractObject (cons
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_XcodeProjectDescriptor result ;
   const GALGAS_XcodeProjectDescriptor * p = (const GALGAS_XcodeProjectDescriptor *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_XcodeProjectDescriptor *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_XcodeProjectDescriptor *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("XcodeProjectDescriptor", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -1160,7 +1160,7 @@ void GALGAS_templateExpressionListAST_2D_element::description (C_String & ioStri
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_templateExpressionListAST_2D_element ("templateExpressionListAST-element",
-                                                             NULL) ;
+                                                             nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1171,7 +1171,7 @@ const C_galgas_type_descriptor * GALGAS_templateExpressionListAST_2D_element::st
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_templateExpressionListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_templateExpressionListAST_2D_element (*this)) ;
   }
@@ -1185,8 +1185,8 @@ GALGAS_templateExpressionListAST_2D_element GALGAS_templateExpressionListAST_2D_
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_templateExpressionListAST_2D_element result ;
   const GALGAS_templateExpressionListAST_2D_element * p = (const GALGAS_templateExpressionListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_templateExpressionListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_templateExpressionListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("templateExpressionListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -1276,7 +1276,7 @@ void GALGAS_templateInstructionIfBranchListForGeneration_2D_element::description
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_templateInstructionIfBranchListForGeneration_2D_element ("templateInstructionIfBranchListForGeneration-element",
-                                                                                NULL) ;
+                                                                                nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1287,7 +1287,7 @@ const C_galgas_type_descriptor * GALGAS_templateInstructionIfBranchListForGenera
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_templateInstructionIfBranchListForGeneration_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_templateInstructionIfBranchListForGeneration_2D_element (*this)) ;
   }
@@ -1301,8 +1301,8 @@ GALGAS_templateInstructionIfBranchListForGeneration_2D_element GALGAS_templateIn
                                                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionIfBranchListForGeneration_2D_element result ;
   const GALGAS_templateInstructionIfBranchListForGeneration_2D_element * p = (const GALGAS_templateInstructionIfBranchListForGeneration_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_templateInstructionIfBranchListForGeneration_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_templateInstructionIfBranchListForGeneration_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("templateInstructionIfBranchListForGeneration-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -1402,7 +1402,7 @@ void GALGAS_templateVariableMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_templateVariableMap_2D_element ("templateVariableMap-element",
-                                                       NULL) ;
+                                                       nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1413,7 +1413,7 @@ const C_galgas_type_descriptor * GALGAS_templateVariableMap_2D_element::staticTy
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_templateVariableMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_templateVariableMap_2D_element (*this)) ;
   }
@@ -1427,8 +1427,8 @@ GALGAS_templateVariableMap_2D_element GALGAS_templateVariableMap_2D_element::ext
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateVariableMap_2D_element result ;
   const GALGAS_templateVariableMap_2D_element * p = (const GALGAS_templateVariableMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_templateVariableMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_templateVariableMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("templateVariableMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -1536,7 +1536,7 @@ void GALGAS_templateDelimitorListAST_2D_element::description (C_String & ioStrin
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_templateDelimitorListAST_2D_element ("templateDelimitorListAST-element",
-                                                            NULL) ;
+                                                            nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1547,7 +1547,7 @@ const C_galgas_type_descriptor * GALGAS_templateDelimitorListAST_2D_element::sta
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_templateDelimitorListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_templateDelimitorListAST_2D_element (*this)) ;
   }
@@ -1561,8 +1561,8 @@ GALGAS_templateDelimitorListAST_2D_element GALGAS_templateDelimitorListAST_2D_el
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_templateDelimitorListAST_2D_element result ;
   const GALGAS_templateDelimitorListAST_2D_element * p = (const GALGAS_templateDelimitorListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_templateDelimitorListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_templateDelimitorListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("templateDelimitorListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -1670,7 +1670,7 @@ void GALGAS_templateReplacementListAST_2D_element::description (C_String & ioStr
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_templateReplacementListAST_2D_element ("templateReplacementListAST-element",
-                                                              NULL) ;
+                                                              nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1681,7 +1681,7 @@ const C_galgas_type_descriptor * GALGAS_templateReplacementListAST_2D_element::s
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_templateReplacementListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_templateReplacementListAST_2D_element (*this)) ;
   }
@@ -1695,8 +1695,8 @@ GALGAS_templateReplacementListAST_2D_element GALGAS_templateReplacementListAST_2
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_templateReplacementListAST_2D_element result ;
   const GALGAS_templateReplacementListAST_2D_element * p = (const GALGAS_templateReplacementListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_templateReplacementListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_templateReplacementListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("templateReplacementListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -1793,7 +1793,7 @@ void GALGAS_lexicalMessageDeclarationListAST_2D_element::description (C_String &
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalMessageDeclarationListAST_2D_element ("lexicalMessageDeclarationListAST-element",
-                                                                    NULL) ;
+                                                                    nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1804,7 +1804,7 @@ const C_galgas_type_descriptor * GALGAS_lexicalMessageDeclarationListAST_2D_elem
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalMessageDeclarationListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_lexicalMessageDeclarationListAST_2D_element (*this)) ;
   }
@@ -1818,8 +1818,8 @@ GALGAS_lexicalMessageDeclarationListAST_2D_element GALGAS_lexicalMessageDeclarat
                                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_lexicalMessageDeclarationListAST_2D_element result ;
   const GALGAS_lexicalMessageDeclarationListAST_2D_element * p = (const GALGAS_lexicalMessageDeclarationListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalMessageDeclarationListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalMessageDeclarationListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("lexicalMessageDeclarationListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -1916,7 +1916,7 @@ void GALGAS_lexicalAttributeListAST_2D_element::description (C_String & ioString
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalAttributeListAST_2D_element ("lexicalAttributeListAST-element",
-                                                           NULL) ;
+                                                           nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1927,7 +1927,7 @@ const C_galgas_type_descriptor * GALGAS_lexicalAttributeListAST_2D_element::stat
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalAttributeListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_lexicalAttributeListAST_2D_element (*this)) ;
   }
@@ -1941,8 +1941,8 @@ GALGAS_lexicalAttributeListAST_2D_element GALGAS_lexicalAttributeListAST_2D_elem
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_lexicalAttributeListAST_2D_element result ;
   const GALGAS_lexicalAttributeListAST_2D_element * p = (const GALGAS_lexicalAttributeListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalAttributeListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalAttributeListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("lexicalAttributeListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -2039,7 +2039,7 @@ void GALGAS_lexicalStyleListAST_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalStyleListAST_2D_element ("lexicalStyleListAST-element",
-                                                       NULL) ;
+                                                       nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2050,7 +2050,7 @@ const C_galgas_type_descriptor * GALGAS_lexicalStyleListAST_2D_element::staticTy
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalStyleListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_lexicalStyleListAST_2D_element (*this)) ;
   }
@@ -2064,8 +2064,8 @@ GALGAS_lexicalStyleListAST_2D_element GALGAS_lexicalStyleListAST_2D_element::ext
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_lexicalStyleListAST_2D_element result ;
   const GALGAS_lexicalStyleListAST_2D_element * p = (const GALGAS_lexicalStyleListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalStyleListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalStyleListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("lexicalStyleListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -2195,7 +2195,7 @@ void GALGAS_terminalDeclarationListAST_2D_element::description (C_String & ioStr
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_terminalDeclarationListAST_2D_element ("terminalDeclarationListAST-element",
-                                                              NULL) ;
+                                                              nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2206,7 +2206,7 @@ const C_galgas_type_descriptor * GALGAS_terminalDeclarationListAST_2D_element::s
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_terminalDeclarationListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_terminalDeclarationListAST_2D_element (*this)) ;
   }
@@ -2220,8 +2220,8 @@ GALGAS_terminalDeclarationListAST_2D_element GALGAS_terminalDeclarationListAST_2
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_terminalDeclarationListAST_2D_element result ;
   const GALGAS_terminalDeclarationListAST_2D_element * p = (const GALGAS_terminalDeclarationListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_terminalDeclarationListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_terminalDeclarationListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("terminalDeclarationListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -2329,7 +2329,7 @@ void GALGAS_lexicalListEntryListAST_2D_element::description (C_String & ioString
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalListEntryListAST_2D_element ("lexicalListEntryListAST-element",
-                                                           NULL) ;
+                                                           nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2340,7 +2340,7 @@ const C_galgas_type_descriptor * GALGAS_lexicalListEntryListAST_2D_element::stat
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalListEntryListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_lexicalListEntryListAST_2D_element (*this)) ;
   }
@@ -2354,8 +2354,8 @@ GALGAS_lexicalListEntryListAST_2D_element GALGAS_lexicalListEntryListAST_2D_elem
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_lexicalListEntryListAST_2D_element result ;
   const GALGAS_lexicalListEntryListAST_2D_element * p = (const GALGAS_lexicalListEntryListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalListEntryListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalListEntryListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("lexicalListEntryListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -2452,7 +2452,7 @@ void GALGAS_sentLexicalAttributeListAST_2D_element::description (C_String & ioSt
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_sentLexicalAttributeListAST_2D_element ("sentLexicalAttributeListAST-element",
-                                                               NULL) ;
+                                                               nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2463,7 +2463,7 @@ const C_galgas_type_descriptor * GALGAS_sentLexicalAttributeListAST_2D_element::
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_sentLexicalAttributeListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_sentLexicalAttributeListAST_2D_element (*this)) ;
   }
@@ -2477,8 +2477,8 @@ GALGAS_sentLexicalAttributeListAST_2D_element GALGAS_sentLexicalAttributeListAST
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_sentLexicalAttributeListAST_2D_element result ;
   const GALGAS_sentLexicalAttributeListAST_2D_element * p = (const GALGAS_sentLexicalAttributeListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_sentLexicalAttributeListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_sentLexicalAttributeListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("sentLexicalAttributeListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -2608,7 +2608,7 @@ void GALGAS_lexicalListDeclarationListAST_2D_element::description (C_String & io
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalListDeclarationListAST_2D_element ("lexicalListDeclarationListAST-element",
-                                                                 NULL) ;
+                                                                 nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2619,7 +2619,7 @@ const C_galgas_type_descriptor * GALGAS_lexicalListDeclarationListAST_2D_element
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalListDeclarationListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_lexicalListDeclarationListAST_2D_element (*this)) ;
   }
@@ -2633,8 +2633,8 @@ GALGAS_lexicalListDeclarationListAST_2D_element GALGAS_lexicalListDeclarationLis
                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_lexicalListDeclarationListAST_2D_element result ;
   const GALGAS_lexicalListDeclarationListAST_2D_element * p = (const GALGAS_lexicalListDeclarationListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalListDeclarationListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalListDeclarationListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("lexicalListDeclarationListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -2731,7 +2731,7 @@ void GALGAS_lexicalSendSearchListAST_2D_element::description (C_String & ioStrin
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalSendSearchListAST_2D_element ("lexicalSendSearchListAST-element",
-                                                            NULL) ;
+                                                            nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2742,7 +2742,7 @@ const C_galgas_type_descriptor * GALGAS_lexicalSendSearchListAST_2D_element::sta
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalSendSearchListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_lexicalSendSearchListAST_2D_element (*this)) ;
   }
@@ -2756,8 +2756,8 @@ GALGAS_lexicalSendSearchListAST_2D_element GALGAS_lexicalSendSearchListAST_2D_el
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_lexicalSendSearchListAST_2D_element result ;
   const GALGAS_lexicalSendSearchListAST_2D_element * p = (const GALGAS_lexicalSendSearchListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalSendSearchListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalSendSearchListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("lexicalSendSearchListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -2854,7 +2854,7 @@ void GALGAS_indexingListAST_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_indexingListAST_2D_element ("indexingListAST-element",
-                                                   NULL) ;
+                                                   nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2865,7 +2865,7 @@ const C_galgas_type_descriptor * GALGAS_indexingListAST_2D_element::staticTypeDe
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_indexingListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_indexingListAST_2D_element (*this)) ;
   }
@@ -2879,8 +2879,8 @@ GALGAS_indexingListAST_2D_element GALGAS_indexingListAST_2D_element::extractObje
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_indexingListAST_2D_element result ;
   const GALGAS_indexingListAST_2D_element * p = (const GALGAS_indexingListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_indexingListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_indexingListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("indexingListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -2980,7 +2980,7 @@ void GALGAS_lexicalSentValueList_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalSentValueList_2D_element ("lexicalSentValueList-element",
-                                                        NULL) ;
+                                                        nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2991,7 +2991,7 @@ const C_galgas_type_descriptor * GALGAS_lexicalSentValueList_2D_element::staticT
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalSentValueList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_lexicalSentValueList_2D_element (*this)) ;
   }
@@ -3005,8 +3005,8 @@ GALGAS_lexicalSentValueList_2D_element GALGAS_lexicalSentValueList_2D_element::e
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_lexicalSentValueList_2D_element result ;
   const GALGAS_lexicalSentValueList_2D_element * p = (const GALGAS_lexicalSentValueList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalSentValueList_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalSentValueList_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("lexicalSentValueList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -3103,7 +3103,7 @@ void GALGAS_terminalMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_terminalMap_2D_element ("terminalMap-element",
-                                               NULL) ;
+                                               nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3114,7 +3114,7 @@ const C_galgas_type_descriptor * GALGAS_terminalMap_2D_element::staticTypeDescri
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_terminalMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_terminalMap_2D_element (*this)) ;
   }
@@ -3128,8 +3128,8 @@ GALGAS_terminalMap_2D_element GALGAS_terminalMap_2D_element::extractObject (cons
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_terminalMap_2D_element result ;
   const GALGAS_terminalMap_2D_element * p = (const GALGAS_terminalMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_terminalMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_terminalMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("terminalMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -3219,7 +3219,7 @@ void GALGAS_lexicalTypeMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalTypeMap_2D_element ("lexicalTypeMap-element",
-                                                  NULL) ;
+                                                  nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3230,7 +3230,7 @@ const C_galgas_type_descriptor * GALGAS_lexicalTypeMap_2D_element::staticTypeDes
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalTypeMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_lexicalTypeMap_2D_element (*this)) ;
   }
@@ -3244,8 +3244,8 @@ GALGAS_lexicalTypeMap_2D_element GALGAS_lexicalTypeMap_2D_element::extractObject
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_lexicalTypeMap_2D_element result ;
   const GALGAS_lexicalTypeMap_2D_element * p = (const GALGAS_lexicalTypeMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalTypeMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalTypeMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("lexicalTypeMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -3335,7 +3335,7 @@ void GALGAS_lexicalAttributeMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalAttributeMap_2D_element ("lexicalAttributeMap-element",
-                                                       NULL) ;
+                                                       nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3346,7 +3346,7 @@ const C_galgas_type_descriptor * GALGAS_lexicalAttributeMap_2D_element::staticTy
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalAttributeMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_lexicalAttributeMap_2D_element (*this)) ;
   }
@@ -3360,8 +3360,8 @@ GALGAS_lexicalAttributeMap_2D_element GALGAS_lexicalAttributeMap_2D_element::ext
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_lexicalAttributeMap_2D_element result ;
   const GALGAS_lexicalAttributeMap_2D_element * p = (const GALGAS_lexicalAttributeMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalAttributeMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalAttributeMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("lexicalAttributeMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -3502,7 +3502,7 @@ void GALGAS_terminalList_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_terminalList_2D_element ("terminalList-element",
-                                                NULL) ;
+                                                nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3513,7 +3513,7 @@ const C_galgas_type_descriptor * GALGAS_terminalList_2D_element::staticTypeDescr
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_terminalList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_terminalList_2D_element (*this)) ;
   }
@@ -3527,8 +3527,8 @@ GALGAS_terminalList_2D_element GALGAS_terminalList_2D_element::extractObject (co
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_terminalList_2D_element result ;
   const GALGAS_terminalList_2D_element * p = (const GALGAS_terminalList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_terminalList_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_terminalList_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("terminalList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -3636,7 +3636,7 @@ void GALGAS_lexicalExplicitTokenListMap_2D_element::description (C_String & ioSt
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap_2D_element ("lexicalExplicitTokenListMap-element",
-                                                               NULL) ;
+                                                               nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3647,7 +3647,7 @@ const C_galgas_type_descriptor * GALGAS_lexicalExplicitTokenListMap_2D_element::
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalExplicitTokenListMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_lexicalExplicitTokenListMap_2D_element (*this)) ;
   }
@@ -3661,8 +3661,8 @@ GALGAS_lexicalExplicitTokenListMap_2D_element GALGAS_lexicalExplicitTokenListMap
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_lexicalExplicitTokenListMap_2D_element result ;
   const GALGAS_lexicalExplicitTokenListMap_2D_element * p = (const GALGAS_lexicalExplicitTokenListMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalExplicitTokenListMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalExplicitTokenListMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("lexicalExplicitTokenListMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -3781,7 +3781,7 @@ void GALGAS_lexicalExplicitTokenListMapMap_2D_element::description (C_String & i
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap_2D_element ("lexicalExplicitTokenListMapMap-element",
-                                                                  NULL) ;
+                                                                  nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3792,7 +3792,7 @@ const C_galgas_type_descriptor * GALGAS_lexicalExplicitTokenListMapMap_2D_elemen
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalExplicitTokenListMapMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_lexicalExplicitTokenListMapMap_2D_element (*this)) ;
   }
@@ -3806,8 +3806,8 @@ GALGAS_lexicalExplicitTokenListMapMap_2D_element GALGAS_lexicalExplicitTokenList
                                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_lexicalExplicitTokenListMapMap_2D_element result ;
   const GALGAS_lexicalExplicitTokenListMapMap_2D_element * p = (const GALGAS_lexicalExplicitTokenListMapMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalExplicitTokenListMapMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalExplicitTokenListMapMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("lexicalExplicitTokenListMapMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -3915,7 +3915,7 @@ void GALGAS_lexicalMessageMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalMessageMap_2D_element ("lexicalMessageMap-element",
-                                                     NULL) ;
+                                                     nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3926,7 +3926,7 @@ const C_galgas_type_descriptor * GALGAS_lexicalMessageMap_2D_element::staticType
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalMessageMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_lexicalMessageMap_2D_element (*this)) ;
   }
@@ -3940,8 +3940,8 @@ GALGAS_lexicalMessageMap_2D_element GALGAS_lexicalMessageMap_2D_element::extract
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_lexicalMessageMap_2D_element result ;
   const GALGAS_lexicalMessageMap_2D_element * p = (const GALGAS_lexicalMessageMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalMessageMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalMessageMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("lexicalMessageMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -4060,7 +4060,7 @@ void GALGAS_lexicalRoutineMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalRoutineMap_2D_element ("lexicalRoutineMap-element",
-                                                     NULL) ;
+                                                     nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4071,7 +4071,7 @@ const C_galgas_type_descriptor * GALGAS_lexicalRoutineMap_2D_element::staticType
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalRoutineMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_lexicalRoutineMap_2D_element (*this)) ;
   }
@@ -4085,8 +4085,8 @@ GALGAS_lexicalRoutineMap_2D_element GALGAS_lexicalRoutineMap_2D_element::extract
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_lexicalRoutineMap_2D_element result ;
   const GALGAS_lexicalRoutineMap_2D_element * p = (const GALGAS_lexicalRoutineMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalRoutineMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalRoutineMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("lexicalRoutineMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -4206,7 +4206,7 @@ void GALGAS_lexicalFunctionMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalFunctionMap_2D_element ("lexicalFunctionMap-element",
-                                                      NULL) ;
+                                                      nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4217,7 +4217,7 @@ const C_galgas_type_descriptor * GALGAS_lexicalFunctionMap_2D_element::staticTyp
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalFunctionMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_lexicalFunctionMap_2D_element (*this)) ;
   }
@@ -4231,8 +4231,8 @@ GALGAS_lexicalFunctionMap_2D_element GALGAS_lexicalFunctionMap_2D_element::extra
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_lexicalFunctionMap_2D_element result ;
   const GALGAS_lexicalFunctionMap_2D_element * p = (const GALGAS_lexicalFunctionMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalFunctionMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalFunctionMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("lexicalFunctionMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -4340,7 +4340,7 @@ void GALGAS_templateDelimitorList_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_templateDelimitorList_2D_element ("templateDelimitorList-element",
-                                                         NULL) ;
+                                                         nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4351,7 +4351,7 @@ const C_galgas_type_descriptor * GALGAS_templateDelimitorList_2D_element::static
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_templateDelimitorList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_templateDelimitorList_2D_element (*this)) ;
   }
@@ -4365,8 +4365,8 @@ GALGAS_templateDelimitorList_2D_element GALGAS_templateDelimitorList_2D_element:
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateDelimitorList_2D_element result ;
   const GALGAS_templateDelimitorList_2D_element * p = (const GALGAS_templateDelimitorList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_templateDelimitorList_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_templateDelimitorList_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("templateDelimitorList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -4474,7 +4474,7 @@ void GALGAS_styleMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_styleMap_2D_element ("styleMap-element",
-                                            NULL) ;
+                                            nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4485,7 +4485,7 @@ const C_galgas_type_descriptor * GALGAS_styleMap_2D_element::staticTypeDescripto
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_styleMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_styleMap_2D_element (*this)) ;
   }
@@ -4499,8 +4499,8 @@ GALGAS_styleMap_2D_element GALGAS_styleMap_2D_element::extractObject (const GALG
                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_styleMap_2D_element result ;
   const GALGAS_styleMap_2D_element * p = (const GALGAS_styleMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_styleMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_styleMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("styleMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -4586,7 +4586,7 @@ void GALGAS_lexicalTagMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalTagMap_2D_element ("lexicalTagMap-element",
-                                                 NULL) ;
+                                                 nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4597,7 +4597,7 @@ const C_galgas_type_descriptor * GALGAS_lexicalTagMap_2D_element::staticTypeDesc
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalTagMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_lexicalTagMap_2D_element (*this)) ;
   }
@@ -4611,8 +4611,8 @@ GALGAS_lexicalTagMap_2D_element GALGAS_lexicalTagMap_2D_element::extractObject (
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_lexicalTagMap_2D_element result ;
   const GALGAS_lexicalTagMap_2D_element * p = (const GALGAS_lexicalTagMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalTagMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalTagMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("lexicalTagMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -4752,7 +4752,7 @@ void GALGAS_commandLineOptionListAST_2D_element::description (C_String & ioStrin
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_commandLineOptionListAST_2D_element ("commandLineOptionListAST-element",
-                                                            NULL) ;
+                                                            nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4763,7 +4763,7 @@ const C_galgas_type_descriptor * GALGAS_commandLineOptionListAST_2D_element::sta
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_commandLineOptionListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_commandLineOptionListAST_2D_element (*this)) ;
   }
@@ -4777,8 +4777,8 @@ GALGAS_commandLineOptionListAST_2D_element GALGAS_commandLineOptionListAST_2D_el
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_commandLineOptionListAST_2D_element result ;
   const GALGAS_commandLineOptionListAST_2D_element * p = (const GALGAS_commandLineOptionListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_commandLineOptionListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_commandLineOptionListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("commandLineOptionListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -4908,7 +4908,7 @@ void GALGAS_commandLineOptionMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_commandLineOptionMap_2D_element ("commandLineOptionMap-element",
-                                                        NULL) ;
+                                                        nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4919,7 +4919,7 @@ const C_galgas_type_descriptor * GALGAS_commandLineOptionMap_2D_element::staticT
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_commandLineOptionMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_commandLineOptionMap_2D_element (*this)) ;
   }
@@ -4933,8 +4933,8 @@ GALGAS_commandLineOptionMap_2D_element GALGAS_commandLineOptionMap_2D_element::e
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_commandLineOptionMap_2D_element result ;
   const GALGAS_commandLineOptionMap_2D_element * p = (const GALGAS_commandLineOptionMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_commandLineOptionMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_commandLineOptionMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("commandLineOptionMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -5031,7 +5031,7 @@ void GALGAS_guiSimpleAttributeListAST_2D_element::description (C_String & ioStri
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_guiSimpleAttributeListAST_2D_element ("guiSimpleAttributeListAST-element",
-                                                             NULL) ;
+                                                             nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5042,7 +5042,7 @@ const C_galgas_type_descriptor * GALGAS_guiSimpleAttributeListAST_2D_element::st
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_guiSimpleAttributeListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_guiSimpleAttributeListAST_2D_element (*this)) ;
   }
@@ -5056,8 +5056,8 @@ GALGAS_guiSimpleAttributeListAST_2D_element GALGAS_guiSimpleAttributeListAST_2D_
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_guiSimpleAttributeListAST_2D_element result ;
   const GALGAS_guiSimpleAttributeListAST_2D_element * p = (const GALGAS_guiSimpleAttributeListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_guiSimpleAttributeListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_guiSimpleAttributeListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("guiSimpleAttributeListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -5165,7 +5165,7 @@ void GALGAS_guiCompoundAttributeListAST_2D_element::description (C_String & ioSt
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_guiCompoundAttributeListAST_2D_element ("guiCompoundAttributeListAST-element",
-                                                               NULL) ;
+                                                               nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5176,7 +5176,7 @@ const C_galgas_type_descriptor * GALGAS_guiCompoundAttributeListAST_2D_element::
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_guiCompoundAttributeListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_guiCompoundAttributeListAST_2D_element (*this)) ;
   }
@@ -5190,8 +5190,8 @@ GALGAS_guiCompoundAttributeListAST_2D_element GALGAS_guiCompoundAttributeListAST
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_guiCompoundAttributeListAST_2D_element result ;
   const GALGAS_guiCompoundAttributeListAST_2D_element * p = (const GALGAS_guiCompoundAttributeListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_guiCompoundAttributeListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_guiCompoundAttributeListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("guiCompoundAttributeListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -5288,7 +5288,7 @@ void GALGAS_terminalLabelListAST_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_terminalLabelListAST_2D_element ("terminalLabelListAST-element",
-                                                        NULL) ;
+                                                        nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5299,7 +5299,7 @@ const C_galgas_type_descriptor * GALGAS_terminalLabelListAST_2D_element::staticT
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_terminalLabelListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_terminalLabelListAST_2D_element (*this)) ;
   }
@@ -5313,8 +5313,8 @@ GALGAS_terminalLabelListAST_2D_element GALGAS_terminalLabelListAST_2D_element::e
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_terminalLabelListAST_2D_element result ;
   const GALGAS_terminalLabelListAST_2D_element * p = (const GALGAS_terminalLabelListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_terminalLabelListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_terminalLabelListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("terminalLabelListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -5433,7 +5433,7 @@ void GALGAS_withLexiqueListAST_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_withLexiqueListAST_2D_element ("withLexiqueListAST-element",
-                                                      NULL) ;
+                                                      nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5444,7 +5444,7 @@ const C_galgas_type_descriptor * GALGAS_withLexiqueListAST_2D_element::staticTyp
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_withLexiqueListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_withLexiqueListAST_2D_element (*this)) ;
   }
@@ -5458,8 +5458,8 @@ GALGAS_withLexiqueListAST_2D_element GALGAS_withLexiqueListAST_2D_element::extra
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_withLexiqueListAST_2D_element result ;
   const GALGAS_withLexiqueListAST_2D_element * p = (const GALGAS_withLexiqueListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_withLexiqueListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_withLexiqueListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("withLexiqueListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -5567,7 +5567,7 @@ void GALGAS_extensionMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_extensionMap_2D_element ("extensionMap-element",
-                                                NULL) ;
+                                                nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5578,7 +5578,7 @@ const C_galgas_type_descriptor * GALGAS_extensionMap_2D_element::staticTypeDescr
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_extensionMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_extensionMap_2D_element (*this)) ;
   }
@@ -5592,8 +5592,8 @@ GALGAS_extensionMap_2D_element GALGAS_extensionMap_2D_element::extractObject (co
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_extensionMap_2D_element result ;
   const GALGAS_extensionMap_2D_element * p = (const GALGAS_extensionMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_extensionMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_extensionMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("extensionMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -5690,7 +5690,7 @@ void GALGAS_projectIndexingDescriptorList_2D_element::description (C_String & io
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_projectIndexingDescriptorList_2D_element ("projectIndexingDescriptorList-element",
-                                                                 NULL) ;
+                                                                 nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5701,7 +5701,7 @@ const C_galgas_type_descriptor * GALGAS_projectIndexingDescriptorList_2D_element
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_projectIndexingDescriptorList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_projectIndexingDescriptorList_2D_element (*this)) ;
   }
@@ -5715,8 +5715,8 @@ GALGAS_projectIndexingDescriptorList_2D_element GALGAS_projectIndexingDescriptor
                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_projectIndexingDescriptorList_2D_element result ;
   const GALGAS_projectIndexingDescriptorList_2D_element * p = (const GALGAS_projectIndexingDescriptorList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_projectIndexingDescriptorList_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_projectIndexingDescriptorList_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("projectIndexingDescriptorList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -5846,7 +5846,7 @@ void GALGAS_galgasGUIComponentListAST_2D_element::description (C_String & ioStri
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_galgasGUIComponentListAST_2D_element ("galgasGUIComponentListAST-element",
-                                                             NULL) ;
+                                                             nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5857,7 +5857,7 @@ const C_galgas_type_descriptor * GALGAS_galgasGUIComponentListAST_2D_element::st
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_galgasGUIComponentListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_galgasGUIComponentListAST_2D_element (*this)) ;
   }
@@ -5871,8 +5871,8 @@ GALGAS_galgasGUIComponentListAST_2D_element GALGAS_galgasGUIComponentListAST_2D_
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_galgasGUIComponentListAST_2D_element result ;
   const GALGAS_galgasGUIComponentListAST_2D_element * p = (const GALGAS_galgasGUIComponentListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_galgasGUIComponentListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_galgasGUIComponentListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("galgasGUIComponentListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -5969,7 +5969,7 @@ void GALGAS_optionComponentMapForGeneration_2D_element::description (C_String & 
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_optionComponentMapForGeneration_2D_element ("optionComponentMapForGeneration-element",
-                                                                   NULL) ;
+                                                                   nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5980,7 +5980,7 @@ const C_galgas_type_descriptor * GALGAS_optionComponentMapForGeneration_2D_eleme
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_optionComponentMapForGeneration_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_optionComponentMapForGeneration_2D_element (*this)) ;
   }
@@ -5994,8 +5994,8 @@ GALGAS_optionComponentMapForGeneration_2D_element GALGAS_optionComponentMapForGe
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_optionComponentMapForGeneration_2D_element result ;
   const GALGAS_optionComponentMapForGeneration_2D_element * p = (const GALGAS_optionComponentMapForGeneration_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_optionComponentMapForGeneration_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_optionComponentMapForGeneration_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("optionComponentMapForGeneration-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -6092,7 +6092,7 @@ void GALGAS_enumConstantList_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_enumConstantList_2D_element ("enumConstantList-element",
-                                                    NULL) ;
+                                                    nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6103,7 +6103,7 @@ const C_galgas_type_descriptor * GALGAS_enumConstantList_2D_element::staticTypeD
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_enumConstantList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_enumConstantList_2D_element (*this)) ;
   }
@@ -6117,8 +6117,8 @@ GALGAS_enumConstantList_2D_element GALGAS_enumConstantList_2D_element::extractOb
                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_enumConstantList_2D_element result ;
   const GALGAS_enumConstantList_2D_element * p = (const GALGAS_enumConstantList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_enumConstantList_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_enumConstantList_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("enumConstantList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -6226,7 +6226,7 @@ void GALGAS_typeNameFormalParameterNameList_2D_element::description (C_String & 
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_typeNameFormalParameterNameList_2D_element ("typeNameFormalParameterNameList-element",
-                                                                   NULL) ;
+                                                                   nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6237,7 +6237,7 @@ const C_galgas_type_descriptor * GALGAS_typeNameFormalParameterNameList_2D_eleme
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_typeNameFormalParameterNameList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_typeNameFormalParameterNameList_2D_element (*this)) ;
   }
@@ -6251,8 +6251,8 @@ GALGAS_typeNameFormalParameterNameList_2D_element GALGAS_typeNameFormalParameter
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_typeNameFormalParameterNameList_2D_element result ;
   const GALGAS_typeNameFormalParameterNameList_2D_element * p = (const GALGAS_typeNameFormalParameterNameList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_typeNameFormalParameterNameList_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_typeNameFormalParameterNameList_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("typeNameFormalParameterNameList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -6360,7 +6360,7 @@ void GALGAS_externTypeConstructorList_2D_element::description (C_String & ioStri
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_externTypeConstructorList_2D_element ("externTypeConstructorList-element",
-                                                             NULL) ;
+                                                             nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6371,7 +6371,7 @@ const C_galgas_type_descriptor * GALGAS_externTypeConstructorList_2D_element::st
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_externTypeConstructorList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_externTypeConstructorList_2D_element (*this)) ;
   }
@@ -6385,8 +6385,8 @@ GALGAS_externTypeConstructorList_2D_element GALGAS_externTypeConstructorList_2D_
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_externTypeConstructorList_2D_element result ;
   const GALGAS_externTypeConstructorList_2D_element * p = (const GALGAS_externTypeConstructorList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_externTypeConstructorList_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_externTypeConstructorList_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("externTypeConstructorList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -6494,7 +6494,7 @@ void GALGAS_externTypeGetterList_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_externTypeGetterList_2D_element ("externTypeGetterList-element",
-                                                        NULL) ;
+                                                        nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6505,7 +6505,7 @@ const C_galgas_type_descriptor * GALGAS_externTypeGetterList_2D_element::staticT
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_externTypeGetterList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_externTypeGetterList_2D_element (*this)) ;
   }
@@ -6519,8 +6519,8 @@ GALGAS_externTypeGetterList_2D_element GALGAS_externTypeGetterList_2D_element::e
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_externTypeGetterList_2D_element result ;
   const GALGAS_externTypeGetterList_2D_element * p = (const GALGAS_externTypeGetterList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_externTypeGetterList_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_externTypeGetterList_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("externTypeGetterList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -6617,7 +6617,7 @@ void GALGAS_externTypeSetterList_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_externTypeSetterList_2D_element ("externTypeSetterList-element",
-                                                        NULL) ;
+                                                        nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6628,7 +6628,7 @@ const C_galgas_type_descriptor * GALGAS_externTypeSetterList_2D_element::staticT
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_externTypeSetterList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_externTypeSetterList_2D_element (*this)) ;
   }
@@ -6642,8 +6642,8 @@ GALGAS_externTypeSetterList_2D_element GALGAS_externTypeSetterList_2D_element::e
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_externTypeSetterList_2D_element result ;
   const GALGAS_externTypeSetterList_2D_element * p = (const GALGAS_externTypeSetterList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_externTypeSetterList_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_externTypeSetterList_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("externTypeSetterList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -6751,7 +6751,7 @@ void GALGAS_externTypeMethodList_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_externTypeMethodList_2D_element ("externTypeMethodList-element",
-                                                        NULL) ;
+                                                        nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6762,7 +6762,7 @@ const C_galgas_type_descriptor * GALGAS_externTypeMethodList_2D_element::staticT
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_externTypeMethodList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_externTypeMethodList_2D_element (*this)) ;
   }
@@ -6776,8 +6776,8 @@ GALGAS_externTypeMethodList_2D_element GALGAS_externTypeMethodList_2D_element::e
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_externTypeMethodList_2D_element result ;
   const GALGAS_externTypeMethodList_2D_element * p = (const GALGAS_externTypeMethodList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_externTypeMethodList_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_externTypeMethodList_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("externTypeMethodList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -6874,7 +6874,7 @@ void GALGAS_graphInsertModifierList_2D_element::description (C_String & ioString
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_graphInsertModifierList_2D_element ("graphInsertModifierList-element",
-                                                           NULL) ;
+                                                           nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6885,7 +6885,7 @@ const C_galgas_type_descriptor * GALGAS_graphInsertModifierList_2D_element::stat
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_graphInsertModifierList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_graphInsertModifierList_2D_element (*this)) ;
   }
@@ -6899,8 +6899,8 @@ GALGAS_graphInsertModifierList_2D_element GALGAS_graphInsertModifierList_2D_elem
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_graphInsertModifierList_2D_element result ;
   const GALGAS_graphInsertModifierList_2D_element * p = (const GALGAS_graphInsertModifierList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_graphInsertModifierList_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_graphInsertModifierList_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("graphInsertModifierList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -7008,7 +7008,7 @@ void GALGAS_insertMethodListAST_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_insertMethodListAST_2D_element ("insertMethodListAST-element",
-                                                       NULL) ;
+                                                       nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7019,7 +7019,7 @@ const C_galgas_type_descriptor * GALGAS_insertMethodListAST_2D_element::staticTy
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_insertMethodListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_insertMethodListAST_2D_element (*this)) ;
   }
@@ -7033,8 +7033,8 @@ GALGAS_insertMethodListAST_2D_element GALGAS_insertMethodListAST_2D_element::ext
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_insertMethodListAST_2D_element result ;
   const GALGAS_insertMethodListAST_2D_element * p = (const GALGAS_insertMethodListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_insertMethodListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_insertMethodListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("insertMethodListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -7142,7 +7142,7 @@ void GALGAS_mapSearchMethodListAST_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_mapSearchMethodListAST_2D_element ("mapSearchMethodListAST-element",
-                                                          NULL) ;
+                                                          nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7153,7 +7153,7 @@ const C_galgas_type_descriptor * GALGAS_mapSearchMethodListAST_2D_element::stati
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_mapSearchMethodListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_mapSearchMethodListAST_2D_element (*this)) ;
   }
@@ -7167,8 +7167,8 @@ GALGAS_mapSearchMethodListAST_2D_element GALGAS_mapSearchMethodListAST_2D_elemen
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_mapSearchMethodListAST_2D_element result ;
   const GALGAS_mapSearchMethodListAST_2D_element * p = (const GALGAS_mapSearchMethodListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_mapSearchMethodListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_mapSearchMethodListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("mapSearchMethodListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -7265,7 +7265,7 @@ void GALGAS_mapRemoveMethodListAST_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_mapRemoveMethodListAST_2D_element ("mapRemoveMethodListAST-element",
-                                                          NULL) ;
+                                                          nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7276,7 +7276,7 @@ const C_galgas_type_descriptor * GALGAS_mapRemoveMethodListAST_2D_element::stati
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_mapRemoveMethodListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_mapRemoveMethodListAST_2D_element (*this)) ;
   }
@@ -7290,8 +7290,8 @@ GALGAS_mapRemoveMethodListAST_2D_element GALGAS_mapRemoveMethodListAST_2D_elemen
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_mapRemoveMethodListAST_2D_element result ;
   const GALGAS_mapRemoveMethodListAST_2D_element * p = (const GALGAS_mapRemoveMethodListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_mapRemoveMethodListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_mapRemoveMethodListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("mapRemoveMethodListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -7377,7 +7377,7 @@ void GALGAS_insertMethodMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_insertMethodMap_2D_element ("insertMethodMap-element",
-                                                   NULL) ;
+                                                   nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7388,7 +7388,7 @@ const C_galgas_type_descriptor * GALGAS_insertMethodMap_2D_element::staticTypeDe
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_insertMethodMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_insertMethodMap_2D_element (*this)) ;
   }
@@ -7402,8 +7402,8 @@ GALGAS_insertMethodMap_2D_element GALGAS_insertMethodMap_2D_element::extractObje
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_insertMethodMap_2D_element result ;
   const GALGAS_insertMethodMap_2D_element * p = (const GALGAS_insertMethodMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_insertMethodMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_insertMethodMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("insertMethodMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -7489,7 +7489,7 @@ void GALGAS_searchMethodMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_searchMethodMap_2D_element ("searchMethodMap-element",
-                                                   NULL) ;
+                                                   nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7500,7 +7500,7 @@ const C_galgas_type_descriptor * GALGAS_searchMethodMap_2D_element::staticTypeDe
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_searchMethodMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_searchMethodMap_2D_element (*this)) ;
   }
@@ -7514,8 +7514,8 @@ GALGAS_searchMethodMap_2D_element GALGAS_searchMethodMap_2D_element::extractObje
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_searchMethodMap_2D_element result ;
   const GALGAS_searchMethodMap_2D_element * p = (const GALGAS_searchMethodMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_searchMethodMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_searchMethodMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("searchMethodMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -7612,7 +7612,7 @@ void GALGAS_sortedListSortDescriptorListAST_2D_element::description (C_String & 
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST_2D_element ("sortedListSortDescriptorListAST-element",
-                                                                   NULL) ;
+                                                                   nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7623,7 +7623,7 @@ const C_galgas_type_descriptor * GALGAS_sortedListSortDescriptorListAST_2D_eleme
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_sortedListSortDescriptorListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_sortedListSortDescriptorListAST_2D_element (*this)) ;
   }
@@ -7637,8 +7637,8 @@ GALGAS_sortedListSortDescriptorListAST_2D_element GALGAS_sortedListSortDescripto
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_sortedListSortDescriptorListAST_2D_element result ;
   const GALGAS_sortedListSortDescriptorListAST_2D_element * p = (const GALGAS_sortedListSortDescriptorListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_sortedListSortDescriptorListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_sortedListSortDescriptorListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("sortedListSortDescriptorListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -7758,7 +7758,7 @@ void GALGAS_formalParameterListAST_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_formalParameterListAST_2D_element ("formalParameterListAST-element",
-                                                          NULL) ;
+                                                          nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7769,7 +7769,7 @@ const C_galgas_type_descriptor * GALGAS_formalParameterListAST_2D_element::stati
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_formalParameterListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_formalParameterListAST_2D_element (*this)) ;
   }
@@ -7783,8 +7783,8 @@ GALGAS_formalParameterListAST_2D_element GALGAS_formalParameterListAST_2D_elemen
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_formalParameterListAST_2D_element result ;
   const GALGAS_formalParameterListAST_2D_element * p = (const GALGAS_formalParameterListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_formalParameterListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_formalParameterListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("formalParameterListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -7914,7 +7914,7 @@ void GALGAS_formalInputParameterListAST_2D_element::description (C_String & ioSt
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_formalInputParameterListAST_2D_element ("formalInputParameterListAST-element",
-                                                               NULL) ;
+                                                               nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7925,7 +7925,7 @@ const C_galgas_type_descriptor * GALGAS_formalInputParameterListAST_2D_element::
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_formalInputParameterListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_formalInputParameterListAST_2D_element (*this)) ;
   }
@@ -7939,8 +7939,8 @@ GALGAS_formalInputParameterListAST_2D_element GALGAS_formalInputParameterListAST
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_formalInputParameterListAST_2D_element result ;
   const GALGAS_formalInputParameterListAST_2D_element * p = (const GALGAS_formalInputParameterListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_formalInputParameterListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_formalInputParameterListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("formalInputParameterListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -8030,7 +8030,7 @@ void GALGAS_actualInputParameterListAST_2D_element::description (C_String & ioSt
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_actualInputParameterListAST_2D_element ("actualInputParameterListAST-element",
-                                                               NULL) ;
+                                                               nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8041,7 +8041,7 @@ const C_galgas_type_descriptor * GALGAS_actualInputParameterListAST_2D_element::
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_actualInputParameterListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_actualInputParameterListAST_2D_element (*this)) ;
   }
@@ -8055,8 +8055,8 @@ GALGAS_actualInputParameterListAST_2D_element GALGAS_actualInputParameterListAST
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_actualInputParameterListAST_2D_element result ;
   const GALGAS_actualInputParameterListAST_2D_element * p = (const GALGAS_actualInputParameterListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_actualInputParameterListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_actualInputParameterListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("actualInputParameterListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -8186,7 +8186,7 @@ void GALGAS_propertyInCollectionListAST_2D_element::description (C_String & ioSt
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_propertyInCollectionListAST_2D_element ("propertyInCollectionListAST-element",
-                                                               NULL) ;
+                                                               nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8197,7 +8197,7 @@ const C_galgas_type_descriptor * GALGAS_propertyInCollectionListAST_2D_element::
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_propertyInCollectionListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_propertyInCollectionListAST_2D_element (*this)) ;
   }
@@ -8211,8 +8211,8 @@ GALGAS_propertyInCollectionListAST_2D_element GALGAS_propertyInCollectionListAST
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_propertyInCollectionListAST_2D_element result ;
   const GALGAS_propertyInCollectionListAST_2D_element * p = (const GALGAS_propertyInCollectionListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_propertyInCollectionListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_propertyInCollectionListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("propertyInCollectionListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -8331,7 +8331,7 @@ void GALGAS_formalTemplateInputParameterListAST_2D_element::description (C_Strin
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_formalTemplateInputParameterListAST_2D_element ("formalTemplateInputParameterListAST-element",
-                                                                       NULL) ;
+                                                                       nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8342,7 +8342,7 @@ const C_galgas_type_descriptor * GALGAS_formalTemplateInputParameterListAST_2D_e
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_formalTemplateInputParameterListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_formalTemplateInputParameterListAST_2D_element (*this)) ;
   }
@@ -8356,8 +8356,8 @@ GALGAS_formalTemplateInputParameterListAST_2D_element GALGAS_formalTemplateInput
                                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_formalTemplateInputParameterListAST_2D_element result ;
   const GALGAS_formalTemplateInputParameterListAST_2D_element * p = (const GALGAS_formalTemplateInputParameterListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_formalTemplateInputParameterListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_formalTemplateInputParameterListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("formalTemplateInputParameterListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -8465,7 +8465,7 @@ void GALGAS_filewrapperTemplateListAST_2D_element::description (C_String & ioStr
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_filewrapperTemplateListAST_2D_element ("filewrapperTemplateListAST-element",
-                                                              NULL) ;
+                                                              nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8476,7 +8476,7 @@ const C_galgas_type_descriptor * GALGAS_filewrapperTemplateListAST_2D_element::s
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_filewrapperTemplateListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_filewrapperTemplateListAST_2D_element (*this)) ;
   }
@@ -8490,8 +8490,8 @@ GALGAS_filewrapperTemplateListAST_2D_element GALGAS_filewrapperTemplateListAST_2
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_filewrapperTemplateListAST_2D_element result ;
   const GALGAS_filewrapperTemplateListAST_2D_element * p = (const GALGAS_filewrapperTemplateListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_filewrapperTemplateListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_filewrapperTemplateListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("filewrapperTemplateListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -8599,7 +8599,7 @@ void GALGAS_nonTerminalLabelListAST_2D_element::description (C_String & ioString
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_nonTerminalLabelListAST_2D_element ("nonTerminalLabelListAST-element",
-                                                           NULL) ;
+                                                           nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8610,7 +8610,7 @@ const C_galgas_type_descriptor * GALGAS_nonTerminalLabelListAST_2D_element::stat
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_nonTerminalLabelListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_nonTerminalLabelListAST_2D_element (*this)) ;
   }
@@ -8624,8 +8624,8 @@ GALGAS_nonTerminalLabelListAST_2D_element GALGAS_nonTerminalLabelListAST_2D_elem
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_nonTerminalLabelListAST_2D_element result ;
   const GALGAS_nonTerminalLabelListAST_2D_element * p = (const GALGAS_nonTerminalLabelListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_nonTerminalLabelListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_nonTerminalLabelListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("nonTerminalLabelListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -8722,7 +8722,7 @@ void GALGAS_nonterminalDeclarationListAST_2D_element::description (C_String & io
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_nonterminalDeclarationListAST_2D_element ("nonterminalDeclarationListAST-element",
-                                                                 NULL) ;
+                                                                 nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8733,7 +8733,7 @@ const C_galgas_type_descriptor * GALGAS_nonterminalDeclarationListAST_2D_element
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_nonterminalDeclarationListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_nonterminalDeclarationListAST_2D_element (*this)) ;
   }
@@ -8747,8 +8747,8 @@ GALGAS_nonterminalDeclarationListAST_2D_element GALGAS_nonterminalDeclarationLis
                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_nonterminalDeclarationListAST_2D_element result ;
   const GALGAS_nonterminalDeclarationListAST_2D_element * p = (const GALGAS_nonterminalDeclarationListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_nonterminalDeclarationListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_nonterminalDeclarationListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("nonterminalDeclarationListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -8878,7 +8878,7 @@ void GALGAS_syntaxRuleLabelListAST_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_syntaxRuleLabelListAST_2D_element ("syntaxRuleLabelListAST-element",
-                                                          NULL) ;
+                                                          nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8889,7 +8889,7 @@ const C_galgas_type_descriptor * GALGAS_syntaxRuleLabelListAST_2D_element::stati
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_syntaxRuleLabelListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_syntaxRuleLabelListAST_2D_element (*this)) ;
   }
@@ -8903,8 +8903,8 @@ GALGAS_syntaxRuleLabelListAST_2D_element GALGAS_syntaxRuleLabelListAST_2D_elemen
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_syntaxRuleLabelListAST_2D_element result ;
   const GALGAS_syntaxRuleLabelListAST_2D_element * p = (const GALGAS_syntaxRuleLabelListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_syntaxRuleLabelListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_syntaxRuleLabelListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("syntaxRuleLabelListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -9001,7 +9001,7 @@ void GALGAS_syntaxRuleListAST_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_syntaxRuleListAST_2D_element ("syntaxRuleListAST-element",
-                                                     NULL) ;
+                                                     nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9012,7 +9012,7 @@ const C_galgas_type_descriptor * GALGAS_syntaxRuleListAST_2D_element::staticType
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_syntaxRuleListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_syntaxRuleListAST_2D_element (*this)) ;
   }
@@ -9026,8 +9026,8 @@ GALGAS_syntaxRuleListAST_2D_element GALGAS_syntaxRuleListAST_2D_element::extract
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_syntaxRuleListAST_2D_element result ;
   const GALGAS_syntaxRuleListAST_2D_element * p = (const GALGAS_syntaxRuleListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_syntaxRuleListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_syntaxRuleListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("syntaxRuleListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -9157,7 +9157,7 @@ void GALGAS_galgas_33_SyntaxComponentListAST_2D_element::description (C_String &
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_galgas_33_SyntaxComponentListAST_2D_element ("galgas3SyntaxComponentListAST-element",
-                                                                    NULL) ;
+                                                                    nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9168,7 +9168,7 @@ const C_galgas_type_descriptor * GALGAS_galgas_33_SyntaxComponentListAST_2D_elem
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_galgas_33_SyntaxComponentListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_galgas_33_SyntaxComponentListAST_2D_element (*this)) ;
   }
@@ -9182,8 +9182,8 @@ GALGAS_galgas_33_SyntaxComponentListAST_2D_element GALGAS_galgas_33_SyntaxCompon
                                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_galgas_33_SyntaxComponentListAST_2D_element result ;
   const GALGAS_galgas_33_SyntaxComponentListAST_2D_element * p = (const GALGAS_galgas_33_SyntaxComponentListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_galgas_33_SyntaxComponentListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_galgas_33_SyntaxComponentListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("galgas3SyntaxComponentListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -9291,7 +9291,7 @@ void GALGAS_galgas_33_SyntaxExtensionListAST_2D_element::description (C_String &
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_galgas_33_SyntaxExtensionListAST_2D_element ("galgas3SyntaxExtensionListAST-element",
-                                                                    NULL) ;
+                                                                    nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9302,7 +9302,7 @@ const C_galgas_type_descriptor * GALGAS_galgas_33_SyntaxExtensionListAST_2D_elem
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_galgas_33_SyntaxExtensionListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_galgas_33_SyntaxExtensionListAST_2D_element (*this)) ;
   }
@@ -9316,8 +9316,8 @@ GALGAS_galgas_33_SyntaxExtensionListAST_2D_element GALGAS_galgas_33_SyntaxExtens
                                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_galgas_33_SyntaxExtensionListAST_2D_element result ;
   const GALGAS_galgas_33_SyntaxExtensionListAST_2D_element * p = (const GALGAS_galgas_33_SyntaxExtensionListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_galgas_33_SyntaxExtensionListAST_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_galgas_33_SyntaxExtensionListAST_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("galgas3SyntaxExtensionListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -9469,7 +9469,7 @@ void GALGAS_programRuleList_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_programRuleList_2D_element ("programRuleList-element",
-                                                   NULL) ;
+                                                   nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9480,7 +9480,7 @@ const C_galgas_type_descriptor * GALGAS_programRuleList_2D_element::staticTypeDe
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_programRuleList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_programRuleList_2D_element (*this)) ;
   }
@@ -9494,8 +9494,8 @@ GALGAS_programRuleList_2D_element GALGAS_programRuleList_2D_element::extractObje
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_programRuleList_2D_element result ;
   const GALGAS_programRuleList_2D_element * p = (const GALGAS_programRuleList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_programRuleList_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_programRuleList_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("programRuleList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -9595,7 +9595,7 @@ void GALGAS_functionSignature_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_functionSignature_2D_element ("functionSignature-element",
-                                                     NULL) ;
+                                                     nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9606,7 +9606,7 @@ const C_galgas_type_descriptor * GALGAS_functionSignature_2D_element::staticType
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_functionSignature_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_functionSignature_2D_element (*this)) ;
   }
@@ -9620,8 +9620,8 @@ GALGAS_functionSignature_2D_element GALGAS_functionSignature_2D_element::extract
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_functionSignature_2D_element result ;
   const GALGAS_functionSignature_2D_element * p = (const GALGAS_functionSignature_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_functionSignature_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_functionSignature_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("functionSignature-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -9731,7 +9731,7 @@ void GALGAS_constructorMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_constructorMap_2D_element ("constructorMap-element",
-                                                  NULL) ;
+                                                  nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9742,7 +9742,7 @@ const C_galgas_type_descriptor * GALGAS_constructorMap_2D_element::staticTypeDes
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_constructorMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_constructorMap_2D_element (*this)) ;
   }
@@ -9756,8 +9756,8 @@ GALGAS_constructorMap_2D_element GALGAS_constructorMap_2D_element::extractObject
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_constructorMap_2D_element result ;
   const GALGAS_constructorMap_2D_element * p = (const GALGAS_constructorMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_constructorMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_constructorMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("constructorMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -9867,7 +9867,7 @@ void GALGAS_optionalMethodSignature_2D_element::description (C_String & ioString
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_optionalMethodSignature_2D_element ("optionalMethodSignature-element",
-                                                           NULL) ;
+                                                           nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9878,7 +9878,7 @@ const C_galgas_type_descriptor * GALGAS_optionalMethodSignature_2D_element::stat
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_optionalMethodSignature_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_optionalMethodSignature_2D_element (*this)) ;
   }
@@ -9892,8 +9892,8 @@ GALGAS_optionalMethodSignature_2D_element GALGAS_optionalMethodSignature_2D_elem
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_optionalMethodSignature_2D_element result ;
   const GALGAS_optionalMethodSignature_2D_element * p = (const GALGAS_optionalMethodSignature_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_optionalMethodSignature_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_optionalMethodSignature_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("optionalMethodSignature-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -9990,7 +9990,7 @@ void GALGAS_optionalMethodMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_optionalMethodMap_2D_element ("optionalMethodMap-element",
-                                                     NULL) ;
+                                                     nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10001,7 +10001,7 @@ const C_galgas_type_descriptor * GALGAS_optionalMethodMap_2D_element::staticType
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_optionalMethodMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_optionalMethodMap_2D_element (*this)) ;
   }
@@ -10015,8 +10015,8 @@ GALGAS_optionalMethodMap_2D_element GALGAS_optionalMethodMap_2D_element::extract
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_optionalMethodMap_2D_element result ;
   const GALGAS_optionalMethodMap_2D_element * p = (const GALGAS_optionalMethodMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_optionalMethodMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_optionalMethodMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("optionalMethodMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -10166,7 +10166,7 @@ void GALGAS_getterMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_getterMap_2D_element ("getterMap-element",
-                                             NULL) ;
+                                             nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10177,7 +10177,7 @@ const C_galgas_type_descriptor * GALGAS_getterMap_2D_element::staticTypeDescript
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_getterMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_getterMap_2D_element (*this)) ;
   }
@@ -10191,8 +10191,8 @@ GALGAS_getterMap_2D_element GALGAS_getterMap_2D_element::extractObject (const GA
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_getterMap_2D_element result ;
   const GALGAS_getterMap_2D_element * p = (const GALGAS_getterMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_getterMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_getterMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("getterMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -10302,7 +10302,7 @@ void GALGAS_formalParameterSignature_2D_element::description (C_String & ioStrin
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_formalParameterSignature_2D_element ("formalParameterSignature-element",
-                                                            NULL) ;
+                                                            nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10313,7 +10313,7 @@ const C_galgas_type_descriptor * GALGAS_formalParameterSignature_2D_element::sta
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_formalParameterSignature_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_formalParameterSignature_2D_element (*this)) ;
   }
@@ -10327,8 +10327,8 @@ GALGAS_formalParameterSignature_2D_element GALGAS_formalParameterSignature_2D_el
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_formalParameterSignature_2D_element result ;
   const GALGAS_formalParameterSignature_2D_element * p = (const GALGAS_formalParameterSignature_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_formalParameterSignature_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_formalParameterSignature_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("formalParameterSignature-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -10458,7 +10458,7 @@ void GALGAS_setterMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_setterMap_2D_element ("setterMap-element",
-                                             NULL) ;
+                                             nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10469,7 +10469,7 @@ const C_galgas_type_descriptor * GALGAS_setterMap_2D_element::staticTypeDescript
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_setterMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_setterMap_2D_element (*this)) ;
   }
@@ -10483,8 +10483,8 @@ GALGAS_setterMap_2D_element GALGAS_setterMap_2D_element::extractObject (const GA
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_setterMap_2D_element result ;
   const GALGAS_setterMap_2D_element * p = (const GALGAS_setterMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_setterMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_setterMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("setterMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -10624,7 +10624,7 @@ void GALGAS_instanceMethodMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_instanceMethodMap_2D_element ("instanceMethodMap-element",
-                                                     NULL) ;
+                                                     nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10635,7 +10635,7 @@ const C_galgas_type_descriptor * GALGAS_instanceMethodMap_2D_element::staticType
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_instanceMethodMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_instanceMethodMap_2D_element (*this)) ;
   }
@@ -10649,8 +10649,8 @@ GALGAS_instanceMethodMap_2D_element GALGAS_instanceMethodMap_2D_element::extract
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_instanceMethodMap_2D_element result ;
   const GALGAS_instanceMethodMap_2D_element * p = (const GALGAS_instanceMethodMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_instanceMethodMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_instanceMethodMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("instanceMethodMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -10758,7 +10758,7 @@ void GALGAS_classMethodMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_classMethodMap_2D_element ("classMethodMap-element",
-                                                  NULL) ;
+                                                  nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10769,7 +10769,7 @@ const C_galgas_type_descriptor * GALGAS_classMethodMap_2D_element::staticTypeDes
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_classMethodMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_classMethodMap_2D_element (*this)) ;
   }
@@ -10783,8 +10783,8 @@ GALGAS_classMethodMap_2D_element GALGAS_classMethodMap_2D_element::extractObject
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_classMethodMap_2D_element result ;
   const GALGAS_classMethodMap_2D_element * p = (const GALGAS_classMethodMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_classMethodMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_classMethodMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("classMethodMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -10894,7 +10894,7 @@ void GALGAS_typedPropertyList_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_typedPropertyList_2D_element ("typedPropertyList-element",
-                                                     NULL) ;
+                                                     nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10905,7 +10905,7 @@ const C_galgas_type_descriptor * GALGAS_typedPropertyList_2D_element::staticType
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_typedPropertyList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_typedPropertyList_2D_element (*this)) ;
   }
@@ -10919,8 +10919,8 @@ GALGAS_typedPropertyList_2D_element GALGAS_typedPropertyList_2D_element::extract
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_typedPropertyList_2D_element result ;
   const GALGAS_typedPropertyList_2D_element * p = (const GALGAS_typedPropertyList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_typedPropertyList_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_typedPropertyList_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("typedPropertyList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -11030,7 +11030,7 @@ void GALGAS_propertyMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_propertyMap_2D_element ("propertyMap-element",
-                                               NULL) ;
+                                               nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11041,7 +11041,7 @@ const C_galgas_type_descriptor * GALGAS_propertyMap_2D_element::staticTypeDescri
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_propertyMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_propertyMap_2D_element (*this)) ;
   }
@@ -11055,8 +11055,8 @@ GALGAS_propertyMap_2D_element GALGAS_propertyMap_2D_element::extractObject (cons
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_propertyMap_2D_element result ;
   const GALGAS_propertyMap_2D_element * p = (const GALGAS_propertyMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_propertyMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_propertyMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("propertyMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -11164,7 +11164,7 @@ void GALGAS_constantIndexMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_constantIndexMap_2D_element ("constantIndexMap-element",
-                                                    NULL) ;
+                                                    nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11175,7 +11175,7 @@ const C_galgas_type_descriptor * GALGAS_constantIndexMap_2D_element::staticTypeD
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_constantIndexMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_constantIndexMap_2D_element (*this)) ;
   }
@@ -11189,8 +11189,8 @@ GALGAS_constantIndexMap_2D_element GALGAS_constantIndexMap_2D_element::extractOb
                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_constantIndexMap_2D_element result ;
   const GALGAS_constantIndexMap_2D_element * p = (const GALGAS_constantIndexMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_constantIndexMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_constantIndexMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("constantIndexMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -11287,7 +11287,7 @@ void GALGAS_grammarLabelMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_grammarLabelMap_2D_element ("grammarLabelMap-element",
-                                                   NULL) ;
+                                                   nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11298,7 +11298,7 @@ const C_galgas_type_descriptor * GALGAS_grammarLabelMap_2D_element::staticTypeDe
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_grammarLabelMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_grammarLabelMap_2D_element (*this)) ;
   }
@@ -11312,8 +11312,8 @@ GALGAS_grammarLabelMap_2D_element GALGAS_grammarLabelMap_2D_element::extractObje
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_grammarLabelMap_2D_element result ;
   const GALGAS_grammarLabelMap_2D_element * p = (const GALGAS_grammarLabelMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_grammarLabelMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_grammarLabelMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("grammarLabelMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -11432,7 +11432,7 @@ void GALGAS_grammarMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_grammarMap_2D_element ("grammarMap-element",
-                                              NULL) ;
+                                              nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11443,7 +11443,7 @@ const C_galgas_type_descriptor * GALGAS_grammarMap_2D_element::staticTypeDescrip
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_grammarMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_grammarMap_2D_element (*this)) ;
   }
@@ -11457,8 +11457,8 @@ GALGAS_grammarMap_2D_element GALGAS_grammarMap_2D_element::extractObject (const 
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_grammarMap_2D_element result ;
   const GALGAS_grammarMap_2D_element * p = (const GALGAS_grammarMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_grammarMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_grammarMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("grammarMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -11566,7 +11566,7 @@ void GALGAS_routineMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_routineMap_2D_element ("routineMap-element",
-                                              NULL) ;
+                                              nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11577,7 +11577,7 @@ const C_galgas_type_descriptor * GALGAS_routineMap_2D_element::staticTypeDescrip
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_routineMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_routineMap_2D_element (*this)) ;
   }
@@ -11591,8 +11591,8 @@ GALGAS_routineMap_2D_element GALGAS_routineMap_2D_element::extractObject (const 
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_routineMap_2D_element result ;
   const GALGAS_routineMap_2D_element * p = (const GALGAS_routineMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_routineMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_routineMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("routineMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -11702,7 +11702,7 @@ void GALGAS_functionMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_functionMap_2D_element ("functionMap-element",
-                                               NULL) ;
+                                               nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11713,7 +11713,7 @@ const C_galgas_type_descriptor * GALGAS_functionMap_2D_element::staticTypeDescri
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_functionMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_functionMap_2D_element (*this)) ;
   }
@@ -11727,8 +11727,8 @@ GALGAS_functionMap_2D_element GALGAS_functionMap_2D_element::extractObject (cons
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_functionMap_2D_element result ;
   const GALGAS_functionMap_2D_element * p = (const GALGAS_functionMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_functionMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_functionMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("functionMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -11858,7 +11858,7 @@ void GALGAS_wrapperFileMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_wrapperFileMap_2D_element ("wrapperFileMap-element",
-                                                  NULL) ;
+                                                  nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11869,7 +11869,7 @@ const C_galgas_type_descriptor * GALGAS_wrapperFileMap_2D_element::staticTypeDes
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_wrapperFileMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_wrapperFileMap_2D_element (*this)) ;
   }
@@ -11883,8 +11883,8 @@ GALGAS_wrapperFileMap_2D_element GALGAS_wrapperFileMap_2D_element::extractObject
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_wrapperFileMap_2D_element result ;
   const GALGAS_wrapperFileMap_2D_element * p = (const GALGAS_wrapperFileMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_wrapperFileMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_wrapperFileMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("wrapperFileMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -12003,7 +12003,7 @@ void GALGAS_wrapperDirectoryMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_wrapperDirectoryMap_2D_element ("wrapperDirectoryMap-element",
-                                                       NULL) ;
+                                                       nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12014,7 +12014,7 @@ const C_galgas_type_descriptor * GALGAS_wrapperDirectoryMap_2D_element::staticTy
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_wrapperDirectoryMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_wrapperDirectoryMap_2D_element (*this)) ;
   }
@@ -12028,8 +12028,8 @@ GALGAS_wrapperDirectoryMap_2D_element GALGAS_wrapperDirectoryMap_2D_element::ext
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_wrapperDirectoryMap_2D_element result ;
   const GALGAS_wrapperDirectoryMap_2D_element * p = (const GALGAS_wrapperDirectoryMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_wrapperDirectoryMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_wrapperDirectoryMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("wrapperDirectoryMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -12137,7 +12137,7 @@ void GALGAS_filewrapperTemplateMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_filewrapperTemplateMap_2D_element ("filewrapperTemplateMap-element",
-                                                          NULL) ;
+                                                          nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12148,7 +12148,7 @@ const C_galgas_type_descriptor * GALGAS_filewrapperTemplateMap_2D_element::stati
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_filewrapperTemplateMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_filewrapperTemplateMap_2D_element (*this)) ;
   }
@@ -12162,8 +12162,8 @@ GALGAS_filewrapperTemplateMap_2D_element GALGAS_filewrapperTemplateMap_2D_elemen
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_filewrapperTemplateMap_2D_element result ;
   const GALGAS_filewrapperTemplateMap_2D_element * p = (const GALGAS_filewrapperTemplateMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_filewrapperTemplateMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_filewrapperTemplateMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("filewrapperTemplateMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -12315,7 +12315,7 @@ void GALGAS_filewrapperMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_filewrapperMap_2D_element ("filewrapperMap-element",
-                                                  NULL) ;
+                                                  nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12326,7 +12326,7 @@ const C_galgas_type_descriptor * GALGAS_filewrapperMap_2D_element::staticTypeDes
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_filewrapperMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_filewrapperMap_2D_element (*this)) ;
   }
@@ -12340,8 +12340,8 @@ GALGAS_filewrapperMap_2D_element GALGAS_filewrapperMap_2D_element::extractObject
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_filewrapperMap_2D_element result ;
   const GALGAS_filewrapperMap_2D_element * p = (const GALGAS_filewrapperMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_filewrapperMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_filewrapperMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("filewrapperMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -12482,7 +12482,7 @@ void GALGAS_optionComponentMapForSemanticAnalysis_2D_element::description (C_Str
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_optionComponentMapForSemanticAnalysis_2D_element ("optionComponentMapForSemanticAnalysis-element",
-                                                                         NULL) ;
+                                                                         nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12493,7 +12493,7 @@ const C_galgas_type_descriptor * GALGAS_optionComponentMapForSemanticAnalysis_2D
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_optionComponentMapForSemanticAnalysis_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_optionComponentMapForSemanticAnalysis_2D_element (*this)) ;
   }
@@ -12507,8 +12507,8 @@ GALGAS_optionComponentMapForSemanticAnalysis_2D_element GALGAS_optionComponentMa
                                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_optionComponentMapForSemanticAnalysis_2D_element result ;
   const GALGAS_optionComponentMapForSemanticAnalysis_2D_element * p = (const GALGAS_optionComponentMapForSemanticAnalysis_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_optionComponentMapForSemanticAnalysis_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_optionComponentMapForSemanticAnalysis_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("optionComponentMapForSemanticAnalysis-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -12671,7 +12671,7 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::description (C_St
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element ("lexiqueComponentMapForSemanticAnalysis-element",
-                                                                          NULL) ;
+                                                                          nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12682,7 +12682,7 @@ const C_galgas_type_descriptor * GALGAS_lexiqueComponentMapForSemanticAnalysis_2
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (*this)) ;
   }
@@ -12696,8 +12696,8 @@ GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element GALGAS_lexiqueComponent
                                                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element result ;
   const GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element * p = (const GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("lexiqueComponentMapForSemanticAnalysis-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -12827,7 +12827,7 @@ void GALGAS_syntaxComponentMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_syntaxComponentMap_2D_element ("syntaxComponentMap-element",
-                                                      NULL) ;
+                                                      nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12838,7 +12838,7 @@ const C_galgas_type_descriptor * GALGAS_syntaxComponentMap_2D_element::staticTyp
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_syntaxComponentMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_syntaxComponentMap_2D_element (*this)) ;
   }
@@ -12852,8 +12852,8 @@ GALGAS_syntaxComponentMap_2D_element GALGAS_syntaxComponentMap_2D_element::extra
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_syntaxComponentMap_2D_element result ;
   const GALGAS_syntaxComponentMap_2D_element * p = (const GALGAS_syntaxComponentMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_syntaxComponentMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_syntaxComponentMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("syntaxComponentMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -12953,7 +12953,7 @@ void GALGAS_extensionMethodMapForType_2D_element::description (C_String & ioStri
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_extensionMethodMapForType_2D_element ("extensionMethodMapForType-element",
-                                                             NULL) ;
+                                                             nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12964,7 +12964,7 @@ const C_galgas_type_descriptor * GALGAS_extensionMethodMapForType_2D_element::st
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_extensionMethodMapForType_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_extensionMethodMapForType_2D_element (*this)) ;
   }
@@ -12978,8 +12978,8 @@ GALGAS_extensionMethodMapForType_2D_element GALGAS_extensionMethodMapForType_2D_
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_extensionMethodMapForType_2D_element result ;
   const GALGAS_extensionMethodMapForType_2D_element * p = (const GALGAS_extensionMethodMapForType_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_extensionMethodMapForType_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_extensionMethodMapForType_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("extensionMethodMapForType-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -13076,7 +13076,7 @@ void GALGAS_extensionMethodMapForBuildingContext_2D_element::description (C_Stri
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_extensionMethodMapForBuildingContext_2D_element ("extensionMethodMapForBuildingContext-element",
-                                                                        NULL) ;
+                                                                        nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13087,7 +13087,7 @@ const C_galgas_type_descriptor * GALGAS_extensionMethodMapForBuildingContext_2D_
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_extensionMethodMapForBuildingContext_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_extensionMethodMapForBuildingContext_2D_element (*this)) ;
   }
@@ -13101,8 +13101,8 @@ GALGAS_extensionMethodMapForBuildingContext_2D_element GALGAS_extensionMethodMap
                                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_extensionMethodMapForBuildingContext_2D_element result ;
   const GALGAS_extensionMethodMapForBuildingContext_2D_element * p = (const GALGAS_extensionMethodMapForBuildingContext_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_extensionMethodMapForBuildingContext_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_extensionMethodMapForBuildingContext_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("extensionMethodMapForBuildingContext-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -13199,7 +13199,7 @@ void GALGAS_extensionSetterMapForType_2D_element::description (C_String & ioStri
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_extensionSetterMapForType_2D_element ("extensionSetterMapForType-element",
-                                                             NULL) ;
+                                                             nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13210,7 +13210,7 @@ const C_galgas_type_descriptor * GALGAS_extensionSetterMapForType_2D_element::st
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_extensionSetterMapForType_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_extensionSetterMapForType_2D_element (*this)) ;
   }
@@ -13224,8 +13224,8 @@ GALGAS_extensionSetterMapForType_2D_element GALGAS_extensionSetterMapForType_2D_
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_extensionSetterMapForType_2D_element result ;
   const GALGAS_extensionSetterMapForType_2D_element * p = (const GALGAS_extensionSetterMapForType_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_extensionSetterMapForType_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_extensionSetterMapForType_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("extensionSetterMapForType-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -13322,7 +13322,7 @@ void GALGAS_extensionSetterMapForBuildingContext_2D_element::description (C_Stri
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_extensionSetterMapForBuildingContext_2D_element ("extensionSetterMapForBuildingContext-element",
-                                                                        NULL) ;
+                                                                        nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13333,7 +13333,7 @@ const C_galgas_type_descriptor * GALGAS_extensionSetterMapForBuildingContext_2D_
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_extensionSetterMapForBuildingContext_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_extensionSetterMapForBuildingContext_2D_element (*this)) ;
   }
@@ -13347,8 +13347,8 @@ GALGAS_extensionSetterMapForBuildingContext_2D_element GALGAS_extensionSetterMap
                                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_extensionSetterMapForBuildingContext_2D_element result ;
   const GALGAS_extensionSetterMapForBuildingContext_2D_element * p = (const GALGAS_extensionSetterMapForBuildingContext_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_extensionSetterMapForBuildingContext_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_extensionSetterMapForBuildingContext_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("extensionSetterMapForBuildingContext-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -13458,7 +13458,7 @@ void GALGAS_extensionGetterMapForType_2D_element::description (C_String & ioStri
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_extensionGetterMapForType_2D_element ("extensionGetterMapForType-element",
-                                                             NULL) ;
+                                                             nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13469,7 +13469,7 @@ const C_galgas_type_descriptor * GALGAS_extensionGetterMapForType_2D_element::st
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_extensionGetterMapForType_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_extensionGetterMapForType_2D_element (*this)) ;
   }
@@ -13483,8 +13483,8 @@ GALGAS_extensionGetterMapForType_2D_element GALGAS_extensionGetterMapForType_2D_
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_extensionGetterMapForType_2D_element result ;
   const GALGAS_extensionGetterMapForType_2D_element * p = (const GALGAS_extensionGetterMapForType_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_extensionGetterMapForType_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_extensionGetterMapForType_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("extensionGetterMapForType-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -13581,7 +13581,7 @@ void GALGAS_extensionGetterMapForBuildingContext_2D_element::description (C_Stri
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_extensionGetterMapForBuildingContext_2D_element ("extensionGetterMapForBuildingContext-element",
-                                                                        NULL) ;
+                                                                        nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13592,7 +13592,7 @@ const C_galgas_type_descriptor * GALGAS_extensionGetterMapForBuildingContext_2D_
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_extensionGetterMapForBuildingContext_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_extensionGetterMapForBuildingContext_2D_element (*this)) ;
   }
@@ -13606,8 +13606,8 @@ GALGAS_extensionGetterMapForBuildingContext_2D_element GALGAS_extensionGetterMap
                                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_extensionGetterMapForBuildingContext_2D_element result ;
   const GALGAS_extensionGetterMapForBuildingContext_2D_element * p = (const GALGAS_extensionGetterMapForBuildingContext_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_extensionGetterMapForBuildingContext_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_extensionGetterMapForBuildingContext_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("extensionGetterMapForBuildingContext-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -13693,7 +13693,7 @@ void GALGAS_wrapperExtensionMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_wrapperExtensionMap_2D_element ("wrapperExtensionMap-element",
-                                                       NULL) ;
+                                                       nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13704,7 +13704,7 @@ const C_galgas_type_descriptor * GALGAS_wrapperExtensionMap_2D_element::staticTy
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_wrapperExtensionMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_wrapperExtensionMap_2D_element (*this)) ;
   }
@@ -13718,8 +13718,8 @@ GALGAS_wrapperExtensionMap_2D_element GALGAS_wrapperExtensionMap_2D_element::ext
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_wrapperExtensionMap_2D_element result ;
   const GALGAS_wrapperExtensionMap_2D_element * p = (const GALGAS_wrapperExtensionMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_wrapperExtensionMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_wrapperExtensionMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("wrapperExtensionMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -13799,7 +13799,7 @@ void GALGAS_semanticExpressionListForGeneration_2D_element::description (C_Strin
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_semanticExpressionListForGeneration_2D_element ("semanticExpressionListForGeneration-element",
-                                                                       NULL) ;
+                                                                       nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13810,7 +13810,7 @@ const C_galgas_type_descriptor * GALGAS_semanticExpressionListForGeneration_2D_e
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_semanticExpressionListForGeneration_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_semanticExpressionListForGeneration_2D_element (*this)) ;
   }
@@ -13824,8 +13824,8 @@ GALGAS_semanticExpressionListForGeneration_2D_element GALGAS_semanticExpressionL
                                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_semanticExpressionListForGeneration_2D_element result ;
   const GALGAS_semanticExpressionListForGeneration_2D_element * p = (const GALGAS_semanticExpressionListForGeneration_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_semanticExpressionListForGeneration_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_semanticExpressionListForGeneration_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("semanticExpressionListForGeneration-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -13945,7 +13945,7 @@ void GALGAS_formalParameterListForGeneration_2D_element::description (C_String &
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_formalParameterListForGeneration_2D_element ("formalParameterListForGeneration-element",
-                                                                    NULL) ;
+                                                                    nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13956,7 +13956,7 @@ const C_galgas_type_descriptor * GALGAS_formalParameterListForGeneration_2D_elem
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_formalParameterListForGeneration_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_formalParameterListForGeneration_2D_element (*this)) ;
   }
@@ -13970,8 +13970,8 @@ GALGAS_formalParameterListForGeneration_2D_element GALGAS_formalParameterListFor
                                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_formalParameterListForGeneration_2D_element result ;
   const GALGAS_formalParameterListForGeneration_2D_element * p = (const GALGAS_formalParameterListForGeneration_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_formalParameterListForGeneration_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_formalParameterListForGeneration_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("formalParameterListForGeneration-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -14091,7 +14091,7 @@ void GALGAS_formalInputParameterListForGeneration_2D_element::description (C_Str
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_formalInputParameterListForGeneration_2D_element ("formalInputParameterListForGeneration-element",
-                                                                         NULL) ;
+                                                                         nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14102,7 +14102,7 @@ const C_galgas_type_descriptor * GALGAS_formalInputParameterListForGeneration_2D
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_formalInputParameterListForGeneration_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_formalInputParameterListForGeneration_2D_element (*this)) ;
   }
@@ -14116,8 +14116,8 @@ GALGAS_formalInputParameterListForGeneration_2D_element GALGAS_formalInputParame
                                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_formalInputParameterListForGeneration_2D_element result ;
   const GALGAS_formalInputParameterListForGeneration_2D_element * p = (const GALGAS_formalInputParameterListForGeneration_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_formalInputParameterListForGeneration_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_formalInputParameterListForGeneration_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("formalInputParameterListForGeneration-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -14207,7 +14207,7 @@ void GALGAS_signatureForGrammarAnalysis_2D_element::description (C_String & ioSt
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_signatureForGrammarAnalysis_2D_element ("signatureForGrammarAnalysis-element",
-                                                               NULL) ;
+                                                               nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14218,7 +14218,7 @@ const C_galgas_type_descriptor * GALGAS_signatureForGrammarAnalysis_2D_element::
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_signatureForGrammarAnalysis_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_signatureForGrammarAnalysis_2D_element (*this)) ;
   }
@@ -14232,8 +14232,8 @@ GALGAS_signatureForGrammarAnalysis_2D_element GALGAS_signatureForGrammarAnalysis
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_signatureForGrammarAnalysis_2D_element result ;
   const GALGAS_signatureForGrammarAnalysis_2D_element * p = (const GALGAS_signatureForGrammarAnalysis_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_signatureForGrammarAnalysis_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_signatureForGrammarAnalysis_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("signatureForGrammarAnalysis-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -14330,7 +14330,7 @@ void GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element::description 
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element ("nonterminalSymbolLabelMapForGrammarAnalysis-element",
-                                                                               NULL) ;
+                                                                               nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14341,7 +14341,7 @@ const C_galgas_type_descriptor * GALGAS_nonterminalSymbolLabelMapForGrammarAnaly
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element (*this)) ;
   }
@@ -14355,8 +14355,8 @@ GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element GALGAS_nonterminal
                                                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element result ;
   const GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element * p = (const GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("nonterminalSymbolLabelMapForGrammarAnalysis-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -14464,7 +14464,7 @@ void GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element::description (C_St
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element ("nonTerminalSymbolMapForGrammarAnalysis-element",
-                                                                          NULL) ;
+                                                                          nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14475,7 +14475,7 @@ const C_galgas_type_descriptor * GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element (*this)) ;
   }
@@ -14489,8 +14489,8 @@ GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element GALGAS_nonTerminalSymbo
                                                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element result ;
   const GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element * p = (const GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("nonTerminalSymbolMapForGrammarAnalysis-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -14600,7 +14600,7 @@ void GALGAS_localConstantList_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_localConstantList_2D_element ("localConstantList-element",
-                                                     NULL) ;
+                                                     nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14611,7 +14611,7 @@ const C_galgas_type_descriptor * GALGAS_localConstantList_2D_element::staticType
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_localConstantList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_localConstantList_2D_element (*this)) ;
   }
@@ -14625,8 +14625,8 @@ GALGAS_localConstantList_2D_element GALGAS_localConstantList_2D_element::extract
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_localConstantList_2D_element result ;
   const GALGAS_localConstantList_2D_element * p = (const GALGAS_localConstantList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_localConstantList_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_localConstantList_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("localConstantList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -14726,7 +14726,7 @@ void GALGAS_localInitializedVariableList_2D_element::description (C_String & ioS
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_localInitializedVariableList_2D_element ("localInitializedVariableList-element",
-                                                                NULL) ;
+                                                                nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14737,7 +14737,7 @@ const C_galgas_type_descriptor * GALGAS_localInitializedVariableList_2D_element:
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_localInitializedVariableList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_localInitializedVariableList_2D_element (*this)) ;
   }
@@ -14751,8 +14751,8 @@ GALGAS_localInitializedVariableList_2D_element GALGAS_localInitializedVariableLi
                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_localInitializedVariableList_2D_element result ;
   const GALGAS_localInitializedVariableList_2D_element * p = (const GALGAS_localInitializedVariableList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_localInitializedVariableList_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_localInitializedVariableList_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("localInitializedVariableList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -14842,7 +14842,7 @@ void GALGAS_propertyIndexMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_propertyIndexMap_2D_element ("propertyIndexMap-element",
-                                                    NULL) ;
+                                                    nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14853,7 +14853,7 @@ const C_galgas_type_descriptor * GALGAS_propertyIndexMap_2D_element::staticTypeD
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_propertyIndexMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_propertyIndexMap_2D_element (*this)) ;
   }
@@ -14867,8 +14867,8 @@ GALGAS_propertyIndexMap_2D_element GALGAS_propertyIndexMap_2D_element::extractOb
                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_propertyIndexMap_2D_element result ;
   const GALGAS_propertyIndexMap_2D_element * p = (const GALGAS_propertyIndexMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_propertyIndexMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_propertyIndexMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("propertyIndexMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
@@ -14987,7 +14987,7 @@ void GALGAS_nonterminalLabelMap_2D_element::description (C_String & ioString,
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_nonterminalLabelMap_2D_element ("nonterminalLabelMap-element",
-                                                       NULL) ;
+                                                       nullptr) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14998,7 +14998,7 @@ const C_galgas_type_descriptor * GALGAS_nonterminalLabelMap_2D_element::staticTy
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_nonterminalLabelMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_nonterminalLabelMap_2D_element (*this)) ;
   }
@@ -15012,8 +15012,8 @@ GALGAS_nonterminalLabelMap_2D_element GALGAS_nonterminalLabelMap_2D_element::ext
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_nonterminalLabelMap_2D_element result ;
   const GALGAS_nonterminalLabelMap_2D_element * p = (const GALGAS_nonterminalLabelMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_nonterminalLabelMap_2D_element *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_nonterminalLabelMap_2D_element *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("nonterminalLabelMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;

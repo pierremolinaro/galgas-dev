@@ -22,7 +22,7 @@ bool cMapElement_%!TYPE_IDENTIFIER%::isValid (void) const {
 //----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
-  cMapElement * result = NULL ;
+  cMapElement * result = nullptr ;
   macroMyNew (result, cMapElement_%!TYPE_IDENTIFIER% (mProperty_lkey%
     for (* mPropertyName 2*) in ATTRIBUTE_LIST
       do %, mProperty_%![mPropertyName identifierRepresentation]
@@ -112,7 +112,7 @@ for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
 end
 %,\n %!^%C_Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) {\n%
-%  cMapElement_%!TYPE_IDENTIFIER% * p = NULL ;\n%
+%  cMapElement_%!TYPE_IDENTIFIER% * p = nullptr ;\n%
 %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inKey%
 for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
   do (IDX) %, inArgument%![IDX string]
@@ -154,7 +154,7 @@ end
     end
     %,\n %!^%C_Compiler * inCompiler%
     %\n %!^%COMMA_LOCATION_ARGS) {\n%
-    %  cMapElement_%!TYPE_IDENTIFIER% * p = NULL ;\n%
+    %  cMapElement_%!TYPE_IDENTIFIER% * p = nullptr ;\n%
     %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inKey%
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
     do (IDX) %, inArgument%![IDX string]
@@ -188,7 +188,7 @@ for (mSearchMethodName mErrorMessage mLocationAttribute) in SEARCH_METHOD_LIST d
                !^%inCompiler,\n%
                !^%kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]%\n%
                !^%COMMA_THERE) ;\n%
-  %  if (NULL == p) {\n%
+  %  if (nullptr == p) {\n%
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
     %    outArgument%![IDX string]%.drop () ;\n%
   end
@@ -220,7 +220,7 @@ for (mMethodName mErrorMessage) in REMOVE_METHOD_LIST do
   %  capCollectionElement attributes ;\n%
   %  performRemove (inKey, attributes, inCompiler, kRemoveErrorMessage COMMA_THERE) ;\n%
   %  cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;\n%
-  %  if (NULL == p) {\n%
+  %  if (nullptr == p) {\n%
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
     %    outArgument%![IDX string]%.drop () ;\n%
   end
@@ -241,7 +241,7 @@ if HAS_INSERT_OR_REPLACE then
     do (IDX) %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
   end
   %\n %!^%COMMA_UNUSED_LOCATION_ARGS) {\n%
-  %  cMapElement_%!TYPE_IDENTIFIER% * p = NULL ;\n%
+  %  cMapElement_%!TYPE_IDENTIFIER% * p = nullptr ;\n%
   %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inKey%
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
     do (IDX) %, inArgument%![IDX string]
@@ -262,7 +262,7 @@ for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
   %  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;\n%
   %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
   %  GALGAS_%![mPropertyTypeEntry identifierRepresentation]% result ;\n%
-  %  if (NULL != p) {\n%
+  %  if (nullptr != p) {\n%
   %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
   %    result = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   %  }\n%
@@ -278,7 +278,7 @@ for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
   %                           %!^%COMMA_LOCATION_ARGS) {\n%
   %  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;\n%
   %  cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
-  %  if (NULL != p) {\n%
+  %  if (nullptr != p) {\n%
   %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
   %    p->mProperty_%![mPropertyName identifierRepresentation]% = inAttributeValue ;\n%
   %  }\n%
@@ -341,7 +341,7 @@ for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
 end
 %) const {\n%
 %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) searchForKey (%?^%inKey) ;\n%
-%  const bool result = NULL != p ;\n%
+%  const bool result = nullptr != p ;\n%
 %  if (result) {\n%
 %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
 for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)

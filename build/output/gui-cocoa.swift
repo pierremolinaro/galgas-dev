@@ -277,7 +277,7 @@ class SWIFT_Tokenizer_0_galgasScanner : SWIFT_Lexique_galgasScanner, SWIFT_Token
     @"Map",
     @"Sorted List",
     @"Struct",
-    NULL
+    nullptr
   } ;
   return kTextMacroTitle [inIndex] ;
 }
@@ -293,7 +293,7 @@ class SWIFT_Tokenizer_0_galgasScanner : SWIFT_Lexique_galgasScanner, SWIFT_Token
     @"map @type {\n  public let @aType mAnAttribute\n  insert insertKey error message \"the '%K' key is already declared in %L\"\n  search searchKey error message \"there is no '%K' key\"\n}\n",
     @"sortedlist @type {\n  public let @string mFirstAttribute\n  public let @bool mSecondAttribute\n}{\n  mFirstAttribute >, mSecondAttribute <\n}\n",
     @"struct @type {\n  public let @aType mAnAttribute\n}\n",
-    NULL
+    nullptr
   } ;
   return kTextMacroContent [inIndex] ;
 }
@@ -379,7 +379,7 @@ class SWIFT_Tokenizer_1_galgasTemplateScanner : SWIFT_Lexique_galgasTemplateScan
 
 - (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {
   static NSString * kTextMacroTitle [1] = {
-    NULL
+    nullptr
   } ;
   return kTextMacroTitle [inIndex] ;
 }
@@ -388,7 +388,7 @@ class SWIFT_Tokenizer_1_galgasTemplateScanner : SWIFT_Lexique_galgasTemplateScan
 
 - (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {
   static NSString * kTextMacroContent [1] = {
-    NULL
+    nullptr
   } ;
   return kTextMacroContent [inIndex] ;
 }

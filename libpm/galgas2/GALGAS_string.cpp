@@ -1519,8 +1519,8 @@ GALGAS_bool GALGAS_string::getter_isDecimalSignedBigInt (UNUSED_LOCATION_ARGS) c
     }
     while ((idx < mString.length ()) && ok) {
       const utf32 c = mString (idx COMMA_HERE) ;
-      idx ++ ;
-      ok = (UNICODE_VALUE (c) >= '0') || (UNICODE_VALUE (c) <= '9') ;
+      idx += 1 ;
+      ok = (UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9') ;
     }
     result = GALGAS_bool (ok) ;
   }

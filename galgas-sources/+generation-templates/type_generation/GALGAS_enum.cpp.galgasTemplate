@@ -73,7 +73,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     end
     %) {\n%
     %    result.mEnum = kEnum_%![mConstantName identifierRepresentation]% ;\n%
-    %    cEnumAssociatedValues * ptr = NULL ;\n%
+    %    cEnumAssociatedValues * ptr = nullptr ;\n%
     %    macroMyNew (ptr, cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% (%
     for (mType) in mAssociatedValueTypeList
     do (idx) %inAssociatedValue%![idx string]

@@ -69,7 +69,7 @@ bool cCollectionElement_%!TYPE_IDENTIFIER%::isValid (void) const {
 //----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
-  cCollectionElement * result = NULL ;
+  cCollectionElement * result = nullptr ;
   macroMyNew (result, cCollectionElement_%!TYPE_IDENTIFIER% (%
     for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST
       do %mObject.mProperty_%![propertyName identifierRepresentation]
@@ -152,7 +152,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (%?^%capCollectionElem
   end
 %\n%
 !^%COMMA_LOCATION_ARGS) {
-  cCollectionElement_%!TYPE_IDENTIFIER% * p = NULL ;
+  cCollectionElement_%!TYPE_IDENTIFIER% * p = nullptr ;
   macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%?^
   for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST
     do %in_%![propertyName identifierRepresentation]
@@ -178,7 +178,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
   between % && %
   end
   %) {
-      cCollectionElement * p = NULL ;
+      cCollectionElement * p = nullptr ;
       macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
       for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST
       do (IDX) %inOperand%![IDX string]
@@ -202,7 +202,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_append (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIF
    !^%COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inElement.isValid ()) {
-      cCollectionElement * p = NULL ;
+      cCollectionElement * p = nullptr ;
       macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (inElement COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
@@ -229,7 +229,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^
   do (IDX) % && inOperand%![IDX string]%.isValid ()%
   end
   %) {
-      cCollectionElement * p = NULL ;
+      cCollectionElement * p = nullptr ;
       macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
       for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST
       do (IDX) %inOperand%![IDX string]
@@ -260,7 +260,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^
       capCollectionElement attributes ;
       removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
       cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
-      if (NULL == p) {
+      if (nullptr == p) {
 %
  for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST do (IDX)
     %        outOperand%![IDX string] %.drop () ;\n%
@@ -299,7 +299,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
 %
  for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
@@ -324,7 +324,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popLast (%?^
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
 %
  for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
@@ -349,7 +349,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
 %
  for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
@@ -374,7 +374,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
-  if (NULL == p) {
+  if (nullptr == p) {
 %
  for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
@@ -448,7 +448,7 @@ for (propertyTypeEntry propertyName hasSetter *) in ATTRIBUTE_LIST do (IDX)
   %                                              %!^%C_Compiler * inCompiler\n%
   %                                              %!^%COMMA_LOCATION_ARGS) {\n%
   %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
-  %  if (NULL != p) {\n%
+  %  if (nullptr != p) {\n%
   %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %    macroUniqueSharedObject (p) ;\n%
   %    p->mObject.mProperty_%![propertyName identifierRepresentation]% = inOperand ;\n%
@@ -463,7 +463,7 @@ for (propertyTypeEntry propertyName hasSetter *) in ATTRIBUTE_LIST do (IDX)
   %  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
   %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;\n%
   %  GALGAS_%![propertyTypeEntry identifierRepresentation]% result ;\n%
-  %  if (NULL != p) {\n%
+  %  if (nullptr != p) {\n%
   %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %    result = p->mObject.mProperty_%![propertyName identifierRepresentation]% ;\n%
   %  }\n%

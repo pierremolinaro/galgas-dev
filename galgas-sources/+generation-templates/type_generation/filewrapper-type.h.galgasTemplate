@@ -52,8 +52,8 @@ class GALGAS_filewrapper : public AC_GALGAS_root {
   private: C_String mCurrentDirectory ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return NULL != mRootDirectoryPtr ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mRootDirectoryPtr = NULL ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return nullptr != mRootDirectoryPtr ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mRootDirectoryPtr = nullptr ; }
 
 //--------------------------------- Default constructor
   public: GALGAS_filewrapper (void) ;

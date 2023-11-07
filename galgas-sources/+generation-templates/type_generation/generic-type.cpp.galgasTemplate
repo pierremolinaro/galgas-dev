@@ -6,7 +6,7 @@
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% (%?^%"%!TYPE_NAME%",
-                       %!^ if [SUPER_TYPE_INDEX isNull] then %NULL% else %& kTypeDescriptor_GALGAS_%![SUPER_TYPE_INDEX identifierRepresentation] end %) ;
+                       %!^ if [SUPER_TYPE_INDEX isNull] then %nullptr% else %& kTypeDescriptor_GALGAS_%![SUPER_TYPE_INDEX identifierRepresentation] end %) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ const C_galgas_type_descriptor * GALGAS_%!TYPE_IDENTIFIER%::staticTypeDescriptor
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_%!TYPE_IDENTIFIER%::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
+  AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GALGAS_%!TYPE_IDENTIFIER% (*this)) ;
   }
@@ -31,8 +31,8 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::extractObject (%?^%const GA
                %!^%COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   const GALGAS_%!TYPE_IDENTIFIER% * p = (const GALGAS_%!TYPE_IDENTIFIER% *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_%!TYPE_IDENTIFIER% *> (p)) {
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_%!TYPE_IDENTIFIER% *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("%!TYPE_NAME%", p->dynamicTypeDescriptor () COMMA_THERE) ;

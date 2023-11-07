@@ -461,13 +461,13 @@ override method @setterCallInstructionForGeneration generateInstruction
       ioGeneratedCode += " = (cPtr_" + [self.mReceiverType identifierRepresentation] + " *) " + receiverCppName + ".ptr () ;\n"
       if [self.mCastType definition].mTypeName.string != [self.mReceiverType definition].mTypeName.string then
         ioInclusionSet += !"class-" + [[self.mCastType definition].mTypeName.string fileNameRepresentation]
-        ioGeneratedCode += "if ((NULL != " + pointerUniqueName
+        ioGeneratedCode += "if ((nullptr != " + pointerUniqueName
                         + ") && (dynamic_cast <cPtr_" + [self.mCastType identifierRepresentation] + " *> ("
-                        + pointerUniqueName + ") == NULL)) {\n"
+                        + pointerUniqueName + ") == nullptr)) {\n"
         [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
         ioGeneratedCode += "  " + compilerCppName () + "->onTheFlyRunTimeError (\"cannot cast to '@" 
                         + [self.mCastType definition].mTypeName.string + "'\"" + [self.mInstructionLocation commaSourceFile] + ") ;\n"
-        ioGeneratedCode += "  " + pointerUniqueName + " = NULL ;\n"
+        ioGeneratedCode += "  " + pointerUniqueName + " = nullptr ;\n"
         ioGeneratedCode += "}\n"
       end
       ioGeneratedCode += "callExtensionSetter_" + [self.mSetterName identifierRepresentation]

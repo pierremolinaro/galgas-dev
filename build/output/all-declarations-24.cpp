@@ -63,7 +63,7 @@ void cPtr_extensionMethodAST::method_enterDeclarationInGraph (GALGAS_semanticTyp
   }
   const GALGAS_extensionMethodAST temp_9 = this ;
   cMapElement_extensionMethodMapForBuildingContext * objectArray_6744 = (cMapElement_extensionMethodMapForBuildingContext *) ioArgument_ioExtensionMethodMapForBuildingContext.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, temp_9.readProperty_mTypeName (), kSearchErrorMessage_extensionMethodMapForBuildingContext_searchKey  COMMA_SOURCE_FILE ("extension-method.galgas", 152)) ;
-  if (NULL != objectArray_6744) {
+  if (nullptr != objectArray_6744) {
     macroValidSharedObject (objectArray_6744, cMapElement_extensionMethodMapForBuildingContext) ;
     {
     const GALGAS_extensionMethodAST temp_10 = this ;
@@ -419,7 +419,7 @@ void cPtr_extensionSetterAST::method_enterDeclarationInGraph (GALGAS_semanticTyp
   }
   const GALGAS_extensionSetterAST temp_9 = this ;
   cMapElement_extensionSetterMapForBuildingContext * objectArray_6663 = (cMapElement_extensionSetterMapForBuildingContext *) ioArgument_ioExtensionSetterMapForBuildingContext.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, temp_9.readProperty_mTypeName (), kSearchErrorMessage_extensionSetterMapForBuildingContext_searchKey  COMMA_SOURCE_FILE ("extension-setter.galgas", 152)) ;
-  if (NULL != objectArray_6663) {
+  if (nullptr != objectArray_6663) {
     macroValidSharedObject (objectArray_6663, cMapElement_extensionSetterMapForBuildingContext) ;
     {
     const GALGAS_extensionSetterAST temp_10 = this ;
@@ -714,7 +714,7 @@ void cPtr_overridingAbstractExtensionGetterAST::method_enterDeclarationInGraph (
   }
   const GALGAS_overridingAbstractExtensionGetterAST temp_4 = this ;
   cMapElement_extensionGetterMapForBuildingContext * objectArray_6511 = (cMapElement_extensionGetterMapForBuildingContext *) ioArgument_ioExtensionGetterMapForBuildingContext.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, temp_4.readProperty_mTypeName (), kSearchErrorMessage_extensionGetterMapForBuildingContext_searchKey  COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 155)) ;
-  if (NULL != objectArray_6511) {
+  if (nullptr != objectArray_6511) {
     macroValidSharedObject (objectArray_6511, cMapElement_extensionGetterMapForBuildingContext) ;
     {
     const GALGAS_overridingAbstractExtensionGetterAST temp_5 = this ;
@@ -916,7 +916,7 @@ void cPtr_overridingAbstractExtensionMethodAST::method_enterDeclarationInGraph (
   }
   const GALGAS_overridingAbstractExtensionMethodAST temp_4 = this ;
   cMapElement_extensionMethodMapForBuildingContext * objectArray_5390 = (cMapElement_extensionMethodMapForBuildingContext *) ioArgument_ioExtensionMethodMapForBuildingContext.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, temp_4.readProperty_mTypeName (), kSearchErrorMessage_extensionMethodMapForBuildingContext_searchKey  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 123)) ;
-  if (NULL != objectArray_5390) {
+  if (nullptr != objectArray_5390) {
     macroValidSharedObject (objectArray_5390, cMapElement_extensionMethodMapForBuildingContext) ;
     {
     const GALGAS_overridingAbstractExtensionMethodAST temp_5 = this ;
@@ -1272,7 +1272,7 @@ void cPtr_overridingExtensionGetterAST::method_enterDeclarationInGraph (GALGAS_s
   }
   const GALGAS_overridingExtensionGetterAST temp_4 = this ;
   cMapElement_extensionGetterMapForBuildingContext * objectArray_7246 = (cMapElement_extensionGetterMapForBuildingContext *) ioArgument_ioExtensionGetterMapForBuildingContext.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, temp_4.readProperty_mTypeName (), kSearchErrorMessage_extensionGetterMapForBuildingContext_searchKey  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 184)) ;
-  if (NULL != objectArray_7246) {
+  if (nullptr != objectArray_7246) {
     macroValidSharedObject (objectArray_7246, cMapElement_extensionGetterMapForBuildingContext) ;
     {
     const GALGAS_overridingExtensionGetterAST temp_5 = this ;
@@ -1551,7 +1551,7 @@ void cPtr_overridingExtensionMethodAST::method_enterDeclarationInGraph (GALGAS_s
   }
   const GALGAS_overridingExtensionMethodAST temp_4 = this ;
   cMapElement_extensionMethodMapForBuildingContext * objectArray_6611 = (cMapElement_extensionMethodMapForBuildingContext *) ioArgument_ioExtensionMethodMapForBuildingContext.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, temp_4.readProperty_mTypeName (), kSearchErrorMessage_extensionMethodMapForBuildingContext_searchKey  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 150)) ;
-  if (NULL != objectArray_6611) {
+  if (nullptr != objectArray_6611) {
     macroValidSharedObject (objectArray_6611, cMapElement_extensionMethodMapForBuildingContext) ;
     {
     const GALGAS_overridingExtensionMethodAST temp_5 = this ;
@@ -2102,7 +2102,7 @@ static void releaseOnceFunctionResult_generateFewHeaderFiles (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gEpilogueForOnceFunction_generateFewHeaderFiles (NULL,
+C_PrologueEpilogue gEpilogueForOnceFunction_generateFewHeaderFiles (nullptr,
                                                                     releaseOnceFunctionResult_generateFewHeaderFiles) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2110,7 +2110,7 @@ C_PrologueEpilogue gEpilogueForOnceFunction_generateFewHeaderFiles (NULL,
 //----------------------------------------------------------------------------------------------------------------------
 
 static const C_galgas_type_descriptor * functionArgs_generateFewHeaderFiles [1] = {
-  NULL
+  nullptr
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5243,7 +5243,7 @@ static void releaseOnceFunctionResult_compilerCppName (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gEpilogueForOnceFunction_compilerCppName (NULL,
+C_PrologueEpilogue gEpilogueForOnceFunction_compilerCppName (nullptr,
                                                              releaseOnceFunctionResult_compilerCppName) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5251,7 +5251,7 @@ C_PrologueEpilogue gEpilogueForOnceFunction_compilerCppName (NULL,
 //----------------------------------------------------------------------------------------------------------------------
 
 static const C_galgas_type_descriptor * functionArgs_compilerCppName [1] = {
-  NULL
+  nullptr
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5313,7 +5313,7 @@ static void releaseOnceFunctionResult_syntaxDirectedTranslationResultVarName (vo
 
 //----------------------------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gEpilogueForOnceFunction_syntaxDirectedTranslationResultVarName (NULL,
+C_PrologueEpilogue gEpilogueForOnceFunction_syntaxDirectedTranslationResultVarName (nullptr,
                                                                                     releaseOnceFunctionResult_syntaxDirectedTranslationResultVarName) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5321,7 +5321,7 @@ C_PrologueEpilogue gEpilogueForOnceFunction_syntaxDirectedTranslationResultVarNa
 //----------------------------------------------------------------------------------------------------------------------
 
 static const C_galgas_type_descriptor * functionArgs_syntaxDirectedTranslationResultVarName [1] = {
-  NULL
+  nullptr
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5822,7 +5822,7 @@ static void releaseOnceFunctionResult_elementTypeNameSuffix (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gEpilogueForOnceFunction_elementTypeNameSuffix (NULL,
+C_PrologueEpilogue gEpilogueForOnceFunction_elementTypeNameSuffix (nullptr,
                                                                    releaseOnceFunctionResult_elementTypeNameSuffix) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5830,7 +5830,7 @@ C_PrologueEpilogue gEpilogueForOnceFunction_elementTypeNameSuffix (NULL,
 //----------------------------------------------------------------------------------------------------------------------
 
 static const C_galgas_type_descriptor * functionArgs_elementTypeNameSuffix [1] = {
-  NULL
+  nullptr
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7950,7 +7950,7 @@ void routine_checkExpressionIsBoolean (const GALGAS_analysisContext constinArgum
     }
     if (kBoolFalse == test_1) {
       const cMapElement_getterMap * objectArray_51007 = (const cMapElement_getterMap *) extensionGetter_definition (var_expressionType_49625, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 1025)).readProperty_mGetterMap ().readAccessForWithInstruction (GALGAS_string ("bool")) ;
-      if (NULL != objectArray_51007) {
+      if (nullptr != objectArray_51007) {
           macroValidSharedObject (objectArray_51007, cMapElement_getterMap) ;
         enumGalgasBool test_6 = kBoolTrue ;
         if (kBoolTrue == test_6) {

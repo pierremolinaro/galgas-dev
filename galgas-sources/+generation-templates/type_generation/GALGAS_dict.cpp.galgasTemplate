@@ -15,8 +15,8 @@ for (* propertyName 2*) in CURRENT_PROPERTY_LIST
   do %, inProperty_%![propertyName identifierRepresentation]
 end
 %),
-  mInfPtr (NULL),
-  mSupPtr (NULL),
+  mInfPtr (nullptr),
+  mSupPtr (nullptr),
   mBalance (0) {
   }
 
@@ -42,7 +42,7 @@ class cSharedDictRoot_%!TYPE_IDENTIFIER% : public C_SharedObject {
 //--------------------------------- Constructor
   protected: cSharedDictRoot_%!TYPE_IDENTIFIER% (LOCATION_ARGS) :
   C_SharedObject (THERE),
-  mRoot (NULL),
+  mRoot (nullptr),
   mCount (0) {
   }
 
@@ -115,7 +115,7 @@ class cSharedDictRoot_%!TYPE_IDENTIFIER% : public C_SharedObject {
                                             bool & outEntryAlreadyPresent,
                                             bool & ioExtension,
                                             const bool inEntryOverrideAllowed) {
-    if (ioRootPtr == NULL) {
+    if (ioRootPtr == nullptr) {
       macroMyNew (ioRootPtr, cNode_%!TYPE_IDENTIFIER% (inNewNode.mProperty_key%
 for (* propertyName 2*) in CURRENT_PROPERTY_LIST
   do %, inNewNode.mProperty_%![propertyName identifierRepresentation]
@@ -169,9 +169,9 @@ end
 
 //--------------------------------- Search
   private: VIRTUAL_IN_DEBUG cNode_%!TYPE_IDENTIFIER% * findEntryInDict (const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey) const {
-    cNode_%!TYPE_IDENTIFIER% * result = NULL ;
+    cNode_%!TYPE_IDENTIFIER% * result = nullptr ;
     cNode_%!TYPE_IDENTIFIER% * currentNode = mRoot ;
-    while ((currentNode != NULL) && (NULL == result)) {
+    while ((currentNode != nullptr) && (nullptr == result)) {
       macroValidPointer (currentNode) ;
       const typeComparisonResult comparaison = currentNode->mProperty_key.objectCompare (inKey) ;
       if (comparaison == kFirstOperandGreaterThanSecond) {
@@ -189,7 +189,7 @@ end
   protected: VIRTUAL_IN_DEBUG void performRemove (const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey, cNode_%!TYPE_IDENTIFIER% * & outRemovedNodePtr) {
     bool branchHasBeenRemoved = false ; // Unused here
     internalRemoveRecursively (mRoot, inKey, outRemovedNodePtr, branchHasBeenRemoved) ;
-    if (NULL != outRemovedNodePtr) {
+    if (nullptr != outRemovedNodePtr) {
       mCount -- ;
     }
   }
@@ -251,7 +251,7 @@ end
   protected: static void getPreviousElement (cNode_%!TYPE_IDENTIFIER% * & ioRoot,
                                              cNode_%!TYPE_IDENTIFIER% * & ioElement,
                                              bool & ioBranchHasBeenRemoved) {
-    if (ioRoot->mSupPtr == NULL) {
+    if (ioRoot->mSupPtr == nullptr) {
       ioElement = ioRoot ;
       ioRoot = ioRoot->mInfPtr ;
       ioBranchHasBeenRemoved = true ;
@@ -267,7 +267,7 @@ end
                                                      const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKeyToRemove,
                                                      cNode_%!TYPE_IDENTIFIER% * & outRemovedNode,
                                                      bool & ioBranchHasBeenRemoved) {
-    if (ioRoot != NULL) {
+    if (ioRoot != nullptr) {
       const typeComparisonResult comparaison = ioRoot->mProperty_key.objectCompare (inKeyToRemove) ;
       if (comparaison == kFirstOperandGreaterThanSecond) {
         internalRemoveRecursively (ioRoot->mInfPtr, inKeyToRemove, outRemovedNode, ioBranchHasBeenRemoved);
@@ -281,20 +281,20 @@ end
         }
       }else{
         cNode_%!TYPE_IDENTIFIER% * p = ioRoot ;
-        if (p->mInfPtr == NULL) {
+        if (p->mInfPtr == nullptr) {
           ioRoot = p->mSupPtr;
-          p->mSupPtr = NULL;
+          p->mSupPtr = nullptr;
           ioBranchHasBeenRemoved = true;
-        }else if (p->mSupPtr == NULL) {
+        }else if (p->mSupPtr == nullptr) {
           ioRoot = p->mInfPtr;
-          p->mInfPtr = NULL;
+          p->mInfPtr = nullptr;
           ioBranchHasBeenRemoved = true;
         }else{
           getPreviousElement (p->mInfPtr, ioRoot, ioBranchHasBeenRemoved) ;
           ioRoot->mSupPtr = p->mSupPtr;
-          p->mSupPtr = NULL;
+          p->mSupPtr = nullptr;
           ioRoot->mInfPtr = p->mInfPtr;
-          p->mInfPtr = NULL;
+          p->mInfPtr = nullptr;
           ioRoot->mBalance = p->mBalance;
           p->mBalance = 0;
           if (ioBranchHasBeenRemoved) {
@@ -322,7 +322,7 @@ end
   #ifndef DO_NOT_GENERATE_CHECKINGS
     private: static void checkNode (const cNode_%!TYPE_IDENTIFIER% * inNode,
                                      uint32_t & ioCount) {
-      if (NULL != inNode) {
+      if (nullptr != inNode) {
         checkNode (inNode->mInfPtr, ioCount) ;
         ioCount ++ ;
         checkNode (inNode->mSupPtr, ioCount) ;
@@ -356,7 +356,7 @@ end
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_root (),
-mSharedDict (NULL) {
+mSharedDict (nullptr) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -369,7 +369,7 @@ GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) :
 AC_GALGAS_root (),
-mSharedDict (NULL) {
+mSharedDict (nullptr) {
   macroAssignSharedObject (mSharedDict, inSource.mSharedDict) ;
 }
 
@@ -405,7 +405,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyDict (LOCA
 static void internalDescription_%!TYPE_IDENTIFIER% (const cNode_%!TYPE_IDENTIFIER% * inNode,
                                  C_String & ioString,
                                  const int32_t inIndentation) {
-  if (NULL != inNode) {
+  if (nullptr != inNode) {
     internalDescription_%!TYPE_IDENTIFIER% (inNode->mInfPtr, ioString, inIndentation) ;
     ioString << "\\n" ;
     inNode->description (ioString, inIndentation) ;
@@ -450,13 +450,13 @@ for (* propertyName 2*) in CURRENT_PROPERTY_LIST
   do %, inNode->mProperty_%![propertyName identifierRepresentation]
 end
 %),
-mInfPtr (NULL),
-mSupPtr (NULL),
+mInfPtr (nullptr),
+mSupPtr (nullptr),
 mBalance (inNode->mBalance) {
-  if (inNode->mInfPtr != NULL) {
+  if (inNode->mInfPtr != nullptr) {
     macroMyNew (mInfPtr, cNode_%!TYPE_IDENTIFIER% (inNode->mInfPtr)) ;
   }
-  if (inNode->mSupPtr != NULL) {
+  if (inNode->mSupPtr != nullptr) {
     macroMyNew (mSupPtr, cNode_%!TYPE_IDENTIFIER% (inNode->mSupPtr)) ;
   }
 }
@@ -470,7 +470,7 @@ void cSharedDictRoot_%!TYPE_IDENTIFIER%::copyFrom (const cSharedDictRoot_%!TYPE_
   #endif
   macroValidSharedObject (inSource, cSharedDictRoot_%!TYPE_IDENTIFIER%) ;
   mCount = inSource->mCount ;
-  if (NULL != inSource->mRoot) {
+  if (nullptr != inSource->mRoot) {
     macroMyNew (mRoot, cNode_%!TYPE_IDENTIFIER% (inSource->mRoot)) ;
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -481,8 +481,8 @@ void cSharedDictRoot_%!TYPE_IDENTIFIER%::copyFrom (const cSharedDictRoot_%!TYPE_
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
-  if ((NULL != mSharedDict) && !mSharedDict->isUniquelyReferenced ()) {
-    cSharedDictRoot_%!TYPE_IDENTIFIER% * p = NULL ;
+  if ((nullptr != mSharedDict) && !mSharedDict->isUniquelyReferenced ()) {
+    cSharedDictRoot_%!TYPE_IDENTIFIER% * p = nullptr ;
     macroMyNew (p, cSharedDictRoot_%!TYPE_IDENTIFIER% (THERE)) ;
     p->copyFrom (mSharedDict) ;
     macroAssignSharedObject (mSharedDict, p) ;
@@ -524,7 +524,7 @@ GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_hasKey (%?^%const GALGAS_%!KEY_TYP
   GALGAS_bool result ;
   if (isValid () && inKey.isValid ()) {
     const cNode_%!TYPE_IDENTIFIER% * p = mSharedDict->findEntryInDict (inKey) ;
-    result = GALGAS_bool (p != NULL) ;
+    result = GALGAS_bool (p != nullptr) ;
    }
    return result ;
  }
@@ -537,10 +537,10 @@ for (propertyTypeEntry 3*) in CURRENT_PROPERTY_LIST
 end
 %,\n %!^%C_Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) const {
-  const cNode_%!TYPE_IDENTIFIER% * p = NULL ;
+  const cNode_%!TYPE_IDENTIFIER% * p = nullptr ;
   if (isValid () && inKey.isValid ()) {
     p = mSharedDict->findEntryInDict (inKey) ;
-    if (NULL == p) {
+    if (nullptr == p) {
     //--- Build error message
       C_String message ;
       message << "cannot search in dict: the key does not exist" ;
@@ -548,7 +548,7 @@ end
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
   }
-  if (NULL == p) {
+  if (nullptr == p) {
 %
 for (4*) in CURRENT_PROPERTY_LIST do (IDX)
   %    outArgument%![IDX string]%.drop () ;\n%
@@ -569,12 +569,12 @@ for (propertyTypeEntry 3*) in CURRENT_PROPERTY_LIST
 end
 %,\n %!^%C_Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) {
-  cNode_%!TYPE_IDENTIFIER% * p = NULL ;
+  cNode_%!TYPE_IDENTIFIER% * p = nullptr ;
   if (isValid () && inKey.isValid ()) {
     insulate (THERE) ;
     macroUniqueSharedObject (mSharedDict) ;
     mSharedDict->performRemove (inKey, p) ;
-    if (NULL == p) {
+    if (nullptr == p) {
     //--- Build error message
       C_String message ;
       message << "cannot remove in dict: the key does not exist" ;
@@ -582,7 +582,7 @@ end
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
   }
-  if (NULL == p) {
+  if (nullptr == p) {
 %
 for (4*) in CURRENT_PROPERTY_LIST do (IDX)
   %    outArgument%![IDX string]%.drop () ;\n%
@@ -604,7 +604,7 @@ end
   %  GALGAS_%![propertyTypeEntry identifierRepresentation]% result ;\n%
   %  if (isValid () && inKey.isValid ()) {\n%
   %  const cNode_%!TYPE_IDENTIFIER% * p = mSharedDict->findEntryInDict (inKey) ;\n%
-  %   if (NULL == p) {\n%
+  %   if (nullptr == p) {\n%
   %    //--- Build error message\n%
   %      C_String message ;\n%
   %      message << "cannot get %![propertyName identifierRepresentation]% ForKey in dict: the key does not exist" ;\n%
@@ -630,7 +630,7 @@ for (propertyTypeEntry propertyName 2*) in CURRENT_PROPERTY_LIST do
   %    insulate (THERE) ;\n%
   %    macroUniqueSharedObject (mSharedDict) ;\n%
   %    cNode_%!TYPE_IDENTIFIER% * p = mSharedDict->findEntryInDict (inKey) ;\n%
-  %    if (NULL == p) {\n%
+  %    if (nullptr == p) {\n%
   %    //--- Build error message\n%
   %      C_String message ;\n%
   %      message << "cannot set%![[propertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey in dict: the key does not exist" ;\n%
@@ -691,7 +691,7 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) {
-    cCollectionElement * p = NULL ;
+    cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (mElement)) ;
     return p ;
   }
@@ -706,9 +706,9 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
 
 static void enterAscendingEnumeration_%!TYPE_IDENTIFIER% (cNode_%!TYPE_IDENTIFIER% * inNode,
                                                        capCollectionElementArray & ioEnumerationArray) {
-  if (inNode != NULL) {
+  if (inNode != nullptr) {
     enterAscendingEnumeration_%!TYPE_IDENTIFIER% (inNode->mInfPtr, ioEnumerationArray) ;
-    cCollectionElement_%!TYPE_IDENTIFIER% * p = NULL ;
+    cCollectionElement_%!TYPE_IDENTIFIER% * p = nullptr ;
     macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (*inNode)) ;
     capCollectionElement element ;
     element.setPointer (p) ;
@@ -732,7 +732,7 @@ void cSharedDictRoot_%!TYPE_IDENTIFIER%::populateEnumerationArray (capCollection
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
-  if (NULL != mSharedDict) {
+  if (nullptr != mSharedDict) {
     mSharedDict->populateEnumerationArray (ioEnumerationArray) ;
   }
 }
@@ -775,11 +775,11 @@ for (propertyTypeEntry 3*) in CURRENT_PROPERTY_LIST
   do (IDX) %,\n%!^%GALGAS_%![propertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
 end
 %) const {\n%
-%  const cNode_%!TYPE_IDENTIFIER% * p = NULL ;\n%
-%  if ((mSharedDict != NULL) && inKey.isValid ()) {\n%
+%  const cNode_%!TYPE_IDENTIFIER% * p = nullptr ;\n%
+%  if ((mSharedDict != nullptr) && inKey.isValid ()) {\n%
 %    p = (const cNode_%!TYPE_IDENTIFIER% *) mSharedDict->findEntryInDict (inKey) ;\n%
 %  }\n%
-%  const bool result = NULL != p ;\n%
+%  const bool result = nullptr != p ;\n%
 %  if (result) {\n%
 %    macroValidSharedObject (p, cNode_%!TYPE_IDENTIFIER%) ;\n%
 for (propertyTypeEntry propertyName hasSetter hasSelector) in CURRENT_PROPERTY_LIST do (IDX)

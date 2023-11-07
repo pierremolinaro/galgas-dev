@@ -30,9 +30,9 @@ GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (void) :
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::operator = (const GALGAS_%!CLASS_TYPE_IDENTIFIER% & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = NULL ;
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != NULL) {
+  if (p != nullptr) {
     proxyPtr = p->getProxy () ;
   }
   macroAssignSharedObject (mProxyPtr, proxyPtr) ;
@@ -60,9 +60,9 @@ GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::construct
 
 GALGAS_%!CLASS_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::bang_%!WEAK_REF_TYPE_IDENTIFIER% (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_%!CLASS_TYPE_IDENTIFIER% result ;
-  if (mProxyPtr != NULL) {
+  if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == NULL) {
+    if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
       macroValidSharedObject (strongPtr, cPtr_%!CLASS_TYPE_IDENTIFIER%) ;

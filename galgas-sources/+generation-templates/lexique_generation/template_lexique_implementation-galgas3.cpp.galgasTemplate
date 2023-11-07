@@ -46,11 +46,11 @@ mMatchedTemplateDelimiterIndex (-1) {
     before %static const cTemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [%![[TEMPLATE_DELIMITOR_LIST count] string]%] = {\n%
     do %  cTemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mStartString identifierRepresentation]%, %![[mStartString count] string]%, %
       if [mEndString count] == 0 then
-        %NULL, 0,%
+        %nullptr, 0,%
       else
         %kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mEndString identifierRepresentation]%, %![[mEndString count] string]%,%
       end
-      % NULL, %
+      % nullptr, %
       ![not mPreservesStartDelimiter cString]
       %)%
     between %,\n%
@@ -67,7 +67,7 @@ mMatchedTemplateDelimiterIndex (-1) {
       %  cTemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mMatchString identifierRepresentation]%, %![[mMatchString count] string]%, %
       %kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mReplacementString identifierRepresentation]%, %![[mReplacementString count] string]%, %
       if [mReplacementFunction count] == 0 then
-        %NULL%
+        %nullptr%
       else
         %scanner_routine_%!mReplacementFunction.string
       end
@@ -110,7 +110,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
       while (replacementIndex >= 0) {
         replacementIndex = findTemplateDelimiterIndex (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray, %![[TEMPLATE_REPLACEMENT_LIST count] string]%) ;
         if (replacementIndex >= 0) {
-          if (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mReplacementFunction == NULL) {
+          if (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mReplacementFunction == nullptr) {
             token.mTemplateStringBeforeToken << %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndString ;
           }else{
             C_String s ;

@@ -122,7 +122,7 @@ end
 for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do
   %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::readProperty_%![mPropertyName identifierRepresentation]% (void) const {\n%
-  %  if (NULL == mObjectPtr) {\n%
+  %  if (nullptr == mObjectPtr) {\n%
   %    return GALGAS_%![mPropertyTypeEntry identifierRepresentation]% () ;\n%
   %  }else{\n%
   %    const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
@@ -141,7 +141,7 @@ for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPER
     %//----------------------------------------------------------------------------------------------------------------------\n\n%
     %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inValue\n%
                   !^%COMMA_LOCATION_ARGS) {\n%
-    %  if (NULL != mObjectPtr) {\n%
+    %  if (nullptr != mObjectPtr) {\n%
     %    insulate (THERE) ;\n%
     %    cPtr_%!TYPE_IDENTIFIER% * p = (cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
     %    macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
@@ -216,7 +216,7 @@ if not IS_ABSTRACT then
 %//----------------------------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_%!TYPE_IDENTIFIER%::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
+  acPtr_class * ptr = nullptr ;
   macroMyNew (ptr, cPtr_%!TYPE_IDENTIFIER% (%
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST
   do  %mProperty_%![mPropertyName identifierRepresentation]

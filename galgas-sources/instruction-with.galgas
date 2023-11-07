@@ -714,7 +714,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
                     + " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   end
-  ioGeneratedCode +=  "if (NULL != " + self.mObjectArrayCppName + ") {\n"
+  ioGeneratedCode +=  "if (nullptr != " + self.mObjectArrayCppName + ") {\n"
                   +  "    macroValidSharedObject (" + self.mObjectArrayCppName
                   + ", cMapElement_" + [receiverType identifierRepresentation] + ") ;\n"
   generateInstructionList (
@@ -774,7 +774,7 @@ override method @readWriteWithInstructionForGeneration generateInstruction
     ioGeneratedCode += ", kSearchErrorMessage_" + [self.mReceiverType identifierRepresentation] + "_" + self.mSearchMethodNameForErrorSignaling
   end
   ioGeneratedCode +=  " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
-    +  "if (NULL != " + self.mObjectArrayCppName + ") {\n"
+    +  "if (nullptr != " + self.mObjectArrayCppName + ") {\n"
     +  "  macroValidSharedObject (" + self.mObjectArrayCppName + ", cMapElement_" + [self.mReceiverType identifierRepresentation] + ") ;\n"
   generateInstructionList (
     !?ioInclusionSet

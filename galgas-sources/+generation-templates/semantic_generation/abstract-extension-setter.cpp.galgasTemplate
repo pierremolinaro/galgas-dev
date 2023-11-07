@@ -10,7 +10,7 @@ static TC_UniqueArray <extensionSetterSignature_%![CLASS_NAME identifierRepresen
 
 void enterExtensionSetter_%![MODIFIER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
                %!^%extensionSetterSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% inModifier) {
-  gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inModifier, NULL COMMA_HERE) ;
+  gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inModifier, nullptr COMMA_HERE) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -21,7 +21,7 @@ static void freeExtensionModifier_%![CLASS_NAME identifierRepresentation]%_%![MO
 
 //----------------------------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gSetter_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (%?^%NULL,
+C_PrologueEpilogue gSetter_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (%?^%nullptr,
        %!^%freeExtensionModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -49,23 +49,23 @@ void callExtensionSetter_%![MODIFIER_NAME identifierRepresentation]% (%?^%cPtr_%
     end
   end
 %//--- Find setter
-  if (NULL != inObject) {
+  if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_%![CLASS_NAME identifierRepresentation]%) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    extensionSetterSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% f = NULL ;
+    extensionSetterSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% f = nullptr ;
     if (classIndex < gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.count ()) {
       f = gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;
     }
-    if (NULL == f) {
+    if (nullptr == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-       while ((NULL == f) && (NULL != p)) {
+       while ((nullptr == f) && (nullptr != p)) {
          if (p->mSlotID < gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.count ()) {
            f = gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, nullptr COMMA_HERE) ;
     }
     f (inObject, %
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do

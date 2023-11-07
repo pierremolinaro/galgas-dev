@@ -174,7 +174,7 @@ class SWIFT_Tokenizer_%![lexiqueIndex string]%_%!lexiqueClassName% : SWIFT_Lexiq
   for (mKey mContents) in textMacroList do
     %    @%![mKey utf8RepresentationEscapingQuestionMark]%,\n%
   end
-  %    NULL\n%
+  %    nullptr\n%
   %  } ;\n%
   %  return kTextMacroTitle [inIndex] ;\n%
   %}\n\n%
@@ -184,7 +184,7 @@ class SWIFT_Tokenizer_%![lexiqueIndex string]%_%!lexiqueClassName% : SWIFT_Lexiq
   for (mKey mContents) in textMacroList do
     %    @%![mContents utf8RepresentationEscapingQuestionMark]%,\n%
   end
-  %    NULL\n%
+  %    nullptr\n%
   %  } ;\n%
   %  return kTextMacroContent [inIndex] ;\n%
   %}\n\n%

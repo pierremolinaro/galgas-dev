@@ -71,7 +71,7 @@ for (mValue) in DIMENSION_LIST
  end
 %    %!^%COMMA_LOCATION_ARGS) :
 C_SharedObject (THERE),
-mObjectArray (NULL),
+mObjectArray (nullptr),
 % for (mValue) in DIMENSION_LIST
   do %mSize%!mValue% (inSize%!mValue%)%
   between %,\n%
@@ -84,7 +84,7 @@ mObjectArray (NULL),
 cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^%const cPtr_%!TYPE_IDENTIFIER% * inPointer
     %!^%COMMA_LOCATION_ARGS) :
 C_SharedObject (THERE),
-mObjectArray (NULL),
+mObjectArray (nullptr),
 % for (mValue) in DIMENSION_LIST
   do %mSize%!mValue% (inPointer->size%!mValue% ())%
   between %,\n%
@@ -168,7 +168,7 @@ do !^%const uint32_t inSize%!mValue
 between %,\n%
 end
 %      \n%!^%COMMA_LOCATION_ARGS) {
-  GALGAS_%!ELEMENT_TYPE_IDENTIFIER% * p = NULL ;
+  GALGAS_%!ELEMENT_TYPE_IDENTIFIER% * p = nullptr ;
   macroMyNewArrayThere (p, GALGAS_%!ELEMENT_TYPE_IDENTIFIER%, % for (mValue) in DIMENSION_LIST do %inSize%!mValue between % * % end %) ;
 %
 for (mValue) in DIMENSION_LIST
@@ -207,7 +207,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSourceObject) :
 AC_GALGAS_root (),
-mSharedObject (NULL) {
+mSharedObject (nullptr) {
   macroAssignSharedObject (mSharedObject, inSourceObject.mSharedObject) ;
 }
 
@@ -241,7 +241,7 @@ for (mValue) in DIMENSION_LIST
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
        %!^%const int32_t /* inIndentation */) const {
   ioString << "<@ptrint:" ;
-  if (NULL == mSharedObject) {
+  if (nullptr == mSharedObject) {
     ioString << "NULL" ;
   }else{
     macroValidSharedObject (mSharedObject, cPtr_%!TYPE_IDENTIFIER%) ;
@@ -369,7 +369,7 @@ end
 
 void GALGAS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
   if (isValid () && !mSharedObject->isUniquelyReferenced ()) {
-    cPtr_%!TYPE_IDENTIFIER% * p = NULL ;
+    cPtr_%!TYPE_IDENTIFIER% * p = nullptr ;
     macroMyNew (p, cPtr_%!TYPE_IDENTIFIER% (mSharedObject COMMA_THERE)) ;
     macroAssignSharedObject (mSharedObject, p) ;
     macroDetachSharedObject (p) ;

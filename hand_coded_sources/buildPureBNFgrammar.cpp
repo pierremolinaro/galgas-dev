@@ -2,7 +2,7 @@
 //
 //  Routines for building pure BNF grammar (without 'select' and 'repeat')                       
 //
-//  Copyright (C) 1999, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -350,7 +350,7 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
     while (currentRule.hasCurrentObject ()) {
       TC_UniqueArray <int16_t> derivation ;
       cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentRule.current_mInstructionList (HERE), kENUMERATION_UP) ;
-      while (instruction .hasCurrentObject ()) {
+      while (instruction.hasCurrentObject ()) {
         cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
         macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
         p->buildRightDerivation (terminalSymbolsCount, orginalGrammarSymbolCount, derivation) ;

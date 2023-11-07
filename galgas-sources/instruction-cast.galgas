@@ -365,13 +365,13 @@ override method @structuredCastInstructionForGeneration generateInstruction
       + ".dynamicTypeDescriptor () == & kTypeDescriptor_GALGAS_"
       + [mType identifierRepresentation] + ") {\n"
     case inherited :
-      ioGeneratedCode += "if (NULL != dynamic_cast <const cPtr_"
+      ioGeneratedCode += "if (nullptr != dynamic_cast <const cPtr_"
       + [mType identifierRepresentation]
       + " *> (" + castCppVarName + ".ptr ())) {\n"
     case strictlyInherited :
       ioGeneratedCode += "if ((" + castCppVarName
       + ".dynamicTypeDescriptor () != & kTypeDescriptor_GALGAS_"
-      + [mType identifierRepresentation] + ") && (NULL != dynamic_cast <const cPtr_"
+      + [mType identifierRepresentation] + ") && (nullptr != dynamic_cast <const cPtr_"
       + [mType identifierRepresentation]
       + " *> (" + castCppVarName + ".ptr ()))) {\n"
     end
