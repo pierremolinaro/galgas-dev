@@ -46004,13 +46004,10 @@ void cGrammar_galgas_33_Grammar::nt_factor_5F_ggs_33__ (GALGAS_semanticExpressio
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_output_5F_expression_5F_list_5F_ggs_33__parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 5 :
-      rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_5F_ggs_33__i5_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 5) {
+  rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_5F_ggs_33__i5_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -46043,13 +46040,10 @@ void cGrammar_galgas_33_Grammar::nt_output_5F_expression_5F_list_5F_ggs_33__ (GA
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_relation_5F_factor_5F_ggs_33__parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 12 :
-      rule_galgas_33_ExpressionSyntax_relation_5F_factor_5F_ggs_33__i12_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 12) {
+  rule_galgas_33_ExpressionSyntax_relation_5F_factor_5F_ggs_33__i12_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -46082,13 +46076,10 @@ void cGrammar_galgas_33_Grammar::nt_relation_5F_factor_5F_ggs_33__ (GALGAS_seman
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_simple_5F_expression_5F_ggs_33__parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 13 :
-      rule_galgas_33_ExpressionSyntax_simple_5F_expression_5F_ggs_33__i13_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 13) {
+  rule_galgas_33_ExpressionSyntax_simple_5F_expression_5F_ggs_33__i13_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -46121,13 +46112,10 @@ void cGrammar_galgas_33_Grammar::nt_simple_5F_expression_5F_ggs_33__ (GALGAS_sem
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_term_5F_ggs_33__parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 14 :
-      rule_galgas_33_ExpressionSyntax_term_5F_ggs_33__i14_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 14) {
+  rule_galgas_33_ExpressionSyntax_term_5F_ggs_33__i14_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -46160,13 +46148,10 @@ void cGrammar_galgas_33_Grammar::nt_term_5F_ggs_33__ (GALGAS_semanticExpressionA
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_expression_5F_ggs_33__parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 15 :
-      rule_galgas_33_ExpressionSyntax_expression_5F_ggs_33__i15_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 15) {
+  rule_galgas_33_ExpressionSyntax_expression_5F_ggs_33__i15_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -46199,13 +46184,10 @@ void cGrammar_galgas_33_Grammar::nt_expression_5F_ggs_33__ (GALGAS_semanticExpre
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_optional_5F_type_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 21 :
-      rule_galgas_33_ExpressionSyntax_optional_5F_type_i21_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 21) {
+  rule_galgas_33_ExpressionSyntax_optional_5F_type_i21_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -46286,13 +46268,10 @@ void cGrammar_galgas_33_Grammar::nt_collection_5F_value_5F_element_ (GALGAS_abst
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_expression_5F_or_5F_ggs_33__parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 35 :
-      rule_galgas_33_ExpressionSyntax_expression_5F_or_5F_ggs_33__i35_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 35) {
+  rule_galgas_33_ExpressionSyntax_expression_5F_or_5F_ggs_33__i35_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -46325,13 +46304,10 @@ void cGrammar_galgas_33_Grammar::nt_expression_5F_or_5F_ggs_33__ (GALGAS_semanti
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_expression_5F_and_5F_ggs_33__parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 36 :
-      rule_galgas_33_ExpressionSyntax_expression_5F_and_5F_ggs_33__i36_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 36) {
+  rule_galgas_33_ExpressionSyntax_expression_5F_and_5F_ggs_33__i36_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -46364,13 +46340,10 @@ void cGrammar_galgas_33_Grammar::nt_expression_5F_and_5F_ggs_33__ (GALGAS_semant
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_formal_5F_parameter_5F_list_5F_ggs_33__parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 37 :
-      rule_galgas_33_ParameterArgumentSyntax_formal_5F_parameter_5F_list_5F_ggs_33__i0_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 37) {
+  rule_galgas_33_ParameterArgumentSyntax_formal_5F_parameter_5F_list_5F_ggs_33__i0_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -46403,13 +46376,10 @@ void cGrammar_galgas_33_Grammar::nt_formal_5F_parameter_5F_list_5F_ggs_33__ (GAL
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_actual_5F_parameter_5F_list_5F_ggs_33__parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 38 :
-      rule_galgas_33_ParameterArgumentSyntax_actual_5F_parameter_5F_list_5F_ggs_33__i1_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 38) {
+  rule_galgas_33_ParameterArgumentSyntax_actual_5F_parameter_5F_list_5F_ggs_33__i1_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -46442,13 +46412,10 @@ void cGrammar_galgas_33_Grammar::nt_actual_5F_parameter_5F_list_5F_ggs_33__ (GAL
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 39 :
-      rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__i2_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 39) {
+  rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__i2_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -46529,13 +46496,10 @@ void cGrammar_galgas_33_Grammar::nt_poisoned_5F_var_5F_list_5F_ggs_33__ (GALGAS_
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_if_5F_expression_5F_ggs_33__parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 81 :
-      rule_galgas_33_InstructionsSyntax_if_5F_expression_5F_ggs_33__i39_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 81) {
+  rule_galgas_33_InstructionsSyntax_if_5F_expression_5F_ggs_33__i39_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -46568,13 +46532,10 @@ void cGrammar_galgas_33_Grammar::nt_if_5F_expression_5F_ggs_33__ (GALGAS_ifExpre
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_semantic_5F_instruction_5F_list_5F_ggs_33__parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 42 :
-      rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_list_5F_ggs_33__i0_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 42) {
+  rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_list_5F_ggs_33__i0_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -47033,13 +46994,10 @@ void cGrammar_galgas_33_Grammar::nt_declaration_5F_ggs_33__ (GALGAS_galgasDeclar
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_syntax_5F_directed_5F_translation_5F_result_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 49 :
-      rule_galgas_33_InstructionsSyntax_syntax_5F_directed_5F_translation_5F_result_i7_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 49) {
+  rule_galgas_33_InstructionsSyntax_syntax_5F_directed_5F_translation_5F_result_i7_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -47072,13 +47030,10 @@ void cGrammar_galgas_33_Grammar::nt_syntax_5F_directed_5F_translation_5F_result_
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_actual_5F_input_5F_parameter_5F_list_5F_ggs_33__parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 50 :
-      rule_galgas_33_InstructionsSyntax_actual_5F_input_5F_parameter_5F_list_5F_ggs_33__i8_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 50) {
+  rule_galgas_33_InstructionsSyntax_actual_5F_input_5F_parameter_5F_list_5F_ggs_33__i8_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -47501,13 +47456,10 @@ void cGrammar_galgas_33_Grammar::nt_semantic_5F_instruction_5F_ggs_33__ (GALGAS_
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_cast_5F_instruction_5F_branch_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 53 :
-      rule_galgas_33_InstructionsSyntax_cast_5F_instruction_5F_branch_i11_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 53) {
+  rule_galgas_33_InstructionsSyntax_cast_5F_instruction_5F_branch_i11_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -47540,13 +47492,10 @@ void cGrammar_galgas_33_Grammar::nt_cast_5F_instruction_5F_branch_ (GALGAS_castI
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_cast_5F_else_5F_or_5F_default_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 54 :
-      rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i12_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 54) {
+  rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i12_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -47579,13 +47528,10 @@ void cGrammar_galgas_33_Grammar::nt_cast_5F_else_5F_or_5F_default_ (GALGAS_seman
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 58 :
-      rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i16_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 58) {
+  rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i16_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -47619,13 +47565,10 @@ void cGrammar_galgas_33_Grammar::nt_semantic_5F_instruction_5F_beginning_5F_with
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_non_5F_empty_5F_output_5F_expression_5F_list_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 59 :
-      rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_i17_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 59) {
+  rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_i17_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -47658,13 +47601,10 @@ void cGrammar_galgas_33_Grammar::nt_non_5F_empty_5F_output_5F_expression_5F_list
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_issue_5F_fixit_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 61 :
-      rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i19_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 61) {
+  rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i19_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -47905,13 +47845,10 @@ void cGrammar_galgas_33_Grammar::nt_grammar_5F_instruction_5F_core_5F_obsolete_ 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_semantic_5F_instruction_5F_inc_5F_dec_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 77 :
-      rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_inc_5F_dec_i35_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 77) {
+  rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_inc_5F_dec_i35_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -47945,13 +47882,10 @@ void cGrammar_galgas_33_Grammar::nt_semantic_5F_instruction_5F_inc_5F_dec_ (cons
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_if_5F_instruction_5F_core_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 79 :
-      rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i37_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 79) {
+  rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i37_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -47984,13 +47918,10 @@ void cGrammar_galgas_33_Grammar::nt_if_5F_instruction_5F_core_ (GALGAS_semanticI
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_switch_5F_case_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 100 :
-      rule_galgas_33_InstructionsSyntax_switch_5F_case_i58_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 100) {
+  rule_galgas_33_InstructionsSyntax_switch_5F_case_i58_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -48076,13 +48007,10 @@ void cGrammar_galgas_33_Grammar::nt_with_5F_instruction_5F_core_ (const GALGAS_l
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_start_5F_symbol_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 109 :
-      rule_galgas_33_DeclarationsSyntax_start_5F_symbol_i0_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 109) {
+  rule_galgas_33_DeclarationsSyntax_start_5F_symbol_i0_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -48271,13 +48199,10 @@ void cGrammar_galgas_33_Grammar::nt_property_5F_declaration_5F_ggs_33__ (GALGAS_
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_filewrapper_5F_text_5F_files_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 114 :
-      rule_galgas_33_DeclarationsSyntax_filewrapper_5F_text_5F_files_i5_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 114) {
+  rule_galgas_33_DeclarationsSyntax_filewrapper_5F_text_5F_files_i5_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -48310,13 +48235,10 @@ void cGrammar_galgas_33_Grammar::nt_filewrapper_5F_text_5F_files_ (GALGAS_lstrin
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_filewrapper_5F_binary_5F_files_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 115 :
-      rule_galgas_33_DeclarationsSyntax_filewrapper_5F_binary_5F_files_i6_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 115) {
+  rule_galgas_33_DeclarationsSyntax_filewrapper_5F_binary_5F_files_i6_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -48349,13 +48271,10 @@ void cGrammar_galgas_33_Grammar::nt_filewrapper_5F_binary_5F_files_ (GALGAS_lstr
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_filewrapper_5F_templates_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 116 :
-      rule_galgas_33_DeclarationsSyntax_filewrapper_5F_templates_i7_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 116) {
+  rule_galgas_33_DeclarationsSyntax_filewrapper_5F_templates_i7_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -48388,13 +48307,10 @@ void cGrammar_galgas_33_Grammar::nt_filewrapper_5F_templates_ (GALGAS_filewrappe
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_externtype_5F_cpp_5F_predeclaration_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 122 :
-      rule_galgas_33_DeclarationsSyntax_externtype_5F_cpp_5F_predeclaration_i13_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 122) {
+  rule_galgas_33_DeclarationsSyntax_externtype_5F_cpp_5F_predeclaration_i13_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -48427,13 +48343,10 @@ void cGrammar_galgas_33_Grammar::nt_externtype_5F_cpp_5F_predeclaration_ (GALGAS
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_externtype_5F_cpp_5F_classdeclaration_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 123 :
-      rule_galgas_33_DeclarationsSyntax_externtype_5F_cpp_5F_classdeclaration_i14_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 123) {
+  rule_galgas_33_DeclarationsSyntax_externtype_5F_cpp_5F_classdeclaration_i14_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -48466,13 +48379,10 @@ void cGrammar_galgas_33_Grammar::nt_externtype_5F_cpp_5F_classdeclaration_ (GALG
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_externtype_5F_constructor_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 124 :
-      rule_galgas_33_DeclarationsSyntax_externtype_5F_constructor_i15_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 124) {
+  rule_galgas_33_DeclarationsSyntax_externtype_5F_constructor_i15_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -48505,13 +48415,10 @@ void cGrammar_galgas_33_Grammar::nt_externtype_5F_constructor_ (GALGAS_externTyp
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_externtype_5F_getter_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 125 :
-      rule_galgas_33_DeclarationsSyntax_externtype_5F_getter_i16_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 125) {
+  rule_galgas_33_DeclarationsSyntax_externtype_5F_getter_i16_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -48544,13 +48451,10 @@ void cGrammar_galgas_33_Grammar::nt_externtype_5F_getter_ (GALGAS_externTypeGett
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_externtype_5F_setter_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 126 :
-      rule_galgas_33_DeclarationsSyntax_externtype_5F_setter_i17_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 126) {
+  rule_galgas_33_DeclarationsSyntax_externtype_5F_setter_i17_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -48583,13 +48487,10 @@ void cGrammar_galgas_33_Grammar::nt_externtype_5F_setter_ (GALGAS_externTypeSett
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_externtype_5F_method_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 127 :
-      rule_galgas_33_DeclarationsSyntax_externtype_5F_method_i18_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 127) {
+  rule_galgas_33_DeclarationsSyntax_externtype_5F_method_i18_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -48622,13 +48523,10 @@ void cGrammar_galgas_33_Grammar::nt_externtype_5F_method_ (GALGAS_externTypeMeth
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_search_5F_declaration_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 133 :
-      rule_galgas_33_DeclarationsSyntax_search_5F_declaration_i24_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 133) {
+  rule_galgas_33_DeclarationsSyntax_search_5F_declaration_i24_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -48661,13 +48559,10 @@ void cGrammar_galgas_33_Grammar::nt_search_5F_declaration_ (GALGAS_mapSearchMeth
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_remove_5F_declaration_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 134 :
-      rule_galgas_33_DeclarationsSyntax_remove_5F_declaration_i25_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 134) {
+  rule_galgas_33_DeclarationsSyntax_remove_5F_declaration_i25_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -48700,13 +48595,10 @@ void cGrammar_galgas_33_Grammar::nt_remove_5F_declaration_ (GALGAS_mapRemoveMeth
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_insert_5F_or_5F_replace_5F_declaration_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 135 :
-      rule_galgas_33_DeclarationsSyntax_insert_5F_or_5F_replace_5F_declaration_i26_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 135) {
+  rule_galgas_33_DeclarationsSyntax_insert_5F_or_5F_replace_5F_declaration_i26_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -48739,13 +48631,10 @@ void cGrammar_galgas_33_Grammar::nt_insert_5F_or_5F_replace_5F_declaration_ (GAL
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_map_5F_insert_5F_setter_5F_declaration_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 136 :
-      rule_galgas_33_DeclarationsSyntax_map_5F_insert_5F_setter_5F_declaration_i27_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 136) {
+  rule_galgas_33_DeclarationsSyntax_map_5F_insert_5F_setter_5F_declaration_i27_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -48778,13 +48667,10 @@ void cGrammar_galgas_33_Grammar::nt_map_5F_insert_5F_setter_5F_declaration_ (GAL
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_sortedlist_5F_sort_5F_descriptor_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 138 :
-      rule_galgas_33_DeclarationsSyntax_sortedlist_5F_sort_5F_descriptor_i29_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 138) {
+  rule_galgas_33_DeclarationsSyntax_sortedlist_5F_sort_5F_descriptor_i29_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -48817,13 +48703,10 @@ void cGrammar_galgas_33_Grammar::nt_sortedlist_5F_sort_5F_descriptor_ (GALGAS_so
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_type_5F_definition_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 141 :
-      rule_galgas_33_DeclarationsSyntax_type_5F_definition_i32_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 141) {
+  rule_galgas_33_DeclarationsSyntax_type_5F_definition_i32_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -48996,13 +48879,10 @@ void cGrammar_galgas_33_Grammar::nt_method_5F_declaration_ (const GALGAS_lstring
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_acces_5F_control_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 168 :
-      rule_galgas_33_DeclarationsSyntax_acces_5F_control_i59_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 168) {
+  rule_galgas_33_DeclarationsSyntax_acces_5F_control_i59_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49035,13 +48915,10 @@ void cGrammar_galgas_33_Grammar::nt_acces_5F_control_ (GALGAS_AccessControlAST &
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_lexical_5F_indexing_5F_declaration_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 171 :
-      rule_galgas_33_LexiqueComponentSyntax_lexical_5F_indexing_5F_declaration_i2_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 171) {
+  rule_galgas_33_LexiqueComponentSyntax_lexical_5F_indexing_5F_declaration_i2_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49074,13 +48951,10 @@ void cGrammar_galgas_33_Grammar::nt_lexical_5F_indexing_5F_declaration_ (GALGAS_
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_lexical_5F_message_5F_declaration_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 172 :
-      rule_galgas_33_LexiqueComponentSyntax_lexical_5F_message_5F_declaration_i3_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 172) {
+  rule_galgas_33_LexiqueComponentSyntax_lexical_5F_message_5F_declaration_i3_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49113,13 +48987,10 @@ void cGrammar_galgas_33_Grammar::nt_lexical_5F_message_5F_declaration_ (GALGAS_l
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_lexical_5F_implicit_5F_rule_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 173 :
-      rule_galgas_33_LexiqueComponentSyntax_lexical_5F_implicit_5F_rule_i4_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 173) {
+  rule_galgas_33_LexiqueComponentSyntax_lexical_5F_implicit_5F_rule_i4_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49152,13 +49023,10 @@ void cGrammar_galgas_33_Grammar::nt_lexical_5F_implicit_5F_rule_ (GALGAS_lexical
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_lexical_5F_explicit_5F_rule_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 174 :
-      rule_galgas_33_LexiqueComponentSyntax_lexical_5F_explicit_5F_rule_i5_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 174) {
+  rule_galgas_33_LexiqueComponentSyntax_lexical_5F_explicit_5F_rule_i5_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49311,13 +49179,10 @@ void cGrammar_galgas_33_Grammar::nt_lexical_5F_instruction_ (GALGAS_lexicalInstr
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_repeat_5F_while_5F_branch_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 176 :
-      rule_galgas_33_LexiqueComponentSyntax_repeat_5F_while_5F_branch_i7_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 176) {
+  rule_galgas_33_LexiqueComponentSyntax_repeat_5F_while_5F_branch_i7_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49416,13 +49281,10 @@ void cGrammar_galgas_33_Grammar::nt_lexical_5F_output_5F_effective_5F_argument_ 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_lexical_5F_expression_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 181 :
-      rule_galgas_33_LexiqueComponentSyntax_lexical_5F_expression_i12_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 181) {
+  rule_galgas_33_LexiqueComponentSyntax_lexical_5F_expression_i12_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49455,13 +49317,10 @@ void cGrammar_galgas_33_Grammar::nt_lexical_5F_expression_ (GALGAS_lexicalExpres
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_lexical_5F_term_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 182 :
-      rule_galgas_33_LexiqueComponentSyntax_lexical_5F_term_i13_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 182) {
+  rule_galgas_33_LexiqueComponentSyntax_lexical_5F_term_i13_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49560,13 +49419,10 @@ void cGrammar_galgas_33_Grammar::nt_lexical_5F_factor_ (GALGAS_lexicalExpression
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_lexical_5F_list_5F_declaration_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 187 :
-      rule_galgas_33_LexiqueComponentSyntax_lexical_5F_list_5F_declaration_i18_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 187) {
+  rule_galgas_33_LexiqueComponentSyntax_lexical_5F_list_5F_declaration_i18_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49599,13 +49455,10 @@ void cGrammar_galgas_33_Grammar::nt_lexical_5F_list_5F_declaration_ (GALGAS_lexi
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_lexical_5F_list_5F_entry_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 188 :
-      rule_galgas_33_LexiqueComponentSyntax_lexical_5F_list_5F_entry_i19_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 188) {
+  rule_galgas_33_LexiqueComponentSyntax_lexical_5F_list_5F_entry_i19_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49638,13 +49491,10 @@ void cGrammar_galgas_33_Grammar::nt_lexical_5F_list_5F_entry_ (GALGAS_lexicalLis
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_lexical_5F_attribute_5F_declaration_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 189 :
-      rule_galgas_33_LexiqueComponentSyntax_lexical_5F_attribute_5F_declaration_i20_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 189) {
+  rule_galgas_33_LexiqueComponentSyntax_lexical_5F_attribute_5F_declaration_i20_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49677,13 +49527,10 @@ void cGrammar_galgas_33_Grammar::nt_lexical_5F_attribute_5F_declaration_ (GALGAS
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_terminal_5F_declaration_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 190 :
-      rule_galgas_33_LexiqueComponentSyntax_terminal_5F_declaration_i21_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 190) {
+  rule_galgas_33_LexiqueComponentSyntax_terminal_5F_declaration_i21_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49716,13 +49563,10 @@ void cGrammar_galgas_33_Grammar::nt_terminal_5F_declaration_ (GALGAS_terminalDec
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_style_5F_declaration_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 191 :
-      rule_galgas_33_LexiqueComponentSyntax_style_5F_declaration_i22_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 191) {
+  rule_galgas_33_LexiqueComponentSyntax_style_5F_declaration_i22_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49755,13 +49599,10 @@ void cGrammar_galgas_33_Grammar::nt_style_5F_declaration_ (GALGAS_lexicalStyleLi
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_template_5F_delimitor_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 193 :
-      rule_galgas_33_LexiqueComponentSyntax_template_5F_delimitor_i24_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 193) {
+  rule_galgas_33_LexiqueComponentSyntax_template_5F_delimitor_i24_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49794,13 +49635,10 @@ void cGrammar_galgas_33_Grammar::nt_template_5F_delimitor_ (GALGAS_templateDelim
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_template_5F_replacement_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 194 :
-      rule_galgas_33_LexiqueComponentSyntax_template_5F_replacement_i25_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 194) {
+  rule_galgas_33_LexiqueComponentSyntax_template_5F_replacement_i25_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49881,13 +49719,10 @@ void cGrammar_galgas_33_Grammar::nt_lexical_5F_send_5F_instruction_ (GALGAS_lexi
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_option_5F_declaration_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 207 :
-      rule_galgas_33_OptionComponentSyntax_option_5F_declaration_i1_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 207) {
+  rule_galgas_33_OptionComponentSyntax_option_5F_declaration_i1_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49920,13 +49755,10 @@ void cGrammar_galgas_33_Grammar::nt_option_5F_declaration_ (GALGAS_commandLineOp
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_gui_5F_with_5F_lexique_5F_declaration_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 209 :
-      rule_galgas_33_GuiComponentSyntax_gui_5F_with_5F_lexique_5F_declaration_i1_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 209) {
+  rule_galgas_33_GuiComponentSyntax_gui_5F_with_5F_lexique_5F_declaration_i1_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49959,13 +49791,10 @@ void cGrammar_galgas_33_Grammar::nt_gui_5F_with_5F_lexique_5F_declaration_ (GALG
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_gui_5F_with_5F_option_5F_declaration_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 210 :
-      rule_galgas_33_GuiComponentSyntax_gui_5F_with_5F_option_5F_declaration_i2_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 210) {
+  rule_galgas_33_GuiComponentSyntax_gui_5F_with_5F_option_5F_declaration_i2_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -49998,13 +49827,10 @@ void cGrammar_galgas_33_Grammar::nt_gui_5F_with_5F_option_5F_declaration_ (GALGA
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_gui_5F_attributes_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 211 :
-      rule_galgas_33_GuiComponentSyntax_gui_5F_attributes_i3_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 211) {
+  rule_galgas_33_GuiComponentSyntax_gui_5F_attributes_i3_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -50037,13 +49863,10 @@ void cGrammar_galgas_33_Grammar::nt_gui_5F_attributes_ (GALGAS_guiSimpleAttribut
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_nonterminal_5F_declaration_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 214 :
-      rule_galgas_33_SyntaxComponentSyntax_nonterminal_5F_declaration_i2_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 214) {
+  rule_galgas_33_SyntaxComponentSyntax_nonterminal_5F_declaration_i2_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -50076,13 +49899,10 @@ void cGrammar_galgas_33_Grammar::nt_nonterminal_5F_declaration_ (GALGAS_nontermi
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_syntax_5F_rule_5F_label_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 215 :
-      rule_galgas_33_SyntaxComponentSyntax_syntax_5F_rule_5F_label_i3_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 215) {
+  rule_galgas_33_SyntaxComponentSyntax_syntax_5F_rule_5F_label_i3_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -50116,13 +49936,10 @@ void cGrammar_galgas_33_Grammar::nt_syntax_5F_rule_5F_label_ (const GALGAS_lstri
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_syntax_5F_rule_5F_declaration_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 216 :
-      rule_galgas_33_SyntaxComponentSyntax_syntax_5F_rule_5F_declaration_i4_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 216) {
+  rule_galgas_33_SyntaxComponentSyntax_syntax_5F_rule_5F_declaration_i4_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -50155,13 +49972,10 @@ void cGrammar_galgas_33_Grammar::nt_syntax_5F_rule_5F_declaration_ (GALGAS_synta
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_syntax_5F_instruction_5F_list_5F_ggs_33__parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 217 :
-      rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_5F_list_5F_ggs_33__i5_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 217) {
+  rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_5F_list_5F_ggs_33__i5_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -50296,13 +50110,10 @@ void cGrammar_galgas_33_Grammar::nt_syntax_5F_instruction_5F_ggs_33__ (GALGAS_sy
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_terminal_5F_instruction_5F_indexing_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 222 :
-      rule_galgas_33_SyntaxComponentSyntax_terminal_5F_instruction_5F_indexing_i10_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 222) {
+  rule_galgas_33_SyntaxComponentSyntax_terminal_5F_instruction_5F_indexing_i10_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 
@@ -50383,13 +50194,10 @@ void cGrammar_galgas_33_Grammar::nt_branchOfParseWhithInstruction_ (GALGAS_synta
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_galgas_33_Grammar::nt_grammar_5F_start_5F_symbol_5F_label_parse (C_Lexique_galgasScanner * inLexique) {
-  switch (inLexique->nextProductionIndex ()) {
-  case 230 :
-      rule_galgas_33_GrammarComponentSyntax_grammar_5F_start_5F_symbol_5F_label_i1_parse(inLexique) ;
-    break ;
-  default :
+  if (inLexique->nextProductionIndex () == 230) {
+  rule_galgas_33_GrammarComponentSyntax_grammar_5F_start_5F_symbol_5F_label_i1_parse(inLexique) ;
+  }else{
     inLexique->internalBottomUpParserError (HERE) ;
-    break ;
   }
 }
 

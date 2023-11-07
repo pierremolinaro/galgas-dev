@@ -2,7 +2,7 @@
 //
 //     Routines for SLR grammar computations                                                     
 //
-//  Copyright (C) 2002, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 2002, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -818,12 +818,52 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
     ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                  << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()
                  << "_parse (" ;
-      if (inSyntaxDirectedTranslationVarName.length() > 0) {
-        ioCppFileContents << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
+    if (inSyntaxDirectedTranslationVarName.length() > 0) {
+      ioCppFileContents << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
+    }
+    ioCppFileContents << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
+                      << ") {\n" ;
+    if (first < 0) { // first<0 means the non terminal symbol is unuseful
+      ioCppFileContents <<  "  inLexique->internalBottomUpParserError (HERE) ;\n" ;
+    }else{
+      const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
+      MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
+      if (first == last) {
+        const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
+        ioCppFileContents << "  if (inLexique->nextProductionIndex () == "<< cStringWithSigned (ip) << ") {\n" ;
+        inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
+                                                                    inVocabulary,
+                                                                    "parse",
+                                                                    ioCppFileContents,
+                                                                    inSyntaxDirectedTranslationVarName) ;
+        ioCppFileContents << "  }else{\n"
+                             "    inLexique->internalBottomUpParserError (HERE) ;\n"
+                             "  }\n" ;
+      }else{
+        ioCppFileContents << "  switch (inLexique->nextProductionIndex ()) {\n" ;
+        for (int32_t j=first ; j<=last ; j++) {
+          const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
+          ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
+          inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
+                                                                      inVocabulary,
+                                                                      "parse",
+                                                                      ioCppFileContents,
+                                                                      inSyntaxDirectedTranslationVarName) ;
+          ioCppFileContents << "    break ;\n" ;
+        }
+        ioCppFileContents << "  default :\n"
+                             "    inLexique->internalBottomUpParserError (HERE) ;\n"
+                             "    break ;\n"
+                             "  }\n" ;
       }
-      ioCppFileContents << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
-                     << ") {\n"
-                        "  switch (inLexique->nextProductionIndex ()) {\n" ;
+    }
+    ioCppFileContents << "}\n\n" ;
+  //--- Indexing
+    ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+                 << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()
+                 << "_indexing (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
+                 << ") {\n"
+                    "  switch (inLexique->nextProductionIndex ()) {\n" ;
     if (first >= 0) { // first<0 means the non terminal symbol is unuseful
       MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
       const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
@@ -833,9 +873,9 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
         inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                     inVocabulary,
-                                                                    "parse",
+                                                                    "indexing",
                                                                     ioCppFileContents,
-                                                                    inSyntaxDirectedTranslationVarName) ;
+                                                                    "") ;
         ioCppFileContents << "    break ;\n" ;
       }
     }
@@ -844,34 +884,6 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                       "    break ;\n"
                       "  }\n"
                       "}\n\n" ;
-  //--- Indexing
-//    if (inHasIndexing) {
-      ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                   << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()
-                   << "_indexing (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
-                   << ") {\n"
-                      "  switch (inLexique->nextProductionIndex ()) {\n" ;
-      if (first >= 0) { // first<0 means the non terminal symbol is unuseful
-        MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
-        const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-        MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
-        for (int32_t j=first ; j<=last ; j++) {
-          const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
-          ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
-          inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
-                                                                      inVocabulary,
-                                                                      "indexing",
-                                                                      ioCppFileContents,
-                                                                      "") ;
-          ioCppFileContents << "    break ;\n" ;
-        }
-      }
-      ioCppFileContents << "  default :\n"
-                        "    inLexique->internalBottomUpParserError (HERE) ;\n"
-                        "    break ;\n"
-                        "  }\n"
-                        "}\n\n" ;
-//    }
     cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kENUMERATION_UP) ;
     while (currentAltForNonTerminal2.hasCurrentObject ()) {
       ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
@@ -881,11 +893,8 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
       cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal2.current_mFormalParametersList (HERE), kENUMERATION_UP) ;
       int16_t numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
-        switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
-        case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
+        if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn) {
           ioCppFileContents << "const " ;
-          break ;
-        default : break ;
         }
         ioCppFileContents << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation () ;
         switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
@@ -999,11 +1008,8 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         int32_t numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           ioCppFileContents << ",\n                                " ;
-          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
-          case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
+          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn) {
             ioCppFileContents << "const " ;
-            break ;
-          default : break ;
           }
           ioCppFileContents << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation () ;
           switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
@@ -1087,11 +1093,8 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           ioCppFileContents << ",\n                                " ;
-          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
-          case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
+          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn) {
             ioCppFileContents << "const " ;
-            break ;
-          default : break ;
           }
           ioCppFileContents << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation () ;
           switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
