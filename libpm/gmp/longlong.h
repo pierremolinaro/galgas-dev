@@ -53,6 +53,9 @@ see https://www.gnu.org/licenses/.  */
    expected.
 */
 
+// pragma once added by PM (nov 7 2023)
+#pragma once
+
 #define __BITS4 (W_TYPE_SIZE / 4)
 #define __ll_B ((UWtype) 1 << (W_TYPE_SIZE / 2))
 #define __ll_lowpart(t) ((UWtype) (t) & (__ll_B - 1))

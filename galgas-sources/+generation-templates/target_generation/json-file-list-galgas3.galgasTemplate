@@ -31,7 +31,6 @@ end
        "C_ColoredConsole.cpp",
        "C_ConsoleOut.cpp",
        "C_ErrorOut.cpp",
-       "C_TCPSocketOut.cpp",
        "unicode_character_cpp.cpp",
        "unicode_string_routines.cpp",
        "C_String.cpp",

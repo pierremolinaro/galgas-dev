@@ -1147,9 +1147,7 @@ proc updateGalgasTargets
         !"C_ConsoleOut.cpp",
         !"C_ConsoleOut.h",
         !"C_ColoredConsole.cpp",
-        !"C_ColoredConsole.h",
-        !"C_TCPSocketOut.cpp",
-        !"C_TCPSocketOut.h"
+        !"C_ColoredConsole.h"
       }
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool

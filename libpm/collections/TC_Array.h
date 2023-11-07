@@ -4,6 +4,10 @@
 //
 //  This file is part of libpm library                                                           
 //
+//  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
+//
+//  e-mail : pierre@pcmolinaro.name
+//
 //  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General
 //  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)
 //  any later version.
@@ -118,12 +122,10 @@ template <typename TYPE> class TC_Array {
 
 //--- Call operators
   public: TYPE & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) ;
-//  public: const TYPE & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
-  public: const TYPE operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
+  public: TYPE operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
 
 //--- Element access (with index checking)
-  public: const TYPE lastObject (LOCATION_ARGS) const ;
-//  public: TYPE & lastObject (LOCATION_ARGS) ;
+  public: TYPE lastObject (LOCATION_ARGS) const ;
 
   public: void setObjectAtIndex (const TYPE & inObject,
                                   const int32_t inIndex
@@ -352,14 +354,7 @@ template <typename TYPE> TYPE & TC_Array <TYPE>::operator () (const int32_t inIn
 
 //----------------------------------------------------------------------------------------------------------------------
 
-//template <typename TYPE> const TYPE & TC_Array <TYPE>::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
-//  macroValidPointer (mSharedArray) ;
-//  return mSharedArray->operator () (inIndex COMMA_THERE) ;
-//}    
-
-//----------------------------------------------------------------------------------------------------------------------
-
-template <typename TYPE> const TYPE TC_Array <TYPE>::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
+template <typename TYPE> TYPE TC_Array <TYPE>::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
   macroValidPointer (mSharedArray) ;
   return mSharedArray->operator () (inIndex COMMA_THERE) ;
 }    
@@ -370,17 +365,10 @@ template <typename TYPE> const TYPE TC_Array <TYPE>::operator () (const int32_t 
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> const TYPE TC_Array <TYPE>::lastObject (LOCATION_ARGS) const {
+template <typename TYPE> TYPE TC_Array <TYPE>::lastObject (LOCATION_ARGS) const {
   macroValidPointer (mSharedArray) ;
   return mSharedArray->lastObject (THERE) ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-//template <typename TYPE> TYPE & TC_Array <TYPE>::lastObject (LOCATION_ARGS) {
-//  macroValidPointer (mSharedArray) ;
-//  return mSharedArray->lastObject (THERE) ;
-//}    
 
 //----------------------------------------------------------------------------------------------------------------------
 //

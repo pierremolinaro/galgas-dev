@@ -6,7 +6,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 1997, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -257,7 +257,7 @@ template <typename TYPE> class TC_UniqueArray {
   public: void reverseSortArrayUsingFunction (int32_t (* inSortFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) ;
 
 //--- Element access (with index checking)
-  public: const TYPE lastObject (LOCATION_ARGS) const ;
+  public: TYPE lastObject (LOCATION_ARGS) const ;
   public: TYPE & lastObject (LOCATION_ARGS) ;
 
   public: void setObjectAtIndex (const TYPE & inObject,
@@ -266,7 +266,7 @@ template <typename TYPE> class TC_UniqueArray {
 
   public: TYPE & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) ;
 
-  public: const TYPE & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
+  public: TYPE & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
 
 //--- Private methods
   private: void internalSortArrayUsingOperators (const int32_t inFirst,
@@ -857,7 +857,7 @@ template <typename TYPE> TYPE & TC_UniqueArray <TYPE>::operator () (const int32_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> const TYPE & TC_UniqueArray <TYPE>::
+template <typename TYPE> TYPE & TC_UniqueArray <TYPE>::
 operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (inIndex COMMA_THERE) ;
@@ -867,7 +867,7 @@ operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> const TYPE TC_UniqueArray <TYPE>::lastObject (LOCATION_ARGS) const {
+template <typename TYPE> TYPE TC_UniqueArray <TYPE>::lastObject (LOCATION_ARGS) const {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (mCount-1 COMMA_THERE) ;
   #endif
