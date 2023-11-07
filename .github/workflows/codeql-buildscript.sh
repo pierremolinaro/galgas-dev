@@ -2,7 +2,7 @@
 
 ROOT_DIR=$PWD
 
-cd "$ROOT_DIR/goil/makefile-unix/"
+cd "$ROOT_DIR/makefile-unix/"
 
 python3 clean.py
 
