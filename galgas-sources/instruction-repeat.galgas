@@ -307,23 +307,41 @@ override method @repeatInstructionForGeneration generateInstruction
     !?ioGeneratedCode
   )
   [!?ioGeneratedCode incIndentation !2]
-  ioGeneratedCode += "switch (select_" + [self.mSyntaxComponentName identifierRepresentation] + "_" + [self.mChoiceIndex string] + " (" + compilerCppName () + ")) {\n"
-  for (mInstructionList *) in self.mListOfSemanticInstructionListForGeneration do(IDX)
-    ioGeneratedCode += "case " + [IDX + 2 string] + ": {\n"
+  if [self.mListOfSemanticInstructionListForGeneration length] == 1 then
+    ioGeneratedCode += "if (select_" + [self.mSyntaxComponentName identifierRepresentation]
+    ioGeneratedCode += "_" + [self.mChoiceIndex string] + " (" + compilerCppName () + ") == 2) {\n"
+    let instructionList = [self.mListOfSemanticInstructionListForGeneration mInstructionListAtIndex !0]
     generateInstructionList (
       !?ioInclusionSet
-      !mInstructionList
+      !instructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     )
-    ioGeneratedCode += "} break ;\n"
+    ioGeneratedCode += "}else{\n"
+    ioGeneratedCode += "  " + repeatFlagCppName + " = false ;\n"
+    ioGeneratedCode += "}\n"  
+  else
+    ioGeneratedCode += "switch (select_" + [self.mSyntaxComponentName identifierRepresentation]
+    ioGeneratedCode += "_" + [self.mChoiceIndex string] + " (" + compilerCppName () + ")) {\n"
+    for (mInstructionList *) in self.mListOfSemanticInstructionListForGeneration do(IDX)
+      ioGeneratedCode += "case " + [IDX + 2 string] + ": {\n"
+      generateInstructionList (
+        !?ioInclusionSet
+        !mInstructionList
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        !inGenerateSyntaxDirectedTranslationString
+        !?ioGeneratedCode
+      )
+      ioGeneratedCode += "} break ;\n"
+    end
+    ioGeneratedCode += "default:\n"
+    ioGeneratedCode += "  " + repeatFlagCppName + " = false ;\n"
+    ioGeneratedCode += "  break ;\n"
+    ioGeneratedCode += "}\n"
   end
-  ioGeneratedCode += "default:\n"
-  ioGeneratedCode += "  " + repeatFlagCppName + " = false ;\n"
-  ioGeneratedCode += "  break ;\n"
-  ioGeneratedCode += "}\n"
   [!?ioGeneratedCode decIndentation !2]
   ioGeneratedCode += "}\n"
 }

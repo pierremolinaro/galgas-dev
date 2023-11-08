@@ -10685,18 +10685,15 @@ void cParser_templateSyntax::rule_templateSyntax_relation_5F_term_5F_tpl_i1_ (GA
   nt_relation_5F_factor_5F_tpl_ (outArgument_outExpression, inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_1 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_1 (inCompiler) == 2) {
       GALGAS_location var_operatorLocation_2771 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 58)) ;
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__26_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 59)) ;
       GALGAS_templateExpressionAST var_leftOperand_2844 = outArgument_outExpression ;
       GALGAS_templateExpressionAST var_rightOperand_2902 ;
       nt_relation_5F_factor_5F_tpl_ (var_rightOperand_2902, inCompiler) ;
       outArgument_outExpression = GALGAS_templateAndOperationAST::constructor_new (var_operatorLocation_2771, var_leftOperand_2844, var_rightOperand_2902  COMMA_SOURCE_FILE ("templateSyntax.galgas", 63)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -10707,14 +10704,11 @@ void cParser_templateSyntax::rule_templateSyntax_relation_5F_term_5F_tpl_i1_pars
   nt_relation_5F_factor_5F_tpl_parse (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_1 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_1 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__26_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 59)) ;
       nt_relation_5F_factor_5F_tpl_parse (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->resetTemplateString () ;
@@ -10726,14 +10720,11 @@ void cParser_templateSyntax::rule_templateSyntax_relation_5F_term_5F_tpl_i1_inde
   nt_relation_5F_factor_5F_tpl_indexing (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_1 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_1 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__26_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 59)) ;
       nt_relation_5F_factor_5F_tpl_indexing (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -11083,16 +11074,13 @@ void cParser_templateSyntax::rule_templateSyntax_factor_5F_tpl_i5_ (GALGAS_templ
   nt_primary_5F_tpl_ (outArgument_outExpression, inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_5 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_5 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 206)) ;
       GALGAS_lstring var_structFieldName_9217 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 207)) ;
       outArgument_outExpression = GALGAS_structFieldAccessTemplateExpressionAST::constructor_new (var_structFieldName_9217.readProperty_location (), outArgument_outExpression, var_structFieldName_9217  COMMA_SOURCE_FILE ("templateSyntax.galgas", 208)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -11103,14 +11091,11 @@ void cParser_templateSyntax::rule_templateSyntax_factor_5F_tpl_i5_parse (C_Lexiq
   nt_primary_5F_tpl_parse (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_5 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_5 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 206)) ;
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 207)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->resetTemplateString () ;
@@ -11122,14 +11107,11 @@ void cParser_templateSyntax::rule_templateSyntax_factor_5F_tpl_i5_indexing (C_Le
   nt_primary_5F_tpl_indexing (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_5 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_5 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 206)) ;
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas", 207)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -11390,12 +11372,9 @@ void cParser_templateSyntax::rule_templateSyntax_primary_5F_tpl_i16_ (GALGAS_tem
     GALGAS_lstring var_literalString_15600 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 343)) ;
     var_literalStringList_15539.addAssign_operation (var_literalString_15600.readProperty_string ()  COMMA_SOURCE_FILE ("templateSyntax.galgas", 344)) ;
-    switch (select_templateSyntax_6 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
+    if (select_templateSyntax_6 (inCompiler) == 2) {
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   outArgument_outExpression = GALGAS_templateLiteralStringExpressionAST::constructor_new (var_literalStringList_15539, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 347))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 347)) ;
@@ -11407,12 +11386,9 @@ void cParser_templateSyntax::rule_templateSyntax_primary_5F_tpl_i16_parse (C_Lex
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 343)) ;
-    switch (select_templateSyntax_6 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
+    if (select_templateSyntax_6 (inCompiler) == 2) {
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->resetTemplateString () ;
@@ -11424,12 +11400,9 @@ void cParser_templateSyntax::rule_templateSyntax_primary_5F_tpl_i16_indexing (C_
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 343)) ;
-    switch (select_templateSyntax_6 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
+    if (select_templateSyntax_6 (inCompiler) == 2) {
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -11744,17 +11717,14 @@ void cParser_templateSyntax::rule_templateSyntax_output_5F_expression_5F_list_5F
   outArgument_outExpressionList = GALGAS_templateExpressionListAST::constructor_emptyList (SOURCE_FILE ("templateSyntax.galgas", 478)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_10 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_10 (inCompiler) == 2) {
       GALGAS_lstring var_selector_20791 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__21_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 481)) ;
       GALGAS_templateExpressionAST var_expression_20849 ;
       nt_expression_5F_tpl_ (var_expression_20849, inCompiler) ;
       outArgument_outExpressionList.addAssign_operation (var_selector_20791, var_expression_20849, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 483))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 483)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -11764,14 +11734,11 @@ void cParser_templateSyntax::rule_templateSyntax_output_5F_expression_5F_list_5F
 void cParser_templateSyntax::rule_templateSyntax_output_5F_expression_5F_list_5F_tpl_i20_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_10 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_10 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__21_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 481)) ;
       nt_expression_5F_tpl_parse (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->resetTemplateString () ;
@@ -11782,14 +11749,11 @@ void cParser_templateSyntax::rule_templateSyntax_output_5F_expression_5F_list_5F
 void cParser_templateSyntax::rule_templateSyntax_output_5F_expression_5F_list_5F_tpl_i20_indexing (C_Lexique_galgasTemplateScanner * inCompiler) {
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_10 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_10 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__21_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 481)) ;
       nt_expression_5F_tpl_indexing (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -11885,13 +11849,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i24_ (G
     {
     routine_enterTemplateString (var_blockInstructionList_22599, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 526)) ;
     }
-    switch (select_templateSyntax_11 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_11 (inCompiler) == 2) {
       nt_template_5F_instruction_ (var_blockInstructionList_22599, inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("templateSyntax.galgas", 531)) ;
@@ -11906,13 +11867,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i24_par
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 522)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_11 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_11 (inCompiler) == 2) {
       nt_template_5F_instruction_parse (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("templateSyntax.galgas", 531)) ;
@@ -11927,13 +11885,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i24_ind
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("templateSyntax.galgas", 522)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_11 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_11 (inCompiler) == 2) {
       nt_template_5F_instruction_indexing (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("templateSyntax.galgas", 531)) ;
@@ -11956,23 +11911,17 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i25_ (G
       {
       routine_enterTemplateString (var_instructionList_23307, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 548)) ;
       }
-      switch (select_templateSyntax_13 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_13 (inCompiler) == 2) {
         nt_template_5F_instruction_ (var_instructionList_23307, inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_1 = false ;
-        break ;
       }
     }
     var_templateInstructionIfBranchList_23141.addAssign_operation (var_expression_23249, var_instructionList_23307  COMMA_SOURCE_FILE ("templateSyntax.galgas", 552)) ;
-    switch (select_templateSyntax_12 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_12 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_elsif COMMA_SOURCE_FILE ("templateSyntax.galgas", 554)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   GALGAS_templateInstructionListAST var_elseInstructionList_23588 = GALGAS_templateInstructionListAST::constructor_emptyList (SOURCE_FILE ("templateSyntax.galgas", 557)) ;
@@ -11986,13 +11935,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i25_ (G
       {
       routine_enterTemplateString (var_elseInstructionList_23588, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 562)) ;
       }
-      switch (select_templateSyntax_15 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_15 (inCompiler) == 2) {
         nt_template_5F_instruction_ (var_elseInstructionList_23588, inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_2 = false ;
-        break ;
       }
     }
   } break ;
@@ -12013,22 +11959,16 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i25_par
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_then COMMA_SOURCE_FILE ("templateSyntax.galgas", 545)) ;
     bool repeatFlag_1 = true ;
     while (repeatFlag_1) {
-      switch (select_templateSyntax_13 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_13 (inCompiler) == 2) {
         nt_template_5F_instruction_parse (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_1 = false ;
-        break ;
       }
     }
-    switch (select_templateSyntax_12 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_12 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_elsif COMMA_SOURCE_FILE ("templateSyntax.galgas", 554)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   switch (select_templateSyntax_14 (inCompiler)) {
@@ -12038,13 +11978,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i25_par
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_else COMMA_SOURCE_FILE ("templateSyntax.galgas", 560)) ;
     bool repeatFlag_2 = true ;
     while (repeatFlag_2) {
-      switch (select_templateSyntax_15 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_15 (inCompiler) == 2) {
         nt_template_5F_instruction_parse (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_2 = false ;
-        break ;
       }
     }
   } break ;
@@ -12065,22 +12002,16 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i25_ind
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_then COMMA_SOURCE_FILE ("templateSyntax.galgas", 545)) ;
     bool repeatFlag_1 = true ;
     while (repeatFlag_1) {
-      switch (select_templateSyntax_13 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_13 (inCompiler) == 2) {
         nt_template_5F_instruction_indexing (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_1 = false ;
-        break ;
       }
     }
-    switch (select_templateSyntax_12 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_12 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_elsif COMMA_SOURCE_FILE ("templateSyntax.galgas", 554)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   switch (select_templateSyntax_14 (inCompiler)) {
@@ -12090,13 +12021,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i25_ind
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_else COMMA_SOURCE_FILE ("templateSyntax.galgas", 560)) ;
     bool repeatFlag_2 = true ;
     while (repeatFlag_2) {
-      switch (select_templateSyntax_15 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_15 (inCompiler) == 2) {
         nt_template_5F_instruction_indexing (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_2 = false ;
-        break ;
       }
     }
   } break ;
@@ -12117,13 +12045,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_parser_5F_start_5F_
     {
     routine_enterTemplateString (outArgument_outResultingInstructionList, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 579)) ;
     }
-    switch (select_templateSyntax_16 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_16 (inCompiler) == 2) {
       nt_template_5F_instruction_ (outArgument_outResultingInstructionList, inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -12133,13 +12058,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_parser_5F_start_5F_
 void cParser_templateSyntax::rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i26_parse (C_Lexique_galgasTemplateScanner * inCompiler) {
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_16 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_16 (inCompiler) == 2) {
       nt_template_5F_instruction_parse (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->resetTemplateString () ;
@@ -12150,13 +12072,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_parser_5F_start_5F_
 void cParser_templateSyntax::rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i26_indexing (C_Lexique_galgasTemplateScanner * inCompiler) {
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_16 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_16 (inCompiler) == 2) {
       nt_template_5F_instruction_indexing (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
 }
@@ -12337,12 +12256,9 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_enumerate
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     nt_for_5F_instruction_5F_element_ (var_enumeration_3341, inCompiler) ;
-    switch (select_templateSyntax_18 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
+    if (select_templateSyntax_18 (inCompiler) == 2) {
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   GALGAS_location var_endOfProperties_3462 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 89)) ;
@@ -12374,12 +12290,9 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_enumerate
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     nt_for_5F_instruction_5F_element_parse (inCompiler) ;
-    switch (select_templateSyntax_18 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
+    if (select_templateSyntax_18 (inCompiler) == 2) {
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 90)) ;
@@ -12405,12 +12318,9 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_enumerate
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     nt_for_5F_instruction_5F_element_indexing (inCompiler) ;
-    switch (select_templateSyntax_18 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
+    if (select_templateSyntax_18 (inCompiler) == 2) {
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("template-for-instruction.galgas", 90)) ;
@@ -12463,13 +12373,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ (G
       {
       routine_enterTemplateString (var_beforeInstructionList_4385, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 125)) ;
       }
-      switch (select_templateSyntax_22 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_22 (inCompiler) == 2) {
         nt_template_5F_instruction_ (var_beforeInstructionList_4385, inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_0 = false ;
-        break ;
       }
     }
   } break ;
@@ -12497,13 +12404,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ (G
     {
     routine_enterTemplateString (var_doInstructionList_4833, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 142)) ;
     }
-    switch (select_templateSyntax_24 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_24 (inCompiler) == 2) {
       nt_template_5F_instruction_ (var_doInstructionList_4833, inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_1 = false ;
-      break ;
     }
   }
   GALGAS_templateInstructionListAST var_betweenInstructionList_5039 = GALGAS_templateInstructionListAST::constructor_emptyList (SOURCE_FILE ("template-for-instruction.galgas", 147)) ;
@@ -12517,13 +12421,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ (G
       {
       routine_enterTemplateString (var_betweenInstructionList_5039, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 152)) ;
       }
-      switch (select_templateSyntax_26 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_26 (inCompiler) == 2) {
         nt_template_5F_instruction_ (var_betweenInstructionList_5039, inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_2 = false ;
-        break ;
       }
     }
   } break ;
@@ -12541,13 +12442,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ (G
       {
       routine_enterTemplateString (var_afterInstructionList_5310, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 163)) ;
       }
-      switch (select_templateSyntax_28 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_28 (inCompiler) == 2) {
         nt_template_5F_instruction_ (var_beforeInstructionList_4385, inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_3 = false ;
-        break ;
       }
     }
   } break ;
@@ -12582,13 +12480,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_par
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_before COMMA_SOURCE_FILE ("template-for-instruction.galgas", 123)) ;
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
-      switch (select_templateSyntax_22 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_22 (inCompiler) == 2) {
         nt_template_5F_instruction_parse (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_0 = false ;
-        break ;
       }
     }
   } break ;
@@ -12609,13 +12504,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_par
   }
   bool repeatFlag_1 = true ;
   while (repeatFlag_1) {
-    switch (select_templateSyntax_24 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_24 (inCompiler) == 2) {
       nt_template_5F_instruction_parse (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_1 = false ;
-      break ;
     }
   }
   switch (select_templateSyntax_25 (inCompiler)) {
@@ -12625,13 +12517,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_par
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_between COMMA_SOURCE_FILE ("template-for-instruction.galgas", 150)) ;
     bool repeatFlag_2 = true ;
     while (repeatFlag_2) {
-      switch (select_templateSyntax_26 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_26 (inCompiler) == 2) {
         nt_template_5F_instruction_parse (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_2 = false ;
-        break ;
       }
     }
   } break ;
@@ -12645,13 +12534,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_par
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_after COMMA_SOURCE_FILE ("template-for-instruction.galgas", 161)) ;
     bool repeatFlag_3 = true ;
     while (repeatFlag_3) {
-      switch (select_templateSyntax_28 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_28 (inCompiler) == 2) {
         nt_template_5F_instruction_parse (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_3 = false ;
-        break ;
       }
     }
   } break ;
@@ -12686,13 +12572,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ind
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_before COMMA_SOURCE_FILE ("template-for-instruction.galgas", 123)) ;
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
-      switch (select_templateSyntax_22 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_22 (inCompiler) == 2) {
         nt_template_5F_instruction_indexing (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_0 = false ;
-        break ;
       }
     }
   } break ;
@@ -12713,13 +12596,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ind
   }
   bool repeatFlag_1 = true ;
   while (repeatFlag_1) {
-    switch (select_templateSyntax_24 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_24 (inCompiler) == 2) {
       nt_template_5F_instruction_indexing (inCompiler) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_1 = false ;
-      break ;
     }
   }
   switch (select_templateSyntax_25 (inCompiler)) {
@@ -12729,13 +12609,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ind
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_between COMMA_SOURCE_FILE ("template-for-instruction.galgas", 150)) ;
     bool repeatFlag_2 = true ;
     while (repeatFlag_2) {
-      switch (select_templateSyntax_26 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_26 (inCompiler) == 2) {
         nt_template_5F_instruction_indexing (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_2 = false ;
-        break ;
       }
     }
   } break ;
@@ -12749,13 +12626,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ind
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_after COMMA_SOURCE_FILE ("template-for-instruction.galgas", 161)) ;
     bool repeatFlag_3 = true ;
     while (repeatFlag_3) {
-      switch (select_templateSyntax_28 (inCompiler)) {
-      case 2: {
+      if (select_templateSyntax_28 (inCompiler) == 2) {
         nt_template_5F_instruction_indexing (inCompiler) ;
-      } break ;
-      default:
+      }else{
         repeatFlag_3 = false ;
-        break ;
       }
     }
   } break ;
@@ -12776,8 +12650,7 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i33_ (G
   GALGAS_templateInstructionSwitchBranchListAST var_templateInstructionSwitchBranchList_1602 = GALGAS_templateInstructionSwitchBranchListAST::constructor_emptyList (SOURCE_FILE ("template-switch-instruction.galgas", 34)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_29 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_29 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_case COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 37)) ;
       GALGAS_lstringlist var_constantNameList_1723 ;
       GALGAS_switchExtractedValuesListAST var_associatedValuesExtraction_1783 ;
@@ -12789,20 +12662,15 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i33_ (G
         {
         routine_enterTemplateString (var_instructionList_1858, inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 44)) ;
         }
-        switch (select_templateSyntax_30 (inCompiler)) {
-        case 2: {
+        if (select_templateSyntax_30 (inCompiler) == 2) {
           nt_template_5F_instruction_ (var_instructionList_1858, inCompiler) ;
-        } break ;
-        default:
+        }else{
           repeatFlag_1 = false ;
-          break ;
         }
       }
       var_templateInstructionSwitchBranchList_1602.addAssign_operation (var_constantNameList_1723, var_associatedValuesExtraction_1783, var_instructionList_1858, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 48))  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 48)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 50)) ;
@@ -12816,26 +12684,20 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i33_par
   nt_expression_5F_tpl_parse (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_29 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_29 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_case COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 37)) ;
       nt_switch_5F_case_parse (inCompiler) ;
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 41)) ;
       bool repeatFlag_1 = true ;
       while (repeatFlag_1) {
-        switch (select_templateSyntax_30 (inCompiler)) {
-        case 2: {
+        if (select_templateSyntax_30 (inCompiler) == 2) {
           nt_template_5F_instruction_parse (inCompiler) ;
-        } break ;
-        default:
+        }else{
           repeatFlag_1 = false ;
-          break ;
         }
       }
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 50)) ;
@@ -12849,26 +12711,20 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i33_ind
   nt_expression_5F_tpl_indexing (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_templateSyntax_29 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_29 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_case COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 37)) ;
       nt_switch_5F_case_indexing (inCompiler) ;
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 41)) ;
       bool repeatFlag_1 = true ;
       while (repeatFlag_1) {
-        switch (select_templateSyntax_30 (inCompiler)) {
-        case 2: {
+        if (select_templateSyntax_30 (inCompiler) == 2) {
           nt_template_5F_instruction_indexing (inCompiler) ;
-        } break ;
-        default:
+        }else{
           repeatFlag_1 = false ;
-          break ;
         }
       }
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 50)) ;
@@ -12887,13 +12743,10 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_ (GALGAS_lst
     GALGAS_lstring var_constantName_2652 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 67)) ;
     outArgument_outConstantNameList.addAssign_operation (var_constantName_2652  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 68)) ;
-    switch (select_templateSyntax_31 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_31 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2C_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 70)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   outArgument_outAssociatedValuesExtraction = GALGAS_switchExtractedValuesListAST::constructor_emptyList (SOURCE_FILE ("template-switch-instruction.galgas", 72)) ;
@@ -12951,12 +12804,9 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_ (GALGAS_lst
       default:
         break ;
       }
-      switch (select_templateSyntax_33 (inCompiler)) {
-      case 2: {
-      } break ;
-      default:
+      if (select_templateSyntax_33 (inCompiler) == 2) {
+      }else{
         repeatFlag_1 = false ;
-        break ;
       }
     }
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 105)) ;
@@ -12972,13 +12822,10 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_parse (C_Lex
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 67)) ;
-    switch (select_templateSyntax_31 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_31 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2C_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 70)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   switch (select_templateSyntax_32 (inCompiler)) {
@@ -13020,12 +12867,9 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_parse (C_Lex
       default:
         break ;
       }
-      switch (select_templateSyntax_33 (inCompiler)) {
-      case 2: {
-      } break ;
-      default:
+      if (select_templateSyntax_33 (inCompiler) == 2) {
+      }else{
         repeatFlag_1 = false ;
-        break ;
       }
     }
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 105)) ;
@@ -13042,13 +12886,10 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_indexing (C_
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 67)) ;
-    switch (select_templateSyntax_31 (inCompiler)) {
-    case 2: {
+    if (select_templateSyntax_31 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__2C_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 70)) ;
-    } break ;
-    default:
+    }else{
       repeatFlag_0 = false ;
-      break ;
     }
   }
   switch (select_templateSyntax_32 (inCompiler)) {
@@ -13090,12 +12931,9 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_indexing (C_
       default:
         break ;
       }
-      switch (select_templateSyntax_33 (inCompiler)) {
-      case 2: {
-      } break ;
-      default:
+      if (select_templateSyntax_33 (inCompiler) == 2) {
+      }else{
         repeatFlag_1 = false ;
-        break ;
       }
     }
     inCompiler->acceptTerminal (C_Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 105)) ;

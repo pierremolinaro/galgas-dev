@@ -213,8 +213,6 @@ override getter @selectInstructionForGeneration compareInstructionSyntaxSignatur
   ->@bool
 {
   if let si = inTestedInstruction as @selectInstructionForGeneration then
-#  cast inTestedInstruction
-#  case >= @selectInstructionForGeneration si :
     result = true
     if result & ([self.mListOfSemanticInstructionListForGeneration count] != [si.mListOfSemanticInstructionListForGeneration count]) then
       error si.mInstructionLocation
@@ -229,7 +227,6 @@ override getter @selectInstructionForGeneration compareInstructionSyntaxSignatur
       result = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)    
     end
   elsif let si = inTestedInstruction as @syntaxInstructionForGeneration then
-#  case >= @syntaxInstructionForGeneration si :
     error si.mInstructionLocation
       :"syntax signature error; the expected syntax instruction here is a 'select' instruction"
     result = false
@@ -248,29 +245,43 @@ override getter @selectInstructionForGeneration compareInstructionSyntaxSignatur
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @selectInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
-#  ioGeneratedCode .= "//-------- @selectInstructionForGeneration\n" ;
+                          ?!@stringset ioInclusionSet
+                          ?!@uint ioTemporaryVariableIndex
+                          ?!@stringset ioUnusedVariableCppNameSet
+                          ?let @bool inGenerateSyntaxDirectedTranslationString
+                          ?!@string ioGeneratedCode {
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  ioGeneratedCode += "switch (select_" + [self.mSyntaxComponentName identifierRepresentation] + "_" + [self.mChoiceIndex string] + " (" + compilerCppName () + ")) {\n"
-  for (mInstructionList *) in self.mListOfSemanticInstructionListForGeneration do(IDX)
-    ioGeneratedCode += "case " + [IDX + 1 string] + ": {\n"
-    generateInstructionList (
-      !?ioInclusionSet
-      !mInstructionList
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      !inGenerateSyntaxDirectedTranslationString
-      !?ioGeneratedCode
-    )
-    ioGeneratedCode += "} break ;\n"
-  end
-  ioGeneratedCode += "default:\n"
-  ioGeneratedCode += "  break ;\n"
-  ioGeneratedCode += "}\n"
+#  if [self.mListOfSemanticInstructionListForGeneration count] == 1 then
+#    ioGeneratedCode += "if (select_" + [self.mSyntaxComponentName identifierRepresentation] + "_" 
+#    ioGeneratedCode += [self.mChoiceIndex string] + " (" + compilerCppName () + ") == " + [IDX + 1 string] + ") {\n"
+#    generateInstructionList (
+#      !?ioInclusionSet
+#      !mInstructionList
+#      !?ioTemporaryVariableIndex
+#      !?ioUnusedVariableCppNameSet
+#      !inGenerateSyntaxDirectedTranslationString
+#      !?ioGeneratedCode
+#    )
+#    ioGeneratedCode += "}\n" 
+#  else
+    ioGeneratedCode += "switch (select_" + [self.mSyntaxComponentName identifierRepresentation] + "_" 
+    ioGeneratedCode += [self.mChoiceIndex string] + " (" + compilerCppName () + ")) {\n"
+    for (mInstructionList *) in self.mListOfSemanticInstructionListForGeneration do(IDX)
+      ioGeneratedCode += "case " + [IDX + 1 string] + ": {\n"
+      generateInstructionList (
+        !?ioInclusionSet
+        !mInstructionList
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        !inGenerateSyntaxDirectedTranslationString
+        !?ioGeneratedCode
+      )
+      ioGeneratedCode += "} break ;\n"
+    end
+    ioGeneratedCode += "default:\n"
+    ioGeneratedCode += "  break ;\n"
+    ioGeneratedCode += "}\n"
+#  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
