@@ -493,7 +493,6 @@ void C_DirectedGraph::removeEdgesToDominator (LOCATION_ARGS) {
         if (dom.contains (target)) {
           mEdges (node COMMA_HERE).remove (target) ;
           mReverseEdges ((int32_t) target COMMA_HERE).remove ((uint32_t) node) ;
-          // printf ("  %u --> %u\n", node, s (i COMMA_HERE)) ;
         }
       }
     }
@@ -511,18 +510,6 @@ void C_DirectedGraph::removeEdgesToDominator (LOCATION_ARGS) {
 
 void C_DirectedGraph::example (void) {
   C_DirectedGraph g ;
-/*  g.addEdge (1, 2) ;
-  g.addEdge (1, 3) ;
-  g.addEdge (2, 3) ;
-  g.addEdge (3, 4) ;
-  g.addEdge (4, 6) ;
-  g.addEdge (6, 4) ;
-  g.addEdge (10, 4) ;
-  g.addEdge (10, 9) ;
-  g.addEdge (6, 9) ;
-  g.addEdge (100, 0) ;
-  g.addEdge (100, 1) ;
-  g.addEdge (100, 10) ; */
 
   g.addEdge (17, 33) ;
   g.addEdge (17, 35) ;

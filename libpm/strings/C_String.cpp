@@ -992,7 +992,6 @@ C_String C_String::stringByReplacingStringByString (const C_String inSearchedStr
       }
     }
     result.appendUTF32String (& sourceString [index]) ;
-    //printf ("RESULT STRING: '%s'\n", result.cString (HERE)) ;
   }
   return result ;
 }
@@ -1328,7 +1327,7 @@ void C_String::convertToSInt64 (int64_t & outResult,
 
 void C_String::convertToDouble (double & outDoubleValue,
                                 bool & outOk) const {
-  outDoubleValue = 0.0 ; // strtod (mString.cString (HERE)) ;
+  outDoubleValue = 0.0 ;
   int32_t idx = 0 ;
 //--- Sign
   bool positive = true ;

@@ -1487,7 +1487,6 @@ updateRelation (const uint32_t inRelationBitNeededCount [],
 //--- Register updating
   if (updateIsNeeded) {
     for (int32_t i=0 ; i<inRelationCardinality; i++) {
-      //printf ("%d -> %d\n", * (inRelationBitCurrentCount [i]), inRelationBitNeededCount [i]) ;
       * (inRelationBitCurrentCount [i]) = inRelationBitNeededCount [i] ;
     }
   }
