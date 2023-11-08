@@ -1282,7 +1282,9 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
     }
     ioCppFileContents << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
                       << ") {\n" ;
-    if (first >= 0) { // first<0 means the non terminal symbol is unuseful
+    if (first < 0) { // first<0 means the non terminal symbol is unuseful
+      ioCppFileContents << "  inLexique->internalBottomUpParserError (HERE) ;\n" ;
+    }else{
       const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
       MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
       if (first == last) {
@@ -1323,28 +1325,42 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
       ioCppFileContents << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
     }
     ioCppFileContents << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
-                      << ") {\n"
-                         "  switch (inLexique->nextProductionIndex ()) {\n" ;
-    if (first >= 0) { // first<0 means the non terminal symbol is unuseful
-      MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
+                      << ") {\n" ;
+    if (first < 0) { // first<0 means the non terminal symbol is unuseful
+      ioCppFileContents << "  inLexique->internalBottomUpParserError (HERE) ;\n" ;
+    }else{
       const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-      MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
-      for (int32_t j=first ; j<=last ; j++) {
-        const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
-        ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
+      if (first == last) {
+        const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
+        ioCppFileContents << "  if (inLexique->nextProductionIndex () == " << cStringWithSigned (ip) << ") {\n" ;
         inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                     inVocabulary,
                                                                     "indexing",
                                                                     ioCppFileContents,
                                                                     "") ;
-        ioCppFileContents << "    break ;\n" ;
+        ioCppFileContents << "  }else{\n"
+                             "    inLexique->internalBottomUpParserError (HERE) ;\n"
+                             "  }\n" ;
+      }else{
+        ioCppFileContents << "  switch (inLexique->nextProductionIndex ()) {\n" ;
+        MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
+        for (int32_t j=first ; j<=last ; j++) {
+          const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
+          ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
+          inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
+                                                                      inVocabulary,
+                                                                      "indexing",
+                                                                      ioCppFileContents,
+                                                                      "") ;
+          ioCppFileContents << "    break ;\n" ;
+        }
+        ioCppFileContents << "  default :\n"
+                             "    inLexique->internalBottomUpParserError (HERE) ;\n"
+                             "    break ;\n"
+                             "  }\n" ;
       }
     }
-    ioCppFileContents << "  default :\n"
-                      "    inLexique->internalBottomUpParserError (HERE) ;\n"
-                      "    break ;\n"
-                      "  }\n"
-                      "}\n\n" ;
+    ioCppFileContents << "}\n\n" ;
     cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kENUMERATION_UP) ;
     while (currentAltForNonTerminal2.hasCurrentObject ()) {
       ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
@@ -1381,27 +1397,41 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
       if (inSyntaxDirectedTranslationVarName.length() > 0) {
         ioCppFileContents << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
       }
-      ioCppFileContents << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique) {\n"
-                        "  switch (inLexique->nextProductionIndex ()) {\n" ;
-      if (first >= 0) { // first<0 means the non terminal symbol is unuseful
-        MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
+      ioCppFileContents << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique) {\n" ;
+      if (first < 0) { // first<0 means the non terminal symbol is unuseful
+        ioCppFileContents << "  inLexique->internalBottomUpParserError (HERE) ;\n" ;
+      }else{
         const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
         MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
-        for (int32_t j=first ; j<=last ; j++) {
-          const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
-          ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
+        if (first == last) {
+          const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
+          ioCppFileContents << "  if (inLexique->nextProductionIndex () == " << cStringWithSigned (ip) << ") {\n" ;
           inProductionRules (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                       inVocabulary,
                                                                       currentAltForNonTerminal2.current_lkey (HERE).mProperty_string.stringValue (),
                                                                       ioCppFileContents,
                                                                       inSyntaxDirectedTranslationVarName) ;
-          ioCppFileContents << "    break ;\n" ;
+          ioCppFileContents << "  }else{\n"
+                               "    inLexique->internalBottomUpParserError (HERE) ;\n"
+                               "  }\n" ;
+        }else{
+          ioCppFileContents << "  switch (inLexique->nextProductionIndex ()) {\n" ;
+          for (int32_t j=first ; j<=last ; j++) {
+            const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
+            ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
+            inProductionRules (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
+                                                                        inVocabulary,
+                                                                        currentAltForNonTerminal2.current_lkey (HERE).mProperty_string.stringValue (),
+                                                                        ioCppFileContents,
+                                                                        inSyntaxDirectedTranslationVarName) ;
+            ioCppFileContents << "    break ;\n" ;
+          }
+          ioCppFileContents << "  default :\n"
+                               "    inLexique->internalBottomUpParserError (HERE) ;\n"
+                               "    break ;\n"
+                               "  }\n" ;
         }
       }
-      ioCppFileContents << "  default :\n"
-                        "    inLexique->internalBottomUpParserError (HERE) ;\n"
-                        "    break ;\n"
-                        "  }\n" ;
       ioCppFileContents << "}\n\n" ;
       currentAltForNonTerminal2.gotoNextObject () ;
     }

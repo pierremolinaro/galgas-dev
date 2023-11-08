@@ -818,7 +818,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
     ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                  << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()
                  << "_parse (" ;
-    if (inSyntaxDirectedTranslationVarName.length() > 0) {
+    if (inSyntaxDirectedTranslationVarName.length () > 0) {
       ioCppFileContents << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
     }
     ioCppFileContents << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
@@ -860,30 +860,44 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
     ioCppFileContents << "}\n\n" ;
   //--- Indexing
     ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                 << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()
-                 << "_indexing (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
-                 << ") {\n"
-                    "  switch (inLexique->nextProductionIndex ()) {\n" ;
-    if (first >= 0) { // first<0 means the non terminal symbol is unuseful
-      MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
+                      << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()
+                      << "_indexing (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
+                      << ") {\n" ;
+    if (first < 0) { // first<0 means the non terminal symbol is unuseful
+      ioCppFileContents << "  inLexique->internalBottomUpParserError (HERE) ;\n" ;
+    }else{
       const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-      MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
-      for (int32_t j=first ; j<=last ; j++) {
-        const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
-        ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
+      if (first == last) {
+        const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
+        ioCppFileContents << "  if (inLexique->nextProductionIndex () == " << cStringWithSigned (ip) << ") {\n" ;
         inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                     inVocabulary,
                                                                     "indexing",
                                                                     ioCppFileContents,
                                                                     "") ;
-        ioCppFileContents << "    break ;\n" ;
+        ioCppFileContents << "  }else{\n"
+                             "    inLexique->internalBottomUpParserError (HERE) ;\n"
+                             "  }\n" ;
+      }else{
+        ioCppFileContents << "  switch (inLexique->nextProductionIndex ()) {\n" ;
+        MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
+        for (int32_t j=first ; j<=last ; j++) {
+          const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
+          ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
+          inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
+                                                                      inVocabulary,
+                                                                      "indexing",
+                                                                      ioCppFileContents,
+                                                                      "") ;
+          ioCppFileContents << "    break ;\n" ;
+        }
+        ioCppFileContents << "  default :\n"
+                             "    inLexique->internalBottomUpParserError (HERE) ;\n"
+                             "    break ;\n"
+                             "  }\n" ;
       }
     }
-    ioCppFileContents << "  default :\n"
-                      "    inLexique->internalBottomUpParserError (HERE) ;\n"
-                      "    break ;\n"
-                      "  }\n"
-                      "}\n\n" ;
+    ioCppFileContents << "}\n\n" ;
     cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kENUMERATION_UP) ;
     while (currentAltForNonTerminal2.hasCurrentObject ()) {
       ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
@@ -920,56 +934,64 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
       if (inSyntaxDirectedTranslationVarName.length() > 0) {
         ioCppFileContents << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
       }
-      ioCppFileContents << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique) {\n"
-                        "  switch (inLexique->nextProductionIndex ()) {\n" ;
-      if (first >= 0) { // first<0 means the non terminal symbol is unuseful
-        MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
+      ioCppFileContents << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique) {\n" ;
+      if (first < 0) { // first<0 means the non terminal symbol is unuseful
+        ioCppFileContents << "  inLexique->internalBottomUpParserError (HERE) ;\n" ;
+      }else{
         const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
         MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
-        for (int32_t j=first ; j<=last ; j++) {
-          const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
-          ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
+        if (first == last) {
+          const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
+          ioCppFileContents << "  if (inLexique->nextProductionIndex () == " << cStringWithSigned (ip) << ") {\n" ;
           inProductionRules (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                       inVocabulary,
                                                                       currentAltForNonTerminal2.current_lkey (HERE).mProperty_string.stringValue (),
                                                                       ioCppFileContents,
                                                                       inSyntaxDirectedTranslationVarName) ;
-          ioCppFileContents << "    break ;\n" ;
+          ioCppFileContents << "  }else{\n"
+                               "    inLexique->internalBottomUpParserError (HERE) ;\n"
+                               "  }\n" ;
+        }else{
+          ioCppFileContents << "  switch (inLexique->nextProductionIndex ()) {\n" ;
+          for (int32_t j=first ; j<=last ; j++) {
+            const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
+            ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
+            inProductionRules (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
+                                                                        inVocabulary,
+                                                                        currentAltForNonTerminal2.current_lkey (HERE).mProperty_string.stringValue (),
+                                                                        ioCppFileContents,
+                                                                        inSyntaxDirectedTranslationVarName) ;
+            ioCppFileContents << "    break ;\n" ;
+          }
+          ioCppFileContents << "  default :\n"
+                               "    inLexique->internalBottomUpParserError (HERE) ;\n"
+                               "    break ;\n"
+                               "  }\n" ;
         }
       }
-      ioCppFileContents << "  default :\n"
-                        "    inLexique->internalBottomUpParserError (HERE) ;\n"
-                        "  }\n" ;
       ioCppFileContents << "}\n\n" ;
       currentAltForNonTerminal2.gotoNextObject () ;
     }
     //--- Engendrer l'axiome ?
     if (nonTerminal.current_mNonTerminalIndex (HERE).uintValue () == inOriginalGrammarStartSymbol) {
-//      if (inHasIndexing) {
-        ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                          << "::performIndexing (C_Compiler * inCompiler,\n"
-                             "             const C_String & inSourceFilePath) {\n"
-                             "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = nullptr ;\n"
-                             "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
-                             "  scanner->enableIndexing () ;\n"
-                             "  if (scanner->sourceText ().isValid ()) {\n"
-                             "    const bool ok = scanner->performBottomUpParsing (gActionTable_" << inTargetFileName << ", gNonTerminalNames_" << inTargetFileName << ",\n"
-                             "                                                     gActionTableIndex_" << inTargetFileName << ", gSuccessorTable_" << inTargetFileName << ",\n"
-                             "                                                     gProductionsTable_" << inTargetFileName << ") ;\n"
-                             "    if (ok) {\n"
-                             "      cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
-                             "      grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation () << "_indexing (scanner) ;\n"
-                             "    }\n"
-                             "    scanner->generateIndexFile () ;\n"
-                             "  }\n"
-                             "  macroDetachSharedObject (scanner) ;\n"
-                             "}\n\n" ;
-//      }else{
-//        ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-//                          << "::performIndexing (C_Compiler * /* inCompiler */,\n"
-//                             "             const C_String & /* inSourceFilePath */) {\n"
-//                             "}\n\n" ;
-//      }
+      ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+                        << "::performIndexing (C_Compiler * inCompiler,\n"
+                           "             const C_String & inSourceFilePath) {\n"
+                           "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = nullptr ;\n"
+                           "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
+                           "  scanner->enableIndexing () ;\n"
+                           "  if (scanner->sourceText ().isValid ()) {\n"
+                           "    const bool ok = scanner->performBottomUpParsing (gActionTable_" << inTargetFileName << ", gNonTerminalNames_" << inTargetFileName << ",\n"
+                           "                                                     gActionTableIndex_" << inTargetFileName << ", gSuccessorTable_" << inTargetFileName << ",\n"
+                           "                                                     gProductionsTable_" << inTargetFileName << ") ;\n"
+                           "    if (ok) {\n"
+                           "      cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
+                           "      grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation () << "_indexing (scanner) ;\n"
+                           "    }\n"
+                           "    scanner->generateIndexFile () ;\n"
+                           "  }\n"
+                           "  macroDetachSharedObject (scanner) ;\n"
+                           "}\n\n" ;
       ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                         << "::performOnlyLexicalAnalysis (C_Compiler * inCompiler,\n"
                            "             const C_String & inSourceFilePath) {\n"
