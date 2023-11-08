@@ -169,7 +169,7 @@ mObject (inElement.mProperty_mTypeComparisonKind, inElement.mProperty_mType, inE
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_castInstructionBranchListForGeneration::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2574,7 +2574,7 @@ mObject (inElement.mProperty_mElement) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_fixitListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3711,7 +3711,7 @@ mObject (inElement.mProperty_mElement) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_fixitListForGeneration::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4306,7 +4306,7 @@ mObject (inElement.mProperty_mOptionalTypeName, inElement.mProperty_mDeclaredAsU
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_forInstructionEnumeratedObjectElementListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5604,7 +5604,7 @@ mObject (inElement.mProperty_mAscending, inElement.mProperty_mEnumeratedCollecti
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_forInstructionEnumeratedObjectListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6242,7 +6242,7 @@ mObject (inElement.mProperty_mEnumerationOrder, inElement.mProperty_mEnumeratedE
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_forInstructionEnumeratedObjectListForGeneration::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10713,7 +10713,7 @@ mObject (inElement.mProperty_mSelector, inElement.mProperty_mActualArgument) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_optionalMethodActualArgumentList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -11193,7 +11193,7 @@ mObject (inElement.mProperty_mExpression) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_ifExpressionList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12696,7 +12696,7 @@ mObject (inElement.mProperty_mParameter) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_optionalMethodActualArgumentListForGeneration::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13113,7 +13113,7 @@ mObject (inElement.mProperty_mExpression) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_ifTestListForGeneration::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -14596,7 +14596,7 @@ mObject (inElement.mProperty_mLogMessage, inElement.mProperty_mLogExpression) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_logListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

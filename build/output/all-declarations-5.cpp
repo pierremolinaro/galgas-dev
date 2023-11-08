@@ -54,7 +54,7 @@ mObject (inElement.mProperty_mNonterminalName, inElement.mProperty_mLabelList) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_syntaxRuleListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -536,7 +536,7 @@ mObject (inElement.mProperty_mSyntaxInstructionList, inElement.mProperty_mEndOf_
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_listOfSyntaxInstructionList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1246,7 +1246,7 @@ mObject (inElement.mProperty_mSyntaxComponentName, inElement.mProperty_mImported
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_galgas_33_SyntaxComponentListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1919,7 +1919,7 @@ mObject (inElement.mProperty_mSyntaxComponentName, inElement.mProperty_mNontermi
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_galgas_33_SyntaxExtensionListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2574,7 +2574,7 @@ mObject (inElement.mProperty_mInstructionList, inElement.mProperty_mEndOfInstruc
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_prologueEpilogueList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3066,7 +3066,7 @@ mObject (inElement.mProperty_mSourceFileExtension, inElement.mProperty_mSourceFi
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_programRuleList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4054,7 +4054,7 @@ mObject (inElement.mProperty_mFormalSelector, inElement.mProperty_mFormalArgumen
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_functionSignature::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5367,7 +5367,7 @@ mObject (inElement.mProperty_mInputArgument, inElement.mProperty_mFormalSelector
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_optionalMethodSignature::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6892,7 +6892,7 @@ mObject (inElement.mProperty_mFormalSelector, inElement.mProperty_mFormalArgumen
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_formalParameterSignature::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -8963,7 +8963,7 @@ mObject (inElement.mProperty_mEnumeratedType, inElement.mProperty_mEnumerationNa
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_enumerationDescriptorList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

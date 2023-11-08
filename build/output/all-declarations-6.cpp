@@ -9782,7 +9782,7 @@ mObject (inElement.mProperty_mExpression) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_semanticExpressionListForGeneration::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -11397,7 +11397,7 @@ mObject (inElement.mProperty_mActualParameter) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_actualParameterListForGeneration::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12312,7 +12312,7 @@ mObject (inElement.mProperty_mInstructionList, inElement.mProperty_mEndOfInstruc
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_listOfSemanticInstructionListForGeneration::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13113,7 +13113,7 @@ mObject (inElement.mProperty_mMessage, inElement.mProperty_mDeclaration) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_semanticDeclarationListForGeneration::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13595,7 +13595,7 @@ mObject (inElement.mProperty_mFormalArgumentPassingModeForGrammarAnalysis, inEle
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_signatureForGrammarAnalysis::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

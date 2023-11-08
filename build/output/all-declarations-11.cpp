@@ -400,7 +400,7 @@ mObject (inElement.mProperty_columns) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_rowList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -936,7 +936,7 @@ mObject (inElement.mProperty_mDeclaration) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_programListForGeneration::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2251,7 +2251,7 @@ mObject (inElement.mProperty_mFeatureName, inElement.mProperty_mFeatureValue) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_galgas_33_QualifiedFeatureList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

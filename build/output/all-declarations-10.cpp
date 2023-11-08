@@ -4400,7 +4400,7 @@ mObject (inElement.mProperty_mSwitchConstantList, inElement.mProperty_mAssociate
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_switchBranchesAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5345,7 +5345,7 @@ mObject (inElement.mProperty_mSwitchConstantList, inElement.mProperty_mExtracted
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_switchBranchesForGeneration::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -11860,7 +11860,7 @@ mObject (inElement.mProperty_mInstruction) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_syntaxInstructionListForGrammarAnalysis::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12283,7 +12283,7 @@ mObject (inElement.mProperty_mLeftNonterminalSymbol, inElement.mProperty_mLeftNo
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_productionRuleListForGrammarAnalysis::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13695,7 +13695,7 @@ mObject (inElement.mProperty_mSyntaxInstructionList) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_branchListForGrammarAnalysis::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -14714,7 +14714,7 @@ mObject (inElement.mProperty_mProductionRulesList, inElement.mProperty_mSyntaxCo
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_syntaxComponentListForGrammarAnalysis::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

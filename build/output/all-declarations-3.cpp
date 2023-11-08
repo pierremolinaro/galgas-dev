@@ -54,7 +54,7 @@ mObject (inElement.mProperty_mTerminal, inElement.mProperty_mDisplayFlags) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_terminalLabelListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -538,7 +538,7 @@ mObject (inElement.mProperty_mLeadingCharacterStrippedCount, inElement.mProperty
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_guiLabelListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1087,7 +1087,7 @@ mObject (inElement.mProperty_mLexiqueFileName, inElement.mProperty_mLabels, inEl
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_withLexiqueListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1701,7 +1701,7 @@ mObject (inElement.mProperty_mOptionComponent, inElement.mProperty_mOptionIdenti
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_guiCommandLineOptionList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2686,7 +2686,7 @@ mObject (inElement.mProperty_mKey, inElement.mProperty_mContents) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_textMacroList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3178,7 +3178,7 @@ mObject (inElement.mProperty_mLexiqueClassName, inElement.mProperty_mIndex, inEl
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_importedLexiqueList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3975,7 +3975,7 @@ mObject (inElement.mProperty_mProjectFileExtension, inElement.mProperty_indexing
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_projectIndexingDescriptorList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4463,7 +4463,7 @@ mObject (inElement.mProperty_mGUIComponentName, inElement.mProperty_mImportedOpt
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_galgasGUIComponentListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5827,7 +5827,7 @@ mObject (inElement.mProperty_isConstant, inElement.mProperty_mPropertyTypeName, 
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_propertyInCollectionListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6676,7 +6676,7 @@ mObject (inElement.mProperty_mPropertyTypeEntry, inElement.mProperty_mPropertyNa
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_typedPropertyList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7395,7 +7395,7 @@ mObject (inElement.mProperty_mConstantName, inElement.mProperty_mAssociatedValue
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_enumConstantList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7988,7 +7988,7 @@ mObject (inElement.mProperty_mConstantName, inElement.mProperty_mAssociatedValue
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_enumConstantListForGeneration::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -8468,7 +8468,7 @@ mObject (inElement.mProperty_mEntry) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_unifiedTypeMapEntryList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -8889,7 +8889,7 @@ mObject (inElement.mProperty_mConstructorName, inElement.mProperty_mResultTypeNa
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_externTypeConstructorList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -9436,7 +9436,7 @@ mObject (inElement.mProperty_mGetterName, inElement.mProperty_mResultTypeName, i
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_externTypeGetterList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -9981,7 +9981,7 @@ mObject (inElement.mProperty_mSetterName, inElement.mProperty_mFormalParameterLi
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_externTypeSetterList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10465,7 +10465,7 @@ mObject (inElement.mProperty_mMethodName, inElement.mProperty_mFormalParameterLi
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_externTypeMethodList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -11123,7 +11123,7 @@ mObject (inElement.mProperty_mFormalSelector, inElement.mProperty_mFormalParamet
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_typeNameFormalParameterNameList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -11674,7 +11674,7 @@ mObject (inElement.mProperty_mFormalSelector, inElement.mProperty_mFormalArgumen
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_formalParameterListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12345,7 +12345,7 @@ mObject (inElement.mProperty_mInsertModifierName, inElement.mProperty_mInsertErr
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_graphInsertModifierList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13273,7 +13273,7 @@ mObject (inElement.mProperty_mInsertMethodName, inElement.mProperty_mErrorMessag
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_insertMethodListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13820,7 +13820,7 @@ mObject (inElement.mProperty_mSearchMethodName, inElement.mProperty_mErrorMessag
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_mapSearchMethodListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -14365,7 +14365,7 @@ mObject (inElement.mProperty_mMethodName, inElement.mProperty_mErrorMessage) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_mapRemoveMethodListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -14845,7 +14845,7 @@ mObject (inElement.mProperty_mInsertOrReplaceDeclarationLocation) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_insertOrReplaceDeclarationListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

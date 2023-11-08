@@ -54,7 +54,7 @@ mObject (inElement.mProperty_mSyntaxComponentName, inElement.mProperty_mNonTermi
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_nonTerminalToAddList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -538,7 +538,7 @@ mObject (inElement.mProperty_mTypeName, inElement.mProperty_mTargetVarCppName, i
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_terminalCheckAssignementList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1305,7 +1305,7 @@ mObject (inElement.mProperty_mFilewrapperTemplateName, inElement.mProperty_mFile
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_filewrapperTemplateListForGeneration::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2012,7 +2012,7 @@ mObject (inElement.mProperty_mType, inElement.mProperty_mName, inElement.mProper
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_localConstantList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2622,7 +2622,7 @@ mObject (inElement.mProperty_mType, inElement.mProperty_mName, inElement.mProper
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_localInitializedVariableList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4356,7 +4356,7 @@ mObject (inElement.mProperty_mLabelName, inElement.mProperty_mSignatureForGenera
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_ruleLabelImplementationList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5029,7 +5029,7 @@ mObject (inElement.mProperty_mNonterminalName, inElement.mProperty_mRuleIndex, i
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_ruleDeclarationList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7583,7 +7583,7 @@ mObject (inElement.mProperty_mMap) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_localVarMapListForLLVM::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -8273,7 +8273,7 @@ mObject (inElement.mProperty_mOverrideKind) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_openedOverrideList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12311,7 +12311,7 @@ mObject (inElement.mProperty_mActualSelector, inElement.mProperty_mExpression, i
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_actualOutputExpressionList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

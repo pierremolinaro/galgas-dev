@@ -54,7 +54,7 @@ mObject (inElement.mProperty_mSelectExpression, inElement.mProperty_mSelectInstr
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalSelectBranchListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -739,7 +739,7 @@ mObject (inElement.mProperty_mLexicalActualInputArgument) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalFunctionCallActualArgumentListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2380,7 +2380,7 @@ mObject (inElement.mProperty_mLexicalFormalSelector, inElement.mProperty_mLexica
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalSentValueList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3788,7 +3788,7 @@ mObject (inElement.mProperty_mTerminalName, inElement.mProperty_mSentAttributeLi
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_terminalList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5919,7 +5919,7 @@ mObject (inElement.mProperty_mLexicalFormalArgumentMode, inElement.mProperty_mLe
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalRoutineFormalArgumentList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6857,7 +6857,7 @@ mObject (inElement.mProperty_mLexicalType, inElement.mProperty_mArgumentNameForC
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalFunctionFormalArgumentList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7788,7 +7788,7 @@ mObject (inElement.mProperty_mStartString, inElement.mProperty_mEndString, inEle
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_templateDelimitorList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -11815,7 +11815,7 @@ mObject (inElement.mProperty_mLexicalRoutineActualArgument) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalRoutineCallActualArgumentListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13194,7 +13194,7 @@ mObject (inElement.mProperty_mOptionTypeName, inElement.mProperty_mOptionInterna
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_commandLineOptionListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -14549,7 +14549,7 @@ mObject (inElement.mProperty_mKey, inElement.mProperty_mValue) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_guiSimpleAttributeListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -15033,7 +15033,7 @@ mObject (inElement.mProperty_mKey, inElement.mProperty_mAttributeName, inElement
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_guiCompoundAttributeListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

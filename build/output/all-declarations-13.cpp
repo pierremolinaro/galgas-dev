@@ -9459,7 +9459,7 @@ mObject (inElement.mProperty_mGroupReference, inElement.mProperty_mGroupName, in
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_XCodeGroupList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10085,7 +10085,7 @@ mObject (inElement.mProperty_mTargetRef, inElement.mProperty_mTargetName, inElem
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_XCodeToolTargetList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -11158,7 +11158,7 @@ mObject (inElement.mProperty_mTargetRef, inElement.mProperty_mTargetName, inElem
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_XCodeAppTargetList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

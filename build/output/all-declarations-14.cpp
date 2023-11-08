@@ -56,7 +56,7 @@ mObject (inElement.mProperty_mFileReference, inElement.mProperty_mFileName, inEl
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_BuildFileList::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

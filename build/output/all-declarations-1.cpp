@@ -165,7 +165,7 @@ mObject (inElement.mProperty_mExpression, inElement.mProperty_mInstructionList) 
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_templateInstructionIfBranchListForGeneration::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2440,7 +2440,7 @@ mObject (inElement.mProperty_mConstantList, inElement.mProperty_mAssociatedValue
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_templateInstructionSwitchBranchListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3050,7 +3050,7 @@ mObject (inElement.mProperty_mExtractedValueTypeName, inElement.mProperty_mExtra
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_switchExtractedValuesListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3904,7 +3904,7 @@ mObject (inElement.mProperty_mConstantList, inElement.mProperty_mExtractedAssoci
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_templateInstructionSwitchBranchListForGeneration::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4514,7 +4514,7 @@ mObject (inElement.mProperty_mType, inElement.mProperty_mCppName, inElement.mPro
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_extractedAssociatedValuesForGeneration::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5281,7 +5281,7 @@ mObject (inElement.mProperty_mStartString, inElement.mProperty_mOptionList, inEl
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_templateDelimitorListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5828,7 +5828,7 @@ mObject (inElement.mProperty_mMatchString, inElement.mProperty_mReplacementStrin
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_templateReplacementListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6373,7 +6373,7 @@ mObject (inElement.mProperty_mTypeName, inElement.mProperty_mName) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalAttributeListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6855,7 +6855,7 @@ mObject (inElement.mProperty_mName, inElement.mProperty_mComment) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalStyleListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7343,7 +7343,7 @@ mObject (inElement.mProperty_mName, inElement.mProperty_mSentAttributeList, inEl
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_terminalDeclarationListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -8014,7 +8014,7 @@ mObject (inElement.mProperty_mMessageName, inElement.mProperty_mMessageValue) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalMessageDeclarationListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -8502,7 +8502,7 @@ mObject (inElement.mProperty_mName, inElement.mProperty_mStyle, inElement.mPrope
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalListDeclarationListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -9171,7 +9171,7 @@ mObject (inElement.mProperty_mLexicalRule) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalRuleListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -9590,7 +9590,7 @@ mObject (inElement.mProperty_mIndexName, inElement.mProperty_mIndexComment) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_indexingListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10702,7 +10702,7 @@ mObject (inElement.mProperty_mInstruction) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalInstructionListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -11751,7 +11751,7 @@ mObject (inElement.mProperty_mFormalSelector, inElement.mProperty_mAttributeName
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_sentLexicalAttributeListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12235,7 +12235,7 @@ mObject (inElement.mProperty_mEntrySpelling, inElement.mProperty_mTerminalSpelli
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalListEntryListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13619,7 +13619,7 @@ mObject (inElement.mProperty_mAttributeName, inElement.mProperty_mSearchListName
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalSendSearchListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -14528,7 +14528,7 @@ mObject (inElement.mProperty_mWhileExpression, inElement.mProperty_mWhileInstruc
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalWhileBranchListAST::isValid (void) const {
-  return true ; // return mObject.isValid () ;
+  return true ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
