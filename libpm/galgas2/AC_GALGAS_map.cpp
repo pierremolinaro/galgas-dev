@@ -812,9 +812,19 @@ cMapNode * cSharedMapRoot::performInsert (const capCollectionElement & inAttribu
         //--- Existing key
           cMapElement * me = (cMapElement *) matchingEntry->mAttributes.ptr () ;
           macroValidSharedObject (me, cMapElement) ;
-          const GALGAS_location lstring_existingKey_location = me->mProperty_lkey.mProperty_location ;
-        //--- Emit error message
-          inCompiler->semanticErrorWith_K_L_message (p->mProperty_lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+          if (me == nullptr) {
+            printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
+            exit (1) ;
+          }else{
+            const GALGAS_location lstring_existingKey_location = me->mProperty_lkey.mProperty_location ;
+          //--- Emit error message
+            if (p == nullptr) {
+              printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
+              exit (1) ;
+            }else{
+              inCompiler->semanticErrorWith_K_L_message (p->mProperty_lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+            }
+          }
         }
       }
     }else{ // Error, entry already exists
@@ -972,7 +982,12 @@ GALGAS_location cSharedMapRoot::locationForKey (const GALGAS_string & inKey,
     }else{
       cMapElement * p = (cMapElement *) node->mAttributes.ptr () ;
       macroValidSharedObject (p, cMapElement) ;
-      result = p->mProperty_lkey.mProperty_location ;
+      if (p == nullptr) {
+        printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
+        exit (1) ;
+      }else{
+        result = p->mProperty_lkey.mProperty_location ;
+      }
     }
   }
   return result ;
