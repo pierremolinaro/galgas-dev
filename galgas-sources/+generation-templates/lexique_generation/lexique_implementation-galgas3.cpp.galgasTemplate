@@ -53,15 +53,6 @@ C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
   end
 %
 //----------------------------------------------------------------------------------------------------------------------
-//          Syntax error messages, for every terminal symbol                                     
-//----------------------------------------------------------------------------------------------------------------------
-%
-  for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST do
-   %\n//--- Syntax error message for terminal '$%!mTerminalName.string%$' :\n%
-   %static const char * gSyntaxErrorMessage_%!LEXIQUE_IDENTIFIER%_%![mTerminalName.string identifierRepresentation]% = %![mSyntaxErrorMessage utf8RepresentationEscapingQuestionMark]% ;\n%
-  end
-%
-//----------------------------------------------------------------------------------------------------------------------
 //                getMessageForTerminal                                                          
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -69,8 +60,8 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t i
   C_String result = "<unknown>" ;
   if ((inTerminalIndex >= 0) && (inTerminalIndex < %![[TERMINAL_LIST count] + 1 string]%)) {
     static const char * syntaxErrorMessageArray [%![[TERMINAL_LIST count] + 1 string]%] = {kEndOfSourceLexicalErrorMessage%
-  for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST do
-   %,\n        gSyntaxErrorMessage_%!LEXIQUE_IDENTIFIER%_%![mTerminalName.string identifierRepresentation]
+  for (* * mSyntaxErrorMessage * * *) in TERMINAL_LIST do
+   %,\n        %![mSyntaxErrorMessage utf8RepresentationEscapingQuestionMark]
   end
 %\n    } ;
     result = syntaxErrorMessageArray [inTerminalIndex] ;

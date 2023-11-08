@@ -77,478 +77,6 @@ static const char * gLexicalMessage_galgasScanner_invalideUnicodeDefinition8 = "
 static const char * gLexicalMessage_galgasScanner_unassignedUnicodeValue = "this value does not correspond to an assigned Unicode point" ;
 
 //----------------------------------------------------------------------------------------------------------------------
-//          Syntax error messages, for every terminal symbol                                     
-//----------------------------------------------------------------------------------------------------------------------
-
-//--- Syntax error message for terminal '$identifier$' :
-static const char * gSyntaxErrorMessage_galgasScanner_identifier = "an identifier" ;
-
-//--- Syntax error message for terminal '$double.xxx$' :
-static const char * gSyntaxErrorMessage_galgasScanner_double_2E_xxx = "a float number" ;
-
-//--- Syntax error message for terminal '$literalInt$' :
-static const char * gSyntaxErrorMessage_galgasScanner_literalInt = "a big integer number" ;
-
-//--- Syntax error message for terminal '$.$' :
-static const char * gSyntaxErrorMessage_galgasScanner__2E_ = "the '.' delimitor" ;
-
-//--- Syntax error message for terminal '$...$' :
-static const char * gSyntaxErrorMessage_galgasScanner__2E__2E__2E_ = "the '...' delimitor" ;
-
-//--- Syntax error message for terminal '$..<$' :
-static const char * gSyntaxErrorMessage_galgasScanner__2E__2E__3C_ = "the '..<' delimitor" ;
-
-//--- Syntax error message for terminal '$@type$' :
-static const char * gSyntaxErrorMessage_galgasScanner__40_type = "a type name (@...)" ;
-
-//--- Syntax error message for terminal '$%attribute$' :
-static const char * gSyntaxErrorMessage_galgasScanner__25_attribute = "an attribute (%...)" ;
-
-//--- Syntax error message for terminal '$'char'$' :
-static const char * gSyntaxErrorMessage_galgasScanner__27_char_27_ = "a character constant" ;
-
-//--- Syntax error message for terminal '$$terminal$$' :
-static const char * gSyntaxErrorMessage_galgasScanner__24_terminal_24_ = "a terminal symbol ($...$)" ;
-
-//--- Syntax error message for terminal '$comment$' :
-static const char * gSyntaxErrorMessage_galgasScanner_comment = "a comment" ;
-
-//--- Syntax error message for terminal '$commentMark$' :
-static const char * gSyntaxErrorMessage_galgasScanner_commentMark = "a comment" ;
-
-//--- Syntax error message for terminal '$?$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3F_ = "the '\?' or '\?selector:' delimitor" ;
-
-//--- Syntax error message for terminal '$?!$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3F__21_ = "the '\?!' or '\?!selector:' delimitor" ;
-
-//--- Syntax error message for terminal '$!$' :
-static const char * gSyntaxErrorMessage_galgasScanner__21_ = "the '!' or '!selector:' delimitor" ;
-
-//--- Syntax error message for terminal '$!?$' :
-static const char * gSyntaxErrorMessage_galgasScanner__21__3F_ = "the '!\?' or '!\?selector:' delimitor" ;
-
-//--- Syntax error message for terminal '$<$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3C_ = "the '<' delimitor" ;
-
-//--- Syntax error message for terminal '$<=$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3C__3D_ = "the '<=' delimitor" ;
-
-//--- Syntax error message for terminal '$<<$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3C__3C_ = "the '<<' delimitor" ;
-
-//--- Syntax error message for terminal '$<non_terminal>$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3C_non_5F_terminal_3E_ = "a non terminal symbol <...>" ;
-
-//--- Syntax error message for terminal '$"string"$' :
-static const char * gSyntaxErrorMessage_galgasScanner__22_string_22_ = "a character string constant \"...\"" ;
-
-//--- Syntax error message for terminal '$abstract$' :
-static const char * gSyntaxErrorMessage_galgasScanner_abstract = "the 'abstract' keyword" ;
-
-//--- Syntax error message for terminal '$after$' :
-static const char * gSyntaxErrorMessage_galgasScanner_after = "the 'after' keyword" ;
-
-//--- Syntax error message for terminal '$array$' :
-static const char * gSyntaxErrorMessage_galgasScanner_array = "the 'array' keyword" ;
-
-//--- Syntax error message for terminal '$as$' :
-static const char * gSyntaxErrorMessage_galgasScanner_as = "the 'as' keyword" ;
-
-//--- Syntax error message for terminal '$bang$' :
-static const char * gSyntaxErrorMessage_galgasScanner_bang = "the 'bang' keyword" ;
-
-//--- Syntax error message for terminal '$before$' :
-static const char * gSyntaxErrorMessage_galgasScanner_before = "the 'before' keyword" ;
-
-//--- Syntax error message for terminal '$between$' :
-static const char * gSyntaxErrorMessage_galgasScanner_between = "the 'between' keyword" ;
-
-//--- Syntax error message for terminal '$block$' :
-static const char * gSyntaxErrorMessage_galgasScanner_block = "the 'block' keyword" ;
-
-//--- Syntax error message for terminal '$boolset$' :
-static const char * gSyntaxErrorMessage_galgasScanner_boolset = "the 'boolset' keyword" ;
-
-//--- Syntax error message for terminal '$cast$' :
-static const char * gSyntaxErrorMessage_galgasScanner_cast = "the 'cast' keyword" ;
-
-//--- Syntax error message for terminal '$case$' :
-static const char * gSyntaxErrorMessage_galgasScanner_case = "the 'case' keyword" ;
-
-//--- Syntax error message for terminal '$class$' :
-static const char * gSyntaxErrorMessage_galgasScanner_class = "the 'class' keyword" ;
-
-//--- Syntax error message for terminal '$constructor$' :
-static const char * gSyntaxErrorMessage_galgasScanner_constructor = "the 'constructor' keyword" ;
-
-//--- Syntax error message for terminal '$default$' :
-static const char * gSyntaxErrorMessage_galgasScanner_default = "the 'default' keyword" ;
-
-//--- Syntax error message for terminal '$dict$' :
-static const char * gSyntaxErrorMessage_galgasScanner_dict = "the 'dict' keyword" ;
-
-//--- Syntax error message for terminal '$do$' :
-static const char * gSyntaxErrorMessage_galgasScanner_do = "the 'do' keyword" ;
-
-//--- Syntax error message for terminal '$drop$' :
-static const char * gSyntaxErrorMessage_galgasScanner_drop = "the 'drop' keyword" ;
-
-//--- Syntax error message for terminal '$else$' :
-static const char * gSyntaxErrorMessage_galgasScanner_else = "the 'else' keyword" ;
-
-//--- Syntax error message for terminal '$elsif$' :
-static const char * gSyntaxErrorMessage_galgasScanner_elsif = "the 'elsif' keyword" ;
-
-//--- Syntax error message for terminal '$end$' :
-static const char * gSyntaxErrorMessage_galgasScanner_end = "the 'end' keyword" ;
-
-//--- Syntax error message for terminal '$enum$' :
-static const char * gSyntaxErrorMessage_galgasScanner_enum = "the 'enum' keyword" ;
-
-//--- Syntax error message for terminal '$error$' :
-static const char * gSyntaxErrorMessage_galgasScanner_error = "the 'error' keyword" ;
-
-//--- Syntax error message for terminal '$extension$' :
-static const char * gSyntaxErrorMessage_galgasScanner_extension = "the 'extension' keyword" ;
-
-//--- Syntax error message for terminal '$extern$' :
-static const char * gSyntaxErrorMessage_galgasScanner_extern = "the 'extern' keyword" ;
-
-//--- Syntax error message for terminal '$false$' :
-static const char * gSyntaxErrorMessage_galgasScanner_false = "the 'false' keyword" ;
-
-//--- Syntax error message for terminal '$fileprivate$' :
-static const char * gSyntaxErrorMessage_galgasScanner_fileprivate = "the 'fileprivate' keyword" ;
-
-//--- Syntax error message for terminal '$filewrapper$' :
-static const char * gSyntaxErrorMessage_galgasScanner_filewrapper = "the 'filewrapper' keyword" ;
-
-//--- Syntax error message for terminal '$for$' :
-static const char * gSyntaxErrorMessage_galgasScanner_for = "the 'for' keyword" ;
-
-//--- Syntax error message for terminal '$fixit$' :
-static const char * gSyntaxErrorMessage_galgasScanner_fixit = "the 'fixit' keyword" ;
-
-//--- Syntax error message for terminal '$func$' :
-static const char * gSyntaxErrorMessage_galgasScanner_func = "the 'func' keyword" ;
-
-//--- Syntax error message for terminal '$getter$' :
-static const char * gSyntaxErrorMessage_galgasScanner_getter = "the 'getter' keyword" ;
-
-//--- Syntax error message for terminal '$grammar$' :
-static const char * gSyntaxErrorMessage_galgasScanner_grammar = "the 'grammar' keyword" ;
-
-//--- Syntax error message for terminal '$graph$' :
-static const char * gSyntaxErrorMessage_galgasScanner_graph = "the 'graph' keyword" ;
-
-//--- Syntax error message for terminal '$gui$' :
-static const char * gSyntaxErrorMessage_galgasScanner_gui = "the 'gui' keyword" ;
-
-//--- Syntax error message for terminal '$if$' :
-static const char * gSyntaxErrorMessage_galgasScanner_if = "the 'if' keyword" ;
-
-//--- Syntax error message for terminal '$in$' :
-static const char * gSyntaxErrorMessage_galgasScanner_in = "the 'in' keyword" ;
-
-//--- Syntax error message for terminal '$indexing$' :
-static const char * gSyntaxErrorMessage_galgasScanner_indexing = "the 'indexing' keyword" ;
-
-//--- Syntax error message for terminal '$insert$' :
-static const char * gSyntaxErrorMessage_galgasScanner_insert = "the 'insert' keyword" ;
-
-//--- Syntax error message for terminal '$is$' :
-static const char * gSyntaxErrorMessage_galgasScanner_is = "the 'is' keyword" ;
-
-//--- Syntax error message for terminal '$label$' :
-static const char * gSyntaxErrorMessage_galgasScanner_label = "the 'label' keyword" ;
-
-//--- Syntax error message for terminal '$let$' :
-static const char * gSyntaxErrorMessage_galgasScanner_let = "the 'let' keyword" ;
-
-//--- Syntax error message for terminal '$lexique$' :
-static const char * gSyntaxErrorMessage_galgasScanner_lexique = "the 'lexique' keyword" ;
-
-//--- Syntax error message for terminal '$list$' :
-static const char * gSyntaxErrorMessage_galgasScanner_list = "the 'list' keyword" ;
-
-//--- Syntax error message for terminal '$listmap$' :
-static const char * gSyntaxErrorMessage_galgasScanner_listmap = "the 'listmap' keyword" ;
-
-//--- Syntax error message for terminal '$log$' :
-static const char * gSyntaxErrorMessage_galgasScanner_log = "the 'log' keyword" ;
-
-//--- Syntax error message for terminal '$loop$' :
-static const char * gSyntaxErrorMessage_galgasScanner_loop = "the 'loop' keyword" ;
-
-//--- Syntax error message for terminal '$map$' :
-static const char * gSyntaxErrorMessage_galgasScanner_map = "the 'map' keyword" ;
-
-//--- Syntax error message for terminal '$message$' :
-static const char * gSyntaxErrorMessage_galgasScanner_message = "the 'message' keyword" ;
-
-//--- Syntax error message for terminal '$method$' :
-static const char * gSyntaxErrorMessage_galgasScanner_method = "the 'method' keyword" ;
-
-//--- Syntax error message for terminal '$mod$' :
-static const char * gSyntaxErrorMessage_galgasScanner_mod = "the 'mod' keyword" ;
-
-//--- Syntax error message for terminal '$mutating$' :
-static const char * gSyntaxErrorMessage_galgasScanner_mutating = "the 'mutating' keyword" ;
-
-//--- Syntax error message for terminal '$not$' :
-static const char * gSyntaxErrorMessage_galgasScanner_not = "the 'not' keyword" ;
-
-//--- Syntax error message for terminal '$on$' :
-static const char * gSyntaxErrorMessage_galgasScanner_on = "the 'on' keyword" ;
-
-//--- Syntax error message for terminal '$operator$' :
-static const char * gSyntaxErrorMessage_galgasScanner_operator = "the 'operator' keyword" ;
-
-//--- Syntax error message for terminal '$option$' :
-static const char * gSyntaxErrorMessage_galgasScanner_option = "the 'option' keyword" ;
-
-//--- Syntax error message for terminal '$or$' :
-static const char * gSyntaxErrorMessage_galgasScanner_or = "the 'or' keyword" ;
-
-//--- Syntax error message for terminal '$override$' :
-static const char * gSyntaxErrorMessage_galgasScanner_override = "the 'override' keyword" ;
-
-//--- Syntax error message for terminal '$parse$' :
-static const char * gSyntaxErrorMessage_galgasScanner_parse = "the 'parse' keyword" ;
-
-//--- Syntax error message for terminal '$public$' :
-static const char * gSyntaxErrorMessage_galgasScanner_public = "the 'public' keyword" ;
-
-//--- Syntax error message for terminal '$protected$' :
-static const char * gSyntaxErrorMessage_galgasScanner_protected = "the 'protected' keyword" ;
-
-//--- Syntax error message for terminal '$private$' :
-static const char * gSyntaxErrorMessage_galgasScanner_private = "the 'private' keyword" ;
-
-//--- Syntax error message for terminal '$proc$' :
-static const char * gSyntaxErrorMessage_galgasScanner_proc = "the 'proc' keyword" ;
-
-//--- Syntax error message for terminal '$project$' :
-static const char * gSyntaxErrorMessage_galgasScanner_project = "the 'project' keyword" ;
-
-//--- Syntax error message for terminal '$refclass$' :
-static const char * gSyntaxErrorMessage_galgasScanner_refclass = "the 'refclass' keyword" ;
-
-//--- Syntax error message for terminal '$remove$' :
-static const char * gSyntaxErrorMessage_galgasScanner_remove = "the 'remove' keyword" ;
-
-//--- Syntax error message for terminal '$replace$' :
-static const char * gSyntaxErrorMessage_galgasScanner_replace = "the 'replace' keyword" ;
-
-//--- Syntax error message for terminal '$repeat$' :
-static const char * gSyntaxErrorMessage_galgasScanner_repeat = "the 'repeat' keyword" ;
-
-//--- Syntax error message for terminal '$rewind$' :
-static const char * gSyntaxErrorMessage_galgasScanner_rewind = "the 'rewind' keyword" ;
-
-//--- Syntax error message for terminal '$rule$' :
-static const char * gSyntaxErrorMessage_galgasScanner_rule = "the 'rule' keyword" ;
-
-//--- Syntax error message for terminal '$search$' :
-static const char * gSyntaxErrorMessage_galgasScanner_search = "the 'search' keyword" ;
-
-//--- Syntax error message for terminal '$select$' :
-static const char * gSyntaxErrorMessage_galgasScanner_select = "the 'select' keyword" ;
-
-//--- Syntax error message for terminal '$self$' :
-static const char * gSyntaxErrorMessage_galgasScanner_self = "the 'self' keyword" ;
-
-//--- Syntax error message for terminal '$send$' :
-static const char * gSyntaxErrorMessage_galgasScanner_send = "the 'send' keyword" ;
-
-//--- Syntax error message for terminal '$setter$' :
-static const char * gSyntaxErrorMessage_galgasScanner_setter = "the 'setter' keyword" ;
-
-//--- Syntax error message for terminal '$sortedlist$' :
-static const char * gSyntaxErrorMessage_galgasScanner_sortedlist = "the 'sortedlist' keyword" ;
-
-//--- Syntax error message for terminal '$spoil$' :
-static const char * gSyntaxErrorMessage_galgasScanner_spoil = "the 'spoil' keyword" ;
-
-//--- Syntax error message for terminal '$struct$' :
-static const char * gSyntaxErrorMessage_galgasScanner_struct = "the 'struct' keyword" ;
-
-//--- Syntax error message for terminal '$style$' :
-static const char * gSyntaxErrorMessage_galgasScanner_style = "the 'style' keyword" ;
-
-//--- Syntax error message for terminal '$switch$' :
-static const char * gSyntaxErrorMessage_galgasScanner_switch = "the 'switch' keyword" ;
-
-//--- Syntax error message for terminal '$syntax$' :
-static const char * gSyntaxErrorMessage_galgasScanner_syntax = "the 'syntax' keyword" ;
-
-//--- Syntax error message for terminal '$tag$' :
-static const char * gSyntaxErrorMessage_galgasScanner_tag = "the 'tag' keyword" ;
-
-//--- Syntax error message for terminal '$template$' :
-static const char * gSyntaxErrorMessage_galgasScanner_template = "the 'template' keyword" ;
-
-//--- Syntax error message for terminal '$then$' :
-static const char * gSyntaxErrorMessage_galgasScanner_then = "the 'then' keyword" ;
-
-//--- Syntax error message for terminal '$true$' :
-static const char * gSyntaxErrorMessage_galgasScanner_true = "the 'true' keyword" ;
-
-//--- Syntax error message for terminal '$typealias$' :
-static const char * gSyntaxErrorMessage_galgasScanner_typealias = "the 'typealias' keyword" ;
-
-//--- Syntax error message for terminal '$unused$' :
-static const char * gSyntaxErrorMessage_galgasScanner_unused = "the 'unused' keyword" ;
-
-//--- Syntax error message for terminal '$var$' :
-static const char * gSyntaxErrorMessage_galgasScanner_var = "the 'var' keyword" ;
-
-//--- Syntax error message for terminal '$valueclass$' :
-static const char * gSyntaxErrorMessage_galgasScanner_valueclass = "the 'valueclass' keyword" ;
-
-//--- Syntax error message for terminal '$warning$' :
-static const char * gSyntaxErrorMessage_galgasScanner_warning = "the 'warning' keyword" ;
-
-//--- Syntax error message for terminal '$while$' :
-static const char * gSyntaxErrorMessage_galgasScanner_while = "the 'while' keyword" ;
-
-//--- Syntax error message for terminal '$with$' :
-static const char * gSyntaxErrorMessage_galgasScanner_with = "the 'with' keyword" ;
-
-//--- Syntax error message for terminal '$*$' :
-static const char * gSyntaxErrorMessage_galgasScanner__2A_ = "the '*' delimitor" ;
-
-//--- Syntax error message for terminal '$,$' :
-static const char * gSyntaxErrorMessage_galgasScanner__2C_ = "the ',' delimitor" ;
-
-//--- Syntax error message for terminal '$+$' :
-static const char * gSyntaxErrorMessage_galgasScanner__2B_ = "the '+' delimitor" ;
-
-//--- Syntax error message for terminal '$&+$' :
-static const char * gSyntaxErrorMessage_galgasScanner__26__2B_ = "the '&+' delimitor" ;
-
-//--- Syntax error message for terminal '$&-$' :
-static const char * gSyntaxErrorMessage_galgasScanner__26__2D_ = "the '&-' delimitor" ;
-
-//--- Syntax error message for terminal '$&*$' :
-static const char * gSyntaxErrorMessage_galgasScanner__26__2A_ = "the '&*' delimitor" ;
-
-//--- Syntax error message for terminal '$&/$' :
-static const char * gSyntaxErrorMessage_galgasScanner__26__2F_ = "the '&/' delimitor" ;
-
-//--- Syntax error message for terminal '$>$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3E_ = "the '>' delimitor" ;
-
-//--- Syntax error message for terminal '$;$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3B_ = "the ';' delimitor" ;
-
-//--- Syntax error message for terminal '$:$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3A_ = "the ':' delimitor" ;
-
-//--- Syntax error message for terminal '$:>$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3A__3E_ = "the ':>' delimitor" ;
-
-//--- Syntax error message for terminal '$-$' :
-static const char * gSyntaxErrorMessage_galgasScanner__2D_ = "the '-' delimitor" ;
-
-//--- Syntax error message for terminal '$($' :
-static const char * gSyntaxErrorMessage_galgasScanner__28_ = "the '(' delimitor" ;
-
-//--- Syntax error message for terminal '$)$' :
-static const char * gSyntaxErrorMessage_galgasScanner__29_ = "the ')' delimitor" ;
-
-//--- Syntax error message for terminal '$->$' :
-static const char * gSyntaxErrorMessage_galgasScanner__2D__3E_ = "the '->' delimitor" ;
-
-//--- Syntax error message for terminal '$==$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3D__3D_ = "the '==' delimitor" ;
-
-//--- Syntax error message for terminal '$=$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3D_ = "the '=' delimitor" ;
-
-//--- Syntax error message for terminal '$&&$' :
-static const char * gSyntaxErrorMessage_galgasScanner__26__26_ = "the '&&' delimitor" ;
-
-//--- Syntax error message for terminal '$[$' :
-static const char * gSyntaxErrorMessage_galgasScanner__5B_ = "the '[' delimitor" ;
-
-//--- Syntax error message for terminal '$]$' :
-static const char * gSyntaxErrorMessage_galgasScanner__5D_ = "the ']' delimitor" ;
-
-//--- Syntax error message for terminal '$+=$' :
-static const char * gSyntaxErrorMessage_galgasScanner__2B__3D_ = "the '+=' delimitor" ;
-
-//--- Syntax error message for terminal '$-=$' :
-static const char * gSyntaxErrorMessage_galgasScanner__2D__3D_ = "the '-=' delimitor" ;
-
-//--- Syntax error message for terminal '$*=$' :
-static const char * gSyntaxErrorMessage_galgasScanner__2A__3D_ = "the '*=' delimitor" ;
-
-//--- Syntax error message for terminal '$/=$' :
-static const char * gSyntaxErrorMessage_galgasScanner__2F__3D_ = "the '/=' delimitor" ;
-
-//--- Syntax error message for terminal '$/$' :
-static const char * gSyntaxErrorMessage_galgasScanner__2F_ = "the '/' delimitor" ;
-
-//--- Syntax error message for terminal '$!=$' :
-static const char * gSyntaxErrorMessage_galgasScanner__21__3D_ = "the '!=' delimitor" ;
-
-//--- Syntax error message for terminal '$>=$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3E__3D_ = "the '>=' delimitor" ;
-
-//--- Syntax error message for terminal '$&$' :
-static const char * gSyntaxErrorMessage_galgasScanner__26_ = "the '&' delimitor" ;
-
-//--- Syntax error message for terminal '${$' :
-static const char * gSyntaxErrorMessage_galgasScanner__7B_ = "the '{' delimitor" ;
-
-//--- Syntax error message for terminal '$}$' :
-static const char * gSyntaxErrorMessage_galgasScanner__7D_ = "the '}' delimitor" ;
-
-//--- Syntax error message for terminal '$`$' :
-static const char * gSyntaxErrorMessage_galgasScanner__60_ = "the '`' delimitor" ;
-
-//--- Syntax error message for terminal '$||$' :
-static const char * gSyntaxErrorMessage_galgasScanner__7C__7C_ = "the '||' delimitor" ;
-
-//--- Syntax error message for terminal '$|$' :
-static const char * gSyntaxErrorMessage_galgasScanner__7C_ = "the '|' delimitor" ;
-
-//--- Syntax error message for terminal '$^$' :
-static const char * gSyntaxErrorMessage_galgasScanner__5E_ = "the '^' delimitor" ;
-
-//--- Syntax error message for terminal '$>>$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3E__3E_ = "the '>>' delimitor" ;
-
-//--- Syntax error message for terminal '$~$' :
-static const char * gSyntaxErrorMessage_galgasScanner__7E_ = "the '~' delimitor" ;
-
-//--- Syntax error message for terminal '$--$' :
-static const char * gSyntaxErrorMessage_galgasScanner__2D__2D_ = "the '--' delimitor" ;
-
-//--- Syntax error message for terminal '$++$' :
-static const char * gSyntaxErrorMessage_galgasScanner__2B__2B_ = "the '++' delimitor" ;
-
-//--- Syntax error message for terminal '$&--$' :
-static const char * gSyntaxErrorMessage_galgasScanner__26__2D__2D_ = "the '&--' delimitor" ;
-
-//--- Syntax error message for terminal '$&++$' :
-static const char * gSyntaxErrorMessage_galgasScanner__26__2B__2B_ = "the '&++' delimitor" ;
-
-//--- Syntax error message for terminal '$===$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3D__3D__3D_ = "the '===' delimitor" ;
-
-//--- Syntax error message for terminal '$!==$' :
-static const char * gSyntaxErrorMessage_galgasScanner__21__3D__3D_ = "the '!==' delimitor" ;
-
-//--- Syntax error message for terminal '$?^$' :
-static const char * gSyntaxErrorMessage_galgasScanner__3F__5E_ = "the '\?^' delimitor" ;
-
-//--- Syntax error message for terminal '$!^$' :
-static const char * gSyntaxErrorMessage_galgasScanner__21__5E_ = "the '!^' delimitor" ;
-
-//----------------------------------------------------------------------------------------------------------------------
 //                getMessageForTerminal                                                          
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -556,162 +84,162 @@ C_String C_Lexique_galgasScanner::getMessageForTerminal (const int16_t inTermina
   C_String result = "<unknown>" ;
   if ((inTerminalIndex >= 0) && (inTerminalIndex < 157)) {
     static const char * syntaxErrorMessageArray [157] = {kEndOfSourceLexicalErrorMessage,
-        gSyntaxErrorMessage_galgasScanner_identifier,
-        gSyntaxErrorMessage_galgasScanner_double_2E_xxx,
-        gSyntaxErrorMessage_galgasScanner_literalInt,
-        gSyntaxErrorMessage_galgasScanner__2E_,
-        gSyntaxErrorMessage_galgasScanner__2E__2E__2E_,
-        gSyntaxErrorMessage_galgasScanner__2E__2E__3C_,
-        gSyntaxErrorMessage_galgasScanner__40_type,
-        gSyntaxErrorMessage_galgasScanner__25_attribute,
-        gSyntaxErrorMessage_galgasScanner__27_char_27_,
-        gSyntaxErrorMessage_galgasScanner__24_terminal_24_,
-        gSyntaxErrorMessage_galgasScanner_comment,
-        gSyntaxErrorMessage_galgasScanner_commentMark,
-        gSyntaxErrorMessage_galgasScanner__3F_,
-        gSyntaxErrorMessage_galgasScanner__3F__21_,
-        gSyntaxErrorMessage_galgasScanner__21_,
-        gSyntaxErrorMessage_galgasScanner__21__3F_,
-        gSyntaxErrorMessage_galgasScanner__3C_,
-        gSyntaxErrorMessage_galgasScanner__3C__3D_,
-        gSyntaxErrorMessage_galgasScanner__3C__3C_,
-        gSyntaxErrorMessage_galgasScanner__3C_non_5F_terminal_3E_,
-        gSyntaxErrorMessage_galgasScanner__22_string_22_,
-        gSyntaxErrorMessage_galgasScanner_abstract,
-        gSyntaxErrorMessage_galgasScanner_after,
-        gSyntaxErrorMessage_galgasScanner_array,
-        gSyntaxErrorMessage_galgasScanner_as,
-        gSyntaxErrorMessage_galgasScanner_bang,
-        gSyntaxErrorMessage_galgasScanner_before,
-        gSyntaxErrorMessage_galgasScanner_between,
-        gSyntaxErrorMessage_galgasScanner_block,
-        gSyntaxErrorMessage_galgasScanner_boolset,
-        gSyntaxErrorMessage_galgasScanner_cast,
-        gSyntaxErrorMessage_galgasScanner_case,
-        gSyntaxErrorMessage_galgasScanner_class,
-        gSyntaxErrorMessage_galgasScanner_constructor,
-        gSyntaxErrorMessage_galgasScanner_default,
-        gSyntaxErrorMessage_galgasScanner_dict,
-        gSyntaxErrorMessage_galgasScanner_do,
-        gSyntaxErrorMessage_galgasScanner_drop,
-        gSyntaxErrorMessage_galgasScanner_else,
-        gSyntaxErrorMessage_galgasScanner_elsif,
-        gSyntaxErrorMessage_galgasScanner_end,
-        gSyntaxErrorMessage_galgasScanner_enum,
-        gSyntaxErrorMessage_galgasScanner_error,
-        gSyntaxErrorMessage_galgasScanner_extension,
-        gSyntaxErrorMessage_galgasScanner_extern,
-        gSyntaxErrorMessage_galgasScanner_false,
-        gSyntaxErrorMessage_galgasScanner_fileprivate,
-        gSyntaxErrorMessage_galgasScanner_filewrapper,
-        gSyntaxErrorMessage_galgasScanner_for,
-        gSyntaxErrorMessage_galgasScanner_fixit,
-        gSyntaxErrorMessage_galgasScanner_func,
-        gSyntaxErrorMessage_galgasScanner_getter,
-        gSyntaxErrorMessage_galgasScanner_grammar,
-        gSyntaxErrorMessage_galgasScanner_graph,
-        gSyntaxErrorMessage_galgasScanner_gui,
-        gSyntaxErrorMessage_galgasScanner_if,
-        gSyntaxErrorMessage_galgasScanner_in,
-        gSyntaxErrorMessage_galgasScanner_indexing,
-        gSyntaxErrorMessage_galgasScanner_insert,
-        gSyntaxErrorMessage_galgasScanner_is,
-        gSyntaxErrorMessage_galgasScanner_label,
-        gSyntaxErrorMessage_galgasScanner_let,
-        gSyntaxErrorMessage_galgasScanner_lexique,
-        gSyntaxErrorMessage_galgasScanner_list,
-        gSyntaxErrorMessage_galgasScanner_listmap,
-        gSyntaxErrorMessage_galgasScanner_log,
-        gSyntaxErrorMessage_galgasScanner_loop,
-        gSyntaxErrorMessage_galgasScanner_map,
-        gSyntaxErrorMessage_galgasScanner_message,
-        gSyntaxErrorMessage_galgasScanner_method,
-        gSyntaxErrorMessage_galgasScanner_mod,
-        gSyntaxErrorMessage_galgasScanner_mutating,
-        gSyntaxErrorMessage_galgasScanner_not,
-        gSyntaxErrorMessage_galgasScanner_on,
-        gSyntaxErrorMessage_galgasScanner_operator,
-        gSyntaxErrorMessage_galgasScanner_option,
-        gSyntaxErrorMessage_galgasScanner_or,
-        gSyntaxErrorMessage_galgasScanner_override,
-        gSyntaxErrorMessage_galgasScanner_parse,
-        gSyntaxErrorMessage_galgasScanner_public,
-        gSyntaxErrorMessage_galgasScanner_protected,
-        gSyntaxErrorMessage_galgasScanner_private,
-        gSyntaxErrorMessage_galgasScanner_proc,
-        gSyntaxErrorMessage_galgasScanner_project,
-        gSyntaxErrorMessage_galgasScanner_refclass,
-        gSyntaxErrorMessage_galgasScanner_remove,
-        gSyntaxErrorMessage_galgasScanner_replace,
-        gSyntaxErrorMessage_galgasScanner_repeat,
-        gSyntaxErrorMessage_galgasScanner_rewind,
-        gSyntaxErrorMessage_galgasScanner_rule,
-        gSyntaxErrorMessage_galgasScanner_search,
-        gSyntaxErrorMessage_galgasScanner_select,
-        gSyntaxErrorMessage_galgasScanner_self,
-        gSyntaxErrorMessage_galgasScanner_send,
-        gSyntaxErrorMessage_galgasScanner_setter,
-        gSyntaxErrorMessage_galgasScanner_sortedlist,
-        gSyntaxErrorMessage_galgasScanner_spoil,
-        gSyntaxErrorMessage_galgasScanner_struct,
-        gSyntaxErrorMessage_galgasScanner_style,
-        gSyntaxErrorMessage_galgasScanner_switch,
-        gSyntaxErrorMessage_galgasScanner_syntax,
-        gSyntaxErrorMessage_galgasScanner_tag,
-        gSyntaxErrorMessage_galgasScanner_template,
-        gSyntaxErrorMessage_galgasScanner_then,
-        gSyntaxErrorMessage_galgasScanner_true,
-        gSyntaxErrorMessage_galgasScanner_typealias,
-        gSyntaxErrorMessage_galgasScanner_unused,
-        gSyntaxErrorMessage_galgasScanner_var,
-        gSyntaxErrorMessage_galgasScanner_valueclass,
-        gSyntaxErrorMessage_galgasScanner_warning,
-        gSyntaxErrorMessage_galgasScanner_while,
-        gSyntaxErrorMessage_galgasScanner_with,
-        gSyntaxErrorMessage_galgasScanner__2A_,
-        gSyntaxErrorMessage_galgasScanner__2C_,
-        gSyntaxErrorMessage_galgasScanner__2B_,
-        gSyntaxErrorMessage_galgasScanner__26__2B_,
-        gSyntaxErrorMessage_galgasScanner__26__2D_,
-        gSyntaxErrorMessage_galgasScanner__26__2A_,
-        gSyntaxErrorMessage_galgasScanner__26__2F_,
-        gSyntaxErrorMessage_galgasScanner__3E_,
-        gSyntaxErrorMessage_galgasScanner__3B_,
-        gSyntaxErrorMessage_galgasScanner__3A_,
-        gSyntaxErrorMessage_galgasScanner__3A__3E_,
-        gSyntaxErrorMessage_galgasScanner__2D_,
-        gSyntaxErrorMessage_galgasScanner__28_,
-        gSyntaxErrorMessage_galgasScanner__29_,
-        gSyntaxErrorMessage_galgasScanner__2D__3E_,
-        gSyntaxErrorMessage_galgasScanner__3D__3D_,
-        gSyntaxErrorMessage_galgasScanner__3D_,
-        gSyntaxErrorMessage_galgasScanner__26__26_,
-        gSyntaxErrorMessage_galgasScanner__5B_,
-        gSyntaxErrorMessage_galgasScanner__5D_,
-        gSyntaxErrorMessage_galgasScanner__2B__3D_,
-        gSyntaxErrorMessage_galgasScanner__2D__3D_,
-        gSyntaxErrorMessage_galgasScanner__2A__3D_,
-        gSyntaxErrorMessage_galgasScanner__2F__3D_,
-        gSyntaxErrorMessage_galgasScanner__2F_,
-        gSyntaxErrorMessage_galgasScanner__21__3D_,
-        gSyntaxErrorMessage_galgasScanner__3E__3D_,
-        gSyntaxErrorMessage_galgasScanner__26_,
-        gSyntaxErrorMessage_galgasScanner__7B_,
-        gSyntaxErrorMessage_galgasScanner__7D_,
-        gSyntaxErrorMessage_galgasScanner__60_,
-        gSyntaxErrorMessage_galgasScanner__7C__7C_,
-        gSyntaxErrorMessage_galgasScanner__7C_,
-        gSyntaxErrorMessage_galgasScanner__5E_,
-        gSyntaxErrorMessage_galgasScanner__3E__3E_,
-        gSyntaxErrorMessage_galgasScanner__7E_,
-        gSyntaxErrorMessage_galgasScanner__2D__2D_,
-        gSyntaxErrorMessage_galgasScanner__2B__2B_,
-        gSyntaxErrorMessage_galgasScanner__26__2D__2D_,
-        gSyntaxErrorMessage_galgasScanner__26__2B__2B_,
-        gSyntaxErrorMessage_galgasScanner__3D__3D__3D_,
-        gSyntaxErrorMessage_galgasScanner__21__3D__3D_,
-        gSyntaxErrorMessage_galgasScanner__3F__5E_,
-        gSyntaxErrorMessage_galgasScanner__21__5E_
+        "an identifier",
+        "a float number",
+        "a big integer number",
+        "the '.' delimitor",
+        "the '...' delimitor",
+        "the '..<' delimitor",
+        "a type name (@...)",
+        "an attribute (%...)",
+        "a character constant",
+        "a terminal symbol ($...$)",
+        "a comment",
+        "a comment",
+        "the '\?' or '\?selector:' delimitor",
+        "the '\?!' or '\?!selector:' delimitor",
+        "the '!' or '!selector:' delimitor",
+        "the '!\?' or '!\?selector:' delimitor",
+        "the '<' delimitor",
+        "the '<=' delimitor",
+        "the '<<' delimitor",
+        "a non terminal symbol <...>",
+        "a character string constant \"...\"",
+        "the 'abstract' keyword",
+        "the 'after' keyword",
+        "the 'array' keyword",
+        "the 'as' keyword",
+        "the 'bang' keyword",
+        "the 'before' keyword",
+        "the 'between' keyword",
+        "the 'block' keyword",
+        "the 'boolset' keyword",
+        "the 'cast' keyword",
+        "the 'case' keyword",
+        "the 'class' keyword",
+        "the 'constructor' keyword",
+        "the 'default' keyword",
+        "the 'dict' keyword",
+        "the 'do' keyword",
+        "the 'drop' keyword",
+        "the 'else' keyword",
+        "the 'elsif' keyword",
+        "the 'end' keyword",
+        "the 'enum' keyword",
+        "the 'error' keyword",
+        "the 'extension' keyword",
+        "the 'extern' keyword",
+        "the 'false' keyword",
+        "the 'fileprivate' keyword",
+        "the 'filewrapper' keyword",
+        "the 'for' keyword",
+        "the 'fixit' keyword",
+        "the 'func' keyword",
+        "the 'getter' keyword",
+        "the 'grammar' keyword",
+        "the 'graph' keyword",
+        "the 'gui' keyword",
+        "the 'if' keyword",
+        "the 'in' keyword",
+        "the 'indexing' keyword",
+        "the 'insert' keyword",
+        "the 'is' keyword",
+        "the 'label' keyword",
+        "the 'let' keyword",
+        "the 'lexique' keyword",
+        "the 'list' keyword",
+        "the 'listmap' keyword",
+        "the 'log' keyword",
+        "the 'loop' keyword",
+        "the 'map' keyword",
+        "the 'message' keyword",
+        "the 'method' keyword",
+        "the 'mod' keyword",
+        "the 'mutating' keyword",
+        "the 'not' keyword",
+        "the 'on' keyword",
+        "the 'operator' keyword",
+        "the 'option' keyword",
+        "the 'or' keyword",
+        "the 'override' keyword",
+        "the 'parse' keyword",
+        "the 'public' keyword",
+        "the 'protected' keyword",
+        "the 'private' keyword",
+        "the 'proc' keyword",
+        "the 'project' keyword",
+        "the 'refclass' keyword",
+        "the 'remove' keyword",
+        "the 'replace' keyword",
+        "the 'repeat' keyword",
+        "the 'rewind' keyword",
+        "the 'rule' keyword",
+        "the 'search' keyword",
+        "the 'select' keyword",
+        "the 'self' keyword",
+        "the 'send' keyword",
+        "the 'setter' keyword",
+        "the 'sortedlist' keyword",
+        "the 'spoil' keyword",
+        "the 'struct' keyword",
+        "the 'style' keyword",
+        "the 'switch' keyword",
+        "the 'syntax' keyword",
+        "the 'tag' keyword",
+        "the 'template' keyword",
+        "the 'then' keyword",
+        "the 'true' keyword",
+        "the 'typealias' keyword",
+        "the 'unused' keyword",
+        "the 'var' keyword",
+        "the 'valueclass' keyword",
+        "the 'warning' keyword",
+        "the 'while' keyword",
+        "the 'with' keyword",
+        "the '*' delimitor",
+        "the ',' delimitor",
+        "the '+' delimitor",
+        "the '&+' delimitor",
+        "the '&-' delimitor",
+        "the '&*' delimitor",
+        "the '&/' delimitor",
+        "the '>' delimitor",
+        "the ';' delimitor",
+        "the ':' delimitor",
+        "the ':>' delimitor",
+        "the '-' delimitor",
+        "the '(' delimitor",
+        "the ')' delimitor",
+        "the '->' delimitor",
+        "the '==' delimitor",
+        "the '=' delimitor",
+        "the '&&' delimitor",
+        "the '[' delimitor",
+        "the ']' delimitor",
+        "the '+=' delimitor",
+        "the '-=' delimitor",
+        "the '*=' delimitor",
+        "the '/=' delimitor",
+        "the '/' delimitor",
+        "the '!=' delimitor",
+        "the '>=' delimitor",
+        "the '&' delimitor",
+        "the '{' delimitor",
+        "the '}' delimitor",
+        "the '`' delimitor",
+        "the '||' delimitor",
+        "the '|' delimitor",
+        "the '^' delimitor",
+        "the '>>' delimitor",
+        "the '~' delimitor",
+        "the '--' delimitor",
+        "the '++' delimitor",
+        "the '&--' delimitor",
+        "the '&++' delimitor",
+        "the '===' delimitor",
+        "the '!==' delimitor",
+        "the '\?^' delimitor",
+        "the '!^' delimitor"
     } ;
     result = syntaxErrorMessageArray [inTerminalIndex] ;
   }
@@ -16406,6 +15934,381 @@ GALGAS_templateBlockInstructionForGeneration_2D_weak GALGAS_templateBlockInstruc
       result = *p ;
     }else{
       inCompiler->castError ("templateBlockInstructionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+// @templateInstructionGetColumnLocationForGeneration reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateInstructionGetColumnLocationForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateInstructionForGeneration::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_templateInstructionGetColumnLocationForGeneration::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
+  return kOperandEqual ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_templateInstructionGetColumnLocationForGeneration::objectCompare (const GALGAS_templateInstructionGetColumnLocationForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionGetColumnLocationForGeneration::GALGAS_templateInstructionGetColumnLocationForGeneration (void) :
+GALGAS_templateInstructionForGeneration () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionGetColumnLocationForGeneration GALGAS_templateInstructionGetColumnLocationForGeneration::constructor_default (LOCATION_ARGS) {
+  return GALGAS_templateInstructionGetColumnLocationForGeneration::constructor_new (THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionGetColumnLocationForGeneration::GALGAS_templateInstructionGetColumnLocationForGeneration (const cPtr_templateInstructionGetColumnLocationForGeneration * inSourcePtr) :
+GALGAS_templateInstructionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionGetColumnLocationForGeneration) ;
+}
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionGetColumnLocationForGeneration GALGAS_templateInstructionGetColumnLocationForGeneration::constructor_new (LOCATION_ARGS) {
+  GALGAS_templateInstructionGetColumnLocationForGeneration result ;
+  macroMyNew (result.mObjectPtr, cPtr_templateInstructionGetColumnLocationForGeneration (THERE)) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//Pointer class for @templateInstructionGetColumnLocationForGeneration class
+//----------------------------------------------------------------------------------------------------------------------
+
+cPtr_templateInstructionGetColumnLocationForGeneration::cPtr_templateInstructionGetColumnLocationForGeneration (LOCATION_ARGS) :
+cPtr_templateInstructionForGeneration (THERE) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_templateInstructionGetColumnLocationForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration ;
+}
+
+void cPtr_templateInstructionGetColumnLocationForGeneration::description (C_String & ioString,
+                                                                          const int32_t /* inIndentation */) const {
+  ioString << "[@templateInstructionGetColumnLocationForGeneration]" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_templateInstructionGetColumnLocationForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateInstructionGetColumnLocationForGeneration (THERE)) ;
+  return ptr ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//     @templateInstructionGetColumnLocationForGeneration generic code implementation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration ("templateInstructionGetColumnLocationForGeneration",
+                                                                          & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_templateInstructionGetColumnLocationForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_templateInstructionGetColumnLocationForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateInstructionGetColumnLocationForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionGetColumnLocationForGeneration GALGAS_templateInstructionGetColumnLocationForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                                                  C_Compiler * inCompiler
+                                                                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_templateInstructionGetColumnLocationForGeneration result ;
+  const GALGAS_templateInstructionGetColumnLocationForGeneration * p = (const GALGAS_templateInstructionGetColumnLocationForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_templateInstructionGetColumnLocationForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateInstructionGetColumnLocationForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak::objectCompare (const GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak::GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak (void) :
+GALGAS_templateInstructionForGeneration_2D_weak () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak & GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak::operator = (const GALGAS_templateInstructionGetColumnLocationForGeneration & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak::GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak (const GALGAS_templateInstructionGetColumnLocationForGeneration & inSource) :
+GALGAS_templateInstructionForGeneration_2D_weak (inSource) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
+  GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionGetColumnLocationForGeneration GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak::bang_templateInstructionGetColumnLocationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_templateInstructionGetColumnLocationForGeneration result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_templateInstructionGetColumnLocationForGeneration) ;
+      result = GALGAS_templateInstructionGetColumnLocationForGeneration ((cPtr_templateInstructionGetColumnLocationForGeneration *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//     @templateInstructionGetColumnLocationForGeneration-weak generic code implementation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak ("templateInstructionGetColumnLocationForGeneration-weak",
+                                                                                  & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2D_weak) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                                                                  C_Compiler * inCompiler
+                                                                                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak result ;
+  const GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak * p = (const GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_templateInstructionGetColumnLocationForGeneration_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateInstructionGetColumnLocationForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+// @templateInstructionGotoColumnLocationForGeneration reference class
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateInstructionGotoColumnLocationForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateInstructionForGeneration::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_templateInstructionGotoColumnLocationForGeneration::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
+  return kOperandEqual ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_templateInstructionGotoColumnLocationForGeneration::objectCompare (const GALGAS_templateInstructionGotoColumnLocationForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionGotoColumnLocationForGeneration::GALGAS_templateInstructionGotoColumnLocationForGeneration (void) :
+GALGAS_templateInstructionForGeneration () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionGotoColumnLocationForGeneration GALGAS_templateInstructionGotoColumnLocationForGeneration::constructor_default (LOCATION_ARGS) {
+  return GALGAS_templateInstructionGotoColumnLocationForGeneration::constructor_new (THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionGotoColumnLocationForGeneration::GALGAS_templateInstructionGotoColumnLocationForGeneration (const cPtr_templateInstructionGotoColumnLocationForGeneration * inSourcePtr) :
+GALGAS_templateInstructionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionGotoColumnLocationForGeneration) ;
+}
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionGotoColumnLocationForGeneration GALGAS_templateInstructionGotoColumnLocationForGeneration::constructor_new (LOCATION_ARGS) {
+  GALGAS_templateInstructionGotoColumnLocationForGeneration result ;
+  macroMyNew (result.mObjectPtr, cPtr_templateInstructionGotoColumnLocationForGeneration (THERE)) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//Pointer class for @templateInstructionGotoColumnLocationForGeneration class
+//----------------------------------------------------------------------------------------------------------------------
+
+cPtr_templateInstructionGotoColumnLocationForGeneration::cPtr_templateInstructionGotoColumnLocationForGeneration (LOCATION_ARGS) :
+cPtr_templateInstructionForGeneration (THERE) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_templateInstructionGotoColumnLocationForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationForGeneration ;
+}
+
+void cPtr_templateInstructionGotoColumnLocationForGeneration::description (C_String & ioString,
+                                                                           const int32_t /* inIndentation */) const {
+  ioString << "[@templateInstructionGotoColumnLocationForGeneration]" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_templateInstructionGotoColumnLocationForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateInstructionGotoColumnLocationForGeneration (THERE)) ;
+  return ptr ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//     @templateInstructionGotoColumnLocationForGeneration generic code implementation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationForGeneration ("templateInstructionGotoColumnLocationForGeneration",
+                                                                           & kTypeDescriptor_GALGAS_templateInstructionForGeneration) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_templateInstructionGotoColumnLocationForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationForGeneration ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_templateInstructionGotoColumnLocationForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateInstructionGotoColumnLocationForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionGotoColumnLocationForGeneration GALGAS_templateInstructionGotoColumnLocationForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                                                    C_Compiler * inCompiler
+                                                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_templateInstructionGotoColumnLocationForGeneration result ;
+  const GALGAS_templateInstructionGotoColumnLocationForGeneration * p = (const GALGAS_templateInstructionGotoColumnLocationForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_templateInstructionGotoColumnLocationForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateInstructionGotoColumnLocationForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
