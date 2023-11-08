@@ -3484,7 +3484,7 @@ static const char * gNonTerminalNames_templateGrammar [51] = {
 #define ACCEPT (1)
 #define END (-1)
 
-static const int16_t gActionTable_templateGrammar [] = {
+static const int32_t gActionTable_templateGrammar [] = {
 // State S0 (index = 0)
   C_Lexique_galgasTemplateScanner::kToken__21_, SHIFT (1)
 , C_Lexique_galgasTemplateScanner::kToken__3F__5E_, SHIFT (2)
@@ -7109,11 +7109,11 @@ static const uint32_t gActionTableIndex_templateGrammar [235] = {
 // Successor tables handle non terminal successors ;
 // an entry is (non_terminal_symbol, n) ; successor is state n.
 
-static const int16_t gSuccessorTable_templateGrammar_0 [7] = {8, 8,
+static const int32_t gSuccessorTable_templateGrammar_0 [7] = {8, 8,
   9, 9,
   29, 10, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_1 [15] = {0, 23,
+static const int32_t gSuccessorTable_templateGrammar_1 [15] = {0, 23,
   1, 24,
   2, 25,
   3, 26,
@@ -7121,7 +7121,7 @@ static const int16_t gSuccessorTable_templateGrammar_1 [15] = {0, 23,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_4 [15] = {0, 30,
+static const int32_t gSuccessorTable_templateGrammar_4 [15] = {0, 30,
   1, 24,
   2, 25,
   3, 26,
@@ -7129,7 +7129,7 @@ static const int16_t gSuccessorTable_templateGrammar_4 [15] = {0, 30,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_5 [15] = {0, 31,
+static const int32_t gSuccessorTable_templateGrammar_5 [15] = {0, 31,
   1, 24,
   2, 25,
   3, 26,
@@ -7137,9 +7137,9 @@ static const int16_t gSuccessorTable_templateGrammar_5 [15] = {0, 31,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_6 [3] = {33, 34, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_6 [3] = {33, 34, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_7 [15] = {0, 35,
+static const int32_t gSuccessorTable_templateGrammar_7 [15] = {0, 35,
   1, 24,
   2, 25,
   3, 26,
@@ -7147,19 +7147,19 @@ static const int16_t gSuccessorTable_templateGrammar_7 [15] = {0, 35,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_8 [5] = {8, 8,
+static const int32_t gSuccessorTable_templateGrammar_8 [5] = {8, 8,
   29, 36, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_11 [5] = {5, 37,
+static const int32_t gSuccessorTable_templateGrammar_11 [5] = {5, 37,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_13 [5] = {5, 39,
+static const int32_t gSuccessorTable_templateGrammar_13 [5] = {5, 39,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_14 [5] = {5, 40,
+static const int32_t gSuccessorTable_templateGrammar_14 [5] = {5, 40,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_15 [15] = {0, 41,
+static const int32_t gSuccessorTable_templateGrammar_15 [15] = {0, 41,
   1, 24,
   2, 25,
   3, 26,
@@ -7167,9 +7167,9 @@ static const int16_t gSuccessorTable_templateGrammar_15 [15] = {0, 41,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_21 [3] = {19, 43, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_21 [3] = {19, 43, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_22 [17] = {0, 48,
+static const int32_t gSuccessorTable_templateGrammar_22 [17] = {0, 48,
   1, 24,
   2, 25,
   3, 26,
@@ -7178,28 +7178,28 @@ static const int16_t gSuccessorTable_templateGrammar_22 [17] = {0, 48,
   6, 29,
   20, 49, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_24 [3] = {13, 52, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_24 [3] = {13, 52, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_25 [3] = {14, 54, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_25 [3] = {14, 54, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_26 [3] = {15, 61, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_26 [3] = {15, 61, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_27 [3] = {16, 66, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_27 [3] = {16, 66, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_28 [3] = {17, 70, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_28 [3] = {17, 70, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_29 [3] = {18, 73, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_29 [3] = {18, 73, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_34 [3] = {11, 77, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_34 [3] = {11, 77, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_35 [3] = {42, 79, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_35 [3] = {42, 79, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_38 [5] = {7, 81,
+static const int32_t gSuccessorTable_templateGrammar_38 [5] = {7, 81,
   23, 82, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_42 [3] = {19, 84, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_42 [3] = {19, 84, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_44 [15] = {0, 85,
+static const int32_t gSuccessorTable_templateGrammar_44 [15] = {0, 85,
   1, 24,
   2, 25,
   3, 26,
@@ -7207,98 +7207,98 @@ static const int16_t gSuccessorTable_templateGrammar_44 [15] = {0, 85,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_47 [3] = {21, 90, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_47 [3] = {21, 90, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_50 [13] = {1, 92,
+static const int32_t gSuccessorTable_templateGrammar_50 [13] = {1, 92,
   2, 25,
   3, 26,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_51 [13] = {1, 93,
+static const int32_t gSuccessorTable_templateGrammar_51 [13] = {1, 93,
   2, 25,
   3, 26,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_53 [11] = {2, 94,
+static const int32_t gSuccessorTable_templateGrammar_53 [11] = {2, 94,
   3, 26,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_55 [9] = {3, 95,
+static const int32_t gSuccessorTable_templateGrammar_55 [9] = {3, 95,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_56 [9] = {3, 96,
+static const int32_t gSuccessorTable_templateGrammar_56 [9] = {3, 96,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_57 [9] = {3, 97,
+static const int32_t gSuccessorTable_templateGrammar_57 [9] = {3, 97,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_58 [9] = {3, 98,
+static const int32_t gSuccessorTable_templateGrammar_58 [9] = {3, 98,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_59 [9] = {3, 99,
+static const int32_t gSuccessorTable_templateGrammar_59 [9] = {3, 99,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_60 [9] = {3, 100,
+static const int32_t gSuccessorTable_templateGrammar_60 [9] = {3, 100,
   4, 27,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_62 [7] = {4, 101,
+static const int32_t gSuccessorTable_templateGrammar_62 [7] = {4, 101,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_63 [7] = {4, 102,
+static const int32_t gSuccessorTable_templateGrammar_63 [7] = {4, 102,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_64 [7] = {4, 103,
+static const int32_t gSuccessorTable_templateGrammar_64 [7] = {4, 103,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_65 [7] = {4, 104,
+static const int32_t gSuccessorTable_templateGrammar_65 [7] = {4, 104,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_67 [5] = {5, 105,
+static const int32_t gSuccessorTable_templateGrammar_67 [5] = {5, 105,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_68 [5] = {5, 106,
+static const int32_t gSuccessorTable_templateGrammar_68 [5] = {5, 106,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_69 [5] = {5, 107,
+static const int32_t gSuccessorTable_templateGrammar_69 [5] = {5, 107,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_72 [3] = {22, 112, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_72 [3] = {22, 112, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_74 [5] = {8, 113,
+static const int32_t gSuccessorTable_templateGrammar_74 [5] = {8, 113,
   24, 114, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_75 [5] = {8, 115,
+static const int32_t gSuccessorTable_templateGrammar_75 [5] = {8, 115,
   26, 116, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_76 [3] = {10, 121, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_76 [3] = {10, 121, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_77 [3] = {34, 123, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_77 [3] = {34, 123, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_78 [3] = {12, 125, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_78 [3] = {12, 125, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_80 [15] = {0, 127,
+static const int32_t gSuccessorTable_templateGrammar_80 [15] = {0, 127,
   1, 24,
   2, 25,
   3, 26,
@@ -7306,56 +7306,56 @@ static const int16_t gSuccessorTable_templateGrammar_80 [15] = {0, 127,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_86 [5] = {7, 130,
+static const int32_t gSuccessorTable_templateGrammar_86 [5] = {7, 130,
   23, 82, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_91 [5] = {7, 135,
+static const int32_t gSuccessorTable_templateGrammar_91 [5] = {7, 135,
   23, 82, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_92 [3] = {13, 136, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_92 [3] = {13, 136, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_93 [3] = {13, 137, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_93 [3] = {13, 137, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_94 [3] = {14, 138, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_94 [3] = {14, 138, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_101 [3] = {16, 139, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_101 [3] = {16, 139, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_102 [3] = {16, 140, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_102 [3] = {16, 140, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_103 [3] = {16, 141, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_103 [3] = {16, 141, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_104 [3] = {16, 142, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_104 [3] = {16, 142, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_105 [3] = {17, 143, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_105 [3] = {17, 143, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_106 [3] = {17, 144, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_106 [3] = {17, 144, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_107 [3] = {17, 145, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_107 [3] = {17, 145, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_108 [3] = {18, 146, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_108 [3] = {18, 146, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_113 [5] = {8, 113,
+static const int32_t gSuccessorTable_templateGrammar_113 [5] = {8, 113,
   24, 148, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_115 [5] = {8, 115,
+static const int32_t gSuccessorTable_templateGrammar_115 [5] = {8, 115,
   26, 150, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_116 [3] = {25, 152, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_116 [3] = {25, 152, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_121 [5] = {10, 155,
+static const int32_t gSuccessorTable_templateGrammar_121 [5] = {10, 155,
   31, 156, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_122 [5] = {8, 157,
+static const int32_t gSuccessorTable_templateGrammar_122 [5] = {8, 157,
   35, 158, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_124 [3] = {44, 161, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_124 [3] = {44, 161, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_127 [3] = {23, 163, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_127 [3] = {23, 163, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_129 [5] = {7, 164,
+static const int32_t gSuccessorTable_templateGrammar_129 [5] = {7, 164,
   23, 82, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_151 [15] = {0, 170,
+static const int32_t gSuccessorTable_templateGrammar_151 [15] = {0, 170,
   1, 24,
   2, 25,
   3, 26,
@@ -7363,9 +7363,9 @@ static const int16_t gSuccessorTable_templateGrammar_151 [15] = {0, 170,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_152 [3] = {27, 172, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_152 [3] = {27, 172, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_153 [15] = {0, 173,
+static const int32_t gSuccessorTable_templateGrammar_153 [15] = {0, 173,
   1, 24,
   2, 25,
   3, 26,
@@ -7373,47 +7373,47 @@ static const int16_t gSuccessorTable_templateGrammar_153 [15] = {0, 173,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_155 [5] = {10, 155,
+static const int32_t gSuccessorTable_templateGrammar_155 [5] = {10, 155,
   31, 174, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_157 [5] = {8, 157,
+static const int32_t gSuccessorTable_templateGrammar_157 [5] = {8, 157,
   35, 176, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_159 [3] = {36, 178, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_159 [3] = {36, 178, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_161 [3] = {45, 181, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_161 [3] = {45, 181, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_162 [5] = {8, 182,
+static const int32_t gSuccessorTable_templateGrammar_162 [5] = {8, 182,
   43, 183, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_166 [5] = {7, 185,
+static const int32_t gSuccessorTable_templateGrammar_166 [5] = {7, 185,
   23, 82, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_171 [5] = {8, 188,
+static const int32_t gSuccessorTable_templateGrammar_171 [5] = {8, 188,
   28, 189, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_173 [3] = {30, 192, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_173 [3] = {30, 192, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_178 [5] = {8, 195,
+static const int32_t gSuccessorTable_templateGrammar_178 [5] = {8, 195,
   37, 196, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_179 [3] = {44, 197, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_179 [3] = {44, 197, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_180 [5] = {47, 201,
+static const int32_t gSuccessorTable_templateGrammar_180 [5] = {47, 201,
   48, 202, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_182 [5] = {8, 182,
+static const int32_t gSuccessorTable_templateGrammar_182 [5] = {8, 182,
   43, 203, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_183 [3] = {42, 204, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_183 [3] = {42, 204, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_187 [5] = {8, 115,
+static const int32_t gSuccessorTable_templateGrammar_187 [5] = {8, 115,
   26, 206, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_188 [5] = {8, 188,
+static const int32_t gSuccessorTable_templateGrammar_188 [5] = {8, 188,
   28, 207, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_193 [15] = {0, 209,
+static const int32_t gSuccessorTable_templateGrammar_193 [15] = {0, 209,
   1, 24,
   2, 25,
   3, 26,
@@ -7421,99 +7421,99 @@ static const int16_t gSuccessorTable_templateGrammar_193 [15] = {0, 209,
   5, 28,
   6, 29, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_195 [5] = {8, 195,
+static const int32_t gSuccessorTable_templateGrammar_195 [5] = {8, 195,
   37, 211, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_196 [3] = {38, 213, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_196 [3] = {38, 213, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_201 [7] = {46, 215,
+static const int32_t gSuccessorTable_templateGrammar_201 [7] = {46, 215,
   47, 216,
   48, 202, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_202 [3] = {49, 218, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_202 [3] = {49, 218, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_206 [3] = {25, 219, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_206 [3] = {25, 219, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_209 [3] = {32, 221, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_209 [3] = {32, 221, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_212 [5] = {8, 222,
+static const int32_t gSuccessorTable_templateGrammar_212 [5] = {8, 222,
   39, 223, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_213 [3] = {40, 225, -1} ;
+static const int32_t gSuccessorTable_templateGrammar_213 [3] = {40, 225, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_216 [7] = {46, 227,
+static const int32_t gSuccessorTable_templateGrammar_216 [7] = {46, 227,
   47, 216,
   48, 202, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_222 [5] = {8, 222,
+static const int32_t gSuccessorTable_templateGrammar_222 [5] = {8, 222,
   39, 230, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_224 [5] = {8, 231,
+static const int32_t gSuccessorTable_templateGrammar_224 [5] = {8, 231,
   41, 232, -1} ;
 
-static const int16_t gSuccessorTable_templateGrammar_231 [5] = {8, 231,
+static const int32_t gSuccessorTable_templateGrammar_231 [5] = {8, 231,
   41, 234, -1} ;
 
-static const int16_t * gSuccessorTable_templateGrammar [235] = {
-gSuccessorTable_templateGrammar_0, gSuccessorTable_templateGrammar_1, NULL, NULL, 
+static const int32_t * gSuccessorTable_templateGrammar [235] = {
+gSuccessorTable_templateGrammar_0, gSuccessorTable_templateGrammar_1, nullptr, nullptr, 
   gSuccessorTable_templateGrammar_4, gSuccessorTable_templateGrammar_5, gSuccessorTable_templateGrammar_6, gSuccessorTable_templateGrammar_7, 
-  gSuccessorTable_templateGrammar_8, NULL, NULL, gSuccessorTable_templateGrammar_11, 
-  NULL, gSuccessorTable_templateGrammar_13, gSuccessorTable_templateGrammar_14, gSuccessorTable_templateGrammar_15, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_templateGrammar_21, gSuccessorTable_templateGrammar_22, NULL, 
+  gSuccessorTable_templateGrammar_8, nullptr, nullptr, gSuccessorTable_templateGrammar_11, 
+  nullptr, gSuccessorTable_templateGrammar_13, gSuccessorTable_templateGrammar_14, gSuccessorTable_templateGrammar_15, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_21, gSuccessorTable_templateGrammar_22, nullptr, 
   gSuccessorTable_templateGrammar_24, gSuccessorTable_templateGrammar_25, gSuccessorTable_templateGrammar_26, gSuccessorTable_templateGrammar_27, 
-  gSuccessorTable_templateGrammar_28, gSuccessorTable_templateGrammar_29, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_templateGrammar_34, gSuccessorTable_templateGrammar_35, 
-  NULL, NULL, gSuccessorTable_templateGrammar_38, NULL, 
-  NULL, NULL, gSuccessorTable_templateGrammar_42, NULL, 
-  gSuccessorTable_templateGrammar_44, NULL, NULL, gSuccessorTable_templateGrammar_47, 
-  NULL, NULL, gSuccessorTable_templateGrammar_50, gSuccessorTable_templateGrammar_51, 
-  NULL, gSuccessorTable_templateGrammar_53, NULL, gSuccessorTable_templateGrammar_55, 
+  gSuccessorTable_templateGrammar_28, gSuccessorTable_templateGrammar_29, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_34, gSuccessorTable_templateGrammar_35, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_38, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_42, nullptr, 
+  gSuccessorTable_templateGrammar_44, nullptr, nullptr, gSuccessorTable_templateGrammar_47, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_50, gSuccessorTable_templateGrammar_51, 
+  nullptr, gSuccessorTable_templateGrammar_53, nullptr, gSuccessorTable_templateGrammar_55, 
   gSuccessorTable_templateGrammar_56, gSuccessorTable_templateGrammar_57, gSuccessorTable_templateGrammar_58, gSuccessorTable_templateGrammar_59, 
-  gSuccessorTable_templateGrammar_60, NULL, gSuccessorTable_templateGrammar_62, gSuccessorTable_templateGrammar_63, 
-  gSuccessorTable_templateGrammar_64, gSuccessorTable_templateGrammar_65, NULL, gSuccessorTable_templateGrammar_67, 
-  gSuccessorTable_templateGrammar_68, gSuccessorTable_templateGrammar_69, NULL, NULL, 
-  gSuccessorTable_templateGrammar_72, NULL, gSuccessorTable_templateGrammar_74, gSuccessorTable_templateGrammar_75, 
-  gSuccessorTable_templateGrammar_76, gSuccessorTable_templateGrammar_77, gSuccessorTable_templateGrammar_78, NULL, 
-  gSuccessorTable_templateGrammar_80, NULL, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_templateGrammar_86, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_templateGrammar_91, 
-  gSuccessorTable_templateGrammar_92, gSuccessorTable_templateGrammar_93, gSuccessorTable_templateGrammar_94, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_templateGrammar_101, gSuccessorTable_templateGrammar_102, gSuccessorTable_templateGrammar_103, 
+  gSuccessorTable_templateGrammar_60, nullptr, gSuccessorTable_templateGrammar_62, gSuccessorTable_templateGrammar_63, 
+  gSuccessorTable_templateGrammar_64, gSuccessorTable_templateGrammar_65, nullptr, gSuccessorTable_templateGrammar_67, 
+  gSuccessorTable_templateGrammar_68, gSuccessorTable_templateGrammar_69, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_72, nullptr, gSuccessorTable_templateGrammar_74, gSuccessorTable_templateGrammar_75, 
+  gSuccessorTable_templateGrammar_76, gSuccessorTable_templateGrammar_77, gSuccessorTable_templateGrammar_78, nullptr, 
+  gSuccessorTable_templateGrammar_80, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_86, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_91, 
+  gSuccessorTable_templateGrammar_92, gSuccessorTable_templateGrammar_93, gSuccessorTable_templateGrammar_94, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_101, gSuccessorTable_templateGrammar_102, gSuccessorTable_templateGrammar_103, 
   gSuccessorTable_templateGrammar_104, gSuccessorTable_templateGrammar_105, gSuccessorTable_templateGrammar_106, gSuccessorTable_templateGrammar_107, 
-  gSuccessorTable_templateGrammar_108, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_templateGrammar_113, NULL, gSuccessorTable_templateGrammar_115, 
-  gSuccessorTable_templateGrammar_116, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_templateGrammar_121, gSuccessorTable_templateGrammar_122, NULL, 
-  gSuccessorTable_templateGrammar_124, NULL, NULL, gSuccessorTable_templateGrammar_127, 
-  NULL, gSuccessorTable_templateGrammar_129, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_templateGrammar_151, 
-  gSuccessorTable_templateGrammar_152, gSuccessorTable_templateGrammar_153, NULL, gSuccessorTable_templateGrammar_155, 
-  NULL, gSuccessorTable_templateGrammar_157, NULL, gSuccessorTable_templateGrammar_159, 
-  NULL, gSuccessorTable_templateGrammar_161, gSuccessorTable_templateGrammar_162, NULL, 
-  NULL, NULL, gSuccessorTable_templateGrammar_166, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_templateGrammar_171, 
-  NULL, gSuccessorTable_templateGrammar_173, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_templateGrammar_178, gSuccessorTable_templateGrammar_179, 
-  gSuccessorTable_templateGrammar_180, NULL, gSuccessorTable_templateGrammar_182, gSuccessorTable_templateGrammar_183, 
-  NULL, NULL, NULL, gSuccessorTable_templateGrammar_187, 
-  gSuccessorTable_templateGrammar_188, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_templateGrammar_193, NULL, gSuccessorTable_templateGrammar_195, 
-  gSuccessorTable_templateGrammar_196, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_templateGrammar_201, gSuccessorTable_templateGrammar_202, NULL, 
-  NULL, NULL, gSuccessorTable_templateGrammar_206, NULL, 
-  NULL, gSuccessorTable_templateGrammar_209, NULL, NULL, 
-  gSuccessorTable_templateGrammar_212, gSuccessorTable_templateGrammar_213, NULL, NULL, 
-  gSuccessorTable_templateGrammar_216, NULL, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_templateGrammar_222, NULL, 
-  gSuccessorTable_templateGrammar_224, NULL, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_templateGrammar_231, 
-  NULL, NULL, NULL} ;
+  gSuccessorTable_templateGrammar_108, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_113, nullptr, gSuccessorTable_templateGrammar_115, 
+  gSuccessorTable_templateGrammar_116, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_121, gSuccessorTable_templateGrammar_122, nullptr, 
+  gSuccessorTable_templateGrammar_124, nullptr, nullptr, gSuccessorTable_templateGrammar_127, 
+  nullptr, gSuccessorTable_templateGrammar_129, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_151, 
+  gSuccessorTable_templateGrammar_152, gSuccessorTable_templateGrammar_153, nullptr, gSuccessorTable_templateGrammar_155, 
+  nullptr, gSuccessorTable_templateGrammar_157, nullptr, gSuccessorTable_templateGrammar_159, 
+  nullptr, gSuccessorTable_templateGrammar_161, gSuccessorTable_templateGrammar_162, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_166, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_171, 
+  nullptr, gSuccessorTable_templateGrammar_173, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_178, gSuccessorTable_templateGrammar_179, 
+  gSuccessorTable_templateGrammar_180, nullptr, gSuccessorTable_templateGrammar_182, gSuccessorTable_templateGrammar_183, 
+  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_187, 
+  gSuccessorTable_templateGrammar_188, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_193, nullptr, gSuccessorTable_templateGrammar_195, 
+  gSuccessorTable_templateGrammar_196, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_201, gSuccessorTable_templateGrammar_202, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_206, nullptr, 
+  nullptr, gSuccessorTable_templateGrammar_209, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_212, gSuccessorTable_templateGrammar_213, nullptr, nullptr, 
+  gSuccessorTable_templateGrammar_216, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_templateGrammar_222, nullptr, 
+  gSuccessorTable_templateGrammar_224, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_templateGrammar_231, 
+  nullptr, nullptr, nullptr} ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                      
@@ -7521,7 +7521,7 @@ gSuccessorTable_templateGrammar_0, gSuccessorTable_templateGrammar_1, NULL, NULL
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int16_t gProductionsTable_templateGrammar [127 * 2] = {
+static const int32_t gProductionsTable_templateGrammar [127 * 2] = {
   0, 2,
   1, 2,
   2, 2,

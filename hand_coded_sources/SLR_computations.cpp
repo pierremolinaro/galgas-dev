@@ -688,7 +688,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                     "#define REDUCE(a) (-(a) - 1)\n"
                     "#define ACCEPT (1)\n"
                     "#define END (-1)\n\n" ;
-  ioCppFileContents << "static const int16_t gActionTable_" << inTargetFileName << " [] = {" ;
+  ioCppFileContents << "static const int32_t gActionTable_" << inTargetFileName << " [] = {" ;
   bool isFirst = true ;
   int32_t startIndex = 0 ;
   for (int32_t i=0 ; i<rowsCount ; i++) {
@@ -760,7 +760,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         if (currentSourceState >= 0) {
           ioCppFileContents << ", -1} ;\n\n" ;
         }
-        ioCppFileContents << "static const int16_t gSuccessorTable_" << inTargetFileName << "_"
+        ioCppFileContents << "static const int32_t gSuccessorTable_" << inTargetFileName << "_"
                 << cStringWithSigned (sourceState) << " ["
                 << cStringWithSigned ((int32_t)(2 * stateSuccessorsCount (sourceState COMMA_HERE) + 1))
                 << "] = {" ;
@@ -771,7 +771,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
   }
   ioCppFileContents << ", -1} ;\n\n" ;
 //--- Write global state successor table
-  ioCppFileContents << "static const int16_t * gSuccessorTable_" << inTargetFileName << " ["
+  ioCppFileContents << "static const int32_t * gSuccessorTable_" << inTargetFileName << " ["
           << cStringWithSigned (rowsCount)
           << "] = {\n" ;
   int32_t itemInSameLineCount = 0 ;
@@ -783,7 +783,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
     }
     itemInSameLineCount ++ ;
     if (stateSuccessorsCount (r COMMA_HERE) == 0) {
-      ioCppFileContents << "NULL" ;
+      ioCppFileContents << "nullptr" ;
     }else{
       ioCppFileContents << "gSuccessorTable_" << inTargetFileName << "_" << cStringWithSigned (r) ;
     }
@@ -794,7 +794,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
 //    and the size of right string
   const int32_t productionsCount = inProductionRules.length () ;
   ioCppFileContents.appendCppTitleComment ("Production rules infos (left non terminal, size of right string)") ;
-  ioCppFileContents << "static const int16_t gProductionsTable_" << inTargetFileName << " ["
+  ioCppFileContents << "static const int32_t gProductionsTable_" << inTargetFileName << " ["
           << cStringWithSigned (productionsCount)
           << " * 2] = {\n" ;
   for (int32_t p=0 ; p<productionsCount ; p++) {

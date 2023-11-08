@@ -56,7 +56,7 @@ C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
 //                getMessageForTerminal                                                          
 //----------------------------------------------------------------------------------------------------------------------
 
-C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t inTerminalIndex) const {
+C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int32_t inTerminalIndex) const {
   C_String result = "<unknown>" ;
   if ((inTerminalIndex >= 0) && (inTerminalIndex < %![[TERMINAL_LIST count] + 1 string]%)) {
     static const char * syntaxErrorMessageArray [%![[TERMINAL_LIST count] + 1 string]%] = {kEndOfSourceLexicalErrorMessage%
@@ -92,7 +92,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t i
       between %,\n%
       end
     %\n} ;\n\n%
-    %int16_t C_Lexique_%!LEXIQUE_IDENTIFIER%::search_into_%!tokenList_lkey.string% (const C_String & inSearchedString) {\n%
+    %int32_t C_Lexique_%!LEXIQUE_IDENTIFIER%::search_into_%!tokenList_lkey.string% (const C_String & inSearchedString) {\n%
     %  return searchInList (inSearchedString, ktable_for_%!LEXIQUE_IDENTIFIER%_%!tokenList_lkey.string%, ktable_size_%!LEXIQUE_IDENTIFIER%_%!tokenList_lkey.string%) ;\n%
     %}\n\n%
   end

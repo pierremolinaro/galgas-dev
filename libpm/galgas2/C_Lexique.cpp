@@ -428,11 +428,11 @@ void C_Lexique::lexicalLog (LOCATION_ARGS) {
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-int16_t C_Lexique::searchInList (const C_String & inString,
+int32_t C_Lexique::searchInList (const C_String & inString,
                                  const C_unicode_lexique_table_entry inTable [],
-                                 const int16_t inTableSize) {
+                                 const int32_t inTableSize) {
   const int32_t searchedStringLength = inString.length () ;
-  int16_t code = -1 ; // -1 means 'not found'
+  int32_t code = -1 ; // -1 means 'not found'
   int32_t bottom = 0 ;
   int32_t top = inTableSize - 1 ;
   
@@ -500,10 +500,10 @@ void C_Lexique::lexicalError (const C_String & inLexicalErrorMessage
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void C_Lexique::parsingError (const TC_UniqueArray <int16_t> & inExpectedTerminalsArray,
+void C_Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTerminalsArray,
                               const cToken * inPreviousTokenPtr,
                               const cToken * inCurrentTokenPtr,
-                              const int16_t inCurrentTokenCode
+                              const int32_t inCurrentTokenCode
                               COMMA_LOCATION_ARGS) {
 //--- Build error message
   C_String foundTokenMessage = getMessageForTerminal (inCurrentTokenCode) ;
@@ -552,14 +552,14 @@ static bool TRACE_LL1_PARSING (void) { return false ; }
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-bool C_Lexique::acceptTerminalForErrorSignaling (const int16_t inTerminal,
-                                                 const int16_t inProductions [],
-                                                 const int16_t inProductionIndexes [],
-                                                 const int16_t inFirstProductionIndex [],
-                                                 const int16_t inDecisionTable [],
-                                                 const int16_t inDecisionTableIndexes [],
-                                                 const TC_Array <int16_t> & inErrorStack,
-                                                 const int16_t inErrorProgramCounter) {
+bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
+                                                 const int32_t inProductions [],
+                                                 const int32_t inProductionIndexes [],
+                                                 const int32_t inFirstProductionIndex [],
+                                                 const int32_t inDecisionTable [],
+                                                 const int32_t inDecisionTableIndexes [],
+                                                 const TC_Array <int32_t> & inErrorStack,
+                                                 const int32_t inErrorProgramCounter) {
   if (TRACE_LL1_PARSING ()) {
     C_String m = getMessageForTerminal (inTerminal) ;
     co << "------ Enter 'acceptTerminalForErrorSignaling' with '"
@@ -571,14 +571,14 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int16_t inTerminal,
     co.flush () ;
   }
   bool accept = false ;
-  int16_t programCounter = inErrorProgramCounter ;
-  TC_Array <int16_t> stack = inErrorStack ;
+  int32_t programCounter = inErrorProgramCounter ;
+  TC_Array <int32_t> stack = inErrorStack ;
   bool loop = true ;
   while (loop) {
-    const int16_t instruction = inProductions [programCounter] ;
+    const int32_t instruction = inProductions [programCounter] ;
     programCounter ++ ;
     if (instruction > 0) { // We reach a terminal
-      const int16_t reachedTerminal = (int16_t) (instruction - 1) ;
+      const int32_t reachedTerminal = (int32_t) (instruction - 1) ;
       accept = reachedTerminal == inTerminal ;
       if (TRACE_LL1_PARSING ()) {
         const C_String m = getMessageForTerminal (reachedTerminal) ;
@@ -591,14 +591,14 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int16_t inTerminal,
       }
       loop = false ;
     }else if (instruction < 0) { // We reach a nonterminal
-      const int16_t reachedNonterminal = (int16_t) (- instruction - 1) ;
+      const int32_t reachedNonterminal = (int32_t) (- instruction - 1) ;
       if (TRACE_LL1_PARSING ()) {
         co << "reached non-terminal "
            << reachedNonterminal
            << "\n" ;
         co.flush () ;
       }
-      int16_t nonTerminalEntry = inDecisionTableIndexes [reachedNonterminal] ;
+      int32_t nonTerminalEntry = inDecisionTableIndexes [reachedNonterminal] ;
       if (inDecisionTable [nonTerminalEntry] < 0) { // Only one rule : call it
         stack.appendObject (programCounter) ;
         programCounter = inProductionIndexes [inFirstProductionIndex [reachedNonterminal]] ;
@@ -607,7 +607,7 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int16_t inTerminal,
         }
       }else{ // More than one rule : test if terminal is accepted, and call rule
         loop = false ;
-        int16_t choice = 0 ;
+        int32_t choice = 0 ;
         bool found = false ;
         while ((inDecisionTable [nonTerminalEntry] >= 0) && ! found) {
           while ((inDecisionTable [nonTerminalEntry] >= 0) && ! found) {
@@ -617,8 +617,8 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int16_t inTerminal,
               co << "try '" << m << "' non terminal" << (found ? " (accepted)": "") << "\n" ; co.flush () ;
             }
             if (found) {
-              int16_t newProgramCounter = programCounter ;
-              TC_Array <int16_t> newStack = stack ;
+              int32_t newProgramCounter = programCounter ;
+              TC_Array <int32_t> newStack = stack ;
               newStack.appendObject (newProgramCounter) ;
               newProgramCounter = inProductionIndexes [inFirstProductionIndex [reachedNonterminal] + choice] ;
               accept = acceptTerminalForErrorSignaling (inTerminal,
@@ -656,20 +656,20 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int16_t inTerminal,
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int16_t inErrorProgramCounter,
+void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorProgramCounter,
                                                           const int32_t inErrorStackCount,
-                                                          const TC_Array <int16_t> & inStack,
-                                                          const TC_Array <int16_t> & inErrorStack,
-                                                          const int16_t inProductions [],
-                                                          const int16_t inProductionIndexes [],
-                                                          const int16_t inFirstProductionIndex [],
-                                                          const int16_t inDecisionTable [],
-                                                          const int16_t inDecisionTableIndexes [],
-                                                          TC_UniqueArray <int16_t> & outExpectedTerminalsArray) {
+                                                          const TC_Array <int32_t> & inStack,
+                                                          const TC_Array <int32_t> & inErrorStack,
+                                                          const int32_t inProductions [],
+                                                          const int32_t inProductionIndexes [],
+                                                          const int32_t inFirstProductionIndex [],
+                                                          const int32_t inDecisionTable [],
+                                                          const int32_t inDecisionTableIndexes [],
+                                                          TC_UniqueArray <int32_t> & outExpectedTerminalsArray) {
 //--- First, go to the next non terminal, terminal or end of productions rules
-  int16_t programCounter = inErrorProgramCounter ;
+  int32_t programCounter = inErrorProgramCounter ;
   const int32_t countToCopy = inErrorStackCount - inErrorStack.count () ;
-  TC_Array <int16_t> errorStack (inErrorStackCount COMMA_HERE) ;
+  TC_Array <int32_t> errorStack (inErrorStackCount COMMA_HERE) ;
   for (int32_t i=0 ; i<countToCopy ; i++) {
     errorStack.appendObject (inStack (i COMMA_HERE)) ;
   }
@@ -695,16 +695,16 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int16_t inErrorP
         co.flush () ;
       }
     }else if (inProductions [programCounter] < 0) { // We reach a non terminal (<0)
-      const int16_t nonTerminal = (int16_t) (- inProductions [programCounter] - 1) ;
+      const int32_t nonTerminal = (int32_t) (- inProductions [programCounter] - 1) ;
       if (TRACE_LL1_PARSING ()) {
         co << "Non-Terminal " << nonTerminal << " reached\n" ;
         co.flush () ;
       }
     //--- We look if we get a non terminal that has only one production rule
-      const int16_t nonTerminalEntry = inDecisionTableIndexes [nonTerminal] ;
+      const int32_t nonTerminalEntry = inDecisionTableIndexes [nonTerminal] ;
       const bool onlyOneRule = inDecisionTable [nonTerminalEntry] < 0 ;
       if (onlyOneRule) { // Go to this rule
-        errorStack.appendObject ((int16_t) (programCounter + 1)) ;
+        errorStack.appendObject ((int32_t) (programCounter + 1)) ;
         programCounter = inProductionIndexes [inFirstProductionIndex [nonTerminal]] ;
         if (TRACE_LL1_PARSING ()) {
           co << "Only one rule: goto " << programCounter << "\n" ;
@@ -736,7 +736,7 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int16_t inErrorP
       co.flush () ;
     }
   }else if (inProductions [programCounter] > 0) { // We reach a terminal symbol
-    const int16_t terminalSymbol = (int16_t) (inProductions [programCounter] - 1) ;
+    const int32_t terminalSymbol = (int32_t) (inProductions [programCounter] - 1) ;
     outExpectedTerminalsArray.appendObject (terminalSymbol) ;
     if (TRACE_LL1_PARSING ()) {
       C_String m = getMessageForTerminal (inProductions [programCounter]) ;
@@ -744,8 +744,8 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int16_t inErrorP
       co.flush () ;
     }
   }else{  // We reach a non terminal symbol
-    const int16_t nonTerminal = (int16_t) (- inProductions [programCounter] - 1) ;
-    int16_t nonTerminalEntry = inDecisionTableIndexes [nonTerminal] ;
+    const int32_t nonTerminal = (int32_t) (- inProductions [programCounter] - 1) ;
+    int32_t nonTerminalEntry = inDecisionTableIndexes [nonTerminal] ;
     while (inDecisionTable [nonTerminalEntry] >= 0) {
       while (inDecisionTable [nonTerminalEntry] >= 0) {
         const bool ok = acceptTerminalForErrorSignaling (inDecisionTable [nonTerminalEntry],
@@ -791,13 +791,13 @@ static void indentForParseOnly (const int32_t inIndentation) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
+bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
                                        const cProductionNameDescriptor inProductionNames [],
-                                       const int16_t inProductionIndexes [],
-                                       const int16_t inFirstProductionIndex [],
-                                       const int16_t inDecisionTable [],
-                                       const int16_t inDecisionTableIndexes [],
-                                       const int16_t inProgramCounterInitialValue) {
+                                       const int32_t inProductionIndexes [],
+                                       const int32_t inFirstProductionIndex [],
+                                       const int32_t inDecisionTable [],
+                                       const int32_t inDecisionTableIndexes [],
+                                       const int32_t inProgramCounterInitialValue) {
   bool result = false ;
 //--- Lexical analysis
   performLexicalAnalysis () ;
@@ -821,15 +821,15 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
     if (executionModeIsSyntaxAnalysisOnly ()) {
       co << "*** PERFORM TOP-DOWN PARSING ONLY (--mode=syntax-only option) ***\n" ;
     }
-    TC_LinkedList <int16_t> listForSecondPassParsing ;
-    TC_Array <int16_t> stack (10000 COMMA_HERE) ;
-    TC_Array <int16_t> errorStack ;
+    TC_LinkedList <int32_t> listForSecondPassParsing ;
+    TC_Array <int32_t> stack (10000 COMMA_HERE) ;
+    TC_Array <int32_t> errorStack ;
     int32_t errorStackCount = 0 ;
     bool loop = tokenPtr != nullptr ;
     result = true ;
-    int16_t programCounter = inProgramCounterInitialValue ;
-    int16_t errorProgramCounter = inProgramCounterInitialValue ;
-    int16_t currentToken = (tokenPtr != nullptr) ? tokenPtr->mTokenCode : int16_t (-1) ;
+    int32_t programCounter = inProgramCounterInitialValue ;
+    int32_t errorProgramCounter = inProgramCounterInitialValue ;
+    int32_t currentToken = (tokenPtr != nullptr) ? tokenPtr->mTokenCode : int32_t (-1) ;
     if (tokenPtr == nullptr) {
       mCurrentLocation.resetLocation () ;
     }else{
@@ -843,7 +843,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
         }else{
           previousTokenPtr = tokenPtr ;
           tokenPtr = tokenPtr->mNextToken ;
-          currentToken = (tokenPtr != nullptr) ? tokenPtr->mTokenCode : ((int16_t) 0) ;
+          currentToken = (tokenPtr != nullptr) ? tokenPtr->mTokenCode : ((int32_t) 0) ;
           if (tokenPtr != nullptr) {
             mCurrentLocation = tokenPtr->mEndLocation ;
           }
@@ -855,17 +855,17 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
         co.flush () ;
       }
     //--- Get instruction to do
-      const int16_t instruction = inProductions [programCounter] ;
+      const int32_t instruction = inProductions [programCounter] ;
       programCounter ++ ;
     //--- Instruction is non terminal call ?
       if (instruction < 0) {
       //--- Get entry of nonterminal symbol to parse
-        const int16_t nonTerminalToParse = (int16_t) (- instruction - 1) ;
+        const int32_t nonTerminalToParse = (int32_t) (- instruction - 1) ;
         if (TRACE_LL1_PARSING ()) {
           co << "Parse non terminal " << cStringWithSigned (nonTerminalToParse) << ": " ;
           co.flush () ;
         }
-        int16_t nonTerminalEntry = inDecisionTableIndexes [nonTerminalToParse] ;
+        int32_t nonTerminalEntry = inDecisionTableIndexes [nonTerminalToParse] ;
         if (inDecisionTable [nonTerminalEntry] < 0) { // Means only one production : don't make any choice
           if (TRACE_LL1_PARSING ()) {
             co << " ok (only one production)\n" ;
@@ -898,7 +898,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
           if (TRACE_LL1_PARSING ()) {
             co << " try tokens\n" ; co.flush () ;
           }
-          int16_t choice = -1 ;
+          int32_t choice = -1 ;
           bool found = false ;
           while ((inDecisionTable [nonTerminalEntry] >= 0) && ! found) {
             while ((inDecisionTable [nonTerminalEntry] >= 0) && ! found) {
@@ -940,9 +940,9 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
                  << "\n" ;
               indentationForParseOnly ++ ;
             }
-            listForSecondPassParsing.insertAtBottom (int16_t (choice + 1)) ;
+            listForSecondPassParsing.insertAtBottom (int32_t (choice + 1)) ;
           }else{ // Syntax error
-            TC_UniqueArray <int16_t> expectedTerminalsArray (100 COMMA_HERE) ;
+            TC_UniqueArray <int32_t> expectedTerminalsArray (100 COMMA_HERE) ;
             buildExpectedTerminalsArrayOnSyntaxError (errorProgramCounter,
                                                       errorStackCount,
                                                       stack,
@@ -963,7 +963,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
         }
     //--- It is a terminal symbol
       }else if (instruction > 0) {
-        const int16_t terminalSymbol = int16_t (instruction - 1) ;
+        const int32_t terminalSymbol = int32_t (instruction - 1) ;
         if (currentToken == terminalSymbol) {
           if (executionModeIsSyntaxAnalysisOnly ()) {
             indentForParseOnly (indentationForParseOnly) ;
@@ -988,7 +988,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
           if (TRACE_LL1_PARSING ()) {
             co << "ERROR: TOKEN NOT EXPECTED\n" ; co.flush () ;
           }
-          TC_UniqueArray <int16_t> expectedTerminalsArray (100 COMMA_HERE) ;
+          TC_UniqueArray <int32_t> expectedTerminalsArray (100 COMMA_HERE) ;
           buildExpectedTerminalsArrayOnSyntaxError (errorProgramCounter,
                                                     errorStackCount,
                                                     stack,
@@ -1025,7 +1025,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
         loop = false ;
       }else{ // We reach the end of text, but current terminal is not "end of text"
       //--- This is a syntax error
-        TC_UniqueArray <int16_t> expectedTerminalsArray (100 COMMA_HERE) ;
+        TC_UniqueArray <int32_t> expectedTerminalsArray (100 COMMA_HERE) ;
         buildExpectedTerminalsArrayOnSyntaxError (errorProgramCounter,
                                                   errorStackCount,
                                                   stack,
@@ -1073,30 +1073,30 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-static bool acceptExpectedTerminalForBottomUpParsingError (const int16_t inExpectedTerminal,
-                                                           const int16_t inExpectedAction,
-                                                           const TC_Array <int16_t> & inSLRstack,
-                                                           const int16_t inActionTable [],
+static bool acceptExpectedTerminalForBottomUpParsingError (const int32_t inExpectedTerminal,
+                                                           const int32_t inExpectedAction,
+                                                           const TC_Array <int32_t> & inSLRstack,
+                                                           const int32_t inActionTable [],
                                                            const uint32_t inActionTableIndex [],
-                                                           const int16_t * inSuccessorTable [],
-                                                           const int16_t inProductionsTable []) {
+                                                           const int32_t * inSuccessorTable [],
+                                                           const int32_t inProductionsTable []) {
   bool accept = inExpectedAction > 1 ; // accept if it is a shift action
   if (! accept) {
-    int16_t actionCode = inExpectedAction ;
-    TC_Array <int16_t> stack (inSLRstack) ; // Duplicate stack
+    int32_t actionCode = inExpectedAction ;
+    TC_Array <int32_t> stack (inSLRstack) ; // Duplicate stack
     bool loop = true ;
     while (loop) {
     //--- Perform reduce action
-      const int16_t reduceAction = (int16_t) (- actionCode - 1) ;
+      const int32_t reduceAction = (int32_t) (- actionCode - 1) ;
       MF_Assert (reduceAction >= 0, "reduceAction (%lld) < 0", reduceAction, 0) ;
-      const int16_t nonTerminal = inProductionsTable [2 * reduceAction] ;
+      const int32_t nonTerminal = inProductionsTable [2 * reduceAction] ;
       const int32_t reduceSize = inProductionsTable [2 * reduceAction + 1] ;
       stack.removeLastObjects (2 * reduceSize  COMMA_HERE) ;
    //--- Get Successor state
       const int32_t tempCurrentState = stack.lastObject (HERE) ;
       MF_Assert (tempCurrentState >= 0, "tempCurrentState (%lld) < 0", tempCurrentState, 0) ;
-      const int16_t * successorTable = inSuccessorTable [tempCurrentState] ;
-      int16_t newCurrentState = -1 ; 
+      const int32_t * successorTable = inSuccessorTable [tempCurrentState] ;
+      int32_t newCurrentState = -1 ; 
       while (((* successorTable) >= 0) && (newCurrentState < 0)) {
         if ((* successorTable) == nonTerminal) {
           successorTable ++ ;
@@ -1111,7 +1111,7 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const int16_t inExpec
     //--- In the state, find action corresponding to expected terminal
       const int32_t currentState = stack (stack.count () - 1 COMMA_HERE) ;
       MF_Assert (currentState >= 0, "currentState (%lld) < 0", currentState, 0) ;
-      const int16_t * actionTable = & (inActionTable [inActionTableIndex [currentState]]) ;
+      const int32_t * actionTable = & (inActionTable [inActionTableIndex [currentState]]) ;
       actionCode = 0 ; 
       while (((* actionTable) >= 0) && (actionCode == 0)) {
         if ((* actionTable) == inExpectedTerminal) {
@@ -1137,11 +1137,11 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const int16_t inExpec
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
+bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
                                         const char * inNonTerminalSymbolNames [],
                                         const uint32_t inActionTableIndex [],
-                                        const int16_t * inSuccessorTable [],
-                                        const int16_t inProductionsTable []) {
+                                        const int32_t * inSuccessorTable [],
+                                        const int32_t inProductionsTable []) {
   bool result = false ;
   performLexicalAnalysis () ;
   if (! executionModeIsLexicalAnalysisOnly ()) {
@@ -1162,17 +1162,17 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
                                      "  size =\"4,4\";\n" ;
     }
   //--- Perform first pass
-    TC_UniqueArray <TC_LinkedList <int16_t> > executionList (100 COMMA_HERE) ;
+    TC_UniqueArray <TC_LinkedList <int32_t> > executionList (100 COMMA_HERE) ;
     executionList.appendDefaultObjectUsingSwap () ;
 
-    TC_Array <int16_t> stack (10000 COMMA_HERE) ;
+    TC_Array <int32_t> stack (10000 COMMA_HERE) ;
     stack.appendObject (0) ; // Enter initial state
     int32_t errorSignalingUselessEntryOnTopOfStack = 0 ;
-    TC_Array <int16_t> poppedErrors (1000 COMMA_HERE)  ;
+    TC_Array <int32_t> poppedErrors (1000 COMMA_HERE)  ;
     cToken * previousTokenPtr = nullptr ;
     cToken * tokenPtr = mFirstToken ;
 
-    int16_t currentToken = int16_t (-1) ;
+    int32_t currentToken = int32_t (-1) ;
     if (tokenPtr == nullptr) {
       mCurrentLocation.resetLocation () ;
     }else{
@@ -1198,8 +1198,8 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
     //--- Get Action code -----------------------------------
       const int32_t currentState = stack.lastObject (HERE) ;
       MF_Assert (currentState >= 0, "currentState (%lld) < 0", currentState, 0) ;
-      const int16_t * actionTable = & (inActionTable [inActionTableIndex [currentState]]) ;
-      int16_t actionCode = 0 ; 
+      const int32_t * actionTable = & (inActionTable [inActionTableIndex [currentState]]) ;
+      int32_t actionCode = 0 ; 
       while (((* actionTable) >= 0) && (actionCode == 0)) {
         if ((* actionTable) == currentToken) {
           actionTable += 1 ;
@@ -1212,7 +1212,7 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
       //--- Token has been used
         currentToken = -1 ;
       //--- Shift action ------------------------------------
-        actionCode = int16_t (actionCode - 2) ;
+        actionCode = int32_t (actionCode - 2) ;
         stack.appendObject (-1) ; // Enter any value
         stack.appendObject (actionCode) ; // Enter next current state
         poppedErrors.setCountToZero () ;
@@ -1236,9 +1236,9 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
         }
       }else if (actionCode < 0) {
       //--- Reduce action ------------------------------------
-        actionCode = int16_t (- actionCode - 1) ;
+        actionCode = int32_t (- actionCode - 1) ;
         MF_Assert (actionCode >= 0, "actionCode (%lld) < 0", actionCode, 0) ;
-        const int16_t nonTerminal = inProductionsTable [2 * actionCode] ;
+        const int32_t nonTerminal = inProductionsTable [2 * actionCode] ;
         const int32_t reduceSize = inProductionsTable [2 * actionCode + 1] ;
         const int32_t executionListLength = executionList.count () ;
         for (int32_t i=executionListLength - reduceSize ; i<executionListLength ; i++) {
@@ -1266,8 +1266,8 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
      //--- Get Successor state
         const int32_t tempCurrentState = stack.lastObject (HERE) ;
         MF_Assert (tempCurrentState >= 0, "tempCurrentState (%lld) < 0", tempCurrentState, 0) ;
-        const int16_t * successorTable = inSuccessorTable [tempCurrentState] ;
-        int16_t newCurrentState = -1 ; 
+        const int32_t * successorTable = inSuccessorTable [tempCurrentState] ;
+        int32_t newCurrentState = -1 ; 
         while (((* successorTable) >= 0) && (newCurrentState < 0)) {
           if ((* successorTable) == nonTerminal) {
             successorTable ++ ;
@@ -1308,7 +1308,7 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
         result = false ;
         loop = false ;
       //--- Build error stack
-        TC_Array <int16_t> actualErrorStack (stack.count () + poppedErrors.count () COMMA_HERE) ;
+        TC_Array <int32_t> actualErrorStack (stack.count () + poppedErrors.count () COMMA_HERE) ;
         for (int32_t i=0 ; i<(stack.count () - errorSignalingUselessEntryOnTopOfStack) ; i++) {
           actualErrorStack.appendObject (stack (i COMMA_HERE)) ;
         }
@@ -1316,13 +1316,13 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
           actualErrorStack.appendObject (poppedErrors (i COMMA_HERE)) ;
         }
       //---
-        TC_UniqueArray <int16_t> expectedTerminalsArray (100 COMMA_HERE) ;
+        TC_UniqueArray <int32_t> expectedTerminalsArray (100 COMMA_HERE) ;
         const int32_t currentErrorState = actualErrorStack.lastObject (HERE) ;
         actionTable = & (inActionTable [inActionTableIndex [currentErrorState]]) ;
         while ((* actionTable) >= 0) {
-          const int16_t expectedTerminal = * actionTable ;
+          const int32_t expectedTerminal = * actionTable ;
           actionTable += 1 ;
-          const int16_t expectedAction = * actionTable ;
+          const int32_t expectedAction = * actionTable ;
           actionTable += 1 ;
           const bool terminalAccepted = acceptExpectedTerminalForBottomUpParsingError (
             expectedTerminal,
@@ -1371,8 +1371,8 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-int16_t C_Lexique::nextProductionIndex (void) {
-  int16_t result = 0 ;
+int32_t C_Lexique::nextProductionIndex (void) {
+  int32_t result = 0 ;
   if (mIndexForSecondPassParsing < mArrayForSecondPassParsing.count ()) {
     result = mArrayForSecondPassParsing (mIndexForSecondPassParsing COMMA_HERE) ;
     mIndexForSecondPassParsing += 1 ;
@@ -1416,9 +1416,9 @@ C_String C_Lexique::tokenString (void) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void C_Lexique::acceptTerminal (const int16_t IN_EXPECTED_TERMINAL COMMA_LOCATION_ARGS) {
+void C_Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    int16_t currentTokenCode = 0 ;
+    int32_t currentTokenCode = 0 ;
   #endif
   if (mCurrentTokenPtr != nullptr) {
     #ifndef DO_NOT_GENERATE_CHECKINGS

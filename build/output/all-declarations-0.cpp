@@ -80,7 +80,7 @@ static const char * gLexicalMessage_galgasScanner_unassignedUnicodeValue = "this
 //                getMessageForTerminal                                                          
 //----------------------------------------------------------------------------------------------------------------------
 
-C_String C_Lexique_galgasScanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
+C_String C_Lexique_galgasScanner::getMessageForTerminal (const int32_t inTerminalIndex) const {
   C_String result = "<unknown>" ;
   if ((inTerminalIndex >= 0) && (inTerminalIndex < 157)) {
     static const char * syntaxErrorMessageArray [157] = {kEndOfSourceLexicalErrorMessage,
@@ -1589,7 +1589,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_galgasDelimi
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner__3D__3D__3D_, 3, C_Lexique_galgasScanner::kToken__3D__3D__3D_)
 } ;
 
-int16_t C_Lexique_galgasScanner::search_into_galgasDelimitorsList (const C_String & inSearchedString) {
+int32_t C_Lexique_galgasScanner::search_into_galgasDelimitorsList (const C_String & inSearchedString) {
   return searchInList (inSearchedString, ktable_for_galgasScanner_galgasDelimitorsList, ktable_size_galgasScanner_galgasDelimitorsList) ;
 }
 
@@ -1693,7 +1693,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_galgasKeyWor
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_filewrapper, 11, C_Lexique_galgasScanner::kToken_filewrapper)
 } ;
 
-int16_t C_Lexique_galgasScanner::search_into_galgasKeyWordList (const C_String & inSearchedString) {
+int32_t C_Lexique_galgasScanner::search_into_galgasKeyWordList (const C_String & inSearchedString) {
   return searchInList (inSearchedString, ktable_for_galgasScanner_galgasKeyWordList, ktable_size_galgasScanner_galgasKeyWordList) ;
 }
 

@@ -608,7 +608,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (C_C
     while (enumerator_4495.hasCurrentObject ()) {
       result << "\n//--- Key words table '" ;
       result << enumerator_4495.current_mName (HERE).readProperty_string ().stringValue () ;
-      result << "'\n  public: static int16_t search_into_" ;
+      result << "'\n  public: static int32_t search_into_" ;
       result << enumerator_4495.current_mName (HERE).readProperty_string ().stringValue () ;
       result << " (const C_String & inSearchedString) ;\n" ;
       index_4495_.increment () ;
@@ -666,7 +666,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (C_C
   }
   result << "\n//--- Parse lexical token\n  protected: void internalParseLexicalToken (cTokenFor_" ;
   result << in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
-  result << " & token) ;\n  protected: virtual bool parseLexicalToken (void) override ;\n\n//--- Get terminal message\n  protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const override ;\n\n//--- Get terminal count\n  public: virtual int16_t terminalVocabularyCount (void) const override { return " ;
+  result << " & token) ;\n  protected: virtual bool parseLexicalToken (void) override ;\n\n//--- Get terminal message\n  protected: virtual C_String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;\n\n//--- Get terminal count\n  public: virtual int32_t terminalVocabularyCount (void) const override { return " ;
   result << in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 130)).getter_string (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 130)).stringValue () ;
   result << " ; }\n\n//--- Get Token String\n  public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const override ;\n\n//--- Enter Token\n  protected: void enterToken (cTokenFor_" ;
   result << in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
@@ -772,7 +772,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_
   }
   result << "\n//----------------------------------------------------------------------------------------------------------------------\n//                getMessageForTerminal                                                          \n//----------------------------------------------------------------------------------------------------------------------\n\nC_String C_Lexique_" ;
   result << in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
-  result << "::getMessageForTerminal (const int16_t inTerminalIndex) const {\n  C_String result = \"<unknown>\" ;\n  if ((inTerminalIndex >= 0) && (inTerminalIndex < " ;
+  result << "::getMessageForTerminal (const int32_t inTerminalIndex) const {\n  C_String result = \"<unknown>\" ;\n  if ((inTerminalIndex >= 0) && (inTerminalIndex < " ;
   result << in_TERMINAL_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 61)).add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 61)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 61)).stringValue () ;
   result << ")) {\n    static const char * syntaxErrorMessageArray [" ;
   result << in_TERMINAL_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 62)).add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 62)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 62)).stringValue () ;
@@ -853,7 +853,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_
           enumerator_4864.gotoNextObject () ;
         }
       }
-      result << "\n} ;\n\nint16_t C_Lexique_" ;
+      result << "\n} ;\n\nint32_t C_Lexique_" ;
       result << in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
       result << "::search_into_" ;
       result << enumerator_4133.current_lkey (HERE).readProperty_string ().stringValue () ;

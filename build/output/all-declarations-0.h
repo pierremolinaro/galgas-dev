@@ -228,10 +228,10 @@ class C_Lexique_galgasScanner : public C_Lexique {
    kToken__21__5E_} ;
 
 //--- Key words table 'galgasKeyWordList'
-  public: static int16_t search_into_galgasKeyWordList (const C_String & inSearchedString) ;
+  public: static int32_t search_into_galgasKeyWordList (const C_String & inSearchedString) ;
 
 //--- Key words table 'galgasDelimitorsList'
-  public: static int16_t search_into_galgasDelimitorsList (const C_String & inSearchedString) ;
+  public: static int32_t search_into_galgasDelimitorsList (const C_String & inSearchedString) ;
   
 
 //--- Assign from attribute
@@ -323,10 +323,10 @@ class C_Lexique_galgasScanner : public C_Lexique {
   protected: virtual bool parseLexicalToken (void) override ;
 
 //--- Get terminal message
-  protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const override ;
+  protected: virtual C_String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int16_t terminalVocabularyCount (void) const override { return 156 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 156 ; }
 
 //--- Get Token String
   public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const override ;

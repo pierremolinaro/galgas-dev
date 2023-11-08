@@ -458,7 +458,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
   ioCppFileContents << "#define TERMINAL(t)     ((t)+1)\n"
                     "#define NONTERMINAL(nt) ((-nt)-1)\n"
                     "#define END_PRODUCTION  (0)\n\n"
-                    "static const int16_t gProductions_" << inTargetFileName << " [] = {\n" ;
+                    "static const int32_t gProductions_" << inTargetFileName << " [] = {\n" ;
   cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, kENUMERATION_UP) ;
   int16_t productionIndex = 0 ;
   bool first = true ;
@@ -500,7 +500,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
 
 //--- Generate productions indexes table
   ioCppFileContents.appendCppTitleComment ("L L ( 1 )    P R O D U C T I O N    I N D E X E S") ;
-  ioCppFileContents << "static const int16_t gProductionIndexes_" << inTargetFileName << " ["
+  ioCppFileContents << "static const int32_t gProductionIndexes_" << inTargetFileName << " ["
                  << cStringWithSigned (productionRulesIndex.count ())
                  << "] = {\n" ;
   for (int32_t p=0 ; p<productionRulesIndex.count () ; p++) {
@@ -515,7 +515,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
 
 //--- Generate decision tables indexes
   ioCppFileContents.appendCppTitleComment ("L L ( 1 )    F I R S T    P R O D U C T I O N    I N D E X E S") ;
-  ioCppFileContents << "static const int16_t gFirstProductionIndexes_" << inTargetFileName << " ["
+  ioCppFileContents << "static const int32_t gFirstProductionIndexes_" << inTargetFileName << " ["
           << cStringWithSigned ((int32_t)(firstProductionRuleIndex.count () + 1))
           << "] = {\n" ;
   { for (int32_t i=0 ; i<firstProductionRuleIndex.count () ; i++) {
@@ -530,7 +530,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
 //--- Generate decision tables  
   TC_UniqueArray <int16_t> productionDecisionIndex (500 COMMA_HERE) ;
   ioCppFileContents.appendCppTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S") ;
-  ioCppFileContents << "static const int16_t gDecision_" << inTargetFileName << " [] = {\n" ;
+  ioCppFileContents << "static const int32_t gDecision_" << inTargetFileName << " [] = {\n" ;
   int16_t decisionTableIndex = 0 ;
   nonTerminal.rewind () ;
   while (nonTerminal.hasCurrentObject ()) {
@@ -550,7 +550,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
 
 //--- Generate decision tables indexes
   ioCppFileContents.appendCppTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S    I N D E X E S") ;
-  ioCppFileContents << "static const int16_t gDecisionIndexes_" << inTargetFileName << " ["
+  ioCppFileContents << "static const int32_t gDecisionIndexes_" << inTargetFileName << " ["
           << cStringWithSigned ((int32_t)(productionDecisionIndex.count () + 1))
           << "] = {\n" ;
   for (int32_t i=0 ; i<productionDecisionIndex.count () ; i++) {

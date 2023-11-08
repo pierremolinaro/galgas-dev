@@ -368,7 +368,7 @@ static const char * gNonTerminalNames_galgas4Grammar [326] = {
 #define ACCEPT (1)
 #define END (-1)
 
-static const int16_t gActionTable_galgas4Grammar [] = {
+static const int32_t gActionTable_galgas4Grammar [] = {
 // State S0 (index = 0)
   C_Lexique_galgasScanner::kToken_option, SHIFT (1)
 , C_Lexique_galgasScanner::kToken_lexique, SHIFT (2)
@@ -26060,45 +26060,45 @@ static const uint32_t gActionTableIndex_galgas4Grammar [1715] = {
 // Successor tables handle non terminal successors ;
 // an entry is (non_terminal_symbol, n) ; successor is state n.
 
-static const int16_t gSuccessorTable_galgas4Grammar_0 [11] = {18, 28,
+static const int32_t gSuccessorTable_galgas4Grammar_0 [11] = {18, 28,
   31, 29,
   200, 30,
   214, 31,
   313, 32, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_7 [3] = {125, 46, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_7 [3] = {125, 46, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_28 [9] = {18, 28,
+static const int32_t gSuccessorTable_galgas4Grammar_28 [9] = {18, 28,
   200, 70,
   214, 31,
   313, 32, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_36 [3] = {36, 77, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_36 [3] = {36, 77, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_39 [3] = {12, 81, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_39 [3] = {12, 81, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_43 [3] = {127, 86, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_43 [3] = {127, 86, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_45 [3] = {125, 88, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_45 [3] = {125, 88, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_47 [9] = {17, 106,
+static const int32_t gSuccessorTable_galgas4Grammar_47 [9] = {17, 106,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_48 [9] = {17, 110,
+static const int32_t gSuccessorTable_galgas4Grammar_48 [9] = {17, 110,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_59 [3] = {231, 122, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_59 [3] = {231, 122, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_68 [3] = {288, 133, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_68 [3] = {288, 133, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_73 [5] = {68, 138,
+static const int32_t gSuccessorTable_galgas4Grammar_73 [5] = {68, 138,
   278, 139, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_74 [23] = {50, 149,
+static const int32_t gSuccessorTable_galgas4Grammar_74 [23] = {50, 149,
   51, 150,
   52, 151,
   53, 152,
@@ -26110,24 +26110,24 @@ static const int16_t gSuccessorTable_galgas4Grammar_74 [23] = {50, 149,
   66, 158,
   251, 159, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_76 [3] = {223, 162, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_76 [3] = {223, 162, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_77 [3] = {37, 164, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_77 [3] = {37, 164, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_78 [3] = {12, 165, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_78 [3] = {12, 165, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_79 [3] = {14, 167, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_79 [3] = {14, 167, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_80 [5] = {103, 172,
+static const int32_t gSuccessorTable_galgas4Grammar_80 [5] = {103, 172,
   105, 173, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_84 [3] = {12, 177, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_84 [3] = {12, 177, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_85 [3] = {127, 178, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_85 [3] = {127, 178, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_89 [3] = {14, 181, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_89 [3] = {14, 181, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_90 [27] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_90 [27] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26141,12 +26141,12 @@ static const int16_t gSuccessorTable_galgas4Grammar_90 [27] = {1, 203,
   92, 214,
   168, 215, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_91 [5] = {135, 217,
+static const int32_t gSuccessorTable_galgas4Grammar_91 [5] = {135, 217,
   137, 218, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_95 [3] = {179, 229, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_95 [3] = {179, 229, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_98 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_98 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26157,16 +26157,16 @@ static const int16_t gSuccessorTable_galgas4Grammar_98 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_99 [3] = {155, 235, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_99 [3] = {155, 235, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_101 [3] = {176, 240, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_101 [3] = {176, 240, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_102 [9] = {17, 242,
+static const int32_t gSuccessorTable_galgas4Grammar_102 [9] = {17, 242,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_103 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_103 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26177,7 +26177,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_103 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_104 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_104 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26188,7 +26188,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_104 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_105 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_105 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26199,49 +26199,49 @@ static const int16_t gSuccessorTable_galgas4Grammar_105 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_107 [5] = {123, 248,
+static const int32_t gSuccessorTable_galgas4Grammar_107 [5] = {123, 248,
   124, 249, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_118 [11] = {32, 267,
+static const int32_t gSuccessorTable_galgas4Grammar_118 [11] = {32, 267,
   48, 268,
   49, 269,
   228, 270,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_121 [3] = {231, 274, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_121 [3] = {231, 274, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_123 [9] = {32, 276,
+static const int32_t gSuccessorTable_galgas4Grammar_123 [9] = {32, 276,
   49, 269,
   235, 277,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_124 [11] = {32, 278,
+static const int32_t gSuccessorTable_galgas4Grammar_124 [11] = {32, 278,
   48, 279,
   49, 269,
   238, 280,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_125 [3] = {47, 282, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_125 [3] = {47, 282, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_131 [9] = {69, 291,
+static const int32_t gSuccessorTable_galgas4Grammar_131 [9] = {69, 291,
   70, 292,
   71, 293,
   281, 294, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_133 [3] = {289, 297, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_133 [3] = {289, 297, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_135 [3] = {215, 300, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_135 [3] = {215, 300, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_138 [5] = {68, 138,
+static const int32_t gSuccessorTable_galgas4Grammar_138 [5] = {68, 138,
   278, 303, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_146 [7] = {57, 316,
+static const int32_t gSuccessorTable_galgas4Grammar_146 [7] = {57, 316,
   58, 317,
   59, 318, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_148 [3] = {263, 321, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_148 [3] = {263, 321, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_149 [23] = {50, 149,
+static const int32_t gSuccessorTable_galgas4Grammar_149 [23] = {50, 149,
   51, 150,
   52, 151,
   53, 152,
@@ -26253,7 +26253,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_149 [23] = {50, 149,
   66, 158,
   251, 322, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_150 [23] = {50, 149,
+static const int32_t gSuccessorTable_galgas4Grammar_150 [23] = {50, 149,
   51, 150,
   52, 151,
   53, 152,
@@ -26265,7 +26265,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_150 [23] = {50, 149,
   66, 158,
   251, 323, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_151 [23] = {50, 149,
+static const int32_t gSuccessorTable_galgas4Grammar_151 [23] = {50, 149,
   51, 150,
   52, 151,
   53, 152,
@@ -26277,7 +26277,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_151 [23] = {50, 149,
   66, 158,
   251, 324, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_152 [23] = {50, 149,
+static const int32_t gSuccessorTable_galgas4Grammar_152 [23] = {50, 149,
   51, 150,
   52, 151,
   53, 152,
@@ -26289,7 +26289,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_152 [23] = {50, 149,
   66, 158,
   251, 325, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_153 [23] = {50, 149,
+static const int32_t gSuccessorTable_galgas4Grammar_153 [23] = {50, 149,
   51, 150,
   52, 151,
   53, 152,
@@ -26301,7 +26301,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_153 [23] = {50, 149,
   66, 158,
   251, 326, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_154 [23] = {50, 149,
+static const int32_t gSuccessorTable_galgas4Grammar_154 [23] = {50, 149,
   51, 150,
   52, 151,
   53, 152,
@@ -26313,7 +26313,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_154 [23] = {50, 149,
   66, 158,
   251, 327, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_155 [23] = {50, 149,
+static const int32_t gSuccessorTable_galgas4Grammar_155 [23] = {50, 149,
   51, 150,
   52, 151,
   53, 152,
@@ -26325,7 +26325,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_155 [23] = {50, 149,
   66, 158,
   251, 328, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_156 [23] = {50, 149,
+static const int32_t gSuccessorTable_galgas4Grammar_156 [23] = {50, 149,
   51, 150,
   52, 151,
   53, 152,
@@ -26337,7 +26337,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_156 [23] = {50, 149,
   66, 158,
   251, 329, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_157 [23] = {50, 149,
+static const int32_t gSuccessorTable_galgas4Grammar_157 [23] = {50, 149,
   51, 150,
   52, 151,
   53, 152,
@@ -26349,7 +26349,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_157 [23] = {50, 149,
   66, 158,
   251, 330, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_158 [23] = {50, 149,
+static const int32_t gSuccessorTable_galgas4Grammar_158 [23] = {50, 149,
   51, 150,
   52, 151,
   53, 152,
@@ -26361,27 +26361,27 @@ static const int16_t gSuccessorTable_galgas4Grammar_158 [23] = {50, 149,
   66, 158,
   251, 331, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_160 [3] = {33, 334, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_160 [3] = {33, 334, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_161 [3] = {223, 335, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_161 [3] = {223, 335, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_163 [3] = {224, 338, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_163 [3] = {224, 338, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_166 [5] = {116, 341,
+static const int32_t gSuccessorTable_galgas4Grammar_166 [5] = {116, 341,
   118, 342, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_174 [9] = {17, 347,
+static const int32_t gSuccessorTable_galgas4Grammar_174 [9] = {17, 347,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_175 [3] = {12, 348, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_175 [3] = {12, 348, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_179 [3] = {14, 351, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_179 [3] = {14, 351, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_180 [3] = {14, 352, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_180 [3] = {14, 352, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_182 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_182 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26392,7 +26392,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_182 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_183 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_183 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26403,57 +26403,57 @@ static const int16_t gSuccessorTable_galgas4Grammar_183 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_184 [9] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_184 [9] = {1, 203,
   2, 356,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_185 [9] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_185 [9] = {1, 203,
   2, 357,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_189 [3] = {84, 360, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_189 [3] = {84, 360, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_193 [9] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_193 [9] = {1, 203,
   2, 361,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_200 [9] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_200 [9] = {1, 203,
   2, 368,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_201 [9] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_201 [9] = {1, 203,
   2, 369,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_202 [3] = {169, 373, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_202 [3] = {169, 373, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_203 [3] = {99, 375, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_203 [3] = {99, 375, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_204 [3] = {87, 381, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_204 [3] = {87, 381, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_205 [3] = {102, 384, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_205 [3] = {102, 384, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_206 [3] = {85, 393, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_206 [3] = {85, 393, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_207 [3] = {86, 400, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_207 [3] = {86, 400, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_210 [3] = {88, 405, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_210 [3] = {88, 405, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_211 [3] = {101, 411, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_211 [3] = {101, 411, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_215 [3] = {167, 415, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_215 [3] = {167, 415, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_218 [5] = {0, 423,
+static const int32_t gSuccessorTable_galgas4Grammar_218 [5] = {0, 423,
   138, 424, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_220 [3] = {22, 427, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_220 [3] = {22, 427, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_221 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_221 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26464,7 +26464,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_221 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_222 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_222 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26475,7 +26475,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_222 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_223 [23] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_223 [23] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26487,7 +26487,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_223 [23] = {1, 203,
   23, 432,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_224 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_224 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26498,7 +26498,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_224 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_225 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_225 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26509,16 +26509,16 @@ static const int16_t gSuccessorTable_galgas4Grammar_225 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_232 [3] = {141, 442, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_232 [3] = {141, 442, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_235 [5] = {26, 446,
+static const int32_t gSuccessorTable_galgas4Grammar_235 [5] = {26, 446,
   151, 447, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_236 [3] = {162, 449, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_236 [3] = {162, 449, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_240 [3] = {175, 453, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_240 [3] = {175, 453, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_241 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_241 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26529,36 +26529,36 @@ static const int16_t gSuccessorTable_galgas4Grammar_241 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_245 [3] = {190, 459, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_245 [3] = {190, 459, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_249 [5] = {21, 460,
+static const int32_t gSuccessorTable_galgas4Grammar_249 [5] = {21, 460,
   22, 108, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_253 [3] = {213, 464, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_253 [3] = {213, 464, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_259 [3] = {249, 471, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_259 [3] = {249, 471, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_265 [3] = {248, 480, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_265 [3] = {248, 480, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_266 [3] = {250, 482, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_266 [3] = {250, 482, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_267 [11] = {32, 267,
+static const int32_t gSuccessorTable_galgas4Grammar_267 [11] = {32, 267,
   48, 268,
   49, 269,
   228, 483,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_268 [11] = {32, 267,
+static const int32_t gSuccessorTable_galgas4Grammar_268 [11] = {32, 267,
   48, 268,
   49, 269,
   228, 484,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_269 [3] = {201, 487, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_269 [3] = {201, 487, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_273 [3] = {229, 491, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_273 [3] = {229, 491, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_275 [19] = {32, 495,
+static const int32_t gSuccessorTable_galgas4Grammar_275 [19] = {32, 495,
   42, 496,
   43, 497,
   44, 498,
@@ -26568,92 +26568,92 @@ static const int16_t gSuccessorTable_galgas4Grammar_275 [19] = {32, 495,
   232, 501,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_276 [9] = {32, 276,
+static const int32_t gSuccessorTable_galgas4Grammar_276 [9] = {32, 276,
   49, 269,
   235, 502,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_278 [11] = {32, 278,
+static const int32_t gSuccessorTable_galgas4Grammar_278 [11] = {32, 278,
   48, 279,
   49, 269,
   238, 504,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_279 [11] = {32, 278,
+static const int32_t gSuccessorTable_galgas4Grammar_279 [11] = {32, 278,
   48, 279,
   49, 269,
   238, 505,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_291 [9] = {69, 291,
+static const int32_t gSuccessorTable_galgas4Grammar_291 [9] = {69, 291,
   70, 292,
   71, 293,
   281, 516, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_292 [9] = {69, 291,
+static const int32_t gSuccessorTable_galgas4Grammar_292 [9] = {69, 291,
   70, 292,
   71, 293,
   281, 517, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_293 [9] = {69, 291,
+static const int32_t gSuccessorTable_galgas4Grammar_293 [9] = {69, 291,
   70, 292,
   71, 293,
   281, 518, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_298 [7] = {72, 523,
+static const int32_t gSuccessorTable_galgas4Grammar_298 [7] = {72, 523,
   74, 524,
   291, 525, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_300 [3] = {216, 528, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_300 [3] = {216, 528, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_301 [3] = {314, 530, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_301 [3] = {314, 530, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_306 [3] = {267, 534, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_306 [3] = {267, 534, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_308 [3] = {266, 537, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_308 [3] = {266, 537, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_309 [3] = {258, 539, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_309 [3] = {258, 539, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_313 [3] = {257, 542, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_313 [3] = {257, 542, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_318 [3] = {256, 547, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_318 [3] = {256, 547, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_321 [3] = {264, 552, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_321 [3] = {264, 552, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_333 [3] = {204, 554, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_333 [3] = {204, 554, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_334 [3] = {34, 556, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_334 [3] = {34, 556, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_337 [3] = {224, 557, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_337 [3] = {224, 557, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_339 [11] = {38, 563,
+static const int32_t gSuccessorTable_galgas4Grammar_339 [11] = {38, 563,
   39, 564,
   40, 565,
   41, 566,
   222, 567, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_342 [3] = {119, 570, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_342 [3] = {119, 570, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_346 [3] = {106, 573, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_346 [3] = {106, 573, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_349 [3] = {33, 576, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_349 [3] = {33, 576, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_350 [9] = {17, 577,
+static const int32_t gSuccessorTable_galgas4Grammar_350 [9] = {17, 577,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_358 [7] = {3, 584,
+static const int32_t gSuccessorTable_galgas4Grammar_358 [7] = {3, 584,
   81, 585,
   83, 586, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_359 [3] = {84, 587, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_359 [3] = {84, 587, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_362 [7] = {3, 588,
+static const int32_t gSuccessorTable_galgas4Grammar_362 [7] = {3, 588,
   81, 585,
   83, 586, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_372 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_372 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26664,32 +26664,32 @@ static const int16_t gSuccessorTable_galgas4Grammar_372 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_376 [9] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_376 [9] = {1, 203,
   2, 597,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_377 [9] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_377 [9] = {1, 203,
   2, 598,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_378 [9] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_378 [9] = {1, 203,
   2, 599,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_379 [9] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_379 [9] = {1, 203,
   2, 600,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_380 [9] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_380 [9] = {1, 203,
   2, 601,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_382 [15] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_382 [15] = {1, 203,
   2, 204,
   4, 602,
   5, 206,
@@ -26697,7 +26697,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_382 [15] = {1, 203,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_383 [15] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_383 [15] = {1, 203,
   2, 204,
   4, 603,
   5, 206,
@@ -26705,99 +26705,99 @@ static const int16_t gSuccessorTable_galgas4Grammar_383 [15] = {1, 203,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_385 [13] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_385 [13] = {1, 203,
   2, 204,
   5, 604,
   6, 207,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_386 [13] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_386 [13] = {1, 203,
   2, 204,
   5, 605,
   6, 207,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_387 [13] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_387 [13] = {1, 203,
   2, 204,
   5, 606,
   6, 207,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_388 [13] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_388 [13] = {1, 203,
   2, 204,
   5, 607,
   6, 207,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_389 [13] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_389 [13] = {1, 203,
   2, 204,
   5, 608,
   6, 207,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_390 [13] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_390 [13] = {1, 203,
   2, 204,
   5, 609,
   6, 207,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_391 [13] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_391 [13] = {1, 203,
   2, 204,
   5, 610,
   6, 207,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_392 [13] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_392 [13] = {1, 203,
   2, 204,
   5, 611,
   6, 207,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_394 [11] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_394 [11] = {1, 203,
   2, 204,
   6, 612,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_395 [11] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_395 [11] = {1, 203,
   2, 204,
   6, 613,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_396 [11] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_396 [11] = {1, 203,
   2, 204,
   6, 614,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_397 [11] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_397 [11] = {1, 203,
   2, 204,
   6, 615,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_398 [11] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_398 [11] = {1, 203,
   2, 204,
   6, 616,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_399 [11] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_399 [11] = {1, 203,
   2, 204,
   6, 617,
   8, 209,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_401 [27] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_401 [27] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26811,9 +26811,9 @@ static const int16_t gSuccessorTable_galgas4Grammar_401 [27] = {1, 203,
   95, 621,
   98, 622, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_403 [3] = {89, 627, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_403 [3] = {89, 627, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_406 [17] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_406 [17] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26822,7 +26822,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_406 [17] = {1, 203,
   11, 629,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_407 [17] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_407 [17] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26831,7 +26831,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_407 [17] = {1, 203,
   11, 630,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_408 [17] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_408 [17] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26840,7 +26840,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_408 [17] = {1, 203,
   11, 631,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_409 [17] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_409 [17] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26849,7 +26849,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_409 [17] = {1, 203,
   11, 632,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_410 [17] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_410 [17] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26858,14 +26858,14 @@ static const int16_t gSuccessorTable_galgas4Grammar_410 [17] = {1, 203,
   11, 633,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_412 [9] = {17, 634,
+static const int32_t gSuccessorTable_galgas4Grammar_412 [9] = {17, 634,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_413 [3] = {166, 636, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_413 [3] = {166, 636, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_414 [23] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_414 [23] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26877,9 +26877,9 @@ static const int16_t gSuccessorTable_galgas4Grammar_414 [23] = {1, 203,
   92, 214,
   168, 637, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_416 [3] = {137, 639, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_416 [3] = {137, 639, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_417 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_417 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26890,7 +26890,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_417 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_418 [25] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_418 [25] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26903,7 +26903,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_418 [25] = {1, 203,
   92, 214,
   107, 646, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_419 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_419 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26914,7 +26914,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_419 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_420 [25] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_420 [25] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26927,7 +26927,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_420 [25] = {1, 203,
   92, 214,
   139, 650, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_421 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_421 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26938,7 +26938,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_421 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_422 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_422 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26949,12 +26949,12 @@ static const int16_t gSuccessorTable_galgas4Grammar_422 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_425 [3] = {0, 653, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_425 [3] = {0, 653, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_426 [5] = {136, 655,
+static const int32_t gSuccessorTable_galgas4Grammar_426 [5] = {136, 655,
   137, 218, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_430 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_430 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26965,7 +26965,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_430 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_435 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_435 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26976,10 +26976,10 @@ static const int16_t gSuccessorTable_galgas4Grammar_435 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_438 [5] = {0, 660,
+static const int32_t gSuccessorTable_galgas4Grammar_438 [5] = {0, 660,
   180, 661, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_439 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_439 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -26990,7 +26990,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_439 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_443 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_443 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27001,16 +27001,16 @@ static const int16_t gSuccessorTable_galgas4Grammar_443 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_444 [5] = {25, 669,
+static const int32_t gSuccessorTable_galgas4Grammar_444 [5] = {25, 669,
   147, 670, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_446 [3] = {154, 672, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_446 [3] = {154, 672, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_447 [3] = {152, 675, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_447 [3] = {152, 675, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_449 [3] = {0, 677, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_449 [3] = {0, 677, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_450 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_450 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27021,9 +27021,9 @@ static const int16_t gSuccessorTable_galgas4Grammar_450 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_452 [3] = {176, 680, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_452 [3] = {176, 680, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_455 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_455 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27034,9 +27034,9 @@ static const int16_t gSuccessorTable_galgas4Grammar_455 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_456 [3] = {29, 684, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_456 [3] = {29, 684, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_457 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_457 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27047,24 +27047,24 @@ static const int16_t gSuccessorTable_galgas4Grammar_457 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_460 [5] = {123, 688,
+static const int32_t gSuccessorTable_galgas4Grammar_460 [5] = {123, 688,
   124, 249, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_461 [3] = {322, 690, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_461 [3] = {322, 690, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_465 [3] = {12, 694, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_465 [3] = {12, 694, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_466 [3] = {14, 695, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_466 [3] = {14, 695, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_467 [3] = {219, 697, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_467 [3] = {219, 697, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_469 [3] = {12, 699, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_469 [3] = {12, 699, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_472 [3] = {14, 701, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_472 [3] = {14, 701, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_490 [3] = {229, 712, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_490 [3] = {229, 712, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_495 [19] = {32, 495,
+static const int32_t gSuccessorTable_galgas4Grammar_495 [19] = {32, 495,
   42, 496,
   43, 497,
   44, 498,
@@ -27074,7 +27074,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_495 [19] = {32, 495,
   232, 718,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_496 [19] = {32, 495,
+static const int32_t gSuccessorTable_galgas4Grammar_496 [19] = {32, 495,
   42, 496,
   43, 497,
   44, 498,
@@ -27084,7 +27084,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_496 [19] = {32, 495,
   232, 719,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_497 [19] = {32, 495,
+static const int32_t gSuccessorTable_galgas4Grammar_497 [19] = {32, 495,
   42, 496,
   43, 497,
   44, 498,
@@ -27094,7 +27094,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_497 [19] = {32, 495,
   232, 720,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_498 [19] = {32, 495,
+static const int32_t gSuccessorTable_galgas4Grammar_498 [19] = {32, 495,
   42, 496,
   43, 497,
   44, 498,
@@ -27104,7 +27104,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_498 [19] = {32, 495,
   232, 721,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_499 [19] = {32, 495,
+static const int32_t gSuccessorTable_galgas4Grammar_499 [19] = {32, 495,
   42, 496,
   43, 497,
   44, 498,
@@ -27114,7 +27114,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_499 [19] = {32, 495,
   232, 722,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_500 [19] = {32, 495,
+static const int32_t gSuccessorTable_galgas4Grammar_500 [19] = {32, 495,
   42, 496,
   43, 497,
   44, 498,
@@ -27124,79 +27124,79 @@ static const int16_t gSuccessorTable_galgas4Grammar_500 [19] = {32, 495,
   232, 723,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_507 [3] = {12, 726, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_507 [3] = {12, 726, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_508 [3] = {12, 727, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_508 [3] = {12, 727, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_509 [3] = {14, 728, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_509 [3] = {14, 728, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_521 [7] = {72, 735,
+static const int32_t gSuccessorTable_galgas4Grammar_521 [7] = {72, 735,
   74, 736,
   290, 737, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_523 [7] = {72, 523,
+static const int32_t gSuccessorTable_galgas4Grammar_523 [7] = {72, 523,
   74, 524,
   291, 739, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_524 [7] = {72, 523,
+static const int32_t gSuccessorTable_galgas4Grammar_524 [7] = {72, 523,
   74, 524,
   291, 740, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_527 [3] = {216, 742, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_527 [3] = {216, 742, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_536 [3] = {266, 749, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_536 [3] = {266, 749, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_539 [3] = {259, 753, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_539 [3] = {259, 753, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_545 [5] = {54, 767,
+static const int32_t gSuccessorTable_galgas4Grammar_545 [5] = {54, 767,
   252, 768, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_546 [3] = {59, 769, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_546 [3] = {59, 769, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_549 [3] = {263, 771, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_549 [3] = {263, 771, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_550 [3] = {264, 772, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_550 [3] = {264, 772, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_553 [3] = {205, 776, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_553 [3] = {205, 776, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_555 [3] = {206, 779, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_555 [3] = {206, 779, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_556 [3] = {35, 781, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_556 [3] = {35, 781, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_563 [11] = {38, 563,
+static const int32_t gSuccessorTable_galgas4Grammar_563 [11] = {38, 563,
   39, 564,
   40, 565,
   41, 566,
   222, 786, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_564 [11] = {38, 563,
+static const int32_t gSuccessorTable_galgas4Grammar_564 [11] = {38, 563,
   39, 564,
   40, 565,
   41, 566,
   222, 787, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_565 [11] = {38, 563,
+static const int32_t gSuccessorTable_galgas4Grammar_565 [11] = {38, 563,
   39, 564,
   40, 565,
   41, 566,
   222, 788, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_566 [11] = {38, 563,
+static const int32_t gSuccessorTable_galgas4Grammar_566 [11] = {38, 563,
   39, 564,
   40, 565,
   41, 566,
   222, 789, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_575 [9] = {17, 793,
+static const int32_t gSuccessorTable_galgas4Grammar_575 [9] = {17, 793,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_576 [3] = {34, 794, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_576 [3] = {34, 794, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_580 [3] = {126, 799, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_580 [3] = {126, 799, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_582 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_582 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27207,7 +27207,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_582 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_586 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_586 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27218,9 +27218,9 @@ static const int16_t gSuccessorTable_galgas4Grammar_586 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_592 [3] = {90, 808, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_592 [3] = {90, 808, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_594 [19] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_594 [19] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27230,51 +27230,51 @@ static const int16_t gSuccessorTable_galgas4Grammar_594 [19] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_595 [3] = {100, 812, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_595 [3] = {100, 812, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_597 [3] = {87, 813, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_597 [3] = {87, 813, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_598 [3] = {87, 814, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_598 [3] = {87, 814, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_599 [3] = {87, 815, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_599 [3] = {87, 815, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_600 [3] = {87, 816, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_600 [3] = {87, 816, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_601 [3] = {87, 817, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_601 [3] = {87, 817, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_602 [3] = {102, 818, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_602 [3] = {102, 818, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_603 [3] = {102, 819, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_603 [3] = {102, 819, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_604 [3] = {85, 820, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_604 [3] = {85, 820, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_605 [3] = {85, 821, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_605 [3] = {85, 821, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_606 [3] = {85, 822, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_606 [3] = {85, 822, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_607 [3] = {85, 823, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_607 [3] = {85, 823, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_608 [3] = {85, 824, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_608 [3] = {85, 824, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_609 [3] = {85, 825, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_609 [3] = {85, 825, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_610 [3] = {85, 826, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_610 [3] = {85, 826, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_611 [3] = {85, 827, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_611 [3] = {85, 827, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_612 [3] = {86, 828, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_612 [3] = {86, 828, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_613 [3] = {86, 829, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_613 [3] = {86, 829, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_614 [3] = {86, 830, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_614 [3] = {86, 830, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_615 [3] = {86, 831, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_615 [3] = {86, 831, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_616 [3] = {86, 832, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_616 [3] = {86, 832, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_617 [3] = {86, 833, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_617 [3] = {86, 833, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_618 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_618 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27285,27 +27285,27 @@ static const int16_t gSuccessorTable_galgas4Grammar_618 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_620 [3] = {96, 836, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_620 [3] = {96, 836, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_622 [3] = {97, 839, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_622 [3] = {97, 839, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_623 [3] = {93, 842, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_623 [3] = {93, 842, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_629 [3] = {101, 844, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_629 [3] = {101, 844, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_630 [3] = {101, 845, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_630 [3] = {101, 845, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_631 [3] = {101, 846, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_631 [3] = {101, 846, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_632 [3] = {101, 847, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_632 [3] = {101, 847, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_633 [3] = {101, 848, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_633 [3] = {101, 848, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_634 [3] = {165, 851, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_634 [3] = {165, 851, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_637 [3] = {167, 852, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_637 [3] = {167, 852, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_641 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_641 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27316,16 +27316,16 @@ static const int16_t gSuccessorTable_galgas4Grammar_641 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_642 [5] = {109, 862,
+static const int32_t gSuccessorTable_galgas4Grammar_642 [5] = {109, 862,
   112, 863, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_643 [3] = {110, 868, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_643 [3] = {110, 868, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_645 [3] = {108, 870, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_645 [3] = {108, 870, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_656 [3] = {140, 875, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_656 [3] = {140, 875, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_658 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_658 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27336,7 +27336,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_658 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_663 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_663 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27347,38 +27347,38 @@ static const int16_t gSuccessorTable_galgas4Grammar_663 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_664 [3] = {141, 879, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_664 [3] = {141, 879, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_665 [3] = {145, 881, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_665 [3] = {145, 881, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_666 [3] = {153, 883, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_666 [3] = {153, 883, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_669 [7] = {25, 885,
+static const int32_t gSuccessorTable_galgas4Grammar_669 [7] = {25, 885,
   147, 670,
   150, 886, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_670 [5] = {148, 889,
+static const int32_t gSuccessorTable_galgas4Grammar_670 [5] = {148, 889,
   149, 890, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_671 [3] = {155, 891, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_671 [3] = {155, 891, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_672 [3] = {156, 893, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_672 [3] = {156, 893, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_677 [3] = {27, 897, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_677 [3] = {27, 897, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_680 [3] = {175, 898, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_680 [3] = {175, 898, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_681 [9] = {17, 899,
+static const int32_t gSuccessorTable_galgas4Grammar_681 [9] = {17, 899,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_683 [3] = {184, 902, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_683 [3] = {184, 902, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_685 [5] = {24, 905,
+static const int32_t gSuccessorTable_galgas4Grammar_685 [5] = {24, 905,
   142, 906, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_687 [23] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_687 [23] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27390,110 +27390,110 @@ static const int16_t gSuccessorTable_galgas4Grammar_687 [23] = {1, 203,
   30, 909,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_691 [7] = {65, 912,
+static const int32_t gSuccessorTable_galgas4Grammar_691 [7] = {65, 912,
   66, 913,
   265, 914, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_692 [3] = {213, 915, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_692 [3] = {213, 915, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_697 [3] = {218, 919, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_697 [3] = {218, 919, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_698 [3] = {227, 921, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_698 [3] = {227, 921, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_702 [3] = {12, 925, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_702 [3] = {12, 925, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_703 [3] = {14, 926, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_703 [3] = {14, 926, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_704 [3] = {12, 927, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_704 [3] = {12, 927, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_705 [3] = {12, 928, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_705 [3] = {12, 928, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_706 [3] = {14, 929, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_706 [3] = {14, 929, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_713 [11] = {32, 935,
+static const int32_t gSuccessorTable_galgas4Grammar_713 [11] = {32, 935,
   48, 936,
   49, 269,
   230, 937,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_717 [3] = {233, 942, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_717 [3] = {233, 942, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_725 [3] = {46, 944, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_725 [3] = {46, 944, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_729 [3] = {12, 948, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_729 [3] = {12, 948, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_730 [3] = {14, 949, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_730 [3] = {14, 949, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_731 [3] = {287, 951, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_731 [3] = {287, 951, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_735 [7] = {72, 735,
+static const int32_t gSuccessorTable_galgas4Grammar_735 [7] = {72, 735,
   74, 736,
   290, 954, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_736 [7] = {72, 735,
+static const int32_t gSuccessorTable_galgas4Grammar_736 [7] = {72, 735,
   74, 736,
   290, 955, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_738 [5] = {12, 957,
+static const int32_t gSuccessorTable_galgas4Grammar_738 [5] = {12, 957,
   73, 958, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_743 [11] = {32, 959,
+static const int32_t gSuccessorTable_galgas4Grammar_743 [11] = {32, 959,
   48, 960,
   49, 269,
   217, 961,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_751 [3] = {258, 966, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_751 [3] = {258, 966, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_762 [3] = {67, 976, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_762 [3] = {67, 976, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_763 [5] = {54, 977,
+static const int32_t gSuccessorTable_galgas4Grammar_763 [5] = {54, 977,
   270, 978, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_767 [5] = {54, 767,
+static const int32_t gSuccessorTable_galgas4Grammar_767 [5] = {54, 767,
   252, 982, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_769 [3] = {256, 984, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_769 [3] = {256, 984, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_773 [3] = {264, 985, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_773 [3] = {264, 985, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_778 [3] = {207, 989, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_778 [3] = {207, 989, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_780 [3] = {208, 992, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_780 [3] = {208, 992, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_782 [3] = {225, 994, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_782 [3] = {225, 994, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_783 [3] = {226, 996, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_783 [3] = {226, 996, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_784 [3] = {12, 997, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_784 [3] = {12, 997, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_785 [3] = {12, 998, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_785 [3] = {12, 998, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_791 [3] = {120, 1000, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_791 [3] = {120, 1000, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_792 [3] = {104, 1002, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_792 [3] = {104, 1002, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_794 [3] = {35, 1004, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_794 [3] = {35, 1004, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_796 [3] = {128, 1006, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_796 [3] = {128, 1006, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_797 [3] = {241, 1008, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_797 [3] = {241, 1008, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_802 [3] = {82, 1012, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_802 [3] = {82, 1012, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_807 [3] = {91, 1018, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_807 [3] = {91, 1018, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_809 [3] = {171, 1022, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_809 [3] = {171, 1022, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_810 [3] = {170, 1024, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_810 [3] = {170, 1024, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_811 [7] = {3, 1025,
+static const int32_t gSuccessorTable_galgas4Grammar_811 [7] = {3, 1025,
   81, 585,
   83, 586, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_812 [3] = {99, 1027, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_812 [3] = {99, 1027, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_835 [25] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_835 [25] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27506,7 +27506,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_835 [25] = {1, 203,
   92, 214,
   98, 622, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_838 [23] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_838 [23] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27518,20 +27518,20 @@ static const int16_t gSuccessorTable_galgas4Grammar_838 [23] = {1, 203,
   92, 214,
   98, 1029, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_840 [7] = {3, 1030,
+static const int32_t gSuccessorTable_galgas4Grammar_840 [7] = {3, 1030,
   81, 585,
   83, 586, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_841 [7] = {3, 1031,
+static const int32_t gSuccessorTable_galgas4Grammar_841 [7] = {3, 1031,
   81, 585,
   83, 586, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_849 [9] = {17, 1032,
+static const int32_t gSuccessorTable_galgas4Grammar_849 [9] = {17, 1032,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_850 [27] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_850 [27] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27545,21 +27545,21 @@ static const int16_t gSuccessorTable_galgas4Grammar_850 [27] = {1, 203,
   92, 214,
   168, 215, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_853 [3] = {137, 639, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_853 [3] = {137, 639, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_855 [3] = {15, 1035, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_855 [3] = {15, 1035, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_857 [3] = {15, 1037, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_857 [3] = {15, 1037, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_859 [3] = {15, 1040, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_859 [3] = {15, 1040, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_860 [3] = {114, 1042, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_860 [3] = {114, 1042, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_861 [3] = {113, 1044, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_861 [3] = {113, 1044, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_864 [3] = {111, 1046, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_864 [3] = {111, 1046, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_869 [23] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_869 [23] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27571,9 +27571,9 @@ static const int16_t gSuccessorTable_galgas4Grammar_869 [23] = {1, 203,
   13, 1048,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_872 [3] = {137, 639, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_872 [3] = {137, 639, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_873 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_873 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27584,7 +27584,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_873 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_874 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_874 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27595,19 +27595,19 @@ static const int16_t gSuccessorTable_galgas4Grammar_874 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_877 [3] = {181, 1052, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_877 [3] = {181, 1052, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_881 [5] = {24, 1054,
+static const int32_t gSuccessorTable_galgas4Grammar_881 [5] = {24, 1054,
   142, 906, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_885 [7] = {25, 885,
+static const int32_t gSuccessorTable_galgas4Grammar_885 [7] = {25, 885,
   147, 670,
   150, 1056, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_891 [5] = {26, 1059,
+static const int32_t gSuccessorTable_galgas4Grammar_891 [5] = {26, 1059,
   151, 447, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_892 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_892 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27618,9 +27618,9 @@ static const int16_t gSuccessorTable_galgas4Grammar_892 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_893 [3] = {157, 1062, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_893 [3] = {157, 1062, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_894 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_894 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27631,7 +27631,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_894 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_895 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_895 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27642,7 +27642,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_895 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_896 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_896 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27653,113 +27653,113 @@ static const int16_t gSuccessorTable_galgas4Grammar_896 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_900 [9] = {17, 1067,
+static const int32_t gSuccessorTable_galgas4Grammar_900 [9] = {17, 1067,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_902 [3] = {185, 1070, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_902 [3] = {185, 1070, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_903 [9] = {17, 1071,
+static const int32_t gSuccessorTable_galgas4Grammar_903 [9] = {17, 1071,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_907 [3] = {194, 1075, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_907 [3] = {194, 1075, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_908 [3] = {192, 1077, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_908 [3] = {192, 1077, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_911 [3] = {323, 1080, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_911 [3] = {323, 1080, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_912 [7] = {65, 912,
+static const int32_t gSuccessorTable_galgas4Grammar_912 [7] = {65, 912,
   66, 913,
   265, 1081, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_913 [7] = {65, 912,
+static const int32_t gSuccessorTable_galgas4Grammar_913 [7] = {65, 912,
   66, 913,
   265, 1082, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_919 [5] = {48, 1087,
+static const int32_t gSuccessorTable_galgas4Grammar_919 [5] = {48, 1087,
   221, 1088, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_922 [9] = {17, 1091,
+static const int32_t gSuccessorTable_galgas4Grammar_922 [9] = {17, 1091,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_930 [3] = {12, 1097, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_930 [3] = {12, 1097, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_931 [3] = {14, 1098, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_931 [3] = {14, 1098, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_934 [3] = {202, 1100, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_934 [3] = {202, 1100, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_935 [11] = {32, 935,
+static const int32_t gSuccessorTable_galgas4Grammar_935 [11] = {32, 935,
   48, 936,
   49, 269,
   230, 1101,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_936 [11] = {32, 935,
+static const int32_t gSuccessorTable_galgas4Grammar_936 [11] = {32, 935,
   48, 936,
   49, 269,
   230, 1102,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_943 [3] = {237, 1109, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_943 [3] = {237, 1109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_944 [3] = {236, 1111, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_944 [3] = {236, 1111, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_945 [9] = {17, 1112,
+static const int32_t gSuccessorTable_galgas4Grammar_945 [9] = {17, 1112,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_946 [9] = {17, 1113,
+static const int32_t gSuccessorTable_galgas4Grammar_946 [9] = {17, 1113,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_950 [3] = {287, 1116, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_950 [3] = {287, 1116, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_952 [3] = {282, 1119, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_952 [3] = {282, 1119, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_957 [3] = {292, 1123, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_957 [3] = {292, 1123, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_958 [3] = {293, 1125, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_958 [3] = {293, 1125, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_959 [11] = {32, 959,
+static const int32_t gSuccessorTable_galgas4Grammar_959 [11] = {32, 959,
   48, 960,
   49, 269,
   217, 1126,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_960 [11] = {32, 959,
+static const int32_t gSuccessorTable_galgas4Grammar_960 [11] = {32, 959,
   48, 960,
   49, 269,
   217, 1127,
   247, 271, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_970 [3] = {272, 1135, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_970 [3] = {272, 1135, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_977 [5] = {54, 977,
+static const int32_t gSuccessorTable_galgas4Grammar_977 [5] = {54, 977,
   270, 1137, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_978 [3] = {55, 1139, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_978 [3] = {55, 1139, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_980 [7] = {57, 1141,
+static const int32_t gSuccessorTable_galgas4Grammar_980 [7] = {57, 1141,
   58, 317,
   59, 318, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_987 [3] = {205, 1143, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_987 [3] = {205, 1143, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1001 [3] = {105, 1152, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1001 [3] = {105, 1152, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1009 [9] = {17, 1155,
+static const int32_t gSuccessorTable_galgas4Grammar_1009 [9] = {17, 1155,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1010 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_1010 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27770,9 +27770,9 @@ static const int16_t gSuccessorTable_galgas4Grammar_1010 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1011 [3] = {83, 1157, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1011 [3] = {83, 1157, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1020 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_1020 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27783,25 +27783,25 @@ static const int16_t gSuccessorTable_galgas4Grammar_1020 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1021 [3] = {172, 1167, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1021 [3] = {172, 1167, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1028 [3] = {96, 1171, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1028 [3] = {96, 1171, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1029 [3] = {97, 1172, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1029 [3] = {97, 1172, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1030 [3] = {94, 1175, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1030 [3] = {94, 1175, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1038 [3] = {15, 1178, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1038 [3] = {15, 1178, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1042 [3] = {115, 1181, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1042 [3] = {115, 1181, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1048 [3] = {108, 1185, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1048 [3] = {108, 1185, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1050 [3] = {140, 1186, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1050 [3] = {140, 1186, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1052 [3] = {0, 1188, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1052 [3] = {0, 1188, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1055 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_1055 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27812,16 +27812,16 @@ static const int16_t gSuccessorTable_galgas4Grammar_1055 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1059 [3] = {154, 1192, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1059 [3] = {154, 1192, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1061 [9] = {17, 1193,
+static const int32_t gSuccessorTable_galgas4Grammar_1061 [9] = {17, 1193,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1064 [3] = {163, 1196, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1064 [3] = {163, 1196, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1066 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_1066 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27832,62 +27832,62 @@ static const int16_t gSuccessorTable_galgas4Grammar_1066 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1068 [3] = {184, 1200, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1068 [3] = {184, 1200, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1069 [5] = {187, 1204,
+static const int32_t gSuccessorTable_galgas4Grammar_1069 [5] = {187, 1204,
   188, 1205, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1071 [3] = {182, 1207, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1071 [3] = {182, 1207, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1072 [3] = {144, 1212, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1072 [3] = {144, 1212, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1073 [3] = {195, 1214, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1073 [3] = {195, 1214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1074 [3] = {196, 1216, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1074 [3] = {196, 1216, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1075 [3] = {198, 1218, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1075 [3] = {198, 1218, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1078 [3] = {191, 1222, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1078 [3] = {191, 1222, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1080 [3] = {324, 1224, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1080 [3] = {324, 1224, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1084 [3] = {239, 1226, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1084 [3] = {239, 1226, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1085 [3] = {220, 1228, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1085 [3] = {220, 1228, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1086 [3] = {219, 1229, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1086 [3] = {219, 1229, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1087 [5] = {48, 1087,
+static const int32_t gSuccessorTable_galgas4Grammar_1087 [5] = {48, 1087,
   221, 1230, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1092 [3] = {242, 1235, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1092 [3] = {242, 1235, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1094 [9] = {17, 1237,
+static const int32_t gSuccessorTable_galgas4Grammar_1094 [9] = {17, 1237,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1095 [9] = {17, 1238,
+static const int32_t gSuccessorTable_galgas4Grammar_1095 [9] = {17, 1238,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1099 [3] = {202, 1241, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1099 [3] = {202, 1241, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1100 [3] = {203, 1243, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1100 [3] = {203, 1243, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1110 [3] = {46, 1247, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1110 [3] = {46, 1247, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1114 [3] = {245, 1252, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1114 [3] = {245, 1252, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1118 [3] = {283, 1257, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1118 [3] = {283, 1257, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1120 [9] = {69, 291,
+static const int32_t gSuccessorTable_galgas4Grammar_1120 [9] = {69, 291,
   70, 292,
   71, 293,
   281, 1259, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1121 [15] = {21, 1265,
+static const int32_t gSuccessorTable_galgas4Grammar_1121 [15] = {21, 1265,
   22, 108,
   75, 1266,
   76, 1267,
@@ -27895,34 +27895,34 @@ static const int16_t gSuccessorTable_galgas4Grammar_1121 [15] = {21, 1265,
   296, 1269,
   298, 1270, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1129 [3] = {315, 1274, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1129 [3] = {315, 1274, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1133 [3] = {56, 1281, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1133 [3] = {56, 1281, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1135 [3] = {273, 1284, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1135 [3] = {273, 1284, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1138 [7] = {57, 1286,
+static const int32_t gSuccessorTable_galgas4Grammar_1138 [7] = {57, 1286,
   58, 317,
   59, 318, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1139 [5] = {55, 1287,
+static const int32_t gSuccessorTable_galgas4Grammar_1139 [5] = {55, 1287,
   271, 1288, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1144 [3] = {207, 1291, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1144 [3] = {207, 1291, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1151 [3] = {117, 1298, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1151 [3] = {117, 1298, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1153 [9] = {17, 1300,
+static const int32_t gSuccessorTable_galgas4Grammar_1153 [9] = {17, 1300,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1154 [9] = {17, 1301,
+static const int32_t gSuccessorTable_galgas4Grammar_1154 [9] = {17, 1301,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1157 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_1157 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27933,29 +27933,29 @@ static const int16_t gSuccessorTable_galgas4Grammar_1157 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1161 [7] = {3, 1306,
+static const int32_t gSuccessorTable_galgas4Grammar_1161 [7] = {3, 1306,
   81, 585,
   83, 586, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1162 [3] = {171, 1307, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1162 [3] = {171, 1307, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1165 [3] = {173, 1310, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1165 [3] = {173, 1310, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1166 [3] = {174, 1312, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1166 [3] = {174, 1312, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1167 [3] = {171, 1313, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1167 [3] = {171, 1313, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1179 [3] = {15, 1315, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1179 [3] = {15, 1315, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1182 [3] = {15, 1317, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1182 [3] = {15, 1317, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1183 [3] = {111, 1318, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1183 [3] = {111, 1318, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1187 [3] = {181, 1319, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1187 [3] = {181, 1319, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1189 [3] = {146, 1321, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1189 [3] = {146, 1321, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1191 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_1191 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27966,11 +27966,11 @@ static const int16_t gSuccessorTable_galgas4Grammar_1191 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1194 [3] = {158, 1324, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1194 [3] = {158, 1324, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1195 [3] = {19, 1326, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1195 [3] = {19, 1326, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1197 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_1197 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -27981,17 +27981,17 @@ static const int16_t gSuccessorTable_galgas4Grammar_1197 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1199 [3] = {178, 1330, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1199 [3] = {178, 1330, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1204 [7] = {186, 1332,
+static const int32_t gSuccessorTable_galgas4Grammar_1204 [7] = {186, 1332,
   187, 1333,
   188, 1205, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1205 [3] = {189, 1335, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1205 [3] = {189, 1335, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1206 [3] = {29, 1336, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1206 [3] = {29, 1336, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1209 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_1209 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -28002,7 +28002,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_1209 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1210 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_1210 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -28013,7 +28013,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_1210 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1211 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_1211 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -28024,20 +28024,20 @@ static const int16_t gSuccessorTable_galgas4Grammar_1211 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1212 [3] = {143, 1342, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1212 [3] = {143, 1342, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1220 [9] = {17, 1348,
+static const int32_t gSuccessorTable_galgas4Grammar_1220 [9] = {17, 1348,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1229 [3] = {218, 1352, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1229 [3] = {218, 1352, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1236 [3] = {240, 1356, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1236 [3] = {240, 1356, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1239 [3] = {246, 1360, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1239 [3] = {246, 1360, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1242 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_1242 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -28048,13 +28048,13 @@ static const int16_t gSuccessorTable_galgas4Grammar_1242 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1245 [3] = {234, 1364, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1245 [3] = {234, 1364, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1247 [3] = {236, 1366, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1247 [3] = {236, 1366, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1253 [3] = {243, 1369, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1253 [3] = {243, 1369, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1260 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_1260 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -28065,9 +28065,9 @@ static const int16_t gSuccessorTable_galgas4Grammar_1260 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1261 [3] = {304, 1375, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1261 [3] = {304, 1375, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1262 [15] = {21, 1265,
+static const int32_t gSuccessorTable_galgas4Grammar_1262 [15] = {21, 1265,
   22, 108,
   75, 1376,
   76, 1267,
@@ -28075,7 +28075,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_1262 [15] = {21, 1265,
   296, 1269,
   298, 1270, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1263 [15] = {21, 1265,
+static const int32_t gSuccessorTable_galgas4Grammar_1263 [15] = {21, 1265,
   22, 108,
   75, 1377,
   76, 1267,
@@ -28083,99 +28083,99 @@ static const int16_t gSuccessorTable_galgas4Grammar_1263 [15] = {21, 1265,
   296, 1269,
   298, 1270, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1269 [5] = {295, 1384,
+static const int32_t gSuccessorTable_galgas4Grammar_1269 [5] = {295, 1384,
   297, 1385, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1271 [3] = {12, 1387, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1271 [3] = {12, 1387, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1272 [5] = {12, 1388,
+static const int32_t gSuccessorTable_galgas4Grammar_1272 [5] = {12, 1388,
   73, 1389, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1277 [3] = {254, 1395, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1277 [3] = {254, 1395, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1281 [3] = {272, 1396, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1281 [3] = {272, 1396, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1282 [3] = {272, 1397, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1282 [3] = {272, 1397, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1287 [5] = {55, 1287,
+static const int32_t gSuccessorTable_galgas4Grammar_1287 [5] = {55, 1287,
   271, 1402, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1290 [5] = {54, 1404,
+static const int32_t gSuccessorTable_galgas4Grammar_1290 [5] = {54, 1404,
   276, 1405, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1293 [3] = {225, 1407, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1293 [3] = {225, 1407, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1295 [3] = {226, 1408, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1295 [3] = {226, 1408, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1297 [3] = {118, 1409, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1297 [3] = {118, 1409, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1299 [3] = {106, 1410, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1299 [3] = {106, 1410, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1304 [3] = {82, 1413, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1304 [3] = {82, 1413, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1314 [3] = {121, 1417, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1314 [3] = {121, 1417, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1316 [3] = {15, 1418, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1316 [3] = {15, 1418, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1324 [9] = {17, 1422,
+static const int32_t gSuccessorTable_galgas4Grammar_1324 [9] = {17, 1422,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1325 [3] = {129, 1427, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1325 [3] = {129, 1427, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1327 [3] = {164, 1429, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1327 [3] = {164, 1429, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1328 [9] = {17, 1430,
+static const int32_t gSuccessorTable_galgas4Grammar_1328 [9] = {17, 1430,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1333 [7] = {186, 1432,
+static const int32_t gSuccessorTable_galgas4Grammar_1333 [7] = {186, 1432,
   187, 1333,
   188, 1205, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1337 [3] = {183, 1436, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1337 [3] = {183, 1436, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1341 [3] = {144, 1437, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1341 [3] = {144, 1437, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1343 [3] = {195, 1439, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1343 [3] = {195, 1439, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1344 [3] = {197, 1441, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1344 [3] = {197, 1441, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1346 [9] = {17, 1443,
+static const int32_t gSuccessorTable_galgas4Grammar_1346 [9] = {17, 1443,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1348 [3] = {193, 1445, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1348 [3] = {193, 1445, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1350 [3] = {220, 1447, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1350 [3] = {220, 1447, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1354 [9] = {17, 1449,
+static const int32_t gSuccessorTable_galgas4Grammar_1354 [9] = {17, 1449,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1361 [3] = {244, 1452, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1361 [3] = {244, 1452, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1367 [9] = {17, 1454,
+static const int32_t gSuccessorTable_galgas4Grammar_1367 [9] = {17, 1454,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1371 [3] = {282, 1456, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1371 [3] = {282, 1456, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1372 [3] = {285, 1459, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1372 [3] = {285, 1459, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1374 [7] = {20, 1461,
+static const int32_t gSuccessorTable_galgas4Grammar_1374 [7] = {20, 1461,
   130, 1462,
   132, 1463, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1375 [5] = {77, 1465,
+static const int32_t gSuccessorTable_galgas4Grammar_1375 [5] = {77, 1465,
   306, 1466, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1379 [15] = {21, 1265,
+static const int32_t gSuccessorTable_galgas4Grammar_1379 [15] = {21, 1265,
   22, 108,
   75, 1469,
   76, 1267,
@@ -28183,7 +28183,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_1379 [15] = {21, 1265,
   296, 1269,
   298, 1270, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1380 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_1380 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -28194,7 +28194,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_1380 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1381 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_1381 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -28205,81 +28205,81 @@ static const int16_t gSuccessorTable_galgas4Grammar_1381 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1385 [11] = {21, 1265,
+static const int32_t gSuccessorTable_galgas4Grammar_1385 [11] = {21, 1265,
   22, 108,
   76, 1267,
   296, 1472,
   298, 1270, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1386 [3] = {0, 1473, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1386 [3] = {0, 1473, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1387 [3] = {292, 1474, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1387 [3] = {292, 1474, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1389 [3] = {293, 1475, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1389 [3] = {293, 1475, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1390 [3] = {315, 1476, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1390 [3] = {315, 1476, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1391 [3] = {79, 1478, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1391 [3] = {79, 1478, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1392 [3] = {279, 1480, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1392 [3] = {279, 1480, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1393 [3] = {61, 1482, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1393 [3] = {61, 1482, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1394 [3] = {255, 1484, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1394 [3] = {255, 1484, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1398 [3] = {274, 1486, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1398 [3] = {274, 1486, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1401 [5] = {54, 1488,
+static const int32_t gSuccessorTable_galgas4Grammar_1401 [5] = {54, 1488,
   253, 1489, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1404 [5] = {54, 1404,
+static const int32_t gSuccessorTable_galgas4Grammar_1404 [5] = {54, 1404,
   276, 1490, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1405 [3] = {275, 1492, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1405 [3] = {275, 1492, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1409 [3] = {119, 1494, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1409 [3] = {119, 1494, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1419 [3] = {146, 1498, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1419 [3] = {146, 1498, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1422 [3] = {159, 1501, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1422 [3] = {159, 1501, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1428 [3] = {19, 1504, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1428 [3] = {19, 1504, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1434 [9] = {17, 1506,
+static const int32_t gSuccessorTable_galgas4Grammar_1434 [9] = {17, 1506,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1437 [3] = {143, 1507, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1437 [3] = {143, 1507, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1443 [3] = {199, 1510, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1443 [3] = {199, 1510, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1444 [9] = {17, 1511,
+static const int32_t gSuccessorTable_galgas4Grammar_1444 [9] = {17, 1511,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1446 [9] = {17, 1512,
+static const int32_t gSuccessorTable_galgas4Grammar_1446 [9] = {17, 1512,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1448 [3] = {227, 1513, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1448 [3] = {227, 1513, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1450 [9] = {17, 1515,
+static const int32_t gSuccessorTable_galgas4Grammar_1450 [9] = {17, 1515,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1455 [3] = {286, 1518, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1455 [3] = {286, 1518, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1459 [3] = {284, 1521, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1459 [3] = {284, 1521, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1463 [3] = {131, 1528, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1463 [3] = {131, 1528, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1465 [3] = {305, 1531, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1465 [3] = {305, 1531, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1467 [15] = {21, 1265,
+static const int32_t gSuccessorTable_galgas4Grammar_1467 [15] = {21, 1265,
   22, 108,
   75, 1532,
   76, 1267,
@@ -28287,7 +28287,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_1467 [15] = {21, 1265,
   296, 1269,
   298, 1270, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1468 [15] = {21, 1265,
+static const int32_t gSuccessorTable_galgas4Grammar_1468 [15] = {21, 1265,
   22, 108,
   75, 1533,
   76, 1267,
@@ -28295,79 +28295,79 @@ static const int16_t gSuccessorTable_galgas4Grammar_1468 [15] = {21, 1265,
   296, 1269,
   298, 1270, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1472 [5] = {295, 1537,
+static const int32_t gSuccessorTable_galgas4Grammar_1472 [5] = {295, 1537,
   297, 1385, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1473 [3] = {299, 1539, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1473 [3] = {299, 1539, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1477 [5] = {80, 1543,
+static const int32_t gSuccessorTable_galgas4Grammar_1477 [5] = {80, 1543,
   318, 1544, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1478 [3] = {316, 1546, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1478 [3] = {316, 1546, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1479 [3] = {280, 1549, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1479 [3] = {280, 1549, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1481 [3] = {261, 1551, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1481 [3] = {261, 1551, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1482 [3] = {260, 1553, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1482 [3] = {260, 1553, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1483 [3] = {56, 1554, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1483 [3] = {56, 1554, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1487 [3] = {268, 1558, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1487 [3] = {268, 1558, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1488 [5] = {54, 1488,
+static const int32_t gSuccessorTable_galgas4Grammar_1488 [5] = {54, 1488,
   253, 1559, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1491 [7] = {57, 1560,
+static const int32_t gSuccessorTable_galgas4Grammar_1491 [7] = {57, 1560,
   58, 317,
   59, 318, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1493 [5] = {209, 1563,
+static const int32_t gSuccessorTable_galgas4Grammar_1493 [5] = {209, 1563,
   211, 1564, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1495 [3] = {104, 1566, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1495 [3] = {104, 1566, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1496 [3] = {121, 1567, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1496 [3] = {121, 1567, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1500 [9] = {17, 1568,
+static const int32_t gSuccessorTable_galgas4Grammar_1500 [9] = {17, 1568,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1501 [3] = {160, 1570, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1501 [3] = {160, 1570, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1505 [3] = {177, 1573, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1505 [3] = {177, 1573, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1506 [3] = {182, 1574, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1506 [3] = {182, 1574, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1508 [3] = {197, 1575, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1508 [3] = {197, 1575, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1509 [9] = {17, 1576,
+static const int32_t gSuccessorTable_galgas4Grammar_1509 [9] = {17, 1576,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1517 [3] = {286, 1579, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1517 [3] = {286, 1579, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1518 [3] = {282, 1580, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1518 [3] = {282, 1580, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1521 [3] = {282, 1583, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1521 [3] = {282, 1583, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1524 [3] = {134, 1585, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1524 [3] = {134, 1585, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1525 [3] = {133, 1587, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1525 [3] = {133, 1587, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1527 [3] = {132, 1588, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1527 [3] = {132, 1588, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1529 [3] = {308, 1590, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1529 [3] = {308, 1590, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1530 [3] = {19, 1591, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1530 [3] = {19, 1591, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1532 [3] = {300, 1593, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1532 [3] = {300, 1593, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1533 [3] = {302, 1595, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1533 [3] = {302, 1595, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1534 [15] = {21, 1265,
+static const int32_t gSuccessorTable_galgas4Grammar_1534 [15] = {21, 1265,
   22, 108,
   75, 1596,
   76, 1267,
@@ -28375,7 +28375,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_1534 [15] = {21, 1265,
   296, 1269,
   298, 1270, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1535 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_1535 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -28386,7 +28386,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_1535 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1536 [15] = {21, 1265,
+static const int32_t gSuccessorTable_galgas4Grammar_1536 [15] = {21, 1265,
   22, 108,
   75, 1598,
   76, 1267,
@@ -28394,42 +28394,42 @@ static const int16_t gSuccessorTable_galgas4Grammar_1536 [15] = {21, 1265,
   296, 1269,
   298, 1270, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1538 [3] = {19, 1599, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1538 [3] = {19, 1599, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1543 [5] = {80, 1543,
+static const int32_t gSuccessorTable_galgas4Grammar_1543 [5] = {80, 1543,
   318, 1604, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1546 [3] = {317, 1608, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1546 [3] = {317, 1608, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1551 [3] = {262, 1610, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1551 [3] = {262, 1610, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1552 [3] = {61, 1611, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1552 [3] = {61, 1611, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1554 [3] = {255, 1613, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1554 [3] = {255, 1613, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1556 [3] = {274, 1614, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1556 [3] = {274, 1614, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1558 [3] = {269, 1618, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1558 [3] = {269, 1618, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1561 [5] = {54, 1620,
+static const int32_t gSuccessorTable_galgas4Grammar_1561 [5] = {54, 1620,
   277, 1621, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1565 [3] = {120, 1624, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1565 [3] = {120, 1624, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1569 [9] = {17, 1625,
+static const int32_t gSuccessorTable_galgas4Grammar_1569 [9] = {17, 1625,
   21, 107,
   22, 108,
   122, 109, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1582 [3] = {285, 1628, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1582 [3] = {285, 1628, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1588 [3] = {131, 1631, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1588 [3] = {131, 1631, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1590 [3] = {307, 1633, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1590 [3] = {307, 1633, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1591 [3] = {19, 1634, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1591 [3] = {19, 1634, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1592 [15] = {21, 1265,
+static const int32_t gSuccessorTable_galgas4Grammar_1592 [15] = {21, 1265,
   22, 108,
   75, 1635,
   76, 1267,
@@ -28437,7 +28437,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_1592 [15] = {21, 1265,
   296, 1269,
   298, 1270, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1594 [15] = {21, 1265,
+static const int32_t gSuccessorTable_galgas4Grammar_1594 [15] = {21, 1265,
   22, 108,
   75, 1637,
   76, 1267,
@@ -28445,41 +28445,41 @@ static const int16_t gSuccessorTable_galgas4Grammar_1594 [15] = {21, 1265,
   296, 1269,
   298, 1270, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1596 [3] = {310, 1640, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1596 [3] = {310, 1640, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1598 [3] = {78, 1644, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1598 [3] = {78, 1644, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1601 [3] = {319, 1647, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1601 [3] = {319, 1647, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1603 [3] = {321, 1650, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1603 [3] = {321, 1650, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1606 [3] = {79, 1651, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1606 [3] = {79, 1651, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1611 [3] = {260, 1655, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1611 [3] = {260, 1655, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1619 [5] = {54, 1404,
+static const int32_t gSuccessorTable_galgas4Grammar_1619 [5] = {54, 1404,
   276, 1658, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1620 [5] = {54, 1620,
+static const int32_t gSuccessorTable_galgas4Grammar_1620 [5] = {54, 1620,
   277, 1659, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1622 [3] = {208, 1661, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1622 [3] = {208, 1661, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1623 [3] = {212, 1663, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1623 [3] = {212, 1663, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1626 [3] = {161, 1666, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1626 [3] = {161, 1666, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1628 [3] = {284, 1668, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1628 [3] = {284, 1668, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1635 [3] = {300, 1670, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1635 [3] = {300, 1670, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1636 [3] = {301, 1672, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1636 [3] = {301, 1672, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1637 [3] = {302, 1673, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1637 [3] = {302, 1673, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1638 [3] = {303, 1675, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1638 [3] = {303, 1675, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1639 [15] = {21, 1265,
+static const int32_t gSuccessorTable_galgas4Grammar_1639 [15] = {21, 1265,
   22, 108,
   75, 1676,
   76, 1267,
@@ -28487,7 +28487,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_1639 [15] = {21, 1265,
   296, 1269,
   298, 1270, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1641 [15] = {21, 1265,
+static const int32_t gSuccessorTable_galgas4Grammar_1641 [15] = {21, 1265,
   22, 108,
   75, 1678,
   76, 1267,
@@ -28495,7 +28495,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_1641 [15] = {21, 1265,
   296, 1269,
   298, 1270, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1642 [15] = {21, 1265,
+static const int32_t gSuccessorTable_galgas4Grammar_1642 [15] = {21, 1265,
   22, 108,
   75, 1679,
   76, 1267,
@@ -28503,7 +28503,7 @@ static const int16_t gSuccessorTable_galgas4Grammar_1642 [15] = {21, 1265,
   296, 1269,
   298, 1270, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1643 [21] = {1, 203,
+static const int32_t gSuccessorTable_galgas4Grammar_1643 [21] = {1, 203,
   2, 204,
   4, 205,
   5, 206,
@@ -28514,31 +28514,31 @@ static const int16_t gSuccessorTable_galgas4Grammar_1643 [21] = {1, 203,
   11, 211,
   92, 214, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1648 [3] = {320, 1684, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1648 [3] = {320, 1684, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1651 [3] = {316, 1686, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1651 [3] = {316, 1686, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1652 [3] = {317, 1687, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1652 [3] = {317, 1687, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1658 [3] = {275, 1689, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1658 [3] = {275, 1689, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1664 [3] = {117, 1691, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1664 [3] = {117, 1691, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1669 [3] = {308, 1692, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1669 [3] = {308, 1692, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1676 [3] = {310, 1693, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1676 [3] = {310, 1693, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1677 [3] = {311, 1695, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1677 [3] = {311, 1695, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1681 [3] = {312, 1699, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1681 [3] = {312, 1699, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1690 [3] = {210, 1703, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1690 [3] = {210, 1703, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1692 [3] = {307, 1704, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1692 [3] = {307, 1704, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1696 [3] = {309, 1706, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1696 [3] = {309, 1706, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1697 [15] = {21, 1265,
+static const int32_t gSuccessorTable_galgas4Grammar_1697 [15] = {21, 1265,
   22, 108,
   75, 1707,
   76, 1267,
@@ -28546,446 +28546,446 @@ static const int16_t gSuccessorTable_galgas4Grammar_1697 [15] = {21, 1265,
   296, 1269,
   298, 1270, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1701 [3] = {268, 1708, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1701 [3] = {268, 1708, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1702 [3] = {211, 1709, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1702 [3] = {211, 1709, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1707 [3] = {78, 1710, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1707 [3] = {78, 1710, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1711 [3] = {212, 1712, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1711 [3] = {212, 1712, -1} ;
 
-static const int16_t gSuccessorTable_galgas4Grammar_1713 [3] = {210, 1714, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1713 [3] = {210, 1714, -1} ;
 
-static const int16_t * gSuccessorTable_galgas4Grammar [1715] = {
-gSuccessorTable_galgas4Grammar_0, NULL, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_7, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_28, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_36, NULL, NULL, gSuccessorTable_galgas4Grammar_39, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_43, 
-  NULL, gSuccessorTable_galgas4Grammar_45, NULL, gSuccessorTable_galgas4Grammar_47, 
-  gSuccessorTable_galgas4Grammar_48, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_59, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_68, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_73, gSuccessorTable_galgas4Grammar_74, NULL, 
+static const int32_t * gSuccessorTable_galgas4Grammar [1715] = {
+gSuccessorTable_galgas4Grammar_0, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_7, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_28, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_36, nullptr, nullptr, gSuccessorTable_galgas4Grammar_39, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_43, 
+  nullptr, gSuccessorTable_galgas4Grammar_45, nullptr, gSuccessorTable_galgas4Grammar_47, 
+  gSuccessorTable_galgas4Grammar_48, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_59, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_68, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_73, gSuccessorTable_galgas4Grammar_74, nullptr, 
   gSuccessorTable_galgas4Grammar_76, gSuccessorTable_galgas4Grammar_77, gSuccessorTable_galgas4Grammar_78, gSuccessorTable_galgas4Grammar_79, 
-  gSuccessorTable_galgas4Grammar_80, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_84, gSuccessorTable_galgas4Grammar_85, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_89, gSuccessorTable_galgas4Grammar_90, gSuccessorTable_galgas4Grammar_91, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_95, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_98, gSuccessorTable_galgas4Grammar_99, 
-  NULL, gSuccessorTable_galgas4Grammar_101, gSuccessorTable_galgas4Grammar_102, gSuccessorTable_galgas4Grammar_103, 
-  gSuccessorTable_galgas4Grammar_104, gSuccessorTable_galgas4Grammar_105, NULL, gSuccessorTable_galgas4Grammar_107, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_118, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_121, NULL, gSuccessorTable_galgas4Grammar_123, 
-  gSuccessorTable_galgas4Grammar_124, gSuccessorTable_galgas4Grammar_125, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_131, 
-  NULL, gSuccessorTable_galgas4Grammar_133, NULL, gSuccessorTable_galgas4Grammar_135, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_138, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_146, NULL, 
+  gSuccessorTable_galgas4Grammar_80, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_84, gSuccessorTable_galgas4Grammar_85, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_89, gSuccessorTable_galgas4Grammar_90, gSuccessorTable_galgas4Grammar_91, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_95, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_98, gSuccessorTable_galgas4Grammar_99, 
+  nullptr, gSuccessorTable_galgas4Grammar_101, gSuccessorTable_galgas4Grammar_102, gSuccessorTable_galgas4Grammar_103, 
+  gSuccessorTable_galgas4Grammar_104, gSuccessorTable_galgas4Grammar_105, nullptr, gSuccessorTable_galgas4Grammar_107, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_118, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_121, nullptr, gSuccessorTable_galgas4Grammar_123, 
+  gSuccessorTable_galgas4Grammar_124, gSuccessorTable_galgas4Grammar_125, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_131, 
+  nullptr, gSuccessorTable_galgas4Grammar_133, nullptr, gSuccessorTable_galgas4Grammar_135, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_138, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_146, nullptr, 
   gSuccessorTable_galgas4Grammar_148, gSuccessorTable_galgas4Grammar_149, gSuccessorTable_galgas4Grammar_150, gSuccessorTable_galgas4Grammar_151, 
   gSuccessorTable_galgas4Grammar_152, gSuccessorTable_galgas4Grammar_153, gSuccessorTable_galgas4Grammar_154, gSuccessorTable_galgas4Grammar_155, 
-  gSuccessorTable_galgas4Grammar_156, gSuccessorTable_galgas4Grammar_157, gSuccessorTable_galgas4Grammar_158, NULL, 
-  gSuccessorTable_galgas4Grammar_160, gSuccessorTable_galgas4Grammar_161, NULL, gSuccessorTable_galgas4Grammar_163, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_166, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_174, gSuccessorTable_galgas4Grammar_175, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_179, 
-  gSuccessorTable_galgas4Grammar_180, NULL, gSuccessorTable_galgas4Grammar_182, gSuccessorTable_galgas4Grammar_183, 
-  gSuccessorTable_galgas4Grammar_184, gSuccessorTable_galgas4Grammar_185, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_189, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_193, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
+  gSuccessorTable_galgas4Grammar_156, gSuccessorTable_galgas4Grammar_157, gSuccessorTable_galgas4Grammar_158, nullptr, 
+  gSuccessorTable_galgas4Grammar_160, gSuccessorTable_galgas4Grammar_161, nullptr, gSuccessorTable_galgas4Grammar_163, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_166, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_174, gSuccessorTable_galgas4Grammar_175, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_179, 
+  gSuccessorTable_galgas4Grammar_180, nullptr, gSuccessorTable_galgas4Grammar_182, gSuccessorTable_galgas4Grammar_183, 
+  gSuccessorTable_galgas4Grammar_184, gSuccessorTable_galgas4Grammar_185, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_189, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_193, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
   gSuccessorTable_galgas4Grammar_200, gSuccessorTable_galgas4Grammar_201, gSuccessorTable_galgas4Grammar_202, gSuccessorTable_galgas4Grammar_203, 
   gSuccessorTable_galgas4Grammar_204, gSuccessorTable_galgas4Grammar_205, gSuccessorTable_galgas4Grammar_206, gSuccessorTable_galgas4Grammar_207, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_210, gSuccessorTable_galgas4Grammar_211, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_215, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_218, NULL, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_210, gSuccessorTable_galgas4Grammar_211, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_215, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_218, nullptr, 
   gSuccessorTable_galgas4Grammar_220, gSuccessorTable_galgas4Grammar_221, gSuccessorTable_galgas4Grammar_222, gSuccessorTable_galgas4Grammar_223, 
-  gSuccessorTable_galgas4Grammar_224, gSuccessorTable_galgas4Grammar_225, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_232, NULL, NULL, gSuccessorTable_galgas4Grammar_235, 
-  gSuccessorTable_galgas4Grammar_236, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_240, gSuccessorTable_galgas4Grammar_241, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_245, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_249, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_253, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_259, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_265, gSuccessorTable_galgas4Grammar_266, gSuccessorTable_galgas4Grammar_267, 
-  gSuccessorTable_galgas4Grammar_268, gSuccessorTable_galgas4Grammar_269, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_273, NULL, gSuccessorTable_galgas4Grammar_275, 
-  gSuccessorTable_galgas4Grammar_276, NULL, gSuccessorTable_galgas4Grammar_278, gSuccessorTable_galgas4Grammar_279, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_291, 
-  gSuccessorTable_galgas4Grammar_292, gSuccessorTable_galgas4Grammar_293, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_298, NULL, 
-  gSuccessorTable_galgas4Grammar_300, gSuccessorTable_galgas4Grammar_301, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_306, NULL, 
-  gSuccessorTable_galgas4Grammar_308, gSuccessorTable_galgas4Grammar_309, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_313, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_318, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_321, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_333, gSuccessorTable_galgas4Grammar_334, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_337, NULL, gSuccessorTable_galgas4Grammar_339, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_342, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_346, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_349, gSuccessorTable_galgas4Grammar_350, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_358, gSuccessorTable_galgas4Grammar_359, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_362, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_372, NULL, NULL, NULL, 
+  gSuccessorTable_galgas4Grammar_224, gSuccessorTable_galgas4Grammar_225, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_232, nullptr, nullptr, gSuccessorTable_galgas4Grammar_235, 
+  gSuccessorTable_galgas4Grammar_236, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_240, gSuccessorTable_galgas4Grammar_241, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_245, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_249, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_253, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_259, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_265, gSuccessorTable_galgas4Grammar_266, gSuccessorTable_galgas4Grammar_267, 
+  gSuccessorTable_galgas4Grammar_268, gSuccessorTable_galgas4Grammar_269, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_273, nullptr, gSuccessorTable_galgas4Grammar_275, 
+  gSuccessorTable_galgas4Grammar_276, nullptr, gSuccessorTable_galgas4Grammar_278, gSuccessorTable_galgas4Grammar_279, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_291, 
+  gSuccessorTable_galgas4Grammar_292, gSuccessorTable_galgas4Grammar_293, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_298, nullptr, 
+  gSuccessorTable_galgas4Grammar_300, gSuccessorTable_galgas4Grammar_301, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_306, nullptr, 
+  gSuccessorTable_galgas4Grammar_308, gSuccessorTable_galgas4Grammar_309, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_313, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_318, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_321, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_333, gSuccessorTable_galgas4Grammar_334, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_337, nullptr, gSuccessorTable_galgas4Grammar_339, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_342, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_346, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_349, gSuccessorTable_galgas4Grammar_350, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_358, gSuccessorTable_galgas4Grammar_359, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_362, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_372, nullptr, nullptr, nullptr, 
   gSuccessorTable_galgas4Grammar_376, gSuccessorTable_galgas4Grammar_377, gSuccessorTable_galgas4Grammar_378, gSuccessorTable_galgas4Grammar_379, 
-  gSuccessorTable_galgas4Grammar_380, NULL, gSuccessorTable_galgas4Grammar_382, gSuccessorTable_galgas4Grammar_383, 
-  NULL, gSuccessorTable_galgas4Grammar_385, gSuccessorTable_galgas4Grammar_386, gSuccessorTable_galgas4Grammar_387, 
+  gSuccessorTable_galgas4Grammar_380, nullptr, gSuccessorTable_galgas4Grammar_382, gSuccessorTable_galgas4Grammar_383, 
+  nullptr, gSuccessorTable_galgas4Grammar_385, gSuccessorTable_galgas4Grammar_386, gSuccessorTable_galgas4Grammar_387, 
   gSuccessorTable_galgas4Grammar_388, gSuccessorTable_galgas4Grammar_389, gSuccessorTable_galgas4Grammar_390, gSuccessorTable_galgas4Grammar_391, 
-  gSuccessorTable_galgas4Grammar_392, NULL, gSuccessorTable_galgas4Grammar_394, gSuccessorTable_galgas4Grammar_395, 
+  gSuccessorTable_galgas4Grammar_392, nullptr, gSuccessorTable_galgas4Grammar_394, gSuccessorTable_galgas4Grammar_395, 
   gSuccessorTable_galgas4Grammar_396, gSuccessorTable_galgas4Grammar_397, gSuccessorTable_galgas4Grammar_398, gSuccessorTable_galgas4Grammar_399, 
-  NULL, gSuccessorTable_galgas4Grammar_401, NULL, gSuccessorTable_galgas4Grammar_403, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_406, gSuccessorTable_galgas4Grammar_407, 
-  gSuccessorTable_galgas4Grammar_408, gSuccessorTable_galgas4Grammar_409, gSuccessorTable_galgas4Grammar_410, NULL, 
-  gSuccessorTable_galgas4Grammar_412, gSuccessorTable_galgas4Grammar_413, gSuccessorTable_galgas4Grammar_414, NULL, 
+  nullptr, gSuccessorTable_galgas4Grammar_401, nullptr, gSuccessorTable_galgas4Grammar_403, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_406, gSuccessorTable_galgas4Grammar_407, 
+  gSuccessorTable_galgas4Grammar_408, gSuccessorTable_galgas4Grammar_409, gSuccessorTable_galgas4Grammar_410, nullptr, 
+  gSuccessorTable_galgas4Grammar_412, gSuccessorTable_galgas4Grammar_413, gSuccessorTable_galgas4Grammar_414, nullptr, 
   gSuccessorTable_galgas4Grammar_416, gSuccessorTable_galgas4Grammar_417, gSuccessorTable_galgas4Grammar_418, gSuccessorTable_galgas4Grammar_419, 
-  gSuccessorTable_galgas4Grammar_420, gSuccessorTable_galgas4Grammar_421, gSuccessorTable_galgas4Grammar_422, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_425, gSuccessorTable_galgas4Grammar_426, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_430, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_435, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_438, gSuccessorTable_galgas4Grammar_439, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_443, 
-  gSuccessorTable_galgas4Grammar_444, NULL, gSuccessorTable_galgas4Grammar_446, gSuccessorTable_galgas4Grammar_447, 
-  NULL, gSuccessorTable_galgas4Grammar_449, gSuccessorTable_galgas4Grammar_450, NULL, 
-  gSuccessorTable_galgas4Grammar_452, NULL, NULL, gSuccessorTable_galgas4Grammar_455, 
-  gSuccessorTable_galgas4Grammar_456, gSuccessorTable_galgas4Grammar_457, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_460, gSuccessorTable_galgas4Grammar_461, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_465, gSuccessorTable_galgas4Grammar_466, gSuccessorTable_galgas4Grammar_467, 
-  NULL, gSuccessorTable_galgas4Grammar_469, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_472, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_490, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_495, 
+  gSuccessorTable_galgas4Grammar_420, gSuccessorTable_galgas4Grammar_421, gSuccessorTable_galgas4Grammar_422, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_425, gSuccessorTable_galgas4Grammar_426, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_430, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_435, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_438, gSuccessorTable_galgas4Grammar_439, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_443, 
+  gSuccessorTable_galgas4Grammar_444, nullptr, gSuccessorTable_galgas4Grammar_446, gSuccessorTable_galgas4Grammar_447, 
+  nullptr, gSuccessorTable_galgas4Grammar_449, gSuccessorTable_galgas4Grammar_450, nullptr, 
+  gSuccessorTable_galgas4Grammar_452, nullptr, nullptr, gSuccessorTable_galgas4Grammar_455, 
+  gSuccessorTable_galgas4Grammar_456, gSuccessorTable_galgas4Grammar_457, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_460, gSuccessorTable_galgas4Grammar_461, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_465, gSuccessorTable_galgas4Grammar_466, gSuccessorTable_galgas4Grammar_467, 
+  nullptr, gSuccessorTable_galgas4Grammar_469, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_472, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_490, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_495, 
   gSuccessorTable_galgas4Grammar_496, gSuccessorTable_galgas4Grammar_497, gSuccessorTable_galgas4Grammar_498, gSuccessorTable_galgas4Grammar_499, 
-  gSuccessorTable_galgas4Grammar_500, NULL, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_507, 
-  gSuccessorTable_galgas4Grammar_508, gSuccessorTable_galgas4Grammar_509, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_521, NULL, gSuccessorTable_galgas4Grammar_523, 
-  gSuccessorTable_galgas4Grammar_524, NULL, NULL, gSuccessorTable_galgas4Grammar_527, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_536, NULL, NULL, gSuccessorTable_galgas4Grammar_539, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_545, gSuccessorTable_galgas4Grammar_546, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_549, gSuccessorTable_galgas4Grammar_550, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_553, NULL, gSuccessorTable_galgas4Grammar_555, 
-  gSuccessorTable_galgas4Grammar_556, NULL, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_563, 
-  gSuccessorTable_galgas4Grammar_564, gSuccessorTable_galgas4Grammar_565, gSuccessorTable_galgas4Grammar_566, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_575, 
-  gSuccessorTable_galgas4Grammar_576, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_580, NULL, gSuccessorTable_galgas4Grammar_582, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_586, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_592, NULL, gSuccessorTable_galgas4Grammar_594, gSuccessorTable_galgas4Grammar_595, 
-  NULL, gSuccessorTable_galgas4Grammar_597, gSuccessorTable_galgas4Grammar_598, gSuccessorTable_galgas4Grammar_599, 
+  gSuccessorTable_galgas4Grammar_500, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_507, 
+  gSuccessorTable_galgas4Grammar_508, gSuccessorTable_galgas4Grammar_509, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_521, nullptr, gSuccessorTable_galgas4Grammar_523, 
+  gSuccessorTable_galgas4Grammar_524, nullptr, nullptr, gSuccessorTable_galgas4Grammar_527, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_536, nullptr, nullptr, gSuccessorTable_galgas4Grammar_539, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_545, gSuccessorTable_galgas4Grammar_546, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_549, gSuccessorTable_galgas4Grammar_550, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_553, nullptr, gSuccessorTable_galgas4Grammar_555, 
+  gSuccessorTable_galgas4Grammar_556, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_563, 
+  gSuccessorTable_galgas4Grammar_564, gSuccessorTable_galgas4Grammar_565, gSuccessorTable_galgas4Grammar_566, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_575, 
+  gSuccessorTable_galgas4Grammar_576, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_580, nullptr, gSuccessorTable_galgas4Grammar_582, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_586, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_592, nullptr, gSuccessorTable_galgas4Grammar_594, gSuccessorTable_galgas4Grammar_595, 
+  nullptr, gSuccessorTable_galgas4Grammar_597, gSuccessorTable_galgas4Grammar_598, gSuccessorTable_galgas4Grammar_599, 
   gSuccessorTable_galgas4Grammar_600, gSuccessorTable_galgas4Grammar_601, gSuccessorTable_galgas4Grammar_602, gSuccessorTable_galgas4Grammar_603, 
   gSuccessorTable_galgas4Grammar_604, gSuccessorTable_galgas4Grammar_605, gSuccessorTable_galgas4Grammar_606, gSuccessorTable_galgas4Grammar_607, 
   gSuccessorTable_galgas4Grammar_608, gSuccessorTable_galgas4Grammar_609, gSuccessorTable_galgas4Grammar_610, gSuccessorTable_galgas4Grammar_611, 
   gSuccessorTable_galgas4Grammar_612, gSuccessorTable_galgas4Grammar_613, gSuccessorTable_galgas4Grammar_614, gSuccessorTable_galgas4Grammar_615, 
-  gSuccessorTable_galgas4Grammar_616, gSuccessorTable_galgas4Grammar_617, gSuccessorTable_galgas4Grammar_618, NULL, 
-  gSuccessorTable_galgas4Grammar_620, NULL, gSuccessorTable_galgas4Grammar_622, gSuccessorTable_galgas4Grammar_623, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_629, gSuccessorTable_galgas4Grammar_630, gSuccessorTable_galgas4Grammar_631, 
-  gSuccessorTable_galgas4Grammar_632, gSuccessorTable_galgas4Grammar_633, gSuccessorTable_galgas4Grammar_634, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_637, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_641, gSuccessorTable_galgas4Grammar_642, gSuccessorTable_galgas4Grammar_643, 
-  NULL, gSuccessorTable_galgas4Grammar_645, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_656, NULL, gSuccessorTable_galgas4Grammar_658, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_663, 
-  gSuccessorTable_galgas4Grammar_664, gSuccessorTable_galgas4Grammar_665, gSuccessorTable_galgas4Grammar_666, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_669, gSuccessorTable_galgas4Grammar_670, gSuccessorTable_galgas4Grammar_671, 
-  gSuccessorTable_galgas4Grammar_672, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_677, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_680, gSuccessorTable_galgas4Grammar_681, NULL, gSuccessorTable_galgas4Grammar_683, 
-  NULL, gSuccessorTable_galgas4Grammar_685, NULL, gSuccessorTable_galgas4Grammar_687, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_691, 
-  gSuccessorTable_galgas4Grammar_692, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_697, gSuccessorTable_galgas4Grammar_698, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_702, gSuccessorTable_galgas4Grammar_703, 
-  gSuccessorTable_galgas4Grammar_704, gSuccessorTable_galgas4Grammar_705, gSuccessorTable_galgas4Grammar_706, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_713, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_717, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_725, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_729, gSuccessorTable_galgas4Grammar_730, gSuccessorTable_galgas4Grammar_731, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_735, 
-  gSuccessorTable_galgas4Grammar_736, NULL, gSuccessorTable_galgas4Grammar_738, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_743, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_751, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_762, gSuccessorTable_galgas4Grammar_763, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_767, 
-  NULL, gSuccessorTable_galgas4Grammar_769, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_773, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_778, NULL, 
-  gSuccessorTable_galgas4Grammar_780, NULL, gSuccessorTable_galgas4Grammar_782, gSuccessorTable_galgas4Grammar_783, 
-  gSuccessorTable_galgas4Grammar_784, gSuccessorTable_galgas4Grammar_785, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_791, 
-  gSuccessorTable_galgas4Grammar_792, NULL, gSuccessorTable_galgas4Grammar_794, NULL, 
-  gSuccessorTable_galgas4Grammar_796, gSuccessorTable_galgas4Grammar_797, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_802, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_807, 
-  NULL, gSuccessorTable_galgas4Grammar_809, gSuccessorTable_galgas4Grammar_810, gSuccessorTable_galgas4Grammar_811, 
-  gSuccessorTable_galgas4Grammar_812, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_835, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_838, NULL, 
-  gSuccessorTable_galgas4Grammar_840, gSuccessorTable_galgas4Grammar_841, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_849, gSuccessorTable_galgas4Grammar_850, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_853, NULL, gSuccessorTable_galgas4Grammar_855, 
-  NULL, gSuccessorTable_galgas4Grammar_857, NULL, gSuccessorTable_galgas4Grammar_859, 
-  gSuccessorTable_galgas4Grammar_860, gSuccessorTable_galgas4Grammar_861, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_864, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_869, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_872, gSuccessorTable_galgas4Grammar_873, gSuccessorTable_galgas4Grammar_874, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_877, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_881, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_885, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_891, 
+  gSuccessorTable_galgas4Grammar_616, gSuccessorTable_galgas4Grammar_617, gSuccessorTable_galgas4Grammar_618, nullptr, 
+  gSuccessorTable_galgas4Grammar_620, nullptr, gSuccessorTable_galgas4Grammar_622, gSuccessorTable_galgas4Grammar_623, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_629, gSuccessorTable_galgas4Grammar_630, gSuccessorTable_galgas4Grammar_631, 
+  gSuccessorTable_galgas4Grammar_632, gSuccessorTable_galgas4Grammar_633, gSuccessorTable_galgas4Grammar_634, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_637, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_641, gSuccessorTable_galgas4Grammar_642, gSuccessorTable_galgas4Grammar_643, 
+  nullptr, gSuccessorTable_galgas4Grammar_645, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_656, nullptr, gSuccessorTable_galgas4Grammar_658, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_663, 
+  gSuccessorTable_galgas4Grammar_664, gSuccessorTable_galgas4Grammar_665, gSuccessorTable_galgas4Grammar_666, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_669, gSuccessorTable_galgas4Grammar_670, gSuccessorTable_galgas4Grammar_671, 
+  gSuccessorTable_galgas4Grammar_672, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_677, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_680, gSuccessorTable_galgas4Grammar_681, nullptr, gSuccessorTable_galgas4Grammar_683, 
+  nullptr, gSuccessorTable_galgas4Grammar_685, nullptr, gSuccessorTable_galgas4Grammar_687, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_691, 
+  gSuccessorTable_galgas4Grammar_692, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_697, gSuccessorTable_galgas4Grammar_698, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_702, gSuccessorTable_galgas4Grammar_703, 
+  gSuccessorTable_galgas4Grammar_704, gSuccessorTable_galgas4Grammar_705, gSuccessorTable_galgas4Grammar_706, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_713, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_717, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_725, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_729, gSuccessorTable_galgas4Grammar_730, gSuccessorTable_galgas4Grammar_731, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_735, 
+  gSuccessorTable_galgas4Grammar_736, nullptr, gSuccessorTable_galgas4Grammar_738, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_743, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_751, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_762, gSuccessorTable_galgas4Grammar_763, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_767, 
+  nullptr, gSuccessorTable_galgas4Grammar_769, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_773, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_778, nullptr, 
+  gSuccessorTable_galgas4Grammar_780, nullptr, gSuccessorTable_galgas4Grammar_782, gSuccessorTable_galgas4Grammar_783, 
+  gSuccessorTable_galgas4Grammar_784, gSuccessorTable_galgas4Grammar_785, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_791, 
+  gSuccessorTable_galgas4Grammar_792, nullptr, gSuccessorTable_galgas4Grammar_794, nullptr, 
+  gSuccessorTable_galgas4Grammar_796, gSuccessorTable_galgas4Grammar_797, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_802, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_807, 
+  nullptr, gSuccessorTable_galgas4Grammar_809, gSuccessorTable_galgas4Grammar_810, gSuccessorTable_galgas4Grammar_811, 
+  gSuccessorTable_galgas4Grammar_812, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_835, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_838, nullptr, 
+  gSuccessorTable_galgas4Grammar_840, gSuccessorTable_galgas4Grammar_841, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_849, gSuccessorTable_galgas4Grammar_850, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_853, nullptr, gSuccessorTable_galgas4Grammar_855, 
+  nullptr, gSuccessorTable_galgas4Grammar_857, nullptr, gSuccessorTable_galgas4Grammar_859, 
+  gSuccessorTable_galgas4Grammar_860, gSuccessorTable_galgas4Grammar_861, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_864, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_869, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_872, gSuccessorTable_galgas4Grammar_873, gSuccessorTable_galgas4Grammar_874, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_877, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_881, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_885, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_891, 
   gSuccessorTable_galgas4Grammar_892, gSuccessorTable_galgas4Grammar_893, gSuccessorTable_galgas4Grammar_894, gSuccessorTable_galgas4Grammar_895, 
-  gSuccessorTable_galgas4Grammar_896, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_900, NULL, gSuccessorTable_galgas4Grammar_902, gSuccessorTable_galgas4Grammar_903, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_907, 
-  gSuccessorTable_galgas4Grammar_908, NULL, NULL, gSuccessorTable_galgas4Grammar_911, 
-  gSuccessorTable_galgas4Grammar_912, gSuccessorTable_galgas4Grammar_913, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_919, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_922, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_930, gSuccessorTable_galgas4Grammar_931, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_934, gSuccessorTable_galgas4Grammar_935, 
-  gSuccessorTable_galgas4Grammar_936, NULL, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_943, 
-  gSuccessorTable_galgas4Grammar_944, gSuccessorTable_galgas4Grammar_945, gSuccessorTable_galgas4Grammar_946, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_950, NULL, 
-  gSuccessorTable_galgas4Grammar_952, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_957, gSuccessorTable_galgas4Grammar_958, gSuccessorTable_galgas4Grammar_959, 
-  gSuccessorTable_galgas4Grammar_960, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_970, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_977, gSuccessorTable_galgas4Grammar_978, NULL, 
-  gSuccessorTable_galgas4Grammar_980, NULL, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_987, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1001, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1009, gSuccessorTable_galgas4Grammar_1010, gSuccessorTable_galgas4Grammar_1011, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1020, gSuccessorTable_galgas4Grammar_1021, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1028, gSuccessorTable_galgas4Grammar_1029, gSuccessorTable_galgas4Grammar_1030, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1038, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1042, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1048, NULL, gSuccessorTable_galgas4Grammar_1050, NULL, 
-  gSuccessorTable_galgas4Grammar_1052, NULL, NULL, gSuccessorTable_galgas4Grammar_1055, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1059, 
-  NULL, gSuccessorTable_galgas4Grammar_1061, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1064, NULL, gSuccessorTable_galgas4Grammar_1066, NULL, 
-  gSuccessorTable_galgas4Grammar_1068, gSuccessorTable_galgas4Grammar_1069, NULL, gSuccessorTable_galgas4Grammar_1071, 
+  gSuccessorTable_galgas4Grammar_896, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_900, nullptr, gSuccessorTable_galgas4Grammar_902, gSuccessorTable_galgas4Grammar_903, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_907, 
+  gSuccessorTable_galgas4Grammar_908, nullptr, nullptr, gSuccessorTable_galgas4Grammar_911, 
+  gSuccessorTable_galgas4Grammar_912, gSuccessorTable_galgas4Grammar_913, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_919, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_922, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_930, gSuccessorTable_galgas4Grammar_931, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_934, gSuccessorTable_galgas4Grammar_935, 
+  gSuccessorTable_galgas4Grammar_936, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_943, 
+  gSuccessorTable_galgas4Grammar_944, gSuccessorTable_galgas4Grammar_945, gSuccessorTable_galgas4Grammar_946, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_950, nullptr, 
+  gSuccessorTable_galgas4Grammar_952, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_957, gSuccessorTable_galgas4Grammar_958, gSuccessorTable_galgas4Grammar_959, 
+  gSuccessorTable_galgas4Grammar_960, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_970, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_977, gSuccessorTable_galgas4Grammar_978, nullptr, 
+  gSuccessorTable_galgas4Grammar_980, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_987, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1001, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1009, gSuccessorTable_galgas4Grammar_1010, gSuccessorTable_galgas4Grammar_1011, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1020, gSuccessorTable_galgas4Grammar_1021, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1028, gSuccessorTable_galgas4Grammar_1029, gSuccessorTable_galgas4Grammar_1030, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1038, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1042, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1048, nullptr, gSuccessorTable_galgas4Grammar_1050, nullptr, 
+  gSuccessorTable_galgas4Grammar_1052, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1055, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1059, 
+  nullptr, gSuccessorTable_galgas4Grammar_1061, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1064, nullptr, gSuccessorTable_galgas4Grammar_1066, nullptr, 
+  gSuccessorTable_galgas4Grammar_1068, gSuccessorTable_galgas4Grammar_1069, nullptr, gSuccessorTable_galgas4Grammar_1071, 
   gSuccessorTable_galgas4Grammar_1072, gSuccessorTable_galgas4Grammar_1073, gSuccessorTable_galgas4Grammar_1074, gSuccessorTable_galgas4Grammar_1075, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1078, NULL, 
-  gSuccessorTable_galgas4Grammar_1080, NULL, NULL, NULL, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1078, nullptr, 
+  gSuccessorTable_galgas4Grammar_1080, nullptr, nullptr, nullptr, 
   gSuccessorTable_galgas4Grammar_1084, gSuccessorTable_galgas4Grammar_1085, gSuccessorTable_galgas4Grammar_1086, gSuccessorTable_galgas4Grammar_1087, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1092, NULL, gSuccessorTable_galgas4Grammar_1094, gSuccessorTable_galgas4Grammar_1095, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1099, 
-  gSuccessorTable_galgas4Grammar_1100, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1110, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1114, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1118, NULL, 
-  gSuccessorTable_galgas4Grammar_1120, gSuccessorTable_galgas4Grammar_1121, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1129, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1133, NULL, gSuccessorTable_galgas4Grammar_1135, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1138, gSuccessorTable_galgas4Grammar_1139, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1144, NULL, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1151, 
-  NULL, gSuccessorTable_galgas4Grammar_1153, gSuccessorTable_galgas4Grammar_1154, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1157, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1161, gSuccessorTable_galgas4Grammar_1162, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1165, gSuccessorTable_galgas4Grammar_1166, gSuccessorTable_galgas4Grammar_1167, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1179, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1182, gSuccessorTable_galgas4Grammar_1183, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1187, 
-  NULL, gSuccessorTable_galgas4Grammar_1189, NULL, gSuccessorTable_galgas4Grammar_1191, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1194, gSuccessorTable_galgas4Grammar_1195, 
-  NULL, gSuccessorTable_galgas4Grammar_1197, NULL, gSuccessorTable_galgas4Grammar_1199, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1204, gSuccessorTable_galgas4Grammar_1205, gSuccessorTable_galgas4Grammar_1206, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1209, gSuccessorTable_galgas4Grammar_1210, gSuccessorTable_galgas4Grammar_1211, 
-  gSuccessorTable_galgas4Grammar_1212, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1220, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1229, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1236, NULL, NULL, gSuccessorTable_galgas4Grammar_1239, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1242, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1245, NULL, gSuccessorTable_galgas4Grammar_1247, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1253, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1092, nullptr, gSuccessorTable_galgas4Grammar_1094, gSuccessorTable_galgas4Grammar_1095, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1099, 
+  gSuccessorTable_galgas4Grammar_1100, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1110, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1114, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1118, nullptr, 
+  gSuccessorTable_galgas4Grammar_1120, gSuccessorTable_galgas4Grammar_1121, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1129, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1133, nullptr, gSuccessorTable_galgas4Grammar_1135, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1138, gSuccessorTable_galgas4Grammar_1139, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1144, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1151, 
+  nullptr, gSuccessorTable_galgas4Grammar_1153, gSuccessorTable_galgas4Grammar_1154, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1157, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1161, gSuccessorTable_galgas4Grammar_1162, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1165, gSuccessorTable_galgas4Grammar_1166, gSuccessorTable_galgas4Grammar_1167, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1179, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1182, gSuccessorTable_galgas4Grammar_1183, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1187, 
+  nullptr, gSuccessorTable_galgas4Grammar_1189, nullptr, gSuccessorTable_galgas4Grammar_1191, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1194, gSuccessorTable_galgas4Grammar_1195, 
+  nullptr, gSuccessorTable_galgas4Grammar_1197, nullptr, gSuccessorTable_galgas4Grammar_1199, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1204, gSuccessorTable_galgas4Grammar_1205, gSuccessorTable_galgas4Grammar_1206, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1209, gSuccessorTable_galgas4Grammar_1210, gSuccessorTable_galgas4Grammar_1211, 
+  gSuccessorTable_galgas4Grammar_1212, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1220, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1229, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1236, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1239, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1242, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1245, nullptr, gSuccessorTable_galgas4Grammar_1247, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1253, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
   gSuccessorTable_galgas4Grammar_1260, gSuccessorTable_galgas4Grammar_1261, gSuccessorTable_galgas4Grammar_1262, gSuccessorTable_galgas4Grammar_1263, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1269, NULL, gSuccessorTable_galgas4Grammar_1271, 
-  gSuccessorTable_galgas4Grammar_1272, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1277, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1281, gSuccessorTable_galgas4Grammar_1282, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1287, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1290, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1293, NULL, gSuccessorTable_galgas4Grammar_1295, 
-  NULL, gSuccessorTable_galgas4Grammar_1297, NULL, gSuccessorTable_galgas4Grammar_1299, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1304, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1314, NULL, 
-  gSuccessorTable_galgas4Grammar_1316, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1324, gSuccessorTable_galgas4Grammar_1325, NULL, gSuccessorTable_galgas4Grammar_1327, 
-  gSuccessorTable_galgas4Grammar_1328, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1333, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1337, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1341, NULL, gSuccessorTable_galgas4Grammar_1343, 
-  gSuccessorTable_galgas4Grammar_1344, NULL, gSuccessorTable_galgas4Grammar_1346, NULL, 
-  gSuccessorTable_galgas4Grammar_1348, NULL, gSuccessorTable_galgas4Grammar_1350, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1354, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1361, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1367, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1371, 
-  gSuccessorTable_galgas4Grammar_1372, NULL, gSuccessorTable_galgas4Grammar_1374, gSuccessorTable_galgas4Grammar_1375, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1379, 
-  gSuccessorTable_galgas4Grammar_1380, gSuccessorTable_galgas4Grammar_1381, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1385, gSuccessorTable_galgas4Grammar_1386, gSuccessorTable_galgas4Grammar_1387, 
-  NULL, gSuccessorTable_galgas4Grammar_1389, gSuccessorTable_galgas4Grammar_1390, gSuccessorTable_galgas4Grammar_1391, 
-  gSuccessorTable_galgas4Grammar_1392, gSuccessorTable_galgas4Grammar_1393, gSuccessorTable_galgas4Grammar_1394, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1398, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1401, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1404, gSuccessorTable_galgas4Grammar_1405, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1409, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1419, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1422, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1428, NULL, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1434, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1437, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1443, 
-  gSuccessorTable_galgas4Grammar_1444, NULL, gSuccessorTable_galgas4Grammar_1446, NULL, 
-  gSuccessorTable_galgas4Grammar_1448, NULL, gSuccessorTable_galgas4Grammar_1450, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1455, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1459, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1463, 
-  NULL, gSuccessorTable_galgas4Grammar_1465, NULL, gSuccessorTable_galgas4Grammar_1467, 
-  gSuccessorTable_galgas4Grammar_1468, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1472, gSuccessorTable_galgas4Grammar_1473, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1477, gSuccessorTable_galgas4Grammar_1478, gSuccessorTable_galgas4Grammar_1479, 
-  NULL, gSuccessorTable_galgas4Grammar_1481, gSuccessorTable_galgas4Grammar_1482, gSuccessorTable_galgas4Grammar_1483, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1487, 
-  gSuccessorTable_galgas4Grammar_1488, NULL, NULL, gSuccessorTable_galgas4Grammar_1491, 
-  NULL, gSuccessorTable_galgas4Grammar_1493, NULL, gSuccessorTable_galgas4Grammar_1495, 
-  gSuccessorTable_galgas4Grammar_1496, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1500, gSuccessorTable_galgas4Grammar_1501, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1505, gSuccessorTable_galgas4Grammar_1506, NULL, 
-  gSuccessorTable_galgas4Grammar_1508, gSuccessorTable_galgas4Grammar_1509, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1517, gSuccessorTable_galgas4Grammar_1518, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1521, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1524, gSuccessorTable_galgas4Grammar_1525, NULL, gSuccessorTable_galgas4Grammar_1527, 
-  NULL, gSuccessorTable_galgas4Grammar_1529, gSuccessorTable_galgas4Grammar_1530, NULL, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1269, nullptr, gSuccessorTable_galgas4Grammar_1271, 
+  gSuccessorTable_galgas4Grammar_1272, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1277, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1281, gSuccessorTable_galgas4Grammar_1282, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1287, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1290, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1293, nullptr, gSuccessorTable_galgas4Grammar_1295, 
+  nullptr, gSuccessorTable_galgas4Grammar_1297, nullptr, gSuccessorTable_galgas4Grammar_1299, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1304, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1314, nullptr, 
+  gSuccessorTable_galgas4Grammar_1316, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1324, gSuccessorTable_galgas4Grammar_1325, nullptr, gSuccessorTable_galgas4Grammar_1327, 
+  gSuccessorTable_galgas4Grammar_1328, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1333, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1337, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1341, nullptr, gSuccessorTable_galgas4Grammar_1343, 
+  gSuccessorTable_galgas4Grammar_1344, nullptr, gSuccessorTable_galgas4Grammar_1346, nullptr, 
+  gSuccessorTable_galgas4Grammar_1348, nullptr, gSuccessorTable_galgas4Grammar_1350, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1354, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1361, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1367, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1371, 
+  gSuccessorTable_galgas4Grammar_1372, nullptr, gSuccessorTable_galgas4Grammar_1374, gSuccessorTable_galgas4Grammar_1375, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1379, 
+  gSuccessorTable_galgas4Grammar_1380, gSuccessorTable_galgas4Grammar_1381, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1385, gSuccessorTable_galgas4Grammar_1386, gSuccessorTable_galgas4Grammar_1387, 
+  nullptr, gSuccessorTable_galgas4Grammar_1389, gSuccessorTable_galgas4Grammar_1390, gSuccessorTable_galgas4Grammar_1391, 
+  gSuccessorTable_galgas4Grammar_1392, gSuccessorTable_galgas4Grammar_1393, gSuccessorTable_galgas4Grammar_1394, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1398, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1401, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1404, gSuccessorTable_galgas4Grammar_1405, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1409, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1419, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1422, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1428, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1434, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1437, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1443, 
+  gSuccessorTable_galgas4Grammar_1444, nullptr, gSuccessorTable_galgas4Grammar_1446, nullptr, 
+  gSuccessorTable_galgas4Grammar_1448, nullptr, gSuccessorTable_galgas4Grammar_1450, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1455, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1459, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1463, 
+  nullptr, gSuccessorTable_galgas4Grammar_1465, nullptr, gSuccessorTable_galgas4Grammar_1467, 
+  gSuccessorTable_galgas4Grammar_1468, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1472, gSuccessorTable_galgas4Grammar_1473, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1477, gSuccessorTable_galgas4Grammar_1478, gSuccessorTable_galgas4Grammar_1479, 
+  nullptr, gSuccessorTable_galgas4Grammar_1481, gSuccessorTable_galgas4Grammar_1482, gSuccessorTable_galgas4Grammar_1483, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1487, 
+  gSuccessorTable_galgas4Grammar_1488, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1491, 
+  nullptr, gSuccessorTable_galgas4Grammar_1493, nullptr, gSuccessorTable_galgas4Grammar_1495, 
+  gSuccessorTable_galgas4Grammar_1496, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1500, gSuccessorTable_galgas4Grammar_1501, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1505, gSuccessorTable_galgas4Grammar_1506, nullptr, 
+  gSuccessorTable_galgas4Grammar_1508, gSuccessorTable_galgas4Grammar_1509, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1517, gSuccessorTable_galgas4Grammar_1518, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1521, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1524, gSuccessorTable_galgas4Grammar_1525, nullptr, gSuccessorTable_galgas4Grammar_1527, 
+  nullptr, gSuccessorTable_galgas4Grammar_1529, gSuccessorTable_galgas4Grammar_1530, nullptr, 
   gSuccessorTable_galgas4Grammar_1532, gSuccessorTable_galgas4Grammar_1533, gSuccessorTable_galgas4Grammar_1534, gSuccessorTable_galgas4Grammar_1535, 
-  gSuccessorTable_galgas4Grammar_1536, NULL, gSuccessorTable_galgas4Grammar_1538, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1543, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1546, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1551, 
-  gSuccessorTable_galgas4Grammar_1552, NULL, gSuccessorTable_galgas4Grammar_1554, NULL, 
-  gSuccessorTable_galgas4Grammar_1556, NULL, gSuccessorTable_galgas4Grammar_1558, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1561, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1565, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1569, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1582, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1588, NULL, gSuccessorTable_galgas4Grammar_1590, gSuccessorTable_galgas4Grammar_1591, 
-  gSuccessorTable_galgas4Grammar_1592, NULL, gSuccessorTable_galgas4Grammar_1594, NULL, 
-  gSuccessorTable_galgas4Grammar_1596, NULL, gSuccessorTable_galgas4Grammar_1598, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1601, NULL, gSuccessorTable_galgas4Grammar_1603, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1606, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1611, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1619, 
-  gSuccessorTable_galgas4Grammar_1620, NULL, gSuccessorTable_galgas4Grammar_1622, gSuccessorTable_galgas4Grammar_1623, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1626, NULL, 
-  gSuccessorTable_galgas4Grammar_1628, NULL, NULL, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1635, 
+  gSuccessorTable_galgas4Grammar_1536, nullptr, gSuccessorTable_galgas4Grammar_1538, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1543, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1546, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1551, 
+  gSuccessorTable_galgas4Grammar_1552, nullptr, gSuccessorTable_galgas4Grammar_1554, nullptr, 
+  gSuccessorTable_galgas4Grammar_1556, nullptr, gSuccessorTable_galgas4Grammar_1558, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1561, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1565, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1569, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1582, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1588, nullptr, gSuccessorTable_galgas4Grammar_1590, gSuccessorTable_galgas4Grammar_1591, 
+  gSuccessorTable_galgas4Grammar_1592, nullptr, gSuccessorTable_galgas4Grammar_1594, nullptr, 
+  gSuccessorTable_galgas4Grammar_1596, nullptr, gSuccessorTable_galgas4Grammar_1598, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1601, nullptr, gSuccessorTable_galgas4Grammar_1603, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1606, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1611, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1619, 
+  gSuccessorTable_galgas4Grammar_1620, nullptr, gSuccessorTable_galgas4Grammar_1622, gSuccessorTable_galgas4Grammar_1623, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1626, nullptr, 
+  gSuccessorTable_galgas4Grammar_1628, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1635, 
   gSuccessorTable_galgas4Grammar_1636, gSuccessorTable_galgas4Grammar_1637, gSuccessorTable_galgas4Grammar_1638, gSuccessorTable_galgas4Grammar_1639, 
-  NULL, gSuccessorTable_galgas4Grammar_1641, gSuccessorTable_galgas4Grammar_1642, gSuccessorTable_galgas4Grammar_1643, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1648, NULL, NULL, gSuccessorTable_galgas4Grammar_1651, 
-  gSuccessorTable_galgas4Grammar_1652, NULL, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1658, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1664, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1669, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1676, gSuccessorTable_galgas4Grammar_1677, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1681, NULL, NULL, 
-  NULL, NULL, NULL, NULL, 
-  NULL, NULL, gSuccessorTable_galgas4Grammar_1690, NULL, 
-  gSuccessorTable_galgas4Grammar_1692, NULL, NULL, NULL, 
-  gSuccessorTable_galgas4Grammar_1696, gSuccessorTable_galgas4Grammar_1697, NULL, NULL, 
-  NULL, gSuccessorTable_galgas4Grammar_1701, gSuccessorTable_galgas4Grammar_1702, NULL, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1707, 
-  NULL, NULL, NULL, gSuccessorTable_galgas4Grammar_1711, 
-  NULL, gSuccessorTable_galgas4Grammar_1713, NULL} ;
+  nullptr, gSuccessorTable_galgas4Grammar_1641, gSuccessorTable_galgas4Grammar_1642, gSuccessorTable_galgas4Grammar_1643, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1648, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1651, 
+  gSuccessorTable_galgas4Grammar_1652, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1658, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1664, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1669, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1676, gSuccessorTable_galgas4Grammar_1677, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1681, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1690, nullptr, 
+  gSuccessorTable_galgas4Grammar_1692, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1696, gSuccessorTable_galgas4Grammar_1697, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1701, gSuccessorTable_galgas4Grammar_1702, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1707, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1711, 
+  nullptr, gSuccessorTable_galgas4Grammar_1713, nullptr} ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                      
@@ -28993,7 +28993,7 @@ gSuccessorTable_galgas4Grammar_0, NULL, NULL, NULL,
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int16_t gProductionsTable_galgas4Grammar [792 * 2] = {
+static const int32_t gProductionsTable_galgas4Grammar [792 * 2] = {
   1, 3,
   1, 7,
   2, 2,
