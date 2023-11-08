@@ -1113,7 +1113,6 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                                const C_String & inLexiqueName,
                                const C_String & inTargetFileName,
                                C_String & ioCppFileContents,
-//                               const bool inHasIndexing,
                                const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Generate header file inclusion -----------------------------------------
   ioCppFileContents << "#include \"utilities/MF_MemoryControl.h\"\n" ;
@@ -1731,7 +1730,6 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
                   const C_String & inLexiqueName,
                   bool & outOk,
                   const bool inVerboseOptionOn,
-//                  const bool inHasIndexing,
                   const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Console display
   if (inVerboseOptionOn) {
@@ -1957,7 +1955,6 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
                                    inLexiqueName,
                                    inTargetFileName,
                                    ioCppFileContents,
-//                                   inHasIndexing,
                                    inSyntaxDirectedTranslationVarName) ;
   }
   macroMyDelete (LR1_items_sets_collection) ;

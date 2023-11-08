@@ -437,7 +437,6 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                                const C_String & inLexiqueName,
                                const cVocabulary & inVocabulary,
                                const cPureBNFproductionsList & inPureBNFproductions,
-//                               const bool inHasIndexing,
                                const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Generate header file inclusion --------------------------------------------------------------
   ioCppFileContents.appendCppHyphenLineComment () ;
@@ -876,7 +875,6 @@ LL1_computations (const cPureBNFproductionsList & inPureBNFproductions,
                   const C_String & inLexiqueName,
                   bool & outOk,
                   const bool inVerboseOptionOn,
-//                  const bool inHasIndexing,
                   const C_String & inSyntaxDirectedTranslationVarName) {
 
 //--- Console display
@@ -906,7 +904,6 @@ LL1_computations (const cPureBNFproductionsList & inPureBNFproductions,
                                    inLexiqueName,
                                    inVocabulary,
                                    inPureBNFproductions,
-//                                   inHasIndexing,
                                    inSyntaxDirectedTranslationVarName) ;
   }
 }

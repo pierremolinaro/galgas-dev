@@ -653,7 +653,6 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                                const C_String & inLexiqueName,
                                const C_String & inTargetFileName,
                                C_String & ioCppFileContents,
-//                               const bool inHasIndexing,
                                const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Generate header file inclusion -----------------------------------------
   ioCppFileContents.appendCppHyphenLineComment () ;
@@ -1263,7 +1262,6 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
                   const C_String & inLexiqueName,
                   bool & outOk,
                   const bool inVerboseOptionOn,
-//                  const bool inHasIndexing,
                   const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Console display
   if (inVerboseOptionOn) {
@@ -1479,7 +1477,6 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
                                    inLexiqueName,
                                    inTargetFileName,
                                    ioCppFileContents,
-//                                   inHasIndexing,
                                    inSyntaxDirectedTranslationVarName) ;
   }
   outOk = conflictCount == 0 ;

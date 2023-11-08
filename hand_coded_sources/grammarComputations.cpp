@@ -289,7 +289,6 @@ analyzeGrammar (C_Compiler * inCompiler,
                 const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
                 const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
                 const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
-//                const bool inHasIndexing,
                 const C_String & inSyntaxDirectedTranslationVarName,
                 C_String & ioCppFileContents,
                 C_HTMLString & outHTMLHelperFileContents,
@@ -515,7 +514,6 @@ analyzeGrammar (C_Compiler * inCompiler,
                       inLexiqueName,
                       ok,
                       verboseOptionOn,
-//                      inHasIndexing,
                       inSyntaxDirectedTranslationVarName) ;
     if (! ok) {
       errorFlag = kGrammarNotLL1 ;
@@ -538,7 +536,6 @@ analyzeGrammar (C_Compiler * inCompiler,
                       inLexiqueName,
                       ok,
                       verboseOptionOn,
-//                      inHasIndexing,
                       inSyntaxDirectedTranslationVarName) ;
     if (ok) {
       errorFlag = kNoError ;
@@ -565,7 +562,6 @@ analyzeGrammar (C_Compiler * inCompiler,
                       inLexiqueName,
                       ok,
                       verboseOptionOn,
-//                      inHasIndexing,
                       inSyntaxDirectedTranslationVarName) ;
     if (ok) {
       errorFlag = kNoError ;
@@ -627,7 +623,6 @@ routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
                                       const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
                                       const GALGAS_string inHTMLFileName,
                                       const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,
-//                                      const GALGAS_bool inHasIndexing,
                                       const GALGAS_string inSyntaxDirectedTranslationVarName,
                                       GALGAS_string & outCppFileContents,
                                       GALGAS_string & outHTMLHelperFileContents,
@@ -653,7 +648,6 @@ routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
                     inTerminalSymbolMap,
                     inSyntaxComponentsList,
                     inNonTerminalSymbolSortedListForGrammarAnalysis,
-//                    inHasIndexing.boolValue (),
                     inSyntaxDirectedTranslationVarName.stringValue (),
                     CppFileContents,
                     HTMLHelperFileContents,

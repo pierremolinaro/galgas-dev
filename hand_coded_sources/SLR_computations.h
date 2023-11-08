@@ -2,7 +2,7 @@
 //
 //     Routines for SLR (1) grammar computations                                                 
 //
-//  Copyright (C) 2002, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 2002, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -44,7 +44,6 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
                   const C_String & inLexiqueName,
                   bool & outOk,
                   const bool inVerboseOptionOn,
-//                  const bool inHasIndexing,
                   const C_String & inSyntaxDirectedTranslationVarName) ;
 
 //----------------------------------------------------------------------------------------------------------------------

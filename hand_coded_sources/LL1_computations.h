@@ -2,7 +2,7 @@
 //
 //  Routines for checking LL(1) condition                                                        
 //
-//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -48,7 +48,6 @@ LL1_computations (const cPureBNFproductionsList & inPureBNFproductions,
                   const C_String & inLexiqueName,
                   bool & outOk,
                   const bool inVerboseOptionOn,
-//                  const bool inHasIndexing,
                   const C_String & inSyntaxDirectedTranslationVarName) ;
 
 //----------------------------------------------------------------------------------------------------------------------
