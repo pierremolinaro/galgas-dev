@@ -2392,7 +2392,6 @@ bool GALGAS_fixitElementAST::optional_fixItReplace (GALGAS_semanticExpressionAST
   const bool ok = mEnum == kEnum_fixItReplace ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_fixitElementAST_fixItReplace *) unsafePointer () ;
-    // const cEnumAssociatedValues_fixitElementAST_fixItReplace * ptr = (const cEnumAssociatedValues_fixitElementAST_fixItReplace *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
   }
@@ -2406,7 +2405,6 @@ bool GALGAS_fixitElementAST::optional_fixItInsertAfter (GALGAS_semanticExpressio
   const bool ok = mEnum == kEnum_fixItInsertAfter ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_fixitElementAST_fixItInsertAfter *) unsafePointer () ;
-    // const cEnumAssociatedValues_fixitElementAST_fixItInsertAfter * ptr = (const cEnumAssociatedValues_fixitElementAST_fixItInsertAfter *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
   }
@@ -2420,7 +2418,6 @@ bool GALGAS_fixitElementAST::optional_fixItInsertBefore (GALGAS_semanticExpressi
   const bool ok = mEnum == kEnum_fixItInsertBefore ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_fixitElementAST_fixItInsertBefore *) unsafePointer () ;
-    // const cEnumAssociatedValues_fixitElementAST_fixItInsertBefore * ptr = (const cEnumAssociatedValues_fixitElementAST_fixItInsertBefore *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
   }
@@ -3534,7 +3531,6 @@ bool GALGAS_fixitElementForGeneration::optional_fixItReplace (GALGAS_semanticExp
   const bool ok = mEnum == kEnum_fixItReplace ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_fixitElementForGeneration_fixItReplace *) unsafePointer () ;
-    // const cEnumAssociatedValues_fixitElementForGeneration_fixItReplace * ptr = (const cEnumAssociatedValues_fixitElementForGeneration_fixItReplace *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -3546,7 +3542,6 @@ bool GALGAS_fixitElementForGeneration::optional_fixItInsertBefore (GALGAS_semant
   const bool ok = mEnum == kEnum_fixItInsertBefore ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertBefore *) unsafePointer () ;
-    // const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertBefore * ptr = (const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertBefore *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -3558,7 +3553,6 @@ bool GALGAS_fixitElementForGeneration::optional_fixItInsertAfter (GALGAS_semanti
   const bool ok = mEnum == kEnum_fixItInsertAfter ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertAfter *) unsafePointer () ;
-    // const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertAfter * ptr = (const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertAfter *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -10074,7 +10068,6 @@ bool GALGAS_ifExpressionKind::optional_regularExp (GALGAS_semanticExpressionAST 
   const bool ok = mEnum == kEnum_regularExp ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_ifExpressionKind_regularExp *) unsafePointer () ;
-    // const cEnumAssociatedValues_ifExpressionKind_regularExp * ptr = (const cEnumAssociatedValues_ifExpressionKind_regularExp *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -10089,7 +10082,6 @@ bool GALGAS_ifExpressionKind::optional_letExp (GALGAS_lstring & outAssociatedVal
   const bool ok = mEnum == kEnum_letExp ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_ifExpressionKind_letExp *) unsafePointer () ;
-    // const cEnumAssociatedValues_ifExpressionKind_letExp * ptr = (const cEnumAssociatedValues_ifExpressionKind_letExp *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
     outAssociatedValue2 = ptr->mAssociatedValue2 ;
@@ -10106,7 +10098,6 @@ bool GALGAS_ifExpressionKind::optional_optionalMethodCall (GALGAS_semanticExpres
   const bool ok = mEnum == kEnum_optionalMethodCall ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_ifExpressionKind_optionalMethodCall *) unsafePointer () ;
-    // const cEnumAssociatedValues_ifExpressionKind_optionalMethodCall * ptr = (const cEnumAssociatedValues_ifExpressionKind_optionalMethodCall *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
     outAssociatedValue2 = ptr->mAssociatedValue2 ;
@@ -10513,7 +10504,6 @@ bool GALGAS_optionalMethodActualArgument::optional_actualOutput (GALGAS_semantic
   const bool ok = mEnum == kEnum_actualOutput ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_optionalMethodActualArgument_actualOutput *) unsafePointer () ;
-    // const cEnumAssociatedValues_optionalMethodActualArgument_actualOutput * ptr = (const cEnumAssociatedValues_optionalMethodActualArgument_actualOutput *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
   }
@@ -10527,7 +10517,6 @@ bool GALGAS_optionalMethodActualArgument::optional_actualLetInput (GALGAS_lstrin
   const bool ok = mEnum == kEnum_actualLetInput ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_optionalMethodActualArgument_actualLetInput *) unsafePointer () ;
-    // const cEnumAssociatedValues_optionalMethodActualArgument_actualLetInput * ptr = (const cEnumAssociatedValues_optionalMethodActualArgument_actualLetInput *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
   }
@@ -10541,7 +10530,6 @@ bool GALGAS_optionalMethodActualArgument::optional_actualVarInput (GALGAS_lstrin
   const bool ok = mEnum == kEnum_actualVarInput ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_optionalMethodActualArgument_actualVarInput *) unsafePointer () ;
-    // const cEnumAssociatedValues_optionalMethodActualArgument_actualVarInput * ptr = (const cEnumAssociatedValues_optionalMethodActualArgument_actualVarInput *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
   }
@@ -10556,7 +10544,6 @@ bool GALGAS_optionalMethodActualArgument::optional_actualInputJoker (GALGAS_bool
   const bool ok = mEnum == kEnum_actualInputJoker ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker *) unsafePointer () ;
-    // const cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker * ptr = (const cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
     outAssociatedValue2 = ptr->mAssociatedValue2 ;
@@ -12174,7 +12161,6 @@ bool GALGAS_ifTestForGeneration::optional_regular (GALGAS_semanticExpressionForG
   const bool ok = mEnum == kEnum_regular ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_ifTestForGeneration_regular *) unsafePointer () ;
-    // const cEnumAssociatedValues_ifTestForGeneration_regular * ptr = (const cEnumAssociatedValues_ifTestForGeneration_regular *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -12189,7 +12175,6 @@ bool GALGAS_ifTestForGeneration::optional_letExp (GALGAS_string & outAssociatedV
   const bool ok = mEnum == kEnum_letExp ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_ifTestForGeneration_letExp *) unsafePointer () ;
-    // const cEnumAssociatedValues_ifTestForGeneration_letExp * ptr = (const cEnumAssociatedValues_ifTestForGeneration_letExp *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
     outAssociatedValue2 = ptr->mAssociatedValue2 ;
@@ -12206,7 +12191,6 @@ bool GALGAS_ifTestForGeneration::optional_optionalMethodCall (GALGAS_semanticExp
   const bool ok = mEnum == kEnum_optionalMethodCall ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_ifTestForGeneration_optionalMethodCall *) unsafePointer () ;
-    // const cEnumAssociatedValues_ifTestForGeneration_optionalMethodCall * ptr = (const cEnumAssociatedValues_ifTestForGeneration_optionalMethodCall *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
     outAssociatedValue2 = ptr->mAssociatedValue2 ;
@@ -12522,7 +12506,6 @@ bool GALGAS_optionalMethodActualArgumentForGeneration::optional_actualOutput (GA
   const bool ok = mEnum == kEnum_actualOutput ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualOutput *) unsafePointer () ;
-    // const cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualOutput * ptr = (const cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualOutput *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -12535,7 +12518,6 @@ bool GALGAS_optionalMethodActualArgumentForGeneration::optional_actualLetInput (
   const bool ok = mEnum == kEnum_actualLetInput ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualLetInput *) unsafePointer () ;
-    // const cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualLetInput * ptr = (const cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualLetInput *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
   }
@@ -12549,7 +12531,6 @@ bool GALGAS_optionalMethodActualArgumentForGeneration::optional_actualVarInput (
   const bool ok = mEnum == kEnum_actualVarInput ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualVarInput *) unsafePointer () ;
-    // const cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualVarInput * ptr = (const cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualVarInput *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
   }

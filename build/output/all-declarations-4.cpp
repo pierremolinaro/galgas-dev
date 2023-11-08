@@ -11742,7 +11742,6 @@ bool GALGAS_AccessControlAST::optional_fileprivateAccess (GALGAS_location & outA
   const bool ok = mEnum == kEnum_fileprivateAccess ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_AccessControlAST_fileprivateAccess *) unsafePointer () ;
-    // const cEnumAssociatedValues_AccessControlAST_fileprivateAccess * ptr = (const cEnumAssociatedValues_AccessControlAST_fileprivateAccess *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -11754,7 +11753,6 @@ bool GALGAS_AccessControlAST::optional_fileprivateSetAccess (GALGAS_location & o
   const bool ok = mEnum == kEnum_fileprivateSetAccess ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess *) unsafePointer () ;
-    // const cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess * ptr = (const cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -11971,7 +11969,6 @@ bool GALGAS_propertyInCollectionInitializationAST::optional_some (GALGAS_semanti
   const bool ok = mEnum == kEnum_some ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_propertyInCollectionInitializationAST_some *) unsafePointer () ;
-    // const cEnumAssociatedValues_propertyInCollectionInitializationAST_some * ptr = (const cEnumAssociatedValues_propertyInCollectionInitializationAST_some *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;

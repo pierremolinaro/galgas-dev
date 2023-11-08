@@ -264,14 +264,12 @@ GALGAS_string GALGAS_filewrapper::getter_currentDirectory (UNUSED_LOCATION_ARGS)
 static const cDirectoryWrapper * findDirectoryInDirectory (const cDirectoryWrapper * inDir,
                                                            const C_String & inSearchedDir) {
   const cDirectoryWrapper * result = NULL ;
-  // printf ("    Searching '%s'\n", inSearchedDir.cString (HERE)) ;
   if (inDir != NULL) {
     int32_t first = 0 ;
     int32_t last = (int32_t) inDir->mDirectoryCount - 1 ;
     bool found = false ;
     while ((first <= last) && ! found) {
       const int32_t mid = (first + last) / 2 ;
-      // printf ("*** Trying index %d: '%s'\n", mid, inDir->mDirectories [mid]->mDirectoryName) ;
       const int32_t c = inSearchedDir.compare (inDir->mDirectories [mid]->mDirectoryName) ;
       if (c > 0) {
         first = mid + 1 ;

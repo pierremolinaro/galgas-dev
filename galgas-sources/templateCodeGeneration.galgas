@@ -125,9 +125,9 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
                                                         ?!@uint ioTemporaryVariableIndex
                                                         ?!@stringset ioUnusedVariableCppNameSet
                                                         ?!@bool ioUseColumnMarker {
-  for (mExpression mInstructionList) in self.mTemplateInstructionIfBranchList do
+  for (expression instructionList) in self.mTemplateInstructionIfBranchList do
   #--- IF expression
-    [mExpression generateExpression
+    [expression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -140,7 +140,7 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
     ioGeneratedCode += "if (kBoolTrue == " + testVar + ") {\n"
     [!?ioGeneratedCode incIndentation !2]
     templateCodeGenerationForListInstruction (
-      !mInstructionList
+      !instructionList
       !?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex

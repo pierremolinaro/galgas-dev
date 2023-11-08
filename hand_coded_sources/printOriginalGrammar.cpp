@@ -40,7 +40,7 @@ printInstructionsListForGrammar (const GALGAS_syntaxInstructionListForGrammarAna
 //----------------------------------------------------------------------------------------------------------------------
 
 void cPtr_repeatInstructionForGrammarAnalysis::
-printInstructionForGrammar (C_HTMLString & inHTMLfile) {
+printInstructionForGrammar (C_HTMLString & inHTMLfile) const {
   inHTMLfile.outputRawData ("<span class=\"galgas_structure\">") ;
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "repeat " ;
@@ -68,7 +68,7 @@ printInstructionForGrammar (C_HTMLString & inHTMLfile) {
 //----------------------------------------------------------------------------------------------------------------------
 
 void cPtr_selectInstructionForGrammarAnalysis::
-printInstructionForGrammar (C_HTMLString & inHTMLfile) {
+printInstructionForGrammar (C_HTMLString & inHTMLfile) const {
   inHTMLfile.outputRawData ("<span class=\"galgas_structure\">") ;
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "select " ;
@@ -96,7 +96,7 @@ printInstructionForGrammar (C_HTMLString & inHTMLfile) {
 //----------------------------------------------------------------------------------------------------------------------
 
 void cPtr_nonTerminalInstructionForGrammarAnalysis::
-printInstructionForGrammar (C_HTMLString & inHTMLfile) {
+printInstructionForGrammar (C_HTMLString & inHTMLfile) const {
   inHTMLfile.outputRawData ("<span class=\"galgas_nonterminal\">") ;
   inHTMLfile << "<" << mProperty_mNonterminalSymbolName.mProperty_string.stringValue () << ">; " ;
   inHTMLfile.outputRawData ("</span>") ;
@@ -105,7 +105,7 @@ printInstructionForGrammar (C_HTMLString & inHTMLfile) {
 //----------------------------------------------------------------------------------------------------------------------
 
 void cPtr_terminalInstructionForGrammarAnalysis::
-printInstructionForGrammar (C_HTMLString & inHTMLfile) {
+printInstructionForGrammar (C_HTMLString & inHTMLfile) const {
   inHTMLfile.outputRawData ("<span class=\"galgas_terminal\">") ;
   inHTMLfile << "$" << mProperty_mTerminalSymbolName.mProperty_string.stringValue () << "$; " ;
   inHTMLfile.outputRawData ("</span>") ;

@@ -10132,7 +10132,6 @@ bool GALGAS_typeKindEnum::optional_classType (GALGAS_bool & outAssociatedValue0)
   const bool ok = mEnum == kEnum_classType ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_typeKindEnum_classType *) unsafePointer () ;
-    // const cEnumAssociatedValues_typeKindEnum_classType * ptr = (const cEnumAssociatedValues_typeKindEnum_classType *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -10144,7 +10143,6 @@ bool GALGAS_typeKindEnum::optional_weakReferenceType (GALGAS_unifiedTypeMapEntry
   const bool ok = mEnum == kEnum_weakReferenceType ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_typeKindEnum_weakReferenceType *) unsafePointer () ;
-    // const cEnumAssociatedValues_typeKindEnum_weakReferenceType * ptr = (const cEnumAssociatedValues_typeKindEnum_weakReferenceType *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -12094,7 +12092,6 @@ bool GALGAS_AccessControl::optional_protectedAccess (GALGAS_unifiedTypeMapEntry 
   const bool ok = mEnum == kEnum_protectedAccess ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_AccessControl_protectedAccess *) unsafePointer () ;
-    // const cEnumAssociatedValues_AccessControl_protectedAccess * ptr = (const cEnumAssociatedValues_AccessControl_protectedAccess *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -12106,7 +12103,6 @@ bool GALGAS_AccessControl::optional_protectedSetAccess (GALGAS_unifiedTypeMapEnt
   const bool ok = mEnum == kEnum_protectedSetAccess ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_AccessControl_protectedSetAccess *) unsafePointer () ;
-    // const cEnumAssociatedValues_AccessControl_protectedSetAccess * ptr = (const cEnumAssociatedValues_AccessControl_protectedSetAccess *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -12118,7 +12114,6 @@ bool GALGAS_AccessControl::optional_privateAccess (GALGAS_unifiedTypeMapEntry & 
   const bool ok = mEnum == kEnum_privateAccess ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_AccessControl_privateAccess *) unsafePointer () ;
-    // const cEnumAssociatedValues_AccessControl_privateAccess * ptr = (const cEnumAssociatedValues_AccessControl_privateAccess *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -12130,7 +12125,6 @@ bool GALGAS_AccessControl::optional_privateSetAccess (GALGAS_unifiedTypeMapEntry
   const bool ok = mEnum == kEnum_privateSetAccess ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_AccessControl_privateSetAccess *) unsafePointer () ;
-    // const cEnumAssociatedValues_AccessControl_privateSetAccess * ptr = (const cEnumAssociatedValues_AccessControl_privateSetAccess *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -12142,7 +12136,6 @@ bool GALGAS_AccessControl::optional_fileprivateAccess (GALGAS_location & outAsso
   const bool ok = mEnum == kEnum_fileprivateAccess ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_AccessControl_fileprivateAccess *) unsafePointer () ;
-    // const cEnumAssociatedValues_AccessControl_fileprivateAccess * ptr = (const cEnumAssociatedValues_AccessControl_fileprivateAccess *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -12154,7 +12147,6 @@ bool GALGAS_AccessControl::optional_fileprivateSetAccess (GALGAS_location & outA
   const bool ok = mEnum == kEnum_fileprivateSetAccess ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_AccessControl_fileprivateSetAccess *) unsafePointer () ;
-    // const cEnumAssociatedValues_AccessControl_fileprivateSetAccess * ptr = (const cEnumAssociatedValues_AccessControl_fileprivateSetAccess *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;

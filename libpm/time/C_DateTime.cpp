@@ -27,27 +27,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-// static struct tm gDate ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-//static struct tm currentDate (void) {
-//  const time_t currentTime = ::time (nullptr) ;
-//  ::localtime_r (& currentTime, &gDate) ;
-//  const std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
-//  return gDate ;
-//}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-//static std::chrono::time_point<std::chrono::system_clock> initWithSeconds (const time_t inTimeInSeconds) {
-//  std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::from_time_t (inTimeInSeconds) ;
-//  ::localtime_r (& inTimeInSeconds, &gDate) ;
-//  return gDate ;
-//}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 C_DateTime::C_DateTime (void) :
 mDate (std::chrono::system_clock::now ()) {
 }

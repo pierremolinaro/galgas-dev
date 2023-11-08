@@ -12099,41 +12099,41 @@ void cPtr_templateInstructionIfForGeneration::method_templateCodeGeneration (GAL
                                                                              C_Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_templateInstructionIfForGeneration temp_0 = this ;
-  cEnumerator_templateInstructionIfBranchListForGeneration enumerator_5934 (temp_0.readProperty_mTemplateInstructionIfBranchList (), kENUMERATION_UP) ;
-  while (enumerator_5934.hasCurrentObject ()) {
-    GALGAS_string var_ifVarCppName_6179 ;
-    callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) enumerator_5934.current_mExpression (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_ifVarCppName_6179, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 130)) ;
-    GALGAS_string var_testVar_6214 = GALGAS_string ("test_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("templateCodeGeneration.galgas", 137)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 137)) ;
+  cEnumerator_templateInstructionIfBranchListForGeneration enumerator_5933 (temp_0.readProperty_mTemplateInstructionIfBranchList (), kENUMERATION_UP) ;
+  while (enumerator_5933.hasCurrentObject ()) {
+    GALGAS_string var_ifVarCppName_6176 ;
+    callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) enumerator_5933.current_mExpression (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_ifVarCppName_6176, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 130)) ;
+    GALGAS_string var_testVar_6211 = GALGAS_string ("test_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("templateCodeGeneration.galgas", 137)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 137)) ;
     ioArgument_ioTemporaryVariableIndex.plusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 138)) ;
-    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("const enumGalgasBool ").add_operation (var_testVar_6214, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 139)).add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 139)).add_operation (var_ifVarCppName_6179, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 139)).add_operation (GALGAS_string (".boolEnum () ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 139)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 139)) ;
-    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (kBoolTrue == ").add_operation (var_testVar_6214, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 140)).add_operation (GALGAS_string (") {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 140)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 140)) ;
+    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("const enumGalgasBool ").add_operation (var_testVar_6211, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 139)).add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 139)).add_operation (var_ifVarCppName_6176, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 139)).add_operation (GALGAS_string (".boolEnum () ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 139)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 139)) ;
+    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (kBoolTrue == ").add_operation (var_testVar_6211, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 140)).add_operation (GALGAS_string (") {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 140)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 140)) ;
     {
     ioArgument_ioGeneratedCode.setter_incIndentation (GALGAS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 141)) ;
     }
     {
-    routine_templateCodeGenerationForListInstruction (enumerator_5934.current_mInstructionList (HERE), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, ioArgument_ioUseColumnMarker, inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 142)) ;
+    routine_templateCodeGenerationForListInstruction (enumerator_5933.current_mInstructionList (HERE), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, ioArgument_ioUseColumnMarker, inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 142)) ;
     }
     {
     ioArgument_ioGeneratedCode.setter_decIndentation (GALGAS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 150)) ;
     }
-    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}else if (kBoolFalse == ").add_operation (var_testVar_6214, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 151)).add_operation (GALGAS_string (") {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 151)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 151)) ;
+    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}else if (kBoolFalse == ").add_operation (var_testVar_6211, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 151)).add_operation (GALGAS_string (") {\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 151)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 151)) ;
     {
     ioArgument_ioGeneratedCode.setter_incIndentation (GALGAS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 152)) ;
     }
-    enumerator_5934.gotoNextObject () ;
+    enumerator_5933.gotoNextObject () ;
   }
   {
   const GALGAS_templateInstructionIfForGeneration temp_1 = this ;
   routine_templateCodeGenerationForListInstruction (temp_1.readProperty_mElseInstructionList (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, ioArgument_ioUseColumnMarker, inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 155)) ;
   }
   const GALGAS_templateInstructionIfForGeneration temp_2 = this ;
-  cEnumerator_templateInstructionIfBranchListForGeneration enumerator_7129 (temp_2.readProperty_mTemplateInstructionIfBranchList (), kENUMERATION_UP) ;
-  while (enumerator_7129.hasCurrentObject ()) {
+  cEnumerator_templateInstructionIfBranchListForGeneration enumerator_7125 (temp_2.readProperty_mTemplateInstructionIfBranchList (), kENUMERATION_UP) ;
+  while (enumerator_7125.hasCurrentObject ()) {
     {
     ioArgument_ioGeneratedCode.setter_decIndentation (GALGAS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 164)) ;
     }
     ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 165)) ;
-    enumerator_7129.gotoNextObject () ;
+    enumerator_7125.gotoNextObject () ;
   }
 }
 //----------------------------------------------------------------------------------------------------------------------

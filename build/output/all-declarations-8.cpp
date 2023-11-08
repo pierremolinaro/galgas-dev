@@ -14674,7 +14674,6 @@ bool GALGAS_selfAvailability::optional_available (GALGAS_unifiedTypeMapEntry & o
   const bool ok = mEnum == kEnum_available ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_selfAvailability_available *) unsafePointer () ;
-    // const cEnumAssociatedValues_selfAvailability_available * ptr = (const cEnumAssociatedValues_selfAvailability_available *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
     outAssociatedValue2 = ptr->mAssociatedValue2 ;

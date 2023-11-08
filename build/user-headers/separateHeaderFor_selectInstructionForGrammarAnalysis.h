@@ -29,21 +29,21 @@ class cPtr_selectInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
 
 //--- START OF USER ZONE 2
 
-  public: virtual void printInstructionForGrammar (C_HTMLString & inHTMLfile) override ;
+  public: virtual void printInstructionForGrammar (C_HTMLString & inHTMLfile) const override ;
 
 
   public: virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                                                   const C_String & inSyntaxComponentName,
-                                                  int32_t & ioCount) override ;
+                                                  int32_t & ioCount) const override ;
 
   public: virtual void buildRightDerivation (const int32_t inTerminalSymbolsCount,
                                               const int32_t inOriginalGrammarSymbolCount,
-                                              TC_UniqueArray <int16_t> & ioInstructionsList) override ;
+                                              TC_UniqueArray <int16_t> & ioInstructionsList) const override ;
 
   public: virtual void buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                                                          const int32_t inOriginalGrammarSymbolCount,
                                                          const C_String & inSyntaxComponentName,
-                                                         cPureBNFproductionsList & ioProductions) override ;
+                                                         cPureBNFproductionsList & ioProductions) const override ;
 
 //--- END OF USER ZONE 2
 //--- Properties

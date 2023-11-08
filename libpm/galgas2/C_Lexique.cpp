@@ -544,7 +544,7 @@ void C_Lexique::lexicalWarning (const C_String & inLexicalWarningMessage
 
 //----------------------------------------------------------------------------------------------------------------------
 
-//   #define TRACE_LL1_PARSING
+static bool TRACE_LL1_PARSING (void) { return false ; }
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -560,7 +560,7 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int16_t inTerminal,
                                                  const int16_t inDecisionTableIndexes [],
                                                  const TC_Array <int16_t> & inErrorStack,
                                                  const int16_t inErrorProgramCounter) {
-  #ifdef TRACE_LL1_PARSING
+  if (TRACE_LL1_PARSING ()) {
     C_String m = getMessageForTerminal (inTerminal) ;
     co << "------ Enter 'acceptTerminalForErrorSignaling' with '"
        << m
@@ -569,7 +569,7 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int16_t inTerminal,
        << ") terminal and program counter "
        << inErrorProgramCounter ;
     co.flush () ;
-  #endif
+  }
   bool accept = false ;
   int16_t programCounter = inErrorProgramCounter ;
   TC_Array <int16_t> stack = inErrorStack ;
@@ -580,32 +580,31 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int16_t inTerminal,
     if (instruction > 0) { // We reach a terminal
       const int16_t reachedTerminal = (int16_t) (instruction - 1) ;
       accept = reachedTerminal == inTerminal ;
-      #ifdef TRACE_LL1_PARSING
-        m.removeAllObjects () ;
-        m = getMessageForTerminal (reachedTerminal) ;
+      if (TRACE_LL1_PARSING ()) {
+        const C_String m = getMessageForTerminal (reachedTerminal) ;
         co << "reached '"
            << m
            << "' terminal"
            << (accept ? " (accepted)" : "")
            << "\n" ;
         co.flush () ;
-      #endif
+      }
       loop = false ;
     }else if (instruction < 0) { // We reach a nonterminal
       const int16_t reachedNonterminal = (int16_t) (- instruction - 1) ;
-      #ifdef TRACE_LL1_PARSING
+      if (TRACE_LL1_PARSING ()) {
         co << "reached non-terminal "
            << reachedNonterminal
            << "\n" ;
         co.flush () ;
-      #endif
+      }
       int16_t nonTerminalEntry = inDecisionTableIndexes [reachedNonterminal] ;
       if (inDecisionTable [nonTerminalEntry] < 0) { // Only one rule : call it
         stack.appendObject (programCounter) ;
         programCounter = inProductionIndexes [inFirstProductionIndex [reachedNonterminal]] ;
-        #ifdef TRACE_LL1_PARSING
+        if (TRACE_LL1_PARSING ()) {
           co << "One rule: goto " << programCounter << "\n" ; co.flush () ;
-        #endif
+        }
       }else{ // More than one rule : test if terminal is accepted, and call rule
         loop = false ;
         int16_t choice = 0 ;
@@ -613,11 +612,10 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int16_t inTerminal,
         while ((inDecisionTable [nonTerminalEntry] >= 0) && ! found) {
           while ((inDecisionTable [nonTerminalEntry] >= 0) && ! found) {
             found = inDecisionTable [nonTerminalEntry] == inTerminal ;
-            #ifdef TRACE_LL1_PARSING
-              m.removeAllObjects () ;
-              m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
+            if (TRACE_LL1_PARSING ()) {
+              const C_String m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
               co << "try '" << m << "' non terminal" << (found ? " (accepted)": "") << "\n" ; co.flush () ;
-            #endif
+            }
             if (found) {
               int16_t newProgramCounter = programCounter ;
               TC_Array <int16_t> newStack = stack ;
@@ -646,9 +644,9 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int16_t inTerminal,
       loop = false ;
     }
   }
-  #ifdef TRACE_LL1_PARSING
+  if (TRACE_LL1_PARSING ()) {
     co << "------ Exit 'acceptTerminalForErrorSignaling' with accept == " << (accept ? "true" : "false") << "\n" ;
-  #endif
+  }
   return accept ;
 }
 
@@ -678,7 +676,7 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int16_t inErrorP
   for (int32_t i=inErrorStack.count () - 1 ; i>=0 ; i--) {
     errorStack.appendObject (inErrorStack (i COMMA_HERE)) ;
   }
-  #ifdef TRACE_LL1_PARSING
+  if (TRACE_LL1_PARSING ()) {
     co << "------ Enter 'buildExpectedTerminalsArrayOnSyntaxError'\n"
        << "programCounter: " << programCounter << ", errorStack: " << errorStack.count() << " value(s):" ;
     for (int32_t i=0 ; i<errorStack.count() ; i++) {
@@ -686,65 +684,65 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int16_t inErrorP
     }
     co << "\n" ;
     co.flush () ;
-  #endif
+  }
   bool loop = true ;
   while (loop) {
     if (inProductions [programCounter] > 0) { // We reach a terminal (when >0)
       loop = false ;
-      #ifdef TRACE_LL1_PARSING
+      if (TRACE_LL1_PARSING ()) {
         C_String m = getMessageForTerminal (inProductions [programCounter]) ;
         co << "Terminal '" << m << "' (" << inProductions [programCounter] << ") reached\n" ;
         co.flush () ;
-      #endif
+      }
     }else if (inProductions [programCounter] < 0) { // We reach a non terminal (<0)
       const int16_t nonTerminal = (int16_t) (- inProductions [programCounter] - 1) ;
-      #ifdef TRACE_LL1_PARSING
+      if (TRACE_LL1_PARSING ()) {
         co << "Non-Terminal " << nonTerminal << " reached\n" ;
         co.flush () ;
-      #endif
+      }
     //--- We look if we get a non terminal that has only one production rule
       const int16_t nonTerminalEntry = inDecisionTableIndexes [nonTerminal] ;
       const bool onlyOneRule = inDecisionTable [nonTerminalEntry] < 0 ;
       if (onlyOneRule) { // Go to this rule
         errorStack.appendObject ((int16_t) (programCounter + 1)) ;
         programCounter = inProductionIndexes [inFirstProductionIndex [nonTerminal]] ;
-        #ifdef TRACE_LL1_PARSING
+        if (TRACE_LL1_PARSING ()) {
           co << "Only one rule: goto " << programCounter << "\n" ;
           co.flush () ;
-        #endif
+        }
       }else{
         loop = false ; // Stop searching
       }
     }else if (errorStack.count () > 0) { // Execute a 'return' instruction
       programCounter = errorStack.lastObject (HERE) ;
       errorStack.removeLastObject (HERE) ;
-      #ifdef TRACE_LL1_PARSING
+      if (TRACE_LL1_PARSING ()) {
         co << "return instruction (goes to " << programCounter << ")\n" ;
         co.flush () ;
-      #endif
+      }
     }else{ // End of source reached
-      #ifdef TRACE_LL1_PARSING
+      if (TRACE_LL1_PARSING ()) {
         co << "end of source reached\n" ;
         co.flush () ;
-      #endif
+      }
       loop = false ;
     }
   }
 //--- Decision for build expected terminals array
   if (errorStack.count () == 0) { // We reach end of productions rules
     outExpectedTerminalsArray.appendObject (0) ; // 0 is always "end_of_text" terminal symbol
-    #ifdef TRACE_LL1_PARSING
+    if (TRACE_LL1_PARSING ()) {
       co << "add 'end of source' to outExpectedTerminalsArray\n" ;
       co.flush () ;
-    #endif
+    }
   }else if (inProductions [programCounter] > 0) { // We reach a terminal symbol
     const int16_t terminalSymbol = (int16_t) (inProductions [programCounter] - 1) ;
     outExpectedTerminalsArray.appendObject (terminalSymbol) ;
-    #ifdef TRACE_LL1_PARSING
+    if (TRACE_LL1_PARSING ()) {
       C_String m = getMessageForTerminal (inProductions [programCounter]) ;
       co << "add '" << m << "' (" << inProductions [programCounter] << ") to outExpectedTerminalsArray\n" ;
       co.flush () ;
-    #endif
+    }
   }else{  // We reach a non terminal symbol
     const int16_t nonTerminal = (int16_t) (- inProductions [programCounter] - 1) ;
     int16_t nonTerminalEntry = inDecisionTableIndexes [nonTerminal] ;
@@ -759,11 +757,11 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int16_t inErrorP
                                                         errorStack,
                                                         programCounter) ;
         if (ok) {
-          #ifdef TRACE_LL1_PARSING
+          if (TRACE_LL1_PARSING ()) {
             C_String m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
             co << "add '" << m << "' (" << inDecisionTable [nonTerminalEntry] << ") to outExpectedTerminalsArray\n" ;
             co.flush () ;
-          #endif
+          }
           outExpectedTerminalsArray.appendObject (inDecisionTable [nonTerminalEntry]) ;
         }
         nonTerminalEntry ++ ;
@@ -771,9 +769,9 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int16_t inErrorP
       nonTerminalEntry ++ ;  
     }
   }
-  #ifdef TRACE_LL1_PARSING
+  if (TRACE_LL1_PARSING ()) {
     co << "------ Exit 'buildExpectedTerminalsArrayOnSyntaxError'\n" ;
-  #endif
+  }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -851,11 +849,11 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
           }
         }
       }
-      #ifdef TRACE_LL1_PARSING
+      if (TRACE_LL1_PARSING ()) {
         co << "---------------------------\n"
               "Current token is " << getCurrentTokenString (tokenPtr) << " (#" << currentToken << ")\n" ;
         co.flush () ;
-      #endif
+      }
     //--- Get instruction to do
       const int16_t instruction = inProductions [programCounter] ;
       programCounter ++ ;
@@ -863,16 +861,16 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
       if (instruction < 0) {
       //--- Get entry of nonterminal symbol to parse
         const int16_t nonTerminalToParse = (int16_t) (- instruction - 1) ;
-        #ifdef TRACE_LL1_PARSING
+        if (TRACE_LL1_PARSING ()) {
           co << "Parse non terminal " << cStringWithSigned (nonTerminalToParse) << ": " ;
           co.flush () ;
-        #endif
+        }
         int16_t nonTerminalEntry = inDecisionTableIndexes [nonTerminalToParse] ;
         if (inDecisionTable [nonTerminalEntry] < 0) { // Means only one production : don't make any choice
-          #ifdef TRACE_LL1_PARSING
+          if (TRACE_LL1_PARSING ()) {
             co << " ok (only one production)\n" ;
             co.flush () ;
-          #endif
+          }
           stack.appendObject (programCounter) ;
           programCounter = inProductionIndexes [inFirstProductionIndex [nonTerminalToParse]] ;
           if (produceSyntaxTree) {
@@ -897,20 +895,20 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
             indentationForParseOnly ++ ;
           }
         }else{ //--- There are several choices : find the one to do
-          #ifdef TRACE_LL1_PARSING
+          if (TRACE_LL1_PARSING ()) {
             co << " try tokens\n" ; co.flush () ;
-          #endif
+          }
           int16_t choice = -1 ;
           bool found = false ;
           while ((inDecisionTable [nonTerminalEntry] >= 0) && ! found) {
             while ((inDecisionTable [nonTerminalEntry] >= 0) && ! found) {
               found = currentToken == inDecisionTable [nonTerminalEntry] ;
-              #ifdef TRACE_LL1_PARSING
+              if (TRACE_LL1_PARSING ()) {
                 C_String m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
                 co << " try " << m << " (" << inDecisionTable [nonTerminalEntry]
                    << ")" << (found ? " (accepted)" : "") << "\n" ;
                 co.flush () ;
-              #endif
+              }
               nonTerminalEntry ++ ;
             }
             choice ++ ;
@@ -955,9 +953,9 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
                                                       inDecisionTable,
                                                       inDecisionTableIndexes,
                                                       expectedTerminalsArray) ;
-            #ifdef TRACE_LL1_PARSING
+            if (TRACE_LL1_PARSING ()) {
               co << expectedTerminalsArray.count () << " Token(s) in syntax error message\n" ; co.flush () ;
-            #endif
+            }
             parsingError (expectedTerminalsArray, previousTokenPtr, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
             result = loop = false ;
             listForSecondPassParsing.makeListEmpty () ;
@@ -987,9 +985,9 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
           errorStack.setCountToZero () ;
           errorProgramCounter = programCounter ;
         }else{ // Error !
-          #ifdef TRACE_LL1_PARSING
+          if (TRACE_LL1_PARSING ()) {
             co << "ERROR: TOKEN NOT EXPECTED\n" ; co.flush () ;
-          #endif
+          }
           TC_UniqueArray <int16_t> expectedTerminalsArray (100 COMMA_HERE) ;
           buildExpectedTerminalsArrayOnSyntaxError (errorProgramCounter,
                                                     errorStackCount,
@@ -1007,9 +1005,9 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
         }
     //--- It is the end of a production    
       }else if (stack.count () > 0) {
-        #ifdef TRACE_LL1_PARSING
+        if (TRACE_LL1_PARSING ()) {
           co << "END OF PRODUCTION REACHED\n" ; co.flush () ;
-        #endif
+        }
         programCounter = stack.lastObject (HERE) ;
         if (errorStackCount >= stack.count ()) {
           errorStack.appendObject (programCounter) ;

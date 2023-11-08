@@ -1319,7 +1319,6 @@ bool GALGAS_unifiedTypeMapEntry::optional_element (GALGAS_unifiedTypeMapElementC
   const bool ok = mEnum == kEnum_element ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) unsafePointer () ;
-    // const cEnumAssociatedValues_unifiedTypeMapEntry_element * ptr = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -2058,7 +2057,6 @@ bool GALGAS_templateInstructionForEnumerationAST::optional_implicit (GALGAS_stri
   const bool ok = mEnum == kEnum_implicit ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit *) unsafePointer () ;
-    // const cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit * ptr = (const cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
   }
@@ -2072,7 +2070,6 @@ bool GALGAS_templateInstructionForEnumerationAST::optional_explicit (GALGAS_lstr
   const bool ok = mEnum == kEnum_explicit ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit *) unsafePointer () ;
-    // const cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit * ptr = (const cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
   }

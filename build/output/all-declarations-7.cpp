@@ -6871,7 +6871,6 @@ bool GALGAS_localVarValuation::optional_declared (GALGAS_bool & outAssociatedVal
   const bool ok = mEnum == kEnum_declared ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_localVarValuation_declared *) unsafePointer () ;
-    // const cEnumAssociatedValues_localVarValuation_declared * ptr = (const cEnumAssociatedValues_localVarValuation_declared *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -8106,7 +8105,6 @@ bool GALGAS_overrideKind::optional_selectOverrideFirstBranch (GALGAS_currentVarM
   const bool ok = mEnum == kEnum_selectOverrideFirstBranch ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) unsafePointer () ;
-    // const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch * ptr = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;
@@ -8119,7 +8117,6 @@ bool GALGAS_overrideKind::optional_selectOverrideNextBranches (GALGAS_currentVar
   const bool ok = mEnum == kEnum_selectOverrideNextBranches ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *) unsafePointer () ;
-    // const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches * ptr = (const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
   }
@@ -10652,7 +10649,6 @@ bool GALGAS_typeDefinition::optional_solved (GALGAS_unifiedTypeDefinition & outA
   const bool ok = mEnum == kEnum_solved ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_typeDefinition_solved *) unsafePointer () ;
-    // const cEnumAssociatedValues_typeDefinition_solved * ptr = (const cEnumAssociatedValues_typeDefinition_solved *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;

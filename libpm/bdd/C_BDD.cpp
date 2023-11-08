@@ -2290,10 +2290,6 @@ static void sortValueArray (uint64_t ioValueArray [],
 
 //----------------------------------------------------------------
 
-//    #define CHECK_WITH_TRIVIAL_BDD_COMPUTING
-
-//----------------------------------------------------------------
-
 C_BDD C_BDD::buildBDDFromValueList (uint64_t ioValueList [],
                                     const uint32_t inValueCount,
                                     const uint32_t inBitCount) {
@@ -2320,9 +2316,6 @@ C_BDD C_BDD::buildBDDFromValueList (uint64_t ioValueList [],
       printf ("Warning: %u duplicates\n", duplicates) ;
     }
   //--- Translate into BDD
-    #ifdef CHECK_WITH_TRIVIAL_BDD_COMPUTING
-      C_BDD EXresult ;
-    #endif
     C_BDD * accumulatorArray = NULL ;
     macroMyNewArray (accumulatorArray, C_BDD, inBitCount) ;
     uint64_t referenceValue = ioValueList [0] ;
@@ -2345,9 +2338,6 @@ C_BDD C_BDD::buildBDDFromValueList (uint64_t ioValueList [],
         referenceValue = currentTransition ;
         accumulatorArray [firstDifferentBit] |= accumulatorBDD ;
       }
-      #ifdef CHECK_WITH_TRIVIAL_BDD_COMPUTING
-        EXresult |= C_BDD::varCompareConst (0, inBitCount, C_BDD::kEqual, ioValueList [i]) ;
-      #endif
     }
     result.setToTrue () ;
     uint64_t mask = 1UL ;
@@ -2356,12 +2346,6 @@ C_BDD C_BDD::buildBDDFromValueList (uint64_t ioValueList [],
       mask <<= 1 ;
     }
     macroMyDeleteArray (accumulatorArray) ;
-    #ifdef CHECK_WITH_TRIVIAL_BDD_COMPUTING
-      if (result.integerValue () != EXresult.integerValue ()) {
-        printf ("*** error in %s:%d ***\n", __FILE__, __LINE__) ;
-        exit (1) ;
-      }
-    #endif
   }
   return result ;
 }

@@ -39,7 +39,12 @@ static void fixNewNonterminalSymbolsForList (const GALGAS_syntaxInstructionListF
   while (currentInstruction.hasCurrentObject ()) {
     cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) currentInstruction.current_mInstruction (HERE).ptr () ;
     macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
-    p->fixNewNonterminalSymbols (ioVocabulary, inSyntaxComponentName, ioCount) ;
+    if (p == nullptr) {
+      printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
+      exit (1) ;
+    }else{
+      p->fixNewNonterminalSymbols (ioVocabulary, inSyntaxComponentName, ioCount) ;
+    }
     currentInstruction.gotoNextObject () ;
   }
 }
@@ -48,7 +53,7 @@ static void fixNewNonterminalSymbolsForList (const GALGAS_syntaxInstructionListF
 
 void cPtr_repeatInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                                                                          const C_String & inSyntaxComponentName,
-                                                                         int32_t & ioCount) {
+                                                                         int32_t & ioCount) const {
   ioVocabulary.addNonTerminalSymbol ("select_",
                                      inSyntaxComponentName,
                                      ioCount,
@@ -69,7 +74,7 @@ void cPtr_repeatInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabu
 
 void cPtr_selectInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                                                                          const C_String & inSyntaxComponentName,
-                                                                         int32_t & ioCount) {
+                                                                         int32_t & ioCount) const {
   ioVocabulary.addNonTerminalSymbol ("select_",
                                      inSyntaxComponentName,
                                      ioCount,
@@ -91,7 +96,7 @@ void cPtr_selectInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabu
 void cPtr_nonTerminalInstructionForGrammarAnalysis::
 fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
                           const C_String & /* inSyntaxComponentName */,
-                          int32_t & /* ioCount */) {
+                          int32_t & /* ioCount */) const {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -99,7 +104,7 @@ fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
 void cPtr_terminalInstructionForGrammarAnalysis::
 fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
                           const C_String & /* inSyntaxComponentName */,
-                          int32_t & /* ioCount */) {
+                          int32_t & /* ioCount */) const {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -114,7 +119,7 @@ fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
 void cPtr_terminalInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
                       const int32_t /* inOriginalGrammarSymbolCount */,
-                      TC_UniqueArray <int16_t> & ioInstructionsList) {
+                      TC_UniqueArray <int16_t> & ioInstructionsList) const {
   ioInstructionsList.appendObject ((int16_t) mProperty_mTerminalSymbolIndex.uintValue ()) ;
 }
 
@@ -123,7 +128,7 @@ buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
 void cPtr_nonTerminalInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t inTerminalSymbolsCount,
                       const int32_t /* inOriginalGrammarSymbolCount */,
-                      TC_UniqueArray <int16_t> & ioInstructionsList) {
+                      TC_UniqueArray <int16_t> & ioInstructionsList) const {
 
   ioInstructionsList.appendObject ((int16_t) (mProperty_mNonterminalSymbolIndex.uintValue () + (uint32_t) inTerminalSymbolsCount)) ;
 }
@@ -133,7 +138,7 @@ buildRightDerivation (const int32_t inTerminalSymbolsCount,
 void cPtr_selectInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
                       const int32_t inOriginalGrammarSymbolCount,
-                      TC_UniqueArray <int16_t> & ioInstructionsList) {
+                      TC_UniqueArray <int16_t> & ioInstructionsList) const {
   const int32_t idx = ((int32_t) mProperty_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
   ioInstructionsList.appendObject ((int16_t) idx) ;
 }
@@ -143,13 +148,18 @@ buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
 void cPtr_repeatInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t inTerminalSymbolsCount,
                       const int32_t inOriginalGrammarSymbolCount,
-                      TC_UniqueArray <int16_t> & ioInstructionsList) {
+                      TC_UniqueArray <int16_t> & ioInstructionsList) const {
   cEnumerator_branchListForGrammarAnalysis firstBranch (mProperty_mRepeatBranchList, kENUMERATION_UP) ;
   cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (firstBranch.current_mSyntaxInstructionList (HERE), kENUMERATION_UP) ;
   while (instruction.hasCurrentObject ()) {
     cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
     macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
-    p->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, ioInstructionsList) ;
+    if (p == nullptr) {
+      printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
+      exit (1) ;
+    }else{
+      p->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, ioInstructionsList) ;
+    }
     instruction.gotoNextObject () ;
   }
   const int32_t idx = ((int32_t) mProperty_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
@@ -168,7 +178,7 @@ void cPtr_selectInstructionForGrammarAnalysis::
 buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                                  const int32_t inOriginalGrammarSymbolCount,
                                  const C_String & inSyntaxComponentName,
-                                 cPureBNFproductionsList & ioProductions) {
+                                 cPureBNFproductionsList & ioProductions) const {
 // A ; choix X ou Y ou Z ... fin choix ; B
 //  'aNumeroNonTerminauxRepeter' designe le nouveau non terminal 'choix_xx_xx', note <W>,
 //     et on engendre les productions :
@@ -184,7 +194,12 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
     while (instruction.hasCurrentObject ()) {
       cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
       macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
-      p->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, derivation) ;
+      if (p == nullptr) {
+        printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
+        exit (1) ;
+      }else{
+        p->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, derivation) ;
+      }
       instruction.gotoNextObject () ;
     }
     cProduction p (inSyntaxComponentName,
@@ -204,10 +219,15 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
     while (instruction.hasCurrentObject ()) {
       cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
       macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
-      p->buildSelectAndRepeatProductions (inTerminalSymbolsCount,
-                                          inOriginalGrammarSymbolCount,
-                                          inSyntaxComponentName,
-                                          ioProductions) ;
+      if (p == nullptr) {
+        printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
+        exit (1) ;
+      }else{
+        p->buildSelectAndRepeatProductions (inTerminalSymbolsCount,
+                                            inOriginalGrammarSymbolCount,
+                                            inSyntaxComponentName,
+                                            ioProductions) ;
+      }
       instruction.gotoNextObject () ;
     }
     currentBranch.gotoNextObject () ;
@@ -220,7 +240,7 @@ void cPtr_repeatInstructionForGrammarAnalysis::
 buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                                  const int32_t inOriginalGrammarSymbolCount,
                                  const C_String & inSyntaxComponentName,
-                                 cPureBNFproductionsList & ioProductions) {
+                                 cPureBNFproductionsList & ioProductions) const {
 //--- How the sequence 'A ; repeat X while Y while Z ... end repeat ; B' is translated into pure BNF productions
 // A new non terminal, call it <T> is created (in fact, in the BNF file, this non terminal has a mangled
 // name from source file, location line and column : <select_repeat_SOURCEFILE_LINE_COLUMN>)
@@ -251,9 +271,14 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
   //--- insert branch instructions
     cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentBranch.current_mSyntaxInstructionList (HERE), kENUMERATION_UP) ;
     while (instruction.hasCurrentObject ()) {
-      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
+      const cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) (instruction.current_mInstruction (HERE).ptr ()) ;
       macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
-      p->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, derivation) ;
+      if (p == nullptr) {
+        printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
+        exit (1) ;
+      }else{
+        p->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, derivation) ;
+      }
       instruction.gotoNextObject () ;
     }
   //--- insert sequence from X
@@ -262,7 +287,12 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
     while (firstBranchInstruction.hasCurrentObject ()) {
       cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) firstBranchInstruction.current_mInstruction (HERE).ptr () ;
       macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
-      p->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, derivation) ;
+      if (p == nullptr) {
+        printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
+        exit (1) ;
+      }else{
+        p->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, derivation) ;
+      }
       firstBranchInstruction.gotoNextObject () ;
     }
   //--- insert <T> production call
@@ -285,10 +315,15 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
     while (instruction.hasCurrentObject ()) {
       cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
       macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
-      p->buildSelectAndRepeatProductions (inTerminalSymbolsCount,
-                                          inOriginalGrammarSymbolCount,
-                                          inSyntaxComponentName,
-                                          ioProductions) ;
+      if (p == nullptr) {
+        printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
+        exit (1) ;
+      }else{
+        p->buildSelectAndRepeatProductions (inTerminalSymbolsCount,
+                                            inOriginalGrammarSymbolCount,
+                                            inSyntaxComponentName,
+                                            ioProductions) ;
+      }
       instruction.gotoNextObject () ;
     }
     currentBranch.gotoNextObject () ;
@@ -301,7 +336,7 @@ void cPtr_terminalInstructionForGrammarAnalysis::
 buildSelectAndRepeatProductions (const int32_t /* inTerminalSymbolsCount */,
                                  const int32_t /* inOriginalGrammarSymbolCount */,
                                  const C_String & /* inSyntaxComponentName */,
-                                 cPureBNFproductionsList  & /* ioProductions */) {
+                                 cPureBNFproductionsList  & /* ioProductions */) const {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -310,10 +345,9 @@ void cPtr_nonTerminalInstructionForGrammarAnalysis::
 buildSelectAndRepeatProductions (const int32_t /* inTerminalSymbolsCount */,
                                  const int32_t /* inOriginalGrammarSymbolCount */,
                                  const C_String & /* inSyntaxComponentName */,
-                                 cPureBNFproductionsList  & /* ioProductions */) {
+                                 cPureBNFproductionsList  & /* ioProductions */) const {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -353,7 +387,12 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
       while (instruction.hasCurrentObject ()) {
         cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
         macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
-        p->buildRightDerivation (terminalSymbolsCount, orginalGrammarSymbolCount, derivation) ;
+        if (p == nullptr) {
+          printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
+          exit (1) ;
+        }else{
+          p->buildRightDerivation (terminalSymbolsCount, orginalGrammarSymbolCount, derivation) ;
+        }
         instruction.gotoNextObject () ;
       }
       cProduction p (currentComponent.current_mSyntaxComponentName (HERE).mProperty_string.stringValue (),
@@ -377,10 +416,15 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
       while (instruction.hasCurrentObject ()) {
         cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
         macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
-        p->buildSelectAndRepeatProductions (terminalSymbolsCount,
-                                            orginalGrammarSymbolCount,
-                                            currentComponent.current_mSyntaxComponentName (HERE).mProperty_string.stringValue (),
-                                            ioProductions) ;
+        if (p == nullptr) {
+          printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
+          exit (1) ;
+        }else{
+          p->buildSelectAndRepeatProductions (terminalSymbolsCount,
+                                              orginalGrammarSymbolCount,
+                                              currentComponent.current_mSyntaxComponentName (HERE).mProperty_string.stringValue (),
+                                              ioProductions) ;
+        }
         instruction.gotoNextObject () ;
       }
       currentRule.gotoNextObject () ;

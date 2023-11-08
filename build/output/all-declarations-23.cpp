@@ -2950,26 +2950,18 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
         result << in_TYPE_5F_IDENTIFIER.stringValue () ;
         result << "_" ;
         result << enumerator_5237.current_mConstantName (HERE).stringValue () ;
-        result << " *) unsafePointer () ;\n    // const cEnumAssociatedValues_" ;
-        result << in_TYPE_5F_IDENTIFIER.stringValue () ;
-        result << "_" ;
-        result << enumerator_5237.current_mConstantName (HERE).stringValue () ;
-        result << " * ptr = (const cEnumAssociatedValues_" ;
-        result << in_TYPE_5F_IDENTIFIER.stringValue () ;
-        result << "_" ;
-        result << enumerator_5237.current_mConstantName (HERE).stringValue () ;
         result << " *) unsafePointer () ;\n" ;
-        GALGAS_uint index_6172_idx (0) ;
+        GALGAS_uint index_5992_idx (0) ;
         if (enumerator_5237.current_mAssociatedValueTypeList (HERE).isValid ()) {
-          cEnumerator_unifiedTypeMapEntryList enumerator_6172 (enumerator_5237.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
-          while (enumerator_6172.hasCurrentObject ()) {
+          cEnumerator_unifiedTypeMapEntryList enumerator_5992 (enumerator_5237.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
+          while (enumerator_5992.hasCurrentObject ()) {
             result << "    outAssociatedValue" ;
-            result << index_6172_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 134)).stringValue () ;
+            result << index_5992_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 133)).stringValue () ;
             result << " = ptr->mAssociatedValue" ;
-            result << index_6172_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 134)).stringValue () ;
+            result << index_5992_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 133)).stringValue () ;
             result << " ;\n" ;
-            index_6172_idx.increment () ;
-            enumerator_6172.gotoNextObject () ;
+            index_5992_idx.increment () ;
+            enumerator_5992.gotoNextObject () ;
           }
         }
         result << "  }\n" ;
@@ -2983,32 +2975,32 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
   result << "//----------------------------------------------------------------------------------------------------------------------\n\nstatic const char * gEnumNameArrayFor_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " [" ;
-  result << in_CONSTANT_5F_LIST.getter_count (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 144)).add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 144)).getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 144)).stringValue () ;
+  result << in_CONSTANT_5F_LIST.getter_count (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 143)).add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 143)).getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 143)).stringValue () ;
   result << "] = {\n  \"(not built)\"" ;
-  GALGAS_uint index_6651_ (0) ;
+  GALGAS_uint index_6471_ (0) ;
   if (in_CONSTANT_5F_LIST.isValid ()) {
-    cEnumerator_enumConstantListForGeneration enumerator_6651 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_6651.hasCurrentObject ()) {
+    cEnumerator_enumConstantListForGeneration enumerator_6471 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_6471.hasCurrentObject ()) {
       result << ",\n  " ;
-      result << enumerator_6651.current_mConstantName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 147)).stringValue () ;
-      index_6651_.increment () ;
-      enumerator_6651.gotoNextObject () ;
+      result << enumerator_6471.current_mConstantName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 146)).stringValue () ;
+      index_6471_.increment () ;
+      enumerator_6471.gotoNextObject () ;
     }
   }
   result << "\n} ;\n\n" ;
-  GALGAS_uint index_6791_ (0) ;
+  GALGAS_uint index_6611_ (0) ;
   if (in_CONSTANT_5F_LIST.isValid ()) {
-    cEnumerator_enumConstantListForGeneration enumerator_6791 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_6791.hasCurrentObject ()) {
+    cEnumerator_enumConstantListForGeneration enumerator_6611 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_6611.hasCurrentObject ()) {
       result << "//----------------------------------------------------------------------------------------------------------------------\n\nGALGAS_bool GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::getter_is" ;
-      result << enumerator_6791.current_mConstantName (HERE).getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 155)).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 155)).stringValue () ;
+      result << enumerator_6611.current_mConstantName (HERE).getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 154)).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 154)).stringValue () ;
       result << " (UNUSED_LOCATION_ARGS) const {\n  return GALGAS_bool (kNotBuilt != mEnum, kEnum_" ;
-      result << enumerator_6791.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 156)).stringValue () ;
+      result << enumerator_6611.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 155)).stringValue () ;
       result << " == mEnum) ;\n}\n\n" ;
-      index_6791_.increment () ;
-      enumerator_6791.gotoNextObject () ;
+      index_6611_.increment () ;
+      enumerator_6611.gotoNextObject () ;
     }
   }
   result << "//----------------------------------------------------------------------------------------------------------------------\n\nvoid GALGAS_" ;

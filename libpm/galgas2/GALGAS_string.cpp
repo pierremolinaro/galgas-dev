@@ -1879,7 +1879,6 @@ void GALGAS_string::method_writeToExecutableFile (GALGAS_string inFilePath,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   if (isValid () && inFilePath.isValid ()) {
- //   inCompiler->addDependancyOutputFilePath (inFilePath.mString) ;
     const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (inFilePath.mString) ;
     if (C_Compiler::performGeneration ()) {
       const bool verboseOptionOn = verboseOutput () ;
