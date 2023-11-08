@@ -119,8 +119,8 @@ fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
 void cPtr_terminalInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
                       const int32_t /* inOriginalGrammarSymbolCount */,
-                      TC_UniqueArray <int16_t> & ioInstructionsList) const {
-  ioInstructionsList.appendObject ((int16_t) mProperty_mTerminalSymbolIndex.uintValue ()) ;
+                      TC_UniqueArray <int32_t> & ioInstructionsList) const {
+  ioInstructionsList.appendObject ((int32_t) mProperty_mTerminalSymbolIndex.uintValue ()) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -128,9 +128,9 @@ buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
 void cPtr_nonTerminalInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t inTerminalSymbolsCount,
                       const int32_t /* inOriginalGrammarSymbolCount */,
-                      TC_UniqueArray <int16_t> & ioInstructionsList) const {
+                      TC_UniqueArray <int32_t> & ioInstructionsList) const {
 
-  ioInstructionsList.appendObject ((int16_t) (mProperty_mNonterminalSymbolIndex.uintValue () + (uint32_t) inTerminalSymbolsCount)) ;
+  ioInstructionsList.appendObject ((int32_t) (mProperty_mNonterminalSymbolIndex.uintValue () + (uint32_t) inTerminalSymbolsCount)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -138,9 +138,9 @@ buildRightDerivation (const int32_t inTerminalSymbolsCount,
 void cPtr_selectInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
                       const int32_t inOriginalGrammarSymbolCount,
-                      TC_UniqueArray <int16_t> & ioInstructionsList) const {
+                      TC_UniqueArray <int32_t> & ioInstructionsList) const {
   const int32_t idx = ((int32_t) mProperty_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
-  ioInstructionsList.appendObject ((int16_t) idx) ;
+  ioInstructionsList.appendObject ((int32_t) idx) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -148,7 +148,7 @@ buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
 void cPtr_repeatInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t inTerminalSymbolsCount,
                       const int32_t inOriginalGrammarSymbolCount,
-                      TC_UniqueArray <int16_t> & ioInstructionsList) const {
+                      TC_UniqueArray <int32_t> & ioInstructionsList) const {
   cEnumerator_branchListForGrammarAnalysis firstBranch (mProperty_mRepeatBranchList, kENUMERATION_UP) ;
   cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (firstBranch.current_mSyntaxInstructionList (HERE), kENUMERATION_UP) ;
   while (instruction.hasCurrentObject ()) {
@@ -163,7 +163,7 @@ buildRightDerivation (const int32_t inTerminalSymbolsCount,
     instruction.gotoNextObject () ;
   }
   const int32_t idx = ((int32_t) mProperty_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
-  ioInstructionsList.appendObject ((int16_t) idx) ;
+  ioInstructionsList.appendObject ((int32_t) idx) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -189,7 +189,7 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
 
  cEnumerator_branchListForGrammarAnalysis currentBranch (mProperty_mSelectBranchList, kENUMERATION_UP) ;
   while (currentBranch.hasCurrentObject ()) {
-    TC_UniqueArray <int16_t> derivation ;
+    TC_UniqueArray <int32_t> derivation ;
     cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentBranch.current_mSyntaxInstructionList (HERE), kENUMERATION_UP) ;
     while (instruction.hasCurrentObject ()) {
       cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
@@ -267,7 +267,7 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
   cEnumerator_branchListForGrammarAnalysis currentBranch (mProperty_mRepeatBranchList, kENUMERATION_UP) ;
   currentBranch.gotoNextObject () ;
   while (currentBranch.hasCurrentObject ()) {
-    TC_UniqueArray <int16_t> derivation ;
+    TC_UniqueArray <int32_t> derivation ;
   //--- insert branch instructions
     cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentBranch.current_mSyntaxInstructionList (HERE), kENUMERATION_UP) ;
     while (instruction.hasCurrentObject ()) {
@@ -297,7 +297,7 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
     }
   //--- insert <T> production call
     const int32_t idx = ((int32_t) mProperty_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
-    derivation.appendObject ((int16_t) idx) ;
+    derivation.appendObject ((int32_t) idx) ;
     cProduction p (inSyntaxComponentName,
                    mProperty_mStartLocation.startLocation ().lineNumber (),
                    mProperty_mStartLocation.startLocation ().columnNumber (),
@@ -382,7 +382,7 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
   while (currentComponent.hasCurrentObject ()) {
     cEnumerator_productionRuleListForGrammarAnalysis currentRule (currentComponent.current_mProductionRulesList (HERE), kENUMERATION_UP) ;
     while (currentRule.hasCurrentObject ()) {
-      TC_UniqueArray <int16_t> derivation ;
+      TC_UniqueArray <int32_t> derivation ;
       cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentRule.current_mInstructionList (HERE), kENUMERATION_UP) ;
       while (instruction.hasCurrentObject ()) {
         cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
@@ -435,8 +435,8 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
 //--- Augment grammar by a new non terminal symbol (denoted <>), and...
   ioVocabulary.addAugmentedSymbol () ;
 //--- ... add the production <> -> <start_symbol>
-  { TC_UniqueArray <int16_t> derivation ;
-    derivation.appendObject ((int16_t) ioVocabulary.getStartSymbol ()) ;
+  { TC_UniqueArray <int32_t> derivation ;
+    derivation.appendObject ((int32_t) ioVocabulary.getStartSymbol ()) ;
     cProduction p ("",
                    0,
                    0,
@@ -541,7 +541,7 @@ buildProductionsArray (const int32_t inTerminalSymbolsCount,
   }
 
 //--- Parcourir les productions
-  int16_t indiceIndirection = 0 ;
+  int32_t indiceIndirection = 0 ;
   for (int32_t i=0 ; i<nombreProductions ; i++) {
     cProduction & p = this->operator () (i COMMA_HERE) ;
     if (! productionTraitee (i COMMA_HERE)) {

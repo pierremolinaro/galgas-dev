@@ -35,17 +35,17 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_clas
   public: virtual void printInstructionForGrammar (C_HTMLString & inHTMLfile) const = 0 ;
 
   public: virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
-                                                  const C_String & inSyntaxComponentName,
-                                                  int32_t & ioCount) const = 0 ;
+                                                 const C_String & inSyntaxComponentName,
+                                                 int32_t & ioCount) const = 0 ;
 
   public: virtual void buildRightDerivation (const int32_t inTerminalSymbolsCount,
-                                              const int32_t inOriginalGrammarSymbolCount,
-                                              TC_UniqueArray <int16_t> & ioInstructionsList) const = 0 ;
+                                             const int32_t inOriginalGrammarSymbolCount,
+                                             TC_UniqueArray <int32_t> & ioInstructionsList) const = 0 ;
 
   public: virtual void buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
-                                                         const int32_t inOriginalGrammarSymbolCount,
-                                                         const C_String & inSyntaxComponentName,
-                                                         cPureBNFproductionsList & ioProductions) const = 0 ;
+                                                        const int32_t inOriginalGrammarSymbolCount,
+                                                        const C_String & inSyntaxComponentName,
+                                                        cPureBNFproductionsList & ioProductions) const = 0 ;
 
 //--- END OF USER ZONE 2
 //--- Properties

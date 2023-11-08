@@ -2,7 +2,7 @@
 //
 //  Routines for printing original grammar (with 'select' and 'repeat')                          
 //
-//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -32,7 +32,12 @@ printInstructionsListForGrammar (const GALGAS_syntaxInstructionListForGrammarAna
   cEnumerator_syntaxInstructionListForGrammarAnalysis currentInstruction (inInstructionsList, kENUMERATION_UP) ;
   while (currentInstruction.hasCurrentObject ()) {
     cPtr_abstractSyntaxInstructionForGrammarAnalysis * instruction = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) currentInstruction.current_mInstruction (HERE).ptr () ;
-    instruction->printInstructionForGrammar (inHTMLfile) ;
+    if (instruction == nullptr) {
+      printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
+      exit (1) ;
+    }else{
+      instruction->printInstructionForGrammar (inHTMLfile) ;
+    }
     currentInstruction.gotoNextObject () ;
   }
 }

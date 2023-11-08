@@ -32,17 +32,17 @@ class cPtr_terminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxIns
   public: virtual void printInstructionForGrammar (C_HTMLString & inHTMLfile) const override ;
 
   public: virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
-                                                  const C_String & inSyntaxComponentName,
-                                                  int32_t & ioCount) const override ;
+                                                 const C_String & inSyntaxComponentName,
+                                                 int32_t & ioCount) const override ;
 
   public: virtual void buildRightDerivation (const int32_t inTerminalSymbolsCount,
-                                              const int32_t inOriginalGrammarSymbolCount,
-                                              TC_UniqueArray <int16_t> & ioInstructionsList) const override ;
+                                             const int32_t inOriginalGrammarSymbolCount,
+                                             TC_UniqueArray <int32_t> & ioInstructionsList) const override ;
 
   public: virtual void buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
-                                                         const int32_t inOriginalGrammarSymbolCount,
-                                                         const C_String & inSyntaxComponentName,
-                                                         cPureBNFproductionsList & ioProductions) const override ;
+                                                        const int32_t inOriginalGrammarSymbolCount,
+                                                        const C_String & inSyntaxComponentName,
+                                                        cPureBNFproductionsList & ioProductions) const override ;
 
 //--- END OF USER ZONE 2
 //--- Properties

@@ -831,9 +831,14 @@ cMapNode * cSharedMapRoot::performInsert (const capCollectionElement & inAttribu
     //--- Existing key
       cMapElement * me = (cMapElement *) matchingEntry->mAttributes.ptr () ;
       macroValidSharedObject (me, cMapElement) ;
-      const GALGAS_location lstring_existingKey_location = me->mProperty_lkey.mProperty_location ;
     //--- Emit error message
-      inCompiler->semanticErrorWith_K_L_message (p->mProperty_lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+      if (me == nullptr) {
+        printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
+        exit (1) ;
+      }else{
+        const GALGAS_location lstring_existingKey_location = me->mProperty_lkey.mProperty_location ;
+        inCompiler->semanticErrorWith_K_L_message (p->mProperty_lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+      }
     }
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS

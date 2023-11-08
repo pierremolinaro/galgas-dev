@@ -36,7 +36,7 @@ class cProduction {
   private: int32_t mLineDefinition ;
   private: int32_t mColumnDefinition ;
   private: int32_t mLeftNonTerminalIndex ;
-  private: TC_UniqueArray <int16_t> mDerivation ;
+  private: TC_UniqueArray <int32_t> mDerivation ;
   public: C_Relation mDerivationFirst ;
   private: uint32_t mProductionIndex ;
 
@@ -46,7 +46,7 @@ class cProduction {
                         const int32_t inDefinitionLine,
                         const int32_t inColumnDefinition,
                         const int32_t inLeftNonTerminalIndex,
-                        TC_UniqueArray <int16_t> & ioDerivation, // Swap
+                        TC_UniqueArray <int32_t> & ioDerivation, // Swap
                         const uint32_t inProductionIndex) ;
   public: cProduction (const C_String & inSourceFileName,
                         const int32_t inDefinitionLine,
@@ -64,7 +64,7 @@ class cProduction {
   }
 
   public: inline int32_t derivationLength (void) const { return mDerivation.count () ; }
-  public: inline int16_t derivationAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const { return mDerivation (inIndex COMMA_THERE) ; }
+  public: inline int32_t derivationAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const { return mDerivation (inIndex COMMA_THERE) ; }
 
 //--- Generate a C++ call instruction of this production
   public: void engendrerAppelProduction (const int16_t nombreDeParametres,

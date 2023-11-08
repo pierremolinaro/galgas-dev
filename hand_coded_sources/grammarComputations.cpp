@@ -61,14 +61,13 @@ cProduction::cProduction (const C_String & inSourceFileName,
                           const int32_t inDefinitionLine,
                           const int32_t inColumnDefinition,
                           const int32_t inLeftNonTerminalIndex,
-                          TC_UniqueArray <int16_t> & ioDerivation, // Swap
+                          TC_UniqueArray <int32_t> & ioDerivation, // Swap
                           const uint32_t inProductionIndex) :
 mSourceFileName (inSourceFileName),
 mLineDefinition (inDefinitionLine),
 mColumnDefinition (inColumnDefinition),
 mLeftNonTerminalIndex (inLeftNonTerminalIndex),
 mDerivation (),
-//mDerivationFirstEX (),
 mDerivationFirst (),
 mProductionIndex (inProductionIndex) {
   swap (mDerivation, ioDerivation) ;
