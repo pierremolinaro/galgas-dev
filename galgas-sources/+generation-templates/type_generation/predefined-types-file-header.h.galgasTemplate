@@ -25,7 +25,8 @@
 #include "command_line_interface/C_StringCommandLineOption.h"
 #include "command_line_interface/C_StringListCommandLineOption.h"
 #include "utilities/C_PrologueEpilogue.h"
-#include "utilities/C_BigInt.h"
+#include "big-integers/BigUnsigned.h"
+#include "big-integers/C_BigInt.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 

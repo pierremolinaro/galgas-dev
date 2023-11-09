@@ -704,6 +704,25 @@ proc updateGalgasTargets
       ?groupRef:groupRef
     ]
     libpmReferenceGroupList += !groupRef
+  #--- Add "Big Integers" group
+    [!?xcodeProject addGroupWithFiles
+      !groupName:"Big Integers"
+      !groupPath:"big-integers"
+      !fileNames:{
+        !"BigUnsigned.cpp",
+        !"BigUnsigned.h",
+        !"C_BigInt.cpp",
+        !"C_BigInt.h"
+     }
+      !?cFileRefs:buildCFileRefListForTool
+      !?cppFileRefs:buildCppFileRefListForTool
+      !?mFileRefs:m_FileRefList
+      !?mmFileRefs:mm_FileRefList
+      !?frameworkFileRefs:frameworksFileRefList
+      !?resourceFileRefs:resourceFileBuildRefs
+      ?groupRef:groupRef
+    ]
+    libpmReferenceGroupList += !groupRef
   #--- Add "cache" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Cache"
@@ -1215,8 +1234,6 @@ proc updateGalgasTargets
       !fileNames:{
         !"basic-allocation.cpp",
         !"basic-allocation.h",
-        !"C_BigInt.cpp",
-        !"C_BigInt.h",
         !"C_CRC32.cpp",
         !"C_CRC32.h",
         !"C_Data.cpp",
@@ -1246,7 +1263,9 @@ proc updateGalgasTargets
         !"PMUInt128.cpp",
         !"PMUInt128.h",
         !"switch-fallthrough.h",
-        !"TF_Swap.h"
+        !"TF_Swap.h",
+        !"galgas-random.cpp",
+        !"galgas-random.h"
       }
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool

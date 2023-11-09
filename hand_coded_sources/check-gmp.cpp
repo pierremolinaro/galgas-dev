@@ -11,7 +11,36 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
+#include <iostream>
+
+//--------------------------------------------------------------------------------------------------
+
 #include "all-declarations.h"
+#include "BigUnsigned.h"
+
+//--------------------------------------------------------------------------------------------------
+
+static void testAddingSubtractingBigUnsigned (void) {
+  std::cout << "Test adding, subtracting BigUnsigned... " ;
+  const clock_t start = ::clock () ;
+  for (int i = 0 ; i < 1'000'000 ; i++) {
+    const BigUnsigned bigA = BigUnsigned::randomNumber () ;
+    const BigUnsigned bigB = BigUnsigned::randomNumber () ;
+    const BigUnsigned bigAdd = bigA.addingBigUnsigned (bigB) ;
+    const BigUnsigned bigSub = bigAdd.subtractingBigUnsigned (bigB) ;
+    if (bigA.compare (bigSub) != 0) {
+      std::cout << "Error " << __FILE__ << ":" << __LINE__ << "\n" ;
+      bigA.printHex ("bigA") ;
+      bigB.printHex ("bigB") ;
+      bigAdd.printHex ("bigAdd") ;
+      bigSub.printHex ("bigSub") ;
+      exit (1) ;
+    }
+  }
+  const clock_t end = ::clock () ;
+  const auto duration = 1000 * (end - start) / CLOCKS_PER_SEC ;
+  std::cout << "Ok " << duration << " ms\n" ;
+}
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -19,13 +48,34 @@ static uint32_t randomU32 (void) {
   return uint32_t (rand ()) ;
 }
 
+//--------------------------------------------------------------------------------------------------
+
+static void testAddingSubtractingC_BigInt (void) {
+  std::cout << "Test adding, subtracting C_BigInt... " ;
+  const clock_t start = ::clock () ;
+  for (int i=0 ; i<1'000'000 ; i++) {
+    const C_BigInt bigA = C_BigInt::randomNumber () ;
+    const C_BigInt bigB = C_BigInt::randomNumber () ;
+    const C_BigInt bigAdd = bigA + bigB ;
+    const C_BigInt bigSub = bigAdd - bigB ;
+    if (bigA != bigSub) {
+      exit (1) ;
+    }
+  }
+  const clock_t end = ::clock () ;
+  const auto duration = 1000 * (end - start) / CLOCKS_PER_SEC ;
+  std::cout << "Ok " << duration << " ms\n" ;
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 
 void routine_checkGMP (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   co << "*** Check GMP (option --check-gmp) ***\n" ;
+  testAddingSubtractingBigUnsigned () ;
+  testAddingSubtractingC_BigInt () ;
   uint32_t errorCount = 0 ;
   {
-    co << "Add, subtract test..." ;
+    co << "Add, subtract test... " ;
     co.flush () ;
     uint32_t addSubtractErrorCount = 0 ;
     for (int32_t i=0 ; i<500000 ; i++) {

@@ -74,6 +74,7 @@ class GenericGalgasMakefile :
   #--- Source directory list
     SOURCES_DIR = self.mDictionary ["SOURCES_DIR"]
   #--------------------------------------------------------------------------- Include dirs
+    SOURCES_DIR.append (LIBPM_DIRECTORY_PATH + "/big-integers")
     SOURCES_DIR.append (LIBPM_DIRECTORY_PATH + "/bdd")
     SOURCES_DIR.append (LIBPM_DIRECTORY_PATH + "/command_line_interface")
     SOURCES_DIR.append (LIBPM_DIRECTORY_PATH + "/files")

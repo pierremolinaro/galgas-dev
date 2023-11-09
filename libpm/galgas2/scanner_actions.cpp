@@ -20,7 +20,7 @@
 
 #include "galgas2/scanner_actions.h"
 #include "strings/unicode_character_cpp.h"
-#include "utilities/C_BigInt.h"
+#include "big-integers/C_BigInt.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 

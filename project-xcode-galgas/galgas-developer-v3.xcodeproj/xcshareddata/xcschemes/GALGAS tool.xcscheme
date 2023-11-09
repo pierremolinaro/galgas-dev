@@ -57,11 +57,11 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--no-file-generation"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--no-color"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--output-html-grammar-file"
@@ -81,6 +81,10 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Volumes/dev-svn/galgas-dev/+galgas.galgasProject"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--check-gmp"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

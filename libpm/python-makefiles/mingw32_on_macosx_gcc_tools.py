@@ -6,12 +6,17 @@
 import sys, time, os, json
 import makefile, default_build_options
 import generic_galgas_makefile
-import tool_chain_installation_path
-import cross_compiler_download
 
 #-----------------------------------------------------------------------------------------
 
 def buildForWin32OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, maxParallelJobs, displayCommands) :
+  executable = makefile.find_executable ("x86_64-w64-mingw32-gcc")
+  if executable == None:
+    print (makefile.BOLD_RED () + "*** Cannot find 'x86_64-w64-mingw32-gcc' executable ***" + makefile.ENDC ())
+    print ("The mingw32 cross compiler can be installed under howebrew:")
+    print ("  brew install mingw-w64")
+    sys.exit (1)
+#---
   gmf = generic_galgas_makefile.GenericGalgasMakefile ()
   gmf.mJSONfilePath = jsonFilePath
   gmf.mDictionary = dictionary

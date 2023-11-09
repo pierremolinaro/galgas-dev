@@ -22,6 +22,7 @@
 #include "galgas2/C_Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "strings/unicode_character_cpp.h"
+#include "utilities/galgas-random.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -99,11 +100,7 @@ void GALGAS_uint::class_method_setRandomSeed (class GALGAS_uint inSeed
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint GALGAS_uint::constructor_random (UNUSED_LOCATION_ARGS) {
-  #if COMPILE_FOR_WINDOWS == 1
-    return GALGAS_uint (uint32_t (rand ())) ;
-  #else
-    return GALGAS_uint (uint32_t (random ())) ;
-  #endif
+  return GALGAS_uint (uint32_t (galgas_random ())) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

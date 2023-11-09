@@ -58,7 +58,7 @@ template <typename TYPE> class TC_UniqueArray {
 
 //--- Allocation Constructor (empty array)
   public: TC_UniqueArray (const int32_t inCapacity
-                           COMMA_LOCATION_ARGS) ;
+                          COMMA_LOCATION_ARGS) ;
 
 //--- Allocation Constructor (array initialized with inValue)
   public: TC_UniqueArray (const int32_t inCapacity,
