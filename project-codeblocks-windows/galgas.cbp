@@ -144,7 +144,7 @@
    <Unit filename="../libpm/streams/C_ErrorOut.cpp" />
    <Unit filename="../libpm/strings/unicode_character_cpp.cpp" />
    <Unit filename="../libpm/strings/unicode_string_routines.cpp" />
-   <Unit filename="../libpm//stringsC_String.cpp" />
+   <Unit filename="../libpm/strings/C_String.cpp" />
    <Unit filename="../libpm/strings/C_HTMLString.cpp" />
    <Unit filename="../libpm/print.cpp" />
    <Unit filename="../libpm/time/C_Timer.cpp" />
@@ -164,8 +164,8 @@
    <Unit filename="../libpm/utilities/C_DirectedGraph.cpp" />
    <Unit filename="../libpm/utilities/md5.cpp" />
    <Unit filename="../libpm/utilities/galgas-random.cpp" />
-   <Unit filename="../libpm/C_galgas_CLI_Options.cpp" />
-   <Unit filename="../libpm/typeComparisonResult.cpp" />
+   <Unit filename="../libpm/galgas2/C_galgas_CLI_Options.cpp" />
+   <Unit filename="../libpm/galgas2/typeComparisonResult.cpp" />
    <Unit filename="../libpm/galgas2/C_Compiler.cpp" />
    <Unit filename="../libpm/galgas2/C_Lexique.cpp" />
    <Unit filename="../libpm/galgas2/C_LocationInSource.cpp" />
