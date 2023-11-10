@@ -142,7 +142,7 @@
    <Unit filename="../libpm/strings/unicode_string_routines.cpp" />
    <Unit filename="../libpm/strings/C_String.cpp" />
    <Unit filename="../libpm/strings/C_HTMLString.cpp" />
-   <Unit filename="../libpm/print.cpp" />
+   <Unit filename="../libpm/strings/print.cpp" />
    <Unit filename="../libpm/time/C_Timer.cpp" />
    <Unit filename="../libpm/time/C_DateTime.cpp" />
    <Unit filename="../libpm/utilities/C_PrologueEpilogue.cpp" />

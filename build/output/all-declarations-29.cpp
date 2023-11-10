@@ -2434,7 +2434,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
   result << in_LIBPM_5F_PATH.stringValue () ;
   result << "/strings/C_HTMLString.cpp\" />\n   <Unit filename=\"" ;
   result << in_LIBPM_5F_PATH.stringValue () ;
-  result << "/print.cpp\" />\n   <Unit filename=\"" ;
+  result << "/strings/print.cpp\" />\n   <Unit filename=\"" ;
   result << in_LIBPM_5F_PATH.stringValue () ;
   result << "/time/C_Timer.cpp\" />\n   <Unit filename=\"" ;
   result << in_LIBPM_5F_PATH.stringValue () ;
