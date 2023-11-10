@@ -55,7 +55,7 @@ class C_BigInt {
 
 //--- Set to value
   public: void setToZero (void) ;
-  public: void setFromUnsigned (const uint32_t inValue) ;
+  public: void setFromU32 (const uint32_t inValue) ;
 
 //--- Sign
   public: bool isZero (void) const ;

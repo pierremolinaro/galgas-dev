@@ -1800,6 +1800,8 @@
 				CF825A6E08536B780077AEAF /* F_DisplayException.h */,
 				CF825A6F08536B780077AEAF /* F_GetPrime.cpp */,
 				CF825A7008536B780077AEAF /* F_GetPrime.h */,
+				CF40C8462AFD4C550027918A /* galgas-random.cpp */,
+				CF40C8472AFD4C550027918A /* galgas-random.h */,
 				CF825A7108536B780077AEAF /* M_machine.h */,
 				CF825A7208536B780077AEAF /* M_SourceLocation.h */,
 				CF0676430E7EE037008B9D1F /* md5.cpp */,
@@ -1812,8 +1814,6 @@
 				CFC1042B161DFE2000253307 /* PMUInt128.h */,
 				CF4C28B91EC227F700DE807B /* switch-fallthrough.h */,
 				CF825A7908536B780077AEAF /* TF_Swap.h */,
-				CF40C8462AFD4C550027918A /* galgas-random.cpp */,
-				CF40C8472AFD4C550027918A /* galgas-random.h */,
 			);
 			path = utilities;
 			sourceTree = "<group>";

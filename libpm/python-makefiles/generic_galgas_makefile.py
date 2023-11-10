@@ -62,13 +62,13 @@ class GenericGalgasMakefile :
   #--- LIBPM
     LIBPM_DIRECTORY_PATH = self.mDictionary ["LIBPM_DIRECTORY_PATH"]
   #--------------------------------------------------------------------------- System
-    if self.mCrossCompilation == "":
-      (SYSTEM_NAME, MODE_NAME, SYSTEM_RELEASE, SYSTEM_VERSION, MACHINE) = os.uname ()
-      if SYSTEM_NAME == "Darwin":
-        MACHINE = "Intel"
-      SYSTEM_MACHINE = SYSTEM_NAME + "-" + MACHINE
-    else:
-      SYSTEM_MACHINE = self.mCrossCompilation
+#     if self.mCrossCompilation == "":
+#       (SYSTEM_NAME, MODE_NAME, SYSTEM_RELEASE, SYSTEM_VERSION, MACHINE) = os.uname ()
+#       if SYSTEM_NAME == "Darwin":
+#         MACHINE = "Intel"
+#       SYSTEM_MACHINE = SYSTEM_NAME + "-" + MACHINE
+#     else:
+#       SYSTEM_MACHINE = self.mCrossCompilation
   #--- GMP
     GMP_DIRECTORY_PATH = LIBPM_DIRECTORY_PATH + "/gmp"
   #--- Source directory list

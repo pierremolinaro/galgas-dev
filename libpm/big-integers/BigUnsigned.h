@@ -22,10 +22,16 @@ class BigUnsigned {
   public: BigUnsigned multiplyingByU64 (const uint64_t inOperand) const ;
   public: BigUnsigned multiplyingByBigUnsigned (const BigUnsigned & inOperand) const ;
   public: int compare (const BigUnsigned & inOperand) const ;
+
+  public: BigUnsigned oringWithBigUnsigned (const BigUnsigned & inOperand) const ;
+  public: BigUnsigned xoringWithBigUnsigned (const BigUnsigned & inOperand) const ;
+  public: BigUnsigned andingWithBigUnsigned (const BigUnsigned & inOperand) const ;
+  public: BigUnsigned complemented (void) const ;
+
   public: void printHex (const char * inName) const ;
 
 //--- Private properties
-  private: std::vector <uint64_t> mValue ;
+  private: std::vector <uint64_t> mArray ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

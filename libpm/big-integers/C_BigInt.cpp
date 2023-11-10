@@ -188,7 +188,7 @@ void C_BigInt::setToZero (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void C_BigInt::setFromUnsigned (const uint32_t inValue) {
+void C_BigInt::setFromU32 (const uint32_t inValue) {
   mpz_set_ui (mGMPint, inValue) ;
 }
 
