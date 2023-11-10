@@ -484,23 +484,6 @@ void routine_generateGalgasCodeBlocksWindowsTarget (const class GALGAS_string co
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Routine 'generateGalgasCodeBlocksMacTarget'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateGalgasCodeBlocksMacTarget (const class GALGAS_string constinArgument0,
-                                                const class GALGAS_string constinArgument1,
-                                                const class GALGAS_string constinArgument2,
-                                                const class GALGAS_stringlist constinArgument3,
-                                                const class GALGAS_string constinArgument4,
-                                                const class GALGAS_stringlist constinArgument5,
-                                                const class GALGAS_stringset constinArgument6,
-                                                const class GALGAS_bool constinArgument7,
-                                                class C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Routine 'generateGalgasCodeBlocksLinuxI686Target'
 //
 //----------------------------------------------------------------------------------------------------------------------

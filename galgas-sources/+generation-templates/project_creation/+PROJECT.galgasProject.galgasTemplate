@@ -9,7 +9,6 @@ project (0:0:1) -> %![PROJECT_NAME utf8RepresentationEscapingQuestionMark]% {
   \%codeblocks-windows
   \%codeblocks-linux32
   \%codeblocks-linux64
-  \%codeblocks-mac
 
 #--- Source files
   "galgas-sources/%!PROJECT_NAME%-lexique.galgas"

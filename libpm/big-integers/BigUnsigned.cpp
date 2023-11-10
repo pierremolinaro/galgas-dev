@@ -4,8 +4,8 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "BigUnsigned.h"
-#include "M_machine.h"
-#include "galgas-random.h"
+#include "utilities/M_machine.h"
+#include "utilities/galgas-random.h"
 
 //--------------------------------------------------------------------------------------------------
 // https://gcc.gnu.org/onlinedocs/gcc/Integer-Overflow-Builtins.html
