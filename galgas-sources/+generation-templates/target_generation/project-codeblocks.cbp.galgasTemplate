@@ -111,7 +111,7 @@ end
    <Unit filename="%!LIBPM_PATH%/streams/C_ErrorOut.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/unicode_character_cpp.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/unicode_string_routines.cpp" />
-   <Unit filename="%!LIBPM_PATH%//stringsC_String.cpp" />
+   <Unit filename="%!LIBPM_PATH%/strings/C_String.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/C_HTMLString.cpp" />
    <Unit filename="%!LIBPM_PATH%/print.cpp" />
    <Unit filename="%!LIBPM_PATH%/time/C_Timer.cpp" />
@@ -131,8 +131,8 @@ end
    <Unit filename="%!LIBPM_PATH%/utilities/C_DirectedGraph.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/md5.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/galgas-random.cpp" />
-   <Unit filename="%!LIBPM_PATH%/C_galgas_CLI_Options.cpp" />
-   <Unit filename="%!LIBPM_PATH%/typeComparisonResult.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_CLI_Options.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas2/typeComparisonResult.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_Compiler.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_Lexique.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_LocationInSource.cpp" />

@@ -290,3 +290,8 @@ testsuite/makefile-macosx/testsuite-debug
 galgas-sources/+generation-templates/build/*
 project-xcode-galgas/*
 makefile-unix/galgas-lto
+
+# Code Blocks
+*.depend
+*.layout
+
