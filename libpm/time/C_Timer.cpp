@@ -51,14 +51,14 @@ void C_Timer::startTimer (void) {
 //----------------------------------------------------------------------------------------------------------------------
 
 uint32_t C_Timer::msFromStart (void) const {
-  uint32_t duration ;
+  clock_t duration ;
   if (mRunning) {
-    duration = (uint32_t) (::clock () - mStart) ;
+    duration = ::clock () - mStart ;
   }else{
-    duration = (uint32_t) (mEnd - mStart) ;
+    duration = mEnd - mStart ;
   }
   duration /= CLOCKS_PER_SEC / 1000 ;
-  return duration ;
+  return uint32_t (duration) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -85,16 +85,16 @@ C_String C_Timer::timeString (void) const {
 
 AC_OutputStream & operator << (AC_OutputStream & inStream,
                                const C_Timer & inTimer) {
-  uint32_t duration ;
+  clock_t duration ;
   if (inTimer.mRunning) {
-    duration = (uint32_t) (::clock () - inTimer.mStart) ;
+    duration = ::clock () - inTimer.mStart ;
   }else{
-    duration = (uint32_t) (inTimer.mEnd - inTimer.mStart) ;
+    duration = inTimer.mEnd - inTimer.mStart ;
   }
   duration /= CLOCKS_PER_SEC / 100 ;
-  const uint32_t cs = (uint32_t) (duration % 100) ;
-  const uint32_t secondes = (uint32_t) ((duration / 100) % 60) ;
-  const uint32_t minutes = (uint32_t) (duration / 6000) ;
+  const clock_t cs = duration % 100 ;
+  const clock_t secondes = (duration / 100) % 60 ;
+  const clock_t minutes = duration / 6000 ;
   if (minutes > 0) {
     inStream.appendUnsigned (minutes) ;
     inStream << " min " ;
