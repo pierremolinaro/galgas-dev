@@ -1592,7 +1592,6 @@ GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
 #endif
 
 //----------------------------------------------------------------------------------------------------------------------
-
 // http://msdn.microsoft.com/en-us/library/ms682499%28VS.85%29.aspx
 
 #if (COMPILE_FOR_WINDOWS == 1) || defined(__CYGWIN__)

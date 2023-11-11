@@ -10,6 +10,8 @@ import generic_galgas_makefile
 #-----------------------------------------------------------------------------------------
 
 def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, maxParallelJobs, displayCommands) :
+  if os.path.exists (os.path.expanduser ("~/galgas-tools-for-cross-compilation")) :
+    print (makefile.BLUE () + makefile.BOLD () + "The '~/galgas-tools-for-cross-compilation' is useless from now: you can delete it" + makefile.ENDC ()) ;
   gmf = generic_galgas_makefile.GenericGalgasMakefile ()
   gmf.mJSONfilePath = jsonFilePath
   gmf.mDictionary = dictionary
