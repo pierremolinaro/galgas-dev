@@ -297,7 +297,7 @@ static void analyze_one_option (const char * inCommand,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#if (COMPILE_FOR_WINDOWS == 1) && !defined (__CYGWIN__)
+#if COMPILE_FOR_WINDOWS == 1
   static void getSourceFileFromWin32OpenDialog (TC_UniqueArray <C_String> & outSourceFileArray,
                                                 const char * inExtensions []) {
     char szFile[260] ;       // buffer for file name
@@ -399,7 +399,7 @@ void F_Analyze_CLI_Options (const int argv,
     print_help (argv, argc, inExtensions, inHelpMessages, print_tool_help_message) ;
   }
 //--- WIN32 : if got no file, display file open dialog
-  #if (COMPILE_FOR_WINDOWS == 1) && !defined (__CYGWIN__)
+  #if COMPILE_FOR_WINDOWS == 1
     if ((outSourceFileArray.count () == 0) && !gOption_generic_5F_cli_5F_options_nodialog.mValue) {
       getSourceFileFromWin32OpenDialog (outSourceFileArray, inExtensions) ;
     }

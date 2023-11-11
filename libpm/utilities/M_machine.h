@@ -44,7 +44,9 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-#ifdef __MINGW32__
+#if defined (__CYGWIN__)
+  #define COMPILE_FOR_WINDOWS (0)
+#elif defined (__MINGW32__)
   #define COMPILE_FOR_WINDOWS (1)
 #elif defined (WIN32)
   #define COMPILE_FOR_WINDOWS (1)
@@ -52,8 +54,6 @@
   #define COMPILE_FOR_WINDOWS (0)
 #elif defined (__linux)
   #define COMPILE_FOR_WINDOWS (0)
-#elif defined (__CYGWIN__)
-  #define COMPILE_FOR_WINDOWS (1)
 #elif defined (__unix__)
   #define COMPILE_FOR_WINDOWS (0)
 #else
