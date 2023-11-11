@@ -1597,6 +1597,7 @@ GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
 
 #if (COMPILE_FOR_WINDOWS == 1) || defined(__CYGWIN__)
   #include <windows.h>
+  #include <iostream>
 
   static bool CreateChildProcess (HANDLE g_hChildStd_OUT_Wr,
                                   HANDLE g_hChildStd_IN_Rd,
@@ -1636,7 +1637,7 @@ GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
        CloseHandle (piProcInfo.hThread) ;
      }else{ // CreateProcess Error
        DWORD error = GetLastError () ;
-       printf ("'CreateProcess' error: %ld\n", error) ;
+       std::cout << "'CreateProcess' error: " << error << std::endl ;
      }
    //---
      return bSuccess ;
