@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 1999, ..., 2013 Pierre Molinaro.
+//  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -24,6 +24,7 @@
 
 #include <iostream>
 #include <cstdint>
+#include <time.h>
 
 //----------------------------------------------------------------------------------------------------------------------
 

@@ -33,7 +33,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#if COMPILE_FOR_WINDOWS == 1
+#if (COMPILE_FOR_WINDOWS == 1) || defined (__CYGWIN__)
   int64_t galgas_random (void) {
     return rand () ;
   }
