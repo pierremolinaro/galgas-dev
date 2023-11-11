@@ -30,7 +30,6 @@ end
        "C_RelationConfiguration.cpp",
        "C_Relation.cpp",
        "C_FileManager.cpp",
-       "AC_FileHandleForWriting.cpp",
        "AC_FileHandle.cpp",
        "C_TextFileWrite.cpp",
        "C_HTML_FileWrite.cpp",

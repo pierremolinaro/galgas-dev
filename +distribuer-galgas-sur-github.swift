@@ -33,7 +33,8 @@ let NOTES : [String] = [
 let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
-  "Suppression du makefile pour OSX (utiliser le makefile-unix)"
+  "Suppression du makefile pour OSX (utiliser le makefile-unix)",
+  "Les makefiles pour cross-compiler pour Win32, X86_64 Linux, i686 Linux sur MacOS font appel aux compilateurs disponibles sur brew"
 ]
 let NEWS : [String] = [
 ]

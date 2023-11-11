@@ -30,7 +30,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 C_TextFileWrite::C_TextFileWrite (const C_String & inFileName) :
-AC_FileHandleForWriting (inFileName, "wt"),
+AC_FileHandle (inFileName, "wt"),
 mBufferLength (0) {
 }
 

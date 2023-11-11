@@ -33,7 +33,7 @@ class AC_FileHandle {
 
 //--- Protected constructor
   protected: AC_FileHandle (const C_String & inFilePath,
-                             const char * inMode) ;
+                            const char * inMode) ;
 
 //--- No copy
   private: AC_FileHandle (const AC_FileHandle &) ;
