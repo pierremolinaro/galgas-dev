@@ -47,7 +47,7 @@ C_DateTime::~C_DateTime (void) {
 const char * C_DateTime::getMonthName (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
   struct tm time ;
-  #if COMPILE_FOR_WINDOWS == 0
+  #if (COMPILE_FOR_WINDOWS == 0) || !defined (__CYGWIN__)
    ::localtime_r (&tt, &time) ; // Mac, Linux
   #else
    ::localtime_s (&time, &tt) ; // Windows
@@ -74,7 +74,7 @@ const char * C_DateTime::getMonthName (void) const {
 const char * C_DateTime::getDayName (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
   struct tm time ;
-  #if COMPILE_FOR_WINDOWS == 0
+  #if (COMPILE_FOR_WINDOWS == 0) || !defined (__CYGWIN__)
    ::localtime_r (&tt, &time) ; // Mac, Linux
   #else
    ::localtime_s (&time, &tt) ; // Windows
@@ -96,7 +96,7 @@ const char * C_DateTime::getDayName (void) const {
 int32_t C_DateTime::getYearCount (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
   struct tm time ;
-  #if COMPILE_FOR_WINDOWS == 0
+  #if (COMPILE_FOR_WINDOWS == 0) || !defined (__CYGWIN__)
    ::localtime_r (&tt, &time) ; // Mac, Linux
   #else
    ::localtime_s (&time, &tt) ; // Windows
@@ -109,7 +109,7 @@ int32_t C_DateTime::getYearCount (void) const {
 int32_t C_DateTime::getMonthCount (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
   struct tm time ;
-  #if COMPILE_FOR_WINDOWS == 0
+  #if (COMPILE_FOR_WINDOWS == 0) || !defined (__CYGWIN__)
    ::localtime_r (&tt, &time) ; // Mac, Linux
   #else
    ::localtime_s (&time, &tt) ; // Windows
@@ -122,7 +122,7 @@ int32_t C_DateTime::getMonthCount (void) const {
 int32_t C_DateTime::getDayOfMonth (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
   struct tm time ;
-  #if COMPILE_FOR_WINDOWS == 0
+  #if (COMPILE_FOR_WINDOWS == 0) || !defined (__CYGWIN__)
    ::localtime_r (&tt, &time) ; // Mac, Linux
   #else
    ::localtime_s (&time, &tt) ; // Windows
@@ -135,7 +135,7 @@ int32_t C_DateTime::getDayOfMonth (void) const {
 int32_t C_DateTime::getHourOfDay (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
   struct tm time ;
-  #if COMPILE_FOR_WINDOWS == 0
+  #if (COMPILE_FOR_WINDOWS == 0) || !defined (__CYGWIN__)
    ::localtime_r (&tt, &time) ; // Mac, Linux
   #else
    ::localtime_s (&time, &tt) ; // Windows
@@ -148,7 +148,7 @@ int32_t C_DateTime::getHourOfDay (void) const {
 int32_t C_DateTime::getMinuteOfHour (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
   struct tm time ;
-  #if COMPILE_FOR_WINDOWS == 0
+  #if (COMPILE_FOR_WINDOWS == 0) || !defined (__CYGWIN__)
    ::localtime_r (&tt, &time) ; // Mac, Linux
   #else
    ::localtime_s (&time, &tt) ; // Windows
@@ -161,7 +161,7 @@ int32_t C_DateTime::getMinuteOfHour (void) const {
 int32_t C_DateTime::getSecondOfMinute (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
   struct tm time ;
-  #if COMPILE_FOR_WINDOWS == 0
+  #if (COMPILE_FOR_WINDOWS == 0) || !defined (__CYGWIN__)
    ::localtime_r (&tt, &time) ; // Mac, Linux
   #else
    ::localtime_s (&time, &tt) ; // Windows
@@ -174,7 +174,7 @@ int32_t C_DateTime::getSecondOfMinute (void) const {
 int32_t C_DateTime::getDayOfWeek (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
   struct tm time ;
-  #if COMPILE_FOR_WINDOWS == 0
+  #if (COMPILE_FOR_WINDOWS == 0) || !defined (__CYGWIN__)
    ::localtime_r (&tt, &time) ; // Mac, Linux
   #else
    ::localtime_s (&time, &tt) ; // Windows

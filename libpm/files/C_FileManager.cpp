@@ -782,7 +782,9 @@ bool C_FileManager::makeDirectoryIfDoesNotExist (const C_String & inDirectoryPat
     if (ok && !directoryExists (directoryPath)) { // Special case when the path contains ../
       const C_String nativePath = nativePathWithUnixPath (directoryPath) ;
     //--- Create directory (mkdir returns 0 if creation is ok)
-      #if COMPILE_FOR_WINDOWS == 1
+      #if __CYGWIN__
+        const int result = ::mkdir (nativePath.cString (HERE), 0770) ;
+      #elif COMPILE_FOR_WINDOWS == 1
         const int result = ::mkdir (nativePath.cString (HERE)) ;
       #else
         const int result = ::mkdir (nativePath.cString (HERE), 0770) ;
