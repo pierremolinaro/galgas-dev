@@ -14,6 +14,8 @@ def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, ma
   gmf.mJSONfilePath = jsonFilePath
   gmf.mDictionary = dictionary
   gmf.mExecutable = EXECUTABLE
+  if os.name == "nt" : # Cygwin
+    gmf.mExecutableSuffix = ".exe"
   gmf.mGoal = GOAL
   gmf.mMaxParallelJobs = maxParallelJobs
   gmf.mDisplayCommands = displayCommands
