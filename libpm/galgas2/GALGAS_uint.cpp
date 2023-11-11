@@ -79,7 +79,7 @@ mUIntValue (inValue) {
 void GALGAS_uint::class_method_setRandomSeed (class GALGAS_uint inSeed
                                               COMMA_UNUSED_LOCATION_ARGS) {
   if (inSeed.isValid  ()) {
-    #if COMPILE_FOR_WINDOWS == 1
+    #if (COMPILE_FOR_WINDOWS == 1) || defined(__CYGWIN__)
       srand (inSeed.uintValue ()) ;
     #else
       srandom (inSeed.uintValue ()) ;

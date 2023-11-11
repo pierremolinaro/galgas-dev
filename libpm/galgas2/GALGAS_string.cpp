@@ -1595,13 +1595,9 @@ GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
 
 // http://msdn.microsoft.com/en-us/library/ms682499%28VS.85%29.aspx
 
-#if COMPILE_FOR_WINDOWS == 1
+#if (COMPILE_FOR_WINDOWS == 1) || defined(__CYGWIN__)
   #include <windows.h>
-#endif
 
-//----------------------------------------------------------------------------------------------------------------------
-
-#if COMPILE_FOR_WINDOWS == 1
   static bool CreateChildProcess (HANDLE g_hChildStd_OUT_Wr,
                                   HANDLE g_hChildStd_IN_Rd,
                                   const char * /* inCommandLine */) {
@@ -1645,11 +1641,7 @@ GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
    //---
      return bSuccess ;
   }
-#endif
 
-//----------------------------------------------------------------------------------------------------------------------
-
-#if COMPILE_FOR_WINDOWS == 1
   GALGAS_string GALGAS_string::getter_popen (C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const {
     GALGAS_string result ;
@@ -1715,11 +1707,9 @@ GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
     }
     return result ;
   }
-#endif
 
-//----------------------------------------------------------------------------------------------------------------------
+#else
 
-#if COMPILE_FOR_WINDOWS == 0
   GALGAS_string GALGAS_string::getter_popen (C_Compiler * /* inCompiler */
                                              COMMA_UNUSED_LOCATION_ARGS) const {
     GALGAS_string result ;

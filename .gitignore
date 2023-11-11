@@ -285,8 +285,8 @@ TSWLatexianTemp*
 TEST_GALGAS/**
 testsuite/xcode-project/build/*
 testsuite/xcode-project/testsuite.xcodeproj/project.xcworkspace/*
-testsuite/makefile-macosx/testsuite
-testsuite/makefile-macosx/testsuite-debug
+testsuite/makefile-unix/testsuite
+testsuite/makefile-unix/testsuite-debug
 galgas-sources/+generation-templates/build/*
 project-xcode-galgas/*
 makefile-unix/galgas-lto
@@ -294,4 +294,4 @@ makefile-unix/galgas-lto
 # Code Blocks
 *.depend
 *.layout
-
+*.exe
