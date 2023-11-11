@@ -886,7 +886,7 @@ C_String C_FileManager::relativePathFromPath (const C_String & inPath,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#if COMPILE_FOR_WINDOWS == 1
+#if (COMPILE_FOR_WINDOWS == 1) || defined (__CYGWIN__)
   bool C_FileManager::makeSymbolicLinkWithPath (const C_String & /* inPath */,
                                                 const C_String & /* inLinkPath */) {
     return true ; // Symbolic links are not supported on Windows
@@ -908,15 +908,11 @@ C_String C_FileManager::relativePathFromPath (const C_String & inPath,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#if COMPILE_FOR_WINDOWS == 1
+#if (COMPILE_FOR_WINDOWS == 1) || defined (__CYGWIN__)
   bool C_FileManager::isSymbolicLink (const C_String & /* inLinkPath */) {
     return false ; // Symbolic links are not supported on Windows
   }
-#endif
-
-//----------------------------------------------------------------------------------------------------------------------
-
-#if COMPILE_FOR_WINDOWS == 0
+#else
   bool C_FileManager::isSymbolicLink (const C_String & inLinkPath) {
     char buffer [8] ; // Any value
     return readlink (inLinkPath.cString (HERE), buffer, 8) >= 0 ;
@@ -925,17 +921,13 @@ C_String C_FileManager::relativePathFromPath (const C_String & inPath,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#if COMPILE_FOR_WINDOWS == 1
+#if (COMPILE_FOR_WINDOWS == 1) || defined (__CYGWIN__)
   C_String C_FileManager::stringWithSymbolicLinkContents (const C_String & /* inLinkPath */,
                                                           bool & outOk) {
     outOk = false ; // Symbolic links are not supported on Windows
     return C_String () ;
   }
-#endif
-
-//----------------------------------------------------------------------------------------------------------------------
-
-#if COMPILE_FOR_WINDOWS == 0
+#else
   C_String C_FileManager::stringWithSymbolicLinkContents (const C_String & inLinkPath,
                                                           bool & outOk) {
     C_String result ;
