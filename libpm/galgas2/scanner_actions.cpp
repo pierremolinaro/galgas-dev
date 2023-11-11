@@ -1,8 +1,8 @@
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  scanner_actions: hand-coded routines for building attribute values during scanning.          
+//  scanner_actions: hand-coded routines for building attribute values during scanning.
 //
-//  This file is part of libpm library                                                           
+//  This file is part of libpm library
 //
 //  Copyright (C) 2009, ..., 2023 Pierre Molinaro.
 //
@@ -37,7 +37,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//   P R E D E F I N E D    S C A N N E R    A C T I O N S                                       
+//   P R E D E F I N E D    S C A N N E R    A C T I O N S
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -100,7 +100,7 @@ void scanner_routine_convertStringToDouble (C_Lexique & inLexique,
                                             const C_String & inString,
                                             double & outValue,
                                             const char * inConversionError) {
-  const double value = ::strtod (inString.cString (HERE), NULL) ;
+  const double value = ::strtod (inString.cString (HERE), nullptr) ;
   if (errno == ERANGE) {
     inLexique.lexicalError (inConversionError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
   }else{
@@ -789,7 +789,7 @@ void scanner_routine_enterHexDigitIntoBigInt (C_Lexique & inLexique,
                                               const utf32 inCharacter,
                                               C_BigInt & ioBigInt,
                                               const char * inCharacterIsNotDecimalDigitError) {
-  
+
   if ((UNICODE_VALUE (inCharacter) >= '0') && (UNICODE_VALUE (inCharacter) <= '9')) {
     const uint32_t digit = UNICODE_VALUE (inCharacter) - '0' ;
     ioBigInt *= 16 ;

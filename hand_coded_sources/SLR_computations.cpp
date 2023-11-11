@@ -16,7 +16,6 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 #include "strings/C_HTMLString.h"
-#include "files/C_TextFileWrite.h"
 #include "collections/TC_UniqueArray2.h"
 #include "galgas2/C_Compiler.h"
 

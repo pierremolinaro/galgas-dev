@@ -1,8 +1,8 @@
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  Timer class.                                                                                 
+//  Timer class.
 //
-//  This file is part of libpm library                                                           
+//  This file is part of libpm library
 //
 //  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
 //
@@ -27,7 +27,7 @@
 #if COMPILE_FOR_WINDOWS == 0
   static timeval gTime ;
   static timeval now (void) {
-    gettimeofday (& gTime, NULL) ;
+    gettimeofday (& gTime, nullptr) ;
     return gTime ;
   }
 #else
@@ -50,7 +50,7 @@ mRunning (true) {
 void C_Timer::stopTimer (void) {
   if (mRunning) {
     #if COMPILE_FOR_WINDOWS == 0
-      gettimeofday (& mEnd, NULL) ;
+      gettimeofday (& mEnd, nullptr) ;
     #else
       mEnd = ::clock () ;
     #endif
@@ -62,7 +62,7 @@ void C_Timer::stopTimer (void) {
 
 void C_Timer::startTimer (void) {
   #if COMPILE_FOR_WINDOWS == 0
-    gettimeofday (& mStart, NULL) ;
+    gettimeofday (& mStart, nullptr) ;
   #else
     mStart = ::clock () ;
   #endif
@@ -77,7 +77,7 @@ uint32_t C_Timer::msFromStart (void) const {
     timeval t ;
     if (mRunning) {
       timeval now ;
-      gettimeofday (& now, NULL) ;
+      gettimeofday (& now, nullptr) ;
       timersub (& now, & mStart, & t) ;
     }else{
       timersub (& mEnd, & mStart, & t) ;
@@ -123,7 +123,7 @@ AC_OutputStream & operator << (AC_OutputStream & inStream,
     timeval duration ;
     if (inTimer.mRunning) {
       timeval now ;
-      gettimeofday (& now, NULL) ;
+      gettimeofday (& now, nullptr) ;
       timersub (& now, & inTimer.mStart, & duration) ;
     }else{
       timersub (& inTimer.mEnd, & inTimer.mStart, & duration) ;

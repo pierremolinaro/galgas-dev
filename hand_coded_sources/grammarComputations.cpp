@@ -15,7 +15,6 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-#include "files/C_TextFileWrite.h"
 #include "files/C_FileManager.h"
 #include "bdd/C_Relation.h"
 #include "utilities/MF_MemoryControl.h"

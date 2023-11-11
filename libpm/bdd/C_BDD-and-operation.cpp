@@ -121,12 +121,12 @@ static bool searchInANDOperationCache (const uint32_t inOperand1,
 static void reallocANDOperationCache (const uint32_t inNewSize) {
   if (0 < inNewSize) {
     gANDOperationCacheMapUsedEntryCount = 0 ;
-    uint64_t * newCache = NULL ;
+    uint64_t * newCache = nullptr ;
     macroMyNewPODArray (newCache, uint64_t, inNewSize) ;
     for (uint32_t i=0 ; i<inNewSize ; i++) {
       newCache [i] = 0 ;
     }
-    uint32_t * newResult = NULL ;
+    uint32_t * newResult = nullptr ;
     macroMyNewPODArray (newResult, uint32_t, inNewSize) ;
     for (uint32_t i=0 ; i<gANDOperationMapSize ; i++) {
       if (gANDOperationCacheOperandMap [i] != 0) {

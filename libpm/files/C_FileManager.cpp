@@ -1,8 +1,8 @@
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  'C_FileManager' : a class for handling files, independantly from platform                    
+//  'C_FileManager' : a class for handling files, independantly from platform
 //
-//  This file is part of libpm library                                                           
+//  This file is part of libpm library
 //
 //  Copyright (C) 2012, ..., 2018 Pierre Molinaro.
 //
@@ -50,7 +50,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//   Converting into Unix Path                                                                   
+//   Converting into Unix Path
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -98,7 +98,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//   Converting into Native Path                                                                 
+//   Converting into Native Path
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -171,7 +171,7 @@ bool C_FileManager::binaryDataWithContentOfFile (const C_String & inFilePath,
 //--- Open file for binary reading
   const C_String nativePath = nativePathWithUnixPath (inFilePath) ;
   FILE * inputFile = ::fopen (nativePath.cString (HERE), "rb") ;
-  bool ok = inputFile != NULL ;
+  bool ok = inputFile != nullptr ;
 //--- Go to the end of the file
   if (ok) {
     ok = ::fseek (inputFile, 0, 2) == 0 ;
@@ -191,7 +191,7 @@ bool C_FileManager::binaryDataWithContentOfFile (const C_String & inFilePath,
 
 //--- Read file
   if (ok) {
-    uint8_t * binaryData = NULL ;
+    uint8_t * binaryData = nullptr ;
     macroMyNewArray (binaryData, uint8_t, uint32_t (fileSize)) ;
     const int32_t sizeRead = (int32_t) (fread (binaryData, 1, (uint32_t) fileSize, inputFile) & UINT32_MAX) ;
     ok = sizeRead == fileSize ;
@@ -200,9 +200,9 @@ bool C_FileManager::binaryDataWithContentOfFile (const C_String & inFilePath,
     }
   }
 //--- Close file
-  if (inputFile != NULL) {
+  if (inputFile != nullptr) {
     const int32_t result = ::fclose (inputFile) ;
-    inputFile = NULL ;
+    inputFile = nullptr ;
     if (ok) {
       ok = result == 0 ;
     }
@@ -515,7 +515,7 @@ static bool searchForEncodingTagAndParse (const C_Data & inDataString,
   bool ok = false ;
 //--- Search for Tag
   bool tagFound = false ;
-  if (strstr (firstLine, "UTF-8") != NULL) {
+  if (strstr (firstLine, "UTF-8") != nullptr) {
     ok = C_String::parseUTF8 (inDataString, 0, outResultString) ;
     outTextFileEncoding = kUTF_8_FileEncoding ;
     tagFound = true ;
@@ -524,7 +524,7 @@ static bool searchForEncodingTagAndParse (const C_Data & inDataString,
     #endif
   }
   for (int32_t i=0 ; (i<kEncodingCount) && ! tagFound ; i++) {
-    tagFound = strstr (firstLine, kEncodings [i].mEncodingName) != NULL ;
+    tagFound = strstr (firstLine, kEncodings [i].mEncodingName) != nullptr ;
     if (tagFound) {
       ok = parseWithEncoding (inDataString, kEncodings [i].mStringEncoding, outResultString) ;
       outTextFileEncoding = kEncodings [i].mTextFileEncoding ;
@@ -751,7 +751,7 @@ bool C_FileManager::directoryExistsWithNativePath (const C_String & inDirectoryN
 //----------------------------------------------------------------------------------------------------------------------
 
 C_String C_FileManager::currentDirectory (void) {
-  char * cwd = getcwd (NULL, 0) ;
+  char * cwd = getcwd (nullptr, 0) ;
   #if COMPILE_FOR_WINDOWS == 1
     const int32_t fileLength = (int32_t) strlen (cwd) ;
     int32_t firstChar = 0 ;
@@ -941,7 +941,7 @@ C_String C_FileManager::relativePathFromPath (const C_String & inPath,
     C_String result ;
     bool loop = true ;
     outOk = true ;
-    char * buffer = NULL ;
+    char * buffer = nullptr ;
     size_t bufferSize = 128 ;
     while (loop) {
       macroMyReallocPODArray (buffer, char, bufferSize) ;
@@ -970,7 +970,7 @@ C_String C_FileManager::relativePathFromPath (const C_String & inPath,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  Delete file                                                                                  
+//  Delete file
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -999,14 +999,14 @@ static C_String recursiveSearchInDirectory (const C_String & inStartSearchPath,
   C_String result ;
   const C_String nativeStartSearchPath = C_FileManager::nativePathWithUnixPath (inStartSearchPath) ;
   DIR * dir = ::opendir (nativeStartSearchPath.cString (HERE)) ;
-  if (dir != NULL) {
+  if (dir != nullptr) {
     C_String fileName = inStartSearchPath ;
     fileName << "/" << inFileName ;
     if (C_FileManager::fileExistsAtPath (fileName)) {
       result = fileName ;
     }else{
       struct dirent  * current = readdir (dir) ;
-      while ((current != NULL) && (result.length () == 0)) {
+      while ((current != nullptr) && (result.length () == 0)) {
         if (current->d_name [0] != '.') {
           C_String name = inStartSearchPath ;
           name.appendCString ("/") ;
@@ -1016,7 +1016,7 @@ static C_String recursiveSearchInDirectory (const C_String & inStartSearchPath,
             for (int32_t i=0 ; (i<inDirectoriesToExcludeCount) && dirOk ; i++) {
               if (UNICODE_VALUE (inDirectoriesToExclude (i COMMA_HERE) (0 COMMA_HERE)) == '.') {
                 const char * dotPtr = strrchr (current->d_name, '.') ;
-                dirOk = (dotPtr == NULL) || (inDirectoriesToExclude (i COMMA_HERE).compare (dotPtr) != 0) ;
+                dirOk = (dotPtr == nullptr) || (inDirectoriesToExclude (i COMMA_HERE).compare (dotPtr) != 0) ;
               }else{
                 dirOk = inDirectoriesToExclude (i COMMA_HERE).compare (current->d_name) != 0 ;
               }
@@ -1057,9 +1057,9 @@ static void recursiveFindAllFilesInDirectory (const C_String & inStartSearchPath
 //--- Iterate throught directory
   const C_String nativeStartSearchPath = C_FileManager::nativePathWithUnixPath (inStartSearchPath) ;
   DIR * dir = ::opendir (nativeStartSearchPath.cString (HERE)) ;
-  if (dir != NULL) {
+  if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
-    while (current != NULL) {
+    while (current != nullptr) {
       if (current->d_name [0] != '.') {
         C_String name = inStartSearchPath ;
         name.appendCString ("/") ;

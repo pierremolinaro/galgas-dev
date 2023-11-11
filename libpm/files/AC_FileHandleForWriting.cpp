@@ -46,7 +46,7 @@ AC_FileHandle (inFilePath, inMode) {
       sigset_t s ;
       sigemptyset (& s) ;
       sigaddset (& s, SIGTERM) ;
-      sigprocmask (SIG_BLOCK, & s, NULL) ;
+      sigprocmask (SIG_BLOCK, & s, nullptr) ;
     }
     g_SIGTERM_balance_count ++ ;
   #endif
@@ -55,9 +55,9 @@ AC_FileHandle (inFilePath, inMode) {
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_FileHandleForWriting::~ AC_FileHandleForWriting (void) {
-  if (NULL != mFilePtr) {
+  if (nullptr != mFilePtr) {
     fclose (mFilePtr) ;
-    mFilePtr = NULL ;
+    mFilePtr = nullptr ;
   }
 //---
   #if COMPILE_FOR_WINDOWS == 0
@@ -66,7 +66,7 @@ AC_FileHandleForWriting::~ AC_FileHandleForWriting (void) {
       sigset_t s ;
       sigemptyset (& s) ;
       sigaddset (& s, SIGTERM) ;
-      sigprocmask (SIG_UNBLOCK, & s, NULL) ;
+      sigprocmask (SIG_UNBLOCK, & s, nullptr) ;
     }
   #endif
 }

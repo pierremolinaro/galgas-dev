@@ -1,8 +1,8 @@
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  GALGAS_bool : this class implements introspection for GALGAS types                           
+//  GALGAS_bool : this class implements introspection for GALGAS types
 //
-//  This file is part of libpm library                                                           
+//  This file is part of libpm library
 //
 //  Copyright (C) 2009, ..., 2023 Pierre Molinaro.
 //
@@ -23,13 +23,13 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                     'GALGAS_type' class                                                       
+//                     'GALGAS_type' class
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_type::GALGAS_type (void) :
 AC_GALGAS_root (),
-mTypeDescriptor (NULL) {
+mTypeDescriptor (nullptr) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -63,7 +63,7 @@ GALGAS_type::~ GALGAS_type (void) {
 void GALGAS_type::description (C_String & ioString,
                                const int32_t /* inIndentation */) const {
   ioString << "<@type: " ;
-  if (NULL == mTypeDescriptor) {
+  if (nullptr == mTypeDescriptor) {
     ioString << "not built" ;
   }else{
     ioString << "@" << mTypeDescriptor->mGalgasTypeName ;
@@ -92,7 +92,7 @@ GALGAS_string GALGAS_type::getter_name (UNUSED_LOCATION_ARGS) const {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_type::getter_hasSuperclass (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (NULL != mTypeDescriptor->mSuperclassDescriptor) ;
+  return GALGAS_bool (nullptr != mTypeDescriptor->mSuperclassDescriptor) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -100,8 +100,8 @@ GALGAS_bool GALGAS_type::getter_hasSuperclass (UNUSED_LOCATION_ARGS) const {
 GALGAS_type GALGAS_type::getter_superclass (C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const {
   GALGAS_type result ;
-  if (mTypeDescriptor != NULL) {
-    if (NULL == mTypeDescriptor->mSuperclassDescriptor) {
+  if (mTypeDescriptor != nullptr) {
+    if (nullptr == mTypeDescriptor->mSuperclassDescriptor) {
       C_String s ;
       s << "'superclass' reader invoked on class type value '@"
         << mTypeDescriptor->mGalgasTypeName << "', without super class"

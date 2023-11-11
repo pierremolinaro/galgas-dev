@@ -2,7 +2,7 @@
 //
 //  Routine 'F_Analyze_CLI_Options' : a way for automatic command line options analysis for MacOS, Win32 and Unix.     *
 //
-//  This file is part of libpm library                                                           
+//  This file is part of libpm library
 //
 //  Copyright (C) 2001, ..., 2017 Pierre Molinaro.
 //
@@ -47,7 +47,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//                        C O C O A   O U T P U T                                                
+//                        C O C O A   O U T P U T
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -67,7 +67,7 @@ const char * galgasVersionString (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//     print_usage                                                                               
+//     print_usage
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -88,7 +88,7 @@ static void print_usage (int argv, const char * argc []) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//     print_options                                                                             
+//     print_options
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -102,7 +102,7 @@ static void print_option_list (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//     print_help                                                                                
+//     print_help
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -141,7 +141,7 @@ static void print_help (int argv,
   C_StringListCommandLineOption::printStringOptions () ;
 
   int32_t extensionIndex = 0 ;
-  while (inExtensions [extensionIndex] != NULL) {
+  while (inExtensions [extensionIndex] != nullptr) {
     extensionIndex ++ ;
   }
   co.setForeColor (kMagentaForeColor) ;
@@ -149,7 +149,7 @@ static void print_help (int argv,
   co << "Handled extension" << ((extensionIndex > 1) ? "s" : "") << ":\n" ;
   co.setTextAttribute (kAllAttributesOff) ;
   extensionIndex = 0 ;
-  while (inExtensions [extensionIndex] != NULL) {
+  while (inExtensions [extensionIndex] != nullptr) {
     co.setForeColor (kBlueForeColor) ;
     co.setTextAttribute (kBoldTextAttribute) ;
     co << "." << inExtensions [extensionIndex] ;
@@ -171,7 +171,7 @@ static void print_help (int argv,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//     Command line option beginning with a single '-'                                           
+//     Command line option beginning with a single '-'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -205,7 +205,7 @@ static void option_beginning_with_single_minus_sign (const char * inCommand,
          << "' command line option (correct format is : '-"
          << inCommand
          << "=value').\n" ;
-    }  
+    }
   }else{
     co << "Error : unknown '" << inCommand << "' command line option.\n" ;
   }
@@ -213,7 +213,7 @@ static void option_beginning_with_single_minus_sign (const char * inCommand,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//     Command line option beginning with '--'                                                   
+//     Command line option beginning with '--'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -244,7 +244,7 @@ static void option_beginning_with_double_minus_sign (const char * inCommand,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//     analyze_one_option                                                                        
+//     analyze_one_option
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -262,7 +262,7 @@ static void analyze_one_option (const char * inCommand,
     }else{
     //--- Single '-' at beginning
       option_beginning_with_single_minus_sign (inCommand, found) ;
-    }  
+    }
   }
 //--- Look for a file
   if (! found) {
@@ -306,15 +306,15 @@ static void analyze_one_option (const char * inCommand,
   //--- Initialize OPENFILENAME
     ZeroMemory (& ofn, sizeof(ofn)) ;
     ofn.lStructSize = sizeof (ofn) ;
-    ofn.hwndOwner = NULL ;
+    ofn.hwndOwner = nullptr ;
     ofn.lpstrFile = szFile ;
-  // Set lpstrFile[0] to '\0' so that GetOpenFileName does not 
+  // Set lpstrFile[0] to '\0' so that GetOpenFileName does not
   // use the contents of szFile to initialize itself.
     ofn.lpstrFile[0] = '\0';
     ofn.nMaxFile = sizeof (szFile) ;
     char filterString [1000] = "";
     int32_t filterIndex = 0 ;
-    while (inExtensions [filterIndex] != NULL) {
+    while (inExtensions [filterIndex] != nullptr) {
       if (filterIndex != 0) {
         strcat (filterString, ";") ;
       }
@@ -327,11 +327,11 @@ static void analyze_one_option (const char * inCommand,
     snprintf (filter, 999, "%c%s%c", zero, filterString, zero) ;
     ofn.lpstrFilter = filter ;
     ofn.nFilterIndex = 1;
-    ofn.lpstrFileTitle = NULL;
+    ofn.lpstrFileTitle = nullptr;
     ofn.nMaxFileTitle = 0 ;
-    char * currentDir = getcwd (NULL, 0) ;
+    char * currentDir = getcwd (nullptr, 0) ;
     ofn.lpstrInitialDir = currentDir ;
-    ofn.lpstrTitle = NULL ;
+    ofn.lpstrTitle = nullptr ;
     ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY ;
     if (GetOpenFileName (& ofn)) {
       C_String fileName ;
@@ -357,7 +357,7 @@ static void analyze_one_option (const char * inCommand,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//     F_Analyze_CLI_Options                                                                     
+//     F_Analyze_CLI_Options
 //
 //----------------------------------------------------------------------------------------------------------------------
 

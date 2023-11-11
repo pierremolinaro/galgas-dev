@@ -1,8 +1,8 @@
 //----------------------------------------------------------------------------------------------------------------------
 //
-//     BDD package (implementation of ROBDD)                                                     
+//     BDD package (implementation of ROBDD)
 //
-//  This file is part of libpm library                                                           
+//  This file is part of libpm library
 //
 //  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
 //
@@ -33,13 +33,13 @@ uint32_t C_BDD::getBDDnodeSize (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  BDD objects unique table                                                                     
+//  BDD objects unique table
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 static uint32_t gNodeArraySize = 0 ;
-cBDDnode * gNodeArray = NULL ;
-static uint64_t * gMarkTable = NULL ;
+cBDDnode * gNodeArray = nullptr ;
+static uint64_t * gMarkTable = nullptr ;
 static uint32_t gCurrentNodeCount = 0 ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -62,7 +62,7 @@ uint32_t C_BDD::getExistingNodesCount (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-static uint32_t * gCollisionMap = NULL ;
+static uint32_t * gCollisionMap = nullptr ;
 static uint32_t gCollisionMapSize = 0 ;
 static uint32_t gHashMapPowerOfTwoMaxSize = 31 ;
 static bool gHashMapExpandable = true ;
@@ -230,15 +230,15 @@ uint32_t C_BDD::getMarkedNodesCount (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  BDD objects hash map                                                                         
+//  BDD objects hash map
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-static const int32_t kInitialCollisionMapPowerOfTwoSize = 20 ; 
+static const int32_t kInitialCollisionMapPowerOfTwoSize = 20 ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//       BDD unique table implementation                                                         
+//       BDD unique table implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -283,15 +283,15 @@ void C_BDD::setHashMapMaxSize (const uint32_t inPowerOfTwoSize) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-static C_BDD * gFirstBDD = NULL ;
-static C_BDD * gLastBDD = NULL ;
+static C_BDD * gFirstBDD = nullptr ;
+static C_BDD * gLastBDD = nullptr ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
 uint32_t C_BDD::getBDDinstancesCount (void) {
   uint32_t n = 0 ;
   C_BDD * p = gFirstBDD ;
-  while (p != NULL) {
+  while (p != nullptr) {
     n ++ ;
     p = p->mPtrToNextBDD ;
   }
@@ -332,7 +332,7 @@ void C_BDD::markAndSweepUnusedNodes (void) {
   unmarkAllExistingBDDnodes () ;
 //--- Marquer tous les elements utilises
   C_BDD * p = gFirstBDD ;
-  while (p != NULL) {
+  while (p != nullptr) {
     recursiveMarkBDDNodes (p->mBDDvalue) ;
     p = p->mPtrToNextBDD ;
   }
@@ -371,7 +371,7 @@ void C_BDD::markAndSweepUnusedNodes (void) {
   if (gNodeArraySize > 0) {
     gCurrentNodeCount = newNodeCount ;
     p = gFirstBDD ;
-    while (p != NULL) {
+    while (p != nullptr) {
       const uint32_t previousValue = p->mBDDvalue ;
       MF_Assert ((gNodeArray [previousValue >> 1].mAuxiliary) <= (previousValue >> 1), "(elseBranch [%lld] >> 1) <= nodeIndex [%lld]", (gNodeArray [previousValue >> 1].mAuxiliary), previousValue >> 1) ;
       p->mBDDvalue = (gNodeArray [previousValue >> 1].mAuxiliary << 1) | (previousValue & 1) ;
@@ -405,8 +405,8 @@ void C_BDD::markAndSweepUnusedNodes (void) {
 
 C_BDD::C_BDD (void) :
 mBDDvalue (0),
-mPtrToPreviousBDD (NULL),
-mPtrToNextBDD (NULL) {
+mPtrToPreviousBDD (nullptr),
+mPtrToNextBDD (nullptr) {
   initLinks () ;
 }
 
@@ -414,8 +414,8 @@ mPtrToNextBDD (NULL) {
 
 C_BDD::C_BDD (const uint32_t inValue) :
 mBDDvalue (inValue),
-mPtrToPreviousBDD (NULL),
-mPtrToNextBDD (NULL) {
+mPtrToPreviousBDD (nullptr),
+mPtrToNextBDD (nullptr) {
   initLinks () ;
 }
 
@@ -424,8 +424,8 @@ mPtrToNextBDD (NULL) {
 C_BDD::C_BDD (const uint32_t variable,
               const bool inSign) :
 mBDDvalue (0),
-mPtrToPreviousBDD (NULL),
-mPtrToNextBDD (NULL) {
+mPtrToPreviousBDD (nullptr),
+mPtrToNextBDD (nullptr) {
   initLinks () ;
   const uint32_t complement = inSign ? 0U : 1U ;
   mBDDvalue = find_or_add (variable, complement, complement ^ 1 COMMA_HERE) ;
@@ -435,15 +435,15 @@ mPtrToNextBDD (NULL) {
 
 C_BDD::C_BDD (const C_BDD & inSource) :
 mBDDvalue (inSource.mBDDvalue),
-mPtrToPreviousBDD (NULL),
-mPtrToNextBDD (NULL) {
+mPtrToPreviousBDD (nullptr),
+mPtrToNextBDD (nullptr) {
   initLinks () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 void C_BDD::initLinks (void) {
-  if (gFirstBDD == NULL) {
+  if (gFirstBDD == nullptr) {
     gLastBDD = this ;
   }else{
     gFirstBDD->mPtrToPreviousBDD = this ;
@@ -456,12 +456,12 @@ void C_BDD::initLinks (void) {
 
 C_BDD::~C_BDD (void) {
   mBDDvalue = 0 ;
-  if (mPtrToPreviousBDD == NULL) {
+  if (mPtrToPreviousBDD == nullptr) {
     gFirstBDD = gFirstBDD->mPtrToNextBDD ;
   }else{
     mPtrToPreviousBDD->mPtrToNextBDD = mPtrToNextBDD ;
   }
-  if (mPtrToNextBDD == NULL) {
+  if (mPtrToNextBDD == nullptr) {
     gLastBDD = gLastBDD->mPtrToPreviousBDD ;
   }else{
     mPtrToNextBDD->mPtrToPreviousBDD = mPtrToPreviousBDD ;
@@ -511,7 +511,7 @@ void C_BDD::checkAllBDDsAreWellFormed (LOCATION_ARGS) {
   unmarkAllExistingBDDnodes () ;
 //--- Check BDDs
   C_BDD * p = gFirstBDD ;
-  while (p != NULL) {
+  while (p != nullptr) {
     internalCheckBDDIsWellFormed (p->mBDDvalue, UINT16_MAX COMMA_THERE) ;
     p = p->mPtrToNextBDD ;
   }
@@ -600,14 +600,14 @@ void C_BDD::printBDDpackageOperationsSummary (AC_OutputStream & inStream) {
     }else{
       entrySizeArray.forceObjectAtIndex (length, 1, 0 COMMA_HERE) ;
     }
-  }  
+  }
   for (int32_t i=0 ; i<entrySizeArray.count () ; i++) {
     if ((entrySizeArray (i COMMA_HERE) > 0) && (gCollisionMapSize > 0)) {
       inStream << "  " << cStringWithUnsigned (entrySizeArray (i COMMA_HERE))
-               << " entries of size " << cStringWithSigned (i) 
+               << " entries of size " << cStringWithSigned (i)
                << " (" << cStringWithUnsigned ((100UL * entrySizeArray (i COMMA_HERE)) / gCollisionMapSize) << "%)\n" ;
     }
-  }  
+  }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -621,7 +621,7 @@ void C_BDD::freeBDDStataStructures (void) {
     macroMyDeletePODArray (gMarkTable) ;
     macroMyDeletePODArray (gNodeArray) ;
   }else{
-    #ifndef DO_NOT_GENERATE_CHECKINGS 
+    #ifndef DO_NOT_GENERATE_CHECKINGS
       printf ("BDD package info: cannot free BDD structures, %u C_BDD instances, %u BDD nodes still alive\n",
               C_BDD::getBDDinstancesCount (),
               gCurrentNodeCount) ;

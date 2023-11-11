@@ -24,7 +24,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class C_TextFileWrite ;
 class GALGAS_terminalSymbolsMapForGrammarAnalysis ;
 class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
 

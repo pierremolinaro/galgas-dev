@@ -16,7 +16,6 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 #include "strings/C_HTMLString.h"
-#include "files/C_TextFileWrite.h"
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/C_Compiler.h"
 #include "collections/TC_UniqueArray2.h"
