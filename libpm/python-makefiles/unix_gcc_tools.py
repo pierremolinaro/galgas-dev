@@ -16,8 +16,6 @@ def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, ma
   gmf.mJSONfilePath = jsonFilePath
   gmf.mDictionary = dictionary
   gmf.mExecutable = EXECUTABLE
-  if os.name == "nt" : # Cygwin
-    gmf.mExecutableSuffix = ".exe"
   gmf.mGoal = GOAL
   gmf.mMaxParallelJobs = maxParallelJobs
   gmf.mDisplayCommands = displayCommands
@@ -33,6 +31,12 @@ def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, ma
   gmf.mLinkingMessage = "Linking for Unix"
   gmf.mInstallationgMessage = "Installing"
   gmf.mStripMessage = "Stripping"
+
+  if os.name == "nt" : # Cygwin
+    gmf.mExecutableSuffix = ".exe"
+    gmf.mCompilationMessage = "Compiling for Cygwin"
+    gmf.mLinkingMessage = "Linking for Cygwin"
+
 #--- Options for all compilers
   gmf.mAllCompilerOptions = default_build_options.allCompilerOptions (["-Wconversion"])
 #--- Options for release mode
