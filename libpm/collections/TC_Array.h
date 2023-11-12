@@ -148,15 +148,15 @@ template <typename TYPE> class TC_Array {
 
 //--- Intersection
   public: void intersectionOfOrderedArraies (const TC_Array<TYPE> & inOperand,
-                                              TC_Array<TYPE> & outResult) const ;
+                                             TC_Array<TYPE> & outResult) const ;
 
 //--- Union
   public: void unionOfOrderedArraies (const TC_Array<TYPE> & inOperand,
-                                       TC_Array<TYPE> & outResult) const ;
+                                      TC_Array<TYPE> & outResult) const ;
 
 //--- substract
   public: void substractOfOrderedArraies (const TC_Array<TYPE> & inSubstractedSet,
-                                           TC_Array<TYPE> & outResult) const ;
+                                          TC_Array<TYPE> & outResult) const ;
 
 //------------------------------------
 
@@ -173,18 +173,19 @@ template <typename TYPE> class TC_Array {
 
 //--- Allocation with provided data
   public: void setDataFromPointer (TYPE * & ioDataPtr,
-                                    const int32_t inDataLength) ;
+                                   const int32_t inDataLength) ;
 
 //--- Append data
   public: void appendDataFromPointer (const TYPE * inDataPtr,
-                                       const int32_t inDataLength) ;
+                                      const int32_t inDataLength) ;
 
 //--- Remove objects at index (0 <= index < count)
   public: void removeObjectAtIndex (const int32_t inIndex
-                                     COMMA_LOCATION_ARGS) ;
+                                    COMMA_LOCATION_ARGS) ;
+
   public: void removeObjectsAtIndex (const int32_t inCount,
-                                      const int32_t inStartingIndex
-                                      COMMA_LOCATION_ARGS) ;
+                                     const int32_t inStartingIndex
+                                     COMMA_LOCATION_ARGS) ;
 
 //--- Shared Array
   private: cSharedArray <TYPE> * mSharedArray ;
