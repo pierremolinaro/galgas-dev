@@ -91,7 +91,7 @@ template <typename TYPE> class TC_Array {
 
 //--- Allocation Constructor (array initialized with inValue)
   public: TC_Array (const int inCount,
-                     const TYPE & inValue COMMA_LOCATION_ARGS) ;
+                    const TYPE & inValue COMMA_LOCATION_ARGS) ;
 
 //--- Handle Copy
   public: TC_Array (const TC_Array <TYPE> &) ;
@@ -133,8 +133,8 @@ template <typename TYPE> class TC_Array {
 
 //--- Insert object at index (0 <= index <= count)
   public: void insertObjectAtIndex (const TYPE & inValue,
-                                     const int32_t inIndex
-                                     COMMA_LOCATION_ARGS) ; // inValue is copied
+                                    const int32_t inIndex
+                                    COMMA_LOCATION_ARGS) ; // inValue is copied
 
 //------------------------------------ Sorted array operations
 //--- Remove an object, suppose the array is ordered

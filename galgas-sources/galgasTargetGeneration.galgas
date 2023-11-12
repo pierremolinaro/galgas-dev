@@ -709,6 +709,8 @@ proc updateGalgasTargets
       !groupName:"Big Integers"
       !groupPath:"big-integers"
       !fileNames:{
+        !"uint128-multiply-divide.cpp",
+        !"uint128-multiply-divide.h",
         !"BigUnsigned.cpp",
         !"BigUnsigned.h",
         !"C_BigInt.cpp",

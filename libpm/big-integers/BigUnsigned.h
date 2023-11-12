@@ -20,7 +20,13 @@ class BigUnsigned {
   public: BigUnsigned addingBigUnsigned (const BigUnsigned & inOperand) const ;
   public: BigUnsigned subtractingBigUnsigned (const BigUnsigned & inOperand) const ;
   public: BigUnsigned multiplyingByU64 (const uint64_t inOperand) const ;
+  public: void divideByU64 (const uint64_t inDivisor,
+                            BigUnsigned & outQuotient,
+                            uint64_t & outRemainder) const ;
   public: BigUnsigned multiplyingByBigUnsigned (const BigUnsigned & inOperand) const ;
+  public: void divideByBigUnsigned (const BigUnsigned & inDivisor,
+                                    BigUnsigned & outQuotient,
+                                    BigUnsigned & outRemainder) ;
   public: int compare (const BigUnsigned & inOperand) const ;
 
   public: BigUnsigned oringWithBigUnsigned (const BigUnsigned & inOperand) const ;

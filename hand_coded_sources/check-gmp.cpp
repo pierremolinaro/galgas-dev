@@ -16,30 +16,141 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-declarations.h"
-#include "big-integers/BigUnsigned.h"
+#include "BigUnsigned.h"
+#include "uint128-multiply-divide.h"
+#include "C_Timer.h"
+#include "galgas-random.h"
+
+//--------------------------------------------------------------------------------------------------
+
+#if __WORDSIZE == 64
+  static void testUnsigned128Multplications (void) {
+    C_Timer timer ;
+    uint64_t errorCount = 0 ;
+    std::cout << "Test multiplications 64 x 64 -> 128... " ;
+    for (int i = 0 ; i < 100'000'000 ; i++) {
+      const uint64_t operand1 = uint64_t (galgas_random ()) ;
+      const uint64_t operand2 = uint64_t (galgas_random ()) ;
+    //--- Compute reference result
+     const unsigned __int128 op1_128 = operand1 ;
+     const unsigned __int128 op2_128 = operand2 ;
+     const unsigned __int128 referenceProduct = op1_128 * op2_128 ;
+    //--- Compute with galgas routine
+     uint64_t productH ;
+     uint64_t productL ;
+     mul64x64to128 (operand1, operand2, productH, productL) ;
+    //--- Compare result
+      unsigned __int128 product = productH ;
+      product <<= 64 ;
+      product |= productL ;
+      const bool ok = referenceProduct == product ;
+      if (!ok) {
+        errorCount += 1 ;
+      }
+    }
+    if (errorCount == 0) {
+      std::cout << "Ok " << timer.msFromStart () << " ms\n" ;
+    }else{
+      std::cout << errorCount << " errors (" << timer.msFromStart () << " ms)\n" ;
+      exit (1) ;
+    }
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+#if __WORDSIZE == 64
+  static void testUnsigned128Divisions (void) {
+    C_Timer timer ;
+    uint64_t errorCount = 0 ;
+    std::cout << "Test divisions 128 / 64 -> (128, 64)... " ;
+    for (int i = 0 ; i < 100'000'000 ; i++) {
+      const uint64_t dividendH = uint64_t (galgas_random ()) ;
+      const uint64_t dividendL = uint64_t (galgas_random ()) ;
+      uint64_t divisor = 0 ;
+      while (divisor == 0) {
+        divisor = uint64_t (galgas_random ()) ;
+      }
+    //--- Build 128 bits operands
+      unsigned __int128 dividend = dividendH ;
+      dividend <<= 64 ;
+      dividend |= dividendL ;
+    //--- Compute reference result
+     const unsigned __int128 referenceQuotient = dividend / divisor ;
+     const unsigned __int128 referenceRemainder = dividend % divisor ;
+    //--- Compute with galgas routine
+     uint64_t quotientH ;
+     uint64_t quotientL ;
+     uint64_t remainder ;
+     div128By64 (dividendH, dividendL, divisor, quotientH, quotientL, remainder) ;
+    //--- Compare result
+      unsigned __int128 quotient = quotientH ;
+      quotient <<= 64 ;
+      quotient |= quotientL ;
+      const bool ok = (referenceQuotient == quotient) && (referenceRemainder == remainder) ;
+      if (!ok) {
+        errorCount += 1 ;
+      }
+    }
+    if (errorCount == 0) {
+      std::cout << "Ok " << timer.msFromStart () << " ms\n" ;
+    }else{
+      std::cout << errorCount << " errors (" << timer.msFromStart () << " ms)\n" ;
+      exit (1) ;
+    }
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+static void testMultiplyingDividingBigUnsignedByU64 (void) {
+  std::cout << "Test multiplying, dividing BigUnsigned by U64... " ;
+  C_Timer timer ;
+  uint64_t errorCount = 0 ;
+  for (int i = 0 ; i < 10'000'000 ; i++) {
+    const BigUnsigned dividend = BigUnsigned::randomNumber () ;
+    uint64_t divisor = 0 ;
+    while (divisor == 0) {
+      divisor = uint64_t (galgas_random ()) ;
+    }
+    BigUnsigned quotient ;
+    uint64_t remainder ;
+    dividend.divideByU64 (divisor, quotient, remainder) ;
+    const BigUnsigned x = quotient.multiplyingByU64 (divisor) ;
+    const BigUnsigned y = x.addingU64 (remainder) ;
+    if (dividend.compare (y) != 0) {
+      errorCount += 1 ;
+    }
+  }
+  if (errorCount == 0) {
+    std::cout << "Ok " << timer.msFromStart () << " ms\n" ;
+  }else{
+    std::cout << errorCount << " errors (" << timer.msFromStart () << " ms)\n" ;
+    exit (1) ;
+  }
+}
 
 //--------------------------------------------------------------------------------------------------
 
 static void testAddingSubtractingBigUnsigned (void) {
   std::cout << "Test adding, subtracting BigUnsigned... " ;
-  const clock_t start = ::clock () ;
-  for (int i = 0 ; i < 1'000'000 ; i++) {
+  C_Timer timer ;
+  uint64_t errorCount = 0 ;
+  for (int i = 0 ; i < 10'000'000 ; i++) {
     const BigUnsigned bigA = BigUnsigned::randomNumber () ;
     const BigUnsigned bigB = BigUnsigned::randomNumber () ;
     const BigUnsigned bigAdd = bigA.addingBigUnsigned (bigB) ;
     const BigUnsigned bigSub = bigAdd.subtractingBigUnsigned (bigB) ;
     if (bigA.compare (bigSub) != 0) {
-      std::cout << "Error " << __FILE__ << ":" << __LINE__ << "\n" ;
-      bigA.printHex ("bigA") ;
-      bigB.printHex ("bigB") ;
-      bigAdd.printHex ("bigAdd") ;
-      bigSub.printHex ("bigSub") ;
-      exit (1) ;
+      errorCount += 1 ;
     }
   }
-  const clock_t end = ::clock () ;
-  const auto duration = 1000 * (end - start) / CLOCKS_PER_SEC ;
-  std::cout << "Ok " << duration << " ms\n" ;
+  if (errorCount == 0) {
+    std::cout << "Ok " << timer.msFromStart () << " ms\n" ;
+  }else{
+    std::cout << errorCount << " errors (" << timer.msFromStart () << " ms)\n" ;
+    exit (1) ;
+  }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -52,26 +163,35 @@ static uint32_t randomU32 (void) {
 
 static void testAddingSubtractingC_BigInt (void) {
   std::cout << "Test adding, subtracting C_BigInt... " ;
-  const clock_t start = ::clock () ;
-  for (int i=0 ; i<1'000'000 ; i++) {
+  C_Timer timer ;
+  uint64_t errorCount = 0 ;
+  for (int i=0 ; i<10'000'000 ; i++) {
     const C_BigInt bigA = C_BigInt::randomNumber () ;
     const C_BigInt bigB = C_BigInt::randomNumber () ;
     const C_BigInt bigAdd = bigA + bigB ;
     const C_BigInt bigSub = bigAdd - bigB ;
     if (bigA != bigSub) {
-      exit (1) ;
+      errorCount += 1 ;
     }
   }
-  const clock_t end = ::clock () ;
-  const auto duration = 1000 * (end - start) / CLOCKS_PER_SEC ;
-  std::cout << "Ok " << duration << " ms\n" ;
+  if (errorCount == 0) {
+    std::cout << "Ok " << timer.msFromStart () << " ms\n" ;
+  }else{
+    std::cout << errorCount << " errors (" << timer.msFromStart () << " ms)\n" ;
+    exit (1) ;
+  }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 void routine_checkGMP (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   co << "*** Check GMP (option --check-gmp) ***\n" ;
+  #if __WORDSIZE == 64
+    testUnsigned128Divisions () ;
+    testUnsigned128Multplications () ;
+  #endif
   testAddingSubtractingBigUnsigned () ;
+  testMultiplyingDividingBigUnsignedByU64 () ;
   testAddingSubtractingC_BigInt () ;
   uint32_t errorCount = 0 ;
   {

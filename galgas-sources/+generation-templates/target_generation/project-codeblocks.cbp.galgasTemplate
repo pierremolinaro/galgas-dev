@@ -90,6 +90,7 @@ end
    <Unit filename="%!LIBPM_PATH%/command_line_interface/C_builtin_CLI_Options.cpp" />
    <Unit filename="%!LIBPM_PATH%/command_line_interface/F_Analyze_CLI_Options.cpp" />
    <Unit filename="%!LIBPM_PATH%/command_line_interface/F_mainForLIBPM.cpp" />
+   <Unit filename="%!LIBPM_PATH%/big-integers/uint128-multiply-divide.cpp" /> 
    <Unit filename="%!LIBPM_PATH%/big-integers/BigUnsigned.cpp" />
    <Unit filename="%!LIBPM_PATH%/big-integers/C_BigInt.cpp" />
    <Unit filename="%!LIBPM_PATH%/bdd/C_BDD.cpp" />

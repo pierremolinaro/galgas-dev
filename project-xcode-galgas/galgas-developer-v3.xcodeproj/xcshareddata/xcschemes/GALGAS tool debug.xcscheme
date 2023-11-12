@@ -56,12 +56,16 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--no-file-generation"
+            argument = "--check-gmp"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "--no-file-generation"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "/Volumes/dev-svn/galgas-dev/+galgas.galgasProject"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>
