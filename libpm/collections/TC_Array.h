@@ -154,11 +154,9 @@ template <typename TYPE> class TC_Array {
   public: void unionOfOrderedArraies (const TC_Array<TYPE> & inOperand,
                                       TC_Array<TYPE> & outResult) const ;
 
-//--- substract
-  public: void substractOfOrderedArraies (const TC_Array<TYPE> & inSubstractedSet,
-                                          TC_Array<TYPE> & outResult) const ;
-
-//------------------------------------
+//--- subtract
+  public: void subtractOfOrderedArraies (const TC_Array<TYPE> & inSubtractedSet,
+                                         TC_Array<TYPE> & outResult) const ;
 
 //--- Remove last object(s)
   public: void removeLastObject (LOCATION_ARGS) ;
@@ -622,8 +620,8 @@ template <typename TYPE> void TC_Array <TYPE>::unionOfOrderedArraies (const TC_A
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::substractOfOrderedArraies (const TC_Array<TYPE> & inSubstractedSet,
-                                                                          TC_Array<TYPE> & outResult) const {
+template <typename TYPE> void TC_Array <TYPE>::subtractOfOrderedArraies (const TC_Array<TYPE> & inSubstractedSet,
+                                                                         TC_Array<TYPE> & outResult) const {
   outResult.setCountToZero () ;
   if (count () > 0) {
     if (inSubstractedSet.count () == 0) {

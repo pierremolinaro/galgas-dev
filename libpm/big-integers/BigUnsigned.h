@@ -12,6 +12,7 @@ class BigUnsigned {
 //--- Constructors
   public: static BigUnsigned randomNumber (void) ;
   public: BigUnsigned (void) noexcept ;
+  public: BigUnsigned (const uint64_t inValue) noexcept ;
 
 
 //--- Operators

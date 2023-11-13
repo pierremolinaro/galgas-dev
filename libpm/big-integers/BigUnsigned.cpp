@@ -34,6 +34,15 @@ BigUnsigned::BigUnsigned (void) noexcept :
 mArray () {
 }
 
+//--------------------------------------------------------------------------------------------------
+
+BigUnsigned::BigUnsigned (const uint64_t inValue) noexcept :
+mArray () {
+  if (inValue != 0) {
+    mArray.push_back (inValue) ;
+  }
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -144,7 +153,7 @@ BigUnsigned BigUnsigned::subtractingBigUnsigned (const BigUnsigned & inOperand) 
       std::cout << "Error " << __FILE__ << ":" << __LINE__ << "\n" ;
       exit (1) ;
     }
-    while ((result.mArray.size () > 0) && (result.mArray [result.mArray.size () - 1] == 0)) {
+    while ((result.mArray.size () > 0) && (result.mArray.back () == 0)) {
       result.mArray.pop_back () ;
     }
   }
@@ -169,26 +178,6 @@ BigUnsigned BigUnsigned::multiplyingByBigUnsigned (const BigUnsigned & inOperand
     }
   }
   return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Print
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-void BigUnsigned::printHex (const char * inName) const {
-  if (mArray.size () == 0) {
-    printf ("%s: 0\n", inName) ;
-  }else{
-    printf ("%s: 0x", inName) ;
-    for (int i = int (mArray.size ()) - 1 ; i>= 0 ; i--) {
-      printf ("'%0" PRIx64 "X", mArray [size_t (i)]) ;
-    }
-    printf ("\n") ;
-  }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -243,7 +232,7 @@ BigUnsigned BigUnsigned::xoringWithBigUnsigned (const BigUnsigned & inOperand) c
     for (size_t i=inOperand.mArray.size () ; i<maxSize ; i++) {
       result.mArray.push_back (mArray [i]) ;
     }
-    while ((result.mArray.size () > 0) && (result.mArray [result.mArray.size () - 1] == 0)) {
+    while ((result.mArray.size () > 0) && (result.mArray.back () == 0)) {
       result.mArray.pop_back () ;
     }
   }
@@ -260,7 +249,7 @@ BigUnsigned BigUnsigned::andingWithBigUnsigned (const BigUnsigned & inOperand) c
     for (size_t i=0 ; i<minSize ; i++) {
       result.mArray.push_back (mArray [i] & inOperand.mArray [i]) ;
     }
-    while ((result.mArray.size () > 0) && (result.mArray [result.mArray.size () - 1] == 0)) {
+    while ((result.mArray.size () > 0) && (result.mArray.back () == 0)) {
       result.mArray.pop_back () ;
     }
   }
@@ -310,6 +299,20 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
   #pragma mark Print
 #endif
 
+//--------------------------------------------------------------------------------------------------
+
+void BigUnsigned::printHex (const char * inName) const {
+  if (mArray.size () == 0) {
+    printf ("%s: 0\n", inName) ;
+  }else{
+    printf ("%s: 0x", inName) ;
+    for (int i = int (mArray.size ()) - 1 ; i>= 0 ; i--) {
+      printf ("'%0" PRIx64 "X", mArray [size_t (i)]) ;
+    }
+    printf ("\n") ;
+  }
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -321,7 +324,9 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 BigUnsigned BigUnsigned::addingU64 (const uint64_t inOperand) const {
   BigUnsigned result ;
   if (mArray.size () == 0) { // Receiver is zero
-    result.mArray.push_back (inOperand) ;
+    if (inOperand != 0) {
+      result.mArray.push_back (inOperand) ;
+    }
   }else{
     uint64_t carry = inOperand ;
     result.mArray.reserve (mArray.size () + 1) ;
@@ -342,6 +347,7 @@ BigUnsigned BigUnsigned::addingU64 (const uint64_t inOperand) const {
 BigUnsigned BigUnsigned::multiplyingByU64 (const uint64_t inOperand) const {
   BigUnsigned result ;
   if ((mArray.size () != 0) && (inOperand != 0)) { // Operands are not zero
+    result.mArray.reserve (mArray.size () + 1) ;
     uint64_t carry = 0 ;
     for (size_t i=0 ; i<mArray.size () ; i++) {
     //--- multiplication 64 x 64 -> 128
