@@ -336,7 +336,6 @@ proc updateGalgasTargets
   availableGenerationFeatures += !"codeblocks-windows"
   availableGenerationFeatures += !"codeblocks-linux32"
   availableGenerationFeatures += !"codeblocks-linux64"
-#  availableGenerationFeatures += !"codeblocks-mac"
   availableGenerationFeatures += !"makefile-unix"
   availableGenerationFeatures += !"makefile-x86linux32-on-macosx"
   availableGenerationFeatures += !"makefile-x86linux64-on-macosx"
@@ -405,18 +404,6 @@ proc updateGalgasTargets
       !inQuietOutputByDefault
     )
   end
-#  if [generationFeatures hasKey !"codeblocks-mac"] then
-#    generateGalgasCodeBlocksMacTarget (
-#      !projectDirectory
-#      !buildDirName: inBuildDirectoryName
-#      !inTargetName
-#      !inToolCppFileList
-#      !libpmPath
-#      !inHandCodedSourceToolFileList
-#      !inHandCodedSourceDirectorySet
-#      !inQuietOutputByDefault
-#    )
-#  end
   if [generationFeatures hasKey !"codeblocks-linux32"] then
     generateGalgasCodeBlocksLinuxI686Target (
       !projectDirectory
