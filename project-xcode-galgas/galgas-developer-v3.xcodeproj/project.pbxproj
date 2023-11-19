@@ -2745,7 +2745,7 @@
 				);
 				INSTALL_PATH = /usr/local/bin;
 				MACH_O_TYPE = mh_execute;
-				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = NO;
 				OSACOMPILE_EXECUTE_ONLY = YES;
 				SDKROOT = macosx;
