@@ -318,7 +318,7 @@ syntax extension galgas4InstructionsSyntax {
             or
               $@type$ ?typeName  
             end
-           $identifier$ ?let variableName
+            $identifier$ ?let variableName
             optionalMethodActualArgumentList += !selector !.actualVarInput {!typeName: typeName !variableName: variableName}
           or
             $*$

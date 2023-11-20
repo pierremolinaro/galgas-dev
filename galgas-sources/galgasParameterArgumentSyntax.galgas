@@ -375,20 +375,6 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
   
   #·····················································································································
 
-#  rule <actual_parameter_list> !@actualParameterListAST outActualParameterList {
-#    outActualParameterList = {}
-#    select
-#    or
-#      repeat
-#         <actual_parameter> !?outActualParameterList
-#       while
-#         $,$
-#      end
-#    end
-#  }
-
-  #·····················································································································
-
   rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
     $?$ ?let selector
     select

@@ -7987,7 +7987,7 @@ GALGAS_string cPtr_typealiasDeclarationAST::getter_keyRepresentation (C_Compiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_typealiasDeclarationAST temp_0 = this ;
-  result_result = GALGAS_string ("typealias @").add_operation (temp_0.readProperty_mAliasTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 120)) ;
+  result_result = GALGAS_string ("typealias @").add_operation (temp_0.readProperty_mAliasTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 124)) ;
 //---
   return result_result ;
 }
@@ -8018,16 +8018,16 @@ void cPtr_typealiasDeclarationAST::method_enterDeclarationInGraph (GALGAS_semant
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_typealiasDeclarationAST temp_0 = this ;
   const GALGAS_typealiasDeclarationAST temp_1 = this ;
-  GALGAS_lstring var_aliasKey_5645 = GALGAS_lstring::constructor_new (GALGAS_string ("@").add_operation (temp_0.readProperty_mAliasTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 136)), temp_1.readProperty_mAliasTypeName ().readProperty_location ()  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 136)) ;
+  GALGAS_lstring var_aliasKey_5789 = GALGAS_lstring::constructor_new (GALGAS_string ("@").add_operation (temp_0.readProperty_mAliasTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 140)), temp_1.readProperty_mAliasTypeName ().readProperty_location ()  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 140)) ;
   {
   const GALGAS_typealiasDeclarationAST temp_2 = this ;
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_aliasKey_5645, temp_2, inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 137)) ;
+  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_aliasKey_5789, temp_2, inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 141)) ;
   }
   const GALGAS_typealiasDeclarationAST temp_3 = this ;
   const GALGAS_typealiasDeclarationAST temp_4 = this ;
-  GALGAS_lstring var_referenceKey_5798 = GALGAS_lstring::constructor_new (GALGAS_string ("@").add_operation (temp_3.readProperty_mDefinedTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 138)), temp_4.readProperty_mDefinedTypeName ().readProperty_location ()  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 138)) ;
+  GALGAS_lstring var_referenceKey_5942 = GALGAS_lstring::constructor_new (GALGAS_string ("@").add_operation (temp_3.readProperty_mDefinedTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 142)), temp_4.readProperty_mDefinedTypeName ().readProperty_location ()  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 142)) ;
   {
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_aliasKey_5645, var_referenceKey_5798 COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 139)) ;
+  ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_aliasKey_5789, var_referenceKey_5942 COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 143)) ;
   }
 }
 //----------------------------------------------------------------------------------------------------------------------
@@ -8043,44 +8043,44 @@ void cPtr_typealiasDeclarationAST::method_enterDeclarationInSemanticContext (con
                                                                              GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
                                                                              C_Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapEntry var_definedTypeEntry_6694 ;
+  GALGAS_unifiedTypeMapEntry var_definedTypeEntry_6838 ;
   {
   const GALGAS_typealiasDeclarationAST temp_0 = this ;
-  extensionSetter_makeEntryFromString (ioArgument_ioTypeMap, temp_0.readProperty_mDefinedTypeName ().readProperty_string (), var_definedTypeEntry_6694, inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 150)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioTypeMap, temp_0.readProperty_mDefinedTypeName ().readProperty_string (), var_definedTypeEntry_6838, inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 154)) ;
   }
-  switch (var_definedTypeEntry_6694.enumValue ()) {
+  switch (var_definedTypeEntry_6838.enumValue ()) {
   case GALGAS_unifiedTypeMapEntry::kNotBuilt:
     break ;
   case GALGAS_unifiedTypeMapEntry::kEnum_null:
     {
       const GALGAS_typealiasDeclarationAST temp_1 = this ;
       TC_Array <C_FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (temp_1.readProperty_mDefinedTypeName ().readProperty_location (), GALGAS_string ("Undefined type"), fixItArray2  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 153)) ;
+      inCompiler->emitSemanticError (temp_1.readProperty_mDefinedTypeName ().readProperty_location (), GALGAS_string ("Undefined type"), fixItArray2  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 157)) ;
     }
     break ;
   case GALGAS_unifiedTypeMapEntry::kEnum_element:
     {
-      const cEnumAssociatedValues_unifiedTypeMapEntry_element * extractPtr_8461 = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) (var_definedTypeEntry_6694.unsafePointer ()) ;
-      const GALGAS_unifiedTypeMapElementClass_2D_weak extractedValue_6860_weakElement = extractPtr_8461->mAssociatedValue0 ;
-      switch (extractedValue_6860_weakElement.bang_unifiedTypeMapElementClass_2D_weak (inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 155)).readProperty_mDefinition ().enumValue ()) {
+      const cEnumAssociatedValues_unifiedTypeMapEntry_element * extractPtr_8605 = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) (var_definedTypeEntry_6838.unsafePointer ()) ;
+      const GALGAS_unifiedTypeMapElementClass_2D_weak extractedValue_7004_weakElement = extractPtr_8605->mAssociatedValue0 ;
+      switch (extractedValue_7004_weakElement.bang_unifiedTypeMapElementClass_2D_weak (inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 159)).readProperty_mDefinition ().enumValue ()) {
       case GALGAS_typeDefinition::kNotBuilt:
         break ;
       case GALGAS_typeDefinition::kEnum_unsolved:
         {
           const GALGAS_typealiasDeclarationAST temp_3 = this ;
           TC_Array <C_FixItDescription> fixItArray4 ;
-          inCompiler->emitSemanticError (temp_3.readProperty_mDefinedTypeName ().readProperty_location (), GALGAS_string ("Undefined type"), fixItArray4  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 157)) ;
+          inCompiler->emitSemanticError (temp_3.readProperty_mDefinedTypeName ().readProperty_location (), GALGAS_string ("Undefined type"), fixItArray4  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 161)) ;
         }
         break ;
       case GALGAS_typeDefinition::kEnum_solved:
         {
-          const cEnumAssociatedValues_typeDefinition_solved * extractPtr_8453 = (const cEnumAssociatedValues_typeDefinition_solved *) (extractedValue_6860_weakElement.bang_unifiedTypeMapElementClass_2D_weak (inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 155)).readProperty_mDefinition ().unsafePointer ()) ;
-          const GALGAS_unifiedTypeDefinition extractedValue_7036_def = extractPtr_8453->mAssociatedValue0 ;
+          const cEnumAssociatedValues_typeDefinition_solved * extractPtr_8597 = (const cEnumAssociatedValues_typeDefinition_solved *) (extractedValue_7004_weakElement.bang_unifiedTypeMapElementClass_2D_weak (inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 159)).readProperty_mDefinition ().unsafePointer ()) ;
+          const GALGAS_unifiedTypeDefinition extractedValue_7180_def = extractPtr_8597->mAssociatedValue0 ;
           const GALGAS_typealiasDeclarationAST temp_5 = this ;
-          GALGAS_unifiedTypeDefinition var_definition_7055 = GALGAS_unifiedTypeDefinition::constructor_new (extractedValue_7036_def.readProperty_mTypeName (), GALGAS_bool (false), extractedValue_7036_def.readProperty_mIsConcrete (), extractedValue_7036_def.readProperty_mSuperType (), extractedValue_7036_def.readProperty_mTypeKindEnum (), extractedValue_7036_def.readProperty_mSupportCollectionValue (), extractedValue_7036_def.readProperty_mAllTypedPropertyList (), extractedValue_7036_def.readProperty_mPropertyMap (), extractedValue_7036_def.readProperty_mCurrentTypedPropertyList (), extractedValue_7036_def.readProperty_mConstructorMap (), extractedValue_7036_def.readProperty_mGetterMap (), extractedValue_7036_def.readProperty_mSetterMap (), extractedValue_7036_def.readProperty_mInstanceMethodMap (), extractedValue_7036_def.readProperty_mClassMethodMap (), extractedValue_7036_def.readProperty_mOptionalMethodMap (), extractedValue_7036_def.readProperty_mEnumerationDescriptor (), extractedValue_7036_def.readProperty_mHandledOperatorFlags (), extractedValue_7036_def.readProperty_mAddAssignOperatorArguments (), extractedValue_7036_def.readProperty_mEnumConstantMap (), extractedValue_7036_def.readProperty_mEnumConstantList (), extractedValue_7036_def.readProperty_mMapSearchMethodList (), extractedValue_7036_def.readProperty_mMapEntrySearchConstructorList (), extractedValue_7036_def.readProperty_mGenerateHeaderInSeparateFile (), extractedValue_7036_def.readProperty_mTypeForEnumeratedElement (), extractedValue_7036_def.readProperty_mDefaultConstructorName (), GALGAS_string ("typealias-").add_operation (temp_5.readProperty_mAliasTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("type-alias-and-type-declaration.galgas", 185)), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 185)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("type-alias-and-type-declaration.galgas", 186))  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 159)) ;
+          GALGAS_unifiedTypeDefinition var_definition_7199 = GALGAS_unifiedTypeDefinition::constructor_new (extractedValue_7180_def.readProperty_mTypeName (), GALGAS_bool (false), extractedValue_7180_def.readProperty_mIsConcrete (), extractedValue_7180_def.readProperty_mSuperType (), extractedValue_7180_def.readProperty_mTypeKindEnum (), extractedValue_7180_def.readProperty_mSupportCollectionValue (), extractedValue_7180_def.readProperty_mAllTypedPropertyList (), extractedValue_7180_def.readProperty_mPropertyMap (), extractedValue_7180_def.readProperty_mCurrentTypedPropertyList (), extractedValue_7180_def.readProperty_mConstructorMap (), extractedValue_7180_def.readProperty_mGetterMap (), extractedValue_7180_def.readProperty_mSetterMap (), extractedValue_7180_def.readProperty_mInstanceMethodMap (), extractedValue_7180_def.readProperty_mClassMethodMap (), extractedValue_7180_def.readProperty_mOptionalMethodMap (), extractedValue_7180_def.readProperty_mEnumerationDescriptor (), extractedValue_7180_def.readProperty_mHandledOperatorFlags (), extractedValue_7180_def.readProperty_mAddAssignOperatorArguments (), extractedValue_7180_def.readProperty_mEnumConstantMap (), extractedValue_7180_def.readProperty_mEnumConstantList (), extractedValue_7180_def.readProperty_mMapSearchMethodList (), extractedValue_7180_def.readProperty_mMapEntrySearchConstructorList (), extractedValue_7180_def.readProperty_mGenerateHeaderInSeparateFile (), extractedValue_7180_def.readProperty_mTypeForEnumeratedElement (), extractedValue_7180_def.readProperty_mDefaultConstructorName (), GALGAS_string ("typealias-").add_operation (temp_5.readProperty_mAliasTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("type-alias-and-type-declaration.galgas", 189)), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 189)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("type-alias-and-type-declaration.galgas", 190))  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 163)) ;
           {
           const GALGAS_typealiasDeclarationAST temp_6 = this ;
-          extensionSetter_insertType (ioArgument_ioTypeMap, temp_6.readProperty_mAliasTypeName (), var_definition_7055, inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 188)) ;
+          extensionSetter_insertType (ioArgument_ioTypeMap, temp_6.readProperty_mAliasTypeName (), var_definition_7199, inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 192)) ;
           }
         }
         break ;
@@ -8105,21 +8105,21 @@ void cPtr_typealiasDeclarationAST::method_semanticAnalysis (GALGAS_lstringlist &
                                                             C_Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_typealiasDeclarationAST temp_0 = this ;
-  GALGAS_lstring var_nameForUsefulness_9224 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mAliasTypeName (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 203)) ;
+  GALGAS_lstring var_nameForUsefulness_9368 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mAliasTypeName (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 207)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_9224, var_nameForUsefulness_9224, inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 204)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_9368, var_nameForUsefulness_9368, inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 208)) ;
   }
   const GALGAS_typealiasDeclarationAST temp_1 = this ;
-  GALGAS_lstring var_elementTypeNameForUsefulness_9382 = function_typeNameForUsefulEntitiesGraph (temp_1.readProperty_mDefinedTypeName (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 205)) ;
+  GALGAS_lstring var_elementTypeNameForUsefulness_9526 = function_typeNameForUsefulEntitiesGraph (temp_1.readProperty_mDefinedTypeName (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 209)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_nameForUsefulness_9224, var_elementTypeNameForUsefulness_9382 COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 206)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_nameForUsefulness_9368, var_elementTypeNameForUsefulness_9526 COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 210)) ;
   }
   const GALGAS_typealiasDeclarationAST temp_2 = this ;
-  GALGAS_unifiedTypeMapEntry var_t_9621 = extensionGetter_searchKey (ioArgument_ioTypeMap, temp_2.readProperty_mDefinedTypeName (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 208)) ;
+  GALGAS_unifiedTypeMapEntry var_t_9765 = extensionGetter_searchKey (ioArgument_ioTypeMap, temp_2.readProperty_mDefinedTypeName (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 212)) ;
   const GALGAS_typealiasDeclarationAST temp_3 = this ;
   const GALGAS_typealiasDeclarationAST temp_4 = this ;
   const GALGAS_typealiasDeclarationAST temp_5 = this ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("typealias ").add_operation (temp_3.readProperty_mAliasTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 210)), GALGAS_aliasTypeForGeneration::constructor_new (extensionGetter_searchKey (ioArgument_ioTypeMap, temp_4.readProperty_mAliasTypeName (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 211)), temp_5.readProperty_mAliasTypeName ().readProperty_string (), var_t_9621  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 211))  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 209)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("typealias ").add_operation (temp_3.readProperty_mAliasTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 214)), GALGAS_aliasTypeForGeneration::constructor_new (extensionGetter_searchKey (ioArgument_ioTypeMap, temp_4.readProperty_mAliasTypeName (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 215)), temp_5.readProperty_mAliasTypeName ().readProperty_string (), var_t_9765  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 215))  COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 213)) ;
 }
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -8132,10 +8132,10 @@ void cPtr_aliasTypeForGeneration::method_appendDeclaration_31_ (GALGAS_stringset
                                                                 C_Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_aliasTypeForGeneration temp_0 = this ;
-  extensionMethod_addHeaderFileName_31_ (temp_0.readProperty_mReferencedType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 230)) ;
+  extensionMethod_addHeaderFileName_31_ (temp_0.readProperty_mReferencedType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 234)) ;
   const GALGAS_aliasTypeForGeneration temp_1 = this ;
   const GALGAS_aliasTypeForGeneration temp_2 = this ;
-  outArgument_outHeader = GALGAS_string (filewrapperTemplate_typeGenerationTemplate_typeAliasTypeHeader_31_ (inCompiler, temp_1.readProperty_mAliasTypeName ().getter_identifierRepresentation (SOURCE_FILE ("type-alias-and-type-declaration.galgas", 232)), extensionGetter_identifierRepresentation (temp_2.readProperty_mReferencedType (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 233)) COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 231))) ;
+  outArgument_outHeader = GALGAS_string (filewrapperTemplate_typeGenerationTemplate_typeAliasTypeHeader_31_ (inCompiler, temp_1.readProperty_mAliasTypeName ().getter_identifierRepresentation (SOURCE_FILE ("type-alias-and-type-declaration.galgas", 236)), extensionGetter_identifierRepresentation (temp_2.readProperty_mReferencedType (), inCompiler COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 237)) COMMA_SOURCE_FILE ("type-alias-and-type-declaration.galgas", 235))) ;
 }
 //----------------------------------------------------------------------------------------------------------------------
 //

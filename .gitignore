@@ -295,3 +295,4 @@ makefile-unix/galgas-lto
 *.depend
 *.layout
 *.exe
+build/helpers/*.html

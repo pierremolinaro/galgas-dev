@@ -1302,10 +1302,10 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
     for (int32_t i=0 ; i<transitionList.length () ; i++) {
       ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       ioHTMLFileContents << "  S" << cStringWithSigned (transitionList (i COMMA_HERE).mSourceState)
-                  << " |- " ;
+                         << " |- " ;
       inVocabulary.printInFile (ioHTMLFileContents, transitionList (i COMMA_HERE).mAction COMMA_HERE) ;
       ioHTMLFileContents << " -> S"
-                  << cStringWithSigned (transitionList (i COMMA_HERE).mTargetState) ;
+                         << cStringWithSigned (transitionList (i COMMA_HERE).mTargetState) ;
       ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
     }
     ioHTMLFileContents.outputRawData ("</table><p></p>") ;
@@ -1363,8 +1363,8 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
       if (inPopulateHTMLHelperString) {
         ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         ioHTMLFileContents << "Action [S"
-                    << cStringWithSigned (state)
-                    << ", " ;
+                           << cStringWithSigned (state)
+                           << ", " ;
         inVocabulary.printInFile (ioHTMLFileContents, terminal COMMA_HERE) ;
         ioHTMLFileContents << "] : accept" ;
         ioHTMLFileContents.outputRawData ("</code>") ;
@@ -1421,11 +1421,11 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
       if (inPopulateHTMLHelperString) {
         ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         ioHTMLFileContents << "Successor [S"
-                    << cStringWithSigned (transitionList (t COMMA_HERE).mSourceState)
-                    << ", " ;
+                           << cStringWithSigned (transitionList (t COMMA_HERE).mSourceState)
+                           << ", " ;
         inVocabulary.printInFile (ioHTMLFileContents, transitionList (t COMMA_HERE).mAction COMMA_HERE) ;
         ioHTMLFileContents << "] = S"
-                    << cStringWithSigned (transitionList (t COMMA_HERE).mTargetState) ;
+                           << cStringWithSigned (transitionList (t COMMA_HERE).mTargetState) ;
         ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
       }
     }
@@ -1442,14 +1442,14 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("</table><p>") ;
     ioHTMLFileContents << "LR0 automaton has "
-                << cStringWithSigned (LR0_items_sets_collection.getStatesCount ())
-                << " states and "
-                << cStringWithSigned (transitionList.length ())
-                << " transitions.\n\n"
-                   "Analyze table has "
-                << cStringWithSigned (shiftActions) << " shift actions, "
-                << cStringWithSigned (reduceActions) << " reduce actions, and "
-                << cStringWithSigned (successorEntries) << " state successor entries." ;
+                       << cStringWithSigned (LR0_items_sets_collection.getStatesCount ())
+                       << " states and "
+                       << cStringWithSigned (transitionList.length ())
+                       << " transitions.\n\n"
+                       << "Analyze table has "
+                       << cStringWithSigned (shiftActions) << " shift actions, "
+                       << cStringWithSigned (reduceActions) << " reduce actions, and "
+                       << cStringWithSigned (successorEntries) << " state successor entries." ;
     ioHTMLFileContents.outputRawData ("</p><p>") ;
     if (conflictCount == 0) {
       ioHTMLFileContents.outputRawData ("<span class=\"success\">") ;
@@ -1458,9 +1458,9 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
     }else{
       ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
       ioHTMLFileContents << cStringWithSigned (conflictCount)
-                  << " conflict"
-                  << ((conflictCount > 1) ? "s" : "")
-                  << " : grammar is not SLR (1)." ;
+                         << " conflict"
+                         << ((conflictCount > 1) ? "s" : "")
+                         << " : grammar is not SLR (1)." ;
       ioHTMLFileContents.outputRawData ("</span>") ;
     }
     ioHTMLFileContents.outputRawData ("</p>") ;

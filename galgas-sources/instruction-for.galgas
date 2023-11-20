@@ -336,6 +336,7 @@ syntax extension galgas4InstructionsSyntax {
     repeat
       <for_instruction_element> !?elementList
     while
+      $,$
     end
     let location = @location.here
     $)$

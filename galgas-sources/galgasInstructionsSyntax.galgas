@@ -42,7 +42,6 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
         select
           $;$
         or
-#          $$ ?let @lstring separatorString
           let separator = @string.separatorString
           if not [separator containsCharacter !'\n'] then
             error .separator : "instructions on same line should be separated by ';'"
@@ -604,13 +603,12 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
   #    M E T H O D    C A L L    I N S T R U C T I O N
   #·····················································································································
 
-#  rule <actual_parameter_list> !@actualParameterListAST outActualParameterList
-
   rule <actual_parameter_list_within_parenthesis> !@actualParameterListAST outActualParameterList
 
   #·····················································································································
 
   rule <syntax_directed_translation_result> !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
+    $($
     $?$ ?let selector
     if selector.string != "" then
       error selector : "the selector should be '?'" fixit { replace "?" }
@@ -630,7 +628,8 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
     or
       $identifier$ ?let actualParameterName
       result = @grammarInstructionSyntaxDirectedTranslationResultInVar.new {!actualParameterName}
-    end  
+    end
+    $)$
   }
 
   #·····················································································································
@@ -639,6 +638,7 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
     outActualInputParameterList = @actualInputParameterListAST {}
     select
     or
+      $($
       repeat
         select
           $?$ ?let selector
@@ -678,6 +678,7 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
       while
         $,$
       end
+      $)$
     end
   }  
 

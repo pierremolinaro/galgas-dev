@@ -64,6 +64,7 @@ syntax extension galgas4DeclarationsSyntax {
                          !@lstring outTypeName {
     $[$
     <type_definition> !?ioDeclarations ?outTypeName
+    error .here : "Not handled yet"
     $]$
   }
 
@@ -75,6 +76,7 @@ syntax extension galgas4DeclarationsSyntax {
     <type_definition> !?ioDeclarations ?outTypeName
     $:$
     <type_definition> !?ioDeclarations ?*
+    error .here : "Not handled yet"
     $]$
   }
 
@@ -84,6 +86,7 @@ syntax extension galgas4DeclarationsSyntax {
                          !@lstring outTypeName {
     <type_definition> !?ioDeclarations ?outTypeName
     $?$ ?let selector
+    error .here : "Not handled yet"
     if selector.string != "" then
       error selector : "only '?' is allowed here"
     end
@@ -99,6 +102,7 @@ syntax extension galgas4DeclarationsSyntax {
     while
       $,$
     end
+    error .here : "Not handled yet"
     $)$
   }
 

@@ -1626,8 +1626,6 @@ class cParser_galgas_34_SyntaxComponentSyntax {
 
   protected: virtual int32_t select_galgas_34_SyntaxComponentSyntax_23 (C_Lexique_galgasScanner *) = 0 ;
 
-  protected: virtual int32_t select_galgas_34_SyntaxComponentSyntax_24 (C_Lexique_galgasScanner *) = 0 ;
-
 
 } ;
 
@@ -1734,6 +1732,8 @@ class cParser_galgas_34_GrammarComponentSyntax {
   protected: virtual int32_t select_galgas_34_GrammarComponentSyntax_7 (C_Lexique_galgasScanner *) = 0 ;
 
   protected: virtual int32_t select_galgas_34_GrammarComponentSyntax_8 (C_Lexique_galgasScanner *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_GrammarComponentSyntax_9 (C_Lexique_galgasScanner *) = 0 ;
 
 
 } ;

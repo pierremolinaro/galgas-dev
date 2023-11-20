@@ -75,16 +75,10 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   #·····················································································································
 
-  rule <syntax_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+                            !@syntaxInstructionAST outInstruction {
     $\$terminal\$$ ?let @lstring terminalName indexing terminalReference
-    let @actualInputParameterListAST actualInputParameterList
-    select
-      actualInputParameterList = {}
-    or
-      $($
-      <actual_input_parameter_list> ?actualInputParameterList
-      $)$
-    end
+    <actual_input_parameter_list> ?let actualInputParameterList
     <terminal_instruction_indexing> ?let indexNameList
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
@@ -114,6 +108,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     select
     or
       $indexing$
+      $($
       repeat
         $identifier$ ?let @lstring indexName indexing indexingNameReference
         let @lstring postfixName
@@ -126,6 +121,7 @@ syntax extension galgas4SyntaxComponentSyntax {
       while
         $,$
       end
+      $)$
     end
   }
 
