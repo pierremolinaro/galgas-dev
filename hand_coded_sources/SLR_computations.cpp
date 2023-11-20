@@ -609,26 +609,19 @@ class c_LR0_automaton_transition {
   public: int32_t mAction ;
   public: int32_t mTargetState ;
   public: c_LR0_automaton_transition (const int32_t inSourceState,
-                                       const int32_t inAction,
-                                       const int32_t inTargetState) ;
+                                      const int32_t inAction,
+                                      const int32_t inTargetState) ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-c_LR0_automaton_transition::
-c_LR0_automaton_transition (const int32_t inSourceState,
-                            const int32_t inAction,
-                            const int32_t inTargetState) :
+c_LR0_automaton_transition::c_LR0_automaton_transition (const int32_t inSourceState,
+                                                        const int32_t inAction,
+                                                        const int32_t inTargetState) :
 mSourceState (inSourceState),
 mAction (inAction),
 mTargetState (inTargetState) {
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1049,27 +1042,26 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
         }
-        ioCppFileContents << "\n                                "
-                          "COMMA_LOCATION_ARGS) {\n" ;
-        ioCppFileContents << "  if (inFilePath.isValid ()) {\n"
-                          "    const GALGAS_string filePathAsString = inFilePath.readProperty_string () ;\n"
-                          "    C_String filePath = filePathAsString.stringValue () ;\n"
-                          "    if (! C_FileManager::isAbsolutePath (filePath)) {\n"
-                          "      filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
-                          "    }\n"
-                          "    if (C_FileManager::fileExistsAtPath (filePath)) {\n"
-                          "      C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
-                          "      macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, filePath COMMA_HERE)) ;\n"
-                          "      if (scanner->sourceText ().isValid ()) {\n"
-                          "        const bool ok = scanner->performBottomUpParsing (gActionTable_" << inTargetFileName << ", gNonTerminalNames_" << inTargetFileName << ",\n"
-                          "                                                         gActionTableIndex_" << inTargetFileName << ", gSuccessorTable_" << inTargetFileName << ",\n"
-                          "                                                         gProductionsTable_" << inTargetFileName << ") ;\n"
-                          "        if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
-                          "          cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
-                          "          " ;
+        ioCppFileContents << "\n                                COMMA_LOCATION_ARGS) {\n"
+                             "  if (inFilePath.isValid ()) {\n"
+                             "    const GALGAS_string filePathAsString = inFilePath.readProperty_string () ;\n"
+                             "    C_String filePath = filePathAsString.stringValue () ;\n"
+                             "    if (! C_FileManager::isAbsolutePath (filePath)) {\n"
+                             "      filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
+                             "    }\n"
+                             "    if (C_FileManager::fileExistsAtPath (filePath)) {\n"
+                              "      C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
+                             "      macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, filePath COMMA_HERE)) ;\n"
+                             "      if (scanner->sourceText ().isValid ()) {\n"
+                             "        const bool ok = scanner->performBottomUpParsing (gActionTable_" << inTargetFileName << ", gNonTerminalNames_" << inTargetFileName << ",\n"
+                             "                                                         gActionTableIndex_" << inTargetFileName << ", gSuccessorTable_" << inTargetFileName << ",\n"
+                             "                                                         gProductionsTable_" << inTargetFileName << ") ;\n"
+                             "        if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
+                             "          cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
+                             "          " ;
         ioCppFileContents << "grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()
-                       << "_" << currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()
-                       << " (" ;
+                          << "_" << currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()
+                          << " (" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
@@ -1134,12 +1126,11 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
         }
-        ioCppFileContents << "\n                                "
-                             "COMMA_UNUSED_LOCATION_ARGS) {\n"
-                          << "  if (inSourceString.isValid () && inNameString.isValid ()) {\n"
+        ioCppFileContents << "\n                                COMMA_UNUSED_LOCATION_ARGS) {\n"
+                             "  if (inSourceString.isValid () && inNameString.isValid ()) {\n"
                              "    const C_String sourceString = inSourceString.stringValue () ;\n"
                              "    const C_String nameString = inNameString.stringValue () ;\n"
-                          << "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
+                             "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                              "    macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation ()
                           << " (inCompiler, sourceString, nameString COMMA_HERE)) ;\n"
                              "    if (scanner->sourceText ().isValid ()) {\n"
