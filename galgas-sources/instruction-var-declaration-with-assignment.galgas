@@ -74,7 +74,7 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
     $var$
     $identifier$ ?let variableName
     $=$
@@ -88,9 +88,10 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
     $var$
     $@type$ ?let typeName
+#    <type_definition> !?ioDeclarations ?let typeName
     $identifier$ ?let variableName
     $=$
     <expression> ?let @semanticExpressionAST sourceExpression

@@ -43,7 +43,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner) {
         $!$ ?selector
         mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentOut
       end
-      $@type$ ?let @lstring mFormalParameterTypeName
+      $@type$ ?let @lstring formalParameterTypeName
       let @bool mIsUnused
       select
         mIsUnused = false
@@ -55,7 +55,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner) {
       outFormalParameterList +=
         !selector
         !mFormalParameterPassingMode
-        !mFormalParameterTypeName
+        !formalParameterTypeName
         !mFormalParameterName
         !mIsUnused
     end
@@ -290,11 +290,14 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
 
   rule <expression> !@semanticExpressionAST outExpressionAST
 
+  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
+                         !@lstring outTypeName
+
   #·····················································································································
   #          F O R M A L    P A R A M E T E R    L I S T
   #·····················································································································
 
-  rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList {
+  rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations !@formalParameterListAST outFormalParameterList {
     outFormalParameterList = {}
     $($
     select
@@ -329,7 +332,8 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
           $!$ ?selector
           mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentOut
         end
-        $@type$ ?let @lstring mFormalParameterTypeName
+        <type_definition> !?ioDeclarations ?let formalParameterTypeName
+#        $@type$ ?let @lstring mFormalParameterTypeName
         let @bool mIsUnused
         select
           mIsUnused = false
@@ -341,7 +345,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner) {
         outFormalParameterList +=
           !selector
           !mFormalParameterPassingMode
-          !mFormalParameterTypeName
+          !formalParameterTypeName
           !mFormalParameterName
           !mIsUnused
       while

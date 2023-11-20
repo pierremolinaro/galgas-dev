@@ -54,16 +54,16 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   #·····················································································································
 
-  rule <syntax_instruction>
+  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
     !@syntaxInstructionAST outInstruction {
     $select$
     let mSelectInstructionLocation = @location.here
     var mSelectBranchList = @listOfSyntaxInstructionList {}
-    <syntax_instruction_list> ?let @syntaxInstructionList il
+    <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList il
     mSelectBranchList += !il !@location.here
     repeat
       $or$
-      <syntax_instruction_list> ?let @syntaxInstructionList instructionList
+      <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList instructionList
       mSelectBranchList += !instructionList !@location.here
     while
     end

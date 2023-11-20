@@ -354,20 +354,24 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
   
   rule <if_expression> !@ifExpressionList outExpressionList
   
-  rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
+  rule <formal_parameter_list>?!@galgasDeclarationAST ioDeclarations !@formalParameterListAST outFormalParameterList
   
   rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
+
+  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
+                         !@lstring outTypeName
 
   #·····················································································································
   #    S E M A N T I C    I N S T R U C T I O N    L I S T
   #·····················································································································
 
-  rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList {
+  rule <semantic_instruction_list> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionListAST outInstructionsList {
     outInstructionsList = @semanticInstructionListAST {}
     select
     or
       repeat
-        <semantic_instruction> ?let @semanticInstructionAST instruction
+        <semantic_instruction> !?ioDeclarations ?let @semanticInstructionAST instruction
         outInstructionsList += !instruction
       while
         select
@@ -390,7 +394,7 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
     $extern$
     $proc$
     $identifier$ ?let @lstring mActionName indexing routineDefinition
-    <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
     ioDeclarations.mDeclarationList += !@externRoutineDeclarationAST.new {
       !false # Is not predefined
       !false # Is not internal
@@ -406,9 +410,9 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $proc$
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
     ${$
-    <semantic_instruction_list> ?let @semanticInstructionListAST mRoutineInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
@@ -427,9 +431,9 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
     $private$
     $proc$
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
     ${$
-    <semantic_instruction_list> ?let @semanticInstructionListAST mRoutineInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
@@ -473,7 +477,7 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
       error functionName: "an 'once' function should has no argument"
     end
     $->$
-    $@type$ ?let resultTypeName
+    <type_definition> !?ioDeclarations ?let resultTypeName
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -481,7 +485,7 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> ?let @semanticInstructionListAST functionInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST functionInstructionList
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then
@@ -540,7 +544,7 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
       error functionName: "an 'once' function should has no argument"
     end
     $->$
-    $@type$ ?let resultTypeName
+    <type_definition> !?ioDeclarations ?let resultTypeName
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -548,7 +552,7 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> ?let @semanticInstructionListAST functionInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST functionInstructionList
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then
@@ -587,7 +591,7 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
     $identifier$ ?let mActionName indexing functionDefinition
     <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
     $->$
-    $@type$ ?let resultTypeName
+    <type_definition> !?ioDeclarations ?let resultTypeName
     ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST.new {
       !false # Is not predefined
       !mActionName

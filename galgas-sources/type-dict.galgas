@@ -85,7 +85,7 @@ syntax extension galgas4DeclarationsSyntax {
     var propertyList = @propertyInCollectionListAST {}
     repeat
     while
-      <property_declaration> !? propertyList
+      <property_declaration> !?ioDeclarations !? propertyList
     while
       <method_declaration> !mDictTypeName !?ioDeclarations
     end

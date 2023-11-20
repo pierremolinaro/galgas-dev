@@ -44,8 +44,10 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+                              !@semanticInstructionAST outInstruction {
     $var$
+#    <type_definition> !?ioDeclarations ?let typeName
     $@type$ ?let typeName
     $identifier$ ?let variableName
     outInstruction = @localVariableDeclarationAST.new {!typeName.location !typeName !variableName}

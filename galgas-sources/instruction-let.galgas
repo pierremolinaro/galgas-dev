@@ -81,8 +81,9 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
     $let$
+#    <type_definition> !?ioDeclarations ?let typeName
     $@type$ ?let typeName
     $identifier$ ?let constantName
     outInstruction = @undefinedLocalConstantDeclarationAST.new {
@@ -94,8 +95,9 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
     $let$
+#    <type_definition> !?ioDeclarations ?let typeName
     $@type$ ?let typeName
     $identifier$ ?let variableName
     $=$
@@ -111,7 +113,7 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
     $let$
     $identifier$ ?let variableName
     $=$

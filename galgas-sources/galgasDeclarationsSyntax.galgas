@@ -249,19 +249,24 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
   #          Rules prototypes                 
   #·····················································································································
 
-  rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
+  rule <formal_parameter_list>?!@galgasDeclarationAST ioDeclarations !@formalParameterListAST outFormalParameterList
   
-  rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList
+  rule <semantic_instruction_list> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionListAST outInstructionsList
   
   rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
 
   rule <expression> !@semanticExpressionAST outExpression
 
+  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
+                         !@lstring outTypeName
+
   #·····················································································································
   #    A T T R I B U T E    I N    C O L L E C T I O N
   #·····················································································································
 
-  rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
+  rule <property_declaration> ?!@galgasDeclarationAST ioDeclarations
+                              ?!@propertyInCollectionListAST ioAttributeInCollectionList {
     <acces_control> ?let accessControl
     let @bool isConstant
     select
@@ -272,7 +277,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
       [accessControl checkCompatibilityWithLet !.here]
       isConstant = true
     end
-    $@type$ ?let propertyTypeName
+    <type_definition> !?ioDeclarations ?let propertyTypeName
     $identifier$ ?let propertyName
     var featureList = @lstringlist {}
     repeat
@@ -308,7 +313,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
     $"string"$ ?let @lstring mFilewrapperPath
     <filewrapper_text_files> ?let filewrapperTextFileExtensionList
     <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
-    <filewrapper_templates> ?let filewrapperTemplateList
+    <filewrapper_templates> !?ioDeclarations ?let filewrapperTemplateList
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
       !false # Is not predefined
       !false # private
@@ -330,7 +335,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
     $"string"$ ?let @lstring mFilewrapperPath
     <filewrapper_text_files> ?let filewrapperTextFileExtensionList
     <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
-    <filewrapper_templates> ?let filewrapperTemplateList
+    <filewrapper_templates> !?ioDeclarations ?let filewrapperTemplateList
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
       !false # Is not predefined
       !true # private
@@ -379,7 +384,8 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <filewrapper_templates> !@filewrapperTemplateListAST outFilewrapperTemplateList {
+  rule <filewrapper_templates> ?!@galgasDeclarationAST ioDeclarations
+                               !@filewrapperTemplateListAST outFilewrapperTemplateList {
     ${$
     outFilewrapperTemplateList = {}
     repeat
@@ -402,7 +408,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
               error selector.location : "check no useless selector: this selector should be removed"
             end
           end
-          $@type$ ?let @lstring typeName
+          <type_definition> !?ioDeclarations ?let typeName
           let @bool isUnused
           select
             isUnused = false

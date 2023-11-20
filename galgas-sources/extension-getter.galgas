@@ -99,7 +99,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
     <formal_input_parameter_list> ?let mFormalInputParameterList
     $->$
-    $@type$ ?let @lstring mReturnedTypeName
+    <type_definition> !?ioDeclarations ?let returnedTypeName
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -107,7 +107,7 @@ syntax extension galgas4DeclarationsSyntax {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionGetterAST.new {
@@ -116,7 +116,7 @@ syntax extension galgas4DeclarationsSyntax {
       !className
       !mMethodName
       !mFormalInputParameterList
-      !mReturnedTypeName
+      !returnedTypeName
       !resultVariableName
       !routineInstructionList
       !endOfInstructionList
@@ -130,15 +130,15 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
     <formal_input_parameter_list> ?let mFormalInputParameterList
     $->$
-    $@type$ ?let @lstring mReturnedTypeName
-    let @lstring resultVariableName
-    select
-      $identifier$ ?resultVariableName
-    or
-      resultVariableName = .new {!"result" !.here}
-    end
+    <type_definition> !?ioDeclarations ?let returnedTypeName
+    let @lstring resultVariableName = .new {!"result" !.here}
+#    select
+#      $identifier$ ?resultVariableName
+#    or
+#      resultVariableName = .new {!"result" !.here}
+#    end
     ${$
-    <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionGetterAST.new {
@@ -147,7 +147,7 @@ syntax extension galgas4DeclarationsSyntax {
       !inClassName
       !mMethodName
       !mFormalInputParameterList
-      !mReturnedTypeName
+      !returnedTypeName
       !resultVariableName
       !routineInstructionList
       !endOfInstructionList

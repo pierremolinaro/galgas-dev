@@ -152,12 +152,12 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
     <semantic_instruction_beginning_with_identifier> !prefixedBySelf: false ?outInstruction
   }
   #·····················································································································
 
-  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
     $self$
     $.$
     <semantic_instruction_beginning_with_identifier> !prefixedBySelf: true ?outInstruction

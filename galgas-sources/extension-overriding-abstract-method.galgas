@@ -64,7 +64,7 @@ syntax extension galgas4DeclarationsSyntax {
     $@type$ ?let @lstring className indexing typeReferenceOverrideAbstractExtensionMethod
     $.$
     $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
-    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list>!?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {
       !false # Is not predefined
       !className
@@ -80,7 +80,7 @@ syntax extension galgas4DeclarationsSyntax {
     $abstract$
     $proc$
     $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
-    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {
       !false # Is not predefined
       !inClassName

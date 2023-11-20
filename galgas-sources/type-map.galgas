@@ -193,7 +193,7 @@ syntax extension galgas4DeclarationsSyntax {
     var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = {}
     repeat
     while
-      <property_declaration> !? propertyList
+      <property_declaration> !?ioDeclarations !? propertyList
     while
       <map_insert_setter_declaration> !? mInsertMethodList
     while
