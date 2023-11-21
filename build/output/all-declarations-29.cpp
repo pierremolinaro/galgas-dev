@@ -2332,7 +2332,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
   result << "  </Compiler>\n  <Linker>\n" ;
   const enumGalgasBool test_4 = in_GENERATE_5F_FOR_5F_WINDOWS.boolEnum () ;
   if (kBoolTrue == test_4) {
-    result << GALGAS_string ("   <Add library=\"Ws2_32\" />\n   <Add library=\"Comdlg32\" />\n").stringValue () ;
+    result << GALGAS_string ("   <Add option=\"-static\" />\n   <Add library=\"Comdlg32\" />\n").stringValue () ;
   }else if (kBoolFalse == test_4) {
   }
   result << "  </Linker>\n" ;

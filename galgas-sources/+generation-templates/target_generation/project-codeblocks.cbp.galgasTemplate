@@ -68,7 +68,7 @@ for (key) in HAND_CODED_SOURCE_TOOL_DIRECTORY_SET do
 end
 %  </Compiler>
   <Linker>
-%if GENERATE_FOR_WINDOWS then !"   <Add library=\"Ws2_32\" />\n   <Add library=\"Comdlg32\" />\n" else end
+%if GENERATE_FOR_WINDOWS then !"   <Add option=\"-static\" />\n   <Add library=\"Comdlg32\" />\n" else end
 %  </Linker>
 %if VERBOSE_OPTION then
 %  <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_verbose_option.cpp" />

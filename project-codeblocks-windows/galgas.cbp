@@ -65,7 +65,7 @@
   <Add directory="../hand_coded_sources" />
   </Compiler>
   <Linker>
-   <Add library="Ws2_32" />
+   <Add option="-static" />
    <Add library="Comdlg32" />
   </Linker>
   <Unit filename="../libpm/galgas2/C_galgas_quiet_option.cpp" />
