@@ -23,8 +23,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration_ggs3>
-   ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $graph$
     $@type$ ?let @lstring graphTypeName indexing graphDefinition
     $($

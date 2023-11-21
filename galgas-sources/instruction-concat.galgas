@@ -283,7 +283,7 @@ syntax extension galgas4InstructionsSyntax {
 
   rule <non_empty_output_expression_list> !@actualOutputExpressionList outExpressionList {
     outExpressionList = {}
-    warning .here : "Obsolete"
+#    warning .here : "Obsolete"
     repeat
       $!$ ?let selector
       <expression> ?let @semanticExpressionAST expression

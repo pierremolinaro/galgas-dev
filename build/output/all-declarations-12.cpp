@@ -9379,18 +9379,16 @@ void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_non
                                                                                                                                 C_Lexique_galgasScanner * inCompiler) {
   outArgument_outExpressionList.drop () ; // Release 'out' argument
   outArgument_outExpressionList = GALGAS_actualOutputExpressionList::constructor_emptyList (SOURCE_FILE ("instruction-concat.galgas", 285)) ;
-  TC_Array <C_FixItDescription> fixItArray0 ;
-  inCompiler->emitSemanticWarning (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 286)), GALGAS_string ("Obsolete"), fixItArray0  COMMA_SOURCE_FILE ("instruction-concat.galgas", 286)) ;
-  bool repeatFlag_1 = true ;
-  while (repeatFlag_1) {
-    GALGAS_lstring var_selector_10515 = inCompiler->synthetizedAttribute_tokenString () ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    GALGAS_lstring var_selector_10516 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgasScanner::kToken__21_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 288)) ;
-    GALGAS_semanticExpressionAST var_expression_10571 ;
-    nt_expression_ (var_expression_10571, inCompiler) ;
-    outArgument_outExpressionList.addAssign_operation (var_selector_10515, var_expression_10571, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 290))  COMMA_SOURCE_FILE ("instruction-concat.galgas", 290)) ;
+    GALGAS_semanticExpressionAST var_expression_10572 ;
+    nt_expression_ (var_expression_10572, inCompiler) ;
+    outArgument_outExpressionList.addAssign_operation (var_selector_10516, var_expression_10572, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 290))  COMMA_SOURCE_FILE ("instruction-concat.galgas", 290)) ;
     if (select_galgas_34_InstructionsSyntax_18 (inCompiler) == 2) {
     }else{
-      repeatFlag_1 = false ;
+      repeatFlag_0 = false ;
     }
   }
 }
