@@ -9763,13 +9763,16 @@ void GALGAS_XCodeGroupList::addAssign_operation (const GALGAS_string & inOperand
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_XCodeGroupList::setter_append (GALGAS_XCodeGroupList_2D_element inElement,
+void GALGAS_XCodeGroupList::setter_append (const GALGAS_string inOperand0,
+                                           const GALGAS_string inOperand1,
+                                           const GALGAS_string inOperand2,
+                                           const GALGAS_stringlist inOperand3,
                                            C_Compiler * /* inCompiler */
                                            COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_XCodeGroupList (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_XCodeGroupList (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -10445,13 +10448,23 @@ void GALGAS_XCodeToolTargetList::addAssign_operation (const GALGAS_string & inOp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_XCodeToolTargetList::setter_append (GALGAS_XCodeToolTargetList_2D_element inElement,
+void GALGAS_XCodeToolTargetList::setter_append (const GALGAS_string inOperand0,
+                                                const GALGAS_string inOperand1,
+                                                const GALGAS_string inOperand2,
+                                                const GALGAS_string inOperand3,
+                                                const GALGAS_stringlist inOperand4,
+                                                const GALGAS_string inOperand5,
+                                                const GALGAS_string inOperand6,
+                                                const GALGAS_stringlist inOperand7,
+                                                const GALGAS_string inOperand8,
+                                                const GALGAS_stringlist inOperand9,
+                                                const GALGAS_string inOperand10,
                                                 C_Compiler * /* inCompiler */
                                                 COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_XCodeToolTargetList (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_XCodeToolTargetList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -11542,13 +11555,26 @@ void GALGAS_XCodeAppTargetList::addAssign_operation (const GALGAS_string & inOpe
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_XCodeAppTargetList::setter_append (GALGAS_XCodeAppTargetList_2D_element inElement,
+void GALGAS_XCodeAppTargetList::setter_append (const GALGAS_string inOperand0,
+                                               const GALGAS_string inOperand1,
+                                               const GALGAS_string inOperand2,
+                                               const GALGAS_string inOperand3,
+                                               const GALGAS_stringlist inOperand4,
+                                               const GALGAS_string inOperand5,
+                                               const GALGAS_string inOperand6,
+                                               const GALGAS_stringlist inOperand7,
+                                               const GALGAS_string inOperand8,
+                                               const GALGAS_stringlist inOperand9,
+                                               const GALGAS_string inOperand10,
+                                               const GALGAS__32_stringlist inOperand11,
+                                               const GALGAS_string inOperand12,
+                                               const GALGAS_stringlist inOperand13,
                                                C_Compiler * /* inCompiler */
                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_XCodeAppTargetList (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_XCodeAppTargetList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;

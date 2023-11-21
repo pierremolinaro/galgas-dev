@@ -250,7 +250,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   [!?setterMap insertOrReplace
     !@lstring.new {!"append" !@location.here}
     !@methodKind.definedAsMember
-    !{!["" nowhere] !listElementTypeIndex !@formalArgumentPassingModeAST.argumentIn !"inElement"}
+    !setterInputFormalArgumentList # {!["" nowhere] !listElementTypeIndex !@formalArgumentPassingModeAST.argumentIn !"inElement"}
     !true
     !@methodQualifier.isBasic
     !""

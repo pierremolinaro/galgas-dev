@@ -197,13 +197,27 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::setter_append (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% inElement,\n%
-   !^%C_Compiler * /* inCompiler */\n%
-   !^%COMMA_LOCATION_ARGS) {
+void GALGAS_%!TYPE_IDENTIFIER%::setter_append (%?^
+  for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST
+  do (IDX) %const GALGAS_%![propertyTypeEntry identifierRepresentation]% inOperand%![IDX string]%,%
+  between %\n%!^
+  end
+  %\n%!^%C_Compiler * /* inCompiler */%
+  %\n%!^%COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (%
+  for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST
+  do (IDX) %inOperand%![IDX string]%.isValid ()%
+  between % && %
+  end
+  %) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
+      for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST
+      do (IDX) %inOperand%![IDX string]
+      between %, %
+      end
+      % COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;

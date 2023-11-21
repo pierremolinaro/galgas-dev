@@ -153,13 +153,14 @@ void GALGAS_terminalLabelListAST::addAssign_operation (const GALGAS_lstring & in
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_terminalLabelListAST::setter_append (GALGAS_terminalLabelListAST_2D_element inElement,
+void GALGAS_terminalLabelListAST::setter_append (const GALGAS_lstring inOperand0,
+                                                 const GALGAS_uint inOperand1,
                                                  C_Compiler * /* inCompiler */
                                                  COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_terminalLabelListAST (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_terminalLabelListAST (inOperand0, inOperand1 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -645,13 +646,15 @@ void GALGAS_guiLabelListAST::addAssign_operation (const GALGAS_uint & inOperand0
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_guiLabelListAST::setter_append (GALGAS_guiLabelListAST_2D_element inElement,
+void GALGAS_guiLabelListAST::setter_append (const GALGAS_uint inOperand0,
+                                            const GALGAS_terminalLabelListAST inOperand1,
+                                            const GALGAS_location inOperand2,
                                             C_Compiler * /* inCompiler */
                                             COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_guiLabelListAST (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_guiLabelListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -1202,13 +1205,16 @@ void GALGAS_withLexiqueListAST::addAssign_operation (const GALGAS_lstring & inOp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_withLexiqueListAST::setter_append (GALGAS_withLexiqueListAST_2D_element inElement,
+void GALGAS_withLexiqueListAST::setter_append (const GALGAS_lstring inOperand0,
+                                               const GALGAS_guiLabelListAST inOperand1,
+                                               const GALGAS_guiSimpleAttributeListAST inOperand2,
+                                               const GALGAS_guiCompoundAttributeListAST inOperand3,
                                                C_Compiler * /* inCompiler */
                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_withLexiqueListAST (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_withLexiqueListAST (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -1824,13 +1830,17 @@ void GALGAS_guiCommandLineOptionList::addAssign_operation (const GALGAS_string &
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_guiCommandLineOptionList::setter_append (GALGAS_guiCommandLineOptionList_2D_element inElement,
+void GALGAS_guiCommandLineOptionList::setter_append (const GALGAS_string inOperand0,
+                                                     const GALGAS_string inOperand1,
+                                                     const GALGAS_char inOperand2,
+                                                     const GALGAS_string inOperand3,
+                                                     const GALGAS_string inOperand4,
                                                      C_Compiler * /* inCompiler */
                                                      COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_guiCommandLineOptionList (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_guiCommandLineOptionList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -2785,13 +2795,14 @@ void GALGAS_textMacroList::addAssign_operation (const GALGAS_string & inOperand0
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_textMacroList::setter_append (GALGAS_textMacroList_2D_element inElement,
+void GALGAS_textMacroList::setter_append (const GALGAS_string inOperand0,
+                                          const GALGAS_string inOperand1,
                                           C_Compiler * /* inCompiler */
                                           COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_textMacroList (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_textMacroList (inOperand0, inOperand1 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -3317,13 +3328,19 @@ void GALGAS_importedLexiqueList::addAssign_operation (const GALGAS_string & inOp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_importedLexiqueList::setter_append (GALGAS_importedLexiqueList_2D_element inElement,
+void GALGAS_importedLexiqueList::setter_append (const GALGAS_string inOperand0,
+                                                const GALGAS_uint inOperand1,
+                                                const GALGAS_string inOperand2,
+                                                const GALGAS_string inOperand3,
+                                                const GALGAS_textMacroList inOperand4,
+                                                const GALGAS_guiLabelListAST inOperand5,
+                                                const GALGAS_lexicalStyleListAST inOperand6,
                                                 C_Compiler * /* inCompiler */
                                                 COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_importedLexiqueList (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_importedLexiqueList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -4074,13 +4091,14 @@ void GALGAS_projectIndexingDescriptorList::addAssign_operation (const GALGAS_lst
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_projectIndexingDescriptorList::setter_append (GALGAS_projectIndexingDescriptorList_2D_element inElement,
+void GALGAS_projectIndexingDescriptorList::setter_append (const GALGAS_lstring inOperand0,
+                                                          const GALGAS_lstring inOperand1,
                                                           C_Compiler * /* inCompiler */
                                                           COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_projectIndexingDescriptorList (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_projectIndexingDescriptorList (inOperand0, inOperand1 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -4586,13 +4604,17 @@ void GALGAS_galgasGUIComponentListAST::addAssign_operation (const GALGAS_lstring
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_galgasGUIComponentListAST::setter_append (GALGAS_galgasGUIComponentListAST_2D_element inElement,
+void GALGAS_galgasGUIComponentListAST::setter_append (const GALGAS_lstring inOperand0,
+                                                      const GALGAS_lstringlist inOperand1,
+                                                      const GALGAS_guiSimpleAttributeListAST inOperand2,
+                                                      const GALGAS_withLexiqueListAST inOperand3,
+                                                      const GALGAS_projectIndexingDescriptorList inOperand4,
                                                       C_Compiler * /* inCompiler */
                                                       COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_galgasGUIComponentListAST (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_galgasGUIComponentListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -5958,13 +5980,18 @@ void GALGAS_propertyInCollectionListAST::addAssign_operation (const GALGAS_bool 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_propertyInCollectionListAST::setter_append (GALGAS_propertyInCollectionListAST_2D_element inElement,
+void GALGAS_propertyInCollectionListAST::setter_append (const GALGAS_bool inOperand0,
+                                                        const GALGAS_lstring inOperand1,
+                                                        const GALGAS_lstring inOperand2,
+                                                        const GALGAS_AccessControlAST inOperand3,
+                                                        const GALGAS_lstringlist inOperand4,
+                                                        const GALGAS_propertyInCollectionInitializationAST inOperand5,
                                                         C_Compiler * /* inCompiler */
                                                         COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_propertyInCollectionListAST (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_propertyInCollectionListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -6791,13 +6818,16 @@ void GALGAS_typedPropertyList::addAssign_operation (const GALGAS_unifiedTypeMapE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_typedPropertyList::setter_append (GALGAS_typedPropertyList_2D_element inElement,
+void GALGAS_typedPropertyList::setter_append (const GALGAS_unifiedTypeMapEntry inOperand0,
+                                              const GALGAS_lstring inOperand1,
+                                              const GALGAS_bool inOperand2,
+                                              const GALGAS_bool inOperand3,
                                               C_Compiler * /* inCompiler */
                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_typedPropertyList (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_typedPropertyList (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -7494,13 +7524,14 @@ void GALGAS_enumConstantList::addAssign_operation (const GALGAS_lstring & inOper
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_enumConstantList::setter_append (GALGAS_enumConstantList_2D_element inElement,
+void GALGAS_enumConstantList::setter_append (const GALGAS_lstring inOperand0,
+                                             const GALGAS__32_lstringlist inOperand1,
                                              C_Compiler * /* inCompiler */
                                              COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_enumConstantList (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_enumConstantList (inOperand0, inOperand1 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -8087,13 +8118,14 @@ void GALGAS_enumConstantListForGeneration::addAssign_operation (const GALGAS_str
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_enumConstantListForGeneration::setter_append (GALGAS_enumConstantListForGeneration_2D_element inElement,
+void GALGAS_enumConstantListForGeneration::setter_append (const GALGAS_string inOperand0,
+                                                          const GALGAS_unifiedTypeMapEntryList inOperand1,
                                                           C_Compiler * /* inCompiler */
                                                           COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_enumConstantListForGeneration (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_enumConstantListForGeneration (inOperand0, inOperand1 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -8559,13 +8591,13 @@ void GALGAS_unifiedTypeMapEntryList::addAssign_operation (const GALGAS_unifiedTy
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMapEntryList::setter_append (GALGAS_unifiedTypeMapEntryList_2D_element inElement,
+void GALGAS_unifiedTypeMapEntryList::setter_append (const GALGAS_unifiedTypeMapEntry inOperand0,
                                                     C_Compiler * /* inCompiler */
                                                     COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_unifiedTypeMapEntryList (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_unifiedTypeMapEntryList (inOperand0 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -8996,13 +9028,15 @@ void GALGAS_externTypeConstructorList::addAssign_operation (const GALGAS_lstring
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeConstructorList::setter_append (GALGAS_externTypeConstructorList_2D_element inElement,
+void GALGAS_externTypeConstructorList::setter_append (const GALGAS_lstring inOperand0,
+                                                      const GALGAS_lstring inOperand1,
+                                                      const GALGAS_typeNameFormalParameterNameList inOperand2,
                                                       C_Compiler * /* inCompiler */
                                                       COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_externTypeConstructorList (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_externTypeConstructorList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -9543,13 +9577,15 @@ void GALGAS_externTypeGetterList::addAssign_operation (const GALGAS_lstring & in
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeGetterList::setter_append (GALGAS_externTypeGetterList_2D_element inElement,
+void GALGAS_externTypeGetterList::setter_append (const GALGAS_lstring inOperand0,
+                                                 const GALGAS_lstring inOperand1,
+                                                 const GALGAS_typeNameFormalParameterNameList inOperand2,
                                                  C_Compiler * /* inCompiler */
                                                  COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_externTypeGetterList (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_externTypeGetterList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -10080,13 +10116,14 @@ void GALGAS_externTypeSetterList::addAssign_operation (const GALGAS_lstring & in
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeSetterList::setter_append (GALGAS_externTypeSetterList_2D_element inElement,
+void GALGAS_externTypeSetterList::setter_append (const GALGAS_lstring inOperand0,
+                                                 const GALGAS_formalParameterListAST inOperand1,
                                                  C_Compiler * /* inCompiler */
                                                  COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_externTypeSetterList (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_externTypeSetterList (inOperand0, inOperand1 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -10572,13 +10609,15 @@ void GALGAS_externTypeMethodList::addAssign_operation (const GALGAS_lstring & in
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeMethodList::setter_append (GALGAS_externTypeMethodList_2D_element inElement,
+void GALGAS_externTypeMethodList::setter_append (const GALGAS_lstring inOperand0,
+                                                 const GALGAS_formalParameterListAST inOperand1,
+                                                 const GALGAS_location inOperand2,
                                                  C_Compiler * /* inCompiler */
                                                  COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_externTypeMethodList (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_externTypeMethodList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -11230,13 +11269,15 @@ void GALGAS_typeNameFormalParameterNameList::addAssign_operation (const GALGAS_l
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_typeNameFormalParameterNameList::setter_append (GALGAS_typeNameFormalParameterNameList_2D_element inElement,
+void GALGAS_typeNameFormalParameterNameList::setter_append (const GALGAS_lstring inOperand0,
+                                                            const GALGAS_lstring inOperand1,
+                                                            const GALGAS_lstring inOperand2,
                                                             C_Compiler * /* inCompiler */
                                                             COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_typeNameFormalParameterNameList (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_typeNameFormalParameterNameList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -11797,13 +11838,17 @@ void GALGAS_formalParameterListAST::addAssign_operation (const GALGAS_lstring & 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_formalParameterListAST::setter_append (GALGAS_formalParameterListAST_2D_element inElement,
+void GALGAS_formalParameterListAST::setter_append (const GALGAS_lstring inOperand0,
+                                                   const GALGAS_formalArgumentPassingModeAST inOperand1,
+                                                   const GALGAS_lstring inOperand2,
+                                                   const GALGAS_lstring inOperand3,
+                                                   const GALGAS_bool inOperand4,
                                                    C_Compiler * /* inCompiler */
                                                    COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_formalParameterListAST (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_formalParameterListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -12444,13 +12489,14 @@ void GALGAS_graphInsertModifierList::addAssign_operation (const GALGAS_lstring &
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_graphInsertModifierList::setter_append (GALGAS_graphInsertModifierList_2D_element inElement,
+void GALGAS_graphInsertModifierList::setter_append (const GALGAS_lstring inOperand0,
+                                                    const GALGAS_lstring inOperand1,
                                                     C_Compiler * /* inCompiler */
                                                     COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_graphInsertModifierList (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_graphInsertModifierList (inOperand0, inOperand1 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -13380,13 +13426,15 @@ void GALGAS_insertMethodListAST::addAssign_operation (const GALGAS_lstring & inO
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_insertMethodListAST::setter_append (GALGAS_insertMethodListAST_2D_element inElement,
+void GALGAS_insertMethodListAST::setter_append (const GALGAS_lstring inOperand0,
+                                                const GALGAS_lstring inOperand1,
+                                                const GALGAS_lstring inOperand2,
                                                 C_Compiler * /* inCompiler */
                                                 COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_insertMethodListAST (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_insertMethodListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -13927,13 +13975,15 @@ void GALGAS_mapSearchMethodListAST::addAssign_operation (const GALGAS_lstring & 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_mapSearchMethodListAST::setter_append (GALGAS_mapSearchMethodListAST_2D_element inElement,
+void GALGAS_mapSearchMethodListAST::setter_append (const GALGAS_lstring inOperand0,
+                                                   const GALGAS_lstring inOperand1,
+                                                   const GALGAS_bool inOperand2,
                                                    C_Compiler * /* inCompiler */
                                                    COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_mapSearchMethodListAST (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_mapSearchMethodListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -14464,13 +14514,14 @@ void GALGAS_mapRemoveMethodListAST::addAssign_operation (const GALGAS_lstring & 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_mapRemoveMethodListAST::setter_append (GALGAS_mapRemoveMethodListAST_2D_element inElement,
+void GALGAS_mapRemoveMethodListAST::setter_append (const GALGAS_lstring inOperand0,
+                                                   const GALGAS_lstring inOperand1,
                                                    C_Compiler * /* inCompiler */
                                                    COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_mapRemoveMethodListAST (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_mapRemoveMethodListAST (inOperand0, inOperand1 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -14936,13 +14987,13 @@ void GALGAS_insertOrReplaceDeclarationListAST::addAssign_operation (const GALGAS
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_insertOrReplaceDeclarationListAST::setter_append (GALGAS_insertOrReplaceDeclarationListAST_2D_element inElement,
+void GALGAS_insertOrReplaceDeclarationListAST::setter_append (const GALGAS_location inOperand0,
                                                               C_Compiler * /* inCompiler */
                                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
+    if (inOperand0.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_insertOrReplaceDeclarationListAST (inElement COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_insertOrReplaceDeclarationListAST (inOperand0 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
