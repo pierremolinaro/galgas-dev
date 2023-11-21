@@ -37,11 +37,12 @@ syntax extension galgas4DeclarationsSyntax {
 
    #·····················································································································
   
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset ioUserImplicitDeclaredTypeSet {
     $typealias$
     $@type$ ?let aliasTypeName indexing dictionaryDefinition
     $=$
-    <type_definition> !?ioDeclarations ?let @lstring definedTypeName
+    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @lstring definedTypeName
     ioDeclarations.mDeclarationList += !@typealiasDeclarationAST.new {
       !false # Is not predefined
       !aliasTypeName
@@ -54,6 +55,7 @@ syntax extension galgas4DeclarationsSyntax {
   #·····················································································································
   
   rule <type_definition> ?!@galgasDeclarationAST unused ioDeclarations
+                         ?!@stringset unused ioUserImplicitDeclaredTypeSet
                          !@lstring outTypeName {
     $@type$ ?outTypeName
   }
@@ -61,9 +63,10 @@ syntax extension galgas4DeclarationsSyntax {
   #·····················································································································
   
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
+                         ?!@stringset ioUserImplicitDeclaredTypeSet
                          !@lstring outTypeName {
     $[$
-    <type_definition> !?ioDeclarations ?outTypeName
+    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?outTypeName
     error .here : "Not handled yet"
     $]$
   }
@@ -71,11 +74,12 @@ syntax extension galgas4DeclarationsSyntax {
   #·····················································································································
   
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
+                         ?!@stringset ioUserImplicitDeclaredTypeSet
                          !@lstring outTypeName {
     $[$
-    <type_definition> !?ioDeclarations ?outTypeName
+    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?outTypeName
     $:$
-    <type_definition> !?ioDeclarations ?*
+    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?*
     error .here : "Not handled yet"
     $]$
   }
@@ -83,8 +87,9 @@ syntax extension galgas4DeclarationsSyntax {
   #·····················································································································
   
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
+                         ?!@stringset ioUserImplicitDeclaredTypeSet
                          !@lstring outTypeName {
-    <type_definition> !?ioDeclarations ?outTypeName
+    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?outTypeName
     $?$ ?let selector
     error .here : "Not handled yet"
     if selector.string != "" then
@@ -95,10 +100,11 @@ syntax extension galgas4DeclarationsSyntax {
   #·····················································································································
 
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
+                         ?!@stringset ioUserImplicitDeclaredTypeSet
                          !@lstring outTypeName {
     $($
     repeat
-      <type_definition> !?ioDeclarations ?outTypeName
+      <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?outTypeName
     while
       $,$
     end

@@ -400,7 +400,9 @@ syntax extension galgas4InstructionsSyntax {
   
   #·····················································································································
   
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
+                              ?!@stringset ioUserImplicitDeclaredTypeSet
+                              !@semanticInstructionAST outInstruction {
     $for$
     let instructionLocation = @location.here
     var mEnumeratedObjectList = @forInstructionEnumeratedObjectListAST {}
@@ -430,7 +432,7 @@ syntax extension galgas4InstructionsSyntax {
       mBeforeInstructionList = @semanticInstructionListAST {}
     or
       $before$
-      <semantic_instruction_list> !?ioDeclarations ? mBeforeInstructionList
+      <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ? mBeforeInstructionList
     end
     let endof_before_branch = @location.here
     $do$
@@ -442,14 +444,14 @@ syntax extension galgas4InstructionsSyntax {
       $identifier$ ? indexVariableName
       $)$
     end
-    <semantic_instruction_list> !?ioDeclarations ?let mDoInstructionList
+    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let mDoInstructionList
     let endof_do_branch = @location.here
     let @semanticInstructionListAST mBetweenInstructionList
     select
       mBetweenInstructionList = @semanticInstructionListAST {}
     or
       $between$
-      <semantic_instruction_list> !?ioDeclarations ? mBetweenInstructionList
+      <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ? mBetweenInstructionList
     end
     let endof_between_branch = @location.here
     let @semanticInstructionListAST mAfterInstructionList
@@ -457,7 +459,7 @@ syntax extension galgas4InstructionsSyntax {
       mAfterInstructionList = @semanticInstructionListAST {}
     or
       $after$
-      <semantic_instruction_list> !?ioDeclarations ? mAfterInstructionList
+      <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ? mAfterInstructionList
     end
     let endof_after_branch = @location.here
     $end$

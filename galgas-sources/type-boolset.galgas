@@ -44,7 +44,8 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset unused ioUserImplicitDeclaredTypeSet {
     $boolset$
     $@type$ ?let @lstring boolsetTypeName indexing structDefinition
     ${$

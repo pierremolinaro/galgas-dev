@@ -56,7 +56,7 @@ syntax extension galgas3DeclarationsSyntax {
     while
       <property_declaration_ggs3> !? propertyList
     while
-      <method_declaration> !className !?ioDeclarations
+      <method_declaration_ggs3> !className !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@classDeclarationAST.new {
@@ -93,7 +93,8 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset ioUserImplicitDeclaredTypeSet {
     let @bool isAbstract
     select
       isAbstract = false
@@ -121,9 +122,9 @@ syntax extension galgas4DeclarationsSyntax {
     var @propertyInCollectionListAST propertyList = {}
     repeat
     while
-      <property_declaration> !?ioDeclarations !? propertyList
+      <property_declaration> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !? propertyList
     while
-      <method_declaration> !className !?ioDeclarations
+      <method_declaration> !className !?ioDeclarations !?ioUserImplicitDeclaredTypeSet
     end
     $}$
     ioDeclarations.mDeclarationList += !@classDeclarationAST.new {

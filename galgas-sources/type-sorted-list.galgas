@@ -76,16 +76,15 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration>
-    ?!@galgasDeclarationAST ioDeclarations
-  {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset ioUserImplicitDeclaredTypeSet {
     $sortedlist$
     $@type$ ?let sortedListTypeName indexing sortedListDefinition, structDefinition "-element"
     ${$
     var @propertyInCollectionListAST attributeList = {}
     repeat
     while
-      <property_declaration> !?ioDeclarations !? attributeList
+      <property_declaration> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !? attributeList
     end
     $}$
     ${$

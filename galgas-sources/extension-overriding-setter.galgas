@@ -42,7 +42,8 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration_ggs3> ?let @lstring inClassName
+                            ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $setter$
     $identifier$ ?let @lstring setterName indexing overrideExtensionSetterDefinition

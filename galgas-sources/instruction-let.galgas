@@ -81,39 +81,37 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
+                              ?!@stringset ioUserImplicitDeclaredTypeSet
+                              !@semanticInstructionAST outInstruction {
     $let$
-#    <type_definition> !?ioDeclarations ?let typeName
-    $@type$ ?let typeName
+    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let typeName
+#    $@type$ ?let typeName
     $identifier$ ?let constantName
-    outInstruction = @undefinedLocalConstantDeclarationAST.new {
-      !typeName.location
-      !typeName
-      !constantName
-   }
+    select
+      outInstruction = @undefinedLocalConstantDeclarationAST.new {
+        !typeName.location
+        !typeName
+        !constantName
+     }
+    or
+      $=$
+      <expression> ?let @semanticExpressionAST sourceExpression
+      outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
+        !typeName.location
+        !true # Is Constant
+        !typeName
+        !constantName
+        !sourceExpression
+      }
+    end
   }
 
   #·····················································································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
-    $let$
-#    <type_definition> !?ioDeclarations ?let typeName
-    $@type$ ?let typeName
-    $identifier$ ?let variableName
-    $=$
-    <expression> ?let @semanticExpressionAST sourceExpression
-    outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
-      !typeName.location
-      !true # Is Constant
-      !typeName
-      !variableName
-      !sourceExpression
-    }
-  }
-
-  #·····················································································································
-
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
+                              !@semanticInstructionAST outInstruction {
     $let$
     $identifier$ ?let variableName
     $=$

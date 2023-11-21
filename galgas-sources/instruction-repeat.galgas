@@ -58,15 +58,17 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   #·····················································································································
 
-  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
+                            ?!@stringset ioUserImplicitDeclaredTypeSet
+                            !@syntaxInstructionAST outInstruction {
     $repeat$
     let mRepeatInstructionLocation = @location.here
-    <syntax_instruction_list>!?ioDeclarations ?let @syntaxInstructionList mRepeatedInstructionList
+    <syntax_instruction_list>!?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @syntaxInstructionList mRepeatedInstructionList
     let endOf_repeated_instructions = @location.here
     var mRepeatBranchList = @listOfSyntaxInstructionList {}
     repeat
       $while$
-      <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList mInstructionList
+      <syntax_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @syntaxInstructionList mInstructionList
       mRepeatBranchList += ! mInstructionList !@location.here
     while
     end

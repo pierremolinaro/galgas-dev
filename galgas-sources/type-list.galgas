@@ -46,16 +46,17 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset ioUserImplicitDeclaredTypeSet {
     $list$
     $@type$ ?let @lstring listTypeName indexing listDefinition, structDefinition "-element"
     ${$
     var @propertyInCollectionListAST propertyList = {}
     repeat
     while
-      <property_declaration> !?ioDeclarations !?propertyList
+      <property_declaration> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !?propertyList
     while
-      <method_declaration> !listTypeName !?ioDeclarations
+      <method_declaration> !listTypeName !?ioDeclarations !?ioUserImplicitDeclaredTypeSet
     end
     $}$
     ioDeclarations.mDeclarationList += !@listDeclarationAST.new {

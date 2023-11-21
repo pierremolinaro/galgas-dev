@@ -92,23 +92,27 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   #·····················································································································
   
-  rule <branchOfParseWhithInstruction> ?!@galgasDeclarationAST ioDeclarations !@syntaxInstructionList outElseInstructionList {
+  rule <branchOfParseWhithInstruction> ?!@galgasDeclarationAST ioDeclarations
+                                       ?!@stringset ioUserImplicitDeclaredTypeSet
+                                       !@syntaxInstructionList outElseInstructionList {
     $else$
-    <syntax_instruction_list> !?ioDeclarations ? outElseInstructionList
+    <syntax_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ? outElseInstructionList
   }
   
   #·····················································································································
   
-  rule <branchOfParseWhithInstruction> ?!@galgasDeclarationAST ioDeclarations !@syntaxInstructionList outElseInstructionList {
+  rule <branchOfParseWhithInstruction> ?!@galgasDeclarationAST ioDeclarations
+                                       ?!@stringset ioUserImplicitDeclaredTypeSet
+                                       !@syntaxInstructionList outElseInstructionList {
     $case$
     let instructionLocation = @location.here
     <expression> ?let whenExpression
     let endOfWhenExpression = @location.here
     $:$
-    <syntax_instruction_list> !?ioDeclarations ?let whenInstructionList
+    <syntax_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let whenInstructionList
     let endOfWhenInstructions = @location.here
   #--- Else part
-    <branchOfParseWhithInstruction> !?ioDeclarations ?let elseInstructionList
+    <branchOfParseWhithInstruction> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let elseInstructionList
     let endOfElseInstructions = @location.here
     outElseInstructionList = {}
     outElseInstructionList += !@parseWhenInstruction.new {
@@ -124,17 +128,19 @@ syntax extension galgas4SyntaxComponentSyntax {
   
   #·····················································································································
   
-  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
+                            ?!@stringset ioUserImplicitDeclaredTypeSet
+                            !@syntaxInstructionAST outInstruction {
     $parse$
     let instructionLocation = @location.here
     $with$
     <expression> ?let @semanticExpressionAST whenExpression
     let endOfWhenExpression = @location.here
     $:$
-    <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList whenInstructionList
+    <syntax_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @syntaxInstructionList whenInstructionList
     let endOfWhenInstructions = @location.here
   #--- Else part
-    <branchOfParseWhithInstruction> !?ioDeclarations ?let @syntaxInstructionList elseInstructionList
+    <branchOfParseWhithInstruction> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @syntaxInstructionList elseInstructionList
     let endOfElseInstructions = @location.here
     $end$
     select

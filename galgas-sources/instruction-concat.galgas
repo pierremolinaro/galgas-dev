@@ -91,7 +91,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $+=$
       select
-        <non_empty_output_expression_list> ?let @actualOutputExpressionList expressionList
+        <non_empty_output_expression_list_ggs3> ?let @actualOutputExpressionList expressionList
         outInstruction = @plusEqualElementsInstructionAST.new {
           !instructionLocation
           !inHasSelfPrefix
@@ -134,7 +134,7 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
 
-  rule <non_empty_output_expression_list> !@actualOutputExpressionList outExpressionList {
+  rule <non_empty_output_expression_list_ggs3> !@actualOutputExpressionList outExpressionList {
     outExpressionList = {}
     repeat
       $!$ ?let selector
@@ -152,12 +152,16 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
+                              !@semanticInstructionAST outInstruction {
     <semantic_instruction_beginning_with_identifier> !prefixedBySelf: false ?outInstruction
   }
   #·····················································································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
+                              !@semanticInstructionAST outInstruction {
     $self$
     $.$
     <semantic_instruction_beginning_with_identifier> !prefixedBySelf: true ?outInstruction
@@ -279,6 +283,7 @@ syntax extension galgas4InstructionsSyntax {
 
   rule <non_empty_output_expression_list> !@actualOutputExpressionList outExpressionList {
     outExpressionList = {}
+    warning .here : "Obsolete"
     repeat
       $!$ ?let selector
       <expression> ?let @semanticExpressionAST expression

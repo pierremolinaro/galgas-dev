@@ -57,7 +57,9 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   #·····················································································································
 
-  rule <syntax_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+                            ?!@stringset unused ioUserImplicitDeclaredTypeSet
+                            !@syntaxInstructionAST outInstruction {
     let @lstring mLabelName # No label : empty string
     select
       mLabelName = @lstring.new {!"" !@location.here}

@@ -41,7 +41,7 @@ syntax galgas3OptionComponentSyntax (galgasScanner) {
     var @commandLineOptionListAST options = {}
     repeat
     while 
-      <option_declaration> !?options
+      <option_declaration_ggs3> !?options
     end
     $}$
     ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST.new {
@@ -53,7 +53,7 @@ syntax galgas3OptionComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <option_declaration> ?!@commandLineOptionListAST ioCommandLineOptionList {
+  rule <option_declaration_ggs3> ?!@commandLineOptionListAST ioCommandLineOptionList {
     $@type$ ?let @lstring mOptionTypeName
     $identifier$ ?let @lstring mOptionInternalName
     $:$
@@ -97,14 +97,15 @@ syntax galgas4OptionComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset unused ioUserImplicitDeclaredTypeSet {
     $option$
     $identifier$ ?let @lstring optionComponentName
     ${$
     var @commandLineOptionListAST options = {}
     repeat
     while 
-      <option_declaration> !?options
+      <option_declaration_ggs3> !?options
     end
     $}$
     ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST.new {
@@ -116,7 +117,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <option_declaration> ?!@commandLineOptionListAST ioCommandLineOptionList {
+  rule <option_declaration_ggs3> ?!@commandLineOptionListAST ioCommandLineOptionList {
     $@type$ ?let @lstring mOptionTypeName
     $identifier$ ?let @lstring mOptionInternalName
     $:$

@@ -78,7 +78,9 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
+                              !@semanticInstructionAST outInstruction {
     $identifier$ ?let mTargetVariableName
     let @lstring optionalProperty
     select
@@ -100,7 +102,9 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
+                              !@semanticInstructionAST outInstruction {
     $self$
     $.$
     $identifier$ ?let mTargetVariableName

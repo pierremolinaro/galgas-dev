@@ -39,9 +39,9 @@ syntax extension galgas3LexiqueComponentSyntax {
     var @templateReplacementListAST templateReplacementList = {}
     repeat
     while 
-      <template_delimitor> !? templateDelimitorList
+      <template_delimitor_ggs3> !? templateDelimitorList
     while 
-      <template_replacement> !? templateReplacementList
+      <template_replacement_ggs3> !? templateReplacementList
     end
     $}$
     ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST.new {
@@ -55,7 +55,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
   #·····················································································································
 
-  rule <template_delimitor> ?!@templateDelimitorListAST ioTemplateDelimitorList {
+  rule <template_delimitor_ggs3> ?!@templateDelimitorListAST ioTemplateDelimitorList {
     $template$
     $"string"$ ?let @lstring startString
     var optionList = @lstringlist {}
@@ -71,7 +71,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
   #·····················································································································
 
-  rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement {
+  rule <template_replacement_ggs3> ?!@templateReplacementListAST ioTemplateReplacement {
     $replace$
     $"string"$ ?let @lstring matchString
     let @lstring replacementString
@@ -99,7 +99,8 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset unused ioUserImplicitDeclaredTypeSet {
     $template$
     $lexique$
   #--- Lexique Component Name

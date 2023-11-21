@@ -48,7 +48,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     repeat
     while
-      <method_declaration> !mEnumTypeName !?ioDeclarations
+      <method_declaration_ggs3> !mEnumTypeName !?ioDeclarations
     end
     let @lstring defaultConstantName
     select
@@ -76,7 +76,8 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset ioUserImplicitDeclaredTypeSet {
     $enum$
     $@type$ ?let mEnumTypeName indexing enumDefinition
     ${$
@@ -101,7 +102,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     repeat
     while
-      <method_declaration> !mEnumTypeName !?ioDeclarations
+      <method_declaration> !mEnumTypeName !?ioDeclarations !?ioUserImplicitDeclaredTypeSet
     end
 #    let @lstring defaultConstantName
 #    select

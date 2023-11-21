@@ -183,7 +183,8 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset ioUserImplicitDeclaredTypeSet {
     $extern$
     $@type$ ?let @lstring externTypeName indexing externTypeDefinition
     <externtype_cpp_predeclaration> ?let cppPredeclarationCode
@@ -195,13 +196,13 @@ syntax extension galgas4DeclarationsSyntax {
     var @externTypeMethodList externTypeMethodList = {}
     repeat
     while
-      <externtype_constructor> !?ioDeclarations !?externTypeConstructorList
+      <externtype_constructor> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !?externTypeConstructorList
     while
-      <externtype_getter> !?ioDeclarations !?externTypeGetterList
+      <externtype_getter> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !?externTypeGetterList
     while
-      <externtype_setter> !?ioDeclarations !?externTypeSetterList
+      <externtype_setter> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !?externTypeSetterList
     while
-      <externtype_method> !?ioDeclarations !?externTypeMethodList
+      <externtype_method> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !?externTypeMethodList
     end
     $}$
     ioDeclarations.mDeclarationList += !@externTypeDeclarationAST.new {
@@ -245,6 +246,7 @@ syntax extension galgas4DeclarationsSyntax {
   #·····················································································································
 
   rule <externtype_constructor> ?!@galgasDeclarationAST ioDeclarations
+                                ?!@stringset ioUserImplicitDeclaredTypeSet
                                 ?!@externTypeConstructorList ioExternTypeConstructorList {
     $constructor$
     $identifier$ ?let @lstring constructorName
@@ -257,13 +259,14 @@ syntax extension galgas4DeclarationsSyntax {
       argumentTypeList += !selector !argumentTypeName !argumentName
     end
     $->$
-    <type_definition> !?ioDeclarations ?let resultTypeName
+    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let resultTypeName
     ioExternTypeConstructorList += !constructorName !resultTypeName !argumentTypeList
   }
 
   #·····················································································································
 
   rule <externtype_getter> ?!@galgasDeclarationAST ioDeclarations
+                           ?!@stringset ioUserImplicitDeclaredTypeSet
                            ?!@externTypeGetterList ioExternTypeGetterList {
     $getter$
     $identifier$ ?let @lstring getterName
@@ -276,25 +279,29 @@ syntax extension galgas4DeclarationsSyntax {
       argumentTypeList += !selector !argumentTypeName !argumentName
     end
     $->$
-    <type_definition> !?ioDeclarations ?let resultTypeName
+    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let resultTypeName
     ioExternTypeGetterList += !getterName !resultTypeName !argumentTypeList
   }
 
   #·····················································································································
 
-  rule <externtype_setter> ?!@galgasDeclarationAST ioDeclarations ?!@externTypeSetterList ioExternTypeSetterList {
+  rule <externtype_setter> ?!@galgasDeclarationAST ioDeclarations
+                           ?!@stringset ioUserImplicitDeclaredTypeSet
+                           ?!@externTypeSetterList ioExternTypeSetterList {
     $setter$
     $identifier$ ?let @lstring setterName
-    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
     ioExternTypeSetterList += !setterName !formalParameterList
   }
 
   #·····················································································································
 
-  rule <externtype_method>?!@galgasDeclarationAST ioDeclarations ?!@externTypeMethodList ioExternTypeMethodList {
+  rule <externtype_method> ?!@galgasDeclarationAST ioDeclarations
+                           ?!@stringset ioUserImplicitDeclaredTypeSet
+                           ?!@externTypeMethodList ioExternTypeMethodList {
     $method$
     $identifier$ ?let @lstring methodName
-    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
     ioExternTypeMethodList += !methodName !formalParameterList !.here
   }
 

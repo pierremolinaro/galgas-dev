@@ -41,7 +41,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration_ggs3> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
     $setter$
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
     <formal_parameter_list_ggs3> ?let @formalParameterListAST formalParameterList
@@ -70,15 +70,16 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset ioUserImplicitDeclaredTypeSet {
     $mutating$
     $proc$
     $@type$ ?let @lstring className indexing typeReferenceExtensionSetter
     $.$
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
-    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
     ${$
-    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST routineInstructionList
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionSetterAST.new {
@@ -94,13 +95,15 @@ syntax extension galgas4DeclarationsSyntax {
 
  #·····················································································································
 
-  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration> ?let @lstring inClassName
+                            ?!@galgasDeclarationAST ioDeclarations
+                            ?!@stringset ioUserImplicitDeclaredTypeSet {
     $mutating$
     $proc$
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
-    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
     ${$
-    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST routineInstructionList
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionSetterAST.new {

@@ -115,16 +115,19 @@ syntax galgas4ProgramDeclarations (galgasScanner) {
 
   #·····················································································································
 
-  rule <semantic_instruction_list> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionListAST outInstructionsList
+  rule <semantic_instruction_list> ?!@galgasDeclarationAST unused ioDeclarations
+                                   ?!@stringset ioUserImplicitDeclaredTypeSet
+                                   !@semanticInstructionListAST outInstructionsList
 
   #·····················································································································
   #   P R O L O G U E                         
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset ioUserImplicitDeclaredTypeSet {
     $before$
     ${$
-    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST prologueInstructionList
+    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST prologueInstructionList
     let endOfPrologue = @location.here
     $}$
     ioDeclarations.mPrologueDeclarationList +=
@@ -136,10 +139,11 @@ syntax galgas4ProgramDeclarations (galgasScanner) {
   #   E P I L O G U E                         
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset ioUserImplicitDeclaredTypeSet {
     $after$
     ${$
-    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST prologueInstructionList
+    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST prologueInstructionList
     let endOfPrologue = @location.here
     $}$
     ioDeclarations.mEpilogueDeclarationList +=
@@ -151,8 +155,8 @@ syntax galgas4ProgramDeclarations (galgasScanner) {
   #   S O U R C E    R U L E                  
   #·····················································································································
 
-  rule <declaration>
-   ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset ioUserImplicitDeclaredTypeSet {
     $case$
     $.$
     $"string"$ ?let @lstring mSourceFileExtension
@@ -188,7 +192,7 @@ syntax galgas4ProgramDeclarations (galgasScanner) {
     $identifier$ ?let @lstring mSourceFileVariableName
   #---
     ${$
-    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST mInstructionList
+    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST mInstructionList
     let endOfInstructionList = @location.here
     $}$
     ioDeclarations.mSourceRuleList +=

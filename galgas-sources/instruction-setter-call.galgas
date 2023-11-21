@@ -139,7 +139,9 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
+                              !@semanticInstructionAST outInstruction {
     let instructionLocation = @location.here
     $!?$ ?let selector
     if selector.string != "" then

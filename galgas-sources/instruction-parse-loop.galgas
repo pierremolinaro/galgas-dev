@@ -61,7 +61,8 @@ syntax extension galgas4SyntaxComponentSyntax {
   #·····················································································································
 
   rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
-    !@syntaxInstructionAST outInstruction {
+                            ?!@stringset ioUserImplicitDeclaredTypeSet
+                            !@syntaxInstructionAST outInstruction {
     $parse$
     let instructionLocation = @location.here
     $loop$
@@ -71,7 +72,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     <expression> ?let @semanticExpressionAST whileExpression
     let endOfWhileExpression = @location.here
     $do$
-    <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList instructionList
+    <syntax_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @syntaxInstructionList instructionList
     $end$
     let endOfInstructionList = @location.here
     select

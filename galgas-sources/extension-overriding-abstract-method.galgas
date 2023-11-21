@@ -33,7 +33,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration_ggs3> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $abstract$
     $method$
@@ -57,14 +57,15 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset ioUserImplicitDeclaredTypeSet {
     $override$
     $abstract$
     $proc$
     $@type$ ?let @lstring className indexing typeReferenceOverrideAbstractExtensionMethod
     $.$
     $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
-    <formal_parameter_list>!?ioDeclarations ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list>!?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {
       !false # Is not predefined
       !className
@@ -75,12 +76,14 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration> ?let @lstring inClassName
+                            ?!@galgasDeclarationAST ioDeclarations
+                            ?!@stringset ioUserImplicitDeclaredTypeSet {
     $override$
     $abstract$
     $proc$
     $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
-    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {
       !false # Is not predefined
       !inClassName

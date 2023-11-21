@@ -202,7 +202,9 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
+                              ?!@stringset ioUserImplicitDeclaredTypeSet
+                              !@semanticInstructionAST outInstruction {
     $with$
     let instructionLocation = @location.here
     <expression> ?let @semanticExpressionAST keyExpression
@@ -215,7 +217,7 @@ syntax extension galgas4InstructionsSyntax {
       $identifier$ ? withPrefix
     end
     $in$
-    <with_instruction_core> !?ioDeclarations !instructionLocation !keyExpression !endOfKeyExpression !withPrefix ?outInstruction
+    <with_instruction_core> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !instructionLocation !keyExpression !endOfKeyExpression !withPrefix ?outInstruction
     $end$
     select
     or
@@ -230,6 +232,7 @@ syntax extension galgas4InstructionsSyntax {
 
   rule <with_instruction_core>
     ?!@galgasDeclarationAST ioDeclarations
+    ?!@stringset ioUserImplicitDeclaredTypeSet
     ?let @location inInstructionLocation
     ?let @semanticExpressionAST inKeyExpression
     ?let @location inEndOfKeyExpression
@@ -247,7 +250,7 @@ syntax extension galgas4InstructionsSyntax {
       $identifier$ ?searchMethodNameForErrorSignaling
     end
     $do$
-    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST mDoBranchInstructions
+    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST mDoBranchInstructions
     let endOfDoInstructions = @location.here
     let @semanticInstructionListAST mElseBranchInstructions
     select
@@ -257,7 +260,7 @@ syntax extension galgas4InstructionsSyntax {
       if searchMethodNameForErrorSignaling.string != "" then
         error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
       end
-      <semantic_instruction_list> !?ioDeclarations ?mElseBranchInstructions
+      <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?mElseBranchInstructions
     end
     outInstruction = @readAccessWithInstructionAST.new {
       !inInstructionLocation
@@ -278,6 +281,7 @@ syntax extension galgas4InstructionsSyntax {
 
   rule <with_instruction_core>
     ?!@galgasDeclarationAST ioDeclarations
+    ?!@stringset ioUserImplicitDeclaredTypeSet
     ?let @location inInstructionLocation
     ?let @semanticExpressionAST inKeyExpression
     ?let @location inEndOfKeyExpression
@@ -326,7 +330,7 @@ syntax extension galgas4InstructionsSyntax {
       $identifier$ ?searchMethodNameForErrorSignaling
     end
     $do$
-    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST mDoBranchInstructions
+    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST mDoBranchInstructions
     let endOf_do_instructions = @location.here
     let @semanticInstructionListAST mElseBranchInstructions
     select
@@ -336,7 +340,7 @@ syntax extension galgas4InstructionsSyntax {
       if searchMethodNameForErrorSignaling.string != "" then
         error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
       end
-      <semantic_instruction_list> !?ioDeclarations ? mElseBranchInstructions
+      <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?mElseBranchInstructions
     end
     let endOf_else_instructions = @location.here
     outInstruction = @readWriteAccessWithInstructionAST.new {

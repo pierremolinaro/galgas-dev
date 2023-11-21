@@ -25,7 +25,7 @@ syntax extension galgas3DeclarationsSyntax {
     while
       <property_declaration_ggs3> !?propertyList
     while
-      <method_declaration> !structTypeName !?ioDeclarations
+      <method_declaration_ggs3> !structTypeName !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@structDeclarationAST.new {
@@ -46,16 +46,17 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset ioUserImplicitDeclaredTypeSet {
     $struct$
     $@type$ ?let @lstring structTypeName indexing structDefinition
     ${$
     var @propertyInCollectionListAST propertyList = {}
     repeat
     while
-      <property_declaration> !?ioDeclarations !?propertyList
+      <property_declaration> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !?propertyList
     while
-      <method_declaration> !structTypeName !?ioDeclarations
+      <method_declaration> !structTypeName !?ioDeclarations !?ioUserImplicitDeclaredTypeSet
     end
     $}$
     ioDeclarations.mDeclarationList += !@structDeclarationAST.new {

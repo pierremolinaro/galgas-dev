@@ -44,7 +44,7 @@ syntax extension galgas3DeclarationsSyntax {
     while
       <property_declaration_ggs3> !? propertyList
     while
-      <method_declaration> !mDictTypeName !?ioDeclarations
+      <method_declaration_ggs3> !mDictTypeName !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@dictDeclarationAST.new {
@@ -66,7 +66,8 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
   
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset ioUserImplicitDeclaredTypeSet {
     $dict$
   #--- Dict type name
     $@type$ ?let mDictTypeName indexing mapDefinition, structDefinition "-element"
@@ -85,9 +86,9 @@ syntax extension galgas4DeclarationsSyntax {
     var propertyList = @propertyInCollectionListAST {}
     repeat
     while
-      <property_declaration> !?ioDeclarations !? propertyList
+      <property_declaration> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !? propertyList
     while
-      <method_declaration> !mDictTypeName !?ioDeclarations
+      <method_declaration> !mDictTypeName !?ioDeclarations !?ioUserImplicitDeclaredTypeSet
     end
     $}$
     ioDeclarations.mDeclarationList += !@dictDeclarationAST.new {

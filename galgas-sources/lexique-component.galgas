@@ -50,25 +50,25 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
     var @indexingListAST indexingListAST = {}
     repeat
     while 
-      <template_delimitor> !? templateDelimitorList
+      <template_delimitor_ggs3> !? templateDelimitorList
     while 
-      <template_replacement> !? templateReplacementList
+      <template_replacement_ggs3> !? templateReplacementList
     while 
-      <lexical_attribute_declaration> !? lexicalAttributeList
+      <lexical_attribute_declaration_ggs3> !? lexicalAttributeList
     while 
-      <style_declaration> !? lexicalStyleList
+      <style_declaration_ggs3> !? lexicalStyleList
     while 
-      <terminal_declaration> !? terminalDeclarationList
+      <terminal_declaration_ggs3> !? terminalDeclarationList
     while 
-      <lexical_list_declaration> !? lexicalListDeclarationList
+      <lexical_list_declaration_ggs3> !? lexicalListDeclarationList
     while
-      <lexical_explicit_rule> !? lexicalRuleList
+      <lexical_explicit_rule_ggs3> !? lexicalRuleList
     while
-      <lexical_implicit_rule> !? lexicalRuleList
+      <lexical_implicit_rule_ggs3> !? lexicalRuleList
     while
-      <lexical_message_declaration> !?lexicalMessageDeclarationList
+      <lexical_message_declaration_ggs3> !?lexicalMessageDeclarationList
     while
-      <lexical_indexing_declaration> !?indexingListAST
+      <lexical_indexing_declaration_ggs3> !?indexingListAST
     end
     $}$
     ioDeclarations.mDeclarationList += !@lexiqueComponentAST.new {
@@ -107,25 +107,25 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
     var @indexingListAST indexingListAST = {}
     repeat
     while 
-      <template_delimitor> !? templateDelimitorList
+      <template_delimitor_ggs3> !? templateDelimitorList
     while 
-      <template_replacement> !? templateReplacementList
+      <template_replacement_ggs3> !? templateReplacementList
     while 
-      <lexical_attribute_declaration> !? lexicalAttributeList
+      <lexical_attribute_declaration_ggs3> !? lexicalAttributeList
     while 
-      <style_declaration> !? lexicalStyleList
+      <style_declaration_ggs3> !? lexicalStyleList
     while 
-      <terminal_declaration> !? terminalDeclarationList
+      <terminal_declaration_ggs3> !? terminalDeclarationList
     while 
-      <lexical_list_declaration> !? lexicalListDeclarationList
+      <lexical_list_declaration_ggs3> !? lexicalListDeclarationList
     while
-      <lexical_explicit_rule> !? lexicalRuleList
+      <lexical_explicit_rule_ggs3> !? lexicalRuleList
     while
-      <lexical_implicit_rule> !? lexicalRuleList
+      <lexical_implicit_rule_ggs3> !? lexicalRuleList
     while
-      <lexical_message_declaration> !?lexicalMessageDeclarationList
+      <lexical_message_declaration_ggs3> !?lexicalMessageDeclarationList
     while
-      <lexical_indexing_declaration> !?indexingListAST
+      <lexical_indexing_declaration_ggs3> !?indexingListAST
     end
     $}$
     ioDeclarations.mDeclarationList += !@lexiqueComponentAST.new {
@@ -146,7 +146,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <lexical_indexing_declaration> ?!@indexingListAST ioIndexingListAST {
+  rule <lexical_indexing_declaration_ggs3> ?!@indexingListAST ioIndexingListAST {
     $indexing$
     $identifier$ ?let @lstring indexName indexing indexingNameDefinition
     $:$
@@ -156,7 +156,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <lexical_message_declaration>
+  rule <lexical_message_declaration_ggs3>
     ?!@lexicalMessageDeclarationListAST ioLexicalMessageDeclarationList {
     $message$
     $identifier$ ?let @lstring messageName
@@ -167,7 +167,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <lexical_implicit_rule> ?!@lexicalRuleListAST ioLexicalImplicitRuleList {
+  rule <lexical_implicit_rule_ggs3> ?!@lexicalRuleListAST ioLexicalImplicitRuleList {
     $rule$
     $list$
     $identifier$ ?let @lstring listName
@@ -176,7 +176,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <lexical_explicit_rule> ?!@lexicalRuleListAST ioLexicalExplicitRuleList {
+  rule <lexical_explicit_rule_ggs3> ?!@lexicalRuleListAST ioLexicalExplicitRuleList {
     $rule$
     <lexical_expression> ?let @lexicalExpressionAST lexicalRuleExpression
     ${$
@@ -313,7 +313,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDeclarationList {
+  rule <lexical_list_declaration_ggs3> ?!@lexicalListDeclarationListAST ioLexicalListDeclarationList {
     $list$
     $identifier$ ?let name
     var @sentLexicalAttributeListAST sentAttributeList = {}
@@ -366,7 +366,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <lexical_attribute_declaration> ?!@lexicalAttributeListAST ioLexicalAttributeList {
+  rule <lexical_attribute_declaration_ggs3> ?!@lexicalAttributeListAST ioLexicalAttributeList {
     $@type$ ?let @lstring typeName
     $identifier$ ?let @lstring name
     ioLexicalAttributeList += !typeName !name
@@ -374,7 +374,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationList {
+  rule <terminal_declaration_ggs3> ?!@terminalDeclarationListAST ioTerminalDeclarationList {
     $\$terminal\$$ ?let @lstring name indexing terminalDeclaration
     var sentAttributeList = @sentLexicalAttributeListAST {}
     repeat
@@ -404,7 +404,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <style_declaration> ?!@lexicalStyleListAST ioLexicalStyleList {
+  rule <style_declaration_ggs3> ?!@lexicalStyleListAST ioLexicalStyleList {
     $style$
     $identifier$ ?let @lstring styleIdentifier
     if [styleIdentifier.string containsCharacter !'_'] then 
@@ -428,7 +428,8 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner) {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset unused ioUserImplicitDeclaredTypeSet {
     $lexique$
   #--- Lexique Component Name
     $identifier$ ?let @lstring lexiqueComponentName

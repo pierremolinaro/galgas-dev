@@ -42,7 +42,7 @@ syntax extension galgas3InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $+=$
-    <non_empty_output_expression_list> ?let @actualOutputExpressionList expressionList
+    <non_empty_output_expression_list_ggs3> ?let @actualOutputExpressionList expressionList
     outInstruction = @selfPlusEqualElementsInstructionAST.new {
       !instructionLocation
       !expressionList
@@ -111,7 +111,9 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
+                              !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $+=$
@@ -124,7 +126,9 @@ syntax extension galgas4InstructionsSyntax {
   
   #·····················································································································
   
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
+                              !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $+=$
@@ -137,7 +141,9 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
   
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
+                              !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $-=$
@@ -150,7 +156,9 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
   
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
+                              !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $*=$
@@ -163,7 +171,9 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
   
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
+                              !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     $/=$

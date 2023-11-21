@@ -42,7 +42,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration_ggs3> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $abstract$
     $getter$
@@ -74,7 +74,8 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
+                     ?!@stringset ioUserImplicitDeclaredTypeSet {
     $override$
     $abstract$
     $func$
@@ -83,7 +84,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ ?let mGetterName indexing overrideAbstractExtensionGetterDefinition
     <formal_input_parameter_list> ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
-    <type_definition> !?ioDeclarations ?let returnedTypeName
+    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let returnedTypeName
     select
       $identifier$ ? let idf
       warning idf : "an identifier is no longer required here" fixit { remove }
@@ -100,14 +101,16 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration> ?let @lstring inClassName
+                            ?!@galgasDeclarationAST ioDeclarations
+                            ?!@stringset ioUserImplicitDeclaredTypeSet {
     $override$
     $abstract$
     $func$
     $identifier$ ?let mGetterName indexing overrideAbstractExtensionGetterDefinition
     <formal_input_parameter_list> ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
-    <type_definition> !?ioDeclarations ?let returnedTypeName
+    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let returnedTypeName
     select
       $identifier$ ? let idf
       warning idf : "an identifier is no longer required here" fixit { remove }
