@@ -172,26 +172,17 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
   end
   %\n%!^%COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (%
-  for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST
-  do (IDX) %inOperand%![IDX string]%.isValid ()%
-  between % && %
-  end
-  %) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
-      for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST
-      do (IDX) %inOperand%![IDX string]
-      between %, %
-      end
-      % COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{ // Destroy receiver
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
+    for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST
+    do (IDX) %inOperand%![IDX string]
+    between %, %
+    end
+    % COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -205,26 +196,17 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_append (%?^
   %\n%!^%C_Compiler * /* inCompiler */%
   %\n%!^%COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (%
-  for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST
-  do (IDX) %inOperand%![IDX string]%.isValid ()%
-  between % && %
-  end
-  %) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
-      for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST
-      do (IDX) %inOperand%![IDX string]
-      between %, %
-      end
-      % COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
+    for (propertyTypeEntry propertyName * *) in ATTRIBUTE_LIST
+    do (IDX) %inOperand%![IDX string]
+    between %, %
+    end
+    % COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
