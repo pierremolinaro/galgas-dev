@@ -8404,11 +8404,6 @@ class GALGAS_mapSearchMethodListAST_2D_element : public AC_GALGAS_root {
     return mProperty_mErrorMessage ;
   }
 
-  public: GALGAS_bool mProperty_mLocationAttribute ;
-  public: inline GALGAS_bool readProperty_mLocationAttribute (void) const {
-    return mProperty_mLocationAttribute ;
-  }
-
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
@@ -8428,17 +8423,12 @@ class GALGAS_mapSearchMethodListAST_2D_element : public AC_GALGAS_root {
     mProperty_mErrorMessage = inValue ;
   }
 
-  public: inline void setter_setMLocationAttribute (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mLocationAttribute = inValue ;
-  }
-
 //--------------------------------- Virtual destructor (in debug mode)
   public: virtual ~ GALGAS_mapSearchMethodListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_mapSearchMethodListAST_2D_element (const GALGAS_lstring & in_mSearchMethodName,
-                                                    const GALGAS_lstring & in_mErrorMessage,
-                                                    const GALGAS_bool & in_mLocationAttribute) ;
+                                                    const GALGAS_lstring & in_mErrorMessage) ;
 
 //-- Start of generic part --*
 
@@ -8452,8 +8442,7 @@ class GALGAS_mapSearchMethodListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_mapSearchMethodListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                 const class GALGAS_lstring & inOperand1,
-                                                                                 const class GALGAS_bool & inOperand2
+                                                                                 const class GALGAS_lstring & inOperand1
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'

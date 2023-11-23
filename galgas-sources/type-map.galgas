@@ -13,7 +13,7 @@ list @insertMethodListAST {
 list @mapSearchMethodListAST {
   public let @lstring mSearchMethodName
   public let @lstring mErrorMessage
-  public let @bool mLocationAttribute
+#  public let @bool mLocationAttribute
 }
 
 #·······················································································································
@@ -105,21 +105,21 @@ syntax extension galgas3DeclarationsSyntax {
   rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
     $search$
     $identifier$ ?let @lstring methodName
-    let @bool locationAttribute
-    select
-      locationAttribute = false
-    or
-      $%attribute$ ?let attribute
-      if attribute.string == "location" then
-        locationAttribute = true
-      else
-        error attribute : "only the %location is allowed here" : locationAttribute fixit { replace "%location" }
-      end
-    end
+#    let @bool locationAttribute
+#    select
+#      locationAttribute = false
+#    or
+#      $%attribute$ ?let attribute
+#      if attribute.string == "location" then
+#        locationAttribute = true
+#      else
+#        error attribute : "only the %location is allowed here" : locationAttribute fixit { replace "%location" }
+#      end
+#    end
     $error$
     $message$
     $"string"$ ?let @lstring errorMessage
-    ioMapSearchMethodListAST += !methodName !errorMessage !locationAttribute
+    ioMapSearchMethodListAST += !methodName !errorMessage # !locationAttribute
   }
 
   #·····················································································································
@@ -224,21 +224,21 @@ syntax extension galgas4DeclarationsSyntax {
   rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
     $search$
     $identifier$ ?let @lstring methodName
-    let @bool locationAttribute
-    select
-      locationAttribute = false
-    or
-      $%attribute$ ?let attribute
-      if attribute.string == "location" then
-        locationAttribute = true
-      else
-        error attribute : "only the %location is allowed here" : locationAttribute fixit { replace "%location" }
-      end
-    end
+#    let @bool locationAttribute
+#    select
+#      locationAttribute = false
+#    or
+#      $%attribute$ ?let attribute
+#      if attribute.string == "location" then
+#        locationAttribute = true
+#      else
+#        error attribute : "only the %location is allowed here" : locationAttribute fixit { replace "%location" }
+#      end
+#    end
     $error$
     $message$
     $"string"$ ?let @lstring errorMessage
-    ioMapSearchMethodListAST += !methodName !errorMessage !locationAttribute
+    ioMapSearchMethodListAST += !methodName !errorMessage # !locationAttribute
   }
 
   #·····················································································································
@@ -347,8 +347,6 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
 {
 #--- string type index
   [!?ioTypeMap makeEntryFromString !"string" ?let stringTypeIndex]
-#--- location type index
-  [!?ioTypeMap makeEntryFromString !"location" ?let locationTypeEntry]
 #--- lstring type index
   [!?ioTypeMap makeEntryFromString !"lstring" ?let lstringTypeIndex]
 #--- Enumeration description
@@ -551,19 +549,11 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     end
   end
 #--- Handle search methods (methods if no state, setters if states)
-  for (mSearchMethodName * mLocationAttribute) in self.mSearchMethodList do
-    var searchMethodFormalArgumentList = removeMethodFormalArgumentList
-    if mLocationAttribute then
-      searchMethodFormalArgumentList +=
-        !if usesSelectorsInInsertAndSearch then ["keyLocation" nowhere] else ["" nowhere] end
-        !locationTypeEntry
-        !.argumentOut
-        !"outKeyLocation"
-    end
+  for (mSearchMethodName *) in self.mSearchMethodList do
     [!?instanceMethodMap insertKey
       !mSearchMethodName
       !.definedAsMember
-      !searchMethodFormalArgumentList
+      !removeMethodFormalArgumentList
       !mSearchMethodName.location
       !true
       !.isBasic
@@ -746,7 +736,7 @@ override method @mapDeclarationAST semanticAnalysis
   end
 #--- Enter search methods
   var @searchMethodMap searchMethodMap = {}
-  for (mSearchMethodName mErrorMessage *) in self.mSearchMethodList do
+  for (mSearchMethodName mErrorMessage) in self.mSearchMethodList do
     [!?searchMethodMap insertKey !mSearchMethodName]
     check_K_escapeCharacters (!mErrorMessage )
   end

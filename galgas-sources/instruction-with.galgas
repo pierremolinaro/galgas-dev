@@ -412,7 +412,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #--- Check search method
   if self.mSearchMethodNameForErrorSignaling.string != "" then
     var @bool found = false
-    for (mSearchMethodName * *) in [receiverType definition].mMapSearchMethodList while not found do
+    for (mSearchMethodName *) in [receiverType definition].mMapSearchMethodList while not found do
       found = mSearchMethodName.string == self.mSearchMethodNameForErrorSignaling.string
     end
     if not found then
@@ -585,7 +585,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 #--- Check search method
   if self.mSearchMethodNameForErrorSignaling.string != "" then
     var @bool found = false
-    for (mSearchMethodName * *) in [targetType definition].mMapSearchMethodList while not found do
+    for (mSearchMethodName *) in [targetType definition].mMapSearchMethodList while not found do
       found = mSearchMethodName.string == self.mSearchMethodNameForErrorSignaling.string
     end
     if not found then

@@ -7047,8 +7047,7 @@ GALGAS_insertMethodListAST_2D_element GALGAS_insertMethodListAST_2D_element::ext
 
 GALGAS_mapSearchMethodListAST_2D_element::GALGAS_mapSearchMethodListAST_2D_element (void) :
 mProperty_mSearchMethodName (),
-mProperty_mErrorMessage (),
-mProperty_mLocationAttribute () {
+mProperty_mErrorMessage () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7059,30 +7058,26 @@ GALGAS_mapSearchMethodListAST_2D_element::~ GALGAS_mapSearchMethodListAST_2D_ele
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_mapSearchMethodListAST_2D_element::GALGAS_mapSearchMethodListAST_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                    const GALGAS_lstring & inOperand1,
-                                                                                    const GALGAS_bool & inOperand2) :
+                                                                                    const GALGAS_lstring & inOperand1) :
 mProperty_mSearchMethodName (inOperand0),
-mProperty_mErrorMessage (inOperand1),
-mProperty_mLocationAttribute (inOperand2) {
+mProperty_mErrorMessage (inOperand1) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_mapSearchMethodListAST_2D_element GALGAS_mapSearchMethodListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_mapSearchMethodListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                   GALGAS_lstring::constructor_default (HERE),
-                                                   GALGAS_bool::constructor_default (HERE)) ;
+                                                   GALGAS_lstring::constructor_default (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_mapSearchMethodListAST_2D_element GALGAS_mapSearchMethodListAST_2D_element::constructor_new (const GALGAS_lstring & in_mSearchMethodName,
-                                                                                                    const GALGAS_lstring & in_mErrorMessage,
-                                                                                                    const GALGAS_bool & in_mLocationAttribute 
+                                                                                                    const GALGAS_lstring & in_mErrorMessage 
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_mapSearchMethodListAST_2D_element result ;
-  if (in_mSearchMethodName.isValid () && in_mErrorMessage.isValid () && in_mLocationAttribute.isValid ()) {
-    result = GALGAS_mapSearchMethodListAST_2D_element (in_mSearchMethodName, in_mErrorMessage, in_mLocationAttribute) ;
+  if (in_mSearchMethodName.isValid () && in_mErrorMessage.isValid ()) {
+    result = GALGAS_mapSearchMethodListAST_2D_element (in_mSearchMethodName, in_mErrorMessage) ;
   }
   return result ;
 }
@@ -7097,16 +7092,13 @@ typeComparisonResult GALGAS_mapSearchMethodListAST_2D_element::objectCompare (co
   if (result == kOperandEqual) {
     result = mProperty_mErrorMessage.objectCompare (inOperand.mProperty_mErrorMessage) ;
   }
-  if (result == kOperandEqual) {
-    result = mProperty_mLocationAttribute.objectCompare (inOperand.mProperty_mLocationAttribute) ;
-  }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_mapSearchMethodListAST_2D_element::isValid (void) const {
-  return mProperty_mSearchMethodName.isValid () && mProperty_mErrorMessage.isValid () && mProperty_mLocationAttribute.isValid () ;
+  return mProperty_mSearchMethodName.isValid () && mProperty_mErrorMessage.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7114,7 +7106,6 @@ bool GALGAS_mapSearchMethodListAST_2D_element::isValid (void) const {
 void GALGAS_mapSearchMethodListAST_2D_element::drop (void) {
   mProperty_mSearchMethodName.drop () ;
   mProperty_mErrorMessage.drop () ;
-  mProperty_mLocationAttribute.drop () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7128,8 +7119,6 @@ void GALGAS_mapSearchMethodListAST_2D_element::description (C_String & ioString,
     mProperty_mSearchMethodName.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mErrorMessage.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mLocationAttribute.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }

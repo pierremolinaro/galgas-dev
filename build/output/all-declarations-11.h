@@ -4298,8 +4298,6 @@ class cParser_galgas_33_DeclarationsSyntax {
 
   protected: virtual int32_t select_galgas_33_DeclarationsSyntax_52 (C_Lexique_galgasScanner *) = 0 ;
 
-  protected: virtual int32_t select_galgas_33_DeclarationsSyntax_53 (C_Lexique_galgasScanner *) = 0 ;
-
 
 } ;
 
