@@ -14,6 +14,9 @@ class BigUnsigned {
   public: BigUnsigned (void) noexcept ;
   public: BigUnsigned (const uint64_t inValue) noexcept ;
 
+//--- Testing value
+  public: bool isZero (void) const ;
+  public: bool isOne (void) const ;
 
 //--- Operators
   public: BigUnsigned leftShiftedBy (const uint32_t inShifCount) const ;
@@ -27,7 +30,7 @@ class BigUnsigned {
   public: BigUnsigned multiplyingByBigUnsigned (const BigUnsigned & inOperand) const ;
   public: void divideByBigUnsigned (const BigUnsigned & inDivisor,
                                     BigUnsigned & outQuotient,
-                                    BigUnsigned & outRemainder) ;
+                                    BigUnsigned & outRemainder) const ;
   public: int compare (const BigUnsigned & inOperand) const ;
 
   public: BigUnsigned oringWithBigUnsigned (const BigUnsigned & inOperand) const ;
@@ -36,6 +39,7 @@ class BigUnsigned {
   public: BigUnsigned complemented (void) const ;
 
   public: void printHex (const char * inName) const ;
+  private: static void printHex (const std::vector <uint64_t> & inArray, const char * inName) ;
 
 //--- Private properties
   private: std::vector <uint64_t> mArray ;

@@ -24,19 +24,23 @@
 
 //--------------------------------------------------------------------------------------------------
 
+static const uint64_t HALF_MASK = 0xFFFF'FFFF ;
+
+//--------------------------------------------------------------------------------------------------
+
 void mul64x64to128 (uint64_t op1,
                     uint64_t op2,
                     uint64_t & outHigh,
                     uint64_t & outLow) {
-  const uint64_t u1 = (op1 & 0xffffffff) ;
-  const uint64_t v1 = (op2 & 0xffffffff) ;
+  const uint64_t u1 = (op1 & HALF_MASK) ;
+  const uint64_t v1 = (op2 & HALF_MASK) ;
   uint64_t t = (u1 * v1);
-  const uint64_t w3 = (t & 0xffffffff);
+  const uint64_t w3 = (t & HALF_MASK);
   uint64_t k = (t >> 32);
 
-  op1 >>= 32;
+  op1 >>= 32 ;
   t = (op1 * v1) + k;
-  k = (t & 0xffffffff);
+  k = (t & HALF_MASK);
   uint64_t w1 = (t >> 32);
 
   op2 >>= 32;
@@ -61,9 +65,9 @@ void divmod128by64 (const uint64_t inDividendH, // inDividendH < inDivisor
 
     const int s = __builtin_clzll (inDivisor) ;
 
-    const uint64_t v = inDivisor << s;
+    const uint64_t v = inDivisor << s ;
     vn1 = v >> 32;
-    vn0 = v & 0xffffffff;
+    vn0 = v & HALF_MASK;
 
     if (s > 0)
     {
@@ -77,7 +81,7 @@ void divmod128by64 (const uint64_t inDividendH, // inDividendH < inDivisor
     }
 
     un1 = un10 >> 32;
-    un0 = un10 & 0xffffffff;
+    un0 = un10 & HALF_MASK;
 
     q1 = un32 / vn1;
     rhat = un32 % vn1;

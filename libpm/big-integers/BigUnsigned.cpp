@@ -23,7 +23,10 @@ BigUnsigned BigUnsigned::randomNumber (void) {
   BigUnsigned result ;
   const size_t randomSize = 1 + size_t (galgas_random ()) % 20 ;
   for (size_t i=0 ; i<randomSize ; i++) {
-    result.mArray.push_back (uint64_t (galgas_random ())) ;
+    uint64_t v = uint64_t (galgas_random ()) ;
+    v <<= 32 ;
+    v |= uint64_t (galgas_random ()) ;
+    result.mArray.push_back (v) ;
   }
   return result ;
 }
@@ -41,6 +44,24 @@ mArray () {
   if (inValue != 0) {
     mArray.push_back (inValue) ;
   }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Testing value
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool BigUnsigned::isZero (void) const {
+  return mArray.size () == 0 ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool BigUnsigned::isOne (void) const {
+  return (mArray.size () == 1) && (mArray [0] == 1) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -183,6 +204,90 @@ BigUnsigned BigUnsigned::multiplyingByBigUnsigned (const BigUnsigned & inOperand
 //----------------------------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Divide
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void BigUnsigned::divideByBigUnsigned (const BigUnsigned & inDivisor,
+                                       BigUnsigned & outQuotient,
+                                       BigUnsigned & outRemainder) const {
+  printHex (mArray,           "\n  -> Dividend") ;
+  printHex (inDivisor.mArray,   "  -> Divisor ") ;
+  BigUnsigned result ;
+  outQuotient = BigUnsigned () ;
+  outRemainder = BigUnsigned () ;
+  if (inDivisor.isZero ()) { // Divide by 0
+    std::cout << "Error " << __FILE__ << ":" << __LINE__ << "\n" ;
+    exit (1) ;
+  }else if (inDivisor.isOne ()) { // Divide by 1: quotient <- dividend, remainder <- 0
+    outQuotient = *this ;
+  }else if (mArray.size () < inDivisor.mArray.size ()) { // dividend < divisor: remainder <- dividend, quotient <- 0
+    outRemainder = *this ;
+  }else{
+    outRemainder = *this ;
+    if (outRemainder.mArray.back () >= inDivisor.mArray.back ()) {
+      outRemainder.mArray.push_back (0) ;
+    }
+    const size_t offset = outRemainder.mArray.size () - inDivisor.mArray.size () - 1 ;
+    std::cout << "  dividend[" << outRemainder.mArray.size ()
+              << "], divisor[" << inDivisor.mArray.size () << "], offset " << offset << "\n" ;
+    for (int idx = int (offset) ; idx > 0 ; idx--) {
+      uint64_t q ;
+      uint64_t r ;
+      const size_t remainderIndexH = outRemainder.mArray.size () + size_t (idx) - offset - 1 ;
+      divmod128by64 (outRemainder.mArray [remainderIndexH], // inDividendH < inDivisor
+                     outRemainder.mArray [remainderIndexH - 1],
+                     inDivisor.mArray.back (),
+                     q,
+                     r) ;
+      std::cout << "+++  idx " << idx << ", outRemainder.mArray [" << (remainderIndexH) << "], q " << q << "\n" ;
+      outQuotient.mArray.insert (outQuotient.mArray.begin (), q) ;
+      uint64_t currentBorrow = 0 ;
+      for (size_t i = 0 ; i < inDivisor.mArray.size () ; i++) {
+        uint64_t resultH ;
+        uint64_t resultL ;
+        mul64x64to128 (inDivisor.mArray [i], q, resultH, resultL) ;
+        std::cout << std::hex << "  resultH " << resultH << ", resultL " << resultL << std::dec << "\n" ;
+        if (resultL < currentBorrow) { // Underflow
+          resultH -= 1 ; // Propagate borrow
+        }
+        resultL -= currentBorrow ;
+        currentBorrow = resultH ; // + (outRemainder.mArray [i + idx - 1] < resultL) ;
+        const size_t remainderIndex = i + size_t (idx) ;
+        std::cout << std::hex << "  currentBorrow " << currentBorrow << std::dec << "\n" ;
+        std::cout << std::hex  << "  outRemainder.mArray ["
+                  << std::dec << (remainderIndex) << "]: " << std::hex  << outRemainder.mArray [remainderIndex] ;
+        outRemainder.mArray [remainderIndex] -= resultL ;
+        std::cout << "  --> " << outRemainder.mArray [remainderIndex] << std::dec << "\n" ;
+      }
+      const bool underflow = outRemainder.mArray [size_t (idx) + inDivisor.mArray.size ()] < currentBorrow ;
+      outRemainder.mArray [size_t (idx) + inDivisor.mArray.size ()] -= currentBorrow ;
+      if (underflow) {
+        std::cout << "  #underflow" << "\n" ;
+        outQuotient.mArray [0] -= 1 ;
+        uint64_t carry = 0 ;
+        for (size_t i = 0 ; i < inDivisor.mArray.size () ; i++) {
+          const uint64_t v1 = outRemainder.mArray [i + size_t (idx)] ;
+          const uint64_t v2 = inDivisor.mArray [i] ;
+          const uint64_t sum = v1 + v2 ;
+          outRemainder.mArray [i + size_t (idx)] = sum + carry ;
+          carry = sum < v1 ;
+        }
+      }
+      printHex (mArray,              "  -> Dividend                  ") ;
+      printHex (outRemainder.mArray, "  -> Remainder") ;
+ //     exit (1) ;
+    }
+    while ((outRemainder.mArray.size () > 0) && (outRemainder.mArray.back () == 0)) {
+      outRemainder.mArray.pop_back () ;
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Logic operations
 #endif
 
@@ -302,12 +407,18 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
 //--------------------------------------------------------------------------------------------------
 
 void BigUnsigned::printHex (const char * inName) const {
-  if (mArray.size () == 0) {
+  printHex (mArray, inName) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void BigUnsigned::printHex (const std::vector <uint64_t> & inArray, const char * inName) {
+  if (inArray.size () == 0) {
     printf ("%s: 0\n", inName) ;
   }else{
     printf ("%s: 0x", inName) ;
-    for (int i = int (mArray.size ()) - 1 ; i>= 0 ; i--) {
-      printf ("'%0" PRIx64 "X", mArray [size_t (i)]) ;
+    for (int i = int (inArray.size ()) - 1 ; i>= 0 ; i--) {
+      printf ("'%016" PRIx64, inArray [size_t (i)]) ;
     }
     printf ("\n") ;
   }
@@ -399,109 +510,5 @@ void BigUnsigned::divideByU64 (const uint64_t inDivisor,
     }
   }
 }
-
-//--------------------------------------------------------------------------------------------------
-// https://copyprogramming.com/howto/mostly-portable-128-by-64-bit-division
-// https://www.codeproject.com/Tips/785014/UInt-Division-Modulus
-
-//static void divmod128by64 (const uint64_t inDividendH,
-//                           const uint64_t inDividendL,
-//                           const uint64_t inDivisor,
-//                           uint64_t & outQuotient,
-//                           uint64_t & outRemainder) {
-//    const uint64_t b = 1ll << 32;
-//    uint64_t un1, un0, vn1, vn0, q1, q0, un32, un21, un10, rhat, left, right;
-////    size_t s;
-//
-//    // s = nlz64(v);
-//    const int s = __builtin_clzl (inDivisor) ;
-//
-//    const uint64_t v = inDivisor << s;
-//    vn1 = v >> 32;
-//    vn0 = v & 0xffffffff;
-//
-//    if (s > 0)
-//    {
-//        un32 = (inDividendH << s) | (inDividendL >> (64 - s));
-//        un10 = inDividendL << s;
-//    }
-//    else
-//    {
-//        un32 = inDividendH;
-//        un10 = inDividendL;
-//    }
-//
-//    un1 = un10 >> 32;
-//    un0 = un10 & 0xffffffff;
-//
-//    q1 = un32 / vn1;
-//    rhat = un32 % vn1;
-//
-//    left = q1 * vn0;
-//    right = (rhat << 32) + un1;
-//again1:
-//    if ((q1 >= b) || (left > right))
-//    {
-//        --q1;
-//        rhat += vn1;
-//        if (rhat < b)
-//        {
-//            left -= vn0;
-//            right = (rhat << 32) | un1;
-//            goto again1;
-//        }
-//    }
-//
-//    un21 = (un32 << 32) + (un1 - (q1 * v));
-//
-//    q0 = un21 / vn1;
-//    rhat = un21 % vn1;
-//
-//    left = q0 * vn0;
-//    right = (rhat << 32) | un0;
-//again2:
-//    if ((q0 >= b) || (left > right))
-//    {
-//        --q0;
-//        rhat += vn1;
-//        if (rhat < b)
-//        {
-//            left -= vn0;
-//            right = (rhat << 32) | un0;
-//            goto again2;
-//        }
-//    }
-//
-//    outRemainder = ((un21 << 32) + (un0 - (q0 * v))) >> s;
-//    outQuotient = (q1 << 32) | q0;
-//}
-
-//static void div128By64 (const uint64_t inDividendH,
-//                        const uint64_t inDividendL,
-//                        const uint64_t inDivisor,
-//                        uint64_t & outQuotientH,
-//                        uint64_t & outQuotientL,
-//                        uint64_t & outRemainder) {
-//  outQuotientH = inDividendH / inDivisor ;
-//  const uint64_t rH = inDividendH % inDivisor ;
-//
-//  const uint64_t u1 = (op1 & 0xffffffff) ;
-//  const uint64_t v1 = (op2 & 0xffffffff) ;
-//  uint64_t t = (u1 * v1);
-//  const uint64_t w3 = (t & 0xffffffff);
-//  uint64_t k = (t >> 32);
-//
-//  op1 >>= 32;
-//  t = (op1 * v1) + k;
-//  k = (t & 0xffffffff);
-//  uint64_t w1 = (t >> 32);
-//
-//  op2 >>= 32;
-//  t = (u1 * op2) + k;
-//  k = (t >> 32);
-//
-//  outHigh = (op1 * op2) + w1 + k;
-//  outLow = (t << 32) + w3;
-//}
 
 //--------------------------------------------------------------------------------------------------
