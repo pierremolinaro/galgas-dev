@@ -220,15 +220,37 @@ BigUnsigned BigUnsigned::subtractingBigUnsigned (const BigUnsigned & inOperand) 
 
 BigUnsigned BigUnsigned::multiplyingByBigUnsigned (const BigUnsigned & inOperand) const {
   BigUnsigned result ;
-//  std::cout << "-------------\n" ;
   if ((mArray.count () != 0) && (inOperand.mArray.count () != 0)) { // Operands are not zero
+    result.mArray.insertObjectsAtIndex (mArray.count () + inOperand.mArray.count (), 0, 0 COMMA_HERE) ;
     for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      const BigUnsigned r1 = multiplyingByU64 (inOperand.mArray (i COMMA_HERE)) ;
-      const BigUnsigned r2 = r1.leftShiftedBy (64 * uint32_t (i)) ;
-      result = result.addingBigUnsigned (r2) ;
-//      r1.printHex ("  r1") ;
-//      r2.printHex ("  r2") ;
-//      result.printHex ("  r ") ;
+      uint64_t carry = 0 ;
+      for (int32_t j = 0 ; j < mArray.count () ; j++) {
+      //--- multiplication 64 x 64 -> 128
+        uint64_t high ;
+        uint64_t low ;
+        mul64x64to128 (mArray (j COMMA_HERE), inOperand.mArray (i COMMA_HERE), high, low) ;
+      //--- Add carry
+        low += carry ;
+        high += low < carry ;
+      //--- Store result
+        uint64_t v = result.mArray (i + j COMMA_HERE) ;
+        v += low ;
+        high += v < low ;
+        result.mArray (i + j COMMA_HERE) = v ;
+        carry = high ;
+      }
+      int32_t idx = mArray.count () + i ;
+      while (carry > 0) {
+        uint64_t v = result.mArray (idx COMMA_HERE) ;
+        v += carry ;
+        carry = v < carry ;
+        result.mArray (idx COMMA_HERE) = v ;
+        idx += 1 ;
+      }
+    }
+  //--- Remove leading zeros
+    while ((result.mArray.count () > 0) && (result.mArray.lastObject (HERE) == 0)) {
+      result.mArray.removeLastObject (HERE) ;
     }
   }
   return result ;
@@ -318,9 +340,8 @@ void BigUnsigned::internalDivide (const BigUnsigned & inDividend,
 //      std::cout << "  MSB outRemainder.mArray [" << remainderLastIndex << "] = "
 //                << std::hex << outRemainder.mArray (remainderLastIndex COMMA_HERE)
 //                << std::dec << "\n" ;
-//      const uint64_t lastRemainder = outRemainder.mArray (remainderLastIndex COMMA_HERE) ;
-      MF_Assert ((lastRemainder == 0) || (lastRemainder == UINT64_MAX), "last remainder error", 0, 0) ;
-      MF_Assert (underflow == (lastRemainder == UINT64_MAX), "last remainder error", 0, 0) ;
+      MF_Assert ((outRemainder.mArray (remainderLastIndex COMMA_HERE) == 0) || (outRemainder.mArray (remainderLastIndex COMMA_HERE) == UINT64_MAX), "last remainder error", 0, 0) ;
+      MF_Assert (underflow == (outRemainder.mArray (remainderLastIndex COMMA_HERE) == UINT64_MAX), "last remainder error", 0, 0) ;
       while (underflow) {
 //        std::cout << "  #underflow" << "\n" ;
 //        outRemainder.printHex ("remainder") ;
