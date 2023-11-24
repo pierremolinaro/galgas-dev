@@ -711,8 +711,8 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
                                     TC_UniqueArray <int32_t> & outProductionsSet,
                                     TC_UniqueArray <int32_t> & outTerminalArray,
                                     bool & outAcceptCondition) {
-  outProductionsSet.setCountToZero () ;
-  outTerminalArray.setCountToZero () ;
+  outProductionsSet.removeAllKeepingCapacity () ;
+  outTerminalArray.removeAllKeepingCapacity () ;
   outAcceptCondition = false ;
   for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
     const int32_t productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;

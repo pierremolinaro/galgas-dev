@@ -114,8 +114,8 @@ template <typename TYPE> class TC_Array {
 //--- Add objects at the end of the array
   public: void appendObject (const TYPE & inValue) ; // inValue is copied
 
-//--- Set Count To zero
-  public: void setCountToZero (void) ;
+//--- Remove all, keeping capacity
+  public: void removeAllKeepingCapacity (void) ;
 
 //--- Remove all objects and deallocate
   public: void free (void) ;
@@ -399,10 +399,10 @@ template <typename TYPE> void TC_Array <TYPE>::removeLastObjects (const int32_t 
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::setCountToZero (void) {
+template <typename TYPE> void TC_Array <TYPE>::removeAllKeepingCapacity (void) {
   if (nullptr != mSharedArray) {
     insulate () ;
-    mSharedArray->setCountToZero () ;
+    mSharedArray->removeAllKeepingCapacity () ;
   }
 }
 
@@ -574,7 +574,7 @@ template <typename TYPE> int32_t TC_Array <TYPE>::indexOfObjectInOrderedArray (c
 
 template <typename TYPE> void TC_Array <TYPE>::intersectionOfOrderedArraies (const TC_Array<TYPE> & inOperand,
                                                                              TC_Array<TYPE> & outResult) const {
-  outResult.setCountToZero () ;
+  outResult.removeAllKeepingCapacity () ;
   if ((count () > 0) && (inOperand.count () > 0)) {
     if (nullptr == outResult.mSharedArray) {
       macroMyNew (outResult.mSharedArray, cSharedArray <TYPE>) ;
@@ -596,7 +596,7 @@ template <typename TYPE> void TC_Array <TYPE>::intersectionOfOrderedArraies (con
 
 template <typename TYPE> void TC_Array <TYPE>::unionOfOrderedArraies (const TC_Array<TYPE> & inOperand,
                                                                       TC_Array<TYPE> & outResult) const {
-  outResult.setCountToZero () ;
+  outResult.removeAllKeepingCapacity () ;
   if ((count () > 0) && (inOperand.count () == 0)) {
     outResult = *this ;
   }else if ((count () == 0) && (inOperand.count () > 0)) {
@@ -622,7 +622,7 @@ template <typename TYPE> void TC_Array <TYPE>::unionOfOrderedArraies (const TC_A
 
 template <typename TYPE> void TC_Array <TYPE>::subtractOfOrderedArraies (const TC_Array<TYPE> & inSubstractedSet,
                                                                          TC_Array<TYPE> & outResult) const {
-  outResult.setCountToZero () ;
+  outResult.removeAllKeepingCapacity () ;
   if (count () > 0) {
     if (inSubstractedSet.count () == 0) {
       outResult = *this ;

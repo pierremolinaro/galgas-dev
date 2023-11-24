@@ -510,7 +510,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
             << "\n" ;
   }
   ioCppFileContents << "} ;\n\n" ;
-  productionRulesTitle.setCountToZero () ;
+  productionRulesTitle.removeAllKeepingCapacity () ;
 
 //--- Generate decision tables indexes
   ioCppFileContents.appendCppTitleComment ("L L ( 1 )    F I R S T    P R O D U C T I O N    I N D E X E S") ;

@@ -283,22 +283,27 @@ BigUnsigned BigUnsigned::leftShiftedBy (const uint32_t inShiftCount) const {
     if (inShiftCount == 0) {
       result = *this ;
     }else{
+      const int32_t insertedWordCount = int32_t (inShiftCount) / 64 ;
       const uint32_t shift = inShiftCount % 64 ;
       if (shift == 0) {
-        result = *this ;
+        result.mArray.setCapacity (mArray.count () + insertedWordCount) ;
+        result.mArray.appendObjects (insertedWordCount, 0) ;
+        for (int32_t i = 0 ; i < mArray.count () ; i++) {
+          result.mArray.appendObject (mArray (i COMMA_HERE)) ;
+        }
       }else{
+        result.mArray.setCapacity (mArray.count () + insertedWordCount + 1) ;
+        result.mArray.appendObjects (insertedWordCount, 0) ;
         uint64_t carry = 0 ;
-        for (int32_t i=0 ; i<mArray.count () ; i++) {
+        for (int32_t i = 0 ; i < mArray.count () ; i++) {
           const uint64_t v = mArray (i COMMA_HERE) ;
           result.mArray.appendObject ((v << shift) | carry) ;
           carry = v >> (64 - shift) ;
         }
-        if (carry != 0) {
+        if (carry > 0) {
           result.mArray.appendObject (carry) ;
         }
       }
-      const uint32_t insertedWordCount = inShiftCount / 64 ;
-      result.mArray.insertObjectsAtIndex (int32_t (insertedWordCount), 0, 0 COMMA_HERE) ;
     }
   }
   return result ;
@@ -308,24 +313,24 @@ BigUnsigned BigUnsigned::leftShiftedBy (const uint32_t inShiftCount) const {
 
 void BigUnsigned::leftShiftInPlaceBy (const uint32_t inShiftCount) {
   if ((mArray.count () > 0) && (inShiftCount > 0)) {
-    const uint32_t insertedWordCount = inShiftCount / 64 ;
+    const int32_t insertedWordCount = int32_t (inShiftCount) / 64 ;
     mArray.setCapacity (mArray.count () + insertedWordCount + 1) ;
-    mArray.insertObjectsAtIndex (int32_t (insertedWordCount), 0, 0 COMMA_HERE) ;
+    mArray.appendObjects (insertedWordCount, 0) ;
     const uint32_t shift = inShiftCount % 64 ;
     if (shift > 0) {
       uint64_t carry = 0 ;
       for (int32_t i=0 ; i<mArray.count () ; i++) {
-        const int32_t idx = i + int32_t (insertedWordCount) ;
-        const uint64_t v = mArray (idx COMMA_HERE) ;
-        mArray (idx COMMA_HERE) = (v << shift) | carry ;
+        const uint64_t v = mArray (i COMMA_HERE) ;
+        mArray (i + insertedWordCount COMMA_HERE) = (v << shift) | carry ;
         carry = v >> (64 - shift) ;
       }
       if (carry != 0) {
         mArray.appendObject (carry) ;
       }
+      for (int32_t i=0 ; i<insertedWordCount ; i++) {
+        mArray (i COMMA_HERE) = 0 ;
+      }
     }
-//    const uint32_t insertedWordCount = inShiftCount / 64 ;
-//    mArray.insertObjectsAtIndex (int32_t (insertedWordCount), 0, 0 COMMA_HERE) ;
   }
 }
 
@@ -378,32 +383,42 @@ BigUnsigned BigUnsigned::addingBigUnsigned (const BigUnsigned & inOperand) const
 
 BigUnsigned BigUnsigned::subtractingBigUnsigned (const BigUnsigned & inOperand) const {
   BigUnsigned result ;
-  int compareResult = compare (inOperand) ;
+  const int compareResult = compare (inOperand) ;
   if (compareResult < 0) { // Error
     std::cout << "Error " << __FILE__ << ":" << __LINE__ << "\n" ;
     exit (1) ;
   }else if (compareResult > 0) {
     result.mArray.setCapacity (mArray.count ()) ;
-    bool borrow = false ;
-    for (int32_t i = 0 ; i < mArray.count () ; i++) {
-      uint64_t v2 = (i < inOperand.mArray.count ()) ? inOperand.mArray (i COMMA_HERE) : 0 ;
-      if (borrow) {
-        v2 ++ ;
-        if (v2 == 0) {
+    uint64_t borrow = 0 ; // 0 or 1
+    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      uint64_t v = inOperand.mArray (i COMMA_HERE) ;
+      if (borrow > 0) {
+        v += 1 ;
+        if (v == 0) {
           result.mArray.appendObject (mArray (i COMMA_HERE)) ;
-          borrow = true ;
+          borrow = 1 ;
         }else{
-          const uint64_t r = mArray (i COMMA_HERE) - v2 ;
-          borrow = mArray (i COMMA_HERE) < v2 ;
+          const uint64_t r = mArray (i COMMA_HERE) - v ;
+          borrow = mArray (i COMMA_HERE) < v ;
           result.mArray.appendObject (r) ;
         }
       }else{
-        const uint64_t r = mArray (i COMMA_HERE) - v2 ;
-        borrow = mArray (i COMMA_HERE) < v2 ;
+        borrow = mArray (i COMMA_HERE) < v ;
+        const uint64_t r = mArray (i COMMA_HERE) - v ;
         result.mArray.appendObject (r) ;
       }
     }
-    if (borrow) {
+    for (int32_t i = inOperand.mArray.count () ; i < mArray.count () ; i++) {
+      if (borrow > 0) {
+        borrow = mArray (i COMMA_HERE) == 0 ;
+        const uint64_t r = mArray (i COMMA_HERE) - 1 ;
+        result.mArray.appendObject (r) ;
+      }else{
+        const uint64_t r = mArray (i COMMA_HERE) ;
+        result.mArray.appendObject (r) ;
+      }
+    }
+    if (borrow > 0) {
       std::cout << "Error " << __FILE__ << ":" << __LINE__ << "\n" ;
       exit (1) ;
     }
@@ -472,8 +487,8 @@ void BigUnsigned::divideByBigUnsigned (const BigUnsigned & inDivisor,
                                        BigUnsigned & outQuotient,
                                        BigUnsigned & outRemainder) const {
   BigUnsigned result ;
-  outQuotient.mArray.setCountToZero () ;
-  outRemainder.mArray.setCountToZero () ;
+  outQuotient.mArray.removeAllKeepingCapacity () ;
+  outRemainder.mArray.removeAllKeepingCapacity () ;
   if (inDivisor.isZero ()) { // Divide by 0
     std::cout << "Error " << __FILE__ << ":" << __LINE__ << "\n" ;
     exit (1) ;

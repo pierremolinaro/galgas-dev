@@ -982,7 +982,7 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
             uniqueTerminalIndex ++ ;
           }
           errorStackCount = stack.count () ;
-          errorStack.setCountToZero () ;
+          errorStack.removeAllKeepingCapacity () ;
           errorProgramCounter = programCounter ;
         }else{ // Error !
           if (TRACE_LL1_PARSING ()) {
@@ -1215,7 +1215,7 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
         actionCode = int32_t (actionCode - 2) ;
         stack.appendObject (-1) ; // Enter any value
         stack.appendObject (actionCode) ; // Enter next current state
-        poppedErrors.setCountToZero () ;
+        poppedErrors.removeAllKeepingCapacity () ;
         errorSignalingUselessEntryOnTopOfStack = 0 ;
         executionList.appendDefaultObjectUsingSwap () ;
       //---

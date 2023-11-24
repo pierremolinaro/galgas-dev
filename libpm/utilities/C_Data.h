@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2012, ..., 2013 Pierre Molinaro.
+//  Copyright (C) 2012, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -37,9 +37,9 @@ class C_Data {
   public: virtual ~C_Data (void) ;
   
 //--- Length
-  public: inline int32_t length (void) const { return mBinaryData.count () ; }
-  
-  public: void setLengthToZero (void) ;
+  public: inline int32_t count (void) const { return mBinaryData.count () ; }
+
+  public: void removeAllKeepingCapacity (void) ;
 
   public: const uint8_t * unsafeDataPointer (void) const { return mBinaryData.unsafeArrayPointer () ; }
 

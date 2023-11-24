@@ -16,7 +16,7 @@ void enterExtensionSetter_%![MODIFIER_NAME identifierRepresentation]% (%?^%const
 //----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (void) {
-  gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.free () ;
+  gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.removeAll () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

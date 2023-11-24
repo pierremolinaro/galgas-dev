@@ -44,7 +44,8 @@ template <typename TYPE> class TC_UniqueArray ;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void swap (TC_UniqueArray <TYPE> & ioOperand1, TC_UniqueArray <TYPE> & ioOperand2) ;
+template <typename TYPE> void swap (TC_UniqueArray <TYPE> & ioOperand1,
+                                    TC_UniqueArray <TYPE> & ioOperand2) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -62,15 +63,15 @@ template <typename TYPE> class TC_UniqueArray {
 
 //--- Allocation Constructor (array initialized with inValue)
   public: TC_UniqueArray (const int32_t inCapacity,
-                           const TYPE & inValue
-                           COMMA_LOCATION_ARGS) ;
+                          const TYPE & inValue
+                          COMMA_LOCATION_ARGS) ;
 
 //--- Virtual Destructor
   public: virtual ~TC_UniqueArray (void) ;
 
 //--- No copy
-  private: TC_UniqueArray (const TC_UniqueArray <TYPE> &) ;
-  private: TC_UniqueArray <TYPE> & operator = (const TC_UniqueArray <TYPE> &) ;
+  private: TC_UniqueArray (const TC_UniqueArray <TYPE> &) = delete ;
+  private: TC_UniqueArray <TYPE> & operator = (const TC_UniqueArray <TYPE> &) = delete ;
 
 //--- Copy
   public: void copyTo (TC_UniqueArray <TYPE> & outArray) const ;
@@ -78,8 +79,11 @@ template <typename TYPE> class TC_UniqueArray {
 //--- Get Count
   public: inline int32_t count (void) const { return mCount ; }
 
-//--- Set Count To zero
-  public: void setCountToZero (void) ;
+//--- Remove all, keeping capacity
+  public: void removeAllKeepingCapacity (void) ;
+
+//--- Remove all objects and deallocate
+  public: void removeAll (void) ;
 
 //--- Get allocated capacity
   public: inline int32_t capacity (void) const { return mCapacity ; }
@@ -90,11 +94,11 @@ template <typename TYPE> class TC_UniqueArray {
 
 //--- Allocation with provided data (ioDataPtr is captured, and nullptr is returned)
   public: void setDataFromPointer (TYPE * & ioDataPtr,
-                                    const int32_t inDataLength) ;
+                                   const int32_t inDataLength) ;
 
 //--- Append data (inDataPtr is not released)
   public: void appendDataFromPointer (const TYPE * inDataPtr,
-                                       const int32_t inDataLength) ;
+                                      const int32_t inDataLength) ;
 
 //--- Get buffer pointer
   public: const TYPE * unsecureBufferPointer (void) const { return mArray ; }
@@ -152,15 +156,12 @@ template <typename TYPE> class TC_UniqueArray {
   public: void unionWithArray (const TC_UniqueArray <TYPE> & inOperand,
                                 TC_UniqueArray <TYPE> & outResult) const ;
 
-//--- Remove all objects and deallocate
-  public: void free (void) ;
-
 //--- Increment, decrement
   public: void incrementAtIndex (const int32_t inIndex
-                                  COMMA_LOCATION_ARGS) ; // ++ on object
+                                 COMMA_LOCATION_ARGS) ; // ++ on object
 
   public: void decrementAtIndex (const int32_t inIndex
-                                  COMMA_LOCATION_ARGS) ; // -- on object
+                                 COMMA_LOCATION_ARGS) ; // -- on object
 
 //--- Append objects at the end of the array
   public: void appendObject (const TYPE & inValue) ; // inValue is copied
@@ -173,27 +174,27 @@ template <typename TYPE> class TC_UniqueArray {
 
 //--- Force entry
   public: void forceObjectAtIndex (const int32_t inIndex,
-                                    const TYPE & inValue,
-                                    const TYPE & inDefaultValue
-                                    COMMA_LOCATION_ARGS) ;
+                                   const TYPE & inValue,
+                                   const TYPE & inDefaultValue
+                                   COMMA_LOCATION_ARGS) ;
 
 //--- Insert objects at index (0 <= index <= count)
   public: void insertObjectAtIndex (const TYPE & inValue,
-                                     const int32_t inIndex
-                                     COMMA_LOCATION_ARGS) ; // inValue is copied
+                                    const int32_t inIndex
+                                    COMMA_LOCATION_ARGS) ; // inValue is copied
 
   public: void insertObjectsAtIndex (const int32_t inCount,
-                                      const TYPE & inValue,
-                                      const int32_t inStartingIndex
-                                      COMMA_LOCATION_ARGS) ; // inValue is copied
+                                     const TYPE & inValue,
+                                     const int32_t inStartingIndex
+                                     COMMA_LOCATION_ARGS) ; // inValue is copied
 
   public: void insertObjectUsingSwap (TYPE & ioValue,
-                                       const int32_t inIndex
-                                       COMMA_LOCATION_ARGS) ;
+                                      const int32_t inIndex
+                                      COMMA_LOCATION_ARGS) ;
 
   public: void insertObjectsUsingExchangeAndClear (const int32_t inObjectCount,
-                                                    const int32_t inIndex
-                                                    COMMA_LOCATION_ARGS) ;
+                                                   const int32_t inIndex
+                                                   COMMA_LOCATION_ARGS) ;
 
 //--- Find Object (uses == operator for comparing objects)
 //    Returns -1 if not found
@@ -205,15 +206,15 @@ template <typename TYPE> class TC_UniqueArray {
 
 //--- Exchange objects at indexes (0 <= index < count, use swap)
   public: void exchangeObjectAtIndexes (const int32_t inIndex1,
-                                         const int32_t inIndex2
-                                         COMMA_LOCATION_ARGS) ;
+                                        const int32_t inIndex2
+                                        COMMA_LOCATION_ARGS) ;
 
 //--- Remove objects at index (0 <= index < count)
   public: void removeObjectAtIndex (const int32_t inIndex
-                                     COMMA_LOCATION_ARGS) ;
+                                    COMMA_LOCATION_ARGS) ;
   public: void removeObjectsAtIndex (const int32_t inCount,
-                                      const int32_t inStartingIndex
-                                      COMMA_LOCATION_ARGS) ;
+                                     const int32_t inStartingIndex
+                                     COMMA_LOCATION_ARGS) ;
 
 //--- Remove objects from an other array (uses == operator for selecting objects to remove)
   public: void removeObjectsFromArray (const TC_UniqueArray <TYPE> & inArray) ; // Remaining objects are copied
@@ -270,26 +271,26 @@ template <typename TYPE> class TC_UniqueArray {
 
 //--- Private methods
   private: void internalSortArrayUsingOperators (const int32_t inFirst,
-                                                  const int32_t inLast) ;
+                                                 const int32_t inLast) ;
 
   private: void internalReverseSortArrayUsingOperators (const int32_t inFirst,
-                                                         const int32_t inLast) ;
+                                                        const int32_t inLast) ;
 
   private: void internalSortArrayUsingCompareMethod (const int32_t inFirst,
-                                                      const int32_t inLast) ;
+                                                     const int32_t inLast) ;
 
   private: void internalReverseSortArrayUsingCompareMethod (const int32_t inFirst,
-                                                             const int32_t inLast) ;
+                                                            const int32_t inLast) ;
 
   private: void internalSortArrayUsingFunction (const int32_t inFirst,
-                                                 const int32_t inLast,
-                                                 int32_t (* inSortFunction) (const TYPE & inOperand1,
-                                                                              const TYPE & inOperand2)) ;
+                                                const int32_t inLast,
+                                                int32_t (* inSortFunction) (const TYPE & inOperand1,
+                                                                            const TYPE & inOperand2)) ;
 
   private: void internalReverseSortArrayUsingFunction (const int32_t inFirst,
-                                                        const int32_t inLast,
-                                                        int32_t (* inSortFunction) (const TYPE & inOperand1,
-                                                                                     const TYPE & inOperand2)) ;
+                                                       const int32_t inLast,
+                                                       int32_t (* inSortFunction) (const TYPE & inOperand1,
+                                                                                   const TYPE & inOperand2)) ;
 //--- Index checking
   #ifndef DO_NOT_GENERATE_CHECKINGS
     protected: void checkIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
@@ -406,7 +407,7 @@ template <typename TYPE> TC_UniqueArray <TYPE>::~TC_UniqueArray (void) {
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::setCountToZero (void) {
+template <typename TYPE> void TC_UniqueArray <TYPE>::removeAllKeepingCapacity (void) {
   mCount = 0 ;
 }
 
@@ -417,7 +418,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::setCountToZero (void) {
 //----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::copyTo (TC_UniqueArray <TYPE> & outArray) const {
-  outArray.setCountToZero () ;
+  outArray.removeAllKeepingCapacity () ;
   for (int32_t i=0 ; i<mCount ; i++) {
     outArray.appendObject (mArray [i]) ;
   }
@@ -505,7 +506,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::setCapacityUsingSwap (const
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::free (void) {
+template <typename TYPE> void TC_UniqueArray <TYPE>::removeAll (void) {
   mCount = 0 ;
   macroMyDeleteArray (mArray) ;
   mCapacity = 0 ;
@@ -1519,7 +1520,7 @@ template <typename TYPE> int32_t TC_UniqueArray <TYPE>::indexOfObjectInOrderedAr
 template <typename TYPE>
 void TC_UniqueArray <TYPE>::intersectionOfOrderedArraies (const TC_UniqueArray<TYPE> & inOperand,
                                                           TC_UniqueArray<TYPE> & outResult) const {
-  outResult.setCountToZero () ;
+  outResult.removeAllKeepingCapacity () ;
   int32_t leftIdx = 0 ;
   int32_t rightIdx = 0 ;
   while ((leftIdx < count ()) && (rightIdx < inOperand.count ())) {
@@ -1548,7 +1549,7 @@ void TC_UniqueArray <TYPE>::intersectionOfOrderedArraies (const TC_UniqueArray<T
 template <typename TYPE>
 void TC_UniqueArray <TYPE>::unionOfOrderedArraies (const TC_UniqueArray<TYPE> & inOperand,
                                                    TC_UniqueArray<TYPE> & outResult) const {
-  outResult.setCountToZero () ;
+  outResult.removeAllKeepingCapacity () ;
   int32_t leftIdx = 0 ;
   int32_t rightIdx = 0 ;
   while ((leftIdx < count ()) && (rightIdx < inOperand.count ())) {
@@ -1587,7 +1588,7 @@ void TC_UniqueArray <TYPE>::unionOfOrderedArraies (const TC_UniqueArray<TYPE> & 
 template <typename TYPE>
 void TC_UniqueArray <TYPE>::substractOfOrderedArraies (const TC_UniqueArray<TYPE> & inSubstractedSet,
                                                        TC_UniqueArray<TYPE> & outResult) const {
-  outResult.setCountToZero () ;
+  outResult.removeAllKeepingCapacity () ;
   int32_t leftIdx = 0 ;
   int32_t rightIdx = 0 ;
   while ((leftIdx < count ()) && (rightIdx < inSubstractedSet.count ())) {
