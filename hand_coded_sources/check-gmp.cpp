@@ -234,7 +234,7 @@ static void testAddingSubtractingC_BigInt (void) {
   std::cout << "Test adding, subtracting C_BigInt... " ;
   C_Timer timer ;
   uint64_t errorCount = 0 ;
-  for (int i=0 ; i<10'000'000 ; i++) {
+  for (int i = 0 ; i < 10'000'000 ; i++) {
     const C_BigInt bigA = C_BigInt::randomNumber () ;
     const C_BigInt bigB = C_BigInt::randomNumber () ;
     const C_BigInt bigAdd = bigA + bigB ;

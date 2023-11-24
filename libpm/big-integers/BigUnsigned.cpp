@@ -207,13 +207,13 @@ BigUnsigned BigUnsigned::randomNumber (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-BigUnsigned::BigUnsigned (void) noexcept :
+BigUnsigned::BigUnsigned (void) :
 mArray () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-BigUnsigned::BigUnsigned (const uint64_t inValue) noexcept :
+BigUnsigned::BigUnsigned (const uint64_t inValue) :
 mArray () {
   if (inValue != 0) {
     mArray.appendObject (inValue) ;
@@ -229,6 +229,12 @@ BigUnsigned BigUnsigned::powerOfTwo (const int32_t inPowerOfTwo) {
   result.mArray.insertObjectsAtIndex (wordCount, 0, 0 COMMA_HERE) ;
   result.mArray.lastObject (HERE) |= uint64_t (1) << bitIndex ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void BigUnsigned::copyTo (BigUnsigned & outTarget) const {
+  mArray.copyTo (outTarget.mArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -296,6 +302,31 @@ BigUnsigned BigUnsigned::leftShiftedBy (const uint32_t inShiftCount) const {
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void BigUnsigned::leftShiftInPlaceBy (const uint32_t inShiftCount) {
+  if ((mArray.count () > 0) && (inShiftCount > 0)) {
+    const uint32_t insertedWordCount = inShiftCount / 64 ;
+    mArray.setCapacity (mArray.count () + insertedWordCount + 1) ;
+    mArray.insertObjectsAtIndex (int32_t (insertedWordCount), 0, 0 COMMA_HERE) ;
+    const uint32_t shift = inShiftCount % 64 ;
+    if (shift > 0) {
+      uint64_t carry = 0 ;
+      for (int32_t i=0 ; i<mArray.count () ; i++) {
+        const int32_t idx = i + int32_t (insertedWordCount) ;
+        const uint64_t v = mArray (idx COMMA_HERE) ;
+        mArray (idx COMMA_HERE) = (v << shift) | carry ;
+        carry = v >> (64 - shift) ;
+      }
+      if (carry != 0) {
+        mArray.appendObject (carry) ;
+      }
+    }
+//    const uint32_t insertedWordCount = inShiftCount / 64 ;
+//    mArray.insertObjectsAtIndex (int32_t (insertedWordCount), 0, 0 COMMA_HERE) ;
+  }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -440,11 +471,9 @@ BigUnsigned BigUnsigned::multiplyingByBigUnsigned (const BigUnsigned & inOperand
 void BigUnsigned::divideByBigUnsigned (const BigUnsigned & inDivisor,
                                        BigUnsigned & outQuotient,
                                        BigUnsigned & outRemainder) const {
-//  printHex (mArray,           "\n  -> Dividend") ;
-//  printHex (inDivisor.mArray,   "  -> Divisor ") ;
   BigUnsigned result ;
-  outQuotient = BigUnsigned () ;
-  outRemainder = BigUnsigned () ;
+  outQuotient.mArray.setCountToZero () ;
+  outRemainder.mArray.setCountToZero () ;
   if (inDivisor.isZero ()) { // Divide by 0
     std::cout << "Error " << __FILE__ << ":" << __LINE__ << "\n" ;
     exit (1) ;
@@ -475,8 +504,8 @@ void BigUnsigned::internalDivide (const BigUnsigned & inDividend,
     uint64_t quotient ;
     const int32_t remainderIndexH = outRemainder.mArray.count () + itx - iterationCount ;
     div128By64Special (outRemainder.mArray (remainderIndexH COMMA_HERE), // inDividendH < divisor
-                       outRemainder.mArray (remainderIndexH - 1 COMMA_HERE),
-                       divisor.mArray.lastObject (HERE),
+                       outRemainder.mArray (remainderIndexH - 1 COMMA_HERE), // inDividendL
+                       divisor.mArray.lastObject (HERE), // divisor >= 0x'8000'0000'0000'0000
                        quotient) ;
     outQuotient.mArray.insertObjectAtIndex (quotient, 0 COMMA_HERE) ;
     if (quotient > 0) {
@@ -521,7 +550,7 @@ void BigUnsigned::internalDivide (const BigUnsigned & inDividend,
   }
 //--- Adjust quotient and remainder
   if (s > 0) {
-    outQuotient = outQuotient.leftShiftedBy (s) ;
+    outQuotient.leftShiftInPlaceBy (s) ;
     MF_Assert (outRemainder.mArray.count () <= inDivisor.mArray.count (), "Error", 0, 0) ;
     if (outRemainder.mArray.count () == inDivisor.mArray.count ()) {
       const uint64_t divisorForAdjust = outRemainder.mArray.lastObject (HERE) / inDivisor.mArray.lastObject (HERE) ;
@@ -551,10 +580,6 @@ void BigUnsigned::internalDivide (const BigUnsigned & inDividend,
           mul64x64to128 (divisorForAdjust, inDivisor.mArray (i COMMA_HERE), resultH, resultL) ;
           resultL += currentCarry ;
           resultH += resultL < currentCarry ;
-//          if (resultL < currentCarry) { // Overflow
-//            resultH += 1 ; // Propagate overflow
-//            MF_Assert (resultH != 0, "resultH is null", 0, 0) ;
-//          }
           currentCarry = resultH ;
           currentCarry += outRemainder.mArray (i COMMA_HERE) < resultL ;
           outRemainder.mArray (i COMMA_HERE) -= resultL ;
@@ -588,8 +613,8 @@ void BigUnsigned::internalDivide (const BigUnsigned & inDividend,
 //--------------------------------------------------------------------------------------------------
 
 void BigUnsigned::divideByBigUnsignedOld (const BigUnsigned & inDivisor,
-                                       BigUnsigned & outQuotient,
-                                       BigUnsigned & outRemainder) const {
+                                          BigUnsigned & outQuotient,
+                                          BigUnsigned & outRemainder) const {
   BigUnsigned result ;
   outQuotient = BigUnsigned () ;
   outRemainder = BigUnsigned () ;
