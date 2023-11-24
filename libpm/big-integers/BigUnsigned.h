@@ -3,7 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include <cstdint>
-#include <vector>
+#include "TC_UniqueArray.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11,6 +11,7 @@ class BigUnsigned {
 
 //--- Constructors
   public: static BigUnsigned randomNumber (void) ;
+  public: static BigUnsigned powerOfTwo (const int32_t inPowerOfTwo) ;
   public: BigUnsigned (void) noexcept ;
   public: BigUnsigned (const uint64_t inValue) noexcept ;
 
@@ -31,6 +32,10 @@ class BigUnsigned {
   public: void divideByBigUnsigned (const BigUnsigned & inDivisor,
                                     BigUnsigned & outQuotient,
                                     BigUnsigned & outRemainder) const ;
+  public: static void internalDivide (const BigUnsigned & inDividend,
+                                      const BigUnsigned & inDivisor,
+                                      BigUnsigned & outQuotient,
+                                      BigUnsigned & outRemainder) ;
   public: int compare (const BigUnsigned & inOperand) const ;
 
   public: BigUnsigned oringWithBigUnsigned (const BigUnsigned & inOperand) const ;
@@ -39,10 +44,14 @@ class BigUnsigned {
   public: BigUnsigned complemented (void) const ;
 
   public: void printHex (const char * inName) const ;
-  private: static void printHex (const std::vector <uint64_t> & inArray, const char * inName) ;
+  private: static void printHex (const TC_UniqueArray <uint64_t> & inArray, const char * inName) ;
+
+//--- Handle copy
+  public: BigUnsigned (const BigUnsigned & inSource) ;
+  public: BigUnsigned & operator = (const BigUnsigned & inSource) ;
 
 //--- Private properties
-  private: std::vector <uint64_t> mArray ;
+  private: TC_UniqueArray <uint64_t> mArray ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

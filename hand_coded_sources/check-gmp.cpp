@@ -133,6 +133,38 @@ static void testMultiplyingDividingBigUnsignedByU64 (void) {
 
 //--------------------------------------------------------------------------------------------------
 
+static void testBigUnsignedMultiplyPowerOfTwo (void) {
+  std::cout << "Test multiplying power of two BigUnsigned... " ;
+  C_Timer timer ;
+  uint64_t errorCount = 0 ;
+  for (int32_t i = 0 ; i < 1000 ; i++) {
+    const BigUnsigned bigA = BigUnsigned::powerOfTwo (i) ;
+    for (int32_t j = 0 ; j < 1000 ; j++) {
+      const BigUnsigned bigB = BigUnsigned::powerOfTwo (j) ;
+      const BigUnsigned product = bigA.multiplyingByBigUnsigned (bigB) ;
+      const BigUnsigned expectedResult = BigUnsigned::powerOfTwo (i + j) ;
+      if (expectedResult.compare (product) != 0) {
+        errorCount += 1 ;
+        std::cout << " error for i=" << i << ", j=" << j << "\n" ;
+        bigA.printHex    ("bigA   ") ;
+        bigB.printHex    ("bigB   ") ;
+        product.printHex ("product") ;
+        expectedResult.printHex ("result ") ;
+        exit (1) ;
+      }
+    }
+  }
+
+  if (errorCount == 0) {
+    std::cout << "Ok " << timer.msFromStart () << " ms\n" ;
+  }else{
+    std::cout << errorCount << " errors (" << timer.msFromStart () << " ms)\n" ;
+    exit (1) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 static void testMultiplyingDividingBigUnsigned (void) {
   std::cout << "Test multiplying, dividing BigUnsigned... " ;
   C_Timer timer ;
@@ -227,6 +259,7 @@ void routine_checkGMP (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   testMultiplyingDividingBigUnsigned () ;
   testAddingSubtractingBigUnsigned () ;
   testMultiplyingDividingBigUnsignedByU64 () ;
+  testBigUnsignedMultiplyPowerOfTwo () ;
   testAddingSubtractingC_BigInt () ;
   uint32_t errorCount = 0 ;
   {
