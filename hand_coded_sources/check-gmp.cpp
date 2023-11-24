@@ -178,13 +178,17 @@ static void testMultiplyingDividingBigUnsigned (void) {
     const BigUnsigned p = divisor.multiplyingByBigUnsigned (quotient) ;
     const BigUnsigned q = p.addingBigUnsigned (remainder) ;
     if (dividend.compare (q) != 0) {
+      errorCount += 1 ;
       std::cout << " error\n" ;
       q.printHex         ("D2       ") ;
       dividend.printHex  ("Dividend ") ;
       divisor.printHex   ("Divisor  ") ;
       quotient.printHex  ("Quotient ") ;
       remainder.printHex ("remainder") ;
-      errorCount += 1 ;
+      std::cout << "With old algo\n" ;
+      dividend.divideByBigUnsignedOld (divisor, quotient, remainder) ;
+      quotient.printHex  ("Quotient ") ;
+      remainder.printHex ("remainder") ;
       exit (1) ;
     }
   }

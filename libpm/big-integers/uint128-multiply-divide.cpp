@@ -66,7 +66,7 @@ void divmod128by64 (const uint64_t inDividendH, // inDividendH < inDivisor
     const int s = __builtin_clzll (inDivisor) ;
 
     const uint64_t v = inDivisor << s ;
-    vn1 = v >> 32;
+    vn1 = v >> 32 ;
     vn0 = v & HALF_MASK;
 
     if (s > 0)
@@ -136,6 +136,77 @@ void div128By64 (const uint64_t inDividendH,
   outQuotientH = inDividendH / inDivisor ;
   const uint64_t rH = inDividendH % inDivisor ;
   divmod128by64 (rH, inDividendL, inDivisor, outQuotientL, outRemainder) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void div128By64Special (const uint64_t inDividendH, // inDividendH < inDivisor
+                        const uint64_t inDividendL,
+                        const uint64_t inDivisor, // inDivisor >= 0x'8000'0000
+                        uint64_t & outQuotient) {
+    const uint64_t b = 1ll << 32;
+    uint64_t un1, un0, vn1, vn0, q1, q0, un32, un21, un10, rhat, left, right;
+
+    const int s = __builtin_clzll (inDivisor) ;
+
+    const uint64_t v = inDivisor << s ;
+    vn1 = v >> 32 ;
+    vn0 = v & HALF_MASK;
+
+    if (s > 0)
+    {
+        un32 = (inDividendH << s) | (inDividendL >> (64 - s));
+        un10 = inDividendL << s;
+    }
+    else
+    {
+        un32 = inDividendH;
+        un10 = inDividendL;
+    }
+
+    un1 = un10 >> 32;
+    un0 = un10 & HALF_MASK;
+
+    q1 = un32 / vn1;
+    rhat = un32 % vn1;
+
+    left = q1 * vn0;
+    right = (rhat << 32) + un1;
+again1:
+    if ((q1 >= b) || (left > right))
+    {
+        --q1;
+        rhat += vn1;
+        if (rhat < b)
+        {
+            left -= vn0;
+            right = (rhat << 32) | un1;
+            goto again1;
+        }
+    }
+
+    un21 = (un32 << 32) + (un1 - (q1 * v));
+
+    q0 = un21 / vn1;
+    rhat = un21 % vn1;
+
+    left = q0 * vn0;
+    right = (rhat << 32) | un0;
+again2:
+    if ((q0 >= b) || (left > right))
+    {
+        --q0;
+        rhat += vn1;
+        if (rhat < b)
+        {
+            left -= vn0;
+            right = (rhat << 32) | un0;
+            goto again2;
+        }
+    }
+
+//    outRemainder = ((un21 << 32) + (un0 - (q0 * v))) >> s;
+    outQuotient = (q1 << 32) | q0;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -47,3 +47,10 @@ void divmod128by64 (const uint64_t inDividendH, // inDividendH < inDivisor
                     uint64_t & outRemainder) ;
 
 //--------------------------------------------------------------------------------------------------
+
+void div128By64Special (const uint64_t inDividendH, // inDividendH < inDivisor
+                        const uint64_t inDividendL,
+                        const uint64_t inDivisor, // inDivisor >= 0x'8000'0000
+                        uint64_t & outQuotient) ;
+
+//--------------------------------------------------------------------------------------------------

@@ -29,6 +29,13 @@ class BigUnsigned {
                             BigUnsigned & outQuotient,
                             uint64_t & outRemainder) const ;
   public: BigUnsigned multiplyingByBigUnsigned (const BigUnsigned & inOperand) const ;
+  public: void divideByBigUnsignedOld (const BigUnsigned & inDivisor,
+                                       BigUnsigned & outQuotient,
+                                       BigUnsigned & outRemainder) const ;
+  public: static void internalDivideOld (const BigUnsigned & inDividend,
+                                         const BigUnsigned & inDivisor,
+                                         BigUnsigned & outQuotient,
+                                         BigUnsigned & outRemainder) ;
   public: void divideByBigUnsigned (const BigUnsigned & inDivisor,
                                     BigUnsigned & outQuotient,
                                     BigUnsigned & outRemainder) const ;
