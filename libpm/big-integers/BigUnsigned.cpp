@@ -10,6 +10,92 @@
 #include "uint128-multiply-divide.h"
 
 //--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark U128 Operations
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+static const uint64_t HALF_MASK = 0xFFFF'FFFF ;
+
+//--------------------------------------------------------------------------------------------------
+
+static void mul64x64to128 (uint64_t op1,
+                           uint64_t op2,
+                           uint64_t & outHigh,
+                           uint64_t & outLow) {
+  const uint64_t u1 = (op1 & HALF_MASK) ;
+  const uint64_t v1 = (op2 & HALF_MASK) ;
+  uint64_t t = (u1 * v1);
+  const uint64_t w3 = (t & HALF_MASK);
+  uint64_t k = (t >> 32);
+
+  op1 >>= 32 ;
+  t = (op1 * v1) + k;
+  k = (t & HALF_MASK);
+  uint64_t w1 = (t >> 32);
+
+  op2 >>= 32;
+  t = (u1 * op2) + k;
+  k = (t >> 32);
+
+  outHigh = (op1 * op2) + w1 + k;
+  outLow = (t << 32) + w3;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static void div128By64Special (const uint64_t inDividendH, // inDividendH < inDivisor
+                               const uint64_t inDividendL,
+                               const uint64_t inDivisor, // inDivisor >= 0x'8000'0000'0000'0000
+                               uint64_t & outQuotient) {
+    const uint64_t vn1 = inDivisor >> 32 ;
+    const uint64_t vn0 = inDivisor & HALF_MASK ;
+    const uint64_t un32 = inDividendH ;
+
+    const uint64_t un1 = inDividendL >> 32;
+    const uint64_t un0 = inDividendL & HALF_MASK;
+
+    uint64_t q1 = inDividendH / vn1 ;
+    uint64_t rhat = inDividendH % vn1 ;
+
+    uint64_t left = q1 * vn0;
+    uint64_t right = (rhat << 32) + un1;
+again1:
+    if ((q1 > HALF_MASK) || (left > right)) {
+        --q1 ;
+        rhat += vn1;
+        if (rhat <= HALF_MASK) {
+            left -= vn0;
+            right = (rhat << 32) | un1;
+            goto again1;
+        }
+    }
+
+    const uint64_t un21 = (un32 << 32) + (un1 - (q1 * inDivisor));
+
+    uint64_t q0 = un21 / vn1;
+    rhat = un21 % vn1;
+
+    left = q0 * vn0;
+    right = (rhat << 32) | un0;
+again2:
+    if ((q0 > HALF_MASK) || (left > right)) {
+        --q0;
+        rhat += vn1;
+        if (rhat <= HALF_MASK)
+        {
+            left -= vn0;
+            right = (rhat << 32) | un0;
+            goto again2;
+        }
+    }
+
+  outQuotient = (q1 << 32) | q0;
+}
+
+//--------------------------------------------------------------------------------------------------
 // https://gcc.gnu.org/onlinedocs/gcc/Integer-Overflow-Builtins.html
 // https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers
 //----------------------------------------------------------------------------------------------------------------------
@@ -287,8 +373,6 @@ void BigUnsigned::divideByBigUnsigned (const BigUnsigned & inDivisor,
 
 //--------------------------------------------------------------------------------------------------
 
-static uint64_t maxAdjustCount = 0 ;
-
 void BigUnsigned::internalDivide (const BigUnsigned & inDividend,
                                   const BigUnsigned & inDivisor,
                                   BigUnsigned & outQuotient,
@@ -316,16 +400,10 @@ void BigUnsigned::internalDivide (const BigUnsigned & inDividend,
         uint64_t resultL ;
         mul64x64to128 (quotient, divisor.mArray (i COMMA_HERE), resultH, resultL) ;
         resultL += currentCarry ;
-        if (resultL < currentCarry) { // Overflow
-          resultH += 1 ; // Propagate overflow
-          MF_Assert (resultH != 0, "resultH is null", 0, 0) ;
-        }
+        resultH += resultL < currentCarry ; // Propagate Overflow
         currentCarry = resultH ;
         const int32_t remainderIndex = i + itx ;
-        if (outRemainder.mArray (remainderIndex COMMA_HERE) < resultL) {
-          currentCarry += 1 ;
-          MF_Assert (currentCarry != 0, "borrow is null", 0, 0) ;
-        }
+        currentCarry += outRemainder.mArray (remainderIndex COMMA_HERE) < resultL ;
         outRemainder.mArray (remainderIndex COMMA_HERE) -= resultL ;
       }
       const int32_t remainderLastIndex = itx + divisor.mArray.count () ;
@@ -340,12 +418,10 @@ void BigUnsigned::internalDivide (const BigUnsigned & inDividend,
           const uint64_t v1 = outRemainder.mArray (i + itx COMMA_HERE) ;
           const uint64_t v2 = divisor.mArray (i COMMA_HERE) ;
           uint64_t sum = v1 + v2 ;
-          const uint64_t carry1 = sum < v1 ;
+          const uint64_t newCarry = sum < v1 ;
           sum += carry ; // No overflow here
-//          const uint64_t carry2 = sum < carry ;
-//          MF_Assert (carry2 == 0, "Invalid carry", 0, 0) ;
           outRemainder.mArray (i + itx COMMA_HERE) = sum ;
-          carry = carry1 ; // + carry2 ;
+          carry = newCarry ;
           MF_Assert (carry <= 1, "Invalid carry", 0, 0) ;
         }
         outRemainder.mArray (divisor.mArray.count () + itx COMMA_HERE) += carry ;
@@ -360,21 +436,65 @@ void BigUnsigned::internalDivide (const BigUnsigned & inDividend,
 //--- Adjust quotient and remainder
   if (s > 0) {
     outQuotient = outQuotient.leftShiftedBy (s) ;
-    const uint64_t division = outRemainder.mArray.lastObject (HERE) / inDivisor.mArray.lastObject (HERE) ;
-    uint64_t adjustCount = 0 ;
-    while (outRemainder.compare (inDivisor) > 0) {
-      adjustCount += 1 ;
-      outRemainder = outRemainder.subtractingBigUnsigned (inDivisor) ;
-      if (outQuotient.mArray.count () > 0) {
-        outQuotient.mArray (0 COMMA_HERE) += 1 ;
-      }else{
-        outQuotient.mArray.appendObject (1) ;
+    MF_Assert (outRemainder.mArray.count () <= inDivisor.mArray.count (), "Error", 0, 0) ;
+    if (outRemainder.mArray.count () == inDivisor.mArray.count ()) {
+      const uint64_t divisorForAdjust = outRemainder.mArray.lastObject (HERE) / inDivisor.mArray.lastObject (HERE) ;
+      if (divisorForAdjust == 1) {
+        uint64_t currentCarry = 0 ;
+        for (int32_t i = 0 ; i < outRemainder.mArray.count () ; i++) {
+          uint64_t resultL = inDivisor.mArray (i COMMA_HERE) ;
+          resultL += currentCarry ;
+          currentCarry = resultL < currentCarry ; // Overflow
+          if (outRemainder.mArray (i COMMA_HERE) < resultL) {
+            currentCarry += 1 ;
+            MF_Assert (currentCarry != 0, "borrow is null", 0, 0) ;
+          }
+          outRemainder.mArray (i COMMA_HERE) -= resultL ;
+        }
+        MF_Assert (currentCarry == 0, "Error", 0, 0) ;
+        if (outQuotient.mArray.count () > 0) {
+          outQuotient.mArray (0 COMMA_HERE) += 1 ;
+        }else{
+          outQuotient.mArray.appendObject (1) ;
+        }
+      }else if (divisorForAdjust > 1) {
+        uint64_t currentCarry = 0 ;
+        for (int32_t i = 0 ; i < outRemainder.mArray.count () ; i++) {
+          uint64_t resultH ;
+          uint64_t resultL ;
+          mul64x64to128 (divisorForAdjust, inDivisor.mArray (i COMMA_HERE), resultH, resultL) ;
+          resultL += currentCarry ;
+          resultH += resultL < currentCarry ;
+//          if (resultL < currentCarry) { // Overflow
+//            resultH += 1 ; // Propagate overflow
+//            MF_Assert (resultH != 0, "resultH is null", 0, 0) ;
+//          }
+          currentCarry = resultH ;
+          currentCarry += outRemainder.mArray (i COMMA_HERE) < resultL ;
+          outRemainder.mArray (i COMMA_HERE) -= resultL ;
+        }
+        MF_Assert (currentCarry == 0, "Error", 0, 0) ;
+        if (outQuotient.mArray.count () > 0) {
+          outQuotient.mArray (0 COMMA_HERE) += divisorForAdjust ;
+        }else{
+          outQuotient.mArray.appendObject (divisorForAdjust) ;
+        }
       }
-    }
-    MF_Assert (division == adjustCount, "error", 0, 0) ;
-    if (maxAdjustCount < adjustCount) {
-      maxAdjustCount = adjustCount ;
-      std::cout << "maxAdjustCount " << maxAdjustCount << ", s " << s << ", div " << division << "\n" ;
+//      uint64_t adjustCount = 0 ;
+//      while (outRemainder.compare (inDivisor) > 0) {
+//        adjustCount += 1 ;
+//        outRemainder = outRemainder.subtractingBigUnsigned (inDivisor) ;
+//        if (outQuotient.mArray.count () > 0) {
+//          outQuotient.mArray (0 COMMA_HERE) += 1 ;
+//        }else{
+//          outQuotient.mArray.appendObject (1) ;
+//        }
+//      }
+//      MF_Assert (divisorForAdjust == adjustCount, "error", 0, 0) ;
+//      if (maxAdjustCount < adjustCount) {
+//        maxAdjustCount = adjustCount ;
+//        std::cout << "maxAdjustCount " << maxAdjustCount << ", s " << s << ", divisorForAdjust " << divisorForAdjust << "\n" ;
+//      }
     }
   }
 }
@@ -384,8 +504,6 @@ void BigUnsigned::internalDivide (const BigUnsigned & inDividend,
 void BigUnsigned::divideByBigUnsignedOld (const BigUnsigned & inDivisor,
                                        BigUnsigned & outQuotient,
                                        BigUnsigned & outRemainder) const {
-//  printHex (mArray,           "\n  -> Dividend") ;
-//  printHex (inDivisor.mArray,   "  -> Divisor ") ;
   BigUnsigned result ;
   outQuotient = BigUnsigned () ;
   outRemainder = BigUnsigned () ;
@@ -409,16 +527,11 @@ void BigUnsigned::internalDivideOld (const BigUnsigned & inDividend,
                                      const BigUnsigned & inDivisor,
                                      BigUnsigned & outQuotient,
                                      BigUnsigned & outRemainder) {
-//  const uint32_t s = uint32_t (__builtin_clzll (inDivisor.mArray.lastObject (HERE))) ;
-//  MF_Assert (s <= 63, "Error", 0, 0) ;
   outRemainder = inDividend ;
-//  divisor.printHex ("Divisor shifted") ;
   if (outRemainder.mArray.lastObject (HERE) >= inDivisor.mArray.lastObject (HERE)) {
     outRemainder.mArray.appendObject (0) ;
   }
   const int32_t iterationCount = outRemainder.mArray.count () - inDivisor.mArray.count () ;
-//    std::cout << "  dividend[" << outRemainder.mArray.count ()
-//              << "], inDivisor[" << inDivisor.mArray.count () << "], iterationCount " << iterationCount << "\n" ;
   for (int32_t itx = iterationCount - 1 ; itx >= 0 ; itx--) {
     uint64_t quotient ;
     const int32_t remainderIndexH = outRemainder.mArray.count () + itx - iterationCount ;
@@ -426,7 +539,6 @@ void BigUnsigned::internalDivideOld (const BigUnsigned & inDividend,
                        outRemainder.mArray (remainderIndexH - 1 COMMA_HERE),
                        inDivisor.mArray.lastObject (HERE),
                        quotient) ;
-//    std::cout << "+++  itx " << itx << ", outRemainder.mArray [" << remainderIndexH << "], q " << std::hex << quotient << std::dec << "\n" ;
     outQuotient.mArray.insertObjectAtIndex (quotient, 0 COMMA_HERE) ;
     if (quotient > 0) {
       uint64_t currentCarry = 0 ;
@@ -441,32 +553,20 @@ void BigUnsigned::internalDivideOld (const BigUnsigned & inDividend,
         }
         currentCarry = resultH ;
         const int32_t remainderIndex = i + itx ;
-//        std::cout << std::hex << "  currentCarry " << currentCarry << std::dec << "\n" ;
-//        std::cout << std::hex  << "  outRemainder.mArray ["
-//                  << std::dec << (remainderIndex) << "]: " << std::hex  << outRemainder.mArray (remainderIndex COMMA_HERE) ;
         if (outRemainder.mArray (remainderIndex COMMA_HERE) < resultL) {
-//          std::cout << "   ovf2\n" ;
           currentCarry += 1 ;
           MF_Assert (currentCarry != 0, "borrow is null", 0, 0) ;
         }
         outRemainder.mArray (remainderIndex COMMA_HERE) -= resultL ;
-//        std::cout << "  carry " << std::hex << currentCarry
-//                  << "  --> " << outRemainder.mArray (remainderIndex COMMA_HERE) << std::dec << "\n" ;
       }
       const int32_t remainderLastIndex = itx + inDivisor.mArray.count () ;
       bool underflow = outRemainder.mArray (remainderLastIndex COMMA_HERE) < currentCarry ;
       outRemainder.mArray (remainderLastIndex COMMA_HERE) -= currentCarry ;
-//      std::cout << "  MSB outRemainder.mArray [" << remainderLastIndex << "] = "
-//                << std::hex << outRemainder.mArray (remainderLastIndex COMMA_HERE)
-//                << std::dec << "\n" ;
       MF_Assert ((outRemainder.mArray (remainderLastIndex COMMA_HERE) == 0) || (outRemainder.mArray (remainderLastIndex COMMA_HERE) == UINT64_MAX), "last remainder error", 0, 0) ;
       MF_Assert (underflow == (outRemainder.mArray (remainderLastIndex COMMA_HERE) == UINT64_MAX), "last remainder error", 0, 0) ;
       uint64_t adjustCount = 0 ;
       while (underflow) {
         adjustCount += 1 ;
-//        std::cout << "  #underflow" << "\n" ;
-//        outRemainder.printHex ("remainder") ;
-//        inDivisor.printHex ("inDivisor  ") ;
         outQuotient.mArray (0 COMMA_HERE) -= 1 ;
         uint64_t carry = 0 ; // 0 or 1
         for (int32_t i = 0 ; i < inDivisor.mArray.count () ; i++) {
@@ -478,13 +578,10 @@ void BigUnsigned::internalDivideOld (const BigUnsigned & inDividend,
           const uint64_t carry2 = sum < carry ;
           MF_Assert (carry2 == 0, "Invalid carry", 0, 0) ;
           outRemainder.mArray (i + itx COMMA_HERE) = sum ;
-//          std::cout << "     i " << i << ": " << std::hex << v1 << " + "<< v2 << " + " << carry
-//                    <<  " -> " << sum << ", " << (carry1 + carry2) << std::dec << "\n" ;
           carry = carry1 + carry2 ;
           MF_Assert (carry <= 1, "Invalid carry", 0, 0) ;
         }
         outRemainder.mArray (inDivisor.mArray.count () + itx COMMA_HERE) += carry ;
-//        outRemainder.printHex ("remainder") ;
         underflow = carry == 0 ;
       }
       if (maxAdjustCountOld < adjustCount) {

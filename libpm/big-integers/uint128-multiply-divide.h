@@ -24,13 +24,6 @@
 
 //--------------------------------------------------------------------------------------------------
 
-void mul64x64to128 (const uint64_t inOperand1,
-                    const uint64_t inOperand2,
-                    uint64_t & outProductHigh,
-                    uint64_t & outProductLow) ;
-
-//--------------------------------------------------------------------------------------------------
-
 void div128By64 (const uint64_t inDividendH,
                  const uint64_t inDividendL,
                  const uint64_t inDivisor,
@@ -48,9 +41,9 @@ void divmod128by64 (const uint64_t inDividendH, // inDividendH < inDivisor
 
 //--------------------------------------------------------------------------------------------------
 
-void div128By64Special (const uint64_t inDividendH, // inDividendH < inDivisor
-                        const uint64_t inDividendL,
-                        const uint64_t inDivisor, // inDivisor >= 0x'8000'0000
-                        uint64_t & outQuotient) ;
+//void div128By64Special (const uint64_t inDividendH, // inDividendH < inDivisor
+//                        const uint64_t inDividendL,
+//                        const uint64_t inDivisor, // inDivisor >= 0x'8000'0000
+//                        uint64_t & outQuotient) ;
 
 //--------------------------------------------------------------------------------------------------
