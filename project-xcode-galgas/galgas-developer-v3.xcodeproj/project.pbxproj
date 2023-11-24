@@ -555,8 +555,6 @@
 		CFDACD081003D0B60096A8E5 /* F_mainForLIBPM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD051003D0B60096A8E5 /* F_mainForLIBPM.cpp */; };
 		CFDACD091003D0B60096A8E5 /* F_mainForLIBPM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD051003D0B60096A8E5 /* F_mainForLIBPM.cpp */; };
 		CFDC3A4A28622A6D00F12E26 /* PMTableViewHandlesContextualMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDC3A4828622A6D00F12E26 /* PMTableViewHandlesContextualMenu.m */; };
-		CFDE72022AFFE78200046605 /* uint128-multiply-divide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDE72002AFFE78200046605 /* uint128-multiply-divide.cpp */; };
-		CFDE72032AFFE78200046605 /* uint128-multiply-divide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDE72002AFFE78200046605 /* uint128-multiply-divide.cpp */; };
 		CFE167840E8E7A2B00AFDAFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE167820E8E7A2B00AFDAFC /* main.m */; };
 		CFE71EC515010F3500EAD989 /* cEnumerator_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE71EC415010F3500EAD989 /* cEnumerator_range.cpp */; };
 		CFE71EC615010F3500EAD989 /* cEnumerator_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE71EC415010F3500EAD989 /* cEnumerator_range.cpp */; };
@@ -1097,8 +1095,6 @@
 		CFDACD051003D0B60096A8E5 /* F_mainForLIBPM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = F_mainForLIBPM.cpp; sourceTree = "<group>"; };
 		CFDC3A4828622A6D00F12E26 /* PMTableViewHandlesContextualMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTableViewHandlesContextualMenu.m; sourceTree = "<group>"; };
 		CFDC3A4928622A6D00F12E26 /* PMTableViewHandlesContextualMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTableViewHandlesContextualMenu.h; sourceTree = "<group>"; };
-		CFDE72002AFFE78200046605 /* uint128-multiply-divide.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "uint128-multiply-divide.cpp"; sourceTree = "<group>"; };
-		CFDE72012AFFE78200046605 /* uint128-multiply-divide.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uint128-multiply-divide.h"; sourceTree = "<group>"; };
 		CFE10E73111738CF00E972AA /* GALGAS_char.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_char.cpp; sourceTree = "<group>"; };
 		CFE167820E8E7A2B00AFDAFC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; };
 		CFE71EC415010F3500EAD989 /* cEnumerator_range.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = cEnumerator_range.cpp; sourceTree = "<group>"; };
@@ -1351,8 +1347,6 @@
 				CF40C83E2AFD3D3D0027918A /* BigUnsigned.h */,
 				CF40C8422AFD47500027918A /* C_BigInt.cpp */,
 				CF40C8432AFD47500027918A /* C_BigInt.h */,
-				CFDE72002AFFE78200046605 /* uint128-multiply-divide.cpp */,
-				CFDE72012AFFE78200046605 /* uint128-multiply-divide.h */,
 			);
 			path = "big-integers";
 			sourceTree = "<group>";
@@ -2107,7 +2101,6 @@
 				CF92AD0612578D3F003F16F7 /* cCollectionElement.cpp in Sources */,
 				CFB02C8019F3FC2F0011D03D /* all-declarations-22.cpp in Sources */,
 				CF9233CD1BADB4C0001032DA /* mpz-and.c in Sources */,
-				CFDE72022AFFE78200046605 /* uint128-multiply-divide.cpp in Sources */,
 				CF92AD0712578D40003F16F7 /* capCollectionElementArray.cpp in Sources */,
 				CF9E75841BADE0AE00DBEFEE /* root-errno.c in Sources */,
 				CF92AD0812578D40003F16F7 /* GALGAS_object.cpp in Sources */,
@@ -2378,7 +2371,6 @@
 				CF9234581BADCD3D001032DA /* mpn-rshift.c in Sources */,
 				CF9E75101BADD69600DBEFEE /* mpn-sub_1.c in Sources */,
 				CF9E752A1BADD83300DBEFEE /* mpn-divrem_2.c in Sources */,
-				CFDE72032AFFE78200046605 /* uint128-multiply-divide.cpp in Sources */,
 				CF9E75511BADD98300DBEFEE /* mpn-toom_eval_pm2.c in Sources */,
 				CF9E75631BADDAA900DBEFEE /* mpn-dive_1.c in Sources */,
 				CF23746B19967C4F0061D2D8 /* all-declarations-15.cpp in Sources */,
