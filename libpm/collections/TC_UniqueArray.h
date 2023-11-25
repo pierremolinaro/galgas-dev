@@ -53,7 +53,7 @@ template <typename TYPE> void swap (TC_UniqueArray <TYPE> & ioOperand1,
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> class TC_UniqueArray {
+template <typename TYPE> class TC_UniqueArray final {
 //--- Default Constructor
   public: TC_UniqueArray (void) ;
 
@@ -67,7 +67,7 @@ template <typename TYPE> class TC_UniqueArray {
                           COMMA_LOCATION_ARGS) ;
 
 //--- Virtual Destructor
-  public: virtual ~TC_UniqueArray (void) ;
+  public: ~TC_UniqueArray (void) ;
 
 //--- No copy
   private: TC_UniqueArray (const TC_UniqueArray <TYPE> &) = delete ;

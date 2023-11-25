@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cinttypes>
-#include <iomanip>
+//#include <iomanip>
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16,7 +16,9 @@
 
 //--------------------------------------------------------------------------------------------------
 
-static const uint64_t HALF_MASK = 0xFFFF'FFFF ;
+#ifndef __SIZEOF_INT128__
+  static const uint64_t HALF_MASK = 0xFFFF'FFFF ;
+#endif
 
 //--------------------------------------------------------------------------------------------------
 
@@ -25,7 +27,7 @@ static const uint64_t HALF_MASK = 0xFFFF'FFFF ;
                              const uint64_t inRight,
                              uint64_t & outHigh,
                              uint64_t & outLow) {
-    const unsigned __int128 left = inLeft ;
+    const __uint128_t left = inLeft ;
     const __uint128_t right = inRight ;
     const __uint128_t product = left * right ;
     outHigh = uint64_t (product >> 64) ;
@@ -64,127 +66,154 @@ static const uint64_t HALF_MASK = 0xFFFF'FFFF ;
 //--------------------------------------------------------------------------------------------------
 // https://copyprogramming.com/howto/mostly-portable-128-by-64-bit-division
 // https://www.codeproject.com/Tips/785014/UInt-Division-Modulus
+//--------------------------------------------------------------------------------------------------
 
-static void divmod128by64 (const uint64_t inDividendH, // inDividendH < inDivisor
-                           const uint64_t inDividendL,
-                           const uint64_t inDivisor,
-                           uint64_t & outQuotient,
-                           uint64_t & outRemainder) {
-    const uint64_t b = 1ll << 32;
-    uint64_t un1, un0, vn1, vn0, q1, q0, un32, un21, un10, rhat, left, right;
+#ifdef __SIZEOF_INT128__
+  static void divmod128by64 (const uint64_t inDividendH, // inDividendH < inDivisor
+                             const uint64_t inDividendL,
+                             const uint64_t inDivisor,
+                             uint64_t & outQuotient,
+                             uint64_t & outRemainder) {
+      __uint128_t dividend = inDividendH ;
+      dividend <<= 64 ;
+      dividend |= inDividendL ;
+      outQuotient = uint64_t (dividend / inDivisor) ;
+      outRemainder = uint64_t (dividend % inDivisor) ;
+  }
+#else
+  static void divmod128by64 (const uint64_t inDividendH, // inDividendH < inDivisor
+                             const uint64_t inDividendL,
+                             const uint64_t inDivisor,
+                             uint64_t & outQuotient,
+                             uint64_t & outRemainder) {
+      const uint64_t b = 1ll << 32;
+      uint64_t un1, un0, vn1, vn0, q1, q0, un32, un21, un10, rhat, left, right;
 
-    const int s = __builtin_clzll (inDivisor) ;
+      const int s = __builtin_clzll (inDivisor) ;
 
-    const uint64_t v = inDivisor << s ;
-    vn1 = v >> 32 ;
-    vn0 = v & HALF_MASK;
+      const uint64_t v = inDivisor << s ;
+      vn1 = v >> 32 ;
+      vn0 = v & HALF_MASK;
 
-    if (s > 0)
-    {
-        un32 = (inDividendH << s) | (inDividendL >> (64 - s));
-        un10 = inDividendL << s;
-    }
-    else
-    {
-        un32 = inDividendH;
-        un10 = inDividendL;
-    }
+      if (s > 0)
+      {
+          un32 = (inDividendH << s) | (inDividendL >> (64 - s));
+          un10 = inDividendL << s;
+      }
+      else
+      {
+          un32 = inDividendH;
+          un10 = inDividendL;
+      }
 
-    un1 = un10 >> 32;
-    un0 = un10 & HALF_MASK;
+      un1 = un10 >> 32;
+      un0 = un10 & HALF_MASK;
 
-    q1 = un32 / vn1;
-    rhat = un32 % vn1;
+      q1 = un32 / vn1;
+      rhat = un32 % vn1;
 
-    left = q1 * vn0;
-    right = (rhat << 32) + un1;
-again1:
-    if ((q1 >= b) || (left > right))
-    {
-        --q1;
-        rhat += vn1;
-        if (rhat < b)
-        {
-            left -= vn0;
-            right = (rhat << 32) | un1;
-            goto again1;
-        }
-    }
+      left = q1 * vn0;
+      right = (rhat << 32) + un1;
+  again1:
+      if ((q1 >= b) || (left > right))
+      {
+          --q1;
+          rhat += vn1;
+          if (rhat < b)
+          {
+              left -= vn0;
+              right = (rhat << 32) | un1;
+              goto again1;
+          }
+      }
 
-    un21 = (un32 << 32) + (un1 - (q1 * v));
+      un21 = (un32 << 32) + (un1 - (q1 * v));
 
-    q0 = un21 / vn1;
-    rhat = un21 % vn1;
+      q0 = un21 / vn1;
+      rhat = un21 % vn1;
 
-    left = q0 * vn0;
-    right = (rhat << 32) | un0;
-again2:
-    if ((q0 >= b) || (left > right))
-    {
-        --q0;
-        rhat += vn1;
-        if (rhat < b)
-        {
-            left -= vn0;
-            right = (rhat << 32) | un0;
-            goto again2;
-        }
-    }
+      left = q0 * vn0;
+      right = (rhat << 32) | un0;
+  again2:
+      if ((q0 >= b) || (left > right))
+      {
+          --q0;
+          rhat += vn1;
+          if (rhat < b)
+          {
+              left -= vn0;
+              right = (rhat << 32) | un0;
+              goto again2;
+          }
+      }
 
-    outRemainder = ((un21 << 32) + (un0 - (q0 * v))) >> s;
-    outQuotient = (q1 << 32) | q0;
-}
+      outRemainder = ((un21 << 32) + (un0 - (q0 * v))) >> s;
+      outQuotient = (q1 << 32) | q0;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 
-static void div128By64Special (const uint64_t inDividendH, // inDividendH < inDivisor
-                               const uint64_t inDividendL,
-                               const uint64_t inDivisor, // inDivisor >= 0x'8000'0000'0000'0000
-                               uint64_t & outQuotient) {
-    const uint64_t vn1 = inDivisor >> 32 ;
-    const uint64_t vn0 = inDivisor & HALF_MASK ;
-    const uint64_t un32 = inDividendH ;
+#ifdef __SIZEOF_INT128__
+  static void div128By64Special (const uint64_t inDividendH, // inDividendH < inDivisor
+                                 const uint64_t inDividendL,
+                                 const uint64_t inDivisor, // inDivisor >= 0x'8000'0000'0000'0000
+                                 uint64_t & outQuotient) {
+    __uint128_t dividend = inDividendH ;
+    dividend <<= 64 ;
+    dividend |= inDividendL ;
+    outQuotient = uint64_t (dividend / inDivisor) ;
+  }
+#else
+  static void div128By64Special (const uint64_t inDividendH, // inDividendH < inDivisor
+                                 const uint64_t inDividendL,
+                                 const uint64_t inDivisor, // inDivisor >= 0x'8000'0000'0000'0000
+                                 uint64_t & outQuotient) {
+      const uint64_t vn1 = inDivisor >> 32 ;
+      const uint64_t vn0 = inDivisor & HALF_MASK ;
+      const uint64_t un32 = inDividendH ;
 
-    const uint64_t un1 = inDividendL >> 32;
-    const uint64_t un0 = inDividendL & HALF_MASK;
+      const uint64_t un1 = inDividendL >> 32;
+      const uint64_t un0 = inDividendL & HALF_MASK;
 
-    uint64_t q1 = inDividendH / vn1 ;
-    uint64_t rhat = inDividendH % vn1 ;
+      uint64_t q1 = inDividendH / vn1 ;
+      uint64_t rhat = inDividendH % vn1 ;
 
-    uint64_t left = q1 * vn0;
-    uint64_t right = (rhat << 32) + un1 ;
-again1:
-    if ((q1 > HALF_MASK) || (left > right)) {
-        --q1 ;
-        rhat += vn1;
-        if (rhat <= HALF_MASK) {
-            left -= vn0;
-            right = (rhat << 32) | un1;
-            goto again1;
-        }
-    }
+      uint64_t left = q1 * vn0;
+      uint64_t right = (rhat << 32) + un1 ;
+  again1:
+      if ((q1 > HALF_MASK) || (left > right)) {
+          --q1 ;
+          rhat += vn1;
+          if (rhat <= HALF_MASK) {
+              left -= vn0;
+              right = (rhat << 32) | un1;
+              goto again1;
+          }
+      }
 
-    const uint64_t un21 = (un32 << 32) + (un1 - (q1 * inDivisor));
+      const uint64_t un21 = (un32 << 32) + (un1 - (q1 * inDivisor));
 
-    uint64_t q0 = un21 / vn1;
-    rhat = un21 % vn1;
+      uint64_t q0 = un21 / vn1;
+      rhat = un21 % vn1;
 
-    left = q0 * vn0;
-    right = (rhat << 32) | un0;
-again2:
-    if ((q0 > HALF_MASK) || (left > right)) {
-        --q0;
-        rhat += vn1;
-        if (rhat <= HALF_MASK)
-        {
-            left -= vn0;
-            right = (rhat << 32) | un0;
-            goto again2;
-        }
-    }
+      left = q0 * vn0;
+      right = (rhat << 32) | un0;
+  again2:
+      if ((q0 > HALF_MASK) || (left > right)) {
+          --q0;
+          rhat += vn1;
+          if (rhat <= HALF_MASK)
+          {
+              left -= vn0;
+              right = (rhat << 32) | un0;
+              goto again2;
+          }
+      }
 
-  outQuotient = (q1 << 32) | q0;
-}
+    outQuotient = (q1 << 32) | q0;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 // https://gcc.gnu.org/onlinedocs/gcc/Integer-Overflow-Builtins.html

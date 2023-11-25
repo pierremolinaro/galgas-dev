@@ -10,7 +10,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class BigUnsigned {
+class BigUnsigned final {
 
 //--- Constructors
   public: static BigUnsigned randomNumber (void) ;

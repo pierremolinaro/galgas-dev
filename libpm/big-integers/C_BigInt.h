@@ -37,7 +37,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class C_BigInt {
+class C_BigInt final {
 //--- Constructors
   public: C_BigInt (void) ;
   public: explicit C_BigInt (const uint64_t inValue, const bool inNegate) ;
