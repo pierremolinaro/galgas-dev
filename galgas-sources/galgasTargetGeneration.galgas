@@ -804,7 +804,6 @@ proc updateGalgasTargets
       !groupPath:"generic-arraies"
       !fileNames:{
         !"TC_Array.h",
-        !"TC_Array2.h",
         !"TC_UniqueArray.h",
         !"TC_UniqueArray2.h"
       }
