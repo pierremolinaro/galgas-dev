@@ -1090,7 +1090,6 @@
 		CFD94ABE1290635400864538 /* useful_symbols_computations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = useful_symbols_computations.cpp; sourceTree = "<group>"; };
 		CFD94ABF1290635400864538 /* useful_symbols_computations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = useful_symbols_computations.h; sourceTree = "<group>"; };
 		CFD94B641290677400864538 /* grammarComputations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = grammarComputations.cpp; sourceTree = "<group>"; };
-		CFDAC3E5192E780200347EEC /* TC_LinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_LinkedList.h; sourceTree = "<group>"; };
 		CFDACD051003D0B60096A8E5 /* F_mainForLIBPM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = F_mainForLIBPM.cpp; sourceTree = "<group>"; };
 		CFDC3A4828622A6D00F12E26 /* PMTableViewHandlesContextualMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTableViewHandlesContextualMenu.m; sourceTree = "<group>"; };
 		CFDC3A4928622A6D00F12E26 /* PMTableViewHandlesContextualMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTableViewHandlesContextualMenu.h; sourceTree = "<group>"; };
@@ -1656,7 +1655,6 @@
 		CFB9E4850DF28AC500885084 /* collections */ = {
 			isa = PBXGroup;
 			children = (
-				CFDAC3E5192E780200347EEC /* TC_LinkedList.h */,
 				CFA5C508192A884800C20A02 /* TC_UniqueSparseArray.h */,
 				CFB9E4870DF28AC500885084 /* TC_Array.h */,
 				CFB9E4880DF28AC500885084 /* TC_Array2.h */,

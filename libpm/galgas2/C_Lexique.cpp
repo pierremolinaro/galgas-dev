@@ -22,7 +22,6 @@
 #include "galgas2/C_Lexique.h"
 #include "all-predefined-types.h"
 #include "utilities/MF_MemoryControl.h"
-#include "collections/TC_LinkedList.h"
 #include "strings/unicode_character_cpp.h"
 #include "strings/unicode_string_routines.h"
 #include "galgas2/C_galgas_CLI_Options.h"
@@ -1162,7 +1161,7 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
                                      "  size =\"4,4\";\n" ;
     }
   //--- Perform first pass
-    TC_UniqueArray <TC_LinkedList <int32_t> > executionList (100 COMMA_HERE) ;
+    TC_UniqueArray <TC_UniqueArray <int32_t> > executionList (100 COMMA_HERE) ;
     executionList.appendDefaultObjectUsingSwap () ;
 
     TC_Array <int32_t> stack (10000 COMMA_HERE) ;
@@ -1242,7 +1241,8 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
         const int32_t reduceSize = inProductionsTable [2 * actionCode + 1] ;
         const int32_t executionListLength = executionList.count () ;
         for (int32_t i=executionListLength - reduceSize ; i<executionListLength ; i++) {
-          executionList (executionListLength -  reduceSize - 1 COMMA_HERE).mergeListAtBottom (executionList (i COMMA_HERE)) ;
+          executionList (executionListLength -  reduceSize - 1 COMMA_HERE).appendObjectsFromArray (executionList (i COMMA_HERE)) ;
+          executionList (i COMMA_HERE).removeAllKeepingCapacity () ;
         }
         executionList (executionListLength - reduceSize - 1 COMMA_HERE).prependObject (actionCode) ;
         executionList.removeLastObjects (reduceSize COMMA_HERE) ; 
@@ -1299,7 +1299,8 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
       }else if (actionCode == 1) {
       //--- Accept action -----------------------------------
         loop = false ;
-        executionList (0 COMMA_HERE).mergeListAtBottom (executionList (1 COMMA_HERE)) ;
+        executionList (0 COMMA_HERE).appendObjectsFromArray (executionList (1 COMMA_HERE)) ;
+        executionList (1 COMMA_HERE).removeAllKeepingCapacity () ;
         if (executionModeIsSyntaxAnalysisOnly ()) {
           co << "  [S" << cStringWithSigned (currentState) << ", " << getCurrentTokenString (tokenPtr) << "] : Accept\n" ;
         }
