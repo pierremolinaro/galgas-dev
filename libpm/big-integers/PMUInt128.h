@@ -26,13 +26,10 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class PMUInt128 {
+class PMUInt128 final {
 //--- Constructors
   public: PMUInt128 (void) ;
   public: PMUInt128 (const uint64_t inValue) ;
-
-//--- Destructor
-  public: virtual ~ PMUInt128 (void) ;
 
 //--- Is Zero
   public: bool isZero (void) const ;

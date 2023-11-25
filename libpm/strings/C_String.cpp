@@ -23,7 +23,7 @@
 #include "utilities/C_SharedObject.h"
 #include "strings/unicode_string_routines.h"
 #include "strings/unicode_character_cpp.h"
-#include "collections/TC_UniqueArray2.h"
+#include "generic-arraies/TC_UniqueArray2.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 

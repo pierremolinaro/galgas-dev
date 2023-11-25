@@ -125,6 +125,7 @@
    <Unit filename="../libpm/command_line_interface/F_mainForLIBPM.cpp" />
    <Unit filename="../libpm/big-integers/BigUnsigned.cpp" />
    <Unit filename="../libpm/big-integers/C_BigInt.cpp" />
+   <Unit filename="../libpm/big-integers/PMUInt128.cpp" />
    <Unit filename="../libpm/bdd/C_BDD.cpp" />
    <Unit filename="../libpm/bdd/C_BDD-find-or-add.cpp" />
    <Unit filename="../libpm/bdd/C_BDD-single-operand-ops.cpp" />
@@ -158,7 +159,6 @@
    <Unit filename="../libpm/utilities/MF_MemoryControl.cpp" />
    <Unit filename="../libpm/utilities/cpp-allocation.cpp" />
    <Unit filename="../libpm/utilities/basic-allocation.cpp" />
-   <Unit filename="../libpm/utilities/PMUInt128.cpp" />
    <Unit filename="../libpm/utilities/C_UIntSet.cpp" />
    <Unit filename="../libpm/utilities/C_DirectedGraph.cpp" />
    <Unit filename="../libpm/utilities/md5.cpp" />

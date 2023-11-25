@@ -35,8 +35,7 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-template <class RESULT>
-class TC_prime_cache2 {
+template <class RESULT> class TC_prime_cache2 final {
 //--- Constructor
   public: TC_prime_cache2 (void) ;
 

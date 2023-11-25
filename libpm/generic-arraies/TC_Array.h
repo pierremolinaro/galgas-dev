@@ -26,7 +26,7 @@
 #include "utilities/TF_Swap.h"
 #include "utilities/MF_MemoryControl.h"
 #include "utilities/cpp-allocation.h"
-#include "collections/TC_UniqueArray.h"
+#include "generic-arraies/TC_UniqueArray.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 //

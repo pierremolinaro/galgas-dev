@@ -24,7 +24,7 @@
 
 #include "galgas2/C_LocationInSource.h"
 #include "strings/C_String.h"
-#include "collections/TC_Array.h"
+#include "generic-arraies/TC_Array.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 

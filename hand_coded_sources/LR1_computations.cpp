@@ -18,7 +18,7 @@
 #include "strings/C_HTMLString.h"
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/C_Compiler.h"
-#include "collections/TC_UniqueArray2.h"
+#include "generic-arraies/TC_UniqueArray2.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 

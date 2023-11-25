@@ -699,7 +699,9 @@ proc updateGalgasTargets
         !"BigUnsigned.cpp",
         !"BigUnsigned.h",
         !"C_BigInt.cpp",
-        !"C_BigInt.h"
+        !"C_BigInt.h",
+        !"PMUInt128.cpp",
+        !"PMUInt128.h"
      }
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
@@ -812,8 +814,8 @@ proc updateGalgasTargets
     libpmReferenceGroupList += !groupRef
   #--- Add "collection" group
     [!?xcodeProject addGroupWithFiles
-      !groupName:"Collections"
-      !groupPath:"collections"
+      !groupName:"Generic Arraies"
+      !groupPath:"generic-arraies"
       !fileNames:{
         !"TC_Array.h",
         !"TC_Array2.h",
@@ -870,8 +872,6 @@ proc updateGalgasTargets
         !"C_FileManager.h",
         !"AC_FileHandle.cpp",
         !"AC_FileHandle.h",
-#        !"AC_FileHandleForWriting.cpp",
-#        !"AC_FileHandleForWriting.h",
         !"C_BinaryFileWrite.cpp",
         !"C_BinaryFileWrite.h",
         !"C_TextFileWrite.cpp",
@@ -1245,8 +1245,6 @@ proc updateGalgasTargets
         !"MF_Assert.h",
         !"MF_MemoryControl.cpp",
         !"MF_MemoryControl.h",
-        !"PMUInt128.cpp",
-        !"PMUInt128.h",
         !"switch-fallthrough.h",
         !"TF_Swap.h",
         !"galgas-random.cpp",

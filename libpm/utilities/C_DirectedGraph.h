@@ -22,7 +22,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#include "collections/TC_Array.h"
+#include "generic-arraies/TC_Array.h"
 #include "C_UIntSet.h"
 #include "strings/C_String.h"
 
