@@ -17,7 +17,6 @@
 
 #include "strings/C_HTMLString.h"
 #include "bdd/C_Relation.h"
-#include "collections/TC_Array2.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 

@@ -1655,11 +1655,11 @@
 		CFB9E4850DF28AC500885084 /* collections */ = {
 			isa = PBXGroup;
 			children = (
-				CFA5C508192A884800C20A02 /* TC_UniqueSparseArray.h */,
 				CFB9E4870DF28AC500885084 /* TC_Array.h */,
 				CFB9E4880DF28AC500885084 /* TC_Array2.h */,
 				CFB9E48E0DF28AC500885084 /* TC_UniqueArray.h */,
 				CFB9E48F0DF28AC500885084 /* TC_UniqueArray2.h */,
+				CFA5C508192A884800C20A02 /* TC_UniqueSparseArray.h */,
 			);
 			path = collections;
 			sourceTree = "<group>";
