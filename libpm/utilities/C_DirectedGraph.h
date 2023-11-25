@@ -35,7 +35,7 @@ typedef struct {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class C_DirectedGraph {
+class C_DirectedGraph final {
 //--- Default constructor
   public: C_DirectedGraph (void) ;
 

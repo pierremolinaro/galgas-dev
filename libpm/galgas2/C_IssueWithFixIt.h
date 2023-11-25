@@ -44,7 +44,7 @@ typedef enum {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class C_FixItDescription {
+class C_FixItDescription final {
 //--- Default constructor
   public: C_FixItDescription (void) ;
 

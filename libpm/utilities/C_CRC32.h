@@ -26,7 +26,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class C_CRC32 {
+class C_CRC32 final {
 //--- Valeur initiale de la somme
   public: static uint32_t getInitialValue (void) {
      return 0xCAFECAFEUL ;

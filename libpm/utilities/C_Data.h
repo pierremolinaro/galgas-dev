@@ -26,7 +26,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class C_Data {
+class C_Data final {
 //--- Data
   private: TC_Array <uint8_t> mBinaryData ;
 
@@ -34,7 +34,7 @@ class C_Data {
   public: C_Data (void) ;
 
 //--- Destructor
-  public: virtual ~C_Data (void) ;
+  public: ~C_Data (void) ;
   
 //--- Length
   public: inline int32_t count (void) const { return mBinaryData.count () ; }
