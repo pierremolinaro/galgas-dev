@@ -1007,7 +1007,6 @@
 		CFA5892C10D28A2200B7E541 /* GALGAS_uint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_uint.cpp; sourceTree = "<group>"; };
 		CFA5897B10D2979300B7E541 /* GALGAS_bool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_bool.cpp; sourceTree = "<group>"; };
 		CFA589B410D2A55D00B7E541 /* GALGAS_sint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_sint.cpp; sourceTree = "<group>"; };
-		CFA5C508192A884800C20A02 /* TC_UniqueSparseArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_UniqueSparseArray.h; sourceTree = "<group>"; };
 		CFA941DE272040EC00B52A16 /* OC_GGS_ColorTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OC_GGS_ColorTransformer.h; sourceTree = "<group>"; };
 		CFA941DF272040EC00B52A16 /* OC_GGS_ColorTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_ColorTransformer.m; sourceTree = "<group>"; };
 		CFAC1A091C3318B800465212 /* C_galgas_quiet_option.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_quiet_option.cpp; sourceTree = "<group>"; };
@@ -1659,7 +1658,6 @@
 				CFB9E4880DF28AC500885084 /* TC_Array2.h */,
 				CFB9E48E0DF28AC500885084 /* TC_UniqueArray.h */,
 				CFB9E48F0DF28AC500885084 /* TC_UniqueArray2.h */,
-				CFA5C508192A884800C20A02 /* TC_UniqueSparseArray.h */,
 			);
 			name = "Generic Arraies";
 			path = "generic-arraies";
