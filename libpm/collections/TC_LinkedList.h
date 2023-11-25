@@ -73,8 +73,8 @@ template <typename TYPE> class TC_LinkedList final {
   } ;
 
 //--- Data members
-  private: cElement * mTopItem ;
-  private: cElement * mBottomItem ;
+  private: cElement * mFirstItem ;
+  private: cElement * mLastItem ;
   private: int32_t mCount ;
 
 //--- Copy into an array
@@ -84,8 +84,8 @@ template <typename TYPE> class TC_LinkedList final {
 //----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE>  TC_LinkedList <TYPE>::TC_LinkedList (void) :
-mTopItem ((cElement *) nullptr),
-mBottomItem ((cElement *) nullptr),
+mFirstItem (nullptr),
+mLastItem (nullptr),
 mCount (0) {
 }
 
@@ -98,10 +98,10 @@ template <typename TYPE> TC_LinkedList <TYPE>::~TC_LinkedList (void) {
 //----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_LinkedList <TYPE>::removeAllKeepingCapacity (void) {
-  while (mTopItem != nullptr) {
-    mBottomItem = mTopItem->mNextItem ;
-    macroMyDelete (mTopItem) ;
-    mTopItem = mBottomItem ;
+  while (mFirstItem != nullptr) {
+    mLastItem = mFirstItem->mNextItem ;
+    macroMyDelete (mFirstItem) ;
+    mFirstItem = mLastItem ;
   }
   mCount = 0 ;
 }
@@ -113,25 +113,25 @@ template <typename TYPE> void TC_LinkedList <TYPE>::prependObject (const TYPE & 
   macroMyNew (p, cElement) ;
   p->mNextItem = (cElement *) nullptr ;
   p->mInfo = inInfo ; // Copy
-  if (mTopItem == nullptr) {
-    mTopItem = p ;
+  if (mFirstItem == nullptr) {
+    mFirstItem = p ;
   }else{
-    mBottomItem->mNextItem = p ;
+    mLastItem->mNextItem = p ;
   }
-  mBottomItem = p ;
+  mLastItem = p ;
   mCount ++ ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_LinkedList<TYPE> ::appendObject (const TYPE & inInfo) {
-  cElement * p = (cElement *) nullptr ;
+  cElement * p = nullptr ;
   macroMyNew (p, cElement) ;
-  p->mNextItem = mTopItem ;
+  p->mNextItem = mFirstItem ;
   p->mInfo = inInfo ; // Copy
-  mTopItem = p ;
-  if (mBottomItem == nullptr) {
-    mBottomItem = p ;
+  mFirstItem = p ;
+  if (mLastItem == nullptr) {
+    mLastItem = p ;
   }
   mCount ++ ;
 }
@@ -140,16 +140,16 @@ template <typename TYPE> void TC_LinkedList<TYPE> ::appendObject (const TYPE & i
 
 template <typename TYPE> void TC_LinkedList <TYPE>::mergeListAtBottom (TC_LinkedList <TYPE> & ioList) {
   MF_Assert (this != & ioList, "this == & ioList", 0, 0) ;
-  if (ioList.mTopItem != nullptr) {
-    if (mBottomItem == nullptr) {
-      mTopItem = ioList.mTopItem ;
+  if (ioList.mFirstItem != nullptr) {
+    if (mLastItem == nullptr) {
+      mFirstItem = ioList.mFirstItem ;
     }else{
-      mBottomItem->mNextItem = ioList.mTopItem ;
+      mLastItem->mNextItem = ioList.mFirstItem ;
     }
-    mBottomItem = ioList.mBottomItem ;
-    ioList.mTopItem = (cElement *) nullptr ;
-    ioList.mBottomItem = (cElement *) nullptr ;
+    mLastItem = ioList.mLastItem ;
     mCount += ioList.mCount ;
+    ioList.mFirstItem = nullptr ;
+    ioList.mLastItem = nullptr ;
     ioList.mCount = 0 ;
   }
 }
@@ -158,7 +158,7 @@ template <typename TYPE> void TC_LinkedList <TYPE>::mergeListAtBottom (TC_Linked
 
 template <typename TYPE> void TC_LinkedList <TYPE>::copyTo (TC_UniqueArray <TYPE> & outArray) {
   outArray.setCapacity (mCount) ;
-  cElement * p = mTopItem ;
+  cElement * p = mFirstItem ;
   while (p != nullptr) {
     outArray.appendObject (p->mInfo) ;
     p = p->mNextItem ;
@@ -169,8 +169,8 @@ template <typename TYPE> void TC_LinkedList <TYPE>::copyTo (TC_UniqueArray <TYPE
 
 template <typename TYPE> void swap (TC_LinkedList <TYPE> & ioList1,
                                     TC_LinkedList <TYPE> & ioList2) {
-  swap (ioList1.mTopItem, ioList2.mTopItem) ;
-  swap (ioList1.mBottomItem, ioList2.mBottomItem) ;
+  swap (ioList1.mFirstItem, ioList2.mFirstItem) ;
+  swap (ioList1.mLastItem, ioList2.mLastItem) ;
   swap (ioList1.mCount, ioList2.mCount) ;
 }
 
