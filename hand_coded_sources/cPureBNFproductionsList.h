@@ -19,7 +19,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#include "collections/TC_FIFO.h"
 #include "bdd/C_Relation.h"
 #include "strings/C_String.h"
 #include "utilities/TF_Swap.h"

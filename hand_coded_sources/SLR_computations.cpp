@@ -605,13 +605,29 @@ getProductionsWhereLocationIsRight (const int32_t inStateIndex,
 //----------------------------------------------------------------------------------------------------------------------
 
 class c_LR0_automaton_transition {
-  public: int32_t mSourceState ;
-  public: int32_t mAction ;
-  public: int32_t mTargetState ;
+  private: int32_t mSourceState ;
+  public: int32_t sourceState (void) const { return mSourceState ; }
+
+  private: int32_t mAction ;
+  public: int32_t action (void) const { return mAction ; }
+
+  private: int32_t mTargetState ;
+  public: int32_t targetState (void) const { return mTargetState ; }
+
+  public: c_LR0_automaton_transition (void) ;
+
   public: c_LR0_automaton_transition (const int32_t inSourceState,
                                       const int32_t inAction,
                                       const int32_t inTargetState) ;
 } ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+c_LR0_automaton_transition::c_LR0_automaton_transition (void) :
+mSourceState (0),
+mAction (0),
+mTargetState (0) {
+}
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -639,7 +655,7 @@ static void
 generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules,
                                const cVocabulary & inVocabulary,
                                const TC_UniqueArray2 <cDecisionTableElement> & inSLRdecisionTable,
-                               const TC_FIFO <c_LR0_automaton_transition> & inTransitionList,
+                               const TC_UniqueArray <c_LR0_automaton_transition> & inTransitionList,
                                const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                                const uint32_t inOriginalGrammarStartSymbol,
                                const C_String & inLexiqueName,
@@ -733,8 +749,8 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
   TC_UniqueArray <int32_t> stateSuccessorsCount (rowsCount, 0 COMMA_HERE) ;
   const int32_t transitionsCount = inTransitionList.count () ;
   for (int32_t i=0 ; i<transitionsCount ; i++) {
-    if (inTransitionList (i COMMA_HERE).mAction >= columnsCount) {
-      stateSuccessorsCount (inTransitionList (i COMMA_HERE).mSourceState COMMA_HERE) ++ ;
+    if (inTransitionList (i COMMA_HERE).action () >= columnsCount) {
+      stateSuccessorsCount (inTransitionList (i COMMA_HERE).sourceState () COMMA_HERE) ++ ;
     }
   }
 
@@ -743,9 +759,9 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                     "// an entry is (non_terminal_symbol, n) ; successor is state n.\n\n" ;
   int32_t currentSourceState = -1 ; // No state
   for (int32_t t=0 ; t<transitionsCount ; t++) {
-    const int32_t nonterminal =  inTransitionList (t COMMA_HERE).mAction - columnsCount ; 
+    const int32_t nonterminal =  inTransitionList (t COMMA_HERE).action () - columnsCount ; 
     if (nonterminal >= 0) {
-      const int32_t sourceState = inTransitionList (t COMMA_HERE).mSourceState ;
+      const int32_t sourceState = inTransitionList (t COMMA_HERE).sourceState () ;
       if (currentSourceState == sourceState) {
         ioCppFileContents << ",\n  " ;
       }else{
@@ -758,7 +774,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                 << "] = {" ;
         currentSourceState = sourceState ;
       }
-      ioCppFileContents << cStringWithSigned (nonterminal) << ", " << cStringWithSigned (inTransitionList (t COMMA_HERE).mTargetState) ;
+      ioCppFileContents << cStringWithSigned (nonterminal) << ", " << cStringWithSigned (inTransitionList (t COMMA_HERE).targetState ()) ;
     }
   }
   ioCppFileContents << ", -1} ;\n\n" ;
@@ -1211,7 +1227,7 @@ static void
 compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
                         const cVocabulary & inVocabulary,
                         c_LR0_items_sets_collection & outLR0_items_sets_collection,
-                        TC_FIFO <c_LR0_automaton_transition> & outTransitionList) {
+                        TC_UniqueArray <c_LR0_automaton_transition> & outTransitionList) {
 //--- Create initial LR0 items set (SLR automaton initial state I0)
   const int32_t vocabularyCount = inVocabulary.getAllSymbolsCount () ;
   c_LR0_items_set LR0_items_set ;
@@ -1227,7 +1243,7 @@ compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
         LR0_items_set.close_items_set (inProductionRules, inVocabulary.getTerminalSymbolsCount ()) ;
         const int32_t target = outLR0_items_sets_collection.searchOrInsert_LR0_itemSet (LR0_items_set) ;
         c_LR0_automaton_transition t (explorationIndex, s, target) ;
-        outTransitionList.insertByCopy (t) ;
+        outTransitionList.appendObject (t) ;
       }
     }
   }
@@ -1266,7 +1282,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
 
 //--- Compute LR0 automaton
   c_LR0_items_sets_collection LR0_items_sets_collection ;
-  TC_FIFO <c_LR0_automaton_transition> transitionList ;
+  TC_UniqueArray <c_LR0_automaton_transition> transitionList ;
   compute_LR0_automation (inProductionRules,
                           inVocabulary,
                           LR0_items_sets_collection,
@@ -1292,11 +1308,11 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
     ioHTMLFileContents.outputRawData ("</td></tr>") ;
     for (int32_t i=0 ; i<transitionList.count () ; i++) {
       ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-      ioHTMLFileContents << "  S" << cStringWithSigned (transitionList (i COMMA_HERE).mSourceState)
+      ioHTMLFileContents << "  S" << cStringWithSigned (transitionList (i COMMA_HERE).sourceState ())
                          << " |- " ;
-      inVocabulary.printInFile (ioHTMLFileContents, transitionList (i COMMA_HERE).mAction COMMA_HERE) ;
+      inVocabulary.printInFile (ioHTMLFileContents, transitionList (i COMMA_HERE).action () COMMA_HERE) ;
       ioHTMLFileContents << " -> S"
-                         << cStringWithSigned (transitionList (i COMMA_HERE).mTargetState) ;
+                         << cStringWithSigned (transitionList (i COMMA_HERE).targetState ()) ;
       ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
     }
     ioHTMLFileContents.outputRawData ("</table><p></p>") ;
@@ -1325,10 +1341,10 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
   }
 //--- Shift actions
   for (int32_t index=0 ; index<transitionList.count () ; index++) {
-    if (transitionList (index COMMA_HERE).mAction < terminalSymbolsCount) {
-      const int32_t sourceState = transitionList (index COMMA_HERE).mSourceState ;
-      const int32_t targetState = transitionList (index COMMA_HERE).mTargetState ;
-      const int32_t terminal = transitionList (index COMMA_HERE).mAction ;
+    if (transitionList (index COMMA_HERE).action () < terminalSymbolsCount) {
+      const int32_t sourceState = transitionList (index COMMA_HERE).sourceState () ;
+      const int32_t targetState = transitionList (index COMMA_HERE).targetState () ;
+      const int32_t terminal = transitionList (index COMMA_HERE).action () ;
       if (inPopulateHTMLHelperString) {
         ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         ioHTMLFileContents << "Action [S" << cStringWithSigned (sourceState) << ", " ;
@@ -1407,16 +1423,16 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
   }
 //--- Successors
   for (int32_t t=0 ; t<transitionList.count () ; t++) {
-    if (transitionList (t COMMA_HERE).mAction >= terminalSymbolsCount) {
+    if (transitionList (t COMMA_HERE).action () >= terminalSymbolsCount) {
       successorEntries ++ ;
       if (inPopulateHTMLHelperString) {
         ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         ioHTMLFileContents << "Successor [S"
-                           << cStringWithSigned (transitionList (t COMMA_HERE).mSourceState)
+                           << cStringWithSigned (transitionList (t COMMA_HERE).sourceState ())
                            << ", " ;
-        inVocabulary.printInFile (ioHTMLFileContents, transitionList (t COMMA_HERE).mAction COMMA_HERE) ;
+        inVocabulary.printInFile (ioHTMLFileContents, transitionList (t COMMA_HERE).action () COMMA_HERE) ;
         ioHTMLFileContents << "] = S"
-                           << cStringWithSigned (transitionList (t COMMA_HERE).mTargetState) ;
+                           << cStringWithSigned (transitionList (t COMMA_HERE).targetState ()) ;
         ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
       }
     }
