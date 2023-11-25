@@ -737,7 +737,6 @@
 		CF40C8462AFD4C550027918A /* galgas-random.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "galgas-random.cpp"; sourceTree = "<group>"; };
 		CF40C8472AFD4C550027918A /* galgas-random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "galgas-random.h"; sourceTree = "<group>"; };
 		CF4398030ADFE1900085F47C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
-		CF443912144E144600E38AA4 /* TC_prime_cache2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TC_prime_cache2.h; sourceTree = "<group>"; };
 		CF45B175239AF1FD00F16511 /* all-declarations-28.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-28.cpp"; sourceTree = "<group>"; };
 		CF4853202724629A0063154F /* acStrongPtr_class.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = acStrongPtr_class.cpp; sourceTree = "<group>"; };
 		CF4853212724629A0063154F /* acStrongPtr_class.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = acStrongPtr_class.h; sourceTree = "<group>"; };
@@ -1354,7 +1353,6 @@
 		CF443911144E144600E38AA4 /* cache */ = {
 			isa = PBXGroup;
 			children = (
-				CF443912144E144600E38AA4 /* TC_prime_cache2.h */,
 			);
 			path = cache;
 			sourceTree = "<group>";
@@ -1654,7 +1652,7 @@
 			path = cocoa_objc_galgas;
 			sourceTree = "<group>";
 		};
-		CFB9E4850DF28AC500885084 /* collections */ = {
+		CFB9E4850DF28AC500885084 /* Generic Arraies */ = {
 			isa = PBXGroup;
 			children = (
 				CFB9E4870DF28AC500885084 /* TC_Array.h */,
@@ -1663,7 +1661,7 @@
 				CFB9E48F0DF28AC500885084 /* TC_UniqueArray2.h */,
 				CFA5C508192A884800C20A02 /* TC_UniqueSparseArray.h */,
 			);
-			name = collections;
+			name = "Generic Arraies";
 			path = "generic-arraies";
 			sourceTree = "<group>";
 		};
@@ -1756,7 +1754,7 @@
 				CF443911144E144600E38AA4 /* cache */,
 				CFAD482E0591BCF700BF8381 /* cocoa_galgas */,
 				CFDAE7040AD19F3E00713406 /* cocoa_utilities */,
-				CFB9E4850DF28AC500885084 /* collections */,
+				CFB9E4850DF28AC500885084 /* Generic Arraies */,
 				CF31E0ED0598DF5400814123 /* command_line_interface */,
 				CFF538CC057A559D00854C83 /* files */,
 				CFA5890010D285C800B7E541 /* galgas2 */,

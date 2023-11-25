@@ -713,19 +713,19 @@ proc updateGalgasTargets
     ]
     libpmReferenceGroupList += !groupRef
   #--- Add "cache" group
-    [!?xcodeProject addGroupWithFiles
-      !groupName:"Cache"
-      !groupPath:"cache"
-      !fileNames:{!"TC_prime_cache2.h"}
-      !?cFileRefs:buildCFileRefListForTool
-      !?cppFileRefs:buildCppFileRefListForTool
-      !?mFileRefs:m_FileRefList
-      !?mmFileRefs:mm_FileRefList
-      !?frameworkFileRefs:frameworksFileRefList
-      !?resourceFileRefs:resourceFileBuildRefs
-      ?groupRef:groupRef
-    ]
-    libpmReferenceGroupList += !groupRef
+#    [!?xcodeProject addGroupWithFiles
+#      !groupName:"Cache"
+#      !groupPath:"cache"
+#      !fileNames:{!"TC_prime_cache2.h"}
+#      !?cFileRefs:buildCFileRefListForTool
+#      !?cppFileRefs:buildCppFileRefListForTool
+#      !?mFileRefs:m_FileRefList
+#      !?mmFileRefs:mm_FileRefList
+#      !?frameworkFileRefs:frameworksFileRefList
+#      !?resourceFileRefs:resourceFileBuildRefs
+#      ?groupRef:groupRef
+#    ]
+#    libpmReferenceGroupList += !groupRef
   #--- Add "Cocoa Utilities" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Cocoa Utilities"
