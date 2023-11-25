@@ -1203,8 +1203,6 @@ proc updateGalgasTargets
       !fileNames:{
         !"basic-allocation.cpp",
         !"basic-allocation.h",
-        !"C_CRC32.cpp",
-        !"C_CRC32.h",
         !"C_Data.cpp",
         !"C_Data.h",
         !"C_DirectedGraph.cpp",

@@ -52,7 +52,8 @@ class PMUInt128 final {
 
 //--- Division
   public: void divideBy (const uint32_t inDivisor,
-                          uint32_t & outRemainder) ;
+                         uint32_t & outRemainder) ;
+
   public: void operator /= (const uint32_t inMultiplicand) ;
 
 //--- Bit access
