@@ -176,8 +176,8 @@ close_items_set (const cPureBNFproductionsList & inProductionRules,
     for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
       const int32_t locationIndex = mItemsSet (i COMMA_HERE).mLocationIndex ;
       const int32_t productionRule = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
-      if (locationIndex < inProductionRules (productionRule COMMA_HERE).derivationLength ()) {
-        const int32_t prodX = inProductionRules (productionRule COMMA_HERE).derivationAtIndex (locationIndex COMMA_HERE) - inTerminalSymbolsCount ;
+      if (locationIndex < inProductionRules.mProductionArray (productionRule COMMA_HERE).derivationLength ()) {
+        const int32_t prodX = inProductionRules.mProductionArray (productionRule COMMA_HERE).derivationAtIndex (locationIndex COMMA_HERE) - inTerminalSymbolsCount ;
         if (prodX >= 0) {
           const int32_t first = inProductionRules.tableauIndicePremiereProduction (prodX COMMA_HERE) ;
           MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
@@ -207,7 +207,7 @@ display (const cPureBNFproductionsList & inProductionRules,
          const cVocabulary & inVocabulary,
          C_HTMLString & inHTMLfile) {
   for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
-    const cProduction & p = inProductionRules (mItemsSet (i COMMA_HERE).mProductionRuleIndex COMMA_HERE) ;
+    const cProduction & p = inProductionRules.mProductionArray (mItemsSet (i COMMA_HERE).mProductionRuleIndex COMMA_HERE) ;
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     inHTMLfile.outputRawData ("<span class=\"list\">") ;
     inHTMLfile << "[" ;
@@ -237,7 +237,7 @@ getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
   out_LR0_item_set.mItemsSet.removeAllKeepingCapacity () ;
   for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
     const int32_t productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
-    const cProduction & p = inProductionRules (productionRuleIndex COMMA_HERE) ;
+    const cProduction & p = inProductionRules.mProductionArray (productionRuleIndex COMMA_HERE) ;
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     if (location < p.derivationLength ()) {
       const int32_t symbol = p.derivationAtIndex (location COMMA_HERE) ;
@@ -258,12 +258,12 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
   outAcceptCondition = false ;
   for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
     const int32_t productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
-    const cProduction & p = inProductionRules (productionRuleIndex COMMA_HERE) ;
+    const cProduction & p = inProductionRules.mProductionArray (productionRuleIndex COMMA_HERE) ;
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     if (location == p.derivationLength ()) {
       outProductionsSet.appendObject (productionRuleIndex) ;
     }
-    if ((productionRuleIndex == (inProductionRules.length () - 1)) && (location == 1)) {
+    if ((productionRuleIndex == (inProductionRules.mProductionArray.count () - 1)) && (location == 1)) {
       outAcceptCondition = true ;
     }
   }  
@@ -731,7 +731,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
   ioCppFileContents.appendCppTitleComment ("SLR states successors table") ;
 //--- Get successor count, by state
   TC_UniqueArray <int32_t> stateSuccessorsCount (rowsCount, 0 COMMA_HERE) ;
-  const int32_t transitionsCount = inTransitionList.length () ;
+  const int32_t transitionsCount = inTransitionList.count () ;
   for (int32_t i=0 ; i<transitionsCount ; i++) {
     if (inTransitionList (i COMMA_HERE).mAction >= columnsCount) {
       stateSuccessorsCount (inTransitionList (i COMMA_HERE).mSourceState COMMA_HERE) ++ ;
@@ -784,7 +784,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
 
 //--- Write for every production, its left non terminal, ---------------------
 //    and the size of right string
-  const int32_t productionsCount = inProductionRules.length () ;
+  const int32_t productionsCount = inProductionRules.mProductionArray.count () ;
   ioCppFileContents.appendCppTitleComment ("Production rules infos (left non terminal, size of right string)") ;
   ioCppFileContents << "static const int32_t gProductionsTable_" << inTargetFileName << " ["
           << cStringWithSigned (productionsCount)
@@ -793,9 +793,9 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
     if (p > 0) {
       ioCppFileContents << ",\n" ;
     }
-    ioCppFileContents << "  " << cStringWithSigned (inProductionRules (p COMMA_HERE).leftNonTerminalIndex () - columnsCount)
+    ioCppFileContents << "  " << cStringWithSigned (inProductionRules.mProductionArray (p COMMA_HERE).leftNonTerminalIndex () - columnsCount)
             << ", "
-            << cStringWithSigned (inProductionRules (p COMMA_HERE).derivationLength ()) ;
+            << cStringWithSigned (inProductionRules.mProductionArray (p COMMA_HERE).derivationLength ()) ;
   }
   ioCppFileContents << "\n} ;\n\n" ;
 
@@ -822,7 +822,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
       if (first == last) {
         const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
         ioCppFileContents << "  if (inLexique->nextProductionIndex () == "<< cStringWithSigned (ip) << ") {\n" ;
-        inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
+        inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                     inVocabulary,
                                                                     "parse",
                                                                     ioCppFileContents,
@@ -835,7 +835,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         for (int32_t j=first ; j<=last ; j++) {
           const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
           ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
-          inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
+          inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                       inVocabulary,
                                                                       "parse",
                                                                       ioCppFileContents,
@@ -861,7 +861,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
       if (first == last) {
         const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
         ioCppFileContents << "  if (inLexique->nextProductionIndex () == " << cStringWithSigned (ip) << ") {\n" ;
-        inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
+        inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                     inVocabulary,
                                                                     "indexing",
                                                                     ioCppFileContents,
@@ -875,7 +875,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         for (int32_t j=first ; j<=last ; j++) {
           const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
           ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
-          inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
+          inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                       inVocabulary,
                                                                       "indexing",
                                                                       ioCppFileContents,
@@ -934,7 +934,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         if (first == last) {
           const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
           ioCppFileContents << "  if (inLexique->nextProductionIndex () == " << cStringWithSigned (ip) << ") {\n" ;
-          inProductionRules (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
+          inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                       inVocabulary,
                                                                       currentAltForNonTerminal2.current_lkey (HERE).mProperty_string.stringValue (),
                                                                       ioCppFileContents,
@@ -947,7 +947,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
           for (int32_t j=first ; j<=last ; j++) {
             const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
             ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
-            inProductionRules (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
+            inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                         inVocabulary,
                                                                         currentAltForNonTerminal2.current_lkey (HERE).mProperty_string.stringValue (),
                                                                         ioCppFileContents,
@@ -1216,7 +1216,7 @@ compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
   const int32_t vocabularyCount = inVocabulary.getAllSymbolsCount () ;
   c_LR0_items_set LR0_items_set ;
 //--- Add last production, that is the added production <> -> <start_symbol>
-  LR0_items_set.add_LR0_item (inProductionRules.length () - 1, 0) ;
+  LR0_items_set.add_LR0_item (inProductionRules.mProductionArray.count () - 1, 0) ;
   LR0_items_set.close_items_set (inProductionRules, inVocabulary.getTerminalSymbolsCount ()) ;
   outLR0_items_sets_collection.searchOrInsert_LR0_itemSet (LR0_items_set) ;
 //--- Calculate LR0 automaton
@@ -1273,7 +1273,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
                           transitionList) ;
   if (inVerboseOptionOn) {
     co << cStringWithSigned (LR0_items_sets_collection.getStatesCount ()) << " states, "
-       << cStringWithSigned (transitionList.length ()) << " transitions.\n" ;
+       << cStringWithSigned (transitionList.count ()) << " transitions.\n" ;
     co.flush () ;
   }
 //--- Display automaton states
@@ -1290,7 +1290,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
     ioHTMLFileContents.outputRawData ("<p></p><table class=\"result\"><tr><td class=\"result_title\">") ;
     ioHTMLFileContents << "LR0 automaton transitions" ;
     ioHTMLFileContents.outputRawData ("</td></tr>") ;
-    for (int32_t i=0 ; i<transitionList.length () ; i++) {
+    for (int32_t i=0 ; i<transitionList.count () ; i++) {
       ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       ioHTMLFileContents << "  S" << cStringWithSigned (transitionList (i COMMA_HERE).mSourceState)
                          << " |- " ;
@@ -1324,7 +1324,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
     ioHTMLFileContents.outputRawData ("</td></tr>") ;
   }
 //--- Shift actions
-  for (int32_t index=0 ; index<transitionList.length () ; index++) {
+  for (int32_t index=0 ; index<transitionList.count () ; index++) {
     if (transitionList (index COMMA_HERE).mAction < terminalSymbolsCount) {
       const int32_t sourceState = transitionList (index COMMA_HERE).mSourceState ;
       const int32_t targetState = transitionList (index COMMA_HERE).mTargetState ;
@@ -1376,7 +1376,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
     }
     for (int32_t p=0 ; p<productionsSet.count () ; p++) {
       const int32_t productionIndex = productionsSet (p COMMA_HERE) ;
-      const int32_t leftNonTerminal = inProductionRules (productionIndex COMMA_HERE).leftNonTerminalIndex () ;
+      const int32_t leftNonTerminal = inProductionRules.mProductionArray (productionIndex COMMA_HERE).leftNonTerminalIndex () ;
       for (int32_t f=0 ; f<inFOLLOWarray (leftNonTerminal COMMA_HERE).count () ; f++) {
         const int32_t terminal = (int32_t) inFOLLOWarray (leftNonTerminal COMMA_HERE) (f COMMA_HERE) ;
         if (inPopulateHTMLHelperString) {
@@ -1406,7 +1406,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
     }
   }
 //--- Successors
-  for (int32_t t=0 ; t<transitionList.length () ; t++) {
+  for (int32_t t=0 ; t<transitionList.count () ; t++) {
     if (transitionList (t COMMA_HERE).mAction >= terminalSymbolsCount) {
       successorEntries ++ ;
       if (inPopulateHTMLHelperString) {
@@ -1435,7 +1435,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
     ioHTMLFileContents << "LR0 automaton has "
                        << cStringWithSigned (LR0_items_sets_collection.getStatesCount ())
                        << " states and "
-                       << cStringWithSigned (transitionList.length ())
+                       << cStringWithSigned (transitionList.count ())
                        << " transitions.\n\n"
                        << "Analyze table has "
                        << cStringWithSigned (shiftActions) << " shift actions, "

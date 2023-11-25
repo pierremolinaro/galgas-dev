@@ -208,7 +208,7 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                    ((int32_t) mProperty_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount,
                    derivation,
                    0) ;
-    ioProductions.insertByExchange (p) ;
+    ioProductions.mProductionArray.appendObjectUsingSwap (p) ;
     currentBranch.gotoNextObject () ;
   }
 
@@ -260,7 +260,7 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                    mProperty_mStartLocation.startLocation ().lineNumber (),
                    mProperty_mStartLocation.startLocation ().columnNumber (),
                    ((int32_t) mProperty_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount) ;
-    ioProductions.insertByExchange (p) ;
+    ioProductions.mProductionArray.appendObjectUsingSwap (p) ;
   }
 
 //--- Insert a new production for every 'while' branch
@@ -304,7 +304,7 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                    idx,
                    derivation,
                    0) ;
-    ioProductions.insertByExchange (p) ;
+    ioProductions.mProductionArray.appendObjectUsingSwap (p) ;
     currentBranch.gotoNextObject () ;
   }
 
@@ -401,7 +401,7 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
                      terminalSymbolsCount + (int32_t) currentRule.current_mLeftNonterminalSymbolIndex (HERE).uintValue (),
                      derivation,
                      currentRule.current_mProductionIndex (HERE).uintValue ()) ;
-      ioProductions.insertByExchange (p) ;
+      ioProductions.mProductionArray.appendObjectUsingSwap (p) ;
       currentRule.gotoNextObject () ;
     }
     currentComponent.gotoNextObject () ;
@@ -443,7 +443,7 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
                    ioVocabulary.getAllSymbolsCount () - 1,
                    derivation,
                    0) ;
-    ioProductions.insertByExchange (p) ;
+    ioProductions.mProductionArray.appendObjectUsingSwap (p) ;
   }
 //--- Build productions arraies
   ioProductions.buildProductionsArray (ioVocabulary.getTerminalSymbolsCount (),
@@ -462,7 +462,7 @@ void
 printPureBNFgrammarInBNFfile (C_HTMLString & inHTMLfile,
                               const cVocabulary & inVocabulary,
                               const cPureBNFproductionsList & inProductions) {
-  const int32_t productionsCount = inProductions.length () ;
+  const int32_t productionsCount = inProductions.mProductionArray.count () ;
   inHTMLfile.outputRawData ("<p><a name=\"pure_bnf\"></a>") ;
   inHTMLfile << "Listing of the " ;
   inHTMLfile.appendSigned (productionsCount) ;
@@ -471,7 +471,7 @@ printPureBNFgrammarInBNFfile (C_HTMLString & inHTMLfile,
              << " :" ;
   inHTMLfile.outputRawData ("</p>\n<table class=\"result\">") ;
   for (int32_t i=0 ; i<productionsCount ; i++) {
-    const cProduction & p = inProductions (i COMMA_HERE) ;
+    const cProduction & p = inProductions.mProductionArray (i COMMA_HERE) ;
     inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     inHTMLfile.outputRawData ("<a name=\"pure_bnf_") ;
     inHTMLfile.appendSigned (i) ;
@@ -521,10 +521,9 @@ printPureBNFgrammarInBNFfile (C_HTMLString & inHTMLfile,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cPureBNFproductionsList::
-buildProductionsArray (const int32_t inTerminalSymbolsCount,
-                       const int32_t inNonTerminalSymbolsCount) {
-  const int32_t nombreProductions = length () ;
+void cPureBNFproductionsList::buildProductionsArray (const int32_t inTerminalSymbolsCount,
+                                                     const int32_t inNonTerminalSymbolsCount) {
+  const int32_t nombreProductions = mProductionArray.count () ;
 
 //--- Construire les tableaux d'indices
   { TC_UniqueArray <int32_t> temp (inNonTerminalSymbolsCount, -1 COMMA_HERE) ;
@@ -543,14 +542,14 @@ buildProductionsArray (const int32_t inTerminalSymbolsCount,
 //--- Parcourir les productions
   int32_t indiceIndirection = 0 ;
   for (int32_t i=0 ; i<nombreProductions ; i++) {
-    cProduction & p = this->operator () (i COMMA_HERE) ;
+    cProduction & p = mProductionArray (i COMMA_HERE) ;
     if (! productionTraitee (i COMMA_HERE)) {
       productionTraitee.setObjectAtIndex (true, i COMMA_HERE) ;
       const int32_t g = ((int32_t) p.leftNonTerminalIndex ()) - inTerminalSymbolsCount ;
       tableauIndicePremiereProduction.setObjectAtIndex (indiceIndirection, g COMMA_HERE) ;
       tableauIndirectionProduction.setObjectAtIndex (i, indiceIndirection COMMA_HERE) ;
       for (int32_t j=i+1 ; j<nombreProductions ; j++) {
-        cProduction & pj = this->operator () (j COMMA_HERE) ;
+        cProduction & pj = mProductionArray (j COMMA_HERE) ;
         if (p.leftNonTerminalIndex () == pj.leftNonTerminalIndex ()) {
           indiceIndirection ++ ;
           tableauIndirectionProduction.setObjectAtIndex (j, indiceIndirection COMMA_HERE) ;

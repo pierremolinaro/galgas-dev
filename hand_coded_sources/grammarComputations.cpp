@@ -91,6 +91,7 @@ mProductionIndex (0) {
 //----------------------------------------------------------------------------------------------------------------------
 
 cPureBNFproductionsList::cPureBNFproductionsList (void) :
+mProductionArray (),
 tableauIndicePremiereProduction (),
 tableauIndiceDerniereProduction (),
 tableauIndirectionProduction (),
@@ -141,10 +142,10 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
   ioHTMLFileContents.outputRawData ("<p><a name=\"identical_productions\"></a></p>") ;
   ioHTMLFileContents.appendCppTitleComment ("Step 2 : searching for identical productions", "title") ;
   bool ok = true ;
-  for (int32_t i=0 ; i<productions.length () ; i++) {
-    const cProduction & pi = productions (i COMMA_HERE) ;
-    for (int32_t j=i+1 ; j<productions.length () ; j++) {
-      const cProduction & pj = productions (j COMMA_HERE) ;
+  for (int32_t i=0 ; i<productions.mProductionArray.count () ; i++) {
+    const cProduction & pi = productions.mProductionArray (i COMMA_HERE) ;
+    for (int32_t j=i+1 ; j<productions.mProductionArray.count () ; j++) {
+      const cProduction & pj = productions.mProductionArray (j COMMA_HERE) ;
       bool identiques = pi.leftNonTerminalIndex () == pj.leftNonTerminalIndex () ;
       if (identiques) {
         identiques = pi.derivationLength () == pj.derivationLength () ;
@@ -367,7 +368,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     outHTMLHelperFileContents.appendCppTitleComment ("  Pure BNF productions list", "title") ;
     printPureBNFgrammarInBNFfile (outHTMLHelperFileContents, vocabulary, pureBNFproductions) ;
     if (verboseOptionOn) {
-      co << cStringWithSigned (pureBNFproductions.length ()) << ".\n" ;
+      co << cStringWithSigned (pureBNFproductions.mProductionArray.count ()) << ".\n" ;
       co.flush () ;
     }
   }

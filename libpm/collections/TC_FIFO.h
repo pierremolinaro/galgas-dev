@@ -6,7 +6,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2001, ..., 2019 Pierre Molinaro.
+//  Copyright (C) 2001, ..., 2023 Pierre Molinaro.
 //  e-mail : pierre@pcmolinaro.name
 //  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General
 //  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)
@@ -36,17 +36,17 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> class TC_FIFO {
+template <typename TYPE> class TC_FIFO final {
 //--- Constructor and destructor
   public: TC_FIFO (void) ;
-  public: virtual ~TC_FIFO (void) ;
+  public: ~TC_FIFO (void) ;
 
 //--- No copy
   private: TC_FIFO <TYPE> (TC_FIFO <TYPE> &) ;
   private: void operator = (TC_FIFO <TYPE> &) ;
 
 //--- Length
-  public: inline int32_t length (void) const { return mListLength ; }
+  public: inline int32_t count (void) const { return mListLength ; }
 
 //--- Empty ?
   public: inline bool isEmpty (void) const { return mListLength == 0 ; }

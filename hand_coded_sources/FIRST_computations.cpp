@@ -37,8 +37,8 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
   vocabulary2Config.appendConfiguration (inVocabularyConfiguration) ;
 //---------------------------------- Compute direct firsts with each production
   C_Relation directFIRST (vocabulary2Config, false) ;
-  for (int32_t i=0 ; i<inProductionRules.length () ; i++) {
-    const cProduction & p = inProductionRules (i COMMA_HERE) ;
+  for (int32_t i=0 ; i<inProductionRules.mProductionArray.count () ; i++) {
+    const cProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
     const int32_t n = p.derivationLength () ;
     if (n > 0) {
       const C_Relation left (vocabulary2Config, 0, C_BDD::kEqual, (uint64_t) p.leftNonTerminalIndex () COMMA_HERE) ;

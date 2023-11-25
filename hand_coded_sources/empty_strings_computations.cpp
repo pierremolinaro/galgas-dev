@@ -30,8 +30,8 @@ static C_Relation
 computeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & inProductionRules,
                                                 const C_RelationConfiguration & inConfiguration) { 
   C_Relation nonterminalSymbolsHavingEmptyDerivation (inConfiguration, false) ;
-  for (int32_t i=0 ; i<inProductionRules.length () ; i++) {
-    const cProduction & p = inProductionRules (i COMMA_HERE) ;
+  for (int32_t i=0 ; i<inProductionRules.mProductionArray.count () ; i++) {
+    const cProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
     if (p.derivationLength () == 0) {
       nonterminalSymbolsHavingEmptyDerivation.orWith (C_Relation (inConfiguration, 0, C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex () COMMA_HERE) COMMA_HERE) ;
     }
@@ -79,7 +79,7 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
                                          TC_UniqueArray <bool> & outVocabulaireSeDerivantEnVide, 
                                          const uint32_t inAllSymbolsCount,
                                          int32_t & outIterationsCount) {
-  const int32_t productionCount = inProductionRules.length () ;
+  const int32_t productionCount = inProductionRules.mProductionArray.count () ;
   
   { TC_UniqueArray <bool> tempo ((int32_t) inAllSymbolsCount, false COMMA_HERE) ;
     swap (tempo, outVocabulaireSeDerivantEnVide) ;
@@ -93,7 +93,7 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
     onProgresse = false ;
     outIterationsCount ++ ;
     for (int32_t i=0 ; i<productionCount ; i++) {
-      const cProduction & p = inProductionRules (i COMMA_HERE) ;
+      const cProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
       if (! productionTraitee (i COMMA_HERE)) {
         const int32_t n = p.derivationLength () ;
         bool estVide = true ;

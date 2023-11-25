@@ -43,8 +43,8 @@ static void computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules
   directFollowers.addVariable ("last", inFIRSTsets.configuration().typeForVariable(0 COMMA_HERE)) ;
   C_Relation lastOfProduction (directFollowers.configuration(), false) ;
 //--- Build the directFollower and lastOfProduction sets
-  for (int32_t ip=0 ; ip<inProductionRules.length () ; ip++) {
-    const cProduction & p = inProductionRules (ip COMMA_HERE) ;
+  for (int32_t ip=0 ; ip<inProductionRules.mProductionArray.count () ; ip++) {
+    const cProduction & p = inProductionRules.mProductionArray (ip COMMA_HERE) ;
     const int32_t derivationLength = p.derivationLength () ;
   //--- Direct follower
     if (derivationLength > 1) { // The right sequence has more than one element (from 0 to derivationLength-1)

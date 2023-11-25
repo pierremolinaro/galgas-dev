@@ -42,8 +42,8 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
   C_RelationConfiguration vocabulary2 = vocabulary ;
   vocabulary2.addVariable ("target", inVocabularyBDDType) ;
   C_Relation accessibilityRelation (vocabulary2, false) ;
-  for (int32_t i=0 ; i<inPureBNFproductions.length () ; i++) {
-    const cProduction & p = inPureBNFproductions (i COMMA_HERE) ;
+  for (int32_t i=0 ; i<inPureBNFproductions.mProductionArray.count () ; i++) {
+    const cProduction & p = inPureBNFproductions.mProductionArray (i COMMA_HERE) ;
     if (p.derivationLength () > 0) {
       C_Relation rightVocabularyRelation (vocabulary2, false) ;
       rightVocabularyRelation.setToEmpty () ;

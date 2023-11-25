@@ -113,7 +113,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
             ioHTMLFileContents << cStringWithSigned (numeroProduction) ;
             ioHTMLFileContents.outputRawData ("</a></td><td><code>") ;
           }
-          cProduction & p = inPureBNFproductions (numeroProduction COMMA_HERE) ;
+          cProduction & p = inPureBNFproductions.mProductionArray (numeroProduction COMMA_HERE) ;
           if (p.derivationLength () == 0) {
             C_Relation temp (inFOLLOWsets.configuration(), 0, C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex () COMMA_HERE) ;
             p.mDerivationFirst = temp.andOp (inFOLLOWsets COMMA_HERE).transposedRelation (HERE).relationByDeletingLastVariable (HERE) ;
@@ -145,8 +145,8 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           const int32_t numeroProductionJ = inPureBNFproductions.tableauIndirectionProduction (pr1 COMMA_HERE) ;
           for (int32_t k=pr1+1 ; k<=derniere ; k++) {
             const int32_t numeroProductionK = inPureBNFproductions.tableauIndirectionProduction (k COMMA_HERE) ;
-            const C_Relation rJ = inPureBNFproductions (numeroProductionJ COMMA_HERE).derivationFirst () ;
-            const C_Relation rK = inPureBNFproductions (numeroProductionK COMMA_HERE).derivationFirst () ;
+            const C_Relation rJ = inPureBNFproductions.mProductionArray (numeroProductionJ COMMA_HERE).derivationFirst () ;
+            const C_Relation rK = inPureBNFproductions.mProductionArray (numeroProductionK COMMA_HERE).derivationFirst () ;
             const bool ok = rJ.andOp (rK COMMA_HERE).isEmpty () ;
             if (! ok) {
               nombreDeConflits ++ ;
@@ -259,13 +259,13 @@ engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
     const int32_t derniere = inPureBNFproductions.tableauIndiceDerniereProduction (inOriginalGrammarProductionLeftNonTerminalIndex COMMA_HERE) ;
     if (first == derniere) { // Une seule production, pas de conflit
       const int32_t indiceProduction = inPureBNFproductions.tableauIndirectionProduction (first COMMA_HERE) ;
-      inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP, inSyntaxDirectedTranslationVarName) ;
+      inPureBNFproductions.mProductionArray (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP, inSyntaxDirectedTranslationVarName) ;
     }else{ // Plusieurs inPureBNFproductions : engendrer l'aiguillage
       fichierCPP << "  switch (inLexique->nextProductionIndex ()) {\n" ;
       for (int32_t j=first ; j<=derniere ; j++) {
         fichierCPP << "  case " << cStringWithSigned ((int32_t)(j - first + 1)) << " :\n  " ;
         const int32_t indiceProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
-        inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP, inSyntaxDirectedTranslationVarName) ;
+        inPureBNFproductions.mProductionArray (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP, inSyntaxDirectedTranslationVarName) ;
         fichierCPP << "    break ;\n" ;
       }
       fichierCPP << "  default :\n"
@@ -327,7 +327,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
     const int32_t lastProduction = inPureBNFproductions.tableauIndiceDerniereProduction (inNonterminalIndex COMMA_HERE) ;
     for (int32_t j=firstProduction ; j<=lastProduction ; j++) {
       ioProductionRulesIndex.appendObject (ioProductionIndex) ;
-      cProduction & p = inPureBNFproductions (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
+      cProduction & p = inPureBNFproductions.mProductionArray (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
       C_String title ;
       inVocabulary.printInFile (title, p.leftNonTerminalIndex () COMMA_HERE) ;
       const C_ProductionNameDescriptor description (title, p.sourceFileName (), (uint32_t) ioProductionIndex) ;
@@ -402,7 +402,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
     }else{ // Several productions : generate decision table
       inCppFile << "\n" ;
       for (int32_t j=firstProduction ; j<=lastProduction ; j++) {
-        cProduction & p = inPureBNFproductions (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
+        cProduction & p = inPureBNFproductions.mProductionArray (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
         TC_UniqueArray <uint64_t> array ;
         p.derivationFirst ().getValueArray (array) ;
         for (int32_t i=0 ; i < array.count () ; i++) {
@@ -447,7 +447,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
   ioCppFileContents << "\n" ;
 
 //--- Generate LL(1) tables
-  const int32_t productionsCount = inPureBNFproductions.length () ;
+  const int32_t productionsCount = inPureBNFproductions.mProductionArray.count () ;
   TC_UniqueArray <int16_t> productionRulesIndex (500 COMMA_HERE);
   TC_UniqueArray <int16_t> firstProductionRuleIndex (500 COMMA_HERE) ;
   TC_UniqueArray <C_ProductionNameDescriptor> productionRuleDescription ;

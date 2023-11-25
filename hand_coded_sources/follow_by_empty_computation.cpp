@@ -36,7 +36,7 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
   TC_UniqueArray <bool> vocabularyFollowedByEmpty_Array (allSymbolsCount, false COMMA_HERE) ;
   vocabularyFollowedByEmpty_Array.setObjectAtIndex (true, inVocabulary.getStartSymbol () COMMA_HERE) ;
 
-  const int32_t productionsCount = inProductionRules.length () ;
+  const int32_t productionsCount = inProductionRules.mProductionArray.count () ;
   TC_UniqueArray <bool> productionIsHandled (productionsCount, false COMMA_HERE) ;
 
   outIterationsCount = 0 ;
@@ -45,7 +45,7 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
     loop = false ;
     outIterationsCount ++ ;
     for (int32_t i=0 ; i<productionsCount ; i++) {
-      const cProduction & p = inProductionRules (i COMMA_HERE) ;
+      const cProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
       if (! productionIsHandled (i COMMA_HERE)) {
         if (vocabularyFollowedByEmpty_Array (p.leftNonTerminalIndex () COMMA_HERE)) {
           const int32_t n = p.derivationLength () ;

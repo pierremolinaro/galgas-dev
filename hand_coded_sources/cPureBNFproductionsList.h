@@ -2,7 +2,7 @@
 //
 //  Pure BNF production rules list                                                               
 //
-//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -83,7 +83,8 @@ class cProduction {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class cPureBNFproductionsList : public TC_FIFO <cProduction> {
+class cPureBNFproductionsList final {
+  public: TC_UniqueArray <cProduction> mProductionArray ;
   public: TC_UniqueArray <int32_t> tableauIndicePremiereProduction ;
   public: TC_UniqueArray <int32_t> tableauIndiceDerniereProduction ;
   public: TC_UniqueArray <int32_t> tableauIndirectionProduction ;
@@ -93,7 +94,8 @@ class cPureBNFproductionsList : public TC_FIFO <cProduction> {
   public: TC_UniqueArray <int32_t> mProductionIndex ;
 
   public: void buildProductionsArray (const int32_t inTerminalSymbolsCount,
-                                       const int32_t inNonTerminalSymbolsCount) ;
+                                      const int32_t inNonTerminalSymbolsCount) ;
+
   public: cPureBNFproductionsList (void) ;
 } ;
 
