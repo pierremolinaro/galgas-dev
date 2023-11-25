@@ -940,7 +940,7 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
                  << "\n" ;
               indentationForParseOnly ++ ;
             }
-            listForSecondPassParsing.insertAtBottom (int32_t (choice + 1)) ;
+            listForSecondPassParsing.prependObject (choice + 1) ;
           }else{ // Syntax error
             TC_UniqueArray <int32_t> expectedTerminalsArray (100 COMMA_HERE) ;
             buildExpectedTerminalsArrayOnSyntaxError (errorProgramCounter,
@@ -958,7 +958,7 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
             }
             parsingError (expectedTerminalsArray, previousTokenPtr, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
             result = loop = false ;
-            listForSecondPassParsing.makeListEmpty () ;
+            listForSecondPassParsing.removeAllKeepingCapacity () ;
           }
         }
     //--- It is a terminal symbol
@@ -1001,7 +1001,7 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
                                                     expectedTerminalsArray) ;
           parsingError (expectedTerminalsArray, previousTokenPtr, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
           result = loop = false ;
-          listForSecondPassParsing.makeListEmpty () ;
+          listForSecondPassParsing.removeAllKeepingCapacity () ;
         }
     //--- It is the end of a production    
       }else if (stack.count () > 0) {
@@ -1038,7 +1038,7 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
                                                   expectedTerminalsArray) ;     
         parsingError (expectedTerminalsArray, previousTokenPtr, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
         result = loop = false ;
-        listForSecondPassParsing.makeListEmpty () ;
+        listForSecondPassParsing.removeAllKeepingCapacity () ;
       }
     }
   //--- Output graphviz file
@@ -1244,7 +1244,7 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
         for (int32_t i=executionListLength - reduceSize ; i<executionListLength ; i++) {
           executionList (executionListLength -  reduceSize - 1 COMMA_HERE).mergeListAtBottom (executionList (i COMMA_HERE)) ;
         }
-        executionList (executionListLength - reduceSize - 1 COMMA_HERE).insertAtTop (actionCode) ;
+        executionList (executionListLength - reduceSize - 1 COMMA_HERE).appendObject (actionCode) ;
         executionList.removeLastObjects (reduceSize COMMA_HERE) ; 
         executionList.appendDefaultObjectUsingSwap () ;
         const int32_t stackReduceSize = 2 * reduceSize ;

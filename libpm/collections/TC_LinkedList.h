@@ -43,31 +43,24 @@ template <typename TYPE> void swap (TC_LinkedList <TYPE> & ioOperand1,
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> class TC_LinkedList {
+template <typename TYPE> class TC_LinkedList final {
 //--- Constructor and destructor
   public: TC_LinkedList (void) ;
   public: virtual ~TC_LinkedList (void) ;
 
 //--- No copy
-  private: TC_LinkedList (TC_LinkedList <TYPE> &) ;
-  private: void operator = (TC_LinkedList <TYPE> &) ;
+  private: TC_LinkedList (TC_LinkedList <TYPE> &) = delete ;
+  private: void operator = (TC_LinkedList <TYPE> &) = delete ;
 
 //--- Suppress all elements
-  public: void makeListEmpty (void) ;
+  public: void removeAllKeepingCapacity (void) ;
 
 //--- Insert a new element
-  public: void insertAtTop (const TYPE & inInfo) ;
-  public: void insertAtBottom (const TYPE & inInfo) ;
-
-//--- Get and suppress last element
-  public: TYPE getByCopyAndSuppressTopItem (LOCATION_ARGS) ;
+  public: void appendObject (const TYPE & inInfo) ;
+  public: void prependObject (const TYPE & inInfo) ;
 
 //--- Merge two lists
-  public: void mergeListAtTop (TC_LinkedList <TYPE> & ioList) ;
   public: void mergeListAtBottom (TC_LinkedList <TYPE> & ioList) ;
-
-//--- List empty ?
-  public: bool isListEmpty (void) const { return mTopItem == nullptr ; }
 
 //--- Exchange
   friend void swap <TYPE> (TC_LinkedList <TYPE> & ioOperand1,
@@ -99,12 +92,12 @@ mCount (0) {
 //----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> TC_LinkedList <TYPE>::~TC_LinkedList (void) {
-  makeListEmpty () ;
+  removeAllKeepingCapacity () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_LinkedList <TYPE>::makeListEmpty (void) {
+template <typename TYPE> void TC_LinkedList <TYPE>::removeAllKeepingCapacity (void) {
   while (mTopItem != nullptr) {
     mBottomItem = mTopItem->mNextItem ;
     macroMyDelete (mTopItem) ;
@@ -115,7 +108,7 @@ template <typename TYPE> void TC_LinkedList <TYPE>::makeListEmpty (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_LinkedList <TYPE>::insertAtBottom (const TYPE & inInfo) {
+template <typename TYPE> void TC_LinkedList <TYPE>::prependObject (const TYPE & inInfo) {
   cElement * p = (cElement *) nullptr ;
   macroMyNew (p, cElement) ;
   p->mNextItem = (cElement *) nullptr ;
@@ -131,7 +124,7 @@ template <typename TYPE> void TC_LinkedList <TYPE>::insertAtBottom (const TYPE &
 
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_LinkedList<TYPE> ::insertAtTop (const TYPE & inInfo) {
+template <typename TYPE> void TC_LinkedList<TYPE> ::appendObject (const TYPE & inInfo) {
   cElement * p = (cElement *) nullptr ;
   macroMyNew (p, cElement) ;
   p->mNextItem = mTopItem ;
@@ -141,39 +134,6 @@ template <typename TYPE> void TC_LinkedList<TYPE> ::insertAtTop (const TYPE & in
     mBottomItem = p ;
   }
   mCount ++ ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-template <typename TYPE> TYPE TC_LinkedList <TYPE>::getByCopyAndSuppressTopItem (LOCATION_ARGS) {
-  MF_AssertThere (mTopItem != nullptr, "mTopItem == nullptr", 0, 0) ;
-  TYPE info (mTopItem->mInfo) ; // Copy constructor call
-  cElement * p = mTopItem->mNextItem ;
-  macroMyDelete (mTopItem) ;
-  mTopItem = p ;
-  if (mTopItem == nullptr) {
-    mBottomItem = (cElement *) nullptr ;
-  }
-  mCount -- ;
-  return info ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-template <typename TYPE> void TC_LinkedList <TYPE>::mergeListAtTop (TC_LinkedList <TYPE> & ioList) {
-  MF_Assert (this != & ioList, "this == & ioList", 0, 0) ;
-  if (ioList.mTopItem != nullptr) {
-    if (mBottomItem == nullptr) {
-      mBottomItem = ioList.mBottomItem ;
-    }else{
-      ioList.mBottomItem->mNextItem = mTopItem ;
-    }
-    mTopItem = ioList.mTopItem ;
-    ioList.mTopItem = (cElement *) nullptr ;
-    ioList.mBottomItem = (cElement *) nullptr ;
-    mCount += ioList.mCount ;
-    ioList.mCount = 0 ;
-  }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -207,8 +167,8 @@ template <typename TYPE> void TC_LinkedList <TYPE>::copyIntoArray (TC_UniqueArra
 
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE>void swap (TC_LinkedList <TYPE> & ioList1,
-                                   TC_LinkedList <TYPE> & ioList2) {
+template <typename TYPE> void swap (TC_LinkedList <TYPE> & ioList1,
+                                    TC_LinkedList <TYPE> & ioList2) {
   swap (ioList1.mTopItem, ioList2.mTopItem) ;
   swap (ioList1.mBottomItem, ioList2.mBottomItem) ;
   swap (ioList1.mCount, ioList2.mCount) ;

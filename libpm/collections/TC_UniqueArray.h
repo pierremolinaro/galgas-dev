@@ -2,7 +2,7 @@
 //
 //            Declaration and implementation of the template class 'TC_UniqueArray'
 //
-//  COPY OF ITS INSTANCES IS FORBIDDEN BY REDEFINITION OF COPY CONSTRUCTOR AND ASSIGNMENT OPERATOR.                    *
+//  COPY OF ITS INSTANCES IS FORBIDDEN BY REDEFINITION OF COPY CONSTRUCTOR AND ASSIGNMENT OPERATOR.
 //
 //  This file is part of libpm library
 //
@@ -170,13 +170,17 @@ template <typename TYPE> class TC_UniqueArray final {
   public: void appendObjectUsingSwap (TYPE & ioValue) ;
   public: void appendDefaultObjectUsingSwap (void) ;
   public: void appendObjects (const int32_t inCount, const TYPE & inValue) ; // inValue is copied
-  public: void appendObjectsFromArray (const TC_UniqueArray <TYPE> &  inObjectArray) ; // New objects are copied
+  public: void appendObjectsFromArray (const TC_UniqueArray <TYPE> & inObjectArray) ; // New objects are copied
 
 //--- Force entry
   public: void forceObjectAtIndex (const int32_t inIndex,
                                    const TYPE & inValue,
                                    const TYPE & inDefaultValue
                                    COMMA_LOCATION_ARGS) ;
+
+//--- Prepend object
+  public: void prependObject (const TYPE & inValue) ; // inValue is copied
+  public: void prependObjects (const TC_UniqueArray <TYPE> & inObjectArray) ; // Values are copied
 
 //--- Insert objects at index (0 <= index <= count)
   public: void insertObjectAtIndex (const TYPE & inValue,
@@ -592,7 +596,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::appendDefaultObjectUsingSwa
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::appendObjectsFromArray (const TC_UniqueArray <TYPE> &  inObjectArray) {
+template <typename TYPE> void TC_UniqueArray <TYPE>::appendObjectsFromArray (const TC_UniqueArray <TYPE> & inObjectArray) {
   if (inObjectArray.mCount > 0) {
     setCapacity (mCount + inObjectArray.mCount) ;
     for (int32_t i=0 ; i<inObjectArray.mCount ; i++) {
@@ -616,9 +620,31 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::appendObjectsFromArray (con
 #endif
 
 //----------------------------------------------------------------------------------------------------------------------
-//
-//   Insert object at index
-//
+
+template <typename TYPE> void TC_UniqueArray <TYPE>::prependObjects (const TC_UniqueArray <TYPE> & inObjectArray) { // Values are copied
+  const int32_t n = inObjectArray.mCount ;
+  if (n > 0) {
+    setCapacity (mCount + n) ;
+    for (int32_t i = mCount - 1 ; i >= 0 ; i--) {
+      mArray [i + n] = mArray [i] ;
+    }
+    for (int32_t i = 0 ; i < n ; i++) {
+      mArray [i] = inObjectArray.mArray [i] ;
+    }
+    mCount += n ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+template <typename TYPE> void TC_UniqueArray <TYPE>::prependObject (const TYPE & inValue) { // inValue is copied
+  setCapacity (mCount + 1) ;
+  for (int32_t i = mCount ; i > 0 ; i--) {
+    mArray [i] = mArray [i-1] ;
+  }
+  mArray [0] = inValue ;
+  mCount ++ ;
+}
 //----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::insertObjectAtIndex (const TYPE & inValue,
