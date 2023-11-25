@@ -1049,7 +1049,7 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
       GALGAS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GALGAS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
     }
   //--- Set current read location to 0
-    listForSecondPassParsing.copyIntoArray (mArrayForSecondPassParsing) ;
+    listForSecondPassParsing.copyTo (mArrayForSecondPassParsing) ;
     resetForSecondPass () ;
     if (executionModeIsSyntaxAnalysisOnly ()) {
       co << "*** END OF PARSING (success: "
@@ -1341,7 +1341,7 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
       }
     }
     if (result) {
-      executionList (0 COMMA_HERE).copyIntoArray (mArrayForSecondPassParsing) ;
+      executionList (0 COMMA_HERE).copyTo (mArrayForSecondPassParsing) ;
     }
   //--- Output graphviz file
     if (produceSyntaxTree) {

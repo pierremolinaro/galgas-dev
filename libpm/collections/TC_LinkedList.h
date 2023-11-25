@@ -78,7 +78,7 @@ template <typename TYPE> class TC_LinkedList final {
   private: int32_t mCount ;
 
 //--- Copy into an array
-  public: void copyIntoArray (TC_UniqueArray <TYPE> & outArray) ;
+  public: void copyTo (TC_UniqueArray <TYPE> & outArray) ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -156,7 +156,7 @@ template <typename TYPE> void TC_LinkedList <TYPE>::mergeListAtBottom (TC_Linked
 
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_LinkedList <TYPE>::copyIntoArray (TC_UniqueArray <TYPE> & outArray) {
+template <typename TYPE> void TC_LinkedList <TYPE>::copyTo (TC_UniqueArray <TYPE> & outArray) {
   outArray.setCapacity (mCount) ;
   cElement * p = mTopItem ;
   while (p != nullptr) {
