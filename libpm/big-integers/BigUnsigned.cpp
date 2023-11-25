@@ -19,6 +19,49 @@
 static const uint64_t HALF_MASK = 0xFFFF'FFFF ;
 
 //--------------------------------------------------------------------------------------------------
+
+#ifdef __SIZEOF_INT128__
+  static void mul64x64to128 (const uint64_t inLeft,
+                             const uint64_t inRight,
+                             uint64_t & outHigh,
+                             uint64_t & outLow) {
+    const unsigned __int128 left = inLeft ;
+    const __uint128_t right = inRight ;
+    const __uint128_t product = left * right ;
+    outHigh = uint64_t (product >> 64) ;
+    outLow = uint64_t (product) ;
+  }
+#else
+  static void mul64x64to128 (const uint64_t inLeft,
+                             const uint64_t inRight,
+                             uint64_t & outHigh,
+                             uint64_t & outLow) {
+    const uint64_t leftH = inLeft >> 32 ;
+    const uint64_t leftL = (inLeft & HALF_MASK) ;
+    const uint64_t rightH = inRight >> 32 ;
+    const uint64_t rightL = (inRight & HALF_MASK) ;
+  //--- Low word
+    outLow = leftL * rightL ;
+  //--- High word
+    outHigh = leftH * rightH ;
+  //--- First intermediate
+    const uint64_t leftH_rightL = leftH * rightL ;
+    const uint64_t leftH_rightL_forLowWord = leftH_rightL << 32 ;
+    outLow += leftH_rightL_forLowWord ;
+    outHigh += outLow < leftH_rightL_forLowWord ; // Propagate carry
+    const uint64_t leftH_rightL_forHighWord = leftH_rightL >> 32 ;
+    outHigh += leftH_rightL_forHighWord ; // No carry
+  //--- Second intermediate
+    const uint64_t leftL_rightH = leftL * rightH ;
+    const uint64_t leftL_rightH_forLowWord = leftL_rightH << 32 ;
+    outLow += leftL_rightH_forLowWord ;
+    outHigh += outLow < leftL_rightH_forLowWord ; // Propagate carry
+    const uint64_t leftL_rightH_forHighWord = leftL_rightH >> 32 ;
+    outHigh += leftL_rightH_forHighWord ; // No carry
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // https://copyprogramming.com/howto/mostly-portable-128-by-64-bit-division
 // https://www.codeproject.com/Tips/785014/UInt-Division-Modulus
 
@@ -90,36 +133,6 @@ again2:
 
     outRemainder = ((un21 << 32) + (un0 - (q0 * v))) >> s;
     outQuotient = (q1 << 32) | q0;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static void mul64x64to128 (const uint64_t inLeft,
-                           const uint64_t inRight,
-                           uint64_t & outHigh,
-                           uint64_t & outLow) {
-  const uint64_t leftH = inLeft >> 32 ;
-  const uint64_t leftL = (inLeft & HALF_MASK) ;
-  const uint64_t rightH = inRight >> 32 ;
-  const uint64_t rightL = (inRight & HALF_MASK) ;
-//--- Low word
-  outLow = leftL * rightL ;
-//--- High word
-  outHigh = leftH * rightH ;
-//--- First intermediate
-  const uint64_t leftH_rightL = leftH * rightL ;
-  const uint64_t leftH_rightL_forLowWord = leftH_rightL << 32 ;
-  outLow += leftH_rightL_forLowWord ;
-  outHigh += outLow < leftH_rightL_forLowWord ; // Propagate carry
-  const uint64_t leftH_rightL_forHighWord = leftH_rightL >> 32 ;
-  outHigh += leftH_rightL_forHighWord ; // No carry
-//--- Second intermediate
-  const uint64_t leftL_rightH = leftL * rightH ;
-  const uint64_t leftL_rightH_forLowWord = leftL_rightH << 32 ;
-  outLow += leftL_rightH_forLowWord ;
-  outHigh += outLow < leftL_rightH_forLowWord ; // Propagate carry
-  const uint64_t leftL_rightH_forHighWord = leftL_rightH >> 32 ;
-  outHigh += leftL_rightH_forHighWord ; // No carry
 }
 
 //--------------------------------------------------------------------------------------------------
