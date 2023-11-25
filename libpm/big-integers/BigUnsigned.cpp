@@ -94,40 +94,32 @@ again2:
 
 //--------------------------------------------------------------------------------------------------
 
-//static void div128By64 (const uint64_t inDividendH,
-//                        const uint64_t inDividendL,
-//                        const uint64_t inDivisor,
-//                        uint64_t & outQuotientH,
-//                        uint64_t & outQuotientL,
-//                        uint64_t & outRemainder) {
-//  outQuotientH = inDividendH / inDivisor ;
-//  const uint64_t rH = inDividendH % inDivisor ;
-//  divmod128by64 (rH, inDividendL, inDivisor, outQuotientL, outRemainder) ;
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-static void mul64x64to128 (uint64_t op1,
-                           uint64_t op2,
+static void mul64x64to128 (const uint64_t inLeft,
+                           const uint64_t inRight,
                            uint64_t & outHigh,
                            uint64_t & outLow) {
-  const uint64_t u1 = (op1 & HALF_MASK) ;
-  const uint64_t v1 = (op2 & HALF_MASK) ;
-  uint64_t t = (u1 * v1);
-  const uint64_t w3 = (t & HALF_MASK);
-  uint64_t k = (t >> 32);
-
-  op1 >>= 32 ;
-  t = (op1 * v1) + k;
-  k = (t & HALF_MASK);
-  uint64_t w1 = (t >> 32);
-
-  op2 >>= 32;
-  t = (u1 * op2) + k;
-  k = (t >> 32);
-
-  outHigh = (op1 * op2) + w1 + k;
-  outLow = (t << 32) + w3;
+  const uint64_t leftH = inLeft >> 32 ;
+  const uint64_t leftL = (inLeft & HALF_MASK) ;
+  const uint64_t rightH = inRight >> 32 ;
+  const uint64_t rightL = (inRight & HALF_MASK) ;
+//--- Low word
+  outLow = leftL * rightL ;
+//--- High word
+  outHigh = leftH * rightH ;
+//--- First intermediate
+  const uint64_t leftH_rightL = leftH * rightL ;
+  const uint64_t leftH_rightL_forLowWord = leftH_rightL << 32 ;
+  outLow += leftH_rightL_forLowWord ;
+  outHigh += outLow < leftH_rightL_forLowWord ; // Propagate carry
+  const uint64_t leftH_rightL_forHighWord = leftH_rightL >> 32 ;
+  outHigh += leftH_rightL_forHighWord ; // No carry
+//--- Second intermediate
+  const uint64_t leftL_rightH = leftL * rightH ;
+  const uint64_t leftL_rightH_forLowWord = leftL_rightH << 32 ;
+  outLow += leftL_rightH_forLowWord ;
+  outHigh += outLow < leftL_rightH_forLowWord ; // Propagate carry
+  const uint64_t leftL_rightH_forHighWord = leftL_rightH >> 32 ;
+  outHigh += leftL_rightH_forHighWord ; // No carry
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -201,7 +193,6 @@ BigUnsigned BigUnsigned::randomNumber (void) {
     v |= uint64_t (galgas_random ()) ;
     result.mArray.appendObject (v) ;
   }
-//  result.mArray.lastObject (HERE) |= uint64_t (1) << 63 ;
   return result ;
 }
 
