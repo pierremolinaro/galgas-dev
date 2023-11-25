@@ -821,7 +821,7 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
     if (executionModeIsSyntaxAnalysisOnly ()) {
       co << "*** PERFORM TOP-DOWN PARSING ONLY (--mode=syntax-only option) ***\n" ;
     }
-    TC_LinkedList <int32_t> listForSecondPassParsing ;
+    TC_UniqueArray <int32_t> listForSecondPassParsing ;
     TC_Array <int32_t> stack (10000 COMMA_HERE) ;
     TC_Array <int32_t> errorStack ;
     int32_t errorStackCount = 0 ;
@@ -940,7 +940,7 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
                  << "\n" ;
               indentationForParseOnly ++ ;
             }
-            listForSecondPassParsing.prependObject (choice + 1) ;
+            listForSecondPassParsing.appendObject (choice + 1) ;
           }else{ // Syntax error
             TC_UniqueArray <int32_t> expectedTerminalsArray (100 COMMA_HERE) ;
             buildExpectedTerminalsArrayOnSyntaxError (errorProgramCounter,
@@ -1244,7 +1244,7 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
         for (int32_t i=executionListLength - reduceSize ; i<executionListLength ; i++) {
           executionList (executionListLength -  reduceSize - 1 COMMA_HERE).mergeListAtBottom (executionList (i COMMA_HERE)) ;
         }
-        executionList (executionListLength - reduceSize - 1 COMMA_HERE).appendObject (actionCode) ;
+        executionList (executionListLength - reduceSize - 1 COMMA_HERE).prependObject (actionCode) ;
         executionList.removeLastObjects (reduceSize COMMA_HERE) ; 
         executionList.appendDefaultObjectUsingSwap () ;
         const int32_t stackReduceSize = 2 * reduceSize ;

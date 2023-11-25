@@ -56,8 +56,8 @@ template <typename TYPE> class TC_LinkedList final {
   public: void removeAllKeepingCapacity (void) ;
 
 //--- Insert a new element
-  public: void appendObject (const TYPE & inInfo) ;
   public: void prependObject (const TYPE & inInfo) ;
+  public: void appendObject (const TYPE & inInfo) ;
 
 //--- Merge two lists
   public: void mergeListAtBottom (TC_LinkedList <TYPE> & ioList) ;
@@ -108,7 +108,7 @@ template <typename TYPE> void TC_LinkedList <TYPE>::removeAllKeepingCapacity (vo
 
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_LinkedList <TYPE>::prependObject (const TYPE & inInfo) {
+template <typename TYPE> void TC_LinkedList <TYPE>::appendObject (const TYPE & inInfo) {
   cElement * p = (cElement *) nullptr ;
   macroMyNew (p, cElement) ;
   p->mNextItem = (cElement *) nullptr ;
@@ -124,7 +124,7 @@ template <typename TYPE> void TC_LinkedList <TYPE>::prependObject (const TYPE & 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_LinkedList<TYPE> ::appendObject (const TYPE & inInfo) {
+template <typename TYPE> void TC_LinkedList<TYPE>::prependObject (const TYPE & inInfo) {
   cElement * p = nullptr ;
   macroMyNew (p, cElement) ;
   p->mNextItem = mFirstItem ;
