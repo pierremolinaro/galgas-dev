@@ -637,7 +637,6 @@
 		CF079F9B192E418B008FEFF6 /* C_RelationSingleType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_RelationSingleType.cpp; sourceTree = "<group>"; };
 		CF079F9C192E418B008FEFF6 /* C_RelationSingleType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_RelationSingleType.h; sourceTree = "<group>"; };
 		CF085E4E11176CDA00A23487 /* GALGAS_location.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_location.cpp; sourceTree = "<group>"; };
-		CF0AE7452B13863A00A07943 /* U64_UniqueArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = U64_UniqueArray.h; sourceTree = "<group>"; };
 		CF12C0BD1D043E610060778F /* all-predefined-types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-predefined-types.cpp"; sourceTree = "<group>"; };
 		CF1A10A02724188400C765C6 /* AC_GALGAS_reference_class.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_GALGAS_reference_class.cpp; sourceTree = "<group>"; };
 		CF1A10A12724188400C765C6 /* AC_GALGAS_reference_class.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_GALGAS_reference_class.h; sourceTree = "<group>"; };
@@ -1337,7 +1336,6 @@
 				CF40C8432AFD47500027918A /* C_BigInt.h */,
 				CF23CCE22B127FFE001F9FE2 /* PMUInt128.cpp */,
 				CF23CCE32B127FFE001F9FE2 /* PMUInt128.h */,
-				CF0AE7452B13863A00A07943 /* U64_UniqueArray.h */,
 				CFF538F7057A560F00854C83 /* BDD */,
 			);
 			path = "big-integers";

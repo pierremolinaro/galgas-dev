@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cinttypes>
-//#include <iomanip>
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1047,7 +1046,7 @@ C_String BigUnsigned::decimalString (void) const {
     result = "0" ;
   }else{
     BigUnsigned number ; mArray.copyTo (number.mArray) ;
-    U64_UniqueArray <uint64_t> decimalValueArray ;
+    U64UniqueArray decimalValueArray ;
     while (!number.isZero ()) {
       const uint64_t divisor = 1'000'000'000'000'000'000 ; // 10**18
       uint64_t remainder ;
