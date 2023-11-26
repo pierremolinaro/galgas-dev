@@ -112,13 +112,15 @@ static void testMultiplyingDividingBigUnsignedByU64 (void) {
     uint64_t divisor = 0 ;
     while (divisor == 0) {
       divisor = uint64_t (galgas_random ()) ;
+      divisor <<= 32 ;
+      divisor |= uint64_t (galgas_random ()) ;
     }
-    BigUnsigned quotient ;
+    BigUnsigned verif ;
     uint64_t remainder ;
-    dividend.divideByU64 (divisor, quotient, remainder) ;
-    const BigUnsigned x = quotient.multiplyingByU64 (divisor) ;
-    const BigUnsigned y = x.addingU64 (remainder) ;
-    if (dividend.compare (y) != 0) {
+    dividend.divideByU64 (divisor, verif, remainder) ; // verif <- quotient
+    verif *= divisor ;
+    verif += remainder ;
+    if (dividend != verif) {
       errorCount += 1 ;
     }
   }
@@ -140,7 +142,7 @@ static void testBigUnsignedMultiplyPowerOfTwo (void) {
     const BigUnsigned bigA = BigUnsigned::powerOfTwo (i) ;
     for (int32_t j = 0 ; j < 1000 ; j++) {
       const BigUnsigned bigB = BigUnsigned::powerOfTwo (j) ;
-      const BigUnsigned product = bigA.multiplyingByBigUnsigned (bigB) ;
+      const BigUnsigned product = bigA * bigB ;
       const BigUnsigned expectedResult = BigUnsigned::powerOfTwo (i + j) ;
       if (expectedResult.compare (product) != 0) {
         errorCount += 1 ;
@@ -174,9 +176,9 @@ static void testMultiplyingDividingBigUnsigned (void) {
     BigUnsigned quotient ;
     BigUnsigned remainder ;
     dividend.divideByBigUnsigned (divisor, quotient, remainder) ;
-    const BigUnsigned p = divisor.multiplyingByBigUnsigned (quotient) ;
-    const BigUnsigned q = p.addingBigUnsigned (remainder) ;
-    if (dividend.compare (q) != 0) {
+    const BigUnsigned p = divisor * quotient ;
+    const BigUnsigned q = p + remainder ;
+    if (dividend != q) {
       errorCount += 1 ;
       std::cout << " error\n" ;
       q.printHex         ("D2       ") ;
@@ -208,9 +210,10 @@ static void testAddingSubtractingBigUnsigned (void) {
   for (int i = 0 ; i < 10'000'000 ; i++) {
     const BigUnsigned bigA = BigUnsigned::randomNumber () ;
     const BigUnsigned bigB = BigUnsigned::randomNumber () ;
-    const BigUnsigned bigAdd = bigA.addingBigUnsigned (bigB) ;
-    const BigUnsigned bigSub = bigAdd.subtractingBigUnsigned (bigB) ;
-    if (bigA.compare (bigSub) != 0) {
+    BigUnsigned verif = bigA ;
+    verif += bigB ;
+    verif -= bigB ;
+    if (bigA.compare (verif) != 0) {
       errorCount += 1 ;
     }
   }
@@ -253,15 +256,56 @@ static void testAddingSubtractingC_BigInt (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+static void somePrimeNumbers (void) {
+  std::cout << "Some prime numbers...\n" ;
+  C_Timer timer ;
+  { BigUnsigned n (1) ;
+    n <<= 127 ;
+    n -= 1 ;
+    const C_String s = n.spacedDecimalString (3) ;
+    std::cout << "  2**127 - 1 = " << s.cString (HERE) << "\n" ;
+  }
+  { BigUnsigned n (1) ;
+    n <<= 148 ;
+    n += 1 ;
+    uint64_t remainder ; n.divideInPlaceByU64 (17, remainder) ;
+    const C_String s = n.spacedDecimalString (3) ;
+    std::cout << "  (2**148 + 1) / 17 = " << s.cString (HERE) << "\n" ;
+  }
+  { BigUnsigned n (1) ;
+    n <<= 607 ;
+    n -= 1 ;
+    const C_String s = n.spacedDecimalString (3) ;
+    std::cout << "  2**607 - 1 = " << s.cString (HERE) << "\n" ;
+  }
+  { BigUnsigned n (1) ;
+    n <<= 4423 ;
+    n -= 1 ;
+    const C_String s = n.spacedDecimalString (3) ;
+    std::cout << "  2**4423 - 1 = " << s.cString (HERE) << "\n" ;
+  }
+  { BigUnsigned n (1) ;
+    n <<= 44497 ;
+    n -= 1 ;
+    const C_String s = n.spacedDecimalString (3) ;
+    std::cout << "  2**44497 - 1 = " << s.cString (HERE) << "\n" ;
+  }
+  std::cout << timer.msFromStart () << " ms\n" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 void routine_checkGMP (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   co << "*** Check GMP (option --check-gmp) ***\n" ;
 //  #if COMPILE_FOR_WINDOWS == 0
 //    testUnsigned128Divisions () ;
 //    testUnsigned128Multplications () ;
 //  #endif
+//---
+  somePrimeNumbers () ;
+  testMultiplyingDividingBigUnsignedByU64 () ;
   testMultiplyingDividingBigUnsigned () ;
   testAddingSubtractingBigUnsigned () ;
-  testMultiplyingDividingBigUnsignedByU64 () ;
   testBigUnsignedMultiplyPowerOfTwo () ;
   testAddingSubtractingC_BigInt () ;
   uint32_t errorCount = 0 ;

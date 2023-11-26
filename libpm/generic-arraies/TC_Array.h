@@ -115,6 +115,13 @@ template <typename TYPE> class TC_Array final {
 
 //--- Add objects at the end of the array
   public: void appendObject (const TYPE & inValue) ; // inValue is copied
+  public: void appendObjects (const int32_t inCount, const TYPE & inValue) ; // inValue is copied
+
+//--- Insert
+  public: void insertObjectsAtIndex (const int32_t inCount,
+                                     const TYPE & inValue,
+                                     const int32_t inStartingIndex
+                                     COMMA_LOCATION_ARGS) ; // inValue is copied
 
 //--- Remove all, keeping capacity
   public: void removeAllKeepingCapacity (void) ;
@@ -128,6 +135,7 @@ template <typename TYPE> class TC_Array final {
 
 //--- Element access (with index checking)
   public: TYPE lastObject (LOCATION_ARGS) const ;
+  public: TYPE & lastObject (LOCATION_ARGS) ;
 
   public: void setObjectAtIndex (const TYPE & inObject,
                                   const int32_t inIndex
@@ -313,9 +321,7 @@ template <typename TYPE> void TC_Array <TYPE>::insulate (void) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//
 //   appendObject (inValue is copied)
-//
 //----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_Array <TYPE>::appendObject (const TYPE & inValue) {
@@ -325,6 +331,36 @@ template <typename TYPE> void TC_Array <TYPE>::appendObject (const TYPE & inValu
     insulate () ;
   }
   mSharedArray->mUniqueArray.appendObject (inValue) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+template <typename TYPE> void TC_Array <TYPE>::appendObjects (const int32_t inCount,
+                                                              const TYPE & inValue) { // inValue is copied
+  if (inCount > 0) {
+    if (nullptr == mSharedArray) {
+      macroMyNew (mSharedArray, cSharedArray <TYPE> ()) ;
+    }else{
+      insulate () ;
+    }
+    mSharedArray->mUniqueArray.appendObjects (inCount, inValue) ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+template <typename TYPE> void TC_Array <TYPE>::insertObjectsAtIndex (const int32_t inCount,
+                                                                     const TYPE & inValue,
+                                                                     const int32_t inStartingIndex
+                                                                     COMMA_LOCATION_ARGS) { // inValue is copied
+  if (inCount > 0) {
+    if (nullptr == mSharedArray) {
+      macroMyNew (mSharedArray, cSharedArray <TYPE> ()) ;
+    }else{
+      insulate () ;
+    }
+    mSharedArray->mUniqueArray.insertObjectsAtIndex (inCount, inValue, inStartingIndex COMMA_THERE) ;
+  }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -361,12 +397,22 @@ template <typename TYPE> TYPE TC_Array <TYPE>::operator () (const int32_t inInde
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//
 //   Last object access (with index checking)
-//
 //----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> TYPE TC_Array <TYPE>::lastObject (LOCATION_ARGS) const {
+  macroValidPointer (mSharedArray) ;
+  return mSharedArray->mUniqueArray.lastObject (THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+template <typename TYPE> TYPE & TC_Array <TYPE>::lastObject (LOCATION_ARGS) {
+  if (nullptr == mSharedArray) {
+    macroMyNew (mSharedArray, cSharedArray <TYPE> ()) ;
+  }else{
+    insulate () ;
+  }
   macroValidPointer (mSharedArray) ;
   return mSharedArray->mUniqueArray.lastObject (THERE) ;
 }
@@ -520,7 +566,7 @@ template <typename TYPE> void TC_Array <TYPE>::insertObjectAtIndex (const TYPE &
     insulate () ;
   }
   macroUniqueSharedObject (mSharedArray) ;
-  mSharedArray->mUniqueArray.setObjectAtIndex (inObject, inIndex COMMA_THERE) ;
+  mSharedArray->mUniqueArray.insertObjectAtIndex (inObject, inIndex COMMA_THERE) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

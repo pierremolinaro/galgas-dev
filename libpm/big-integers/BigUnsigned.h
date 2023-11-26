@@ -7,6 +7,8 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "generic-arraies/TC_UniqueArray.h"
+#include "strings/C_String.h"
+//#include "generic-arraies/TC_Array.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -19,7 +21,7 @@ class BigUnsigned final {
   public: BigUnsigned (const uint64_t inValue) ;
 
 //--- Handle copy
-  public: void copyTo (BigUnsigned & outTarget) const ;
+//  public: void copyTo (BigUnsigned & outTarget) const ;
   public: BigUnsigned (const BigUnsigned & inSource) ;
   public: BigUnsigned & operator = (const BigUnsigned & inSource) ;
 
@@ -27,17 +29,37 @@ class BigUnsigned final {
   public: bool isZero (void) const ;
   public: bool isOne (void) const ;
 
-//--- Operators
-  public: BigUnsigned leftShiftedBy (const uint32_t inShiftCount) const ;
-  public: void leftShiftInPlaceBy (const uint32_t inShiftCount) ;
-  public: BigUnsigned addingU64 (const uint64_t inOperand) const ;
-  public: BigUnsigned addingBigUnsigned (const BigUnsigned & inOperand) const ;
-  public: BigUnsigned subtractingBigUnsigned (const BigUnsigned & inOperand) const ;
-  public: BigUnsigned multiplyingByU64 (const uint64_t inOperand) const ;
+//--- Shift operators
+  public: BigUnsigned operator << (const uint32_t inShiftCount) const ;
+  public: void operator <<= (const uint32_t inShiftCount) ;
+
+//--- Operations with U64
+  public: void operator += (const uint64_t inOperand) ;
+  public: void operator -= (const uint64_t inOperand) ;
+  public: void operator *= (const uint64_t inOperand) ;
+
+//  public: BigUnsigned addingU64 (const uint64_t inOperand) const ;
+//  public: BigUnsigned subtractingU64 (const uint64_t inOperand) const ;
+//  public: BigUnsigned multiplyingByU64 (const uint64_t inOperand) const ;
+
   public: void divideByU64 (const uint64_t inDivisor,
                             BigUnsigned & outQuotient,
                             uint64_t & outRemainder) const ;
-  public: BigUnsigned multiplyingByBigUnsigned (const BigUnsigned & inOperand) const ;
+  public: void divideInPlaceByU64 (const uint64_t inDivisor,
+                                   uint64_t & outRemainder) ;
+
+//--- Logical operations
+  public: BigUnsigned operator | (const BigUnsigned & inOperand) const ;
+  public: BigUnsigned operator ^ (const BigUnsigned & inOperand) const ;
+  public: BigUnsigned operator & (const BigUnsigned & inOperand) const ;
+  public: BigUnsigned operator ~ (void) const ;
+
+//--- Arithmetic operations
+  public: void operator += (const BigUnsigned & inOperand) ;
+  public: void operator -= (const BigUnsigned & inOperand) ;
+  public: BigUnsigned operator + (const BigUnsigned & inOperand) const ;
+  public: BigUnsigned operator - (const BigUnsigned & inOperand) const ;
+  public: BigUnsigned operator * (const BigUnsigned & inOperand) const ;
 
   public: void divideByBigUnsignedOld (const BigUnsigned & inDivisor,
                                        BigUnsigned & outQuotient,
@@ -55,17 +77,23 @@ class BigUnsigned final {
                                       BigUnsigned & outQuotient,
                                       BigUnsigned & outRemainder) ;
 
+//--- Compare
   public: int compare (const BigUnsigned & inOperand) const ;
+  public: bool operator == (const BigUnsigned & inOperand) const { return compare (inOperand) == 0 ; }
+  public: bool operator != (const BigUnsigned & inOperand) const { return compare (inOperand) != 0 ; }
+  public: bool operator >  (const BigUnsigned & inOperand) const { return compare (inOperand) >  0 ; }
+  public: bool operator >= (const BigUnsigned & inOperand) const { return compare (inOperand) >= 0 ; }
+  public: bool operator <  (const BigUnsigned & inOperand) const { return compare (inOperand) <  0 ; }
+  public: bool operator <= (const BigUnsigned & inOperand) const { return compare (inOperand) <= 0 ; }
 
-  public: BigUnsigned oringWithBigUnsigned (const BigUnsigned & inOperand) const ;
-  public: BigUnsigned xoringWithBigUnsigned (const BigUnsigned & inOperand) const ;
-  public: BigUnsigned andingWithBigUnsigned (const BigUnsigned & inOperand) const ;
-  public: BigUnsigned complemented (void) const ;
-
+//--- Print
+  public: C_String decimalString (void) const ;
+  public: C_String spacedDecimalString (const uint32_t inSeparation) const ;
+  public: C_String hexString (void) const ;
+  public: C_String xString (void) const ;
   public: void printHex (const char * inName) const ;
-  private: static void printHex (const TC_UniqueArray <uint64_t> & inArray, const char * inName) ;
 
-//--- Private properties
+//--- Private property
   private: TC_UniqueArray <uint64_t> mArray ;
 } ;
 

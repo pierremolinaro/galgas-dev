@@ -47,7 +47,7 @@ class C_BigInt final {
   public: static C_BigInt randomNumber (void) ;
 
 //--- Destructor
-  public: virtual ~ C_BigInt (void) ;
+  public: ~ C_BigInt (void) ;
 
 //--- Handle copy
   public: C_BigInt (const C_BigInt & inOperand) ;
