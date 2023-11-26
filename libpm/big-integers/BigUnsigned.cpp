@@ -259,7 +259,7 @@ BigUnsigned BigUnsigned::powerOfTwo (const int32_t inPowerOfTwo) {
   const int32_t wordCount = 1 + inPowerOfTwo / 64 ;
   const int32_t bitIndex = inPowerOfTwo % 64 ;
   BigUnsigned result ;
-  result.mArray.insertObjectsAtIndex (wordCount, 0, 0 COMMA_HERE) ;
+  result.mArray.prependObjects (wordCount, 0) ;
   result.mArray.lastObject (HERE) |= uint64_t (1) << bitIndex ;
   return result ;
 }
@@ -624,7 +624,7 @@ BigUnsigned BigUnsigned::operator - (const BigUnsigned & inOperand) const {
 BigUnsigned BigUnsigned::operator * (const BigUnsigned & inOperand) const {
   BigUnsigned result ;
   if ((mArray.count () != 0) && (inOperand.mArray.count () != 0)) { // Operands are not zero
-    result.mArray.insertObjectsAtIndex (mArray.count () + inOperand.mArray.count (), 0, 0 COMMA_HERE) ;
+    result.mArray.prependObjects (mArray.count () + inOperand.mArray.count (), 0) ;
     for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
       uint64_t carry = 0 ;
       for (int32_t j = 0 ; j < mArray.count () ; j++) {
@@ -706,7 +706,7 @@ void BigUnsigned::internalDivide (const BigUnsigned & inDividend,
                        outRemainder.mArray (remainderIndexH - 1 COMMA_HERE), // inDividendL
                        divisor.mArray.lastObject (HERE), // divisor >= 0x'8000'0000'0000'0000
                        quotient) ;
-    outQuotient.mArray.insertObjectAtIndex (quotient, 0 COMMA_HERE) ;
+    outQuotient.mArray.prependObject (quotient) ;
     if (quotient > 0) {
       uint64_t currentCarry = 0 ;
       for (int32_t i = 0 ; i < divisor.mArray.count () ; i++) {
@@ -849,7 +849,7 @@ void BigUnsigned::internalDivideOld (const BigUnsigned & inDividend,
                        outRemainder.mArray (remainderIndexH - 1 COMMA_HERE),
                        inDivisor.mArray.lastObject (HERE),
                        quotient) ;
-    outQuotient.mArray.insertObjectAtIndex (quotient, 0 COMMA_HERE) ;
+    outQuotient.mArray.prependObject (quotient) ;
     if (quotient > 0) {
       uint64_t currentCarry = 0 ;
       for (int32_t i = 0 ; i < inDivisor.mArray.count () ; i++) {
@@ -1047,7 +1047,7 @@ C_String BigUnsigned::decimalString (void) const {
     result = "0" ;
   }else{
     BigUnsigned number ; mArray.copyTo (number.mArray) ;
-    TC_UniqueArray <uint64_t> decimalValueArray ;
+    U64_UniqueArray <uint64_t> decimalValueArray ;
     while (!number.isZero ()) {
       const uint64_t divisor = 1'000'000'000'000'000'000 ; // 10**18
       uint64_t remainder ;

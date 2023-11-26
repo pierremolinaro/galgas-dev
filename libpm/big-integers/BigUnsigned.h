@@ -6,9 +6,8 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "generic-arraies/TC_UniqueArray.h"
+#include "U64_UniqueArray.h"
 #include "strings/C_String.h"
-//#include "generic-arraies/TC_Array.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -94,7 +93,7 @@ class BigUnsigned final {
   public: void printHex (const char * inName) const ;
 
 //--- Private property
-  private: TC_UniqueArray <uint64_t> mArray ;
+  private: U64_UniqueArray <uint64_t> mArray ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
