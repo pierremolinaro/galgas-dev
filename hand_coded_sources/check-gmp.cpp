@@ -117,9 +117,9 @@ static void testMultiplyingDividingBigUnsignedByU64 (void) {
     }
     BigUnsigned verif ;
     uint64_t remainder ;
-    dividend.divideByU64 (divisor, verif, remainder) ; // verif <- quotient
-    verif *= divisor ;
-    verif += remainder ;
+    dividend.dividingByU64 (divisor, verif, remainder) ; // verif <- quotient
+    verif.mulU64InPlace (divisor) ;
+    verif.addU64InPlace (remainder) ;
     if (dividend != verif) {
       errorCount += 1 ;
     }
@@ -142,7 +142,7 @@ static void testBigUnsignedMultiplyPowerOfTwo (void) {
     const BigUnsigned bigA = BigUnsigned::powerOfTwo (i) ;
     for (int32_t j = 0 ; j < 1000 ; j++) {
       const BigUnsigned bigB = BigUnsigned::powerOfTwo (j) ;
-      const BigUnsigned product = bigA * bigB ;
+      const BigUnsigned product = bigA.multiplingByBigUnsigned (bigB) ;
       const BigUnsigned expectedResult = BigUnsigned::powerOfTwo (i + j) ;
       if (expectedResult.compare (product) != 0) {
         errorCount += 1 ;
@@ -172,16 +172,17 @@ static void testMultiplyingDividingBigUnsigned (void) {
   uint64_t errorCount = 0 ;
   for (int i = 0 ; i < 10'000'000 ; i++) {
     const BigUnsigned dividend = BigUnsigned::randomNumber () ;
-    const BigUnsigned divisor = BigUnsigned::randomNumber () ;
+    const BigUnsigned divisor  = BigUnsigned::randomNumber () ;
     BigUnsigned quotient ;
     BigUnsigned remainder ;
     dividend.divideByBigUnsigned (divisor, quotient, remainder) ;
-    const BigUnsigned p = divisor * quotient ;
-    const BigUnsigned q = p + remainder ;
-    if (dividend != q) {
+    BigUnsigned verif = divisor ;
+    verif.mulBigUnsignedInPlace (quotient) ;
+    verif.addBigUnsignedInPlace (remainder) ;
+    if (dividend != verif) {
       errorCount += 1 ;
       std::cout << " error\n" ;
-      q.printHex         ("D2       ") ;
+      verif.printHex     ("Verif    ") ;
       dividend.printHex  ("Dividend ") ;
       divisor.printHex   ("Divisor  ") ;
       quotient.printHex  ("Quotient ") ;
@@ -211,8 +212,8 @@ static void testAddingSubtractingBigUnsigned (void) {
     const BigUnsigned bigA = BigUnsigned::randomNumber () ;
     const BigUnsigned bigB = BigUnsigned::randomNumber () ;
     BigUnsigned verif = bigA ;
-    verif += bigB ;
-    verif -= bigB ;
+    verif.addBigUnsignedInPlace (bigB) ;
+    verif.subBigUnsignedInPlace (bigB) ;
     if (bigA.compare (verif) != 0) {
       errorCount += 1 ;
     }
@@ -260,33 +261,33 @@ static void somePrimeNumbers (void) {
   std::cout << "Some prime numbers...\n" ;
   C_Timer timer ;
   { BigUnsigned n (1) ;
-    n <<= 127 ;
-    n -= 1 ;
+    n.leftShiftInPlace (127) ;
+    n.subU64InPlace (1) ;
     const C_String s = n.spacedDecimalString (3) ;
     std::cout << "  2**127 - 1 = " << s.cString (HERE) << "\n" ;
   }
   { BigUnsigned n (1) ;
-    n <<= 148 ;
-    n += 1 ;
-    uint64_t remainder ; n.divideInPlaceByU64 (17, remainder) ;
+    n.leftShiftInPlace (148) ;
+    n.addU64InPlace (1) ;
+    uint64_t remainder ; n.divideByU64InPlace (17, remainder) ;
     const C_String s = n.spacedDecimalString (3) ;
     std::cout << "  (2**148 + 1) / 17 = " << s.cString (HERE) << "\n" ;
   }
   { BigUnsigned n (1) ;
-    n <<= 607 ;
-    n -= 1 ;
+    n.leftShiftInPlace (607) ;
+    n.subU64InPlace (1) ;
     const C_String s = n.spacedDecimalString (3) ;
     std::cout << "  2**607 - 1 = " << s.cString (HERE) << "\n" ;
   }
   { BigUnsigned n (1) ;
-    n <<= 4423 ;
-    n -= 1 ;
+    n.leftShiftInPlace (4423) ;
+    n.subU64InPlace (1) ;
     const C_String s = n.spacedDecimalString (3) ;
     std::cout << "  2**4423 - 1 = " << s.cString (HERE) << "\n" ;
   }
   { BigUnsigned n (1) ;
-    n <<= 44497 ;
-    n -= 1 ;
+    n.leftShiftInPlace (44497) ;
+    n.subU64InPlace (1) ;
     const C_String s = n.spacedDecimalString (3) ;
     std::cout << "  2**44497 - 1 = " << s.cString (HERE) << "\n" ;
   }

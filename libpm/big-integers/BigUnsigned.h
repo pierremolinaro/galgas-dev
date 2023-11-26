@@ -26,6 +26,7 @@ class U64UniqueArray final {
 //--- Copy
   public: void copyTo (U64UniqueArray & outArray) const {
     outArray.removeAllKeepingCapacity () ;
+    outArray.setCapacity (mCount) ;
     for (int64_t i=0 ; i<mCount ; i++) {
       outArray.appendObject (mArray [i]) ;
     }
@@ -72,7 +73,7 @@ class U64UniqueArray final {
     mCount ++ ;
   }
 
-  public: void appendObjects (const int64_t inCount, const uint64_t inValue)  {
+  public: void appendObjects (const int64_t inCount, const uint64_t inValue) {
     if (inCount > 0) {
       const int64_t newCount = mCount + inCount ;
       setCapacity (newCount) ;
@@ -83,61 +84,37 @@ class U64UniqueArray final {
     }
   }
 
-//--- Prepend object
-  public: void prependObject (const uint64_t inValue)  {
-    setCapacity (mCount + 1) ;
-    for (int64_t i = mCount ; i > 0 ; i--) {
-      mArray [i] = mArray [i-1] ;
-    }
-    mArray [0] = inValue ;
-    mCount ++ ;
-  }
-
-  public: void prependObjects (const int64_t inCount,
-                               const uint64_t inValue)  {
+  public: void appendRandomObjects (const int64_t inCount) {
     if (inCount > 0) {
+      const int64_t newCount = mCount + inCount ;
       setCapacity (mCount + inCount) ;
-      for (int64_t i = mCount - 1 ; i >= 0 ; i--) {
-        mArray [i + inCount] = mArray [i] ;
-      }
-      for (int64_t i=0 ; i<inCount ; i++) {
-        mArray [i] = inValue ;
-      }
-      mCount += inCount ;
+      mCount = newCount ;
     }
   }
 
-//--- Remove last object(s)
-  public: void removeLastObject (LOCATION_ARGS)  {
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkIndex (mCount-1 COMMA_THERE) ;
-    #endif
-    mCount -- ;
+//--- Remove leading zeros
+  public: void removeLeadingZeros (void) {
+    while ((mCount > 0) && (mArray [mCount - 1] == 0)) {
+      mCount -- ;
+    }
   }
 
 //--- Element access (with index checking)
-  public: uint64_t lastObject (LOCATION_ARGS) const  {
+  public: uint64_t lastObject (LOCATION_ARGS) const {
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkIndex (mCount-1 COMMA_THERE) ;
     #endif
     return mArray [mCount-1] ;
   }
 
-  public: uint64_t & lastObject (LOCATION_ARGS)  {
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkIndex (mCount-1 COMMA_THERE) ;
-    #endif
-    return mArray [mCount-1] ;
-  }
-
-  public: uint64_t operator () (const int64_t inIndex COMMA_LOCATION_ARGS) const  {
+  public: uint64_t operator () (const int64_t inIndex COMMA_LOCATION_ARGS) const {
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkIndex (inIndex COMMA_THERE) ;
     #endif
     return mArray [inIndex] ;
   }
 
-  public: uint64_t & operator () (const int64_t inIndex COMMA_LOCATION_ARGS)  {
+  public: uint64_t & operator () (const int64_t inIndex COMMA_LOCATION_ARGS) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkIndex (inIndex COMMA_THERE) ;
     #endif
@@ -153,9 +130,9 @@ class U64UniqueArray final {
   #endif
 
 //--- Protected attributes
-  protected: uint64_t * mArray ;
-  protected: int64_t mCount ;
-  protected: int64_t mCapacity ;
+  private: uint64_t * mArray ;
+  private: int64_t mCount ;
+  private: int64_t mCapacity ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -165,11 +142,11 @@ class BigUnsigned final {
 //--- Constructors
   public: static BigUnsigned randomNumber (void) ;
   public: static BigUnsigned powerOfTwo (const int32_t inPowerOfTwo) ;
-  public: BigUnsigned (void) ;
-  public: BigUnsigned (const uint64_t inValue) ;
+  public: explicit BigUnsigned (void) ; // Zero
+  public: explicit BigUnsigned (const uint64_t inValue) ;
+  public: explicit BigUnsigned (const uint64_t inHigh, const uint64_t inLow) ;
 
 //--- Handle copy
-//  public: void copyTo (BigUnsigned & outTarget) const ;
   public: BigUnsigned (const BigUnsigned & inSource) ;
   public: BigUnsigned & operator = (const BigUnsigned & inSource) ;
 
@@ -178,36 +155,37 @@ class BigUnsigned final {
   public: bool isOne (void) const ;
 
 //--- Shift operators
-  public: BigUnsigned operator << (const uint32_t inShiftCount) const ;
-  public: void operator <<= (const uint32_t inShiftCount) ;
+  public: BigUnsigned leftShiftedBy (const uint32_t inShiftCount) const ;
+  public: void leftShiftInPlace (const uint32_t inShiftCount) ;
 
 //--- Operations with U64
-  public: void operator += (const uint64_t inOperand) ;
-  public: void operator -= (const uint64_t inOperand) ;
-  public: void operator *= (const uint64_t inOperand) ;
+  public: void addU64InPlace (const uint64_t inOperand) ;
+  public: void subU64InPlace (const uint64_t inOperand) ;
+  public: void mulU64InPlace (const uint64_t inOperand) ;
 
-//  public: BigUnsigned addingU64 (const uint64_t inOperand) const ;
-//  public: BigUnsigned subtractingU64 (const uint64_t inOperand) const ;
-//  public: BigUnsigned multiplyingByU64 (const uint64_t inOperand) const ;
+  public: BigUnsigned addingU64 (const uint64_t inOperand) const ;
+  public: BigUnsigned subtractingU64 (const uint64_t inOperand) const ;
+  public: BigUnsigned multiplyingByU64 (const uint64_t inOperand) const ;
 
-  public: void divideByU64 (const uint64_t inDivisor,
-                            BigUnsigned & outQuotient,
-                            uint64_t & outRemainder) const ;
-  public: void divideInPlaceByU64 (const uint64_t inDivisor,
+  public: void dividingByU64 (const uint64_t inDivisor,
+                              BigUnsigned & outQuotient,
+                              uint64_t & outRemainder) const ;
+  public: void divideByU64InPlace (const uint64_t inDivisor,
                                    uint64_t & outRemainder) ;
 
 //--- Logical operations
-  public: BigUnsigned operator | (const BigUnsigned & inOperand) const ;
-  public: BigUnsigned operator ^ (const BigUnsigned & inOperand) const ;
-  public: BigUnsigned operator & (const BigUnsigned & inOperand) const ;
-  public: BigUnsigned operator ~ (void) const ;
+  public: BigUnsigned oringWith (const BigUnsigned & inOperand) const ;
+  public: BigUnsigned xoringWith (const BigUnsigned & inOperand) const ;
+  public: BigUnsigned andingWith (const BigUnsigned & inOperand) const ;
+  public: BigUnsigned complementing (void) const ;
 
 //--- Arithmetic operations
-  public: void operator += (const BigUnsigned & inOperand) ;
-  public: void operator -= (const BigUnsigned & inOperand) ;
-  public: BigUnsigned operator + (const BigUnsigned & inOperand) const ;
-  public: BigUnsigned operator - (const BigUnsigned & inOperand) const ;
-  public: BigUnsigned operator * (const BigUnsigned & inOperand) const ;
+  public: void addBigUnsignedInPlace (const BigUnsigned & inOperand) ;
+  public: void subBigUnsignedInPlace (const BigUnsigned & inOperand) ;
+  public: void mulBigUnsignedInPlace (const BigUnsigned & inOperand) ;
+  public: BigUnsigned addingBigUnsigned (const BigUnsigned & inOperand) const ;
+  public: BigUnsigned subtractingBigUnsigned (const BigUnsigned & inOperand) const ;
+  public: BigUnsigned multiplingByBigUnsigned (const BigUnsigned & inOperand) const ;
 
   public: void divideByBigUnsignedOld (const BigUnsigned & inDivisor,
                                        BigUnsigned & outQuotient,
