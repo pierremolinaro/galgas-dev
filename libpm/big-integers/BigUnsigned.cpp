@@ -1,4 +1,7 @@
 #include <iostream>
+
+//--------------------------------------------------------------------------------------------------
+
 #include <cinttypes>
 
 //--------------------------------------------------------------------------------------------------
@@ -228,7 +231,7 @@
 BigUnsigned BigUnsigned::randomNumber (void) {
   BigUnsigned result ;
   const size_t randomSize = 1 + size_t (galgas_random ()) % 20 ;
-  for (size_t i=0 ; i<randomSize ; i++) {
+  for (size_t i = 0 ; i < randomSize ; i++) {
     uint64_t v = uint64_t (galgas_random ()) ;
     v <<= 32 ;
     v |= uint64_t (galgas_random ()) ;
@@ -264,20 +267,14 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-BigUnsigned BigUnsigned::powerOfTwo (const int32_t inPowerOfTwo) {
-  const int64_t wordCount = 1 + inPowerOfTwo / 64 ;
+BigUnsigned BigUnsigned::powerOfTwo (const uint32_t inPowerOfTwo) {
+  const uint64_t wordCount = 1 + inPowerOfTwo / 64 ;
   const int32_t bitIndex = inPowerOfTwo % 64 ;
   BigUnsigned result ;
   result.mArray.appendObjects (wordCount - 1, 0) ;
   result.mArray.appendObject (uint64_t (1) << bitIndex) ;
   return result ;
 }
-
-//--------------------------------------------------------------------------------------------------
-
-//void BigUnsigned::copyTo (BigUnsigned & outTarget) const {
-//  mArray.copyTo (outTarget.mArray) ;
-//}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -308,7 +305,7 @@ bool BigUnsigned::isZero (void) const {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool BigUnsigned::isOne (void) const {
-  return (mArray.count () == 1) && (mArray (0 COMMA_HERE) == 1) ;
+  return (mArray.count () == 1) && (mArray (1 COMMA_HERE) == 1) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -326,7 +323,7 @@ void BigUnsigned::addU64InPlace (const uint64_t inOperand) {
     }
   }else{
     uint64_t carry = inOperand ;
-    for (int64_t i=0 ; i<mArray.count () ; i++) {
+    for (uint64_t i = 1 ; i <= mArray.count () ; i++) {
       const uint64_t sum = mArray (i COMMA_HERE) + carry ;
       mArray (i COMMA_HERE) = sum ;
       carry = sum < carry ;
@@ -362,12 +359,12 @@ void BigUnsigned::subU64InPlace (const uint64_t inOperand) {
       exit (1) ;
     }else{
       uint64_t carry = inOperand ;
-      for (int64_t i=0 ; i<mArray.count () ; i++) {
+      for (uint64_t i = 1 ; i <= mArray.count () ; i++) {
         const uint64_t v = mArray (i COMMA_HERE) ;
         mArray (i COMMA_HERE) = v - carry ;
         carry = v < carry ;
       }
-      if (carry != 0) {
+      if (carry > 0) {
         std::cout << "Error " << __FILE__ << ":" << __LINE__ << "\n" ;
         exit (1) ;
       }
@@ -383,7 +380,7 @@ void BigUnsigned::mulU64InPlace (const uint64_t inOperand) {
     mArray.removeAllKeepingCapacity () ;
   }else if (mArray.count () != 0) { // Operands are not zero
     uint64_t carry = 0 ;
-    for (int64_t i=0 ; i<mArray.count () ; i++) {
+    for (uint64_t i = 1 ; i <= mArray.count () ; i++) {
     //--- multiplication 64 x 64 -> 128
       uint64_t high ;
       uint64_t low ;
@@ -395,7 +392,7 @@ void BigUnsigned::mulU64InPlace (const uint64_t inOperand) {
       mArray (i COMMA_HERE) = low ;
       carry = high ;
     }
-    if (carry != 0) {
+    if (carry > 0) {
       mArray.appendObject (carry) ;
     }
   }
@@ -428,14 +425,14 @@ void BigUnsigned::divideByU64InPlace (const uint64_t inDivisor,
   }else if (inDivisor == 1) {
     outRemainder = 0 ;
   }else if (mArray.count () == 1) {
-    outRemainder = mArray (0 COMMA_HERE) % inDivisor ;
-    mArray (0 COMMA_HERE) /= inDivisor ;
-    if (mArray (0 COMMA_HERE) == 0) {
+    outRemainder = mArray (1 COMMA_HERE) % inDivisor ;
+    mArray (1 COMMA_HERE) /= inDivisor ;
+    if (mArray (1 COMMA_HERE) == 0) {
       mArray.removeAllKeepingCapacity () ;
     }
   }else{
     outRemainder = 0 ;
-    for (int64_t i = mArray.count () - 1 ; i >= 0 ; i--) {
+    for (uint64_t i = mArray.count () ; i > 0 ; i--) {
       uint64_t quotient ;
       uint64_t r ;
       divmod128by64 (outRemainder, mArray (i COMMA_HERE), inDivisor, quotient, r) ;
@@ -460,19 +457,19 @@ BigUnsigned BigUnsigned::leftShiftedBy (const uint32_t inShiftCount) const {
     if (inShiftCount == 0) {
       result = *this ;
     }else{
-      const int64_t insertedWordCount = int64_t (inShiftCount) / 64 ;
+      const uint64_t insertedWordCount = inShiftCount / 64 ;
       const uint32_t shift = inShiftCount % 64 ;
       if (shift == 0) {
         result.mArray.setCapacity (mArray.count () + insertedWordCount) ;
         result.mArray.appendObjects (insertedWordCount, 0) ;
-        for (int64_t i = 0 ; i < mArray.count () ; i++) {
+        for (uint64_t i = 1 ; i <= mArray.count () ; i++) {
           result.mArray.appendObject (mArray (i COMMA_HERE)) ;
         }
       }else{
         result.mArray.setCapacity (mArray.count () + insertedWordCount + 1) ;
         result.mArray.appendObjects (insertedWordCount, 0) ;
         uint64_t carry = 0 ;
-        for (int64_t i = 0 ; i < mArray.count () ; i++) {
+        for (uint64_t i = 1 ; i <= mArray.count () ; i++) {
           const uint64_t v = mArray (i COMMA_HERE) ;
           result.mArray.appendObject ((v << shift) | carry) ;
           carry = v >> (64 - shift) ;
@@ -490,14 +487,14 @@ BigUnsigned BigUnsigned::leftShiftedBy (const uint32_t inShiftCount) const {
 
 void BigUnsigned::leftShiftInPlace (const uint32_t inShiftCount) {
   if ((mArray.count () > 0) && (inShiftCount > 0)) {
-    const int64_t n = mArray.count () ;
-    const int64_t insertedWordCount = int64_t (inShiftCount) / 64 ;
+    const uint64_t n = mArray.count () ;
+    const uint64_t insertedWordCount = inShiftCount / 64 ;
     mArray.setCapacity (n + insertedWordCount + 1) ;
     mArray.appendRandomObjects (insertedWordCount) ;
     const uint32_t shift = inShiftCount % 64 ;
     if (shift > 0) {
       uint64_t carry = 0 ;
-      for (int64_t i = 0 ; i < n ; i++) {
+      for (uint64_t i = 1 ; i <= n ; i++) {
         const uint64_t v = mArray (i COMMA_HERE) ;
         mArray (i + insertedWordCount COMMA_HERE) = (v << shift) | carry ;
         carry = v >> (64 - shift) ;
@@ -505,7 +502,7 @@ void BigUnsigned::leftShiftInPlace (const uint32_t inShiftCount) {
       if (carry != 0) {
         mArray.appendObject (carry) ;
       }
-      for (int64_t i=0 ; i<insertedWordCount ; i++) {
+      for (uint64_t i = 1 ; i <= insertedWordCount ; i++) {
         mArray (i COMMA_HERE) = 0 ;
       }
     }
@@ -522,15 +519,15 @@ void BigUnsigned::leftShiftInPlace (const uint32_t inShiftCount) {
 
 void BigUnsigned::addBigUnsignedInPlace (const BigUnsigned & inOperand) {
   if (!inOperand.isZero ()) {
-    const int64_t n = mArray.count () ;
+    const uint64_t n = mArray.count () ;
     if (n == 0) { // Receiver is zero
       inOperand.mArray.copyTo (mArray) ;
     }else{ // Operand is not zero
       uint64_t carry = 0 ;
-      const int64_t maxSize = std::max (n, inOperand.mArray.count ()) ;
+      const uint64_t maxSize = std::max (n, inOperand.mArray.count ()) ;
       mArray.setCapacity (maxSize + 1) ;
-      const int64_t minSize = std::min (n, inOperand.mArray.count ()) ;
-      for (int64_t i=0 ; i<minSize ; i++) {
+      const uint64_t minSize = std::min (n, inOperand.mArray.count ()) ;
+      for (uint64_t i = 1 ; i <= minSize ; i++) {
         const uint64_t v1 = mArray (i COMMA_HERE) ;
         const uint64_t v2 = inOperand.mArray (i COMMA_HERE) ;
         const uint64_t sum = v1 + v2 + carry ;
@@ -538,14 +535,14 @@ void BigUnsigned::addBigUnsignedInPlace (const BigUnsigned & inOperand) {
         mArray (i COMMA_HERE) = sum ;
       }
       if (n < inOperand.mArray.count ()) {
-        for (int64_t i = n ; i < inOperand.mArray.count () ; i++) {
+        for (uint64_t i = n + 1 ; i <= inOperand.mArray.count () ; i++) {
           const uint64_t v2 = inOperand.mArray (i COMMA_HERE) ;
           const uint64_t sum = v2 + carry ;
           carry = sum < v2 ;
           mArray.appendObject (sum) ;
         }
       }else if (n > inOperand.mArray.count ()) {
-        for (int64_t i = inOperand.mArray.count () ; i < n ; i++) {
+        for (uint64_t i = inOperand.mArray.count () + 1 ; i <= n ; i++) {
           const uint64_t v2 = mArray (i COMMA_HERE) ;
           const uint64_t sum = v2 + carry ;
           carry = sum < v2 ;
@@ -577,7 +574,7 @@ void BigUnsigned::subBigUnsignedInPlace (const BigUnsigned & inOperand) {
       exit (1) ;
     }else if (compareResult > 0) {
       uint64_t borrow = 0 ; // 0 or 1
-      for (int64_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      for (uint64_t i = 1 ; i <= inOperand.mArray.count () ; i++) {
         uint64_t v = inOperand.mArray (i COMMA_HERE) ;
         if (borrow > 0) {
           v += 1 ;
@@ -594,7 +591,7 @@ void BigUnsigned::subBigUnsignedInPlace (const BigUnsigned & inOperand) {
           mArray (i COMMA_HERE) = r ;
         }
       }
-      for (int64_t i = inOperand.mArray.count () ; (borrow > 0) && (i < mArray.count ()) ; i++) {
+      for (uint64_t i = inOperand.mArray.count () + 1 ; (borrow > 0) && (i <= mArray.count ()) ; i++) {
         borrow = mArray (i COMMA_HERE) == 0 ;
         mArray (i COMMA_HERE) -- ;
       }
@@ -627,9 +624,9 @@ void BigUnsigned::mulBigUnsignedInPlace (const BigUnsigned & inOperand) {
   BigUnsigned result ;
   if ((mArray.count () != 0) && (inOperand.mArray.count () != 0)) { // Operands are not zero
     result.mArray.appendObjects (mArray.count () + inOperand.mArray.count (), 0) ;
-    for (int64_t i=0 ; i<inOperand.mArray.count () ; i++) {
+    for (uint64_t i = 1 ; i <= inOperand.mArray.count () ; i++) {
       uint64_t carry = 0 ;
-      for (int64_t j = 0 ; j < mArray.count () ; j++) {
+      for (uint64_t j = 1 ; j <= mArray.count () ; j++) {
       //--- multiplication 64 x 64 -> 128
         uint64_t high ;
         uint64_t low ;
@@ -638,13 +635,13 @@ void BigUnsigned::mulBigUnsignedInPlace (const BigUnsigned & inOperand) {
         low += carry ;
         high += low < carry ;
       //--- Store result
-        uint64_t v = result.mArray (i + j COMMA_HERE) ;
+        uint64_t v = result.mArray (i + j - 1 COMMA_HERE) ;
         v += low ;
         high += v < low ;
-        result.mArray (i + j COMMA_HERE) = v ;
+        result.mArray (i + j - 1 COMMA_HERE) = v ;
         carry = high ;
       }
-      int64_t idx = mArray.count () + i ;
+      uint64_t idx = mArray.count () + i ;
       while (carry > 0) {
         uint64_t v = result.mArray (idx COMMA_HERE) ;
         v += carry ;
@@ -665,9 +662,9 @@ BigUnsigned BigUnsigned::multiplingByBigUnsigned (const BigUnsigned & inOperand)
   BigUnsigned result ;
   if ((mArray.count () != 0) && (inOperand.mArray.count () != 0)) { // Operands are not zero
     result.mArray.appendObjects (mArray.count () + inOperand.mArray.count (), 0) ;
-    for (int64_t i=0 ; i<inOperand.mArray.count () ; i++) {
+    for (uint64_t i = 1 ; i <= inOperand.mArray.count () ; i++) {
       uint64_t carry = 0 ;
-      for (int64_t j = 0 ; j < mArray.count () ; j++) {
+      for (uint64_t j = 1 ; j <= mArray.count () ; j++) {
       //--- multiplication 64 x 64 -> 128
         uint64_t high ;
         uint64_t low ;
@@ -676,13 +673,13 @@ BigUnsigned BigUnsigned::multiplingByBigUnsigned (const BigUnsigned & inOperand)
         low += carry ;
         high += low < carry ;
       //--- Store result
-        uint64_t v = result.mArray (i + j COMMA_HERE) ;
+        uint64_t v = result.mArray (i + j - 1 COMMA_HERE) ;
         v += low ;
         high += v < low ;
-        result.mArray (i + j COMMA_HERE) = v ;
+        result.mArray (i + j - 1 COMMA_HERE) = v ;
         carry = high ;
       }
-      int64_t idx = mArray.count () + i ;
+      uint64_t idx = mArray.count () + i ;
       while (carry > 0) {
         uint64_t v = result.mArray (idx COMMA_HERE) ;
         v += carry ;
@@ -736,11 +733,11 @@ void BigUnsigned::internalDivide (const BigUnsigned & inDividend,
   if (outRemainder.mArray.lastObject (HERE) >= divisor.mArray.lastObject (HERE)) {
     outRemainder.mArray.appendObject (0) ;
   }
-  const int64_t iterationCount = outRemainder.mArray.count () - divisor.mArray.count () ;
+  const uint64_t iterationCount = outRemainder.mArray.count () - divisor.mArray.count () ;
   outQuotient.mArray.appendRandomObjects (iterationCount) ;
-  for (int64_t itx = iterationCount - 1 ; itx >= 0 ; itx--) {
+  for (uint64_t itx = iterationCount ; itx > 0 ; itx--) {
     uint64_t quotient ;
-    const int64_t remainderIndexH = outRemainder.mArray.count () + itx - iterationCount ;
+    const uint64_t remainderIndexH = outRemainder.mArray.count () + itx - iterationCount ;
     div128By64Special (outRemainder.mArray (remainderIndexH COMMA_HERE), // inDividendH < divisor
                        outRemainder.mArray (remainderIndexH - 1 COMMA_HERE), // inDividendL
                        divisor.mArray.lastObject (HERE), // divisor >= 0x'8000'0000'0000'0000
@@ -748,32 +745,32 @@ void BigUnsigned::internalDivide (const BigUnsigned & inDividend,
     outQuotient.mArray (itx COMMA_HERE) = quotient ;
     if (quotient > 0) {
       uint64_t currentCarry = 0 ;
-      for (int64_t i = 0 ; i < divisor.mArray.count () ; i++) {
+      for (uint64_t i = 1 ; i <= divisor.mArray.count () ; i++) {
         uint64_t resultH ;
         uint64_t resultL ;
         mul64x64to128 (quotient, divisor.mArray (i COMMA_HERE), resultH, resultL) ;
         resultL += currentCarry ;
         resultH += resultL < currentCarry ; // Propagate Overflow
         currentCarry = resultH ;
-        const int64_t remainderIndex = i + itx ;
+        const uint64_t remainderIndex = i + itx - 1 ;
         currentCarry += outRemainder.mArray (remainderIndex COMMA_HERE) < resultL ;
         outRemainder.mArray (remainderIndex COMMA_HERE) -= resultL ;
       }
-      const int64_t remainderLastIndex = itx + divisor.mArray.count () ;
+      const uint64_t remainderLastIndex = itx + divisor.mArray.count () ;
       bool underflow = outRemainder.mArray (remainderLastIndex COMMA_HERE) < currentCarry ;
       outRemainder.mArray (remainderLastIndex COMMA_HERE) -= currentCarry ;
-      MF_Assert ((outRemainder.mArray (remainderLastIndex COMMA_HERE) == 0) || (outRemainder.mArray (remainderLastIndex COMMA_HERE) == UINT64_MAX), "last remainder error", 0, 0) ;
+      MF_Assert ((outRemainder.mArray (remainderLastIndex COMMA_HERE) == 0) || (outRemainder.mArray (remainderLastIndex COMMA_HERE) == UINT64_MAX), "last remainder error (%llx)", int64_t (outRemainder.mArray (remainderLastIndex COMMA_HERE)), 0) ;
       MF_Assert (underflow == (outRemainder.mArray (remainderLastIndex COMMA_HERE) == UINT64_MAX), "last remainder error", 0, 0) ;
       while (underflow) {
         outQuotient.mArray (itx COMMA_HERE) -= 1 ;
         uint64_t carry = 0 ; // 0 or 1
-        for (int64_t i = 0 ; i < divisor.mArray.count () ; i++) {
-          const uint64_t v1 = outRemainder.mArray (i + itx COMMA_HERE) ;
+        for (uint64_t i = 1 ; i <= divisor.mArray.count () ; i++) {
+          const uint64_t v1 = outRemainder.mArray (i + itx - 1 COMMA_HERE) ;
           const uint64_t v2 = divisor.mArray (i COMMA_HERE) ;
           uint64_t sum = v1 + v2 ;
           const uint64_t newCarry = sum < v1 ;
           sum += carry ; // No overflow here
-          outRemainder.mArray (i + itx COMMA_HERE) = sum ;
+          outRemainder.mArray (i + itx - 1 COMMA_HERE) = sum ;
           carry = newCarry ;
           MF_Assert (carry <= 1, "Invalid carry", 0, 0) ;
         }
@@ -792,7 +789,7 @@ void BigUnsigned::internalDivide (const BigUnsigned & inDividend,
       const uint64_t divisorForAdjust = outRemainder.mArray.lastObject (HERE) / inDivisor.mArray.lastObject (HERE) ;
       if (divisorForAdjust == 1) {
         uint64_t currentCarry = 0 ;
-        for (int64_t i = 0 ; i < outRemainder.mArray.count () ; i++) {
+        for (uint64_t i = 1 ; i <= outRemainder.mArray.count () ; i++) {
           uint64_t resultL = inDivisor.mArray (i COMMA_HERE) ;
           resultL += currentCarry ;
           currentCarry = resultL < currentCarry ; // Overflow
@@ -804,13 +801,13 @@ void BigUnsigned::internalDivide (const BigUnsigned & inDividend,
         }
         MF_Assert (currentCarry == 0, "Error", 0, 0) ;
         if (outQuotient.mArray.count () > 0) {
-          outQuotient.mArray (0 COMMA_HERE) += 1 ;
+          outQuotient.mArray (1 COMMA_HERE) += 1 ;
         }else{
           outQuotient.mArray.appendObject (1) ;
         }
       }else if (divisorForAdjust > 1) {
         uint64_t currentCarry = 0 ;
-        for (int64_t i = 0 ; i < outRemainder.mArray.count () ; i++) {
+        for (uint64_t i = 1 ; i <= outRemainder.mArray.count () ; i++) {
           uint64_t resultH ;
           uint64_t resultL ;
           mul64x64to128 (divisorForAdjust, inDivisor.mArray (i COMMA_HERE), resultH, resultL) ;
@@ -822,7 +819,7 @@ void BigUnsigned::internalDivide (const BigUnsigned & inDividend,
         }
         MF_Assert (currentCarry == 0, "Error", 0, 0) ;
         if (outQuotient.mArray.count () > 0) {
-          outQuotient.mArray (0 COMMA_HERE) += divisorForAdjust ;
+          outQuotient.mArray (1 COMMA_HERE) += divisorForAdjust ;
         }else{
           outQuotient.mArray.appendObject (divisorForAdjust) ;
         }
@@ -863,11 +860,11 @@ void BigUnsigned::internalDivideOld (const BigUnsigned & inDividend,
   if (outRemainder.mArray.lastObject (HERE) >= inDivisor.mArray.lastObject (HERE)) {
     outRemainder.mArray.appendObject (0) ;
   }
-  const int64_t iterationCount = outRemainder.mArray.count () - inDivisor.mArray.count () ;
+  const uint64_t iterationCount = outRemainder.mArray.count () - inDivisor.mArray.count () ;
   outQuotient.mArray.appendRandomObjects (iterationCount) ;
-  for (int64_t itx = iterationCount - 1 ; itx >= 0 ; itx--) {
+  for (uint64_t itx = iterationCount ; itx > 0 ; itx--) {
     uint64_t quotient ;
-    const int64_t remainderIndexH = outRemainder.mArray.count () + itx - iterationCount ;
+    const uint64_t remainderIndexH = outRemainder.mArray.count () + itx - iterationCount ;
     div128By64Special (outRemainder.mArray (remainderIndexH COMMA_HERE), // inDividendH < inDivisor
                        outRemainder.mArray (remainderIndexH - 1 COMMA_HERE),
                        inDivisor.mArray.lastObject (HERE),
@@ -875,7 +872,7 @@ void BigUnsigned::internalDivideOld (const BigUnsigned & inDividend,
     outQuotient.mArray (itx COMMA_HERE) = quotient ;
     if (quotient > 0) {
       uint64_t currentCarry = 0 ;
-      for (int64_t i = 0 ; i < inDivisor.mArray.count () ; i++) {
+      for (uint64_t i = 1 ; i <= inDivisor.mArray.count () ; i++) {
         uint64_t resultH ;
         uint64_t resultL ;
         mul64x64to128 (quotient, inDivisor.mArray (i COMMA_HERE), resultH, resultL) ;
@@ -885,14 +882,14 @@ void BigUnsigned::internalDivideOld (const BigUnsigned & inDividend,
           MF_Assert (resultH != 0, "resultH is null", 0, 0) ;
         }
         currentCarry = resultH ;
-        const int64_t remainderIndex = i + itx ;
+        const uint64_t remainderIndex = i + itx ;
         if (outRemainder.mArray (remainderIndex COMMA_HERE) < resultL) {
           currentCarry += 1 ;
           MF_Assert (currentCarry != 0, "borrow is null", 0, 0) ;
         }
         outRemainder.mArray (remainderIndex COMMA_HERE) -= resultL ;
       }
-      const int64_t remainderLastIndex = itx + inDivisor.mArray.count () ;
+      const uint64_t remainderLastIndex = itx + inDivisor.mArray.count () ;
       bool underflow = outRemainder.mArray (remainderLastIndex COMMA_HERE) < currentCarry ;
       outRemainder.mArray (remainderLastIndex COMMA_HERE) -= currentCarry ;
       MF_Assert ((outRemainder.mArray (remainderLastIndex COMMA_HERE) == 0) || (outRemainder.mArray (remainderLastIndex COMMA_HERE) == UINT64_MAX), "last remainder error", 0, 0) ;
@@ -902,7 +899,7 @@ void BigUnsigned::internalDivideOld (const BigUnsigned & inDividend,
         adjustCount += 1 ;
         outQuotient.mArray (itx COMMA_HERE) -= 1 ;
         uint64_t carry = 0 ; // 0 or 1
-        for (int64_t i = 0 ; i < inDivisor.mArray.count () ; i++) {
+        for (uint64_t i = 1 ; i <= inDivisor.mArray.count () ; i++) {
           const uint64_t v1 = outRemainder.mArray (i + itx COMMA_HERE) ;
           const uint64_t v2 = inDivisor.mArray (i COMMA_HERE) ;
           uint64_t sum = v1 + v2 ;
@@ -942,16 +939,16 @@ BigUnsigned BigUnsigned::oringWith (const BigUnsigned & inOperand) const {
   }else if (inOperand.mArray.count () == 0) { // Operand is zero
     result = *this ;
   }else{
-    const int64_t maxSize = std::max (mArray.count (), inOperand.mArray.count ()) ;
+    const uint64_t maxSize = std::max (mArray.count (), inOperand.mArray.count ()) ;
     result.mArray.setCapacity (maxSize) ;
-    const int64_t minSize = std::min (mArray.count (), inOperand.mArray.count ()) ;
-    for (int64_t i=0 ; i<minSize ; i++) {
+    const uint64_t minSize = std::min (mArray.count (), inOperand.mArray.count ()) ;
+    for (uint64_t i = 1 ; i <= minSize ; i++) {
       result.mArray.appendObject (mArray (i COMMA_HERE) | inOperand.mArray (i COMMA_HERE)) ;
     }
-    for (int64_t i=mArray.count () ; i<maxSize ; i++) {
+    for (uint64_t i = mArray.count () + 1 ; i <= maxSize ; i++) {
       result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
     }
-    for (int64_t i=inOperand.mArray.count () ; i<maxSize ; i++) {
+    for (uint64_t i = inOperand.mArray.count () + 1 ; i <= maxSize ; i++) {
       result.mArray.appendObject (mArray (i COMMA_HERE)) ;
     }
   }
@@ -967,16 +964,16 @@ BigUnsigned BigUnsigned::xoringWith (const BigUnsigned & inOperand) const {
   }else if (inOperand.mArray.count () == 0) { // Operand is zero
     result = *this ;
   }else{
-    const int64_t maxSize = std::max (mArray.count (), inOperand.mArray.count ()) ;
+    const uint64_t maxSize = std::max (mArray.count (), inOperand.mArray.count ()) ;
     result.mArray.setCapacity (maxSize) ;
-    const int64_t minSize = std::min (mArray.count (), inOperand.mArray.count ()) ;
-    for (int64_t i=0 ; i<minSize ; i++) {
+    const uint64_t minSize = std::min (mArray.count (), inOperand.mArray.count ()) ;
+    for (uint64_t i = 1 ; i <= minSize ; i++) {
       result.mArray.appendObject (mArray (i COMMA_HERE) ^ inOperand.mArray (i COMMA_HERE)) ;
     }
-    for (int64_t i=mArray.count () ; i<maxSize ; i++) {
+    for (uint64_t i = mArray.count () + 1 ; i <= maxSize ; i++) {
       result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
     }
-    for (int64_t i=inOperand.mArray.count () ; i<maxSize ; i++) {
+    for (uint64_t i = inOperand.mArray.count () + 1 ; i <= maxSize ; i++) {
       result.mArray.appendObject (mArray (i COMMA_HERE)) ;
     }
     result.mArray.removeLeadingZeros () ;
@@ -989,9 +986,9 @@ BigUnsigned BigUnsigned::xoringWith (const BigUnsigned & inOperand) const {
 BigUnsigned BigUnsigned::andingWith (const BigUnsigned & inOperand) const {
   BigUnsigned result ;
   if ((mArray.count () != 0) && (inOperand.mArray.count () != 0)) { // Operand are not zero
-    const int64_t minSize = std::min (mArray.count (), inOperand.mArray.count ()) ;
+    const uint64_t minSize = std::min (mArray.count (), inOperand.mArray.count ()) ;
     result.mArray.setCapacity (minSize) ;
-    for (int64_t i=0 ; i<minSize ; i++) {
+    for (uint64_t i = 1 ; i <= minSize ; i++) {
       result.mArray.appendObject (mArray (i COMMA_HERE) & inOperand.mArray (i COMMA_HERE)) ;
     }
     result.mArray.removeLeadingZeros () ;
@@ -1004,7 +1001,7 @@ BigUnsigned BigUnsigned::andingWith (const BigUnsigned & inOperand) const {
 BigUnsigned BigUnsigned::complementing (void) const {
   BigUnsigned result ;
   result.mArray.setCapacity (mArray.count ()) ;
-  for (int64_t i=0 ; i<mArray.count () ; i++) {
+  for (uint64_t i = 1 ; i <= mArray.count () ; i++) {
     result.mArray.appendObject (~ mArray (i COMMA_HERE)) ;
   }
   return result ;
@@ -1025,7 +1022,7 @@ int BigUnsigned::compare (const BigUnsigned & inOperand) const {
   }else if (mArray.count () > inOperand.mArray.count ()) {
     result = 1 ;
   }else if (mArray.count () > 0) {
-    for (int64_t i = mArray.count () - 1 ; (result == 0) && (i >= 0) ; i--) {
+    for (uint64_t i = mArray.count () ; (result == 0) && (i > 0) ; i--) {
       if (mArray (i COMMA_HERE) < inOperand.mArray (i COMMA_HERE)) {
         result = -1 ;
       }else if (mArray (i COMMA_HERE) > inOperand.mArray (i COMMA_HERE)) {
@@ -1049,7 +1046,7 @@ void BigUnsigned::printHex (const char * inName) const {
     printf ("%s: 0\n", inName) ;
   }else{
     printf ("%s: [%" PRId64 "] 0x", inName, mArray.count ()) ;
-    for (int64_t i = mArray.count () - 1 ; i>= 0 ; i--) {
+    for (uint64_t i = mArray.count () ; i > 0 ; i--) {
       printf ("'%016" PRIX64, mArray (i COMMA_HERE)) ;
     }
     printf ("\n") ;
@@ -1072,7 +1069,7 @@ C_String BigUnsigned::decimalString (void) const {
       decimalValueArray.appendObject (remainder) ;
     }
     result << cStringWithUnsigned (decimalValueArray.lastObject (HERE)) ;
-    for (int64_t i = decimalValueArray.count () - 2 ; i >= 0 ; i--) {
+    for (uint64_t i = decimalValueArray.count () - 1 ; i > 0 ; i--) {
       char s [32] ;
       snprintf (s, 31, "%018" PRIu64, decimalValueArray (i COMMA_HERE)) ;
       result << s ;
@@ -1101,7 +1098,7 @@ C_String BigUnsigned::hexString (void) const {
     result = "0" ;
   }else{
     result << cHexStringWithUnsigned (mArray.lastObject (HERE)) ;
-    for (int64_t i = mArray.count () - 2 ; i >= 0 ; i--) {
+    for (uint64_t i = mArray.count () - 1 ; i > 0 ; i--) {
       char s [32] ;
       snprintf (s, 31, "%016" PRIX64, mArray (i COMMA_HERE)) ;
       result << s ;
@@ -1120,7 +1117,7 @@ C_String BigUnsigned::xString (void) const {
     char s [32] ;
     snprintf (s, 31, "%" PRIX64, mArray.lastObject (HERE)) ;
     result << s ;
-    for (int64_t i = mArray.count () - 2 ; i >= 0 ; i--) {
+    for (uint64_t i = mArray.count () - 1 ; i > 0 ; i--) {
       snprintf (s, 31, "%016" PRIX64, mArray (i COMMA_HERE)) ;
       result << s ;
     }

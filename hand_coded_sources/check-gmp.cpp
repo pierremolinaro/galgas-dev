@@ -138,9 +138,9 @@ static void testBigUnsignedMultiplyPowerOfTwo (void) {
   std::cout << "Test multiplying power of two BigUnsigned... " ;
   C_Timer timer ;
   uint64_t errorCount = 0 ;
-  for (int32_t i = 0 ; i < 1000 ; i++) {
+  for (uint32_t i = 0 ; i < 1000 ; i++) {
     const BigUnsigned bigA = BigUnsigned::powerOfTwo (i) ;
-    for (int32_t j = 0 ; j < 1000 ; j++) {
+    for (uint32_t j = 0 ; j < 1000 ; j++) {
       const BigUnsigned bigB = BigUnsigned::powerOfTwo (j) ;
       const BigUnsigned product = bigA.multiplingByBigUnsigned (bigB) ;
       const BigUnsigned expectedResult = BigUnsigned::powerOfTwo (i + j) ;

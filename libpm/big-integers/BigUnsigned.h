@@ -7,6 +7,11 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class U64UniqueArray final {
+//--- Private attributes
+  private: uint64_t * mArray ; // Element 0 is reference count, data is 1-Based Indexing
+  private: uint64_t mCount ;
+  private: uint64_t mCapacity ;
+
 //--- Default Constructor
   public: U64UniqueArray (void) :
   mArray (nullptr),
@@ -27,13 +32,13 @@ class U64UniqueArray final {
   public: void copyTo (U64UniqueArray & outArray) const {
     outArray.removeAllKeepingCapacity () ;
     outArray.setCapacity (mCount) ;
-    for (int64_t i=0 ; i<mCount ; i++) {
-      outArray.appendObject (mArray [i]) ;
+    for (uint64_t i = 1 ; i <= mCount ; i++) {
+      outArray.appendObject (mArray [i]) ; // 1-Based Indexing
     }
   }
 
 //--- Get Count
-  public: int64_t count (void) const { return mCount ; }
+  public: uint64_t count (void) const { return mCount ; }
 
 //--- Remove all, keeping capacity
   public: void removeAllKeepingCapacity (void) {
@@ -48,16 +53,13 @@ class U64UniqueArray final {
   }
 
 //--- Set capacity
-  public: void setCapacity (const int64_t inNewCapacity)  {
+  public: void setCapacity (const uint64_t inNewCapacity)  {
     if (mCapacity < inNewCapacity) {
-      int64_t newCapacity = (mCapacity > 32) ? mCapacity : 32 ;
-      while (newCapacity < inNewCapacity) {
-        newCapacity <<= 1 ;
-      }
+      const uint64_t newCapacity = std::max (inNewCapacity, uint64_t (31)) ;
       uint64_t * newArray = nullptr ;
-      macroMyNewArray (newArray, uint64_t, uint32_t (newCapacity)) ;
-      for (int64_t i=0 ; i<mCount ; i++) {
-        newArray [i] = mArray [i] ;
+      macroMyNewArray (newArray, uint64_t, uint32_t (newCapacity + 1)) ;
+      for (uint64_t i = 1 ; i <= mCount ; i++) {
+        newArray [i] = mArray [i] ;  // 1-Based Indexing
       }
       macroMyDeleteArray (mArray) ; mArray = newArray ;
       mCapacity = newCapacity ;
@@ -69,24 +71,24 @@ class U64UniqueArray final {
     if (mCount >= mCapacity) {
       setCapacity (mCount + 1 + mCount / 2) ;
     }
-    mArray [mCount] = inValue ;
-    mCount ++ ;
+    mCount += 1 ;
+    mArray [mCount] = inValue ; // 1-Based Indexing
   }
 
-  public: void appendObjects (const int64_t inCount, const uint64_t inValue) {
+  public: void appendObjects (const uint64_t inCount, const uint64_t inValue) {
     if (inCount > 0) {
-      const int64_t newCount = mCount + inCount ;
+      const uint64_t newCount = mCount + inCount ;
       setCapacity (newCount) ;
-      for (int64_t i=mCount ; i<newCount ; i++) {
-        mArray [i] = inValue ;
+      for (uint64_t i = mCount + 1 ; i <= newCount ; i++) {
+        mArray [i] = inValue ; // 1-Based Indexing
       }
       mCount = newCount ;
     }
   }
 
-  public: void appendRandomObjects (const int64_t inCount) {
+  public: void appendRandomObjects (const uint64_t inCount) {
     if (inCount > 0) {
-      const int64_t newCount = mCount + inCount ;
+      const uint64_t newCount = mCount + inCount ;
       setCapacity (mCount + inCount) ;
       mCount = newCount ;
     }
@@ -94,45 +96,40 @@ class U64UniqueArray final {
 
 //--- Remove leading zeros
   public: void removeLeadingZeros (void) {
-    while ((mCount > 0) && (mArray [mCount - 1] == 0)) {
-      mCount -- ;
+    while ((mCount > 0) && (mArray [mCount] == 0)) { // 1-Based Indexing
+      mCount -= 1 ;
     }
   }
 
 //--- Element access (with index checking)
   public: uint64_t lastObject (LOCATION_ARGS) const {
     #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkIndex (mCount-1 COMMA_THERE) ;
+      checkIndex (mCount COMMA_THERE) ;
     #endif
-    return mArray [mCount-1] ;
+    return mArray [mCount] ; // 1-Based Indexing
   }
 
-  public: uint64_t operator () (const int64_t inIndex COMMA_LOCATION_ARGS) const {
+  public: uint64_t operator () (const uint64_t inIndex COMMA_LOCATION_ARGS) const {
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkIndex (inIndex COMMA_THERE) ;
     #endif
-    return mArray [inIndex] ;
+    return mArray [inIndex] ; // 1-Based Indexing
   }
 
-  public: uint64_t & operator () (const int64_t inIndex COMMA_LOCATION_ARGS) {
+  public: uint64_t & operator () (const uint64_t inIndex COMMA_LOCATION_ARGS) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkIndex (inIndex COMMA_THERE) ;
     #endif
-    return mArray [inIndex] ;
+    return mArray [inIndex] ; // 1-Based Indexing
   }
 
 //--- Index checking
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    protected: void checkIndex (const int64_t inIndex COMMA_LOCATION_ARGS) const {
-      MF_AssertThere (inIndex >= 0, "inIndex (%lld) < 0", inIndex, 0) ;
-      MF_AssertThere (inIndex < mCount, "inIndex (%lld) >= mCount (%lld)", inIndex, mCount) ;
+    protected: void checkIndex (const uint64_t inIndex COMMA_LOCATION_ARGS) const {
+      MF_AssertThere (inIndex > 0, "inIndex (%llu) < 0", int64_t (inIndex), 0) ;
+      MF_AssertThere (inIndex <= mCount, "inIndex (%llu) >= mCount (%llu)", int64_t (inIndex), int64_t (mCount)) ;
     }
   #endif
-
-//--- Protected attributes
-  private: uint64_t * mArray ;
-  private: int64_t mCount ;
-  private: int64_t mCapacity ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -141,7 +138,7 @@ class BigUnsigned final {
 
 //--- Constructors
   public: static BigUnsigned randomNumber (void) ;
-  public: static BigUnsigned powerOfTwo (const int32_t inPowerOfTwo) ;
+  public: static BigUnsigned powerOfTwo (const uint32_t inPowerOfTwo) ;
   public: explicit BigUnsigned (void) ; // Zero
   public: explicit BigUnsigned (const uint64_t inValue) ;
   public: explicit BigUnsigned (const uint64_t inHigh, const uint64_t inLow) ;
