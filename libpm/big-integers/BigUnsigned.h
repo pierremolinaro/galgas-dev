@@ -142,6 +142,7 @@ class BigUnsigned final {
   public: explicit BigUnsigned (void) ; // Zero
   public: explicit BigUnsigned (const uint64_t inValue) ;
   public: explicit BigUnsigned (const uint64_t inHigh, const uint64_t inLow) ;
+  public: explicit BigUnsigned (const C_String & inString, const uint8_t inSeparator) ;
 
 //--- Handle copy
   public: BigUnsigned (const BigUnsigned & inSource) ;
@@ -150,6 +151,7 @@ class BigUnsigned final {
 //--- Testing value
   public: bool isZero (void) const ;
   public: bool isOne (void) const ;
+  public: uint64_t componentCount (void) const  { return mArray.count () ; }
 
 //--- Shift operators
   public: BigUnsigned leftShiftedBy (const uint32_t inShiftCount) const ;

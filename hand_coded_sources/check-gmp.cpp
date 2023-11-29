@@ -256,6 +256,73 @@ static void testAddingSubtractingC_BigInt (void) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+// page 191
+//----------------------------------------------------------------------------------------------------------------------
+
+static void pgcdComputing (void) {
+  std::cout << "n**17 + 9 and (n+1)**17 + 9...\n" ;
+  C_Timer timer ;
+  const C_String s ("8 424 432 925 592 889 329 288 197 322 308 900 672 459 420 460 792 433") ;
+  const BigUnsigned n (s, ' ') ;
+  { const C_String verif = n.spacedDecimalString (3) ;
+    if (s != verif) {
+      std::cout << "  Error\n" ;
+      std::cout << "   s     '" << s.cString (HERE) << "'\n" ;
+      std::cout << "   verif '" << verif.cString (HERE) << "'\n" ;
+      exit (1) ;
+    }
+  }
+//--- Computing n**17+9
+  BigUnsigned nPower17Plus9 = n ;
+  for (uint64_t i = 1 ; i < 17 ; i++) {
+    BigUnsigned v = nPower17Plus9.multiplingByBigUnsigned (n) ;
+    nPower17Plus9 = v ;
+  }
+  nPower17Plus9.addU64InPlace (9) ;
+  std::cout << " nPower17Plus9 " << nPower17Plus9.spacedDecimalString (3).cString (HERE) << "\n" ;
+//--- Computing (n+1)**17+9
+  BigUnsigned nPlus1 = n.addingU64 (1) ;
+  BigUnsigned nPlus1Power17Plus9 = nPlus1 ;
+  for (uint64_t i = 1 ; i < 17 ; i++) {
+    BigUnsigned v = nPlus1Power17Plus9.multiplingByBigUnsigned (nPlus1) ;
+    nPlus1Power17Plus9 = v ;
+  }
+  nPlus1Power17Plus9.addU64InPlace (9) ;
+  std::cout << " nPlus1Power17Plus9 " << nPlus1Power17Plus9.spacedDecimalString (3).cString (HERE) << "\n" ;
+//--- Calcul du PGCD
+  BigUnsigned dividend = nPlus1Power17Plus9 ;
+  BigUnsigned divisor  = nPower17Plus9 ;
+  bool loop = true ;
+  while (loop) {
+    BigUnsigned quotient ;
+    BigUnsigned remainder ;
+    dividend.divideByBigUnsigned (divisor, quotient, remainder) ;
+    std::cout << "  Dividend " << dividend.componentCount ()
+              << ", divisor " << divisor.componentCount ()
+              << ", quotient " << quotient.componentCount ()
+              << ", remainder " << remainder.componentCount () << "\n" << std::flush ;
+    BigUnsigned verif = divisor ;
+    verif.mulBigUnsignedInPlace (quotient) ;
+    verif.addBigUnsignedInPlace (remainder) ;
+    if (verif != dividend) {
+      std::cout << "*** Error verif\n" ;
+      dividend.printHex ("dividend") ;
+      verif.printHex ("verif   ") ;
+      exit (1) ;
+    }
+    loop = !remainder.isZero () ;
+    if (loop) {
+      dividend = divisor ;
+      divisor = remainder ;
+    }else{
+      std::cout << "PGCD is " << quotient.spacedDecimalString (3).cString (HERE) << "\n" ;
+    }
+  }
+//---
+  std::cout << timer.msFromStart () << " ms\n" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 
 static void somePrimeNumbers (void) {
   std::cout << "Some prime numbers...\n" ;
@@ -303,6 +370,7 @@ void routine_checkGMP (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 //    testUnsigned128Multplications () ;
 //  #endif
 //---
+  pgcdComputing () ;
   somePrimeNumbers () ;
   testMultiplyingDividingBigUnsignedByU64 () ;
   testMultiplyingDividingBigUnsigned () ;

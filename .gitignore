@@ -20,14 +20,23 @@ project-xcode-galgas/galgas-distribution.xcodeproj/project.xcworkspace/*
 
 makefile-macosx/galgas
 makefile-macosx/galgas-debug
+makefile-macosx/galgas-arm64
+makefile-macosx/galgas-arm64-debug
+makefile-macosx/galgas-intel
+makefile-macosx/galgas-intel-debug
+
 makefile-x86linux32-on-macosx/galgas
 makefile-x86linux32-on-macosx/galgas-debug
+
 makefile-x86linux64-on-macosx/galgas
 makefile-x86linux64-on-macosx/galgas-debug
+
 makefile-win32-on-macosx/galgas.exe
 makefile-win32-on-macosx/galgas-debug.exe
+
 makefile-unix/galgas
 makefile-unix/galgas-debug
+makefile-unix/galgas-lto
 
 build/indexes/*
 
@@ -289,7 +298,6 @@ testsuite/makefile-unix/testsuite
 testsuite/makefile-unix/testsuite-debug
 galgas-sources/+generation-templates/build/*
 project-xcode-galgas/*
-makefile-unix/galgas-lto
 
 # Code Blocks
 *.depend

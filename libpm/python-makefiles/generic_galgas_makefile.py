@@ -64,7 +64,7 @@ class GenericGalgasMakefile :
   #--- GMP
     GMP_DIRECTORY_PATH = LIBPM_DIRECTORY_PATH + "/gmp"
   #--- Source directory list
-    SOURCES_DIR = self.mDictionary ["SOURCES_DIR"]
+    SOURCES_DIR = self.mDictionary ["SOURCES_DIR"].copy ()
   #--------------------------------------------------------------------------- Include dirs
     SOURCES_DIR.append (LIBPM_DIRECTORY_PATH + "/bdd")
     SOURCES_DIR.append (LIBPM_DIRECTORY_PATH + "/big-integers")

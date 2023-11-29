@@ -22,8 +22,8 @@ def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, ma
   gmf.mTargetName = "unix"
   gmf.mBuildDirName = BUILD_DIR_NAME
 #---
-  gmf.mCompilerTool = ["gcc"]
-  gmf.mLinkerTool   = ["g++"]
+  gmf.mCompilerTool = ["gcc", "-arch", "arm64"]
+  gmf.mLinkerTool   = ["g++", "-arch", "arm64"]
   gmf.mStripTool    = ["strip"]
   gmf.mSudoTool     = ["sudo"]
 
@@ -32,7 +32,7 @@ def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, ma
   gmf.mInstallationgMessage = "Installing"
   gmf.mStripMessage = "Stripping"
 
-  if os.name == "nt" : # Cygwin
+  if (os.name == "nt") or sys.platform.startswith ("cygwin") : # Cygwin
     gmf.mLinkerTool.append ("-static")
     gmf.mExecutableSuffix = ".exe"
     gmf.mCompilationMessage = "Compiling for Cygwin"

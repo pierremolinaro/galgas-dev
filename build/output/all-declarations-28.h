@@ -217,6 +217,7 @@ extern const cDirectoryWrapper gWrapperDirectory_3_typeDumpGenerationTemplate ;
 extern const cDirectoryWrapper gWrapperDirectory_4_typeDumpGenerationTemplate ;
 extern const cDirectoryWrapper gWrapperDirectory_5_typeDumpGenerationTemplate ;
 extern const cDirectoryWrapper gWrapperDirectory_6_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_7_typeDumpGenerationTemplate ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
