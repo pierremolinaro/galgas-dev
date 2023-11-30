@@ -116,8 +116,6 @@
 		CF3D9FDE1257733E0037D473 /* cSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC71257733E0037D473 /* cSortedListElement.cpp */; };
 		CF3FDE2114E6CD4E0040331C /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE2014E6CD4E0040331C /* C_Data.cpp */; };
 		CF3FDE2214E6CD4E0040331C /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE2014E6CD4E0040331C /* C_Data.cpp */; };
-		CF40C8402AFD3D3D0027918A /* BigUnsigned.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF40C83F2AFD3D3D0027918A /* BigUnsigned.cpp */; };
-		CF40C8412AFD3D3D0027918A /* BigUnsigned.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF40C83F2AFD3D3D0027918A /* BigUnsigned.cpp */; };
 		CF40C8442AFD47500027918A /* C_BigInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF40C8422AFD47500027918A /* C_BigInt.cpp */; };
 		CF40C8452AFD47500027918A /* C_BigInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF40C8422AFD47500027918A /* C_BigInt.cpp */; };
 		CF40C8482AFD4C550027918A /* galgas-random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF40C8462AFD4C550027918A /* galgas-random.cpp */; };
@@ -728,8 +726,6 @@
 		CF3FDDFB14E66BD40040331C /* C_FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_FileManager.h; sourceTree = "<group>"; };
 		CF3FDE2014E6CD4E0040331C /* C_Data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_Data.cpp; sourceTree = "<group>"; };
 		CF3FDE2314E6D3CD0040331C /* C_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_Data.h; sourceTree = "<group>"; };
-		CF40C83E2AFD3D3D0027918A /* BigUnsigned.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigUnsigned.h; sourceTree = "<group>"; };
-		CF40C83F2AFD3D3D0027918A /* BigUnsigned.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BigUnsigned.cpp; sourceTree = "<group>"; };
 		CF40C8422AFD47500027918A /* C_BigInt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_BigInt.cpp; sourceTree = "<group>"; };
 		CF40C8432AFD47500027918A /* C_BigInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_BigInt.h; sourceTree = "<group>"; };
 		CF40C8462AFD4C550027918A /* galgas-random.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "galgas-random.cpp"; sourceTree = "<group>"; };
@@ -1330,8 +1326,6 @@
 		CF40C83D2AFD3CCE0027918A /* big-integers */ = {
 			isa = PBXGroup;
 			children = (
-				CF40C83F2AFD3D3D0027918A /* BigUnsigned.cpp */,
-				CF40C83E2AFD3D3D0027918A /* BigUnsigned.h */,
 				CF40C8422AFD47500027918A /* C_BigInt.cpp */,
 				CF40C8432AFD47500027918A /* C_BigInt.h */,
 				CF23CCE22B127FFE001F9FE2 /* PMUInt128.cpp */,
@@ -2126,7 +2120,6 @@
 				CFEEE0FC1A064DE800E38AAC /* all-declarations-25.cpp in Sources */,
 				CF33370D126B13A6008DA1DE /* acPtr_class.cpp in Sources */,
 				CF23746619967C4F0061D2D8 /* all-declarations-13.cpp in Sources */,
-				CF40C8402AFD3D3D0027918A /* BigUnsigned.cpp in Sources */,
 				CF206C091D54772A00CC4135 /* C_IssueWithFixIt.cpp in Sources */,
 				CF333815126B38B7008DA1DE /* GALGAS_filewrapper.cpp in Sources */,
 				CFB6E59912788349000F1772 /* GALGAS_application.cpp in Sources */,
@@ -2395,7 +2388,6 @@
 				CF33368D126B07C1008DA1DE /* AC_GALGAS_list.cpp in Sources */,
 				CF9E755A1BADDA0E00DBEFEE /* mpn-toom_eval_pm2rexp.c in Sources */,
 				CF206C0A1D54772A00CC4135 /* C_IssueWithFixIt.cpp in Sources */,
-				CF40C8412AFD3D3D0027918A /* BigUnsigned.cpp in Sources */,
 				CF33368F126B07C1008DA1DE /* AC_GALGAS_map.cpp in Sources */,
 				CF9E75971BADE30A00DBEFEE /* root-tal-notreent.c in Sources */,
 				CF9E75301BADD83300DBEFEE /* mpn-toom_couple_handling.c in Sources */,

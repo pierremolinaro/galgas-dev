@@ -123,7 +123,6 @@
    <Unit filename="../libpm/command_line_interface/C_builtin_CLI_Options.cpp" />
    <Unit filename="../libpm/command_line_interface/F_Analyze_CLI_Options.cpp" />
    <Unit filename="../libpm/command_line_interface/F_mainForLIBPM.cpp" />
-   <Unit filename="../libpm/big-integers/BigUnsigned.cpp" />
    <Unit filename="../libpm/big-integers/C_BigInt.cpp" />
    <Unit filename="../libpm/big-integers/PMUInt128.cpp" />
    <Unit filename="../libpm/bdd/C_BDD.cpp" />

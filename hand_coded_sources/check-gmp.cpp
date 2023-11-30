@@ -16,7 +16,6 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-declarations.h"
-#include "big-integers/BigUnsigned.h"
 #include "time/C_Timer.h"
 #include "utilities/M_machine.h"
 #include "utilities/galgas-random.h"
@@ -101,131 +100,6 @@
 //  }
 //#endif
 
-//--------------------------------------------------------------------------------------------------
-
-static void testMultiplyingDividingBigUnsignedByU64 (void) {
-  std::cout << "Test multiplying, dividing BigUnsigned by U64... " ;
-  C_Timer timer ;
-  uint64_t errorCount = 0 ;
-  for (int i = 0 ; i < 10'000'000 ; i++) {
-    const BigUnsigned dividend = BigUnsigned::randomNumber () ;
-    uint64_t divisor = 0 ;
-    while (divisor == 0) {
-      divisor = uint64_t (galgas_random ()) ;
-      divisor <<= 32 ;
-      divisor |= uint64_t (galgas_random ()) ;
-    }
-    BigUnsigned verif ;
-    uint64_t remainder ;
-    dividend.dividingByU64 (divisor, verif, remainder) ; // verif <- quotient
-    verif.mulU64InPlace (divisor) ;
-    verif.addU64InPlace (remainder) ;
-    if (dividend != verif) {
-      errorCount += 1 ;
-    }
-  }
-  if (errorCount == 0) {
-    std::cout << "Ok " << timer.msFromStart () << " ms\n" ;
-  }else{
-    std::cout << errorCount << " errors (" << timer.msFromStart () << " ms)\n" ;
-    exit (1) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static void testBigUnsignedMultiplyPowerOfTwo (void) {
-  std::cout << "Test multiplying power of two BigUnsigned... " ;
-  C_Timer timer ;
-  uint64_t errorCount = 0 ;
-  for (uint32_t i = 0 ; i < 1000 ; i++) {
-    const BigUnsigned bigA = BigUnsigned::powerOfTwo (i) ;
-    for (uint32_t j = 0 ; j < 1000 ; j++) {
-      const BigUnsigned bigB = BigUnsigned::powerOfTwo (j) ;
-      const BigUnsigned product = bigA.multiplingByBigUnsigned (bigB) ;
-      const BigUnsigned expectedResult = BigUnsigned::powerOfTwo (i + j) ;
-      if (expectedResult.compare (product) != 0) {
-        errorCount += 1 ;
-        std::cout << " error for i=" << i << ", j=" << j << "\n" ;
-        bigA.printHex    ("bigA   ") ;
-        bigB.printHex    ("bigB   ") ;
-        product.printHex ("product") ;
-        expectedResult.printHex ("result ") ;
-        exit (1) ;
-      }
-    }
-  }
-
-  if (errorCount == 0) {
-    std::cout << "Ok " << timer.msFromStart () << " ms\n" ;
-  }else{
-    std::cout << errorCount << " errors (" << timer.msFromStart () << " ms)\n" ;
-    exit (1) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static void testMultiplyingDividingBigUnsigned (void) {
-  std::cout << "Test multiplying, dividing BigUnsigned... " ;
-  C_Timer timer ;
-  uint64_t errorCount = 0 ;
-  for (int i = 0 ; i < 10'000'000 ; i++) {
-    const BigUnsigned dividend = BigUnsigned::randomNumber () ;
-    const BigUnsigned divisor  = BigUnsigned::randomNumber () ;
-    BigUnsigned quotient ;
-    BigUnsigned remainder ;
-    dividend.divideByBigUnsigned (divisor, quotient, remainder) ;
-    BigUnsigned verif = divisor ;
-    verif.mulBigUnsignedInPlace (quotient) ;
-    verif.addBigUnsignedInPlace (remainder) ;
-    if (dividend != verif) {
-      errorCount += 1 ;
-      std::cout << " error\n" ;
-      verif.printHex     ("Verif    ") ;
-      dividend.printHex  ("Dividend ") ;
-      divisor.printHex   ("Divisor  ") ;
-      quotient.printHex  ("Quotient ") ;
-      remainder.printHex ("remainder") ;
-      std::cout << "With old algo\n" ;
-      dividend.divideByBigUnsignedOld (divisor, quotient, remainder) ;
-      quotient.printHex  ("Quotient ") ;
-      remainder.printHex ("remainder") ;
-      exit (1) ;
-    }
-  }
-  if (errorCount == 0) {
-    std::cout << "Ok " << timer.msFromStart () << " ms\n" ;
-  }else{
-    std::cout << errorCount << " errors (" << timer.msFromStart () << " ms)\n" ;
-    exit (1) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static void testAddingSubtractingBigUnsigned (void) {
-  std::cout << "Test adding, subtracting BigUnsigned... " ;
-  C_Timer timer ;
-  uint64_t errorCount = 0 ;
-  for (int i = 0 ; i < 10'000'000 ; i++) {
-    const BigUnsigned bigA = BigUnsigned::randomNumber () ;
-    const BigUnsigned bigB = BigUnsigned::randomNumber () ;
-    BigUnsigned verif = bigA ;
-    verif.addBigUnsignedInPlace (bigB) ;
-    verif.subBigUnsignedInPlace (bigB) ;
-    if (bigA.compare (verif) != 0) {
-      errorCount += 1 ;
-    }
-  }
-  if (errorCount == 0) {
-    std::cout << "Ok " << timer.msFromStart () << " ms\n" ;
-  }else{
-    std::cout << errorCount << " errors (" << timer.msFromStart () << " ms)\n" ;
-    exit (1) ;
-  }
-}
-
 //----------------------------------------------------------------------------------------------------------------------
 
 static uint32_t randomU32 (void) {
@@ -256,112 +130,6 @@ static void testAddingSubtractingC_BigInt (void) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-// page 191
-//----------------------------------------------------------------------------------------------------------------------
-
-static void pgcdComputing (void) {
-  std::cout << "n**17 + 9 and (n+1)**17 + 9...\n" ;
-  C_Timer timer ;
-  const C_String s ("8 424 432 925 592 889 329 288 197 322 308 900 672 459 420 460 792 433") ;
-  const BigUnsigned n (s, ' ') ;
-  { const C_String verif = n.spacedDecimalString (3) ;
-    if (s != verif) {
-      std::cout << "  Error\n" ;
-      std::cout << "   s     '" << s.cString (HERE) << "'\n" ;
-      std::cout << "   verif '" << verif.cString (HERE) << "'\n" ;
-      exit (1) ;
-    }
-  }
-//--- Computing n**17+9
-  BigUnsigned nPower17Plus9 = n ;
-  for (uint64_t i = 1 ; i < 17 ; i++) {
-    BigUnsigned v = nPower17Plus9.multiplingByBigUnsigned (n) ;
-    nPower17Plus9 = v ;
-  }
-  nPower17Plus9.addU64InPlace (9) ;
-  std::cout << " nPower17Plus9 " << nPower17Plus9.spacedDecimalString (3).cString (HERE) << "\n" ;
-//--- Computing (n+1)**17+9
-  BigUnsigned nPlus1 = n.addingU64 (1) ;
-  BigUnsigned nPlus1Power17Plus9 = nPlus1 ;
-  for (uint64_t i = 1 ; i < 17 ; i++) {
-    BigUnsigned v = nPlus1Power17Plus9.multiplingByBigUnsigned (nPlus1) ;
-    nPlus1Power17Plus9 = v ;
-  }
-  nPlus1Power17Plus9.addU64InPlace (9) ;
-  std::cout << " nPlus1Power17Plus9 " << nPlus1Power17Plus9.spacedDecimalString (3).cString (HERE) << "\n" ;
-//--- Calcul du PGCD
-  BigUnsigned dividend = nPlus1Power17Plus9 ;
-  BigUnsigned divisor  = nPower17Plus9 ;
-  bool loop = true ;
-  while (loop) {
-    BigUnsigned quotient ;
-    BigUnsigned remainder ;
-    dividend.divideByBigUnsigned (divisor, quotient, remainder) ;
-    std::cout << "  Dividend " << dividend.componentCount ()
-              << ", divisor " << divisor.componentCount ()
-              << ", quotient " << quotient.componentCount ()
-              << ", remainder " << remainder.componentCount () << "\n" << std::flush ;
-    BigUnsigned verif = divisor ;
-    verif.mulBigUnsignedInPlace (quotient) ;
-    verif.addBigUnsignedInPlace (remainder) ;
-    if (verif != dividend) {
-      std::cout << "*** Error verif\n" ;
-      dividend.printHex ("dividend") ;
-      verif.printHex ("verif   ") ;
-      exit (1) ;
-    }
-    loop = !remainder.isZero () ;
-    if (loop) {
-      dividend = divisor ;
-      divisor = remainder ;
-    }else{
-      std::cout << "PGCD is " << quotient.spacedDecimalString (3).cString (HERE) << "\n" ;
-    }
-  }
-//---
-  std::cout << timer.msFromStart () << " ms\n" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static void somePrimeNumbers (void) {
-  std::cout << "Some prime numbers...\n" ;
-  C_Timer timer ;
-  { BigUnsigned n (1) ;
-    n.leftShiftInPlace (127) ;
-    n.subU64InPlace (1) ;
-    const C_String s = n.spacedDecimalString (3) ;
-    std::cout << "  2**127 - 1 = " << s.cString (HERE) << "\n" ;
-  }
-  { BigUnsigned n (1) ;
-    n.leftShiftInPlace (148) ;
-    n.addU64InPlace (1) ;
-    uint64_t remainder ; n.divideByU64InPlace (17, remainder) ;
-    const C_String s = n.spacedDecimalString (3) ;
-    std::cout << "  (2**148 + 1) / 17 = " << s.cString (HERE) << "\n" ;
-  }
-  { BigUnsigned n (1) ;
-    n.leftShiftInPlace (607) ;
-    n.subU64InPlace (1) ;
-    const C_String s = n.spacedDecimalString (3) ;
-    std::cout << "  2**607 - 1 = " << s.cString (HERE) << "\n" ;
-  }
-  { BigUnsigned n (1) ;
-    n.leftShiftInPlace (4423) ;
-    n.subU64InPlace (1) ;
-    const C_String s = n.spacedDecimalString (3) ;
-    std::cout << "  2**4423 - 1 = " << s.cString (HERE) << "\n" ;
-  }
-  { BigUnsigned n (1) ;
-    n.leftShiftInPlace (44497) ;
-    n.subU64InPlace (1) ;
-    const C_String s = n.spacedDecimalString (3) ;
-    std::cout << "  2**44497 - 1 = " << s.cString (HERE) << "\n" ;
-  }
-  std::cout << timer.msFromStart () << " ms\n" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
 
 void routine_checkGMP (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   co << "*** Check GMP (option --check-gmp) ***\n" ;
@@ -370,12 +138,6 @@ void routine_checkGMP (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 //    testUnsigned128Multplications () ;
 //  #endif
 //---
-  pgcdComputing () ;
-  somePrimeNumbers () ;
-  testMultiplyingDividingBigUnsignedByU64 () ;
-  testMultiplyingDividingBigUnsigned () ;
-  testAddingSubtractingBigUnsigned () ;
-  testBigUnsignedMultiplyPowerOfTwo () ;
   testAddingSubtractingC_BigInt () ;
   uint32_t errorCount = 0 ;
   {
