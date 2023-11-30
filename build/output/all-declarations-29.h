@@ -203,6 +203,15 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_macosx'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_macosx (class C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Filewrapper template 'targetGalgas3GenerationFileWrapper clean_unix'
 //
 //----------------------------------------------------------------------------------------------------------------------

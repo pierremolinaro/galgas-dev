@@ -22,8 +22,8 @@ def buildForUnix (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL, ma
   gmf.mTargetName = "unix"
   gmf.mBuildDirName = BUILD_DIR_NAME
 #---
-  gmf.mCompilerTool = ["gcc", "-arch", "arm64"]
-  gmf.mLinkerTool   = ["g++", "-arch", "arm64"]
+  gmf.mCompilerTool = ["gcc"]
+  gmf.mLinkerTool   = ["g++"]
   gmf.mStripTool    = ["strip"]
   gmf.mSudoTool     = ["sudo"]
 

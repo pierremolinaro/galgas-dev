@@ -13,11 +13,13 @@ def buildForMacOSintel (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GO
   gmf = generic_galgas_makefile.GenericGalgasMakefile ()
   gmf.mJSONfilePath = jsonFilePath
   gmf.mDictionary = dictionary
-  gmf.mExecutable = EXECUTABLE + "-intel"
+  gmf.mExecutable = EXECUTABLE
+  gmf.mExecutableDirectory = "x86_64/"
+  gmf.mDeleteExecutableDirectoryOnClean = True
   gmf.mGoal = GOAL
   gmf.mMaxParallelJobs = maxParallelJobs
   gmf.mDisplayCommands = displayCommands
-  gmf.mTargetName = "macosx-intel"
+  gmf.mTargetName = "macosx-x86_64"
   gmf.mBuildDirName = BUILD_DIR_NAME
 #---
   gmf.mCompilerTool = ["gcc", "-arch", "x86_64"]
@@ -53,7 +55,9 @@ def buildForMacOSarm64 (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GO
   gmf = generic_galgas_makefile.GenericGalgasMakefile ()
   gmf.mJSONfilePath = jsonFilePath
   gmf.mDictionary = dictionary
-  gmf.mExecutable = EXECUTABLE + "-arm64"
+  gmf.mExecutable = EXECUTABLE
+  gmf.mExecutableDirectory = "arm64/"
+  gmf.mDeleteExecutableDirectoryOnClean = True
   gmf.mGoal = GOAL
   gmf.mMaxParallelJobs = maxParallelJobs
   gmf.mDisplayCommands = displayCommands
@@ -93,23 +97,37 @@ def buildForMacOSFat (dictionary, jsonFilePath, EXECUTABLE, BUILD_DIR_NAME, GOAL
 #--- Make object
   make = makefile.Make (GOAL, maxParallelJobs == 1) # Display command utility tool path if sequential build
 #---
-  rule = makefile.Rule ([EXECUTABLE], "Build Universal")
-  rule.mDependences.append (EXECUTABLE + "-arm64")
-  rule.mDependences.append (EXECUTABLE + "-intel")
+  rule = makefile.Rule (["universal/" + EXECUTABLE], "Build Universal")
+  rule.mDependences.append ("x86_64/" + EXECUTABLE)
+  rule.mDependences.append ("arm64/" + EXECUTABLE)
   rule.mCommand += ["lipo"]
-  rule.mCommand += [EXECUTABLE + "-arm64", EXECUTABLE + "-intel"]
-  rule.mCommand += ["-create", "-output", EXECUTABLE]
+  rule.mCommand += ["x86_64/" + EXECUTABLE, "arm64/" + EXECUTABLE]
+  rule.mCommand += ["-create", "-output", "universal/" + EXECUTABLE]
+  rule.deleteTargetDirectoryOnClean ()
   make.addRule (rule) ;
 #---
-  rule = makefile.Rule ([EXECUTABLE + "-debug"], "Build Universal (debug)")
-  rule.mDependences.append (EXECUTABLE + "-arm64-debug")
-  rule.mDependences.append (EXECUTABLE + "-intel-debug")
+  rule = makefile.Rule (["universal/" + EXECUTABLE + "-debug"], "Build Universal (debug)")
+  rule.mDependences.append ("x86_64/" + EXECUTABLE + "-debug")
+  rule.mDependences.append ("arm64/" + EXECUTABLE + "-debug")
   rule.mCommand += ["lipo"]
-  rule.mCommand += [EXECUTABLE + "-arm64-debug", EXECUTABLE + "-intel-debug"]
-  rule.mCommand += ["-create", "-output", EXECUTABLE + "-debug"]
+  rule.mCommand += ["x86_64/" + EXECUTABLE + "-debug", "arm64/" + EXECUTABLE + "-debug"]
+  rule.mCommand += ["-create", "-output", "universal/" + EXECUTABLE + "-debug"]
+  rule.deleteTargetDirectoryOnClean ()
+  make.addRule (rule) ;
+#---
+  rule = makefile.Rule (["universal/" + EXECUTABLE + "-lto"], "Build LTO Universal")
+  rule.mDependences.append ("x86_64/" + EXECUTABLE + "-lto")
+  rule.mDependences.append ("arm64/" + EXECUTABLE + "-lto")
+  rule.mCommand += ["lipo"]
+  rule.mCommand += ["x86_64/" + EXECUTABLE + "-lto", "arm64/" + EXECUTABLE + "-lto"]
+  rule.mCommand += ["-create", "-output", "universal/" + EXECUTABLE + "-lto"]
+  rule.deleteTargetDirectoryOnClean ()
   make.addRule (rule) ;
 #--- Build
-  make.addGoal ("all", [EXECUTABLE, EXECUTABLE + "-debug"], "Build")
+  make.addGoal ("all", ["universal/" + EXECUTABLE, "universal/" + EXECUTABLE + "-debug"], "Build")
+  make.addGoal ("release", ["universal/" + EXECUTABLE], "Build Universal Release")
+  make.addGoal ("debug", ["universal/" + EXECUTABLE + "-debug"], "Build Universal Debug")
+  make.addGoal ("lto", ["universal/" + EXECUTABLE + "-lto"], "Build LTO Universal")
 #--- Run jobs
   make.runGoal (maxParallelJobs, displayCommands)
 

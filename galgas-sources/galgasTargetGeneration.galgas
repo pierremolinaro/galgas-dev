@@ -15,7 +15,7 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
   template build_verbose_macosx "makefile-macosx/verbose-build.py.galgasTemplate"
   template build_debug_macosx "makefile-macosx/build+debug.py.galgasTemplate"
   template build_release_macosx "makefile-macosx/build+release.py.galgasTemplate"
-#  template build_lto_macosx "makefile-macosx/build+lto.py.galgasTemplate"
+  template build_lto_macosx "makefile-macosx/build+lto.py.galgasTemplate"
 #  template install_macosx "makefile-macosx/install.py.galgasTemplate"
 
   template clean_unix "makefile-unix/clean.py.galgasTemplate" ?@string PROJECT_NAME
@@ -241,7 +241,7 @@ private proc generateGalgas3MakefileMacTarget
   [dir makeDirectory]
   [[filewrapper targetGalgas3GenerationFileWrapper.build_macosx !inProjectName !inBuildDirectoryName] writeToExecutableFileWhenDifferentContents !dir +"/build.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.build_release_macosx] writeToExecutableFileWhenDifferentContents !dir +"/build+release.py" ?*]
-#  [[filewrapper targetGalgas3GenerationFileWrapper.build_lto_macosx] writeToExecutableFileWhenDifferentContents !dir +"/build+lto.py" ?*]
+  [[filewrapper targetGalgas3GenerationFileWrapper.build_lto_macosx] writeToExecutableFileWhenDifferentContents !dir +"/build+lto.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.build_debug_macosx] writeToExecutableFileWhenDifferentContents !dir +"/build+debug.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.build_verbose_macosx] writeToExecutableFileWhenDifferentContents !dir +"/verbose-build.py" ?*]
 #  [[filewrapper targetGalgas3GenerationFileWrapper.install_macosx] writeToExecutableFileWhenDifferentContents !dir +"/install.py" ?*]
