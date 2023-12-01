@@ -33,9 +33,10 @@ let NOTES : [String] = [
 let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
-  "Ajout de l'option -static lors de l'édition de liens des exécutables Windows"
+  "%makefile-unix : reconnaissance de cygwin par '(os.name == \"nt\") or sys.platform.startswith (\"cygwin\")'"
 ]
 let NEWS : [String] = [
+  "Ajout de %makefile-macosx pour compiler l'outil ligne de commande sur MacOS pour X86_64, arm64 et Universal"
 ]
 
 //--------------------------------------------------------------------------------------------------
