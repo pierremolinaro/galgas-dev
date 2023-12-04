@@ -131,6 +131,45 @@ static void testAddingSubtractingC_BigInt (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+//static void testMultiplyingDividingBigInt (void) {
+//  std::cout << "Test multiplying, dividing C_BigInt... " ;
+//  C_Timer timer ;
+//  uint64_t errorCount = 0 ;
+//  for (int i = 0 ; i < 10'000'000 ; i++) {
+//    const C_BigInt dividend = C_BigInt::randomNumber () ;
+//    const C_BigInt divisor  = C_BigInt::randomNumber () ;
+//    C_BigInt quotient ;
+//    C_BigInt remainder ;
+//    dividend.divideBy (divisor, quotient, remainder) ;
+//    C_BigInt verif = divisor ;
+//    verif *= quotient ;
+//    verif += remainder ;
+//    if (dividend != verif) {
+//      errorCount += 1 ;
+//      std::cout << " error\n" ;
+//      verif.printHex     ("Verif    ") ;
+//      dividend.printHex  ("Dividend ") ;
+//      divisor.printHex   ("Divisor  ") ;
+//      quotient.printHex  ("Quotient ") ;
+//      remainder.printHex ("remainder") ;
+////      std::cout << "With old algo\n" ;
+//////      dividend.divideByBigUnsignedOld (divisor, quotient, remainder) ;
+////      quotient.printHex  ("Quotient ") ;
+////      remainder.printHex ("remainder") ;
+//      exit (1) ;
+//    }
+//  }
+//  const uint32_t duration = timer.msFromStart () ;
+//  if (errorCount == 0) {
+//    std::cout << "Ok " << duration << " ms\n" ;
+//  }else{
+//    std::cout << errorCount << " errors (" << duration << " ms)\n" ;
+//    exit (1) ;
+//  }
+//}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 void routine_checkGMP (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   co << "*** Check GMP (option --check-gmp) ***\n" ;
 //  #if COMPILE_FOR_WINDOWS == 0
@@ -139,6 +178,7 @@ void routine_checkGMP (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 //  #endif
 //---
   testAddingSubtractingC_BigInt () ;
+//  testMultiplyingDividingBigInt () ;
   uint32_t errorCount = 0 ;
   {
     co << "Add, subtract test... " ;

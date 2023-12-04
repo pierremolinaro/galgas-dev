@@ -285,6 +285,12 @@ C_String C_BigInt::xString (void) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+void C_BigInt::printHex (const char * inTitle) const {
+  co << inTitle << hexString () << "\n" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Absolute value
 #endif

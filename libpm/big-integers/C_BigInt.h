@@ -91,6 +91,7 @@ class C_BigInt final {
   public: C_String spacedDecimalString (const uint32_t inSeparation) const ;
   public: C_String hexString (void) const ;
   public: C_String xString (void) const ;
+  public: void printHex (const char * inTitle) const ;
 
 //--- Add, subtract
   public: void operator += (const C_BigInt inValue) ;
