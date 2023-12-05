@@ -30,13 +30,6 @@ syntax extension galgas3SyntaxComponentSyntax {
     end
     $end$
     let endOfInstruction = @location.here
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "parse" then
-        error terminator : "the terminator attribute should be '%parse'" fixit { replace "%parse" }
-      end
-    end
     outInstruction = @parseRewindInstruction.new {
       !instructionLocation
       !mParseDoBranchList
@@ -71,13 +64,6 @@ syntax extension galgas4SyntaxComponentSyntax {
     end
     $end$
     let endOfInstruction = @location.here
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "parse" then
-        error terminator : "the terminator attribute should be '%parse'" fixit { replace "%parse" }
-      end
-    end
     outInstruction = @parseRewindInstruction.new {
       !instructionLocation
       !mParseDoBranchList

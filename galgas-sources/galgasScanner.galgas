@@ -2,7 +2,7 @@
 #                                           
 #  GALGAS scanner definition                
 #                                           
-#  Copyright (C) 1997, ..., 2015 Pierre Molinaro.
+#  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
@@ -328,6 +328,15 @@ $%attribute$ ! tokenString  style attributeStyle error message "an attribute (%.
 
 message attributeError : "in an attribute name, a letter or a digit should follow the '%' character"
 
+
+list attributeKeyWordList style attributeStyle error message "the '%%%K' keyword" {
+#  "makefile-macosx" -> $%makefile-macosx$,
+  "translate" -> $%translate$,
+  "once" -> $%once$,
+  "usefull" -> $%usefull$,
+  "generatedInSeparateFile" -> $%generatedInSeparateFile$
+}
+
 rule '%' {
   select
   case isUnicodeLetter :
@@ -338,7 +347,7 @@ rule '%' {
   default
     error attributeError
   end
-  send $%attribute$ 
+  send search tokenString in attributeKeyWordList default $%attribute$
 }
 
 #--------------------------------- Character constant ------------------------------------

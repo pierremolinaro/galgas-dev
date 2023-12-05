@@ -119,7 +119,24 @@ fileprivate let gPopUpData_0_galgasScanner : [[UInt16]] = [
   ],
   [0, // Leading character count to strip
     galgasScanner_1_func, 0,
-    galgasScanner_1__25_attribute, 0,
+    galgasScanner_1__25_once, 0,
+    galgasScanner_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner_1_func, 0,
+    galgasScanner_1__25_once, 0,
+    galgasScanner_1__25_usefull, 0,
+    galgasScanner_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner_1_func, 0,
+    galgasScanner_1__25_usefull, 0,
+    galgasScanner_1_identifier, 0
+  ],
+  [0, // Leading character count to strip
+    galgasScanner_1_func, 0,
+    galgasScanner_1__25_usefull, 0,
+    galgasScanner_1__25_once, 0,
     galgasScanner_1_identifier, 0
   ],
   [0, // Leading character count to strip

@@ -43,11 +43,12 @@ syntax extension galgas3DeclarationsSyntax {
       $:$
       $@type$ ? superClassName indexing classReferencedAsSuperClass
     end
-    var classFeatureList = @lstringlist {}
-    repeat
-    while
-      $%attribute$ ?let @lstring classFeatureName
-      classFeatureList += !classFeatureName
+    let @bool generateInSeparateFile
+    select
+      generateInSeparateFile = false
+    or
+      $%generatedInSeparateFile$
+      generateInSeparateFile = true
     end
     ${$
   #--- Class properties
@@ -65,7 +66,7 @@ syntax extension galgas3DeclarationsSyntax {
       !isReference
       !className
       !superClassName # Empty if no super class
-      !classFeatureList
+      !generateInSeparateFile
       !propertyList
     }
     if isReference then
@@ -77,7 +78,7 @@ syntax extension galgas3DeclarationsSyntax {
            then superClassName
            else .new {!superClassName.string + "-weak" !superClassName.location}
          end
-        !classFeatureList
+        !generateInSeparateFile
         !propertyList
       }
     end
@@ -111,11 +112,12 @@ syntax extension galgas4DeclarationsSyntax {
       $:$
       $@type$ ? superClassName indexing classReferencedAsSuperClass
     end
-    var classFeatureList = @lstringlist {}
-    repeat
-    while
-      $%attribute$ ?let @lstring classFeatureName
-      classFeatureList += !classFeatureName
+    let @bool generateInSeparateFile
+    select
+      generateInSeparateFile = false
+    or
+      $%generatedInSeparateFile$
+      generateInSeparateFile = true
     end
     ${$
   #--- Class properties
@@ -133,7 +135,7 @@ syntax extension galgas4DeclarationsSyntax {
       !true
       !className
       !superClassName # Empty if no super class
-      !classFeatureList
+      !generateInSeparateFile
       !propertyList
     }
   #--- Associated Weak Type
@@ -145,7 +147,7 @@ syntax extension galgas4DeclarationsSyntax {
          then superClassName
          else .new {!superClassName.string + "-weak" !superClassName.location}
        end
-      !classFeatureList
+      !generateInSeparateFile
       !propertyList
     }
   }
@@ -163,7 +165,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   private let @bool mIsReference
   private let @lstring mClassTypeName
   private let @lstring mSuperClassName # Empty if no super class
-  private let @lstringlist mClassFeatureList
+  private let @bool mGenerateInSeparateFile
   private let @propertyInCollectionListAST mPropertyList
 
   #·····················································································································
@@ -213,7 +215,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     var @propertyMap attributeMap = {}
   #--- Handle super class
     let @unifiedTypeMapEntry superClassIndex
-    var @bool generateHeaderInSeparateFile
+    let @bool generateHeaderInSeparateFile
     if self.mSuperClassName.string == "" then
       superClassIndex = @unifiedTypeMapEntry.null
       commonGetterMapForAllTypes (!?ioTypeMap ?getterMap )
@@ -221,12 +223,12 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       instanceMethodMap = {}
       inheritedTypedPropertyList = {}
       attributeMap = {}
-      generateHeaderInSeparateFile = false
-      for (mValue) in self.mClassFeatureList do
-        if mValue.string == "generatedInSeparateFile" then
-          generateHeaderInSeparateFile = true
-        end
-      end
+      generateHeaderInSeparateFile = self.mGenerateInSeparateFile
+#      for (mValue) in self.mClassFeatureList do
+#        if mValue.string == "generatedInSeparateFile" then
+#          generateHeaderInSeparateFile = true
+#        end
+#      end
     else
       [!?ioTypeMap makeEntry !self.mSuperClassName ?superClassIndex]
       [ioTypeMap searchType !self.mSuperClassName ?let superTypeDefinition]
@@ -459,25 +461,25 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     var @typedPropertyList allAttributeList
     if superClassEntry == .null then
       allAttributeList = {}
-      var @bool generatedInSeparateFileFeature = false
-      if [self.mClassFeatureList count] > 0 then
-        for (mValue) in self.mClassFeatureList do
-          if mValue.string == "generatedInSeparateFile" then
-            if generatedInSeparateFileFeature then
-              error mValue:"the 'generatedInSeparateFile' is already named"
-            end
-            generatedInSeparateFileFeature = true
-          else
-            error mValue:"only the 'generatedInSeparateFile' attribute is allowed here"
-          end
-        end
-      end
+#      var @bool generatedInSeparateFileFeature = self.mGenerateInSeparateFile
+#      if [self.mClassFeatureList count] > 0 then
+#        for (mValue) in self.mClassFeatureList do
+#          if mValue.string == "generatedInSeparateFile" then
+#            if generatedInSeparateFileFeature then
+#              error mValue:"the 'generatedInSeparateFile' is already named"
+#            end
+#            generatedInSeparateFileFeature = true
+#          else
+#            error mValue:"only the 'generatedInSeparateFile' attribute is allowed here"
+#          end
+#        end
+#      end
     else
       allAttributeList = [superClassEntry definition].mAllTypedPropertyList
-      if [self.mClassFeatureList count] > 0 then
-        for (mValue) in self.mClassFeatureList do
-          error mValue:"a class that has a super class does not accept any feature"
-        end
+      if self.mGenerateInSeparateFile then
+#        for (mValue) in self.mClassFeatureList do
+          error self.mClassTypeName : "a class that has a super class does not accept any feature"
+#        end
       end
     end
   #------ Enter attributes

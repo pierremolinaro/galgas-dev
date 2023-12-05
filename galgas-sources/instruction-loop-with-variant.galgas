@@ -41,13 +41,6 @@ syntax extension galgas3InstructionsSyntax {
     <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST secondInstructions
     let endOfSecondInstructions = @location.here
     $end$
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "loop" then
-        error terminator : "the terminator attribute should be '%loop'" fixit { replace "%loop" }
-      end
-    end
     let endOfLoopInstruction = @location.here
     outInstruction = @loopInstructionWithVariantAST.new {
       !instructionLocation
@@ -94,13 +87,6 @@ syntax extension galgas4InstructionsSyntax {
     <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST secondInstructions
     let endOfSecondInstructions = @location.here
     $end$
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "loop" then
-        error terminator : "the terminator attribute should be '%loop'" fixit { replace "%loop" }
-      end
-    end
     let endOfLoopInstruction = @location.here
     outInstruction = @loopInstructionWithVariantAST.new {
       !instructionLocation

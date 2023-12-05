@@ -97,13 +97,6 @@ syntax extension galgas3InstructionsSyntax {
     end
     <cast_else_or_default> ?let @semanticInstructionListAST mElseOrDefault
     $end$
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "cast" then
-        error terminator : "the terminator attribute should be '%cast'" fixit { replace "%cast" }
-      end
-    end
     let endOfInstructionLocation = @location.here
     outInstruction = @structuredCastInstructionAST.new {
       !instructionLocation
@@ -118,98 +111,6 @@ syntax extension galgas3InstructionsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#syntax extension galgas4InstructionsSyntax {
-#
-#  #·····················································································································
-#  
-#  rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstructionBranchList {
-#    $case$
-#    var @dynamicTypeComparisonKind kind
-#    select
-#      $==$
-#      kind = .equal
-#    or
-#      $>=$
-#      kind = .inherited
-#    or
-#      $>$
-#      kind = .strictlyInherited
-#    end
-#    $@type$ ?let mTypeName
-#    var @lstring mConstantVarName # Empty string if no constant var
-#    select
-#      $identifier$ ?mConstantVarName
-#    or
-#      mConstantVarName = @lstring.new {!"" !@location.here}
-#    end
-#    $:$
-#    <semantic_instruction_list> ?let @semanticInstructionListAST mCastBranchInstructionList
-#    ioCastInstructionBranchList +=
-#      !mTypeName
-#      !mConstantVarName
-#      !mCastBranchInstructionList
-#      !kind
-#      !@location.here
-#  }
-#  
-#  #·····················································································································
-#  
-#  rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault {
-#    select
-#      outElseOrDefault = {}
-#    or
-#      $else$
-#      <semantic_instruction_list> ? outElseOrDefault
-#    or
-#      $default$
-#      let instructionLocation = @location.here
-#      $error$
-#      <expression> ?let @semanticExpressionAST errorLocationExpression
-#      outElseOrDefault = {}
-#      outElseOrDefault += !@errorInstructionAST.new {
-#        !instructionLocation
-#        !errorLocationExpression
-#        !@literalStringExpressionAST.new {!instructionLocation!{!"cast instruction run-time error"}}
-#        !{}
-#        !{}
-#      }
-#    end
-#  }
-#  
-#  #·····················································································································
-#  
-#  rule <semantic_instruction>
-#    !@semanticInstructionAST outInstruction {
-#    $cast$
-#    let instructionLocation = @location.here
-#    <expression> ?let @semanticExpressionAST expression
-#    var mCastInstructionBranchList = @castInstructionBranchListAST {}
-#    repeat
-#      <cast_instruction_branch> !? mCastInstructionBranchList
-#    while
-#    end
-#    <cast_else_or_default> ?let @semanticInstructionListAST mElseOrDefault
-#    $end$
-#    select
-#    or
-#      $%attribute$ ?let @lstring terminator
-#      if terminator.string != "cast" then
-#        error terminator : "the terminator attribute should be '%cast'" fixit { replace "%cast" }
-#      end
-#    end
-#    let endOfInstructionLocation = @location.here
-#    outInstruction = @structuredCastInstructionAST.new {
-#      !instructionLocation
-#      !expression
-#      !mCastInstructionBranchList
-#      !mElseOrDefault
-#      !endOfInstructionLocation}
-#  }
-#
-#  #·····················································································································
-#
-#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT

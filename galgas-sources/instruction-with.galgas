@@ -55,13 +55,6 @@ syntax extension galgas3InstructionsSyntax {
     $in$
     <with_instruction_core> !instructionLocation !keyExpression !endOfKeyExpression !withPrefix ?outInstruction
     $end$
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "with" then
-        error terminator : "the terminator attribute should be '%with'" fixit { replace "%with" }
-      end
-    end
    }
 
   #·····················································································································
@@ -219,13 +212,6 @@ syntax extension galgas4InstructionsSyntax {
     $in$
     <with_instruction_core> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !instructionLocation !keyExpression !endOfKeyExpression !withPrefix ?outInstruction
     $end$
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "with" then
-        error terminator : "the terminator attribute should be '%with'" fixit { replace "%with" }
-      end
-    end
    }
 
   #·····················································································································

@@ -1867,8 +1867,6 @@ class GALGAS_mapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
   public: class GALGAS_bool readProperty_mHasInsertOrReplaceModifier (void) const ;
 
-  public: class GALGAS_bool readProperty_mActivateSuggestions (void) const ;
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1887,8 +1885,7 @@ class GALGAS_mapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                                     const class GALGAS_insertMethodListAST & inOperand4,
                                                                     const class GALGAS_mapSearchMethodListAST & inOperand5,
                                                                     const class GALGAS_mapRemoveMethodListAST & inOperand6,
-                                                                    const class GALGAS_bool & inOperand7,
-                                                                    const class GALGAS_bool & inOperand8
+                                                                    const class GALGAS_bool & inOperand7
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1949,7 +1946,6 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: GALGAS_mapSearchMethodListAST mProperty_mSearchMethodList ;
   public: GALGAS_mapRemoveMethodListAST mProperty_mRemoveMethodList ;
   public: GALGAS_bool mProperty_mHasInsertOrReplaceModifier ;
-  public: GALGAS_bool mProperty_mActivateSuggestions ;
 
 //--- Constructor
   public: cPtr_mapTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
@@ -1959,8 +1955,7 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                      const GALGAS_insertMethodListAST & in_mInsertMethodList,
                                      const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
                                      const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
-                                     const GALGAS_bool & in_mHasInsertOrReplaceModifier,
-                                     const GALGAS_bool & in_mActivateSuggestions
+                                     const GALGAS_bool & in_mHasInsertOrReplaceModifier
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

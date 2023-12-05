@@ -82,8 +82,8 @@ static const char * gLexicalMessage_galgasScanner_unassignedUnicodeValue = "this
 
 C_String C_Lexique_galgasScanner::getMessageForTerminal (const int32_t inTerminalIndex) const {
   C_String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 157)) {
-    static const char * syntaxErrorMessageArray [157] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 161)) {
+    static const char * syntaxErrorMessageArray [161] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a big integer number",
@@ -196,6 +196,10 @@ C_String C_Lexique_galgasScanner::getMessageForTerminal (const int32_t inTermina
         "the 'warning' keyword",
         "the 'while' keyword",
         "the 'with' keyword",
+        "the '%%%translate' keyword",
+        "the '%%%once' keyword",
+        "the '%%%usefull' keyword",
+        "the '%%%generatedInSeparateFile' keyword",
         "the '*' delimitor",
         "the ',' delimitor",
         "the '+' delimitor",
@@ -868,6 +872,34 @@ static const utf32 kUnicodeString_galgasScanner_func [] = {
   TO_UNICODE (0)
 } ;
 
+//--- Unicode string for '$generatedInSeparateFile$'
+static const utf32 kUnicodeString_galgasScanner_generatedInSeparateFile [] = {
+  TO_UNICODE ('g'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('I'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('S'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('F'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
+} ;
+
 //--- Unicode string for '$getter$'
 static const utf32 kUnicodeString_galgasScanner_getter [] = {
   TO_UNICODE ('g'),
@@ -1086,6 +1118,15 @@ static const utf32 kUnicodeString_galgasScanner_not [] = {
 static const utf32 kUnicodeString_galgasScanner_on [] = {
   TO_UNICODE ('o'),
   TO_UNICODE ('n'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$once$'
+static const utf32 kUnicodeString_galgasScanner_once [] = {
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('e'),
   TO_UNICODE (0)
 } ;
 
@@ -1417,6 +1458,20 @@ static const utf32 kUnicodeString_galgasScanner_then [] = {
   TO_UNICODE (0)
 } ;
 
+//--- Unicode string for '$translate$'
+static const utf32 kUnicodeString_galgasScanner_translate [] = {
+  TO_UNICODE ('t'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
+} ;
+
 //--- Unicode string for '$true$'
 static const utf32 kUnicodeString_galgasScanner_true [] = {
   TO_UNICODE ('t'),
@@ -1448,6 +1503,18 @@ static const utf32 kUnicodeString_galgasScanner_unused [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
   TO_UNICODE ('d'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$usefull$'
+static const utf32 kUnicodeString_galgasScanner_usefull [] = {
+  TO_UNICODE ('u'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('l'),
   TO_UNICODE (0)
 } ;
 
@@ -1535,6 +1602,23 @@ static const utf32 kUnicodeString_galgasScanner__7E_ [] = {
   TO_UNICODE ('~'),
   TO_UNICODE (0)
 } ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//             Key words table 'attributeKeyWordList'      
+//----------------------------------------------------------------------------------------------------------------------
+
+static const int32_t ktable_size_galgasScanner_attributeKeyWordList = 4 ;
+
+static const C_unicode_lexique_table_entry ktable_for_galgasScanner_attributeKeyWordList [ktable_size_galgasScanner_attributeKeyWordList] = {
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_once, 4, C_Lexique_galgasScanner::kToken__25_once),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_usefull, 7, C_Lexique_galgasScanner::kToken__25_usefull),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_translate, 9, C_Lexique_galgasScanner::kToken__25_translate),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_generatedInSeparateFile, 23, C_Lexique_galgasScanner::kToken__25_generatedInSeparateFile)
+} ;
+
+int32_t C_Lexique_galgasScanner::search_into_attributeKeyWordList (const C_String & inSearchedString) {
+  return searchInList (inSearchedString, ktable_for_galgasScanner_attributeKeyWordList, ktable_size_galgasScanner_attributeKeyWordList) ;
+}
 
 //----------------------------------------------------------------------------------------------------------------------
 //             Key words table 'galgasDelimitorsList'      
@@ -2300,6 +2384,26 @@ C_String C_Lexique_galgasScanner::getCurrentTokenString (const cToken * inTokenP
       s.appendCString ("with") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
+    case kToken__25_translate:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("%translate") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken__25_once:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("%once") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken__25_usefull:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("%usefull") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken__25_generatedInSeparateFile:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("%generatedInSeparateFile") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
     case kToken__2A_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("*") ;
@@ -2698,7 +2802,12 @@ void C_Lexique_galgasScanner::internalParseLexicalToken (cTokenFor_galgasScanner
       }else{
         lexicalError (gLexicalMessage_galgasScanner_attributeError COMMA_LINE_AND_SOURCE_FILE) ;
       }
-      token.mTokenCode = kToken__25_attribute ;
+      if (token.mTokenCode == -1) {
+        token.mTokenCode = search_into_attributeKeyWordList (token.mLexicalAttribute_tokenString) ;
+      }
+      if (token.mTokenCode == -1) {
+        token.mTokenCode = kToken__25_attribute ;
+      }
       enterToken (token) ;
     }else if (testForInputUTF32Char (TO_UNICODE ('\''))) {
       if (testForInputUTF32Char (TO_UNICODE ('\\'))) {
@@ -3608,6 +3717,10 @@ GALGAS_stringlist C_Lexique_galgasScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("warning") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("while") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("with") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%translate") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%once") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%usefull") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%generatedInSeparateFile") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("*") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (",") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("+") COMMA_THERE) ;
@@ -3658,6 +3771,7 @@ GALGAS_stringlist C_Lexique_galgasScanner::symbols (LOCATION_ARGS) {
 //----------------------------------------------------------------------------------------------------------------------
 
 static void getKeywordLists_galgasScanner (TC_UniqueArray <C_String> & ioList) {
+  ioList.appendObject ("galgasScanner:attributeKeyWordList") ;
   ioList.appendObject ("galgasScanner:galgasDelimitorsList") ;
   ioList.appendObject ("galgasScanner:galgasKeyWordList") ;
 }
@@ -3667,6 +3781,14 @@ static void getKeywordLists_galgasScanner (TC_UniqueArray <C_String> & ioList) {
 static void getKeywordsForIdentifier_galgasScanner (const C_String & inIdentifier,
                                                     bool & ioFound,
                                                     TC_UniqueArray <C_String> & ioList) {
+  if (inIdentifier == "galgasScanner:attributeKeyWordList") {
+    ioFound = true ;
+    ioList.appendObject ("once") ;
+    ioList.appendObject ("usefull") ;
+    ioList.appendObject ("translate") ;
+    ioList.appendObject ("generatedInSeparateFile") ;
+    ioList.sortArrayUsingCompareMethod() ;
+  }
   if (inIdentifier == "galgasScanner:galgasDelimitorsList") {
     ioFound = true ;
     ioList.appendObject ("&") ;
@@ -3823,7 +3945,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner, getKeywordsForIdentifie
 //----------------------------------------------------------------------------------------------------------------------
 
 uint32_t C_Lexique_galgasScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [157] = {0,
+  static const uint32_t kTerminalSymbolStyles [161] = {0,
     0 /* galgasScanner_1_identifier */,
     8 /* galgasScanner_1_double_2E_xxx */,
     7 /* galgasScanner_1_literalInt */,
@@ -3936,6 +4058,10 @@ uint32_t C_Lexique_galgasScanner::styleIndexForTerminal (const int32_t inTermina
     1 /* galgasScanner_1_warning */,
     1 /* galgasScanner_1_while */,
     1 /* galgasScanner_1_with */,
+    12 /* galgasScanner_1__25_translate */,
+    12 /* galgasScanner_1__25_once */,
+    12 /* galgasScanner_1__25_usefull */,
+    12 /* galgasScanner_1__25_generatedInSeparateFile */,
     2 /* galgasScanner_1__2A_ */,
     2 /* galgasScanner_1__2C_ */,
     2 /* galgasScanner_1__2B_ */,
@@ -16280,117 +16406,6 @@ GALGAS_templateInstructionGotoColumnLocationForGeneration GALGAS_templateInstruc
       result = *p ;
     }else{
       inCompiler->castError ("templateInstructionGotoColumnLocationForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak::objectCompare (const GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = kOperandEqual ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak::GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak (void) :
-GALGAS_templateInstructionForGeneration_2D_weak () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak & GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak::operator = (const GALGAS_templateInstructionGotoColumnLocationForGeneration & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak::GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak (const GALGAS_templateInstructionGotoColumnLocationForGeneration & inSource) :
-GALGAS_templateInstructionForGeneration_2D_weak (inSource) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
-  GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionGotoColumnLocationForGeneration GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak::bang_templateInstructionGotoColumnLocationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_templateInstructionGotoColumnLocationForGeneration result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_templateInstructionGotoColumnLocationForGeneration) ;
-      result = GALGAS_templateInstructionGotoColumnLocationForGeneration ((cPtr_templateInstructionGotoColumnLocationForGeneration *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//     @templateInstructionGotoColumnLocationForGeneration-weak generic code implementation
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak ("templateInstructionGotoColumnLocationForGeneration-weak",
-                                                                                   & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2D_weak) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                                                    C_Compiler * inCompiler
-                                                                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak result ;
-  const GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak * p = (const GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_templateInstructionGotoColumnLocationForGeneration_2D_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateInstructionGotoColumnLocationForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

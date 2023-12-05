@@ -5,7 +5,6 @@
 refclass @dictDeclarationAST : @semanticDeclarationAST {
   private let @lstring mDictTypeName
   private let @lstring mKeyTypeName
-  private let @lstringlist mAttributeList
   private let @propertyInCollectionListAST mPropertyList
 }
 
@@ -30,13 +29,6 @@ syntax extension galgas3DeclarationsSyntax {
   #--- Dict key type name
     $:$
     $@type$ ?let keyTypeName
-  #--- Map attributes
-    var @lstringlist mapAttributeList = {}
-    repeat
-    while
-      $%attribute$ ?let attribute
-      mapAttributeList += !attribute
-    end
   #--- Map properties
     ${$
     var propertyList = @propertyInCollectionListAST {}
@@ -51,7 +43,6 @@ syntax extension galgas3DeclarationsSyntax {
       !false # Is not predefined
       !mDictTypeName
       !keyTypeName
-      !mapAttributeList
       !propertyList
     }
   }
@@ -74,13 +65,6 @@ syntax extension galgas4DeclarationsSyntax {
   #--- Dict key type name
     $:$
     $@type$ ?let keyTypeName
-  #--- Map attributes
-    var @lstringlist mapAttributeList = {}
-    repeat
-    while
-      $%attribute$ ?let attribute
-      mapAttributeList += !attribute
-    end
   #--- Map properties
     ${$
     var propertyList = @propertyInCollectionListAST {}
@@ -95,7 +79,6 @@ syntax extension galgas4DeclarationsSyntax {
       !false # Is not predefined
       !mDictTypeName
       !keyTypeName
-      !mapAttributeList
       !propertyList
     }
   }
@@ -156,18 +139,6 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap makeEntryFromString !self.mKeyTypeName ?let keyTypeIndex]
 #--- Enumeration description
   var enumerationDescriptor = @enumerationDescriptorList.listWithValue {!keyTypeIndex !"key"}
-#--- Attributes
-  var @bool usesSelectorsInInsertAndSearch = false
-  for (s) in self.mAttributeList do
-    if s.string == "selectors" then
-      if usesSelectorsInInsertAndSearch then
-        error s : "duplicated attribute"
-      end
-      usesSelectorsInInsertAndSearch = true
-    else
-      error s : "unknown attribute"
-    end
-  end
 #---
   var @constructorMap constructorMap = {}
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
@@ -204,20 +175,20 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = {}
   argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !keyTypeIndex !"key"
   insertMethodFormalArgumentList +=
-    ![if usesSelectorsInInsertAndSearch then "key" else "" end nowhere]
+    !["" nowhere]
     !keyTypeIndex
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inKey"
   var @formalParameterSignature removeMethodFormalArgumentList = {}
   removeMethodFormalArgumentList +=
-    ![if usesSelectorsInInsertAndSearch then "key" else "" end nowhere]
+    !["" nowhere]
     !keyTypeIndex
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inKey"
   var @optionalMethodSignature optionalMethodSignature = {}
   optionalMethodSignature +=
     !true
-    ![if usesSelectorsInInsertAndSearch then "key" else "" end nowhere]
+    !["" nowhere]
     !keyTypeIndex
     !"inKey"
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapEntryList {}
@@ -230,18 +201,18 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     insertMethodFormalArgumentList +=
-      !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
+      !["" nowhere]
       !attributeTypeIndex
       !@formalArgumentPassingModeAST.argumentConstantIn
       !mPropertyName.string
     removeMethodFormalArgumentList +=
-      !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
+      !["" nowhere]
       !attributeTypeIndex
       !@formalArgumentPassingModeAST.argumentOut
       !mPropertyName.string
     optionalMethodSignature +=
       !false
-      !if usesSelectorsInInsertAndSearch || hasSelector then mPropertyName else ["" nowhere] end
+      !["" nowhere]
       !attributeTypeIndex
       !mPropertyName.string
   end

@@ -1295,20 +1295,6 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
 
   public: virtual int32_t select_galgas_33_InstructionsSyntax_80 (C_Lexique_galgasScanner *) ;
 
-  public: virtual int32_t select_galgas_33_InstructionsSyntax_81 (C_Lexique_galgasScanner *) ;
-
-  public: virtual int32_t select_galgas_33_InstructionsSyntax_82 (C_Lexique_galgasScanner *) ;
-
-  public: virtual int32_t select_galgas_33_InstructionsSyntax_83 (C_Lexique_galgasScanner *) ;
-
-  public: virtual int32_t select_galgas_33_InstructionsSyntax_84 (C_Lexique_galgasScanner *) ;
-
-  public: virtual int32_t select_galgas_33_InstructionsSyntax_85 (C_Lexique_galgasScanner *) ;
-
-  public: virtual int32_t select_galgas_33_InstructionsSyntax_86 (C_Lexique_galgasScanner *) ;
-
-  public: virtual int32_t select_galgas_33_InstructionsSyntax_87 (C_Lexique_galgasScanner *) ;
-
   public: virtual int32_t select_galgas_33_DeclarationsSyntax_0 (C_Lexique_galgasScanner *) ;
 
   public: virtual int32_t select_galgas_33_DeclarationsSyntax_1 (C_Lexique_galgasScanner *) ;
@@ -1410,10 +1396,6 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public: virtual int32_t select_galgas_33_DeclarationsSyntax_49 (C_Lexique_galgasScanner *) ;
 
   public: virtual int32_t select_galgas_33_DeclarationsSyntax_50 (C_Lexique_galgasScanner *) ;
-
-  public: virtual int32_t select_galgas_33_DeclarationsSyntax_51 (C_Lexique_galgasScanner *) ;
-
-  public: virtual int32_t select_galgas_33_DeclarationsSyntax_52 (C_Lexique_galgasScanner *) ;
 
   public: virtual int32_t select_galgas_33_LexiqueComponentSyntax_0 (C_Lexique_galgasScanner *) ;
 
@@ -1528,16 +1510,6 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public: virtual int32_t select_galgas_33_SyntaxComponentSyntax_17 (C_Lexique_galgasScanner *) ;
 
   public: virtual int32_t select_galgas_33_SyntaxComponentSyntax_18 (C_Lexique_galgasScanner *) ;
-
-  public: virtual int32_t select_galgas_33_SyntaxComponentSyntax_19 (C_Lexique_galgasScanner *) ;
-
-  public: virtual int32_t select_galgas_33_SyntaxComponentSyntax_20 (C_Lexique_galgasScanner *) ;
-
-  public: virtual int32_t select_galgas_33_SyntaxComponentSyntax_21 (C_Lexique_galgasScanner *) ;
-
-  public: virtual int32_t select_galgas_33_SyntaxComponentSyntax_22 (C_Lexique_galgasScanner *) ;
-
-  public: virtual int32_t select_galgas_33_SyntaxComponentSyntax_23 (C_Lexique_galgasScanner *) ;
 
   public: virtual int32_t select_galgas_33_GrammarComponentSyntax_0 (C_Lexique_galgasScanner *) ;
 

@@ -194,8 +194,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
                                                                                         const class GALGAS_insertMethodListAST & in_INSERT_5F_METHOD_5F_LIST,
                                                                                         const class GALGAS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST,
                                                                                         const class GALGAS_mapRemoveMethodListAST & in_REMOVE_5F_METHOD_5F_LIST,
-                                                                                        const class GALGAS_bool & in_HAS_5F_INSERT_5F_OR_5F_REPLACE,
-                                                                                        const class GALGAS_bool & in_ACTIVATE_5F_REMPLACEMENT_5F_SUGGESTIONS
+                                                                                        const class GALGAS_bool & in_HAS_5F_INSERT_5F_OR_5F_REPLACE
                                                                                         COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1291,4 +1290,35 @@ void routine_generateFunction (const class GALGAS_string constinArgument0,
                                class GALGAS_string & outArgument9,
                                class C_Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'methodNameForUsefulEntitiesGraph'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_lstring function_methodNameForUsefulEntitiesGraph (const class GALGAS_string & constinArgument0,
+                                                                const class GALGAS_lstring & constinArgument1,
+                                                                class C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'analyzeRoutineBody'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_analyzeRoutineBody (const class GALGAS_lstring constinArgument0,
+                                 class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                 const class GALGAS_analysisContext constinArgument2,
+                                 class GALGAS_unifiedTypeMap & ioArgument3,
+                                 const class GALGAS_formalParameterListAST constinArgument4,
+                                 const class GALGAS_typedPropertyList constinArgument5,
+                                 const class GALGAS_typedPropertyList constinArgument6,
+                                 const class GALGAS_semanticInstructionListAST constinArgument7,
+                                 const class GALGAS_location constinArgument8,
+                                 class GALGAS_semanticInstructionListForGeneration & outArgument9,
+                                 class GALGAS_formalParameterListForGeneration & outArgument10,
+                                 class C_Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
 

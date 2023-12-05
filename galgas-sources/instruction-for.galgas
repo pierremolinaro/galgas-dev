@@ -254,13 +254,6 @@ syntax extension galgas3InstructionsSyntax {
     end
     let endof_after_branch = @location.here
     $end$
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "for" then
-        error terminator : "the terminator attribute should be '%for'" fixit { replace "%for" }
-      end
-    end
     let endof_foreach_instruction = @location.here
     outInstruction = @forInstructionAST.new {
       !instructionLocation
@@ -463,13 +456,6 @@ syntax extension galgas4InstructionsSyntax {
     end
     let endof_after_branch = @location.here
     $end$
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "for" then
-        error terminator : "the terminator attribute should be '%for'" fixit { replace "%for" }
-      end
-    end
     let endof_foreach_instruction = @location.here
     outInstruction = @forInstructionAST.new {
       !instructionLocation

@@ -5229,7 +5229,7 @@ GALGAS_boolsetTypeForGeneration_2D_weak GALGAS_boolsetTypeForGeneration_2D_weak:
     mProperty_mIsReference.printNonNullClassInstanceProperties ("mIsReference") ;
     mProperty_mClassTypeName.printNonNullClassInstanceProperties ("mClassTypeName") ;
     mProperty_mSuperClassName.printNonNullClassInstanceProperties ("mSuperClassName") ;
-    mProperty_mClassFeatureList.printNonNullClassInstanceProperties ("mClassFeatureList") ;
+    mProperty_mGenerateInSeparateFile.printNonNullClassInstanceProperties ("mGenerateInSeparateFile") ;
     mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
   }
 #endif
@@ -5256,7 +5256,7 @@ typeComparisonResult cPtr_classDeclarationAST::dynamicObjectCompare (const acPtr
     result = mProperty_mSuperClassName.objectCompare (p->mProperty_mSuperClassName) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mClassFeatureList.objectCompare (p->mProperty_mClassFeatureList) ;
+    result = mProperty_mGenerateInSeparateFile.objectCompare (p->mProperty_mGenerateInSeparateFile) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mPropertyList.objectCompare (p->mProperty_mPropertyList) ;
@@ -5297,7 +5297,7 @@ GALGAS_classDeclarationAST GALGAS_classDeclarationAST::constructor_default (LOCA
                                                       GALGAS_bool::constructor_default (HERE),
                                                       GALGAS_lstring::constructor_default (HERE),
                                                       GALGAS_lstring::constructor_default (HERE),
-                                                      GALGAS_lstringlist::constructor_emptyList (HERE),
+                                                      GALGAS_bool::constructor_default (HERE),
                                                       GALGAS_propertyInCollectionListAST::constructor_emptyList (HERE)
                                                       COMMA_THERE) ;
 }
@@ -5315,12 +5315,12 @@ GALGAS_classDeclarationAST GALGAS_classDeclarationAST::constructor_new (const GA
                                                                         const GALGAS_bool & inAttribute_mIsReference,
                                                                         const GALGAS_lstring & inAttribute_mClassTypeName,
                                                                         const GALGAS_lstring & inAttribute_mSuperClassName,
-                                                                        const GALGAS_lstringlist & inAttribute_mClassFeatureList,
+                                                                        const GALGAS_bool & inAttribute_mGenerateInSeparateFile,
                                                                         const GALGAS_propertyInCollectionListAST & inAttribute_mPropertyList
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_classDeclarationAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mIsAbstract.isValid () && inAttribute_mIsReference.isValid () && inAttribute_mClassTypeName.isValid () && inAttribute_mSuperClassName.isValid () && inAttribute_mClassFeatureList.isValid () && inAttribute_mPropertyList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_classDeclarationAST (inAttribute_mIsPredefined, inAttribute_mIsAbstract, inAttribute_mIsReference, inAttribute_mClassTypeName, inAttribute_mSuperClassName, inAttribute_mClassFeatureList, inAttribute_mPropertyList COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mIsAbstract.isValid () && inAttribute_mIsReference.isValid () && inAttribute_mClassTypeName.isValid () && inAttribute_mSuperClassName.isValid () && inAttribute_mGenerateInSeparateFile.isValid () && inAttribute_mPropertyList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_classDeclarationAST (inAttribute_mIsPredefined, inAttribute_mIsAbstract, inAttribute_mIsReference, inAttribute_mClassTypeName, inAttribute_mSuperClassName, inAttribute_mGenerateInSeparateFile, inAttribute_mPropertyList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -5375,13 +5375,13 @@ GALGAS_lstring GALGAS_classDeclarationAST::readProperty_mSuperClassName (void) c
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist GALGAS_classDeclarationAST::readProperty_mClassFeatureList (void) const {
+GALGAS_bool GALGAS_classDeclarationAST::readProperty_mGenerateInSeparateFile (void) const {
   if (nullptr == mObjectPtr) {
-    return GALGAS_lstringlist () ;
+    return GALGAS_bool () ;
   }else{
     cPtr_classDeclarationAST * p = (cPtr_classDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_classDeclarationAST) ;
-    return p->mProperty_mClassFeatureList ;
+    return p->mProperty_mGenerateInSeparateFile ;
   }
 }
 
@@ -5406,7 +5406,7 @@ cPtr_classDeclarationAST::cPtr_classDeclarationAST (const GALGAS_bool & in_mIsPr
                                                     const GALGAS_bool & in_mIsReference,
                                                     const GALGAS_lstring & in_mClassTypeName,
                                                     const GALGAS_lstring & in_mSuperClassName,
-                                                    const GALGAS_lstringlist & in_mClassFeatureList,
+                                                    const GALGAS_bool & in_mGenerateInSeparateFile,
                                                     const GALGAS_propertyInCollectionListAST & in_mPropertyList
                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
@@ -5414,7 +5414,7 @@ mProperty_mIsAbstract (in_mIsAbstract),
 mProperty_mIsReference (in_mIsReference),
 mProperty_mClassTypeName (in_mClassTypeName),
 mProperty_mSuperClassName (in_mSuperClassName),
-mProperty_mClassFeatureList (in_mClassFeatureList),
+mProperty_mGenerateInSeparateFile (in_mGenerateInSeparateFile),
 mProperty_mPropertyList (in_mPropertyList) {
 }
 
@@ -5437,7 +5437,7 @@ void cPtr_classDeclarationAST::description (C_String & ioString,
   ioString << ", " ;
   mProperty_mSuperClassName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mClassFeatureList.description (ioString, inIndentation+1) ;
+  mProperty_mGenerateInSeparateFile.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mPropertyList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -5447,7 +5447,7 @@ void cPtr_classDeclarationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_classDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_classDeclarationAST (mProperty_mIsPredefined, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mClassTypeName, mProperty_mSuperClassName, mProperty_mClassFeatureList, mProperty_mPropertyList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_classDeclarationAST (mProperty_mIsPredefined, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mClassTypeName, mProperty_mSuperClassName, mProperty_mGenerateInSeparateFile, mProperty_mPropertyList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -5880,7 +5880,7 @@ GALGAS_classTypeForGeneration_2D_weak GALGAS_classTypeForGeneration_2D_weak::ext
     mProperty_mClassTypeName.printNonNullClassInstanceProperties ("mClassTypeName") ;
     mProperty_mWeakReferenceTypeName.printNonNullClassInstanceProperties ("mWeakReferenceTypeName") ;
     mProperty_mSuperWeakReferenceTypeName.printNonNullClassInstanceProperties ("mSuperWeakReferenceTypeName") ;
-    mProperty_mClassFeatureList.printNonNullClassInstanceProperties ("mClassFeatureList") ;
+    mProperty_mGenerateInSeparateFile.printNonNullClassInstanceProperties ("mGenerateInSeparateFile") ;
     mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
   }
 #endif
@@ -5904,7 +5904,7 @@ typeComparisonResult cPtr_weakReferenceDeclarationAST::dynamicObjectCompare (con
     result = mProperty_mSuperWeakReferenceTypeName.objectCompare (p->mProperty_mSuperWeakReferenceTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mClassFeatureList.objectCompare (p->mProperty_mClassFeatureList) ;
+    result = mProperty_mGenerateInSeparateFile.objectCompare (p->mProperty_mGenerateInSeparateFile) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mPropertyList.objectCompare (p->mProperty_mPropertyList) ;
@@ -5944,7 +5944,7 @@ GALGAS_weakReferenceDeclarationAST GALGAS_weakReferenceDeclarationAST::construct
                                                               GALGAS_lstring::constructor_default (HERE),
                                                               GALGAS_lstring::constructor_default (HERE),
                                                               GALGAS_lstring::constructor_default (HERE),
-                                                              GALGAS_lstringlist::constructor_emptyList (HERE),
+                                                              GALGAS_bool::constructor_default (HERE),
                                                               GALGAS_propertyInCollectionListAST::constructor_emptyList (HERE)
                                                               COMMA_THERE) ;
 }
@@ -5961,12 +5961,12 @@ GALGAS_weakReferenceDeclarationAST GALGAS_weakReferenceDeclarationAST::construct
                                                                                         const GALGAS_lstring & inAttribute_mClassTypeName,
                                                                                         const GALGAS_lstring & inAttribute_mWeakReferenceTypeName,
                                                                                         const GALGAS_lstring & inAttribute_mSuperWeakReferenceTypeName,
-                                                                                        const GALGAS_lstringlist & inAttribute_mClassFeatureList,
+                                                                                        const GALGAS_bool & inAttribute_mGenerateInSeparateFile,
                                                                                         const GALGAS_propertyInCollectionListAST & inAttribute_mPropertyList
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_weakReferenceDeclarationAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mClassTypeName.isValid () && inAttribute_mWeakReferenceTypeName.isValid () && inAttribute_mSuperWeakReferenceTypeName.isValid () && inAttribute_mClassFeatureList.isValid () && inAttribute_mPropertyList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_weakReferenceDeclarationAST (inAttribute_mIsPredefined, inAttribute_mClassTypeName, inAttribute_mWeakReferenceTypeName, inAttribute_mSuperWeakReferenceTypeName, inAttribute_mClassFeatureList, inAttribute_mPropertyList COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mClassTypeName.isValid () && inAttribute_mWeakReferenceTypeName.isValid () && inAttribute_mSuperWeakReferenceTypeName.isValid () && inAttribute_mGenerateInSeparateFile.isValid () && inAttribute_mPropertyList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_weakReferenceDeclarationAST (inAttribute_mIsPredefined, inAttribute_mClassTypeName, inAttribute_mWeakReferenceTypeName, inAttribute_mSuperWeakReferenceTypeName, inAttribute_mGenerateInSeparateFile, inAttribute_mPropertyList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -6009,13 +6009,13 @@ GALGAS_lstring GALGAS_weakReferenceDeclarationAST::readProperty_mSuperWeakRefere
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist GALGAS_weakReferenceDeclarationAST::readProperty_mClassFeatureList (void) const {
+GALGAS_bool GALGAS_weakReferenceDeclarationAST::readProperty_mGenerateInSeparateFile (void) const {
   if (nullptr == mObjectPtr) {
-    return GALGAS_lstringlist () ;
+    return GALGAS_bool () ;
   }else{
     cPtr_weakReferenceDeclarationAST * p = (cPtr_weakReferenceDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_weakReferenceDeclarationAST) ;
-    return p->mProperty_mClassFeatureList ;
+    return p->mProperty_mGenerateInSeparateFile ;
   }
 }
 
@@ -6039,14 +6039,14 @@ cPtr_weakReferenceDeclarationAST::cPtr_weakReferenceDeclarationAST (const GALGAS
                                                                     const GALGAS_lstring & in_mClassTypeName,
                                                                     const GALGAS_lstring & in_mWeakReferenceTypeName,
                                                                     const GALGAS_lstring & in_mSuperWeakReferenceTypeName,
-                                                                    const GALGAS_lstringlist & in_mClassFeatureList,
+                                                                    const GALGAS_bool & in_mGenerateInSeparateFile,
                                                                     const GALGAS_propertyInCollectionListAST & in_mPropertyList
                                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mProperty_mClassTypeName (in_mClassTypeName),
 mProperty_mWeakReferenceTypeName (in_mWeakReferenceTypeName),
 mProperty_mSuperWeakReferenceTypeName (in_mSuperWeakReferenceTypeName),
-mProperty_mClassFeatureList (in_mClassFeatureList),
+mProperty_mGenerateInSeparateFile (in_mGenerateInSeparateFile),
 mProperty_mPropertyList (in_mPropertyList) {
 }
 
@@ -6067,7 +6067,7 @@ void cPtr_weakReferenceDeclarationAST::description (C_String & ioString,
   ioString << ", " ;
   mProperty_mSuperWeakReferenceTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mClassFeatureList.description (ioString, inIndentation+1) ;
+  mProperty_mGenerateInSeparateFile.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mPropertyList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -6077,7 +6077,7 @@ void cPtr_weakReferenceDeclarationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_weakReferenceDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_weakReferenceDeclarationAST (mProperty_mIsPredefined, mProperty_mClassTypeName, mProperty_mWeakReferenceTypeName, mProperty_mSuperWeakReferenceTypeName, mProperty_mClassFeatureList, mProperty_mPropertyList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_weakReferenceDeclarationAST (mProperty_mIsPredefined, mProperty_mClassTypeName, mProperty_mWeakReferenceTypeName, mProperty_mSuperWeakReferenceTypeName, mProperty_mGenerateInSeparateFile, mProperty_mPropertyList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -9084,7 +9084,6 @@ GALGAS_listmapTypeForGeneration_2D_weak GALGAS_listmapTypeForGeneration_2D_weak:
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
     mProperty_mDictTypeName.printNonNullClassInstanceProperties ("mDictTypeName") ;
     mProperty_mKeyTypeName.printNonNullClassInstanceProperties ("mKeyTypeName") ;
-    mProperty_mAttributeList.printNonNullClassInstanceProperties ("mAttributeList") ;
     mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
   }
 #endif
@@ -9103,9 +9102,6 @@ typeComparisonResult cPtr_dictDeclarationAST::dynamicObjectCompare (const acPtr_
   }
   if (kOperandEqual == result) {
     result = mProperty_mKeyTypeName.objectCompare (p->mProperty_mKeyTypeName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mAttributeList.objectCompare (p->mProperty_mAttributeList) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mPropertyList.objectCompare (p->mProperty_mPropertyList) ;
@@ -9144,7 +9140,6 @@ GALGAS_dictDeclarationAST GALGAS_dictDeclarationAST::constructor_default (LOCATI
   return GALGAS_dictDeclarationAST::constructor_new (GALGAS_bool::constructor_default (HERE),
                                                      GALGAS_lstring::constructor_default (HERE),
                                                      GALGAS_lstring::constructor_default (HERE),
-                                                     GALGAS_lstringlist::constructor_emptyList (HERE),
                                                      GALGAS_propertyInCollectionListAST::constructor_emptyList (HERE)
                                                      COMMA_THERE) ;
 }
@@ -9160,12 +9155,11 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 GALGAS_dictDeclarationAST GALGAS_dictDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                       const GALGAS_lstring & inAttribute_mDictTypeName,
                                                                       const GALGAS_lstring & inAttribute_mKeyTypeName,
-                                                                      const GALGAS_lstringlist & inAttribute_mAttributeList,
                                                                       const GALGAS_propertyInCollectionListAST & inAttribute_mPropertyList
                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_dictDeclarationAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mDictTypeName.isValid () && inAttribute_mKeyTypeName.isValid () && inAttribute_mAttributeList.isValid () && inAttribute_mPropertyList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_dictDeclarationAST (inAttribute_mIsPredefined, inAttribute_mDictTypeName, inAttribute_mKeyTypeName, inAttribute_mAttributeList, inAttribute_mPropertyList COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mDictTypeName.isValid () && inAttribute_mKeyTypeName.isValid () && inAttribute_mPropertyList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_dictDeclarationAST (inAttribute_mIsPredefined, inAttribute_mDictTypeName, inAttribute_mKeyTypeName, inAttribute_mPropertyList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -9196,18 +9190,6 @@ GALGAS_lstring GALGAS_dictDeclarationAST::readProperty_mKeyTypeName (void) const
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist GALGAS_dictDeclarationAST::readProperty_mAttributeList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstringlist () ;
-  }else{
-    cPtr_dictDeclarationAST * p = (cPtr_dictDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_dictDeclarationAST) ;
-    return p->mProperty_mAttributeList ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_propertyInCollectionListAST GALGAS_dictDeclarationAST::readProperty_mPropertyList (void) const {
   if (nullptr == mObjectPtr) {
     return GALGAS_propertyInCollectionListAST () ;
@@ -9225,13 +9207,11 @@ GALGAS_propertyInCollectionListAST GALGAS_dictDeclarationAST::readProperty_mProp
 cPtr_dictDeclarationAST::cPtr_dictDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                   const GALGAS_lstring & in_mDictTypeName,
                                                   const GALGAS_lstring & in_mKeyTypeName,
-                                                  const GALGAS_lstringlist & in_mAttributeList,
                                                   const GALGAS_propertyInCollectionListAST & in_mPropertyList
                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mProperty_mDictTypeName (in_mDictTypeName),
 mProperty_mKeyTypeName (in_mKeyTypeName),
-mProperty_mAttributeList (in_mAttributeList),
 mProperty_mPropertyList (in_mPropertyList) {
 }
 
@@ -9250,8 +9230,6 @@ void cPtr_dictDeclarationAST::description (C_String & ioString,
   ioString << ", " ;
   mProperty_mKeyTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mAttributeList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
   mProperty_mPropertyList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
@@ -9260,7 +9238,7 @@ void cPtr_dictDeclarationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_dictDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_dictDeclarationAST (mProperty_mIsPredefined, mProperty_mDictTypeName, mProperty_mKeyTypeName, mProperty_mAttributeList, mProperty_mPropertyList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_dictDeclarationAST (mProperty_mIsPredefined, mProperty_mDictTypeName, mProperty_mKeyTypeName, mProperty_mPropertyList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -9649,7 +9627,6 @@ GALGAS_dictTypeForGeneration_2D_weak GALGAS_dictTypeForGeneration_2D_weak::extra
   void cPtr_mapDeclarationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
     mProperty_mMapTypeName.printNonNullClassInstanceProperties ("mMapTypeName") ;
-    mProperty_mAttributeList.printNonNullClassInstanceProperties ("mAttributeList") ;
     mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
     mProperty_mInsertMethodList.printNonNullClassInstanceProperties ("mInsertMethodList") ;
     mProperty_mSearchMethodList.printNonNullClassInstanceProperties ("mSearchMethodList") ;
@@ -9669,9 +9646,6 @@ typeComparisonResult cPtr_mapDeclarationAST::dynamicObjectCompare (const acPtr_c
   }
   if (kOperandEqual == result) {
     result = mProperty_mMapTypeName.objectCompare (p->mProperty_mMapTypeName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mAttributeList.objectCompare (p->mProperty_mAttributeList) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mPropertyList.objectCompare (p->mProperty_mPropertyList) ;
@@ -9721,7 +9695,6 @@ GALGAS_semanticDeclarationAST () {
 GALGAS_mapDeclarationAST GALGAS_mapDeclarationAST::constructor_default (LOCATION_ARGS) {
   return GALGAS_mapDeclarationAST::constructor_new (GALGAS_bool::constructor_default (HERE),
                                                     GALGAS_lstring::constructor_default (HERE),
-                                                    GALGAS_lstringlist::constructor_emptyList (HERE),
                                                     GALGAS_propertyInCollectionListAST::constructor_emptyList (HERE),
                                                     GALGAS_insertMethodListAST::constructor_emptyList (HERE),
                                                     GALGAS_mapSearchMethodListAST::constructor_emptyList (HERE),
@@ -9740,7 +9713,6 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 
 GALGAS_mapDeclarationAST GALGAS_mapDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                     const GALGAS_lstring & inAttribute_mMapTypeName,
-                                                                    const GALGAS_lstringlist & inAttribute_mAttributeList,
                                                                     const GALGAS_propertyInCollectionListAST & inAttribute_mPropertyList,
                                                                     const GALGAS_insertMethodListAST & inAttribute_mInsertMethodList,
                                                                     const GALGAS_mapSearchMethodListAST & inAttribute_mSearchMethodList,
@@ -9748,8 +9720,8 @@ GALGAS_mapDeclarationAST GALGAS_mapDeclarationAST::constructor_new (const GALGAS
                                                                     const GALGAS_insertOrReplaceDeclarationListAST & inAttribute_mInsertOrReplaceDeclarationListAST
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_mapDeclarationAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mAttributeList.isValid () && inAttribute_mPropertyList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mRemoveMethodList.isValid () && inAttribute_mInsertOrReplaceDeclarationListAST.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_mapDeclarationAST (inAttribute_mIsPredefined, inAttribute_mMapTypeName, inAttribute_mAttributeList, inAttribute_mPropertyList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mRemoveMethodList, inAttribute_mInsertOrReplaceDeclarationListAST COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mPropertyList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mRemoveMethodList.isValid () && inAttribute_mInsertOrReplaceDeclarationListAST.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_mapDeclarationAST (inAttribute_mIsPredefined, inAttribute_mMapTypeName, inAttribute_mPropertyList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mRemoveMethodList, inAttribute_mInsertOrReplaceDeclarationListAST COMMA_THERE)) ;
   }
   return result ;
 }
@@ -9763,18 +9735,6 @@ GALGAS_lstring GALGAS_mapDeclarationAST::readProperty_mMapTypeName (void) const 
     cPtr_mapDeclarationAST * p = (cPtr_mapDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapDeclarationAST) ;
     return p->mProperty_mMapTypeName ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lstringlist GALGAS_mapDeclarationAST::readProperty_mAttributeList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstringlist () ;
-  }else{
-    cPtr_mapDeclarationAST * p = (cPtr_mapDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_mapDeclarationAST) ;
-    return p->mProperty_mAttributeList ;
   }
 }
 
@@ -9844,7 +9804,6 @@ GALGAS_insertOrReplaceDeclarationListAST GALGAS_mapDeclarationAST::readProperty_
 
 cPtr_mapDeclarationAST::cPtr_mapDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                 const GALGAS_lstring & in_mMapTypeName,
-                                                const GALGAS_lstringlist & in_mAttributeList,
                                                 const GALGAS_propertyInCollectionListAST & in_mPropertyList,
                                                 const GALGAS_insertMethodListAST & in_mInsertMethodList,
                                                 const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
@@ -9853,7 +9812,6 @@ cPtr_mapDeclarationAST::cPtr_mapDeclarationAST (const GALGAS_bool & in_mIsPredef
                                                 COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mProperty_mMapTypeName (in_mMapTypeName),
-mProperty_mAttributeList (in_mAttributeList),
 mProperty_mPropertyList (in_mPropertyList),
 mProperty_mInsertMethodList (in_mInsertMethodList),
 mProperty_mSearchMethodList (in_mSearchMethodList),
@@ -9874,8 +9832,6 @@ void cPtr_mapDeclarationAST::description (C_String & ioString,
   ioString << ", " ;
   mProperty_mMapTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mAttributeList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
   mProperty_mPropertyList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mInsertMethodList.description (ioString, inIndentation+1) ;
@@ -9892,7 +9848,7 @@ void cPtr_mapDeclarationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_mapDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_mapDeclarationAST (mProperty_mIsPredefined, mProperty_mMapTypeName, mProperty_mAttributeList, mProperty_mPropertyList, mProperty_mInsertMethodList, mProperty_mSearchMethodList, mProperty_mRemoveMethodList, mProperty_mInsertOrReplaceDeclarationListAST COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_mapDeclarationAST (mProperty_mIsPredefined, mProperty_mMapTypeName, mProperty_mPropertyList, mProperty_mInsertMethodList, mProperty_mSearchMethodList, mProperty_mRemoveMethodList, mProperty_mInsertOrReplaceDeclarationListAST COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -9954,7 +9910,6 @@ GALGAS_mapDeclarationAST GALGAS_mapDeclarationAST::extractObject (const GALGAS_o
     mProperty_mSearchMethodList.printNonNullClassInstanceProperties ("mSearchMethodList") ;
     mProperty_mRemoveMethodList.printNonNullClassInstanceProperties ("mRemoveMethodList") ;
     mProperty_mHasInsertOrReplaceModifier.printNonNullClassInstanceProperties ("mHasInsertOrReplaceModifier") ;
-    mProperty_mActivateSuggestions.printNonNullClassInstanceProperties ("mActivateSuggestions") ;
   }
 #endif
 
@@ -9987,9 +9942,6 @@ typeComparisonResult cPtr_mapTypeForGeneration::dynamicObjectCompare (const acPt
   }
   if (kOperandEqual == result) {
     result = mProperty_mHasInsertOrReplaceModifier.objectCompare (p->mProperty_mHasInsertOrReplaceModifier) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mActivateSuggestions.objectCompare (p->mProperty_mActivateSuggestions) ;
   }
   return result ;
 }
@@ -10034,12 +9986,11 @@ GALGAS_mapTypeForGeneration GALGAS_mapTypeForGeneration::constructor_new (const 
                                                                           const GALGAS_insertMethodListAST & inAttribute_mInsertMethodList,
                                                                           const GALGAS_mapSearchMethodListAST & inAttribute_mSearchMethodList,
                                                                           const GALGAS_mapRemoveMethodListAST & inAttribute_mRemoveMethodList,
-                                                                          const GALGAS_bool & inAttribute_mHasInsertOrReplaceModifier,
-                                                                          const GALGAS_bool & inAttribute_mActivateSuggestions
+                                                                          const GALGAS_bool & inAttribute_mHasInsertOrReplaceModifier
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_mapTypeForGeneration result ;
-  if (inAttribute_mSelfTypeEntry.isValid () && inAttribute_mElementTypeEntry.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mRemoveMethodList.isValid () && inAttribute_mHasInsertOrReplaceModifier.isValid () && inAttribute_mActivateSuggestions.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_mapTypeForGeneration (inAttribute_mSelfTypeEntry, inAttribute_mElementTypeEntry, inAttribute_mMapTypeName, inAttribute_mTypedAttributeList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mRemoveMethodList, inAttribute_mHasInsertOrReplaceModifier, inAttribute_mActivateSuggestions COMMA_THERE)) ;
+  if (inAttribute_mSelfTypeEntry.isValid () && inAttribute_mElementTypeEntry.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mRemoveMethodList.isValid () && inAttribute_mHasInsertOrReplaceModifier.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_mapTypeForGeneration (inAttribute_mSelfTypeEntry, inAttribute_mElementTypeEntry, inAttribute_mMapTypeName, inAttribute_mTypedAttributeList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mRemoveMethodList, inAttribute_mHasInsertOrReplaceModifier COMMA_THERE)) ;
   }
   return result ;
 }
@@ -10129,18 +10080,6 @@ GALGAS_bool GALGAS_mapTypeForGeneration::readProperty_mHasInsertOrReplaceModifie
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_mapTypeForGeneration::readProperty_mActivateSuggestions (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_bool () ;
-  }else{
-    cPtr_mapTypeForGeneration * p = (cPtr_mapTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_mapTypeForGeneration) ;
-    return p->mProperty_mActivateSuggestions ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @mapTypeForGeneration class
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10151,8 +10090,7 @@ cPtr_mapTypeForGeneration::cPtr_mapTypeForGeneration (const GALGAS_unifiedTypeMa
                                                       const GALGAS_insertMethodListAST & in_mInsertMethodList,
                                                       const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
                                                       const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
-                                                      const GALGAS_bool & in_mHasInsertOrReplaceModifier,
-                                                      const GALGAS_bool & in_mActivateSuggestions
+                                                      const GALGAS_bool & in_mHasInsertOrReplaceModifier
                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
 mProperty_mElementTypeEntry (in_mElementTypeEntry),
@@ -10161,8 +10099,7 @@ mProperty_mTypedAttributeList (in_mTypedAttributeList),
 mProperty_mInsertMethodList (in_mInsertMethodList),
 mProperty_mSearchMethodList (in_mSearchMethodList),
 mProperty_mRemoveMethodList (in_mRemoveMethodList),
-mProperty_mHasInsertOrReplaceModifier (in_mHasInsertOrReplaceModifier),
-mProperty_mActivateSuggestions (in_mActivateSuggestions) {
+mProperty_mHasInsertOrReplaceModifier (in_mHasInsertOrReplaceModifier) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10189,8 +10126,6 @@ void cPtr_mapTypeForGeneration::description (C_String & ioString,
   mProperty_mRemoveMethodList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mHasInsertOrReplaceModifier.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mActivateSuggestions.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -10198,7 +10133,7 @@ void cPtr_mapTypeForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_mapTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_mapTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mElementTypeEntry, mProperty_mMapTypeName, mProperty_mTypedAttributeList, mProperty_mInsertMethodList, mProperty_mSearchMethodList, mProperty_mRemoveMethodList, mProperty_mHasInsertOrReplaceModifier, mProperty_mActivateSuggestions COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_mapTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mElementTypeEntry, mProperty_mMapTypeName, mProperty_mTypedAttributeList, mProperty_mInsertMethodList, mProperty_mSearchMethodList, mProperty_mRemoveMethodList, mProperty_mHasInsertOrReplaceModifier COMMA_THERE)) ;
   return ptr ;
 }
 

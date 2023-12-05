@@ -1062,16 +1062,6 @@ class cParser_galgas_33_SyntaxComponentSyntax {
 
   protected: virtual int32_t select_galgas_33_SyntaxComponentSyntax_18 (C_Lexique_galgasScanner *) = 0 ;
 
-  protected: virtual int32_t select_galgas_33_SyntaxComponentSyntax_19 (C_Lexique_galgasScanner *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_SyntaxComponentSyntax_20 (C_Lexique_galgasScanner *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_SyntaxComponentSyntax_21 (C_Lexique_galgasScanner *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_SyntaxComponentSyntax_22 (C_Lexique_galgasScanner *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_SyntaxComponentSyntax_23 (C_Lexique_galgasScanner *) = 0 ;
-
 
 } ;
 
@@ -2592,18 +2582,6 @@ class cParser_galgas_34_InstructionsSyntax {
   protected: virtual int32_t select_galgas_34_InstructionsSyntax_72 (C_Lexique_galgasScanner *) = 0 ;
 
   protected: virtual int32_t select_galgas_34_InstructionsSyntax_73 (C_Lexique_galgasScanner *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_InstructionsSyntax_74 (C_Lexique_galgasScanner *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_InstructionsSyntax_75 (C_Lexique_galgasScanner *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_InstructionsSyntax_76 (C_Lexique_galgasScanner *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_InstructionsSyntax_77 (C_Lexique_galgasScanner *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_InstructionsSyntax_78 (C_Lexique_galgasScanner *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_InstructionsSyntax_79 (C_Lexique_galgasScanner *) = 0 ;
 
 
 } ;

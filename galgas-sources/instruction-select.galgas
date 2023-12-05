@@ -30,13 +30,6 @@ syntax extension galgas3SyntaxComponentSyntax {
     end
     $end$
     let endOf_select_instruction = @location.here
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "select" then
-        error terminator : "the terminator attribute should be '%select'" fixit { replace "%select" }
-      end
-    end
     outInstruction = @selectInstruction.new {
       !mSelectInstructionLocation
       !mSelectBranchList
@@ -70,13 +63,6 @@ syntax extension galgas4SyntaxComponentSyntax {
     end
     $end$
     let endOf_select_instruction = @location.here
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "select" then
-        error terminator : "the terminator attribute should be '%select'" fixit { replace "%select" }
-      end
-    end
     outInstruction = @selectInstruction.new {
       !mSelectInstructionLocation
       !mSelectBranchList

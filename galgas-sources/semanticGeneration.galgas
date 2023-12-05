@@ -776,7 +776,6 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
     ?@mapRemoveMethodListAST REMOVE_METHOD_LIST
     ?@bool HAS_INSERT_OR_REPLACE
-    ?@bool ACTIVATE_REMPLACEMENT_SUGGESTIONS
 
 #---------- dict
   template dictTypeHeader1 "GALGAS_dict.h1.galgasTemplate"

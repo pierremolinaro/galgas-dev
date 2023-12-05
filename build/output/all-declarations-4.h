@@ -27,8 +27,6 @@ class GALGAS_mapDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Property read access
   public: class GALGAS_lstring readProperty_mMapTypeName (void) const ;
 
-  public: class GALGAS_lstringlist readProperty_mAttributeList (void) const ;
-
   public: class GALGAS_propertyInCollectionListAST readProperty_mPropertyList (void) const ;
 
   public: class GALGAS_insertMethodListAST readProperty_mInsertMethodList (void) const ;
@@ -52,12 +50,11 @@ class GALGAS_mapDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_mapDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
                                                                  const class GALGAS_lstring & inOperand1,
-                                                                 const class GALGAS_lstringlist & inOperand2,
-                                                                 const class GALGAS_propertyInCollectionListAST & inOperand3,
-                                                                 const class GALGAS_insertMethodListAST & inOperand4,
-                                                                 const class GALGAS_mapSearchMethodListAST & inOperand5,
-                                                                 const class GALGAS_mapRemoveMethodListAST & inOperand6,
-                                                                 const class GALGAS_insertOrReplaceDeclarationListAST & inOperand7
+                                                                 const class GALGAS_propertyInCollectionListAST & inOperand2,
+                                                                 const class GALGAS_insertMethodListAST & inOperand3,
+                                                                 const class GALGAS_mapSearchMethodListAST & inOperand4,
+                                                                 const class GALGAS_mapRemoveMethodListAST & inOperand5,
+                                                                 const class GALGAS_insertOrReplaceDeclarationListAST & inOperand6
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -128,7 +125,6 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Properties
   public: GALGAS_lstring mProperty_mMapTypeName ;
-  public: GALGAS_lstringlist mProperty_mAttributeList ;
   public: GALGAS_propertyInCollectionListAST mProperty_mPropertyList ;
   public: GALGAS_insertMethodListAST mProperty_mInsertMethodList ;
   public: GALGAS_mapSearchMethodListAST mProperty_mSearchMethodList ;
@@ -138,7 +134,6 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Constructor
   public: cPtr_mapDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                   const GALGAS_lstring & in_mMapTypeName,
-                                  const GALGAS_lstringlist & in_mAttributeList,
                                   const GALGAS_propertyInCollectionListAST & in_mPropertyList,
                                   const GALGAS_insertMethodListAST & in_mInsertMethodList,
                                   const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,

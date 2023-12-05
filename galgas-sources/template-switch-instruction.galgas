@@ -173,7 +173,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
               [!?analysisContext.mTemplateVariableMap insertKey !mExtractedValueName !mType !cppName]
             end
             associatedValueIndex += 1
-          end%for
+          end
         end
       else
         error mValue

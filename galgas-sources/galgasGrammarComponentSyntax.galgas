@@ -35,10 +35,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner) {
     select
       hasTranslateFeature = false
     or
-      $%attribute$ ?let @lstring featureName
-      if featureName.string != "translate" then
-        error featureName: "only 'feature translate' can be declared here"
-      end
+      $%translate$
       hasTranslateFeature = true
     end
     ${$
@@ -203,10 +200,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner) {
     select
       hasTranslateFeature = false
     or
-      $%attribute$ ?let @lstring featureName
-      if featureName.string != "translate" then
-        error featureName: "only 'feature translate' can be declared here"
-      end
+      $%translate$
       hasTranslateFeature = true
     end
     ${$

@@ -89,13 +89,6 @@ syntax extension galgas3InstructionsSyntax {
     $if$
     <if_instruction_core> ?outInstruction
     $end$
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "if" then
-        error terminator : "the terminator attribute should be '%if'" fixit { replace "%if" }
-      end
-    end
   }
 
   #·····················································································································
@@ -248,13 +241,6 @@ syntax extension galgas4InstructionsSyntax {
     $if$
     <if_instruction_core> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?outInstruction
     $end$
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "if" then
-        error terminator : "the terminator attribute should be '%if'" fixit { replace "%if" }
-      end
-    end
   }
 
   #·····················································································································

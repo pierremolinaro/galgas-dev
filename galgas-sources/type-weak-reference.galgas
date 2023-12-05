@@ -6,7 +6,7 @@ refclass @weakReferenceDeclarationAST : @semanticDeclarationAST {
   private let @lstring mClassTypeName
   private let @lstring mWeakReferenceTypeName
   private let @lstring mSuperWeakReferenceTypeName # Empty if no super class
-  private let @lstringlist mClassFeatureList
+  private let @bool mGenerateInSeparateFile
   private let @propertyInCollectionListAST mPropertyList
 }
 
@@ -54,15 +54,15 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
 {
 #--- Handle super class
   let @unifiedTypeMapEntry superClassIndex
-  var @bool generateHeaderInSeparateFile
+  let @bool generateHeaderInSeparateFile
   if self.mSuperWeakReferenceTypeName.string == "" then
     superClassIndex = @unifiedTypeMapEntry.null
-    generateHeaderInSeparateFile = false
-    for (mValue) in self.mClassFeatureList do
-      if mValue.string == "generatedInSeparateFile" then
-        generateHeaderInSeparateFile = true
-      end
-    end
+    generateHeaderInSeparateFile = self.mGenerateInSeparateFile
+#    for (mValue) in self.mClassFeatureList do
+#      if mValue.string == "generatedInSeparateFile" then
+#        generateHeaderInSeparateFile = true
+#      end
+#    end
   else
     [!?ioTypeMap makeEntry !self.mSuperWeakReferenceTypeName ?superClassIndex]
     [ioTypeMap searchType !self.mSuperWeakReferenceTypeName ?let superTypeDefinition]
@@ -186,25 +186,23 @@ override method @weakReferenceDeclarationAST semanticAnalysis
   var @typedPropertyList allAttributeList
   if superClassEntry == .null then
     allAttributeList = {}
-    var @bool generatedInSeparateFileFeature = false
-    if [self.mClassFeatureList count] > 0 then
-      for (mValue) in self.mClassFeatureList do
-        if mValue.string == "generatedInSeparateFile" then
-          if generatedInSeparateFileFeature then
-            error mValue:"the 'generatedInSeparateFile' is already named"
-          end
-          generatedInSeparateFileFeature = true
-        else
-          error mValue:"only the 'generatedInSeparateFile' attribute is allowed here"
-        end
-      end
-    end
+#    var @bool generatedInSeparateFileFeature = self.mGenerateInSeparateFile
+#    if [self.mClassFeatureList count] > 0 then
+#      for (mValue) in self.mClassFeatureList do
+#        if mValue.string == "generatedInSeparateFile" then
+#          if generatedInSeparateFileFeature then
+#            error mValue:"the 'generatedInSeparateFile' is already named"
+#          end
+#          generatedInSeparateFileFeature = true
+#        else
+#          error mValue:"only the 'generatedInSeparateFile' attribute is allowed here"
+#        end
+#      end
+#    end
   else
     allAttributeList = [superClassEntry definition].mAllTypedPropertyList
-    if [self.mClassFeatureList count] > 0 then
-      for (mValue) in self.mClassFeatureList do
-        error mValue:"a class that has a super class does not accept any feature"
-      end
+    if self.mGenerateInSeparateFile then
+      error self.mClassTypeName:"a class that has a super class does not accept any feature"
     end
   end
 #------ Enter attributes

@@ -120,20 +120,17 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
     var isUsefull = false
     repeat
     while
-      $%attribute$ ?let @lstring attribute
-      if attribute.string == "once" then
-        if isOnce then
-          error attribute : "duplicate attribute" fixit { remove }
-        end
-        isOnce = true
-      elsif attribute.string == "usefull" then
-        if isUsefull then
-          error attribute : "duplicate attribute" fixit { remove }
-        end
-        isUsefull = true
-      else
-        error attribute : "invalid attribute" fixit { replace "%once" replace "%usefull" }
+      $%once$
+      if isOnce then
+        error .here : "duplicate attribute" fixit { remove }
       end
+      isOnce = true
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { remove }
+      end
+      isUsefull = true
     end
     $identifier$ ?let functionName indexing functionDefinition
     <formal_input_parameter_list_ggs3> ?let @formalInputParameterListAST formalInputParameterList
@@ -187,20 +184,17 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
     var isUsefull = false
     repeat
     while
-      $%attribute$ ?let @lstring attribute
-      if attribute.string == "once" then
-        if isOnce then
-          error attribute : "duplicate attribute" fixit { remove }
-        end
-        isOnce = true
-      elsif attribute.string == "usefull" then
-        if isUsefull then
-          error attribute : "duplicate attribute" fixit { remove }
-        end
-        isUsefull = true
-      else
-        error attribute : "invalid attribute" fixit { replace "%once" replace "%usefull" }
+      $%once$
+      if isOnce then
+        error .here : "duplicate attribute" fixit { remove }
       end
+      isOnce = true
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { remove }
+      end
+      isUsefull = true
     end
     $identifier$ ?let functionName indexing functionDefinition
     <formal_input_parameter_list_ggs3> ?let @formalInputParameterListAST formalInputParameterList
@@ -463,20 +457,17 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
     var isUsefull = false
     repeat
     while
-      $%attribute$ ?let @lstring attribute
-      if attribute.string == "once" then
-        if isOnce then
-          error attribute : "duplicate attribute" fixit { remove }
-        end
-        isOnce = true
-      elsif attribute.string == "usefull" then
-        if isUsefull then
-          error attribute : "duplicate attribute" fixit { remove }
-        end
-        isUsefull = true
-      else
-        error attribute : "invalid attribute" fixit { replace "%once" replace "%usefull" }
+      $%once$
+      if isOnce then
+        error .here : "duplicate attribute" fixit { remove }
       end
+      isOnce = true
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { remove }
+      end
+      isUsefull = true
     end
     $identifier$ ?let functionName indexing functionDefinition
     <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
@@ -531,20 +522,17 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
     var isUsefull = false
     repeat
     while
-      $%attribute$ ?let @lstring attribute
-      if attribute.string == "once" then
-        if isOnce then
-          error attribute : "duplicate attribute" fixit { remove }
-        end
-        isOnce = true
-      elsif attribute.string == "usefull" then
-        if isUsefull then
-          error attribute : "duplicate attribute" fixit { remove }
-        end
-        isUsefull = true
-      else
-        error attribute : "invalid attribute" fixit { replace "%once" replace "%usefull" }
+      $%once$
+      if isOnce then
+        error .here : "duplicate attribute" fixit { remove }
       end
+      isOnce = true
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { remove }
+      end
+      isUsefull = true
     end
     $identifier$ ?let functionName indexing functionDefinition
     <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList

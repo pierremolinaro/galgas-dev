@@ -32,13 +32,6 @@ syntax extension galgas3SyntaxComponentSyntax {
     end
     $end$
     let endOf_repeat_instruction = @location.here
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "repeat" then
-        error terminator : "the terminator attribute should be '%repeat'" fixit { replace "%repeat" }
-      end
-    end
     outInstruction = @repeatInstruction.new {
       !mRepeatInstructionLocation
       !mRepeatedInstructionList
@@ -74,13 +67,6 @@ syntax extension galgas4SyntaxComponentSyntax {
     end
     $end$
     let endOf_repeat_instruction = @location.here
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "repeat" then
-        error terminator : "the terminator attribute should be '%repeat'" fixit { replace "%repeat" }
-      end
-    end
     outInstruction = @repeatInstruction.new {
       !mRepeatInstructionLocation
       !mRepeatedInstructionList

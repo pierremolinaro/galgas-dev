@@ -52,13 +52,6 @@ syntax extension galgas3InstructionsSyntax {
     end
     $end$
     let endOfSwitchInstruction = @location.here
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "switch" then
-        error terminator : "the terminator attribute should be '%switch'" fixit { replace "%switch" }
-      end
-    end
     outInstruction = @switchInstructionAST.new {
       !instructionLocation
       !switchExpression
@@ -148,13 +141,6 @@ syntax extension galgas4InstructionsSyntax {
     end
     $end$
     let endOfSwitchInstruction = @location.here
-    select
-    or
-      $%attribute$ ?let @lstring terminator
-      if terminator.string != "switch" then
-        error terminator : "the terminator attribute should be '%switch'" fixit { replace "%switch" }
-      end
-    end
     outInstruction = @switchInstructionAST.new {
       !instructionLocation
       !switchExpression
@@ -304,7 +290,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
               end
             end
             associatedValueIndex += 1
-          end%for
+          end
         end
       else
         error mValue

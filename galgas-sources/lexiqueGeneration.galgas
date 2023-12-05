@@ -149,7 +149,7 @@ override getter @lexicalSendTerminalByDefaultAST generateDefaultSendCode
   ?let @string unused inScannerClassName
   -> @string
 {
-  result = "token.mTokenCode = kToken_" + self.mDefaultSentTerminal + " ;\n"
+  result = "token.mTokenCode = kToken_" + [self.mDefaultSentTerminal identifierRepresentation] + " ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

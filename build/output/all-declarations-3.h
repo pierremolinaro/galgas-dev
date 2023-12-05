@@ -4022,7 +4022,7 @@ class GALGAS_classDeclarationAST : public GALGAS_semanticDeclarationAST {
 
   public: class GALGAS_lstring readProperty_mSuperClassName (void) const ;
 
-  public: class GALGAS_lstringlist readProperty_mClassFeatureList (void) const ;
+  public: class GALGAS_bool readProperty_mGenerateInSeparateFile (void) const ;
 
   public: class GALGAS_propertyInCollectionListAST readProperty_mPropertyList (void) const ;
 
@@ -4042,7 +4042,7 @@ class GALGAS_classDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                                    const class GALGAS_bool & inOperand2,
                                                                    const class GALGAS_lstring & inOperand3,
                                                                    const class GALGAS_lstring & inOperand4,
-                                                                   const class GALGAS_lstringlist & inOperand5,
+                                                                   const class GALGAS_bool & inOperand5,
                                                                    const class GALGAS_propertyInCollectionListAST & inOperand6
                                                                    COMMA_LOCATION_ARGS) ;
 
@@ -4113,7 +4113,7 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_bool mProperty_mIsReference ;
   public: GALGAS_lstring mProperty_mClassTypeName ;
   public: GALGAS_lstring mProperty_mSuperClassName ;
-  public: GALGAS_lstringlist mProperty_mClassFeatureList ;
+  public: GALGAS_bool mProperty_mGenerateInSeparateFile ;
   public: GALGAS_propertyInCollectionListAST mProperty_mPropertyList ;
 
 //--- Constructor
@@ -4122,7 +4122,7 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
                                     const GALGAS_bool & in_mIsReference,
                                     const GALGAS_lstring & in_mClassTypeName,
                                     const GALGAS_lstring & in_mSuperClassName,
-                                    const GALGAS_lstringlist & in_mClassFeatureList,
+                                    const GALGAS_bool & in_mGenerateInSeparateFile,
                                     const GALGAS_propertyInCollectionListAST & in_mPropertyList
                                     COMMA_LOCATION_ARGS) ;
 
@@ -4322,7 +4322,7 @@ class GALGAS_weakReferenceDeclarationAST : public GALGAS_semanticDeclarationAST 
 
   public: class GALGAS_lstring readProperty_mSuperWeakReferenceTypeName (void) const ;
 
-  public: class GALGAS_lstringlist readProperty_mClassFeatureList (void) const ;
+  public: class GALGAS_bool readProperty_mGenerateInSeparateFile (void) const ;
 
   public: class GALGAS_propertyInCollectionListAST readProperty_mPropertyList (void) const ;
 
@@ -4341,7 +4341,7 @@ class GALGAS_weakReferenceDeclarationAST : public GALGAS_semanticDeclarationAST 
                                                                            const class GALGAS_lstring & inOperand1,
                                                                            const class GALGAS_lstring & inOperand2,
                                                                            const class GALGAS_lstring & inOperand3,
-                                                                           const class GALGAS_lstringlist & inOperand4,
+                                                                           const class GALGAS_bool & inOperand4,
                                                                            const class GALGAS_propertyInCollectionListAST & inOperand5
                                                                            COMMA_LOCATION_ARGS) ;
 
@@ -4411,7 +4411,7 @@ class cPtr_weakReferenceDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_lstring mProperty_mClassTypeName ;
   public: GALGAS_lstring mProperty_mWeakReferenceTypeName ;
   public: GALGAS_lstring mProperty_mSuperWeakReferenceTypeName ;
-  public: GALGAS_lstringlist mProperty_mClassFeatureList ;
+  public: GALGAS_bool mProperty_mGenerateInSeparateFile ;
   public: GALGAS_propertyInCollectionListAST mProperty_mPropertyList ;
 
 //--- Constructor
@@ -4419,7 +4419,7 @@ class cPtr_weakReferenceDeclarationAST : public cPtr_semanticDeclarationAST {
                                             const GALGAS_lstring & in_mClassTypeName,
                                             const GALGAS_lstring & in_mWeakReferenceTypeName,
                                             const GALGAS_lstring & in_mSuperWeakReferenceTypeName,
-                                            const GALGAS_lstringlist & in_mClassFeatureList,
+                                            const GALGAS_bool & in_mGenerateInSeparateFile,
                                             const GALGAS_propertyInCollectionListAST & in_mPropertyList
                                             COMMA_LOCATION_ARGS) ;
 
@@ -7945,8 +7945,6 @@ class GALGAS_dictDeclarationAST : public GALGAS_semanticDeclarationAST {
 
   public: class GALGAS_lstring readProperty_mKeyTypeName (void) const ;
 
-  public: class GALGAS_lstringlist readProperty_mAttributeList (void) const ;
-
   public: class GALGAS_propertyInCollectionListAST readProperty_mPropertyList (void) const ;
 
 //-- Start of generic part --*
@@ -7963,8 +7961,7 @@ class GALGAS_dictDeclarationAST : public GALGAS_semanticDeclarationAST {
   public: static class GALGAS_dictDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
                                                                   const class GALGAS_lstring & inOperand1,
                                                                   const class GALGAS_lstring & inOperand2,
-                                                                  const class GALGAS_lstringlist & inOperand3,
-                                                                  const class GALGAS_propertyInCollectionListAST & inOperand4
+                                                                  const class GALGAS_propertyInCollectionListAST & inOperand3
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8036,14 +8033,12 @@ class cPtr_dictDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Properties
   public: GALGAS_lstring mProperty_mDictTypeName ;
   public: GALGAS_lstring mProperty_mKeyTypeName ;
-  public: GALGAS_lstringlist mProperty_mAttributeList ;
   public: GALGAS_propertyInCollectionListAST mProperty_mPropertyList ;
 
 //--- Constructor
   public: cPtr_dictDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                    const GALGAS_lstring & in_mDictTypeName,
                                    const GALGAS_lstring & in_mKeyTypeName,
-                                   const GALGAS_lstringlist & in_mAttributeList,
                                    const GALGAS_propertyInCollectionListAST & in_mPropertyList
                                    COMMA_LOCATION_ARGS) ;
 
