@@ -1,7 +1,7 @@
 
 
 proc testsuite_extension_setters() {
-  print ("*************************************** begin of extension setter test")
+  println ("*************************************** begin of extension setter test")
   let v = @TestExtensionSetter.new (!1, !"Hello")
   var @uint u = 2
   let @string s = " World"
@@ -89,7 +89,7 @@ class @baseClassForTypeCastInSetterCall {}
 class @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall {}
 
 proc @inheritedClassForTypeCastInSetterCall.unSetter() {
-  print ("Appel @inheritedClassForTypeCastInSetterCall unSetter")
+  println ("Appel @inheritedClassForTypeCastInSetterCall unSetter")
 }
 
 

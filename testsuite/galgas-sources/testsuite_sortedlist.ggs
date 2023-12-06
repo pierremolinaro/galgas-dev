@@ -12,9 +12,9 @@ proc testsuite_sortedlist() {
   strList += !"a"
   strList += !"d"
   strList += !"c"
-  print ("*************************************** begin of sorted list test")
+  println ("*************************************** begin of sorted list test")
   for s in strList do (idx)
-    print ("  index " + idx + " : " + s.mValue)
+    println ("  index " + idx + " : " + s.mValue)
   end
 }
 

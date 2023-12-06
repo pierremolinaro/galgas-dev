@@ -106,7 +106,7 @@ rule <element>
     s += [[commentString.location line] string]
     s += ":" + [[commentString.location column] string]
     s += ":" + [[commentString.location locationIndex] string] + "\n"
-    message s
+    print (!s)
   end
 }
 
@@ -147,7 +147,7 @@ rule <element>
     between s += ", "
     end
     s += "}\n"
-    message s
+    print (!s)
   end
 
   var nodeList = @xmlNodeList {}
@@ -212,7 +212,7 @@ proc addText
     ioNodes += !node
     if inPrintDuringParsing then
       let @string s = inIndendation + "TEXT " + "'" + ls + "'\n"
-      message s
+      print (!s)
     end
   end
 }

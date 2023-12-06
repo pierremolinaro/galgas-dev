@@ -8,7 +8,7 @@ list @aList {
 listmap @myListMap (@aList)
 
 proc testsuite_listmap() {
-  print ("*************************************** begin of listmap")
+  println ("*************************************** begin of listmap")
   var m = @myListMap []
   m += !"d" !"g" !37
   m += !"a" !"b" !23
@@ -23,19 +23,19 @@ proc testsuite_listmap() {
   log sl
   let @aList aList = m.listForKey ("a")
   log aList
-#  print ("--- test .= operator listmap") ;
+#  println ("--- test .= operator listmap") ;
   var m2 = @myListMap []
 #  m2 += !"b" !"z" !9 ;
 #  m2 += !"a" !"q" !14 ;
 #  m .= m2 ;
 #  log m ;
-  print ("--- test += operator listmap")
+  println ("--- test += operator listmap")
   m2 += !"b" !"w" !7
   m2 += !"e" !"r" !2
   m2 += !"b" !"x" !19
 #  @myListMap mm := m .m2 ;
 #  log mm ;
-  print ("--- test foreach for listmap")
+  println ("--- test foreach for listmap")
   for e in m do
     log "key: " : e.key
     log "list: " : e.mList

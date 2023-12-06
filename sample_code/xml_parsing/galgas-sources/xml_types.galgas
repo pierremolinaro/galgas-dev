@@ -66,7 +66,7 @@ proc internal_logXMLNodes
 proc logXMLNodes ?let @xmlNodeList inNodeList {
   var @string s = ""
   internal_logXMLNodes (!inNodeList !"" !?s )
-  message s
+  print (!s)
 }
 
 #------------------------------------------------------------*

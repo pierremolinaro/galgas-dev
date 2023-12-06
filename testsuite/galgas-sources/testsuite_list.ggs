@@ -12,7 +12,7 @@ proc testsuite_list() {
   strList += !"b"
   strList += !"c"
   strList += !"d"
-  print ("*************************************** begin of list direct access")
+  println ("*************************************** begin of list direct access")
   var @string s = strList.mValueAtIndex (0)
   log s
   s = strList.mValueAtIndex (1)
@@ -23,15 +23,15 @@ proc testsuite_list() {
   log s
   !?strList.setMValueAtIndex ("z", !3)
   log strList
-  print ("--- test .= operator on list")
+  println ("--- test .= operator on list")
   strList += strList
   log s
-  print ("*************************************** begin of list compare")
+  println ("*************************************** begin of list compare")
   let aList = @myList [!"az"]
   let bList = @myList [!"az"]
   let @bool comp = aList == bList
   log comp
-  print ("*************************************** begin of collection value")
+  println ("*************************************** begin of collection value")
   var s1 = @stringlist [!"a"]
   s1 += !"b"
   var s2 = @stringlist [!"c"]

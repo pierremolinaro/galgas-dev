@@ -29,7 +29,7 @@ func @uint.carré () -> @uint {
 }
 
 proc testsuite_extension_readers() {
-  print ("*************************************** begin of extension reader test")
+  println ("*************************************** begin of extension reader test")
   let @B_B b = .new
   let @string s = b.otherReader (!2, !"-")
   log s
@@ -37,6 +37,6 @@ proc testsuite_extension_readers() {
     error b : "non displayed message"
   end
   let @uint a = 9
-  print ("Carré de 9: " + a.carré + "")
+  println ("Carré de 9: " + a.carré + "")
 }
 

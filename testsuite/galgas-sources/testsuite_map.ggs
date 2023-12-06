@@ -1,14 +1,14 @@
 
 
 map @aMap {
-  public let @uint value %setter
+  public let @uint value
   insert insertKey error message "the '%K' key is already inserted"
   search searchKey error message "the '%K' key is not inserted"
   remove removeKey error message "the '%K' key is not inserted"
 }
 
 proc testsuite_map() {
-  print ("*************************************** begin of map")
+  println ("*************************************** begin of map")
   var @aMap m = []
   !?m.insertKey (.new (!"g", !.here), !37)
   log m
@@ -81,7 +81,7 @@ proc testsuite_map() {
     "z".nowhere, 50
   ]
   for e in otherMap do
-    print ("  key '" + e.lkey + "', value: " + e.value)
+    println ("  key '" + e.lkey + "', value: " + e.value)
   end
   for key in otherMap.keyList do
     !?otherMap.removeKey (!key.mValue, ?*)

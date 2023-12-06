@@ -8,16 +8,16 @@
 #-----------------------------------------------------------------------------
 
 proc testsuite_introspection() {
-print ("*************************************** begin of introspection test")
+println ("*************************************** begin of introspection test")
 #--- List of types
   let @typelist typeList = @type.typeList
-  print ("--- Type list (" + typeList.length.string + " types)")
+  println ("--- Type list (" + typeList.length.string + " types)")
   for (mValue) in typeList do
-    print ("  @" + mValue.name + "")
+    println ("  @" + mValue.name + "")
   end
 #--- List of functions
   let @functionlist functionList = @function.functionList
-  print ("--- Function list (" + functionList.length.string
+  println ("--- Function list (" + functionList.length.string
   + " function" + if functionList.length > 1 then "s" else "" end + ")")
   for (mValue) in functionList do
     var @string s = ""
@@ -26,12 +26,12 @@ print ("*************************************** begin of introspection test")
     between s += " "
     end
     log "mValue" : mValue
-    print (mValue.description + "  " + mValue.name + " [" + s + "] -> @" + mValue.resultType.name)
+    println (mValue.description + "  " + mValue.name + " [" + s + "] -> @" + mValue.resultType.name)
   end
   let b1 = @function.isFunctionDefined (!"foo")
   let b2 = @function.isFunctionDefined (!"functionTest")
-  print ("Function 'foo' exists:" + b1.cString + "")
-  print ("Function 'functionTest' exists:" + b2.cString + "")
+  println ("Function 'foo' exists:" + b1.cString + "")
+  println ("Function 'functionTest' exists:" + b2.cString + "")
 #--- Introspection of an @uint
   let @uint x = 2
   let @object object = x.object

@@ -6,7 +6,7 @@ struct @structTest {
 }
 
 proc testsuite_struct() {
-  print ("*************************************** begin of struct logging")
+  println ("*************************************** begin of struct logging")
   let s = @structTest.new (!"az", !34)
   log s
 }

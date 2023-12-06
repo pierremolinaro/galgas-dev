@@ -1,22 +1,22 @@
 
 
 proc testsuite_bigint_type() {
-  print ("*************************************** begin of @bigint test")
-  print ("--- construction")
-  print (@bigint.zero.string)
-  print ((1234).string)
-  print ((-1234).string)
-  print ((1234).sint.string)
-  print ((-1234).string)
-  print ("--- getter string")
-  print ((-1234567890_1234567890_1234567890).string)
-  print ("--- getter hexString")
-  print ((-1234567890_1234567890_1234567890).hexString)
-  print ("--- getter xString")
-  print ((-1234567890_1234567890_1234567890).xString)
-  print ((123_456_789_012_345_678).spacedString (3))
-  print ((-123_456_789_012_345_678).spacedString (3))
-  print ("--- extract8ForUnsignedRepresentation")
+  println ("*************************************** begin of @bigint test")
+  println ("--- construction")
+  println (@bigint.zero.string)
+  println ((1234).string)
+  println ((-1234).string)
+  println ((1234).sint.string)
+  println ((-1234).string)
+  println ("--- getter string")
+  println ((-1234567890_1234567890_1234567890).string)
+  println ("--- getter hexString")
+  println ((-1234567890_1234567890_1234567890).hexString)
+  println ("--- getter xString")
+  println ((-1234567890_1234567890_1234567890).xString)
+  println ((123_456_789_012_345_678).spacedString (3))
+  println ((-123_456_789_012_345_678).spacedString (3))
+  println ("--- extract8ForUnsignedRepresentation")
 # Parcours dans le sens des indices croissants : little endian
   var @uintlist a = (0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211).extract8ForUnsignedRepresentation
   var s = ""
@@ -24,22 +24,22 @@ proc testsuite_bigint_type() {
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0x11 0x22 0x33 0x44 ...0xAA 0xBB 0xCC 0xDD 0xEE 0xFF 
+  println (s) # 0x11 0x22 0x33 0x44 ...0xAA 0xBB 0xCC 0xDD 0xEE 0xFF 
 # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in a
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA ...0x44 0x33 0x22 0x11
+  println (s) # 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA ...0x44 0x33 0x22 0x11
   a = (0).extract8ForUnsignedRepresentation
   s = ""
   for (n) in a
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0x0
-  print ("--- extract8ForSignedRepresentation")
+  println (s) # 0x0
+  println ("--- extract8ForSignedRepresentation")
 # Parcours dans le sens des indices croissants : little endian
   a = (0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211).extract8ForSignedRepresentation
   s = ""
@@ -47,14 +47,14 @@ proc testsuite_bigint_type() {
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0x11 0x22 0x33 0x44 ...0xAA 0xBB 0xCC 0xDD 0xEE 0xFF 0x00
+  println (s) # 0x11 0x22 0x33 0x44 ...0xAA 0xBB 0xCC 0xDD 0xEE 0xFF 0x00
   # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in a
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0x00 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA ...0x44 0x33 0x22 0x11
+  println (s) # 0x00 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA ...0x44 0x33 0x22 0x11
   # Parcours dans le sens des indices croissants : little endian
   a = (-0x4433_2211).extract8ForSignedRepresentation
   s = ""
@@ -62,15 +62,15 @@ proc testsuite_bigint_type() {
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0xEF 0xDD 0xCC 0xBB
+  println (s) # 0xEF 0xDD 0xCC 0xBB
   # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in a
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0xBB 0xCC 0xDD 0xEF
-  print ("--- extract32ForUnsignedRepresentation")
+  println (s) # 0xBB 0xCC 0xDD 0xEF
+  println ("--- extract32ForUnsignedRepresentation")
   # Parcours dans le sens des indices croissants : little endian
   a = (0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211).extract32ForUnsignedRepresentation
   s = ""
@@ -78,22 +78,22 @@ proc testsuite_bigint_type() {
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0x44332211 0x88776655 0xCCBBAA99 0x00FFEEDD 
+  println (s) # 0x44332211 0x88776655 0xCCBBAA99 0x00FFEEDD 
   # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in a
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0x00FFEEDD 0xCCBBAA99 0x88776655 0x44332211
+  println (s) # 0x00FFEEDD 0xCCBBAA99 0x88776655 0x44332211
   a = (0).extract32ForUnsignedRepresentation
   s = ""
   for (n) in a
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0x0
-  print ("--- extract32ForSignedRepresentation")
+  println (s) # 0x0
+  println ("--- extract32ForSignedRepresentation")
   # Parcours dans le sens des indices croissants : little endian
   a = (0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211).extract32ForSignedRepresentation
   s = ""
@@ -101,14 +101,14 @@ proc testsuite_bigint_type() {
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0x44332211 0x88776655 0xCCBBAA99 0x00FFEEDD
+  println (s) # 0x44332211 0x88776655 0xCCBBAA99 0x00FFEEDD
   # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in a
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0x00FFEEDD 0xCCBBAA99 0x88776655 0x44332211
+  println (s) # 0x00FFEEDD 0xCCBBAA99 0x88776655 0x44332211
   # Parcours dans le sens des indices croissants : little endian
   a = (-0x55_4433_2211).extract32ForSignedRepresentation
   s = ""
@@ -116,7 +116,7 @@ proc testsuite_bigint_type() {
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0xBBCCDDEF 0xFFFFFFAA
+  println (s) # 0xBBCCDDEF 0xFFFFFFAA
   # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in a
@@ -124,8 +124,8 @@ proc testsuite_bigint_type() {
     between s += " "
   end
   drop a
-  print (s) # 0xFFFFFFAA 0xBBCCDDEF
-  print ("--- extract64ForUnsignedRepresentation")
+  println (s) # 0xFFFFFFAA 0xBBCCDDEF
+  println ("--- extract64ForUnsignedRepresentation")
   # Parcours dans le sens des indices croissants : little endian
   var @uint64list aa = (0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211).extract64ForUnsignedRepresentation
   s = ""
@@ -133,22 +133,22 @@ proc testsuite_bigint_type() {
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0x8877665544332211 0xFFEEDDCCBBAA99
+  println (s) # 0x8877665544332211 0xFFEEDDCCBBAA99
   # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in aa
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0xFFEEDDCCBBAA99 0x8877665544332211
+  println (s) # 0xFFEEDDCCBBAA99 0x8877665544332211
   aa = (0).extract64ForUnsignedRepresentation
   s = ""
   for (n) in aa
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0x0
-  print ("--- extract64ForSignedRepresentation")
+  println (s) # 0x0
+  println ("--- extract64ForSignedRepresentation")
   # Parcours dans le sens des indices croissants : little endian
   aa = (0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211).extract64ForSignedRepresentation
   s = ""
@@ -156,14 +156,14 @@ proc testsuite_bigint_type() {
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0x8877665544332211 0xFFEEDDCCBBAA99
+  println (s) # 0x8877665544332211 0xFFEEDDCCBBAA99
   # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in aa
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0xFFEEDDCCBBAA99 0x8877665544332211
+  println (s) # 0xFFEEDDCCBBAA99 0x8877665544332211
   # Parcours dans le sens des indices croissants : little endian
   aa = (-0x55_4433_2211).extract64ForSignedRepresentation
   s = ""
@@ -171,38 +171,38 @@ proc testsuite_bigint_type() {
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0xFFFFFFAABBCCDDEF
+  println (s) # 0xFFFFFFAABBCCDDEF
   # Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > (n) in aa
     do s += n.hexString
     between s += " "
   end
-  print (s) # 0xFFFFFFAABBCCDDEF
-  print ("--- Addition")
-  print ((12345_67890_12345_67890 + 98765_43210_98765_43210).string)
-  print ("--- Subtract")
-  print ((12345_67890_12345_67890 - 98765_43210_98765_43210).string)
-  print ("--- Multiply")
-  print ((12345_67890_12345_67890 * 98765_43210_98765_43210).string)
-  print ("--- Divide")
-  print ((98765_43210_98765_43210 / 12345_67890_12345_67890).string)
-  print (((-98765_43210_98765_43210) / 12345_67890_12345_67890).string)
-  print (((-98765_43210_98765_43210) / (-12345_67890_12345_67890)).string)
-  print ((98765_43210_98765_43210 / (-12345_67890_12345_67890)).string)
-  print (((-7) / 2).string) # -3
-  print (((-7) / (-2)).string) # 3
-  print ((7 / (-2)).string) # -3
-  print ("--- mod")
-  print ((9876543210 mod 1234567890).string) # 90
-  print (((-9876543210) mod 1234567890).string) # -90
-  print (((-9876543210) mod (-1234567890)).string)  # -90
-  print ((9876543210 mod (-1234567890)).string)  # 90
-  print ((2000 mod 183).string) # 170
-  print (((-2000) mod 183).string) # -170
-  print (((-2000) mod (-183)).string) # -170
-  print ((2000 mod (-183)).string) # 170
-  print ("--- divideBy")
+  println (s) # 0xFFFFFFAABBCCDDEF
+  println ("--- Addition")
+  println ((12345_67890_12345_67890 + 98765_43210_98765_43210).string)
+  println ("--- Subtract")
+  println ((12345_67890_12345_67890 - 98765_43210_98765_43210).string)
+  println ("--- Multiply")
+  println ((12345_67890_12345_67890 * 98765_43210_98765_43210).string)
+  println ("--- Divide")
+  println ((98765_43210_98765_43210 / 12345_67890_12345_67890).string)
+  println (((-98765_43210_98765_43210) / 12345_67890_12345_67890).string)
+  println (((-98765_43210_98765_43210) / (-12345_67890_12345_67890)).string)
+  println ((98765_43210_98765_43210 / (-12345_67890_12345_67890)).string)
+  println (((-7) / 2).string) # -3
+  println (((-7) / (-2)).string) # 3
+  println ((7 / (-2)).string) # -3
+  println ("--- mod")
+  println ((9876543210 mod 1234567890).string) # 90
+  println (((-9876543210) mod 1234567890).string) # -90
+  println (((-9876543210) mod (-1234567890)).string)  # -90
+  println ((9876543210 mod (-1234567890)).string)  # 90
+  println ((2000 mod 183).string) # 170
+  println (((-2000) mod 183).string) # -170
+  println (((-2000) mod (-183)).string) # -170
+  println ((2000 mod (-183)).string) # 170
+  println ("--- divideBy")
   var @bigint quotient
   var @bigint remainder
   let cst1 = 9876543210_9876543210 ; cst1.divideBy (
@@ -210,142 +210,142 @@ proc testsuite_bigint_type() {
     ?quotient:quotient,
     ?remainder:remainder
   )
-  print (quotient.string + " " + remainder) # 80000000737 8280
+  println (quotient.string + " " + remainder) # 80000000737 8280
   let cst2 = -9876543210_9876543210 ; cst2.divideBy (
     !1234567890,
     ?quotient:quotient,
     ?remainder:remainder
   )
-  print (quotient.string + " " + remainder) # -80000000737 -8280
+  println (quotient.string + " " + remainder) # -80000000737 -8280
   let cst3 = -9876543210_9876543210 ; cst3.divideBy (
     !-1234567890,
     ?quotient:quotient,
     ?remainder:remainder
   )
-  print (quotient.string + " " + remainder) # 80000000737 -8280
+  println (quotient.string + " " + remainder) # 80000000737 -8280
   let cst4 = 9876543210_9876543210 ; cst4.divideBy (
     !-1234567890,
     ?quotient:quotient,
     ?remainder:remainder
   )
-  print (quotient.string + " " + remainder) # -80000000737 8280
-  print ("--- floorDivideBy")
+  println (quotient.string + " " + remainder) # -80000000737 8280
+  println ("--- floorDivideBy")
   let cst5 = 9876543210_9876543210 ; cst5.floorDivideBy (
     !1234567890,
     ?quotient:quotient,
     ?remainder:remainder
   )
-  print (quotient.string + " " + remainder) # 80000000737 8280
+  println (quotient.string + " " + remainder) # 80000000737 8280
   let cst6 = -9876543210_9876543210 ; cst6.floorDivideBy (
     !1234567890,
     ?quotient:quotient,
     ?remainder:remainder
   )
-  print (quotient.string + " " + remainder) # -80000000738 1234559610
+  println (quotient.string + " " + remainder) # -80000000738 1234559610
   let cst7 = -9876543210_9876543210 ; cst7.floorDivideBy (
     !-1234567890,
     ?quotient:quotient,
     ?remainder:remainder
   )
-  print (quotient.string + " " + remainder) # 80000000737 -8280
+  println (quotient.string + " " + remainder) # 80000000737 -8280
   let cst8 = 9876543210_9876543210 ; cst8.floorDivideBy (
     !-1234567890,
     ?quotient:quotient,
     ?remainder:remainder
   )
-  print (quotient.string + " " + remainder) # -80000000738 -1234559610
-  print ("--- ceilDivideBy")
+  println (quotient.string + " " + remainder) # -80000000738 -1234559610
+  println ("--- ceilDivideBy")
   let cst9 = 9876543210_9876543210 ; cst9.ceilDivideBy (
     !1234567890,
     ?quotient:quotient,
     ?remainder:remainder
   )
-  print (quotient.string + " " + remainder) # 80000000738 -1234559610
+  println (quotient.string + " " + remainder) # 80000000738 -1234559610
   let cstA = -9876543210_9876543210 ; cstA.ceilDivideBy (
     !1234567890,
     ?quotient:quotient,
     ?remainder:remainder
   )
-  print (quotient.string + " " + remainder) # -80000000737 -8280
+  println (quotient.string + " " + remainder) # -80000000737 -8280
   let cstB = -9876543210_9876543210 ; cstB.ceilDivideBy (
     !-1234567890,
     ?quotient:quotient,
     ?remainder:remainder
   )
-  print (quotient.string + " " + remainder) # 80000000738 1234559610
+  println (quotient.string + " " + remainder) # 80000000738 1234559610
   let cstC = 9876543210_9876543210 ; cstC.ceilDivideBy (
     !-1234567890,
     ?quotient:quotient,
     ?remainder:remainder
   )
-  print (quotient.string + " " + remainder) # -80000000737 8280
-  print ("--- operator <<")
-  print ((0x1234567890 << 12).hexString) # 0x1234567890000
-  print (((-0x1234567890) << 12).hexString) # -0x1234567890000
-  print ((2000 << 2).string) # 8000
-  print (((-2000) << 2).string) # -8000
-  print ("--- operator >>")
-  print ((0x1234567890 >> 12).hexString) # 0x1234567
-  print (((-0x1234567890) >> 12).hexString) # -0x1234567
-  print ((2000 >> 2).string) # 500
-  print (((-2000) >> 2).string) # -500
-  print ((9 >> 1).string) # 4
-  print ((9 >> 1).string) # 4
-  print ((7 >> 1).string) # 3
-  print ((7 >> 1).string) # 3
-  print ((3 >> 1).string) # 1
-  print ((3 >> 1).string) # 1
-  print ((1 >> 1).string) # 0
-  print ((1 >> 1).string) # 0
-  print ((-9 >> 1).string) # -5
-  print ((-9 >> 1).string) # -5
-  print ((-7 >> 1).string) # -4
-  print ((-7 >> 1).string) # -4
-  print ((-3 >> 1).string) # -2
-  print ((-3 >> 1).string) # -2
-  print ((-1 >> 1).string) # -1
-  print ((-1 >> 1).string) # -1
-  print ("--- operator &")
-  print ((0x1234 & 0x4321).hexString) # 0x220
-  print ((-0x1234 & 0x4321).hexString) # 0x4100
-  print ((-0x80 & 0xFF).hexString) # 0x80
-  print ("--- operator |")
-  print ((0x1234 | 0x4321).hexString) # 0x5335
-  print ((-0x1234 | 0x4321).hexString) # -0x1013
-  print ((-0x80 | 0xFF).hexString) # -0x1
-  print ("--- operator ^")
-  print ((0x1234 ^ 0x4321).hexString) # 0x5115
-  print ((-0x1234 ^ 0x4321).hexString) # -0x5113
-  print ((-0x80 ^ 0xFF).hexString) # -0x81
-  print ((-0x80 ^ -0xFF).hexString) # 0x81
-  print ("--- operator ~")
-  print ((~  0x1234).hexString) # -0x1235
-  print ((~ -0x1234).hexString) # 0x1233
-  print ("--- bitAtIndex")
-  print ((0x1234).bitAtIndex (7).ocString) # NO
-  print ((0x1234).bitAtIndex (5).ocString) # YES
-  print ((0x1234).bitAtIndex (25).ocString) # NO
-  print ((-0x1234).bitAtIndex (7).ocString) # YES
-  print ((-0x1234).bitAtIndex (5).ocString) # NO
-  print ((-0x1234).bitAtIndex (25).ocString) # YES
-  print ("--- setBitAtIndex")
+  println (quotient.string + " " + remainder) # -80000000737 8280
+  println ("--- operator <<")
+  println ((0x1234567890 << 12).hexString) # 0x1234567890000
+  println (((-0x1234567890) << 12).hexString) # -0x1234567890000
+  println ((2000 << 2).string) # 8000
+  println (((-2000) << 2).string) # -8000
+  println ("--- operator >>")
+  println ((0x1234567890 >> 12).hexString) # 0x1234567
+  println (((-0x1234567890) >> 12).hexString) # -0x1234567
+  println ((2000 >> 2).string) # 500
+  println (((-2000) >> 2).string) # -500
+  println ((9 >> 1).string) # 4
+  println ((9 >> 1).string) # 4
+  println ((7 >> 1).string) # 3
+  println ((7 >> 1).string) # 3
+  println ((3 >> 1).string) # 1
+  println ((3 >> 1).string) # 1
+  println ((1 >> 1).string) # 0
+  println ((1 >> 1).string) # 0
+  println ((-9 >> 1).string) # -5
+  println ((-9 >> 1).string) # -5
+  println ((-7 >> 1).string) # -4
+  println ((-7 >> 1).string) # -4
+  println ((-3 >> 1).string) # -2
+  println ((-3 >> 1).string) # -2
+  println ((-1 >> 1).string) # -1
+  println ((-1 >> 1).string) # -1
+  println ("--- operator &")
+  println ((0x1234 & 0x4321).hexString) # 0x220
+  println ((-0x1234 & 0x4321).hexString) # 0x4100
+  println ((-0x80 & 0xFF).hexString) # 0x80
+  println ("--- operator |")
+  println ((0x1234 | 0x4321).hexString) # 0x5335
+  println ((-0x1234 | 0x4321).hexString) # -0x1013
+  println ((-0x80 | 0xFF).hexString) # -0x1
+  println ("--- operator ^")
+  println ((0x1234 ^ 0x4321).hexString) # 0x5115
+  println ((-0x1234 ^ 0x4321).hexString) # -0x5113
+  println ((-0x80 ^ 0xFF).hexString) # -0x81
+  println ((-0x80 ^ -0xFF).hexString) # 0x81
+  println ("--- operator ~")
+  println ((~  0x1234).hexString) # -0x1235
+  println ((~ -0x1234).hexString) # 0x1233
+  println ("--- bitAtIndex")
+  println ((0x1234).bitAtIndex (7).ocString) # NO
+  println ((0x1234).bitAtIndex (5).ocString) # YES
+  println ((0x1234).bitAtIndex (25).ocString) # NO
+  println ((-0x1234).bitAtIndex (7).ocString) # YES
+  println ((-0x1234).bitAtIndex (5).ocString) # NO
+  println ((-0x1234).bitAtIndex (25).ocString) # YES
+  println ("--- setBitAtIndex")
   var b = 0x1234
   !?b.setBitAtIndex (true, !14)
-  print (b.hexString) # 0x5234
+  println (b.hexString) # 0x5234
   !?b.setBitAtIndex (true, !40)
-  print (b.hexString) # 0x10000005234
+  println (b.hexString) # 0x10000005234
   b = -0x1234
   !?b.setBitAtIndex (false, !14)
-  print (b.hexString) # -0x5234
+  println (b.hexString) # -0x5234
   !?b.setBitAtIndex (false, !40) # -0x10000005234
-  print (b.hexString)
-  print ("--- complementBitAtIndex")
+  println (b.hexString)
+  println ("--- complementBitAtIndex")
   b = 0x1234
   !?b.complementBitAtIndex (14)
-  print (b.hexString) # 0x5234
+  println (b.hexString) # 0x5234
   b = -0x1234
   !?b.complementBitAtIndex (40)
-  print (b.hexString) # -0x10000005234
+  println (b.hexString) # -0x10000005234
 }
 
 
