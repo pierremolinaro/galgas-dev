@@ -35,7 +35,6 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* ... */,
   false /* ..< */,
   false /* @type */,
-  false /* %attribute */,
   false /* 'char' */,
   false /* $terminal$ */,
   false /* comment */,
@@ -342,7 +341,7 @@ class SWIFT_Lexique_galgasTemplateScanner : SWIFT_Lexique_galgasScanner {
 //----------------------------------------------------------------------------------------------------------------------
 
 /*
-static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [181] = {
+static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [180] = {
   NO /* identifier */,
   NO /* double.xxx */,
   NO /* literalInt */,
@@ -350,7 +349,6 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [181] = {
   NO /* ... */,
   NO /* ..< */,
   NO /* @type */,
-  NO /* %attribute */,
   NO /* 'char' */,
   NO /* $terminal$ */,
   NO /* comment */,

@@ -14,12 +14,12 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
-    $message$
-    let instructionLocation = @location.here
-    <expression_ggs3> ?let @semanticExpressionAST expression
-    outInstruction = @messageInstructionAST.new {!instructionLocation !expression}
-  }
+#  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+#    $message$
+#    let instructionLocation = @location.here
+#    <expression_ggs3> ?let @semanticExpressionAST expression
+#    outInstruction = @messageInstructionAST.new {!instructionLocation !expression}
+#  }
 
   #·····················································································································
 

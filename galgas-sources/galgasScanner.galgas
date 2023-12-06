@@ -324,10 +324,9 @@ rule '@' {
 
 # -------------------------- Attribute -----------------------------
 
-$%attribute$ ! tokenString  style attributeStyle error message "an attribute (%...)"
-
 message attributeError : "in an attribute name, a letter or a digit should follow the '%' character"
 
+message undefinedAttribute : "undefined attribute"
 
 list attributeKeyWordList style attributeStyle error message "the '%K' keyword" {
   "makefile-macosx" -> $%makefile-macosx$,
@@ -367,7 +366,7 @@ rule '%' {
   default
     error attributeError
   end
-  send search tokenString in attributeKeyWordList default $%attribute$
+  send search tokenString in attributeKeyWordList default error undefinedAttribute
 }
 
 #--------------------------------- Character constant ------------------------------------
