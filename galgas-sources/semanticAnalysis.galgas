@@ -725,7 +725,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
   if @application.verboseOutput then
-    message "*** Analyzing '" + self.mGrammarComponentName + "' grammar\n"
+    println (!"*** Analyzing '" + self.mGrammarComponentName + "' grammar")
   end
 #--- Useful entities graph
   let grammarNameForUsefulness = grammarNameForUsefulEntitiesGraph (!self.mGrammarComponentName)

@@ -55,11 +55,11 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
     end
     $@type$ ?let propertyTypeName
     $identifier$ ?let propertyName
-    var featureList = @lstringlist {}
+    var selectorAttribute = false
     repeat
     while
-      $%attribute$ ?let @lstring featureName
-      featureList += !featureName
+      $%selector$
+      selectorAttribute = true
     end
     let @propertyInCollectionInitializationAST initialization
     select
@@ -74,7 +74,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
       !propertyTypeName
       !propertyName
       !accessControl
-      !featureList
+      !selector: selectorAttribute
       !initialization
   }
 
@@ -83,11 +83,12 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
   rule <property_declaration_ggs3> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
     $@type$ ?let propertyTypeName
     $identifier$ ?let propertyName
-    var featureList = @lstringlist {}
-    repeat
-    while
-      $%attribute$ ?let @lstring featureName
-      featureList += !featureName
+    let @bool selectorAttribute
+    select
+      selectorAttribute = false
+    or
+      $%selector$
+      selectorAttribute = true
     end
     let @propertyInCollectionInitializationAST initialization
     select
@@ -102,7 +103,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner) {
       !propertyTypeName
       !propertyName
       !.publicAccess
-      !featureList
+      !selector: selectorAttribute
       !initialization
     if [option galgas_cli_options.errorOldStylePropertyDeclaration value] then
       let errorLocation = [propertyTypeName.location union !propertyName.location]
@@ -270,7 +271,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
   #·····················································································································
 
   rule <property_declaration> ?!@galgasDeclarationAST ioDeclarations
-                               ?!@stringset ioUserImplicitDeclaredTypeSet
+                              ?!@stringset ioUserImplicitDeclaredTypeSet
                               ?!@propertyInCollectionListAST ioAttributeInCollectionList {
     <acces_control> ?let accessControl
     let @bool isConstant
@@ -284,11 +285,11 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
     end
     <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let propertyTypeName
     $identifier$ ?let propertyName
-    var featureList = @lstringlist {}
+    var selectorAttribute = false
     repeat
     while
-      $%attribute$ ?let @lstring featureName
-      featureList += !featureName
+      $%selector$
+      selectorAttribute = true
     end
     let @propertyInCollectionInitializationAST initialization
     select
@@ -303,7 +304,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner) {
       !propertyTypeName
       !propertyName
       !accessControl
-      !featureList
+      !selector: selectorAttribute
       !initialization
   }
 

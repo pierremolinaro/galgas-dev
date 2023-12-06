@@ -329,12 +329,32 @@ $%attribute$ ! tokenString  style attributeStyle error message "an attribute (%.
 message attributeError : "in an attribute name, a letter or a digit should follow the '%' character"
 
 
-list attributeKeyWordList style attributeStyle error message "the '%%%K' keyword" {
-#  "makefile-macosx" -> $%makefile-macosx$,
+list attributeKeyWordList style attributeStyle error message "the '%K' keyword" {
+  "makefile-macosx" -> $%makefile-macosx$,
+  "makefile-unix" -> $%makefile-unix$,
+  "makefile-x86linux32-on-macosx" -> $%makefile-x86linux32-on-macosx$,
+  "makefile-x86linux64-on-macosx" -> $%makefile-x86linux64-on-macosx$,
+  "makefile-win32-on-macosx" -> $%makefile-win32-on-macosx$,
+  "codeblocks-windows" -> $%codeblocks-windows$,
+  "codeblocks-linux32" -> $%codeblocks-linux32$,
+  "codeblocks-linux64" -> $%codeblocks-linux64$,
+  "applicationBundleBase" -> $%applicationBundleBase$,
+  "MacOS" -> $%MacOS$,
+  "MacOSDeployment" -> $%MacOSDeployment$,
+  "quietOutputByDefault" -> $%quietOutputByDefault$,
+  "macCodeSign" -> $%macCodeSign$,
+  "libpmAtPath" -> $%libpmAtPath$,
+  "tool-source" -> $%tool-source$,
+  "app-source" -> $%app-source$,
+  "app-link" -> $%app-link$,
   "translate" -> $%translate$,
   "once" -> $%once$,
   "usefull" -> $%usefull$,
-  "generatedInSeparateFile" -> $%generatedInSeparateFile$
+  "generatedInSeparateFile" -> $%generatedInSeparateFile$,
+  "nonAtomicSelection" -> $%nonAtomicSelection$,
+  "templateEndMark" -> $%templateEndMark$,
+  "preserved" -> $%preserved$,
+  "selector" -> $%selector$
 }
 
 rule '%' {
@@ -539,6 +559,7 @@ rule '$' {
 # ------------------------------------ Comment ----------------------------
 $comment$  style commentStyle %nonAtomicSelection error message "a comment"
 $commentMark$  style commentStyle %nonAtomicSelection error message "a comment"
+
 rule '#' {
   select
   case '!' :

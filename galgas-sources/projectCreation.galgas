@@ -48,14 +48,14 @@ proc performProjectCreation ?let @string inProjectPath {
   [[filewrapper projectCreationFileWrapper.PROJECT_semantics !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-semantics.galgas"]
   [[filewrapper projectCreationFileWrapper.PROJECT_syntax !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-syntax.galgas"]
 #---
-   message "*** DONE ***\n"
+   println (!"*** DONE ***")
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc projectCreation ?let @string inProjectPath {
   if [inProjectPath count] > 0 then
-    message "*** PERFORM PROJECT CREATION (--create-project=" + inProjectPath +" option) ***\n"
+    println (!"*** PERFORM PROJECT CREATION (--create-project=" + inProjectPath +" option) ***")
   #--- First check the project name is correct (not empty, only letters, digits and '_')
     let @string projectName = [inProjectPath lastPathComponent]
     var @bool ok = [[projectName characterAtIndex !0] isalpha]
@@ -67,14 +67,14 @@ proc projectCreation ?let @string inProjectPath {
       idx += 1
     end
     if not ok then
-      message "** Cannot create GALGAS project: the project name '"
+      println (!"** Cannot create GALGAS project: the project name '"
         + projectName
-        + "' should begin by a letter followed by zero, one or more letters, digits and underscore character.\n"
+        + "' should begin by a letter followed by zero, one or more letters, digits and underscore character.")
     end
     if ok then
       ok = not [inProjectPath directoryExists]
       if not ok then
-        message "*** Cannot create GALGAS project: '" + inProjectPath +"' directory already exists.***\n"
+        println (!"*** Cannot create GALGAS project: '" + inProjectPath +"' directory already exists.***")
       end
     end
     if ok then

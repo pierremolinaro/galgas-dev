@@ -10276,7 +10276,9 @@ void routine_performProjectCreation (const GALGAS_string constinArgument_inProje
   GALGAS_string (filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_program (inCompiler, var_projectName_2323 COMMA_SOURCE_FILE ("projectCreation.galgas", 47))).method_writeToFile (var_galgas_5F_sources_5F_DIR_2405.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 47)).add_operation (var_projectName_2323, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 47)).add_operation (GALGAS_string ("-program.galgas"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 47)), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 47)) ;
   GALGAS_string (filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_semantics (inCompiler, var_projectName_2323 COMMA_SOURCE_FILE ("projectCreation.galgas", 48))).method_writeToFile (var_galgas_5F_sources_5F_DIR_2405.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 48)).add_operation (var_projectName_2323, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 48)).add_operation (GALGAS_string ("-semantics.galgas"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 48)), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 48)) ;
   GALGAS_string (filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_syntax (inCompiler, var_projectName_2323 COMMA_SOURCE_FILE ("projectCreation.galgas", 49))).method_writeToFile (var_galgas_5F_sources_5F_DIR_2405.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 49)).add_operation (var_projectName_2323, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 49)).add_operation (GALGAS_string ("-syntax.galgas"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 49)), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 49)) ;
-  inCompiler->printMessage (GALGAS_string ("*** DONE ***\n")  COMMA_SOURCE_FILE ("projectCreation.galgas", 51)) ;
+  {
+  routine_println (GALGAS_string ("*** DONE ***"), inCompiler  COMMA_SOURCE_FILE ("projectCreation.galgas", 51)) ;
+  }
 }
 
 
@@ -10293,54 +10295,60 @@ void routine_projectCreation (const GALGAS_string constinArgument_inProjectPath,
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (kIsStrictSup, constinArgument_inProjectPath.getter_count (SOURCE_FILE ("projectCreation.galgas", 57)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      inCompiler->printMessage (GALGAS_string ("*** PERFORM PROJECT CREATION (--create-project=").add_operation (constinArgument_inProjectPath, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 58)).add_operation (GALGAS_string (" option) ***\n"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 58))  COMMA_SOURCE_FILE ("projectCreation.galgas", 58)) ;
-      GALGAS_string var_projectName_4079 = constinArgument_inProjectPath.getter_lastPathComponent (SOURCE_FILE ("projectCreation.galgas", 60)) ;
-      GALGAS_bool var_ok_4141 = var_projectName_4079.getter_characterAtIndex (GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 61)).getter_isalpha (SOURCE_FILE ("projectCreation.galgas", 61)) ;
-      GALGAS_uint var_idx_4204 = GALGAS_uint (uint32_t (1U)) ;
-      if (var_projectName_4079.getter_count (SOURCE_FILE ("projectCreation.galgas", 63)).isValid ()) {
-        uint32_t variant_4216 = var_projectName_4079.getter_count (SOURCE_FILE ("projectCreation.galgas", 63)).uintValue () ;
-        bool loop_4216 = true ;
-        while (loop_4216) {
-          loop_4216 = GALGAS_bool (kIsStrictInf, var_idx_4204.objectCompare (var_projectName_4079.getter_count (SOURCE_FILE ("projectCreation.galgas", 64)))).operator_and (var_ok_4141 COMMA_SOURCE_FILE ("projectCreation.galgas", 64)).isValid () ;
-          if (loop_4216) {
-            loop_4216 = GALGAS_bool (kIsStrictInf, var_idx_4204.objectCompare (var_projectName_4079.getter_count (SOURCE_FILE ("projectCreation.galgas", 64)))).operator_and (var_ok_4141 COMMA_SOURCE_FILE ("projectCreation.galgas", 64)).boolValue () ;
+      {
+      routine_println (GALGAS_string ("*** PERFORM PROJECT CREATION (--create-project=").add_operation (constinArgument_inProjectPath, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 58)).add_operation (GALGAS_string (" option) ***"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 58)), inCompiler  COMMA_SOURCE_FILE ("projectCreation.galgas", 58)) ;
+      }
+      GALGAS_string var_projectName_4081 = constinArgument_inProjectPath.getter_lastPathComponent (SOURCE_FILE ("projectCreation.galgas", 60)) ;
+      GALGAS_bool var_ok_4143 = var_projectName_4081.getter_characterAtIndex (GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 61)).getter_isalpha (SOURCE_FILE ("projectCreation.galgas", 61)) ;
+      GALGAS_uint var_idx_4206 = GALGAS_uint (uint32_t (1U)) ;
+      if (var_projectName_4081.getter_count (SOURCE_FILE ("projectCreation.galgas", 63)).isValid ()) {
+        uint32_t variant_4218 = var_projectName_4081.getter_count (SOURCE_FILE ("projectCreation.galgas", 63)).uintValue () ;
+        bool loop_4218 = true ;
+        while (loop_4218) {
+          loop_4218 = GALGAS_bool (kIsStrictInf, var_idx_4206.objectCompare (var_projectName_4081.getter_count (SOURCE_FILE ("projectCreation.galgas", 64)))).operator_and (var_ok_4143 COMMA_SOURCE_FILE ("projectCreation.galgas", 64)).isValid () ;
+          if (loop_4218) {
+            loop_4218 = GALGAS_bool (kIsStrictInf, var_idx_4206.objectCompare (var_projectName_4081.getter_count (SOURCE_FILE ("projectCreation.galgas", 64)))).operator_and (var_ok_4143 COMMA_SOURCE_FILE ("projectCreation.galgas", 64)).boolValue () ;
           }
-          if (loop_4216 && (0 == variant_4216)) {
-            loop_4216 = false ;
+          if (loop_4218 && (0 == variant_4218)) {
+            loop_4218 = false ;
             inCompiler->loopRunTimeVariantError (SOURCE_FILE ("projectCreation.galgas", 63)) ;
           }
-          if (loop_4216) {
-            variant_4216 -- ;
-            GALGAS_char var_c_4305 = var_projectName_4079.getter_characterAtIndex (var_idx_4204, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 65)) ;
-            var_ok_4141 = var_c_4305.getter_isalnum (SOURCE_FILE ("projectCreation.galgas", 66)).operator_or (GALGAS_bool (kIsEqual, var_c_4305.objectCompare (GALGAS_char (TO_UNICODE (95)))) COMMA_SOURCE_FILE ("projectCreation.galgas", 66)) ;
-            var_idx_4204.plusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("projectCreation.galgas", 67)) ;
+          if (loop_4218) {
+            variant_4218 -- ;
+            GALGAS_char var_c_4307 = var_projectName_4081.getter_characterAtIndex (var_idx_4206, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 65)) ;
+            var_ok_4143 = var_c_4307.getter_isalnum (SOURCE_FILE ("projectCreation.galgas", 66)).operator_or (GALGAS_bool (kIsEqual, var_c_4307.objectCompare (GALGAS_char (TO_UNICODE (95)))) COMMA_SOURCE_FILE ("projectCreation.galgas", 66)) ;
+            var_idx_4206.plusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("projectCreation.galgas", 67)) ;
           }
         }
       }
       enumGalgasBool test_1 = kBoolTrue ;
       if (kBoolTrue == test_1) {
-        test_1 = var_ok_4141.operator_not (SOURCE_FILE ("projectCreation.galgas", 69)).boolEnum () ;
+        test_1 = var_ok_4143.operator_not (SOURCE_FILE ("projectCreation.galgas", 69)).boolEnum () ;
         if (kBoolTrue == test_1) {
-          inCompiler->printMessage (GALGAS_string ("** Cannot create GALGAS project: the project name '").add_operation (var_projectName_4079, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 70)).add_operation (GALGAS_string ("' should begin by a letter followed by zero, one or more letters, digits and underscore character.\n"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 71))  COMMA_SOURCE_FILE ("projectCreation.galgas", 70)) ;
+          {
+          routine_println (GALGAS_string ("** Cannot create GALGAS project: the project name '").add_operation (var_projectName_4081, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 70)).add_operation (GALGAS_string ("' should begin by a letter followed by zero, one or more letters, digits and underscore character."), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 71)), inCompiler  COMMA_SOURCE_FILE ("projectCreation.galgas", 70)) ;
+          }
         }
       }
       enumGalgasBool test_2 = kBoolTrue ;
       if (kBoolTrue == test_2) {
-        test_2 = var_ok_4141.boolEnum () ;
+        test_2 = var_ok_4143.boolEnum () ;
         if (kBoolTrue == test_2) {
-          var_ok_4141 = constinArgument_inProjectPath.getter_directoryExists (SOURCE_FILE ("projectCreation.galgas", 75)).operator_not (SOURCE_FILE ("projectCreation.galgas", 75)) ;
+          var_ok_4143 = constinArgument_inProjectPath.getter_directoryExists (SOURCE_FILE ("projectCreation.galgas", 75)).operator_not (SOURCE_FILE ("projectCreation.galgas", 75)) ;
           enumGalgasBool test_3 = kBoolTrue ;
           if (kBoolTrue == test_3) {
-            test_3 = var_ok_4141.operator_not (SOURCE_FILE ("projectCreation.galgas", 76)).boolEnum () ;
+            test_3 = var_ok_4143.operator_not (SOURCE_FILE ("projectCreation.galgas", 76)).boolEnum () ;
             if (kBoolTrue == test_3) {
-              inCompiler->printMessage (GALGAS_string ("*** Cannot create GALGAS project: '").add_operation (constinArgument_inProjectPath, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 77)).add_operation (GALGAS_string ("' directory already exists.***\n"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 77))  COMMA_SOURCE_FILE ("projectCreation.galgas", 77)) ;
+              {
+              routine_println (GALGAS_string ("*** Cannot create GALGAS project: '").add_operation (constinArgument_inProjectPath, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 77)).add_operation (GALGAS_string ("' directory already exists.***"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 77)), inCompiler  COMMA_SOURCE_FILE ("projectCreation.galgas", 77)) ;
+              }
             }
           }
         }
       }
       enumGalgasBool test_4 = kBoolTrue ;
       if (kBoolTrue == test_4) {
-        test_4 = var_ok_4141.boolEnum () ;
+        test_4 = var_ok_4143.boolEnum () ;
         if (kBoolTrue == test_4) {
           {
           routine_performProjectCreation (constinArgument_inProjectPath, inCompiler  COMMA_SOURCE_FILE ("projectCreation.galgas", 81)) ;

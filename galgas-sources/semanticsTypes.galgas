@@ -183,7 +183,7 @@ list @typedPropertyList {
   public let @unifiedTypeMapEntry mPropertyTypeEntry
   public let @lstring mPropertyName
   public let @bool hasSetter %selector
-  public let @bool mHasSelector
+  public let @bool hasSelector %selector
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -6,8 +6,8 @@ list @terminalList {
   public let @lstring mTerminalName
   public let @lexicalSentValueList mSentAttributeList
   public let @string mSyntaxErrorMessage
-  public let @bool mIsEndOfTemplateMark
-  public let @bool mAtomicSelection # True if atomic selection in source editor
+  public let @bool isEndOfTemplateMark %selector
+  public let @bool atomicSelection %selector # True if atomic selection in source editor
   public let @uint mStyleIndex # 0 if default style
 }
 
@@ -15,7 +15,8 @@ list @terminalList {
 
 map @lexicalExplicitTokenListMap {
   public let @lstring mTerminal
-  public let @lstringlist mAttributeList
+  public let @bool atomicSelection %selector # True if atomic selection in source editor
+  public let @bool isEndOfTemplateMark %selector
   insert insertKey error message "the '%K' terminal has been already declared in the list"
   search searchKey error message "the '%K' terminal is not declared"
 }

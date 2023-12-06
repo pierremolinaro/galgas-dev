@@ -213,56 +213,77 @@ let galgasScanner_1_valueclass : UInt16 = 109
 let galgasScanner_1_warning : UInt16 = 110
 let galgasScanner_1_while : UInt16 = 111
 let galgasScanner_1_with : UInt16 = 112
-let galgasScanner_1__25_translate : UInt16 = 113
-let galgasScanner_1__25_once : UInt16 = 114
-let galgasScanner_1__25_usefull : UInt16 = 115
-let galgasScanner_1__25_generatedInSeparateFile : UInt16 = 116
-let galgasScanner_1__2A_ : UInt16 = 117
-let galgasScanner_1__2C_ : UInt16 = 118
-let galgasScanner_1__2B_ : UInt16 = 119
-let galgasScanner_1__26__2B_ : UInt16 = 120
-let galgasScanner_1__26__2D_ : UInt16 = 121
-let galgasScanner_1__26__2A_ : UInt16 = 122
-let galgasScanner_1__26__2F_ : UInt16 = 123
-let galgasScanner_1__3E_ : UInt16 = 124
-let galgasScanner_1__3B_ : UInt16 = 125
-let galgasScanner_1__3A_ : UInt16 = 126
-let galgasScanner_1__3A__3E_ : UInt16 = 127
-let galgasScanner_1__2D_ : UInt16 = 128
-let galgasScanner_1__28_ : UInt16 = 129
-let galgasScanner_1__29_ : UInt16 = 130
-let galgasScanner_1__2D__3E_ : UInt16 = 131
-let galgasScanner_1__3D__3D_ : UInt16 = 132
-let galgasScanner_1__3D_ : UInt16 = 133
-let galgasScanner_1__26__26_ : UInt16 = 134
-let galgasScanner_1__5B_ : UInt16 = 135
-let galgasScanner_1__5D_ : UInt16 = 136
-let galgasScanner_1__2B__3D_ : UInt16 = 137
-let galgasScanner_1__2D__3D_ : UInt16 = 138
-let galgasScanner_1__2A__3D_ : UInt16 = 139
-let galgasScanner_1__2F__3D_ : UInt16 = 140
-let galgasScanner_1__2F_ : UInt16 = 141
-let galgasScanner_1__21__3D_ : UInt16 = 142
-let galgasScanner_1__3E__3D_ : UInt16 = 143
-let galgasScanner_1__26_ : UInt16 = 144
-let galgasScanner_1__7B_ : UInt16 = 145
-let galgasScanner_1__7D_ : UInt16 = 146
-let galgasScanner_1__60_ : UInt16 = 147
-let galgasScanner_1__7C__7C_ : UInt16 = 148
-let galgasScanner_1__7C_ : UInt16 = 149
-let galgasScanner_1__5E_ : UInt16 = 150
-let galgasScanner_1__3E__3E_ : UInt16 = 151
-let galgasScanner_1__7E_ : UInt16 = 152
-let galgasScanner_1__2D__2D_ : UInt16 = 153
-let galgasScanner_1__2B__2B_ : UInt16 = 154
-let galgasScanner_1__26__2D__2D_ : UInt16 = 155
-let galgasScanner_1__26__2B__2B_ : UInt16 = 156
-let galgasScanner_1__3D__3D__3D_ : UInt16 = 157
-let galgasScanner_1__21__3D__3D_ : UInt16 = 158
-let galgasScanner_1__3F__5E_ : UInt16 = 159
-let galgasScanner_1__21__5E_ : UInt16 = 160
-let galgasScanner_2_ERROR : UInt16 = 161
-let galgasScanner_2_TEMPLATE : UInt16 = 162
+let galgasScanner_1__25_makefile_2D_macosx : UInt16 = 113
+let galgasScanner_1__25_makefile_2D_unix : UInt16 = 114
+let galgasScanner_1__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx : UInt16 = 115
+let galgasScanner_1__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx : UInt16 = 116
+let galgasScanner_1__25_makefile_2D_win_33__32__2D_on_2D_macosx : UInt16 = 117
+let galgasScanner_1__25_codeblocks_2D_windows : UInt16 = 118
+let galgasScanner_1__25_codeblocks_2D_linux_33__32_ : UInt16 = 119
+let galgasScanner_1__25_codeblocks_2D_linux_36__34_ : UInt16 = 120
+let galgasScanner_1__25_applicationBundleBase : UInt16 = 121
+let galgasScanner_1__25_MacOS : UInt16 = 122
+let galgasScanner_1__25_MacOSDeployment : UInt16 = 123
+let galgasScanner_1__25_quietOutputByDefault : UInt16 = 124
+let galgasScanner_1__25_macCodeSign : UInt16 = 125
+let galgasScanner_1__25_libpmAtPath : UInt16 = 126
+let galgasScanner_1__25_tool_2D_source : UInt16 = 127
+let galgasScanner_1__25_app_2D_source : UInt16 = 128
+let galgasScanner_1__25_app_2D_link : UInt16 = 129
+let galgasScanner_1__25_translate : UInt16 = 130
+let galgasScanner_1__25_once : UInt16 = 131
+let galgasScanner_1__25_usefull : UInt16 = 132
+let galgasScanner_1__25_generatedInSeparateFile : UInt16 = 133
+let galgasScanner_1__25_nonAtomicSelection : UInt16 = 134
+let galgasScanner_1__25_templateEndMark : UInt16 = 135
+let galgasScanner_1__25_preserved : UInt16 = 136
+let galgasScanner_1__25_selector : UInt16 = 137
+let galgasScanner_1__2A_ : UInt16 = 138
+let galgasScanner_1__2C_ : UInt16 = 139
+let galgasScanner_1__2B_ : UInt16 = 140
+let galgasScanner_1__26__2B_ : UInt16 = 141
+let galgasScanner_1__26__2D_ : UInt16 = 142
+let galgasScanner_1__26__2A_ : UInt16 = 143
+let galgasScanner_1__26__2F_ : UInt16 = 144
+let galgasScanner_1__3E_ : UInt16 = 145
+let galgasScanner_1__3B_ : UInt16 = 146
+let galgasScanner_1__3A_ : UInt16 = 147
+let galgasScanner_1__3A__3E_ : UInt16 = 148
+let galgasScanner_1__2D_ : UInt16 = 149
+let galgasScanner_1__28_ : UInt16 = 150
+let galgasScanner_1__29_ : UInt16 = 151
+let galgasScanner_1__2D__3E_ : UInt16 = 152
+let galgasScanner_1__3D__3D_ : UInt16 = 153
+let galgasScanner_1__3D_ : UInt16 = 154
+let galgasScanner_1__26__26_ : UInt16 = 155
+let galgasScanner_1__5B_ : UInt16 = 156
+let galgasScanner_1__5D_ : UInt16 = 157
+let galgasScanner_1__2B__3D_ : UInt16 = 158
+let galgasScanner_1__2D__3D_ : UInt16 = 159
+let galgasScanner_1__2A__3D_ : UInt16 = 160
+let galgasScanner_1__2F__3D_ : UInt16 = 161
+let galgasScanner_1__2F_ : UInt16 = 162
+let galgasScanner_1__21__3D_ : UInt16 = 163
+let galgasScanner_1__3E__3D_ : UInt16 = 164
+let galgasScanner_1__26_ : UInt16 = 165
+let galgasScanner_1__7B_ : UInt16 = 166
+let galgasScanner_1__7D_ : UInt16 = 167
+let galgasScanner_1__60_ : UInt16 = 168
+let galgasScanner_1__7C__7C_ : UInt16 = 169
+let galgasScanner_1__7C_ : UInt16 = 170
+let galgasScanner_1__5E_ : UInt16 = 171
+let galgasScanner_1__3E__3E_ : UInt16 = 172
+let galgasScanner_1__7E_ : UInt16 = 173
+let galgasScanner_1__2D__2D_ : UInt16 = 174
+let galgasScanner_1__2B__2B_ : UInt16 = 175
+let galgasScanner_1__26__2D__2D_ : UInt16 = 176
+let galgasScanner_1__26__2B__2B_ : UInt16 = 177
+let galgasScanner_1__3D__3D__3D_ : UInt16 = 178
+let galgasScanner_1__21__3D__3D_ : UInt16 = 179
+let galgasScanner_1__3F__5E_ : UInt16 = 180
+let galgasScanner_1__21__5E_ : UInt16 = 181
+let galgasScanner_2_ERROR : UInt16 = 182
+let galgasScanner_2_TEMPLATE : UInt16 = 183
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -351,7 +372,7 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func terminalVocabularyCount () -> Int {
-    return 160
+    return 181
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -497,56 +518,77 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
       1, // 110 : galgasScanner_1_warning
       1, // 111 : galgasScanner_1_while
       1, // 112 : galgasScanner_1_with
-      12, // 113 : galgasScanner_1__25_translate
-      12, // 114 : galgasScanner_1__25_once
-      12, // 115 : galgasScanner_1__25_usefull
-      12, // 116 : galgasScanner_1__25_generatedInSeparateFile
-      2, // 117 : galgasScanner_1__2A_
-      2, // 118 : galgasScanner_1__2C_
-      2, // 119 : galgasScanner_1__2B_
-      2, // 120 : galgasScanner_1__26__2B_
-      2, // 121 : galgasScanner_1__26__2D_
-      2, // 122 : galgasScanner_1__26__2A_
-      2, // 123 : galgasScanner_1__26__2F_
-      2, // 124 : galgasScanner_1__3E_
-      2, // 125 : galgasScanner_1__3B_
-      2, // 126 : galgasScanner_1__3A_
-      2, // 127 : galgasScanner_1__3A__3E_
-      2, // 128 : galgasScanner_1__2D_
-      2, // 129 : galgasScanner_1__28_
-      2, // 130 : galgasScanner_1__29_
-      2, // 131 : galgasScanner_1__2D__3E_
-      2, // 132 : galgasScanner_1__3D__3D_
-      2, // 133 : galgasScanner_1__3D_
-      2, // 134 : galgasScanner_1__26__26_
-      2, // 135 : galgasScanner_1__5B_
-      2, // 136 : galgasScanner_1__5D_
-      2, // 137 : galgasScanner_1__2B__3D_
-      2, // 138 : galgasScanner_1__2D__3D_
-      2, // 139 : galgasScanner_1__2A__3D_
-      2, // 140 : galgasScanner_1__2F__3D_
-      2, // 141 : galgasScanner_1__2F_
-      2, // 142 : galgasScanner_1__21__3D_
-      2, // 143 : galgasScanner_1__3E__3D_
-      2, // 144 : galgasScanner_1__26_
-      2, // 145 : galgasScanner_1__7B_
-      2, // 146 : galgasScanner_1__7D_
-      2, // 147 : galgasScanner_1__60_
-      2, // 148 : galgasScanner_1__7C__7C_
-      2, // 149 : galgasScanner_1__7C_
-      2, // 150 : galgasScanner_1__5E_
-      2, // 151 : galgasScanner_1__3E__3E_
-      2, // 152 : galgasScanner_1__7E_
-      2, // 153 : galgasScanner_1__2D__2D_
-      2, // 154 : galgasScanner_1__2B__2B_
-      2, // 155 : galgasScanner_1__26__2D__2D_
-      2, // 156 : galgasScanner_1__26__2B__2B_
-      2, // 157 : galgasScanner_1__3D__3D__3D_
-      2, // 158 : galgasScanner_1__21__3D__3D_
-      2, // 159 : galgasScanner_1__3F__5E_
-      2, // 160 : galgasScanner_1__21__5E_
-      14, // 161 : galgasScanner_2_ERROR
-      15  // 162 : galgasScanner_2_TEMPLATE
+      12, // 113 : galgasScanner_1__25_makefile_2D_macosx
+      12, // 114 : galgasScanner_1__25_makefile_2D_unix
+      12, // 115 : galgasScanner_1__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx
+      12, // 116 : galgasScanner_1__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx
+      12, // 117 : galgasScanner_1__25_makefile_2D_win_33__32__2D_on_2D_macosx
+      12, // 118 : galgasScanner_1__25_codeblocks_2D_windows
+      12, // 119 : galgasScanner_1__25_codeblocks_2D_linux_33__32_
+      12, // 120 : galgasScanner_1__25_codeblocks_2D_linux_36__34_
+      12, // 121 : galgasScanner_1__25_applicationBundleBase
+      12, // 122 : galgasScanner_1__25_MacOS
+      12, // 123 : galgasScanner_1__25_MacOSDeployment
+      12, // 124 : galgasScanner_1__25_quietOutputByDefault
+      12, // 125 : galgasScanner_1__25_macCodeSign
+      12, // 126 : galgasScanner_1__25_libpmAtPath
+      12, // 127 : galgasScanner_1__25_tool_2D_source
+      12, // 128 : galgasScanner_1__25_app_2D_source
+      12, // 129 : galgasScanner_1__25_app_2D_link
+      12, // 130 : galgasScanner_1__25_translate
+      12, // 131 : galgasScanner_1__25_once
+      12, // 132 : galgasScanner_1__25_usefull
+      12, // 133 : galgasScanner_1__25_generatedInSeparateFile
+      12, // 134 : galgasScanner_1__25_nonAtomicSelection
+      12, // 135 : galgasScanner_1__25_templateEndMark
+      12, // 136 : galgasScanner_1__25_preserved
+      12, // 137 : galgasScanner_1__25_selector
+      2, // 138 : galgasScanner_1__2A_
+      2, // 139 : galgasScanner_1__2C_
+      2, // 140 : galgasScanner_1__2B_
+      2, // 141 : galgasScanner_1__26__2B_
+      2, // 142 : galgasScanner_1__26__2D_
+      2, // 143 : galgasScanner_1__26__2A_
+      2, // 144 : galgasScanner_1__26__2F_
+      2, // 145 : galgasScanner_1__3E_
+      2, // 146 : galgasScanner_1__3B_
+      2, // 147 : galgasScanner_1__3A_
+      2, // 148 : galgasScanner_1__3A__3E_
+      2, // 149 : galgasScanner_1__2D_
+      2, // 150 : galgasScanner_1__28_
+      2, // 151 : galgasScanner_1__29_
+      2, // 152 : galgasScanner_1__2D__3E_
+      2, // 153 : galgasScanner_1__3D__3D_
+      2, // 154 : galgasScanner_1__3D_
+      2, // 155 : galgasScanner_1__26__26_
+      2, // 156 : galgasScanner_1__5B_
+      2, // 157 : galgasScanner_1__5D_
+      2, // 158 : galgasScanner_1__2B__3D_
+      2, // 159 : galgasScanner_1__2D__3D_
+      2, // 160 : galgasScanner_1__2A__3D_
+      2, // 161 : galgasScanner_1__2F__3D_
+      2, // 162 : galgasScanner_1__2F_
+      2, // 163 : galgasScanner_1__21__3D_
+      2, // 164 : galgasScanner_1__3E__3D_
+      2, // 165 : galgasScanner_1__26_
+      2, // 166 : galgasScanner_1__7B_
+      2, // 167 : galgasScanner_1__7D_
+      2, // 168 : galgasScanner_1__60_
+      2, // 169 : galgasScanner_1__7C__7C_
+      2, // 170 : galgasScanner_1__7C_
+      2, // 171 : galgasScanner_1__5E_
+      2, // 172 : galgasScanner_1__3E__3E_
+      2, // 173 : galgasScanner_1__7E_
+      2, // 174 : galgasScanner_1__2D__2D_
+      2, // 175 : galgasScanner_1__2B__2B_
+      2, // 176 : galgasScanner_1__26__2D__2D_
+      2, // 177 : galgasScanner_1__26__2B__2B_
+      2, // 178 : galgasScanner_1__3D__3D__3D_
+      2, // 179 : galgasScanner_1__21__3D__3D_
+      2, // 180 : galgasScanner_1__3F__5E_
+      2, // 181 : galgasScanner_1__21__5E_
+      14, // 182 : galgasScanner_2_ERROR
+      15  // 183 : galgasScanner_2_TEMPLATE
     ]
     return kTerminalSymbolStyles [Int (inTokenIndex)]
   }
@@ -668,56 +710,77 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
       true, // 110 : galgasScanner_1_warning
       true, // 111 : galgasScanner_1_while
       true, // 112 : galgasScanner_1_with
-      true, // 113 : galgasScanner_1__25_translate
-      true, // 114 : galgasScanner_1__25_once
-      true, // 115 : galgasScanner_1__25_usefull
-      true, // 116 : galgasScanner_1__25_generatedInSeparateFile
-      true, // 117 : galgasScanner_1__2A_
-      true, // 118 : galgasScanner_1__2C_
-      true, // 119 : galgasScanner_1__2B_
-      true, // 120 : galgasScanner_1__26__2B_
-      true, // 121 : galgasScanner_1__26__2D_
-      true, // 122 : galgasScanner_1__26__2A_
-      true, // 123 : galgasScanner_1__26__2F_
-      true, // 124 : galgasScanner_1__3E_
-      true, // 125 : galgasScanner_1__3B_
-      true, // 126 : galgasScanner_1__3A_
-      true, // 127 : galgasScanner_1__3A__3E_
-      true, // 128 : galgasScanner_1__2D_
-      true, // 129 : galgasScanner_1__28_
-      true, // 130 : galgasScanner_1__29_
-      true, // 131 : galgasScanner_1__2D__3E_
-      true, // 132 : galgasScanner_1__3D__3D_
-      true, // 133 : galgasScanner_1__3D_
-      true, // 134 : galgasScanner_1__26__26_
-      true, // 135 : galgasScanner_1__5B_
-      true, // 136 : galgasScanner_1__5D_
-      true, // 137 : galgasScanner_1__2B__3D_
-      true, // 138 : galgasScanner_1__2D__3D_
-      true, // 139 : galgasScanner_1__2A__3D_
-      true, // 140 : galgasScanner_1__2F__3D_
-      true, // 141 : galgasScanner_1__2F_
-      true, // 142 : galgasScanner_1__21__3D_
-      true, // 143 : galgasScanner_1__3E__3D_
-      true, // 144 : galgasScanner_1__26_
-      true, // 145 : galgasScanner_1__7B_
-      true, // 146 : galgasScanner_1__7D_
-      true, // 147 : galgasScanner_1__60_
-      true, // 148 : galgasScanner_1__7C__7C_
-      true, // 149 : galgasScanner_1__7C_
-      true, // 150 : galgasScanner_1__5E_
-      true, // 151 : galgasScanner_1__3E__3E_
-      true, // 152 : galgasScanner_1__7E_
-      true, // 153 : galgasScanner_1__2D__2D_
-      true, // 154 : galgasScanner_1__2B__2B_
-      true, // 155 : galgasScanner_1__26__2D__2D_
-      true, // 156 : galgasScanner_1__26__2B__2B_
-      true, // 157 : galgasScanner_1__3D__3D__3D_
-      true, // 158 : galgasScanner_1__21__3D__3D_
-      true, // 159 : galgasScanner_1__3F__5E_
-      true, // 160 : galgasScanner_1__21__5E_
-      false, // 161 : galgasScanner_2_ERROR
-      false  // 162 : galgasScanner_2_TEMPLATE
+      true, // 113 : galgasScanner_1__25_makefile_2D_macosx
+      true, // 114 : galgasScanner_1__25_makefile_2D_unix
+      true, // 115 : galgasScanner_1__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx
+      true, // 116 : galgasScanner_1__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx
+      true, // 117 : galgasScanner_1__25_makefile_2D_win_33__32__2D_on_2D_macosx
+      true, // 118 : galgasScanner_1__25_codeblocks_2D_windows
+      true, // 119 : galgasScanner_1__25_codeblocks_2D_linux_33__32_
+      true, // 120 : galgasScanner_1__25_codeblocks_2D_linux_36__34_
+      true, // 121 : galgasScanner_1__25_applicationBundleBase
+      true, // 122 : galgasScanner_1__25_MacOS
+      true, // 123 : galgasScanner_1__25_MacOSDeployment
+      true, // 124 : galgasScanner_1__25_quietOutputByDefault
+      true, // 125 : galgasScanner_1__25_macCodeSign
+      true, // 126 : galgasScanner_1__25_libpmAtPath
+      true, // 127 : galgasScanner_1__25_tool_2D_source
+      true, // 128 : galgasScanner_1__25_app_2D_source
+      true, // 129 : galgasScanner_1__25_app_2D_link
+      true, // 130 : galgasScanner_1__25_translate
+      true, // 131 : galgasScanner_1__25_once
+      true, // 132 : galgasScanner_1__25_usefull
+      true, // 133 : galgasScanner_1__25_generatedInSeparateFile
+      true, // 134 : galgasScanner_1__25_nonAtomicSelection
+      true, // 135 : galgasScanner_1__25_templateEndMark
+      true, // 136 : galgasScanner_1__25_preserved
+      true, // 137 : galgasScanner_1__25_selector
+      true, // 138 : galgasScanner_1__2A_
+      true, // 139 : galgasScanner_1__2C_
+      true, // 140 : galgasScanner_1__2B_
+      true, // 141 : galgasScanner_1__26__2B_
+      true, // 142 : galgasScanner_1__26__2D_
+      true, // 143 : galgasScanner_1__26__2A_
+      true, // 144 : galgasScanner_1__26__2F_
+      true, // 145 : galgasScanner_1__3E_
+      true, // 146 : galgasScanner_1__3B_
+      true, // 147 : galgasScanner_1__3A_
+      true, // 148 : galgasScanner_1__3A__3E_
+      true, // 149 : galgasScanner_1__2D_
+      true, // 150 : galgasScanner_1__28_
+      true, // 151 : galgasScanner_1__29_
+      true, // 152 : galgasScanner_1__2D__3E_
+      true, // 153 : galgasScanner_1__3D__3D_
+      true, // 154 : galgasScanner_1__3D_
+      true, // 155 : galgasScanner_1__26__26_
+      true, // 156 : galgasScanner_1__5B_
+      true, // 157 : galgasScanner_1__5D_
+      true, // 158 : galgasScanner_1__2B__3D_
+      true, // 159 : galgasScanner_1__2D__3D_
+      true, // 160 : galgasScanner_1__2A__3D_
+      true, // 161 : galgasScanner_1__2F__3D_
+      true, // 162 : galgasScanner_1__2F_
+      true, // 163 : galgasScanner_1__21__3D_
+      true, // 164 : galgasScanner_1__3E__3D_
+      true, // 165 : galgasScanner_1__26_
+      true, // 166 : galgasScanner_1__7B_
+      true, // 167 : galgasScanner_1__7D_
+      true, // 168 : galgasScanner_1__60_
+      true, // 169 : galgasScanner_1__7C__7C_
+      true, // 170 : galgasScanner_1__7C_
+      true, // 171 : galgasScanner_1__5E_
+      true, // 172 : galgasScanner_1__3E__3E_
+      true, // 173 : galgasScanner_1__7E_
+      true, // 174 : galgasScanner_1__2D__2D_
+      true, // 175 : galgasScanner_1__2B__2B_
+      true, // 176 : galgasScanner_1__26__2D__2D_
+      true, // 177 : galgasScanner_1__26__2B__2B_
+      true, // 178 : galgasScanner_1__3D__3D__3D_
+      true, // 179 : galgasScanner_1__21__3D__3D_
+      true, // 180 : galgasScanner_1__3F__5E_
+      true, // 181 : galgasScanner_1__21__5E_
+      false, // 182 : galgasScanner_2_ERROR
+      false  // 183 : galgasScanner_2_TEMPLATE
     ]
     return kTerminalAtomicSelection [Int (inTokenIndex)]
   }
@@ -1500,9 +1563,30 @@ class SWIFT_Lexique_galgasScanner : SWIFT_Lexique {
 fileprivate func search_into_galgasScanner_attributeKeyWordList (_ inSearchedString : String) -> UInt16 {
   let dictionary : [String : UInt16] = [
     "once" : galgasScanner_1__25_once,
+    "MacOS" : galgasScanner_1__25_MacOS,
     "usefull" : galgasScanner_1__25_usefull,
+    "app-link" : galgasScanner_1__25_app_2D_link,
+    "selector" : galgasScanner_1__25_selector,
+    "preserved" : galgasScanner_1__25_preserved,
     "translate" : galgasScanner_1__25_translate,
-    "generatedInSeparateFile" : galgasScanner_1__25_generatedInSeparateFile
+    "app-source" : galgasScanner_1__25_app_2D_source,
+    "libpmAtPath" : galgasScanner_1__25_libpmAtPath,
+    "macCodeSign" : galgasScanner_1__25_macCodeSign,
+    "tool-source" : galgasScanner_1__25_tool_2D_source,
+    "makefile-unix" : galgasScanner_1__25_makefile_2D_unix,
+    "MacOSDeployment" : galgasScanner_1__25_MacOSDeployment,
+    "makefile-macosx" : galgasScanner_1__25_makefile_2D_macosx,
+    "templateEndMark" : galgasScanner_1__25_templateEndMark,
+    "codeblocks-linux32" : galgasScanner_1__25_codeblocks_2D_linux_33__32_,
+    "codeblocks-linux64" : galgasScanner_1__25_codeblocks_2D_linux_36__34_,
+    "codeblocks-windows" : galgasScanner_1__25_codeblocks_2D_windows,
+    "nonAtomicSelection" : galgasScanner_1__25_nonAtomicSelection,
+    "quietOutputByDefault" : galgasScanner_1__25_quietOutputByDefault,
+    "applicationBundleBase" : galgasScanner_1__25_applicationBundleBase,
+    "generatedInSeparateFile" : galgasScanner_1__25_generatedInSeparateFile,
+    "makefile-win32-on-macosx" : galgasScanner_1__25_makefile_2D_win_33__32__2D_on_2D_macosx,
+    "makefile-x86linux32-on-macosx" : galgasScanner_1__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx,
+    "makefile-x86linux64-on-macosx" : galgasScanner_1__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx
   ]
   return dictionary [inSearchedString, default: galgasScanner_1_]
 }

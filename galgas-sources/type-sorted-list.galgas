@@ -145,13 +145,13 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
 override method @sortedListDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   var @propertyInCollectionListAST structAttributeList = {}
-  for (isConstant qualifiedTypeAST mPropertyName * * initExpression) in self.mPropertyList do
+  for (isConstant qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
     structAttributeList +=
       !isConstant: isConstant 
       !qualifiedTypeAST
       !mPropertyName
       !.publicAccess
-      !{}
+      !selector: hasSelector
       !initExpression
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
@@ -187,7 +187,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   for (* propertyTypeName mPropertyName 3*) in self.mPropertyList do
     [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
     let hasSelector = false
-    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter: true !hasSelector
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter: true !hasSelector: hasSelector
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
     setterFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST.argumentOut !mPropertyName.string
@@ -332,7 +332,7 @@ override method @sortedListDeclarationAST semanticAnalysis
       !t
       !mPropertyName
       !hasSetter: true
-      !hasSelector
+      !hasSelector: hasSelector
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #--- Sort descriptor

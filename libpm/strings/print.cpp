@@ -11,11 +11,21 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_print (const GALGAS_string inString,
-                    class C_Compiler * /* inCompiler */
-                    COMMA_LOCATION_ARGS) {
+void routine_println (const GALGAS_string inString,
+                      C_Compiler * /* inCompiler */
+                      COMMA_LOCATION_ARGS) {
   if (inString.isValid ()) {
     std::cout << inString.stringValue ().cString (THERE) << "\n" ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_print (const GALGAS_string inString,
+                    C_Compiler * /* inCompiler */
+                    COMMA_LOCATION_ARGS) {
+  if (inString.isValid ()) {
+    std::cout << inString.stringValue ().cString (THERE) ;
   }
 }
 

@@ -23,7 +23,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
                             !@unifiedTypeMap outTypeMap
                             !@semanticDeclarationListForGeneration outSemanticDeclarationSortedListForGeneration {
   if @application.verboseOutput then
-    message "*** Building semantic context\n"
+    println (!"*** Building semantic context")
   end
 #------ Add predefined types to semantics declarations
   var @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes = inSemanticDeclarationList
@@ -78,7 +78,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
   )
 #---
   if @application.verboseOutput then
-    message "*** Semantic analysis\n"
+    println (!"*** Semantic analysis")
   end
 #------ Check there is no undefined types
   for entry in [outTypeMap unsolvedEntryList] do
@@ -140,7 +140,7 @@ private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSeman
 #--- Add optional declarations
   for node in [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
     if [node.mValue lastCharacter] == '?' then
-      message "Optional '" + node.mValue + "'\n"
+      println (!"Optional '" + node.mValue + "'")
     end
   end
 #---
@@ -170,7 +170,6 @@ private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSeman
     #--- Build initial semantic context
       outTypeMap = .emptyMap
       outSemanticContext = @semanticContext.new {
-#        !mTypeMap: .emptyMap
         !mRoutineMap: {}
         !mFunctionMap: {}
         !mFilewrapperMap: {}
@@ -304,7 +303,7 @@ private proc generateManyHeaders
       [declaration.mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerDef1]
       var headerIncludes1 = ""
       if [inclusionSet1 hasKey !""] then
-        message "Empty inclusion in " + [declaration.mDeclaration implementationCppFileName] + "headers 1\n"
+        println (!"Empty inclusion in " + [declaration.mDeclaration implementationCppFileName] + "headers 1")
       end
       for (s) in inclusionSet1 do
         headerIncludes1 += "#include \"" + s + ".h\"\n"
@@ -314,7 +313,7 @@ private proc generateManyHeaders
       [declaration.mDeclaration appendDeclaration2 !inProductDirectory !?inclusionSet2 ?let @string headerDef2]
       var headerIncludes2 = ""
       if [inclusionSet2 hasKey !""] then
-        message "Empty inclusion in " + [declaration.mDeclaration implementationCppFileName] + "headers 2\n"
+        println (!"Empty inclusion in " + [declaration.mDeclaration implementationCppFileName] + "headers 2")
       end
       for (s) in inclusionSet2 do
         headerIncludes2 += "#include \"" + s + ".h\"\n"
@@ -516,7 +515,7 @@ private proc generateFewImplementationFiles
     if not [declaration.mDeclaration isPredefined] then
       [declaration.mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?let @string code]
       if [inclusionSet hasKey !""] then
-        message "Empty inclusion in " + [declaration.mDeclaration implementationCppFileName] + " cpp headers\n"
+        println (!"Empty inclusion in " + [declaration.mDeclaration implementationCppFileName] + " cpp headers")
       end
       implementationString += code
       implementationString += [declaration.mDeclaration appendTypeGenericImplementation]

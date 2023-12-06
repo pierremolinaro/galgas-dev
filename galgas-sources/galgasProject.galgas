@@ -73,14 +73,70 @@ rule <project_component_start_symbol> !@galgas3ProjectComponentAST outProjectCom
   var @galgas3QualifiedFeatureList qualifiedFeatureList = {}
   repeat
   while
-    $%attribute$ ?let @lstring featureName
-    select
-      $:$
-      $"string"$ ?let @lstring featureValue
-      qualifiedFeatureList += !featureName !featureValue
-    or
-      generateFeatureList += !featureName
-    end
+    $%quietOutputByDefault$
+    generateFeatureList += !["quietOutputByDefault" here]
+  while
+    $%MacOS$
+    generateFeatureList += !["MacOS" here]
+  while
+    $%makefile-macosx$
+    generateFeatureList += !["makefile-macosx" here]
+  while
+    $%makefile-unix$
+    generateFeatureList += !["makefile-unix" here]
+  while
+    $%makefile-x86linux32-on-macosx$
+    generateFeatureList += !["makefile-x86linux32-on-macosx" here]
+  while
+    $%makefile-x86linux64-on-macosx$
+    generateFeatureList += !["makefile-x86linux64-on-macosx" here]
+  while
+    $%makefile-win32-on-macosx$
+    generateFeatureList += !["makefile-win32-on-macosx" here]
+  while
+    $%codeblocks-windows$
+    generateFeatureList += !["codeblocks-windows" here]
+  while
+    $%codeblocks-linux32$
+    generateFeatureList += !["codeblocks-linux32" here]
+  while
+    $%codeblocks-linux64$
+    generateFeatureList += !["codeblocks-linux64" here]
+  while
+    $%applicationBundleBase$
+    $:$
+    $"string"$ ?let @lstring featureValue
+    qualifiedFeatureList += !["applicationBundleBase" here] !featureValue
+  while
+    $%libpmAtPath$
+    $:$
+    $"string"$ ?let @lstring featureValue
+    qualifiedFeatureList += !["libpmAtPath" here] !featureValue
+  while
+    $%tool-source$
+    $:$
+    $"string"$ ?let @lstring featureValue
+    qualifiedFeatureList += !["tool-source" here] !featureValue
+  while
+    $%MacOSDeployment$ 
+    $:$
+    $"string"$ ?let @lstring featureValue
+    qualifiedFeatureList += !["MacOSDeployment" here] !featureValue
+  while
+    $%macCodeSign$ 
+    $:$
+    $"string"$ ?let @lstring featureValue
+    qualifiedFeatureList += !["macCodeSign" here] !featureValue
+  while
+    $%app-source$
+    $:$
+    $"string"$ ?let @lstring featureValue
+    qualifiedFeatureList += !["app-source" here] !featureValue
+  while
+    $%app-link$ 
+    $:$
+    $"string"$ ?let @lstring featureValue
+    qualifiedFeatureList += !["app-link" here] !featureValue
   while
     $"string"$ ?let @lstring filePath
     projectSourceList += !filePath

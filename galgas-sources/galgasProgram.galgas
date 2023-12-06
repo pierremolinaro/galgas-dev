@@ -154,7 +154,7 @@ private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFile
                                     ?galgas4: let @bool inGalgas4
                                     ?let @string inSourceToAnalyze {
   if @application.verboseOutput then
-    message "*** Parsing project files\n"
+    println (!"*** Parsing project files")
   end
   grammar galgas3ProjectGrammar (?let @galgas3ProjectComponentAST projectComponentAST) in inProjectSourceFile
   if [option.mode value] == "" then
@@ -164,7 +164,7 @@ private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFile
       let cppCompilationTarget = [option galgas_cli_options.cppCompile value]
       if cppCompilationTarget != "" then
         if @application.verboseOutput then
-          message "*** Perform C++ compilation\n"
+          println (!"*** Perform C++ compilation")
         end
         let buildFile = [inProjectSourceFile stringByDeletingLastPathComponent] + "/" + cppCompilationTarget + "/build.py"
         if [buildFile fileExists] then
@@ -205,10 +205,17 @@ private proc compileProject ?let @lstring inProjectSourceFile
   declarationAST.mDeclarationList += !@externRoutineDeclarationAST.new {
     !false # Is not predefined
     !false # Is not internal
-    !["print" nowhere]
+    !["println" nowhere]
     !formalParameterList
   }
   var @lstringlist usefulnessRootEntities = {}
+  usefulnessRootEntities += !procedureNameForUsefulEntitiesGraph (!["println" nowhere])
+  declarationAST.mDeclarationList += !@externRoutineDeclarationAST.new {
+    !false # Is not predefined
+    !false # Is not internal
+    !["print" nowhere]
+    !formalParameterList
+  }
   usefulnessRootEntities += !procedureNameForUsefulEntitiesGraph (!["print" nowhere])
 #---------------------------------- Hand coded source files
   var @stringlist handCodedLinkToolFileList = {}
@@ -413,7 +420,7 @@ private proc projectGeneration
   var appProductFileList = inAppProductFileList
 #---------------------------------- File generation
   if @application.verboseOutput then
-    message "*** Generating files\n"
+    println (!"*** Generating files")
   end
   var @stringset allProductFileSet = {}
 #---------------------------------- Create build/user-headers if does not exist

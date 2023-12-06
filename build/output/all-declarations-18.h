@@ -85,8 +85,6 @@ class cGrammar_galgas_33_ProjectGrammar : public cParser_galgas_33_ProjectSyntax
                                               C_Lexique_galgasScanner * inCompiler) ;
 
   public: virtual int32_t select_galgas_33_ProjectSyntax_0 (C_Lexique_galgasScanner *) ;
-
-  public: virtual int32_t select_galgas_33_ProjectSyntax_1 (C_Lexique_galgasScanner *) ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------

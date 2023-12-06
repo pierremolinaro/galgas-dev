@@ -258,15 +258,15 @@ override method @mapDeclarationAST addAssociatedElement
     !["lstring" nowhere]
     !["lkey" nowhere]
     !.publicAccess
-    !{}
+    !selector: false
     !.none
-  for (* qualifiedTypeAST mPropertyName * * initExpression) in self.mPropertyList do
+  for (* qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
     structAttributeList +=
       !isConstant: false
       !qualifiedTypeAST
       !mPropertyName
       !.publicAccess
-      !{}
+      !selector: hasSelector
       !initExpression
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
@@ -426,22 +426,22 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inLKey"
   var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
-  for (* propertyTypeName mPropertyName * mAttributeList initExpression) in self.mPropertyList do
+  for (* propertyTypeName mPropertyName * hasSelector initExpression) in self.mPropertyList do
     if [initExpression isSome] then
       error mPropertyName : "property initialization is not handled for a map"
     end
     [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
-    var hasSelector = false
-    for (attribute) in mAttributeList do
-      if attribute.string == "selector" then
-        hasSelector = true
-#        if hasSelector && usesSelectorsInInsertAndSearch then
-#          warning attribute : "%selector useless, map has %selectors attributes"
-#        end
-      end
-    end
+#    var hasSelector = false
+#    for (attribute) in mAttributeList do
+#      if attribute.string == "selector" then
+#        hasSelector = true
+##        if hasSelector && usesSelectorsInInsertAndSearch then
+##          warning attribute : "%selector useless, map has %selectors attributes"
+##        end
+#      end
+#    end
     argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
-    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter: true !hasSelector
+    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter: true !hasSelector: hasSelector
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     insertMethodFormalArgumentList +=
@@ -636,16 +636,6 @@ override method @mapDeclarationAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mMapTypeName.string + "-element" !self.mMapTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
-#--- Attributes
-#  var usesSelectorsInInsertAndSearch = false
-#  var activateSuggestion = true
-#  for (s) in self.mMapAttributeList do
-#    if s.string == "selectors" then
-#      usesSelectorsInInsertAndSearch = true
-#    elsif s.string == "noSuggestion" then
-#      activateSuggestion = false
-#    end
-#  end
 #------ Enter property
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
@@ -658,7 +648,7 @@ override method @mapDeclarationAST semanticAnalysis
       !t
       !mPropertyName
       !hasSetter: true
-      !hasSelector
+      !hasSelector: hasSelector
     if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
       var @string m = "a property cannot be named:"
       for s in forbiddenKeysForMapAndDict () do

@@ -26,7 +26,7 @@ private proc appendPredefinedListTypeAST
     !@lstring.new {!inElementTypeName !@location.here}
     !@lstring.new {!"mValue" !@location.here}
     !.publicAccess
-    !{}
+    !selector: false
     !.none
   ioDeclarationListASTs += !@listDeclarationAST.new {
     !true # Is predefined
@@ -48,14 +48,14 @@ private proc appendPredefined2StringListTypeAST
     !@lstring.new {!"string" !@location.here}
     !@lstring.new {!"mValue0" !@location.here}
     !.publicAccess
-    !{}
+    !selector: false
     !.none
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"string" !@location.here}
     !@lstring.new {!"mValue1" !@location.here}
     !.publicAccess
-    !{}
+    !selector: false
     !.none
 
   ioDeclarationListASTs += !@listDeclarationAST.new {
@@ -78,14 +78,14 @@ private proc appendPredefined2LStringListTypeAST
     !@lstring.new {!"lstring" !@location.here}
     !@lstring.new {!"mValue0" !@location.here}
     !.publicAccess
-    !{}
+    !selector: false
     !.none
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"lstring" !@location.here}
     !@lstring.new {!"mValue1" !@location.here}
     !.publicAccess
-    !{}
+    !selector: false
     !.none
   ioDeclarationListASTs += !@listDeclarationAST.new {
     !true # Is predefined
@@ -108,14 +108,14 @@ private proc appendStructASTForTypeWithLocation
     !@lstring.new {!inElementTypeName !@location.here}
     !@lstring.new {!inElementTypeName !@location.here}
     !.publicAccess
-    !{}
+    !selector: false
     !.none
   attributeList +=
     !isConstant: false 
     !@lstring.new {!"location" !@location.here}
     !@lstring.new {!"location" !@location.here}
     !.publicAccess
-    !{}
+    !selector: false
     !.none
   ioDeclarationListASTs += !@structDeclarationAST.new {
     !true # Is prefined
@@ -138,14 +138,14 @@ private proc appendStructASTForRangeType
     !@lstring.new {!"uint" !@location.here}
     !@lstring.new {!"start" !@location.here}
     !.publicAccess
-    !{}
+    !selector: false
     !.none
   attributeList +=
     !isConstant: false 
     ! @lstring.new {!"uint" !@location.here}
     !@lstring.new {!"length" !@location.here}
     !.publicAccess
-    !{}
+    !selector: false
     !.none
   ioDeclarationListASTs += !@structDeclarationAST.new {
     !true # Is prefined

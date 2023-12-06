@@ -348,11 +348,15 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
 
   rule <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList {
     $"string"$ ?let @lstring entrySpelling
-    var @lstringlist optionList = {}
-    select
-    or
-      $%attribute$ ?let @lstring optionName
-      optionList += !optionName
+    var isTemplateEndMark = false
+    var nonAtomicSelection = false
+    repeat
+    while
+      $%templateEndMark$
+      isTemplateEndMark = true
+    while
+      $%nonAtomicSelection$
+      nonAtomicSelection = true
     end
     let @lstring terminalSpelling
     select
@@ -361,7 +365,11 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
     or
       terminalSpelling = entrySpelling
     end
-    ioLexicalListEntryList += !entrySpelling !terminalSpelling !optionList
+    ioLexicalListEntryList +=
+      !entrySpelling
+      !terminalSpelling
+      !nonAtomicSelection: nonAtomicSelection
+      !isEndOfTemplateMark: isTemplateEndMark
   }
 
   #·····················································································································
@@ -384,7 +392,8 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
       sentAttributeList += !selector !sentAttribute
     end
     var @lstring theStyle = [""nowhere] # Empty string if no style
-    var @lstringlist optionList = {}
+    var nonAtomicSelection = false
+    var templateEndMark = false
     repeat
     while
       $style$
@@ -393,13 +402,22 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner) {
       end
       $identifier$ ? theStyle
     while
-      $%attribute$ ?let @lstring optionName
-      optionList += !optionName
+      $%nonAtomicSelection$
+      nonAtomicSelection = true
+    while
+      $%templateEndMark$
+      templateEndMark = true
     end
     $error$
     $message$
     $"string"$ ?let @lstring errorMessage
-    ioTerminalDeclarationList += !name !sentAttributeList !errorMessage !theStyle !optionList
+    ioTerminalDeclarationList +=
+      !name
+      !sentAttributeList
+      !errorMessage
+      !theStyle
+      !nonAtomicSelection: nonAtomicSelection
+      !isEndOfTemplateMark: templateEndMark
   }
 
   #·····················································································································
@@ -687,11 +705,15 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner) {
 
   rule <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList {
     $"string"$ ?let @lstring entrySpelling
-    var @lstringlist optionList = {}
-    select
-    or
-      $%attribute$ ?let @lstring optionName
-      optionList += !optionName
+    var isTemplateEndMark = false
+    var nonAtomicSelection = false
+    repeat
+    while
+      $%templateEndMark$
+      isTemplateEndMark = true
+    while
+      $%nonAtomicSelection$
+      nonAtomicSelection = true
     end
     let @lstring terminalSpelling
     select
@@ -700,7 +722,11 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner) {
     or
       terminalSpelling = entrySpelling
     end
-    ioLexicalListEntryList += !entrySpelling !terminalSpelling !optionList
+    ioLexicalListEntryList +=
+      !entrySpelling
+      !terminalSpelling
+      !nonAtomicSelection: nonAtomicSelection 
+      !isEndOfTemplateMark: isTemplateEndMark
   }
 
   #·····················································································································
@@ -723,7 +749,8 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner) {
       sentAttributeList += !selector !sentAttribute
     end
     var @lstring theStyle = [""nowhere] # Empty string if no style
-    var @lstringlist optionList = {}
+    var nonAtomicSelection = false
+    var templateEndMark = false
     repeat
     while
       $style$
@@ -732,13 +759,22 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner) {
       end
       $identifier$ ? theStyle
     while
-      $%attribute$ ?let @lstring optionName
-      optionList += !optionName
+      $%nonAtomicSelection$
+      nonAtomicSelection = true
+    while
+      $%templateEndMark$ 
+      templateEndMark = true
     end
     $error$
     $message$
     $"string"$ ?let @lstring errorMessage
-    ioTerminalDeclarationList += !name !sentAttributeList !errorMessage !theStyle !optionList
+    ioTerminalDeclarationList +=
+      !name
+      !sentAttributeList
+      !errorMessage
+      !theStyle
+      !nonAtomicSelection: nonAtomicSelection
+      !isEndOfTemplateMark: templateEndMark
   }
 
   #·····················································································································
@@ -797,7 +833,7 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
   )
 #--------------------------------------- 
   var @terminalMap terminalMap = {}
-  for (name sentAttributeList * * *) in self.mTerminalDeclarationListAST do
+  for (name sentAttributeList 4*) in self.mTerminalDeclarationListAST do
     var argumentTypeList = @lexicalSentValueList {}
     for (mFormalSelector mAttributeName) in sentAttributeList do
       [lexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
@@ -812,7 +848,7 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
       [lexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
-    for (* mTerminalSpelling *) in mEntryList do
+    for (* mTerminalSpelling 2*) in mEntryList do
       [!?terminalMap insertKey !mTerminalSpelling !argumentTypeList]
     end
   end
@@ -878,7 +914,7 @@ override method @lexiqueComponentAST semanticAnalysis
    !?lexiqueAnalysisContext.mLexicalAttributeMap
   )
 #--------------------------------------- Build terminal map
-  for (mName mSentAttributeList mSyntaxErrorMessage mStyle mOptionList) in self.mTerminalDeclarationListAST do
+  for (mName mSentAttributeList mSyntaxErrorMessage mStyle nonAtomicSelection isEndOfTemplateMark) in self.mTerminalDeclarationListAST do
     var @uint terminalStyleIndex = 0
     if [mStyle.string count] > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
@@ -889,29 +925,29 @@ override method @lexiqueComponentAST semanticAnalysis
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
     [!?lexiqueAnalysisContext.mTerminalMap insertKey !mName !argumentTypeList]
-    var isEndOfTemplateMark = false
-    var atomicSelection = true
-    for (mValue) in mOptionList do
-      if mValue.string == "nonAtomicSelection" then
-        if atomicSelection then
-          atomicSelection = false
-        else
-          error mValue: "the 'nonAtomicSelection' attribute is already set"
-        end
-      elsif mValue.string != "templateEndMark" then
-        error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' attributes are allowed here"
-      elsif isEndOfTemplateMark then
-        error mValue:"the 'templateEndMark' attribute is already set"
-      else
-        isEndOfTemplateMark = true
-      end
-    end
+#    var isEndOfTemplateMark = false
+#    var atomicSelection = true
+#    for (mValue) in mOptionList do
+#      if mValue.string == "nonAtomicSelection" then
+#        if atomicSelection then
+#          atomicSelection = false
+#        else
+#          error mValue: "the 'nonAtomicSelection' attribute is already set"
+#        end
+#      elsif mValue.string != "templateEndMark" then
+#        error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' attributes are allowed here"
+#      elsif isEndOfTemplateMark then
+#        error mValue:"the 'templateEndMark' attribute is already set"
+#      else
+#        isEndOfTemplateMark = true
+#      end
+#    end
     lexiqueAnalysisContext.mTerminalList +=
       !mName
       !argumentTypeList
       !mSyntaxErrorMessage.string
-      !isEndOfTemplateMark
-      !atomicSelection
+      !isEndOfTemplateMark: isEndOfTemplateMark
+      !atomicSelection: not nonAtomicSelection
       !terminalStyleIndex
   end
   for (mName mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in self.mLexicalListDeclarationListAST do
@@ -926,34 +962,39 @@ override method @lexiqueComponentAST semanticAnalysis
     end
     var @lexicalExplicitTokenListMap lexicalTokenListMap = {}
     var tokenSortedlist = @tokenSortedlist {}
-    for (mEntrySpelling mTerminalSpelling mAttributeList) in mEntryList do
+    for (mEntrySpelling mTerminalSpelling nonAtomicSelection isTemplateEndMark) in mEntryList do
       let syntaxErrorMessage = [mSyntaxErrorMessage.string stringByReplacingStringByString !"%K" !mTerminalSpelling.string]
-      var isEndOfTemplateMark = false
-      var atomicSelection = true
-      for (mValue) in mAttributeList do
-        if mValue.string == "nonAtomicSelection" then
-          if atomicSelection then
-            atomicSelection = false
-          else
-            error mValue: "the 'nonAtomicSelection' attribute is already set"
-          end
-        elsif mValue.string != "templateEndMark" then
-          error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' attributes are allowed here"
-        elsif isEndOfTemplateMark then
-          error mValue:"the 'templateEndMark' attribute is already set"
-        else
-          isEndOfTemplateMark = true
-        end
-      end
+#      var isEndOfTemplateMark = false
+#      var atomicSelection = true
+#      for (mValue) in mAttributeList do
+#        if mValue.string == "nonAtomicSelection" then
+#          if atomicSelection then
+#            atomicSelection = false
+#          else
+#            error mValue: "the 'nonAtomicSelection' attribute is already set"
+#          end
+#        elsif mValue.string != "templateEndMark" then
+#          error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' attributes are allowed here"
+#        elsif isEndOfTemplateMark then
+#          error mValue:"the 'templateEndMark' attribute is already set"
+#        else
+#          isEndOfTemplateMark = true
+#        end
+#      end
       lexiqueAnalysisContext.mTerminalList +=
         !mTerminalSpelling
         !argumentTypeList
         !syntaxErrorMessage
-        !isEndOfTemplateMark
-        !atomicSelection
+        !isEndOfTemplateMark: isTemplateEndMark
+        !atomicSelection: not nonAtomicSelection
         !terminalStyleIndex
       [!?lexiqueAnalysisContext.mTerminalMap insertKey !mTerminalSpelling !argumentTypeList]
-      [!?lexicalTokenListMap insertKey !mEntrySpelling !mTerminalSpelling !mAttributeList]
+      [!?lexicalTokenListMap insertKey
+        !mEntrySpelling
+        !mTerminalSpelling
+        !atomicSelection: nonAtomicSelection
+        !isEndOfTemplateMark: isTemplateEndMark
+      ]
       tokenSortedlist += ![mEntrySpelling.string count] !mEntrySpelling.string !mTerminalSpelling.string
       lexiqueAnalysisContext.mUnicodeStringToGenerate += !mEntrySpelling.string
     end
@@ -974,19 +1015,9 @@ override method @lexiqueComponentAST semanticAnalysis
     end
   end
 #--------------------------------------- Template delimiters
-  for (mStartString mOptionList mEndString) in self.mTemplateDelimitorListAST do
+  for (mStartString * * preservesStartDelimiter mEndString) in self.mTemplateDelimitorListAST do
    lexiqueAnalysisContext.mUnicodeStringToGenerate += !mStartString.string
    lexiqueAnalysisContext.mUnicodeStringToGenerate += !mEndString.string
-   var preservesStartDelimiter = false
-   for (mValue) in mOptionList do
-     if mValue.string != "preserved" then
-       error mValue:"only the 'preserved' attribute is allowed here"
-     elsif preservesStartDelimiter then
-       error mValue:"the 'preserved' attribute is already set"
-     else
-       preservesStartDelimiter = true
-     end
-   end
    lexiqueAnalysisContext.mTemplateDelimitorList += !mStartString !mEndString !preservesStartDelimiter
   end
   var @stringset indexNameSet = {}

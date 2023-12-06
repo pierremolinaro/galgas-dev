@@ -66,14 +66,14 @@ override method @listmapDeclarationAST addAssociatedElement
     !["string" nowhere]
     !["key" nowhere]
     !.publicAccess
-    !{}
+    !selector: false
     !.none
   structAttributeList +=
     !isConstant: false
     !self.mAssociatedListTypeName
     !["mList" nowhere]
     !.publicAccess
-    !{}
+    !selector: false
     !.none
 #---
   ioSemanticDeclarationList += !@structDeclarationAST.new {

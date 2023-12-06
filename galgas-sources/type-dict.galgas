@@ -93,9 +93,9 @@ syntax extension galgas4DeclarationsSyntax {
 
 override method @dictDeclarationAST addAssociatedElement ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   var @propertyInCollectionListAST structAttributeList = {}
-  structAttributeList += !isConstant: true !self.mKeyTypeName !["key" nowhere] !.publicAccess !{} !.none
-  for (* qualifiedTypeAST mPropertyName 3*) in self.mPropertyList do
-    structAttributeList += !isConstant: true !qualifiedTypeAST !mPropertyName !.publicAccess !{} !.none
+  structAttributeList += !isConstant: true !self.mKeyTypeName !["key" nowhere] !.publicAccess !selector: false !.none
+  for (* qualifiedTypeAST mPropertyName * hasSelector *) in self.mPropertyList do
+    structAttributeList += !isConstant: true !qualifiedTypeAST !mPropertyName !.publicAccess !selector: hasSelector !.none
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
     !self.mIsPredefined
@@ -120,7 +120,6 @@ override method @dictDeclarationAST enterDeclarationInGraph
   [!?ioSemanticTypePrecedenceGraph addNode !dictionary !self]
   [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + self.mKeyTypeName !self.mKeyTypeName}]
   for (* typeName 4*) in self.mPropertyList do
-#    let typeName = [qualifiedTypeAST typeName]
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + typeName !typeName}]
   end
 }
@@ -197,7 +196,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     let hasSetter = true
     let hasSelector = false
     argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
-    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter: hasSetter !hasSelector
+    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter: hasSetter !hasSelector: hasSelector
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     insertMethodFormalArgumentList +=
@@ -391,17 +390,16 @@ override method @dictDeclarationAST semanticAnalysis
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (* typeName mPropertyName 3*) in self.mPropertyList do
+  for (* typeName mPropertyName * hasSelector *) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!typeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let @unifiedTypeMapEntry t = [ioTypeMap searchKey !typeName]
     let hasSetter = true
-    let hasSelector = false
     typedAttributeList +=
       !t
       !mPropertyName
       !hasSetter: hasSetter
-      !hasSelector
+      !hasSelector: hasSelector
     if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
       var @string m = "a property cannot be named:"
       for s in forbiddenKeysForMapAndDict () do

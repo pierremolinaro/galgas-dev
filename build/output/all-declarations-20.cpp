@@ -1441,7 +1441,9 @@ GALGAS_templateVariableMap_2D_element GALGAS_templateVariableMap_2D_element::ext
 
 GALGAS_templateDelimitorListAST_2D_element::GALGAS_templateDelimitorListAST_2D_element (void) :
 mProperty_mStartString (),
-mProperty_mOptionList (),
+mProperty_nonAtomicSelection (),
+mProperty_mTemplateEndMark (),
+mProperty_mPreserved (),
 mProperty_mEndString () {
 }
 
@@ -1453,30 +1455,38 @@ GALGAS_templateDelimitorListAST_2D_element::~ GALGAS_templateDelimitorListAST_2D
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateDelimitorListAST_2D_element::GALGAS_templateDelimitorListAST_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                        const GALGAS_lstringlist & inOperand1,
-                                                                                        const GALGAS_lstring & inOperand2) :
+                                                                                        const GALGAS_bool & inOperand1,
+                                                                                        const GALGAS_bool & inOperand2,
+                                                                                        const GALGAS_bool & inOperand3,
+                                                                                        const GALGAS_lstring & inOperand4) :
 mProperty_mStartString (inOperand0),
-mProperty_mOptionList (inOperand1),
-mProperty_mEndString (inOperand2) {
+mProperty_nonAtomicSelection (inOperand1),
+mProperty_mTemplateEndMark (inOperand2),
+mProperty_mPreserved (inOperand3),
+mProperty_mEndString (inOperand4) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateDelimitorListAST_2D_element GALGAS_templateDelimitorListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_templateDelimitorListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                     GALGAS_lstringlist::constructor_emptyList (HERE),
+                                                     GALGAS_bool::constructor_default (HERE),
+                                                     GALGAS_bool::constructor_default (HERE),
+                                                     GALGAS_bool::constructor_default (HERE),
                                                      GALGAS_lstring::constructor_default (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateDelimitorListAST_2D_element GALGAS_templateDelimitorListAST_2D_element::constructor_new (const GALGAS_lstring & in_mStartString,
-                                                                                                        const GALGAS_lstringlist & in_mOptionList,
+                                                                                                        const GALGAS_bool & in_nonAtomicSelection,
+                                                                                                        const GALGAS_bool & in_mTemplateEndMark,
+                                                                                                        const GALGAS_bool & in_mPreserved,
                                                                                                         const GALGAS_lstring & in_mEndString 
                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateDelimitorListAST_2D_element result ;
-  if (in_mStartString.isValid () && in_mOptionList.isValid () && in_mEndString.isValid ()) {
-    result = GALGAS_templateDelimitorListAST_2D_element (in_mStartString, in_mOptionList, in_mEndString) ;
+  if (in_mStartString.isValid () && in_nonAtomicSelection.isValid () && in_mTemplateEndMark.isValid () && in_mPreserved.isValid () && in_mEndString.isValid ()) {
+    result = GALGAS_templateDelimitorListAST_2D_element (in_mStartString, in_nonAtomicSelection, in_mTemplateEndMark, in_mPreserved, in_mEndString) ;
   }
   return result ;
 }
@@ -1489,7 +1499,13 @@ typeComparisonResult GALGAS_templateDelimitorListAST_2D_element::objectCompare (
     result = mProperty_mStartString.objectCompare (inOperand.mProperty_mStartString) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mOptionList.objectCompare (inOperand.mProperty_mOptionList) ;
+    result = mProperty_nonAtomicSelection.objectCompare (inOperand.mProperty_nonAtomicSelection) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mTemplateEndMark.objectCompare (inOperand.mProperty_mTemplateEndMark) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mPreserved.objectCompare (inOperand.mProperty_mPreserved) ;
   }
   if (result == kOperandEqual) {
     result = mProperty_mEndString.objectCompare (inOperand.mProperty_mEndString) ;
@@ -1500,14 +1516,16 @@ typeComparisonResult GALGAS_templateDelimitorListAST_2D_element::objectCompare (
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_templateDelimitorListAST_2D_element::isValid (void) const {
-  return mProperty_mStartString.isValid () && mProperty_mOptionList.isValid () && mProperty_mEndString.isValid () ;
+  return mProperty_mStartString.isValid () && mProperty_nonAtomicSelection.isValid () && mProperty_mTemplateEndMark.isValid () && mProperty_mPreserved.isValid () && mProperty_mEndString.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateDelimitorListAST_2D_element::drop (void) {
   mProperty_mStartString.drop () ;
-  mProperty_mOptionList.drop () ;
+  mProperty_nonAtomicSelection.drop () ;
+  mProperty_mTemplateEndMark.drop () ;
+  mProperty_mPreserved.drop () ;
   mProperty_mEndString.drop () ;
 }
 
@@ -1521,7 +1539,11 @@ void GALGAS_templateDelimitorListAST_2D_element::description (C_String & ioStrin
   }else{
     mProperty_mStartString.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mOptionList.description (ioString, inIndentation+1) ;
+    mProperty_nonAtomicSelection.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mTemplateEndMark.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mPreserved.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mEndString.description (ioString, inIndentation+1) ;
   }
@@ -2081,7 +2103,8 @@ mProperty_mName (),
 mProperty_mSentAttributeList (),
 mProperty_mSyntaxErrorMessage (),
 mProperty_mStyle (),
-mProperty_mOptionList () {
+mProperty_nonAtomicSelection (),
+mProperty_isEndOfTemplateMark () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2095,12 +2118,14 @@ GALGAS_terminalDeclarationListAST_2D_element::GALGAS_terminalDeclarationListAST_
                                                                                             const GALGAS_sentLexicalAttributeListAST & inOperand1,
                                                                                             const GALGAS_lstring & inOperand2,
                                                                                             const GALGAS_lstring & inOperand3,
-                                                                                            const GALGAS_lstringlist & inOperand4) :
+                                                                                            const GALGAS_bool & inOperand4,
+                                                                                            const GALGAS_bool & inOperand5) :
 mProperty_mName (inOperand0),
 mProperty_mSentAttributeList (inOperand1),
 mProperty_mSyntaxErrorMessage (inOperand2),
 mProperty_mStyle (inOperand3),
-mProperty_mOptionList (inOperand4) {
+mProperty_nonAtomicSelection (inOperand4),
+mProperty_isEndOfTemplateMark (inOperand5) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2110,7 +2135,8 @@ GALGAS_terminalDeclarationListAST_2D_element GALGAS_terminalDeclarationListAST_2
                                                        GALGAS_sentLexicalAttributeListAST::constructor_emptyList (HERE),
                                                        GALGAS_lstring::constructor_default (HERE),
                                                        GALGAS_lstring::constructor_default (HERE),
-                                                       GALGAS_lstringlist::constructor_emptyList (HERE)) ;
+                                                       GALGAS_bool::constructor_default (HERE),
+                                                       GALGAS_bool::constructor_default (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2119,11 +2145,12 @@ GALGAS_terminalDeclarationListAST_2D_element GALGAS_terminalDeclarationListAST_2
                                                                                                             const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
                                                                                                             const GALGAS_lstring & in_mSyntaxErrorMessage,
                                                                                                             const GALGAS_lstring & in_mStyle,
-                                                                                                            const GALGAS_lstringlist & in_mOptionList 
+                                                                                                            const GALGAS_bool & in_nonAtomicSelection,
+                                                                                                            const GALGAS_bool & in_isEndOfTemplateMark 
                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_terminalDeclarationListAST_2D_element result ;
-  if (in_mName.isValid () && in_mSentAttributeList.isValid () && in_mSyntaxErrorMessage.isValid () && in_mStyle.isValid () && in_mOptionList.isValid ()) {
-    result = GALGAS_terminalDeclarationListAST_2D_element (in_mName, in_mSentAttributeList, in_mSyntaxErrorMessage, in_mStyle, in_mOptionList) ;
+  if (in_mName.isValid () && in_mSentAttributeList.isValid () && in_mSyntaxErrorMessage.isValid () && in_mStyle.isValid () && in_nonAtomicSelection.isValid () && in_isEndOfTemplateMark.isValid ()) {
+    result = GALGAS_terminalDeclarationListAST_2D_element (in_mName, in_mSentAttributeList, in_mSyntaxErrorMessage, in_mStyle, in_nonAtomicSelection, in_isEndOfTemplateMark) ;
   }
   return result ;
 }
@@ -2145,7 +2172,10 @@ typeComparisonResult GALGAS_terminalDeclarationListAST_2D_element::objectCompare
     result = mProperty_mStyle.objectCompare (inOperand.mProperty_mStyle) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mOptionList.objectCompare (inOperand.mProperty_mOptionList) ;
+    result = mProperty_nonAtomicSelection.objectCompare (inOperand.mProperty_nonAtomicSelection) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_isEndOfTemplateMark.objectCompare (inOperand.mProperty_isEndOfTemplateMark) ;
   }
   return result ;
 }
@@ -2153,7 +2183,7 @@ typeComparisonResult GALGAS_terminalDeclarationListAST_2D_element::objectCompare
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_terminalDeclarationListAST_2D_element::isValid (void) const {
-  return mProperty_mName.isValid () && mProperty_mSentAttributeList.isValid () && mProperty_mSyntaxErrorMessage.isValid () && mProperty_mStyle.isValid () && mProperty_mOptionList.isValid () ;
+  return mProperty_mName.isValid () && mProperty_mSentAttributeList.isValid () && mProperty_mSyntaxErrorMessage.isValid () && mProperty_mStyle.isValid () && mProperty_nonAtomicSelection.isValid () && mProperty_isEndOfTemplateMark.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2163,7 +2193,8 @@ void GALGAS_terminalDeclarationListAST_2D_element::drop (void) {
   mProperty_mSentAttributeList.drop () ;
   mProperty_mSyntaxErrorMessage.drop () ;
   mProperty_mStyle.drop () ;
-  mProperty_mOptionList.drop () ;
+  mProperty_nonAtomicSelection.drop () ;
+  mProperty_isEndOfTemplateMark.drop () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2182,7 +2213,9 @@ void GALGAS_terminalDeclarationListAST_2D_element::description (C_String & ioStr
     ioString << ", " ;
     mProperty_mStyle.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mOptionList.description (ioString, inIndentation+1) ;
+    mProperty_nonAtomicSelection.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_isEndOfTemplateMark.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -2235,7 +2268,8 @@ GALGAS_terminalDeclarationListAST_2D_element GALGAS_terminalDeclarationListAST_2
 GALGAS_lexicalListEntryListAST_2D_element::GALGAS_lexicalListEntryListAST_2D_element (void) :
 mProperty_mEntrySpelling (),
 mProperty_mTerminalSpelling (),
-mProperty_mAttributeList () {
+mProperty_nonAtomicSelection (),
+mProperty_isEndOfTemplateMark () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2247,10 +2281,12 @@ GALGAS_lexicalListEntryListAST_2D_element::~ GALGAS_lexicalListEntryListAST_2D_e
 
 GALGAS_lexicalListEntryListAST_2D_element::GALGAS_lexicalListEntryListAST_2D_element (const GALGAS_lstring & inOperand0,
                                                                                       const GALGAS_lstring & inOperand1,
-                                                                                      const GALGAS_lstringlist & inOperand2) :
+                                                                                      const GALGAS_bool & inOperand2,
+                                                                                      const GALGAS_bool & inOperand3) :
 mProperty_mEntrySpelling (inOperand0),
 mProperty_mTerminalSpelling (inOperand1),
-mProperty_mAttributeList (inOperand2) {
+mProperty_nonAtomicSelection (inOperand2),
+mProperty_isEndOfTemplateMark (inOperand3) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2258,18 +2294,20 @@ mProperty_mAttributeList (inOperand2) {
 GALGAS_lexicalListEntryListAST_2D_element GALGAS_lexicalListEntryListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalListEntryListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
                                                     GALGAS_lstring::constructor_default (HERE),
-                                                    GALGAS_lstringlist::constructor_emptyList (HERE)) ;
+                                                    GALGAS_bool::constructor_default (HERE),
+                                                    GALGAS_bool::constructor_default (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalListEntryListAST_2D_element GALGAS_lexicalListEntryListAST_2D_element::constructor_new (const GALGAS_lstring & in_mEntrySpelling,
                                                                                                       const GALGAS_lstring & in_mTerminalSpelling,
-                                                                                                      const GALGAS_lstringlist & in_mAttributeList 
+                                                                                                      const GALGAS_bool & in_nonAtomicSelection,
+                                                                                                      const GALGAS_bool & in_isEndOfTemplateMark 
                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalListEntryListAST_2D_element result ;
-  if (in_mEntrySpelling.isValid () && in_mTerminalSpelling.isValid () && in_mAttributeList.isValid ()) {
-    result = GALGAS_lexicalListEntryListAST_2D_element (in_mEntrySpelling, in_mTerminalSpelling, in_mAttributeList) ;
+  if (in_mEntrySpelling.isValid () && in_mTerminalSpelling.isValid () && in_nonAtomicSelection.isValid () && in_isEndOfTemplateMark.isValid ()) {
+    result = GALGAS_lexicalListEntryListAST_2D_element (in_mEntrySpelling, in_mTerminalSpelling, in_nonAtomicSelection, in_isEndOfTemplateMark) ;
   }
   return result ;
 }
@@ -2285,7 +2323,10 @@ typeComparisonResult GALGAS_lexicalListEntryListAST_2D_element::objectCompare (c
     result = mProperty_mTerminalSpelling.objectCompare (inOperand.mProperty_mTerminalSpelling) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mAttributeList.objectCompare (inOperand.mProperty_mAttributeList) ;
+    result = mProperty_nonAtomicSelection.objectCompare (inOperand.mProperty_nonAtomicSelection) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_isEndOfTemplateMark.objectCompare (inOperand.mProperty_isEndOfTemplateMark) ;
   }
   return result ;
 }
@@ -2293,7 +2334,7 @@ typeComparisonResult GALGAS_lexicalListEntryListAST_2D_element::objectCompare (c
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalListEntryListAST_2D_element::isValid (void) const {
-  return mProperty_mEntrySpelling.isValid () && mProperty_mTerminalSpelling.isValid () && mProperty_mAttributeList.isValid () ;
+  return mProperty_mEntrySpelling.isValid () && mProperty_mTerminalSpelling.isValid () && mProperty_nonAtomicSelection.isValid () && mProperty_isEndOfTemplateMark.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2301,7 +2342,8 @@ bool GALGAS_lexicalListEntryListAST_2D_element::isValid (void) const {
 void GALGAS_lexicalListEntryListAST_2D_element::drop (void) {
   mProperty_mEntrySpelling.drop () ;
   mProperty_mTerminalSpelling.drop () ;
-  mProperty_mAttributeList.drop () ;
+  mProperty_nonAtomicSelection.drop () ;
+  mProperty_isEndOfTemplateMark.drop () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2316,7 +2358,9 @@ void GALGAS_lexicalListEntryListAST_2D_element::description (C_String & ioString
     ioString << ", " ;
     mProperty_mTerminalSpelling.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mAttributeList.description (ioString, inIndentation+1) ;
+    mProperty_nonAtomicSelection.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_isEndOfTemplateMark.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -3376,8 +3420,8 @@ GALGAS_terminalList_2D_element::GALGAS_terminalList_2D_element (void) :
 mProperty_mTerminalName (),
 mProperty_mSentAttributeList (),
 mProperty_mSyntaxErrorMessage (),
-mProperty_mIsEndOfTemplateMark (),
-mProperty_mAtomicSelection (),
+mProperty_isEndOfTemplateMark (),
+mProperty_atomicSelection (),
 mProperty_mStyleIndex () {
 }
 
@@ -3397,8 +3441,8 @@ GALGAS_terminalList_2D_element::GALGAS_terminalList_2D_element (const GALGAS_lst
 mProperty_mTerminalName (inOperand0),
 mProperty_mSentAttributeList (inOperand1),
 mProperty_mSyntaxErrorMessage (inOperand2),
-mProperty_mIsEndOfTemplateMark (inOperand3),
-mProperty_mAtomicSelection (inOperand4),
+mProperty_isEndOfTemplateMark (inOperand3),
+mProperty_atomicSelection (inOperand4),
 mProperty_mStyleIndex (inOperand5) {
 }
 
@@ -3418,13 +3462,13 @@ GALGAS_terminalList_2D_element GALGAS_terminalList_2D_element::constructor_defau
 GALGAS_terminalList_2D_element GALGAS_terminalList_2D_element::constructor_new (const GALGAS_lstring & in_mTerminalName,
                                                                                 const GALGAS_lexicalSentValueList & in_mSentAttributeList,
                                                                                 const GALGAS_string & in_mSyntaxErrorMessage,
-                                                                                const GALGAS_bool & in_mIsEndOfTemplateMark,
-                                                                                const GALGAS_bool & in_mAtomicSelection,
+                                                                                const GALGAS_bool & in_isEndOfTemplateMark,
+                                                                                const GALGAS_bool & in_atomicSelection,
                                                                                 const GALGAS_uint & in_mStyleIndex 
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_terminalList_2D_element result ;
-  if (in_mTerminalName.isValid () && in_mSentAttributeList.isValid () && in_mSyntaxErrorMessage.isValid () && in_mIsEndOfTemplateMark.isValid () && in_mAtomicSelection.isValid () && in_mStyleIndex.isValid ()) {
-    result = GALGAS_terminalList_2D_element (in_mTerminalName, in_mSentAttributeList, in_mSyntaxErrorMessage, in_mIsEndOfTemplateMark, in_mAtomicSelection, in_mStyleIndex) ;
+  if (in_mTerminalName.isValid () && in_mSentAttributeList.isValid () && in_mSyntaxErrorMessage.isValid () && in_isEndOfTemplateMark.isValid () && in_atomicSelection.isValid () && in_mStyleIndex.isValid ()) {
+    result = GALGAS_terminalList_2D_element (in_mTerminalName, in_mSentAttributeList, in_mSyntaxErrorMessage, in_isEndOfTemplateMark, in_atomicSelection, in_mStyleIndex) ;
   }
   return result ;
 }
@@ -3443,10 +3487,10 @@ typeComparisonResult GALGAS_terminalList_2D_element::objectCompare (const GALGAS
     result = mProperty_mSyntaxErrorMessage.objectCompare (inOperand.mProperty_mSyntaxErrorMessage) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mIsEndOfTemplateMark.objectCompare (inOperand.mProperty_mIsEndOfTemplateMark) ;
+    result = mProperty_isEndOfTemplateMark.objectCompare (inOperand.mProperty_isEndOfTemplateMark) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mAtomicSelection.objectCompare (inOperand.mProperty_mAtomicSelection) ;
+    result = mProperty_atomicSelection.objectCompare (inOperand.mProperty_atomicSelection) ;
   }
   if (result == kOperandEqual) {
     result = mProperty_mStyleIndex.objectCompare (inOperand.mProperty_mStyleIndex) ;
@@ -3457,7 +3501,7 @@ typeComparisonResult GALGAS_terminalList_2D_element::objectCompare (const GALGAS
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_terminalList_2D_element::isValid (void) const {
-  return mProperty_mTerminalName.isValid () && mProperty_mSentAttributeList.isValid () && mProperty_mSyntaxErrorMessage.isValid () && mProperty_mIsEndOfTemplateMark.isValid () && mProperty_mAtomicSelection.isValid () && mProperty_mStyleIndex.isValid () ;
+  return mProperty_mTerminalName.isValid () && mProperty_mSentAttributeList.isValid () && mProperty_mSyntaxErrorMessage.isValid () && mProperty_isEndOfTemplateMark.isValid () && mProperty_atomicSelection.isValid () && mProperty_mStyleIndex.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3466,8 +3510,8 @@ void GALGAS_terminalList_2D_element::drop (void) {
   mProperty_mTerminalName.drop () ;
   mProperty_mSentAttributeList.drop () ;
   mProperty_mSyntaxErrorMessage.drop () ;
-  mProperty_mIsEndOfTemplateMark.drop () ;
-  mProperty_mAtomicSelection.drop () ;
+  mProperty_isEndOfTemplateMark.drop () ;
+  mProperty_atomicSelection.drop () ;
   mProperty_mStyleIndex.drop () ;
 }
 
@@ -3485,9 +3529,9 @@ void GALGAS_terminalList_2D_element::description (C_String & ioString,
     ioString << ", " ;
     mProperty_mSyntaxErrorMessage.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mIsEndOfTemplateMark.description (ioString, inIndentation+1) ;
+    mProperty_isEndOfTemplateMark.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mAtomicSelection.description (ioString, inIndentation+1) ;
+    mProperty_atomicSelection.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mStyleIndex.description (ioString, inIndentation+1) ;
   }
@@ -3542,7 +3586,8 @@ GALGAS_terminalList_2D_element GALGAS_terminalList_2D_element::extractObject (co
 GALGAS_lexicalExplicitTokenListMap_2D_element::GALGAS_lexicalExplicitTokenListMap_2D_element (void) :
 mProperty_lkey (),
 mProperty_mTerminal (),
-mProperty_mAttributeList () {
+mProperty_atomicSelection (),
+mProperty_isEndOfTemplateMark () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3554,10 +3599,12 @@ GALGAS_lexicalExplicitTokenListMap_2D_element::~ GALGAS_lexicalExplicitTokenList
 
 GALGAS_lexicalExplicitTokenListMap_2D_element::GALGAS_lexicalExplicitTokenListMap_2D_element (const GALGAS_lstring & inOperand0,
                                                                                               const GALGAS_lstring & inOperand1,
-                                                                                              const GALGAS_lstringlist & inOperand2) :
+                                                                                              const GALGAS_bool & inOperand2,
+                                                                                              const GALGAS_bool & inOperand3) :
 mProperty_lkey (inOperand0),
 mProperty_mTerminal (inOperand1),
-mProperty_mAttributeList (inOperand2) {
+mProperty_atomicSelection (inOperand2),
+mProperty_isEndOfTemplateMark (inOperand3) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3565,18 +3612,20 @@ mProperty_mAttributeList (inOperand2) {
 GALGAS_lexicalExplicitTokenListMap_2D_element GALGAS_lexicalExplicitTokenListMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalExplicitTokenListMap_2D_element (GALGAS_lstring::constructor_default (HERE),
                                                         GALGAS_lstring::constructor_default (HERE),
-                                                        GALGAS_lstringlist::constructor_emptyList (HERE)) ;
+                                                        GALGAS_bool::constructor_default (HERE),
+                                                        GALGAS_bool::constructor_default (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMap_2D_element GALGAS_lexicalExplicitTokenListMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
                                                                                                               const GALGAS_lstring & in_mTerminal,
-                                                                                                              const GALGAS_lstringlist & in_mAttributeList 
+                                                                                                              const GALGAS_bool & in_atomicSelection,
+                                                                                                              const GALGAS_bool & in_isEndOfTemplateMark 
                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalExplicitTokenListMap_2D_element result ;
-  if (in_lkey.isValid () && in_mTerminal.isValid () && in_mAttributeList.isValid ()) {
-    result = GALGAS_lexicalExplicitTokenListMap_2D_element (in_lkey, in_mTerminal, in_mAttributeList) ;
+  if (in_lkey.isValid () && in_mTerminal.isValid () && in_atomicSelection.isValid () && in_isEndOfTemplateMark.isValid ()) {
+    result = GALGAS_lexicalExplicitTokenListMap_2D_element (in_lkey, in_mTerminal, in_atomicSelection, in_isEndOfTemplateMark) ;
   }
   return result ;
 }
@@ -3592,7 +3641,10 @@ typeComparisonResult GALGAS_lexicalExplicitTokenListMap_2D_element::objectCompar
     result = mProperty_mTerminal.objectCompare (inOperand.mProperty_mTerminal) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mAttributeList.objectCompare (inOperand.mProperty_mAttributeList) ;
+    result = mProperty_atomicSelection.objectCompare (inOperand.mProperty_atomicSelection) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_isEndOfTemplateMark.objectCompare (inOperand.mProperty_isEndOfTemplateMark) ;
   }
   return result ;
 }
@@ -3600,7 +3652,7 @@ typeComparisonResult GALGAS_lexicalExplicitTokenListMap_2D_element::objectCompar
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalExplicitTokenListMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mTerminal.isValid () && mProperty_mAttributeList.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mTerminal.isValid () && mProperty_atomicSelection.isValid () && mProperty_isEndOfTemplateMark.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3608,7 +3660,8 @@ bool GALGAS_lexicalExplicitTokenListMap_2D_element::isValid (void) const {
 void GALGAS_lexicalExplicitTokenListMap_2D_element::drop (void) {
   mProperty_lkey.drop () ;
   mProperty_mTerminal.drop () ;
-  mProperty_mAttributeList.drop () ;
+  mProperty_atomicSelection.drop () ;
+  mProperty_isEndOfTemplateMark.drop () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3623,7 +3676,9 @@ void GALGAS_lexicalExplicitTokenListMap_2D_element::description (C_String & ioSt
     ioString << ", " ;
     mProperty_mTerminal.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mAttributeList.description (ioString, inIndentation+1) ;
+    mProperty_atomicSelection.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_isEndOfTemplateMark.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -8061,7 +8116,7 @@ mProperty_isConstant (),
 mProperty_mPropertyTypeName (),
 mProperty_mPropertyName (),
 mProperty_mAccessControl (),
-mProperty_mAttributeList (),
+mProperty_selector (),
 mProperty_mInitialization () {
 }
 
@@ -8076,13 +8131,13 @@ GALGAS_propertyInCollectionListAST_2D_element::GALGAS_propertyInCollectionListAS
                                                                                               const GALGAS_lstring & inOperand1,
                                                                                               const GALGAS_lstring & inOperand2,
                                                                                               const GALGAS_AccessControlAST & inOperand3,
-                                                                                              const GALGAS_lstringlist & inOperand4,
+                                                                                              const GALGAS_bool & inOperand4,
                                                                                               const GALGAS_propertyInCollectionInitializationAST & inOperand5) :
 mProperty_isConstant (inOperand0),
 mProperty_mPropertyTypeName (inOperand1),
 mProperty_mPropertyName (inOperand2),
 mProperty_mAccessControl (inOperand3),
-mProperty_mAttributeList (inOperand4),
+mProperty_selector (inOperand4),
 mProperty_mInitialization (inOperand5) {
 }
 
@@ -8092,12 +8147,12 @@ GALGAS_propertyInCollectionListAST_2D_element GALGAS_propertyInCollectionListAST
                                                                                                               const GALGAS_lstring & in_mPropertyTypeName,
                                                                                                               const GALGAS_lstring & in_mPropertyName,
                                                                                                               const GALGAS_AccessControlAST & in_mAccessControl,
-                                                                                                              const GALGAS_lstringlist & in_mAttributeList,
+                                                                                                              const GALGAS_bool & in_selector,
                                                                                                               const GALGAS_propertyInCollectionInitializationAST & in_mInitialization 
                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_propertyInCollectionListAST_2D_element result ;
-  if (in_isConstant.isValid () && in_mPropertyTypeName.isValid () && in_mPropertyName.isValid () && in_mAccessControl.isValid () && in_mAttributeList.isValid () && in_mInitialization.isValid ()) {
-    result = GALGAS_propertyInCollectionListAST_2D_element (in_isConstant, in_mPropertyTypeName, in_mPropertyName, in_mAccessControl, in_mAttributeList, in_mInitialization) ;
+  if (in_isConstant.isValid () && in_mPropertyTypeName.isValid () && in_mPropertyName.isValid () && in_mAccessControl.isValid () && in_selector.isValid () && in_mInitialization.isValid ()) {
+    result = GALGAS_propertyInCollectionListAST_2D_element (in_isConstant, in_mPropertyTypeName, in_mPropertyName, in_mAccessControl, in_selector, in_mInitialization) ;
   }
   return result ;
 }
@@ -8119,7 +8174,7 @@ typeComparisonResult GALGAS_propertyInCollectionListAST_2D_element::objectCompar
     result = mProperty_mAccessControl.objectCompare (inOperand.mProperty_mAccessControl) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mAttributeList.objectCompare (inOperand.mProperty_mAttributeList) ;
+    result = mProperty_selector.objectCompare (inOperand.mProperty_selector) ;
   }
   if (result == kOperandEqual) {
     result = mProperty_mInitialization.objectCompare (inOperand.mProperty_mInitialization) ;
@@ -8130,7 +8185,7 @@ typeComparisonResult GALGAS_propertyInCollectionListAST_2D_element::objectCompar
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_propertyInCollectionListAST_2D_element::isValid (void) const {
-  return mProperty_isConstant.isValid () && mProperty_mPropertyTypeName.isValid () && mProperty_mPropertyName.isValid () && mProperty_mAccessControl.isValid () && mProperty_mAttributeList.isValid () && mProperty_mInitialization.isValid () ;
+  return mProperty_isConstant.isValid () && mProperty_mPropertyTypeName.isValid () && mProperty_mPropertyName.isValid () && mProperty_mAccessControl.isValid () && mProperty_selector.isValid () && mProperty_mInitialization.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -8140,7 +8195,7 @@ void GALGAS_propertyInCollectionListAST_2D_element::drop (void) {
   mProperty_mPropertyTypeName.drop () ;
   mProperty_mPropertyName.drop () ;
   mProperty_mAccessControl.drop () ;
-  mProperty_mAttributeList.drop () ;
+  mProperty_selector.drop () ;
   mProperty_mInitialization.drop () ;
 }
 
@@ -8160,7 +8215,7 @@ void GALGAS_propertyInCollectionListAST_2D_element::description (C_String & ioSt
     ioString << ", " ;
     mProperty_mAccessControl.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mAttributeList.description (ioString, inIndentation+1) ;
+    mProperty_selector.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mInitialization.description (ioString, inIndentation+1) ;
   }
@@ -10788,7 +10843,7 @@ GALGAS_typedPropertyList_2D_element::GALGAS_typedPropertyList_2D_element (void) 
 mProperty_mPropertyTypeEntry (),
 mProperty_mPropertyName (),
 mProperty_hasSetter (),
-mProperty_mHasSelector () {
+mProperty_hasSelector () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10805,7 +10860,7 @@ GALGAS_typedPropertyList_2D_element::GALGAS_typedPropertyList_2D_element (const 
 mProperty_mPropertyTypeEntry (inOperand0),
 mProperty_mPropertyName (inOperand1),
 mProperty_hasSetter (inOperand2),
-mProperty_mHasSelector (inOperand3) {
+mProperty_hasSelector (inOperand3) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10813,11 +10868,11 @@ mProperty_mHasSelector (inOperand3) {
 GALGAS_typedPropertyList_2D_element GALGAS_typedPropertyList_2D_element::constructor_new (const GALGAS_unifiedTypeMapEntry & in_mPropertyTypeEntry,
                                                                                           const GALGAS_lstring & in_mPropertyName,
                                                                                           const GALGAS_bool & in_hasSetter,
-                                                                                          const GALGAS_bool & in_mHasSelector 
+                                                                                          const GALGAS_bool & in_hasSelector 
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typedPropertyList_2D_element result ;
-  if (in_mPropertyTypeEntry.isValid () && in_mPropertyName.isValid () && in_hasSetter.isValid () && in_mHasSelector.isValid ()) {
-    result = GALGAS_typedPropertyList_2D_element (in_mPropertyTypeEntry, in_mPropertyName, in_hasSetter, in_mHasSelector) ;
+  if (in_mPropertyTypeEntry.isValid () && in_mPropertyName.isValid () && in_hasSetter.isValid () && in_hasSelector.isValid ()) {
+    result = GALGAS_typedPropertyList_2D_element (in_mPropertyTypeEntry, in_mPropertyName, in_hasSetter, in_hasSelector) ;
   }
   return result ;
 }
@@ -10836,7 +10891,7 @@ typeComparisonResult GALGAS_typedPropertyList_2D_element::objectCompare (const G
     result = mProperty_hasSetter.objectCompare (inOperand.mProperty_hasSetter) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mHasSelector.objectCompare (inOperand.mProperty_mHasSelector) ;
+    result = mProperty_hasSelector.objectCompare (inOperand.mProperty_hasSelector) ;
   }
   return result ;
 }
@@ -10844,7 +10899,7 @@ typeComparisonResult GALGAS_typedPropertyList_2D_element::objectCompare (const G
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_typedPropertyList_2D_element::isValid (void) const {
-  return mProperty_mPropertyTypeEntry.isValid () && mProperty_mPropertyName.isValid () && mProperty_hasSetter.isValid () && mProperty_mHasSelector.isValid () ;
+  return mProperty_mPropertyTypeEntry.isValid () && mProperty_mPropertyName.isValid () && mProperty_hasSetter.isValid () && mProperty_hasSelector.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10853,7 +10908,7 @@ void GALGAS_typedPropertyList_2D_element::drop (void) {
   mProperty_mPropertyTypeEntry.drop () ;
   mProperty_mPropertyName.drop () ;
   mProperty_hasSetter.drop () ;
-  mProperty_mHasSelector.drop () ;
+  mProperty_hasSelector.drop () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10870,7 +10925,7 @@ void GALGAS_typedPropertyList_2D_element::description (C_String & ioString,
     ioString << ", " ;
     mProperty_hasSetter.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mHasSelector.description (ioString, inIndentation+1) ;
+    mProperty_hasSelector.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }

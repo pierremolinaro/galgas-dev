@@ -207,7 +207,7 @@ proc performGalgas3ProjectGlobalCheckings
   ?let @semanticDeclarationListAST inSemanticDeclarationList
 {
   if @application.verboseOutput then
-    message "*** Perform global checkings\n"
+    println (!"*** Perform global checkings")
   end
 #------ Build descendant type list map
 # For every type, a list of its directed descendants is associated

@@ -291,20 +291,11 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         !mPropertyTypeEntry
         !mPropertyName.string
     end
-    for (isConstant propertyTypeName mPropertyName accessControlAST mAttributeList initExpression) in self.mPropertyList do
+    for (isConstant propertyTypeName mPropertyName accessControlAST hasSelector initExpression) in self.mPropertyList do
       if [initExpression isSome] then
         error mPropertyName : "property initialization is not handled for a class"
       end
       [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
-      var hasSelector = false
-      for (attribute) in mAttributeList do
-        if attribute.string == "selector" then
-          if hasSelector then
-            error attribute : "duplicated attribute" fixit { remove }
-          end
-          hasSelector = true
-        end
-      end
       constructorPropertyTypeList += 
         !if hasSelector then mPropertyName else ["" nowhere] end
         !attributeTypeIndex
@@ -332,23 +323,13 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   #--- Typed attribute list
     var @typedPropertyList currentClassTypedPropertyList = {}
     var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
-    for (isConstant propertyTypeName mPropertyName unused accessControl mAttributeList initExpression) in self.mPropertyList do
+    for (isConstant propertyTypeName mPropertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
       if [initExpression isSome] then
         error mPropertyName : "property initialization is not handled for a class"
       end
       [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
-      var hasSelector = false
-      for (mValue) in mAttributeList do
-        if mValue.string == "setter" then
-          warning mValue : "'%nogetter' is obsolete and has no effect"
-        elsif mValue.string == "nogetter" then
-          warning mValue : "'%setter' is obsolete and has no effect"
-        elsif mValue.string == "selector" then
-          hasSelector = true
-        end
-      end
-      currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter: not isConstant !hasSelector
-      allTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter: not isConstant !hasSelector
+      currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter: not isConstant !hasSelector: hasSelector
+      allTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter: not isConstant !hasSelector: hasSelector
     end
   #--- set...attribute setter
     for (mPropertyTypeEntry mPropertyName mHasSetter *) in currentClassTypedPropertyList do
@@ -485,27 +466,23 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   #------ Enter attributes
     var @typedPropertyList typedAttributeList = {}
     var @propertyIndexMap attributeMap = {}
-    for (isConstant propertyTypeName mPropertyName unused accessControl mAttributeList initExpression) in self.mPropertyList do
+    for (isConstant propertyTypeName mPropertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
       if [initExpression isSome] then
         error mPropertyName : "property initialization is not handled for a class"
       end
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
       [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
       let t = [ioTypeMap searchKey !propertyTypeName]
-      var hasSelector = false
-      for (mValue) in mAttributeList while not hasSelector do
-        hasSelector = mValue.string == "selector"
-      end
       typedAttributeList +=
         !t
         !mPropertyName
         !hasSetter: not isConstant
-        !hasSelector
+        !hasSelector: hasSelector
       allAttributeList +=
         !t
         !mPropertyName
         !hasSetter: not isConstant
-        !hasSelector
+        !hasSelector: hasSelector
       [!?attributeMap insertKey !mPropertyName !t]
     end
   #------

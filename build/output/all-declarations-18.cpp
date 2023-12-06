@@ -8995,21 +8995,92 @@ static const int32_t gProductions_galgas3ProjectGrammar [] = {
 // At index 16 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
 , END_PRODUCTION
 // At index 17 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
-, TERMINAL (C_Lexique_galgasScanner::kToken__25_attribute) // $%attribute$
-, NONTERMINAL (3) // <select_galgas_33_ProjectSyntax_1>
+, TERMINAL (C_Lexique_galgasScanner::kToken__25_quietOutputByDefault) // $%quietOutputByDefault$
 , NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , END_PRODUCTION
-// At index 21 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
-, TERMINAL (C_Lexique_galgasScanner::kToken__22_string_22_) // $"string"$
+// At index 20 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+, TERMINAL (C_Lexique_galgasScanner::kToken__25_MacOS) // $%MacOS$
 , NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , END_PRODUCTION
-// At index 24 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 77
+// At index 23 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+, TERMINAL (C_Lexique_galgasScanner::kToken__25_makefile_2D_macosx) // $%makefile-macosx$
+, NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
+, END_PRODUCTION
+// At index 26 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+, TERMINAL (C_Lexique_galgasScanner::kToken__25_makefile_2D_unix) // $%makefile-unix$
+, NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
+, END_PRODUCTION
+// At index 29 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+, TERMINAL (C_Lexique_galgasScanner::kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx) // $%makefile-x86linux32-on-macosx$
+, NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
+, END_PRODUCTION
+// At index 32 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+, TERMINAL (C_Lexique_galgasScanner::kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx) // $%makefile-x86linux64-on-macosx$
+, NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
+, END_PRODUCTION
+// At index 35 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+, TERMINAL (C_Lexique_galgasScanner::kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx) // $%makefile-win32-on-macosx$
+, NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
+, END_PRODUCTION
+// At index 38 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+, TERMINAL (C_Lexique_galgasScanner::kToken__25_codeblocks_2D_windows) // $%codeblocks-windows$
+, NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
+, END_PRODUCTION
+// At index 41 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+, TERMINAL (C_Lexique_galgasScanner::kToken__25_codeblocks_2D_linux_33__32_) // $%codeblocks-linux32$
+, NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
+, END_PRODUCTION
+// At index 44 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+, TERMINAL (C_Lexique_galgasScanner::kToken__25_codeblocks_2D_linux_36__34_) // $%codeblocks-linux64$
+, NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
+, END_PRODUCTION
+// At index 47 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+, TERMINAL (C_Lexique_galgasScanner::kToken__25_applicationBundleBase) // $%applicationBundleBase$
 , TERMINAL (C_Lexique_galgasScanner::kToken__3A_) // $:$
 , TERMINAL (C_Lexique_galgasScanner::kToken__22_string_22_) // $"string"$
+, NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , END_PRODUCTION
-// At index 27 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 77
+// At index 52 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+, TERMINAL (C_Lexique_galgasScanner::kToken__25_libpmAtPath) // $%libpmAtPath$
+, TERMINAL (C_Lexique_galgasScanner::kToken__3A_) // $:$
+, TERMINAL (C_Lexique_galgasScanner::kToken__22_string_22_) // $"string"$
+, NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , END_PRODUCTION
-// At index 28 : <>, in file '.ggs', line 0
+// At index 57 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+, TERMINAL (C_Lexique_galgasScanner::kToken__25_tool_2D_source) // $%tool-source$
+, TERMINAL (C_Lexique_galgasScanner::kToken__3A_) // $:$
+, TERMINAL (C_Lexique_galgasScanner::kToken__22_string_22_) // $"string"$
+, NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
+, END_PRODUCTION
+// At index 62 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+, TERMINAL (C_Lexique_galgasScanner::kToken__25_MacOSDeployment) // $%MacOSDeployment$
+, TERMINAL (C_Lexique_galgasScanner::kToken__3A_) // $:$
+, TERMINAL (C_Lexique_galgasScanner::kToken__22_string_22_) // $"string"$
+, NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
+, END_PRODUCTION
+// At index 67 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+, TERMINAL (C_Lexique_galgasScanner::kToken__25_macCodeSign) // $%macCodeSign$
+, TERMINAL (C_Lexique_galgasScanner::kToken__3A_) // $:$
+, TERMINAL (C_Lexique_galgasScanner::kToken__22_string_22_) // $"string"$
+, NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
+, END_PRODUCTION
+// At index 72 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+, TERMINAL (C_Lexique_galgasScanner::kToken__25_app_2D_source) // $%app-source$
+, TERMINAL (C_Lexique_galgasScanner::kToken__3A_) // $:$
+, TERMINAL (C_Lexique_galgasScanner::kToken__22_string_22_) // $"string"$
+, NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
+, END_PRODUCTION
+// At index 77 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+, TERMINAL (C_Lexique_galgasScanner::kToken__25_app_2D_link) // $%app-link$
+, TERMINAL (C_Lexique_galgasScanner::kToken__3A_) // $:$
+, TERMINAL (C_Lexique_galgasScanner::kToken__22_string_22_) // $"string"$
+, NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
+, END_PRODUCTION
+// At index 82 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+, TERMINAL (C_Lexique_galgasScanner::kToken__22_string_22_) // $"string"$
+, NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
+, END_PRODUCTION
+// At index 85 : <>, in file '.ggs', line 0
 , NONTERMINAL (1) // <project_component_start_symbol>
 , END_PRODUCTION
 } ;
@@ -9020,15 +9091,29 @@ static const int32_t gProductions_galgas3ProjectGrammar [] = {
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const cProductionNameDescriptor gProductionNames_galgas3ProjectGrammar [8] = {
+static const cProductionNameDescriptor gProductionNames_galgas3ProjectGrammar [22] = {
  {"<project_header>", "galgas3ProjectSyntax", 0}, // at index 0
  {"<project_component_start_symbol>", "galgas3ProjectSyntax", 11}, // at index 1
  {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 16}, // at index 2
  {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 17}, // at index 3
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 21}, // at index 4
- {"<select_galgas_33_ProjectSyntax_1>", "galgas3ProjectSyntax", 24}, // at index 5
- {"<select_galgas_33_ProjectSyntax_1>", "galgas3ProjectSyntax", 27}, // at index 6
- {"<>", "", 28} // at index 7
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 20}, // at index 4
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 23}, // at index 5
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 26}, // at index 6
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 29}, // at index 7
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 32}, // at index 8
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 35}, // at index 9
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 38}, // at index 10
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 41}, // at index 11
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 44}, // at index 12
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 47}, // at index 13
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 52}, // at index 14
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 57}, // at index 15
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 62}, // at index 16
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 67}, // at index 17
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 72}, // at index 18
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 77}, // at index 19
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 82}, // at index 20
+ {"<>", "", 85} // at index 21
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9037,15 +9122,29 @@ static const cProductionNameDescriptor gProductionNames_galgas3ProjectGrammar [8
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int32_t gProductionIndexes_galgas3ProjectGrammar [8] = {
+static const int32_t gProductionIndexes_galgas3ProjectGrammar [22] = {
 0, // index 0 : <project_header>, in file 'galgas3ProjectSyntax.ggs', line 49
 11, // index 1 : <project_component_start_symbol>, in file 'galgas3ProjectSyntax.ggs', line 64
 16, // index 2 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
 17, // index 3 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
-21, // index 4 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
-24, // index 5 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 77
-27, // index 6 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 77
-28 // index 7 : <>, in file '.ggs', line 0
+20, // index 4 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+23, // index 5 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+26, // index 6 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+29, // index 7 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+32, // index 8 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+35, // index 9 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+38, // index 10 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+41, // index 11 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+44, // index 12 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+47, // index 13 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+52, // index 14 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+57, // index 15 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+62, // index 16 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+67, // index 17 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+72, // index 18 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+77, // index 19 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+82, // index 20 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 74
+85 // index 21 : <>, in file '.ggs', line 0
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9054,12 +9153,11 @@ static const int32_t gProductionIndexes_galgas3ProjectGrammar [8] = {
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int32_t gFirstProductionIndexes_galgas3ProjectGrammar [6] = {
+static const int32_t gFirstProductionIndexes_galgas3ProjectGrammar [5] = {
 0, // at 0 : <project_header>
 1, // at 1 : <project_component_start_symbol>
 2, // at 2 : <select_galgas_33_ProjectSyntax_0>
-5, // at 3 : <select_galgas_33_ProjectSyntax_1>
-7, // at 4 : <>
+21, // at 3 : <>
 0} ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9076,14 +9174,26 @@ static const int32_t gDecision_galgas3ProjectGrammar [] = {
 //---- Added non terminal symbols from 'select' and 'repeat' instructions
 // At index 2 : <select_galgas_33_ProjectSyntax_0>
 C_Lexique_galgasScanner::kToken__7D_, -1, // Choice 1
-C_Lexique_galgasScanner::kToken__25_attribute, -1, // Choice 2
-C_Lexique_galgasScanner::kToken__22_string_22_, -1, // Choice 3
+C_Lexique_galgasScanner::kToken__25_quietOutputByDefault, -1, // Choice 2
+C_Lexique_galgasScanner::kToken__25_MacOS, -1, // Choice 3
+C_Lexique_galgasScanner::kToken__25_makefile_2D_macosx, -1, // Choice 4
+C_Lexique_galgasScanner::kToken__25_makefile_2D_unix, -1, // Choice 5
+C_Lexique_galgasScanner::kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx, -1, // Choice 6
+C_Lexique_galgasScanner::kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx, -1, // Choice 7
+C_Lexique_galgasScanner::kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx, -1, // Choice 8
+C_Lexique_galgasScanner::kToken__25_codeblocks_2D_windows, -1, // Choice 9
+C_Lexique_galgasScanner::kToken__25_codeblocks_2D_linux_33__32_, -1, // Choice 10
+C_Lexique_galgasScanner::kToken__25_codeblocks_2D_linux_36__34_, -1, // Choice 11
+C_Lexique_galgasScanner::kToken__25_applicationBundleBase, -1, // Choice 12
+C_Lexique_galgasScanner::kToken__25_libpmAtPath, -1, // Choice 13
+C_Lexique_galgasScanner::kToken__25_tool_2D_source, -1, // Choice 14
+C_Lexique_galgasScanner::kToken__25_MacOSDeployment, -1, // Choice 15
+C_Lexique_galgasScanner::kToken__25_macCodeSign, -1, // Choice 16
+C_Lexique_galgasScanner::kToken__25_app_2D_source, -1, // Choice 17
+C_Lexique_galgasScanner::kToken__25_app_2D_link, -1, // Choice 18
+C_Lexique_galgasScanner::kToken__22_string_22_, -1, // Choice 19
   -1,
-// At index 9 : <select_galgas_33_ProjectSyntax_1>
-C_Lexique_galgasScanner::kToken__3A_, -1, // Choice 1
-C_Lexique_galgasScanner::kToken__22_string_22_, C_Lexique_galgasScanner::kToken__25_attribute, C_Lexique_galgasScanner::kToken__7D_, -1, // Choice 2
-  -1,
-// At index 16 : <> only one production, no choice
+// At index 41 : <> only one production, no choice
   -1,
 0} ;
 
@@ -9093,12 +9203,11 @@ C_Lexique_galgasScanner::kToken__22_string_22_, C_Lexique_galgasScanner::kToken_
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int32_t gDecisionIndexes_galgas3ProjectGrammar [6] = {
+static const int32_t gDecisionIndexes_galgas3ProjectGrammar [5] = {
 0, // at 0 : <project_header>
 1, // at 1 : <project_component_start_symbol>
 2, // at 2 : <select_galgas_33_ProjectSyntax_0>
-9, // at 3 : <select_galgas_33_ProjectSyntax_1>
-16, // at 4 : <>
+41, // at 3 : <>
 0} ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9149,7 +9258,7 @@ void cGrammar_galgas_33_ProjectGrammar::performIndexing (C_Compiler * inCompiler
   scanner->enableIndexing () ;
   if (scanner->sourceText ().isValid ()) {
     const bool ok = scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
-                                                    gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 28) ;
+                                                    gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 85) ;
     if (ok) {
       cGrammar_galgas_33_ProjectGrammar grammar ;
       grammar.nt_project_5F_component_5F_start_5F_symbol_indexing (scanner) ;
@@ -9175,7 +9284,7 @@ void cGrammar_galgas_33_ProjectGrammar::performOnlySyntaxAnalysis (C_Compiler * 
   macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
-                                    gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 28) ;
+                                    gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 85) ;
   }
   macroDetachSharedObject (scanner) ;
 }
@@ -9201,7 +9310,7 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (C_Compiler *
     macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, filePath COMMA_HERE)) ;
     if (scanner->sourceText ().isValid ()) {
       const bool ok = scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
-                                                      gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 28) ;
+                                                      gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 85) ;
       if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
         cGrammar_galgas_33_ProjectGrammar grammar ;
         grammar.nt_project_5F_component_5F_start_5F_symbol_ (parameter_1, scanner) ;
@@ -9235,7 +9344,7 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceStringParsing_ (C_Compiler
     C_Lexique_galgasScanner * scanner = NULL ;
     macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, sourceString, nameString COMMA_HERE)) ;
     const bool ok = scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
-                                                    gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 28) ;
+                                                    gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 85) ;
     if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
       cGrammar_galgas_33_ProjectGrammar grammar ;
       grammar.nt_project_5F_component_5F_start_5F_symbol_ (parameter_1, scanner) ;
@@ -9251,16 +9360,6 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceStringParsing_ (C_Compiler
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_ProjectGrammar::select_galgas_33_ProjectSyntax_0 (C_Lexique_galgasScanner * inLexique) {
-  return inLexique->nextProductionIndex () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                      
-//                        'select_galgas_33_ProjectSyntax_1' added non terminal implementation                          
-//                                                                                                                      
-//---------------------------------------------------------------------------------------------------------------------*
-
-int32_t cGrammar_galgas_33_ProjectGrammar::select_galgas_33_ProjectSyntax_1 (C_Lexique_galgasScanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -9629,7 +9728,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_case, SHIFT (8)
 , C_Lexique_galgasScanner::kToken_after, SHIFT (9)
 , C_Lexique_galgasScanner::kToken_before, SHIFT (10)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (787)
 , C_Lexique_galgasScanner::kToken_template, SHIFT (11)
 , C_Lexique_galgasScanner::kToken_array, SHIFT (12)
 , C_Lexique_galgasScanner::kToken_boolset, SHIFT (13)
@@ -9751,7 +9850,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_method, SHIFT (73)
 , END
 // State S28 (index = 180)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (788)
 , END
 // State S29 (index = 183)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (74)
@@ -9771,7 +9870,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_case, SHIFT (8)
 , C_Lexique_galgasScanner::kToken_after, SHIFT (9)
 , C_Lexique_galgasScanner::kToken_before, SHIFT (10)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (787)
 , C_Lexique_galgasScanner::kToken_template, SHIFT (11)
 , C_Lexique_galgasScanner::kToken_array, SHIFT (12)
 , C_Lexique_galgasScanner::kToken_boolset, SHIFT (13)
@@ -10044,8 +10143,8 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , END
 // State S75 (index = 623)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (154)
-, C_Lexique_galgasScanner::kToken__7B_, REDUCE (742)
-, C_Lexique_galgasScanner::kToken__25_translate, REDUCE (742)
+, C_Lexique_galgasScanner::kToken__7B_, REDUCE (746)
+, C_Lexique_galgasScanner::kToken__25_translate, REDUCE (746)
 , END
 // State S76 (index = 630)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (156)
@@ -10070,7 +10169,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , END
 // State S83 (index = 651)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (159)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (716)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (720)
 , END
 // State S84 (index = 656)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
@@ -10915,7 +11014,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , END
 // State S153 (index = 2131)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (328)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (722)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (726)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (329)
 , C_Lexique_galgasScanner::kToken_project, SHIFT (330)
 , END
@@ -10923,7 +11022,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (335)
 , END
 // State S155 (index = 2143)
-, C_Lexique_galgasScanner::kToken__7B_, REDUCE (744)
+, C_Lexique_galgasScanner::kToken__7B_, REDUCE (748)
 , C_Lexique_galgasScanner::kToken__25_translate, SHIFT (336)
 , END
 // State S156 (index = 2148)
@@ -10942,7 +11041,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , END
 // State S160 (index = 2164)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (159)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (716)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (720)
 , END
 // State S161 (index = 2169)
 , C_Lexique_galgasScanner::kToken__7D_, SHIFT (344)
@@ -10977,11 +11076,12 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , END
 // State S170 (index = 2204)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (360)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (683)
-, C_Lexique_galgasScanner::kToken__25_attribute, REDUCE (683)
-, C_Lexique_galgasScanner::kToken_style, REDUCE (683)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (684)
+, C_Lexique_galgasScanner::kToken_style, REDUCE (684)
+, C_Lexique_galgasScanner::kToken__25_templateEndMark, REDUCE (684)
+, C_Lexique_galgasScanner::kToken__25_nonAtomicSelection, REDUCE (684)
 , END
-// State S171 (index = 2213)
+// State S171 (index = 2215)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (639)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -10993,7 +11093,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S172 (index = 2234)
+// State S172 (index = 2236)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (639)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -11005,7 +11105,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S173 (index = 2255)
+// State S173 (index = 2257)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (639)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -11017,7 +11117,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S174 (index = 2276)
+// State S174 (index = 2278)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (639)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -11029,7 +11129,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S175 (index = 2297)
+// State S175 (index = 2299)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (639)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -11041,7 +11141,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S176 (index = 2318)
+// State S176 (index = 2320)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (639)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -11053,7 +11153,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S177 (index = 2339)
+// State S177 (index = 2341)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (639)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -11065,7 +11165,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S178 (index = 2360)
+// State S178 (index = 2362)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (639)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -11077,7 +11177,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S179 (index = 2381)
+// State S179 (index = 2383)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (639)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -11089,7 +11189,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S180 (index = 2402)
+// State S180 (index = 2404)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (639)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -11101,27 +11201,27 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S181 (index = 2423)
+// State S181 (index = 2425)
 , C_Lexique_galgasScanner::kToken__7D_, SHIFT (372)
 , END
-// State S182 (index = 2426)
+// State S182 (index = 2428)
 , C_Lexique_galgasScanner::kToken__7B_, SHIFT (373)
 , END
-// State S183 (index = 2429)
+// State S183 (index = 2431)
 , C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (183)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (577)
 , END
-// State S184 (index = 2434)
+// State S184 (index = 2436)
 , C_Lexique_galgasScanner::kToken__7D_, SHIFT (376)
 , END
-// State S185 (index = 2437)
+// State S185 (index = 2439)
 , C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (377)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (579)
 , END
-// State S186 (index = 2442)
+// State S186 (index = 2444)
 , C_Lexique_galgasScanner::kToken__7B_, SHIFT (379)
 , END
-// State S187 (index = 2445)
+// State S187 (index = 2447)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (43)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (43)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (43)
@@ -11158,20 +11258,20 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (43)
 , C_Lexique_galgasScanner::kToken_, REDUCE (43)
 , END
-// State S188 (index = 2516)
+// State S188 (index = 2518)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (329)
 , C_Lexique_galgasScanner::kToken_let, SHIFT (380)
 , END
-// State S189 (index = 2521)
+// State S189 (index = 2523)
 , C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (382)
 , END
-// State S190 (index = 2524)
+// State S190 (index = 2526)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (39)
 , END
-// State S191 (index = 2527)
+// State S191 (index = 2529)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (299)
 , END
-// State S192 (index = 2530)
+// State S192 (index = 2532)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -11201,33 +11301,33 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S193 (index = 2587)
+// State S193 (index = 2589)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (302)
 , C_Lexique_galgasScanner::kToken_unused, SHIFT (384)
 , END
-// State S194 (index = 2592)
+// State S194 (index = 2594)
 , C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (386)
 , END
-// State S195 (index = 2595)
+// State S195 (index = 2597)
 , C_Lexique_galgasScanner::kToken__7B_, SHIFT (387)
 , END
-// State S196 (index = 2598)
+// State S196 (index = 2600)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (347)
 , END
-// State S197 (index = 2601)
+// State S197 (index = 2603)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (348)
 , END
-// State S198 (index = 2604)
+// State S198 (index = 2606)
 , C_Lexique_galgasScanner::kToken__3F_, SHIFT (188)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (327)
 , END
-// State S199 (index = 2609)
+// State S199 (index = 2611)
 , C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (389)
 , END
-// State S200 (index = 2612)
+// State S200 (index = 2614)
 , C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (390)
 , END
-// State S201 (index = 2615)
+// State S201 (index = 2617)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -11249,7 +11349,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S202 (index = 2656)
+// State S202 (index = 2658)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -11271,7 +11371,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S203 (index = 2697)
+// State S203 (index = 2699)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -11293,7 +11393,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S204 (index = 2738)
+// State S204 (index = 2740)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -11315,7 +11415,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S205 (index = 2779)
+// State S205 (index = 2781)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (395)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (4)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (4)
@@ -11409,7 +11509,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (4)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (4)
 , END
-// State S206 (index = 2964)
+// State S206 (index = 2966)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (6)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (6)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (6)
@@ -11502,7 +11602,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (6)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (6)
 , END
-// State S207 (index = 3147)
+// State S207 (index = 3149)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (7)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (7)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (7)
@@ -11595,7 +11695,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (7)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (7)
 , END
-// State S208 (index = 3330)
+// State S208 (index = 3332)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (240)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (240)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (240)
@@ -11689,7 +11789,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (240)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (240)
 , END
-// State S209 (index = 3515)
+// State S209 (index = 3517)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (9)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (9)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (9)
@@ -11782,7 +11882,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (9)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (9)
 , END
-// State S210 (index = 3698)
+// State S210 (index = 3700)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (10)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (10)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (10)
@@ -11875,7 +11975,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (10)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (10)
 , END
-// State S211 (index = 3881)
+// State S211 (index = 3883)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (11)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (11)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (11)
@@ -11968,7 +12068,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (11)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (11)
 , END
-// State S212 (index = 4064)
+// State S212 (index = 4066)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -11990,11 +12090,11 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S213 (index = 4105)
+// State S213 (index = 4107)
 , C_Lexique_galgasScanner::kToken__2E_, REDUCE (276)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (276)
 , END
-// State S214 (index = 4110)
+// State S214 (index = 4112)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -12019,10 +12119,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S215 (index = 4157)
+// State S215 (index = 4159)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (403)
 , END
-// State S216 (index = 4160)
+// State S216 (index = 4162)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (29)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (29)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (29)
@@ -12115,7 +12215,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (29)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (29)
 , END
-// State S217 (index = 4343)
+// State S217 (index = 4345)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -12137,7 +12237,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S218 (index = 4384)
+// State S218 (index = 4386)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -12159,12 +12259,12 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S219 (index = 4425)
+// State S219 (index = 4427)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (406)
 , C_Lexique_galgasScanner::kToken__2A_, SHIFT (407)
 , C_Lexique_galgasScanner::kToken__5B_, SHIFT (408)
 , END
-// State S220 (index = 4432)
+// State S220 (index = 4434)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (285)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (285)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (285)
@@ -12257,7 +12357,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (285)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (285)
 , END
-// State S221 (index = 4615)
+// State S221 (index = 4617)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (258)
@@ -12349,7 +12449,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (258)
 , END
-// State S222 (index = 4796)
+// State S222 (index = 4798)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (293)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (293)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (293)
@@ -12422,7 +12522,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (293)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (293)
 , END
-// State S223 (index = 4939)
+// State S223 (index = 4941)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (242)
@@ -12503,7 +12603,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (242)
 , END
-// State S224 (index = 5098)
+// State S224 (index = 5100)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (251)
@@ -12590,15 +12690,15 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (251)
 , END
-// State S225 (index = 5269)
+// State S225 (index = 5271)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (462)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (462)
 , END
-// State S226 (index = 5274)
+// State S226 (index = 5276)
 , C_Lexique_galgasScanner::kToken__2E_, SHIFT (437)
 , C_Lexique_galgasScanner::kToken__7B_, SHIFT (438)
 , END
-// State S227 (index = 5279)
+// State S227 (index = 5281)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (264)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (264)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (264)
@@ -12664,7 +12764,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (264)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (264)
 , END
-// State S228 (index = 5408)
+// State S228 (index = 5410)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (287)
@@ -12735,21 +12835,21 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (287)
 , END
-// State S229 (index = 5547)
+// State S229 (index = 5549)
 , C_Lexique_galgasScanner::kToken_then, SHIFT (448)
 , END
-// State S230 (index = 5550)
+// State S230 (index = 5552)
 , C_Lexique_galgasScanner::kToken_end, SHIFT (449)
 , END
-// State S231 (index = 5553)
+// State S231 (index = 5555)
 , C_Lexique_galgasScanner::kToken__2E_, REDUCE (21)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (21)
 , END
-// State S232 (index = 5558)
+// State S232 (index = 5560)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (458)
 , C_Lexique_galgasScanner::kToken__2C_, SHIFT (450)
 , END
-// State S233 (index = 5563)
+// State S233 (index = 5565)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -12794,25 +12894,25 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S234 (index = 5650)
+// State S234 (index = 5652)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (457)
 , END
-// State S235 (index = 5653)
+// State S235 (index = 5655)
 , C_Lexique_galgasScanner::kToken__3D_, SHIFT (458)
 , END
-// State S236 (index = 5656)
+// State S236 (index = 5658)
 , C_Lexique_galgasScanner::kToken__2D__3D_, SHIFT (459)
 , C_Lexique_galgasScanner::kToken__2B__3D_, SHIFT (460)
 , C_Lexique_galgasScanner::kToken__2A__3D_, SHIFT (461)
 , C_Lexique_galgasScanner::kToken__2F__3D_, SHIFT (462)
 , END
-// State S237 (index = 5665)
+// State S237 (index = 5667)
 , C_Lexique_galgasScanner::kToken__2B__2B_, SHIFT (464)
 , C_Lexique_galgasScanner::kToken__26__2B__2B_, SHIFT (465)
 , C_Lexique_galgasScanner::kToken__26__2D__2D_, SHIFT (466)
 , C_Lexique_galgasScanner::kToken__2D__2D_, SHIFT (467)
 , END
-// State S238 (index = 5674)
+// State S238 (index = 5676)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (103)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (103)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (103)
@@ -12852,22 +12952,22 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (103)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (103)
 , END
-// State S239 (index = 5751)
+// State S239 (index = 5753)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (470)
 , C_Lexique_galgasScanner::kToken__2E_, REDUCE (276)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (276)
 , END
-// State S240 (index = 5758)
+// State S240 (index = 5760)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (483)
 , C_Lexique_galgasScanner::kToken_self, SHIFT (471)
 , END
-// State S241 (index = 5763)
+// State S241 (index = 5765)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (473)
 , END
-// State S242 (index = 5766)
+// State S242 (index = 5768)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (474)
 , END
-// State S243 (index = 5769)
+// State S243 (index = 5771)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -12889,7 +12989,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S244 (index = 5810)
+// State S244 (index = 5812)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -12911,7 +13011,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S245 (index = 5851)
+// State S245 (index = 5853)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -12934,7 +13034,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S246 (index = 5894)
+// State S246 (index = 5896)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -12956,7 +13056,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S247 (index = 5935)
+// State S247 (index = 5937)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -12978,7 +13078,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S248 (index = 5976)
+// State S248 (index = 5978)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (451)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (451)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (451)
@@ -13017,7 +13117,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (451)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (451)
 , END
-// State S249 (index = 6051)
+// State S249 (index = 6053)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (453)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (453)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (453)
@@ -13056,7 +13156,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (453)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (453)
 , END
-// State S250 (index = 6126)
+// State S250 (index = 6128)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (454)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (454)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (454)
@@ -13095,7 +13195,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (454)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (454)
 , END
-// State S251 (index = 6201)
+// State S251 (index = 6203)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (452)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (452)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (452)
@@ -13134,7 +13234,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (452)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (452)
 , END
-// State S252 (index = 6276)
+// State S252 (index = 6278)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (78)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (78)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (78)
@@ -13173,25 +13273,25 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (78)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (78)
 , END
-// State S253 (index = 6351)
+// State S253 (index = 6353)
 , C_Lexique_galgasScanner::kToken__3D_, SHIFT (484)
 , END
-// State S254 (index = 6354)
+// State S254 (index = 6356)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (485)
 , END
-// State S255 (index = 6357)
+// State S255 (index = 6359)
 , C_Lexique_galgasScanner::kToken__3D_, SHIFT (486)
 , END
-// State S256 (index = 6360)
+// State S256 (index = 6362)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (487)
 , END
-// State S257 (index = 6363)
+// State S257 (index = 6365)
 , C_Lexique_galgasScanner::kToken__3A_, SHIFT (488)
 , END
-// State S258 (index = 6366)
+// State S258 (index = 6368)
 , C_Lexique_galgasScanner::kToken_case, SHIFT (489)
 , END
-// State S259 (index = 6369)
+// State S259 (index = 6371)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (388)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (388)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (388)
@@ -13231,25 +13331,25 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (388)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (388)
 , END
-// State S260 (index = 6446)
+// State S260 (index = 6448)
 , C_Lexique_galgasScanner::kToken__28_, REDUCE (422)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (422)
 , C_Lexique_galgasScanner::kToken__2A_, REDUCE (422)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (422)
 , END
-// State S261 (index = 6455)
+// State S261 (index = 6457)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (493)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (413)
 , C_Lexique_galgasScanner::kToken__2A_, REDUCE (413)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (494)
 , END
-// State S262 (index = 6464)
+// State S262 (index = 6466)
 , C_Lexique_galgasScanner::kToken__28_, REDUCE (433)
 , C_Lexique_galgasScanner::kToken_in, REDUCE (439)
 , C_Lexique_galgasScanner::kToken_label, SHIFT (497)
 , C_Lexique_galgasScanner::kToken_on, REDUCE (439)
 , END
-// State S263 (index = 6473)
+// State S263 (index = 6475)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (480)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (480)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (480)
@@ -13289,13 +13389,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (480)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (480)
 , END
-// State S264 (index = 6550)
+// State S264 (index = 6552)
 , C_Lexique_galgasScanner::kToken__3A_, SHIFT (500)
 , END
-// State S265 (index = 6553)
+// State S265 (index = 6555)
 , C_Lexique_galgasScanner::kToken__2E_, SHIFT (501)
 , END
-// State S266 (index = 6556)
+// State S266 (index = 6558)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (478)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (478)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (478)
@@ -13335,7 +13435,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (478)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (478)
 , END
-// State S267 (index = 6633)
+// State S267 (index = 6635)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -13357,10 +13457,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S268 (index = 6674)
+// State S268 (index = 6676)
 , C_Lexique_galgasScanner::kToken_while, SHIFT (505)
 , END
-// State S269 (index = 6677)
+// State S269 (index = 6679)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (88)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (88)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (88)
@@ -13399,17 +13499,17 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (88)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (88)
 , END
-// State S270 (index = 6752)
+// State S270 (index = 6754)
 , C_Lexique_galgasScanner::kToken_case, SHIFT (506)
 , END
-// State S271 (index = 6755)
+// State S271 (index = 6757)
 , C_Lexique_galgasScanner::kToken__3A_, SHIFT (507)
 , END
-// State S272 (index = 6758)
+// State S272 (index = 6760)
 , C_Lexique_galgasScanner::kToken__3A_, SHIFT (508)
 , C_Lexique_galgasScanner::kToken_in, REDUCE (504)
 , END
-// State S273 (index = 6763)
+// State S273 (index = 6765)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (236)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (236)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (236)
@@ -13446,7 +13546,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (236)
 , C_Lexique_galgasScanner::kToken_, REDUCE (236)
 , END
-// State S274 (index = 6834)
+// State S274 (index = 6836)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (339)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (339)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (339)
@@ -13466,7 +13566,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, REDUCE (339)
 , C_Lexique_galgasScanner::kToken_with, REDUCE (339)
 , END
-// State S275 (index = 6871)
+// State S275 (index = 6873)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (336)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (336)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (336)
@@ -13478,7 +13578,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_between, REDUCE (336)
 , C_Lexique_galgasScanner::kToken_elsif, REDUCE (336)
 , END
-// State S276 (index = 6892)
+// State S276 (index = 6894)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
@@ -13498,7 +13598,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S277 (index = 6929)
+// State S277 (index = 6931)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (235)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (235)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (235)
@@ -13535,10 +13635,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (235)
 , C_Lexique_galgasScanner::kToken_, REDUCE (235)
 , END
-// State S278 (index = 7000)
+// State S278 (index = 7002)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (511)
 , END
-// State S279 (index = 7003)
+// State S279 (index = 7005)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (650)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -13550,18 +13650,18 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S280 (index = 7024)
+// State S280 (index = 7026)
 , C_Lexique_galgasScanner::kToken__5B_, SHIFT (523)
 , END
-// State S281 (index = 7027)
+// State S281 (index = 7029)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (548)
 , C_Lexique_galgasScanner::kToken__2C_, SHIFT (524)
 , END
-// State S282 (index = 7032)
+// State S282 (index = 7034)
 , C_Lexique_galgasScanner::kToken__3F_, SHIFT (188)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (327)
 , END
-// State S283 (index = 7037)
+// State S283 (index = 7039)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -13616,7 +13716,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S284 (index = 7144)
+// State S284 (index = 7146)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -13671,44 +13771,44 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S285 (index = 7251)
+// State S285 (index = 7253)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (529)
 , END
-// State S286 (index = 7254)
+// State S286 (index = 7256)
 , C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (530)
 , END
-// State S287 (index = 7257)
+// State S287 (index = 7259)
 , C_Lexique_galgasScanner::kToken__7B_, SHIFT (531)
 , END
-// State S288 (index = 7260)
+// State S288 (index = 7262)
 , C_Lexique_galgasScanner::kToken__7B_, SHIFT (532)
 , END
-// State S289 (index = 7263)
+// State S289 (index = 7265)
 , C_Lexique_galgasScanner::kToken__29_, SHIFT (533)
 , END
-// State S290 (index = 7266)
+// State S290 (index = 7268)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (534)
 , END
-// State S291 (index = 7269)
+// State S291 (index = 7271)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (535)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (635)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (635)
 , END
-// State S292 (index = 7276)
+// State S292 (index = 7278)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (629)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (629)
 , END
-// State S293 (index = 7281)
+// State S293 (index = 7283)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (537)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (633)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (633)
 , END
-// State S294 (index = 7288)
+// State S294 (index = 7290)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (539)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (637)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (637)
 , END
-// State S295 (index = 7295)
+// State S295 (index = 7297)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (589)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (589)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (589)
@@ -13719,51 +13819,51 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (589)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (589)
 , END
-// State S296 (index = 7314)
+// State S296 (index = 7316)
 , C_Lexique_galgasScanner::kToken_let, SHIFT (543)
 , C_Lexique_galgasScanner::kToken_var, SHIFT (544)
 , END
-// State S297 (index = 7319)
+// State S297 (index = 7321)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (168)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (168)
 , END
-// State S298 (index = 7324)
+// State S298 (index = 7326)
 , C_Lexique_galgasScanner::kToken__29_, SHIFT (546)
 , END
-// State S299 (index = 7327)
+// State S299 (index = 7329)
 , C_Lexique_galgasScanner::kToken__7B_, SHIFT (547)
 , END
-// State S300 (index = 7330)
+// State S300 (index = 7332)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (548)
 , END
-// State S301 (index = 7333)
+// State S301 (index = 7335)
 , C_Lexique_galgasScanner::kToken_getter, SHIFT (549)
 , C_Lexique_galgasScanner::kToken_setter, SHIFT (550)
 , C_Lexique_galgasScanner::kToken_method, SHIFT (551)
 , END
-// State S302 (index = 7340)
+// State S302 (index = 7342)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (552)
 , END
-// State S303 (index = 7343)
+// State S303 (index = 7345)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (553)
 , END
-// State S304 (index = 7346)
+// State S304 (index = 7348)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (554)
 , END
-// State S305 (index = 7349)
+// State S305 (index = 7351)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (555)
 , C_Lexique_galgasScanner::kToken_or, SHIFT (556)
 , END
-// State S306 (index = 7354)
+// State S306 (index = 7356)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (557)
 , END
-// State S307 (index = 7357)
+// State S307 (index = 7359)
 , C_Lexique_galgasScanner::kToken_abstract, SHIFT (558)
 , C_Lexique_galgasScanner::kToken_getter, SHIFT (559)
 , C_Lexique_galgasScanner::kToken_setter, SHIFT (560)
 , C_Lexique_galgasScanner::kToken_method, SHIFT (561)
 , END
-// State S308 (index = 7366)
+// State S308 (index = 7368)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (290)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (594)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (628)
@@ -13781,7 +13881,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, SHIFT (293)
 , C_Lexique_galgasScanner::kToken_fileprivate, SHIFT (294)
 , END
-// State S309 (index = 7399)
+// State S309 (index = 7401)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (290)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (594)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (628)
@@ -13799,7 +13899,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, SHIFT (293)
 , C_Lexique_galgasScanner::kToken_fileprivate, SHIFT (294)
 , END
-// State S310 (index = 7432)
+// State S310 (index = 7434)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (290)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (594)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (628)
@@ -13817,7 +13917,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, SHIFT (293)
 , C_Lexique_galgasScanner::kToken_fileprivate, SHIFT (294)
 , END
-// State S311 (index = 7465)
+// State S311 (index = 7467)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (290)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (594)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (628)
@@ -13835,7 +13935,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, SHIFT (293)
 , C_Lexique_galgasScanner::kToken_fileprivate, SHIFT (294)
 , END
-// State S312 (index = 7498)
+// State S312 (index = 7500)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (290)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (594)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (628)
@@ -13853,7 +13953,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, SHIFT (293)
 , C_Lexique_galgasScanner::kToken_fileprivate, SHIFT (294)
 , END
-// State S313 (index = 7531)
+// State S313 (index = 7533)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (290)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (594)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (628)
@@ -13871,10 +13971,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, SHIFT (293)
 , C_Lexique_galgasScanner::kToken_fileprivate, SHIFT (294)
 , END
-// State S314 (index = 7564)
+// State S314 (index = 7566)
 , C_Lexique_galgasScanner::kToken__7D_, SHIFT (568)
 , END
-// State S315 (index = 7567)
+// State S315 (index = 7569)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (290)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (603)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (628)
@@ -13884,10 +13984,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, SHIFT (293)
 , C_Lexique_galgasScanner::kToken_fileprivate, SHIFT (294)
 , END
-// State S316 (index = 7584)
+// State S316 (index = 7586)
 , C_Lexique_galgasScanner::kToken__7D_, SHIFT (570)
 , END
-// State S317 (index = 7587)
+// State S317 (index = 7589)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (290)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (609)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (628)
@@ -13902,7 +14002,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, SHIFT (293)
 , C_Lexique_galgasScanner::kToken_fileprivate, SHIFT (294)
 , END
-// State S318 (index = 7614)
+// State S318 (index = 7616)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (290)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (609)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (628)
@@ -13917,10 +14017,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, SHIFT (293)
 , C_Lexique_galgasScanner::kToken_fileprivate, SHIFT (294)
 , END
-// State S319 (index = 7641)
+// State S319 (index = 7643)
 , C_Lexique_galgasScanner::kToken__7D_, SHIFT (573)
 , END
-// State S320 (index = 7644)
+// State S320 (index = 7646)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (143)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (143)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (143)
@@ -13957,7 +14057,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (143)
 , C_Lexique_galgasScanner::kToken_, REDUCE (143)
 , END
-// State S321 (index = 7715)
+// State S321 (index = 7717)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (142)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (142)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (142)
@@ -13994,20 +14094,20 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (142)
 , C_Lexique_galgasScanner::kToken_, REDUCE (142)
 , END
-// State S322 (index = 7786)
+// State S322 (index = 7788)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (574)
 , END
-// State S323 (index = 7789)
+// State S323 (index = 7791)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (575)
 , END
-// State S324 (index = 7792)
+// State S324 (index = 7794)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (576)
 , END
-// State S325 (index = 7795)
+// State S325 (index = 7797)
 , C_Lexique_galgasScanner::kToken__3F_, SHIFT (188)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (327)
 , END
-// State S326 (index = 7800)
+// State S326 (index = 7802)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -14062,7 +14162,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S327 (index = 7907)
+// State S327 (index = 7909)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -14117,68 +14217,68 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S328 (index = 8014)
+// State S328 (index = 8016)
 , C_Lexique_galgasScanner::kToken__3A_, SHIFT (580)
 , END
-// State S329 (index = 8017)
+// State S329 (index = 8019)
 , C_Lexique_galgasScanner::kToken_option, SHIFT (581)
 , C_Lexique_galgasScanner::kToken_lexique, SHIFT (582)
 , END
-// State S330 (index = 8022)
+// State S330 (index = 8024)
 , C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (583)
 , END
-// State S331 (index = 8025)
+// State S331 (index = 8027)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (328)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (722)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (726)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (329)
 , C_Lexique_galgasScanner::kToken_project, SHIFT (330)
 , END
-// State S332 (index = 8034)
+// State S332 (index = 8036)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (328)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (722)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (726)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (329)
 , C_Lexique_galgasScanner::kToken_project, SHIFT (330)
 , END
-// State S333 (index = 8043)
+// State S333 (index = 8045)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (328)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (722)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (726)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (329)
 , C_Lexique_galgasScanner::kToken_project, SHIFT (330)
 , END
-// State S334 (index = 8052)
+// State S334 (index = 8054)
 , C_Lexique_galgasScanner::kToken__7D_, SHIFT (587)
 , END
-// State S335 (index = 8055)
+// State S335 (index = 8057)
 , C_Lexique_galgasScanner::kToken__29_, SHIFT (588)
 , END
-// State S336 (index = 8058)
-, C_Lexique_galgasScanner::kToken__7B_, REDUCE (745)
+// State S336 (index = 8060)
+, C_Lexique_galgasScanner::kToken__7B_, REDUCE (749)
 , END
-// State S337 (index = 8061)
+// State S337 (index = 8063)
 , C_Lexique_galgasScanner::kToken__7B_, SHIFT (589)
 , END
-// State S338 (index = 8064)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (749)
+// State S338 (index = 8066)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (753)
 , C_Lexique_galgasScanner::kToken_rule, SHIFT (590)
 , END
-// State S339 (index = 8069)
+// State S339 (index = 8071)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (594)
 , END
-// State S340 (index = 8072)
+// State S340 (index = 8074)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (557)
 , C_Lexique_galgasScanner::kToken__25_generatedInSeparateFile, SHIFT (595)
 , END
-// State S341 (index = 8077)
-, C_Lexique_galgasScanner::kToken__7B_, REDUCE (785)
+// State S341 (index = 8079)
+, C_Lexique_galgasScanner::kToken__7B_, REDUCE (789)
 , C_Lexique_galgasScanner::kToken__25_translate, SHIFT (597)
 , END
-// State S342 (index = 8082)
+// State S342 (index = 8084)
 , C_Lexique_galgasScanner::kToken__3A_, SHIFT (599)
 , END
-// State S343 (index = 8085)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (717)
+// State S343 (index = 8087)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (721)
 , END
-// State S344 (index = 8088)
+// State S344 (index = 8090)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (206)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (206)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (206)
@@ -14215,7 +14315,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (206)
 , C_Lexique_galgasScanner::kToken_, REDUCE (206)
 , END
-// State S345 (index = 8159)
+// State S345 (index = 8161)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (189)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (189)
 , C_Lexique_galgasScanner::kToken_replace, REDUCE (189)
@@ -14227,101 +14327,104 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, REDUCE (189)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (189)
 , END
-// State S346 (index = 8180)
+// State S346 (index = 8182)
 , C_Lexique_galgasScanner::kToken__2E__2E__2E_, SHIFT (600)
 , C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (601)
 , END
-// State S347 (index = 8185)
+// State S347 (index = 8187)
 , C_Lexique_galgasScanner::kToken__3A_, SHIFT (603)
 , END
-// State S348 (index = 8188)
-, C_Lexique_galgasScanner::kToken__2E__2E__2E_, REDUCE (691)
-, C_Lexique_galgasScanner::kToken__25_attribute, SHIFT (604)
+// State S348 (index = 8190)
+, C_Lexique_galgasScanner::kToken__2E__2E__2E_, REDUCE (693)
+, C_Lexique_galgasScanner::kToken__25_templateEndMark, SHIFT (604)
+, C_Lexique_galgasScanner::kToken__25_nonAtomicSelection, SHIFT (605)
+, C_Lexique_galgasScanner::kToken__25_preserved, SHIFT (606)
 , END
-// State S349 (index = 8193)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (606)
+// State S349 (index = 8199)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (608)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (673)
 , C_Lexique_galgasScanner::kToken_style, REDUCE (673)
 , END
-// State S350 (index = 8200)
-, C_Lexique_galgasScanner::kToken__3A_, SHIFT (608)
+// State S350 (index = 8206)
+, C_Lexique_galgasScanner::kToken__3A_, SHIFT (610)
 , END
-// State S351 (index = 8203)
+// State S351 (index = 8209)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (186)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (186)
 , C_Lexique_galgasScanner::kToken__7C_, REDUCE (186)
 , END
-// State S352 (index = 8210)
+// State S352 (index = 8216)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (183)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (183)
 , C_Lexique_galgasScanner::kToken__7C_, REDUCE (183)
 , END
-// State S353 (index = 8217)
+// State S353 (index = 8223)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (671)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (671)
 , C_Lexique_galgasScanner::kToken__7C_, REDUCE (671)
-, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (609)
+, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (611)
 , END
-// State S354 (index = 8226)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (611)
+// State S354 (index = 8232)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (613)
 , END
-// State S355 (index = 8229)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (612)
+// State S355 (index = 8235)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (614)
 , END
-// State S356 (index = 8232)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (613)
+// State S356 (index = 8238)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (615)
 , END
-// State S357 (index = 8235)
+// State S357 (index = 8241)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (181)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (181)
 , END
-// State S358 (index = 8240)
+// State S358 (index = 8246)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (669)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (669)
-, C_Lexique_galgasScanner::kToken__7C_, SHIFT (614)
+, C_Lexique_galgasScanner::kToken__7C_, SHIFT (616)
 , END
-// State S359 (index = 8247)
-, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (616)
+// State S359 (index = 8253)
+, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (618)
 , END
-// State S360 (index = 8250)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (617)
+// State S360 (index = 8256)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (619)
 , END
-// State S361 (index = 8253)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (685)
-, C_Lexique_galgasScanner::kToken__25_attribute, SHIFT (618)
-, C_Lexique_galgasScanner::kToken_style, SHIFT (619)
+// State S361 (index = 8259)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (686)
+, C_Lexique_galgasScanner::kToken_style, SHIFT (620)
+, C_Lexique_galgasScanner::kToken__25_templateEndMark, SHIFT (621)
+, C_Lexique_galgasScanner::kToken__25_nonAtomicSelection, SHIFT (622)
 , END
-// State S362 (index = 8260)
+// State S362 (index = 8268)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (649)
 , END
-// State S363 (index = 8263)
+// State S363 (index = 8271)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (648)
 , END
-// State S364 (index = 8266)
+// State S364 (index = 8274)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (647)
 , END
-// State S365 (index = 8269)
+// State S365 (index = 8277)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (646)
 , END
-// State S366 (index = 8272)
+// State S366 (index = 8280)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (645)
 , END
-// State S367 (index = 8275)
+// State S367 (index = 8283)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (642)
 , END
-// State S368 (index = 8278)
+// State S368 (index = 8286)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (644)
 , END
-// State S369 (index = 8281)
+// State S369 (index = 8289)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (643)
 , END
-// State S370 (index = 8284)
+// State S370 (index = 8292)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (640)
 , END
-// State S371 (index = 8287)
+// State S371 (index = 8295)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (641)
 , END
-// State S372 (index = 8290)
+// State S372 (index = 8298)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (169)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (169)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (169)
@@ -14358,55 +14461,55 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (169)
 , C_Lexique_galgasScanner::kToken_, REDUCE (169)
 , END
-// State S373 (index = 8361)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (621)
+// State S373 (index = 8369)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (624)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (534)
 , END
-// State S374 (index = 8366)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (623)
+// State S374 (index = 8374)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (626)
 , END
-// State S375 (index = 8369)
+// State S375 (index = 8377)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (578)
 , END
-// State S376 (index = 8372)
+// State S376 (index = 8380)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (124)
 , END
-// State S377 (index = 8375)
+// State S377 (index = 8383)
 , C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (377)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (579)
 , END
-// State S378 (index = 8380)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (626)
+// State S378 (index = 8388)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (629)
 , END
-// State S379 (index = 8383)
+// State S379 (index = 8391)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (572)
-, C_Lexique_galgasScanner::kToken_constructor, SHIFT (627)
-, C_Lexique_galgasScanner::kToken_getter, SHIFT (628)
-, C_Lexique_galgasScanner::kToken_setter, SHIFT (629)
-, C_Lexique_galgasScanner::kToken_method, SHIFT (630)
+, C_Lexique_galgasScanner::kToken_constructor, SHIFT (630)
+, C_Lexique_galgasScanner::kToken_getter, SHIFT (631)
+, C_Lexique_galgasScanner::kToken_setter, SHIFT (632)
+, C_Lexique_galgasScanner::kToken_method, SHIFT (633)
 , END
-// State S380 (index = 8394)
+// State S380 (index = 8402)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (330)
 , END
-// State S381 (index = 8397)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (636)
+// State S381 (index = 8405)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (639)
 , END
-// State S382 (index = 8400)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (637)
+// State S382 (index = 8408)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (640)
 , END
-// State S383 (index = 8403)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (638)
+// State S383 (index = 8411)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (641)
 , END
-// State S384 (index = 8406)
+// State S384 (index = 8414)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (303)
 , END
-// State S385 (index = 8409)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (639)
+// State S385 (index = 8417)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (642)
 , END
-// State S386 (index = 8412)
+// State S386 (index = 8420)
 , C_Lexique_galgasScanner::kToken__7B_, SHIFT (373)
 , END
-// State S387 (index = 8415)
+// State S387 (index = 8423)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -14436,23 +14539,23 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S388 (index = 8472)
-, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (642)
+// State S388 (index = 8480)
+, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (645)
 , END
-// State S389 (index = 8475)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (643)
+// State S389 (index = 8483)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (646)
 , END
-// State S390 (index = 8478)
-, C_Lexique_galgasScanner::kToken__3F_, REDUCE (801)
-, C_Lexique_galgasScanner::kToken_grammar, SHIFT (644)
+// State S390 (index = 8486)
+, C_Lexique_galgasScanner::kToken__3F_, REDUCE (805)
+, C_Lexique_galgasScanner::kToken_grammar, SHIFT (647)
 , END
-// State S391 (index = 8483)
-, C_Lexique_galgasScanner::kToken__29_, SHIFT (646)
+// State S391 (index = 8491)
+, C_Lexique_galgasScanner::kToken__29_, SHIFT (649)
 , END
-// State S392 (index = 8486)
-, C_Lexique_galgasScanner::kToken_then, SHIFT (647)
+// State S392 (index = 8494)
+, C_Lexique_galgasScanner::kToken_then, SHIFT (650)
 , END
-// State S393 (index = 8489)
+// State S393 (index = 8497)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (2)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (2)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (2)
@@ -14544,7 +14647,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (2)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (2)
 , END
-// State S394 (index = 8670)
+// State S394 (index = 8678)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (3)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (3)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (3)
@@ -14636,13 +14739,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (3)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (3)
 , END
-// State S395 (index = 8851)
+// State S395 (index = 8859)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (238)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (648)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (651)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (238)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (238)
 , END
-// State S396 (index = 8860)
+// State S396 (index = 8868)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (240)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (240)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (240)
@@ -14736,7 +14839,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (240)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (240)
 , END
-// State S397 (index = 9045)
+// State S397 (index = 9053)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (8)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (8)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (8)
@@ -14829,7 +14932,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (8)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (8)
 , END
-// State S398 (index = 9228)
+// State S398 (index = 9236)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (34)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (34)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (34)
@@ -14921,20 +15024,20 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (34)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (34)
 , END
-// State S399 (index = 9409)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (652)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (653)
-, END
-// State S400 (index = 9414)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (654)
-, END
-// State S401 (index = 9417)
+// State S399 (index = 9417)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (655)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (656)
 , END
-// State S402 (index = 9420)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (656)
+// State S400 (index = 9422)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (657)
 , END
-// State S403 (index = 9423)
+// State S401 (index = 9425)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (658)
+, END
+// State S402 (index = 9428)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (659)
+, END
+// State S403 (index = 9431)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (25)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (25)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (25)
@@ -15027,7 +15130,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (25)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (25)
 , END
-// State S404 (index = 9606)
+// State S404 (index = 9614)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (31)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (31)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (31)
@@ -15119,7 +15222,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (31)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (31)
 , END
-// State S405 (index = 9787)
+// State S405 (index = 9795)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (32)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (32)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (32)
@@ -15211,13 +15314,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (32)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (32)
 , END
-// State S406 (index = 9968)
+// State S406 (index = 9976)
 , C_Lexique_galgasScanner::kToken__3D_, REDUCE (463)
 , END
-// State S407 (index = 9971)
+// State S407 (index = 9979)
 , C_Lexique_galgasScanner::kToken__3D_, REDUCE (464)
 , END
-// State S408 (index = 9974)
+// State S408 (index = 9982)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15239,14 +15342,14 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S409 (index = 10015)
-, C_Lexique_galgasScanner::kToken__3D_, SHIFT (658)
+// State S409 (index = 10023)
+, C_Lexique_galgasScanner::kToken__3D_, SHIFT (661)
 , END
-// State S410 (index = 10018)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (659)
-, C_Lexique_galgasScanner::kToken_bang, SHIFT (660)
+// State S410 (index = 10026)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (662)
+, C_Lexique_galgasScanner::kToken_bang, SHIFT (663)
 , END
-// State S411 (index = 10023)
+// State S411 (index = 10031)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (30)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (30)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (30)
@@ -15338,7 +15441,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (30)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (30)
 , END
-// State S412 (index = 10204)
+// State S412 (index = 10212)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15360,7 +15463,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S413 (index = 10245)
+// State S413 (index = 10253)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15382,7 +15485,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S414 (index = 10286)
+// State S414 (index = 10294)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15404,7 +15507,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S415 (index = 10327)
+// State S415 (index = 10335)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15426,7 +15529,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S416 (index = 10368)
+// State S416 (index = 10376)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15448,7 +15551,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S417 (index = 10409)
+// State S417 (index = 10417)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (14)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (14)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (14)
@@ -15535,7 +15638,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (14)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (14)
 , END
-// State S418 (index = 10580)
+// State S418 (index = 10588)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15557,7 +15660,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S419 (index = 10621)
+// State S419 (index = 10629)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15579,7 +15682,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S420 (index = 10662)
+// State S420 (index = 10670)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (36)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (36)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (36)
@@ -15650,7 +15753,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (36)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (36)
 , END
-// State S421 (index = 10801)
+// State S421 (index = 10809)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15672,7 +15775,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S422 (index = 10842)
+// State S422 (index = 10850)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15694,7 +15797,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S423 (index = 10883)
+// State S423 (index = 10891)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15716,7 +15819,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S424 (index = 10924)
+// State S424 (index = 10932)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15738,7 +15841,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S425 (index = 10965)
+// State S425 (index = 10973)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15760,7 +15863,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S426 (index = 11006)
+// State S426 (index = 11014)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15782,7 +15885,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S427 (index = 11047)
+// State S427 (index = 11055)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15804,7 +15907,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S428 (index = 11088)
+// State S428 (index = 11096)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15826,7 +15929,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S429 (index = 11129)
+// State S429 (index = 11137)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (12)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (12)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (12)
@@ -15899,7 +16002,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (12)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (12)
 , END
-// State S430 (index = 11272)
+// State S430 (index = 11280)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15921,7 +16024,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S431 (index = 11313)
+// State S431 (index = 11321)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15943,7 +16046,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S432 (index = 11354)
+// State S432 (index = 11362)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15965,7 +16068,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S433 (index = 11395)
+// State S433 (index = 11403)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -15987,7 +16090,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S434 (index = 11436)
+// State S434 (index = 11444)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -16009,7 +16112,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S435 (index = 11477)
+// State S435 (index = 11485)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -16031,7 +16134,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S436 (index = 11518)
+// State S436 (index = 11526)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (13)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (13)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (13)
@@ -16112,17 +16215,17 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (13)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (13)
 , END
-// State S437 (index = 11677)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (682)
-, C_Lexique_galgasScanner::kToken_default, SHIFT (683)
+// State S437 (index = 11685)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (685)
+, C_Lexique_galgasScanner::kToken_default, SHIFT (686)
 , END
-// State S438 (index = 11682)
+// State S438 (index = 11690)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
 , C_Lexique_galgasScanner::kToken__2D_, SHIFT (204)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (205)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (684)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (687)
 , C_Lexique_galgasScanner::kToken_true, SHIFT (206)
 , C_Lexique_galgasScanner::kToken_false, SHIFT (207)
 , C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (208)
@@ -16140,16 +16243,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S439 (index = 11727)
-, C_Lexique_galgasScanner::kToken__3D__3D_, SHIFT (688)
-, C_Lexique_galgasScanner::kToken__3E__3D_, SHIFT (689)
-, C_Lexique_galgasScanner::kToken__3E_, SHIFT (690)
+// State S439 (index = 11735)
+, C_Lexique_galgasScanner::kToken__3D__3D_, SHIFT (691)
+, C_Lexique_galgasScanner::kToken__3E__3D_, SHIFT (692)
+, C_Lexique_galgasScanner::kToken__3E_, SHIFT (693)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (269)
 , END
-// State S440 (index = 11736)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (692)
+// State S440 (index = 11744)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (695)
 , END
-// State S441 (index = 11739)
+// State S441 (index = 11747)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (15)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (15)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (15)
@@ -16213,7 +16316,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (15)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (15)
 , END
-// State S442 (index = 11864)
+// State S442 (index = 11872)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -16235,7 +16338,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S443 (index = 11905)
+// State S443 (index = 11913)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -16257,7 +16360,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S444 (index = 11946)
+// State S444 (index = 11954)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -16279,7 +16382,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S445 (index = 11987)
+// State S445 (index = 11995)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -16301,7 +16404,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S446 (index = 12028)
+// State S446 (index = 12036)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -16323,7 +16426,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S447 (index = 12069)
+// State S447 (index = 12077)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (35)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (35)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (35)
@@ -16389,7 +16492,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (35)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (35)
 , END
-// State S448 (index = 12198)
+// State S448 (index = 12206)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -16419,7 +16522,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S449 (index = 12255)
+// State S449 (index = 12263)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (80)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (80)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (80)
@@ -16458,7 +16561,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (80)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (80)
 , END
-// State S450 (index = 12330)
+// State S450 (index = 12338)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -16481,10 +16584,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , C_Lexique_galgasScanner::kToken_let, SHIFT (219)
 , END
-// State S451 (index = 12373)
+// State S451 (index = 12381)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (81)
 , END
-// State S452 (index = 12376)
+// State S452 (index = 12384)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -16506,25 +16609,25 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S453 (index = 12417)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (701)
-, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (702)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (703)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (704)
-, C_Lexique_galgasScanner::kToken_self, SHIFT (705)
-, C_Lexique_galgasScanner::kToken_let, SHIFT (706)
-, C_Lexique_galgasScanner::kToken_var, SHIFT (707)
+// State S453 (index = 12425)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (704)
+, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (705)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (706)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (707)
+, C_Lexique_galgasScanner::kToken_self, SHIFT (708)
+, C_Lexique_galgasScanner::kToken_let, SHIFT (709)
+, C_Lexique_galgasScanner::kToken_var, SHIFT (710)
 , END
-// State S454 (index = 12432)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (709)
-, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (710)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (711)
-, C_Lexique_galgasScanner::kToken_self, SHIFT (712)
+// State S454 (index = 12440)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (712)
+, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (713)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (714)
+, C_Lexique_galgasScanner::kToken_self, SHIFT (715)
 , END
-// State S455 (index = 12441)
-, C_Lexique_galgasScanner::kToken__29_, SHIFT (713)
+// State S455 (index = 12449)
+, C_Lexique_galgasScanner::kToken__29_, SHIFT (716)
 , END
-// State S456 (index = 12444)
+// State S456 (index = 12452)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (38)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (38)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (38)
@@ -16566,8 +16669,8 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (38)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (38)
 , END
-// State S457 (index = 12525)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (714)
+// State S457 (index = 12533)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (717)
 , C_Lexique_galgasScanner::kToken__3D_, REDUCE (365)
 , C_Lexique_galgasScanner::kToken__2D__3D_, REDUCE (378)
 , C_Lexique_galgasScanner::kToken__2B__3D_, REDUCE (378)
@@ -16578,7 +16681,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__26__2D__2D_, REDUCE (445)
 , C_Lexique_galgasScanner::kToken__2D__2D_, REDUCE (445)
 , END
-// State S458 (index = 12546)
+// State S458 (index = 12554)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -16600,7 +16703,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S459 (index = 12587)
+// State S459 (index = 12595)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -16622,7 +16725,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S460 (index = 12628)
+// State S460 (index = 12636)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -16645,7 +16748,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S461 (index = 12671)
+// State S461 (index = 12679)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -16667,7 +16770,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S462 (index = 12712)
+// State S462 (index = 12720)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -16689,7 +16792,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S463 (index = 12753)
+// State S463 (index = 12761)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (58)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (58)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (58)
@@ -16728,7 +16831,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (58)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (58)
 , END
-// State S464 (index = 12828)
+// State S464 (index = 12836)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (447)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (447)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (447)
@@ -16767,7 +16870,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (447)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (447)
 , END
-// State S465 (index = 12903)
+// State S465 (index = 12911)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (448)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (448)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (448)
@@ -16806,7 +16909,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (448)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (448)
 , END
-// State S466 (index = 12978)
+// State S466 (index = 12986)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (449)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (449)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (449)
@@ -16845,7 +16948,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (449)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (449)
 , END
-// State S467 (index = 13053)
+// State S467 (index = 13061)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (450)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (450)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (450)
@@ -16884,7 +16987,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (450)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (450)
 , END
-// State S468 (index = 13128)
+// State S468 (index = 13136)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (77)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (77)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (77)
@@ -16923,7 +17026,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (77)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (77)
 , END
-// State S469 (index = 13203)
+// State S469 (index = 13211)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -16945,7 +17048,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S470 (index = 13244)
+// State S470 (index = 13252)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -16990,60 +17093,60 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S471 (index = 13331)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (726)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (727)
-, END
-// State S472 (index = 13336)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (728)
-, END
-// State S473 (index = 13339)
-, C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_if, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (304)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (452)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (304)
-, C_Lexique_galgasScanner::kToken__5B_, REDUCE (304)
-, C_Lexique_galgasScanner::kToken__5D_, REDUCE (304)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_default, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_self, REDUCE (304)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (453)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (304)
-, C_Lexique_galgasScanner::kToken__21__3F_, SHIFT (454)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (304)
-, C_Lexique_galgasScanner::kToken__3B_, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_cast, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_after, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_for, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_do, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_between, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (304)
-, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_elsif, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_loop, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_switch, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (304)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (304)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
-, C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
-, END
-// State S474 (index = 13426)
+// State S471 (index = 13339)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (729)
 , C_Lexique_galgasScanner::kToken__2E_, SHIFT (730)
+, END
+// State S472 (index = 13344)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (731)
+, END
+// State S473 (index = 13347)
+, C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_if, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (304)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (452)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (304)
+, C_Lexique_galgasScanner::kToken__5B_, REDUCE (304)
+, C_Lexique_galgasScanner::kToken__5D_, REDUCE (304)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_default, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_self, REDUCE (304)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (453)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (304)
+, C_Lexique_galgasScanner::kToken__21__3F_, SHIFT (454)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (304)
+, C_Lexique_galgasScanner::kToken__3B_, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_cast, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_after, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_for, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_do, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_between, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (304)
+, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_elsif, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_loop, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_switch, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (304)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (304)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
+, C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
+, END
+// State S474 (index = 13434)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (733)
 , C_Lexique_galgasScanner::kToken__3D_, REDUCE (366)
 , C_Lexique_galgasScanner::kToken__2D__3D_, REDUCE (378)
 , C_Lexique_galgasScanner::kToken__2B__3D_, REDUCE (378)
@@ -17054,7 +17157,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__26__2D__2D_, REDUCE (445)
 , C_Lexique_galgasScanner::kToken__2D__2D_, REDUCE (445)
 , END
-// State S475 (index = 13447)
+// State S475 (index = 13455)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (57)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (57)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (57)
@@ -17093,7 +17196,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (57)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (57)
 , END
-// State S476 (index = 13522)
+// State S476 (index = 13530)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (76)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (76)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (76)
@@ -17132,7 +17235,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (76)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (76)
 , END
-// State S477 (index = 13597)
+// State S477 (index = 13605)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (91)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (91)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (91)
@@ -17171,7 +17274,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (91)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (91)
 , END
-// State S478 (index = 13672)
+// State S478 (index = 13680)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (94)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (94)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (94)
@@ -17210,7 +17313,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (94)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (94)
 , END
-// State S479 (index = 13747)
+// State S479 (index = 13755)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -17232,7 +17335,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S480 (index = 13788)
+// State S480 (index = 13796)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (93)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (93)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (93)
@@ -17271,7 +17374,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (93)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (93)
 , END
-// State S481 (index = 13863)
+// State S481 (index = 13871)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (92)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (92)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (92)
@@ -17310,7 +17413,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (92)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (92)
 , END
-// State S482 (index = 13938)
+// State S482 (index = 13946)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (95)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (95)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (95)
@@ -17349,7 +17452,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (95)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (95)
 , END
-// State S483 (index = 14013)
+// State S483 (index = 14021)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (96)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (96)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (96)
@@ -17388,7 +17491,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (96)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (96)
 , END
-// State S484 (index = 14088)
+// State S484 (index = 14096)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -17410,7 +17513,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S485 (index = 14129)
+// State S485 (index = 14137)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (82)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (82)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (82)
@@ -17423,7 +17526,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_let, REDUCE (82)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (82)
 , C_Lexique_galgasScanner::kToken__3B_, REDUCE (82)
-, C_Lexique_galgasScanner::kToken__3D_, SHIFT (734)
+, C_Lexique_galgasScanner::kToken__3D_, SHIFT (737)
 , C_Lexique_galgasScanner::kToken_case, REDUCE (82)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (82)
 , C_Lexique_galgasScanner::kToken_cast, REDUCE (82)
@@ -17450,7 +17553,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (82)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (82)
 , END
-// State S486 (index = 14206)
+// State S486 (index = 14214)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -17472,7 +17575,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S487 (index = 14247)
+// State S487 (index = 14255)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (102)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (102)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (102)
@@ -17485,7 +17588,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_let, REDUCE (102)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (102)
 , C_Lexique_galgasScanner::kToken__3B_, REDUCE (102)
-, C_Lexique_galgasScanner::kToken__3D_, SHIFT (736)
+, C_Lexique_galgasScanner::kToken__3D_, SHIFT (739)
 , C_Lexique_galgasScanner::kToken_case, REDUCE (102)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (102)
 , C_Lexique_galgasScanner::kToken_cast, REDUCE (102)
@@ -17512,7 +17615,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (102)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (102)
 , END
-// State S488 (index = 14324)
+// State S488 (index = 14332)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -17534,21 +17637,21 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S489 (index = 14365)
-, C_Lexique_galgasScanner::kToken__3D__3D_, SHIFT (738)
-, C_Lexique_galgasScanner::kToken__3E__3D_, SHIFT (739)
-, C_Lexique_galgasScanner::kToken__3E_, SHIFT (740)
+// State S489 (index = 14373)
+, C_Lexique_galgasScanner::kToken__3D__3D_, SHIFT (741)
+, C_Lexique_galgasScanner::kToken__3E__3D_, SHIFT (742)
+, C_Lexique_galgasScanner::kToken__3E_, SHIFT (743)
 , END
-// State S490 (index = 14372)
+// State S490 (index = 14380)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (376)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (376)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (376)
 , C_Lexique_galgasScanner::kToken_case, SHIFT (489)
 , END
-// State S491 (index = 14381)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (744)
+// State S491 (index = 14389)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (747)
 , END
-// State S492 (index = 14384)
+// State S492 (index = 14392)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (60)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (60)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (60)
@@ -17587,40 +17690,40 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (60)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (60)
 , END
-// State S493 (index = 14459)
-, C_Lexique_galgasScanner::kToken__29_, SHIFT (745)
+// State S493 (index = 14467)
+, C_Lexique_galgasScanner::kToken__29_, SHIFT (748)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (401)
-, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (746)
+, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (749)
 , C_Lexique_galgasScanner::kToken__2A_, REDUCE (401)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (747)
-, C_Lexique_galgasScanner::kToken__2E__2E__2E_, SHIFT (748)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (750)
+, C_Lexique_galgasScanner::kToken__2E__2E__2E_, SHIFT (751)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (401)
 , END
-// State S494 (index = 14474)
+// State S494 (index = 14482)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (414)
 , C_Lexique_galgasScanner::kToken__2A_, REDUCE (414)
 , END
-// State S495 (index = 14479)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (752)
+// State S495 (index = 14487)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (755)
 , C_Lexique_galgasScanner::kToken_before, REDUCE (419)
 , C_Lexique_galgasScanner::kToken_while, REDUCE (419)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (419)
 , END
-// State S496 (index = 14488)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (754)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (755)
-, END
-// State S497 (index = 14493)
+// State S496 (index = 14496)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (757)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (758)
 , END
-// State S498 (index = 14496)
-, C_Lexique_galgasScanner::kToken__28_, SHIFT (758)
+// State S497 (index = 14501)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (760)
 , END
-// State S499 (index = 14499)
-, C_Lexique_galgasScanner::kToken_in, SHIFT (759)
-, C_Lexique_galgasScanner::kToken_on, SHIFT (760)
+// State S498 (index = 14504)
+, C_Lexique_galgasScanner::kToken__28_, SHIFT (761)
 , END
-// State S500 (index = 14504)
+// State S499 (index = 14507)
+, C_Lexique_galgasScanner::kToken_in, SHIFT (762)
+, C_Lexique_galgasScanner::kToken_on, SHIFT (763)
+, END
+// State S500 (index = 14512)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -17642,15 +17745,15 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S501 (index = 14545)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (763)
+// State S501 (index = 14553)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (766)
 , END
-// State S502 (index = 14548)
+// State S502 (index = 14556)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (263)
 , C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (264)
 , C_Lexique_galgasScanner::kToken_self, SHIFT (265)
 , END
-// State S503 (index = 14555)
+// State S503 (index = 14563)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (85)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (85)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (85)
@@ -17689,10 +17792,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (85)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (85)
 , END
-// State S504 (index = 14630)
-, C_Lexique_galgasScanner::kToken__29_, SHIFT (765)
+// State S504 (index = 14638)
+, C_Lexique_galgasScanner::kToken__29_, SHIFT (768)
 , END
-// State S505 (index = 14633)
+// State S505 (index = 14641)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -17714,38 +17817,38 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S506 (index = 14674)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (767)
-, END
-// State S507 (index = 14677)
-, C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
-, C_Lexique_galgasScanner::kToken_if, SHIFT (202)
-, C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
-, C_Lexique_galgasScanner::kToken__2D_, SHIFT (204)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (205)
-, C_Lexique_galgasScanner::kToken_true, SHIFT (206)
-, C_Lexique_galgasScanner::kToken_false, SHIFT (207)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (208)
-, C_Lexique_galgasScanner::kToken__27_char_27_, SHIFT (209)
-, C_Lexique_galgasScanner::kToken_double_2E_xxx, SHIFT (210)
-, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (211)
-, C_Lexique_galgasScanner::kToken__26__2D_, SHIFT (212)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (213)
-, C_Lexique_galgasScanner::kToken__5B_, SHIFT (214)
-, C_Lexique_galgasScanner::kToken__2E_, REDUCE (275)
-, C_Lexique_galgasScanner::kToken__7B_, REDUCE (275)
-, C_Lexique_galgasScanner::kToken__60_, SHIFT (215)
-, C_Lexique_galgasScanner::kToken_self, SHIFT (216)
-, C_Lexique_galgasScanner::kToken_not, SHIFT (217)
-, C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
-, END
-// State S508 (index = 14718)
+// State S506 (index = 14682)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (770)
 , END
-// State S509 (index = 14721)
-, C_Lexique_galgasScanner::kToken_in, SHIFT (771)
+// State S507 (index = 14685)
+, C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
+, C_Lexique_galgasScanner::kToken_if, SHIFT (202)
+, C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
+, C_Lexique_galgasScanner::kToken__2D_, SHIFT (204)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (205)
+, C_Lexique_galgasScanner::kToken_true, SHIFT (206)
+, C_Lexique_galgasScanner::kToken_false, SHIFT (207)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (208)
+, C_Lexique_galgasScanner::kToken__27_char_27_, SHIFT (209)
+, C_Lexique_galgasScanner::kToken_double_2E_xxx, SHIFT (210)
+, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (211)
+, C_Lexique_galgasScanner::kToken__26__2D_, SHIFT (212)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (213)
+, C_Lexique_galgasScanner::kToken__5B_, SHIFT (214)
+, C_Lexique_galgasScanner::kToken__2E_, REDUCE (275)
+, C_Lexique_galgasScanner::kToken__7B_, REDUCE (275)
+, C_Lexique_galgasScanner::kToken__60_, SHIFT (215)
+, C_Lexique_galgasScanner::kToken_self, SHIFT (216)
+, C_Lexique_galgasScanner::kToken_not, SHIFT (217)
+, C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S510 (index = 14724)
+// State S508 (index = 14726)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (773)
+, END
+// State S509 (index = 14729)
+, C_Lexique_galgasScanner::kToken_in, SHIFT (774)
+, END
+// State S510 (index = 14732)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (340)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (337)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (337)
@@ -17776,10 +17879,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, REDUCE (340)
 , C_Lexique_galgasScanner::kToken_with, REDUCE (340)
 , END
-// State S511 (index = 14783)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (773)
+// State S511 (index = 14791)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (776)
 , END
-// State S512 (index = 14786)
+// State S512 (index = 14794)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (650)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -17791,7 +17894,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S513 (index = 14807)
+// State S513 (index = 14815)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (650)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -17803,7 +17906,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S514 (index = 14828)
+// State S514 (index = 14836)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (650)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -17815,7 +17918,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S515 (index = 14849)
+// State S515 (index = 14857)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (650)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -17827,7 +17930,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S516 (index = 14870)
+// State S516 (index = 14878)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (650)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -17839,7 +17942,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S517 (index = 14891)
+// State S517 (index = 14899)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (650)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -17851,7 +17954,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S518 (index = 14912)
+// State S518 (index = 14920)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (650)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -17863,7 +17966,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S519 (index = 14933)
+// State S519 (index = 14941)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (650)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -17875,7 +17978,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S520 (index = 14954)
+// State S520 (index = 14962)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (650)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -17887,7 +17990,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S521 (index = 14975)
+// State S521 (index = 14983)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (162)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (650)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
@@ -17899,22 +18002,22 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, SHIFT (169)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (170)
 , END
-// State S522 (index = 14996)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (784)
-, END
-// State S523 (index = 14999)
-, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (785)
-, END
-// State S524 (index = 15002)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (786)
-, END
-// State S525 (index = 15005)
+// State S522 (index = 15004)
 , C_Lexique_galgasScanner::kToken__7D_, SHIFT (787)
 , END
-// State S526 (index = 15008)
-, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (788)
+// State S523 (index = 15007)
+, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (788)
 , END
-// State S527 (index = 15011)
+// State S524 (index = 15010)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (789)
+, END
+// State S525 (index = 15013)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (790)
+, END
+// State S526 (index = 15016)
+, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (791)
+, END
+// State S527 (index = 15019)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (148)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (148)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (148)
@@ -17951,7 +18054,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (148)
 , C_Lexique_galgasScanner::kToken_, REDUCE (148)
 , END
-// State S528 (index = 15082)
+// State S528 (index = 15090)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (146)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (146)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (146)
@@ -17988,8 +18091,8 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (146)
 , C_Lexique_galgasScanner::kToken_, REDUCE (146)
 , END
-// State S529 (index = 15153)
-, C_Lexique_galgasScanner::kToken__28_, SHIFT (789)
+// State S529 (index = 15161)
+, C_Lexique_galgasScanner::kToken__28_, SHIFT (792)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (564)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (564)
 , C_Lexique_galgasScanner::kToken_case, REDUCE (564)
@@ -17999,10 +18102,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_method, REDUCE (564)
 , C_Lexique_galgasScanner::kToken_override, REDUCE (564)
 , END
-// State S530 (index = 15172)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (791)
+// State S530 (index = 15180)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (794)
 , END
-// State S531 (index = 15175)
+// State S531 (index = 15183)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -18032,7 +18135,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S532 (index = 15232)
+// State S532 (index = 15240)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -18062,10 +18165,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S533 (index = 15289)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (794)
+// State S533 (index = 15297)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (797)
 , END
-// State S534 (index = 15292)
+// State S534 (index = 15300)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (530)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (530)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (530)
@@ -18074,7 +18177,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_private, REDUCE (530)
 , C_Lexique_galgasScanner::kToken__3D_, REDUCE (530)
 , C_Lexique_galgasScanner::kToken_remove, REDUCE (530)
-, C_Lexique_galgasScanner::kToken__25_attribute, SHIFT (795)
+, C_Lexique_galgasScanner::kToken__25_selector, SHIFT (798)
 , C_Lexique_galgasScanner::kToken_abstract, REDUCE (530)
 , C_Lexique_galgasScanner::kToken_getter, REDUCE (530)
 , C_Lexique_galgasScanner::kToken_setter, REDUCE (530)
@@ -18086,28 +18189,28 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (530)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (530)
 , END
-// State S535 (index = 15331)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (797)
+// State S535 (index = 15339)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (800)
 , END
-// State S536 (index = 15334)
+// State S536 (index = 15342)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (631)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (631)
 , END
-// State S537 (index = 15339)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (798)
+// State S537 (index = 15347)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (801)
 , END
-// State S538 (index = 15342)
+// State S538 (index = 15350)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (630)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (630)
 , END
-// State S539 (index = 15347)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (799)
+// State S539 (index = 15355)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (802)
 , END
-// State S540 (index = 15350)
+// State S540 (index = 15358)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (632)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (632)
 , END
-// State S541 (index = 15355)
+// State S541 (index = 15363)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (590)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (590)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (590)
@@ -18117,7 +18220,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (590)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (590)
 , END
-// State S542 (index = 15372)
+// State S542 (index = 15380)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (290)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (587)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (628)
@@ -18127,16 +18230,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, SHIFT (293)
 , C_Lexique_galgasScanner::kToken_fileprivate, SHIFT (294)
 , END
-// State S543 (index = 15389)
+// State S543 (index = 15397)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (525)
 , END
-// State S544 (index = 15392)
+// State S544 (index = 15400)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (524)
 , END
-// State S545 (index = 15395)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (802)
+// State S545 (index = 15403)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (805)
 , END
-// State S546 (index = 15398)
+// State S546 (index = 15406)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (132)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (132)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (132)
@@ -18173,7 +18276,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (132)
 , C_Lexique_galgasScanner::kToken_, REDUCE (132)
 , END
-// State S547 (index = 15469)
+// State S547 (index = 15477)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (290)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (591)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (628)
@@ -18188,23 +18291,23 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, SHIFT (293)
 , C_Lexique_galgasScanner::kToken_fileprivate, SHIFT (294)
 , END
-// State S548 (index = 15496)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (806)
+// State S548 (index = 15504)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (809)
 , END
-// State S549 (index = 15499)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (807)
+// State S549 (index = 15507)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (810)
 , END
-// State S550 (index = 15502)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (808)
+// State S550 (index = 15510)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (811)
 , END
-// State S551 (index = 15505)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (809)
+// State S551 (index = 15513)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (812)
 , END
-// State S552 (index = 15508)
+// State S552 (index = 15516)
 , C_Lexique_galgasScanner::kToken__3F_, SHIFT (188)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (327)
 , END
-// State S553 (index = 15513)
+// State S553 (index = 15521)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -18259,7 +18362,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S554 (index = 15620)
+// State S554 (index = 15628)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -18314,48 +18417,48 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S555 (index = 15727)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (813)
+// State S555 (index = 15735)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (816)
 , END
-// State S556 (index = 15730)
-, C_Lexique_galgasScanner::kToken_replace, SHIFT (814)
+// State S556 (index = 15738)
+, C_Lexique_galgasScanner::kToken_replace, SHIFT (817)
 , END
-// State S557 (index = 15733)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (815)
+// State S557 (index = 15741)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (818)
 , END
-// State S558 (index = 15736)
-, C_Lexique_galgasScanner::kToken_getter, SHIFT (816)
-, C_Lexique_galgasScanner::kToken_setter, SHIFT (817)
-, C_Lexique_galgasScanner::kToken_method, SHIFT (818)
+// State S558 (index = 15744)
+, C_Lexique_galgasScanner::kToken_getter, SHIFT (819)
+, C_Lexique_galgasScanner::kToken_setter, SHIFT (820)
+, C_Lexique_galgasScanner::kToken_method, SHIFT (821)
 , END
-// State S559 (index = 15743)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (819)
+// State S559 (index = 15751)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (822)
 , END
-// State S560 (index = 15746)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (820)
+// State S560 (index = 15754)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (823)
 , END
-// State S561 (index = 15749)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (821)
+// State S561 (index = 15757)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (824)
 , END
-// State S562 (index = 15752)
+// State S562 (index = 15760)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (595)
 , END
-// State S563 (index = 15755)
+// State S563 (index = 15763)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (597)
 , END
-// State S564 (index = 15758)
+// State S564 (index = 15766)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (598)
 , END
-// State S565 (index = 15761)
+// State S565 (index = 15769)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (599)
 , END
-// State S566 (index = 15764)
+// State S566 (index = 15772)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (596)
 , END
-// State S567 (index = 15767)
+// State S567 (index = 15775)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (600)
 , END
-// State S568 (index = 15770)
+// State S568 (index = 15778)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (134)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (134)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (134)
@@ -18392,19 +18495,19 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (134)
 , C_Lexique_galgasScanner::kToken_, REDUCE (134)
 , END
-// State S569 (index = 15841)
+// State S569 (index = 15849)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (604)
 , END
-// State S570 (index = 15844)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (822)
+// State S570 (index = 15852)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (825)
 , END
-// State S571 (index = 15847)
+// State S571 (index = 15855)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (610)
 , END
-// State S572 (index = 15850)
+// State S572 (index = 15858)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (611)
 , END
-// State S573 (index = 15853)
+// State S573 (index = 15861)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (141)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (141)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (141)
@@ -18441,11 +18544,11 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (141)
 , C_Lexique_galgasScanner::kToken_, REDUCE (141)
 , END
-// State S574 (index = 15924)
+// State S574 (index = 15932)
 , C_Lexique_galgasScanner::kToken__3F_, SHIFT (188)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (327)
 , END
-// State S575 (index = 15929)
+// State S575 (index = 15937)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -18500,7 +18603,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S576 (index = 16036)
+// State S576 (index = 16044)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -18555,37 +18658,37 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S577 (index = 16143)
-, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (826)
+// State S577 (index = 16151)
+, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (829)
 , END
-// State S578 (index = 16146)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (827)
+// State S578 (index = 16154)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (830)
 , END
-// State S579 (index = 16149)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (828)
+// State S579 (index = 16157)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (831)
 , END
-// State S580 (index = 16152)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (829)
+// State S580 (index = 16160)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (832)
 , END
-// State S581 (index = 16155)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (830)
+// State S581 (index = 16163)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (833)
 , END
-// State S582 (index = 16158)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (831)
+// State S582 (index = 16166)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (834)
 , END
-// State S583 (index = 16161)
-, C_Lexique_galgasScanner::kToken_indexing, SHIFT (832)
+// State S583 (index = 16169)
+, C_Lexique_galgasScanner::kToken_indexing, SHIFT (835)
 , END
-// State S584 (index = 16164)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (726)
+// State S584 (index = 16172)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (730)
 , END
-// State S585 (index = 16167)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (725)
+// State S585 (index = 16175)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (729)
 , END
-// State S586 (index = 16170)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (724)
+// State S586 (index = 16178)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (728)
 , END
-// State S587 (index = 16173)
+// State S587 (index = 16181)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (208)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (208)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (208)
@@ -18622,54 +18725,54 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (208)
 , C_Lexique_galgasScanner::kToken_, REDUCE (208)
 , END
-// State S588 (index = 16244)
-, C_Lexique_galgasScanner::kToken__7B_, REDUCE (743)
-, C_Lexique_galgasScanner::kToken__25_translate, REDUCE (743)
+// State S588 (index = 16252)
+, C_Lexique_galgasScanner::kToken__7B_, REDUCE (747)
+, C_Lexique_galgasScanner::kToken__25_translate, REDUCE (747)
 , END
-// State S589 (index = 16249)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (746)
+// State S589 (index = 16257)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (750)
 , C_Lexique_galgasScanner::kToken_rule, SHIFT (590)
 , END
-// State S590 (index = 16254)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, SHIFT (836)
+// State S590 (index = 16262)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, SHIFT (839)
 , END
-// State S591 (index = 16257)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (749)
+// State S591 (index = 16265)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (753)
 , C_Lexique_galgasScanner::kToken_rule, SHIFT (590)
 , END
-// State S592 (index = 16262)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (749)
+// State S592 (index = 16270)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (753)
 , C_Lexique_galgasScanner::kToken_rule, SHIFT (590)
 , END
-// State S593 (index = 16267)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (839)
+// State S593 (index = 16275)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (842)
 , END
-// State S594 (index = 16270)
+// State S594 (index = 16278)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (556)
 , C_Lexique_galgasScanner::kToken__25_generatedInSeparateFile, REDUCE (556)
 , END
-// State S595 (index = 16275)
+// State S595 (index = 16283)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (558)
 , END
-// State S596 (index = 16278)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (840)
+// State S596 (index = 16286)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (843)
 , END
-// State S597 (index = 16281)
-, C_Lexique_galgasScanner::kToken__7B_, REDUCE (786)
+// State S597 (index = 16289)
+, C_Lexique_galgasScanner::kToken__7B_, REDUCE (790)
 , END
-// State S598 (index = 16284)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (841)
+// State S598 (index = 16292)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (844)
 , END
-// State S599 (index = 16287)
-, C_Lexique_galgasScanner::kToken__27_char_27_, SHIFT (842)
+// State S599 (index = 16295)
+, C_Lexique_galgasScanner::kToken__27_char_27_, SHIFT (845)
 , END
-// State S600 (index = 16290)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (843)
+// State S600 (index = 16298)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (846)
 , END
-// State S601 (index = 16293)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (844)
+// State S601 (index = 16301)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (847)
 , END
-// State S602 (index = 16296)
+// State S602 (index = 16304)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (194)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (194)
 , C_Lexique_galgasScanner::kToken_replace, REDUCE (194)
@@ -18681,38 +18784,52 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, REDUCE (194)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (194)
 , END
-// State S603 (index = 16317)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (845)
+// State S603 (index = 16325)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (848)
 , END
-// State S604 (index = 16320)
-, C_Lexique_galgasScanner::kToken__2E__2E__2E_, REDUCE (691)
-, C_Lexique_galgasScanner::kToken__25_attribute, SHIFT (604)
+// State S604 (index = 16328)
+, C_Lexique_galgasScanner::kToken__2E__2E__2E_, REDUCE (693)
+, C_Lexique_galgasScanner::kToken__25_templateEndMark, SHIFT (604)
+, C_Lexique_galgasScanner::kToken__25_nonAtomicSelection, SHIFT (605)
+, C_Lexique_galgasScanner::kToken__25_preserved, SHIFT (606)
 , END
-// State S605 (index = 16325)
-, C_Lexique_galgasScanner::kToken__2E__2E__2E_, SHIFT (847)
+// State S605 (index = 16337)
+, C_Lexique_galgasScanner::kToken__2E__2E__2E_, REDUCE (693)
+, C_Lexique_galgasScanner::kToken__25_templateEndMark, SHIFT (604)
+, C_Lexique_galgasScanner::kToken__25_nonAtomicSelection, SHIFT (605)
+, C_Lexique_galgasScanner::kToken__25_preserved, SHIFT (606)
 , END
-// State S606 (index = 16328)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (848)
+// State S606 (index = 16346)
+, C_Lexique_galgasScanner::kToken__2E__2E__2E_, REDUCE (693)
+, C_Lexique_galgasScanner::kToken__25_templateEndMark, SHIFT (604)
+, C_Lexique_galgasScanner::kToken__25_nonAtomicSelection, SHIFT (605)
+, C_Lexique_galgasScanner::kToken__25_preserved, SHIFT (606)
 , END
-// State S607 (index = 16331)
+// State S607 (index = 16355)
+, C_Lexique_galgasScanner::kToken__2E__2E__2E_, SHIFT (852)
+, END
+// State S608 (index = 16358)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (853)
+, END
+// State S609 (index = 16361)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (676)
-, C_Lexique_galgasScanner::kToken_style, SHIFT (849)
+, C_Lexique_galgasScanner::kToken_style, SHIFT (854)
 , END
-// State S608 (index = 16336)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (851)
+// State S610 (index = 16366)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (856)
 , END
-// State S609 (index = 16339)
-, C_Lexique_galgasScanner::kToken__27_char_27_, SHIFT (852)
+// State S611 (index = 16369)
+, C_Lexique_galgasScanner::kToken__27_char_27_, SHIFT (857)
 , END
-// State S610 (index = 16342)
+// State S612 (index = 16372)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (185)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (185)
 , C_Lexique_galgasScanner::kToken__7C_, REDUCE (185)
 , END
-// State S611 (index = 16349)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (853)
+// State S613 (index = 16379)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (858)
 , END
-// State S612 (index = 16352)
+// State S614 (index = 16382)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (173)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (173)
 , C_Lexique_galgasScanner::kToken_replace, REDUCE (173)
@@ -18724,117 +18841,125 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, REDUCE (173)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (173)
 , END
-// State S613 (index = 16373)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (854)
+// State S615 (index = 16403)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (859)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (661)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (855)
-, C_Lexique_galgasScanner::kToken_drop, SHIFT (856)
-, C_Lexique_galgasScanner::kToken_log, SHIFT (857)
-, C_Lexique_galgasScanner::kToken_warning, SHIFT (858)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (859)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (860)
-, C_Lexique_galgasScanner::kToken_rewind, SHIFT (861)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (862)
-, C_Lexique_galgasScanner::kToken_tag, SHIFT (863)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (860)
+, C_Lexique_galgasScanner::kToken_drop, SHIFT (861)
+, C_Lexique_galgasScanner::kToken_log, SHIFT (862)
+, C_Lexique_galgasScanner::kToken_warning, SHIFT (863)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (864)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (865)
+, C_Lexique_galgasScanner::kToken_rewind, SHIFT (866)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (867)
+, C_Lexique_galgasScanner::kToken_tag, SHIFT (868)
 , END
-// State S614 (index = 16396)
+// State S616 (index = 16426)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (351)
 , C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (352)
 , C_Lexique_galgasScanner::kToken__27_char_27_, SHIFT (353)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (354)
 , END
-// State S615 (index = 16405)
+// State S617 (index = 16435)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (182)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (182)
 , END
-// State S616 (index = 16410)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (867)
+// State S618 (index = 16440)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (872)
 , END
-// State S617 (index = 16413)
+// State S619 (index = 16443)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (360)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (683)
-, C_Lexique_galgasScanner::kToken__25_attribute, REDUCE (683)
-, C_Lexique_galgasScanner::kToken_style, REDUCE (683)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (684)
+, C_Lexique_galgasScanner::kToken_style, REDUCE (684)
+, C_Lexique_galgasScanner::kToken__25_templateEndMark, REDUCE (684)
+, C_Lexique_galgasScanner::kToken__25_nonAtomicSelection, REDUCE (684)
 , END
-// State S618 (index = 16422)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (685)
-, C_Lexique_galgasScanner::kToken__25_attribute, SHIFT (618)
-, C_Lexique_galgasScanner::kToken_style, SHIFT (619)
+// State S620 (index = 16454)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (874)
 , END
-// State S619 (index = 16429)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (870)
+// State S621 (index = 16457)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (686)
+, C_Lexique_galgasScanner::kToken_style, SHIFT (620)
+, C_Lexique_galgasScanner::kToken__25_templateEndMark, SHIFT (621)
+, C_Lexique_galgasScanner::kToken__25_nonAtomicSelection, SHIFT (622)
 , END
-// State S620 (index = 16432)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (871)
+// State S622 (index = 16466)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (686)
+, C_Lexique_galgasScanner::kToken_style, SHIFT (620)
+, C_Lexique_galgasScanner::kToken__25_templateEndMark, SHIFT (621)
+, C_Lexique_galgasScanner::kToken__25_nonAtomicSelection, SHIFT (622)
 , END
-// State S621 (index = 16435)
+// State S623 (index = 16475)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (877)
+, END
+// State S624 (index = 16478)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (536)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (872)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (878)
 , END
-// State S622 (index = 16440)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (874)
+// State S625 (index = 16483)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (880)
 , END
-// State S623 (index = 16443)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (875)
+// State S626 (index = 16486)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (881)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (538)
 , END
-// State S624 (index = 16448)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (877)
+// State S627 (index = 16491)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (883)
 , END
-// State S625 (index = 16451)
+// State S628 (index = 16494)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (580)
 , END
-// State S626 (index = 16454)
+// State S629 (index = 16497)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (125)
 , END
-// State S627 (index = 16457)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (879)
+// State S630 (index = 16500)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (885)
 , END
-// State S628 (index = 16460)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (880)
+// State S631 (index = 16503)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (886)
 , END
-// State S629 (index = 16463)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (881)
+// State S632 (index = 16506)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (887)
 , END
-// State S630 (index = 16466)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (882)
+// State S633 (index = 16509)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (888)
 , END
-// State S631 (index = 16469)
+// State S634 (index = 16512)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (572)
-, C_Lexique_galgasScanner::kToken_constructor, SHIFT (627)
-, C_Lexique_galgasScanner::kToken_getter, SHIFT (628)
-, C_Lexique_galgasScanner::kToken_setter, SHIFT (629)
-, C_Lexique_galgasScanner::kToken_method, SHIFT (630)
+, C_Lexique_galgasScanner::kToken_constructor, SHIFT (630)
+, C_Lexique_galgasScanner::kToken_getter, SHIFT (631)
+, C_Lexique_galgasScanner::kToken_setter, SHIFT (632)
+, C_Lexique_galgasScanner::kToken_method, SHIFT (633)
 , END
-// State S632 (index = 16480)
+// State S635 (index = 16523)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (572)
-, C_Lexique_galgasScanner::kToken_constructor, SHIFT (627)
-, C_Lexique_galgasScanner::kToken_getter, SHIFT (628)
-, C_Lexique_galgasScanner::kToken_setter, SHIFT (629)
-, C_Lexique_galgasScanner::kToken_method, SHIFT (630)
+, C_Lexique_galgasScanner::kToken_constructor, SHIFT (630)
+, C_Lexique_galgasScanner::kToken_getter, SHIFT (631)
+, C_Lexique_galgasScanner::kToken_setter, SHIFT (632)
+, C_Lexique_galgasScanner::kToken_method, SHIFT (633)
 , END
-// State S633 (index = 16491)
+// State S636 (index = 16534)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (572)
-, C_Lexique_galgasScanner::kToken_constructor, SHIFT (627)
-, C_Lexique_galgasScanner::kToken_getter, SHIFT (628)
-, C_Lexique_galgasScanner::kToken_setter, SHIFT (629)
-, C_Lexique_galgasScanner::kToken_method, SHIFT (630)
+, C_Lexique_galgasScanner::kToken_constructor, SHIFT (630)
+, C_Lexique_galgasScanner::kToken_getter, SHIFT (631)
+, C_Lexique_galgasScanner::kToken_setter, SHIFT (632)
+, C_Lexique_galgasScanner::kToken_method, SHIFT (633)
 , END
-// State S634 (index = 16502)
+// State S637 (index = 16545)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (572)
-, C_Lexique_galgasScanner::kToken_constructor, SHIFT (627)
-, C_Lexique_galgasScanner::kToken_getter, SHIFT (628)
-, C_Lexique_galgasScanner::kToken_setter, SHIFT (629)
-, C_Lexique_galgasScanner::kToken_method, SHIFT (630)
+, C_Lexique_galgasScanner::kToken_constructor, SHIFT (630)
+, C_Lexique_galgasScanner::kToken_getter, SHIFT (631)
+, C_Lexique_galgasScanner::kToken_setter, SHIFT (632)
+, C_Lexique_galgasScanner::kToken_method, SHIFT (633)
 , END
-// State S635 (index = 16513)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (887)
+// State S638 (index = 16556)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (893)
 , END
-// State S636 (index = 16516)
+// State S639 (index = 16559)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (331)
-, C_Lexique_galgasScanner::kToken_unused, SHIFT (888)
+, C_Lexique_galgasScanner::kToken_unused, SHIFT (894)
 , END
-// State S637 (index = 16521)
+// State S640 (index = 16564)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (48)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (48)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (48)
@@ -18871,7 +18996,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (48)
 , C_Lexique_galgasScanner::kToken_, REDUCE (48)
 , END
-// State S638 (index = 16592)
+// State S641 (index = 16635)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (44)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (44)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (44)
@@ -18908,7 +19033,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (44)
 , C_Lexique_galgasScanner::kToken_, REDUCE (44)
 , END
-// State S639 (index = 16663)
+// State S642 (index = 16706)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -18963,26 +19088,26 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S640 (index = 16770)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (623)
+// State S643 (index = 16813)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (626)
 , END
-// State S641 (index = 16773)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (892)
+// State S644 (index = 16816)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (898)
 , END
-// State S642 (index = 16776)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (893)
+// State S645 (index = 16819)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (899)
 , END
-// State S643 (index = 16779)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (894)
+// State S646 (index = 16822)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (900)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (345)
 , END
-// State S644 (index = 16784)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (896)
+// State S647 (index = 16827)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (902)
 , END
-// State S645 (index = 16787)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (897)
+// State S648 (index = 16830)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (903)
 , END
-// State S646 (index = 16790)
+// State S649 (index = 16833)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (0)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (0)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (0)
@@ -19075,7 +19200,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (0)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (0)
 , END
-// State S647 (index = 16973)
+// State S650 (index = 17016)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -19097,7 +19222,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S648 (index = 17014)
+// State S651 (index = 17057)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -19119,15 +19244,15 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S649 (index = 17055)
-, C_Lexique_galgasScanner::kToken__29_, SHIFT (900)
+// State S652 (index = 17098)
+, C_Lexique_galgasScanner::kToken__29_, SHIFT (906)
 , END
-// State S650 (index = 17058)
+// State S653 (index = 17101)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (5)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (5)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (5)
 , END
-// State S651 (index = 17065)
+// State S654 (index = 17108)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (241)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (241)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (241)
@@ -19220,29 +19345,29 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (241)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (241)
 , END
-// State S652 (index = 17248)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (901)
+// State S655 (index = 17291)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (907)
 , END
-// State S653 (index = 17251)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (902)
+// State S656 (index = 17294)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (908)
 , END
-// State S654 (index = 17254)
-, C_Lexique_galgasScanner::kToken__3A_, SHIFT (903)
+// State S657 (index = 17297)
+, C_Lexique_galgasScanner::kToken__3A_, SHIFT (909)
 , END
-// State S655 (index = 17257)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (904)
+// State S658 (index = 17300)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (910)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (271)
 , END
-// State S656 (index = 17262)
+// State S659 (index = 17305)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (238)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (648)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (651)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (238)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (238)
 , END
-// State S657 (index = 17271)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (907)
+// State S660 (index = 17314)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (913)
 , END
-// State S658 (index = 17274)
+// State S661 (index = 17317)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -19264,7 +19389,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S659 (index = 17315)
+// State S662 (index = 17358)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (285)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (285)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (285)
@@ -19295,7 +19420,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (285)
 , C_Lexique_galgasScanner::kToken_as, REDUCE (285)
 , C_Lexique_galgasScanner::kToken__5B_, REDUCE (285)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (909)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (915)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (285)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (285)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (285)
@@ -19357,7 +19482,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (285)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (285)
 , END
-// State S660 (index = 17498)
+// State S663 (index = 17541)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (33)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (33)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (33)
@@ -19450,7 +19575,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (33)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (33)
 , END
-// State S661 (index = 17681)
+// State S664 (index = 17724)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (258)
@@ -19542,7 +19667,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (258)
 , END
-// State S662 (index = 17862)
+// State S665 (index = 17905)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (258)
@@ -19634,7 +19759,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (258)
 , END
-// State S663 (index = 18043)
+// State S666 (index = 18086)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (258)
@@ -19726,7 +19851,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (258)
 , END
-// State S664 (index = 18224)
+// State S667 (index = 18267)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (258)
@@ -19818,7 +19943,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (258)
 , END
-// State S665 (index = 18405)
+// State S668 (index = 18448)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (258)
@@ -19910,7 +20035,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (258)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (258)
 , END
-// State S666 (index = 18586)
+// State S669 (index = 18629)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (293)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (293)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (293)
@@ -19983,7 +20108,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (293)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (293)
 , END
-// State S667 (index = 18729)
+// State S670 (index = 18772)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (293)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (293)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (293)
@@ -20056,7 +20181,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (293)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (293)
 , END
-// State S668 (index = 18872)
+// State S671 (index = 18915)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (242)
@@ -20137,7 +20262,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (242)
 , END
-// State S669 (index = 19031)
+// State S672 (index = 19074)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (242)
@@ -20218,7 +20343,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (242)
 , END
-// State S670 (index = 19190)
+// State S673 (index = 19233)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (242)
@@ -20299,7 +20424,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (242)
 , END
-// State S671 (index = 19349)
+// State S674 (index = 19392)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (242)
@@ -20380,7 +20505,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (242)
 , END
-// State S672 (index = 19508)
+// State S675 (index = 19551)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (242)
@@ -20461,7 +20586,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (242)
 , END
-// State S673 (index = 19667)
+// State S676 (index = 19710)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (242)
@@ -20542,7 +20667,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (242)
 , END
-// State S674 (index = 19826)
+// State S677 (index = 19869)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (242)
@@ -20623,7 +20748,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (242)
 , END
-// State S675 (index = 19985)
+// State S678 (index = 20028)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (242)
@@ -20704,7 +20829,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (242)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (242)
 , END
-// State S676 (index = 20144)
+// State S679 (index = 20187)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (251)
@@ -20791,7 +20916,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (251)
 , END
-// State S677 (index = 20315)
+// State S680 (index = 20358)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (251)
@@ -20878,7 +21003,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (251)
 , END
-// State S678 (index = 20486)
+// State S681 (index = 20529)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (251)
@@ -20965,7 +21090,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (251)
 , END
-// State S679 (index = 20657)
+// State S682 (index = 20700)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (251)
@@ -21052,7 +21177,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (251)
 , END
-// State S680 (index = 20828)
+// State S683 (index = 20871)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (251)
@@ -21139,7 +21264,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (251)
 , END
-// State S681 (index = 20999)
+// State S684 (index = 21042)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (251)
@@ -21226,7 +21351,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (251)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (251)
 , END
-// State S682 (index = 21170)
+// State S685 (index = 21213)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (277)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (277)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (277)
@@ -21260,7 +21385,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__2E_, REDUCE (277)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (277)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (277)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (932)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (938)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (277)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (277)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (277)
@@ -21320,7 +21445,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (277)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (277)
 , END
-// State S683 (index = 21355)
+// State S686 (index = 21398)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (23)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (23)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (23)
@@ -21413,7 +21538,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (23)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (23)
 , END
-// State S684 (index = 21538)
+// State S687 (index = 21581)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -21435,30 +21560,30 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S685 (index = 21579)
+// State S688 (index = 21622)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (28)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (28)
 , END
-// State S686 (index = 21584)
+// State S689 (index = 21627)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (281)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (935)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (941)
 , END
-// State S687 (index = 21589)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (937)
+// State S690 (index = 21632)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (943)
 , END
-// State S688 (index = 21592)
+// State S691 (index = 21635)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (267)
 , END
-// State S689 (index = 21595)
+// State S692 (index = 21638)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (268)
 , END
-// State S690 (index = 21598)
+// State S693 (index = 21641)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (270)
 , END
-// State S691 (index = 21601)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (938)
+// State S694 (index = 21644)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (944)
 , END
-// State S692 (index = 21604)
+// State S695 (index = 21647)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (266)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (266)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (266)
@@ -21522,7 +21647,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (266)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (266)
 , END
-// State S693 (index = 21729)
+// State S696 (index = 21772)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (287)
@@ -21593,7 +21718,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (287)
 , END
-// State S694 (index = 21868)
+// State S697 (index = 21911)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (287)
@@ -21664,7 +21789,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (287)
 , END
-// State S695 (index = 22007)
+// State S698 (index = 22050)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (287)
@@ -21735,7 +21860,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (287)
 , END
-// State S696 (index = 22146)
+// State S699 (index = 22189)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (287)
@@ -21806,7 +21931,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (287)
 , END
-// State S697 (index = 22285)
+// State S700 (index = 22328)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (287)
@@ -21877,16 +22002,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (287)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (287)
 , END
-// State S698 (index = 22424)
-, C_Lexique_galgasScanner::kToken_else, SHIFT (944)
+// State S701 (index = 22467)
+, C_Lexique_galgasScanner::kToken_else, SHIFT (950)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (455)
-, C_Lexique_galgasScanner::kToken_elsif, SHIFT (945)
+, C_Lexique_galgasScanner::kToken_elsif, SHIFT (951)
 , END
-// State S699 (index = 22431)
+// State S702 (index = 22474)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (458)
 , C_Lexique_galgasScanner::kToken__2C_, SHIFT (450)
 , END
-// State S700 (index = 22436)
+// State S703 (index = 22479)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -21931,7 +22056,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S701 (index = 22523)
+// State S704 (index = 22566)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (40)
@@ -21948,7 +22073,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_let, REDUCE (40)
 , C_Lexique_galgasScanner::kToken__21__3F_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (40)
-, C_Lexique_galgasScanner::kToken_spoil, SHIFT (949)
+, C_Lexique_galgasScanner::kToken_spoil, SHIFT (955)
 , C_Lexique_galgasScanner::kToken__3B_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_case, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (40)
@@ -21977,10 +22102,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (40)
 , END
-// State S702 (index = 22612)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (951)
+// State S705 (index = 22655)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (957)
 , END
-// State S703 (index = 22615)
+// State S706 (index = 22658)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (40)
@@ -21997,7 +22122,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_let, REDUCE (40)
 , C_Lexique_galgasScanner::kToken__21__3F_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (40)
-, C_Lexique_galgasScanner::kToken_spoil, SHIFT (949)
+, C_Lexique_galgasScanner::kToken_spoil, SHIFT (955)
 , C_Lexique_galgasScanner::kToken__3B_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_case, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (40)
@@ -22026,10 +22151,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (40)
 , END
-// State S704 (index = 22704)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (953)
+// State S707 (index = 22747)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (959)
 , END
-// State S705 (index = 22707)
+// State S708 (index = 22750)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (40)
@@ -22038,7 +22163,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__21_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (40)
 , C_Lexique_galgasScanner::kToken__5B_, REDUCE (40)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (954)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (960)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (40)
@@ -22047,7 +22172,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_let, REDUCE (40)
 , C_Lexique_galgasScanner::kToken__21__3F_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (40)
-, C_Lexique_galgasScanner::kToken_spoil, SHIFT (949)
+, C_Lexique_galgasScanner::kToken_spoil, SHIFT (955)
 , C_Lexique_galgasScanner::kToken__3B_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_case, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (40)
@@ -22076,16 +22201,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (40)
 , END
-// State S706 (index = 22798)
+// State S709 (index = 22841)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (323)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (956)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (962)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (323)
 , END
-// State S707 (index = 22805)
+// State S710 (index = 22848)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (321)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (958)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (964)
 , END
-// State S708 (index = 22810)
+// State S711 (index = 22853)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -22130,7 +22255,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S709 (index = 22897)
+// State S712 (index = 22940)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (319)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (319)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (319)
@@ -22139,7 +22264,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__21_, REDUCE (319)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (319)
 , C_Lexique_galgasScanner::kToken__5B_, REDUCE (319)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (961)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (967)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (319)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (319)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (319)
@@ -22176,10 +22301,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (319)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (319)
 , END
-// State S710 (index = 22986)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (963)
+// State S713 (index = 23029)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (969)
 , END
-// State S711 (index = 22989)
+// State S714 (index = 23032)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -22224,7 +22349,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S712 (index = 23076)
+// State S715 (index = 23119)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -22269,7 +22394,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S713 (index = 23163)
+// State S716 (index = 23206)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (90)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (90)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (90)
@@ -22308,22 +22433,22 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (90)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (90)
 , END
-// State S714 (index = 23238)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (966)
+// State S717 (index = 23281)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (972)
 , END
-// State S715 (index = 23241)
+// State S718 (index = 23284)
 , C_Lexique_galgasScanner::kToken__2D__3D_, REDUCE (379)
 , C_Lexique_galgasScanner::kToken__2B__3D_, REDUCE (379)
 , C_Lexique_galgasScanner::kToken__2A__3D_, REDUCE (379)
 , C_Lexique_galgasScanner::kToken__2F__3D_, REDUCE (379)
 , END
-// State S716 (index = 23250)
+// State S719 (index = 23293)
 , C_Lexique_galgasScanner::kToken__2B__2B_, REDUCE (446)
 , C_Lexique_galgasScanner::kToken__26__2B__2B_, REDUCE (446)
 , C_Lexique_galgasScanner::kToken__26__2D__2D_, REDUCE (446)
 , C_Lexique_galgasScanner::kToken__2D__2D_, REDUCE (446)
 , END
-// State S717 (index = 23259)
+// State S720 (index = 23302)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (51)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (51)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (51)
@@ -22362,7 +22487,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (51)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (51)
 , END
-// State S718 (index = 23334)
+// State S721 (index = 23377)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (380)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (380)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (380)
@@ -22401,7 +22526,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (380)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (380)
 , END
-// State S719 (index = 23409)
+// State S722 (index = 23452)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (385)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (385)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (385)
@@ -22440,7 +22565,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (385)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (385)
 , END
-// State S720 (index = 23484)
+// State S723 (index = 23527)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (384)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (384)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (384)
@@ -22479,7 +22604,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (384)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (384)
 , END
-// State S721 (index = 23559)
+// State S724 (index = 23602)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (381)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (381)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (381)
@@ -22518,7 +22643,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (381)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (381)
 , END
-// State S722 (index = 23634)
+// State S725 (index = 23677)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (382)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (382)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (382)
@@ -22557,7 +22682,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (382)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (382)
 , END
-// State S723 (index = 23709)
+// State S726 (index = 23752)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (383)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (383)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (383)
@@ -22596,7 +22721,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (383)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (383)
 , END
-// State S724 (index = 23784)
+// State S727 (index = 23827)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (106)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (106)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (106)
@@ -22635,10 +22760,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (106)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (106)
 , END
-// State S725 (index = 23859)
-, C_Lexique_galgasScanner::kToken__5D_, SHIFT (967)
+// State S728 (index = 23902)
+, C_Lexique_galgasScanner::kToken__5D_, SHIFT (973)
 , END
-// State S726 (index = 23862)
+// State S729 (index = 23905)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -22683,29 +22808,29 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S727 (index = 23949)
+// State S730 (index = 23992)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (484)
 , END
-// State S728 (index = 23952)
+// State S731 (index = 23995)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (485)
 , C_Lexique_galgasScanner::kToken_as, REDUCE (485)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (969)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (975)
 , END
-// State S729 (index = 23959)
-, C_Lexique_galgasScanner::kToken__5D_, SHIFT (971)
+// State S732 (index = 24002)
+, C_Lexique_galgasScanner::kToken__5D_, SHIFT (977)
 , END
-// State S730 (index = 23962)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (972)
+// State S733 (index = 24005)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (978)
 , END
-// State S731 (index = 23965)
-, C_Lexique_galgasScanner::kToken__3D_, SHIFT (973)
+// State S734 (index = 24008)
+, C_Lexique_galgasScanner::kToken__3D_, SHIFT (979)
 , END
-// State S732 (index = 23968)
+// State S735 (index = 24011)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (386)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (386)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (386)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (386)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (974)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (980)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (386)
 , C_Lexique_galgasScanner::kToken__5B_, REDUCE (386)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (386)
@@ -22740,7 +22865,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (386)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (386)
 , END
-// State S733 (index = 24045)
+// State S736 (index = 24088)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (84)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (84)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (84)
@@ -22779,7 +22904,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (84)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (84)
 , END
-// State S734 (index = 24120)
+// State S737 (index = 24163)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -22801,7 +22926,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S735 (index = 24161)
+// State S738 (index = 24204)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (104)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (104)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (104)
@@ -22840,7 +22965,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (104)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (104)
 , END
-// State S736 (index = 24236)
+// State S739 (index = 24279)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -22862,14 +22987,14 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S737 (index = 24277)
+// State S740 (index = 24320)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (397)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (397)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (397)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (397)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (397)
 , C_Lexique_galgasScanner::kToken__5B_, REDUCE (397)
-, C_Lexique_galgasScanner::kToken__3A_, SHIFT (978)
+, C_Lexique_galgasScanner::kToken__3A_, SHIFT (984)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (397)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (397)
 , C_Lexique_galgasScanner::kToken_self, REDUCE (397)
@@ -22903,30 +23028,30 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (397)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (397)
 , END
-// State S738 (index = 24356)
+// State S741 (index = 24399)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (368)
 , END
-// State S739 (index = 24359)
+// State S742 (index = 24402)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (369)
 , END
-// State S740 (index = 24362)
+// State S743 (index = 24405)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (370)
 , END
-// State S741 (index = 24365)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (980)
+// State S744 (index = 24408)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (986)
 , END
-// State S742 (index = 24368)
+// State S745 (index = 24411)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (376)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (376)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (376)
 , C_Lexique_galgasScanner::kToken_case, SHIFT (489)
 , END
-// State S743 (index = 24377)
-, C_Lexique_galgasScanner::kToken_else, SHIFT (982)
+// State S746 (index = 24420)
+, C_Lexique_galgasScanner::kToken_else, SHIFT (988)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (373)
-, C_Lexique_galgasScanner::kToken_default, SHIFT (983)
+, C_Lexique_galgasScanner::kToken_default, SHIFT (989)
 , END
-// State S744 (index = 24384)
+// State S747 (index = 24427)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (388)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (388)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (388)
@@ -22966,65 +23091,65 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (388)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (388)
 , END
-// State S745 (index = 24461)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (987)
+// State S748 (index = 24504)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (993)
 , C_Lexique_galgasScanner::kToken_in, REDUCE (417)
 , END
-// State S746 (index = 24466)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (989)
+// State S749 (index = 24509)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (995)
 , END
-// State S747 (index = 24469)
+// State S750 (index = 24512)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (402)
 , C_Lexique_galgasScanner::kToken__2A_, REDUCE (402)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (402)
 , END
-// State S748 (index = 24476)
+// State S751 (index = 24519)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (407)
 , END
-// State S749 (index = 24479)
+// State S752 (index = 24522)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (409)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (401)
-, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (746)
+, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (749)
 , C_Lexique_galgasScanner::kToken__2A_, REDUCE (401)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (747)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (750)
 , C_Lexique_galgasScanner::kToken__2E__2E__2E_, REDUCE (409)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (401)
 , END
-// State S750 (index = 24494)
+// State S753 (index = 24537)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (405)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (992)
-, C_Lexique_galgasScanner::kToken_unused, SHIFT (993)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (998)
+, C_Lexique_galgasScanner::kToken_unused, SHIFT (999)
 , END
-// State S751 (index = 24501)
-, C_Lexique_galgasScanner::kToken__29_, SHIFT (996)
+// State S754 (index = 24544)
+, C_Lexique_galgasScanner::kToken__29_, SHIFT (1002)
 , END
-// State S752 (index = 24504)
+// State S755 (index = 24547)
 , C_Lexique_galgasScanner::kToken__28_, REDUCE (421)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (421)
 , C_Lexique_galgasScanner::kToken__3E_, SHIFT (260)
 , C_Lexique_galgasScanner::kToken__2A_, REDUCE (421)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (421)
 , END
-// State S753 (index = 24515)
+// State S756 (index = 24558)
 , C_Lexique_galgasScanner::kToken_before, REDUCE (423)
-, C_Lexique_galgasScanner::kToken_while, SHIFT (998)
+, C_Lexique_galgasScanner::kToken_while, SHIFT (1004)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (423)
 , END
-// State S754 (index = 24522)
+// State S757 (index = 24565)
 , C_Lexique_galgasScanner::kToken_in, REDUCE (416)
 , END
-// State S755 (index = 24525)
+// State S758 (index = 24568)
 , C_Lexique_galgasScanner::kToken_in, REDUCE (415)
 , END
-// State S756 (index = 24528)
-, C_Lexique_galgasScanner::kToken_in, SHIFT (1000)
+// State S759 (index = 24571)
+, C_Lexique_galgasScanner::kToken_in, SHIFT (1006)
 , END
-// State S757 (index = 24531)
+// State S760 (index = 24574)
 , C_Lexique_galgasScanner::kToken__28_, REDUCE (434)
 , C_Lexique_galgasScanner::kToken_in, REDUCE (440)
 , C_Lexique_galgasScanner::kToken_on, REDUCE (440)
 , END
-// State S758 (index = 24538)
+// State S761 (index = 24581)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -23069,7 +23194,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S759 (index = 24625)
+// State S762 (index = 24668)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -23091,10 +23216,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S760 (index = 24666)
-, C_Lexique_galgasScanner::kToken__28_, SHIFT (1003)
+// State S763 (index = 24709)
+, C_Lexique_galgasScanner::kToken__28_, SHIFT (1009)
 , END
-// State S761 (index = 24669)
+// State S764 (index = 24712)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (72)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (72)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (72)
@@ -23133,7 +23258,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (72)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (72)
 , END
-// State S762 (index = 24744)
+// State S765 (index = 24787)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (482)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (482)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (482)
@@ -23173,7 +23298,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (482)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (482)
 , END
-// State S763 (index = 24821)
+// State S766 (index = 24864)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (481)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (481)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (481)
@@ -23213,7 +23338,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (481)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (481)
 , END
-// State S764 (index = 24898)
+// State S767 (index = 24941)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (478)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (478)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (478)
@@ -23253,7 +23378,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (478)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (478)
 , END
-// State S765 (index = 24975)
+// State S768 (index = 25018)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -23283,18 +23408,18 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S766 (index = 25032)
-, C_Lexique_galgasScanner::kToken_do, SHIFT (1006)
+// State S769 (index = 25075)
+, C_Lexique_galgasScanner::kToken_do, SHIFT (1012)
 , END
-// State S767 (index = 25035)
+// State S770 (index = 25078)
 , C_Lexique_galgasScanner::kToken__28_, REDUCE (491)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (491)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1007)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1013)
 , END
-// State S768 (index = 25042)
-, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1009)
+// State S771 (index = 25085)
+, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1015)
 , END
-// State S769 (index = 25045)
+// State S772 (index = 25088)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (390)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (390)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (390)
@@ -23311,7 +23436,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_error, REDUCE (390)
 , C_Lexique_galgasScanner::kToken_cast, REDUCE (390)
 , C_Lexique_galgasScanner::kToken_drop, REDUCE (390)
-, C_Lexique_galgasScanner::kToken_fixit, SHIFT (1010)
+, C_Lexique_galgasScanner::kToken_fixit, SHIFT (1016)
 , C_Lexique_galgasScanner::kToken_after, REDUCE (390)
 , C_Lexique_galgasScanner::kToken_for, REDUCE (390)
 , C_Lexique_galgasScanner::kToken_while, REDUCE (390)
@@ -23334,10 +23459,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (390)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (390)
 , END
-// State S770 (index = 25122)
+// State S773 (index = 25165)
 , C_Lexique_galgasScanner::kToken_in, REDUCE (505)
 , END
-// State S771 (index = 25125)
+// State S774 (index = 25168)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -23358,9 +23483,9 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_self, SHIFT (216)
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
-, C_Lexique_galgasScanner::kToken__21__3F_, SHIFT (1013)
+, C_Lexique_galgasScanner::kToken__21__3F_, SHIFT (1019)
 , END
-// State S772 (index = 25168)
+// State S775 (index = 25211)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (338)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (338)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (338)
@@ -23372,42 +23497,42 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_between, REDUCE (338)
 , C_Lexique_galgasScanner::kToken_elsif, REDUCE (338)
 , END
-// State S773 (index = 25189)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (688)
+// State S776 (index = 25232)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (690)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
 , C_Lexique_galgasScanner::kToken_template, SHIFT (165)
 , END
-// State S774 (index = 25196)
+// State S777 (index = 25239)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (660)
 , END
-// State S775 (index = 25199)
+// State S778 (index = 25242)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (659)
 , END
-// State S776 (index = 25202)
+// State S779 (index = 25245)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (658)
 , END
-// State S777 (index = 25205)
+// State S780 (index = 25248)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (657)
 , END
-// State S778 (index = 25208)
+// State S781 (index = 25251)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (656)
 , END
-// State S779 (index = 25211)
+// State S782 (index = 25254)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (653)
 , END
-// State S780 (index = 25214)
+// State S783 (index = 25257)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (655)
 , END
-// State S781 (index = 25217)
+// State S784 (index = 25260)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (654)
 , END
-// State S782 (index = 25220)
+// State S785 (index = 25263)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (651)
 , END
-// State S783 (index = 25223)
+// State S786 (index = 25266)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (652)
 , END
-// State S784 (index = 25226)
+// State S787 (index = 25269)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (170)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (170)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (170)
@@ -23444,14 +23569,14 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (170)
 , C_Lexique_galgasScanner::kToken_, REDUCE (170)
 , END
-// State S785 (index = 25297)
-, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1019)
+// State S788 (index = 25340)
+, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1025)
 , END
-// State S786 (index = 25300)
+// State S789 (index = 25343)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (548)
 , C_Lexique_galgasScanner::kToken__2C_, SHIFT (524)
 , END
-// State S787 (index = 25305)
+// State S790 (index = 25348)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (120)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (120)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (120)
@@ -23488,65 +23613,64 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (120)
 , C_Lexique_galgasScanner::kToken_, REDUCE (120)
 , END
-// State S788 (index = 25376)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1021)
+// State S791 (index = 25419)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1027)
 , END
-// State S789 (index = 25379)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1022)
+// State S792 (index = 25422)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1028)
 , END
-// State S790 (index = 25382)
+// State S793 (index = 25425)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (562)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (562)
-, C_Lexique_galgasScanner::kToken_case, SHIFT (1023)
+, C_Lexique_galgasScanner::kToken_case, SHIFT (1029)
 , C_Lexique_galgasScanner::kToken_abstract, REDUCE (562)
 , C_Lexique_galgasScanner::kToken_getter, REDUCE (562)
 , C_Lexique_galgasScanner::kToken_setter, REDUCE (562)
 , C_Lexique_galgasScanner::kToken_method, REDUCE (562)
 , C_Lexique_galgasScanner::kToken_override, REDUCE (562)
 , END
-// State S791 (index = 25399)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1025)
+// State S794 (index = 25442)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1031)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (617)
 , END
-// State S792 (index = 25404)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1027)
+// State S795 (index = 25447)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1033)
 , END
-// State S793 (index = 25407)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1028)
+// State S796 (index = 25450)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1034)
 , END
-// State S794 (index = 25410)
+// State S797 (index = 25453)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (585)
-, C_Lexique_galgasScanner::kToken_insert, SHIFT (1029)
+, C_Lexique_galgasScanner::kToken_insert, SHIFT (1035)
 , END
-// State S795 (index = 25415)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (530)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (530)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (530)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (530)
-, C_Lexique_galgasScanner::kToken__3B_, REDUCE (530)
-, C_Lexique_galgasScanner::kToken_private, REDUCE (530)
-, C_Lexique_galgasScanner::kToken__3D_, REDUCE (530)
-, C_Lexique_galgasScanner::kToken_remove, REDUCE (530)
-, C_Lexique_galgasScanner::kToken__25_attribute, SHIFT (795)
-, C_Lexique_galgasScanner::kToken_abstract, REDUCE (530)
-, C_Lexique_galgasScanner::kToken_getter, REDUCE (530)
-, C_Lexique_galgasScanner::kToken_setter, REDUCE (530)
-, C_Lexique_galgasScanner::kToken_method, REDUCE (530)
-, C_Lexique_galgasScanner::kToken_insert, REDUCE (530)
-, C_Lexique_galgasScanner::kToken_search, REDUCE (530)
-, C_Lexique_galgasScanner::kToken_override, REDUCE (530)
-, C_Lexique_galgasScanner::kToken_public, REDUCE (530)
-, C_Lexique_galgasScanner::kToken_protected, REDUCE (530)
-, C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (530)
+// State S798 (index = 25458)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (531)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (531)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (531)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (531)
+, C_Lexique_galgasScanner::kToken__3B_, REDUCE (531)
+, C_Lexique_galgasScanner::kToken_private, REDUCE (531)
+, C_Lexique_galgasScanner::kToken__3D_, REDUCE (531)
+, C_Lexique_galgasScanner::kToken_remove, REDUCE (531)
+, C_Lexique_galgasScanner::kToken_abstract, REDUCE (531)
+, C_Lexique_galgasScanner::kToken_getter, REDUCE (531)
+, C_Lexique_galgasScanner::kToken_setter, REDUCE (531)
+, C_Lexique_galgasScanner::kToken_method, REDUCE (531)
+, C_Lexique_galgasScanner::kToken_insert, REDUCE (531)
+, C_Lexique_galgasScanner::kToken_search, REDUCE (531)
+, C_Lexique_galgasScanner::kToken_override, REDUCE (531)
+, C_Lexique_galgasScanner::kToken_public, REDUCE (531)
+, C_Lexique_galgasScanner::kToken_protected, REDUCE (531)
+, C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (531)
 , END
-// State S796 (index = 25454)
+// State S799 (index = 25495)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (532)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (532)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (532)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (532)
 , C_Lexique_galgasScanner::kToken__3B_, REDUCE (532)
 , C_Lexique_galgasScanner::kToken_private, REDUCE (532)
-, C_Lexique_galgasScanner::kToken__3D_, SHIFT (1032)
+, C_Lexique_galgasScanner::kToken__3D_, SHIFT (1037)
 , C_Lexique_galgasScanner::kToken_remove, REDUCE (532)
 , C_Lexique_galgasScanner::kToken_abstract, REDUCE (532)
 , C_Lexique_galgasScanner::kToken_getter, REDUCE (532)
@@ -23559,16 +23683,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (532)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (532)
 , END
-// State S797 (index = 25491)
-, C_Lexique_galgasScanner::kToken__29_, SHIFT (1034)
+// State S800 (index = 25532)
+, C_Lexique_galgasScanner::kToken__29_, SHIFT (1039)
 , END
-// State S798 (index = 25494)
-, C_Lexique_galgasScanner::kToken__29_, SHIFT (1035)
+// State S801 (index = 25535)
+, C_Lexique_galgasScanner::kToken__29_, SHIFT (1040)
 , END
-// State S799 (index = 25497)
-, C_Lexique_galgasScanner::kToken__29_, SHIFT (1036)
+// State S802 (index = 25538)
+, C_Lexique_galgasScanner::kToken__29_, SHIFT (1041)
 , END
-// State S800 (index = 25500)
+// State S803 (index = 25541)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (589)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (589)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (589)
@@ -23579,13 +23703,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (589)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (589)
 , END
-// State S801 (index = 25519)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1038)
+// State S804 (index = 25560)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1043)
 , END
-// State S802 (index = 25522)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1039)
+// State S805 (index = 25563)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1044)
 , END
-// State S803 (index = 25525)
+// State S806 (index = 25566)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (290)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (591)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (628)
@@ -23600,7 +23724,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, SHIFT (293)
 , C_Lexique_galgasScanner::kToken_fileprivate, SHIFT (294)
 , END
-// State S804 (index = 25552)
+// State S807 (index = 25593)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (290)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (591)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (628)
@@ -23615,17 +23739,17 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, SHIFT (293)
 , C_Lexique_galgasScanner::kToken_fileprivate, SHIFT (294)
 , END
-// State S805 (index = 25579)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1042)
+// State S808 (index = 25620)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1047)
 , END
-// State S806 (index = 25582)
-, C_Lexique_galgasScanner::kToken_message, SHIFT (1043)
+// State S809 (index = 25623)
+, C_Lexique_galgasScanner::kToken_message, SHIFT (1048)
 , END
-// State S807 (index = 25585)
+// State S810 (index = 25626)
 , C_Lexique_galgasScanner::kToken__3F_, SHIFT (188)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (327)
 , END
-// State S808 (index = 25590)
+// State S811 (index = 25631)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -23680,7 +23804,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S809 (index = 25697)
+// State S812 (index = 25738)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -23735,19 +23859,19 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S810 (index = 25804)
-, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1047)
+// State S813 (index = 25845)
+, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1052)
 , END
-// State S811 (index = 25807)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1048)
+// State S814 (index = 25848)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1053)
 , END
-// State S812 (index = 25810)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1049)
+// State S815 (index = 25851)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1054)
 , END
-// State S813 (index = 25813)
-, C_Lexique_galgasScanner::kToken_message, SHIFT (1050)
+// State S816 (index = 25854)
+, C_Lexique_galgasScanner::kToken_message, SHIFT (1055)
 , END
-// State S814 (index = 25816)
+// State S817 (index = 25857)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (137)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (137)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (137)
@@ -23765,23 +23889,23 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (137)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (137)
 , END
-// State S815 (index = 25849)
-, C_Lexique_galgasScanner::kToken_message, SHIFT (1051)
+// State S818 (index = 25890)
+, C_Lexique_galgasScanner::kToken_message, SHIFT (1056)
 , END
-// State S816 (index = 25852)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1052)
+// State S819 (index = 25893)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1057)
 , END
-// State S817 (index = 25855)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1053)
+// State S820 (index = 25896)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1058)
 , END
-// State S818 (index = 25858)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1054)
+// State S821 (index = 25899)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1059)
 , END
-// State S819 (index = 25861)
+// State S822 (index = 25902)
 , C_Lexique_galgasScanner::kToken__3F_, SHIFT (188)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (327)
 , END
-// State S820 (index = 25866)
+// State S823 (index = 25907)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -23836,7 +23960,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S821 (index = 25973)
+// State S824 (index = 26014)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -23891,13 +24015,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S822 (index = 26080)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1058)
+// State S825 (index = 26121)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1063)
 , END
-// State S823 (index = 26083)
-, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1060)
+// State S826 (index = 26124)
+, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1065)
 , END
-// State S824 (index = 26086)
+// State S827 (index = 26127)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (160)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (160)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (160)
@@ -23934,7 +24058,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (160)
 , C_Lexique_galgasScanner::kToken_, REDUCE (160)
 , END
-// State S825 (index = 26157)
+// State S828 (index = 26198)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (158)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (158)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (158)
@@ -23971,10 +24095,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (158)
 , C_Lexique_galgasScanner::kToken_, REDUCE (158)
 , END
-// State S826 (index = 26228)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1061)
+// State S829 (index = 26269)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1066)
 , END
-// State S827 (index = 26231)
+// State S830 (index = 26272)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -24004,7 +24128,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S828 (index = 26288)
+// State S831 (index = 26329)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -24034,37 +24158,37 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S829 (index = 26345)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (740)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1064)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (740)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (740)
-, C_Lexique_galgasScanner::kToken_project, REDUCE (740)
+// State S832 (index = 26386)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (744)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1069)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (744)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (744)
+, C_Lexique_galgasScanner::kToken_project, REDUCE (744)
 , END
-// State S830 (index = 26356)
+// State S833 (index = 26397)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (210)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (210)
 , C_Lexique_galgasScanner::kToken_with, REDUCE (210)
 , C_Lexique_galgasScanner::kToken_project, REDUCE (210)
 , END
-// State S831 (index = 26365)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1066)
+// State S834 (index = 26406)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1071)
 , END
-// State S832 (index = 26368)
-, C_Lexique_galgasScanner::kToken_in, SHIFT (1067)
+// State S835 (index = 26409)
+, C_Lexique_galgasScanner::kToken_in, SHIFT (1072)
 , END
-// State S833 (index = 26371)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (746)
+// State S836 (index = 26412)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (750)
 , C_Lexique_galgasScanner::kToken_rule, SHIFT (590)
 , END
-// State S834 (index = 26376)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (746)
+// State S837 (index = 26417)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (750)
 , C_Lexique_galgasScanner::kToken_rule, SHIFT (590)
 , END
-// State S835 (index = 26381)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1070)
+// State S838 (index = 26422)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1075)
 , END
-// State S836 (index = 26384)
+// State S839 (index = 26425)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -24119,13 +24243,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S837 (index = 26491)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (750)
+// State S840 (index = 26532)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (754)
 , END
-// State S838 (index = 26494)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (751)
+// State S841 (index = 26535)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (755)
 , END
-// State S839 (index = 26497)
+// State S842 (index = 26538)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (213)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (213)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (213)
@@ -24162,7 +24286,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (213)
 , C_Lexique_galgasScanner::kToken_, REDUCE (213)
 , END
-// State S840 (index = 26568)
+// State S843 (index = 26609)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (290)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (559)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (628)
@@ -24177,28 +24301,28 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, SHIFT (293)
 , C_Lexique_galgasScanner::kToken_fileprivate, SHIFT (294)
 , END
-// State S841 (index = 26595)
-, C_Lexique_galgasScanner::kToken_syntax, SHIFT (1076)
+// State S844 (index = 26636)
+, C_Lexique_galgasScanner::kToken_syntax, SHIFT (1081)
 , END
-// State S842 (index = 26598)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1077)
+// State S845 (index = 26639)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1082)
 , END
-// State S843 (index = 26601)
-, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1078)
+// State S846 (index = 26642)
+, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1083)
 , END
-// State S844 (index = 26604)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (694)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (694)
-, C_Lexique_galgasScanner::kToken_replace, REDUCE (694)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (694)
-, C_Lexique_galgasScanner::kToken_template, REDUCE (694)
-, C_Lexique_galgasScanner::kToken_list, REDUCE (694)
-, C_Lexique_galgasScanner::kToken_indexing, REDUCE (694)
-, C_Lexique_galgasScanner::kToken_rule, REDUCE (694)
-, C_Lexique_galgasScanner::kToken_style, REDUCE (694)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (694)
+// State S847 (index = 26645)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (698)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (698)
+, C_Lexique_galgasScanner::kToken_replace, REDUCE (698)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (698)
+, C_Lexique_galgasScanner::kToken_template, REDUCE (698)
+, C_Lexique_galgasScanner::kToken_list, REDUCE (698)
+, C_Lexique_galgasScanner::kToken_indexing, REDUCE (698)
+, C_Lexique_galgasScanner::kToken_rule, REDUCE (698)
+, C_Lexique_galgasScanner::kToken_style, REDUCE (698)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (698)
 , END
-// State S845 (index = 26625)
+// State S848 (index = 26666)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (172)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (172)
 , C_Lexique_galgasScanner::kToken_replace, REDUCE (172)
@@ -24210,24 +24334,30 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, REDUCE (172)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (172)
 , END
-// State S846 (index = 26646)
-, C_Lexique_galgasScanner::kToken__2E__2E__2E_, REDUCE (692)
+// State S849 (index = 26687)
+, C_Lexique_galgasScanner::kToken__2E__2E__2E_, REDUCE (695)
 , END
-// State S847 (index = 26649)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1079)
+// State S850 (index = 26690)
+, C_Lexique_galgasScanner::kToken__2E__2E__2E_, REDUCE (694)
 , END
-// State S848 (index = 26652)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (606)
+// State S851 (index = 26693)
+, C_Lexique_galgasScanner::kToken__2E__2E__2E_, REDUCE (696)
+, END
+// State S852 (index = 26696)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1084)
+, END
+// State S853 (index = 26699)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (608)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (673)
 , C_Lexique_galgasScanner::kToken_style, REDUCE (673)
 , END
-// State S849 (index = 26659)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1081)
+// State S854 (index = 26706)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1086)
 , END
-// State S850 (index = 26662)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (1082)
+// State S855 (index = 26709)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (1087)
 , END
-// State S851 (index = 26665)
+// State S856 (index = 26712)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (171)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (171)
 , C_Lexique_galgasScanner::kToken_replace, REDUCE (171)
@@ -24239,24 +24369,24 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, REDUCE (171)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (171)
 , END
-// State S852 (index = 26686)
+// State S857 (index = 26733)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (672)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (672)
 , C_Lexique_galgasScanner::kToken__7C_, REDUCE (672)
 , END
-// State S853 (index = 26693)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1083)
+// State S858 (index = 26740)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1088)
 , END
-// State S854 (index = 26696)
-, C_Lexique_galgasScanner::kToken__28_, SHIFT (1084)
+// State S859 (index = 26743)
+, C_Lexique_galgasScanner::kToken__28_, SHIFT (1089)
 , END
-// State S855 (index = 26699)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1085)
+// State S860 (index = 26746)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1090)
 , END
-// State S856 (index = 26702)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1086)
+// State S861 (index = 26749)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1091)
 , END
-// State S857 (index = 26705)
+// State S862 (index = 26752)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (198)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (198)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (198)
@@ -24273,57 +24403,57 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_select, REDUCE (198)
 , C_Lexique_galgasScanner::kToken_tag, REDUCE (198)
 , END
-// State S858 (index = 26736)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1087)
+// State S863 (index = 26783)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1092)
 , END
-// State S859 (index = 26739)
-, C_Lexique_galgasScanner::kToken_search, SHIFT (1088)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1089)
+// State S864 (index = 26786)
+, C_Lexique_galgasScanner::kToken_search, SHIFT (1093)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1094)
 , END
-// State S860 (index = 26744)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (854)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (855)
-, C_Lexique_galgasScanner::kToken_drop, SHIFT (856)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (699)
-, C_Lexique_galgasScanner::kToken_log, SHIFT (857)
-, C_Lexique_galgasScanner::kToken_warning, SHIFT (858)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (859)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (860)
-, C_Lexique_galgasScanner::kToken_rewind, SHIFT (861)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (862)
-, C_Lexique_galgasScanner::kToken_tag, SHIFT (863)
+// State S865 (index = 26791)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (859)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (860)
+, C_Lexique_galgasScanner::kToken_drop, SHIFT (861)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (703)
+, C_Lexique_galgasScanner::kToken_log, SHIFT (862)
+, C_Lexique_galgasScanner::kToken_warning, SHIFT (863)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (864)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (865)
+, C_Lexique_galgasScanner::kToken_rewind, SHIFT (866)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (867)
+, C_Lexique_galgasScanner::kToken_tag, SHIFT (868)
 , END
-// State S861 (index = 26767)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1093)
+// State S866 (index = 26814)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1098)
 , END
-// State S862 (index = 26770)
-, C_Lexique_galgasScanner::kToken_case, SHIFT (1094)
+// State S867 (index = 26817)
+, C_Lexique_galgasScanner::kToken_case, SHIFT (1099)
 , END
-// State S863 (index = 26773)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1095)
+// State S868 (index = 26820)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1100)
 , END
-// State S864 (index = 26776)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (854)
+// State S869 (index = 26823)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (859)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (661)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (855)
-, C_Lexique_galgasScanner::kToken_drop, SHIFT (856)
-, C_Lexique_galgasScanner::kToken_log, SHIFT (857)
-, C_Lexique_galgasScanner::kToken_warning, SHIFT (858)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (859)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (860)
-, C_Lexique_galgasScanner::kToken_rewind, SHIFT (861)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (862)
-, C_Lexique_galgasScanner::kToken_tag, SHIFT (863)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (860)
+, C_Lexique_galgasScanner::kToken_drop, SHIFT (861)
+, C_Lexique_galgasScanner::kToken_log, SHIFT (862)
+, C_Lexique_galgasScanner::kToken_warning, SHIFT (863)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (864)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (865)
+, C_Lexique_galgasScanner::kToken_rewind, SHIFT (866)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (867)
+, C_Lexique_galgasScanner::kToken_tag, SHIFT (868)
 , END
-// State S865 (index = 26799)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1097)
+// State S870 (index = 26846)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1102)
 , END
-// State S866 (index = 26802)
+// State S871 (index = 26849)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (669)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (669)
-, C_Lexique_galgasScanner::kToken__7C_, SHIFT (614)
+, C_Lexique_galgasScanner::kToken__7C_, SHIFT (616)
 , END
-// State S867 (index = 26809)
+// State S872 (index = 26856)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (191)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (191)
 , C_Lexique_galgasScanner::kToken_replace, REDUCE (191)
@@ -24335,43 +24465,48 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, REDUCE (191)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (191)
 , END
-// State S868 (index = 26830)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (684)
-, C_Lexique_galgasScanner::kToken__25_attribute, REDUCE (684)
-, C_Lexique_galgasScanner::kToken_style, REDUCE (684)
-, END
-// State S869 (index = 26837)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (687)
-, END
-// State S870 (index = 26840)
+// State S873 (index = 26877)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (685)
-, C_Lexique_galgasScanner::kToken__25_attribute, SHIFT (618)
-, C_Lexique_galgasScanner::kToken_style, SHIFT (619)
+, C_Lexique_galgasScanner::kToken_style, REDUCE (685)
+, C_Lexique_galgasScanner::kToken__25_templateEndMark, REDUCE (685)
+, C_Lexique_galgasScanner::kToken__25_nonAtomicSelection, REDUCE (685)
 , END
-// State S871 (index = 26847)
-, C_Lexique_galgasScanner::kToken_message, SHIFT (1100)
+// State S874 (index = 26886)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (686)
+, C_Lexique_galgasScanner::kToken_style, SHIFT (620)
+, C_Lexique_galgasScanner::kToken__25_templateEndMark, SHIFT (621)
+, C_Lexique_galgasScanner::kToken__25_nonAtomicSelection, SHIFT (622)
 , END
-// State S872 (index = 26850)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1101)
+// State S875 (index = 26895)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (689)
 , END
-// State S873 (index = 26853)
+// State S876 (index = 26898)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (688)
+, END
+// State S877 (index = 26901)
+, C_Lexique_galgasScanner::kToken_message, SHIFT (1105)
+, END
+// State S878 (index = 26904)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1106)
+, END
+// State S879 (index = 26907)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (535)
 , END
-// State S874 (index = 26856)
+// State S880 (index = 26910)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (116)
 , END
-// State S875 (index = 26859)
+// State S881 (index = 26913)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (540)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1102)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1107)
 , END
-// State S876 (index = 26864)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1104)
+// State S882 (index = 26918)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1109)
 , END
-// State S877 (index = 26867)
+// State S883 (index = 26921)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (542)
-, C_Lexique_galgasScanner::kToken_template, SHIFT (1105)
+, C_Lexique_galgasScanner::kToken_template, SHIFT (1110)
 , END
-// State S878 (index = 26872)
+// State S884 (index = 26926)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (114)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (114)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (114)
@@ -24408,15 +24543,15 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (114)
 , C_Lexique_galgasScanner::kToken_, REDUCE (114)
 , END
-// State S879 (index = 26943)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1107)
+// State S885 (index = 26997)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1112)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (581)
 , END
-// State S880 (index = 26948)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1109)
+// State S886 (index = 27002)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1114)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (583)
 , END
-// State S881 (index = 26953)
+// State S887 (index = 27007)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -24471,7 +24606,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S882 (index = 27060)
+// State S888 (index = 27114)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -24526,19 +24661,19 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S883 (index = 27167)
+// State S889 (index = 27221)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (573)
 , END
-// State S884 (index = 27170)
+// State S890 (index = 27224)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (574)
 , END
-// State S885 (index = 27173)
+// State S891 (index = 27227)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (575)
 , END
-// State S886 (index = 27176)
+// State S892 (index = 27230)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (576)
 , END
-// State S887 (index = 27179)
+// State S893 (index = 27233)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (123)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (123)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (123)
@@ -24575,13 +24710,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (123)
 , C_Lexique_galgasScanner::kToken_, REDUCE (123)
 , END
-// State S888 (index = 27250)
+// State S894 (index = 27304)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (332)
 , END
-// State S889 (index = 27253)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1113)
+// State S895 (index = 27307)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1118)
 , END
-// State S890 (index = 27256)
+// State S896 (index = 27310)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (297)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (297)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (297)
@@ -24633,10 +24768,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (297)
 , C_Lexique_galgasScanner::kToken_, REDUCE (297)
 , END
-// State S891 (index = 27357)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (877)
+// State S897 (index = 27411)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (883)
 , END
-// State S892 (index = 27360)
+// State S898 (index = 27414)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (45)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (45)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (45)
@@ -24673,34 +24808,34 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (45)
 , C_Lexique_galgasScanner::kToken_, REDUCE (45)
 , END
-// State S893 (index = 27431)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1115)
+// State S899 (index = 27485)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1120)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (350)
 , END
-// State S894 (index = 27436)
+// State S900 (index = 27490)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (344)
 , END
-// State S895 (index = 27439)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1117)
+// State S901 (index = 27493)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1122)
 , END
-// State S896 (index = 27442)
-, C_Lexique_galgasScanner::kToken__3F_, REDUCE (802)
+// State S902 (index = 27496)
+, C_Lexique_galgasScanner::kToken__3F_, REDUCE (806)
 , END
-// State S897 (index = 27445)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (803)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1118)
-, C_Lexique_galgasScanner::kToken_unused, REDUCE (803)
+// State S903 (index = 27499)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (807)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1123)
+, C_Lexique_galgasScanner::kToken_unused, REDUCE (807)
 , END
-// State S898 (index = 27452)
-, C_Lexique_galgasScanner::kToken_else, SHIFT (1120)
+// State S904 (index = 27506)
+, C_Lexique_galgasScanner::kToken_else, SHIFT (1125)
 , END
-// State S899 (index = 27455)
+// State S905 (index = 27509)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (238)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (648)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (651)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (238)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (238)
 , END
-// State S900 (index = 27464)
+// State S906 (index = 27518)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (24)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (24)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (24)
@@ -24793,39 +24928,39 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (24)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (24)
 , END
-// State S901 (index = 27647)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1122)
+// State S907 (index = 27701)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1127)
 , END
-// State S902 (index = 27650)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1123)
+// State S908 (index = 27704)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1128)
 , END
-// State S903 (index = 27653)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1124)
+// State S909 (index = 27707)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1129)
 , END
-// State S904 (index = 27656)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1125)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1126)
+// State S910 (index = 27710)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1130)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1131)
 , END
-// State S905 (index = 27661)
-, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1128)
+// State S911 (index = 27715)
+, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1133)
 , END
-// State S906 (index = 27664)
-, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1129)
+// State S912 (index = 27718)
+, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1134)
 , END
-// State S907 (index = 27667)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (1130)
+// State S913 (index = 27721)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (1135)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (467)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1131)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1136)
 , END
-// State S908 (index = 27674)
+// State S914 (index = 27728)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (465)
-, C_Lexique_galgasScanner::kToken_as, SHIFT (1133)
+, C_Lexique_galgasScanner::kToken_as, SHIFT (1138)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (465)
 , END
-// State S909 (index = 27681)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (659)
+// State S915 (index = 27735)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (662)
 , END
-// State S910 (index = 27684)
+// State S916 (index = 27738)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (286)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (286)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (286)
@@ -24917,7 +25052,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (286)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (286)
 , END
-// State S911 (index = 27865)
+// State S917 (index = 27919)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (259)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (259)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (259)
@@ -25004,7 +25139,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (259)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (259)
 , END
-// State S912 (index = 28036)
+// State S918 (index = 28090)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (260)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (260)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (260)
@@ -25091,7 +25226,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (260)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (260)
 , END
-// State S913 (index = 28207)
+// State S919 (index = 28261)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (261)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (261)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (261)
@@ -25178,7 +25313,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (261)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (261)
 , END
-// State S914 (index = 28378)
+// State S920 (index = 28432)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (262)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (262)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (262)
@@ -25265,7 +25400,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (262)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (262)
 , END
-// State S915 (index = 28549)
+// State S921 (index = 28603)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (263)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (263)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (263)
@@ -25352,7 +25487,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (263)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (263)
 , END
-// State S916 (index = 28720)
+// State S922 (index = 28774)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (294)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (294)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (294)
@@ -25423,7 +25558,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (294)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (294)
 , END
-// State S917 (index = 28859)
+// State S923 (index = 28913)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (295)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (295)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (295)
@@ -25494,7 +25629,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (295)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (295)
 , END
-// State S918 (index = 28998)
+// State S924 (index = 29052)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (243)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (243)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (243)
@@ -25567,7 +25702,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (243)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (243)
 , END
-// State S919 (index = 29141)
+// State S925 (index = 29195)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (244)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (244)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (244)
@@ -25640,7 +25775,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (244)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (244)
 , END
-// State S920 (index = 29284)
+// State S926 (index = 29338)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (245)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (245)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (245)
@@ -25713,7 +25848,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (245)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (245)
 , END
-// State S921 (index = 29427)
+// State S927 (index = 29481)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (246)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (246)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (246)
@@ -25786,7 +25921,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (246)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (246)
 , END
-// State S922 (index = 29570)
+// State S928 (index = 29624)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (247)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (247)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (247)
@@ -25859,7 +25994,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (247)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (247)
 , END
-// State S923 (index = 29713)
+// State S929 (index = 29767)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (248)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (248)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (248)
@@ -25932,7 +26067,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (248)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (248)
 , END
-// State S924 (index = 29856)
+// State S930 (index = 29910)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (249)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (249)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (249)
@@ -26005,7 +26140,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (249)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (249)
 , END
-// State S925 (index = 29999)
+// State S931 (index = 30053)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (250)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (250)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (250)
@@ -26078,7 +26213,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (250)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (250)
 , END
-// State S926 (index = 30142)
+// State S932 (index = 30196)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (254)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (254)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (254)
@@ -26159,7 +26294,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (254)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (254)
 , END
-// State S927 (index = 30301)
+// State S933 (index = 30355)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (256)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (256)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (256)
@@ -26240,7 +26375,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (256)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (256)
 , END
-// State S928 (index = 30460)
+// State S934 (index = 30514)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (252)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (252)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (252)
@@ -26321,7 +26456,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (252)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (252)
 , END
-// State S929 (index = 30619)
+// State S935 (index = 30673)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (253)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (253)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (253)
@@ -26402,7 +26537,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (253)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (253)
 , END
-// State S930 (index = 30778)
+// State S936 (index = 30832)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (255)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (255)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (255)
@@ -26483,7 +26618,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (255)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (255)
 , END
-// State S931 (index = 30937)
+// State S937 (index = 30991)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (257)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (257)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (257)
@@ -26564,13 +26699,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (257)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (257)
 , END
-// State S932 (index = 31096)
+// State S938 (index = 31150)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (238)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (648)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (651)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (238)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (238)
 , END
-// State S933 (index = 31105)
+// State S939 (index = 31159)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (22)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (22)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (22)
@@ -26663,18 +26798,18 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (22)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (22)
 , END
-// State S934 (index = 31288)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (1136)
+// State S940 (index = 31342)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (1141)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (283)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (283)
 , END
-// State S935 (index = 31295)
+// State S941 (index = 31349)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
 , C_Lexique_galgasScanner::kToken__2D_, SHIFT (204)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (205)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (684)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (687)
 , C_Lexique_galgasScanner::kToken_true, SHIFT (206)
 , C_Lexique_galgasScanner::kToken_false, SHIFT (207)
 , C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (208)
@@ -26691,10 +26826,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S936 (index = 31338)
+// State S942 (index = 31392)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (280)
 , END
-// State S937 (index = 31341)
+// State S943 (index = 31395)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (26)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (26)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (26)
@@ -26787,7 +26922,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (26)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (26)
 , END
-// State S938 (index = 31524)
+// State S944 (index = 31578)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (265)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (265)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (265)
@@ -26851,7 +26986,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (265)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (265)
 , END
-// State S939 (index = 31649)
+// State S945 (index = 31703)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (288)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (288)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (288)
@@ -26917,7 +27052,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (288)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (288)
 , END
-// State S940 (index = 31778)
+// State S946 (index = 31832)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (289)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (289)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (289)
@@ -26983,7 +27118,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (289)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (289)
 , END
-// State S941 (index = 31907)
+// State S947 (index = 31961)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (290)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (290)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (290)
@@ -27049,7 +27184,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (290)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (290)
 , END
-// State S942 (index = 32036)
+// State S948 (index = 32090)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (291)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (291)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (291)
@@ -27115,7 +27250,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (291)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (291)
 , END
-// State S943 (index = 32165)
+// State S949 (index = 32219)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (292)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (292)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (292)
@@ -27181,7 +27316,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (292)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (292)
 , END
-// State S944 (index = 32294)
+// State S950 (index = 32348)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -27211,7 +27346,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S945 (index = 32351)
+// State S951 (index = 32405)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -27234,13 +27369,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , C_Lexique_galgasScanner::kToken_let, SHIFT (219)
 , END
-// State S946 (index = 32394)
+// State S952 (index = 32448)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (79)
 , END
-// State S947 (index = 32397)
+// State S953 (index = 32451)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (459)
 , END
-// State S948 (index = 32400)
+// State S954 (index = 32454)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (305)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (305)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (305)
@@ -27282,10 +27417,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (305)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (305)
 , END
-// State S949 (index = 32481)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1141)
+// State S955 (index = 32535)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1146)
 , END
-// State S950 (index = 32484)
+// State S956 (index = 32538)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -27330,7 +27465,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S951 (index = 32571)
+// State S957 (index = 32625)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (318)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (318)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (318)
@@ -27375,7 +27510,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (318)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (318)
 , END
-// State S952 (index = 32658)
+// State S958 (index = 32712)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (317)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (317)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (317)
@@ -27420,7 +27555,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (317)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (317)
 , END
-// State S953 (index = 32745)
+// State S959 (index = 32799)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (40)
@@ -27437,7 +27572,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_let, REDUCE (40)
 , C_Lexique_galgasScanner::kToken__21__3F_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (40)
-, C_Lexique_galgasScanner::kToken_spoil, SHIFT (949)
+, C_Lexique_galgasScanner::kToken_spoil, SHIFT (955)
 , C_Lexique_galgasScanner::kToken__3B_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_case, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (40)
@@ -27466,10 +27601,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (40)
 , END
-// State S954 (index = 32834)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1144)
+// State S960 (index = 32888)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1149)
 , END
-// State S955 (index = 32837)
+// State S961 (index = 32891)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -27514,21 +27649,21 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S956 (index = 32924)
+// State S962 (index = 32978)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (324)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (324)
 , END
-// State S957 (index = 32929)
+// State S963 (index = 32983)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (325)
-, C_Lexique_galgasScanner::kToken_unused, SHIFT (1146)
+, C_Lexique_galgasScanner::kToken_unused, SHIFT (1151)
 , END
-// State S958 (index = 32934)
+// State S964 (index = 32988)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (322)
 , END
-// State S959 (index = 32937)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1148)
+// State S965 (index = 32991)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1153)
 , END
-// State S960 (index = 32940)
+// State S966 (index = 32994)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (306)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (306)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (306)
@@ -27570,10 +27705,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (306)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (306)
 , END
-// State S961 (index = 33021)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1149)
+// State S967 (index = 33075)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1154)
 , END
-// State S962 (index = 33024)
+// State S968 (index = 33078)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -27618,7 +27753,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S963 (index = 33111)
+// State S969 (index = 33165)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -27663,7 +27798,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S964 (index = 33198)
+// State S970 (index = 33252)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (309)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (309)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (309)
@@ -27705,7 +27840,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (309)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (309)
 , END
-// State S965 (index = 33279)
+// State S971 (index = 33333)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (307)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (307)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (307)
@@ -27747,8 +27882,8 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (307)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (307)
 , END
-// State S966 (index = 33360)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (714)
+// State S972 (index = 33414)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (717)
 , C_Lexique_galgasScanner::kToken__2D__3D_, REDUCE (378)
 , C_Lexique_galgasScanner::kToken__2B__3D_, REDUCE (378)
 , C_Lexique_galgasScanner::kToken__2A__3D_, REDUCE (378)
@@ -27758,7 +27893,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__26__2D__2D_, REDUCE (445)
 , C_Lexique_galgasScanner::kToken__2D__2D_, REDUCE (445)
 , END
-// State S967 (index = 33379)
+// State S973 (index = 33433)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (101)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (101)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (101)
@@ -27797,17 +27932,17 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (101)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (101)
 , END
-// State S968 (index = 33454)
-, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1152)
+// State S974 (index = 33508)
+, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1157)
 , END
-// State S969 (index = 33457)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1153)
+// State S975 (index = 33511)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1158)
 , END
-// State S970 (index = 33460)
+// State S976 (index = 33514)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (487)
-, C_Lexique_galgasScanner::kToken_as, SHIFT (1154)
+, C_Lexique_galgasScanner::kToken_as, SHIFT (1159)
 , END
-// State S971 (index = 33465)
+// State S977 (index = 33519)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (89)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (89)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (89)
@@ -27846,8 +27981,8 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (89)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (89)
 , END
-// State S972 (index = 33540)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (714)
+// State S978 (index = 33594)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (717)
 , C_Lexique_galgasScanner::kToken__3D_, REDUCE (367)
 , C_Lexique_galgasScanner::kToken__2D__3D_, REDUCE (378)
 , C_Lexique_galgasScanner::kToken__2B__3D_, REDUCE (378)
@@ -27858,7 +27993,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__26__2D__2D_, REDUCE (445)
 , C_Lexique_galgasScanner::kToken__2D__2D_, REDUCE (445)
 , END
-// State S973 (index = 33561)
+// State S979 (index = 33615)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -27880,7 +28015,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S974 (index = 33602)
+// State S980 (index = 33656)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -27902,7 +28037,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S975 (index = 33643)
+// State S981 (index = 33697)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (59)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (59)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (59)
@@ -27941,7 +28076,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (59)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (59)
 , END
-// State S976 (index = 33718)
+// State S982 (index = 33772)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (83)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (83)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (83)
@@ -27980,7 +28115,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (83)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (83)
 , END
-// State S977 (index = 33793)
+// State S983 (index = 33847)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (105)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (105)
@@ -28019,10 +28154,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (105)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (105)
 , END
-// State S978 (index = 33868)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1158)
+// State S984 (index = 33922)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1163)
 , END
-// State S979 (index = 33871)
+// State S985 (index = 33925)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (390)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (390)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (390)
@@ -28039,7 +28174,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_error, REDUCE (390)
 , C_Lexique_galgasScanner::kToken_cast, REDUCE (390)
 , C_Lexique_galgasScanner::kToken_drop, REDUCE (390)
-, C_Lexique_galgasScanner::kToken_fixit, SHIFT (1010)
+, C_Lexique_galgasScanner::kToken_fixit, SHIFT (1016)
 , C_Lexique_galgasScanner::kToken_after, REDUCE (390)
 , C_Lexique_galgasScanner::kToken_for, REDUCE (390)
 , C_Lexique_galgasScanner::kToken_while, REDUCE (390)
@@ -28062,16 +28197,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (390)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (390)
 , END
-// State S980 (index = 33948)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1160)
+// State S986 (index = 34002)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1165)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (372)
 , END
-// State S981 (index = 33953)
+// State S987 (index = 34007)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (377)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (377)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (377)
 , END
-// State S982 (index = 33960)
+// State S988 (index = 34014)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -28101,16 +28236,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S983 (index = 34017)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (1163)
+// State S989 (index = 34071)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (1168)
 , END
-// State S984 (index = 34020)
-, C_Lexique_galgasScanner::kToken_end, SHIFT (1164)
+// State S990 (index = 34074)
+, C_Lexique_galgasScanner::kToken_end, SHIFT (1169)
 , END
-// State S985 (index = 34023)
+// State S991 (index = 34077)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (54)
 , END
-// State S986 (index = 34026)
+// State S992 (index = 34080)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (389)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (389)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (389)
@@ -28149,13 +28284,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (389)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (389)
 , END
-// State S987 (index = 34101)
+// State S993 (index = 34155)
 , C_Lexique_galgasScanner::kToken_in, REDUCE (418)
 , END
-// State S988 (index = 34104)
-, C_Lexique_galgasScanner::kToken_in, SHIFT (1165)
+// State S994 (index = 34158)
+, C_Lexique_galgasScanner::kToken_in, SHIFT (1170)
 , END
-// State S989 (index = 34107)
+// State S995 (index = 34161)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (63)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (63)
 , C_Lexique_galgasScanner::kToken_literalInt, REDUCE (63)
@@ -28164,20 +28299,20 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__2E__2E__2E_, REDUCE (63)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (63)
 , END
-// State S990 (index = 34122)
+// State S996 (index = 34176)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (409)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (401)
-, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (746)
+, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (749)
 , C_Lexique_galgasScanner::kToken__2A_, REDUCE (401)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (747)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (750)
 , C_Lexique_galgasScanner::kToken__2E__2E__2E_, REDUCE (409)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (401)
 , END
-// State S991 (index = 34137)
+// State S997 (index = 34191)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (411)
-, C_Lexique_galgasScanner::kToken__2E__2E__2E_, SHIFT (1167)
+, C_Lexique_galgasScanner::kToken__2E__2E__2E_, SHIFT (1172)
 , END
-// State S992 (index = 34142)
+// State S998 (index = 34196)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (403)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (403)
 , C_Lexique_galgasScanner::kToken_literalInt, REDUCE (403)
@@ -28186,10 +28321,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__2E__2E__2E_, REDUCE (403)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (403)
 , END
-// State S993 (index = 34157)
+// State S999 (index = 34211)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (406)
 , END
-// State S994 (index = 34160)
+// State S1000 (index = 34214)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (64)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (64)
 , C_Lexique_galgasScanner::kToken_literalInt, REDUCE (64)
@@ -28198,19 +28333,19 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__2E__2E__2E_, REDUCE (64)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (64)
 , END
-// State S995 (index = 34175)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1169)
+// State S1001 (index = 34229)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1174)
 , END
-// State S996 (index = 34178)
-, C_Lexique_galgasScanner::kToken_in, SHIFT (1170)
+// State S1002 (index = 34232)
+, C_Lexique_galgasScanner::kToken_in, SHIFT (1175)
 , END
-// State S997 (index = 34181)
+// State S1003 (index = 34235)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (493)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (413)
 , C_Lexique_galgasScanner::kToken__2A_, REDUCE (413)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (494)
 , END
-// State S998 (index = 34190)
+// State S1004 (index = 34244)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -28232,11 +28367,11 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S999 (index = 34231)
-, C_Lexique_galgasScanner::kToken_before, SHIFT (1173)
+// State S1005 (index = 34285)
+, C_Lexique_galgasScanner::kToken_before, SHIFT (1178)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (425)
 , END
-// State S1000 (index = 34236)
+// State S1006 (index = 34290)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -28258,10 +28393,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1001 (index = 34277)
-, C_Lexique_galgasScanner::kToken__29_, SHIFT (1176)
+// State S1007 (index = 34331)
+, C_Lexique_galgasScanner::kToken__29_, SHIFT (1181)
 , END
-// State S1002 (index = 34280)
+// State S1008 (index = 34334)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -28306,7 +28441,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S1003 (index = 34367)
+// State S1009 (index = 34421)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -28328,7 +28463,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1004 (index = 34408)
+// State S1010 (index = 34462)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (479)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (479)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (479)
@@ -28367,10 +28502,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (479)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (479)
 , END
-// State S1005 (index = 34483)
-, C_Lexique_galgasScanner::kToken_while, SHIFT (1179)
+// State S1011 (index = 34537)
+, C_Lexique_galgasScanner::kToken_while, SHIFT (1184)
 , END
-// State S1006 (index = 34486)
+// State S1012 (index = 34540)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -28400,14 +28535,14 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1007 (index = 34543)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1181)
+// State S1013 (index = 34597)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1186)
 , END
-// State S1008 (index = 34546)
-, C_Lexique_galgasScanner::kToken__28_, SHIFT (1182)
+// State S1014 (index = 34600)
+, C_Lexique_galgasScanner::kToken__28_, SHIFT (1187)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (493)
 , END
-// State S1009 (index = 34551)
+// State S1015 (index = 34605)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -28437,10 +28572,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1010 (index = 34608)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1185)
+// State S1016 (index = 34662)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1190)
 , END
-// State S1011 (index = 34611)
+// State S1017 (index = 34665)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (107)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (107)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (107)
@@ -28479,7 +28614,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (107)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (107)
 , END
-// State S1012 (index = 34686)
+// State S1018 (index = 34740)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (61)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (61)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (61)
@@ -28518,31 +28653,31 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (61)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (61)
 , END
-// State S1013 (index = 34761)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1186)
-, C_Lexique_galgasScanner::kToken_self, SHIFT (1187)
+// State S1019 (index = 34815)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1191)
+, C_Lexique_galgasScanner::kToken_self, SHIFT (1192)
 , END
-// State S1014 (index = 34766)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (1189)
+// State S1020 (index = 34820)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (1194)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (506)
 , END
-// State S1015 (index = 34771)
-, C_Lexique_galgasScanner::kToken_end, SHIFT (1191)
+// State S1021 (index = 34825)
+, C_Lexique_galgasScanner::kToken_end, SHIFT (1196)
 , END
-// State S1016 (index = 34774)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (688)
+// State S1022 (index = 34828)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (690)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
 , C_Lexique_galgasScanner::kToken_template, SHIFT (165)
 , END
-// State S1017 (index = 34781)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (688)
+// State S1023 (index = 34835)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (690)
 , C_Lexique_galgasScanner::kToken_replace, SHIFT (163)
 , C_Lexique_galgasScanner::kToken_template, SHIFT (165)
 , END
-// State S1018 (index = 34788)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1194)
+// State S1024 (index = 34842)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1199)
 , END
-// State S1019 (index = 34791)
+// State S1025 (index = 34845)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (119)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (119)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (119)
@@ -28579,11 +28714,11 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (119)
 , C_Lexique_galgasScanner::kToken_, REDUCE (119)
 , END
-// State S1020 (index = 34862)
+// State S1026 (index = 34916)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (549)
 , END
-// State S1021 (index = 34865)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1195)
+// State S1027 (index = 34919)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1200)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (612)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (612)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (612)
@@ -28620,13 +28755,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (612)
 , C_Lexique_galgasScanner::kToken_, REDUCE (612)
 , END
-// State S1022 (index = 34938)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1197)
+// State S1028 (index = 34992)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1202)
 , END
-// State S1023 (index = 34941)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1198)
+// State S1029 (index = 34995)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1203)
 , END
-// State S1024 (index = 34944)
+// State S1030 (index = 34998)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (568)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (568)
 , C_Lexique_galgasScanner::kToken_abstract, SHIFT (301)
@@ -28635,13 +28770,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_method, SHIFT (304)
 , C_Lexique_galgasScanner::kToken_override, SHIFT (307)
 , END
-// State S1025 (index = 34959)
+// State S1031 (index = 35013)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (616)
 , END
-// State S1026 (index = 34962)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1201)
+// State S1032 (index = 35016)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1206)
 , END
-// State S1027 (index = 34965)
+// State S1033 (index = 35019)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (154)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (154)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (154)
@@ -28678,7 +28813,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (154)
 , C_Lexique_galgasScanner::kToken_, REDUCE (154)
 , END
-// State S1028 (index = 35036)
+// State S1034 (index = 35090)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (152)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (152)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (152)
@@ -28715,33 +28850,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (152)
 , C_Lexique_galgasScanner::kToken_, REDUCE (152)
 , END
-// State S1029 (index = 35107)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1202)
+// State S1035 (index = 35161)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1207)
 , END
-// State S1030 (index = 35110)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1203)
+// State S1036 (index = 35164)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1208)
 , END
-// State S1031 (index = 35113)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (531)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (531)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (531)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (531)
-, C_Lexique_galgasScanner::kToken__3B_, REDUCE (531)
-, C_Lexique_galgasScanner::kToken_private, REDUCE (531)
-, C_Lexique_galgasScanner::kToken__3D_, REDUCE (531)
-, C_Lexique_galgasScanner::kToken_remove, REDUCE (531)
-, C_Lexique_galgasScanner::kToken_abstract, REDUCE (531)
-, C_Lexique_galgasScanner::kToken_getter, REDUCE (531)
-, C_Lexique_galgasScanner::kToken_setter, REDUCE (531)
-, C_Lexique_galgasScanner::kToken_method, REDUCE (531)
-, C_Lexique_galgasScanner::kToken_insert, REDUCE (531)
-, C_Lexique_galgasScanner::kToken_search, REDUCE (531)
-, C_Lexique_galgasScanner::kToken_override, REDUCE (531)
-, C_Lexique_galgasScanner::kToken_public, REDUCE (531)
-, C_Lexique_galgasScanner::kToken_protected, REDUCE (531)
-, C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (531)
-, END
-// State S1032 (index = 35150)
+// State S1037 (index = 35167)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -28763,7 +28878,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1033 (index = 35191)
+// State S1038 (index = 35208)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (113)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (113)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (113)
@@ -28782,19 +28897,19 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (113)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (113)
 , END
-// State S1034 (index = 35226)
+// State S1039 (index = 35243)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (636)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (636)
 , END
-// State S1035 (index = 35231)
+// State S1040 (index = 35248)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (634)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (634)
 , END
-// State S1036 (index = 35236)
+// State S1041 (index = 35253)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (638)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (638)
 , END
-// State S1037 (index = 35241)
+// State S1042 (index = 35258)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (290)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (587)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (628)
@@ -28804,7 +28919,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, SHIFT (293)
 , C_Lexique_galgasScanner::kToken_fileprivate, SHIFT (294)
 , END
-// State S1038 (index = 35258)
+// State S1043 (index = 35275)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (131)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (131)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (131)
@@ -28841,7 +28956,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (131)
 , C_Lexique_galgasScanner::kToken_, REDUCE (131)
 , END
-// State S1039 (index = 35329)
+// State S1044 (index = 35346)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (526)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (526)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (526)
@@ -28850,7 +28965,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_private, REDUCE (526)
 , C_Lexique_galgasScanner::kToken__3D_, REDUCE (526)
 , C_Lexique_galgasScanner::kToken_remove, REDUCE (526)
-, C_Lexique_galgasScanner::kToken__25_attribute, SHIFT (1206)
+, C_Lexique_galgasScanner::kToken__25_selector, SHIFT (1211)
 , C_Lexique_galgasScanner::kToken_abstract, REDUCE (526)
 , C_Lexique_galgasScanner::kToken_getter, REDUCE (526)
 , C_Lexique_galgasScanner::kToken_setter, REDUCE (526)
@@ -28862,13 +28977,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (526)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (526)
 , END
-// State S1040 (index = 35368)
+// State S1045 (index = 35385)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (592)
 , END
-// State S1041 (index = 35371)
+// State S1046 (index = 35388)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (593)
 , END
-// State S1042 (index = 35374)
+// State S1047 (index = 35391)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (133)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (133)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (133)
@@ -28905,13 +29020,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (133)
 , C_Lexique_galgasScanner::kToken_, REDUCE (133)
 , END
-// State S1043 (index = 35445)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1208)
+// State S1048 (index = 35462)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1213)
 , END
-// State S1044 (index = 35448)
-, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1209)
+// State S1049 (index = 35465)
+, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1214)
 , END
-// State S1045 (index = 35451)
+// State S1050 (index = 35468)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (149)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (149)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (149)
@@ -28930,7 +29045,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (149)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (149)
 , END
-// State S1046 (index = 35486)
+// State S1051 (index = 35503)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (147)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (147)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (147)
@@ -28949,10 +29064,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (147)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (147)
 , END
-// State S1047 (index = 35521)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1210)
+// State S1052 (index = 35538)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1215)
 , END
-// State S1048 (index = 35524)
+// State S1053 (index = 35541)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -28982,7 +29097,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1049 (index = 35581)
+// State S1054 (index = 35598)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -29012,17 +29127,17 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1050 (index = 35638)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1213)
+// State S1055 (index = 35655)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1218)
 , END
-// State S1051 (index = 35641)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1214)
+// State S1056 (index = 35658)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1219)
 , END
-// State S1052 (index = 35644)
+// State S1057 (index = 35661)
 , C_Lexique_galgasScanner::kToken__3F_, SHIFT (188)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (327)
 , END
-// State S1053 (index = 35649)
+// State S1058 (index = 35666)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -29077,7 +29192,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S1054 (index = 35756)
+// State S1059 (index = 35773)
 , C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (296)
@@ -29132,64 +29247,64 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
 , C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S1055 (index = 35863)
-, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1218)
+// State S1060 (index = 35880)
+, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1223)
 , END
-// State S1056 (index = 35866)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1219)
+// State S1061 (index = 35883)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1224)
 , END
-// State S1057 (index = 35869)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1220)
+// State S1062 (index = 35886)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1225)
 , END
-// State S1058 (index = 35872)
-, C_Lexique_galgasScanner::kToken__3E_, SHIFT (1221)
-, C_Lexique_galgasScanner::kToken__3C_, SHIFT (1222)
+// State S1063 (index = 35889)
+, C_Lexique_galgasScanner::kToken__3E_, SHIFT (1226)
+, C_Lexique_galgasScanner::kToken__3C_, SHIFT (1227)
 , END
-// State S1059 (index = 35877)
+// State S1064 (index = 35894)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (605)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1224)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1229)
 , END
-// State S1060 (index = 35882)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1226)
+// State S1065 (index = 35899)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1231)
 , END
-// State S1061 (index = 35885)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1227)
+// State S1066 (index = 35902)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1232)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (625)
 , END
-// State S1062 (index = 35890)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1229)
+// State S1067 (index = 35907)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1234)
 , END
-// State S1063 (index = 35893)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1230)
+// State S1068 (index = 35910)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1235)
 , END
-// State S1064 (index = 35896)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (740)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1064)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (740)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (740)
-, C_Lexique_galgasScanner::kToken_project, REDUCE (740)
+// State S1069 (index = 35913)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (744)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1069)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (744)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (744)
+, C_Lexique_galgasScanner::kToken_project, REDUCE (744)
 , END
-// State S1065 (index = 35907)
+// State S1070 (index = 35924)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (211)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (211)
 , C_Lexique_galgasScanner::kToken_with, REDUCE (211)
 , C_Lexique_galgasScanner::kToken_project, REDUCE (211)
 , END
-// State S1066 (index = 35916)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1232)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (727)
-, C_Lexique_galgasScanner::kToken_label, SHIFT (1233)
+// State S1071 (index = 35933)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1237)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (731)
+, C_Lexique_galgasScanner::kToken_label, SHIFT (1238)
 , END
-// State S1067 (index = 35923)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1235)
+// State S1072 (index = 35940)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1240)
 , END
-// State S1068 (index = 35926)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (747)
+// State S1073 (index = 35943)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (751)
 , END
-// State S1069 (index = 35929)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (748)
+// State S1074 (index = 35946)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (752)
 , END
-// State S1070 (index = 35932)
+// State S1075 (index = 35949)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (212)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (212)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (212)
@@ -29226,18 +29341,18 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (212)
 , C_Lexique_galgasScanner::kToken_, REDUCE (212)
 , END
-// State S1071 (index = 36003)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1236)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (752)
-, C_Lexique_galgasScanner::kToken_label, SHIFT (1237)
-, C_Lexique_galgasScanner::kToken_rule, REDUCE (752)
+// State S1076 (index = 36020)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1241)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_label, SHIFT (1242)
+, C_Lexique_galgasScanner::kToken_rule, REDUCE (756)
 , END
-// State S1072 (index = 36012)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (754)
-, C_Lexique_galgasScanner::kToken_label, SHIFT (1239)
-, C_Lexique_galgasScanner::kToken_rule, REDUCE (754)
+// State S1077 (index = 36029)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (758)
+, C_Lexique_galgasScanner::kToken_label, SHIFT (1244)
+, C_Lexique_galgasScanner::kToken_rule, REDUCE (758)
 , END
-// State S1073 (index = 36019)
+// State S1078 (index = 36036)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (290)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (559)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (628)
@@ -29252,7 +29367,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, SHIFT (293)
 , C_Lexique_galgasScanner::kToken_fileprivate, SHIFT (294)
 , END
-// State S1074 (index = 36046)
+// State S1079 (index = 36063)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (290)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (559)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (628)
@@ -29267,19 +29382,19 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, SHIFT (293)
 , C_Lexique_galgasScanner::kToken_fileprivate, SHIFT (294)
 , END
-// State S1075 (index = 36073)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1243)
+// State S1080 (index = 36090)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1248)
 , END
-// State S1076 (index = 36076)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1244)
+// State S1081 (index = 36093)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1249)
 , END
-// State S1077 (index = 36079)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1245)
+// State S1082 (index = 36096)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1250)
 , END
-// State S1078 (index = 36082)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1246)
+// State S1083 (index = 36099)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1251)
 , END
-// State S1079 (index = 36085)
+// State S1084 (index = 36102)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (193)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (193)
 , C_Lexique_galgasScanner::kToken_replace, REDUCE (193)
@@ -29291,28 +29406,28 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, REDUCE (193)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (193)
 , END
-// State S1080 (index = 36106)
+// State S1085 (index = 36123)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (674)
 , C_Lexique_galgasScanner::kToken_style, REDUCE (674)
 , END
-// State S1081 (index = 36111)
+// State S1086 (index = 36128)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (675)
 , END
-// State S1082 (index = 36114)
-, C_Lexique_galgasScanner::kToken_message, SHIFT (1247)
+// State S1087 (index = 36131)
+, C_Lexique_galgasScanner::kToken_message, SHIFT (1252)
 , END
-// State S1083 (index = 36117)
+// State S1088 (index = 36134)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (184)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (184)
 , C_Lexique_galgasScanner::kToken__7C_, REDUCE (184)
 , END
-// State S1084 (index = 36124)
-, C_Lexique_galgasScanner::kToken__29_, REDUCE (703)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (1248)
-, C_Lexique_galgasScanner::kToken__21__3F_, SHIFT (1249)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (703)
+// State S1089 (index = 36141)
+, C_Lexique_galgasScanner::kToken__29_, REDUCE (707)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (1253)
+, C_Lexique_galgasScanner::kToken__21__3F_, SHIFT (1254)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (707)
 , END
-// State S1085 (index = 36133)
+// State S1090 (index = 36150)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (197)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (197)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (197)
@@ -29329,7 +29444,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_select, REDUCE (197)
 , C_Lexique_galgasScanner::kToken_tag, REDUCE (197)
 , END
-// State S1086 (index = 36164)
+// State S1091 (index = 36181)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (196)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (196)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (196)
@@ -29346,7 +29461,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_select, REDUCE (196)
 , C_Lexique_galgasScanner::kToken_tag, REDUCE (196)
 , END
-// State S1087 (index = 36195)
+// State S1092 (index = 36212)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (205)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (205)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (205)
@@ -29363,10 +29478,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_select, REDUCE (205)
 , C_Lexique_galgasScanner::kToken_tag, REDUCE (205)
 , END
-// State S1088 (index = 36226)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1251)
+// State S1093 (index = 36243)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1256)
 , END
-// State S1089 (index = 36229)
+// State S1094 (index = 36246)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (203)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (203)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (203)
@@ -29383,7 +29498,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_select, REDUCE (203)
 , C_Lexique_galgasScanner::kToken_tag, REDUCE (203)
 , END
-// State S1090 (index = 36260)
+// State S1095 (index = 36277)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (175)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (175)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (175)
@@ -29400,32 +29515,32 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_select, REDUCE (175)
 , C_Lexique_galgasScanner::kToken_tag, REDUCE (175)
 , END
-// State S1091 (index = 36291)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (854)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (855)
-, C_Lexique_galgasScanner::kToken_drop, SHIFT (856)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (699)
-, C_Lexique_galgasScanner::kToken_log, SHIFT (857)
-, C_Lexique_galgasScanner::kToken_warning, SHIFT (858)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (859)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (860)
-, C_Lexique_galgasScanner::kToken_rewind, SHIFT (861)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (862)
-, C_Lexique_galgasScanner::kToken_tag, SHIFT (863)
+// State S1096 (index = 36308)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (859)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (860)
+, C_Lexique_galgasScanner::kToken_drop, SHIFT (861)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (703)
+, C_Lexique_galgasScanner::kToken_log, SHIFT (862)
+, C_Lexique_galgasScanner::kToken_warning, SHIFT (863)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (864)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (865)
+, C_Lexique_galgasScanner::kToken_rewind, SHIFT (866)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (867)
+, C_Lexique_galgasScanner::kToken_tag, SHIFT (868)
 , END
-// State S1092 (index = 36314)
-, C_Lexique_galgasScanner::kToken_while, SHIFT (1253)
+// State S1097 (index = 36331)
+, C_Lexique_galgasScanner::kToken_while, SHIFT (1258)
 , END
-// State S1093 (index = 36317)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (1255)
+// State S1098 (index = 36334)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (1260)
 , END
-// State S1094 (index = 36320)
+// State S1099 (index = 36337)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (351)
 , C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (352)
 , C_Lexique_galgasScanner::kToken__27_char_27_, SHIFT (353)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (354)
 , END
-// State S1095 (index = 36329)
+// State S1100 (index = 36346)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (204)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (204)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (204)
@@ -29442,10 +29557,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_select, REDUCE (204)
 , C_Lexique_galgasScanner::kToken_tag, REDUCE (204)
 , END
-// State S1096 (index = 36360)
+// State S1101 (index = 36377)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (662)
 , END
-// State S1097 (index = 36363)
+// State S1102 (index = 36380)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (174)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (174)
 , C_Lexique_galgasScanner::kToken_replace, REDUCE (174)
@@ -29457,66 +29572,66 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, REDUCE (174)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (174)
 , END
-// State S1098 (index = 36384)
+// State S1103 (index = 36401)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (670)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (670)
 , END
-// State S1099 (index = 36389)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (686)
-, END
-// State S1100 (index = 36392)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1257)
-, END
-// State S1101 (index = 36395)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (536)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (872)
-, END
-// State S1102 (index = 36400)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1259)
-, END
-// State S1103 (index = 36403)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (539)
-, END
 // State S1104 (index = 36406)
-, C_Lexique_galgasScanner::kToken__7B_, REDUCE (117)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (687)
 , END
 // State S1105 (index = 36409)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1260)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1262)
 , END
 // State S1106 (index = 36412)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1261)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (536)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (878)
 , END
-// State S1107 (index = 36415)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1262)
+// State S1107 (index = 36417)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1264)
 , END
-// State S1108 (index = 36418)
-, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1263)
+// State S1108 (index = 36420)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (539)
 , END
-// State S1109 (index = 36421)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1264)
+// State S1109 (index = 36423)
+, C_Lexique_galgasScanner::kToken__7B_, REDUCE (117)
 , END
-// State S1110 (index = 36424)
-, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1265)
+// State S1110 (index = 36426)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1265)
 , END
-// State S1111 (index = 36427)
+// State S1111 (index = 36429)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1266)
+, END
+// State S1112 (index = 36432)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1267)
+, END
+// State S1113 (index = 36435)
+, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1268)
+, END
+// State S1114 (index = 36438)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1269)
+, END
+// State S1115 (index = 36441)
+, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1270)
+, END
+// State S1116 (index = 36444)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (128)
 , C_Lexique_galgasScanner::kToken_constructor, REDUCE (128)
 , C_Lexique_galgasScanner::kToken_getter, REDUCE (128)
 , C_Lexique_galgasScanner::kToken_setter, REDUCE (128)
 , C_Lexique_galgasScanner::kToken_method, REDUCE (128)
 , END
-// State S1112 (index = 36438)
+// State S1117 (index = 36455)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (129)
 , C_Lexique_galgasScanner::kToken_constructor, REDUCE (129)
 , C_Lexique_galgasScanner::kToken_getter, REDUCE (129)
 , C_Lexique_galgasScanner::kToken_setter, REDUCE (129)
 , C_Lexique_galgasScanner::kToken_method, REDUCE (129)
 , END
-// State S1113 (index = 36449)
+// State S1118 (index = 36466)
 , C_Lexique_galgasScanner::kToken__3F_, SHIFT (188)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (327)
 , END
-// State S1114 (index = 36454)
+// State S1119 (index = 36471)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (115)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (115)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (115)
@@ -29553,13 +29668,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (115)
 , C_Lexique_galgasScanner::kToken_, REDUCE (115)
 , END
-// State S1115 (index = 36525)
+// State S1120 (index = 36542)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (349)
 , END
-// State S1116 (index = 36528)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1267)
+// State S1121 (index = 36545)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1272)
 , END
-// State S1117 (index = 36531)
+// State S1122 (index = 36548)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -29589,15 +29704,15 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1118 (index = 36588)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (804)
-, C_Lexique_galgasScanner::kToken_unused, REDUCE (804)
+// State S1123 (index = 36605)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (808)
+, C_Lexique_galgasScanner::kToken_unused, REDUCE (808)
 , END
-// State S1119 (index = 36593)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (805)
-, C_Lexique_galgasScanner::kToken_unused, SHIFT (1269)
+// State S1124 (index = 36610)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (809)
+, C_Lexique_galgasScanner::kToken_unused, SHIFT (1274)
 , END
-// State S1120 (index = 36598)
+// State S1125 (index = 36615)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -29619,33 +29734,33 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1121 (index = 36639)
+// State S1126 (index = 36656)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (239)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (239)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (239)
 , END
-// State S1122 (index = 36646)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1272)
+// State S1127 (index = 36663)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1277)
 , END
-// State S1123 (index = 36649)
-, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1273)
+// State S1128 (index = 36666)
+, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1278)
 , END
-// State S1124 (index = 36652)
-, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1274)
+// State S1129 (index = 36669)
+, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1279)
 , END
-// State S1125 (index = 36655)
+// State S1130 (index = 36672)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (238)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (648)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (651)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (238)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (238)
 , END
-// State S1126 (index = 36664)
+// State S1131 (index = 36681)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (273)
 , END
-// State S1127 (index = 36667)
+// State S1132 (index = 36684)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (272)
 , END
-// State S1128 (index = 36670)
+// State S1133 (index = 36687)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (19)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (19)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (19)
@@ -29738,7 +29853,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (19)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (19)
 , END
-// State S1129 (index = 36853)
+// State S1134 (index = 36870)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (20)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (20)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (20)
@@ -29831,7 +29946,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (20)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (20)
 , END
-// State S1130 (index = 37036)
+// State S1135 (index = 37053)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -29853,26 +29968,26 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1131 (index = 37077)
-, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1277)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1278)
-, C_Lexique_galgasScanner::kToken_let, SHIFT (1279)
-, C_Lexique_galgasScanner::kToken_var, SHIFT (1280)
+// State S1136 (index = 37094)
+, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1282)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1283)
+, C_Lexique_galgasScanner::kToken_let, SHIFT (1284)
+, C_Lexique_galgasScanner::kToken_var, SHIFT (1285)
 , END
-// State S1132 (index = 37086)
-, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1282)
+// State S1137 (index = 37103)
+, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1287)
 , END
-// State S1133 (index = 37089)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1283)
+// State S1138 (index = 37106)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1288)
 , END
-// State S1134 (index = 37092)
+// State S1139 (index = 37109)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (460)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (460)
 , END
-// State S1135 (index = 37097)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1284)
+// State S1140 (index = 37114)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1289)
 , END
-// State S1136 (index = 37100)
+// State S1141 (index = 37117)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -29894,21 +30009,21 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1137 (index = 37141)
+// State S1142 (index = 37158)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (27)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (27)
 , END
-// State S1138 (index = 37146)
+// State S1143 (index = 37163)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (281)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (935)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (941)
 , END
-// State S1139 (index = 37151)
+// State S1144 (index = 37168)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (456)
 , END
-// State S1140 (index = 37154)
+// State S1145 (index = 37171)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (457)
 , END
-// State S1141 (index = 37157)
+// State S1146 (index = 37174)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (333)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (333)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (333)
@@ -29920,7 +30035,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (333)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (333)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (333)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1287)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1292)
 , C_Lexique_galgasScanner::kToken_self, REDUCE (333)
 , C_Lexique_galgasScanner::kToken__3F_, REDUCE (333)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (333)
@@ -29954,7 +30069,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (333)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (333)
 , END
-// State S1142 (index = 37246)
+// State S1147 (index = 37263)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (311)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (311)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (311)
@@ -29996,7 +30111,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (311)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (311)
 , END
-// State S1143 (index = 37327)
+// State S1148 (index = 37344)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -30041,7 +30156,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S1144 (index = 37414)
+// State S1149 (index = 37431)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (40)
@@ -30058,7 +30173,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_let, REDUCE (40)
 , C_Lexique_galgasScanner::kToken__21__3F_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (40)
-, C_Lexique_galgasScanner::kToken_spoil, SHIFT (949)
+, C_Lexique_galgasScanner::kToken_spoil, SHIFT (955)
 , C_Lexique_galgasScanner::kToken__3B_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_case, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (40)
@@ -30087,7 +30202,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (40)
 , END
-// State S1145 (index = 37503)
+// State S1150 (index = 37520)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (313)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (313)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (313)
@@ -30129,13 +30244,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (313)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (313)
 , END
-// State S1146 (index = 37584)
+// State S1151 (index = 37601)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (326)
 , END
-// State S1147 (index = 37587)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1291)
+// State S1152 (index = 37604)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1296)
 , END
-// State S1148 (index = 37590)
+// State S1153 (index = 37607)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (40)
@@ -30152,7 +30267,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_let, REDUCE (40)
 , C_Lexique_galgasScanner::kToken__21__3F_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (40)
-, C_Lexique_galgasScanner::kToken_spoil, SHIFT (949)
+, C_Lexique_galgasScanner::kToken_spoil, SHIFT (955)
 , C_Lexique_galgasScanner::kToken__3B_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_case, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (40)
@@ -30181,7 +30296,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (40)
 , END
-// State S1149 (index = 37679)
+// State S1154 (index = 37696)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (319)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (319)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (319)
@@ -30190,7 +30305,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__21_, REDUCE (319)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (319)
 , C_Lexique_galgasScanner::kToken__5B_, REDUCE (319)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (961)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (967)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (319)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (319)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (319)
@@ -30227,7 +30342,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (319)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (319)
 , END
-// State S1150 (index = 37768)
+// State S1155 (index = 37785)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (308)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (308)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (308)
@@ -30269,7 +30384,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (308)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (308)
 , END
-// State S1151 (index = 37849)
+// State S1156 (index = 37866)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (310)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (310)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (310)
@@ -30311,7 +30426,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (310)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (310)
 , END
-// State S1152 (index = 37930)
+// State S1157 (index = 37947)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (98)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (98)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (98)
@@ -30350,18 +30465,18 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (98)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (98)
 , END
-// State S1153 (index = 38005)
+// State S1158 (index = 38022)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (485)
 , C_Lexique_galgasScanner::kToken_as, REDUCE (485)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (969)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (975)
 , END
-// State S1154 (index = 38012)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1295)
+// State S1159 (index = 38029)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1300)
 , END
-// State S1155 (index = 38015)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1296)
+// State S1160 (index = 38032)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1301)
 , END
-// State S1156 (index = 38018)
+// State S1161 (index = 38035)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (52)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (52)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (52)
@@ -30400,12 +30515,12 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (52)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (52)
 , END
-// State S1157 (index = 38093)
+// State S1162 (index = 38110)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (386)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (386)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (386)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (386)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (974)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (980)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (386)
 , C_Lexique_galgasScanner::kToken__5B_, REDUCE (386)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (386)
@@ -30440,7 +30555,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (386)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (386)
 , END
-// State S1158 (index = 38170)
+// State S1163 (index = 38187)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (399)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (399)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (399)
@@ -30449,7 +30564,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__5B_, REDUCE (399)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (399)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (399)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1298)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1303)
 , C_Lexique_galgasScanner::kToken_self, REDUCE (399)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (399)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (399)
@@ -30481,7 +30596,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (399)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (399)
 , END
-// State S1159 (index = 38249)
+// State S1164 (index = 38266)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (62)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (62)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (62)
@@ -30520,16 +30635,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (62)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (62)
 , END
-// State S1160 (index = 38324)
+// State S1165 (index = 38341)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (371)
 , END
-// State S1161 (index = 38327)
-, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1300)
+// State S1166 (index = 38344)
+, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1305)
 , END
-// State S1162 (index = 38330)
+// State S1167 (index = 38347)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (374)
 , END
-// State S1163 (index = 38333)
+// State S1168 (index = 38350)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -30551,7 +30666,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1164 (index = 38374)
+// State S1169 (index = 38391)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (55)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (55)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (55)
@@ -30590,7 +30705,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (55)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (55)
 , END
-// State S1165 (index = 38449)
+// State S1170 (index = 38466)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -30612,17 +30727,17 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1166 (index = 38490)
+// State S1171 (index = 38507)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (410)
 , C_Lexique_galgasScanner::kToken__2E__2E__2E_, REDUCE (410)
 , END
-// State S1167 (index = 38495)
+// State S1172 (index = 38512)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (412)
 , END
-// State S1168 (index = 38498)
+// State S1173 (index = 38515)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (408)
 , END
-// State S1169 (index = 38501)
+// State S1174 (index = 38518)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (404)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (404)
 , C_Lexique_galgasScanner::kToken_literalInt, REDUCE (404)
@@ -30631,7 +30746,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__2E__2E__2E_, REDUCE (404)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (404)
 , END
-// State S1170 (index = 38516)
+// State S1175 (index = 38533)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -30653,17 +30768,17 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1171 (index = 38557)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (752)
+// State S1176 (index = 38574)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (755)
 , C_Lexique_galgasScanner::kToken_before, REDUCE (419)
 , C_Lexique_galgasScanner::kToken_while, REDUCE (419)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (419)
 , END
-// State S1172 (index = 38566)
+// State S1177 (index = 38583)
 , C_Lexique_galgasScanner::kToken_before, REDUCE (424)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (424)
 , END
-// State S1173 (index = 38571)
+// State S1178 (index = 38588)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -30693,20 +30808,20 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1174 (index = 38628)
-, C_Lexique_galgasScanner::kToken_do, SHIFT (1306)
+// State S1179 (index = 38645)
+, C_Lexique_galgasScanner::kToken_do, SHIFT (1311)
 , END
-// State S1175 (index = 38631)
+// State S1180 (index = 38648)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (66)
 , C_Lexique_galgasScanner::kToken_before, REDUCE (66)
 , C_Lexique_galgasScanner::kToken_while, REDUCE (66)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (66)
 , END
-// State S1176 (index = 38640)
-, C_Lexique_galgasScanner::kToken_in, SHIFT (1307)
-, C_Lexique_galgasScanner::kToken_on, SHIFT (1308)
+// State S1181 (index = 38657)
+, C_Lexique_galgasScanner::kToken_in, SHIFT (1312)
+, C_Lexique_galgasScanner::kToken_on, SHIFT (1313)
 , END
-// State S1177 (index = 38645)
+// State S1182 (index = 38662)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (441)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (441)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (441)
@@ -30729,7 +30844,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_do, REDUCE (441)
 , C_Lexique_galgasScanner::kToken_between, REDUCE (441)
 , C_Lexique_galgasScanner::kToken_grammar, REDUCE (441)
-, C_Lexique_galgasScanner::kToken__3A__3E_, SHIFT (1310)
+, C_Lexique_galgasScanner::kToken__3A__3E_, SHIFT (1315)
 , C_Lexique_galgasScanner::kToken_elsif, REDUCE (441)
 , C_Lexique_galgasScanner::kToken_log, REDUCE (441)
 , C_Lexique_galgasScanner::kToken_loop, REDUCE (441)
@@ -30746,10 +30861,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (441)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (441)
 , END
-// State S1178 (index = 38722)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1312)
+// State S1183 (index = 38739)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1317)
 , END
-// State S1179 (index = 38725)
+// State S1184 (index = 38742)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -30771,56 +30886,56 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1180 (index = 38766)
-, C_Lexique_galgasScanner::kToken_end, SHIFT (1314)
+// State S1185 (index = 38783)
+, C_Lexique_galgasScanner::kToken_end, SHIFT (1319)
 , END
-// State S1181 (index = 38769)
+// State S1186 (index = 38786)
 , C_Lexique_galgasScanner::kToken__28_, REDUCE (491)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (491)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1007)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1013)
 , END
-// State S1182 (index = 38776)
+// State S1187 (index = 38793)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (501)
-, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1316)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1317)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1318)
+, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1321)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1322)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1323)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (501)
 , END
-// State S1183 (index = 38787)
+// State S1188 (index = 38804)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (100)
 , END
-// State S1184 (index = 38790)
+// State S1189 (index = 38807)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (489)
-, C_Lexique_galgasScanner::kToken_case, SHIFT (1321)
+, C_Lexique_galgasScanner::kToken_case, SHIFT (1326)
 , END
-// State S1185 (index = 38795)
+// State S1190 (index = 38812)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (392)
-, C_Lexique_galgasScanner::kToken_remove, SHIFT (1323)
-, C_Lexique_galgasScanner::kToken_replace, SHIFT (1324)
-, C_Lexique_galgasScanner::kToken_after, SHIFT (1325)
-, C_Lexique_galgasScanner::kToken_before, SHIFT (1326)
+, C_Lexique_galgasScanner::kToken_remove, SHIFT (1328)
+, C_Lexique_galgasScanner::kToken_replace, SHIFT (1329)
+, C_Lexique_galgasScanner::kToken_after, SHIFT (1330)
+, C_Lexique_galgasScanner::kToken_before, SHIFT (1331)
 , END
-// State S1186 (index = 38806)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (1328)
+// State S1191 (index = 38823)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (1333)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (512)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (512)
 , END
-// State S1187 (index = 38813)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (1330)
+// State S1192 (index = 38830)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (1335)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (514)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (514)
 , END
-// State S1188 (index = 38820)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (1332)
+// State S1193 (index = 38837)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (1337)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (518)
 , END
-// State S1189 (index = 38825)
-, C_Lexique_galgasScanner::kToken_message, SHIFT (1334)
+// State S1194 (index = 38842)
+, C_Lexique_galgasScanner::kToken_message, SHIFT (1339)
 , END
-// State S1190 (index = 38828)
-, C_Lexique_galgasScanner::kToken_do, SHIFT (1335)
+// State S1195 (index = 38845)
+, C_Lexique_galgasScanner::kToken_do, SHIFT (1340)
 , END
-// State S1191 (index = 38831)
+// State S1196 (index = 38848)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (108)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (108)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (108)
@@ -30859,13 +30974,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (108)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (108)
 , END
-// State S1192 (index = 38906)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (689)
+// State S1197 (index = 38923)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (691)
 , END
-// State S1193 (index = 38909)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (690)
+// State S1198 (index = 38926)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (692)
 , END
-// State S1194 (index = 38912)
+// State S1199 (index = 38929)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (192)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (192)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (192)
@@ -30902,7 +31017,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (192)
 , C_Lexique_galgasScanner::kToken_, REDUCE (192)
 , END
-// State S1195 (index = 38983)
+// State S1200 (index = 39000)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (613)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (613)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (613)
@@ -30939,7 +31054,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (613)
 , C_Lexique_galgasScanner::kToken_, REDUCE (613)
 , END
-// State S1196 (index = 39054)
+// State S1201 (index = 39071)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (144)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (144)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (144)
@@ -30976,12 +31091,12 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (144)
 , C_Lexique_galgasScanner::kToken_, REDUCE (144)
 , END
-// State S1197 (index = 39125)
+// State S1202 (index = 39142)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (566)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1336)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1341)
 , END
-// State S1198 (index = 39130)
-, C_Lexique_galgasScanner::kToken__28_, SHIFT (789)
+// State S1203 (index = 39147)
+, C_Lexique_galgasScanner::kToken__28_, SHIFT (792)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (564)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (564)
 , C_Lexique_galgasScanner::kToken_case, REDUCE (564)
@@ -30991,7 +31106,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_method, REDUCE (564)
 , C_Lexique_galgasScanner::kToken_override, REDUCE (564)
 , END
-// State S1199 (index = 39149)
+// State S1204 (index = 39166)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (568)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (568)
 , C_Lexique_galgasScanner::kToken_abstract, SHIFT (301)
@@ -31000,11 +31115,11 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_method, SHIFT (304)
 , C_Lexique_galgasScanner::kToken_override, SHIFT (307)
 , END
-// State S1200 (index = 39164)
+// State S1205 (index = 39181)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (570)
-, C_Lexique_galgasScanner::kToken_default, SHIFT (1340)
+, C_Lexique_galgasScanner::kToken_default, SHIFT (1345)
 , END
-// State S1201 (index = 39169)
+// State S1206 (index = 39186)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -31034,10 +31149,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1202 (index = 39226)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (1343)
+// State S1207 (index = 39243)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (1348)
 , END
-// State S1203 (index = 39229)
+// State S1208 (index = 39246)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (130)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (130)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (130)
@@ -31074,7 +31189,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (130)
 , C_Lexique_galgasScanner::kToken_, REDUCE (130)
 , END
-// State S1204 (index = 39300)
+// State S1209 (index = 39317)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (533)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (533)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (533)
@@ -31093,10 +31208,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (533)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (533)
 , END
-// State S1205 (index = 39335)
+// State S1210 (index = 39352)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (588)
 , END
-// State S1206 (index = 39338)
+// State S1211 (index = 39355)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (526)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (526)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (526)
@@ -31105,7 +31220,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_private, REDUCE (526)
 , C_Lexique_galgasScanner::kToken__3D_, REDUCE (526)
 , C_Lexique_galgasScanner::kToken_remove, REDUCE (526)
-, C_Lexique_galgasScanner::kToken__25_attribute, SHIFT (1206)
+, C_Lexique_galgasScanner::kToken__25_selector, SHIFT (1211)
 , C_Lexique_galgasScanner::kToken_abstract, REDUCE (526)
 , C_Lexique_galgasScanner::kToken_getter, REDUCE (526)
 , C_Lexique_galgasScanner::kToken_setter, REDUCE (526)
@@ -31117,14 +31232,14 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (526)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (526)
 , END
-// State S1207 (index = 39377)
+// State S1212 (index = 39394)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (528)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (528)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (528)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (528)
 , C_Lexique_galgasScanner::kToken__3B_, REDUCE (528)
 , C_Lexique_galgasScanner::kToken_private, REDUCE (528)
-, C_Lexique_galgasScanner::kToken__3D_, SHIFT (1345)
+, C_Lexique_galgasScanner::kToken__3D_, SHIFT (1350)
 , C_Lexique_galgasScanner::kToken_remove, REDUCE (528)
 , C_Lexique_galgasScanner::kToken_abstract, REDUCE (528)
 , C_Lexique_galgasScanner::kToken_getter, REDUCE (528)
@@ -31137,7 +31252,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (528)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (528)
 , END
-// State S1208 (index = 39414)
+// State S1213 (index = 39431)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (136)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (136)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (136)
@@ -31155,23 +31270,23 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (136)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (136)
 , END
-// State S1209 (index = 39447)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1347)
+// State S1214 (index = 39464)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1352)
 , END
-// State S1210 (index = 39450)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1348)
+// State S1215 (index = 39467)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1353)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (619)
 , END
-// State S1211 (index = 39455)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1350)
+// State S1216 (index = 39472)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1355)
 , END
-// State S1212 (index = 39458)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1351)
+// State S1217 (index = 39475)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1356)
 , END
-// State S1213 (index = 39461)
+// State S1218 (index = 39478)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (601)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (601)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1352)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1357)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (601)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (601)
 , C_Lexique_galgasScanner::kToken_private, REDUCE (601)
@@ -31187,7 +31302,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (601)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (601)
 , END
-// State S1214 (index = 39496)
+// State S1219 (index = 39513)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (135)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (135)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (135)
@@ -31205,10 +31320,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (135)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (135)
 , END
-// State S1215 (index = 39529)
-, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1354)
+// State S1220 (index = 39546)
+, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1359)
 , END
-// State S1216 (index = 39532)
+// State S1221 (index = 39549)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (161)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (161)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (161)
@@ -31227,7 +31342,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (161)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (161)
 , END
-// State S1217 (index = 39567)
+// State S1222 (index = 39584)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (159)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (159)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (159)
@@ -31246,10 +31361,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (159)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (159)
 , END
-// State S1218 (index = 39602)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1355)
+// State S1223 (index = 39619)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1360)
 , END
-// State S1219 (index = 39605)
+// State S1224 (index = 39622)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -31279,7 +31394,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1220 (index = 39662)
+// State S1225 (index = 39679)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -31309,26 +31424,26 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1221 (index = 39719)
+// State S1226 (index = 39736)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (608)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (608)
 , END
-// State S1222 (index = 39724)
+// State S1227 (index = 39741)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (607)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (607)
 , END
-// State S1223 (index = 39729)
+// State S1228 (index = 39746)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (140)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (140)
 , END
-// State S1224 (index = 39734)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1058)
+// State S1229 (index = 39751)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1063)
 , END
-// State S1225 (index = 39737)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1359)
+// State S1230 (index = 39754)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1364)
 , END
-// State S1226 (index = 39740)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1360)
+// State S1231 (index = 39757)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1365)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (621)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (621)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (621)
@@ -31365,13 +31480,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (621)
 , C_Lexique_galgasScanner::kToken_, REDUCE (621)
 , END
-// State S1227 (index = 39813)
+// State S1232 (index = 39830)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (624)
 , END
-// State S1228 (index = 39816)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1362)
+// State S1233 (index = 39833)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1367)
 , END
-// State S1229 (index = 39819)
+// State S1234 (index = 39836)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (166)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (166)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (166)
@@ -31408,7 +31523,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (166)
 , C_Lexique_galgasScanner::kToken_, REDUCE (166)
 , END
-// State S1230 (index = 39890)
+// State S1235 (index = 39907)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (164)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (164)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (164)
@@ -31445,46 +31560,46 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (164)
 , C_Lexique_galgasScanner::kToken_, REDUCE (164)
 , END
-// State S1231 (index = 39961)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (741)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (741)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (741)
-, C_Lexique_galgasScanner::kToken_project, REDUCE (741)
+// State S1236 (index = 39978)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (745)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (745)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (745)
+, C_Lexique_galgasScanner::kToken_project, REDUCE (745)
 , END
-// State S1232 (index = 39970)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1363)
-, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1364)
+// State S1237 (index = 39987)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1368)
+, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1369)
 , END
-// State S1233 (index = 39975)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1365)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (731)
+// State S1238 (index = 39992)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1370)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (735)
 , END
-// State S1234 (index = 39980)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1367)
+// State S1239 (index = 39997)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1372)
 , END
-// State S1235 (index = 39983)
+// State S1240 (index = 40000)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (328)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (722)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (726)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (329)
 , C_Lexique_galgasScanner::kToken_project, SHIFT (330)
 , END
-// State S1236 (index = 39992)
+// State S1241 (index = 40009)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
 , C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (756)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_self, SHIFT (109)
 , C_Lexique_galgasScanner::kToken_let, SHIFT (110)
 , C_Lexique_galgasScanner::kToken_var, SHIFT (111)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_error, SHIFT (112)
 , C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
 , C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
 , C_Lexique_galgasScanner::kToken_for, SHIFT (115)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
 , C_Lexique_galgasScanner::kToken_log, SHIFT (117)
 , C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
@@ -31492,36 +31607,36 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (1369)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1370)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1371)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (1372)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (764)
-, C_Lexique_galgasScanner::kToken_parse, SHIFT (1373)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (1374)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1375)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1376)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (1377)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (768)
+, C_Lexique_galgasScanner::kToken_parse, SHIFT (1378)
 , END
-// State S1237 (index = 40055)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1380)
+// State S1242 (index = 40072)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1385)
 , END
-// State S1238 (index = 40058)
+// State S1243 (index = 40075)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (214)
 , C_Lexique_galgasScanner::kToken_rule, REDUCE (214)
 , END
-// State S1239 (index = 40063)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1381)
+// State S1244 (index = 40080)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1386)
 , END
-// State S1240 (index = 40066)
+// State S1245 (index = 40083)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (216)
 , C_Lexique_galgasScanner::kToken_rule, REDUCE (216)
 , END
-// State S1241 (index = 40071)
+// State S1246 (index = 40088)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (560)
 , END
-// State S1242 (index = 40074)
+// State S1247 (index = 40091)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (561)
 , END
-// State S1243 (index = 40077)
+// State S1248 (index = 40094)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (121)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (121)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (121)
@@ -31558,64 +31673,64 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (121)
 , C_Lexique_galgasScanner::kToken_, REDUCE (121)
 , END
-// State S1244 (index = 40148)
-, C_Lexique_galgasScanner::kToken_syntax, SHIFT (1382)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (787)
+// State S1249 (index = 40165)
+, C_Lexique_galgasScanner::kToken_syntax, SHIFT (1387)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (791)
 , END
-// State S1245 (index = 40153)
-, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1384)
+// State S1250 (index = 40170)
+, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1389)
 , END
-// State S1246 (index = 40156)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (693)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (693)
-, C_Lexique_galgasScanner::kToken_replace, REDUCE (693)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (693)
-, C_Lexique_galgasScanner::kToken_template, REDUCE (693)
-, C_Lexique_galgasScanner::kToken_list, REDUCE (693)
-, C_Lexique_galgasScanner::kToken_indexing, REDUCE (693)
-, C_Lexique_galgasScanner::kToken_rule, REDUCE (693)
-, C_Lexique_galgasScanner::kToken_style, REDUCE (693)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (693)
+// State S1251 (index = 40173)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (697)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (697)
+, C_Lexique_galgasScanner::kToken_replace, REDUCE (697)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (697)
+, C_Lexique_galgasScanner::kToken_template, REDUCE (697)
+, C_Lexique_galgasScanner::kToken_list, REDUCE (697)
+, C_Lexique_galgasScanner::kToken_indexing, REDUCE (697)
+, C_Lexique_galgasScanner::kToken_rule, REDUCE (697)
+, C_Lexique_galgasScanner::kToken_style, REDUCE (697)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (697)
 , END
-// State S1247 (index = 40177)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1385)
+// State S1252 (index = 40194)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1390)
 , END
-// State S1248 (index = 40180)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1386)
-, C_Lexique_galgasScanner::kToken__27_char_27_, SHIFT (1387)
-, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1388)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1389)
-, END
-// State S1249 (index = 40189)
+// State S1253 (index = 40197)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (1391)
+, C_Lexique_galgasScanner::kToken__27_char_27_, SHIFT (1392)
+, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1393)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1394)
 , END
-// State S1250 (index = 40192)
-, C_Lexique_galgasScanner::kToken__29_, REDUCE (706)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (1392)
+// State S1254 (index = 40206)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1396)
 , END
-// State S1251 (index = 40197)
-, C_Lexique_galgasScanner::kToken_in, SHIFT (1394)
+// State S1255 (index = 40209)
+, C_Lexique_galgasScanner::kToken__29_, REDUCE (710)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (1397)
 , END
-// State S1252 (index = 40200)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (700)
+// State S1256 (index = 40214)
+, C_Lexique_galgasScanner::kToken_in, SHIFT (1399)
 , END
-// State S1253 (index = 40203)
+// State S1257 (index = 40217)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (704)
+, END
+// State S1258 (index = 40220)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (351)
 , C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (352)
 , C_Lexique_galgasScanner::kToken__27_char_27_, SHIFT (353)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (354)
 , END
-// State S1254 (index = 40212)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (701)
-, C_Lexique_galgasScanner::kToken_while, SHIFT (1253)
+// State S1259 (index = 40229)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (705)
+, C_Lexique_galgasScanner::kToken_while, SHIFT (1258)
 , END
-// State S1255 (index = 40217)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1398)
+// State S1260 (index = 40234)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1403)
 , END
-// State S1256 (index = 40220)
-, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1399)
+// State S1261 (index = 40237)
+, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1404)
 , END
-// State S1257 (index = 40223)
+// State S1262 (index = 40240)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (190)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (190)
 , C_Lexique_galgasScanner::kToken_replace, REDUCE (190)
@@ -31627,17 +31742,17 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, REDUCE (190)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (190)
 , END
-// State S1258 (index = 40244)
+// State S1263 (index = 40261)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (537)
 , END
-// State S1259 (index = 40247)
+// State S1264 (index = 40264)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (540)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1102)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1107)
 , END
-// State S1260 (index = 40252)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1401)
+// State S1265 (index = 40269)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1406)
 , END
-// State S1261 (index = 40255)
+// State S1266 (index = 40272)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (118)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (118)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (118)
@@ -31674,22 +31789,22 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (118)
 , C_Lexique_galgasScanner::kToken_, REDUCE (118)
 , END
-// State S1262 (index = 40326)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1402)
+// State S1267 (index = 40343)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1407)
 , END
-// State S1263 (index = 40329)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1403)
+// State S1268 (index = 40346)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1408)
 , END
-// State S1264 (index = 40332)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1404)
+// State S1269 (index = 40349)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1409)
 , END
-// State S1265 (index = 40335)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1405)
+// State S1270 (index = 40352)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1410)
 , END
-// State S1266 (index = 40338)
+// State S1271 (index = 40355)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (328)
 , END
-// State S1267 (index = 40341)
+// State S1272 (index = 40358)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -31719,22 +31834,22 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1268 (index = 40398)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1407)
+// State S1273 (index = 40415)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1412)
 , END
-// State S1269 (index = 40401)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (806)
+// State S1274 (index = 40418)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (810)
 , END
-// State S1270 (index = 40404)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1408)
+// State S1275 (index = 40421)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1413)
 , END
-// State S1271 (index = 40407)
-, C_Lexique_galgasScanner::kToken_end, SHIFT (1409)
+// State S1276 (index = 40424)
+, C_Lexique_galgasScanner::kToken_end, SHIFT (1414)
 , END
-// State S1272 (index = 40410)
-, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1410)
+// State S1277 (index = 40427)
+, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1415)
 , END
-// State S1273 (index = 40413)
+// State S1278 (index = 40430)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (17)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (17)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (17)
@@ -31827,7 +31942,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (17)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (17)
 , END
-// State S1274 (index = 40596)
+// State S1279 (index = 40613)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (18)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (18)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (18)
@@ -31920,44 +32035,44 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (18)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (18)
 , END
-// State S1275 (index = 40779)
+// State S1280 (index = 40796)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (274)
 , END
-// State S1276 (index = 40782)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (1130)
+// State S1281 (index = 40799)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (1135)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (467)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1131)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1136)
 , END
-// State S1277 (index = 40789)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1412)
+// State S1282 (index = 40806)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1417)
 , END
-// State S1278 (index = 40792)
+// State S1283 (index = 40809)
 , C_Lexique_galgasScanner::kToken__21_, REDUCE (472)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (472)
 , C_Lexique_galgasScanner::kToken__3F_, REDUCE (472)
 , END
-// State S1279 (index = 40799)
+// State S1284 (index = 40816)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (474)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1413)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1418)
 , END
-// State S1280 (index = 40804)
+// State S1285 (index = 40821)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (476)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1415)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1420)
 , END
-// State S1281 (index = 40809)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (1130)
+// State S1286 (index = 40826)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (1135)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (467)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1131)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1136)
 , END
-// State S1282 (index = 40816)
+// State S1287 (index = 40833)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (461)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (461)
 , END
-// State S1283 (index = 40821)
+// State S1288 (index = 40838)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (466)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (466)
 , END
-// State S1284 (index = 40826)
+// State S1289 (index = 40843)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (278)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (278)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (278)
@@ -32050,18 +32165,18 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (278)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (278)
 , END
-// State S1285 (index = 41009)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (1136)
+// State S1290 (index = 41026)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (1141)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (283)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (283)
 , END
-// State S1286 (index = 41016)
+// State S1291 (index = 41033)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (282)
 , END
-// State S1287 (index = 41019)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1419)
+// State S1292 (index = 41036)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1424)
 , END
-// State S1288 (index = 41022)
+// State S1293 (index = 41039)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (41)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (41)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (41)
@@ -32106,7 +32221,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (41)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (41)
 , END
-// State S1289 (index = 41109)
+// State S1294 (index = 41126)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (315)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (315)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (315)
@@ -32148,7 +32263,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (315)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (315)
 , END
-// State S1290 (index = 41190)
+// State S1295 (index = 41207)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -32193,7 +32308,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S1291 (index = 41277)
+// State S1296 (index = 41294)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (40)
@@ -32210,7 +32325,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_let, REDUCE (40)
 , C_Lexique_galgasScanner::kToken__21__3F_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (40)
-, C_Lexique_galgasScanner::kToken_spoil, SHIFT (949)
+, C_Lexique_galgasScanner::kToken_spoil, SHIFT (955)
 , C_Lexique_galgasScanner::kToken__3B_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_case, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (40)
@@ -32239,7 +32354,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (40)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (40)
 , END
-// State S1292 (index = 41366)
+// State S1297 (index = 41383)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -32284,7 +32399,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S1293 (index = 41453)
+// State S1298 (index = 41470)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (320)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (320)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (320)
@@ -32329,14 +32444,14 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (320)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (320)
 , END
-// State S1294 (index = 41540)
+// State S1299 (index = 41557)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (486)
 , C_Lexique_galgasScanner::kToken_as, REDUCE (486)
 , END
-// State S1295 (index = 41545)
+// State S1300 (index = 41562)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (488)
 , END
-// State S1296 (index = 41548)
+// State S1301 (index = 41565)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -32381,7 +32496,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S1297 (index = 41635)
+// State S1302 (index = 41652)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (387)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (387)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (387)
@@ -32420,10 +32535,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (387)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (387)
 , END
-// State S1298 (index = 41710)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1424)
+// State S1303 (index = 41727)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1429)
 , END
-// State S1299 (index = 41713)
+// State S1304 (index = 41730)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (398)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (398)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (398)
@@ -32463,7 +32578,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (398)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (398)
 , END
-// State S1300 (index = 41790)
+// State S1305 (index = 41807)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -32493,31 +32608,31 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1301 (index = 41847)
+// State S1306 (index = 41864)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (375)
 , END
-// State S1302 (index = 41850)
+// State S1307 (index = 41867)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (67)
 , C_Lexique_galgasScanner::kToken_before, REDUCE (67)
 , C_Lexique_galgasScanner::kToken_while, REDUCE (67)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (67)
 , END
-// State S1303 (index = 41859)
+// State S1308 (index = 41876)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (65)
 , C_Lexique_galgasScanner::kToken_before, REDUCE (65)
 , C_Lexique_galgasScanner::kToken_while, REDUCE (65)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (65)
 , END
-// State S1304 (index = 41868)
+// State S1309 (index = 41885)
 , C_Lexique_galgasScanner::kToken_before, REDUCE (420)
 , C_Lexique_galgasScanner::kToken_while, REDUCE (420)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (420)
 , END
-// State S1305 (index = 41875)
+// State S1310 (index = 41892)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (426)
 , END
-// State S1306 (index = 41878)
-, C_Lexique_galgasScanner::kToken__28_, SHIFT (1426)
+// State S1311 (index = 41895)
+, C_Lexique_galgasScanner::kToken__28_, SHIFT (1431)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (427)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (427)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (427)
@@ -32540,7 +32655,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, REDUCE (427)
 , C_Lexique_galgasScanner::kToken_with, REDUCE (427)
 , END
-// State S1307 (index = 41923)
+// State S1312 (index = 41940)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -32562,7 +32677,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1308 (index = 41964)
+// State S1313 (index = 41981)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -32584,7 +32699,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1309 (index = 42005)
+// State S1314 (index = 42022)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (69)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (69)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (69)
@@ -32623,10 +32738,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (69)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (69)
 , END
-// State S1310 (index = 42080)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1430)
+// State S1315 (index = 42097)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1435)
 , END
-// State S1311 (index = 42083)
+// State S1316 (index = 42100)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (73)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (73)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (73)
@@ -32665,7 +32780,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (73)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (73)
 , END
-// State S1312 (index = 42158)
+// State S1317 (index = 42175)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -32687,10 +32802,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1313 (index = 42199)
-, C_Lexique_galgasScanner::kToken_do, SHIFT (1433)
+// State S1318 (index = 42216)
+, C_Lexique_galgasScanner::kToken_do, SHIFT (1438)
 , END
-// State S1314 (index = 42202)
+// State S1319 (index = 42219)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (87)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (87)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (87)
@@ -32729,14 +32844,14 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (87)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (87)
 , END
-// State S1315 (index = 42277)
+// State S1320 (index = 42294)
 , C_Lexique_galgasScanner::kToken__28_, REDUCE (492)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (492)
 , END
-// State S1316 (index = 42282)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1434)
+// State S1321 (index = 42299)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1439)
 , END
-// State S1317 (index = 42285)
+// State S1322 (index = 42302)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (498)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (498)
 , C_Lexique_galgasScanner::kToken_literalInt, REDUCE (498)
@@ -32744,36 +32859,36 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (498)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (498)
 , END
-// State S1318 (index = 42298)
+// State S1323 (index = 42315)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (500)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (500)
 , END
-// State S1319 (index = 42303)
+// State S1324 (index = 42320)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (495)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (501)
-, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1316)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1317)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1318)
+, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1321)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1322)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1323)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (501)
 , END
-// State S1320 (index = 42316)
+// State S1325 (index = 42333)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (502)
-, C_Lexique_galgasScanner::kToken_unused, SHIFT (1437)
+, C_Lexique_galgasScanner::kToken_unused, SHIFT (1442)
 , END
-// State S1321 (index = 42321)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (767)
+// State S1326 (index = 42338)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (770)
 , END
-// State S1322 (index = 42324)
-, C_Lexique_galgasScanner::kToken_end, SHIFT (1440)
+// State S1327 (index = 42341)
+, C_Lexique_galgasScanner::kToken_end, SHIFT (1445)
 , END
-// State S1323 (index = 42327)
+// State S1328 (index = 42344)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (392)
-, C_Lexique_galgasScanner::kToken_remove, SHIFT (1323)
-, C_Lexique_galgasScanner::kToken_replace, SHIFT (1324)
-, C_Lexique_galgasScanner::kToken_after, SHIFT (1325)
-, C_Lexique_galgasScanner::kToken_before, SHIFT (1326)
+, C_Lexique_galgasScanner::kToken_remove, SHIFT (1328)
+, C_Lexique_galgasScanner::kToken_replace, SHIFT (1329)
+, C_Lexique_galgasScanner::kToken_after, SHIFT (1330)
+, C_Lexique_galgasScanner::kToken_before, SHIFT (1331)
 , END
-// State S1324 (index = 42338)
+// State S1329 (index = 42355)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -32795,7 +32910,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1325 (index = 42379)
+// State S1330 (index = 42396)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -32817,7 +32932,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1326 (index = 42420)
+// State S1331 (index = 42437)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -32839,33 +32954,33 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1327 (index = 42461)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1445)
+// State S1332 (index = 42478)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1450)
 , END
-// State S1328 (index = 42464)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1446)
+// State S1333 (index = 42481)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1451)
 , END
-// State S1329 (index = 42467)
+// State S1334 (index = 42484)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (510)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (510)
 , END
-// State S1330 (index = 42472)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1447)
+// State S1335 (index = 42489)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1452)
 , END
-// State S1331 (index = 42475)
+// State S1336 (index = 42492)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (511)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (511)
 , END
-// State S1332 (index = 42480)
-, C_Lexique_galgasScanner::kToken_message, SHIFT (1448)
+// State S1337 (index = 42497)
+, C_Lexique_galgasScanner::kToken_message, SHIFT (1453)
 , END
-// State S1333 (index = 42483)
-, C_Lexique_galgasScanner::kToken_do, SHIFT (1449)
+// State S1338 (index = 42500)
+, C_Lexique_galgasScanner::kToken_do, SHIFT (1454)
 , END
-// State S1334 (index = 42486)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1450)
+// State S1339 (index = 42503)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1455)
 , END
-// State S1335 (index = 42489)
+// State S1340 (index = 42506)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -32895,39 +33010,39 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1336 (index = 42546)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1452)
+// State S1341 (index = 42563)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1457)
 , END
-// State S1337 (index = 42549)
-, C_Lexique_galgasScanner::kToken__29_, SHIFT (1453)
+// State S1342 (index = 42566)
+, C_Lexique_galgasScanner::kToken__29_, SHIFT (1458)
 , END
-// State S1338 (index = 42552)
+// State S1343 (index = 42569)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (562)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (562)
-, C_Lexique_galgasScanner::kToken_case, SHIFT (1023)
+, C_Lexique_galgasScanner::kToken_case, SHIFT (1029)
 , C_Lexique_galgasScanner::kToken_abstract, REDUCE (562)
 , C_Lexique_galgasScanner::kToken_getter, REDUCE (562)
 , C_Lexique_galgasScanner::kToken_setter, REDUCE (562)
 , C_Lexique_galgasScanner::kToken_method, REDUCE (562)
 , C_Lexique_galgasScanner::kToken_override, REDUCE (562)
 , END
-// State S1339 (index = 42569)
+// State S1344 (index = 42586)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (569)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (569)
 , END
-// State S1340 (index = 42574)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1455)
+// State S1345 (index = 42591)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1460)
 , END
-// State S1341 (index = 42577)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1456)
+// State S1346 (index = 42594)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1461)
 , END
-// State S1342 (index = 42580)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1457)
+// State S1347 (index = 42597)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1462)
 , END
-// State S1343 (index = 42583)
-, C_Lexique_galgasScanner::kToken_message, SHIFT (1458)
+// State S1348 (index = 42600)
+, C_Lexique_galgasScanner::kToken_message, SHIFT (1463)
 , END
-// State S1344 (index = 42586)
+// State S1349 (index = 42603)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (527)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (527)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (527)
@@ -32947,7 +33062,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (527)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (527)
 , END
-// State S1345 (index = 42623)
+// State S1350 (index = 42640)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -32969,7 +33084,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1346 (index = 42664)
+// State S1351 (index = 42681)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (112)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (112)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (112)
@@ -32988,8 +33103,8 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (112)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (112)
 , END
-// State S1347 (index = 42699)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1460)
+// State S1352 (index = 42716)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1465)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (614)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (614)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (614)
@@ -33008,13 +33123,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (614)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (614)
 , END
-// State S1348 (index = 42736)
+// State S1353 (index = 42753)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (618)
 , END
-// State S1349 (index = 42739)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1462)
+// State S1354 (index = 42756)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1467)
 , END
-// State S1350 (index = 42742)
+// State S1355 (index = 42759)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (155)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (155)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (155)
@@ -33033,7 +33148,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (155)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (155)
 , END
-// State S1351 (index = 42777)
+// State S1356 (index = 42794)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (153)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (153)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (153)
@@ -33052,10 +33167,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (153)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (153)
 , END
-// State S1352 (index = 42812)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1463)
+// State S1357 (index = 42829)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1468)
 , END
-// State S1353 (index = 42815)
+// State S1358 (index = 42832)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (138)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (138)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (138)
@@ -33073,24 +33188,24 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (138)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (138)
 , END
-// State S1354 (index = 42848)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1464)
+// State S1359 (index = 42865)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1469)
 , END
-// State S1355 (index = 42851)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1465)
+// State S1360 (index = 42868)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1470)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (627)
 , END
-// State S1356 (index = 42856)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1467)
+// State S1361 (index = 42873)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1472)
 , END
-// State S1357 (index = 42859)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1468)
+// State S1362 (index = 42876)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1473)
 , END
-// State S1358 (index = 42862)
+// State S1363 (index = 42879)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (605)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1224)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1229)
 , END
-// State S1359 (index = 42867)
+// State S1364 (index = 42884)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (139)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (139)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (139)
@@ -33127,7 +33242,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (139)
 , C_Lexique_galgasScanner::kToken_, REDUCE (139)
 , END
-// State S1360 (index = 42938)
+// State S1365 (index = 42955)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (620)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (620)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (620)
@@ -33164,7 +33279,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (620)
 , C_Lexique_galgasScanner::kToken_, REDUCE (620)
 , END
-// State S1361 (index = 43009)
+// State S1366 (index = 43026)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (156)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (156)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (156)
@@ -33201,7 +33316,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (156)
 , C_Lexique_galgasScanner::kToken_, REDUCE (156)
 , END
-// State S1362 (index = 43080)
+// State S1367 (index = 43097)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -33231,28 +33346,28 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1363 (index = 43137)
-, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1471)
+// State S1368 (index = 43154)
+, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1476)
 , END
-// State S1364 (index = 43140)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1472)
+// State S1369 (index = 43157)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1477)
 , END
-// State S1365 (index = 43143)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (732)
+// State S1370 (index = 43160)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (736)
 , END
-// State S1366 (index = 43146)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1473)
+// State S1371 (index = 43163)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1478)
 , END
-// State S1367 (index = 43149)
+// State S1372 (index = 43166)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (209)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (209)
 , C_Lexique_galgasScanner::kToken_with, REDUCE (209)
 , C_Lexique_galgasScanner::kToken_project, REDUCE (209)
 , END
-// State S1368 (index = 43158)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (723)
+// State S1373 (index = 43175)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (727)
 , END
-// State S1369 (index = 43161)
+// State S1374 (index = 43178)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -33274,7 +33389,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1370 (index = 43202)
+// State S1375 (index = 43219)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (355)
@@ -33283,7 +33398,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__5B_, REDUCE (355)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_self, REDUCE (355)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1475)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1480)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (355)
 , C_Lexique_galgasScanner::kToken__3B_, REDUCE (355)
@@ -33311,151 +33426,151 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (355)
 , END
-// State S1371 (index = 43273)
+// State S1376 (index = 43290)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
-, C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_self, SHIFT (109)
-, C_Lexique_galgasScanner::kToken_let, SHIFT (110)
-, C_Lexique_galgasScanner::kToken_var, SHIFT (111)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (112)
-, C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
-, C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
-, C_Lexique_galgasScanner::kToken_for, SHIFT (115)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
-, C_Lexique_galgasScanner::kToken_log, SHIFT (117)
-, C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
-, C_Lexique_galgasScanner::kToken_message, SHIFT (119)
-, C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
-, C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
-, C_Lexique_galgasScanner::kToken_with, SHIFT (122)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (1369)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1370)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1371)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (1372)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (764)
-, C_Lexique_galgasScanner::kToken_parse, SHIFT (1373)
-, END
-// State S1372 (index = 43336)
-, C_Lexique_galgasScanner::kToken_if, SHIFT (105)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
-, C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_self, SHIFT (109)
-, C_Lexique_galgasScanner::kToken_let, SHIFT (110)
-, C_Lexique_galgasScanner::kToken_var, SHIFT (111)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (112)
-, C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
-, C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
-, C_Lexique_galgasScanner::kToken_for, SHIFT (115)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
-, C_Lexique_galgasScanner::kToken_log, SHIFT (117)
-, C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
-, C_Lexique_galgasScanner::kToken_message, SHIFT (119)
-, C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
-, C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
-, C_Lexique_galgasScanner::kToken_with, SHIFT (122)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (1369)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1370)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1371)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (1372)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (764)
-, C_Lexique_galgasScanner::kToken_parse, SHIFT (1373)
-, END
-// State S1373 (index = 43399)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1480)
-, C_Lexique_galgasScanner::kToken_do, SHIFT (1481)
-, C_Lexique_galgasScanner::kToken_loop, SHIFT (1482)
-, C_Lexique_galgasScanner::kToken_with, SHIFT (1483)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (765)
-, END
-// State S1374 (index = 43410)
-, C_Lexique_galgasScanner::kToken_if, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (760)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (760)
-, C_Lexique_galgasScanner::kToken__5B_, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
+, C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_self, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (760)
-, C_Lexique_galgasScanner::kToken__3B_, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_self, SHIFT (109)
+, C_Lexique_galgasScanner::kToken_let, SHIFT (110)
+, C_Lexique_galgasScanner::kToken_var, SHIFT (111)
 , C_Lexique_galgasScanner::kToken_case, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_cast, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_for, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (112)
+, C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
+, C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
+, C_Lexique_galgasScanner::kToken_for, SHIFT (115)
 , C_Lexique_galgasScanner::kToken_while, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_loop, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_switch, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
+, C_Lexique_galgasScanner::kToken_log, SHIFT (117)
+, C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
+, C_Lexique_galgasScanner::kToken_message, SHIFT (119)
+, C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
+, C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
+, C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , C_Lexique_galgasScanner::kToken_or, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (760)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (1374)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1375)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1376)
 , C_Lexique_galgasScanner::kToken_rewind, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (760)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (760)
-, C_Lexique_galgasScanner::kToken_parse, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (1377)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (768)
+, C_Lexique_galgasScanner::kToken_parse, SHIFT (1378)
 , END
-// State S1375 (index = 43475)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1484)
+// State S1377 (index = 43353)
+, C_Lexique_galgasScanner::kToken_if, SHIFT (105)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
+, C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_self, SHIFT (109)
+, C_Lexique_galgasScanner::kToken_let, SHIFT (110)
+, C_Lexique_galgasScanner::kToken_var, SHIFT (111)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (112)
+, C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
+, C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
+, C_Lexique_galgasScanner::kToken_for, SHIFT (115)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
+, C_Lexique_galgasScanner::kToken_log, SHIFT (117)
+, C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
+, C_Lexique_galgasScanner::kToken_message, SHIFT (119)
+, C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
+, C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
+, C_Lexique_galgasScanner::kToken_with, SHIFT (122)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (1374)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1375)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1376)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (1377)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (768)
+, C_Lexique_galgasScanner::kToken_parse, SHIFT (1378)
 , END
-// State S1376 (index = 43478)
-, C_Lexique_galgasScanner::kToken_if, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (761)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (761)
-, C_Lexique_galgasScanner::kToken__5B_, REDUCE (761)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_self, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (761)
-, C_Lexique_galgasScanner::kToken__3B_, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_cast, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_for, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_loop, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_switch, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (761)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (761)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (761)
-, C_Lexique_galgasScanner::kToken_parse, REDUCE (761)
+// State S1378 (index = 43416)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1485)
+, C_Lexique_galgasScanner::kToken_do, SHIFT (1486)
+, C_Lexique_galgasScanner::kToken_loop, SHIFT (1487)
+, C_Lexique_galgasScanner::kToken_with, SHIFT (1488)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (769)
 , END
-// State S1377 (index = 43543)
+// State S1379 (index = 43427)
+, C_Lexique_galgasScanner::kToken_if, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (764)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (764)
+, C_Lexique_galgasScanner::kToken__5B_, REDUCE (764)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_self, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (764)
+, C_Lexique_galgasScanner::kToken__3B_, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_cast, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_for, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_loop, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_switch, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (764)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (764)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (764)
+, C_Lexique_galgasScanner::kToken_parse, REDUCE (764)
+, END
+// State S1380 (index = 43492)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1489)
+, END
+// State S1381 (index = 43495)
+, C_Lexique_galgasScanner::kToken_if, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (765)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (765)
+, C_Lexique_galgasScanner::kToken__5B_, REDUCE (765)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_self, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (765)
+, C_Lexique_galgasScanner::kToken__3B_, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_cast, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_for, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_loop, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_switch, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (765)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (765)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (765)
+, C_Lexique_galgasScanner::kToken_parse, REDUCE (765)
+, END
+// State S1382 (index = 43560)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (217)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (217)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (217)
@@ -33464,222 +33579,222 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_or, REDUCE (217)
 , C_Lexique_galgasScanner::kToken_rewind, REDUCE (217)
 , END
-// State S1378 (index = 43558)
-, C_Lexique_galgasScanner::kToken_if, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (758)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (758)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (763)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (763)
-, C_Lexique_galgasScanner::kToken__5B_, REDUCE (763)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (758)
-, C_Lexique_galgasScanner::kToken_self, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (763)
-, C_Lexique_galgasScanner::kToken__3B_, SHIFT (1485)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (758)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_cast, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_for, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (758)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_loop, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_switch, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (758)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (763)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (758)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (763)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_parse, REDUCE (763)
+// State S1383 (index = 43575)
+, C_Lexique_galgasScanner::kToken_if, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (762)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (762)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (767)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (767)
+, C_Lexique_galgasScanner::kToken__5B_, REDUCE (767)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (762)
+, C_Lexique_galgasScanner::kToken_self, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (767)
+, C_Lexique_galgasScanner::kToken__3B_, SHIFT (1490)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (762)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_cast, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_for, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (762)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_loop, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_switch, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (762)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (767)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (762)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (767)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_parse, REDUCE (767)
 , END
-// State S1379 (index = 43623)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, SHIFT (1488)
-, END
-// State S1380 (index = 43626)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_option, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_lexique, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (296)
-, C_Lexique_galgasScanner::kToken__7B_, REDUCE (296)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_default, REDUCE (296)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (91)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (296)
-, C_Lexique_galgasScanner::kToken__3F__21_, SHIFT (92)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_extern, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_proc, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_private, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_func, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_remove, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_after, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_before, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_label, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_template, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_array, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_boolset, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_abstract, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_class, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_valueclass, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_refclass, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_enum, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_constructor, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_getter, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_setter, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_method, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_graph, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_insert, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_list, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_listmap, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_dict, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_map, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_search, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_sortedlist, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_struct, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_typealias, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_override, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_public, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_protected, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_indexing, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_rule, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_gui, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_, REDUCE (296)
-, END
-// State S1381 (index = 43733)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_option, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_lexique, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (296)
-, C_Lexique_galgasScanner::kToken__7B_, REDUCE (296)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_default, REDUCE (296)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (91)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (296)
-, C_Lexique_galgasScanner::kToken__3F__21_, SHIFT (92)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_extern, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_proc, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_private, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_func, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_remove, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_after, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_before, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_label, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_template, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_array, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_boolset, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_abstract, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_class, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_valueclass, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_refclass, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_enum, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_constructor, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_getter, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_setter, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_method, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_graph, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_insert, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_list, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_listmap, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_dict, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_map, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_search, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_sortedlist, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_struct, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_typealias, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_override, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_public, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_protected, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_indexing, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_rule, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_gui, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
-, C_Lexique_galgasScanner::kToken_, REDUCE (296)
-, END
-// State S1382 (index = 43840)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1492)
-, END
-// State S1383 (index = 43843)
+// State S1384 (index = 43640)
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, SHIFT (1493)
 , END
-// State S1384 (index = 43846)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1494)
+// State S1385 (index = 43643)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_option, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_lexique, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (296)
+, C_Lexique_galgasScanner::kToken__7B_, REDUCE (296)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_default, REDUCE (296)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (91)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (296)
+, C_Lexique_galgasScanner::kToken__3F__21_, SHIFT (92)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_extern, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_proc, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_private, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_func, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_remove, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_after, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_before, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_label, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_template, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_array, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_boolset, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_abstract, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_class, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_valueclass, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_refclass, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_enum, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_constructor, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_getter, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_setter, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_method, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_graph, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_insert, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_list, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_listmap, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_dict, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_map, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_search, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_sortedlist, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_struct, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_typealias, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_override, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_public, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_protected, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_indexing, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_rule, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_gui, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S1385 (index = 43849)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1495)
+// State S1386 (index = 43750)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (90)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_option, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_lexique, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (296)
+, C_Lexique_galgasScanner::kToken__7B_, REDUCE (296)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_default, REDUCE (296)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (91)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (296)
+, C_Lexique_galgasScanner::kToken__3F__21_, SHIFT (92)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_extern, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_proc, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_private, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_func, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_remove, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_after, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_before, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_label, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_template, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_array, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_boolset, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_abstract, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_class, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_valueclass, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_refclass, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_enum, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_constructor, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_getter, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_setter, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_method, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_graph, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_insert, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_list, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_listmap, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_dict, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_map, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_search, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_sortedlist, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_struct, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_typealias, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_override, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_public, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_protected, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_indexing, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_rule, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_gui, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_syntax, REDUCE (296)
+, C_Lexique_galgasScanner::kToken_, REDUCE (296)
 , END
-// State S1386 (index = 43852)
-, C_Lexique_galgasScanner::kToken__28_, SHIFT (1496)
+// State S1387 (index = 43857)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1497)
+, END
+// State S1388 (index = 43860)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, SHIFT (1498)
+, END
+// State S1389 (index = 43863)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1499)
+, END
+// State S1390 (index = 43866)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1500)
+, END
+// State S1391 (index = 43869)
+, C_Lexique_galgasScanner::kToken__28_, SHIFT (1501)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (665)
 , C_Lexique_galgasScanner::kToken__21_, REDUCE (665)
 , C_Lexique_galgasScanner::kToken__21__3F_, REDUCE (665)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (665)
 , END
-// State S1387 (index = 43863)
+// State S1392 (index = 43880)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (177)
 , C_Lexique_galgasScanner::kToken__21_, REDUCE (177)
 , C_Lexique_galgasScanner::kToken__21__3F_, REDUCE (177)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (177)
 , END
-// State S1388 (index = 43872)
+// State S1393 (index = 43889)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (178)
 , C_Lexique_galgasScanner::kToken__21_, REDUCE (178)
 , C_Lexique_galgasScanner::kToken__21__3F_, REDUCE (178)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (178)
 , END
-// State S1389 (index = 43881)
+// State S1394 (index = 43898)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (179)
 , C_Lexique_galgasScanner::kToken__21_, REDUCE (179)
 , C_Lexique_galgasScanner::kToken__21__3F_, REDUCE (179)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (179)
 , END
-// State S1390 (index = 43890)
-, C_Lexique_galgasScanner::kToken__29_, REDUCE (703)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (1248)
-, C_Lexique_galgasScanner::kToken__21__3F_, SHIFT (1249)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (703)
+// State S1395 (index = 43907)
+, C_Lexique_galgasScanner::kToken__29_, REDUCE (707)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (1253)
+, C_Lexique_galgasScanner::kToken__21__3F_, SHIFT (1254)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (707)
 , END
-// State S1391 (index = 43899)
-, C_Lexique_galgasScanner::kToken__29_, REDUCE (703)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (1248)
-, C_Lexique_galgasScanner::kToken__21__3F_, SHIFT (1249)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (703)
-, END
-// State S1392 (index = 43908)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1500)
-, END
-// State S1393 (index = 43911)
-, C_Lexique_galgasScanner::kToken__29_, SHIFT (1501)
-, END
-// State S1394 (index = 43914)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1502)
-, END
-// State S1395 (index = 43917)
-, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1503)
-, END
-// State S1396 (index = 43920)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (701)
-, C_Lexique_galgasScanner::kToken_while, SHIFT (1253)
+// State S1396 (index = 43916)
+, C_Lexique_galgasScanner::kToken__29_, REDUCE (707)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (1253)
+, C_Lexique_galgasScanner::kToken__21__3F_, SHIFT (1254)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (707)
 , END
 // State S1397 (index = 43925)
-, C_Lexique_galgasScanner::kToken_end, SHIFT (1505)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1505)
 , END
 // State S1398 (index = 43928)
+, C_Lexique_galgasScanner::kToken__29_, SHIFT (1506)
+, END
+// State S1399 (index = 43931)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1507)
+, END
+// State S1400 (index = 43934)
+, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1508)
+, END
+// State S1401 (index = 43937)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (705)
+, C_Lexique_galgasScanner::kToken_while, SHIFT (1258)
+, END
+// State S1402 (index = 43942)
+, C_Lexique_galgasScanner::kToken_end, SHIFT (1510)
+, END
+// State S1403 (index = 43945)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (200)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (200)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (200)
@@ -33696,54 +33811,54 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_select, REDUCE (200)
 , C_Lexique_galgasScanner::kToken_tag, REDUCE (200)
 , END
-// State S1399 (index = 43959)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (854)
-, C_Lexique_galgasScanner::kToken_default, REDUCE (712)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (712)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (855)
-, C_Lexique_galgasScanner::kToken_drop, SHIFT (856)
-, C_Lexique_galgasScanner::kToken_log, SHIFT (857)
-, C_Lexique_galgasScanner::kToken_warning, SHIFT (858)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (859)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (860)
-, C_Lexique_galgasScanner::kToken_rewind, SHIFT (861)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (862)
-, C_Lexique_galgasScanner::kToken_tag, SHIFT (863)
+// State S1404 (index = 43976)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (859)
+, C_Lexique_galgasScanner::kToken_default, REDUCE (716)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (716)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (860)
+, C_Lexique_galgasScanner::kToken_drop, SHIFT (861)
+, C_Lexique_galgasScanner::kToken_log, SHIFT (862)
+, C_Lexique_galgasScanner::kToken_warning, SHIFT (863)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (864)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (865)
+, C_Lexique_galgasScanner::kToken_rewind, SHIFT (866)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (867)
+, C_Lexique_galgasScanner::kToken_tag, SHIFT (868)
 , END
-// State S1400 (index = 43984)
+// State S1405 (index = 44001)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (541)
 , END
-// State S1401 (index = 43987)
+// State S1406 (index = 44004)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (544)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1508)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1513)
 , C_Lexique_galgasScanner::kToken_template, REDUCE (544)
 , END
-// State S1402 (index = 43994)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1107)
+// State S1407 (index = 44011)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1112)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (581)
 , END
-// State S1403 (index = 43999)
+// State S1408 (index = 44016)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (126)
 , C_Lexique_galgasScanner::kToken_constructor, REDUCE (126)
 , C_Lexique_galgasScanner::kToken_getter, REDUCE (126)
 , C_Lexique_galgasScanner::kToken_setter, REDUCE (126)
 , C_Lexique_galgasScanner::kToken_method, REDUCE (126)
 , END
-// State S1404 (index = 44010)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1109)
+// State S1409 (index = 44027)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1114)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (583)
 , END
-// State S1405 (index = 44015)
+// State S1410 (index = 44032)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (127)
 , C_Lexique_galgasScanner::kToken_constructor, REDUCE (127)
 , C_Lexique_galgasScanner::kToken_getter, REDUCE (127)
 , C_Lexique_galgasScanner::kToken_setter, REDUCE (127)
 , C_Lexique_galgasScanner::kToken_method, REDUCE (127)
 , END
-// State S1406 (index = 44026)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1512)
+// State S1411 (index = 44043)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1517)
 , END
-// State S1407 (index = 44029)
+// State S1412 (index = 44046)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (46)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (46)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (46)
@@ -33780,10 +33895,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (46)
 , C_Lexique_galgasScanner::kToken_, REDUCE (46)
 , END
-// State S1408 (index = 44100)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1513)
+// State S1413 (index = 44117)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1518)
 , END
-// State S1409 (index = 44103)
+// State S1414 (index = 44120)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (1)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (1)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (1)
@@ -33876,7 +33991,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (1)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (1)
 , END
-// State S1410 (index = 44286)
+// State S1415 (index = 44303)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (16)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (16)
 , C_Lexique_galgasScanner::kToken_then, REDUCE (16)
@@ -33969,34 +34084,34 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (16)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (16)
 , END
-// State S1411 (index = 44469)
+// State S1416 (index = 44486)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (468)
 , END
-// State S1412 (index = 44472)
+// State S1417 (index = 44489)
 , C_Lexique_galgasScanner::kToken__21_, REDUCE (473)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (473)
 , C_Lexique_galgasScanner::kToken__3F_, REDUCE (473)
 , END
-// State S1413 (index = 44479)
+// State S1418 (index = 44496)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (475)
 , END
-// State S1414 (index = 44482)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1514)
+// State S1419 (index = 44499)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1519)
 , END
-// State S1415 (index = 44485)
+// State S1420 (index = 44502)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (477)
 , END
-// State S1416 (index = 44488)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1515)
+// State S1421 (index = 44505)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1520)
 , END
-// State S1417 (index = 44491)
+// State S1422 (index = 44508)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (469)
 , END
-// State S1418 (index = 44494)
+// State S1423 (index = 44511)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (284)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (284)
 , END
-// State S1419 (index = 44499)
+// State S1424 (index = 44516)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (333)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (333)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (333)
@@ -34008,7 +34123,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (333)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (333)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (333)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1287)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1292)
 , C_Lexique_galgasScanner::kToken_self, REDUCE (333)
 , C_Lexique_galgasScanner::kToken__3F_, REDUCE (333)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (333)
@@ -34042,7 +34157,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (333)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (333)
 , END
-// State S1420 (index = 44588)
+// State S1425 (index = 44605)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (312)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (312)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (312)
@@ -34084,7 +34199,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (312)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (312)
 , END
-// State S1421 (index = 44669)
+// State S1426 (index = 44686)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -34129,7 +34244,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S1422 (index = 44756)
+// State S1427 (index = 44773)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (314)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (314)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (314)
@@ -34171,10 +34286,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (314)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (314)
 , END
-// State S1423 (index = 44837)
-, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1518)
+// State S1428 (index = 44854)
+, C_Lexique_galgasScanner::kToken__5D_, SHIFT (1523)
 , END
-// State S1424 (index = 44840)
+// State S1429 (index = 44857)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (399)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (399)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (399)
@@ -34183,7 +34298,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__5B_, REDUCE (399)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (399)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (399)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1298)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1303)
 , C_Lexique_galgasScanner::kToken_self, REDUCE (399)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (399)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (399)
@@ -34215,16 +34330,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (399)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (399)
 , END
-// State S1425 (index = 44919)
+// State S1430 (index = 44936)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (53)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (53)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (53)
 , C_Lexique_galgasScanner::kToken_case, REDUCE (53)
 , END
-// State S1426 (index = 44928)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1520)
+// State S1431 (index = 44945)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1525)
 , END
-// State S1427 (index = 44931)
+// State S1432 (index = 44948)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -34254,7 +34369,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1428 (index = 44988)
+// State S1433 (index = 45005)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (435)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (435)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (435)
@@ -34277,7 +34392,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_do, REDUCE (435)
 , C_Lexique_galgasScanner::kToken_between, REDUCE (435)
 , C_Lexique_galgasScanner::kToken_grammar, REDUCE (435)
-, C_Lexique_galgasScanner::kToken__3A__3E_, SHIFT (1522)
+, C_Lexique_galgasScanner::kToken__3A__3E_, SHIFT (1527)
 , C_Lexique_galgasScanner::kToken_elsif, REDUCE (435)
 , C_Lexique_galgasScanner::kToken_log, REDUCE (435)
 , C_Lexique_galgasScanner::kToken_loop, REDUCE (435)
@@ -34294,16 +34409,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (435)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (435)
 , END
-// State S1429 (index = 45065)
-, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1524)
+// State S1434 (index = 45082)
+, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1529)
 , END
-// State S1430 (index = 45068)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1525)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1526)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1527)
-, C_Lexique_galgasScanner::kToken_let, SHIFT (1528)
+// State S1435 (index = 45085)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1530)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1531)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1532)
+, C_Lexique_galgasScanner::kToken_let, SHIFT (1533)
 , END
-// State S1431 (index = 45077)
+// State S1436 (index = 45094)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (442)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (442)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (442)
@@ -34342,10 +34457,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (442)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (442)
 , END
-// State S1432 (index = 45152)
-, C_Lexique_galgasScanner::kToken__29_, SHIFT (1530)
+// State S1437 (index = 45169)
+, C_Lexique_galgasScanner::kToken__29_, SHIFT (1535)
 , END
-// State S1433 (index = 45155)
+// State S1438 (index = 45172)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -34375,7 +34490,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1434 (index = 45212)
+// State S1439 (index = 45229)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (497)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (497)
 , C_Lexique_galgasScanner::kToken_literalInt, REDUCE (497)
@@ -34383,27 +34498,27 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (497)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (497)
 , END
-// State S1435 (index = 45225)
-, C_Lexique_galgasScanner::kToken__29_, SHIFT (1532)
+// State S1440 (index = 45242)
+, C_Lexique_galgasScanner::kToken__29_, SHIFT (1537)
 , END
-// State S1436 (index = 45228)
+// State S1441 (index = 45245)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (495)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (501)
-, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1316)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1317)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1318)
+, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1321)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1322)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1323)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (501)
 , END
-// State S1437 (index = 45241)
+// State S1442 (index = 45258)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (503)
 , END
-// State S1438 (index = 45244)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1534)
+// State S1443 (index = 45261)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1539)
 , END
-// State S1439 (index = 45247)
-, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1535)
+// State S1444 (index = 45264)
+, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1540)
 , END
-// State S1440 (index = 45250)
+// State S1445 (index = 45267)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (99)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (99)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (99)
@@ -34442,31 +34557,31 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (99)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (99)
 , END
-// State S1441 (index = 45325)
+// State S1446 (index = 45342)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (393)
 , END
-// State S1442 (index = 45328)
+// State S1447 (index = 45345)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (392)
-, C_Lexique_galgasScanner::kToken_remove, SHIFT (1323)
-, C_Lexique_galgasScanner::kToken_replace, SHIFT (1324)
-, C_Lexique_galgasScanner::kToken_after, SHIFT (1325)
-, C_Lexique_galgasScanner::kToken_before, SHIFT (1326)
+, C_Lexique_galgasScanner::kToken_remove, SHIFT (1328)
+, C_Lexique_galgasScanner::kToken_replace, SHIFT (1329)
+, C_Lexique_galgasScanner::kToken_after, SHIFT (1330)
+, C_Lexique_galgasScanner::kToken_before, SHIFT (1331)
 , END
-// State S1443 (index = 45339)
+// State S1448 (index = 45356)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (392)
-, C_Lexique_galgasScanner::kToken_remove, SHIFT (1323)
-, C_Lexique_galgasScanner::kToken_replace, SHIFT (1324)
-, C_Lexique_galgasScanner::kToken_after, SHIFT (1325)
-, C_Lexique_galgasScanner::kToken_before, SHIFT (1326)
+, C_Lexique_galgasScanner::kToken_remove, SHIFT (1328)
+, C_Lexique_galgasScanner::kToken_replace, SHIFT (1329)
+, C_Lexique_galgasScanner::kToken_after, SHIFT (1330)
+, C_Lexique_galgasScanner::kToken_before, SHIFT (1331)
 , END
-// State S1444 (index = 45350)
+// State S1449 (index = 45367)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (392)
-, C_Lexique_galgasScanner::kToken_remove, SHIFT (1323)
-, C_Lexique_galgasScanner::kToken_replace, SHIFT (1324)
-, C_Lexique_galgasScanner::kToken_after, SHIFT (1325)
-, C_Lexique_galgasScanner::kToken_before, SHIFT (1326)
+, C_Lexique_galgasScanner::kToken_remove, SHIFT (1328)
+, C_Lexique_galgasScanner::kToken_replace, SHIFT (1329)
+, C_Lexique_galgasScanner::kToken_after, SHIFT (1330)
+, C_Lexique_galgasScanner::kToken_before, SHIFT (1331)
 , END
-// State S1445 (index = 45361)
+// State S1450 (index = 45378)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (391)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (391)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (391)
@@ -34505,20 +34620,20 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (391)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (391)
 , END
-// State S1446 (index = 45436)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (1328)
+// State S1451 (index = 45453)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (1333)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (512)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (512)
 , END
-// State S1447 (index = 45443)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (1540)
+// State S1452 (index = 45460)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (1545)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (516)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (516)
 , END
-// State S1448 (index = 45450)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1542)
+// State S1453 (index = 45467)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1547)
 , END
-// State S1449 (index = 45453)
+// State S1454 (index = 45470)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -34548,18 +34663,18 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1450 (index = 45510)
+// State S1455 (index = 45527)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (507)
 , END
-// State S1451 (index = 45513)
-, C_Lexique_galgasScanner::kToken_else, SHIFT (1544)
+// State S1456 (index = 45530)
+, C_Lexique_galgasScanner::kToken_else, SHIFT (1549)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (508)
 , END
-// State S1452 (index = 45518)
+// State S1457 (index = 45535)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (566)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1336)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1341)
 , END
-// State S1453 (index = 45523)
+// State S1458 (index = 45540)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (565)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (565)
 , C_Lexique_galgasScanner::kToken_case, REDUCE (565)
@@ -34569,7 +34684,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_method, REDUCE (565)
 , C_Lexique_galgasScanner::kToken_override, REDUCE (565)
 , END
-// State S1454 (index = 45540)
+// State S1459 (index = 45557)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (563)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (563)
 , C_Lexique_galgasScanner::kToken_abstract, REDUCE (563)
@@ -34578,10 +34693,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_method, REDUCE (563)
 , C_Lexique_galgasScanner::kToken_override, REDUCE (563)
 , END
-// State S1455 (index = 45555)
+// State S1460 (index = 45572)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (571)
 , END
-// State S1456 (index = 45558)
+// State S1461 (index = 45575)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (122)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (122)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (122)
@@ -34618,7 +34733,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (122)
 , C_Lexique_galgasScanner::kToken_, REDUCE (122)
 , END
-// State S1457 (index = 45629)
+// State S1462 (index = 45646)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (150)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (150)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (150)
@@ -34655,10 +34770,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (150)
 , C_Lexique_galgasScanner::kToken_, REDUCE (150)
 , END
-// State S1458 (index = 45700)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1547)
+// State S1463 (index = 45717)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1552)
 , END
-// State S1459 (index = 45703)
+// State S1464 (index = 45720)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (529)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (529)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (529)
@@ -34677,7 +34792,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (529)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (529)
 , END
-// State S1460 (index = 45738)
+// State S1465 (index = 45755)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (615)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (615)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (615)
@@ -34696,7 +34811,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (615)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (615)
 , END
-// State S1461 (index = 45773)
+// State S1466 (index = 45790)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (145)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (145)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (145)
@@ -34715,7 +34830,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (145)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (145)
 , END
-// State S1462 (index = 45808)
+// State S1467 (index = 45825)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -34745,7 +34860,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1463 (index = 45865)
+// State S1468 (index = 45882)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (602)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (602)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (602)
@@ -34763,8 +34878,8 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (602)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (602)
 , END
-// State S1464 (index = 45898)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1549)
+// State S1469 (index = 45915)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1554)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (623)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (623)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (623)
@@ -34783,13 +34898,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (623)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (623)
 , END
-// State S1465 (index = 45935)
+// State S1470 (index = 45952)
 , C_Lexique_galgasScanner::kToken__7B_, REDUCE (626)
 , END
-// State S1466 (index = 45938)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1551)
+// State S1471 (index = 45955)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1556)
 , END
-// State S1467 (index = 45941)
+// State S1472 (index = 45958)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (167)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (167)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (167)
@@ -34808,7 +34923,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (167)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (167)
 , END
-// State S1468 (index = 45976)
+// State S1473 (index = 45993)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (165)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (165)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (165)
@@ -34827,29 +34942,29 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (165)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (165)
 , END
-// State S1469 (index = 46011)
+// State S1474 (index = 46028)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (606)
 , END
-// State S1470 (index = 46014)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1552)
+// State S1475 (index = 46031)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1557)
 , END
-// State S1471 (index = 46017)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1553)
+// State S1476 (index = 46034)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1558)
 , END
-// State S1472 (index = 46020)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1232)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (727)
-, C_Lexique_galgasScanner::kToken_label, SHIFT (1233)
+// State S1477 (index = 46037)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1237)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (731)
+, C_Lexique_galgasScanner::kToken_label, SHIFT (1238)
 , END
-// State S1473 (index = 46027)
-, C_Lexique_galgasScanner::kToken__28_, SHIFT (1555)
-, C_Lexique_galgasScanner::kToken__2D_, SHIFT (1556)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (735)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (735)
-, C_Lexique_galgasScanner::kToken__2C_, REDUCE (735)
-, C_Lexique_galgasScanner::kToken_label, REDUCE (735)
+// State S1478 (index = 46044)
+, C_Lexique_galgasScanner::kToken__28_, SHIFT (1560)
+, C_Lexique_galgasScanner::kToken__2D_, SHIFT (1561)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (739)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (739)
+, C_Lexique_galgasScanner::kToken__2C_, REDUCE (739)
+, C_Lexique_galgasScanner::kToken_label, REDUCE (739)
 , END
-// State S1474 (index = 46040)
+// State S1479 (index = 46057)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (228)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (228)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (228)
@@ -34883,49 +34998,49 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (228)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (228)
 , END
-// State S1475 (index = 46105)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1558)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1559)
-, C_Lexique_galgasScanner::kToken_let, SHIFT (1560)
-, C_Lexique_galgasScanner::kToken_var, SHIFT (1561)
+// State S1480 (index = 46122)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1563)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1564)
+, C_Lexique_galgasScanner::kToken_let, SHIFT (1565)
+, C_Lexique_galgasScanner::kToken_var, SHIFT (1566)
 , END
-// State S1476 (index = 46114)
-, C_Lexique_galgasScanner::kToken_if, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (775)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (775)
-, C_Lexique_galgasScanner::kToken__5B_, REDUCE (775)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_self, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (775)
-, C_Lexique_galgasScanner::kToken__3B_, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_cast, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_for, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (775)
-, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_loop, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_switch, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_indexing, SHIFT (1562)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (775)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (775)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (775)
-, C_Lexique_galgasScanner::kToken_parse, REDUCE (775)
+// State S1481 (index = 46131)
+, C_Lexique_galgasScanner::kToken_if, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (779)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (779)
+, C_Lexique_galgasScanner::kToken__5B_, REDUCE (779)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_self, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (779)
+, C_Lexique_galgasScanner::kToken__3B_, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_cast, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_for, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (779)
+, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_loop, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_switch, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_indexing, SHIFT (1567)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (779)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (779)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (779)
+, C_Lexique_galgasScanner::kToken_parse, REDUCE (779)
 , END
-// State S1477 (index = 46183)
+// State S1482 (index = 46200)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (50)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (50)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (50)
@@ -34961,32 +35076,32 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (50)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (50)
 , END
-// State S1478 (index = 46252)
-, C_Lexique_galgasScanner::kToken_while, SHIFT (1565)
+// State S1483 (index = 46269)
+, C_Lexique_galgasScanner::kToken_while, SHIFT (1570)
 , END
-// State S1479 (index = 46255)
-, C_Lexique_galgasScanner::kToken_or, SHIFT (1566)
+// State S1484 (index = 46272)
+, C_Lexique_galgasScanner::kToken_or, SHIFT (1571)
 , END
-// State S1480 (index = 46258)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (766)
+// State S1485 (index = 46275)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (770)
 , END
-// State S1481 (index = 46261)
+// State S1486 (index = 46278)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
 , C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (756)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_self, SHIFT (109)
 , C_Lexique_galgasScanner::kToken_let, SHIFT (110)
 , C_Lexique_galgasScanner::kToken_var, SHIFT (111)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_error, SHIFT (112)
 , C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
 , C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
 , C_Lexique_galgasScanner::kToken_for, SHIFT (115)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
 , C_Lexique_galgasScanner::kToken_log, SHIFT (117)
 , C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
@@ -34994,16 +35109,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (1369)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1370)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1371)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (1372)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (764)
-, C_Lexique_galgasScanner::kToken_parse, SHIFT (1373)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (1374)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1375)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1376)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (1377)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (768)
+, C_Lexique_galgasScanner::kToken_parse, SHIFT (1378)
 , END
-// State S1482 (index = 46324)
+// State S1487 (index = 46341)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -35025,7 +35140,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1483 (index = 46365)
+// State S1488 (index = 46382)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -35047,47 +35162,47 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1484 (index = 46406)
+// State S1489 (index = 46423)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (215)
 , C_Lexique_galgasScanner::kToken_label, REDUCE (215)
 , C_Lexique_galgasScanner::kToken_rule, REDUCE (215)
 , END
-// State S1485 (index = 46413)
-, C_Lexique_galgasScanner::kToken_if, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (762)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (762)
-, C_Lexique_galgasScanner::kToken__5B_, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_self, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_cast, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_for, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_loop, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_switch, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (762)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (762)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (762)
-, C_Lexique_galgasScanner::kToken_parse, REDUCE (762)
+// State S1490 (index = 46430)
+, C_Lexique_galgasScanner::kToken_if, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (766)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (766)
+, C_Lexique_galgasScanner::kToken__5B_, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_self, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_cast, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_for, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_loop, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_switch, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (766)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (766)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (766)
+, C_Lexique_galgasScanner::kToken_parse, REDUCE (766)
 , END
-// State S1486 (index = 46462)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (757)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (757)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (757)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (757)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (757)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (757)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (757)
+// State S1491 (index = 46479)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (761)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (761)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (761)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (761)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (761)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (761)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (761)
 , END
-// State S1487 (index = 46477)
+// State S1492 (index = 46494)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
@@ -35106,14 +35221,14 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (1369)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1370)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1371)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (1372)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (764)
-, C_Lexique_galgasScanner::kToken_parse, SHIFT (1373)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (1374)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1375)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1376)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (1377)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (768)
+, C_Lexique_galgasScanner::kToken_parse, SHIFT (1378)
 , END
-// State S1488 (index = 46526)
+// State S1493 (index = 46543)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -35158,62 +35273,62 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S1489 (index = 46613)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (752)
-, C_Lexique_galgasScanner::kToken_label, SHIFT (1237)
-, C_Lexique_galgasScanner::kToken_rule, REDUCE (752)
+// State S1494 (index = 46630)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_label, SHIFT (1242)
+, C_Lexique_galgasScanner::kToken_rule, REDUCE (756)
 , END
-// State S1490 (index = 46620)
-, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1236)
+// State S1495 (index = 46637)
+, C_Lexique_galgasScanner::kToken__7B_, SHIFT (1241)
 , END
-// State S1491 (index = 46623)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (754)
-, C_Lexique_galgasScanner::kToken_label, SHIFT (1239)
-, C_Lexique_galgasScanner::kToken_rule, REDUCE (754)
+// State S1496 (index = 46640)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (758)
+, C_Lexique_galgasScanner::kToken_label, SHIFT (1244)
+, C_Lexique_galgasScanner::kToken_rule, REDUCE (758)
 , END
-// State S1492 (index = 46630)
-, C_Lexique_galgasScanner::kToken_syntax, SHIFT (1382)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (787)
+// State S1497 (index = 46647)
+, C_Lexique_galgasScanner::kToken_syntax, SHIFT (1387)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (791)
 , END
-// State S1493 (index = 46635)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (1575)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (793)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1576)
-, C_Lexique_galgasScanner::kToken__3F__21_, SHIFT (1577)
-, C_Lexique_galgasScanner::kToken_unused, REDUCE (793)
-, C_Lexique_galgasScanner::kToken_label, REDUCE (793)
+// State S1498 (index = 46652)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (1580)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (797)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1581)
+, C_Lexique_galgasScanner::kToken__3F__21_, SHIFT (1582)
+, C_Lexique_galgasScanner::kToken_unused, REDUCE (797)
+, C_Lexique_galgasScanner::kToken_label, REDUCE (797)
 , END
-// State S1494 (index = 46648)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (718)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (718)
-, C_Lexique_galgasScanner::kToken_default, SHIFT (1581)
+// State S1499 (index = 46665)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (722)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (722)
+, C_Lexique_galgasScanner::kToken_default, SHIFT (1586)
 , END
-// State S1495 (index = 46655)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1583)
+// State S1500 (index = 46672)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1588)
 , END
-// State S1496 (index = 46658)
+// State S1501 (index = 46675)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (667)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (1585)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (1590)
 , END
-// State S1497 (index = 46663)
+// State S1502 (index = 46680)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (180)
 , C_Lexique_galgasScanner::kToken__21_, REDUCE (180)
 , C_Lexique_galgasScanner::kToken__21__3F_, REDUCE (180)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (180)
 , END
-// State S1498 (index = 46672)
-, C_Lexique_galgasScanner::kToken__29_, REDUCE (704)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (704)
-, END
-// State S1499 (index = 46677)
-, C_Lexique_galgasScanner::kToken__29_, REDUCE (705)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (705)
-, END
-// State S1500 (index = 46682)
+// State S1503 (index = 46689)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (708)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1587)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (708)
 , END
-// State S1501 (index = 46687)
+// State S1504 (index = 46694)
+, C_Lexique_galgasScanner::kToken__29_, REDUCE (709)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (709)
+, END
+// State S1505 (index = 46699)
+, C_Lexique_galgasScanner::kToken__29_, REDUCE (712)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1592)
+, END
+// State S1506 (index = 46704)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (201)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (201)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (201)
@@ -35230,27 +35345,27 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_select, REDUCE (201)
 , C_Lexique_galgasScanner::kToken_tag, REDUCE (201)
 , END
-// State S1502 (index = 46718)
-, C_Lexique_galgasScanner::kToken_default, SHIFT (1589)
+// State S1507 (index = 46735)
+, C_Lexique_galgasScanner::kToken_default, SHIFT (1594)
 , END
-// State S1503 (index = 46721)
+// State S1508 (index = 46738)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (663)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (854)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (855)
-, C_Lexique_galgasScanner::kToken_drop, SHIFT (856)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (859)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (860)
+, C_Lexique_galgasScanner::kToken_drop, SHIFT (861)
 , C_Lexique_galgasScanner::kToken_while, REDUCE (663)
-, C_Lexique_galgasScanner::kToken_log, SHIFT (857)
-, C_Lexique_galgasScanner::kToken_warning, SHIFT (858)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (859)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (860)
-, C_Lexique_galgasScanner::kToken_rewind, SHIFT (861)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (862)
-, C_Lexique_galgasScanner::kToken_tag, SHIFT (863)
+, C_Lexique_galgasScanner::kToken_log, SHIFT (862)
+, C_Lexique_galgasScanner::kToken_warning, SHIFT (863)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (864)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (865)
+, C_Lexique_galgasScanner::kToken_rewind, SHIFT (866)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (867)
+, C_Lexique_galgasScanner::kToken_tag, SHIFT (868)
 , END
-// State S1504 (index = 46746)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (702)
+// State S1509 (index = 46763)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (706)
 , END
-// State S1505 (index = 46749)
+// State S1510 (index = 46766)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (199)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (199)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (199)
@@ -35267,38 +35382,38 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_select, REDUCE (199)
 , C_Lexique_galgasScanner::kToken_tag, REDUCE (199)
 , END
-// State S1506 (index = 46780)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (854)
-, C_Lexique_galgasScanner::kToken_default, REDUCE (712)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (712)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (855)
-, C_Lexique_galgasScanner::kToken_drop, SHIFT (856)
-, C_Lexique_galgasScanner::kToken_log, SHIFT (857)
-, C_Lexique_galgasScanner::kToken_warning, SHIFT (858)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (859)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (860)
-, C_Lexique_galgasScanner::kToken_rewind, SHIFT (861)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (862)
-, C_Lexique_galgasScanner::kToken_tag, SHIFT (863)
+// State S1511 (index = 46797)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (859)
+, C_Lexique_galgasScanner::kToken_default, REDUCE (716)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (716)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (860)
+, C_Lexique_galgasScanner::kToken_drop, SHIFT (861)
+, C_Lexique_galgasScanner::kToken_log, SHIFT (862)
+, C_Lexique_galgasScanner::kToken_warning, SHIFT (863)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (864)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (865)
+, C_Lexique_galgasScanner::kToken_rewind, SHIFT (866)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (867)
+, C_Lexique_galgasScanner::kToken_tag, SHIFT (868)
 , END
-// State S1507 (index = 46805)
-, C_Lexique_galgasScanner::kToken_default, REDUCE (710)
-, C_Lexique_galgasScanner::kToken_case, SHIFT (1593)
+// State S1512 (index = 46822)
+, C_Lexique_galgasScanner::kToken_default, REDUCE (714)
+, C_Lexique_galgasScanner::kToken_case, SHIFT (1598)
 , END
-// State S1508 (index = 46810)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1595)
+// State S1513 (index = 46827)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1600)
 , END
-// State S1509 (index = 46813)
+// State S1514 (index = 46830)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (542)
-, C_Lexique_galgasScanner::kToken_template, SHIFT (1105)
+, C_Lexique_galgasScanner::kToken_template, SHIFT (1110)
 , END
-// State S1510 (index = 46818)
+// State S1515 (index = 46835)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (582)
 , END
-// State S1511 (index = 46821)
+// State S1516 (index = 46838)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (584)
 , END
-// State S1512 (index = 46824)
+// State S1517 (index = 46841)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (47)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (47)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (47)
@@ -35335,7 +35450,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (47)
 , C_Lexique_galgasScanner::kToken_, REDUCE (47)
 , END
-// State S1513 (index = 46895)
+// State S1518 (index = 46912)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -35365,17 +35480,17 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1514 (index = 46952)
+// State S1519 (index = 46969)
 , C_Lexique_galgasScanner::kToken__21_, REDUCE (470)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (470)
 , C_Lexique_galgasScanner::kToken__3F_, REDUCE (470)
 , END
-// State S1515 (index = 46959)
+// State S1520 (index = 46976)
 , C_Lexique_galgasScanner::kToken__21_, REDUCE (471)
 , C_Lexique_galgasScanner::kToken__5D_, REDUCE (471)
 , C_Lexique_galgasScanner::kToken__3F_, REDUCE (471)
 , END
-// State S1516 (index = 46966)
+// State S1521 (index = 46983)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (334)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (334)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (334)
@@ -35420,7 +35535,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (334)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (334)
 , END
-// State S1517 (index = 47053)
+// State S1522 (index = 47070)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (316)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (316)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (316)
@@ -35462,7 +35577,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (316)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (316)
 , END
-// State S1518 (index = 47134)
+// State S1523 (index = 47151)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (97)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (97)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (97)
@@ -35501,7 +35616,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (97)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (97)
 , END
-// State S1519 (index = 47209)
+// State S1524 (index = 47226)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (400)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (400)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (400)
@@ -35541,18 +35656,18 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (400)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (400)
 , END
-// State S1520 (index = 47286)
-, C_Lexique_galgasScanner::kToken__29_, SHIFT (1598)
+// State S1525 (index = 47303)
+, C_Lexique_galgasScanner::kToken__29_, SHIFT (1603)
 , END
-// State S1521 (index = 47289)
+// State S1526 (index = 47306)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (429)
 , C_Lexique_galgasScanner::kToken_after, REDUCE (429)
-, C_Lexique_galgasScanner::kToken_between, SHIFT (1599)
+, C_Lexique_galgasScanner::kToken_between, SHIFT (1604)
 , END
-// State S1522 (index = 47296)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1430)
+// State S1527 (index = 47313)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1435)
 , END
-// State S1523 (index = 47299)
+// State S1528 (index = 47316)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (70)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (70)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (70)
@@ -35591,7 +35706,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (70)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (70)
 , END
-// State S1524 (index = 47374)
+// State S1529 (index = 47391)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -35613,7 +35728,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1525 (index = 47415)
+// State S1530 (index = 47432)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (354)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (354)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (354)
@@ -35653,7 +35768,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (354)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (354)
 , END
-// State S1526 (index = 47492)
+// State S1531 (index = 47509)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (351)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (351)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (351)
@@ -35693,13 +35808,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (351)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (351)
 , END
-// State S1527 (index = 47569)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1603)
+// State S1532 (index = 47586)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1608)
 , END
-// State S1528 (index = 47572)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1604)
+// State S1533 (index = 47589)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1609)
 , END
-// State S1529 (index = 47575)
+// State S1534 (index = 47592)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (49)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (49)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (49)
@@ -35739,7 +35854,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (49)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (49)
 , END
-// State S1530 (index = 47652)
+// State S1535 (index = 47669)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (304)
@@ -35784,16 +35899,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (304)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (304)
 , END
-// State S1531 (index = 47739)
-, C_Lexique_galgasScanner::kToken_end, SHIFT (1606)
+// State S1536 (index = 47756)
+, C_Lexique_galgasScanner::kToken_end, SHIFT (1611)
 , END
-// State S1532 (index = 47742)
+// State S1537 (index = 47759)
 , C_Lexique_galgasScanner::kToken__3A_, REDUCE (494)
 , END
-// State S1533 (index = 47745)
+// State S1538 (index = 47762)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (496)
 , END
-// State S1534 (index = 47748)
+// State S1539 (index = 47765)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (499)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (499)
 , C_Lexique_galgasScanner::kToken_literalInt, REDUCE (499)
@@ -35801,7 +35916,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (499)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (499)
 , END
-// State S1535 (index = 47761)
+// State S1540 (index = 47778)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -35831,34 +35946,34 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1536 (index = 47818)
+// State S1541 (index = 47835)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (394)
 , END
-// State S1537 (index = 47821)
+// State S1542 (index = 47838)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (395)
 , END
-// State S1538 (index = 47824)
+// State S1543 (index = 47841)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (396)
 , END
-// State S1539 (index = 47827)
+// State S1544 (index = 47844)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (513)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (513)
 , END
-// State S1540 (index = 47832)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1608)
+// State S1545 (index = 47849)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1613)
 , END
-// State S1541 (index = 47835)
+// State S1546 (index = 47852)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (515)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (515)
 , END
-// State S1542 (index = 47840)
+// State S1547 (index = 47857)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (519)
 , END
-// State S1543 (index = 47843)
-, C_Lexique_galgasScanner::kToken_else, SHIFT (1609)
+// State S1548 (index = 47860)
+, C_Lexique_galgasScanner::kToken_else, SHIFT (1614)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (520)
 , END
-// State S1544 (index = 47848)
+// State S1549 (index = 47865)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -35888,20 +36003,20 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1545 (index = 47905)
+// State S1550 (index = 47922)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (109)
 , END
-// State S1546 (index = 47908)
+// State S1551 (index = 47925)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (567)
 , END
-// State S1547 (index = 47911)
+// State S1552 (index = 47928)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (585)
-, C_Lexique_galgasScanner::kToken_insert, SHIFT (1029)
+, C_Lexique_galgasScanner::kToken_insert, SHIFT (1035)
 , END
-// State S1548 (index = 47916)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1613)
+// State S1553 (index = 47933)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1618)
 , END
-// State S1549 (index = 47919)
+// State S1554 (index = 47936)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (622)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (622)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (622)
@@ -35920,7 +36035,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (622)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (622)
 , END
-// State S1550 (index = 47954)
+// State S1555 (index = 47971)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (157)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (157)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (157)
@@ -35939,7 +36054,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (157)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (157)
 , END
-// State S1551 (index = 47989)
+// State S1556 (index = 48006)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -35969,7 +36084,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1552 (index = 48046)
+// State S1557 (index = 48063)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (162)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (162)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (162)
@@ -36006,31 +36121,31 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (162)
 , C_Lexique_galgasScanner::kToken_, REDUCE (162)
 , END
-// State S1553 (index = 48117)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (738)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1615)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (738)
-, C_Lexique_galgasScanner::kToken_label, REDUCE (738)
+// State S1558 (index = 48134)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (742)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1620)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (742)
+, C_Lexique_galgasScanner::kToken_label, REDUCE (742)
 , END
-// State S1554 (index = 48126)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (730)
+// State S1559 (index = 48143)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (734)
 , END
-// State S1555 (index = 48129)
-, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1617)
+// State S1560 (index = 48146)
+, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1622)
 , END
-// State S1556 (index = 48132)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (736)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (736)
-, C_Lexique_galgasScanner::kToken__2C_, REDUCE (736)
-, C_Lexique_galgasScanner::kToken_label, REDUCE (736)
+// State S1561 (index = 48149)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (740)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (740)
+, C_Lexique_galgasScanner::kToken__2C_, REDUCE (740)
+, C_Lexique_galgasScanner::kToken_label, REDUCE (740)
 , END
-// State S1557 (index = 48141)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (733)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (733)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1618)
-, C_Lexique_galgasScanner::kToken_label, REDUCE (733)
+// State S1562 (index = 48158)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (737)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (737)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1623)
+, C_Lexique_galgasScanner::kToken_label, REDUCE (737)
 , END
-// State S1558 (index = 48150)
+// State S1563 (index = 48167)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (355)
@@ -36039,7 +36154,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__5B_, REDUCE (355)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_self, REDUCE (355)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1475)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1480)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (355)
 , C_Lexique_galgasScanner::kToken__3B_, REDUCE (355)
@@ -36067,7 +36182,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (355)
 , END
-// State S1559 (index = 48221)
+// State S1564 (index = 48238)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (355)
@@ -36076,7 +36191,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__5B_, REDUCE (355)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_self, REDUCE (355)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1475)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1480)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (355)
 , C_Lexique_galgasScanner::kToken__3B_, REDUCE (355)
@@ -36104,53 +36219,53 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (355)
 , END
-// State S1560 (index = 48292)
+// State S1565 (index = 48309)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (362)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1622)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1627)
 , END
-// State S1561 (index = 48297)
+// State S1566 (index = 48314)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (360)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1624)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1629)
 , END
-// State S1562 (index = 48302)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1626)
+// State S1567 (index = 48319)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1631)
 , END
-// State S1563 (index = 48305)
-, C_Lexique_galgasScanner::kToken_if, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (773)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (773)
-, C_Lexique_galgasScanner::kToken__5B_, REDUCE (773)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_self, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (773)
-, C_Lexique_galgasScanner::kToken__3B_, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_cast, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_for, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (773)
-, C_Lexique_galgasScanner::kToken__3A__3E_, SHIFT (1627)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_loop, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_switch, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (773)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (773)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (773)
-, C_Lexique_galgasScanner::kToken_parse, REDUCE (773)
+// State S1568 (index = 48322)
+, C_Lexique_galgasScanner::kToken_if, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (777)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (777)
+, C_Lexique_galgasScanner::kToken__5B_, REDUCE (777)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_self, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (777)
+, C_Lexique_galgasScanner::kToken__3B_, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_cast, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_for, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (777)
+, C_Lexique_galgasScanner::kToken__3A__3E_, SHIFT (1632)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_loop, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_switch, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (777)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (777)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (777)
+, C_Lexique_galgasScanner::kToken_parse, REDUCE (777)
 , END
-// State S1564 (index = 48372)
+// State S1569 (index = 48389)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (222)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (222)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (222)
@@ -36185,23 +36300,23 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (222)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (222)
 , END
-// State S1565 (index = 48439)
+// State S1570 (index = 48456)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
 , C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (756)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_self, SHIFT (109)
 , C_Lexique_galgasScanner::kToken_let, SHIFT (110)
 , C_Lexique_galgasScanner::kToken_var, SHIFT (111)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_error, SHIFT (112)
 , C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
 , C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
 , C_Lexique_galgasScanner::kToken_for, SHIFT (115)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
 , C_Lexique_galgasScanner::kToken_log, SHIFT (117)
 , C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
@@ -36209,32 +36324,32 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (1369)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1370)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1371)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (1372)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (764)
-, C_Lexique_galgasScanner::kToken_parse, SHIFT (1373)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (1374)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1375)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1376)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (1377)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (768)
+, C_Lexique_galgasScanner::kToken_parse, SHIFT (1378)
 , END
-// State S1566 (index = 48502)
+// State S1571 (index = 48519)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
 , C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (756)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_self, SHIFT (109)
 , C_Lexique_galgasScanner::kToken_let, SHIFT (110)
 , C_Lexique_galgasScanner::kToken_var, SHIFT (111)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_error, SHIFT (112)
 , C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
 , C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
 , C_Lexique_galgasScanner::kToken_for, SHIFT (115)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
 , C_Lexique_galgasScanner::kToken_log, SHIFT (117)
 , C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
@@ -36242,212 +36357,213 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (1369)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1370)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1371)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (1372)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (764)
-, C_Lexique_galgasScanner::kToken_parse, SHIFT (1373)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (1374)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1375)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1376)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (1377)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (768)
+, C_Lexique_galgasScanner::kToken_parse, SHIFT (1378)
 , END
-// State S1567 (index = 48565)
-, C_Lexique_galgasScanner::kToken_rewind, SHIFT (1631)
+// State S1572 (index = 48582)
+, C_Lexique_galgasScanner::kToken_rewind, SHIFT (1636)
 , END
-// State S1568 (index = 48568)
-, C_Lexique_galgasScanner::kToken_while, SHIFT (1632)
+// State S1573 (index = 48585)
+, C_Lexique_galgasScanner::kToken_while, SHIFT (1637)
 , END
-// State S1569 (index = 48571)
-, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1633)
+// State S1574 (index = 48588)
+, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1638)
 , END
-// State S1570 (index = 48574)
-, C_Lexique_galgasScanner::kToken_if, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (758)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (758)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (763)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (763)
-, C_Lexique_galgasScanner::kToken__5B_, REDUCE (763)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (758)
-, C_Lexique_galgasScanner::kToken_self, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (763)
-, C_Lexique_galgasScanner::kToken__3B_, SHIFT (1485)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (758)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_cast, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_for, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (758)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_loop, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_switch, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (758)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (763)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (758)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (763)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (763)
-, C_Lexique_galgasScanner::kToken_parse, REDUCE (763)
-, END
-// State S1571 (index = 48639)
+// State S1575 (index = 48591)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (767)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (767)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (762)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (762)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (767)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (767)
 , C_Lexique_galgasScanner::kToken__5B_, REDUCE (767)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (767)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (762)
 , C_Lexique_galgasScanner::kToken_self, REDUCE (767)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (767)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (767)
-, C_Lexique_galgasScanner::kToken__3B_, REDUCE (767)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (767)
+, C_Lexique_galgasScanner::kToken__3B_, SHIFT (1490)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (762)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (767)
 , C_Lexique_galgasScanner::kToken_cast, REDUCE (767)
 , C_Lexique_galgasScanner::kToken_drop, REDUCE (767)
 , C_Lexique_galgasScanner::kToken_for, REDUCE (767)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (762)
 , C_Lexique_galgasScanner::kToken_grammar, REDUCE (767)
-, C_Lexique_galgasScanner::kToken__3A__3E_, SHIFT (1635)
 , C_Lexique_galgasScanner::kToken_log, REDUCE (767)
 , C_Lexique_galgasScanner::kToken_loop, REDUCE (767)
 , C_Lexique_galgasScanner::kToken_message, REDUCE (767)
 , C_Lexique_galgasScanner::kToken_switch, REDUCE (767)
 , C_Lexique_galgasScanner::kToken_warning, REDUCE (767)
 , C_Lexique_galgasScanner::kToken_with, REDUCE (767)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (762)
 , C_Lexique_galgasScanner::kToken_send, REDUCE (767)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (767)
 , C_Lexique_galgasScanner::kToken_repeat, REDUCE (767)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (767)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (762)
 , C_Lexique_galgasScanner::kToken_select, REDUCE (767)
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (767)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (767)
 , END
-// State S1572 (index = 48706)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (753)
-, C_Lexique_galgasScanner::kToken_rule, REDUCE (753)
+// State S1576 (index = 48656)
+, C_Lexique_galgasScanner::kToken_if, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (771)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (771)
+, C_Lexique_galgasScanner::kToken__5B_, REDUCE (771)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_self, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (771)
+, C_Lexique_galgasScanner::kToken__3B_, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_cast, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_for, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (771)
+, C_Lexique_galgasScanner::kToken__3A__3E_, SHIFT (1640)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_loop, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_switch, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (771)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (771)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (771)
+, C_Lexique_galgasScanner::kToken_parse, REDUCE (771)
 , END
-// State S1573 (index = 48711)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (755)
-, C_Lexique_galgasScanner::kToken_rule, REDUCE (755)
+// State S1577 (index = 48723)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (757)
+, C_Lexique_galgasScanner::kToken_rule, REDUCE (757)
 , END
-// State S1574 (index = 48716)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (788)
+// State S1578 (index = 48728)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (759)
+, C_Lexique_galgasScanner::kToken_rule, REDUCE (759)
 , END
-// State S1575 (index = 48719)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1637)
+// State S1579 (index = 48733)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (792)
 , END
-// State S1576 (index = 48722)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1638)
-, C_Lexique_galgasScanner::kToken_let, SHIFT (1639)
+// State S1580 (index = 48736)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1642)
 , END
-// State S1577 (index = 48727)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1640)
+// State S1581 (index = 48739)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1643)
+, C_Lexique_galgasScanner::kToken_let, SHIFT (1644)
 , END
-// State S1578 (index = 48730)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (789)
-, C_Lexique_galgasScanner::kToken_unused, REDUCE (789)
-, C_Lexique_galgasScanner::kToken_label, SHIFT (1641)
+// State S1582 (index = 48744)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1645)
 , END
-// State S1579 (index = 48737)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (1575)
+// State S1583 (index = 48747)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (793)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1576)
-, C_Lexique_galgasScanner::kToken__3F__21_, SHIFT (1577)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (793)
-, C_Lexique_galgasScanner::kToken_label, REDUCE (793)
+, C_Lexique_galgasScanner::kToken_label, SHIFT (1646)
 , END
-// State S1580 (index = 48750)
+// State S1584 (index = 48754)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (1580)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (797)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1581)
+, C_Lexique_galgasScanner::kToken__3F__21_, SHIFT (1582)
+, C_Lexique_galgasScanner::kToken_unused, REDUCE (797)
+, C_Lexique_galgasScanner::kToken_label, REDUCE (797)
+, END
+// State S1585 (index = 48767)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (230)
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (230)
 , C_Lexique_galgasScanner::kToken_label, REDUCE (230)
 , END
-// State S1581 (index = 48757)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1644)
-, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1645)
+// State S1586 (index = 48774)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1649)
+, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1650)
 , END
-// State S1582 (index = 48762)
+// State S1587 (index = 48779)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (207)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (207)
 , END
-// State S1583 (index = 48767)
+// State S1588 (index = 48784)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (679)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (679)
 , C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (679)
-, C_Lexique_galgasScanner::kToken__25_attribute, SHIFT (1647)
+, C_Lexique_galgasScanner::kToken__25_templateEndMark, SHIFT (1652)
+, C_Lexique_galgasScanner::kToken__25_nonAtomicSelection, SHIFT (1653)
 , END
-// State S1584 (index = 48776)
+// State S1589 (index = 48795)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (677)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1649)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1655)
 , END
-// State S1585 (index = 48781)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1386)
-, C_Lexique_galgasScanner::kToken__27_char_27_, SHIFT (1387)
-, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1388)
-, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1389)
+// State S1590 (index = 48800)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1391)
+, C_Lexique_galgasScanner::kToken__27_char_27_, SHIFT (1392)
+, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1393)
+, C_Lexique_galgasScanner::kToken__2A_, SHIFT (1394)
 , END
-// State S1586 (index = 48790)
-, C_Lexique_galgasScanner::kToken__29_, SHIFT (1652)
+// State S1591 (index = 48809)
+, C_Lexique_galgasScanner::kToken__29_, SHIFT (1658)
 , END
-// State S1587 (index = 48793)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1653)
+// State S1592 (index = 48812)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1659)
 , END
-// State S1588 (index = 48796)
-, C_Lexique_galgasScanner::kToken__29_, REDUCE (707)
+// State S1593 (index = 48815)
+, C_Lexique_galgasScanner::kToken__29_, REDUCE (711)
 , END
-// State S1589 (index = 48799)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (695)
-, C_Lexique_galgasScanner::kToken_search, SHIFT (1654)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (695)
+// State S1594 (index = 48818)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (699)
+, C_Lexique_galgasScanner::kToken_search, SHIFT (1660)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (699)
 , END
-// State S1590 (index = 48806)
+// State S1595 (index = 48825)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (663)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (854)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (855)
-, C_Lexique_galgasScanner::kToken_drop, SHIFT (856)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (859)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (860)
+, C_Lexique_galgasScanner::kToken_drop, SHIFT (861)
 , C_Lexique_galgasScanner::kToken_while, REDUCE (663)
-, C_Lexique_galgasScanner::kToken_log, SHIFT (857)
-, C_Lexique_galgasScanner::kToken_warning, SHIFT (858)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (859)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (860)
-, C_Lexique_galgasScanner::kToken_rewind, SHIFT (861)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (862)
-, C_Lexique_galgasScanner::kToken_tag, SHIFT (863)
+, C_Lexique_galgasScanner::kToken_log, SHIFT (862)
+, C_Lexique_galgasScanner::kToken_warning, SHIFT (863)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (864)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (865)
+, C_Lexique_galgasScanner::kToken_rewind, SHIFT (866)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (867)
+, C_Lexique_galgasScanner::kToken_tag, SHIFT (868)
 , END
-// State S1591 (index = 48831)
+// State S1596 (index = 48850)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (176)
 , C_Lexique_galgasScanner::kToken_while, REDUCE (176)
 , END
-// State S1592 (index = 48836)
-, C_Lexique_galgasScanner::kToken_default, REDUCE (713)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (713)
+// State S1597 (index = 48855)
+, C_Lexique_galgasScanner::kToken_default, REDUCE (717)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (717)
 , END
-// State S1593 (index = 48841)
+// State S1598 (index = 48860)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (351)
 , C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (352)
 , C_Lexique_galgasScanner::kToken__27_char_27_, SHIFT (353)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (354)
 , END
-// State S1594 (index = 48850)
-, C_Lexique_galgasScanner::kToken_default, SHIFT (1658)
+// State S1599 (index = 48869)
+, C_Lexique_galgasScanner::kToken_default, SHIFT (1664)
 , END
-// State S1595 (index = 48853)
+// State S1600 (index = 48872)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (546)
-, C_Lexique_galgasScanner::kToken_unused, SHIFT (1659)
+, C_Lexique_galgasScanner::kToken_unused, SHIFT (1665)
 , END
-// State S1596 (index = 48858)
+// State S1601 (index = 48877)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (543)
 , END
-// State S1597 (index = 48861)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1661)
+// State S1602 (index = 48880)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1667)
 , END
-// State S1598 (index = 48864)
+// State S1603 (index = 48883)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (428)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (428)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (428)
@@ -36470,7 +36586,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, REDUCE (428)
 , C_Lexique_galgasScanner::kToken_with, REDUCE (428)
 , END
-// State S1599 (index = 48907)
+// State S1604 (index = 48926)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -36500,11 +36616,11 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1600 (index = 48964)
+// State S1605 (index = 48983)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (431)
-, C_Lexique_galgasScanner::kToken_after, SHIFT (1663)
+, C_Lexique_galgasScanner::kToken_after, SHIFT (1669)
 , END
-// State S1601 (index = 48969)
+// State S1606 (index = 48988)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (436)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (436)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (436)
@@ -36543,7 +36659,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (436)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (436)
 , END
-// State S1602 (index = 49044)
+// State S1607 (index = 49063)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (437)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (437)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (437)
@@ -36566,7 +36682,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_do, REDUCE (437)
 , C_Lexique_galgasScanner::kToken_between, REDUCE (437)
 , C_Lexique_galgasScanner::kToken_grammar, REDUCE (437)
-, C_Lexique_galgasScanner::kToken__3A__3E_, SHIFT (1665)
+, C_Lexique_galgasScanner::kToken__3A__3E_, SHIFT (1671)
 , C_Lexique_galgasScanner::kToken_elsif, REDUCE (437)
 , C_Lexique_galgasScanner::kToken_log, REDUCE (437)
 , C_Lexique_galgasScanner::kToken_loop, REDUCE (437)
@@ -36583,7 +36699,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (437)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (437)
 , END
-// State S1603 (index = 49121)
+// State S1608 (index = 49140)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (352)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (352)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (352)
@@ -36623,10 +36739,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (352)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (352)
 , END
-// State S1604 (index = 49198)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1667)
+// State S1609 (index = 49217)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1673)
 , END
-// State S1605 (index = 49201)
+// State S1610 (index = 49220)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (443)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (443)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (443)
@@ -36649,7 +36765,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_do, REDUCE (443)
 , C_Lexique_galgasScanner::kToken_between, REDUCE (443)
 , C_Lexique_galgasScanner::kToken_grammar, REDUCE (443)
-, C_Lexique_galgasScanner::kToken__3A__3E_, SHIFT (1668)
+, C_Lexique_galgasScanner::kToken__3A__3E_, SHIFT (1674)
 , C_Lexique_galgasScanner::kToken_elsif, REDUCE (443)
 , C_Lexique_galgasScanner::kToken_log, REDUCE (443)
 , C_Lexique_galgasScanner::kToken_loop, REDUCE (443)
@@ -36666,7 +36782,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (443)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (443)
 , END
-// State S1606 (index = 49278)
+// State S1611 (index = 49297)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (86)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (86)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (86)
@@ -36705,16 +36821,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (86)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (86)
 , END
-// State S1607 (index = 49353)
+// State S1612 (index = 49372)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (489)
-, C_Lexique_galgasScanner::kToken_case, SHIFT (1321)
+, C_Lexique_galgasScanner::kToken_case, SHIFT (1326)
 , END
-// State S1608 (index = 49358)
-, C_Lexique_galgasScanner::kToken__2E_, SHIFT (1540)
+// State S1613 (index = 49377)
+, C_Lexique_galgasScanner::kToken__2E_, SHIFT (1545)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (516)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (516)
 , END
-// State S1609 (index = 49365)
+// State S1614 (index = 49384)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -36744,16 +36860,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1610 (index = 49422)
+// State S1615 (index = 49441)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (110)
 , END
-// State S1611 (index = 49425)
+// State S1616 (index = 49444)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (509)
 , END
-// State S1612 (index = 49428)
+// State S1617 (index = 49447)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (586)
 , END
-// State S1613 (index = 49431)
+// State S1618 (index = 49450)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (151)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (151)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (151)
@@ -36772,32 +36888,32 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (151)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (151)
 , END
-// State S1614 (index = 49466)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1673)
+// State S1619 (index = 49485)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1679)
 , END
-// State S1615 (index = 49469)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (738)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1615)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (738)
-, C_Lexique_galgasScanner::kToken_label, REDUCE (738)
+// State S1620 (index = 49488)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (742)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1620)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (742)
+, C_Lexique_galgasScanner::kToken_label, REDUCE (742)
 , END
-// State S1616 (index = 49478)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1232)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (727)
-, C_Lexique_galgasScanner::kToken_label, SHIFT (1233)
+// State S1621 (index = 49497)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1237)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (731)
+, C_Lexique_galgasScanner::kToken_label, SHIFT (1238)
 , END
-// State S1617 (index = 49485)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1676)
+// State S1622 (index = 49504)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1682)
 , END
-// State S1618 (index = 49488)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1677)
+// State S1623 (index = 49507)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1683)
 , END
-// State S1619 (index = 49491)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1232)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (727)
-, C_Lexique_galgasScanner::kToken_label, SHIFT (1233)
+// State S1624 (index = 49510)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1237)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (731)
+, C_Lexique_galgasScanner::kToken_label, SHIFT (1238)
 , END
-// State S1620 (index = 49498)
+// State S1625 (index = 49517)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (359)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (359)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (359)
@@ -36833,7 +36949,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (359)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (359)
 , END
-// State S1621 (index = 49567)
+// State S1626 (index = 49586)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (356)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (356)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (356)
@@ -36869,59 +36985,59 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (356)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (356)
 , END
-// State S1622 (index = 49636)
+// State S1627 (index = 49655)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (363)
 , END
-// State S1623 (index = 49639)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1679)
+// State S1628 (index = 49658)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1685)
 , END
-// State S1624 (index = 49642)
+// State S1629 (index = 49661)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (361)
 , END
-// State S1625 (index = 49645)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1680)
+// State S1630 (index = 49664)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1686)
 , END
-// State S1626 (index = 49648)
-, C_Lexique_galgasScanner::kToken_if, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (779)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1681)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (779)
-, C_Lexique_galgasScanner::kToken__5B_, REDUCE (779)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (779)
-, C_Lexique_galgasScanner::kToken__2C_, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_self, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (779)
-, C_Lexique_galgasScanner::kToken__3B_, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_cast, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_for, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (779)
-, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_loop, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_switch, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (779)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (779)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_parse, REDUCE (779)
+// State S1631 (index = 49667)
+, C_Lexique_galgasScanner::kToken_if, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (783)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1687)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (783)
+, C_Lexique_galgasScanner::kToken__5B_, REDUCE (783)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (783)
+, C_Lexique_galgasScanner::kToken__2C_, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_self, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (783)
+, C_Lexique_galgasScanner::kToken__3B_, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_cast, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_for, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (783)
+, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_loop, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_switch, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (783)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (783)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_parse, REDUCE (783)
 , END
-// State S1627 (index = 49719)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1430)
+// State S1632 (index = 49738)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1435)
 , END
-// State S1628 (index = 49722)
+// State S1633 (index = 49741)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (221)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (221)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (221)
@@ -36955,31 +37071,31 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (221)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (221)
 , END
-// State S1629 (index = 49787)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (769)
-, C_Lexique_galgasScanner::kToken_while, SHIFT (1684)
+// State S1634 (index = 49806)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (773)
+, C_Lexique_galgasScanner::kToken_while, SHIFT (1690)
 , END
-// State S1630 (index = 49792)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (771)
-, C_Lexique_galgasScanner::kToken_or, SHIFT (1686)
+// State S1635 (index = 49811)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (775)
+, C_Lexique_galgasScanner::kToken_or, SHIFT (1692)
 , END
-// State S1631 (index = 49797)
+// State S1636 (index = 49816)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
 , C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (756)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_self, SHIFT (109)
 , C_Lexique_galgasScanner::kToken_let, SHIFT (110)
 , C_Lexique_galgasScanner::kToken_var, SHIFT (111)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_error, SHIFT (112)
 , C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
 , C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
 , C_Lexique_galgasScanner::kToken_for, SHIFT (115)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
 , C_Lexique_galgasScanner::kToken_log, SHIFT (117)
 , C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
@@ -36987,16 +37103,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (1369)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1370)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1371)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (1372)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (764)
-, C_Lexique_galgasScanner::kToken_parse, SHIFT (1373)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (1374)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1375)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1376)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (1377)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (768)
+, C_Lexique_galgasScanner::kToken_parse, SHIFT (1378)
 , END
-// State S1632 (index = 49860)
+// State S1637 (index = 49879)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -37018,23 +37134,23 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1633 (index = 49901)
+// State S1638 (index = 49920)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
 , C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (756)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_self, SHIFT (109)
 , C_Lexique_galgasScanner::kToken_let, SHIFT (110)
 , C_Lexique_galgasScanner::kToken_var, SHIFT (111)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_error, SHIFT (112)
 , C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
 , C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
 , C_Lexique_galgasScanner::kToken_for, SHIFT (115)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
 , C_Lexique_galgasScanner::kToken_log, SHIFT (117)
 , C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
@@ -37042,28 +37158,28 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (1369)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1370)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1371)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (1372)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (764)
-, C_Lexique_galgasScanner::kToken_parse, SHIFT (1373)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (1374)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1375)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1376)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (1377)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (768)
+, C_Lexique_galgasScanner::kToken_parse, SHIFT (1378)
 , END
-// State S1634 (index = 49964)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (759)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (759)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (759)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (759)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (759)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (759)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (759)
+// State S1639 (index = 49983)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (763)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (763)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (763)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (763)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (763)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (763)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (763)
 , END
-// State S1635 (index = 49979)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1430)
+// State S1640 (index = 49998)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1435)
 , END
-// State S1636 (index = 49982)
+// State S1641 (index = 50001)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (218)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (218)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (218)
@@ -37097,108 +37213,117 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (218)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (218)
 , END
-// State S1637 (index = 50047)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1692)
-, END
-// State S1638 (index = 50050)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (795)
-, C_Lexique_galgasScanner::kToken_unused, SHIFT (1693)
-, END
-// State S1639 (index = 50055)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1695)
-, END
-// State S1640 (index = 50058)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (799)
-, C_Lexique_galgasScanner::kToken_unused, SHIFT (1696)
-, END
-// State S1641 (index = 50063)
+// State S1642 (index = 50066)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (1698)
 , END
-// State S1642 (index = 50066)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (791)
+// State S1643 (index = 50069)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (799)
 , C_Lexique_galgasScanner::kToken_unused, SHIFT (1699)
 , END
-// State S1643 (index = 50071)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (794)
-, C_Lexique_galgasScanner::kToken_unused, REDUCE (794)
-, C_Lexique_galgasScanner::kToken_label, REDUCE (794)
+// State S1644 (index = 50074)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (1701)
 , END
-// State S1644 (index = 50078)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (720)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (720)
+// State S1645 (index = 50077)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (803)
+, C_Lexique_galgasScanner::kToken_unused, SHIFT (1702)
 , END
-// State S1645 (index = 50083)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (721)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (721)
+// State S1646 (index = 50082)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1704)
 , END
-// State S1646 (index = 50088)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (719)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (719)
+// State S1647 (index = 50085)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (795)
+, C_Lexique_galgasScanner::kToken_unused, SHIFT (1705)
 , END
-// State S1647 (index = 50093)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (680)
-, C_Lexique_galgasScanner::kToken__2C_, REDUCE (680)
-, C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (680)
+// State S1648 (index = 50090)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (798)
+, C_Lexique_galgasScanner::kToken_unused, REDUCE (798)
+, C_Lexique_galgasScanner::kToken_label, REDUCE (798)
 , END
-// State S1648 (index = 50100)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (682)
-, C_Lexique_galgasScanner::kToken__2C_, REDUCE (682)
-, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1701)
+// State S1649 (index = 50097)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (724)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (724)
 , END
-// State S1649 (index = 50107)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1583)
+// State S1650 (index = 50102)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (725)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (725)
 , END
-// State S1650 (index = 50110)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1704)
+// State S1651 (index = 50107)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (723)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (723)
 , END
-// State S1651 (index = 50113)
+// State S1652 (index = 50112)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (679)
+, C_Lexique_galgasScanner::kToken__2C_, REDUCE (679)
+, C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (679)
+, C_Lexique_galgasScanner::kToken__25_templateEndMark, SHIFT (1652)
+, C_Lexique_galgasScanner::kToken__25_nonAtomicSelection, SHIFT (1653)
+, END
+// State S1653 (index = 50123)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (679)
+, C_Lexique_galgasScanner::kToken__2C_, REDUCE (679)
+, C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (679)
+, C_Lexique_galgasScanner::kToken__25_templateEndMark, SHIFT (1652)
+, C_Lexique_galgasScanner::kToken__25_nonAtomicSelection, SHIFT (1653)
+, END
+// State S1654 (index = 50134)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (683)
+, C_Lexique_galgasScanner::kToken__2C_, REDUCE (683)
+, C_Lexique_galgasScanner::kToken__2D__3E_, SHIFT (1709)
+, END
+// State S1655 (index = 50141)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1588)
+, END
+// State S1656 (index = 50144)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1712)
+, END
+// State S1657 (index = 50147)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (667)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (1585)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (1590)
 , END
-// State S1652 (index = 50118)
+// State S1658 (index = 50152)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (666)
 , C_Lexique_galgasScanner::kToken__21_, REDUCE (666)
 , C_Lexique_galgasScanner::kToken__21__3F_, REDUCE (666)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (666)
 , END
-// State S1653 (index = 50127)
-, C_Lexique_galgasScanner::kToken__29_, REDUCE (708)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1587)
+// State S1659 (index = 50161)
+, C_Lexique_galgasScanner::kToken__29_, REDUCE (712)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1592)
 , END
-// State S1654 (index = 50132)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1707)
+// State S1660 (index = 50166)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1715)
 , END
-// State S1655 (index = 50135)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (1708)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1709)
+// State S1661 (index = 50169)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (1716)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1717)
 , END
-// State S1656 (index = 50140)
+// State S1662 (index = 50174)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (664)
 , C_Lexique_galgasScanner::kToken_while, REDUCE (664)
 , END
-// State S1657 (index = 50145)
-, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1711)
+// State S1663 (index = 50179)
+, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1719)
 , END
-// State S1658 (index = 50148)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (714)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (854)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (855)
-, C_Lexique_galgasScanner::kToken_drop, SHIFT (856)
-, C_Lexique_galgasScanner::kToken_log, SHIFT (857)
-, C_Lexique_galgasScanner::kToken_warning, SHIFT (858)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (859)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (860)
-, C_Lexique_galgasScanner::kToken_rewind, SHIFT (861)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (862)
-, C_Lexique_galgasScanner::kToken_tag, SHIFT (863)
+// State S1664 (index = 50182)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (718)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (859)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (860)
+, C_Lexique_galgasScanner::kToken_drop, SHIFT (861)
+, C_Lexique_galgasScanner::kToken_log, SHIFT (862)
+, C_Lexique_galgasScanner::kToken_warning, SHIFT (863)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (864)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (865)
+, C_Lexique_galgasScanner::kToken_rewind, SHIFT (866)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (867)
+, C_Lexique_galgasScanner::kToken_tag, SHIFT (868)
 , END
-// State S1659 (index = 50171)
+// State S1665 (index = 50205)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (547)
 , END
-// State S1660 (index = 50174)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1714)
+// State S1666 (index = 50208)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1722)
 , END
-// State S1661 (index = 50177)
+// State S1667 (index = 50211)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (237)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (237)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (237)
@@ -37235,11 +37360,11 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (237)
 , C_Lexique_galgasScanner::kToken_, REDUCE (237)
 , END
-// State S1662 (index = 50248)
+// State S1668 (index = 50282)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (430)
 , C_Lexique_galgasScanner::kToken_after, REDUCE (430)
 , END
-// State S1663 (index = 50253)
+// State S1669 (index = 50287)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (335)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (335)
@@ -37269,13 +37394,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
 , END
-// State S1664 (index = 50310)
-, C_Lexique_galgasScanner::kToken_end, SHIFT (1716)
+// State S1670 (index = 50344)
+, C_Lexique_galgasScanner::kToken_end, SHIFT (1724)
 , END
-// State S1665 (index = 50313)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1430)
+// State S1671 (index = 50347)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1435)
 , END
-// State S1666 (index = 50316)
+// State S1672 (index = 50350)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (71)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (71)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (71)
@@ -37314,7 +37439,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (71)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (71)
 , END
-// State S1667 (index = 50391)
+// State S1673 (index = 50425)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (353)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (353)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (353)
@@ -37354,10 +37479,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (353)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (353)
 , END
-// State S1668 (index = 50468)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1430)
+// State S1674 (index = 50502)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1435)
 , END
-// State S1669 (index = 50471)
+// State S1675 (index = 50505)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (74)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (74)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (74)
@@ -37396,17 +37521,17 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (74)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (74)
 , END
-// State S1670 (index = 50546)
+// State S1676 (index = 50580)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (490)
 , END
-// State S1671 (index = 50549)
+// State S1677 (index = 50583)
 , C_Lexique_galgasScanner::kToken_error, REDUCE (517)
 , C_Lexique_galgasScanner::kToken_do, REDUCE (517)
 , END
-// State S1672 (index = 50554)
+// State S1678 (index = 50588)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (521)
 , END
-// State S1673 (index = 50557)
+// State S1679 (index = 50591)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (163)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (163)
 , C_Lexique_galgasScanner::kToken_default, REDUCE (163)
@@ -37425,29 +37550,29 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_protected, REDUCE (163)
 , C_Lexique_galgasScanner::kToken_fileprivate, REDUCE (163)
 , END
-// State S1674 (index = 50592)
+// State S1680 (index = 50626)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (743)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (743)
+, C_Lexique_galgasScanner::kToken_label, REDUCE (743)
+, END
+// State S1681 (index = 50633)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (733)
+, END
+// State S1682 (index = 50636)
+, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1727)
+, END
+// State S1683 (index = 50639)
+, C_Lexique_galgasScanner::kToken__28_, SHIFT (1560)
+, C_Lexique_galgasScanner::kToken__2D_, SHIFT (1561)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (739)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (739)
+, C_Lexique_galgasScanner::kToken__2C_, REDUCE (739)
 , C_Lexique_galgasScanner::kToken_label, REDUCE (739)
 , END
-// State S1675 (index = 50599)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (729)
+// State S1684 (index = 50652)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (732)
 , END
-// State S1676 (index = 50602)
-, C_Lexique_galgasScanner::kToken_literalInt, SHIFT (1719)
-, END
-// State S1677 (index = 50605)
-, C_Lexique_galgasScanner::kToken__28_, SHIFT (1555)
-, C_Lexique_galgasScanner::kToken__2D_, SHIFT (1556)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (735)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (735)
-, C_Lexique_galgasScanner::kToken__2C_, REDUCE (735)
-, C_Lexique_galgasScanner::kToken_label, REDUCE (735)
-, END
-// State S1678 (index = 50618)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (728)
-, END
-// State S1679 (index = 50621)
+// State S1685 (index = 50655)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (355)
@@ -37456,7 +37581,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__5B_, REDUCE (355)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_self, REDUCE (355)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1475)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1480)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (355)
 , C_Lexique_galgasScanner::kToken__3B_, REDUCE (355)
@@ -37484,7 +37609,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (355)
 , END
-// State S1680 (index = 50692)
+// State S1686 (index = 50726)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (355)
@@ -37493,7 +37618,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__5B_, REDUCE (355)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_self, REDUCE (355)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1475)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1480)
 , C_Lexique_galgasScanner::kToken_let, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_var, REDUCE (355)
 , C_Lexique_galgasScanner::kToken__3B_, REDUCE (355)
@@ -37521,199 +37646,199 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (355)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (355)
 , END
-// State S1681 (index = 50763)
-, C_Lexique_galgasScanner::kToken_if, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (780)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (780)
-, C_Lexique_galgasScanner::kToken__5B_, REDUCE (780)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (780)
-, C_Lexique_galgasScanner::kToken__2C_, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_self, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (780)
-, C_Lexique_galgasScanner::kToken__3B_, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_cast, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_for, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (780)
-, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_loop, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_switch, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (780)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (780)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (780)
-, C_Lexique_galgasScanner::kToken_parse, REDUCE (780)
+// State S1687 (index = 50797)
+, C_Lexique_galgasScanner::kToken_if, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (784)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (784)
+, C_Lexique_galgasScanner::kToken__5B_, REDUCE (784)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (784)
+, C_Lexique_galgasScanner::kToken__2C_, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_self, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (784)
+, C_Lexique_galgasScanner::kToken__3B_, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_cast, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_for, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (784)
+, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_loop, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_switch, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (784)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (784)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (784)
+, C_Lexique_galgasScanner::kToken_parse, REDUCE (784)
 , END
-// State S1682 (index = 50832)
-, C_Lexique_galgasScanner::kToken_if, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (777)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (777)
-, C_Lexique_galgasScanner::kToken__5B_, REDUCE (777)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (777)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1723)
-, C_Lexique_galgasScanner::kToken_self, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (777)
-, C_Lexique_galgasScanner::kToken__3B_, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_cast, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_for, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (777)
-, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_loop, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_switch, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (777)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (777)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_parse, REDUCE (777)
-, END
-// State S1683 (index = 50901)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1430)
-, END
-// State S1684 (index = 50904)
-, C_Lexique_galgasScanner::kToken_if, SHIFT (105)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
-, C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_self, SHIFT (109)
-, C_Lexique_galgasScanner::kToken_let, SHIFT (110)
-, C_Lexique_galgasScanner::kToken_var, SHIFT (111)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (112)
-, C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
-, C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
-, C_Lexique_galgasScanner::kToken_for, SHIFT (115)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
-, C_Lexique_galgasScanner::kToken_log, SHIFT (117)
-, C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
-, C_Lexique_galgasScanner::kToken_message, SHIFT (119)
-, C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
-, C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
-, C_Lexique_galgasScanner::kToken_with, SHIFT (122)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (1369)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1370)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1371)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (1372)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (764)
-, C_Lexique_galgasScanner::kToken_parse, SHIFT (1373)
-, END
-// State S1685 (index = 50967)
-, C_Lexique_galgasScanner::kToken_end, SHIFT (1727)
-, END
-// State S1686 (index = 50970)
-, C_Lexique_galgasScanner::kToken_if, SHIFT (105)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
-, C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
-, C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_self, SHIFT (109)
-, C_Lexique_galgasScanner::kToken_let, SHIFT (110)
-, C_Lexique_galgasScanner::kToken_var, SHIFT (111)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (112)
-, C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
-, C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
-, C_Lexique_galgasScanner::kToken_for, SHIFT (115)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
-, C_Lexique_galgasScanner::kToken_log, SHIFT (117)
-, C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
-, C_Lexique_galgasScanner::kToken_message, SHIFT (119)
-, C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
-, C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
-, C_Lexique_galgasScanner::kToken_with, SHIFT (122)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (1369)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1370)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1371)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (1372)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (764)
-, C_Lexique_galgasScanner::kToken_parse, SHIFT (1373)
-, END
-// State S1687 (index = 51033)
-, C_Lexique_galgasScanner::kToken_end, SHIFT (1729)
-, END
-// State S1688 (index = 51036)
+// State S1688 (index = 50866)
+, C_Lexique_galgasScanner::kToken_if, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (781)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (781)
-, C_Lexique_galgasScanner::kToken_rewind, SHIFT (1730)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (781)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (781)
+, C_Lexique_galgasScanner::kToken__5B_, REDUCE (781)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (781)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1731)
+, C_Lexique_galgasScanner::kToken_self, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (781)
+, C_Lexique_galgasScanner::kToken__3B_, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_cast, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_for, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (781)
+, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_loop, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_switch, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (781)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (781)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_parse, REDUCE (781)
 , END
-// State S1689 (index = 51041)
-, C_Lexique_galgasScanner::kToken_do, SHIFT (1732)
+// State S1689 (index = 50935)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1435)
 , END
-// State S1690 (index = 51044)
-, C_Lexique_galgasScanner::kToken_else, SHIFT (1733)
-, C_Lexique_galgasScanner::kToken_case, SHIFT (1734)
-, END
-// State S1691 (index = 51049)
-, C_Lexique_galgasScanner::kToken_if, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (768)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (768)
-, C_Lexique_galgasScanner::kToken__5B_, REDUCE (768)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_self, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (768)
-, C_Lexique_galgasScanner::kToken__3B_, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_cast, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_for, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_loop, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_switch, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (768)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (768)
+// State S1690 (index = 50938)
+, C_Lexique_galgasScanner::kToken_if, SHIFT (105)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
+, C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_self, SHIFT (109)
+, C_Lexique_galgasScanner::kToken_let, SHIFT (110)
+, C_Lexique_galgasScanner::kToken_var, SHIFT (111)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (112)
+, C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
+, C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
+, C_Lexique_galgasScanner::kToken_for, SHIFT (115)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
+, C_Lexique_galgasScanner::kToken_log, SHIFT (117)
+, C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
+, C_Lexique_galgasScanner::kToken_message, SHIFT (119)
+, C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
+, C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
+, C_Lexique_galgasScanner::kToken_with, SHIFT (122)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (1374)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1375)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1376)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (1377)
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (768)
-, C_Lexique_galgasScanner::kToken_parse, REDUCE (768)
+, C_Lexique_galgasScanner::kToken_parse, SHIFT (1378)
 , END
-// State S1692 (index = 51114)
+// State S1691 (index = 51001)
+, C_Lexique_galgasScanner::kToken_end, SHIFT (1735)
+, END
+// State S1692 (index = 51004)
+, C_Lexique_galgasScanner::kToken_if, SHIFT (105)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
+, C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
+, C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_self, SHIFT (109)
+, C_Lexique_galgasScanner::kToken_let, SHIFT (110)
+, C_Lexique_galgasScanner::kToken_var, SHIFT (111)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (112)
+, C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
+, C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
+, C_Lexique_galgasScanner::kToken_for, SHIFT (115)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
+, C_Lexique_galgasScanner::kToken_log, SHIFT (117)
+, C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
+, C_Lexique_galgasScanner::kToken_message, SHIFT (119)
+, C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
+, C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
+, C_Lexique_galgasScanner::kToken_with, SHIFT (122)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (1374)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1375)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1376)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (1377)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (768)
+, C_Lexique_galgasScanner::kToken_parse, SHIFT (1378)
+, END
+// State S1693 (index = 51067)
+, C_Lexique_galgasScanner::kToken_end, SHIFT (1737)
+, END
+// State S1694 (index = 51070)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (785)
+, C_Lexique_galgasScanner::kToken_rewind, SHIFT (1738)
+, END
+// State S1695 (index = 51075)
+, C_Lexique_galgasScanner::kToken_do, SHIFT (1740)
+, END
+// State S1696 (index = 51078)
+, C_Lexique_galgasScanner::kToken_else, SHIFT (1741)
+, C_Lexique_galgasScanner::kToken_case, SHIFT (1742)
+, END
+// State S1697 (index = 51083)
+, C_Lexique_galgasScanner::kToken_if, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (772)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (772)
+, C_Lexique_galgasScanner::kToken__5B_, REDUCE (772)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_self, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (772)
+, C_Lexique_galgasScanner::kToken__3B_, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_cast, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_for, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_loop, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_switch, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (772)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (772)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (772)
+, C_Lexique_galgasScanner::kToken_parse, REDUCE (772)
+, END
+// State S1698 (index = 51148)
 , C_Lexique_galgasScanner::kToken__21_, REDUCE (234)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (234)
 , C_Lexique_galgasScanner::kToken__3F_, REDUCE (234)
@@ -37721,48 +37846,58 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (234)
 , C_Lexique_galgasScanner::kToken_label, REDUCE (234)
 , END
-// State S1693 (index = 51127)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (796)
-, END
-// State S1694 (index = 51130)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1736)
-, END
-// State S1695 (index = 51133)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (797)
-, C_Lexique_galgasScanner::kToken_unused, SHIFT (1737)
-, END
-// State S1696 (index = 51138)
+// State S1699 (index = 51161)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (800)
 , END
-// State S1697 (index = 51141)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1739)
+// State S1700 (index = 51164)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1744)
 , END
-// State S1698 (index = 51144)
-, C_Lexique_galgasScanner::kToken__21_, SHIFT (1575)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (793)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1576)
-, C_Lexique_galgasScanner::kToken__3F__21_, SHIFT (1577)
-, C_Lexique_galgasScanner::kToken_unused, REDUCE (793)
-, C_Lexique_galgasScanner::kToken_label, REDUCE (793)
+// State S1701 (index = 51167)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (801)
+, C_Lexique_galgasScanner::kToken_unused, SHIFT (1745)
 , END
-// State S1699 (index = 51157)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, SHIFT (1741)
+// State S1702 (index = 51172)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (804)
 , END
-// State S1700 (index = 51160)
-, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1742)
+// State S1703 (index = 51175)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1747)
 , END
-// State S1701 (index = 51163)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1743)
+// State S1704 (index = 51178)
+, C_Lexique_galgasScanner::kToken__21_, SHIFT (1580)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (797)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1581)
+, C_Lexique_galgasScanner::kToken__3F__21_, SHIFT (1582)
+, C_Lexique_galgasScanner::kToken_unused, REDUCE (797)
+, C_Lexique_galgasScanner::kToken_label, REDUCE (797)
 , END
-// State S1702 (index = 51166)
+// State S1705 (index = 51191)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, SHIFT (1749)
+, END
+// State S1706 (index = 51194)
+, C_Lexique_galgasScanner::kToken__7D_, SHIFT (1750)
+, END
+// State S1707 (index = 51197)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (680)
+, C_Lexique_galgasScanner::kToken__2C_, REDUCE (680)
+, C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (680)
+, END
+// State S1708 (index = 51204)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (681)
+, C_Lexique_galgasScanner::kToken__2C_, REDUCE (681)
+, C_Lexique_galgasScanner::kToken__2D__3E_, REDUCE (681)
+, END
+// State S1709 (index = 51211)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1751)
+, END
+// State S1710 (index = 51214)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (188)
 , C_Lexique_galgasScanner::kToken__2C_, REDUCE (188)
 , END
-// State S1703 (index = 51171)
+// State S1711 (index = 51219)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (677)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1649)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1655)
 , END
-// State S1704 (index = 51176)
+// State S1712 (index = 51224)
 , C_Lexique_galgasScanner::kToken__40_type, REDUCE (187)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (187)
 , C_Lexique_galgasScanner::kToken_replace, REDUCE (187)
@@ -37774,36 +37909,36 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_style, REDUCE (187)
 , C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (187)
 , END
-// State S1705 (index = 51197)
+// State S1713 (index = 51245)
 , C_Lexique_galgasScanner::kToken__29_, REDUCE (668)
 , END
-// State S1706 (index = 51200)
-, C_Lexique_galgasScanner::kToken__29_, REDUCE (709)
+// State S1714 (index = 51248)
+, C_Lexique_galgasScanner::kToken__29_, REDUCE (713)
 , END
-// State S1707 (index = 51203)
-, C_Lexique_galgasScanner::kToken_in, SHIFT (1745)
+// State S1715 (index = 51251)
+, C_Lexique_galgasScanner::kToken_in, SHIFT (1753)
 , END
-// State S1708 (index = 51206)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1746)
+// State S1716 (index = 51254)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1754)
 , END
-// State S1709 (index = 51209)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (697)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (697)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (697)
-, C_Lexique_galgasScanner::kToken_default, REDUCE (697)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (697)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (697)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (697)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (697)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (697)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (697)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (697)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (697)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (697)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (697)
-, C_Lexique_galgasScanner::kToken_tag, REDUCE (697)
+// State S1717 (index = 51257)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (701)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (701)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (701)
+, C_Lexique_galgasScanner::kToken_default, REDUCE (701)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (701)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (701)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (701)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (701)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (701)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (701)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (701)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (701)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (701)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (701)
+, C_Lexique_galgasScanner::kToken_tag, REDUCE (701)
 , END
-// State S1710 (index = 51240)
+// State S1718 (index = 51288)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (195)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (195)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (195)
@@ -37820,45 +37955,45 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_select, REDUCE (195)
 , C_Lexique_galgasScanner::kToken_tag, REDUCE (195)
 , END
-// State S1711 (index = 51271)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (854)
-, C_Lexique_galgasScanner::kToken_default, REDUCE (712)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (712)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (855)
-, C_Lexique_galgasScanner::kToken_drop, SHIFT (856)
-, C_Lexique_galgasScanner::kToken_log, SHIFT (857)
-, C_Lexique_galgasScanner::kToken_warning, SHIFT (858)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (859)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (860)
-, C_Lexique_galgasScanner::kToken_rewind, SHIFT (861)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (862)
-, C_Lexique_galgasScanner::kToken_tag, SHIFT (863)
+// State S1719 (index = 51319)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (859)
+, C_Lexique_galgasScanner::kToken_default, REDUCE (716)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (716)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (860)
+, C_Lexique_galgasScanner::kToken_drop, SHIFT (861)
+, C_Lexique_galgasScanner::kToken_log, SHIFT (862)
+, C_Lexique_galgasScanner::kToken_warning, SHIFT (863)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (864)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (865)
+, C_Lexique_galgasScanner::kToken_rewind, SHIFT (866)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (867)
+, C_Lexique_galgasScanner::kToken_tag, SHIFT (868)
 , END
-// State S1712 (index = 51296)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (714)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (854)
-, C_Lexique_galgasScanner::kToken_error, SHIFT (855)
-, C_Lexique_galgasScanner::kToken_drop, SHIFT (856)
-, C_Lexique_galgasScanner::kToken_log, SHIFT (857)
-, C_Lexique_galgasScanner::kToken_warning, SHIFT (858)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (859)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (860)
-, C_Lexique_galgasScanner::kToken_rewind, SHIFT (861)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (862)
-, C_Lexique_galgasScanner::kToken_tag, SHIFT (863)
+// State S1720 (index = 51344)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (718)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (859)
+, C_Lexique_galgasScanner::kToken_error, SHIFT (860)
+, C_Lexique_galgasScanner::kToken_drop, SHIFT (861)
+, C_Lexique_galgasScanner::kToken_log, SHIFT (862)
+, C_Lexique_galgasScanner::kToken_warning, SHIFT (863)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (864)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (865)
+, C_Lexique_galgasScanner::kToken_rewind, SHIFT (866)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (867)
+, C_Lexique_galgasScanner::kToken_tag, SHIFT (868)
 , END
-// State S1713 (index = 51319)
-, C_Lexique_galgasScanner::kToken_end, SHIFT (1749)
+// State S1721 (index = 51367)
+, C_Lexique_galgasScanner::kToken_end, SHIFT (1757)
 , END
-// State S1714 (index = 51322)
+// State S1722 (index = 51370)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (544)
-, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1508)
+, C_Lexique_galgasScanner::kToken__3F_, SHIFT (1513)
 , C_Lexique_galgasScanner::kToken_template, REDUCE (544)
 , END
-// State S1715 (index = 51329)
+// State S1723 (index = 51377)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (432)
 , END
-// State S1716 (index = 51332)
+// State S1724 (index = 51380)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (68)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (68)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (68)
@@ -37897,7 +38032,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (68)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (68)
 , END
-// State S1717 (index = 51407)
+// State S1725 (index = 51455)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (438)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (438)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (438)
@@ -37936,7 +38071,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (438)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (438)
 , END
-// State S1718 (index = 51482)
+// State S1726 (index = 51530)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (444)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (444)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (444)
@@ -37975,16 +38110,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (444)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (444)
 , END
-// State S1719 (index = 51557)
-, C_Lexique_galgasScanner::kToken__29_, SHIFT (1751)
+// State S1727 (index = 51605)
+, C_Lexique_galgasScanner::kToken__29_, SHIFT (1759)
 , END
-// State S1720 (index = 51560)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (733)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (733)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1618)
-, C_Lexique_galgasScanner::kToken_label, REDUCE (733)
+// State S1728 (index = 51608)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (737)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (737)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1623)
+, C_Lexique_galgasScanner::kToken_label, REDUCE (737)
 , END
-// State S1721 (index = 51569)
+// State S1729 (index = 51617)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (358)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (358)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (358)
@@ -38020,7 +38155,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (358)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (358)
 , END
-// State S1722 (index = 51638)
+// State S1730 (index = 51686)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (357)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (357)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (357)
@@ -38056,83 +38191,83 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (357)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (357)
 , END
-// State S1723 (index = 51707)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1753)
+// State S1731 (index = 51755)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1761)
 , END
-// State S1724 (index = 51710)
-, C_Lexique_galgasScanner::kToken_if, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (776)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (776)
-, C_Lexique_galgasScanner::kToken__5B_, REDUCE (776)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_self, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (776)
-, C_Lexique_galgasScanner::kToken__3B_, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_cast, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_for, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (776)
-, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_loop, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_switch, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (776)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (776)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (776)
-, C_Lexique_galgasScanner::kToken_parse, REDUCE (776)
+// State S1732 (index = 51758)
+, C_Lexique_galgasScanner::kToken_if, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (780)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (780)
+, C_Lexique_galgasScanner::kToken__5B_, REDUCE (780)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_self, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (780)
+, C_Lexique_galgasScanner::kToken__3B_, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_cast, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_for, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (780)
+, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_loop, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_switch, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (780)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (780)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (780)
+, C_Lexique_galgasScanner::kToken_parse, REDUCE (780)
 , END
-// State S1725 (index = 51777)
-, C_Lexique_galgasScanner::kToken_if, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (774)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (774)
-, C_Lexique_galgasScanner::kToken__5B_, REDUCE (774)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_self, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (774)
-, C_Lexique_galgasScanner::kToken__3B_, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_cast, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_for, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_loop, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_switch, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (774)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (774)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (774)
-, C_Lexique_galgasScanner::kToken_parse, REDUCE (774)
+// State S1733 (index = 51825)
+, C_Lexique_galgasScanner::kToken_if, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (778)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (778)
+, C_Lexique_galgasScanner::kToken__5B_, REDUCE (778)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_self, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (778)
+, C_Lexique_galgasScanner::kToken__3B_, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_cast, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_for, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_loop, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_switch, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (778)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (778)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (778)
+, C_Lexique_galgasScanner::kToken_parse, REDUCE (778)
 , END
-// State S1726 (index = 51842)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (769)
-, C_Lexique_galgasScanner::kToken_while, SHIFT (1684)
+// State S1734 (index = 51890)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (773)
+, C_Lexique_galgasScanner::kToken_while, SHIFT (1690)
 , END
-// State S1727 (index = 51847)
+// State S1735 (index = 51895)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (219)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (219)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (219)
@@ -38166,11 +38301,11 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (219)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (219)
 , END
-// State S1728 (index = 51912)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (771)
-, C_Lexique_galgasScanner::kToken_or, SHIFT (1686)
+// State S1736 (index = 51960)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (775)
+, C_Lexique_galgasScanner::kToken_or, SHIFT (1692)
 , END
-// State S1729 (index = 51917)
+// State S1737 (index = 51965)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (220)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (220)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (220)
@@ -38204,23 +38339,23 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (220)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (220)
 , END
-// State S1730 (index = 51982)
+// State S1738 (index = 52030)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
 , C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (756)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_self, SHIFT (109)
 , C_Lexique_galgasScanner::kToken_let, SHIFT (110)
 , C_Lexique_galgasScanner::kToken_var, SHIFT (111)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_error, SHIFT (112)
 , C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
 , C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
 , C_Lexique_galgasScanner::kToken_for, SHIFT (115)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
 , C_Lexique_galgasScanner::kToken_log, SHIFT (117)
 , C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
@@ -38228,35 +38363,35 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (1369)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1370)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1371)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (1372)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (764)
-, C_Lexique_galgasScanner::kToken_parse, SHIFT (1373)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (1374)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1375)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1376)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (1377)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (768)
+, C_Lexique_galgasScanner::kToken_parse, SHIFT (1378)
 , END
-// State S1731 (index = 52045)
-, C_Lexique_galgasScanner::kToken_end, SHIFT (1757)
+// State S1739 (index = 52093)
+, C_Lexique_galgasScanner::kToken_end, SHIFT (1765)
 , END
-// State S1732 (index = 52048)
+// State S1740 (index = 52096)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
 , C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (756)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_self, SHIFT (109)
 , C_Lexique_galgasScanner::kToken_let, SHIFT (110)
 , C_Lexique_galgasScanner::kToken_var, SHIFT (111)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_error, SHIFT (112)
 , C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
 , C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
 , C_Lexique_galgasScanner::kToken_for, SHIFT (115)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
 , C_Lexique_galgasScanner::kToken_log, SHIFT (117)
 , C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
@@ -38264,32 +38399,32 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (1369)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1370)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1371)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (1372)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (764)
-, C_Lexique_galgasScanner::kToken_parse, SHIFT (1373)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (1374)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1375)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1376)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (1377)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (768)
+, C_Lexique_galgasScanner::kToken_parse, SHIFT (1378)
 , END
-// State S1733 (index = 52111)
+// State S1741 (index = 52159)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
 , C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (756)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_self, SHIFT (109)
 , C_Lexique_galgasScanner::kToken_let, SHIFT (110)
 , C_Lexique_galgasScanner::kToken_var, SHIFT (111)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_error, SHIFT (112)
 , C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
 , C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
 , C_Lexique_galgasScanner::kToken_for, SHIFT (115)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
 , C_Lexique_galgasScanner::kToken_log, SHIFT (117)
 , C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
@@ -38297,16 +38432,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (1369)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1370)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1371)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (1372)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (764)
-, C_Lexique_galgasScanner::kToken_parse, SHIFT (1373)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (1374)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1375)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1376)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (1377)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (768)
+, C_Lexique_galgasScanner::kToken_parse, SHIFT (1378)
 , END
-// State S1734 (index = 52174)
+// State S1742 (index = 52222)
 , C_Lexique_galgasScanner::kToken__28_, SHIFT (201)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (202)
 , C_Lexique_galgasScanner::kToken__2B_, SHIFT (203)
@@ -38328,10 +38463,10 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_not, SHIFT (217)
 , C_Lexique_galgasScanner::kToken__7E_, SHIFT (218)
 , END
-// State S1735 (index = 52215)
-, C_Lexique_galgasScanner::kToken_end, SHIFT (1761)
+// State S1743 (index = 52263)
+, C_Lexique_galgasScanner::kToken_end, SHIFT (1769)
 , END
-// State S1736 (index = 52218)
+// State S1744 (index = 52266)
 , C_Lexique_galgasScanner::kToken__21_, REDUCE (231)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (231)
 , C_Lexique_galgasScanner::kToken__3F_, REDUCE (231)
@@ -38339,13 +38474,13 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (231)
 , C_Lexique_galgasScanner::kToken_label, REDUCE (231)
 , END
-// State S1737 (index = 52231)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (798)
+// State S1745 (index = 52279)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (802)
 , END
-// State S1738 (index = 52234)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1762)
+// State S1746 (index = 52282)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1770)
 , END
-// State S1739 (index = 52237)
+// State S1747 (index = 52285)
 , C_Lexique_galgasScanner::kToken__21_, REDUCE (233)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (233)
 , C_Lexique_galgasScanner::kToken__3F_, REDUCE (233)
@@ -38353,16 +38488,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (233)
 , C_Lexique_galgasScanner::kToken_label, REDUCE (233)
 , END
-// State S1740 (index = 52250)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (789)
-, C_Lexique_galgasScanner::kToken_unused, REDUCE (789)
-, C_Lexique_galgasScanner::kToken_label, SHIFT (1641)
+// State S1748 (index = 52298)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (793)
+, C_Lexique_galgasScanner::kToken_unused, REDUCE (793)
+, C_Lexique_galgasScanner::kToken_label, SHIFT (1646)
 , END
-// State S1741 (index = 52257)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (791)
-, C_Lexique_galgasScanner::kToken_unused, SHIFT (1699)
+// State S1749 (index = 52305)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (795)
+, C_Lexique_galgasScanner::kToken_unused, SHIFT (1705)
 , END
-// State S1742 (index = 52262)
+// State S1750 (index = 52310)
 , C_Lexique_galgasScanner::kToken_option, REDUCE (229)
 , C_Lexique_galgasScanner::kToken_lexique, REDUCE (229)
 , C_Lexique_galgasScanner::kToken_filewrapper, REDUCE (229)
@@ -38399,41 +38534,41 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_syntax, REDUCE (229)
 , C_Lexique_galgasScanner::kToken_, REDUCE (229)
 , END
-// State S1743 (index = 52333)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (681)
-, C_Lexique_galgasScanner::kToken__2C_, REDUCE (681)
+// State S1751 (index = 52381)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (682)
+, C_Lexique_galgasScanner::kToken__2C_, REDUCE (682)
 , END
-// State S1744 (index = 52338)
+// State S1752 (index = 52386)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (678)
 , END
-// State S1745 (index = 52341)
-, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1765)
+// State S1753 (index = 52389)
+, C_Lexique_galgasScanner::kToken_identifier, SHIFT (1773)
 , END
-// State S1746 (index = 52344)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (698)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (698)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (698)
-, C_Lexique_galgasScanner::kToken_default, REDUCE (698)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (698)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (698)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (698)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (698)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (698)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (698)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (698)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (698)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (698)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (698)
-, C_Lexique_galgasScanner::kToken_tag, REDUCE (698)
+// State S1754 (index = 52392)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (702)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (702)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (702)
+, C_Lexique_galgasScanner::kToken_default, REDUCE (702)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (702)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (702)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (702)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (702)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (702)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (702)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (702)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (702)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (702)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (702)
+, C_Lexique_galgasScanner::kToken_tag, REDUCE (702)
 , END
-// State S1747 (index = 52375)
-, C_Lexique_galgasScanner::kToken_default, REDUCE (710)
-, C_Lexique_galgasScanner::kToken_case, SHIFT (1593)
+// State S1755 (index = 52423)
+, C_Lexique_galgasScanner::kToken_default, REDUCE (714)
+, C_Lexique_galgasScanner::kToken_case, SHIFT (1598)
 , END
-// State S1748 (index = 52380)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (715)
+// State S1756 (index = 52428)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (719)
 , END
-// State S1749 (index = 52383)
+// State S1757 (index = 52431)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (202)
 , C_Lexique_galgasScanner::kToken_identifier, REDUCE (202)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (202)
@@ -38450,69 +38585,69 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_select, REDUCE (202)
 , C_Lexique_galgasScanner::kToken_tag, REDUCE (202)
 , END
-// State S1750 (index = 52414)
+// State S1758 (index = 52462)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (545)
 , C_Lexique_galgasScanner::kToken_template, REDUCE (545)
 , END
-// State S1751 (index = 52419)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (737)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (737)
-, C_Lexique_galgasScanner::kToken__2C_, REDUCE (737)
-, C_Lexique_galgasScanner::kToken_label, REDUCE (737)
+// State S1759 (index = 52467)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (741)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (741)
+, C_Lexique_galgasScanner::kToken__2C_, REDUCE (741)
+, C_Lexique_galgasScanner::kToken_label, REDUCE (741)
 , END
-// State S1752 (index = 52428)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (734)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (734)
-, C_Lexique_galgasScanner::kToken_label, REDUCE (734)
+// State S1760 (index = 52476)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (738)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (738)
+, C_Lexique_galgasScanner::kToken_label, REDUCE (738)
 , END
-// State S1753 (index = 52435)
-, C_Lexique_galgasScanner::kToken_if, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (779)
-, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1681)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (779)
-, C_Lexique_galgasScanner::kToken__5B_, REDUCE (779)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (779)
-, C_Lexique_galgasScanner::kToken__2C_, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_self, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (779)
-, C_Lexique_galgasScanner::kToken__3B_, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_cast, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_for, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (779)
-, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_loop, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_switch, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (779)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (779)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (779)
-, C_Lexique_galgasScanner::kToken_parse, REDUCE (779)
+// State S1761 (index = 52483)
+, C_Lexique_galgasScanner::kToken_if, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (783)
+, C_Lexique_galgasScanner::kToken__22_string_22_, SHIFT (1687)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (783)
+, C_Lexique_galgasScanner::kToken__5B_, REDUCE (783)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (783)
+, C_Lexique_galgasScanner::kToken__2C_, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_self, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (783)
+, C_Lexique_galgasScanner::kToken__3B_, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_cast, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_for, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (783)
+, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_loop, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_switch, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (783)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (783)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (783)
+, C_Lexique_galgasScanner::kToken_parse, REDUCE (783)
 , END
-// State S1754 (index = 52506)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (770)
+// State S1762 (index = 52554)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (774)
 , END
-// State S1755 (index = 52509)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (772)
+// State S1763 (index = 52557)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (776)
 , END
-// State S1756 (index = 52512)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (781)
-, C_Lexique_galgasScanner::kToken_rewind, SHIFT (1730)
+// State S1764 (index = 52560)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (785)
+, C_Lexique_galgasScanner::kToken_rewind, SHIFT (1738)
 , END
-// State S1757 (index = 52517)
+// State S1765 (index = 52565)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (224)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (224)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (224)
@@ -38546,16 +38681,16 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (224)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (224)
 , END
-// State S1758 (index = 52582)
-, C_Lexique_galgasScanner::kToken_end, SHIFT (1769)
+// State S1766 (index = 52630)
+, C_Lexique_galgasScanner::kToken_end, SHIFT (1777)
 , END
-// State S1759 (index = 52585)
+// State S1767 (index = 52633)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (225)
 , END
-// State S1760 (index = 52588)
-, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1770)
+// State S1768 (index = 52636)
+, C_Lexique_galgasScanner::kToken__3A_, SHIFT (1778)
 , END
-// State S1761 (index = 52591)
+// State S1769 (index = 52639)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (227)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (227)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (227)
@@ -38589,7 +38724,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (227)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (227)
 , END
-// State S1762 (index = 52656)
+// State S1770 (index = 52704)
 , C_Lexique_galgasScanner::kToken__21_, REDUCE (232)
 , C_Lexique_galgasScanner::kToken__7D_, REDUCE (232)
 , C_Lexique_galgasScanner::kToken__3F_, REDUCE (232)
@@ -38597,59 +38732,59 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_unused, REDUCE (232)
 , C_Lexique_galgasScanner::kToken_label, REDUCE (232)
 , END
-// State S1763 (index = 52669)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (790)
-, C_Lexique_galgasScanner::kToken_unused, REDUCE (790)
+// State S1771 (index = 52717)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (794)
+, C_Lexique_galgasScanner::kToken_unused, REDUCE (794)
 , END
-// State S1764 (index = 52674)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (792)
+// State S1772 (index = 52722)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (796)
 , END
-// State S1765 (index = 52677)
-, C_Lexique_galgasScanner::kToken_default, SHIFT (1771)
+// State S1773 (index = 52725)
+, C_Lexique_galgasScanner::kToken_default, SHIFT (1779)
 , END
-// State S1766 (index = 52680)
-, C_Lexique_galgasScanner::kToken_default, REDUCE (711)
+// State S1774 (index = 52728)
+, C_Lexique_galgasScanner::kToken_default, REDUCE (715)
 , END
-// State S1767 (index = 52683)
-, C_Lexique_galgasScanner::kToken_if, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (777)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (777)
-, C_Lexique_galgasScanner::kToken__5B_, REDUCE (777)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (777)
-, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1723)
-, C_Lexique_galgasScanner::kToken_self, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (777)
-, C_Lexique_galgasScanner::kToken__3B_, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_cast, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_for, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (777)
-, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_loop, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_switch, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (777)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (777)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (777)
-, C_Lexique_galgasScanner::kToken_parse, REDUCE (777)
+// State S1775 (index = 52731)
+, C_Lexique_galgasScanner::kToken_if, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (781)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (781)
+, C_Lexique_galgasScanner::kToken__5B_, REDUCE (781)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (781)
+, C_Lexique_galgasScanner::kToken__2C_, SHIFT (1731)
+, C_Lexique_galgasScanner::kToken_self, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (781)
+, C_Lexique_galgasScanner::kToken__3B_, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_cast, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_for, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (781)
+, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_loop, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_switch, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (781)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (781)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (781)
+, C_Lexique_galgasScanner::kToken_parse, REDUCE (781)
 , END
-// State S1768 (index = 52752)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (782)
+// State S1776 (index = 52800)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (786)
 , END
-// State S1769 (index = 52755)
+// State S1777 (index = 52803)
 , C_Lexique_galgasScanner::kToken_if, REDUCE (223)
 , C_Lexique_galgasScanner::kToken_else, REDUCE (223)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (223)
@@ -38683,23 +38818,23 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (223)
 , C_Lexique_galgasScanner::kToken_parse, REDUCE (223)
 , END
-// State S1770 (index = 52820)
+// State S1778 (index = 52868)
 , C_Lexique_galgasScanner::kToken_if, SHIFT (105)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_identifier, SHIFT (106)
 , C_Lexique_galgasScanner::kToken__40_type, SHIFT (107)
 , C_Lexique_galgasScanner::kToken__5B_, SHIFT (108)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (756)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_self, SHIFT (109)
 , C_Lexique_galgasScanner::kToken_let, SHIFT (110)
 , C_Lexique_galgasScanner::kToken_var, SHIFT (111)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_error, SHIFT (112)
 , C_Lexique_galgasScanner::kToken_cast, SHIFT (113)
 , C_Lexique_galgasScanner::kToken_drop, SHIFT (114)
 , C_Lexique_galgasScanner::kToken_for, SHIFT (115)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (756)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (760)
 , C_Lexique_galgasScanner::kToken_grammar, SHIFT (116)
 , C_Lexique_galgasScanner::kToken_log, SHIFT (117)
 , C_Lexique_galgasScanner::kToken_loop, SHIFT (118)
@@ -38707,68 +38842,68 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , C_Lexique_galgasScanner::kToken_switch, SHIFT (120)
 , C_Lexique_galgasScanner::kToken_warning, SHIFT (121)
 , C_Lexique_galgasScanner::kToken_with, SHIFT (122)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_send, SHIFT (1369)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1370)
-, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1371)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (756)
-, C_Lexique_galgasScanner::kToken_select, SHIFT (1372)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (764)
-, C_Lexique_galgasScanner::kToken_parse, SHIFT (1373)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_send, SHIFT (1374)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, SHIFT (1375)
+, C_Lexique_galgasScanner::kToken_repeat, SHIFT (1376)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (760)
+, C_Lexique_galgasScanner::kToken_select, SHIFT (1377)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (768)
+, C_Lexique_galgasScanner::kToken_parse, SHIFT (1378)
 , END
-// State S1771 (index = 52883)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (695)
-, C_Lexique_galgasScanner::kToken_search, SHIFT (1654)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (695)
+// State S1779 (index = 52931)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (699)
+, C_Lexique_galgasScanner::kToken_search, SHIFT (1660)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (699)
 , END
-// State S1772 (index = 52890)
-, C_Lexique_galgasScanner::kToken_if, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_else, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_end, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_identifier, REDUCE (778)
-, C_Lexique_galgasScanner::kToken__40_type, REDUCE (778)
-, C_Lexique_galgasScanner::kToken__5B_, REDUCE (778)
-, C_Lexique_galgasScanner::kToken__7D_, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_self, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_let, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_var, REDUCE (778)
-, C_Lexique_galgasScanner::kToken__3B_, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_case, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_cast, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_drop, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_for, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_while, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_grammar, REDUCE (778)
-, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_log, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_loop, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_message, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_switch, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_warning, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_with, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_or, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_send, REDUCE (778)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_repeat, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_rewind, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_select, REDUCE (778)
-, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (778)
-, C_Lexique_galgasScanner::kToken_parse, REDUCE (778)
+// State S1780 (index = 52938)
+, C_Lexique_galgasScanner::kToken_if, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_else, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_end, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_identifier, REDUCE (782)
+, C_Lexique_galgasScanner::kToken__40_type, REDUCE (782)
+, C_Lexique_galgasScanner::kToken__5B_, REDUCE (782)
+, C_Lexique_galgasScanner::kToken__7D_, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_self, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_let, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_var, REDUCE (782)
+, C_Lexique_galgasScanner::kToken__3B_, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_case, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_cast, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_drop, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_for, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_while, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_grammar, REDUCE (782)
+, C_Lexique_galgasScanner::kToken__3A__3E_, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_log, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_loop, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_message, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_switch, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_warning, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_with, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_or, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_send, REDUCE (782)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_repeat, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_rewind, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_select, REDUCE (782)
+, C_Lexique_galgasScanner::kToken__3C_non_5F_terminal_3E_, REDUCE (782)
+, C_Lexique_galgasScanner::kToken_parse, REDUCE (782)
 , END
-// State S1773 (index = 52957)
-, C_Lexique_galgasScanner::kToken_else, SHIFT (1733)
-, C_Lexique_galgasScanner::kToken_case, SHIFT (1734)
+// State S1781 (index = 53005)
+, C_Lexique_galgasScanner::kToken_else, SHIFT (1741)
+, C_Lexique_galgasScanner::kToken_case, SHIFT (1742)
 , END
-// State S1774 (index = 52962)
-, C_Lexique_galgasScanner::kToken_error, REDUCE (696)
-, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (696)
+// State S1782 (index = 53010)
+, C_Lexique_galgasScanner::kToken_error, REDUCE (700)
+, C_Lexique_galgasScanner::kToken__24_terminal_24_, REDUCE (700)
 , END
-// State S1775 (index = 52967)
+// State S1783 (index = 53015)
 , C_Lexique_galgasScanner::kToken_end, REDUCE (226)
 , END} ;
 
-static const uint32_t gActionTableIndex_galgas3Grammar [1776] = {
+static const uint32_t gActionTableIndex_galgas3Grammar [1784] = {
   0  // S0
 , 71  // S1
 , 74  // S2
@@ -38940,1611 +39075,1619 @@ static const uint32_t gActionTableIndex_galgas3Grammar [1776] = {
 , 2190  // S168
 , 2201  // S169
 , 2204  // S170
-, 2213  // S171
-, 2234  // S172
-, 2255  // S173
-, 2276  // S174
-, 2297  // S175
-, 2318  // S176
-, 2339  // S177
-, 2360  // S178
-, 2381  // S179
-, 2402  // S180
-, 2423  // S181
-, 2426  // S182
-, 2429  // S183
-, 2434  // S184
-, 2437  // S185
-, 2442  // S186
-, 2445  // S187
-, 2516  // S188
-, 2521  // S189
-, 2524  // S190
-, 2527  // S191
-, 2530  // S192
-, 2587  // S193
-, 2592  // S194
-, 2595  // S195
-, 2598  // S196
-, 2601  // S197
-, 2604  // S198
-, 2609  // S199
-, 2612  // S200
-, 2615  // S201
-, 2656  // S202
-, 2697  // S203
-, 2738  // S204
-, 2779  // S205
-, 2964  // S206
-, 3147  // S207
-, 3330  // S208
-, 3515  // S209
-, 3698  // S210
-, 3881  // S211
-, 4064  // S212
-, 4105  // S213
-, 4110  // S214
-, 4157  // S215
-, 4160  // S216
-, 4343  // S217
-, 4384  // S218
-, 4425  // S219
-, 4432  // S220
-, 4615  // S221
-, 4796  // S222
-, 4939  // S223
-, 5098  // S224
-, 5269  // S225
-, 5274  // S226
-, 5279  // S227
-, 5408  // S228
-, 5547  // S229
-, 5550  // S230
-, 5553  // S231
-, 5558  // S232
-, 5563  // S233
-, 5650  // S234
-, 5653  // S235
-, 5656  // S236
-, 5665  // S237
-, 5674  // S238
-, 5751  // S239
-, 5758  // S240
-, 5763  // S241
-, 5766  // S242
-, 5769  // S243
-, 5810  // S244
-, 5851  // S245
-, 5894  // S246
-, 5935  // S247
-, 5976  // S248
-, 6051  // S249
-, 6126  // S250
-, 6201  // S251
-, 6276  // S252
-, 6351  // S253
-, 6354  // S254
-, 6357  // S255
-, 6360  // S256
-, 6363  // S257
-, 6366  // S258
-, 6369  // S259
-, 6446  // S260
-, 6455  // S261
-, 6464  // S262
-, 6473  // S263
-, 6550  // S264
-, 6553  // S265
-, 6556  // S266
-, 6633  // S267
-, 6674  // S268
-, 6677  // S269
-, 6752  // S270
-, 6755  // S271
-, 6758  // S272
-, 6763  // S273
-, 6834  // S274
-, 6871  // S275
-, 6892  // S276
-, 6929  // S277
-, 7000  // S278
-, 7003  // S279
-, 7024  // S280
-, 7027  // S281
-, 7032  // S282
-, 7037  // S283
-, 7144  // S284
-, 7251  // S285
-, 7254  // S286
-, 7257  // S287
-, 7260  // S288
-, 7263  // S289
-, 7266  // S290
-, 7269  // S291
-, 7276  // S292
-, 7281  // S293
-, 7288  // S294
-, 7295  // S295
-, 7314  // S296
-, 7319  // S297
-, 7324  // S298
-, 7327  // S299
-, 7330  // S300
-, 7333  // S301
-, 7340  // S302
-, 7343  // S303
-, 7346  // S304
-, 7349  // S305
-, 7354  // S306
-, 7357  // S307
-, 7366  // S308
-, 7399  // S309
-, 7432  // S310
-, 7465  // S311
-, 7498  // S312
-, 7531  // S313
-, 7564  // S314
-, 7567  // S315
-, 7584  // S316
-, 7587  // S317
-, 7614  // S318
-, 7641  // S319
-, 7644  // S320
-, 7715  // S321
-, 7786  // S322
-, 7789  // S323
-, 7792  // S324
-, 7795  // S325
-, 7800  // S326
-, 7907  // S327
-, 8014  // S328
-, 8017  // S329
-, 8022  // S330
-, 8025  // S331
-, 8034  // S332
-, 8043  // S333
-, 8052  // S334
-, 8055  // S335
-, 8058  // S336
-, 8061  // S337
-, 8064  // S338
-, 8069  // S339
-, 8072  // S340
-, 8077  // S341
-, 8082  // S342
-, 8085  // S343
-, 8088  // S344
-, 8159  // S345
-, 8180  // S346
-, 8185  // S347
-, 8188  // S348
-, 8193  // S349
-, 8200  // S350
-, 8203  // S351
-, 8210  // S352
-, 8217  // S353
-, 8226  // S354
-, 8229  // S355
-, 8232  // S356
-, 8235  // S357
-, 8240  // S358
-, 8247  // S359
-, 8250  // S360
-, 8253  // S361
-, 8260  // S362
-, 8263  // S363
-, 8266  // S364
-, 8269  // S365
-, 8272  // S366
-, 8275  // S367
-, 8278  // S368
-, 8281  // S369
-, 8284  // S370
-, 8287  // S371
-, 8290  // S372
-, 8361  // S373
-, 8366  // S374
-, 8369  // S375
-, 8372  // S376
-, 8375  // S377
-, 8380  // S378
-, 8383  // S379
-, 8394  // S380
-, 8397  // S381
-, 8400  // S382
-, 8403  // S383
-, 8406  // S384
-, 8409  // S385
-, 8412  // S386
-, 8415  // S387
-, 8472  // S388
-, 8475  // S389
-, 8478  // S390
-, 8483  // S391
-, 8486  // S392
-, 8489  // S393
-, 8670  // S394
-, 8851  // S395
-, 8860  // S396
-, 9045  // S397
-, 9228  // S398
-, 9409  // S399
-, 9414  // S400
-, 9417  // S401
-, 9420  // S402
-, 9423  // S403
-, 9606  // S404
-, 9787  // S405
-, 9968  // S406
-, 9971  // S407
-, 9974  // S408
-, 10015  // S409
-, 10018  // S410
-, 10023  // S411
-, 10204  // S412
-, 10245  // S413
-, 10286  // S414
-, 10327  // S415
-, 10368  // S416
-, 10409  // S417
-, 10580  // S418
-, 10621  // S419
-, 10662  // S420
-, 10801  // S421
-, 10842  // S422
-, 10883  // S423
-, 10924  // S424
-, 10965  // S425
-, 11006  // S426
-, 11047  // S427
-, 11088  // S428
-, 11129  // S429
-, 11272  // S430
-, 11313  // S431
-, 11354  // S432
-, 11395  // S433
-, 11436  // S434
-, 11477  // S435
-, 11518  // S436
-, 11677  // S437
-, 11682  // S438
-, 11727  // S439
-, 11736  // S440
-, 11739  // S441
-, 11864  // S442
-, 11905  // S443
-, 11946  // S444
-, 11987  // S445
-, 12028  // S446
-, 12069  // S447
-, 12198  // S448
-, 12255  // S449
-, 12330  // S450
-, 12373  // S451
-, 12376  // S452
-, 12417  // S453
-, 12432  // S454
-, 12441  // S455
-, 12444  // S456
-, 12525  // S457
-, 12546  // S458
-, 12587  // S459
-, 12628  // S460
-, 12671  // S461
-, 12712  // S462
-, 12753  // S463
-, 12828  // S464
-, 12903  // S465
-, 12978  // S466
-, 13053  // S467
-, 13128  // S468
-, 13203  // S469
-, 13244  // S470
-, 13331  // S471
-, 13336  // S472
-, 13339  // S473
-, 13426  // S474
-, 13447  // S475
-, 13522  // S476
-, 13597  // S477
-, 13672  // S478
-, 13747  // S479
-, 13788  // S480
-, 13863  // S481
-, 13938  // S482
-, 14013  // S483
-, 14088  // S484
-, 14129  // S485
-, 14206  // S486
-, 14247  // S487
-, 14324  // S488
-, 14365  // S489
-, 14372  // S490
-, 14381  // S491
-, 14384  // S492
-, 14459  // S493
-, 14474  // S494
-, 14479  // S495
-, 14488  // S496
-, 14493  // S497
-, 14496  // S498
-, 14499  // S499
-, 14504  // S500
-, 14545  // S501
-, 14548  // S502
-, 14555  // S503
-, 14630  // S504
-, 14633  // S505
-, 14674  // S506
-, 14677  // S507
-, 14718  // S508
-, 14721  // S509
-, 14724  // S510
-, 14783  // S511
-, 14786  // S512
-, 14807  // S513
-, 14828  // S514
-, 14849  // S515
-, 14870  // S516
-, 14891  // S517
-, 14912  // S518
-, 14933  // S519
-, 14954  // S520
-, 14975  // S521
-, 14996  // S522
-, 14999  // S523
-, 15002  // S524
-, 15005  // S525
-, 15008  // S526
-, 15011  // S527
-, 15082  // S528
-, 15153  // S529
-, 15172  // S530
-, 15175  // S531
-, 15232  // S532
-, 15289  // S533
-, 15292  // S534
-, 15331  // S535
-, 15334  // S536
-, 15339  // S537
-, 15342  // S538
-, 15347  // S539
-, 15350  // S540
-, 15355  // S541
-, 15372  // S542
-, 15389  // S543
-, 15392  // S544
-, 15395  // S545
-, 15398  // S546
-, 15469  // S547
-, 15496  // S548
-, 15499  // S549
-, 15502  // S550
-, 15505  // S551
-, 15508  // S552
-, 15513  // S553
-, 15620  // S554
-, 15727  // S555
-, 15730  // S556
-, 15733  // S557
-, 15736  // S558
-, 15743  // S559
-, 15746  // S560
-, 15749  // S561
-, 15752  // S562
-, 15755  // S563
-, 15758  // S564
-, 15761  // S565
-, 15764  // S566
-, 15767  // S567
-, 15770  // S568
-, 15841  // S569
-, 15844  // S570
-, 15847  // S571
-, 15850  // S572
-, 15853  // S573
-, 15924  // S574
-, 15929  // S575
-, 16036  // S576
-, 16143  // S577
-, 16146  // S578
-, 16149  // S579
-, 16152  // S580
-, 16155  // S581
-, 16158  // S582
-, 16161  // S583
-, 16164  // S584
-, 16167  // S585
-, 16170  // S586
-, 16173  // S587
-, 16244  // S588
-, 16249  // S589
-, 16254  // S590
-, 16257  // S591
-, 16262  // S592
-, 16267  // S593
-, 16270  // S594
-, 16275  // S595
-, 16278  // S596
-, 16281  // S597
-, 16284  // S598
-, 16287  // S599
-, 16290  // S600
-, 16293  // S601
-, 16296  // S602
-, 16317  // S603
-, 16320  // S604
-, 16325  // S605
-, 16328  // S606
-, 16331  // S607
-, 16336  // S608
-, 16339  // S609
-, 16342  // S610
-, 16349  // S611
-, 16352  // S612
-, 16373  // S613
-, 16396  // S614
-, 16405  // S615
-, 16410  // S616
-, 16413  // S617
-, 16422  // S618
-, 16429  // S619
-, 16432  // S620
-, 16435  // S621
-, 16440  // S622
-, 16443  // S623
-, 16448  // S624
-, 16451  // S625
-, 16454  // S626
-, 16457  // S627
-, 16460  // S628
-, 16463  // S629
-, 16466  // S630
-, 16469  // S631
-, 16480  // S632
-, 16491  // S633
-, 16502  // S634
-, 16513  // S635
-, 16516  // S636
-, 16521  // S637
-, 16592  // S638
-, 16663  // S639
-, 16770  // S640
-, 16773  // S641
-, 16776  // S642
-, 16779  // S643
-, 16784  // S644
-, 16787  // S645
-, 16790  // S646
-, 16973  // S647
-, 17014  // S648
-, 17055  // S649
-, 17058  // S650
-, 17065  // S651
-, 17248  // S652
-, 17251  // S653
-, 17254  // S654
-, 17257  // S655
-, 17262  // S656
-, 17271  // S657
-, 17274  // S658
-, 17315  // S659
-, 17498  // S660
-, 17681  // S661
-, 17862  // S662
-, 18043  // S663
-, 18224  // S664
-, 18405  // S665
-, 18586  // S666
-, 18729  // S667
-, 18872  // S668
-, 19031  // S669
-, 19190  // S670
-, 19349  // S671
-, 19508  // S672
-, 19667  // S673
-, 19826  // S674
-, 19985  // S675
-, 20144  // S676
-, 20315  // S677
-, 20486  // S678
-, 20657  // S679
-, 20828  // S680
-, 20999  // S681
-, 21170  // S682
-, 21355  // S683
-, 21538  // S684
-, 21579  // S685
-, 21584  // S686
-, 21589  // S687
-, 21592  // S688
-, 21595  // S689
-, 21598  // S690
-, 21601  // S691
-, 21604  // S692
-, 21729  // S693
-, 21868  // S694
-, 22007  // S695
-, 22146  // S696
-, 22285  // S697
-, 22424  // S698
-, 22431  // S699
-, 22436  // S700
-, 22523  // S701
-, 22612  // S702
-, 22615  // S703
-, 22704  // S704
-, 22707  // S705
-, 22798  // S706
-, 22805  // S707
-, 22810  // S708
-, 22897  // S709
-, 22986  // S710
-, 22989  // S711
-, 23076  // S712
-, 23163  // S713
-, 23238  // S714
-, 23241  // S715
-, 23250  // S716
-, 23259  // S717
-, 23334  // S718
-, 23409  // S719
-, 23484  // S720
-, 23559  // S721
-, 23634  // S722
-, 23709  // S723
-, 23784  // S724
-, 23859  // S725
-, 23862  // S726
-, 23949  // S727
-, 23952  // S728
-, 23959  // S729
-, 23962  // S730
-, 23965  // S731
-, 23968  // S732
-, 24045  // S733
-, 24120  // S734
-, 24161  // S735
-, 24236  // S736
-, 24277  // S737
-, 24356  // S738
-, 24359  // S739
-, 24362  // S740
-, 24365  // S741
-, 24368  // S742
-, 24377  // S743
-, 24384  // S744
-, 24461  // S745
-, 24466  // S746
-, 24469  // S747
-, 24476  // S748
-, 24479  // S749
-, 24494  // S750
-, 24501  // S751
-, 24504  // S752
-, 24515  // S753
-, 24522  // S754
-, 24525  // S755
-, 24528  // S756
-, 24531  // S757
-, 24538  // S758
-, 24625  // S759
-, 24666  // S760
-, 24669  // S761
-, 24744  // S762
-, 24821  // S763
-, 24898  // S764
-, 24975  // S765
-, 25032  // S766
-, 25035  // S767
-, 25042  // S768
-, 25045  // S769
-, 25122  // S770
-, 25125  // S771
-, 25168  // S772
-, 25189  // S773
-, 25196  // S774
-, 25199  // S775
-, 25202  // S776
-, 25205  // S777
-, 25208  // S778
-, 25211  // S779
-, 25214  // S780
-, 25217  // S781
-, 25220  // S782
-, 25223  // S783
-, 25226  // S784
-, 25297  // S785
-, 25300  // S786
-, 25305  // S787
-, 25376  // S788
-, 25379  // S789
-, 25382  // S790
-, 25399  // S791
-, 25404  // S792
-, 25407  // S793
-, 25410  // S794
-, 25415  // S795
-, 25454  // S796
-, 25491  // S797
-, 25494  // S798
-, 25497  // S799
-, 25500  // S800
-, 25519  // S801
-, 25522  // S802
-, 25525  // S803
-, 25552  // S804
-, 25579  // S805
-, 25582  // S806
-, 25585  // S807
-, 25590  // S808
-, 25697  // S809
-, 25804  // S810
-, 25807  // S811
-, 25810  // S812
-, 25813  // S813
-, 25816  // S814
-, 25849  // S815
-, 25852  // S816
-, 25855  // S817
-, 25858  // S818
-, 25861  // S819
-, 25866  // S820
-, 25973  // S821
-, 26080  // S822
-, 26083  // S823
-, 26086  // S824
-, 26157  // S825
-, 26228  // S826
-, 26231  // S827
-, 26288  // S828
-, 26345  // S829
-, 26356  // S830
-, 26365  // S831
-, 26368  // S832
-, 26371  // S833
-, 26376  // S834
-, 26381  // S835
-, 26384  // S836
-, 26491  // S837
-, 26494  // S838
-, 26497  // S839
-, 26568  // S840
-, 26595  // S841
-, 26598  // S842
-, 26601  // S843
-, 26604  // S844
-, 26625  // S845
-, 26646  // S846
-, 26649  // S847
-, 26652  // S848
-, 26659  // S849
-, 26662  // S850
-, 26665  // S851
-, 26686  // S852
-, 26693  // S853
-, 26696  // S854
-, 26699  // S855
-, 26702  // S856
-, 26705  // S857
-, 26736  // S858
-, 26739  // S859
-, 26744  // S860
-, 26767  // S861
-, 26770  // S862
-, 26773  // S863
-, 26776  // S864
-, 26799  // S865
-, 26802  // S866
-, 26809  // S867
-, 26830  // S868
-, 26837  // S869
-, 26840  // S870
-, 26847  // S871
-, 26850  // S872
-, 26853  // S873
-, 26856  // S874
-, 26859  // S875
-, 26864  // S876
-, 26867  // S877
-, 26872  // S878
-, 26943  // S879
-, 26948  // S880
-, 26953  // S881
-, 27060  // S882
-, 27167  // S883
-, 27170  // S884
-, 27173  // S885
-, 27176  // S886
-, 27179  // S887
-, 27250  // S888
-, 27253  // S889
-, 27256  // S890
-, 27357  // S891
-, 27360  // S892
-, 27431  // S893
-, 27436  // S894
-, 27439  // S895
-, 27442  // S896
-, 27445  // S897
-, 27452  // S898
-, 27455  // S899
-, 27464  // S900
-, 27647  // S901
-, 27650  // S902
-, 27653  // S903
-, 27656  // S904
-, 27661  // S905
-, 27664  // S906
-, 27667  // S907
-, 27674  // S908
-, 27681  // S909
-, 27684  // S910
-, 27865  // S911
-, 28036  // S912
-, 28207  // S913
-, 28378  // S914
-, 28549  // S915
-, 28720  // S916
-, 28859  // S917
-, 28998  // S918
-, 29141  // S919
-, 29284  // S920
-, 29427  // S921
-, 29570  // S922
-, 29713  // S923
-, 29856  // S924
-, 29999  // S925
-, 30142  // S926
-, 30301  // S927
-, 30460  // S928
-, 30619  // S929
-, 30778  // S930
-, 30937  // S931
-, 31096  // S932
-, 31105  // S933
-, 31288  // S934
-, 31295  // S935
-, 31338  // S936
-, 31341  // S937
-, 31524  // S938
-, 31649  // S939
-, 31778  // S940
-, 31907  // S941
-, 32036  // S942
-, 32165  // S943
-, 32294  // S944
-, 32351  // S945
-, 32394  // S946
-, 32397  // S947
-, 32400  // S948
-, 32481  // S949
-, 32484  // S950
-, 32571  // S951
-, 32658  // S952
-, 32745  // S953
-, 32834  // S954
-, 32837  // S955
-, 32924  // S956
-, 32929  // S957
-, 32934  // S958
-, 32937  // S959
-, 32940  // S960
-, 33021  // S961
-, 33024  // S962
-, 33111  // S963
-, 33198  // S964
-, 33279  // S965
-, 33360  // S966
-, 33379  // S967
-, 33454  // S968
-, 33457  // S969
-, 33460  // S970
-, 33465  // S971
-, 33540  // S972
-, 33561  // S973
-, 33602  // S974
-, 33643  // S975
-, 33718  // S976
-, 33793  // S977
-, 33868  // S978
-, 33871  // S979
-, 33948  // S980
-, 33953  // S981
-, 33960  // S982
-, 34017  // S983
-, 34020  // S984
-, 34023  // S985
-, 34026  // S986
-, 34101  // S987
-, 34104  // S988
-, 34107  // S989
-, 34122  // S990
-, 34137  // S991
-, 34142  // S992
-, 34157  // S993
-, 34160  // S994
-, 34175  // S995
-, 34178  // S996
-, 34181  // S997
-, 34190  // S998
-, 34231  // S999
-, 34236  // S1000
-, 34277  // S1001
-, 34280  // S1002
-, 34367  // S1003
-, 34408  // S1004
-, 34483  // S1005
-, 34486  // S1006
-, 34543  // S1007
-, 34546  // S1008
-, 34551  // S1009
-, 34608  // S1010
-, 34611  // S1011
-, 34686  // S1012
-, 34761  // S1013
-, 34766  // S1014
-, 34771  // S1015
-, 34774  // S1016
-, 34781  // S1017
-, 34788  // S1018
-, 34791  // S1019
-, 34862  // S1020
-, 34865  // S1021
-, 34938  // S1022
-, 34941  // S1023
-, 34944  // S1024
-, 34959  // S1025
-, 34962  // S1026
-, 34965  // S1027
-, 35036  // S1028
-, 35107  // S1029
-, 35110  // S1030
-, 35113  // S1031
-, 35150  // S1032
-, 35191  // S1033
-, 35226  // S1034
-, 35231  // S1035
-, 35236  // S1036
-, 35241  // S1037
-, 35258  // S1038
-, 35329  // S1039
-, 35368  // S1040
-, 35371  // S1041
-, 35374  // S1042
-, 35445  // S1043
-, 35448  // S1044
-, 35451  // S1045
-, 35486  // S1046
-, 35521  // S1047
-, 35524  // S1048
-, 35581  // S1049
-, 35638  // S1050
-, 35641  // S1051
-, 35644  // S1052
-, 35649  // S1053
-, 35756  // S1054
-, 35863  // S1055
-, 35866  // S1056
-, 35869  // S1057
-, 35872  // S1058
-, 35877  // S1059
-, 35882  // S1060
-, 35885  // S1061
-, 35890  // S1062
-, 35893  // S1063
-, 35896  // S1064
-, 35907  // S1065
-, 35916  // S1066
-, 35923  // S1067
-, 35926  // S1068
-, 35929  // S1069
-, 35932  // S1070
-, 36003  // S1071
-, 36012  // S1072
-, 36019  // S1073
-, 36046  // S1074
-, 36073  // S1075
-, 36076  // S1076
-, 36079  // S1077
-, 36082  // S1078
-, 36085  // S1079
-, 36106  // S1080
-, 36111  // S1081
-, 36114  // S1082
-, 36117  // S1083
-, 36124  // S1084
-, 36133  // S1085
-, 36164  // S1086
-, 36195  // S1087
-, 36226  // S1088
-, 36229  // S1089
-, 36260  // S1090
-, 36291  // S1091
-, 36314  // S1092
-, 36317  // S1093
-, 36320  // S1094
-, 36329  // S1095
-, 36360  // S1096
-, 36363  // S1097
-, 36384  // S1098
-, 36389  // S1099
-, 36392  // S1100
-, 36395  // S1101
-, 36400  // S1102
-, 36403  // S1103
+, 2215  // S171
+, 2236  // S172
+, 2257  // S173
+, 2278  // S174
+, 2299  // S175
+, 2320  // S176
+, 2341  // S177
+, 2362  // S178
+, 2383  // S179
+, 2404  // S180
+, 2425  // S181
+, 2428  // S182
+, 2431  // S183
+, 2436  // S184
+, 2439  // S185
+, 2444  // S186
+, 2447  // S187
+, 2518  // S188
+, 2523  // S189
+, 2526  // S190
+, 2529  // S191
+, 2532  // S192
+, 2589  // S193
+, 2594  // S194
+, 2597  // S195
+, 2600  // S196
+, 2603  // S197
+, 2606  // S198
+, 2611  // S199
+, 2614  // S200
+, 2617  // S201
+, 2658  // S202
+, 2699  // S203
+, 2740  // S204
+, 2781  // S205
+, 2966  // S206
+, 3149  // S207
+, 3332  // S208
+, 3517  // S209
+, 3700  // S210
+, 3883  // S211
+, 4066  // S212
+, 4107  // S213
+, 4112  // S214
+, 4159  // S215
+, 4162  // S216
+, 4345  // S217
+, 4386  // S218
+, 4427  // S219
+, 4434  // S220
+, 4617  // S221
+, 4798  // S222
+, 4941  // S223
+, 5100  // S224
+, 5271  // S225
+, 5276  // S226
+, 5281  // S227
+, 5410  // S228
+, 5549  // S229
+, 5552  // S230
+, 5555  // S231
+, 5560  // S232
+, 5565  // S233
+, 5652  // S234
+, 5655  // S235
+, 5658  // S236
+, 5667  // S237
+, 5676  // S238
+, 5753  // S239
+, 5760  // S240
+, 5765  // S241
+, 5768  // S242
+, 5771  // S243
+, 5812  // S244
+, 5853  // S245
+, 5896  // S246
+, 5937  // S247
+, 5978  // S248
+, 6053  // S249
+, 6128  // S250
+, 6203  // S251
+, 6278  // S252
+, 6353  // S253
+, 6356  // S254
+, 6359  // S255
+, 6362  // S256
+, 6365  // S257
+, 6368  // S258
+, 6371  // S259
+, 6448  // S260
+, 6457  // S261
+, 6466  // S262
+, 6475  // S263
+, 6552  // S264
+, 6555  // S265
+, 6558  // S266
+, 6635  // S267
+, 6676  // S268
+, 6679  // S269
+, 6754  // S270
+, 6757  // S271
+, 6760  // S272
+, 6765  // S273
+, 6836  // S274
+, 6873  // S275
+, 6894  // S276
+, 6931  // S277
+, 7002  // S278
+, 7005  // S279
+, 7026  // S280
+, 7029  // S281
+, 7034  // S282
+, 7039  // S283
+, 7146  // S284
+, 7253  // S285
+, 7256  // S286
+, 7259  // S287
+, 7262  // S288
+, 7265  // S289
+, 7268  // S290
+, 7271  // S291
+, 7278  // S292
+, 7283  // S293
+, 7290  // S294
+, 7297  // S295
+, 7316  // S296
+, 7321  // S297
+, 7326  // S298
+, 7329  // S299
+, 7332  // S300
+, 7335  // S301
+, 7342  // S302
+, 7345  // S303
+, 7348  // S304
+, 7351  // S305
+, 7356  // S306
+, 7359  // S307
+, 7368  // S308
+, 7401  // S309
+, 7434  // S310
+, 7467  // S311
+, 7500  // S312
+, 7533  // S313
+, 7566  // S314
+, 7569  // S315
+, 7586  // S316
+, 7589  // S317
+, 7616  // S318
+, 7643  // S319
+, 7646  // S320
+, 7717  // S321
+, 7788  // S322
+, 7791  // S323
+, 7794  // S324
+, 7797  // S325
+, 7802  // S326
+, 7909  // S327
+, 8016  // S328
+, 8019  // S329
+, 8024  // S330
+, 8027  // S331
+, 8036  // S332
+, 8045  // S333
+, 8054  // S334
+, 8057  // S335
+, 8060  // S336
+, 8063  // S337
+, 8066  // S338
+, 8071  // S339
+, 8074  // S340
+, 8079  // S341
+, 8084  // S342
+, 8087  // S343
+, 8090  // S344
+, 8161  // S345
+, 8182  // S346
+, 8187  // S347
+, 8190  // S348
+, 8199  // S349
+, 8206  // S350
+, 8209  // S351
+, 8216  // S352
+, 8223  // S353
+, 8232  // S354
+, 8235  // S355
+, 8238  // S356
+, 8241  // S357
+, 8246  // S358
+, 8253  // S359
+, 8256  // S360
+, 8259  // S361
+, 8268  // S362
+, 8271  // S363
+, 8274  // S364
+, 8277  // S365
+, 8280  // S366
+, 8283  // S367
+, 8286  // S368
+, 8289  // S369
+, 8292  // S370
+, 8295  // S371
+, 8298  // S372
+, 8369  // S373
+, 8374  // S374
+, 8377  // S375
+, 8380  // S376
+, 8383  // S377
+, 8388  // S378
+, 8391  // S379
+, 8402  // S380
+, 8405  // S381
+, 8408  // S382
+, 8411  // S383
+, 8414  // S384
+, 8417  // S385
+, 8420  // S386
+, 8423  // S387
+, 8480  // S388
+, 8483  // S389
+, 8486  // S390
+, 8491  // S391
+, 8494  // S392
+, 8497  // S393
+, 8678  // S394
+, 8859  // S395
+, 8868  // S396
+, 9053  // S397
+, 9236  // S398
+, 9417  // S399
+, 9422  // S400
+, 9425  // S401
+, 9428  // S402
+, 9431  // S403
+, 9614  // S404
+, 9795  // S405
+, 9976  // S406
+, 9979  // S407
+, 9982  // S408
+, 10023  // S409
+, 10026  // S410
+, 10031  // S411
+, 10212  // S412
+, 10253  // S413
+, 10294  // S414
+, 10335  // S415
+, 10376  // S416
+, 10417  // S417
+, 10588  // S418
+, 10629  // S419
+, 10670  // S420
+, 10809  // S421
+, 10850  // S422
+, 10891  // S423
+, 10932  // S424
+, 10973  // S425
+, 11014  // S426
+, 11055  // S427
+, 11096  // S428
+, 11137  // S429
+, 11280  // S430
+, 11321  // S431
+, 11362  // S432
+, 11403  // S433
+, 11444  // S434
+, 11485  // S435
+, 11526  // S436
+, 11685  // S437
+, 11690  // S438
+, 11735  // S439
+, 11744  // S440
+, 11747  // S441
+, 11872  // S442
+, 11913  // S443
+, 11954  // S444
+, 11995  // S445
+, 12036  // S446
+, 12077  // S447
+, 12206  // S448
+, 12263  // S449
+, 12338  // S450
+, 12381  // S451
+, 12384  // S452
+, 12425  // S453
+, 12440  // S454
+, 12449  // S455
+, 12452  // S456
+, 12533  // S457
+, 12554  // S458
+, 12595  // S459
+, 12636  // S460
+, 12679  // S461
+, 12720  // S462
+, 12761  // S463
+, 12836  // S464
+, 12911  // S465
+, 12986  // S466
+, 13061  // S467
+, 13136  // S468
+, 13211  // S469
+, 13252  // S470
+, 13339  // S471
+, 13344  // S472
+, 13347  // S473
+, 13434  // S474
+, 13455  // S475
+, 13530  // S476
+, 13605  // S477
+, 13680  // S478
+, 13755  // S479
+, 13796  // S480
+, 13871  // S481
+, 13946  // S482
+, 14021  // S483
+, 14096  // S484
+, 14137  // S485
+, 14214  // S486
+, 14255  // S487
+, 14332  // S488
+, 14373  // S489
+, 14380  // S490
+, 14389  // S491
+, 14392  // S492
+, 14467  // S493
+, 14482  // S494
+, 14487  // S495
+, 14496  // S496
+, 14501  // S497
+, 14504  // S498
+, 14507  // S499
+, 14512  // S500
+, 14553  // S501
+, 14556  // S502
+, 14563  // S503
+, 14638  // S504
+, 14641  // S505
+, 14682  // S506
+, 14685  // S507
+, 14726  // S508
+, 14729  // S509
+, 14732  // S510
+, 14791  // S511
+, 14794  // S512
+, 14815  // S513
+, 14836  // S514
+, 14857  // S515
+, 14878  // S516
+, 14899  // S517
+, 14920  // S518
+, 14941  // S519
+, 14962  // S520
+, 14983  // S521
+, 15004  // S522
+, 15007  // S523
+, 15010  // S524
+, 15013  // S525
+, 15016  // S526
+, 15019  // S527
+, 15090  // S528
+, 15161  // S529
+, 15180  // S530
+, 15183  // S531
+, 15240  // S532
+, 15297  // S533
+, 15300  // S534
+, 15339  // S535
+, 15342  // S536
+, 15347  // S537
+, 15350  // S538
+, 15355  // S539
+, 15358  // S540
+, 15363  // S541
+, 15380  // S542
+, 15397  // S543
+, 15400  // S544
+, 15403  // S545
+, 15406  // S546
+, 15477  // S547
+, 15504  // S548
+, 15507  // S549
+, 15510  // S550
+, 15513  // S551
+, 15516  // S552
+, 15521  // S553
+, 15628  // S554
+, 15735  // S555
+, 15738  // S556
+, 15741  // S557
+, 15744  // S558
+, 15751  // S559
+, 15754  // S560
+, 15757  // S561
+, 15760  // S562
+, 15763  // S563
+, 15766  // S564
+, 15769  // S565
+, 15772  // S566
+, 15775  // S567
+, 15778  // S568
+, 15849  // S569
+, 15852  // S570
+, 15855  // S571
+, 15858  // S572
+, 15861  // S573
+, 15932  // S574
+, 15937  // S575
+, 16044  // S576
+, 16151  // S577
+, 16154  // S578
+, 16157  // S579
+, 16160  // S580
+, 16163  // S581
+, 16166  // S582
+, 16169  // S583
+, 16172  // S584
+, 16175  // S585
+, 16178  // S586
+, 16181  // S587
+, 16252  // S588
+, 16257  // S589
+, 16262  // S590
+, 16265  // S591
+, 16270  // S592
+, 16275  // S593
+, 16278  // S594
+, 16283  // S595
+, 16286  // S596
+, 16289  // S597
+, 16292  // S598
+, 16295  // S599
+, 16298  // S600
+, 16301  // S601
+, 16304  // S602
+, 16325  // S603
+, 16328  // S604
+, 16337  // S605
+, 16346  // S606
+, 16355  // S607
+, 16358  // S608
+, 16361  // S609
+, 16366  // S610
+, 16369  // S611
+, 16372  // S612
+, 16379  // S613
+, 16382  // S614
+, 16403  // S615
+, 16426  // S616
+, 16435  // S617
+, 16440  // S618
+, 16443  // S619
+, 16454  // S620
+, 16457  // S621
+, 16466  // S622
+, 16475  // S623
+, 16478  // S624
+, 16483  // S625
+, 16486  // S626
+, 16491  // S627
+, 16494  // S628
+, 16497  // S629
+, 16500  // S630
+, 16503  // S631
+, 16506  // S632
+, 16509  // S633
+, 16512  // S634
+, 16523  // S635
+, 16534  // S636
+, 16545  // S637
+, 16556  // S638
+, 16559  // S639
+, 16564  // S640
+, 16635  // S641
+, 16706  // S642
+, 16813  // S643
+, 16816  // S644
+, 16819  // S645
+, 16822  // S646
+, 16827  // S647
+, 16830  // S648
+, 16833  // S649
+, 17016  // S650
+, 17057  // S651
+, 17098  // S652
+, 17101  // S653
+, 17108  // S654
+, 17291  // S655
+, 17294  // S656
+, 17297  // S657
+, 17300  // S658
+, 17305  // S659
+, 17314  // S660
+, 17317  // S661
+, 17358  // S662
+, 17541  // S663
+, 17724  // S664
+, 17905  // S665
+, 18086  // S666
+, 18267  // S667
+, 18448  // S668
+, 18629  // S669
+, 18772  // S670
+, 18915  // S671
+, 19074  // S672
+, 19233  // S673
+, 19392  // S674
+, 19551  // S675
+, 19710  // S676
+, 19869  // S677
+, 20028  // S678
+, 20187  // S679
+, 20358  // S680
+, 20529  // S681
+, 20700  // S682
+, 20871  // S683
+, 21042  // S684
+, 21213  // S685
+, 21398  // S686
+, 21581  // S687
+, 21622  // S688
+, 21627  // S689
+, 21632  // S690
+, 21635  // S691
+, 21638  // S692
+, 21641  // S693
+, 21644  // S694
+, 21647  // S695
+, 21772  // S696
+, 21911  // S697
+, 22050  // S698
+, 22189  // S699
+, 22328  // S700
+, 22467  // S701
+, 22474  // S702
+, 22479  // S703
+, 22566  // S704
+, 22655  // S705
+, 22658  // S706
+, 22747  // S707
+, 22750  // S708
+, 22841  // S709
+, 22848  // S710
+, 22853  // S711
+, 22940  // S712
+, 23029  // S713
+, 23032  // S714
+, 23119  // S715
+, 23206  // S716
+, 23281  // S717
+, 23284  // S718
+, 23293  // S719
+, 23302  // S720
+, 23377  // S721
+, 23452  // S722
+, 23527  // S723
+, 23602  // S724
+, 23677  // S725
+, 23752  // S726
+, 23827  // S727
+, 23902  // S728
+, 23905  // S729
+, 23992  // S730
+, 23995  // S731
+, 24002  // S732
+, 24005  // S733
+, 24008  // S734
+, 24011  // S735
+, 24088  // S736
+, 24163  // S737
+, 24204  // S738
+, 24279  // S739
+, 24320  // S740
+, 24399  // S741
+, 24402  // S742
+, 24405  // S743
+, 24408  // S744
+, 24411  // S745
+, 24420  // S746
+, 24427  // S747
+, 24504  // S748
+, 24509  // S749
+, 24512  // S750
+, 24519  // S751
+, 24522  // S752
+, 24537  // S753
+, 24544  // S754
+, 24547  // S755
+, 24558  // S756
+, 24565  // S757
+, 24568  // S758
+, 24571  // S759
+, 24574  // S760
+, 24581  // S761
+, 24668  // S762
+, 24709  // S763
+, 24712  // S764
+, 24787  // S765
+, 24864  // S766
+, 24941  // S767
+, 25018  // S768
+, 25075  // S769
+, 25078  // S770
+, 25085  // S771
+, 25088  // S772
+, 25165  // S773
+, 25168  // S774
+, 25211  // S775
+, 25232  // S776
+, 25239  // S777
+, 25242  // S778
+, 25245  // S779
+, 25248  // S780
+, 25251  // S781
+, 25254  // S782
+, 25257  // S783
+, 25260  // S784
+, 25263  // S785
+, 25266  // S786
+, 25269  // S787
+, 25340  // S788
+, 25343  // S789
+, 25348  // S790
+, 25419  // S791
+, 25422  // S792
+, 25425  // S793
+, 25442  // S794
+, 25447  // S795
+, 25450  // S796
+, 25453  // S797
+, 25458  // S798
+, 25495  // S799
+, 25532  // S800
+, 25535  // S801
+, 25538  // S802
+, 25541  // S803
+, 25560  // S804
+, 25563  // S805
+, 25566  // S806
+, 25593  // S807
+, 25620  // S808
+, 25623  // S809
+, 25626  // S810
+, 25631  // S811
+, 25738  // S812
+, 25845  // S813
+, 25848  // S814
+, 25851  // S815
+, 25854  // S816
+, 25857  // S817
+, 25890  // S818
+, 25893  // S819
+, 25896  // S820
+, 25899  // S821
+, 25902  // S822
+, 25907  // S823
+, 26014  // S824
+, 26121  // S825
+, 26124  // S826
+, 26127  // S827
+, 26198  // S828
+, 26269  // S829
+, 26272  // S830
+, 26329  // S831
+, 26386  // S832
+, 26397  // S833
+, 26406  // S834
+, 26409  // S835
+, 26412  // S836
+, 26417  // S837
+, 26422  // S838
+, 26425  // S839
+, 26532  // S840
+, 26535  // S841
+, 26538  // S842
+, 26609  // S843
+, 26636  // S844
+, 26639  // S845
+, 26642  // S846
+, 26645  // S847
+, 26666  // S848
+, 26687  // S849
+, 26690  // S850
+, 26693  // S851
+, 26696  // S852
+, 26699  // S853
+, 26706  // S854
+, 26709  // S855
+, 26712  // S856
+, 26733  // S857
+, 26740  // S858
+, 26743  // S859
+, 26746  // S860
+, 26749  // S861
+, 26752  // S862
+, 26783  // S863
+, 26786  // S864
+, 26791  // S865
+, 26814  // S866
+, 26817  // S867
+, 26820  // S868
+, 26823  // S869
+, 26846  // S870
+, 26849  // S871
+, 26856  // S872
+, 26877  // S873
+, 26886  // S874
+, 26895  // S875
+, 26898  // S876
+, 26901  // S877
+, 26904  // S878
+, 26907  // S879
+, 26910  // S880
+, 26913  // S881
+, 26918  // S882
+, 26921  // S883
+, 26926  // S884
+, 26997  // S885
+, 27002  // S886
+, 27007  // S887
+, 27114  // S888
+, 27221  // S889
+, 27224  // S890
+, 27227  // S891
+, 27230  // S892
+, 27233  // S893
+, 27304  // S894
+, 27307  // S895
+, 27310  // S896
+, 27411  // S897
+, 27414  // S898
+, 27485  // S899
+, 27490  // S900
+, 27493  // S901
+, 27496  // S902
+, 27499  // S903
+, 27506  // S904
+, 27509  // S905
+, 27518  // S906
+, 27701  // S907
+, 27704  // S908
+, 27707  // S909
+, 27710  // S910
+, 27715  // S911
+, 27718  // S912
+, 27721  // S913
+, 27728  // S914
+, 27735  // S915
+, 27738  // S916
+, 27919  // S917
+, 28090  // S918
+, 28261  // S919
+, 28432  // S920
+, 28603  // S921
+, 28774  // S922
+, 28913  // S923
+, 29052  // S924
+, 29195  // S925
+, 29338  // S926
+, 29481  // S927
+, 29624  // S928
+, 29767  // S929
+, 29910  // S930
+, 30053  // S931
+, 30196  // S932
+, 30355  // S933
+, 30514  // S934
+, 30673  // S935
+, 30832  // S936
+, 30991  // S937
+, 31150  // S938
+, 31159  // S939
+, 31342  // S940
+, 31349  // S941
+, 31392  // S942
+, 31395  // S943
+, 31578  // S944
+, 31703  // S945
+, 31832  // S946
+, 31961  // S947
+, 32090  // S948
+, 32219  // S949
+, 32348  // S950
+, 32405  // S951
+, 32448  // S952
+, 32451  // S953
+, 32454  // S954
+, 32535  // S955
+, 32538  // S956
+, 32625  // S957
+, 32712  // S958
+, 32799  // S959
+, 32888  // S960
+, 32891  // S961
+, 32978  // S962
+, 32983  // S963
+, 32988  // S964
+, 32991  // S965
+, 32994  // S966
+, 33075  // S967
+, 33078  // S968
+, 33165  // S969
+, 33252  // S970
+, 33333  // S971
+, 33414  // S972
+, 33433  // S973
+, 33508  // S974
+, 33511  // S975
+, 33514  // S976
+, 33519  // S977
+, 33594  // S978
+, 33615  // S979
+, 33656  // S980
+, 33697  // S981
+, 33772  // S982
+, 33847  // S983
+, 33922  // S984
+, 33925  // S985
+, 34002  // S986
+, 34007  // S987
+, 34014  // S988
+, 34071  // S989
+, 34074  // S990
+, 34077  // S991
+, 34080  // S992
+, 34155  // S993
+, 34158  // S994
+, 34161  // S995
+, 34176  // S996
+, 34191  // S997
+, 34196  // S998
+, 34211  // S999
+, 34214  // S1000
+, 34229  // S1001
+, 34232  // S1002
+, 34235  // S1003
+, 34244  // S1004
+, 34285  // S1005
+, 34290  // S1006
+, 34331  // S1007
+, 34334  // S1008
+, 34421  // S1009
+, 34462  // S1010
+, 34537  // S1011
+, 34540  // S1012
+, 34597  // S1013
+, 34600  // S1014
+, 34605  // S1015
+, 34662  // S1016
+, 34665  // S1017
+, 34740  // S1018
+, 34815  // S1019
+, 34820  // S1020
+, 34825  // S1021
+, 34828  // S1022
+, 34835  // S1023
+, 34842  // S1024
+, 34845  // S1025
+, 34916  // S1026
+, 34919  // S1027
+, 34992  // S1028
+, 34995  // S1029
+, 34998  // S1030
+, 35013  // S1031
+, 35016  // S1032
+, 35019  // S1033
+, 35090  // S1034
+, 35161  // S1035
+, 35164  // S1036
+, 35167  // S1037
+, 35208  // S1038
+, 35243  // S1039
+, 35248  // S1040
+, 35253  // S1041
+, 35258  // S1042
+, 35275  // S1043
+, 35346  // S1044
+, 35385  // S1045
+, 35388  // S1046
+, 35391  // S1047
+, 35462  // S1048
+, 35465  // S1049
+, 35468  // S1050
+, 35503  // S1051
+, 35538  // S1052
+, 35541  // S1053
+, 35598  // S1054
+, 35655  // S1055
+, 35658  // S1056
+, 35661  // S1057
+, 35666  // S1058
+, 35773  // S1059
+, 35880  // S1060
+, 35883  // S1061
+, 35886  // S1062
+, 35889  // S1063
+, 35894  // S1064
+, 35899  // S1065
+, 35902  // S1066
+, 35907  // S1067
+, 35910  // S1068
+, 35913  // S1069
+, 35924  // S1070
+, 35933  // S1071
+, 35940  // S1072
+, 35943  // S1073
+, 35946  // S1074
+, 35949  // S1075
+, 36020  // S1076
+, 36029  // S1077
+, 36036  // S1078
+, 36063  // S1079
+, 36090  // S1080
+, 36093  // S1081
+, 36096  // S1082
+, 36099  // S1083
+, 36102  // S1084
+, 36123  // S1085
+, 36128  // S1086
+, 36131  // S1087
+, 36134  // S1088
+, 36141  // S1089
+, 36150  // S1090
+, 36181  // S1091
+, 36212  // S1092
+, 36243  // S1093
+, 36246  // S1094
+, 36277  // S1095
+, 36308  // S1096
+, 36331  // S1097
+, 36334  // S1098
+, 36337  // S1099
+, 36346  // S1100
+, 36377  // S1101
+, 36380  // S1102
+, 36401  // S1103
 , 36406  // S1104
 , 36409  // S1105
 , 36412  // S1106
-, 36415  // S1107
-, 36418  // S1108
-, 36421  // S1109
-, 36424  // S1110
-, 36427  // S1111
-, 36438  // S1112
-, 36449  // S1113
-, 36454  // S1114
-, 36525  // S1115
-, 36528  // S1116
-, 36531  // S1117
-, 36588  // S1118
-, 36593  // S1119
-, 36598  // S1120
-, 36639  // S1121
-, 36646  // S1122
-, 36649  // S1123
-, 36652  // S1124
-, 36655  // S1125
-, 36664  // S1126
-, 36667  // S1127
-, 36670  // S1128
-, 36853  // S1129
-, 37036  // S1130
-, 37077  // S1131
-, 37086  // S1132
-, 37089  // S1133
-, 37092  // S1134
-, 37097  // S1135
-, 37100  // S1136
-, 37141  // S1137
-, 37146  // S1138
-, 37151  // S1139
-, 37154  // S1140
-, 37157  // S1141
-, 37246  // S1142
-, 37327  // S1143
-, 37414  // S1144
-, 37503  // S1145
-, 37584  // S1146
-, 37587  // S1147
-, 37590  // S1148
-, 37679  // S1149
-, 37768  // S1150
-, 37849  // S1151
-, 37930  // S1152
-, 38005  // S1153
-, 38012  // S1154
-, 38015  // S1155
-, 38018  // S1156
-, 38093  // S1157
-, 38170  // S1158
-, 38249  // S1159
-, 38324  // S1160
-, 38327  // S1161
-, 38330  // S1162
-, 38333  // S1163
-, 38374  // S1164
-, 38449  // S1165
-, 38490  // S1166
-, 38495  // S1167
-, 38498  // S1168
-, 38501  // S1169
-, 38516  // S1170
-, 38557  // S1171
-, 38566  // S1172
-, 38571  // S1173
-, 38628  // S1174
-, 38631  // S1175
-, 38640  // S1176
-, 38645  // S1177
-, 38722  // S1178
-, 38725  // S1179
-, 38766  // S1180
-, 38769  // S1181
-, 38776  // S1182
-, 38787  // S1183
-, 38790  // S1184
-, 38795  // S1185
-, 38806  // S1186
-, 38813  // S1187
-, 38820  // S1188
-, 38825  // S1189
-, 38828  // S1190
-, 38831  // S1191
-, 38906  // S1192
-, 38909  // S1193
-, 38912  // S1194
-, 38983  // S1195
-, 39054  // S1196
-, 39125  // S1197
-, 39130  // S1198
-, 39149  // S1199
-, 39164  // S1200
-, 39169  // S1201
-, 39226  // S1202
-, 39229  // S1203
-, 39300  // S1204
-, 39335  // S1205
-, 39338  // S1206
-, 39377  // S1207
-, 39414  // S1208
-, 39447  // S1209
-, 39450  // S1210
-, 39455  // S1211
-, 39458  // S1212
-, 39461  // S1213
-, 39496  // S1214
-, 39529  // S1215
-, 39532  // S1216
-, 39567  // S1217
-, 39602  // S1218
-, 39605  // S1219
-, 39662  // S1220
-, 39719  // S1221
-, 39724  // S1222
-, 39729  // S1223
-, 39734  // S1224
-, 39737  // S1225
-, 39740  // S1226
-, 39813  // S1227
-, 39816  // S1228
-, 39819  // S1229
-, 39890  // S1230
-, 39961  // S1231
-, 39970  // S1232
-, 39975  // S1233
-, 39980  // S1234
-, 39983  // S1235
-, 39992  // S1236
-, 40055  // S1237
-, 40058  // S1238
-, 40063  // S1239
-, 40066  // S1240
-, 40071  // S1241
-, 40074  // S1242
-, 40077  // S1243
-, 40148  // S1244
-, 40153  // S1245
-, 40156  // S1246
-, 40177  // S1247
-, 40180  // S1248
-, 40189  // S1249
-, 40192  // S1250
-, 40197  // S1251
-, 40200  // S1252
-, 40203  // S1253
-, 40212  // S1254
-, 40217  // S1255
-, 40220  // S1256
-, 40223  // S1257
-, 40244  // S1258
-, 40247  // S1259
-, 40252  // S1260
-, 40255  // S1261
-, 40326  // S1262
-, 40329  // S1263
-, 40332  // S1264
-, 40335  // S1265
-, 40338  // S1266
-, 40341  // S1267
-, 40398  // S1268
-, 40401  // S1269
-, 40404  // S1270
-, 40407  // S1271
-, 40410  // S1272
-, 40413  // S1273
-, 40596  // S1274
-, 40779  // S1275
-, 40782  // S1276
-, 40789  // S1277
-, 40792  // S1278
-, 40799  // S1279
-, 40804  // S1280
-, 40809  // S1281
-, 40816  // S1282
-, 40821  // S1283
-, 40826  // S1284
-, 41009  // S1285
-, 41016  // S1286
-, 41019  // S1287
-, 41022  // S1288
-, 41109  // S1289
-, 41190  // S1290
-, 41277  // S1291
-, 41366  // S1292
-, 41453  // S1293
-, 41540  // S1294
-, 41545  // S1295
-, 41548  // S1296
-, 41635  // S1297
-, 41710  // S1298
-, 41713  // S1299
-, 41790  // S1300
-, 41847  // S1301
-, 41850  // S1302
-, 41859  // S1303
-, 41868  // S1304
-, 41875  // S1305
-, 41878  // S1306
-, 41923  // S1307
-, 41964  // S1308
-, 42005  // S1309
-, 42080  // S1310
-, 42083  // S1311
-, 42158  // S1312
-, 42199  // S1313
-, 42202  // S1314
-, 42277  // S1315
-, 42282  // S1316
-, 42285  // S1317
-, 42298  // S1318
-, 42303  // S1319
-, 42316  // S1320
-, 42321  // S1321
-, 42324  // S1322
-, 42327  // S1323
-, 42338  // S1324
-, 42379  // S1325
-, 42420  // S1326
-, 42461  // S1327
-, 42464  // S1328
-, 42467  // S1329
-, 42472  // S1330
-, 42475  // S1331
-, 42480  // S1332
-, 42483  // S1333
-, 42486  // S1334
+, 36417  // S1107
+, 36420  // S1108
+, 36423  // S1109
+, 36426  // S1110
+, 36429  // S1111
+, 36432  // S1112
+, 36435  // S1113
+, 36438  // S1114
+, 36441  // S1115
+, 36444  // S1116
+, 36455  // S1117
+, 36466  // S1118
+, 36471  // S1119
+, 36542  // S1120
+, 36545  // S1121
+, 36548  // S1122
+, 36605  // S1123
+, 36610  // S1124
+, 36615  // S1125
+, 36656  // S1126
+, 36663  // S1127
+, 36666  // S1128
+, 36669  // S1129
+, 36672  // S1130
+, 36681  // S1131
+, 36684  // S1132
+, 36687  // S1133
+, 36870  // S1134
+, 37053  // S1135
+, 37094  // S1136
+, 37103  // S1137
+, 37106  // S1138
+, 37109  // S1139
+, 37114  // S1140
+, 37117  // S1141
+, 37158  // S1142
+, 37163  // S1143
+, 37168  // S1144
+, 37171  // S1145
+, 37174  // S1146
+, 37263  // S1147
+, 37344  // S1148
+, 37431  // S1149
+, 37520  // S1150
+, 37601  // S1151
+, 37604  // S1152
+, 37607  // S1153
+, 37696  // S1154
+, 37785  // S1155
+, 37866  // S1156
+, 37947  // S1157
+, 38022  // S1158
+, 38029  // S1159
+, 38032  // S1160
+, 38035  // S1161
+, 38110  // S1162
+, 38187  // S1163
+, 38266  // S1164
+, 38341  // S1165
+, 38344  // S1166
+, 38347  // S1167
+, 38350  // S1168
+, 38391  // S1169
+, 38466  // S1170
+, 38507  // S1171
+, 38512  // S1172
+, 38515  // S1173
+, 38518  // S1174
+, 38533  // S1175
+, 38574  // S1176
+, 38583  // S1177
+, 38588  // S1178
+, 38645  // S1179
+, 38648  // S1180
+, 38657  // S1181
+, 38662  // S1182
+, 38739  // S1183
+, 38742  // S1184
+, 38783  // S1185
+, 38786  // S1186
+, 38793  // S1187
+, 38804  // S1188
+, 38807  // S1189
+, 38812  // S1190
+, 38823  // S1191
+, 38830  // S1192
+, 38837  // S1193
+, 38842  // S1194
+, 38845  // S1195
+, 38848  // S1196
+, 38923  // S1197
+, 38926  // S1198
+, 38929  // S1199
+, 39000  // S1200
+, 39071  // S1201
+, 39142  // S1202
+, 39147  // S1203
+, 39166  // S1204
+, 39181  // S1205
+, 39186  // S1206
+, 39243  // S1207
+, 39246  // S1208
+, 39317  // S1209
+, 39352  // S1210
+, 39355  // S1211
+, 39394  // S1212
+, 39431  // S1213
+, 39464  // S1214
+, 39467  // S1215
+, 39472  // S1216
+, 39475  // S1217
+, 39478  // S1218
+, 39513  // S1219
+, 39546  // S1220
+, 39549  // S1221
+, 39584  // S1222
+, 39619  // S1223
+, 39622  // S1224
+, 39679  // S1225
+, 39736  // S1226
+, 39741  // S1227
+, 39746  // S1228
+, 39751  // S1229
+, 39754  // S1230
+, 39757  // S1231
+, 39830  // S1232
+, 39833  // S1233
+, 39836  // S1234
+, 39907  // S1235
+, 39978  // S1236
+, 39987  // S1237
+, 39992  // S1238
+, 39997  // S1239
+, 40000  // S1240
+, 40009  // S1241
+, 40072  // S1242
+, 40075  // S1243
+, 40080  // S1244
+, 40083  // S1245
+, 40088  // S1246
+, 40091  // S1247
+, 40094  // S1248
+, 40165  // S1249
+, 40170  // S1250
+, 40173  // S1251
+, 40194  // S1252
+, 40197  // S1253
+, 40206  // S1254
+, 40209  // S1255
+, 40214  // S1256
+, 40217  // S1257
+, 40220  // S1258
+, 40229  // S1259
+, 40234  // S1260
+, 40237  // S1261
+, 40240  // S1262
+, 40261  // S1263
+, 40264  // S1264
+, 40269  // S1265
+, 40272  // S1266
+, 40343  // S1267
+, 40346  // S1268
+, 40349  // S1269
+, 40352  // S1270
+, 40355  // S1271
+, 40358  // S1272
+, 40415  // S1273
+, 40418  // S1274
+, 40421  // S1275
+, 40424  // S1276
+, 40427  // S1277
+, 40430  // S1278
+, 40613  // S1279
+, 40796  // S1280
+, 40799  // S1281
+, 40806  // S1282
+, 40809  // S1283
+, 40816  // S1284
+, 40821  // S1285
+, 40826  // S1286
+, 40833  // S1287
+, 40838  // S1288
+, 40843  // S1289
+, 41026  // S1290
+, 41033  // S1291
+, 41036  // S1292
+, 41039  // S1293
+, 41126  // S1294
+, 41207  // S1295
+, 41294  // S1296
+, 41383  // S1297
+, 41470  // S1298
+, 41557  // S1299
+, 41562  // S1300
+, 41565  // S1301
+, 41652  // S1302
+, 41727  // S1303
+, 41730  // S1304
+, 41807  // S1305
+, 41864  // S1306
+, 41867  // S1307
+, 41876  // S1308
+, 41885  // S1309
+, 41892  // S1310
+, 41895  // S1311
+, 41940  // S1312
+, 41981  // S1313
+, 42022  // S1314
+, 42097  // S1315
+, 42100  // S1316
+, 42175  // S1317
+, 42216  // S1318
+, 42219  // S1319
+, 42294  // S1320
+, 42299  // S1321
+, 42302  // S1322
+, 42315  // S1323
+, 42320  // S1324
+, 42333  // S1325
+, 42338  // S1326
+, 42341  // S1327
+, 42344  // S1328
+, 42355  // S1329
+, 42396  // S1330
+, 42437  // S1331
+, 42478  // S1332
+, 42481  // S1333
+, 42484  // S1334
 , 42489  // S1335
-, 42546  // S1336
-, 42549  // S1337
-, 42552  // S1338
-, 42569  // S1339
-, 42574  // S1340
-, 42577  // S1341
-, 42580  // S1342
-, 42583  // S1343
+, 42492  // S1336
+, 42497  // S1337
+, 42500  // S1338
+, 42503  // S1339
+, 42506  // S1340
+, 42563  // S1341
+, 42566  // S1342
+, 42569  // S1343
 , 42586  // S1344
-, 42623  // S1345
-, 42664  // S1346
-, 42699  // S1347
-, 42736  // S1348
-, 42739  // S1349
-, 42742  // S1350
-, 42777  // S1351
-, 42812  // S1352
-, 42815  // S1353
-, 42848  // S1354
-, 42851  // S1355
-, 42856  // S1356
-, 42859  // S1357
-, 42862  // S1358
-, 42867  // S1359
-, 42938  // S1360
-, 43009  // S1361
-, 43080  // S1362
-, 43137  // S1363
-, 43140  // S1364
-, 43143  // S1365
-, 43146  // S1366
-, 43149  // S1367
-, 43158  // S1368
-, 43161  // S1369
-, 43202  // S1370
-, 43273  // S1371
-, 43336  // S1372
-, 43399  // S1373
-, 43410  // S1374
-, 43475  // S1375
-, 43478  // S1376
-, 43543  // S1377
-, 43558  // S1378
-, 43623  // S1379
-, 43626  // S1380
-, 43733  // S1381
-, 43840  // S1382
-, 43843  // S1383
-, 43846  // S1384
-, 43849  // S1385
-, 43852  // S1386
-, 43863  // S1387
-, 43872  // S1388
-, 43881  // S1389
-, 43890  // S1390
-, 43899  // S1391
-, 43908  // S1392
-, 43911  // S1393
-, 43914  // S1394
-, 43917  // S1395
-, 43920  // S1396
+, 42591  // S1345
+, 42594  // S1346
+, 42597  // S1347
+, 42600  // S1348
+, 42603  // S1349
+, 42640  // S1350
+, 42681  // S1351
+, 42716  // S1352
+, 42753  // S1353
+, 42756  // S1354
+, 42759  // S1355
+, 42794  // S1356
+, 42829  // S1357
+, 42832  // S1358
+, 42865  // S1359
+, 42868  // S1360
+, 42873  // S1361
+, 42876  // S1362
+, 42879  // S1363
+, 42884  // S1364
+, 42955  // S1365
+, 43026  // S1366
+, 43097  // S1367
+, 43154  // S1368
+, 43157  // S1369
+, 43160  // S1370
+, 43163  // S1371
+, 43166  // S1372
+, 43175  // S1373
+, 43178  // S1374
+, 43219  // S1375
+, 43290  // S1376
+, 43353  // S1377
+, 43416  // S1378
+, 43427  // S1379
+, 43492  // S1380
+, 43495  // S1381
+, 43560  // S1382
+, 43575  // S1383
+, 43640  // S1384
+, 43643  // S1385
+, 43750  // S1386
+, 43857  // S1387
+, 43860  // S1388
+, 43863  // S1389
+, 43866  // S1390
+, 43869  // S1391
+, 43880  // S1392
+, 43889  // S1393
+, 43898  // S1394
+, 43907  // S1395
+, 43916  // S1396
 , 43925  // S1397
 , 43928  // S1398
-, 43959  // S1399
-, 43984  // S1400
-, 43987  // S1401
-, 43994  // S1402
-, 43999  // S1403
-, 44010  // S1404
-, 44015  // S1405
-, 44026  // S1406
-, 44029  // S1407
-, 44100  // S1408
-, 44103  // S1409
-, 44286  // S1410
-, 44469  // S1411
-, 44472  // S1412
-, 44479  // S1413
-, 44482  // S1414
-, 44485  // S1415
-, 44488  // S1416
-, 44491  // S1417
-, 44494  // S1418
+, 43931  // S1399
+, 43934  // S1400
+, 43937  // S1401
+, 43942  // S1402
+, 43945  // S1403
+, 43976  // S1404
+, 44001  // S1405
+, 44004  // S1406
+, 44011  // S1407
+, 44016  // S1408
+, 44027  // S1409
+, 44032  // S1410
+, 44043  // S1411
+, 44046  // S1412
+, 44117  // S1413
+, 44120  // S1414
+, 44303  // S1415
+, 44486  // S1416
+, 44489  // S1417
+, 44496  // S1418
 , 44499  // S1419
-, 44588  // S1420
-, 44669  // S1421
-, 44756  // S1422
-, 44837  // S1423
-, 44840  // S1424
-, 44919  // S1425
-, 44928  // S1426
-, 44931  // S1427
-, 44988  // S1428
-, 45065  // S1429
-, 45068  // S1430
-, 45077  // S1431
-, 45152  // S1432
-, 45155  // S1433
-, 45212  // S1434
-, 45225  // S1435
-, 45228  // S1436
-, 45241  // S1437
-, 45244  // S1438
-, 45247  // S1439
-, 45250  // S1440
-, 45325  // S1441
-, 45328  // S1442
-, 45339  // S1443
-, 45350  // S1444
-, 45361  // S1445
-, 45436  // S1446
-, 45443  // S1447
-, 45450  // S1448
-, 45453  // S1449
-, 45510  // S1450
-, 45513  // S1451
-, 45518  // S1452
-, 45523  // S1453
-, 45540  // S1454
-, 45555  // S1455
-, 45558  // S1456
-, 45629  // S1457
-, 45700  // S1458
-, 45703  // S1459
-, 45738  // S1460
-, 45773  // S1461
-, 45808  // S1462
-, 45865  // S1463
-, 45898  // S1464
-, 45935  // S1465
-, 45938  // S1466
-, 45941  // S1467
-, 45976  // S1468
-, 46011  // S1469
-, 46014  // S1470
-, 46017  // S1471
-, 46020  // S1472
-, 46027  // S1473
-, 46040  // S1474
-, 46105  // S1475
-, 46114  // S1476
-, 46183  // S1477
-, 46252  // S1478
-, 46255  // S1479
-, 46258  // S1480
-, 46261  // S1481
-, 46324  // S1482
-, 46365  // S1483
-, 46406  // S1484
-, 46413  // S1485
-, 46462  // S1486
-, 46477  // S1487
-, 46526  // S1488
-, 46613  // S1489
-, 46620  // S1490
-, 46623  // S1491
-, 46630  // S1492
-, 46635  // S1493
-, 46648  // S1494
-, 46655  // S1495
-, 46658  // S1496
-, 46663  // S1497
-, 46672  // S1498
-, 46677  // S1499
-, 46682  // S1500
-, 46687  // S1501
-, 46718  // S1502
-, 46721  // S1503
-, 46746  // S1504
-, 46749  // S1505
-, 46780  // S1506
-, 46805  // S1507
-, 46810  // S1508
-, 46813  // S1509
-, 46818  // S1510
-, 46821  // S1511
-, 46824  // S1512
-, 46895  // S1513
-, 46952  // S1514
-, 46959  // S1515
-, 46966  // S1516
-, 47053  // S1517
-, 47134  // S1518
-, 47209  // S1519
-, 47286  // S1520
-, 47289  // S1521
-, 47296  // S1522
-, 47299  // S1523
-, 47374  // S1524
-, 47415  // S1525
-, 47492  // S1526
-, 47569  // S1527
-, 47572  // S1528
-, 47575  // S1529
-, 47652  // S1530
-, 47739  // S1531
-, 47742  // S1532
-, 47745  // S1533
-, 47748  // S1534
-, 47761  // S1535
-, 47818  // S1536
-, 47821  // S1537
-, 47824  // S1538
-, 47827  // S1539
-, 47832  // S1540
+, 44502  // S1420
+, 44505  // S1421
+, 44508  // S1422
+, 44511  // S1423
+, 44516  // S1424
+, 44605  // S1425
+, 44686  // S1426
+, 44773  // S1427
+, 44854  // S1428
+, 44857  // S1429
+, 44936  // S1430
+, 44945  // S1431
+, 44948  // S1432
+, 45005  // S1433
+, 45082  // S1434
+, 45085  // S1435
+, 45094  // S1436
+, 45169  // S1437
+, 45172  // S1438
+, 45229  // S1439
+, 45242  // S1440
+, 45245  // S1441
+, 45258  // S1442
+, 45261  // S1443
+, 45264  // S1444
+, 45267  // S1445
+, 45342  // S1446
+, 45345  // S1447
+, 45356  // S1448
+, 45367  // S1449
+, 45378  // S1450
+, 45453  // S1451
+, 45460  // S1452
+, 45467  // S1453
+, 45470  // S1454
+, 45527  // S1455
+, 45530  // S1456
+, 45535  // S1457
+, 45540  // S1458
+, 45557  // S1459
+, 45572  // S1460
+, 45575  // S1461
+, 45646  // S1462
+, 45717  // S1463
+, 45720  // S1464
+, 45755  // S1465
+, 45790  // S1466
+, 45825  // S1467
+, 45882  // S1468
+, 45915  // S1469
+, 45952  // S1470
+, 45955  // S1471
+, 45958  // S1472
+, 45993  // S1473
+, 46028  // S1474
+, 46031  // S1475
+, 46034  // S1476
+, 46037  // S1477
+, 46044  // S1478
+, 46057  // S1479
+, 46122  // S1480
+, 46131  // S1481
+, 46200  // S1482
+, 46269  // S1483
+, 46272  // S1484
+, 46275  // S1485
+, 46278  // S1486
+, 46341  // S1487
+, 46382  // S1488
+, 46423  // S1489
+, 46430  // S1490
+, 46479  // S1491
+, 46494  // S1492
+, 46543  // S1493
+, 46630  // S1494
+, 46637  // S1495
+, 46640  // S1496
+, 46647  // S1497
+, 46652  // S1498
+, 46665  // S1499
+, 46672  // S1500
+, 46675  // S1501
+, 46680  // S1502
+, 46689  // S1503
+, 46694  // S1504
+, 46699  // S1505
+, 46704  // S1506
+, 46735  // S1507
+, 46738  // S1508
+, 46763  // S1509
+, 46766  // S1510
+, 46797  // S1511
+, 46822  // S1512
+, 46827  // S1513
+, 46830  // S1514
+, 46835  // S1515
+, 46838  // S1516
+, 46841  // S1517
+, 46912  // S1518
+, 46969  // S1519
+, 46976  // S1520
+, 46983  // S1521
+, 47070  // S1522
+, 47151  // S1523
+, 47226  // S1524
+, 47303  // S1525
+, 47306  // S1526
+, 47313  // S1527
+, 47316  // S1528
+, 47391  // S1529
+, 47432  // S1530
+, 47509  // S1531
+, 47586  // S1532
+, 47589  // S1533
+, 47592  // S1534
+, 47669  // S1535
+, 47756  // S1536
+, 47759  // S1537
+, 47762  // S1538
+, 47765  // S1539
+, 47778  // S1540
 , 47835  // S1541
-, 47840  // S1542
-, 47843  // S1543
-, 47848  // S1544
-, 47905  // S1545
-, 47908  // S1546
-, 47911  // S1547
-, 47916  // S1548
-, 47919  // S1549
-, 47954  // S1550
-, 47989  // S1551
-, 48046  // S1552
-, 48117  // S1553
-, 48126  // S1554
-, 48129  // S1555
-, 48132  // S1556
-, 48141  // S1557
-, 48150  // S1558
-, 48221  // S1559
-, 48292  // S1560
-, 48297  // S1561
-, 48302  // S1562
-, 48305  // S1563
-, 48372  // S1564
-, 48439  // S1565
-, 48502  // S1566
-, 48565  // S1567
-, 48568  // S1568
-, 48571  // S1569
-, 48574  // S1570
-, 48639  // S1571
-, 48706  // S1572
-, 48711  // S1573
-, 48716  // S1574
-, 48719  // S1575
-, 48722  // S1576
-, 48727  // S1577
-, 48730  // S1578
-, 48737  // S1579
-, 48750  // S1580
-, 48757  // S1581
-, 48762  // S1582
-, 48767  // S1583
-, 48776  // S1584
-, 48781  // S1585
-, 48790  // S1586
-, 48793  // S1587
-, 48796  // S1588
-, 48799  // S1589
-, 48806  // S1590
-, 48831  // S1591
-, 48836  // S1592
-, 48841  // S1593
-, 48850  // S1594
-, 48853  // S1595
-, 48858  // S1596
-, 48861  // S1597
-, 48864  // S1598
-, 48907  // S1599
-, 48964  // S1600
-, 48969  // S1601
-, 49044  // S1602
-, 49121  // S1603
-, 49198  // S1604
-, 49201  // S1605
-, 49278  // S1606
-, 49353  // S1607
-, 49358  // S1608
-, 49365  // S1609
-, 49422  // S1610
-, 49425  // S1611
-, 49428  // S1612
-, 49431  // S1613
-, 49466  // S1614
-, 49469  // S1615
-, 49478  // S1616
-, 49485  // S1617
-, 49488  // S1618
-, 49491  // S1619
-, 49498  // S1620
-, 49567  // S1621
-, 49636  // S1622
-, 49639  // S1623
-, 49642  // S1624
-, 49645  // S1625
-, 49648  // S1626
-, 49719  // S1627
-, 49722  // S1628
-, 49787  // S1629
-, 49792  // S1630
-, 49797  // S1631
-, 49860  // S1632
-, 49901  // S1633
-, 49964  // S1634
-, 49979  // S1635
-, 49982  // S1636
-, 50047  // S1637
-, 50050  // S1638
-, 50055  // S1639
-, 50058  // S1640
-, 50063  // S1641
+, 47838  // S1542
+, 47841  // S1543
+, 47844  // S1544
+, 47849  // S1545
+, 47852  // S1546
+, 47857  // S1547
+, 47860  // S1548
+, 47865  // S1549
+, 47922  // S1550
+, 47925  // S1551
+, 47928  // S1552
+, 47933  // S1553
+, 47936  // S1554
+, 47971  // S1555
+, 48006  // S1556
+, 48063  // S1557
+, 48134  // S1558
+, 48143  // S1559
+, 48146  // S1560
+, 48149  // S1561
+, 48158  // S1562
+, 48167  // S1563
+, 48238  // S1564
+, 48309  // S1565
+, 48314  // S1566
+, 48319  // S1567
+, 48322  // S1568
+, 48389  // S1569
+, 48456  // S1570
+, 48519  // S1571
+, 48582  // S1572
+, 48585  // S1573
+, 48588  // S1574
+, 48591  // S1575
+, 48656  // S1576
+, 48723  // S1577
+, 48728  // S1578
+, 48733  // S1579
+, 48736  // S1580
+, 48739  // S1581
+, 48744  // S1582
+, 48747  // S1583
+, 48754  // S1584
+, 48767  // S1585
+, 48774  // S1586
+, 48779  // S1587
+, 48784  // S1588
+, 48795  // S1589
+, 48800  // S1590
+, 48809  // S1591
+, 48812  // S1592
+, 48815  // S1593
+, 48818  // S1594
+, 48825  // S1595
+, 48850  // S1596
+, 48855  // S1597
+, 48860  // S1598
+, 48869  // S1599
+, 48872  // S1600
+, 48877  // S1601
+, 48880  // S1602
+, 48883  // S1603
+, 48926  // S1604
+, 48983  // S1605
+, 48988  // S1606
+, 49063  // S1607
+, 49140  // S1608
+, 49217  // S1609
+, 49220  // S1610
+, 49297  // S1611
+, 49372  // S1612
+, 49377  // S1613
+, 49384  // S1614
+, 49441  // S1615
+, 49444  // S1616
+, 49447  // S1617
+, 49450  // S1618
+, 49485  // S1619
+, 49488  // S1620
+, 49497  // S1621
+, 49504  // S1622
+, 49507  // S1623
+, 49510  // S1624
+, 49517  // S1625
+, 49586  // S1626
+, 49655  // S1627
+, 49658  // S1628
+, 49661  // S1629
+, 49664  // S1630
+, 49667  // S1631
+, 49738  // S1632
+, 49741  // S1633
+, 49806  // S1634
+, 49811  // S1635
+, 49816  // S1636
+, 49879  // S1637
+, 49920  // S1638
+, 49983  // S1639
+, 49998  // S1640
+, 50001  // S1641
 , 50066  // S1642
-, 50071  // S1643
-, 50078  // S1644
-, 50083  // S1645
-, 50088  // S1646
-, 50093  // S1647
-, 50100  // S1648
-, 50107  // S1649
-, 50110  // S1650
-, 50113  // S1651
-, 50118  // S1652
-, 50127  // S1653
-, 50132  // S1654
-, 50135  // S1655
-, 50140  // S1656
-, 50145  // S1657
-, 50148  // S1658
-, 50171  // S1659
-, 50174  // S1660
-, 50177  // S1661
-, 50248  // S1662
-, 50253  // S1663
-, 50310  // S1664
-, 50313  // S1665
-, 50316  // S1666
-, 50391  // S1667
-, 50468  // S1668
-, 50471  // S1669
-, 50546  // S1670
-, 50549  // S1671
-, 50554  // S1672
-, 50557  // S1673
-, 50592  // S1674
-, 50599  // S1675
-, 50602  // S1676
-, 50605  // S1677
-, 50618  // S1678
-, 50621  // S1679
-, 50692  // S1680
-, 50763  // S1681
-, 50832  // S1682
-, 50901  // S1683
-, 50904  // S1684
-, 50967  // S1685
-, 50970  // S1686
-, 51033  // S1687
-, 51036  // S1688
-, 51041  // S1689
-, 51044  // S1690
-, 51049  // S1691
-, 51114  // S1692
-, 51127  // S1693
-, 51130  // S1694
-, 51133  // S1695
-, 51138  // S1696
-, 51141  // S1697
-, 51144  // S1698
-, 51157  // S1699
-, 51160  // S1700
-, 51163  // S1701
-, 51166  // S1702
-, 51171  // S1703
-, 51176  // S1704
-, 51197  // S1705
-, 51200  // S1706
-, 51203  // S1707
-, 51206  // S1708
-, 51209  // S1709
-, 51240  // S1710
-, 51271  // S1711
-, 51296  // S1712
-, 51319  // S1713
-, 51322  // S1714
-, 51329  // S1715
-, 51332  // S1716
-, 51407  // S1717
-, 51482  // S1718
-, 51557  // S1719
-, 51560  // S1720
-, 51569  // S1721
-, 51638  // S1722
-, 51707  // S1723
-, 51710  // S1724
-, 51777  // S1725
-, 51842  // S1726
-, 51847  // S1727
-, 51912  // S1728
-, 51917  // S1729
-, 51982  // S1730
-, 52045  // S1731
-, 52048  // S1732
-, 52111  // S1733
-, 52174  // S1734
-, 52215  // S1735
-, 52218  // S1736
-, 52231  // S1737
-, 52234  // S1738
-, 52237  // S1739
-, 52250  // S1740
-, 52257  // S1741
-, 52262  // S1742
-, 52333  // S1743
-, 52338  // S1744
-, 52341  // S1745
-, 52344  // S1746
-, 52375  // S1747
-, 52380  // S1748
-, 52383  // S1749
-, 52414  // S1750
-, 52419  // S1751
-, 52428  // S1752
-, 52435  // S1753
-, 52506  // S1754
-, 52509  // S1755
-, 52512  // S1756
-, 52517  // S1757
-, 52582  // S1758
-, 52585  // S1759
-, 52588  // S1760
-, 52591  // S1761
-, 52656  // S1762
-, 52669  // S1763
-, 52674  // S1764
-, 52677  // S1765
-, 52680  // S1766
-, 52683  // S1767
-, 52752  // S1768
-, 52755  // S1769
-, 52820  // S1770
-, 52883  // S1771
-, 52890  // S1772
-, 52957  // S1773
-, 52962  // S1774
-, 52967  // S1775
+, 50069  // S1643
+, 50074  // S1644
+, 50077  // S1645
+, 50082  // S1646
+, 50085  // S1647
+, 50090  // S1648
+, 50097  // S1649
+, 50102  // S1650
+, 50107  // S1651
+, 50112  // S1652
+, 50123  // S1653
+, 50134  // S1654
+, 50141  // S1655
+, 50144  // S1656
+, 50147  // S1657
+, 50152  // S1658
+, 50161  // S1659
+, 50166  // S1660
+, 50169  // S1661
+, 50174  // S1662
+, 50179  // S1663
+, 50182  // S1664
+, 50205  // S1665
+, 50208  // S1666
+, 50211  // S1667
+, 50282  // S1668
+, 50287  // S1669
+, 50344  // S1670
+, 50347  // S1671
+, 50350  // S1672
+, 50425  // S1673
+, 50502  // S1674
+, 50505  // S1675
+, 50580  // S1676
+, 50583  // S1677
+, 50588  // S1678
+, 50591  // S1679
+, 50626  // S1680
+, 50633  // S1681
+, 50636  // S1682
+, 50639  // S1683
+, 50652  // S1684
+, 50655  // S1685
+, 50726  // S1686
+, 50797  // S1687
+, 50866  // S1688
+, 50935  // S1689
+, 50938  // S1690
+, 51001  // S1691
+, 51004  // S1692
+, 51067  // S1693
+, 51070  // S1694
+, 51075  // S1695
+, 51078  // S1696
+, 51083  // S1697
+, 51148  // S1698
+, 51161  // S1699
+, 51164  // S1700
+, 51167  // S1701
+, 51172  // S1702
+, 51175  // S1703
+, 51178  // S1704
+, 51191  // S1705
+, 51194  // S1706
+, 51197  // S1707
+, 51204  // S1708
+, 51211  // S1709
+, 51214  // S1710
+, 51219  // S1711
+, 51224  // S1712
+, 51245  // S1713
+, 51248  // S1714
+, 51251  // S1715
+, 51254  // S1716
+, 51257  // S1717
+, 51288  // S1718
+, 51319  // S1719
+, 51344  // S1720
+, 51367  // S1721
+, 51370  // S1722
+, 51377  // S1723
+, 51380  // S1724
+, 51455  // S1725
+, 51530  // S1726
+, 51605  // S1727
+, 51608  // S1728
+, 51617  // S1729
+, 51686  // S1730
+, 51755  // S1731
+, 51758  // S1732
+, 51825  // S1733
+, 51890  // S1734
+, 51895  // S1735
+, 51960  // S1736
+, 51965  // S1737
+, 52030  // S1738
+, 52093  // S1739
+, 52096  // S1740
+, 52159  // S1741
+, 52222  // S1742
+, 52263  // S1743
+, 52266  // S1744
+, 52279  // S1745
+, 52282  // S1746
+, 52285  // S1747
+, 52298  // S1748
+, 52305  // S1749
+, 52310  // S1750
+, 52381  // S1751
+, 52386  // S1752
+, 52389  // S1753
+, 52392  // S1754
+, 52423  // S1755
+, 52428  // S1756
+, 52431  // S1757
+, 52462  // S1758
+, 52467  // S1759
+, 52476  // S1760
+, 52483  // S1761
+, 52554  // S1762
+, 52557  // S1763
+, 52560  // S1764
+, 52565  // S1765
+, 52630  // S1766
+, 52633  // S1767
+, 52636  // S1768
+, 52639  // S1769
+, 52704  // S1770
+, 52717  // S1771
+, 52722  // S1772
+, 52725  // S1773
+, 52728  // S1774
+, 52731  // S1775
+, 52800  // S1776
+, 52803  // S1777
+, 52868  // S1778
+, 52931  // S1779
+, 52938  // S1780
+, 53005  // S1781
+, 53010  // S1782
+, 53015  // S1783
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -41262,82 +41405,82 @@ static const int32_t gSuccessorTable_galgas3Grammar_341 [3] = {304, 598, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_346 [3] = {263, 602, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_348 [3] = {262, 605, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_348 [3] = {262, 607, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_349 [3] = {254, 607, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_349 [3] = {254, 609, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_353 [3] = {253, 610, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_353 [3] = {253, 612, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_358 [3] = {252, 615, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_358 [3] = {252, 617, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_361 [3] = {260, 620, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_361 [3] = {260, 623, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_373 [3] = {201, 622, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_373 [3] = {201, 625, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_374 [3] = {37, 624, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_374 [3] = {37, 627, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_377 [3] = {221, 625, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_377 [3] = {221, 628, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_379 [11] = {41, 631,
-  42, 632,
-  43, 633,
-  44, 634,
-  219, 635, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_379 [11] = {41, 634,
+  42, 635,
+  43, 636,
+  44, 637,
+  219, 638, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_386 [3] = {36, 640, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_386 [3] = {36, 643, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_387 [11] = {16, 641,
+static const int32_t gSuccessorTable_galgas3Grammar_387 [11] = {16, 644,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_390 [3] = {312, 645, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_390 [3] = {312, 648, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_395 [5] = {2, 649,
-  84, 650, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_395 [5] = {2, 652,
+  84, 653, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_396 [3] = {85, 651, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_396 [3] = {85, 654, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_408 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 657,
+  6, 660,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_412 [9] = {0, 220,
-  1, 661,
-  7, 226,
-  93, 231, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_413 [9] = {0, 220,
-  1, 662,
-  7, 226,
-  93, 231, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_414 [9] = {0, 220,
-  1, 663,
-  7, 226,
-  93, 231, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_415 [9] = {0, 220,
   1, 664,
   7, 226,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_416 [9] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_413 [9] = {0, 220,
   1, 665,
+  7, 226,
+  93, 231, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_414 [9] = {0, 220,
+  1, 666,
+  7, 226,
+  93, 231, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_415 [9] = {0, 220,
+  1, 667,
+  7, 226,
+  93, 231, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_416 [9] = {0, 220,
+  1, 668,
   7, 226,
   93, 231, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_418 [15] = {0, 220,
   1, 221,
-  3, 666,
+  3, 669,
   4, 223,
   5, 224,
   7, 226,
@@ -41345,7 +41488,7 @@ static const int32_t gSuccessorTable_galgas3Grammar_418 [15] = {0, 220,
 
 static const int32_t gSuccessorTable_galgas3Grammar_419 [15] = {0, 220,
   1, 221,
-  3, 667,
+  3, 670,
   4, 223,
   5, 224,
   7, 226,
@@ -41353,93 +41496,93 @@ static const int32_t gSuccessorTable_galgas3Grammar_419 [15] = {0, 220,
 
 static const int32_t gSuccessorTable_galgas3Grammar_421 [13] = {0, 220,
   1, 221,
-  4, 668,
+  4, 671,
   5, 224,
   7, 226,
   93, 231, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_422 [13] = {0, 220,
   1, 221,
-  4, 669,
+  4, 672,
   5, 224,
   7, 226,
   93, 231, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_423 [13] = {0, 220,
   1, 221,
-  4, 670,
+  4, 673,
   5, 224,
   7, 226,
   93, 231, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_424 [13] = {0, 220,
   1, 221,
-  4, 671,
+  4, 674,
   5, 224,
   7, 226,
   93, 231, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_425 [13] = {0, 220,
   1, 221,
-  4, 672,
+  4, 675,
   5, 224,
   7, 226,
   93, 231, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_426 [13] = {0, 220,
   1, 221,
-  4, 673,
+  4, 676,
   5, 224,
   7, 226,
   93, 231, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_427 [13] = {0, 220,
   1, 221,
-  4, 674,
+  4, 677,
   5, 224,
   7, 226,
   93, 231, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_428 [13] = {0, 220,
   1, 221,
-  4, 675,
+  4, 678,
   5, 224,
   7, 226,
   93, 231, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_430 [11] = {0, 220,
   1, 221,
-  5, 676,
+  5, 679,
   7, 226,
   93, 231, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_431 [11] = {0, 220,
   1, 221,
-  5, 677,
+  5, 680,
   7, 226,
   93, 231, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_432 [11] = {0, 220,
   1, 221,
-  5, 678,
+  5, 681,
   7, 226,
   93, 231, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_433 [11] = {0, 220,
   1, 221,
-  5, 679,
+  5, 682,
   7, 226,
   93, 231, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_434 [11] = {0, 220,
   1, 221,
-  5, 680,
+  5, 683,
   7, 226,
   93, 231, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_435 [11] = {0, 220,
   1, 221,
-  5, 681,
+  5, 684,
   7, 226,
   93, 231, -1} ;
 
@@ -41448,44 +41591,17 @@ static const int32_t gSuccessorTable_galgas3Grammar_438 [25] = {0, 220,
   3, 222,
   4, 223,
   5, 224,
-  6, 685,
+  6, 688,
   7, 226,
-  8, 686,
+  8, 689,
   9, 227,
   10, 228,
   93, 231,
-  95, 687, -1} ;
+  95, 690, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_439 [3] = {90, 691, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_439 [3] = {90, 694, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_442 [17] = {0, 220,
-  1, 221,
-  3, 222,
-  4, 223,
-  5, 224,
-  7, 226,
-  10, 693,
-  93, 231, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_443 [17] = {0, 220,
-  1, 221,
-  3, 222,
-  4, 223,
-  5, 224,
-  7, 226,
-  10, 694,
-  93, 231, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_444 [17] = {0, 220,
-  1, 221,
-  3, 222,
-  4, 223,
-  5, 224,
-  7, 226,
-  10, 695,
-  93, 231, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_445 [17] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
@@ -41494,7 +41610,7 @@ static const int32_t gSuccessorTable_galgas3Grammar_445 [17] = {0, 220,
   10, 696,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_446 [17] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_443 [17] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
@@ -41503,7 +41619,34 @@ static const int32_t gSuccessorTable_galgas3Grammar_446 [17] = {0, 220,
   10, 697,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_448 [11] = {16, 698,
+static const int32_t gSuccessorTable_galgas3Grammar_444 [17] = {0, 220,
+  1, 221,
+  3, 222,
+  4, 223,
+  5, 224,
+  7, 226,
+  10, 698,
+  93, 231, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_445 [17] = {0, 220,
+  1, 221,
+  3, 222,
+  4, 223,
+  5, 224,
+  7, 226,
+  10, 699,
+  93, 231, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_446 [17] = {0, 220,
+  1, 221,
+  3, 222,
+  4, 223,
+  5, 224,
+  7, 226,
+  10, 700,
+  93, 231, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_448 [11] = {16, 701,
   20, 124,
   23, 125,
   30, 126,
@@ -41519,30 +41662,30 @@ static const int32_t gSuccessorTable_galgas3Grammar_450 [23] = {0, 220,
   9, 227,
   10, 228,
   93, 231,
-  167, 699, -1} ;
+  167, 702, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_452 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 700,
+  6, 703,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_453 [3] = {105, 708, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_453 [3] = {105, 711, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_457 [5] = {131, 715,
-  162, 716, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_457 [5] = {131, 718,
+  162, 719, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_458 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 717,
+  6, 720,
   7, 226,
   9, 227,
   10, 228,
@@ -41553,7 +41696,7 @@ static const int32_t gSuccessorTable_galgas3Grammar_459 [21] = {0, 220,
   3, 222,
   4, 223,
   5, 224,
-  6, 718,
+  6, 721,
   7, 226,
   9, 227,
   10, 228,
@@ -41564,20 +41707,20 @@ static const int32_t gSuccessorTable_galgas3Grammar_460 [25] = {0, 220,
   3, 222,
   4, 223,
   5, 224,
-  6, 719,
+  6, 722,
   7, 226,
   9, 227,
   10, 228,
-  24, 720,
+  24, 723,
   93, 231,
-  133, 721, -1} ;
+  133, 724, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_461 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 722,
+  6, 725,
   7, 226,
   9, 227,
   10, 228,
@@ -41588,7 +41731,7 @@ static const int32_t gSuccessorTable_galgas3Grammar_462 [21] = {0, 220,
   3, 222,
   4, 223,
   5, 224,
-  6, 723,
+  6, 726,
   7, 226,
   9, 227,
   10, 228,
@@ -41599,45 +41742,23 @@ static const int32_t gSuccessorTable_galgas3Grammar_469 [21] = {0, 220,
   3, 222,
   4, 223,
   5, 224,
-  6, 724,
+  6, 727,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_470 [5] = {12, 725,
+static const int32_t gSuccessorTable_galgas3Grammar_470 [5] = {12, 728,
   104, 456, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_473 [5] = {12, 729,
+static const int32_t gSuccessorTable_galgas3Grammar_473 [5] = {12, 732,
   104, 456, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_474 [7] = {126, 731,
+static const int32_t gSuccessorTable_galgas3Grammar_474 [7] = {126, 734,
   131, 236,
   162, 237, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_479 [21] = {0, 220,
-  1, 221,
-  3, 222,
-  4, 223,
-  5, 224,
-  6, 732,
-  7, 226,
-  9, 227,
-  10, 228,
-  93, 231, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_484 [21] = {0, 220,
-  1, 221,
-  3, 222,
-  4, 223,
-  5, 224,
-  6, 733,
-  7, 226,
-  9, 227,
-  10, 228,
-  93, 231, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_486 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
@@ -41648,59 +41769,68 @@ static const int32_t gSuccessorTable_galgas3Grammar_486 [21] = {0, 220,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_488 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_484 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 737,
+  6, 736,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_489 [3] = {127, 741, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_486 [21] = {0, 220,
+  1, 221,
+  3, 222,
+  4, 223,
+  5, 224,
+  6, 738,
+  7, 226,
+  9, 227,
+  10, 228,
+  93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_490 [5] = {21, 742,
-  130, 743, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_488 [21] = {0, 220,
+  1, 221,
+  3, 222,
+  4, 223,
+  5, 224,
+  6, 740,
+  7, 226,
+  9, 227,
+  10, 228,
+  93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_493 [7] = {26, 749,
-  140, 750,
-  143, 751, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_489 [3] = {127, 744, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_495 [3] = {149, 753, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_490 [5] = {21, 745,
+  130, 746, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_496 [3] = {147, 756, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_493 [7] = {26, 752,
+  140, 753,
+  143, 754, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_499 [3] = {29, 761, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_495 [3] = {149, 756, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_496 [3] = {147, 759, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_499 [3] = {29, 764, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_500 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 762,
+  6, 765,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_502 [3] = {175, 764, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_502 [3] = {175, 767, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_505 [21] = {0, 220,
-  1, 221,
-  3, 222,
-  4, 223,
-  5, 224,
-  6, 766,
-  7, 226,
-  9, 227,
-  10, 228,
-  93, 231, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_506 [3] = {32, 768, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_507 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
@@ -41711,7 +41841,20 @@ static const int32_t gSuccessorTable_galgas3Grammar_507 [21] = {0, 220,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_510 [5] = {115, 772,
+static const int32_t gSuccessorTable_galgas3Grammar_506 [3] = {32, 771, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_507 [21] = {0, 220,
+  1, 221,
+  3, 222,
+  4, 223,
+  5, 224,
+  6, 772,
+  7, 226,
+  9, 227,
+  10, 228,
+  93, 231, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_510 [5] = {115, 775,
   116, 276, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_512 [23] = {53, 512,
@@ -41724,7 +41867,7 @@ static const int32_t gSuccessorTable_galgas3Grammar_512 [23] = {53, 512,
   67, 519,
   68, 520,
   69, 521,
-  247, 774, -1} ;
+  247, 777, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_513 [23] = {53, 512,
   54, 513,
@@ -41736,7 +41879,7 @@ static const int32_t gSuccessorTable_galgas3Grammar_513 [23] = {53, 512,
   67, 519,
   68, 520,
   69, 521,
-  247, 775, -1} ;
+  247, 778, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_514 [23] = {53, 512,
   54, 513,
@@ -41748,7 +41891,7 @@ static const int32_t gSuccessorTable_galgas3Grammar_514 [23] = {53, 512,
   67, 519,
   68, 520,
   69, 521,
-  247, 776, -1} ;
+  247, 779, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_515 [23] = {53, 512,
   54, 513,
@@ -41760,7 +41903,7 @@ static const int32_t gSuccessorTable_galgas3Grammar_515 [23] = {53, 512,
   67, 519,
   68, 520,
   69, 521,
-  247, 777, -1} ;
+  247, 780, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_516 [23] = {53, 512,
   54, 513,
@@ -41772,7 +41915,7 @@ static const int32_t gSuccessorTable_galgas3Grammar_516 [23] = {53, 512,
   67, 519,
   68, 520,
   69, 521,
-  247, 778, -1} ;
+  247, 781, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_517 [23] = {53, 512,
   54, 513,
@@ -41784,7 +41927,7 @@ static const int32_t gSuccessorTable_galgas3Grammar_517 [23] = {53, 512,
   67, 519,
   68, 520,
   69, 521,
-  247, 779, -1} ;
+  247, 782, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_518 [23] = {53, 512,
   54, 513,
@@ -41796,7 +41939,7 @@ static const int32_t gSuccessorTable_galgas3Grammar_518 [23] = {53, 512,
   67, 519,
   68, 520,
   69, 521,
-  247, 780, -1} ;
+  247, 783, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_519 [23] = {53, 512,
   54, 513,
@@ -41808,7 +41951,7 @@ static const int32_t gSuccessorTable_galgas3Grammar_519 [23] = {53, 512,
   67, 519,
   68, 520,
   69, 521,
-  247, 781, -1} ;
+  247, 784, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_520 [23] = {53, 512,
   54, 513,
@@ -41820,7 +41963,7 @@ static const int32_t gSuccessorTable_galgas3Grammar_520 [23] = {53, 512,
   67, 519,
   68, 520,
   69, 521,
-  247, 782, -1} ;
+  247, 785, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_521 [23] = {53, 512,
   54, 513,
@@ -41832,497 +41975,501 @@ static const int32_t gSuccessorTable_galgas3Grammar_521 [23] = {53, 512,
   67, 519,
   68, 520,
   69, 521,
-  247, 783, -1} ;
+  247, 786, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_529 [3] = {215, 790, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_529 [3] = {215, 793, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_531 [11] = {16, 792,
+static const int32_t gSuccessorTable_galgas3Grammar_531 [11] = {16, 795,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_532 [11] = {16, 793,
+static const int32_t gSuccessorTable_galgas3Grammar_532 [11] = {16, 796,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_534 [3] = {199, 796, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_534 [3] = {199, 799, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_542 [9] = {35, 800,
+static const int32_t gSuccessorTable_galgas3Grammar_542 [9] = {35, 803,
   52, 296,
-  225, 801,
+  225, 804,
   242, 297, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_547 [11] = {35, 803,
-  51, 804,
+static const int32_t gSuccessorTable_galgas3Grammar_547 [11] = {35, 806,
+  51, 807,
   52, 296,
-  227, 805,
+  227, 808,
   242, 297, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_552 [5] = {13, 810,
+static const int32_t gSuccessorTable_galgas3Grammar_552 [5] = {13, 813,
   110, 190, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_553 [7] = {11, 811,
+static const int32_t gSuccessorTable_galgas3Grammar_553 [7] = {11, 814,
   101, 94,
   102, 95, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_554 [7] = {11, 812,
+static const int32_t gSuccessorTable_galgas3Grammar_554 [7] = {11, 815,
   101, 94,
   102, 95, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_574 [5] = {13, 823,
+static const int32_t gSuccessorTable_galgas3Grammar_574 [5] = {13, 826,
   110, 190, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_575 [7] = {11, 824,
+static const int32_t gSuccessorTable_galgas3Grammar_575 [7] = {11, 827,
   101, 94,
   102, 95, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_576 [7] = {11, 825,
+static const int32_t gSuccessorTable_galgas3Grammar_576 [7] = {11, 828,
   101, 94,
   102, 95, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_589 [7] = {75, 833,
-  77, 834,
-  286, 835, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_589 [7] = {75, 836,
+  77, 837,
+  286, 838, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_591 [7] = {75, 591,
   77, 592,
-  287, 837, -1} ;
+  287, 840, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_592 [7] = {75, 591,
   77, 592,
-  287, 838, -1} ;
+  287, 841, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_604 [3] = {262, 846, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_604 [3] = {262, 849, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_607 [3] = {255, 850, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_605 [3] = {262, 850, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_613 [5] = {57, 864,
-  248, 865, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_606 [3] = {262, 851, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_614 [3] = {62, 866, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_609 [3] = {255, 855, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_617 [3] = {259, 868, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_615 [5] = {57, 869,
+  248, 870, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_618 [3] = {260, 869, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_616 [3] = {62, 871, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_621 [3] = {202, 873, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_619 [3] = {259, 873, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_623 [3] = {203, 876, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_621 [3] = {260, 875, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_624 [3] = {38, 878, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_622 [3] = {260, 876, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_631 [11] = {41, 631,
-  42, 632,
-  43, 633,
-  44, 634,
-  219, 883, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_624 [3] = {202, 879, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_632 [11] = {41, 631,
-  42, 632,
-  43, 633,
-  44, 634,
-  219, 884, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_626 [3] = {203, 882, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_633 [11] = {41, 631,
-  42, 632,
-  43, 633,
-  44, 634,
-  219, 885, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_627 [3] = {38, 884, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_634 [11] = {41, 631,
-  42, 632,
-  43, 633,
-  44, 634,
-  219, 886, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_634 [11] = {41, 634,
+  42, 635,
+  43, 636,
+  44, 637,
+  219, 889, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_636 [3] = {112, 889, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_635 [11] = {41, 634,
+  42, 635,
+  43, 636,
+  44, 637,
+  219, 890, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_639 [5] = {101, 890,
+static const int32_t gSuccessorTable_galgas3Grammar_636 [11] = {41, 634,
+  42, 635,
+  43, 636,
+  44, 637,
+  219, 891, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_637 [11] = {41, 634,
+  42, 635,
+  43, 636,
+  44, 637,
+  219, 892, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_639 [3] = {112, 895, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_642 [5] = {101, 896,
   102, 95, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_640 [3] = {37, 891, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_643 [3] = {37, 897, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_643 [3] = {118, 895, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_646 [3] = {118, 901, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_647 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_650 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 898,
+  6, 904,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_648 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_651 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 899,
+  6, 905,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_655 [3] = {91, 905, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_658 [3] = {91, 911, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_656 [5] = {2, 906,
-  84, 650, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_659 [5] = {2, 912,
+  84, 653, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_658 [19] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_661 [19] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
   7, 226,
-  9, 908,
+  9, 914,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_659 [3] = {98, 910, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_662 [3] = {98, 916, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_661 [3] = {88, 911, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_664 [3] = {88, 917, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_662 [3] = {88, 912, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_665 [3] = {88, 918, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_663 [3] = {88, 913, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_666 [3] = {88, 919, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_664 [3] = {88, 914, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_667 [3] = {88, 920, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_665 [3] = {88, 915, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_668 [3] = {88, 921, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_666 [3] = {100, 916, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_669 [3] = {100, 922, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_667 [3] = {100, 917, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_670 [3] = {100, 923, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_668 [3] = {86, 918, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_671 [3] = {86, 924, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_669 [3] = {86, 919, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_672 [3] = {86, 925, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_670 [3] = {86, 920, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_673 [3] = {86, 926, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_671 [3] = {86, 921, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_674 [3] = {86, 927, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_672 [3] = {86, 922, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_675 [3] = {86, 928, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_673 [3] = {86, 923, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_676 [3] = {86, 929, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_674 [3] = {86, 924, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_677 [3] = {86, 930, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_675 [3] = {86, 925, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_678 [3] = {86, 931, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_676 [3] = {87, 926, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_679 [3] = {87, 932, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_677 [3] = {87, 927, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_680 [3] = {87, 933, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_678 [3] = {87, 928, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_681 [3] = {87, 934, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_679 [3] = {87, 929, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_682 [3] = {87, 935, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_680 [3] = {87, 930, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_683 [3] = {87, 936, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_681 [3] = {87, 931, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_684 [3] = {87, 937, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_682 [3] = {94, 933, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_685 [3] = {94, 939, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_684 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_687 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 934,
+  6, 940,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_686 [3] = {96, 936, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_689 [3] = {96, 942, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_693 [3] = {99, 939, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_696 [3] = {99, 945, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_694 [3] = {99, 940, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_697 [3] = {99, 946, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_695 [3] = {99, 941, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_698 [3] = {99, 947, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_696 [3] = {99, 942, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_699 [3] = {99, 948, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_697 [3] = {99, 943, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_700 [3] = {99, 949, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_698 [3] = {165, 946, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_701 [3] = {165, 952, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_699 [3] = {166, 947, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_702 [3] = {166, 953, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_700 [3] = {104, 948, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_703 [3] = {104, 954, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_701 [3] = {14, 950, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_704 [3] = {14, 956, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_703 [3] = {14, 952, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_706 [3] = {14, 958, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_705 [3] = {14, 955, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_708 [3] = {14, 961, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_706 [3] = {108, 957, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_709 [3] = {108, 963, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_707 [3] = {107, 959, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_710 [3] = {107, 965, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_708 [3] = {104, 960, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_711 [3] = {104, 966, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_709 [3] = {106, 962, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_712 [3] = {106, 968, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_711 [3] = {104, 964, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_714 [3] = {104, 970, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_712 [3] = {104, 965, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_715 [3] = {104, 971, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_726 [5] = {12, 968,
+static const int32_t gSuccessorTable_galgas3Grammar_729 [5] = {12, 974,
   104, 456, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_728 [3] = {177, 970, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_731 [3] = {177, 976, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_732 [3] = {134, 975, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_735 [3] = {134, 981, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_734 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_737 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 976,
+  6, 982,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_736 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_739 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 977,
+  6, 983,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_737 [3] = {138, 979, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_740 [3] = {138, 985, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_742 [5] = {21, 742,
-  130, 981, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_745 [5] = {21, 745,
+  130, 987, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_743 [5] = {22, 984,
-  129, 985, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_746 [5] = {22, 990,
+  129, 991, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_744 [3] = {135, 986, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_747 [3] = {135, 992, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_745 [3] = {148, 988, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_748 [3] = {148, 994, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_749 [7] = {26, 990,
-  140, 750,
-  144, 991, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_752 [7] = {26, 996,
+  140, 753,
+  144, 997, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_750 [5] = {141, 994,
-  142, 995, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_753 [5] = {141, 1000,
+  142, 1001, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_752 [3] = {150, 997, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_755 [3] = {150, 1003, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_753 [3] = {151, 999, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_756 [3] = {151, 1005, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_758 [5] = {12, 1001,
+static const int32_t gSuccessorTable_galgas3Grammar_761 [5] = {12, 1007,
   104, 456, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_759 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_762 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1002,
+  6, 1008,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_764 [3] = {174, 1004, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_767 [3] = {174, 1010, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_765 [11] = {16, 1005,
+static const int32_t gSuccessorTable_galgas3Grammar_768 [11] = {16, 1011,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_767 [3] = {180, 1008, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_770 [3] = {180, 1014, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_769 [5] = {25, 1011,
-  136, 1012, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_772 [5] = {25, 1017,
+  136, 1018, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_771 [23] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_774 [23] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1014,
+  6, 1020,
   7, 226,
   9, 227,
   10, 228,
-  33, 1015,
+  33, 1021,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_773 [7] = {68, 1016,
-  69, 1017,
-  261, 1018, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_776 [7] = {68, 1022,
+  69, 1023,
+  261, 1024, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_786 [3] = {208, 1020, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_789 [3] = {208, 1026, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_790 [3] = {214, 1024, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_793 [3] = {214, 1030, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_791 [3] = {236, 1026, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_794 [3] = {236, 1032, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_794 [3] = {224, 1030, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_797 [3] = {224, 1036, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_795 [3] = {199, 1031, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_799 [3] = {200, 1038, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_796 [3] = {200, 1033, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_803 [3] = {226, 1042, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_800 [3] = {226, 1037, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_803 [11] = {35, 803,
-  51, 804,
+static const int32_t gSuccessorTable_galgas3Grammar_806 [11] = {35, 806,
+  51, 807,
   52, 296,
-  227, 1040,
+  227, 1045,
   242, 297, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_804 [11] = {35, 803,
-  51, 804,
+static const int32_t gSuccessorTable_galgas3Grammar_807 [11] = {35, 806,
+  51, 807,
   52, 296,
-  227, 1041,
+  227, 1046,
   242, 297, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_807 [5] = {13, 1044,
+static const int32_t gSuccessorTable_galgas3Grammar_810 [5] = {13, 1049,
   110, 190, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_808 [7] = {11, 1045,
+static const int32_t gSuccessorTable_galgas3Grammar_811 [7] = {11, 1050,
   101, 94,
   102, 95, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_809 [7] = {11, 1046,
+static const int32_t gSuccessorTable_galgas3Grammar_812 [7] = {11, 1051,
   101, 94,
   102, 95, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_819 [5] = {13, 1055,
+static const int32_t gSuccessorTable_galgas3Grammar_822 [5] = {13, 1060,
   110, 190, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_820 [7] = {11, 1056,
+static const int32_t gSuccessorTable_galgas3Grammar_823 [7] = {11, 1061,
   101, 94,
   102, 95, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_821 [7] = {11, 1057,
+static const int32_t gSuccessorTable_galgas3Grammar_824 [7] = {11, 1062,
   101, 94,
   102, 95, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_822 [3] = {49, 1059, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_825 [3] = {49, 1064, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_827 [11] = {16, 1062,
+static const int32_t gSuccessorTable_galgas3Grammar_830 [11] = {16, 1067,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_828 [11] = {16, 1063,
+static const int32_t gSuccessorTable_galgas3Grammar_831 [11] = {16, 1068,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_829 [3] = {283, 1065, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_832 [3] = {283, 1070, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_833 [7] = {75, 833,
-  77, 834,
-  286, 1068, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_836 [7] = {75, 836,
+  77, 837,
+  286, 1073, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_834 [7] = {75, 833,
-  77, 834,
-  286, 1069, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_837 [7] = {75, 836,
+  77, 837,
+  286, 1074, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_836 [9] = {11, 1071,
-  76, 1072,
+static const int32_t gSuccessorTable_galgas3Grammar_839 [9] = {11, 1076,
+  76, 1077,
   101, 94,
   102, 95, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_840 [11] = {35, 1073,
-  51, 1074,
+static const int32_t gSuccessorTable_galgas3Grammar_843 [11] = {35, 1078,
+  51, 1079,
   52, 296,
-  213, 1075,
+  213, 1080,
   242, 297, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_848 [3] = {254, 1080, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_853 [3] = {254, 1085, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_859 [3] = {70, 1090, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_864 [3] = {70, 1095, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_860 [5] = {57, 1091,
-  266, 1092, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_865 [5] = {57, 1096,
+  266, 1097, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_864 [5] = {57, 864,
-  248, 1096, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_869 [5] = {57, 869,
+  248, 1101, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_866 [3] = {252, 1098, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_871 [3] = {252, 1103, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_870 [3] = {260, 1099, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_874 [3] = {260, 1104, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_875 [3] = {204, 1103, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_881 [3] = {204, 1108, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_877 [3] = {205, 1106, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_883 [3] = {205, 1111, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_879 [3] = {222, 1108, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_885 [3] = {222, 1113, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_880 [3] = {223, 1110, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_886 [3] = {223, 1115, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_881 [7] = {11, 1111,
+static const int32_t gSuccessorTable_galgas3Grammar_887 [7] = {11, 1116,
   101, 94,
   102, 95, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_882 [7] = {11, 1112,
+static const int32_t gSuccessorTable_galgas3Grammar_888 [7] = {11, 1117,
   101, 94,
   102, 95, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_891 [3] = {38, 1114, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_897 [3] = {38, 1119, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_893 [3] = {120, 1116, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_899 [3] = {120, 1121, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_897 [3] = {313, 1119, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_903 [3] = {313, 1124, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_899 [3] = {84, 1121, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_905 [3] = {84, 1126, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_904 [3] = {92, 1127, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_910 [3] = {92, 1132, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_907 [3] = {170, 1132, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_913 [3] = {170, 1137, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_908 [3] = {169, 1134, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_914 [3] = {169, 1139, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_932 [5] = {2, 1135,
-  84, 650, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_938 [5] = {2, 1140,
+  84, 653, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_934 [3] = {97, 1137, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_940 [3] = {97, 1142, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_935 [23] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_941 [23] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 685,
+  6, 688,
   7, 226,
-  8, 1138,
+  8, 1143,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_944 [11] = {16, 1139,
+static const int32_t gSuccessorTable_galgas3Grammar_950 [11] = {16, 1144,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_945 [27] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_951 [27] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
@@ -42332,246 +42479,232 @@ static const int32_t gSuccessorTable_galgas3Grammar_945 [27] = {0, 220,
   9, 227,
   10, 228,
   15, 229,
-  31, 1140,
+  31, 1145,
   93, 231,
   167, 232, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_950 [3] = {104, 1142, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_956 [3] = {104, 1147, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_953 [3] = {14, 1143, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_959 [3] = {14, 1148, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_955 [3] = {104, 1145, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_961 [3] = {104, 1150, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_957 [3] = {109, 1147, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_963 [3] = {109, 1152, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_962 [3] = {104, 1150, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_968 [3] = {104, 1155, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_963 [3] = {104, 1151, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_969 [3] = {104, 1156, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_966 [5] = {131, 715,
-  162, 716, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_972 [5] = {131, 718,
+  162, 719, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_970 [3] = {178, 1155, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_976 [3] = {178, 1160, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_972 [5] = {131, 715,
-  162, 716, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_978 [5] = {131, 718,
+  162, 719, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_973 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_979 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1156,
+  6, 1161,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_974 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_980 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1157,
+  6, 1162,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_979 [5] = {25, 1159,
-  136, 1012, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_985 [5] = {25, 1164,
+  136, 1018, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_980 [3] = {128, 1161, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_986 [3] = {128, 1166, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_982 [11] = {16, 1162,
+static const int32_t gSuccessorTable_galgas3Grammar_988 [11] = {16, 1167,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_990 [7] = {26, 990,
-  140, 750,
-  144, 1166, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_996 [7] = {26, 996,
+  140, 753,
+  144, 1171, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_991 [3] = {145, 1168, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_997 [3] = {145, 1173, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_997 [5] = {27, 1171,
+static const int32_t gSuccessorTable_galgas3Grammar_1003 [5] = {27, 1176,
   146, 496, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_998 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1004 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1172,
+  6, 1177,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_999 [3] = {152, 1174, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1005 [3] = {152, 1179, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1000 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1006 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1175,
+  6, 1180,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1002 [5] = {12, 1177,
+static const int32_t gSuccessorTable_galgas3Grammar_1008 [5] = {12, 1182,
   104, 456, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1003 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1009 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1178,
+  6, 1183,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1006 [11] = {16, 1180,
+static const int32_t gSuccessorTable_galgas3Grammar_1012 [11] = {16, 1185,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1008 [3] = {181, 1183, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1014 [3] = {181, 1188, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1009 [11] = {16, 1184,
+static const int32_t gSuccessorTable_galgas3Grammar_1015 [11] = {16, 1189,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1013 [3] = {189, 1188, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1019 [3] = {189, 1193, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1014 [3] = {187, 1190, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1020 [3] = {187, 1195, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1016 [7] = {68, 1016,
-  69, 1017,
-  261, 1192, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1022 [7] = {68, 1022,
+  69, 1023,
+  261, 1197, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1017 [7] = {68, 1016,
-  69, 1017,
-  261, 1193, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1023 [7] = {68, 1022,
+  69, 1023,
+  261, 1198, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1021 [3] = {234, 1196, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1027 [3] = {234, 1201, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1024 [5] = {51, 1199,
-  217, 1200, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1030 [5] = {51, 1204,
+  217, 1205, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1032 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1037 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1204,
+  6, 1209,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1037 [9] = {35, 800,
+static const int32_t gSuccessorTable_galgas3Grammar_1042 [9] = {35, 803,
   52, 296,
-  225, 1205,
+  225, 1210,
   242, 297, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1039 [3] = {197, 1207, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1044 [3] = {197, 1212, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1048 [11] = {16, 1211,
+static const int32_t gSuccessorTable_galgas3Grammar_1053 [11] = {16, 1216,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1049 [11] = {16, 1212,
+static const int32_t gSuccessorTable_galgas3Grammar_1054 [11] = {16, 1217,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1052 [5] = {13, 1215,
+static const int32_t gSuccessorTable_galgas3Grammar_1057 [5] = {13, 1220,
   110, 190, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1053 [7] = {11, 1216,
+static const int32_t gSuccessorTable_galgas3Grammar_1058 [7] = {11, 1221,
   101, 94,
   102, 95, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1054 [7] = {11, 1217,
+static const int32_t gSuccessorTable_galgas3Grammar_1059 [7] = {11, 1222,
   101, 94,
   102, 95, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1058 [3] = {232, 1223, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1063 [3] = {232, 1228, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1059 [3] = {231, 1225, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1064 [3] = {231, 1230, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1061 [3] = {240, 1228, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1066 [3] = {240, 1233, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1064 [3] = {283, 1231, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1069 [3] = {283, 1236, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1066 [3] = {278, 1234, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1071 [3] = {278, 1239, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1071 [3] = {288, 1238, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1076 [3] = {288, 1243, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1072 [3] = {289, 1240, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1077 [3] = {289, 1245, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1073 [11] = {35, 1073,
-  51, 1074,
+static const int32_t gSuccessorTable_galgas3Grammar_1078 [11] = {35, 1078,
+  51, 1079,
   52, 296,
-  213, 1241,
+  213, 1246,
   242, 297, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1074 [11] = {35, 1073,
-  51, 1074,
+static const int32_t gSuccessorTable_galgas3Grammar_1079 [11] = {35, 1078,
+  51, 1079,
   52, 296,
-  213, 1242,
+  213, 1247,
   242, 297, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1084 [3] = {268, 1250, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1089 [3] = {268, 1255, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1091 [5] = {57, 1091,
-  266, 1252, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1096 [5] = {57, 1096,
+  266, 1257, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1092 [3] = {58, 1254, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1097 [3] = {58, 1259, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1094 [7] = {60, 1256,
+static const int32_t gSuccessorTable_galgas3Grammar_1099 [7] = {60, 1261,
   61, 357,
   62, 358, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1101 [3] = {202, 1258, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1106 [3] = {202, 1263, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1113 [3] = {110, 1266, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1118 [3] = {110, 1271, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1117 [11] = {16, 1268,
+static const int32_t gSuccessorTable_galgas3Grammar_1122 [11] = {16, 1273,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1119 [3] = {314, 1270, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1124 [3] = {314, 1275, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1120 [21] = {0, 220,
-  1, 221,
-  3, 222,
-  4, 223,
-  5, 224,
-  6, 1271,
-  7, 226,
-  9, 227,
-  10, 228,
-  93, 231, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1125 [5] = {2, 1275,
-  84, 650, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1130 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1125 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
@@ -42582,54 +42715,57 @@ static const int32_t gSuccessorTable_galgas3Grammar_1130 [21] = {0, 220,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1131 [3] = {171, 1281, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1130 [5] = {2, 1280,
+  84, 653, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1136 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1135 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1285,
+  6, 1281,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1138 [3] = {96, 1286, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1136 [3] = {171, 1286, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1141 [3] = {113, 1288, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1143 [3] = {104, 1289, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1144 [3] = {14, 1290, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1148 [3] = {14, 1292, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1149 [3] = {106, 1293, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1153 [3] = {177, 1294, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1157 [3] = {134, 1297, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1158 [3] = {139, 1299, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1163 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1141 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1301,
+  6, 1290,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1165 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1143 [3] = {96, 1291, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1146 [3] = {113, 1293, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1148 [3] = {104, 1294, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1149 [3] = {14, 1295, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1153 [3] = {14, 1297, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1154 [3] = {106, 1298, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1158 [3] = {177, 1299, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1162 [3] = {134, 1302, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1163 [3] = {139, 1304, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1168 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1302,
+  6, 1306,
   7, 226,
   9, 227,
   10, 228,
@@ -42640,775 +42776,790 @@ static const int32_t gSuccessorTable_galgas3Grammar_1170 [21] = {0, 220,
   3, 222,
   4, 223,
   5, 224,
-  6, 1303,
+  6, 1307,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1171 [3] = {149, 1304, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1173 [11] = {16, 1305,
-  20, 124,
-  23, 125,
-  30, 126,
-  114, 127, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1176 [3] = {28, 1309, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1177 [3] = {160, 1311, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1179 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1175 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1313,
+  6, 1308,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1181 [3] = {180, 1315, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1176 [3] = {149, 1309, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1182 [5] = {183, 1319,
-  184, 1320, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1184 [3] = {179, 1322, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1185 [3] = {137, 1327, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1186 [3] = {190, 1329, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1187 [3] = {191, 1331, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1188 [3] = {193, 1333, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1197 [3] = {216, 1337, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1198 [3] = {215, 1338, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1199 [5] = {51, 1199,
-  217, 1339, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1200 [3] = {218, 1341, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1201 [11] = {16, 1342,
+static const int32_t gSuccessorTable_galgas3Grammar_1178 [11] = {16, 1310,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1206 [3] = {197, 1344, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1181 [3] = {28, 1314, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1207 [3] = {198, 1346, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1182 [3] = {160, 1316, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1210 [3] = {237, 1349, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1184 [21] = {0, 220,
+  1, 221,
+  3, 222,
+  4, 223,
+  5, 224,
+  6, 1318,
+  7, 226,
+  9, 227,
+  10, 228,
+  93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1213 [3] = {229, 1353, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1186 [3] = {180, 1320, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1219 [11] = {16, 1356,
+static const int32_t gSuccessorTable_galgas3Grammar_1187 [5] = {183, 1324,
+  184, 1325, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1189 [3] = {179, 1327, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1190 [3] = {137, 1332, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1191 [3] = {190, 1334, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1192 [3] = {191, 1336, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1193 [3] = {193, 1338, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1202 [3] = {216, 1342, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1203 [3] = {215, 1343, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1204 [5] = {51, 1204,
+  217, 1344, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1205 [3] = {218, 1346, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1206 [11] = {16, 1347,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1220 [11] = {16, 1357,
+static const int32_t gSuccessorTable_galgas3Grammar_1211 [3] = {197, 1349, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1212 [3] = {198, 1351, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1215 [3] = {237, 1354, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1218 [3] = {229, 1358, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1224 [11] = {16, 1361,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1224 [3] = {49, 1358, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1225 [11] = {16, 1362,
+  20, 124,
+  23, 125,
+  30, 126,
+  114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1226 [3] = {238, 1361, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1229 [3] = {49, 1363, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1233 [3] = {279, 1366, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1231 [3] = {238, 1366, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1235 [9] = {72, 331,
+static const int32_t gSuccessorTable_galgas3Grammar_1238 [3] = {279, 1371, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1240 [9] = {72, 331,
   73, 332,
   74, 333,
-  277, 1368, -1} ;
+  277, 1373, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1236 [17] = {20, 1374,
+static const int32_t gSuccessorTable_galgas3Grammar_1241 [17] = {20, 1379,
   23, 125,
   30, 126,
-  78, 1375,
-  79, 1376,
-  290, 1377,
-  292, 1378,
-  294, 1379, -1} ;
+  78, 1380,
+  79, 1381,
+  290, 1382,
+  292, 1383,
+  294, 1384, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1244 [3] = {305, 1383, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1249 [3] = {305, 1388, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1248 [3] = {59, 1390, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1253 [3] = {59, 1395, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1250 [3] = {269, 1393, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1255 [3] = {269, 1398, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1253 [7] = {60, 1395,
+static const int32_t gSuccessorTable_galgas3Grammar_1258 [7] = {60, 1400,
   61, 357,
   62, 358, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1254 [5] = {58, 1396,
-  267, 1397, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1259 [5] = {58, 1401,
+  267, 1402, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1259 [3] = {204, 1400, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1264 [3] = {204, 1405, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1267 [11] = {16, 1406,
+static const int32_t gSuccessorTable_galgas3Grammar_1272 [11] = {16, 1411,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1276 [3] = {170, 1411, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1281 [3] = {170, 1416, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1279 [3] = {172, 1414, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1284 [3] = {172, 1419, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1280 [3] = {173, 1416, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1285 [3] = {173, 1421, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1281 [3] = {170, 1417, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1286 [3] = {170, 1422, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1285 [3] = {97, 1418, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1290 [3] = {97, 1423, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1290 [3] = {104, 1420, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1295 [3] = {104, 1425, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1291 [3] = {14, 1421, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1296 [3] = {14, 1426, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1292 [3] = {104, 1422, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1297 [3] = {104, 1427, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1296 [5] = {12, 1423,
+static const int32_t gSuccessorTable_galgas3Grammar_1301 [5] = {12, 1428,
   104, 456, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1300 [11] = {16, 1425,
+static const int32_t gSuccessorTable_galgas3Grammar_1305 [11] = {16, 1430,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1306 [3] = {153, 1427, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1307 [21] = {0, 220,
-  1, 221,
-  3, 222,
-  4, 223,
-  5, 224,
-  6, 1428,
-  7, 226,
-  9, 227,
-  10, 228,
-  93, 231, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1308 [21] = {0, 220,
-  1, 221,
-  3, 222,
-  4, 223,
-  5, 224,
-  6, 1429,
-  7, 226,
-  9, 227,
-  10, 228,
-  93, 231, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1310 [3] = {18, 1431, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1311 [3] = {153, 1432, -1} ;
 
 static const int32_t gSuccessorTable_galgas3Grammar_1312 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1432,
+  6, 1433,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1319 [7] = {182, 1435,
-  183, 1436,
-  184, 1320, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1320 [3] = {185, 1438, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1321 [3] = {32, 1439, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1323 [3] = {137, 1441, -1} ;
-
-static const int32_t gSuccessorTable_galgas3Grammar_1324 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1313 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1442,
+  6, 1434,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1325 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1315 [3] = {18, 1436, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1317 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1443,
+  6, 1437,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1326 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1324 [7] = {182, 1440,
+  183, 1441,
+  184, 1325, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1325 [3] = {185, 1443, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1326 [3] = {32, 1444, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1328 [3] = {137, 1446, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1329 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1444,
+  6, 1447,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1335 [11] = {16, 1451,
+static const int32_t gSuccessorTable_galgas3Grammar_1330 [21] = {0, 220,
+  1, 221,
+  3, 222,
+  4, 223,
+  5, 224,
+  6, 1448,
+  7, 226,
+  9, 227,
+  10, 228,
+  93, 231, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1331 [21] = {0, 220,
+  1, 221,
+  3, 222,
+  4, 223,
+  5, 224,
+  6, 1449,
+  7, 226,
+  9, 227,
+  10, 228,
+  93, 231, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1340 [11] = {16, 1456,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1338 [3] = {214, 1454, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1343 [3] = {214, 1459, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1345 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1350 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1459,
+  6, 1464,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1347 [3] = {235, 1461, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1352 [3] = {235, 1466, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1355 [3] = {241, 1466, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1360 [3] = {241, 1471, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1358 [3] = {231, 1469, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1363 [3] = {231, 1474, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1362 [11] = {16, 1470,
+static const int32_t gSuccessorTable_galgas3Grammar_1367 [11] = {16, 1475,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1369 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1374 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1474,
+  6, 1479,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1370 [5] = {19, 1476,
-  122, 1477, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1375 [5] = {19, 1481,
+  122, 1482, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1371 [17] = {20, 1374,
+static const int32_t gSuccessorTable_galgas3Grammar_1376 [17] = {20, 1379,
   23, 125,
   30, 126,
-  78, 1478,
-  79, 1376,
-  290, 1377,
-  292, 1378,
-  294, 1379, -1} ;
+  78, 1483,
+  79, 1381,
+  290, 1382,
+  292, 1383,
+  294, 1384, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1372 [17] = {20, 1374,
+static const int32_t gSuccessorTable_galgas3Grammar_1377 [17] = {20, 1379,
   23, 125,
   30, 126,
-  78, 1479,
-  79, 1376,
-  290, 1377,
-  292, 1378,
-  294, 1379, -1} ;
+  78, 1484,
+  79, 1381,
+  290, 1382,
+  292, 1383,
+  294, 1384, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1378 [5] = {291, 1486,
-  293, 1487, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1383 [5] = {291, 1491,
+  293, 1492, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1380 [7] = {11, 1489,
+static const int32_t gSuccessorTable_galgas3Grammar_1385 [7] = {11, 1494,
   101, 94,
   102, 95, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1381 [9] = {11, 1490,
-  76, 1491,
+static const int32_t gSuccessorTable_galgas3Grammar_1386 [9] = {11, 1495,
+  76, 1496,
   101, 94,
   102, 95, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1386 [3] = {250, 1497, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1391 [3] = {250, 1502, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1390 [3] = {268, 1498, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1395 [3] = {268, 1503, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1391 [3] = {268, 1499, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1396 [3] = {268, 1504, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1396 [5] = {58, 1396,
-  267, 1504, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1401 [5] = {58, 1401,
+  267, 1509, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1399 [5] = {57, 1506,
-  272, 1507, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1404 [5] = {57, 1511,
+  272, 1512, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1401 [3] = {206, 1509, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1406 [3] = {206, 1514, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1402 [3] = {222, 1510, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1407 [3] = {222, 1515, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1404 [3] = {223, 1511, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1409 [3] = {223, 1516, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1419 [3] = {113, 1516, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1424 [3] = {113, 1521, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1421 [3] = {104, 1517, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1426 [3] = {104, 1522, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1424 [3] = {139, 1519, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1429 [3] = {139, 1524, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1427 [11] = {16, 1521,
+static const int32_t gSuccessorTable_galgas3Grammar_1432 [11] = {16, 1526,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1428 [3] = {157, 1523, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1433 [3] = {157, 1528, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1430 [3] = {121, 1529, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1435 [3] = {121, 1534, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1433 [11] = {16, 1531,
+static const int32_t gSuccessorTable_galgas3Grammar_1438 [11] = {16, 1536,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1436 [7] = {182, 1533,
-  183, 1436,
-  184, 1320, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1441 [7] = {182, 1538,
+  183, 1441,
+  184, 1325, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1442 [3] = {137, 1536, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1447 [3] = {137, 1541, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1443 [3] = {137, 1537, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1448 [3] = {137, 1542, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1444 [3] = {137, 1538, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1449 [3] = {137, 1543, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1446 [3] = {190, 1539, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1451 [3] = {190, 1544, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1447 [3] = {192, 1541, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1452 [3] = {192, 1546, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1449 [11] = {16, 1543,
+static const int32_t gSuccessorTable_galgas3Grammar_1454 [11] = {16, 1548,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1451 [3] = {188, 1545, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1456 [3] = {188, 1550, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1452 [3] = {216, 1546, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1457 [3] = {216, 1551, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1462 [11] = {16, 1548,
+static const int32_t gSuccessorTable_galgas3Grammar_1467 [11] = {16, 1553,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1464 [3] = {239, 1550, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1469 [3] = {239, 1555, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1472 [3] = {278, 1554, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1477 [3] = {278, 1559, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1473 [3] = {281, 1557, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1478 [3] = {281, 1562, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1476 [5] = {80, 1563,
-  299, 1564, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1481 [5] = {80, 1568,
+  299, 1569, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1481 [17] = {20, 1374,
+static const int32_t gSuccessorTable_galgas3Grammar_1486 [17] = {20, 1379,
   23, 125,
   30, 126,
-  78, 1567,
-  79, 1376,
-  290, 1377,
-  292, 1378,
-  294, 1379, -1} ;
+  78, 1572,
+  79, 1381,
+  290, 1382,
+  292, 1383,
+  294, 1384, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1482 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1487 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1568,
+  6, 1573,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1483 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1488 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1569,
+  6, 1574,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1487 [13] = {20, 1374,
+static const int32_t gSuccessorTable_galgas3Grammar_1492 [13] = {20, 1379,
   23, 125,
   30, 126,
-  79, 1376,
-  292, 1570,
-  294, 1379, -1} ;
+  79, 1381,
+  292, 1575,
+  294, 1384, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1488 [5] = {12, 1571,
+static const int32_t gSuccessorTable_galgas3Grammar_1493 [5] = {12, 1576,
   104, 456, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1489 [3] = {288, 1572, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1494 [3] = {288, 1577, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1491 [3] = {289, 1573, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1496 [3] = {289, 1578, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1492 [3] = {305, 1574, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1497 [3] = {305, 1579, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1493 [7] = {82, 1578,
-  83, 1579,
-  308, 1580, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1498 [7] = {82, 1583,
+  83, 1584,
+  308, 1585, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1494 [3] = {275, 1582, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1499 [3] = {275, 1587, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1495 [3] = {64, 1584, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1500 [3] = {64, 1589, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1496 [3] = {251, 1586, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1501 [3] = {251, 1591, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1500 [3] = {270, 1588, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1505 [3] = {270, 1593, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1503 [5] = {57, 1590,
-  249, 1591, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1508 [5] = {57, 1595,
+  249, 1596, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1506 [5] = {57, 1506,
-  272, 1592, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1511 [5] = {57, 1511,
+  272, 1597, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1507 [3] = {271, 1594, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1512 [3] = {271, 1599, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1509 [3] = {205, 1596, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1514 [3] = {205, 1601, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1513 [11] = {16, 1597,
+static const int32_t gSuccessorTable_galgas3Grammar_1518 [11] = {16, 1602,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1521 [3] = {154, 1600, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1526 [3] = {154, 1605, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1522 [3] = {18, 1601, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1527 [3] = {18, 1606, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1524 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1529 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1602,
+  6, 1607,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1530 [5] = {12, 1605,
+static const int32_t gSuccessorTable_galgas3Grammar_1535 [5] = {12, 1610,
   104, 456, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1535 [11] = {16, 1607,
+static const int32_t gSuccessorTable_galgas3Grammar_1540 [11] = {16, 1612,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1543 [3] = {194, 1610, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1548 [3] = {194, 1615, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1544 [11] = {16, 1611,
+static const int32_t gSuccessorTable_galgas3Grammar_1549 [11] = {16, 1616,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1547 [3] = {224, 1612, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1552 [3] = {224, 1617, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1551 [11] = {16, 1614,
+static const int32_t gSuccessorTable_galgas3Grammar_1556 [11] = {16, 1619,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1553 [3] = {282, 1616, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1558 [3] = {282, 1621, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1557 [3] = {280, 1619, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1562 [3] = {280, 1624, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1558 [3] = {122, 1620, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1563 [3] = {122, 1625, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1559 [3] = {122, 1621, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1564 [3] = {122, 1626, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1560 [3] = {124, 1623, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1565 [3] = {124, 1628, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1561 [3] = {123, 1625, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1566 [3] = {123, 1630, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1563 [3] = {298, 1628, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1568 [3] = {298, 1633, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1565 [17] = {20, 1374,
+static const int32_t gSuccessorTable_galgas3Grammar_1570 [17] = {20, 1379,
   23, 125,
   30, 126,
-  78, 1629,
-  79, 1376,
-  290, 1377,
-  292, 1378,
-  294, 1379, -1} ;
+  78, 1634,
+  79, 1381,
+  290, 1382,
+  292, 1383,
+  294, 1384, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1566 [17] = {20, 1374,
+static const int32_t gSuccessorTable_galgas3Grammar_1571 [17] = {20, 1379,
   23, 125,
   30, 126,
-  78, 1630,
-  79, 1376,
-  290, 1377,
-  292, 1378,
-  294, 1379, -1} ;
+  78, 1635,
+  79, 1381,
+  290, 1382,
+  292, 1383,
+  294, 1384, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1570 [5] = {291, 1634,
-  293, 1487, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1575 [5] = {291, 1639,
+  293, 1492, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1571 [3] = {295, 1636, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1576 [3] = {295, 1641, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1578 [3] = {306, 1642, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1583 [3] = {306, 1647, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1579 [5] = {83, 1579,
-  308, 1643, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1584 [5] = {83, 1584,
+  308, 1648, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1581 [3] = {276, 1646, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1586 [3] = {276, 1651, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1583 [3] = {257, 1648, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1588 [3] = {257, 1654, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1584 [3] = {256, 1650, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1589 [3] = {256, 1656, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1585 [3] = {59, 1651, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1590 [3] = {59, 1657, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1589 [3] = {264, 1655, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1594 [3] = {264, 1661, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1590 [5] = {57, 1590,
-  249, 1656, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1595 [5] = {57, 1595,
+  249, 1662, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1593 [7] = {60, 1657,
+static const int32_t gSuccessorTable_galgas3Grammar_1598 [7] = {60, 1663,
   61, 357,
   62, 358, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1595 [3] = {207, 1660, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1600 [3] = {207, 1666, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1599 [11] = {16, 1662,
+static const int32_t gSuccessorTable_galgas3Grammar_1604 [11] = {16, 1668,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1600 [3] = {155, 1664, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1605 [3] = {155, 1670, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1602 [3] = {158, 1666, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1607 [3] = {158, 1672, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1605 [3] = {161, 1669, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1610 [3] = {161, 1675, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1607 [3] = {179, 1670, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1612 [3] = {179, 1676, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1608 [3] = {192, 1671, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1613 [3] = {192, 1677, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1609 [11] = {16, 1672,
+static const int32_t gSuccessorTable_galgas3Grammar_1614 [11] = {16, 1678,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1615 [3] = {282, 1674, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1620 [3] = {282, 1680, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1616 [3] = {278, 1675, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1621 [3] = {278, 1681, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1619 [3] = {278, 1678, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1624 [3] = {278, 1684, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1626 [3] = {301, 1682, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1631 [3] = {301, 1688, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1627 [3] = {18, 1683, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1632 [3] = {18, 1689, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1629 [3] = {296, 1685, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1634 [3] = {296, 1691, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1630 [3] = {297, 1687, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1635 [3] = {297, 1693, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1631 [17] = {20, 1374,
+static const int32_t gSuccessorTable_galgas3Grammar_1636 [17] = {20, 1379,
   23, 125,
   30, 126,
-  78, 1688,
-  79, 1376,
-  290, 1377,
-  292, 1378,
-  294, 1379, -1} ;
+  78, 1694,
+  79, 1381,
+  290, 1382,
+  292, 1383,
+  294, 1384, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1632 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1637 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1689,
+  6, 1695,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1633 [17] = {20, 1374,
+static const int32_t gSuccessorTable_galgas3Grammar_1638 [17] = {20, 1379,
   23, 125,
   30, 126,
-  78, 1690,
-  79, 1376,
-  290, 1377,
-  292, 1378,
-  294, 1379, -1} ;
+  78, 1696,
+  79, 1381,
+  290, 1382,
+  292, 1383,
+  294, 1384, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1635 [3] = {18, 1691, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1640 [3] = {18, 1697, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1638 [3] = {309, 1694, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1643 [3] = {309, 1700, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1640 [3] = {311, 1697, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1645 [3] = {311, 1703, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1642 [3] = {307, 1700, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1647 [3] = {307, 1706, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1648 [3] = {258, 1702, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1652 [3] = {257, 1707, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1649 [3] = {64, 1703, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1653 [3] = {257, 1708, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1651 [3] = {251, 1705, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1654 [3] = {258, 1710, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1653 [3] = {270, 1706, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1655 [3] = {64, 1711, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1655 [3] = {265, 1710, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1657 [3] = {251, 1713, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1658 [5] = {57, 1712,
-  273, 1713, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1659 [3] = {270, 1714, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1663 [11] = {16, 1715,
+static const int32_t gSuccessorTable_galgas3Grammar_1661 [3] = {265, 1718, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1664 [5] = {57, 1720,
+  273, 1721, -1} ;
+
+static const int32_t gSuccessorTable_galgas3Grammar_1669 [11] = {16, 1723,
   20, 124,
   23, 125,
   30, 126,
   114, 127, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1665 [3] = {18, 1717, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1671 [3] = {18, 1725, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1668 [3] = {18, 1718, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1674 [3] = {18, 1726, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1677 [3] = {281, 1720, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1683 [3] = {281, 1728, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1679 [3] = {122, 1721, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1685 [3] = {122, 1729, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1680 [3] = {122, 1722, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1686 [3] = {122, 1730, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1682 [3] = {300, 1724, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1688 [3] = {300, 1732, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1683 [3] = {18, 1725, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1689 [3] = {18, 1733, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1684 [17] = {20, 1374,
+static const int32_t gSuccessorTable_galgas3Grammar_1690 [17] = {20, 1379,
   23, 125,
   30, 126,
-  78, 1726,
-  79, 1376,
-  290, 1377,
-  292, 1378,
-  294, 1379, -1} ;
+  78, 1734,
+  79, 1381,
+  290, 1382,
+  292, 1383,
+  294, 1384, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1686 [17] = {20, 1374,
+static const int32_t gSuccessorTable_galgas3Grammar_1692 [17] = {20, 1379,
   23, 125,
   30, 126,
-  78, 1728,
-  79, 1376,
-  290, 1377,
-  292, 1378,
-  294, 1379, -1} ;
+  78, 1736,
+  79, 1381,
+  290, 1382,
+  292, 1383,
+  294, 1384, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1688 [3] = {302, 1731, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1694 [3] = {302, 1739, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1690 [3] = {81, 1735, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1696 [3] = {81, 1743, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1695 [3] = {310, 1738, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1701 [3] = {310, 1746, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1698 [7] = {82, 1740,
-  83, 1579,
-  308, 1580, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1704 [7] = {82, 1748,
+  83, 1584,
+  308, 1585, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1703 [3] = {256, 1744, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1711 [3] = {256, 1752, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1711 [5] = {57, 1506,
-  272, 1747, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1719 [5] = {57, 1511,
+  272, 1755, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1712 [5] = {57, 1712,
-  273, 1748, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1720 [5] = {57, 1720,
+  273, 1756, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1714 [3] = {206, 1750, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1722 [3] = {206, 1758, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1720 [3] = {280, 1752, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1728 [3] = {280, 1760, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1726 [3] = {296, 1754, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1734 [3] = {296, 1762, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1728 [3] = {297, 1755, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1736 [3] = {297, 1763, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1730 [17] = {20, 1374,
+static const int32_t gSuccessorTable_galgas3Grammar_1738 [17] = {20, 1379,
   23, 125,
   30, 126,
-  78, 1756,
-  79, 1376,
-  290, 1377,
-  292, 1378,
-  294, 1379, -1} ;
+  78, 1764,
+  79, 1381,
+  290, 1382,
+  292, 1383,
+  294, 1384, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1732 [17] = {20, 1374,
+static const int32_t gSuccessorTable_galgas3Grammar_1740 [17] = {20, 1379,
   23, 125,
   30, 126,
-  78, 1758,
-  79, 1376,
-  290, 1377,
-  292, 1378,
-  294, 1379, -1} ;
+  78, 1766,
+  79, 1381,
+  290, 1382,
+  292, 1383,
+  294, 1384, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1733 [17] = {20, 1374,
+static const int32_t gSuccessorTable_galgas3Grammar_1741 [17] = {20, 1379,
   23, 125,
   30, 126,
-  78, 1759,
-  79, 1376,
-  290, 1377,
-  292, 1378,
-  294, 1379, -1} ;
+  78, 1767,
+  79, 1381,
+  290, 1382,
+  292, 1383,
+  294, 1384, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1734 [21] = {0, 220,
+static const int32_t gSuccessorTable_galgas3Grammar_1742 [21] = {0, 220,
   1, 221,
   3, 222,
   4, 223,
   5, 224,
-  6, 1760,
+  6, 1768,
   7, 226,
   9, 227,
   10, 228,
   93, 231, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1740 [3] = {306, 1763, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1748 [3] = {306, 1771, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1741 [3] = {307, 1764, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1749 [3] = {307, 1772, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1747 [3] = {271, 1766, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1755 [3] = {271, 1774, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1753 [3] = {301, 1767, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1761 [3] = {301, 1775, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1756 [3] = {302, 1768, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1764 [3] = {302, 1776, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1767 [3] = {300, 1772, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1775 [3] = {300, 1780, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1770 [17] = {20, 1374,
+static const int32_t gSuccessorTable_galgas3Grammar_1778 [17] = {20, 1379,
   23, 125,
   30, 126,
-  78, 1773,
-  79, 1376,
-  290, 1377,
-  292, 1378,
-  294, 1379, -1} ;
+  78, 1781,
+  79, 1381,
+  290, 1382,
+  292, 1383,
+  294, 1384, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1771 [3] = {264, 1774, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1779 [3] = {264, 1782, -1} ;
 
-static const int32_t gSuccessorTable_galgas3Grammar_1773 [3] = {81, 1775, -1} ;
+static const int32_t gSuccessorTable_galgas3Grammar_1781 [3] = {81, 1783, -1} ;
 
-static const int32_t * gSuccessorTable_galgas3Grammar [1776] = {
+static const int32_t * gSuccessorTable_galgas3Grammar [1784] = {
 gSuccessorTable_galgas3Grammar_0, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_7, 
   nullptr, nullptr, nullptr, nullptr, 
@@ -43560,299 +43711,301 @@ gSuccessorTable_galgas3Grammar_0, nullptr, nullptr, nullptr,
   gSuccessorTable_galgas3Grammar_592, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_604, nullptr, nullptr, gSuccessorTable_galgas3Grammar_607, 
+  gSuccessorTable_galgas3Grammar_604, gSuccessorTable_galgas3Grammar_605, gSuccessorTable_galgas3Grammar_606, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_609, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_615, 
+  gSuccessorTable_galgas3Grammar_616, nullptr, nullptr, gSuccessorTable_galgas3Grammar_619, 
+  nullptr, gSuccessorTable_galgas3Grammar_621, gSuccessorTable_galgas3Grammar_622, nullptr, 
+  gSuccessorTable_galgas3Grammar_624, nullptr, gSuccessorTable_galgas3Grammar_626, gSuccessorTable_galgas3Grammar_627, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_613, gSuccessorTable_galgas3Grammar_614, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_617, gSuccessorTable_galgas3Grammar_618, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_621, nullptr, gSuccessorTable_galgas3Grammar_623, 
-  gSuccessorTable_galgas3Grammar_624, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_631, 
-  gSuccessorTable_galgas3Grammar_632, gSuccessorTable_galgas3Grammar_633, gSuccessorTable_galgas3Grammar_634, nullptr, 
-  gSuccessorTable_galgas3Grammar_636, nullptr, nullptr, gSuccessorTable_galgas3Grammar_639, 
-  gSuccessorTable_galgas3Grammar_640, nullptr, nullptr, gSuccessorTable_galgas3Grammar_643, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_647, 
-  gSuccessorTable_galgas3Grammar_648, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_655, 
-  gSuccessorTable_galgas3Grammar_656, nullptr, gSuccessorTable_galgas3Grammar_658, gSuccessorTable_galgas3Grammar_659, 
-  nullptr, gSuccessorTable_galgas3Grammar_661, gSuccessorTable_galgas3Grammar_662, gSuccessorTable_galgas3Grammar_663, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_634, gSuccessorTable_galgas3Grammar_635, 
+  gSuccessorTable_galgas3Grammar_636, gSuccessorTable_galgas3Grammar_637, nullptr, gSuccessorTable_galgas3Grammar_639, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_642, gSuccessorTable_galgas3Grammar_643, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_646, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_650, gSuccessorTable_galgas3Grammar_651, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_658, gSuccessorTable_galgas3Grammar_659, 
+  nullptr, gSuccessorTable_galgas3Grammar_661, gSuccessorTable_galgas3Grammar_662, nullptr, 
   gSuccessorTable_galgas3Grammar_664, gSuccessorTable_galgas3Grammar_665, gSuccessorTable_galgas3Grammar_666, gSuccessorTable_galgas3Grammar_667, 
   gSuccessorTable_galgas3Grammar_668, gSuccessorTable_galgas3Grammar_669, gSuccessorTable_galgas3Grammar_670, gSuccessorTable_galgas3Grammar_671, 
   gSuccessorTable_galgas3Grammar_672, gSuccessorTable_galgas3Grammar_673, gSuccessorTable_galgas3Grammar_674, gSuccessorTable_galgas3Grammar_675, 
   gSuccessorTable_galgas3Grammar_676, gSuccessorTable_galgas3Grammar_677, gSuccessorTable_galgas3Grammar_678, gSuccessorTable_galgas3Grammar_679, 
-  gSuccessorTable_galgas3Grammar_680, gSuccessorTable_galgas3Grammar_681, gSuccessorTable_galgas3Grammar_682, nullptr, 
-  gSuccessorTable_galgas3Grammar_684, nullptr, gSuccessorTable_galgas3Grammar_686, nullptr, 
+  gSuccessorTable_galgas3Grammar_680, gSuccessorTable_galgas3Grammar_681, gSuccessorTable_galgas3Grammar_682, gSuccessorTable_galgas3Grammar_683, 
+  gSuccessorTable_galgas3Grammar_684, gSuccessorTable_galgas3Grammar_685, nullptr, gSuccessorTable_galgas3Grammar_687, 
+  nullptr, gSuccessorTable_galgas3Grammar_689, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_693, gSuccessorTable_galgas3Grammar_694, gSuccessorTable_galgas3Grammar_695, 
   gSuccessorTable_galgas3Grammar_696, gSuccessorTable_galgas3Grammar_697, gSuccessorTable_galgas3Grammar_698, gSuccessorTable_galgas3Grammar_699, 
-  gSuccessorTable_galgas3Grammar_700, gSuccessorTable_galgas3Grammar_701, nullptr, gSuccessorTable_galgas3Grammar_703, 
-  nullptr, gSuccessorTable_galgas3Grammar_705, gSuccessorTable_galgas3Grammar_706, gSuccessorTable_galgas3Grammar_707, 
-  gSuccessorTable_galgas3Grammar_708, gSuccessorTable_galgas3Grammar_709, nullptr, gSuccessorTable_galgas3Grammar_711, 
-  gSuccessorTable_galgas3Grammar_712, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_700, gSuccessorTable_galgas3Grammar_701, gSuccessorTable_galgas3Grammar_702, gSuccessorTable_galgas3Grammar_703, 
+  gSuccessorTable_galgas3Grammar_704, nullptr, gSuccessorTable_galgas3Grammar_706, nullptr, 
+  gSuccessorTable_galgas3Grammar_708, gSuccessorTable_galgas3Grammar_709, gSuccessorTable_galgas3Grammar_710, gSuccessorTable_galgas3Grammar_711, 
+  gSuccessorTable_galgas3Grammar_712, nullptr, gSuccessorTable_galgas3Grammar_714, gSuccessorTable_galgas3Grammar_715, 
   nullptr, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_726, nullptr, 
-  gSuccessorTable_galgas3Grammar_728, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_732, nullptr, gSuccessorTable_galgas3Grammar_734, nullptr, 
-  gSuccessorTable_galgas3Grammar_736, gSuccessorTable_galgas3Grammar_737, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_742, gSuccessorTable_galgas3Grammar_743, 
-  gSuccessorTable_galgas3Grammar_744, gSuccessorTable_galgas3Grammar_745, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_749, gSuccessorTable_galgas3Grammar_750, nullptr, 
-  gSuccessorTable_galgas3Grammar_752, gSuccessorTable_galgas3Grammar_753, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_758, gSuccessorTable_galgas3Grammar_759, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_764, gSuccessorTable_galgas3Grammar_765, nullptr, gSuccessorTable_galgas3Grammar_767, 
-  nullptr, gSuccessorTable_galgas3Grammar_769, nullptr, gSuccessorTable_galgas3Grammar_771, 
-  nullptr, gSuccessorTable_galgas3Grammar_773, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_729, nullptr, gSuccessorTable_galgas3Grammar_731, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_735, 
+  nullptr, gSuccessorTable_galgas3Grammar_737, nullptr, gSuccessorTable_galgas3Grammar_739, 
+  gSuccessorTable_galgas3Grammar_740, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_745, gSuccessorTable_galgas3Grammar_746, gSuccessorTable_galgas3Grammar_747, 
+  gSuccessorTable_galgas3Grammar_748, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_752, gSuccessorTable_galgas3Grammar_753, nullptr, gSuccessorTable_galgas3Grammar_755, 
+  gSuccessorTable_galgas3Grammar_756, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_761, gSuccessorTable_galgas3Grammar_762, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_767, 
+  gSuccessorTable_galgas3Grammar_768, nullptr, gSuccessorTable_galgas3Grammar_770, nullptr, 
+  gSuccessorTable_galgas3Grammar_772, nullptr, gSuccessorTable_galgas3Grammar_774, nullptr, 
+  gSuccessorTable_galgas3Grammar_776, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_786, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_790, gSuccessorTable_galgas3Grammar_791, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_794, gSuccessorTable_galgas3Grammar_795, 
-  gSuccessorTable_galgas3Grammar_796, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_800, nullptr, nullptr, gSuccessorTable_galgas3Grammar_803, 
-  gSuccessorTable_galgas3Grammar_804, nullptr, nullptr, gSuccessorTable_galgas3Grammar_807, 
-  gSuccessorTable_galgas3Grammar_808, gSuccessorTable_galgas3Grammar_809, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_789, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_793, gSuccessorTable_galgas3Grammar_794, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_797, nullptr, gSuccessorTable_galgas3Grammar_799, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_803, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_806, gSuccessorTable_galgas3Grammar_807, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_810, gSuccessorTable_galgas3Grammar_811, 
+  gSuccessorTable_galgas3Grammar_812, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_819, 
-  gSuccessorTable_galgas3Grammar_820, gSuccessorTable_galgas3Grammar_821, gSuccessorTable_galgas3Grammar_822, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_827, 
-  gSuccessorTable_galgas3Grammar_828, gSuccessorTable_galgas3Grammar_829, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_833, gSuccessorTable_galgas3Grammar_834, nullptr, 
-  gSuccessorTable_galgas3Grammar_836, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_840, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_822, gSuccessorTable_galgas3Grammar_823, 
+  gSuccessorTable_galgas3Grammar_824, gSuccessorTable_galgas3Grammar_825, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_830, gSuccessorTable_galgas3Grammar_831, 
+  gSuccessorTable_galgas3Grammar_832, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_836, gSuccessorTable_galgas3Grammar_837, nullptr, gSuccessorTable_galgas3Grammar_839, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_843, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_848, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_859, 
-  gSuccessorTable_galgas3Grammar_860, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_864, nullptr, gSuccessorTable_galgas3Grammar_866, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_870, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_875, 
-  nullptr, gSuccessorTable_galgas3Grammar_877, nullptr, gSuccessorTable_galgas3Grammar_879, 
-  gSuccessorTable_galgas3Grammar_880, gSuccessorTable_galgas3Grammar_881, gSuccessorTable_galgas3Grammar_882, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_853, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_891, 
-  nullptr, gSuccessorTable_galgas3Grammar_893, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_864, gSuccessorTable_galgas3Grammar_865, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_869, nullptr, gSuccessorTable_galgas3Grammar_871, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_874, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_881, nullptr, gSuccessorTable_galgas3Grammar_883, 
+  nullptr, gSuccessorTable_galgas3Grammar_885, gSuccessorTable_galgas3Grammar_886, gSuccessorTable_galgas3Grammar_887, 
+  gSuccessorTable_galgas3Grammar_888, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
   nullptr, gSuccessorTable_galgas3Grammar_897, nullptr, gSuccessorTable_galgas3Grammar_899, 
-  nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_904, nullptr, nullptr, gSuccessorTable_galgas3Grammar_907, 
-  gSuccessorTable_galgas3Grammar_908, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_903, 
+  nullptr, gSuccessorTable_galgas3Grammar_905, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_910, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_913, gSuccessorTable_galgas3Grammar_914, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_932, nullptr, gSuccessorTable_galgas3Grammar_934, gSuccessorTable_galgas3Grammar_935, 
   nullptr, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_944, gSuccessorTable_galgas3Grammar_945, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_950, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_953, nullptr, gSuccessorTable_galgas3Grammar_955, 
-  nullptr, gSuccessorTable_galgas3Grammar_957, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_962, gSuccessorTable_galgas3Grammar_963, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_966, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_970, nullptr, 
-  gSuccessorTable_galgas3Grammar_972, gSuccessorTable_galgas3Grammar_973, gSuccessorTable_galgas3Grammar_974, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_979, 
-  gSuccessorTable_galgas3Grammar_980, nullptr, gSuccessorTable_galgas3Grammar_982, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_990, gSuccessorTable_galgas3Grammar_991, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_938, nullptr, 
+  gSuccessorTable_galgas3Grammar_940, gSuccessorTable_galgas3Grammar_941, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_997, gSuccessorTable_galgas3Grammar_998, gSuccessorTable_galgas3Grammar_999, 
-  gSuccessorTable_galgas3Grammar_1000, nullptr, gSuccessorTable_galgas3Grammar_1002, gSuccessorTable_galgas3Grammar_1003, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1006, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_950, gSuccessorTable_galgas3Grammar_951, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_956, nullptr, nullptr, gSuccessorTable_galgas3Grammar_959, 
+  nullptr, gSuccessorTable_galgas3Grammar_961, nullptr, gSuccessorTable_galgas3Grammar_963, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_968, gSuccessorTable_galgas3Grammar_969, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_972, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_976, nullptr, gSuccessorTable_galgas3Grammar_978, gSuccessorTable_galgas3Grammar_979, 
+  gSuccessorTable_galgas3Grammar_980, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_985, gSuccessorTable_galgas3Grammar_986, nullptr, 
+  gSuccessorTable_galgas3Grammar_988, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_996, gSuccessorTable_galgas3Grammar_997, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1003, 
+  gSuccessorTable_galgas3Grammar_1004, gSuccessorTable_galgas3Grammar_1005, gSuccessorTable_galgas3Grammar_1006, nullptr, 
   gSuccessorTable_galgas3Grammar_1008, gSuccessorTable_galgas3Grammar_1009, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1013, gSuccessorTable_galgas3Grammar_1014, nullptr, 
-  gSuccessorTable_galgas3Grammar_1016, gSuccessorTable_galgas3Grammar_1017, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1021, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1024, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1012, nullptr, gSuccessorTable_galgas3Grammar_1014, gSuccessorTable_galgas3Grammar_1015, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1019, 
+  gSuccessorTable_galgas3Grammar_1020, nullptr, gSuccessorTable_galgas3Grammar_1022, gSuccessorTable_galgas3Grammar_1023, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1027, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1030, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1032, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1037, nullptr, gSuccessorTable_galgas3Grammar_1039, 
+  nullptr, gSuccessorTable_galgas3Grammar_1037, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1042, nullptr, 
+  gSuccessorTable_galgas3Grammar_1044, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1048, gSuccessorTable_galgas3Grammar_1049, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1052, gSuccessorTable_galgas3Grammar_1053, gSuccessorTable_galgas3Grammar_1054, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1058, gSuccessorTable_galgas3Grammar_1059, 
-  nullptr, gSuccessorTable_galgas3Grammar_1061, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_1053, gSuccessorTable_galgas3Grammar_1054, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_1057, gSuccessorTable_galgas3Grammar_1058, gSuccessorTable_galgas3Grammar_1059, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1063, 
   gSuccessorTable_galgas3Grammar_1064, nullptr, gSuccessorTable_galgas3Grammar_1066, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1071, 
-  gSuccessorTable_galgas3Grammar_1072, gSuccessorTable_galgas3Grammar_1073, gSuccessorTable_galgas3Grammar_1074, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_1069, nullptr, gSuccessorTable_galgas3Grammar_1071, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1076, gSuccessorTable_galgas3Grammar_1077, gSuccessorTable_galgas3Grammar_1078, gSuccessorTable_galgas3Grammar_1079, 
   nullptr, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1084, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1091, 
-  gSuccessorTable_galgas3Grammar_1092, nullptr, gSuccessorTable_galgas3Grammar_1094, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_1089, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1101, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1096, gSuccessorTable_galgas3Grammar_1097, nullptr, gSuccessorTable_galgas3Grammar_1099, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1106, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1113, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1117, nullptr, gSuccessorTable_galgas3Grammar_1119, 
-  gSuccessorTable_galgas3Grammar_1120, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1125, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1130, gSuccessorTable_galgas3Grammar_1131, 
-  nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1136, nullptr, gSuccessorTable_galgas3Grammar_1138, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1118, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1122, nullptr, 
+  gSuccessorTable_galgas3Grammar_1124, gSuccessorTable_galgas3Grammar_1125, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1130, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1135, 
+  gSuccessorTable_galgas3Grammar_1136, nullptr, nullptr, nullptr, 
   nullptr, gSuccessorTable_galgas3Grammar_1141, nullptr, gSuccessorTable_galgas3Grammar_1143, 
-  gSuccessorTable_galgas3Grammar_1144, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1146, nullptr, 
   gSuccessorTable_galgas3Grammar_1148, gSuccessorTable_galgas3Grammar_1149, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1153, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1157, gSuccessorTable_galgas3Grammar_1158, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1163, 
-  nullptr, gSuccessorTable_galgas3Grammar_1165, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1170, gSuccessorTable_galgas3Grammar_1171, 
-  nullptr, gSuccessorTable_galgas3Grammar_1173, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1176, gSuccessorTable_galgas3Grammar_1177, nullptr, gSuccessorTable_galgas3Grammar_1179, 
+  nullptr, gSuccessorTable_galgas3Grammar_1153, gSuccessorTable_galgas3Grammar_1154, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1158, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1162, gSuccessorTable_galgas3Grammar_1163, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1168, nullptr, gSuccessorTable_galgas3Grammar_1170, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1175, 
+  gSuccessorTable_galgas3Grammar_1176, nullptr, gSuccessorTable_galgas3Grammar_1178, nullptr, 
   nullptr, gSuccessorTable_galgas3Grammar_1181, gSuccessorTable_galgas3Grammar_1182, nullptr, 
-  gSuccessorTable_galgas3Grammar_1184, gSuccessorTable_galgas3Grammar_1185, gSuccessorTable_galgas3Grammar_1186, gSuccessorTable_galgas3Grammar_1187, 
-  gSuccessorTable_galgas3Grammar_1188, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1184, nullptr, gSuccessorTable_galgas3Grammar_1186, gSuccessorTable_galgas3Grammar_1187, 
+  nullptr, gSuccessorTable_galgas3Grammar_1189, gSuccessorTable_galgas3Grammar_1190, gSuccessorTable_galgas3Grammar_1191, 
+  gSuccessorTable_galgas3Grammar_1192, gSuccessorTable_galgas3Grammar_1193, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1197, gSuccessorTable_galgas3Grammar_1198, gSuccessorTable_galgas3Grammar_1199, 
-  gSuccessorTable_galgas3Grammar_1200, gSuccessorTable_galgas3Grammar_1201, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1206, gSuccessorTable_galgas3Grammar_1207, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1210, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1213, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1219, 
-  gSuccessorTable_galgas3Grammar_1220, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1224, nullptr, gSuccessorTable_galgas3Grammar_1226, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1202, gSuccessorTable_galgas3Grammar_1203, 
+  gSuccessorTable_galgas3Grammar_1204, gSuccessorTable_galgas3Grammar_1205, gSuccessorTable_galgas3Grammar_1206, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1211, 
+  gSuccessorTable_galgas3Grammar_1212, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1215, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1218, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1233, nullptr, gSuccessorTable_galgas3Grammar_1235, 
-  gSuccessorTable_galgas3Grammar_1236, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1224, gSuccessorTable_galgas3Grammar_1225, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_1229, nullptr, gSuccessorTable_galgas3Grammar_1231, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1244, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1248, nullptr, gSuccessorTable_galgas3Grammar_1250, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1253, gSuccessorTable_galgas3Grammar_1254, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1259, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1238, nullptr, 
+  gSuccessorTable_galgas3Grammar_1240, gSuccessorTable_galgas3Grammar_1241, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1267, 
+  nullptr, gSuccessorTable_galgas3Grammar_1249, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_1253, nullptr, gSuccessorTable_galgas3Grammar_1255, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1258, gSuccessorTable_galgas3Grammar_1259, 
   nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1264, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1276, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1279, 
-  gSuccessorTable_galgas3Grammar_1280, gSuccessorTable_galgas3Grammar_1281, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1285, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1290, gSuccessorTable_galgas3Grammar_1291, 
-  gSuccessorTable_galgas3Grammar_1292, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1296, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1300, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1306, gSuccessorTable_galgas3Grammar_1307, 
-  gSuccessorTable_galgas3Grammar_1308, nullptr, gSuccessorTable_galgas3Grammar_1310, nullptr, 
-  gSuccessorTable_galgas3Grammar_1312, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1319, 
-  gSuccessorTable_galgas3Grammar_1320, gSuccessorTable_galgas3Grammar_1321, nullptr, gSuccessorTable_galgas3Grammar_1323, 
+  gSuccessorTable_galgas3Grammar_1272, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_1281, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1284, gSuccessorTable_galgas3Grammar_1285, gSuccessorTable_galgas3Grammar_1286, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1290, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1295, 
+  gSuccessorTable_galgas3Grammar_1296, gSuccessorTable_galgas3Grammar_1297, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_1301, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_1305, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1311, 
+  gSuccessorTable_galgas3Grammar_1312, gSuccessorTable_galgas3Grammar_1313, nullptr, gSuccessorTable_galgas3Grammar_1315, 
+  nullptr, gSuccessorTable_galgas3Grammar_1317, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
   gSuccessorTable_galgas3Grammar_1324, gSuccessorTable_galgas3Grammar_1325, gSuccessorTable_galgas3Grammar_1326, nullptr, 
-  nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1335, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1338, nullptr, 
-  nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1345, nullptr, gSuccessorTable_galgas3Grammar_1347, 
-  nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1355, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1358, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1362, nullptr, 
-  nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1369, gSuccessorTable_galgas3Grammar_1370, gSuccessorTable_galgas3Grammar_1371, 
-  gSuccessorTable_galgas3Grammar_1372, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1378, nullptr, 
-  gSuccessorTable_galgas3Grammar_1380, gSuccessorTable_galgas3Grammar_1381, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1386, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1390, gSuccessorTable_galgas3Grammar_1391, 
-  nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1396, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1399, 
-  nullptr, gSuccessorTable_galgas3Grammar_1401, gSuccessorTable_galgas3Grammar_1402, nullptr, 
-  gSuccessorTable_galgas3Grammar_1404, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1328, gSuccessorTable_galgas3Grammar_1329, gSuccessorTable_galgas3Grammar_1330, gSuccessorTable_galgas3Grammar_1331, 
   nullptr, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1419, 
-  nullptr, gSuccessorTable_galgas3Grammar_1421, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1424, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1427, 
-  gSuccessorTable_galgas3Grammar_1428, nullptr, gSuccessorTable_galgas3Grammar_1430, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1433, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1436, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1442, gSuccessorTable_galgas3Grammar_1443, 
-  gSuccessorTable_galgas3Grammar_1444, nullptr, gSuccessorTable_galgas3Grammar_1446, gSuccessorTable_galgas3Grammar_1447, 
-  nullptr, gSuccessorTable_galgas3Grammar_1449, nullptr, gSuccessorTable_galgas3Grammar_1451, 
-  gSuccessorTable_galgas3Grammar_1452, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1340, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1343, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1462, nullptr, 
-  gSuccessorTable_galgas3Grammar_1464, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1350, nullptr, 
+  gSuccessorTable_galgas3Grammar_1352, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1472, gSuccessorTable_galgas3Grammar_1473, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1476, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1481, gSuccessorTable_galgas3Grammar_1482, gSuccessorTable_galgas3Grammar_1483, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1487, 
-  gSuccessorTable_galgas3Grammar_1488, gSuccessorTable_galgas3Grammar_1489, nullptr, gSuccessorTable_galgas3Grammar_1491, 
-  gSuccessorTable_galgas3Grammar_1492, gSuccessorTable_galgas3Grammar_1493, gSuccessorTable_galgas3Grammar_1494, gSuccessorTable_galgas3Grammar_1495, 
-  gSuccessorTable_galgas3Grammar_1496, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1500, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1503, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1506, gSuccessorTable_galgas3Grammar_1507, 
-  nullptr, gSuccessorTable_galgas3Grammar_1509, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1513, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1360, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1363, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1367, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1521, gSuccessorTable_galgas3Grammar_1522, nullptr, 
-  gSuccessorTable_galgas3Grammar_1524, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1530, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1374, gSuccessorTable_galgas3Grammar_1375, 
+  gSuccessorTable_galgas3Grammar_1376, gSuccessorTable_galgas3Grammar_1377, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1383, 
+  nullptr, gSuccessorTable_galgas3Grammar_1385, gSuccessorTable_galgas3Grammar_1386, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1391, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1395, 
+  gSuccessorTable_galgas3Grammar_1396, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_1401, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1404, nullptr, gSuccessorTable_galgas3Grammar_1406, gSuccessorTable_galgas3Grammar_1407, 
+  nullptr, gSuccessorTable_galgas3Grammar_1409, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1424, nullptr, gSuccessorTable_galgas3Grammar_1426, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_1429, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1432, gSuccessorTable_galgas3Grammar_1433, nullptr, gSuccessorTable_galgas3Grammar_1435, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1438, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_1441, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1447, 
+  gSuccessorTable_galgas3Grammar_1448, gSuccessorTable_galgas3Grammar_1449, nullptr, gSuccessorTable_galgas3Grammar_1451, 
+  gSuccessorTable_galgas3Grammar_1452, nullptr, gSuccessorTable_galgas3Grammar_1454, nullptr, 
+  gSuccessorTable_galgas3Grammar_1456, gSuccessorTable_galgas3Grammar_1457, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1467, 
+  nullptr, gSuccessorTable_galgas3Grammar_1469, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_1477, gSuccessorTable_galgas3Grammar_1478, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_1481, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1486, gSuccessorTable_galgas3Grammar_1487, 
+  gSuccessorTable_galgas3Grammar_1488, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1492, gSuccessorTable_galgas3Grammar_1493, gSuccessorTable_galgas3Grammar_1494, nullptr, 
+  gSuccessorTable_galgas3Grammar_1496, gSuccessorTable_galgas3Grammar_1497, gSuccessorTable_galgas3Grammar_1498, gSuccessorTable_galgas3Grammar_1499, 
+  gSuccessorTable_galgas3Grammar_1500, gSuccessorTable_galgas3Grammar_1501, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_1505, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1508, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1511, 
+  gSuccessorTable_galgas3Grammar_1512, nullptr, gSuccessorTable_galgas3Grammar_1514, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1518, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1526, gSuccessorTable_galgas3Grammar_1527, 
+  nullptr, gSuccessorTable_galgas3Grammar_1529, nullptr, nullptr, 
   nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1535, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1543, 
-  gSuccessorTable_galgas3Grammar_1544, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1547, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1551, 
-  nullptr, gSuccessorTable_galgas3Grammar_1553, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1557, gSuccessorTable_galgas3Grammar_1558, gSuccessorTable_galgas3Grammar_1559, 
-  gSuccessorTable_galgas3Grammar_1560, gSuccessorTable_galgas3Grammar_1561, nullptr, gSuccessorTable_galgas3Grammar_1563, 
-  nullptr, gSuccessorTable_galgas3Grammar_1565, gSuccessorTable_galgas3Grammar_1566, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1570, gSuccessorTable_galgas3Grammar_1571, 
+  gSuccessorTable_galgas3Grammar_1540, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1578, gSuccessorTable_galgas3Grammar_1579, 
-  nullptr, gSuccessorTable_galgas3Grammar_1581, nullptr, gSuccessorTable_galgas3Grammar_1583, 
-  gSuccessorTable_galgas3Grammar_1584, gSuccessorTable_galgas3Grammar_1585, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1589, gSuccessorTable_galgas3Grammar_1590, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1593, nullptr, gSuccessorTable_galgas3Grammar_1595, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1599, 
-  gSuccessorTable_galgas3Grammar_1600, nullptr, gSuccessorTable_galgas3Grammar_1602, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1605, nullptr, gSuccessorTable_galgas3Grammar_1607, 
-  gSuccessorTable_galgas3Grammar_1608, gSuccessorTable_galgas3Grammar_1609, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1615, 
-  gSuccessorTable_galgas3Grammar_1616, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1619, 
+  gSuccessorTable_galgas3Grammar_1548, gSuccessorTable_galgas3Grammar_1549, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1552, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1556, nullptr, gSuccessorTable_galgas3Grammar_1558, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1562, gSuccessorTable_galgas3Grammar_1563, 
+  gSuccessorTable_galgas3Grammar_1564, gSuccessorTable_galgas3Grammar_1565, gSuccessorTable_galgas3Grammar_1566, nullptr, 
+  gSuccessorTable_galgas3Grammar_1568, nullptr, gSuccessorTable_galgas3Grammar_1570, gSuccessorTable_galgas3Grammar_1571, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1575, 
+  gSuccessorTable_galgas3Grammar_1576, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1583, 
+  gSuccessorTable_galgas3Grammar_1584, nullptr, gSuccessorTable_galgas3Grammar_1586, nullptr, 
+  gSuccessorTable_galgas3Grammar_1588, gSuccessorTable_galgas3Grammar_1589, gSuccessorTable_galgas3Grammar_1590, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1594, gSuccessorTable_galgas3Grammar_1595, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1598, nullptr, 
+  gSuccessorTable_galgas3Grammar_1600, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1604, gSuccessorTable_galgas3Grammar_1605, nullptr, gSuccessorTable_galgas3Grammar_1607, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1610, nullptr, 
+  gSuccessorTable_galgas3Grammar_1612, gSuccessorTable_galgas3Grammar_1613, gSuccessorTable_galgas3Grammar_1614, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1626, gSuccessorTable_galgas3Grammar_1627, 
-  nullptr, gSuccessorTable_galgas3Grammar_1629, gSuccessorTable_galgas3Grammar_1630, gSuccessorTable_galgas3Grammar_1631, 
-  gSuccessorTable_galgas3Grammar_1632, gSuccessorTable_galgas3Grammar_1633, nullptr, gSuccessorTable_galgas3Grammar_1635, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1638, nullptr, 
-  gSuccessorTable_galgas3Grammar_1640, nullptr, gSuccessorTable_galgas3Grammar_1642, nullptr, 
+  gSuccessorTable_galgas3Grammar_1620, gSuccessorTable_galgas3Grammar_1621, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1624, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1631, 
+  gSuccessorTable_galgas3Grammar_1632, nullptr, gSuccessorTable_galgas3Grammar_1634, gSuccessorTable_galgas3Grammar_1635, 
+  gSuccessorTable_galgas3Grammar_1636, gSuccessorTable_galgas3Grammar_1637, gSuccessorTable_galgas3Grammar_1638, nullptr, 
+  gSuccessorTable_galgas3Grammar_1640, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1643, 
+  nullptr, gSuccessorTable_galgas3Grammar_1645, nullptr, gSuccessorTable_galgas3Grammar_1647, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1648, gSuccessorTable_galgas3Grammar_1649, nullptr, gSuccessorTable_galgas3Grammar_1651, 
-  nullptr, gSuccessorTable_galgas3Grammar_1653, nullptr, gSuccessorTable_galgas3Grammar_1655, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1658, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1663, 
-  nullptr, gSuccessorTable_galgas3Grammar_1665, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1668, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1652, gSuccessorTable_galgas3Grammar_1653, gSuccessorTable_galgas3Grammar_1654, gSuccessorTable_galgas3Grammar_1655, 
+  nullptr, gSuccessorTable_galgas3Grammar_1657, nullptr, gSuccessorTable_galgas3Grammar_1659, 
+  nullptr, gSuccessorTable_galgas3Grammar_1661, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1664, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_1669, nullptr, gSuccessorTable_galgas3Grammar_1671, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1674, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1677, nullptr, gSuccessorTable_galgas3Grammar_1679, 
-  gSuccessorTable_galgas3Grammar_1680, nullptr, gSuccessorTable_galgas3Grammar_1682, gSuccessorTable_galgas3Grammar_1683, 
-  gSuccessorTable_galgas3Grammar_1684, nullptr, gSuccessorTable_galgas3Grammar_1686, nullptr, 
-  gSuccessorTable_galgas3Grammar_1688, nullptr, gSuccessorTable_galgas3Grammar_1690, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1695, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1698, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1703, 
-  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1683, 
+  nullptr, gSuccessorTable_galgas3Grammar_1685, gSuccessorTable_galgas3Grammar_1686, nullptr, 
+  gSuccessorTable_galgas3Grammar_1688, gSuccessorTable_galgas3Grammar_1689, gSuccessorTable_galgas3Grammar_1690, nullptr, 
+  gSuccessorTable_galgas3Grammar_1692, nullptr, gSuccessorTable_galgas3Grammar_1694, nullptr, 
+  gSuccessorTable_galgas3Grammar_1696, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas3Grammar_1701, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1704, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1711, 
-  gSuccessorTable_galgas3Grammar_1712, nullptr, gSuccessorTable_galgas3Grammar_1714, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1720, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1726, nullptr, 
-  gSuccessorTable_galgas3Grammar_1728, nullptr, gSuccessorTable_galgas3Grammar_1730, nullptr, 
-  gSuccessorTable_galgas3Grammar_1732, gSuccessorTable_galgas3Grammar_1733, gSuccessorTable_galgas3Grammar_1734, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1719, 
+  gSuccessorTable_galgas3Grammar_1720, nullptr, gSuccessorTable_galgas3Grammar_1722, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1740, gSuccessorTable_galgas3Grammar_1741, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1747, 
+  gSuccessorTable_galgas3Grammar_1728, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1734, nullptr, 
+  gSuccessorTable_galgas3Grammar_1736, nullptr, gSuccessorTable_galgas3Grammar_1738, nullptr, 
+  gSuccessorTable_galgas3Grammar_1740, gSuccessorTable_galgas3Grammar_1741, gSuccessorTable_galgas3Grammar_1742, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas3Grammar_1753, nullptr, nullptr, 
-  gSuccessorTable_galgas3Grammar_1756, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1748, gSuccessorTable_galgas3Grammar_1749, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1755, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1767, 
-  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1770, gSuccessorTable_galgas3Grammar_1771, 
-  nullptr, gSuccessorTable_galgas3Grammar_1773, nullptr, nullptr} ;
+  nullptr, gSuccessorTable_galgas3Grammar_1761, nullptr, nullptr, 
+  gSuccessorTable_galgas3Grammar_1764, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas3Grammar_1775, 
+  nullptr, nullptr, gSuccessorTable_galgas3Grammar_1778, gSuccessorTable_galgas3Grammar_1779, 
+  nullptr, gSuccessorTable_galgas3Grammar_1781, nullptr, nullptr} ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                      
@@ -43860,7 +44013,7 @@ gSuccessorTable_galgas3Grammar_0, nullptr, nullptr, nullptr,
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int32_t gProductionsTable_galgas3Grammar [808 * 2] = {
+static const int32_t gProductionsTable_galgas3Grammar [812 * 2] = {
   0, 3,
   0, 7,
   1, 2,
@@ -44392,7 +44545,7 @@ static const int32_t gProductionsTable_galgas3Grammar [808 * 2] = {
   198, 0,
   198, 2,
   199, 0,
-  199, 2,
+  199, 1,
   200, 0,
   200, 2,
   201, 0,
@@ -44541,7 +44694,8 @@ static const int32_t gProductionsTable_galgas3Grammar [808 * 2] = {
   256, 0,
   256, 3,
   257, 0,
-  257, 1,
+  257, 2,
+  257, 2,
   258, 2,
   258, 0,
   259, 0,
@@ -44549,10 +44703,13 @@ static const int32_t gProductionsTable_galgas3Grammar [808 * 2] = {
   260, 0,
   260, 3,
   260, 2,
+  260, 2,
   261, 0,
   261, 2,
   261, 2,
   262, 0,
+  262, 2,
+  262, 2,
   262, 2,
   263, 4,
   263, 2,
@@ -50880,7 +51037,7 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_10 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_11 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 679 680
+// Productions numbers : 679 680 681
   return inLexique->nextProductionIndex () - 678 ;
 }
 
@@ -50891,8 +51048,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_11 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_12 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 681 682
-  return inLexique->nextProductionIndex () - 680 ;
+// Productions numbers : 682 683
+  return inLexique->nextProductionIndex () - 681 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -50902,8 +51059,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_12 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_13 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 683 684
-  return inLexique->nextProductionIndex () - 682 ;
+// Productions numbers : 684 685
+  return inLexique->nextProductionIndex () - 683 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -50913,8 +51070,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_13 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_14 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 685 686 687
-  return inLexique->nextProductionIndex () - 684 ;
+// Productions numbers : 686 687 688 689
+  return inLexique->nextProductionIndex () - 685 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -50924,8 +51081,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_14 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_15 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 688 689 690
-  return inLexique->nextProductionIndex () - 687 ;
+// Productions numbers : 690 691 692
+  return inLexique->nextProductionIndex () - 689 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -50935,8 +51092,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_15 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_16 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 691 692
-  return inLexique->nextProductionIndex () - 690 ;
+// Productions numbers : 693 694 695 696
+  return inLexique->nextProductionIndex () - 692 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -50946,8 +51103,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_16 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_17 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 693 694
-  return inLexique->nextProductionIndex () - 692 ;
+// Productions numbers : 697 698
+  return inLexique->nextProductionIndex () - 696 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -50957,8 +51114,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_17 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_18 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 695 696
-  return inLexique->nextProductionIndex () - 694 ;
+// Productions numbers : 699 700
+  return inLexique->nextProductionIndex () - 698 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -50968,8 +51125,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_18 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_19 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 697 698
-  return inLexique->nextProductionIndex () - 696 ;
+// Productions numbers : 701 702
+  return inLexique->nextProductionIndex () - 700 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -50979,8 +51136,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_19 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_20 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 699 700
-  return inLexique->nextProductionIndex () - 698 ;
+// Productions numbers : 703 704
+  return inLexique->nextProductionIndex () - 702 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -50990,8 +51147,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_20 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_21 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 701 702
-  return inLexique->nextProductionIndex () - 700 ;
+// Productions numbers : 705 706
+  return inLexique->nextProductionIndex () - 704 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51001,8 +51158,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_21 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_22 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 703 704 705
-  return inLexique->nextProductionIndex () - 702 ;
+// Productions numbers : 707 708 709
+  return inLexique->nextProductionIndex () - 706 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51012,8 +51169,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_22 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_23 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 706 707
-  return inLexique->nextProductionIndex () - 705 ;
+// Productions numbers : 710 711
+  return inLexique->nextProductionIndex () - 709 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51023,8 +51180,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_23 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_24 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 708 709
-  return inLexique->nextProductionIndex () - 707 ;
+// Productions numbers : 712 713
+  return inLexique->nextProductionIndex () - 711 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51034,8 +51191,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_24 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_25 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 710 711
-  return inLexique->nextProductionIndex () - 709 ;
+// Productions numbers : 714 715
+  return inLexique->nextProductionIndex () - 713 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51045,8 +51202,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_25 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_26 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 712 713
-  return inLexique->nextProductionIndex () - 711 ;
+// Productions numbers : 716 717
+  return inLexique->nextProductionIndex () - 715 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51056,8 +51213,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_26 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_27 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 714 715
-  return inLexique->nextProductionIndex () - 713 ;
+// Productions numbers : 718 719
+  return inLexique->nextProductionIndex () - 717 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51067,8 +51224,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_LexiqueComponentSyntax_27 (
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_OptionComponentSyntax_0 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 716 717
-  return inLexique->nextProductionIndex () - 715 ;
+// Productions numbers : 720 721
+  return inLexique->nextProductionIndex () - 719 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51078,8 +51235,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_OptionComponentSyntax_0 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_OptionComponentSyntax_1 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 718 719
-  return inLexique->nextProductionIndex () - 717 ;
+// Productions numbers : 722 723
+  return inLexique->nextProductionIndex () - 721 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51089,8 +51246,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_OptionComponentSyntax_1 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_OptionComponentSyntax_2 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 720 721
-  return inLexique->nextProductionIndex () - 719 ;
+// Productions numbers : 724 725
+  return inLexique->nextProductionIndex () - 723 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51100,8 +51257,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_OptionComponentSyntax_2 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_0 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 722 723 724 725 726
-  return inLexique->nextProductionIndex () - 721 ;
+// Productions numbers : 726 727 728 729 730
+  return inLexique->nextProductionIndex () - 725 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51111,8 +51268,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_0 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_1 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 727 728 729 730
-  return inLexique->nextProductionIndex () - 726 ;
+// Productions numbers : 731 732 733 734
+  return inLexique->nextProductionIndex () - 730 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51122,8 +51279,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_1 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_2 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 731 732
-  return inLexique->nextProductionIndex () - 730 ;
+// Productions numbers : 735 736
+  return inLexique->nextProductionIndex () - 734 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51133,8 +51290,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_2 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_3 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 733 734
-  return inLexique->nextProductionIndex () - 732 ;
+// Productions numbers : 737 738
+  return inLexique->nextProductionIndex () - 736 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51144,8 +51301,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_3 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_4 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 735 736 737
-  return inLexique->nextProductionIndex () - 734 ;
+// Productions numbers : 739 740 741
+  return inLexique->nextProductionIndex () - 738 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51155,8 +51312,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_4 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_5 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 738 739
-  return inLexique->nextProductionIndex () - 737 ;
+// Productions numbers : 742 743
+  return inLexique->nextProductionIndex () - 741 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51166,8 +51323,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_5 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_6 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 740 741
-  return inLexique->nextProductionIndex () - 739 ;
+// Productions numbers : 744 745
+  return inLexique->nextProductionIndex () - 743 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51177,8 +51334,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GuiComponentSyntax_6 (C_Lex
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_0 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 742 743
-  return inLexique->nextProductionIndex () - 741 ;
+// Productions numbers : 746 747
+  return inLexique->nextProductionIndex () - 745 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51188,8 +51345,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_0 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_1 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 744 745
-  return inLexique->nextProductionIndex () - 743 ;
+// Productions numbers : 748 749
+  return inLexique->nextProductionIndex () - 747 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51199,8 +51356,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_1 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_2 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 746 747 748
-  return inLexique->nextProductionIndex () - 745 ;
+// Productions numbers : 750 751 752
+  return inLexique->nextProductionIndex () - 749 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51210,8 +51367,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_2 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_3 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 749 750 751
-  return inLexique->nextProductionIndex () - 748 ;
+// Productions numbers : 753 754 755
+  return inLexique->nextProductionIndex () - 752 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51221,8 +51378,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_3 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_4 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 752 753
-  return inLexique->nextProductionIndex () - 751 ;
+// Productions numbers : 756 757
+  return inLexique->nextProductionIndex () - 755 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51232,8 +51389,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_4 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_5 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 754 755
-  return inLexique->nextProductionIndex () - 753 ;
+// Productions numbers : 758 759
+  return inLexique->nextProductionIndex () - 757 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51243,8 +51400,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_5 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_6 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 756 757
-  return inLexique->nextProductionIndex () - 755 ;
+// Productions numbers : 760 761
+  return inLexique->nextProductionIndex () - 759 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51254,8 +51411,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_6 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_7 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 758 759
-  return inLexique->nextProductionIndex () - 757 ;
+// Productions numbers : 762 763
+  return inLexique->nextProductionIndex () - 761 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51265,8 +51422,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_7 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_8 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 760 761
-  return inLexique->nextProductionIndex () - 759 ;
+// Productions numbers : 764 765
+  return inLexique->nextProductionIndex () - 763 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51276,8 +51433,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_8 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_9 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 762 763
-  return inLexique->nextProductionIndex () - 761 ;
+// Productions numbers : 766 767
+  return inLexique->nextProductionIndex () - 765 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51287,8 +51444,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_9 (C_
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_10 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 764 765 766
-  return inLexique->nextProductionIndex () - 763 ;
+// Productions numbers : 768 769 770
+  return inLexique->nextProductionIndex () - 767 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51298,8 +51455,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_10 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_11 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 767 768
-  return inLexique->nextProductionIndex () - 766 ;
+// Productions numbers : 771 772
+  return inLexique->nextProductionIndex () - 770 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51309,8 +51466,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_11 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_12 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 769 770
-  return inLexique->nextProductionIndex () - 768 ;
+// Productions numbers : 773 774
+  return inLexique->nextProductionIndex () - 772 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51320,8 +51477,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_12 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_13 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 771 772
-  return inLexique->nextProductionIndex () - 770 ;
+// Productions numbers : 775 776
+  return inLexique->nextProductionIndex () - 774 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51331,8 +51488,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_13 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_14 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 773 774
-  return inLexique->nextProductionIndex () - 772 ;
+// Productions numbers : 777 778
+  return inLexique->nextProductionIndex () - 776 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51342,8 +51499,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_14 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_15 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 775 776
-  return inLexique->nextProductionIndex () - 774 ;
+// Productions numbers : 779 780
+  return inLexique->nextProductionIndex () - 778 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51353,8 +51510,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_15 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_16 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 777 778
-  return inLexique->nextProductionIndex () - 776 ;
+// Productions numbers : 781 782
+  return inLexique->nextProductionIndex () - 780 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51364,8 +51521,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_16 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_17 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 779 780
-  return inLexique->nextProductionIndex () - 778 ;
+// Productions numbers : 783 784
+  return inLexique->nextProductionIndex () - 782 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51375,8 +51532,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_17 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_18 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 781 782
-  return inLexique->nextProductionIndex () - 780 ;
+// Productions numbers : 785 786
+  return inLexique->nextProductionIndex () - 784 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51386,8 +51543,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_SyntaxComponentSyntax_18 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_0 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 783 784
-  return inLexique->nextProductionIndex () - 782 ;
+// Productions numbers : 787 788
+  return inLexique->nextProductionIndex () - 786 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51397,8 +51554,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_0 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_1 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 785 786
-  return inLexique->nextProductionIndex () - 784 ;
+// Productions numbers : 789 790
+  return inLexique->nextProductionIndex () - 788 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51408,8 +51565,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_1 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_2 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 787 788
-  return inLexique->nextProductionIndex () - 786 ;
+// Productions numbers : 791 792
+  return inLexique->nextProductionIndex () - 790 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51419,8 +51576,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_2 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_3 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 789 790
-  return inLexique->nextProductionIndex () - 788 ;
+// Productions numbers : 793 794
+  return inLexique->nextProductionIndex () - 792 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51430,8 +51587,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_3 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_4 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 791 792
-  return inLexique->nextProductionIndex () - 790 ;
+// Productions numbers : 795 796
+  return inLexique->nextProductionIndex () - 794 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51441,8 +51598,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_4 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_5 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 793 794
-  return inLexique->nextProductionIndex () - 792 ;
+// Productions numbers : 797 798
+  return inLexique->nextProductionIndex () - 796 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51452,8 +51609,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_5 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_6 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 795 796
-  return inLexique->nextProductionIndex () - 794 ;
+// Productions numbers : 799 800
+  return inLexique->nextProductionIndex () - 798 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51463,8 +51620,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_6 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_7 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 797 798
-  return inLexique->nextProductionIndex () - 796 ;
+// Productions numbers : 801 802
+  return inLexique->nextProductionIndex () - 800 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51474,8 +51631,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_7 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_8 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 799 800
-  return inLexique->nextProductionIndex () - 798 ;
+// Productions numbers : 803 804
+  return inLexique->nextProductionIndex () - 802 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51485,8 +51642,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_GrammarComponentSyntax_8 (C
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ProgramDeclarations_0 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 801 802
-  return inLexique->nextProductionIndex () - 800 ;
+// Productions numbers : 805 806
+  return inLexique->nextProductionIndex () - 804 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51496,8 +51653,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ProgramDeclarations_0 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ProgramDeclarations_1 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 803 804
-  return inLexique->nextProductionIndex () - 802 ;
+// Productions numbers : 807 808
+  return inLexique->nextProductionIndex () - 806 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -51507,8 +51664,8 @@ int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ProgramDeclarations_1 (C_Le
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_galgas_33_Grammar::select_galgas_33_ProgramDeclarations_2 (C_Lexique_galgasScanner * inLexique) {
-// Productions numbers : 805 806
-  return inLexique->nextProductionIndex () - 804 ;
+// Productions numbers : 809 810
+  return inLexique->nextProductionIndex () - 808 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

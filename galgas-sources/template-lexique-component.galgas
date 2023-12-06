@@ -58,15 +58,37 @@ syntax extension galgas3LexiqueComponentSyntax {
   rule <template_delimitor_ggs3> ?!@templateDelimitorListAST ioTemplateDelimitorList {
     $template$
     $"string"$ ?let @lstring startString
-    var optionList = @lstringlist {}
+    var nonAtomicSelection = false
+    var templateEndMark = false
+    var preserved = false
     repeat
     while
-      $%attribute$ ?let @lstring optionName
-      optionList += !optionName
+      $%nonAtomicSelection$
+      if nonAtomicSelection then
+        error .here : "duplicated %nonAtomicSelection attribute"
+      end
+      nonAtomicSelection = true
+    while
+      $%templateEndMark$
+      if templateEndMark then
+        error .here : "duplicated %templateEndMark attribute"
+      end
+      templateEndMark = true
+    while
+      $%preserved$
+      if preserved then
+        error .here : "duplicated %preserved attribute"
+      end
+      preserved = true
     end
     $...$
     $"string"$ ?let @lstring endString
-    ioTemplateDelimitorList += !startString !optionList !endString
+    ioTemplateDelimitorList +=
+      !startString
+      !nonAtomicSelection: nonAtomicSelection
+      !templateEndMark
+      !preserved
+      !endString
   }
 
   #·····················································································································
@@ -132,15 +154,37 @@ syntax extension galgas4LexiqueComponentSyntax {
   rule <template_delimitor> ?!@templateDelimitorListAST ioTemplateDelimitorList {
     $template$
     $"string"$ ?let @lstring startString
-    var optionList = @lstringlist {}
+    var nonAtomicSelection = false
+    var templateEndMark = false
+    var preserved = false
     repeat
     while
-      $%attribute$ ?let @lstring optionName
-      optionList += !optionName
+      $%nonAtomicSelection$
+      if nonAtomicSelection then
+        error .here : "duplicated %nonAtomicSelection attribute"
+      end
+      nonAtomicSelection = true
+    while
+      $%templateEndMark$
+      if templateEndMark then
+        error .here : "duplicated %templateEndMark attribute"
+      end
+      templateEndMark = true
+    while
+      $%preserved$
+      if preserved then
+        error .here : "duplicated %preserved attribute"
+      end
+      preserved = true
     end
     $...$
     $"string"$ ?let @lstring endString
-    ioTemplateDelimitorList += !startString !optionList !endString
+    ioTemplateDelimitorList +=
+      !startString
+      !nonAtomicSelection: nonAtomicSelection
+      !templateEndMark
+      !preserved
+      !endString
   }
 
   #·····················································································································
@@ -242,7 +286,6 @@ override method @templateLexiqueComponentAST semanticAnalysis
      !self.mLexiqueSuperComponentName
      ?* #let superLexiqueIsTemplate
      ?* #let terminalMap
-#     ?* #let indexingListAST
      ?* #let indexingDirectory
      ?let terminalListAST
      ?let lexicalAttributeListAST
@@ -286,7 +329,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
   )
 #--------------------------------------- Build terminal map
   @terminalList terminalList = {}
-  for (mName mSentAttributeList mSyntaxErrorMessage mStyle mOptionList) in terminalListAST do
+  for (mName mSentAttributeList mSyntaxErrorMessage mStyle nonAtomicSelection isEndOfTemplateMark) in terminalListAST do
     var @uint terminalStyleIndex = 0
     if [mStyle.string count] > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
@@ -297,29 +340,12 @@ override method @templateLexiqueComponentAST semanticAnalysis
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
     [!?lexiqueAnalysisContext.mTerminalMap insertKey !mName !argumentTypeList]
-    var isEndOfTemplateMark = false
-    var atomicSelection = true
-    for (mValue) in mOptionList do
-      if mValue.string == "nonAtomicSelection" then
-        if atomicSelection then
-          atomicSelection = false
-        else
-          error mValue: "the 'nonAtomicSelection' attribute is already set"
-        end
-      elsif mValue.string != "templateEndMark" then
-        error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' attributes are allowed here"
-      elsif isEndOfTemplateMark then
-        error mValue:"the 'templateEndMark' attribute is already set"
-      else
-        isEndOfTemplateMark = true
-      end
-    end
     terminalList +=
       !mName
       !argumentTypeList
       !mSyntaxErrorMessage.string
-      !isEndOfTemplateMark
-      !atomicSelection
+      !isEndOfTemplateMark: isEndOfTemplateMark
+      !atomicSelection: not nonAtomicSelection
       !terminalStyleIndex
   end
   for (* mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in lexicalListDeclarationListAST do
@@ -332,50 +358,23 @@ override method @templateLexiqueComponentAST semanticAnalysis
       [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
-    for (* mTerminalSpelling mAttributeList) in mEntryList do
+    for (* mTerminalSpelling nonAtomicSelection isTemplateEndMark) in mEntryList do
       let syntaxErrorMessage = [mSyntaxErrorMessage.string stringByReplacingStringByString !"%K" !mTerminalSpelling.string]
-      var isEndOfTemplateMark = false
-      var atomicSelection = true
-      for (mValue) in mAttributeList do
-        if mValue.string == "nonAtomicSelection" then
-          if atomicSelection then
-            atomicSelection = false
-          else
-            error mValue: "the 'nonAtomicSelection' attribute is already set"
-          end
-        elsif mValue.string != "templateEndMark" then
-          error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' attributes are allowed here"
-        elsif isEndOfTemplateMark then
-          error mValue:"the 'templateEndMark' attribute is already set"
-        else
-          isEndOfTemplateMark = true
-        end
-      end
       terminalList +=
         !mTerminalSpelling
         !argumentTypeList
         !syntaxErrorMessage
-        !isEndOfTemplateMark
-        !atomicSelection
+        !isEndOfTemplateMark: isTemplateEndMark
+        !atomicSelection: not nonAtomicSelection
         !terminalStyleIndex
     end
   end
 #--------------------------------------- Template delimiters
   var @stringset unicodeStringToGenerate = {}
   var @templateDelimitorList templateDelimitorList = {}
-  for (mStartString mOptionList mEndString) in self.mTemplateDelimitorList do
+  for (mStartString * * preservesStartDelimiter mEndString) in self.mTemplateDelimitorList do
    unicodeStringToGenerate += !mStartString.string
    unicodeStringToGenerate += !mEndString.string
-   var preservesStartDelimiter = false
-   for (mValue) in mOptionList do
-     if mValue.string != "preserved" then
-       error mValue:"only the 'preserved' attribute is allowed here"
-     elsif preservesStartDelimiter then
-       error mValue:"the 'preserved' attribute is already set"
-     else
-       preservesStartDelimiter = true
-     end
-   end
    templateDelimitorList += !mStartString !mEndString !preservesStartDelimiter
   end
 #--------------------------------------- Template replacements

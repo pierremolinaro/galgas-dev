@@ -8301,7 +8301,7 @@ static const cTemplateDelimiter galgasTemplateScanner_kTemplateReplacementArray 
 //            Terminal Symbols as end of script in template mark
 //----------------------------------------------------------------------------------------------------------------------
 
-static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [160] = {
+static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [181] = {
   false /* identifier */,
   false /* double.xxx */,
   false /* literalInt */,
@@ -8414,10 +8414,31 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [160] = {
   false /* warning */,
   false /* while */,
   false /* with */,
+  false /* %makefile-macosx */,
+  false /* %makefile-unix */,
+  false /* %makefile-x86linux32-on-macosx */,
+  false /* %makefile-x86linux64-on-macosx */,
+  false /* %makefile-win32-on-macosx */,
+  false /* %codeblocks-windows */,
+  false /* %codeblocks-linux32 */,
+  false /* %codeblocks-linux64 */,
+  false /* %applicationBundleBase */,
+  false /* %MacOS */,
+  false /* %MacOSDeployment */,
+  false /* %quietOutputByDefault */,
+  false /* %macCodeSign */,
+  false /* %libpmAtPath */,
+  false /* %tool-source */,
+  false /* %app-source */,
+  false /* %app-link */,
   false /* %translate */,
   false /* %once */,
   false /* %usefull */,
   false /* %generatedInSeparateFile */,
+  false /* %nonAtomicSelection */,
+  false /* %templateEndMark */,
+  false /* %preserved */,
+  false /* %selector */,
   false /* * */,
   false /* , */,
   false /* + */,
@@ -8639,10 +8660,31 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("warning") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("while") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("with") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%makefile-macosx") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%makefile-unix") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%makefile-x86linux32-on-macosx") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%makefile-x86linux64-on-macosx") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%makefile-win32-on-macosx") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%codeblocks-windows") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%codeblocks-linux32") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%codeblocks-linux64") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%applicationBundleBase") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%MacOS") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%MacOSDeployment") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%quietOutputByDefault") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%macCodeSign") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%libpmAtPath") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%tool-source") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%app-source") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%app-link") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("%translate") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("%once") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("%usefull") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("%generatedInSeparateFile") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%nonAtomicSelection") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%templateEndMark") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%preserved") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%selector") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("*") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (",") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("+") COMMA_THERE) ;
