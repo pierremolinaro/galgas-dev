@@ -152,7 +152,17 @@ proc produit ?@uint a ?@uint b !@uint resultat {
 En préfixant la déclaration d'une procédure par \ggs+private+, on limite son appel aux instructions situées dans le même fichier que la déclaration.
 
 
+\subsection{Attribut \texttt{\%usefull}}
 
+Une procédure accepte l'attribut \ggs+%usefull+ :
+
+\begin{galgas}
+proc %usefull produit ?@uint a ?@uint b !@uint resultat {
+  resultat = a * b
+}
+\end{galgas}
+
+L'attribut \ggs+%usefull+ déclare la procédure comme utile, c'est-à-dire qu'elle est considérée comme une construction racine du graphe d'utilité calculé par l'option \tpp{-{}-check-usefulness} (\refChapterPage{chapitreCalculEntitesUtiles}). Ceci est nécessaire si la procédure n'est pas appelée directement, mais par l'intermédiaire d'un objet de type \refTypePredefini{function}.
 
 
 
@@ -191,6 +201,14 @@ Donc :
 \end{itemize}
 
 
+La déclaration d'une fonction ou d'une procédure externe accepte l'attribut \ggs+%usefull+ :
+
+\begin{galgas}
+extern func %usefull maFonctionExterne ?@uint a ?@uint b -> @uint 
+extern proc %usefull maProcédureExterne !@uint a ?!@uint b ?@uint64 c
+\end{galgas}
+
+L'attribut \ggs+%usefull+ déclare la procédure ou la fonction comme utile, c'est-à-dire qu'elle est considérée comme une construction racine du graphe d'utilité calculé par l'option \tpp{-{}-check-usefulness} (\refChapterPage{chapitreCalculEntitesUtiles}). Ceci est nécessaire si la procédure n'est pas appelée directement, mais par l'intermédiaire d'un objet de type \refTypePredefini{function}.
 
 
 

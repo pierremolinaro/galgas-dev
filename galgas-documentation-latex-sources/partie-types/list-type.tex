@@ -14,10 +14,20 @@ La déclaration d'un type \ggs+list+ nomme toutes les propriétés des élément
 
 \begin{galgas}
 list @MyList {
-  @string mFirstAttribute
-  @bool mSecondAttribute
+  public var @string mFirstProperty
+  public var @bool mSecondProperty
 }
 \end{galgas}
+
+La déclaration d'un type liste accepte l'attribut \ggs+%usefull+~:
+\begin{galgas}
+list @MyList %usefull {
+  public var @string mFirstProperty
+  public var @bool mSecondProperty
+}
+\end{galgas}
+
+L'attribut \ggs+%usefull+ déclare la procédure ou la fonction comme utile, c'est-à-dire qu'elle est considérée comme une construction racine du graphe d'utilité calculé par l'option \tpp{-{}-check-usefulness} (\refChapterPage{chapitreCalculEntitesUtiles}). Ceci est nécessaire si la procédure n'est pas appelée directement, mais par l'intermédiaire d'un objet de type \refTypePredefini{function}.
 
 \section{Constructeurs}
 
@@ -50,7 +60,7 @@ aList += !"c" !3
 
 \subsectionLabel{The \texttt{+=} operator}{operatorPlusEgalSurListe}
 
-The  \ggs*+=* operator adds a new element at the end of the list. The right side expressions should correspond to the attributes declared in the \ggs+list+ declaration:\\
+The  \ggs*+=* operator adds a new element at the end of the list. The right side expressions should correspond to the propertys declared in the \ggs+list+ declaration:\\
 
 \begin{galgas}
 @MyList aList = ...
@@ -94,7 +104,7 @@ Le setter \texttt{append} permet d'ajouter un élément à la fin de la liste, �
 
 {\bf \textcolor{red}{Ce setter a été supprimé~; utiliser le setter \emph{insertAtIndex}.}}
 
-The \ggs+prependValue+ setter adds a new element at the begining of the list. The right side expressions should correspond to the attributes declared in the  \ggs+list+ declaration:
+The \ggs+prependValue+ setter adds a new element at the begining of the list. The right side expressions should correspond to the propertys declared in the  \ggs+list+ declaration:
 
 \begin{galgas}
 @MyList aList = ...
@@ -141,7 +151,7 @@ The «~\ggs*+*~» operator can be used for concatenating two lists of the same t
 \subsection{Setter \texttt{popFirst}}
 
 
-The \ggs+popFirst+ setter removes and returns the first element of the list. The right side expressions should correspond to the attributes declared in the \ggs+list+ declaration:
+The \ggs+popFirst+ setter removes and returns the first element of the list. The right side expressions should correspond to the propertys declared in the \ggs+list+ declaration:
 
 \begin{galgas}
 @MyList aList = ...
@@ -155,7 +165,7 @@ If the list is empty when \ggs+popFirst+ setter is invoked, a run-time error is 
 \subsection{Setter \texttt{popLast}}
 
 
-The \ggs+popLast+ setter removes and returns the last element of the list. The right side expressions should correspond to the attributes declared in the \ggs+list+ declaration:
+The \ggs+popLast+ setter removes and returns the last element of the list. The right side expressions should correspond to the propertys declared in the \ggs+list+ declaration:
 
 \begin{galgas}
 @MyList aList = ...
@@ -170,7 +180,7 @@ If the list is empty when \ggs+popLast+ is invoked, a run-time error is raised a
 
 \subsection{The \texttt{first} method}
 
-The \ggs+first+ method returns the first element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \ggs+list+ declaration:
+The \ggs+first+ method returns the first element of the list. The element is not removed. The right side expressions should correspond to the propertys declared in the \ggs+list+ declaration:
 
 \begin{galgas}
 @MyList aList = ...
@@ -183,7 +193,7 @@ If the list is empty when \ggs+first+ is invoked, a run-time error is raised and
 
 \subsection{The \texttt{last} method}
 
-The \ggs+last+ method returns the last element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \ggs+list+ declaration:\\
+The \ggs+last+ method returns the last element of the list. The element is not removed. The right side expressions should correspond to the propertys declared in the \ggs+list+ declaration:\\
 
 \begin{galgas}
 @MyList aList = ...
@@ -288,43 +298,43 @@ The \ggs+for+ instruction can be used for enumerating list objects. By default, 
 
 There are two ways for accessing element values:
 \begin{itemize}
-\item using the implicitly declared constants that receive the current attribute values;
-\item declare explicitly constants that receive the current attribute values.
+\item using the implicitly declared constants that receive the current property values;
+\item declare explicitly constants that receive the current property values.
 \end{itemize}
 
 Given the list declaration:
 
 \begin{galgas}
 list @MyList {
-  @string mFirstAttribute
-  @bool mSecondAttribute
+  @string mFirstProperty
+  @bool mSecondProperty
 }
 \end{galgas}
 
 \subsection{Enumeration using the implicitly declared constants}
 
-For every attribute, a constant of the same name is available in the \ggs+do+ instruction list. Theses constants receive the value of the corresponding attribute of the current element.
+For every property, a constant of the same name is available in the \ggs+do+ instruction list. Theses constants receive the value of the corresponding property of the current element.
 
 \begin{galgas}
 for () in aList do
-  # the mFirstAttribute constant receives the value
-  # of the mFirstAttribute attribute of the current element,
-  # and the mSecondAttribute constant receives the value
-  # of the mSecondAttribute attribute of the current element.
+  # the mFirstProperty constant receives the value
+  # of the mFirstProperty property of the current element,
+  # and the mSecondProperty constant receives the value
+  # of the mSecondProperty property of the current element.
 end
 \end{galgas}
 
 \subsection{Enumeration using the explicitly declared constants}
 
-The \ggs+for+ header declares a sequence of constants, corresponding to the attribute list of the \ggs+do+ declaration. Theses constants receive the value of the corresponding attribute of the current element.
+The \ggs+for+ header declares a sequence of constants, corresponding to the property list of the \ggs+do+ declaration. Theses constants receive the value of the corresponding property of the current element.
 
 
 \begin{galgas}
 for (kString kBool) in aList do
   # the kString constant receives the value
-  # of the mFirstAttribute attribute of the current element,
+  # of the mFirstProperty property of the current element,
   # and the kBool constant receives the value
-  # of the mSecondAttribute attribute of the current element.
+  # of the mSecondProperty property of the current element.
 end
 \end{galgas}
 
@@ -341,7 +351,7 @@ end
 
 
 
-\section{Direct Access of an element attribute}
+\section{Direct Access of an element property}
 
 In GALGAS 1.7.5 and later, lists can be used as an array. Each element of a list is associated with an \ggs+@uint+ index, spanning from 0 to element count (value returned by \ggs+length+ getter) minus one.
 
@@ -351,7 +361,7 @@ The element retrieved with \ggs+last+ method is at index equal to element count 
 
 \subsection{Read Access}
 
-By default and for every attribute, a getter is provided to retrieve the value of this attribute for an element at a given index. For example, for an attribute named \emph{name}, the \emph{nameAtIndex} getter is provided. It accepts one \ggs+@uint+ argument, the value of the index.
+By default and for every property, a getter is provided to retrieve the value of this property for an element at a given index. For example, for a property named \emph{name}, the \emph{nameAtIndex} getter is provided. It accepts one \ggs+@uint+ argument, the value of the index.
 
 Si la propriété a été déclarée \ggs+private+, seules les \emph{méthodes}, \emph{getters} et \emph{setters} de cette classe peuvent accéder cette propriété.
 
@@ -359,20 +369,20 @@ Si la propriété a été déclarée \ggs+private+, seules les \emph{méthodes},
 
 \subsection{Write Access}
 
-By default, a setter is provided for performing a direct write access to an attribute at a given index.
+By default, a setter is provided for performing a direct write access to a property at a given index.
 
-The setter name is the name of the attribute with the first letter capitalized, prefixed by \emph{set} and suffixed by \emph{AtIndex}: for an attribute named \emph{name}, the setter is named \emph{setNameAtIndex}. It accepts two arguments, the first one is the new attribute's value, the second one an \ggs+@uint+ argument, the value of the index.
+The setter name is the name of the property with the first letter capitalized, prefixed by \emph{set} and suffixed by \emph{AtIndex}: for a property named \emph{name}, the setter is named \emph{setNameAtIndex}. It accepts two arguments, the first one is the new property's value, the second one an \ggs+@uint+ argument, the value of the index.
 
 For example:
 
 \begin{galgas}
 list @MyList {
-  @string mFirstAttribute
-  @bool mSecondAttribute
+  @string mFirstProperty
+  @bool mSecondProperty
 }
 ...
 @string s = ...
-[!?aList setMFirstAttributeAtIndex !s !1]
+[!?aList setMFirstPropertyAtIndex !s !1]
 \end{galgas}
 
 Si la propriété a été déclarée \ggs+private+, seules les \emph{méthodes}, \emph{getters} et \emph{setters} de cette classe peuvent accéder cette propriété.

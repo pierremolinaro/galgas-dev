@@ -18,11 +18,11 @@ template lexique galgasTemplateScanner : galgasScanner {
 
   template "%" ... "%"
   
-  replace "\\%" -> "%"
+  %templateReplacement "\\%" -> "%"
   
-  replace "\\n" -> "\n"
+  %templateReplacement "\\n" -> "\n"
   
-  replace "\\\\" -> "\\"
+  %templateReplacement "\\\\" -> "\\"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

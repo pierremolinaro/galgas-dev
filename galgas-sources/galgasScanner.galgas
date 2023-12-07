@@ -170,7 +170,6 @@ list galgasKeyWordList style keywordsStyle %errorMessage "the '%K' keyword" {
   "proc",
   "project",
   "refclass",
-  "replace",
   "repeat",
   "rewind",
   "rule",
@@ -360,7 +359,8 @@ list attributeKeyWordList style attributeStyle %errorMessage "the '%K' keyword" 
   "insertAfter" -> $%insertAfter$,
   "insertBefore" -> $%insertBefore$,
   "useGrammar" -> $%useGrammar$,
-  "codeFor" -> $%codeFor$
+  "codeFor" -> $%codeFor$,
+  "templateReplacement" -> $%templateReplacement$
 }
 
 rule '%' {

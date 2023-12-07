@@ -12970,7 +12970,6 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [187] = {
   false /* proc */,
   false /* project */,
   false /* refclass */,
-  false /* replace */,
   false /* repeat */,
   false /* rewind */,
   false /* rule */,
@@ -13031,6 +13030,7 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [187] = {
   false /* %insertBefore */,
   false /* %useGrammar */,
   false /* %codeFor */,
+  false /* %templateReplacement */,
   false /* * */,
   false /* , */,
   false /* + */,
@@ -13222,7 +13222,6 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("proc") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("project") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("refclass") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("replace") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("repeat") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("rewind") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("rule") COMMA_THERE) ;
@@ -13283,6 +13282,7 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("%insertBefore") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("%useGrammar") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("%codeFor") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("%templateReplacement") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("*") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (",") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("+") COMMA_THERE) ;
