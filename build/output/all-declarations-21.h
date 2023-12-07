@@ -273,30 +273,7 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_XcodeProjectDescriptor constructor_new (const class GALGAS_uint & inOperand0,
-                                                                      const class GALGAS_string & inOperand1,
-                                                                      const class GALGAS_stringlist & inOperand2,
-                                                                      const class GALGAS_string & inOperand3,
-                                                                      const class GALGAS_XCodeGroupList & inOperand4,
-                                                                      const class GALGAS_XCodeToolTargetList & inOperand5,
-                                                                      const class GALGAS_XCodeAppTargetList & inOperand6,
-                                                                      const class GALGAS__32_stringlist & inOperand7,
-                                                                      const class GALGAS__32_stringlist & inOperand8,
-                                                                      const class GALGAS__32_stringlist & inOperand9,
-                                                                      const class GALGAS__32_stringlist & inOperand10,
-                                                                      const class GALGAS__32_stringlist & inOperand11,
-                                                                      const class GALGAS__32_stringlist & inOperand12,
-                                                                      const class GALGAS_BuildFileList & inOperand13,
-                                                                      const class GALGAS_string & inOperand14,
-                                                                      const class GALGAS_stringlist & inOperand15,
-                                                                      const class GALGAS_string & inOperand16,
-                                                                      const class GALGAS__32_stringlist & inOperand17,
-                                                                      const class GALGAS__32_stringlist & inOperand18,
-                                                                      const class GALGAS__32_stringlist & inOperand19,
-                                                                      const class GALGAS__32_stringlist & inOperand20,
-                                                                      const class GALGAS_string & inOperand21,
-                                                                      const class GALGAS_string & inOperand22
-                                                                      COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_XcodeProjectDescriptor constructor_new (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (C_String & ioString,

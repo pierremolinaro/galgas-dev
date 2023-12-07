@@ -2424,9 +2424,7 @@ class GALGAS_currentVarManager : public AC_GALGAS_root {
                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_currentVarManager constructor_new (const class GALGAS_scopeLocalVarMap & inOperand0,
-                                                                 const class GALGAS_localVarMapListForLLVM & inOperand1
-                                                                 COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_currentVarManager constructor_new (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -2508,9 +2506,7 @@ class GALGAS_localVarManager : public AC_GALGAS_root {
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_localVarManager constructor_new (const class GALGAS_currentVarManager & inOperand0,
-                                                               const class GALGAS_openedOverrideList & inOperand1
-                                                               COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_localVarManager constructor_new (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (C_String & ioString,

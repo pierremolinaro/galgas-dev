@@ -2962,15 +2962,7 @@ class GALGAS_galgasDeclarationAST : public AC_GALGAS_root {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_galgasDeclarationAST constructor_new (const class GALGAS_semanticDeclarationListAST & inOperand0,
-                                                                    const class GALGAS_stringset & inOperand1,
-                                                                    const class GALGAS_galgas_33_SyntaxComponentListAST & inOperand2,
-                                                                    const class GALGAS_syntaxExtensions & inOperand3,
-                                                                    const class GALGAS_galgasGUIComponentListAST & inOperand4,
-                                                                    const class GALGAS_prologueEpilogueList & inOperand5,
-                                                                    const class GALGAS_programRuleList & inOperand6,
-                                                                    const class GALGAS_prologueEpilogueList & inOperand7
-                                                                    COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_galgasDeclarationAST constructor_new (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (C_String & ioString,

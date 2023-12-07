@@ -3707,16 +3707,7 @@ class GALGAS_guiAnalysisContext : public AC_GALGAS_root {
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_guiAnalysisContext constructor_new (const class GALGAS_stringlist & inOperand0,
-                                                                  const class GALGAS_guiCommandLineOptionList & inOperand1,
-                                                                  const class GALGAS_guiCommandLineOptionList & inOperand2,
-                                                                  const class GALGAS_guiCommandLineOptionList & inOperand3,
-                                                                  const class GALGAS_stringlist & inOperand4,
-                                                                  const class GALGAS_extensionMap & inOperand5,
-                                                                  const class GALGAS_importedLexiqueList & inOperand6,
-                                                                  const class GALGAS_string & inOperand7,
-                                                                  const class GALGAS_projectIndexingDescriptorList & inOperand8
-                                                                  COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_guiAnalysisContext constructor_new (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (C_String & ioString,

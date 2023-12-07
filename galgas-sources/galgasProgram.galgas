@@ -187,7 +187,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
                             ?let @string inSourceToAnalyze
                             ?galgas4: let @bool inGalgas4
                             ?let @galgas3ProjectComponentAST inProjectComponentAST {
-  var @galgasDeclarationAST declarationAST = .default
+  var @galgasDeclarationAST declarationAST = .new
 //--- Parse predefined type definitions
 #  var f = filewrapper  typeGenerationTemplate
   grammar galgas4Grammar (!?declarationAST) on
@@ -312,7 +312,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
     )
   else
     semanticDeclarationSortedListForGeneration = {}
-    semanticContext = .default
+    semanticContext = @semanticContext.new {!galgas4: inGalgas4}
     typeMap = {}
   end
 #---------------------------------- Compile GUI components

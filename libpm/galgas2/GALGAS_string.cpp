@@ -1280,8 +1280,8 @@ static void recursiveSearchForRegularFiles (const C_String & inUnixStartPath,
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_stringlist GALGAS_string::getter_regularFilesWithExtensions (const GALGAS_bool & inRecursiveSearch,
-                                                                      const GALGAS_stringlist & inExtensionList
-                                                                      COMMA_LOCATION_ARGS) const {
+                                                                    const GALGAS_stringlist & inExtensionList
+                                                                    COMMA_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if ((inRecursiveSearch.isValid ()) && (inExtensionList.isValid ())) {
     result = GALGAS_stringlist::constructor_emptyList (THERE) ;

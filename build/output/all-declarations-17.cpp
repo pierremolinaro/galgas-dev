@@ -2333,9 +2333,9 @@ GALGAS_localVarManager GALGAS_localVarManager::constructor_default (UNUSED_LOCAT
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_localVarManager GALGAS_localVarManager::constructor_new (const GALGAS_currentVarManager & in_mCurrentManager,
-                                                                const GALGAS_openedOverrideList & in_mOverridenManagers 
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_localVarManager GALGAS_localVarManager::constructor_new (UNUSED_LOCATION_ARGS) {
+  const GALGAS_currentVarManager in_mCurrentManager = GALGAS_currentVarManager::constructor_new (SOURCE_FILE ("variable-manager.galgas", 368)) ;
+  const GALGAS_openedOverrideList in_mOverridenManagers = GALGAS_openedOverrideList::constructor_emptyList (SOURCE_FILE ("variable-manager.galgas", 369)) ;
   GALGAS_localVarManager result ;
   if (in_mCurrentManager.isValid () && in_mOverridenManagers.isValid ()) {
     result = GALGAS_localVarManager (in_mCurrentManager, in_mOverridenManagers) ;

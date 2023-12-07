@@ -114,7 +114,7 @@ AC_GALGAS_list (inSharedArray) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_%!TYPE_IDENTIFIER%  (capCollectionElementArray ()) ;
+  return GALGAS_%!TYPE_IDENTIFIER% (capCollectionElementArray ()) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

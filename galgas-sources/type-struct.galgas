@@ -285,7 +285,7 @@ override method @structDeclarationAST semanticAnalysis
    switch initExpression
     case none :
     case some (expressionAST) :
-      var variableMap = @localVarManager.new {!.new {!{} !{}} !{}}
+      var variableMap = @localVarManager.new {}
       let @analysisContext analysisContext = .new {
         !inSemanticContext
         !inPredefinedTypes

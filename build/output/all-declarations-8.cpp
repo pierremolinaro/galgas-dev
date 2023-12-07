@@ -8858,7 +8858,7 @@ AC_GALGAS_list (inSharedArray) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_collectionValueElementList GALGAS_collectionValueElementList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_collectionValueElementList  (capCollectionElementArray ()) ;
+  return GALGAS_collectionValueElementList (capCollectionElementArray ()) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10199,7 +10199,7 @@ AC_GALGAS_list (inSharedArray) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_collectionValueElementListForGeneration GALGAS_collectionValueElementListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_collectionValueElementListForGeneration  (capCollectionElementArray ()) ;
+  return GALGAS_collectionValueElementListForGeneration (capCollectionElementArray ()) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

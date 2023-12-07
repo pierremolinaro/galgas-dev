@@ -36,7 +36,7 @@ L'attribut \ggs+%usefull+ déclare la procédure ou la fonction comme utile, c'e
 Pour chaque liste, le constructeur \ggs+emptyList+ est implicitement déclaré. Il retourne une liste vide~:
 
 \begin{galgas}
-@MyList aList = [@MyList emptyList]
+var @MyList aList = [@MyList emptyList]
 \end{galgas}
 
 
@@ -45,27 +45,29 @@ Pour chaque liste, le constructeur \ggs+emptyList+ est implicitement déclaré. 
 Ce constructeur permet de construire directement une liste contenant un élément~:
 
 \begin{galgas}
-@MyList aList = [@myList listWithValue !"c" !3]
+var @MyList aList = [@myList listWithValue !"c" !3]
 \end{galgas}
 
 
 Using this constructor is equivalent to:
 
 \begin{galgas}
-@MyList aList = [@MyList emptyList]
+var @MyList aList = [@MyList emptyList]
 aList += !"c" !3
 \end{galgas}
 
-\section{Adding elements}
+\section{Ajouter des éléments}
 
-\subsectionLabel{The \texttt{+=} operator}{operatorPlusEgalSurListe}
+\subsectionLabel{L'instruction \texttt{+=}, dont la partie droite est une liste}{operatorPlusEgalSurListe}
 
-The  \ggs*+=* operator adds a new element at the end of the list. The right side expressions should correspond to the propertys declared in the \ggs+list+ declaration:\\
+\textcolor{red}{\bf Cette instruction est invalide en GALGAS 4, il faut utiliser le setter \texttt{append}.}
+
+The  \ggs*+=* operator adds a new element at the end of the list. The right side expressions should correspond to the propertys declared in the \ggs+list+ declaration:
 
 \begin{galgas}
-@MyList aList = ...
-@string aString = ...
-@bool aBool = ...
+var @MyList aList = ...
+var @string aString = ...
+var @bool aBool = ...
 aList += !aString !aBool
 \end{galgas}
 
@@ -75,9 +77,9 @@ aList += !aString !aBool
 L'instruction \ggs*cible += expression* concatène la liste définie par la valeur de \ggs+expression+ à la liste \ggs+cible+ :
 
 \begin{galgas}
-@MyList aList = ...
-@MyList secondList = ...
-aList += secondList
+var @MyList cible = ...
+var @MyList expression = ...
+cible += expression
 \end{galgas}
 
 
@@ -88,29 +90,26 @@ aList += secondList
 
 \subsection{Le setter \texttt{append}}
 
-Le setter \texttt{append} permet d'ajouter un élément à la fin de la liste, à partir d'un objet du type \emph{élément de la liste} implicitement déclaré.
+Le setter \texttt{append} permet d'ajouter un élément à la fin de la liste~; les arguments correspondent aux propriétés déclarées.
 
 
 \begin{galgas}
-@MyList aList = ... 
-@string aString = ... 
-@bool aBool = ... 
-@MyList-element élément = .new {!aString !aBool}
-[!?aList append !élément]
+var @MyList aList = ... 
+var @string aString = ... 
+var @bool aBool = ... 
+[!?aList append !aString !aBool]
 \end{galgas}
 
 
-\subsection{The \texttt{prependValue} setter}
+\subsection{Le setter \texttt{prepend}}
 
-{\bf \textcolor{red}{Ce setter a été supprimé~; utiliser le setter \emph{insertAtIndex}.}}
-
-The \ggs+prependValue+ setter adds a new element at the begining of the list. The right side expressions should correspond to the propertys declared in the  \ggs+list+ declaration:
+Le setter \texttt{prepend} permet d'ajouter un élément à la fin de la liste~; les arguments correspondent aux propriétés déclarées.
 
 \begin{galgas}
-@MyList aList = ...
-@string aString = ...
-@bool aBool = ...
-[!?aList prependValue !aString !aBool]
+var @MyList aList = ...
+var @string aString = ...
+var @bool aBool = ...
+[!?aList prepend !aString !aBool]
 \end{galgas}
 
 
@@ -129,9 +128,9 @@ L'indice d'insertion peut varier entre $0$ (insertion au début, comme le faisai
 Par exemple :
 
 \begin{galgas}
-@MyList aList = ...
+var @MyList aList = ...
 @string aString = ...
-@bool aBool = ..
+var @bool aBool = ..
 [!?aList insertAtIndex !aString !aBool !0]
 \end{galgas}
 
@@ -141,9 +140,9 @@ The «~\ggs*+*~» operator can be used for concatenating two lists of the same t
 
 
 \begin{galgas}
-@MyList firstList = ..
-@MyList secondList = ..
-@MyList thirdList = firstList + secondList
+var @MyList firstList = ..
+var @MyList secondList = ..
+var @MyList thirdList = firstList + secondList
 \end{galgas}
 
 \section{Removing elements}
@@ -154,9 +153,9 @@ The «~\ggs*+*~» operator can be used for concatenating two lists of the same t
 The \ggs+popFirst+ setter removes and returns the first element of the list. The right side expressions should correspond to the propertys declared in the \ggs+list+ declaration:
 
 \begin{galgas}
-@MyList aList = ...
-@string aString
-@bool aBool
+var @MyList aList = ...
+var @string aString
+var @bool aBool
 [!?aList popFirst ?aString ?aBool]
 \end{galgas}
 
@@ -168,9 +167,9 @@ If the list is empty when \ggs+popFirst+ setter is invoked, a run-time error is 
 The \ggs+popLast+ setter removes and returns the last element of the list. The right side expressions should correspond to the propertys declared in the \ggs+list+ declaration:
 
 \begin{galgas}
-@MyList aList = ...
-@string aString
-@bool aBool
+var @MyList aList = ...
+var @string aString
+var @bool aBool
 [!?aList popLast ?aString ?aBool]
 \end{galgas}
 
@@ -183,9 +182,9 @@ If the list is empty when \ggs+popLast+ is invoked, a run-time error is raised a
 The \ggs+first+ method returns the first element of the list. The element is not removed. The right side expressions should correspond to the propertys declared in the \ggs+list+ declaration:
 
 \begin{galgas}
-@MyList aList = ...
-@string aString
-@bool aBool
+var @MyList aList = ...
+var @string aString
+var @bool aBool
 [aList first ?aString ?aBool]
 \end{galgas}
 
@@ -196,9 +195,9 @@ If the list is empty when \ggs+first+ is invoked, a run-time error is raised and
 The \ggs+last+ method returns the last element of the list. The element is not removed. The right side expressions should correspond to the propertys declared in the \ggs+list+ declaration:\\
 
 \begin{galgas}
-@MyList aList = ...
-@string aString
-@bool aBool
+var @MyList aList = ...
+var @string aString
+var @bool aBool
 [aList last ?aString ?aBool]
 \end{galgas}
 
@@ -306,8 +305,8 @@ Given the list declaration:
 
 \begin{galgas}
 list @MyList {
-  @string mFirstProperty
-  @bool mSecondProperty
+  public var @string mFirstProperty
+  public var @bool mSecondProperty
 }
 \end{galgas}
 
@@ -377,8 +376,8 @@ For example:
 
 \begin{galgas}
 list @MyList {
-  @string mFirstProperty
-  @bool mSecondProperty
+  public var @string mFirstProperty
+  public var @bool mSecondProperty
 }
 ...
 @string s = ...
@@ -392,10 +391,10 @@ Si la propriété a été déclarée \ggs+private+, seules les \emph{méthodes},
 
 \begin{galgas}
 list @myList {
-  @string name
+  public var @string name
 }
 ...
-@myList strList [emptyList]
+var @myList strList [emptyList]
 strList += !"a"
 strList += !"b"
 strList += !"c"
@@ -431,8 +430,8 @@ Le type \ggs!@2stringlist! est implicitement déclaré de la façon suivante :
 
 \begin{galgasbox}
 list @2stringlist {
-  @string mValue0
-  @string mValue1
+  public var @string mValue0
+  public var @string mValue1
 }
 \end{galgasbox}
 
@@ -449,8 +448,8 @@ Le type \ggs!@2lstringlist! est implicitement déclaré de la façon suivante :
 
 \begin{galgasbox}
 list @2lstringlist {
-  @lstring mValue0
-  @lstring mValue1
+  public var @lstring mValue0
+  public var @lstring mValue1
 }
 \end{galgasbox}
 
@@ -467,7 +466,7 @@ Le type \ggs!@bigintlist! est implicitement déclaré de la façon suivante :
 
 \begin{galgasbox}
 list @bigintlist {
-  @bigint mValue
+  public var @bigint mValue
 }
 \end{galgasbox}
 
@@ -484,7 +483,7 @@ Le type \ggs!@functionlist! est implicitement déclaré de la façon suivante :
 
 \begin{galgasbox}
 list @functionlist {
-  @function mValue
+  public var @function mValue
 }
 \end{galgasbox}
 
@@ -501,7 +500,7 @@ Le type \ggs!@lbigintlist! est implicitement déclaré de la façon suivante :
 
 \begin{galgasbox}
 list @lbigintlist {
-  @lbigint mValue
+  public var @lbigint mValue
 }
 \end{galgasbox}
 
@@ -520,7 +519,7 @@ Le type \ggs!@luintlist! est implicitement déclaré de la façon suivante :
 
 \begin{galgasbox}
 list @luintlist {
-  @luint mValue
+  public var @luint mValue
 }
 \end{galgasbox}
 
@@ -539,7 +538,7 @@ Le type \ggs!@lstringlist! est implicitement déclaré de la façon suivante :
 
 \begin{galgasbox}
 list @lstringlist {
-  @lstring mValue
+  public var @lstring mValue
 }
 \end{galgasbox}
 
@@ -555,7 +554,7 @@ Le type \ggs!@objectlist! est implicitement déclaré de la façon suivante :
 
 \begin{galgasbox}
 list @objectlist {
-  @object mValue
+  public var @object mValue
 }
 \end{galgasbox}
 
@@ -569,7 +568,7 @@ Le type \ggs!@stringlist! est implicitement déclaré de la façon suivante :
 
 \begin{galgasbox}
 list @stringlist {
-  @string mValue
+  public var @string mValue
 }
 \end{galgasbox}
 
@@ -585,7 +584,7 @@ Le type \ggs!@typelist! est implicitement déclaré de la façon suivante :
 
 \begin{galgasbox}
 list @typelist {
-  @type mValue
+  public var @type mValue
 }
 \end{galgasbox}
 
@@ -599,7 +598,7 @@ Le type \ggs!@uintlist! est implicitement déclaré de la façon suivante :
 
 \begin{galgasbox}
 list @uintlist {
-  @uint mValue
+  public var @uint mValue
 }
 \end{galgasbox}
 
@@ -614,7 +613,7 @@ Le type \ggs!@uint64list! est implicitement déclaré de la façon suivante :
 
 \begin{galgasbox}
 list @uint64list {
-  @uint64 mValue
+  public var @uint64 mValue
 }
 \end{galgasbox}
 

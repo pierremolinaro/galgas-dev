@@ -197,7 +197,7 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
     error self.mOverridingExtensionMethodName:"this getter is not declared by a super class"
   end
 #--- Analyze formal argument list
-  var variableMap = @localVarManager.default
+  var variableMap = @localVarManager.new
   buildLocalVariableMapAndSignature (
     !inSemanticContext
     !?ioTypeMap

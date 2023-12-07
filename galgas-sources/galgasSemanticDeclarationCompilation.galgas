@@ -170,13 +170,13 @@ private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSeman
     #--- Build initial semantic context
       outTypeMap = .emptyMap
       outSemanticContext = @semanticContext.new {
-        !mRoutineMap: {}
-        !mFunctionMap: {}
-        !mFilewrapperMap: {}
-        !mGrammarMap: {}
-        !mOptionComponentMapForSemanticAnalysis: {}
-        !mLexiqueComponentMapForSemanticAnalysis: {}
-        !mSyntaxComponentMapForSemanticAnalysis: {}
+#        !mRoutineMap: {}
+#        !mFunctionMap: {}
+#        !mFilewrapperMap: {}
+#        !mGrammarMap: {}
+#        !mOptionComponentMapForSemanticAnalysis: {}
+#        !mLexiqueComponentMapForSemanticAnalysis: {}
+#        !mSyntaxComponentMapForSemanticAnalysis: {}
         !galgas4: inGalgas4
       }
     #--- Loop throught all declarations

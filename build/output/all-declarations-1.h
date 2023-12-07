@@ -6574,14 +6574,7 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_semanticContext constructor_new (const class GALGAS_routineMap & inOperand0,
-                                                               const class GALGAS_functionMap & inOperand1,
-                                                               const class GALGAS_filewrapperMap & inOperand2,
-                                                               const class GALGAS_grammarMap & inOperand3,
-                                                               const class GALGAS_optionComponentMapForSemanticAnalysis & inOperand4,
-                                                               const class GALGAS_lexiqueComponentMapForSemanticAnalysis & inOperand5,
-                                                               const class GALGAS_syntaxComponentMap & inOperand6,
-                                                               const class GALGAS_bool & inOperand7
+  public: static class GALGAS_semanticContext constructor_new (const class GALGAS_bool & inOperand0
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'

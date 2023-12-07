@@ -120,30 +120,30 @@ GALGAS_XcodeProjectDescriptor GALGAS_XcodeProjectDescriptor::constructor_default
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_XcodeProjectDescriptor GALGAS_XcodeProjectDescriptor::constructor_new (const GALGAS_uint & in_mSequenceNumber,
-                                                                              const GALGAS_string & in_mMainGroupReference,
-                                                                              const GALGAS_stringlist & in_mMainGroupChildrenRefs,
-                                                                              const GALGAS_string & in_mProjectObjectReference,
-                                                                              const GALGAS_XCodeGroupList & in_mGroupList,
-                                                                              const GALGAS_XCodeToolTargetList & in_mToolTargetList,
-                                                                              const GALGAS_XCodeAppTargetList & in_mAppTargetList,
-                                                                              const GALGAS__32_stringlist & in_mCFileList,
-                                                                              const GALGAS__32_stringlist & in_mCppFileList,
-                                                                              const GALGAS__32_stringlist & in_m_M_FileList,
-                                                                              const GALGAS__32_stringlist & in_m_MM_FileList,
-                                                                              const GALGAS__32_stringlist & in_mFrameworkFileList,
-                                                                              const GALGAS__32_stringlist & in_mHeaderFileList,
-                                                                              const GALGAS_BuildFileList & in_mBuildFileList,
-                                                                              const GALGAS_string & in_mDefaultConfigurationRef,
-                                                                              const GALGAS_stringlist & in_mDefaultConfigurationSettingList,
-                                                                              const GALGAS_string & in_mProjectBuildConfigurationRef,
-                                                                              const GALGAS__32_stringlist & in_mInfoPlistFileList,
-                                                                              const GALGAS__32_stringlist & in_mXIB_fileList,
-                                                                              const GALGAS__32_stringlist & in_mTIFF_fileList,
-                                                                              const GALGAS__32_stringlist & in_mICNS_fileList,
-                                                                              const GALGAS_string & in_mApplicationBundleName,
-                                                                              const GALGAS_string & in_mProjectName 
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_XcodeProjectDescriptor GALGAS_XcodeProjectDescriptor::constructor_new (UNUSED_LOCATION_ARGS) {
+  const GALGAS_uint in_mSequenceNumber = GALGAS_uint (uint32_t (0U)) ;
+  const GALGAS_string in_mMainGroupReference = GALGAS_string::makeEmptyString () ;
+  const GALGAS_stringlist in_mMainGroupChildrenRefs = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 377)) ;
+  const GALGAS_string in_mProjectObjectReference = GALGAS_string::makeEmptyString () ;
+  const GALGAS_XCodeGroupList in_mGroupList = GALGAS_XCodeGroupList::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 379)) ;
+  const GALGAS_XCodeToolTargetList in_mToolTargetList = GALGAS_XCodeToolTargetList::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 380)) ;
+  const GALGAS_XCodeAppTargetList in_mAppTargetList = GALGAS_XCodeAppTargetList::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 381)) ;
+  const GALGAS__32_stringlist in_mCFileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 382)) ;
+  const GALGAS__32_stringlist in_mCppFileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 383)) ;
+  const GALGAS__32_stringlist in_m_M_FileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 384)) ;
+  const GALGAS__32_stringlist in_m_MM_FileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 385)) ;
+  const GALGAS__32_stringlist in_mFrameworkFileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 386)) ;
+  const GALGAS__32_stringlist in_mHeaderFileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 387)) ;
+  const GALGAS_BuildFileList in_mBuildFileList = GALGAS_BuildFileList::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 388)) ;
+  const GALGAS_string in_mDefaultConfigurationRef = GALGAS_string::makeEmptyString () ;
+  const GALGAS_stringlist in_mDefaultConfigurationSettingList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 391)) ;
+  const GALGAS_string in_mProjectBuildConfigurationRef = GALGAS_string::makeEmptyString () ;
+  const GALGAS__32_stringlist in_mInfoPlistFileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 394)) ;
+  const GALGAS__32_stringlist in_mXIB_fileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 395)) ;
+  const GALGAS__32_stringlist in_mTIFF_fileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 396)) ;
+  const GALGAS__32_stringlist in_mICNS_fileList = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 397)) ;
+  const GALGAS_string in_mApplicationBundleName = GALGAS_string::makeEmptyString () ;
+  const GALGAS_string in_mProjectName = GALGAS_string::makeEmptyString () ;
   GALGAS_XcodeProjectDescriptor result ;
   if (in_mSequenceNumber.isValid () && in_mMainGroupReference.isValid () && in_mMainGroupChildrenRefs.isValid () && in_mProjectObjectReference.isValid () && in_mGroupList.isValid () && in_mToolTargetList.isValid () && in_mAppTargetList.isValid () && in_mCFileList.isValid () && in_mCppFileList.isValid () && in_m_M_FileList.isValid () && in_m_MM_FileList.isValid () && in_mFrameworkFileList.isValid () && in_mHeaderFileList.isValid () && in_mBuildFileList.isValid () && in_mDefaultConfigurationRef.isValid () && in_mDefaultConfigurationSettingList.isValid () && in_mProjectBuildConfigurationRef.isValid () && in_mInfoPlistFileList.isValid () && in_mXIB_fileList.isValid () && in_mTIFF_fileList.isValid () && in_mICNS_fileList.isValid () && in_mApplicationBundleName.isValid () && in_mProjectName.isValid ()) {
     result = GALGAS_XcodeProjectDescriptor (in_mSequenceNumber, in_mMainGroupReference, in_mMainGroupChildrenRefs, in_mProjectObjectReference, in_mGroupList, in_mToolTargetList, in_mAppTargetList, in_mCFileList, in_mCppFileList, in_m_M_FileList, in_m_MM_FileList, in_mFrameworkFileList, in_mHeaderFileList, in_mBuildFileList, in_mDefaultConfigurationRef, in_mDefaultConfigurationSettingList, in_mProjectBuildConfigurationRef, in_mInfoPlistFileList, in_mXIB_fileList, in_mTIFF_fileList, in_mICNS_fileList, in_mApplicationBundleName, in_mProjectName) ;
@@ -1047,23 +1047,23 @@ void extensionMethod_generateAtPath (const GALGAS_XcodeProjectDescriptor inObjec
   const GALGAS_XcodeProjectDescriptor temp_19 = inObject ;
   const GALGAS_XcodeProjectDescriptor temp_20 = inObject ;
   const GALGAS_XcodeProjectDescriptor temp_21 = inObject ;
-  GALGAS_string var_contents_17651 = GALGAS_string (filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (inCompiler, temp_0.readProperty_mProjectObjectReference (), temp_1.readProperty_mMainGroupReference (), temp_2.readProperty_mGroupList (), temp_3.readProperty_mMainGroupChildrenRefs (), temp_4.readProperty_mToolTargetList (), temp_5.readProperty_mAppTargetList (), temp_6.readProperty_mCFileList (), temp_7.readProperty_mCppFileList (), temp_8.readProperty_m_5F_M_5F_FileList (), temp_9.readProperty_m_5F_MM_5F_FileList (), temp_10.readProperty_mFrameworkFileList (), temp_11.readProperty_mHeaderFileList (), temp_12.readProperty_mInfoPlistFileList (), temp_13.readProperty_mTIFF_5F_fileList (), temp_14.readProperty_mICNS_5F_fileList (), temp_15.readProperty_mXIB_5F_fileList (), temp_16.readProperty_mBuildFileList (), temp_17.readProperty_mDefaultConfigurationRef (), temp_18.readProperty_mDefaultConfigurationSettingList (), temp_19.readProperty_mProjectBuildConfigurationRef (), temp_20.readProperty_mApplicationBundleName (), temp_21.readProperty_mProjectName () COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 438))) ;
-  GALGAS_string var_projectCoreFile_18346 = constinArgument_inPath.add_operation (GALGAS_string ("/project.pbxproj"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 462)) ;
+  GALGAS_string var_contents_17765 = GALGAS_string (filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (inCompiler, temp_0.readProperty_mProjectObjectReference (), temp_1.readProperty_mMainGroupReference (), temp_2.readProperty_mGroupList (), temp_3.readProperty_mMainGroupChildrenRefs (), temp_4.readProperty_mToolTargetList (), temp_5.readProperty_mAppTargetList (), temp_6.readProperty_mCFileList (), temp_7.readProperty_mCppFileList (), temp_8.readProperty_m_5F_M_5F_FileList (), temp_9.readProperty_m_5F_MM_5F_FileList (), temp_10.readProperty_mFrameworkFileList (), temp_11.readProperty_mHeaderFileList (), temp_12.readProperty_mInfoPlistFileList (), temp_13.readProperty_mTIFF_5F_fileList (), temp_14.readProperty_mICNS_5F_fileList (), temp_15.readProperty_mXIB_5F_fileList (), temp_16.readProperty_mBuildFileList (), temp_17.readProperty_mDefaultConfigurationRef (), temp_18.readProperty_mDefaultConfigurationSettingList (), temp_19.readProperty_mProjectBuildConfigurationRef (), temp_20.readProperty_mApplicationBundleName (), temp_21.readProperty_mProjectName () COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 438))) ;
+  GALGAS_string var_projectCoreFile_18460 = constinArgument_inPath.add_operation (GALGAS_string ("/project.pbxproj"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 462)) ;
   enumGalgasBool test_22 = kBoolTrue ;
   if (kBoolTrue == test_22) {
-    GALGAS_bool test_23 = var_projectCoreFile_18346.getter_fileExists (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 463)).operator_not (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 463)) ;
+    GALGAS_bool test_23 = var_projectCoreFile_18460.getter_fileExists (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 463)).operator_not (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 463)) ;
     if (kBoolTrue != test_23.boolEnum ()) {
       test_23 = constinArgument_inCacheFilePath.getter_fileExists (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 463)).operator_not (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 463)) ;
     }
     GALGAS_bool test_24 = test_23 ;
     if (kBoolTrue != test_24.boolEnum ()) {
-      test_24 = GALGAS_bool (kIsNotEqual, GALGAS_string::constructor_stringWithContentsOfFile (constinArgument_inCacheFilePath, inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 463)).objectCompare (var_contents_17651)) ;
+      test_24 = GALGAS_bool (kIsNotEqual, GALGAS_string::constructor_stringWithContentsOfFile (constinArgument_inCacheFilePath, inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 463)).objectCompare (var_contents_17765)) ;
     }
     test_22 = test_24.boolEnum () ;
     if (kBoolTrue == test_22) {
-      GALGAS_bool joker_18610 ; // Joker input parameter
-      var_contents_17651.method_writeToFileWhenDifferentContents (constinArgument_inCacheFilePath, joker_18610, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 464)) ;
-      var_contents_17651.method_makeDirectoryAndWriteToFile (var_projectCoreFile_18346, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 465)) ;
+      GALGAS_bool joker_18724 ; // Joker input parameter
+      var_contents_17765.method_writeToFileWhenDifferentContents (constinArgument_inCacheFilePath, joker_18724, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 464)) ;
+      var_contents_17765.method_makeDirectoryAndWriteToFile (var_projectCoreFile_18460, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 465)) ;
     }
   }
 }

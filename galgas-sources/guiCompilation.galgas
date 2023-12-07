@@ -370,15 +370,15 @@ syntax galgas4GuiComponentSyntax (galgasScanner) {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @guiAnalysisContext {
-  public var @stringlist mImportedOptionComponentList
-  public let @guiCommandLineOptionList mBoolOptionList
-  public let @guiCommandLineOptionList mUIntOptionList
-  public let @guiCommandLineOptionList mStringOptionList
-  public var @stringlist mNibAndClassList
-  public var @extensionMap mExtensionMap
-  public var @importedLexiqueList mWithLexiqueList
-  public var @string mBuildRunOption
-  public var @projectIndexingDescriptorList mProjectIndexingDescriptorList
+  public var @stringlist mImportedOptionComponentList = {}
+  public let @guiCommandLineOptionList mBoolOptionList = {}
+  public let @guiCommandLineOptionList mUIntOptionList = {}
+  public let @guiCommandLineOptionList mStringOptionList = {}
+  public var @stringlist mNibAndClassList = {}
+  public var @extensionMap mExtensionMap = {}
+  public var @importedLexiqueList mWithLexiqueList = {}
+  public var @string mBuildRunOption = ""
+  public var @projectIndexingDescriptorList mProjectIndexingDescriptorList = {}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -414,7 +414,7 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST-elemen
     error inGUIComponentAST.mGUIComponentName : "the gui name should be 'cocoa'"
   end
 #--- 
-  var @guiAnalysisContext context = .default
+  var @guiAnalysisContext context = .new {}
   context.mProjectIndexingDescriptorList = inGUIComponentAST.mProjectIndexingDescriptorList
 #--- Check imported options components
   for (mValue) in inGUIComponentAST.mImportedOptionList do

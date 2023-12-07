@@ -528,7 +528,7 @@ proc updateGalgasTargets
     let newIntermediateFilePath = inAbsoluteBuildDirectory + "/output/file-list-for-xcode-project.txt"
     ioAllProductFileSet += !"file-list-for-xcode-project.txt"
   #-------------------------------------------------------- New Xcode project generation
-    var xcodeProject = @XcodeProjectDescriptor.default
+    var xcodeProject = @XcodeProjectDescriptor.new
     xcodeProject.mApplicationBundleName = applicationBundleBase
     xcodeProject.mProjectName = inTargetName
     var headerSearchPaths = "HEADER_SEARCH_PATHS = (\"../"

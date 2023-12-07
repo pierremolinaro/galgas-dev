@@ -200,7 +200,7 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
                         ?let @location inEndOfMethodLocation
                         !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
                         !@formalParameterListForGeneration outRoutineSignature {
-  var variableMap = @localVarManager.default
+  var variableMap = @localVarManager.new
 #--- Enter non mutable instance attributes
   if not inAnalysisContext.requiresSelfForAccessingProperty then
     for (mPropertyTypeEntry mPropertyName 2*) in inNonMutableTypedAttributeList do
@@ -389,7 +389,7 @@ proc analyzeFunctionBody
   !@string outResultVariableCppName
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
 {
-  var variableMap = @localVarManager.default
+  var variableMap = @localVarManager.new
 #--- Enter instance attributes
 #  if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
   if not inAnalysisContext.requiresSelfForAccessingProperty then
@@ -1507,7 +1507,7 @@ proc semanticAnalysisOfRuleLabel
   !@formalParameterSignature outSignature
   !@semanticInstructionListForGeneration outInstructionListForGeneration
 {
-  var variableMap = @localVarManager.default
+  var variableMap = @localVarManager.new
   buildLocalVariableMapAndSignature (
     !inAnalysisContext.mSemanticContext
     !?ioTypeMap

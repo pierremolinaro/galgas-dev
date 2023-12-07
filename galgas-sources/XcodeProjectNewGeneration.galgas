@@ -372,32 +372,32 @@ setter @XcodeProjectDescriptor getReferenceKey
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @XcodeProjectDescriptor {
-  public var @uint mSequenceNumber
-  public let @string mMainGroupReference
-  public var @stringlist mMainGroupChildrenRefs
-  public var @string mProjectObjectReference
-  public var @XCodeGroupList mGroupList
-  public var @XCodeToolTargetList mToolTargetList
-  public var @XCodeAppTargetList mAppTargetList
-  public var @2stringlist mCFileList
-  public var @2stringlist mCppFileList
-  public var @2stringlist m_M_FileList
-  public var @2stringlist m_MM_FileList
-  public var @2stringlist mFrameworkFileList
-  public var @2stringlist mHeaderFileList
-  public var @BuildFileList mBuildFileList
+  public var @uint mSequenceNumber = 0
+  public let @string mMainGroupReference = ""
+  public var @stringlist mMainGroupChildrenRefs = {}
+  public var @string mProjectObjectReference = ""
+  public var @XCodeGroupList mGroupList = {}
+  public var @XCodeToolTargetList mToolTargetList = {}
+  public var @XCodeAppTargetList mAppTargetList = {}
+  public var @2stringlist mCFileList = {}
+  public var @2stringlist mCppFileList = {}
+  public var @2stringlist m_M_FileList = {}
+  public var @2stringlist m_MM_FileList = {}
+  public var @2stringlist mFrameworkFileList = {}
+  public var @2stringlist mHeaderFileList = {}
+  public var @BuildFileList mBuildFileList = {}
 #--- Default configuration
-  public let @string mDefaultConfigurationRef
-  public var @stringlist mDefaultConfigurationSettingList
-  public let @string mProjectBuildConfigurationRef
+  public let @string mDefaultConfigurationRef = ""
+  public var @stringlist mDefaultConfigurationSettingList = {}
+  public let @string mProjectBuildConfigurationRef = ""
 #--- Resource files
-  public var @2stringlist mInfoPlistFileList
-  public var @2stringlist mXIB_fileList
-  public var @2stringlist mTIFF_fileList
-  public var @2stringlist mICNS_fileList
+  public var @2stringlist mInfoPlistFileList = {}
+  public var @2stringlist mXIB_fileList = {}
+  public var @2stringlist mTIFF_fileList = {}
+  public var @2stringlist mICNS_fileList = {}
 #--- Project
-  public var @string mApplicationBundleName
-  public var @string mProjectName
+  public var @string mApplicationBundleName = ""
+  public var @string mProjectName = ""
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

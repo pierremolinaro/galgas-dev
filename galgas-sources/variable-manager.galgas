@@ -365,15 +365,15 @@ list @openedOverrideList {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @localVarManager {
-  private var @currentVarManager mCurrentManager
-  private var @openedOverrideList mOverridenManagers
+  private var @currentVarManager mCurrentManager = .new {}
+  private var @openedOverrideList mOverridenManagers = {}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @currentVarManager {
-  private var @scopeLocalVarMap mLocalVarMap
-  private var @localVarMapListForLLVM mSubMaps
+  private var @scopeLocalVarMap mLocalVarMap = {}
+  private var @localVarMapListForLLVM mSubMaps = {}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
