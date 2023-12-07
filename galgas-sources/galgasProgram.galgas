@@ -188,6 +188,12 @@ private proc compileProject ?let @lstring inProjectSourceFile
                             ?galgas4: let @bool inGalgas4
                             ?let @galgas3ProjectComponentAST inProjectComponentAST {
   var @galgasDeclarationAST declarationAST = .default
+//--- Parse predefined type definitions
+#  var f = filewrapper  typeGenerationTemplate
+  grammar galgas4Grammar (!?declarationAST) on
+  [[filewrapper typeGenerationTemplate] textFileContentsAtPath !"galgas-predefined-types.ggs"]
+  : "GALGAS predefined types"
+ //--- Parse source file
   for (mValue) in inProjectComponentAST.mProjectSourceList do
     if [mValue pathExtension] == "galgas" then
       let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]
@@ -200,23 +206,24 @@ private proc compileProject ?let @lstring inProjectSourceFile
     end
   end
 #---------------------------------- Add 'print' proc
-  var @formalParameterListAST formalParameterList = {}
-  formalParameterList += !["" nowhere] !.argumentConstantIn !["string" nowhere] !["inMessage" nowhere] !false
-  declarationAST.mDeclarationList += !@externRoutineDeclarationAST.new {
-    !false # Is not predefined
-    !false # Is not internal
-    !["println" nowhere]
-    !formalParameterList
-  }
-  var @lstringlist usefulnessRootEntities = {}
-  usefulnessRootEntities += !procedureNameForUsefulEntitiesGraph (!["println" nowhere])
-  declarationAST.mDeclarationList += !@externRoutineDeclarationAST.new {
-    !false # Is not predefined
-    !false # Is not internal
-    !["print" nowhere]
-    !formalParameterList
-  }
-  usefulnessRootEntities += !procedureNameForUsefulEntitiesGraph (!["print" nowhere])
+#  var @formalParameterListAST formalParameterList = {}
+#  formalParameterList += !["" nowhere] !.argumentConstantIn !["string" nowhere] !["inMessage" nowhere] !false
+#  declarationAST.mDeclarationList += !@externProcedureDeclarationAST.new {
+#    !false # Is not predefined
+#    !false # Is not internal
+#    !["println" nowhere]
+#    !formalParameterList
+#    !usefullProcedure: true
+#  }
+##  usefulnessRootEntities += !procedureNameForUsefulEntitiesGraph (!["println" nowhere])
+#  declarationAST.mDeclarationList += !@externProcedureDeclarationAST.new {
+#    !false # Is not predefined
+#    !false # Is not internal
+#    !["print" nowhere]
+#    !formalParameterList
+#    !usefullProcedure: true
+#  }
+##  usefulnessRootEntities += !procedureNameForUsefulEntitiesGraph (!["print" nowhere])
 #---------------------------------- Hand coded source files
   var @stringlist handCodedLinkToolFileList = {}
   var @stringlist handCodedLinkAppFileList = {}
@@ -290,6 +297,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
   let @semanticContext semanticContext
   var @unifiedTypeMap typeMap
   var @semanticDeclarationListForGeneration semanticDeclarationSortedListForGeneration
+  var @lstringlist usefulnessRootEntities = {}
   if @uint.errorCount == 0 then
     compileSemanticDeclarationsGalgas (
       !?usefulnessRootEntities

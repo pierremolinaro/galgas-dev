@@ -250,7 +250,7 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @externFunctionDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@lstringlist ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
@@ -261,6 +261,9 @@ override method @externFunctionDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefulness = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  if self.usefullFunc then
+    ioUsefulnessRootEntities += !nameForUsefulness
+  end
 #---
   var formalArgumentList = @formalInputParameterListForGeneration {}
   for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mFormalArgumentList do
@@ -284,8 +287,8 @@ override method @externFunctionDeclarationAST semanticAnalysis
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @externRoutineDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
+override method @externProcedureDeclarationAST semanticAnalysis
+  ?!@lstringlist ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
@@ -296,6 +299,9 @@ override method @externRoutineDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!self.mRoutineName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  if self.usefullProcedure then
+    ioUsefulnessRootEntities += !nameForUsefulness
+  end
 #---
   var formalArgumentList = @formalParameterListForGeneration {}
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mFormalArgumentList do
@@ -451,7 +457,7 @@ proc analyzeFunctionBody
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @functionDeclarationAST semanticAnalysis
-  ?!@lstringlist ioUsefulnessRootEntities 
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -459,12 +465,6 @@ override method @functionDeclarationAST semanticAnalysis
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
-#--- Useful entities graph
-  let nameForUsefulness = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  if self.mIsUsefull then
-    ioUsefulnessRootEntities += !nameForUsefulness
-  end
 #--- Analyse function body  
   let analysisContext = @analysisContext.new {
     !inSemanticContext
@@ -474,6 +474,7 @@ override method @functionDeclarationAST semanticAnalysis
     !""
     !requiresSelfForAccessingProperty: true # self.requiresSelfForAccessingProperty
   }
+  let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!self.mFunctionName)
   analyzeFunctionBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph

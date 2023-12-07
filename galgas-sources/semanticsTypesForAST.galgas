@@ -256,10 +256,11 @@ list @semanticDeclarationListAST {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @externRoutineDeclarationAST : @semanticDeclarationAST {
+refclass @externProcedureDeclarationAST : @semanticDeclarationAST {
   public let @bool mIsInternal
   public let @lstring mRoutineName
   public let @formalParameterListAST mFormalArgumentList
+  public let @bool usefullProcedure %selector
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -268,7 +269,7 @@ refclass @externRoutineDeclarationAST : @semanticDeclarationAST {
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @procDeclarationAST : @externRoutineDeclarationAST {
+refclass @procDeclarationAST : @externProcedureDeclarationAST {
   public let @semanticInstructionListAST mRoutineInstructionList
   public let @location mEndOfRoutineInstructionList
 }
@@ -283,6 +284,7 @@ refclass @externFunctionDeclarationAST : @semanticDeclarationAST {
   public let @lstring mFunctionName
   public let @formalInputParameterListAST mFormalArgumentList
   public let @lstring mResultTypeName
+  public let @bool usefullFunc %selector
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -296,7 +298,6 @@ refclass @functionDeclarationAST : @externFunctionDeclarationAST {
   public let @semanticInstructionListAST mFunctionInstructionList
   public let @location mEndOfFunctionInstructionList
   public let @bool mIsInternal
-  public let @bool mIsUsefull
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

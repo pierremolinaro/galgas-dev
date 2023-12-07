@@ -5,6 +5,7 @@
 refclass @listDeclarationAST : @semanticDeclarationAST {
   private let @lstring mListTypeName
   private let @propertyInCollectionListAST mPropertyList
+  private let @bool usefullList %selector
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -18,6 +19,15 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $list$
     $@type$ ?let @lstring listTypeName indexing listDefinition, structDefinition "-element"
+    var isUsefull = false
+    repeat
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { %remove }
+      end
+      isUsefull = true
+    end
     ${$
     var @propertyInCollectionListAST propertyList = {}
     repeat
@@ -33,6 +43,7 @@ syntax extension galgas3DeclarationsSyntax {
       !false # Is not predefined
       !listTypeName
       !propertyList
+      !usefullList: isUsefull
     }
   }
 
@@ -50,6 +61,15 @@ syntax extension galgas4DeclarationsSyntax {
                      ?!@stringset ioUserImplicitDeclaredTypeSet {
     $list$
     $@type$ ?let @lstring listTypeName indexing listDefinition, structDefinition "-element"
+    var isUsefull = false
+    repeat
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { %remove }
+      end
+      isUsefull = true
+    end
     ${$
     var @propertyInCollectionListAST propertyList = {}
     repeat
@@ -63,6 +83,7 @@ syntax extension galgas4DeclarationsSyntax {
       !false # Is not predefined
       !listTypeName
       !propertyList
+      !usefullList: isUsefull
     }
   }
 
@@ -364,7 +385,7 @@ override method @listDeclarationAST addAssociatedElement
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@lstringlist ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
@@ -377,6 +398,9 @@ override method @listDeclarationAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mListTypeName.string + "-element" !self.mListTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
+  if self.usefullList then
+    ioUsefulnessRootEntities += !nameForUsefulness
+  end
 #---
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}

@@ -389,7 +389,7 @@ override getter @externFunctionDeclarationAST keyRepresentation -> @string {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @externRoutineDeclarationAST keyRepresentation -> @string {
+override getter @externProcedureDeclarationAST keyRepresentation -> @string {
   result = "extern routine " + self.mRoutineName
 }
 
@@ -715,7 +715,7 @@ override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @externRoutineDeclarationAST enterDeclarationInSemanticContext
+override method @externProcedureDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
@@ -937,7 +937,7 @@ override method @onceFunctionDeclarationAST enterDeclarationInGraph
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @externRoutineDeclarationAST enterDeclarationInGraph
+override method @externProcedureDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext

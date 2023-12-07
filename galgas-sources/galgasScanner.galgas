@@ -203,7 +203,7 @@ rule isUnicodeLetter {
     enterCharacterIntoString (!?tokenString !*)
   while isUnicodeLetter | '_' | '0'->'9' :
   end
-  send search identifierString in galgasKeyWordList default $identifier$
+  send %codeFor identifierString in galgasKeyWordList default $identifier$
 }
 
 #------------------------------- Integer, floating Point Constant ------------------
@@ -359,7 +359,8 @@ list attributeKeyWordList style attributeStyle %errorMessage "the '%K' keyword" 
   "replaceBy" -> $%replaceBy$,
   "insertAfter" -> $%insertAfter$,
   "insertBefore" -> $%insertBefore$,
-  "useGrammar" -> $%useGrammar$
+  "useGrammar" -> $%useGrammar$,
+  "codeFor" -> $%codeFor$
 }
 
 rule '%' {
@@ -372,7 +373,7 @@ rule '%' {
   default
     error attributeError
   end
-  send search tokenString in attributeKeyWordList default error undefinedAttribute
+  send %codeFor tokenString in attributeKeyWordList default error undefinedAttribute
 }
 
 #--------------------------------- Character constant ------------------------------------

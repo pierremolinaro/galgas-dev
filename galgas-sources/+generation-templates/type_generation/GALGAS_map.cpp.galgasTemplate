@@ -62,7 +62,7 @@ typeComparisonResult cMapElement_%!TYPE_IDENTIFIER%::compare (const cCollectionE
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
-AC_GALGAS_map (true) {
+AC_GALGAS_map () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -58,13 +58,23 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
     $proc$
+    var isUsefull = false
+    repeat
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { %remove }
+      end
+      isUsefull = true
+    end
     $identifier$ ?let @lstring mActionName indexing routineDefinition
     <formal_parameter_list_ggs3> ?let @formalParameterListAST mFormalParameterList
-    ioDeclarations.mDeclarationList += !@externRoutineDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@externProcedureDeclarationAST.new {
       !false # Is not predefined
       !false # Is not internal
       !mActionName
       !mFormalParameterList
+      !usefullProcedure: isUsefull
     }
   }
 
@@ -74,6 +84,15 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $proc$
+    var isUsefull = false
+    repeat
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { %remove }
+      end
+      isUsefull = true
+    end
     $identifier$ ?let mRoutineName indexing routineDefinition
     <formal_parameter_list_ggs3> ?let @formalParameterListAST mFormalParameterList
     ${$
@@ -85,6 +104,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
       !false # private
       !mRoutineName
       !mFormalParameterList
+      !usefullProcedure: isUsefull
       !mRoutineInstructionList
       !endOfInstructionList
     }
@@ -94,6 +114,15 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $private$
     $proc$
+    var isUsefull = false
+    repeat
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { %remove }
+      end
+      isUsefull = true
+    end
     $identifier$ ?let mRoutineName indexing routineDefinition
     <formal_parameter_list_ggs3> ?let @formalParameterListAST mFormalParameterList
     ${$
@@ -105,6 +134,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
       !true # private
       !mRoutineName
       !mFormalParameterList
+      !usefullProcedure: isUsefull
       !mRoutineInstructionList
       !endOfInstructionList
     }
@@ -166,11 +196,11 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
         !functionName
         !formalInputParameterList
         !resultTypeName
+        !usefullFunc: isUsefull
         !resultVariableName
         !functionInstructionList
         !endOfFunctionInstructionList
         !false # private
-        !isUsefull
       }
     end
   }
@@ -230,11 +260,11 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
         !functionName
         !formalInputParameterList
         !resultTypeName
+        !usefullFunc: isUsefull
         !resultVariableName
         !functionInstructionList
         !endOfFunctionInstructionList
         !true # private
-        !isUsefull
       }
     end
   }
@@ -246,6 +276,15 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
     $func$
+    var isUsefull = false
+    repeat
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { %remove }
+      end
+      isUsefull = true
+    end
     $identifier$ ?let mActionName indexing functionDefinition
     <formal_input_parameter_list_ggs3> ?let @formalInputParameterListAST formalInputParameterList
     $->$
@@ -255,6 +294,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
       !mActionName
       !formalInputParameterList
       !resultTypeName
+      !usefullFunc: isUsefull
     }
   }
 
@@ -391,13 +431,23 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
                      ?!@stringset ioUserImplicitDeclaredTypeSet {
     $extern$
     $proc$
+    var isUsefull = false
+    repeat
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { %remove }
+      end
+      isUsefull = true
+    end
     $identifier$ ?let @lstring mActionName indexing routineDefinition
     <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST mFormalParameterList
-    ioDeclarations.mDeclarationList += !@externRoutineDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@externProcedureDeclarationAST.new {
       !false # Is not predefined
       !false # Is not internal
       !mActionName
       !mFormalParameterList
+      !usefullProcedure: isUsefull
     }
   }
 
@@ -408,6 +458,15 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations
                      ?!@stringset ioUserImplicitDeclaredTypeSet {
     $proc$
+    var isUsefull = false
+    repeat
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { %remove }
+      end
+      isUsefull = true
+    end
     $identifier$ ?let mRoutineName indexing routineDefinition
     <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST mFormalParameterList
     ${$
@@ -419,6 +478,7 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
       !false
       !mRoutineName
       !mFormalParameterList
+      !usefullProcedure: isUsefull
       !mRoutineInstructionList
       !endOfInstructionList
     }
@@ -430,6 +490,15 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
                      ?!@stringset ioUserImplicitDeclaredTypeSet {
     $private$
     $proc$
+    var isUsefull = false
+    repeat
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { %remove }
+      end
+      isUsefull = true
+    end
     $identifier$ ?let mRoutineName indexing routineDefinition
     <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST mFormalParameterList
     ${$
@@ -441,6 +510,7 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
       !true
       !mRoutineName
       !mFormalParameterList
+      !usefullProcedure: isUsefull
       !mRoutineInstructionList
       !endOfInstructionList
     }
@@ -503,11 +573,11 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
         !functionName
         !formalInputParameterList
         !resultTypeName
+        !usefullFunc: isUsefull
         !resultVariableName
         !functionInstructionList
         !endOfFunctionInstructionList
         !false # private
-        !isUsefull
       }
     end
   }
@@ -568,11 +638,11 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
         !functionName
         !formalInputParameterList
         !resultTypeName
+        !usefullFunc: isUsefull
         !resultVariableName
         !functionInstructionList
         !endOfFunctionInstructionList
         !true # private
-        !isUsefull
       }
     end
   }
@@ -585,6 +655,15 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
                      ?!@stringset ioUserImplicitDeclaredTypeSet {
     $extern$
     $func$
+    var isUsefull = false
+    repeat
+    while
+      $%usefull$
+      if isUsefull then
+        error .here : "duplicate attribute" fixit { %remove }
+      end
+      isUsefull = true
+    end
     $identifier$ ?let mActionName indexing functionDefinition
     <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
     $->$
@@ -594,6 +673,7 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
       !mActionName
       !formalInputParameterList
       !resultTypeName
+      !usefullFunc: isUsefull
     }
   }
 

@@ -30,7 +30,7 @@
 
   @private BOOL mOutputBufferedDataHasBeenTransmitted ;
 
-  @private BOOL mTaskCompleted ;
+//  @private BOOL mTaskCompleted ;
   
   @private OC_GGS_Document * mDocument ;
 }

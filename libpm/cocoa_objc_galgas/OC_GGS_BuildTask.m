@@ -100,12 +100,12 @@
       ] ;
       [mTaskOutputPipe.fileHandleForReading readInBackgroundAndNotify] ;
     //---
-      [[NSNotificationCenter defaultCenter]
-        addObserver: self
-        selector: @selector (taskDidTerminate:)
-        name: NSTaskDidTerminateNotification
-        object: mTask
-      ] ;
+//      [[NSNotificationCenter defaultCenter]
+//        addObserver: self
+//        selector: @selector (taskDidTerminate:)
+//        name: NSTaskDidTerminateNotification
+//        object: mTask
+//      ] ;
     //--- Start task
       [mTask launch] ;
     }
@@ -125,9 +125,9 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSData * data = [inNotification.userInfo objectForKey:NSFileHandleNotificationDataItem];
+  NSData * data = [inNotification.userInfo objectForKey: NSFileHandleNotificationDataItem];
   if (data.length > 0) {
-    [mDocument appendBuildOutputData:data] ;
+    [mDocument appendBuildOutputData: data] ;
     [inNotification.object readInBackgroundAndNotify] ;
   }else{
     [[NSNotificationCenter defaultCenter]
@@ -135,11 +135,11 @@
       name: NSFileHandleReadCompletionNotification
       object: mTaskOutputPipe.fileHandleForReading
     ] ;
-    [[NSNotificationCenter defaultCenter]
-      removeObserver: self
-      name: NSTaskDidTerminateNotification
-      object: mTask
-    ] ;
+//    [[NSNotificationCenter defaultCenter]
+//      removeObserver: self
+//      name: NSTaskDidTerminateNotification
+//      object: mTask
+//    ] ;
     [mTaskOutputPipe.fileHandleForReading closeFile] ;
     const int terminationStatus = [mTask terminationStatus] ;
     mOutputBufferedDataHasBeenTransmitted = YES ;
@@ -151,9 +151,9 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-- (void) taskDidTerminate: (NSNotification *) inNotification {
-  mTaskCompleted = YES ;
-}
+//- (void) taskDidTerminate: (NSNotification *) inNotification {
+//  mTaskCompleted = YES ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -163,9 +163,9 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-- (BOOL) isCompleted {
-  return mTaskCompleted && mOutputBufferedDataHasBeenTransmitted ;
-}
+//- (BOOL) isCompleted {
+//  return mTaskCompleted && mOutputBufferedDataHasBeenTransmitted ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 

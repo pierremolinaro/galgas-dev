@@ -41,22 +41,20 @@ class cSharedMapRoot : public C_SharedObject {
   private: cMapNode * mRoot ;
   private: uint32_t mCount ;
   protected: cSharedMapRoot * mOverridenMap ;
-  private: bool mActivateReplacementSuggestions ;
-
 
 //--------------------------------- Accessors
   public: inline const cMapNode * root (void) const { return mRoot ; }
   public: inline uint32_t count (void) const { return mCount ; }
 
 //--------------------------------- Constructor
-  protected: cSharedMapRoot (const bool inActivateReplacementSuggestions COMMA_LOCATION_ARGS) ;
+  protected: cSharedMapRoot (LOCATION_ARGS) ;
 
 //--------------------------------- Virtual destructor
   public: virtual ~ cSharedMapRoot (void) ;
 
 //--------------------------------- No copy
-  private: cSharedMapRoot (const cSharedMapRoot &) ;
-  private: cSharedMapRoot & operator = (const cSharedMapRoot &) ;
+  private: cSharedMapRoot (const cSharedMapRoot &) = delete ;
+  private: cSharedMapRoot & operator = (const cSharedMapRoot &) = delete ;
 
 //--------------------------------- Copy a map
   protected: VIRTUAL_IN_DEBUG void copyFrom (const cSharedMapRoot * inSource) ;
@@ -184,12 +182,11 @@ class cMapNode {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cSharedMapRoot::cSharedMapRoot (const bool inActivateReplacementSuggestions COMMA_LOCATION_ARGS) :
+cSharedMapRoot::cSharedMapRoot (LOCATION_ARGS) :
 C_SharedObject (THERE),
 mRoot (nullptr),
 mCount (0),
-mOverridenMap (nullptr),
-mActivateReplacementSuggestions (inActivateReplacementSuggestions) {
+mOverridenMap (nullptr) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -256,18 +253,16 @@ cMapNode::~cMapNode (void) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_map::AC_GALGAS_map (const bool inActivateReplacementSuggestions) :
+AC_GALGAS_map::AC_GALGAS_map (void) :
 AC_GALGAS_root (),
-mSharedMap (nullptr),
-mActivateReplacementSuggestions (inActivateReplacementSuggestions) {
+mSharedMap (nullptr) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_map::AC_GALGAS_map (const AC_GALGAS_map & inSource) :
 AC_GALGAS_root (),
-mSharedMap (nullptr),
-mActivateReplacementSuggestions (inSource.mActivateReplacementSuggestions) {
+mSharedMap (nullptr) {
   macroAssignSharedObject (mSharedMap, inSource.mSharedMap) ;
 }
 
@@ -293,7 +288,7 @@ void AC_GALGAS_map::drop (void) {
 //----------------------------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_map::makeNewEmptyMap (LOCATION_ARGS) {
-  macroMyNew (mSharedMap, cSharedMapRoot (mActivateReplacementSuggestions COMMA_THERE)) ;
+  macroMyNew (mSharedMap, cSharedMapRoot (THERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -301,7 +296,7 @@ void AC_GALGAS_map::makeNewEmptyMap (LOCATION_ARGS) {
 void AC_GALGAS_map::makeNewEmptyMapWithMapToOverride (const AC_GALGAS_map & inMapToOverride
                                                       COMMA_LOCATION_ARGS) {
   if (inMapToOverride.isValid ()) {
-    macroMyNew (mSharedMap, cSharedMapRoot (mActivateReplacementSuggestions COMMA_THERE)) ;
+    macroMyNew (mSharedMap, cSharedMapRoot (THERE)) ;
     macroAssignSharedObject (mSharedMap->mOverridenMap, inMapToOverride.mSharedMap) ;
   }
 }
@@ -487,9 +482,7 @@ cCollectionElement * AC_GALGAS_map::readWriteAccessForWithInstructionWithErrorMe
     cMapNode * node = mSharedMap->findEntryInMap (key, mSharedMap) ;
     if (nullptr == node) {
       TC_UniqueArray <C_String> nearestKeyArray ;
-      if (mActivateReplacementSuggestions) {
-        mSharedMap->findNearestKey (key, nearestKeyArray) ;
-      }
+      mSharedMap->findNearestKey (key, nearestKeyArray) ;
       inCompiler->semanticErrorWith_K_message (inKey, nearestKeyArray, inSearchErrorMessage COMMA_THERE) ;
     }else{
       result = node->mAttributes.ptr () ;
@@ -673,7 +666,7 @@ void cSharedMapRoot::copyFrom (const cSharedMapRoot * inSource) {
 void AC_GALGAS_map::insulate (LOCATION_ARGS) {
   if ((nullptr != mSharedMap) && !mSharedMap->isUniquelyReferenced ()) {
     cSharedMapRoot * p = nullptr ;
-    macroMyNew (p, cSharedMapRoot (mActivateReplacementSuggestions COMMA_THERE)) ;
+    macroMyNew (p, cSharedMapRoot (THERE)) ;
     p->copyFrom (mSharedMap) ;
     macroAssignSharedObject (mSharedMap, p) ;
     macroDetachSharedObject (p) ;
@@ -693,7 +686,7 @@ void cSharedMapRoot::copyCurrentAndOverridenMapsFrom (const cSharedMapRoot * inS
     macroMyNew (mRoot, cMapNode (inSource->mRoot)) ;
   }
   if (nullptr != inSource->mOverridenMap) {
-    macroMyNew (mOverridenMap, cSharedMapRoot (mActivateReplacementSuggestions COMMA_HERE)) ;
+    macroMyNew (mOverridenMap, cSharedMapRoot (HERE)) ;
     mOverridenMap->copyCurrentAndOverridenMapsFrom (inSource->mOverridenMap) ;
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -714,7 +707,7 @@ void AC_GALGAS_map::insulateCurrentAndOverridenMaps (LOCATION_ARGS) {
     }
     if (performDeepCopy) {
       cSharedMapRoot * p = nullptr ;
-      macroMyNew (p, cSharedMapRoot (mActivateReplacementSuggestions COMMA_THERE)) ;
+      macroMyNew (p, cSharedMapRoot (THERE)) ;
       p->copyCurrentAndOverridenMapsFrom (mSharedMap) ;
       macroAssignSharedObject (mSharedMap, p) ;
       macroDetachSharedObject (p) ;
@@ -1152,9 +1145,7 @@ cMapNode * cSharedMapRoot::performSearch (const GALGAS_lstring & inKey,
     result = findEntryInMap (key, this) ;
     if (nullptr == result) {
       TC_UniqueArray <C_String> nearestKeyArray ;
-      if (mActivateReplacementSuggestions) {
-        findNearestKey (key, nearestKeyArray) ;
-      }
+      findNearestKey (key, nearestKeyArray) ;
       inCompiler->semanticErrorWith_K_message (inKey, nearestKeyArray, inSearchErrorMessage COMMA_THERE) ;
     }
   }
@@ -1322,9 +1313,7 @@ cMapElement * cSharedMapRoot::searchForReadWriteAttribute (const GALGAS_lstring 
       macroUniqueSharedObject (result) ;
     }else{
       TC_UniqueArray <C_String> nearestKeyArray ;
-      if (mActivateReplacementSuggestions) {
-        findNearestKey (key, nearestKeyArray) ;
-      }
+      findNearestKey (key, nearestKeyArray) ;
       inCompiler->semanticErrorWith_K_message (inKey, nearestKeyArray, inSearchErrorMessage COMMA_THERE) ;
     }
   }

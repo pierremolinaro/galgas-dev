@@ -1,0 +1,9 @@
+
+extern proc %usefull println (let @string inString)
+
+extern proc %usefull print (let @string inString)
+
+list @2lstringlist %usefull {
+  public var @lstring mValue0
+  public var @lstring mValue1
+}
