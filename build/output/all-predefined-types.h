@@ -1021,6 +1021,10 @@ class GALGAS_stringset : public AC_GALGAS_root {
   public: typeComparisonResult objectCompare (const GALGAS_stringset & inOperand) const ;
 
 //--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_insert (class GALGAS_string constinArgument0,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
   public: VIRTUAL_IN_DEBUG void setter_removeKey (class GALGAS_string inArgument0
                                                   COMMA_LOCATION_ARGS) ;
 

@@ -4358,6 +4358,12 @@ class GALGAS_tokenSortedlist : public AC_GALGAS_sortedlist {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_insert (class GALGAS_uint inArgument0,
+                                               class GALGAS_string inArgument1,
+                                               class GALGAS_string inArgument2,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
   public: VIRTUAL_IN_DEBUG void setter_popGreatest (class GALGAS_uint & outArgument0,
                                                     class GALGAS_string & outArgument1,
                                                     class GALGAS_string & outArgument2,

@@ -3571,6 +3571,21 @@ void GALGAS_syntaxExtensions::addAssign_operation (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 
+void GALGAS_syntaxExtensions::setter_insert (const GALGAS_string inKey,
+                                             const GALGAS_lstring inOperand0,
+                                             const GALGAS_nonterminalDeclarationListAST inOperand1,
+                                             const GALGAS_syntaxRuleListAST inOperand2,
+                                             C_Compiler * /* inCompiler */
+                                             COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    capCollectionElement attributes ;
+    GALGAS_galgas_33_SyntaxExtensionListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    addObjectInListMap (inKey.stringValue (), attributes) ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 GALGAS_galgas_33_SyntaxExtensionListAST GALGAS_syntaxExtensions::getter_listForKey (const GALGAS_string & inKey
                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   return GALGAS_galgas_33_SyntaxExtensionListAST (listForKey (inKey)) ;

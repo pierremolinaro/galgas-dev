@@ -2395,6 +2395,19 @@ void GALGAS_genericExtensionMethodListMap::addAssign_operation (const GALGAS_str
 
 //----------------------------------------------------------------------------------------------------------------------
 
+void GALGAS_genericExtensionMethodListMap::setter_insert (const GALGAS_string inKey,
+                                                          const GALGAS_lstring inOperand0,
+                                                          C_Compiler * /* inCompiler */
+                                                          COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid () && inOperand0.isValid ()) {
+    capCollectionElement attributes ;
+    GALGAS_lstringlist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
+    addObjectInListMap (inKey.stringValue (), attributes) ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 GALGAS_lstringlist GALGAS_genericExtensionMethodListMap::getter_listForKey (const GALGAS_string & inKey
                                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   return GALGAS_lstringlist (listForKey (inKey)) ;
@@ -2538,6 +2551,19 @@ GALGAS_descendantClassListMap GALGAS_descendantClassListMap::constructor_emptyMa
 void GALGAS_descendantClassListMap::addAssign_operation (const GALGAS_string & inKey,
                                                          const GALGAS_unifiedTypeMapEntry & inOperand0
                                                          COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid () && inOperand0.isValid ()) {
+    capCollectionElement attributes ;
+    GALGAS_unifiedTypeMapEntryList::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
+    addObjectInListMap (inKey.stringValue (), attributes) ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_descendantClassListMap::setter_insert (const GALGAS_string inKey,
+                                                   const GALGAS_unifiedTypeMapEntry inOperand0,
+                                                   C_Compiler * /* inCompiler */
+                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid () && inOperand0.isValid ()) {
     capCollectionElement attributes ;
     GALGAS_unifiedTypeMapEntryList::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;

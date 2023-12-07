@@ -149,7 +149,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWithV
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
+  for (mPropertyTypeEntry mPropertyName 2*) in ATTRIBUTE_LIST
   do (IDX) %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end
@@ -158,7 +158,30 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
   if (isValid ()) {
     cSortedListElement * p = nullptr ;
     macroMyNew (p, cSortedListElement_%!TYPE_IDENTIFIER% (%
-    for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
+    for (4*) in ATTRIBUTE_LIST
+    do (IDX) %inOperand%![IDX string]
+    between %, %
+    end
+    % COMMA_THERE)) ;
+    capSortedListElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::setter_insert (%?^
+  for (mPropertyTypeEntry mPropertyName 2*) in ATTRIBUTE_LIST
+  do (IDX) %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inOperand%![IDX string]%,\n%!^
+  end
+%C_Compiler * /* inCompiler */
+    %!^%COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    cSortedListElement * p = nullptr ;
+    macroMyNew (p, cSortedListElement_%!TYPE_IDENTIFIER% (%
+    for (4*) in ATTRIBUTE_LIST
     do (IDX) %inOperand%![IDX string]
     between %, %
     end
@@ -258,7 +281,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_greatest (%?^
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST
+  for (mPropertyTypeEntry mPropertyName * *) in ATTRIBUTE_LIST
   do (IDX) %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
      %C_Compiler * inCompiler\n%

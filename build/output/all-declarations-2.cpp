@@ -6475,6 +6475,23 @@ void GALGAS_tokenSortedlist::addAssign_operation (const GALGAS_uint & inOperand0
 
 //----------------------------------------------------------------------------------------------------------------------
 
+void GALGAS_tokenSortedlist::setter_insert (const GALGAS_uint inOperand0,
+                                            const GALGAS_string inOperand1,
+                                            const GALGAS_string inOperand2,
+                                            C_Compiler * /* inCompiler */
+                                            COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    cSortedListElement * p = nullptr ;
+    macroMyNew (p, cSortedListElement_tokenSortedlist (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capSortedListElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 void GALGAS_tokenSortedlist::plusAssign_operation (const GALGAS_tokenSortedlist inOperand,
                                                    C_Compiler * /* inCompiler */
                                                    COMMA_UNUSED_LOCATION_ARGS) {

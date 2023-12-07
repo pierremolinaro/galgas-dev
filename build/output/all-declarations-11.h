@@ -1230,6 +1230,11 @@ class GALGAS_genericExtensionMethodListMap : public AC_GALGAS_listmap {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_insert (class GALGAS_string constinArgument0,
+                                               class GALGAS_lstring constinArgument1,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -1403,6 +1408,11 @@ class GALGAS_descendantClassListMap : public AC_GALGAS_listmap {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_insert (class GALGAS_string constinArgument0,
+                                               class GALGAS_unifiedTypeMapEntry constinArgument1,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods

@@ -519,6 +519,27 @@ end
 
 //----------------------------------------------------------------------------------------------------------------------
 
+void GALGAS_%!TYPE_IDENTIFIER%::setter_insert (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% inKey%
+for (propertyTypeEntry 3*) in CURRENT_PROPERTY_LIST
+  do (IDX) %,\n%!^%const GALGAS_%![propertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
+end
+%,\n %!^%C_Compiler * /* inCompiler */%
+%\n %!^%COMMA_LOCATION_ARGS) {\n%
+%  GALGAS_%!TYPE_IDENTIFIER%_2D_element newElement (inKey%
+for (4*) in CURRENT_PROPERTY_LIST
+  do (IDX) %, inArgument%![IDX string]
+end
+%) ;
+  if (isValid () && newElement.isValid ()) {
+    insulate (THERE) ;
+    macroUniqueSharedObject (mSharedDict) ;
+    const bool entryOverrideAllowed = true ;
+    mSharedDict->performInsert (newElement, entryOverrideAllowed) ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_hasKey (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey%
 %\n %!^%COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;

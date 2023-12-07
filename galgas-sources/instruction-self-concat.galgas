@@ -111,18 +111,19 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
-                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
-                              !@semanticInstructionAST outInstruction {
-    $self$
-    let instructionLocation = @location.here
-    $+=$
-    <non_empty_output_expression_list> ?let @actualOutputExpressionList expressionList
-    outInstruction = @selfPlusEqualElementsInstructionAST.new {
-      !instructionLocation
-      !expressionList
-    }
-  }
+#  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
+#                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
+#                              !@semanticInstructionAST outInstruction {
+#    $self$
+#    let instructionLocation = @location.here
+#    $+=$
+#    error .here : "obsolete"
+#    <non_empty_output_expression_list> ?let @actualOutputExpressionList expressionList
+#    outInstruction = @selfPlusEqualElementsInstructionAST.new {
+#      !instructionLocation
+#      !expressionList
+#    }
+#  }
   
   #·····················································································································
   

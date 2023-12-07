@@ -194,16 +194,17 @@ syntax extension galgas4InstructionsSyntax {
       }
     or
       $+=$
-      select
-        <non_empty_output_expression_list> ?let @actualOutputExpressionList expressionList
-        outInstruction = @plusEqualElementsInstructionAST.new {
-          !instructionLocation
-          !inHasSelfPrefix
-          !receiverName
-          !propertyList
-          !expressionList
-        }
-      or
+#      select
+#        <non_empty_output_expression_list> ?let @actualOutputExpressionList expressionList
+#        warning .here : "obsolete"
+#        outInstruction = @plusEqualElementsInstructionAST.new {
+#          !instructionLocation
+#          !inHasSelfPrefix
+#          !receiverName
+#          !propertyList
+#          !expressionList
+#        }
+#      or
         <expression> ?let @semanticExpressionAST expression
         outInstruction = @plusEqualExpressionInstructionAST.new {
           !instructionLocation
@@ -212,7 +213,7 @@ syntax extension galgas4InstructionsSyntax {
           !propertyList
           !expression
         }
-      end
+#      end
     or
       $*=$
       <expression> ?let @semanticExpressionAST expression
@@ -281,16 +282,15 @@ syntax extension galgas4InstructionsSyntax {
 
   #·····················································································································
 
-  rule <non_empty_output_expression_list> !@actualOutputExpressionList outExpressionList {
-    outExpressionList = {}
-#    warning .here : "Obsolete"
-    repeat
-      $!$ ?let selector
-      <expression> ?let @semanticExpressionAST expression
-      outExpressionList += !selector !expression !@location.here
-    while
-    end
-  }
+#  rule <non_empty_output_expression_list> !@actualOutputExpressionList outExpressionList {
+#    outExpressionList = {}
+#    repeat
+#      $!$ ?let selector
+#      <expression> ?let @semanticExpressionAST expression
+#      outExpressionList += !selector !expression !@location.here
+#    while
+#    end
+#  }
 
 }
 

@@ -11078,6 +11078,12 @@ class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis : public AC_GALGAS_so
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_insert (class GALGAS_lstring inArgument0,
+                                               class GALGAS_uint inArgument1,
+                                               class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis inArgument2,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
   public: VIRTUAL_IN_DEBUG void setter_popGreatest (class GALGAS_lstring & outArgument0,
                                                     class GALGAS_uint & outArgument1,
                                                     class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis & outArgument2,

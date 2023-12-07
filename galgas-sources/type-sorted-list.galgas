@@ -182,7 +182,8 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
 #--- Enumeration description
   var @enumerationDescriptorList enumerationDescriptor = {}
   var @functionSignature constructorAttributeTypeList = {}
-  var @formalParameterSignature setterFormalArgumentList = {}
+  var @formalParameterSignature setterFormalOutputArgumentList = {}
+  var @formalParameterSignature setterFormalInputArgumentList = {}
   var @typedPropertyList typedAttributeList = {}
   for (* propertyTypeName mPropertyName 3*) in self.mPropertyList do
     [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
@@ -190,7 +191,8 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter: true !hasSelector: hasSelector
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
-    setterFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST.argumentOut !mPropertyName.string
+    setterFormalOutputArgumentList += !["" nowhere] !attributeTypeIndex !.argumentOut !mPropertyName.string
+    setterFormalInputArgumentList += !["" nowhere] !attributeTypeIndex !.argumentIn !mPropertyName.string
   end
 #--- Constructors
   var @constructorMap constructorMap = {}
@@ -217,12 +219,12 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
-#--- Modifiers
+#--- Setters
   var @setterMap setterMap = {}
   [!?setterMap insertOrReplace
     !@lstring.new {!"popGreatest" !@location.here}
     !@methodKind.definedAsMember
-    !setterFormalArgumentList
+    !setterFormalOutputArgumentList
     !true
     !@methodQualifier.isBasic
     !"" # No error message
@@ -230,7 +232,15 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   [!?setterMap insertOrReplace
     !@lstring.new {!"popSmallest" !@location.here}
     !@methodKind.definedAsMember
-    !setterFormalArgumentList
+    !setterFormalOutputArgumentList
+    !true
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+  [!?setterMap insertOrReplace
+    !@lstring.new {!"insert" !@location.here}
+    !@methodKind.definedAsMember
+    !setterFormalInputArgumentList
     !true
     !@methodQualifier.isBasic
     !"" # No error message
@@ -240,7 +250,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   [!?instanceMethodMap insertKey
     !@lstring.new {!"greatest" !@location.here}
     !@methodKind.definedAsMember
-    !setterFormalArgumentList
+    !setterFormalOutputArgumentList
     !@location.here
     !true
     !@methodQualifier.isBasic
@@ -249,7 +259,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   [!?instanceMethodMap insertKey
     !@lstring.new {!"smallest" !@location.here}
     !@methodKind.definedAsMember
-    !setterFormalArgumentList
+    !setterFormalOutputArgumentList
     !@location.here
     !true
     !@methodQualifier.isBasic

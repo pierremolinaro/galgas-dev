@@ -669,6 +669,26 @@ void GALGAS_stringset::insulate (LOCATION_ARGS) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+void GALGAS_stringset::setter_insert (const GALGAS_string inKey,
+                                      C_Compiler * /* inCompiler */
+                                      COMMA_LOCATION_ARGS) {
+  if (isValid () && (inKey.isValid ())) {
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      checkStringset (HERE) ;
+    #endif
+    insulate (THERE) ;
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      checkStringset (HERE) ;
+    #endif
+    mSharedRoot->addKey (inKey.stringValue ()) ;
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      checkStringset (HERE) ;
+    #endif
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 void GALGAS_stringset::addAssign_operation (const GALGAS_string & inKey
                                             COMMA_LOCATION_ARGS) {
   if (isValid () && (inKey.isValid ())) {

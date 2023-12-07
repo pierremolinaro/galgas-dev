@@ -2,7 +2,7 @@
 #                                           
 #  semantics definitions for semantics component 
 #                                           
-#  Copyright (C) 2009, ..., 2015 Pierre Molinaro.
+#  Copyright (C) 2009, ..., 2023 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
@@ -105,6 +105,32 @@ proc enterModifierWithoutArgument
     !@methodQualifier. isBasic
     !""
   ]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @stringsetPredefinedTypeAST getSetterMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@setterMap outSetterMap
+{
+  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let stringType]
+  outSetterMap = {}
+  [!?outSetterMap insertKey
+    !@lstring.new {!"removeKey" !@location.here}
+    !@methodKind. definedAsMember
+    !@formalParameterSignature.listWithValue {!["" nowhere] !stringType !.argumentIn !"inKey"}
+    !false # No Compiler argument
+    !@methodQualifier. isBasic
+    !""
+  ]
+  enterModifierWithInputArgument (
+    !?outSetterMap
+    !?ioUnifiedTypeMap
+    !argTypeName: "string" 
+    !argName: "inValue"
+    !setterName: "insert"
+    !compilerArg: true
+  )
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

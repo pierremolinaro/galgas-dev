@@ -43,28 +43,6 @@ override method @dataPredefinedTypeAST getEnumerationList
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                           
-#  G E T    M O D I F I E R    M A P        
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @stringsetPredefinedTypeAST getSetterMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@setterMap outSetterMap
-{
-  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let stringType]
-  outSetterMap = {}
-  [!?outSetterMap insertKey
-    !@lstring.new {!"removeKey" !@location.here}
-    !@methodKind. definedAsMember
-    !@formalParameterSignature.listWithValue {!["" nowhere] !stringType !.argumentIn !"inKey"}
-    !false # No Compiler argument
-    !@methodQualifier. isBasic
-    !""
-  ]
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
 #  G E T    S U P P O R T E D    O P E R A T O R    F L A G S                                                  
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

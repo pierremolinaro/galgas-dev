@@ -112,14 +112,6 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
 #--- Check associated map is really a list
   [ioTypeMap searchType !self.mAssociatedListTypeName ?let associatedTypeDefinition]
   var @typedPropertyList listTypedAttributeList = associatedTypeDefinition.mAllTypedPropertyList
-#  [ioTypeMap searchKey
-#    !self.mAssociatedListTypeName
-#    ?3*
-#    ?let @typeKindEnum typeKindEnum
-#    ?*
-#    ?var @typedPropertyList listTypedAttributeList
-#    ?20*
-#  ]
   if associatedTypeDefinition.mTypeKindEnum != @typeKindEnum.listType then
     error self.mAssociatedListTypeName : "the '@" + self.mAssociatedListTypeName + "' type should be a list type"
     listTypedAttributeList = @typedPropertyList {}
@@ -178,12 +170,31 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
   var enumeratorDescriptor = @enumerationDescriptorList {}
   enumeratorDescriptor += !stringTypeIndex !"key"
   enumeratorDescriptor += !associatedListTypeIndex !"mList"
-#--- Add assign operator description
+#--- Add assign operator description, insert setter
+  var @formalParameterSignature insertSetterFormalArgumentList = {}
+  insertSetterFormalArgumentList +=
+    !["" nowhere]
+    !stringTypeIndex
+    !.argumentConstantIn
+    !"inKey"
   var addAssignOperatorDescription = @functionSignature {}
   addAssignOperatorDescription += !["" nowhere] !stringTypeIndex !"inKey"
   for (mPropertyTypeEntry mPropertyName 2*) in listTypedAttributeList do
     addAssignOperatorDescription += !["" nowhere] !mPropertyTypeEntry !mPropertyName.string
+   insertSetterFormalArgumentList +=
+      !["" nowhere]
+      !mPropertyTypeEntry
+      !.argumentConstantIn
+      !mPropertyName.string
   end
+  [!?setterMap insertOrReplace
+    !.new {!"insert" !self.mListmapTypeName.location}
+    !@methodKind.definedAsMember
+    !insertSetterFormalArgumentList
+    !true
+    !@methodQualifier.isBasic
+    !""
+  ]
 #--- Add extensions
   addExtensions (
     !inExtensionMethodMapForBuildingContext

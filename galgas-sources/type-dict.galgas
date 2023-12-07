@@ -169,20 +169,20 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !hasCompilerArgument:false
   )
 #--- Handle properties
-  var @formalParameterSignature insertMethodFormalArgumentList = {}
+  var @formalParameterSignature insertSetterFormalArgumentList = {}
   var @typedPropertyList typedPropertyList = {}
   var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = {}
   argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !keyTypeIndex !"key"
-  insertMethodFormalArgumentList +=
+  insertSetterFormalArgumentList +=
     !["" nowhere]
     !keyTypeIndex
-    !@formalArgumentPassingModeAST.argumentConstantIn
+    !.argumentConstantIn
     !"inKey"
   var @formalParameterSignature removeMethodFormalArgumentList = {}
   removeMethodFormalArgumentList +=
     !["" nowhere]
     !keyTypeIndex
-    !@formalArgumentPassingModeAST.argumentConstantIn
+    !.argumentConstantIn
     !"inKey"
   var @optionalMethodSignature optionalMethodSignature = {}
   optionalMethodSignature +=
@@ -199,7 +199,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter: hasSetter !hasSelector: hasSelector
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
-    insertMethodFormalArgumentList +=
+    insertSetterFormalArgumentList +=
       !["" nowhere]
       !attributeTypeIndex
       !@formalArgumentPassingModeAST.argumentConstantIn
@@ -215,6 +215,15 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
       !attributeTypeIndex
       !mPropertyName.string
   end
+#--- Handle insert setter
+  [!?setterMap insertOrReplace
+    !.new {!"insert" !self.mDictTypeName.location}
+    !@methodKind.definedAsMember
+    !insertSetterFormalArgumentList
+    !true
+    !@methodQualifier.isBasic
+    !""
+  ]
 #--- Handle remove setter
   [!?setterMap insertOrReplace
     !.new {!"removeKey" !self.mDictTypeName.location}

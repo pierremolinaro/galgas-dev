@@ -14382,6 +14382,23 @@ void GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis::addAssign_operation (
 
 //----------------------------------------------------------------------------------------------------------------------
 
+void GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis::setter_insert (const GALGAS_lstring inOperand0,
+                                                                          const GALGAS_uint inOperand1,
+                                                                          const GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis inOperand2,
+                                                                          C_Compiler * /* inCompiler */
+                                                                          COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    cSortedListElement * p = nullptr ;
+    macroMyNew (p, cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capSortedListElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 void GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis::plusAssign_operation (const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis inOperand,
                                                                                  C_Compiler * /* inCompiler */
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
