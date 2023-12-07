@@ -11,9 +11,9 @@ refclass @constructorExpressionAST : @semanticExpressionAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @defaultConstructorExpressionAST : @semanticExpressionAST {
-  private let @lstring mTypeName
-}
+#refclass @defaultConstructorExpressionAST : @semanticExpressionAST {
+#  private let @lstring mTypeName
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
@@ -60,12 +60,12 @@ syntax extension galgas3ExpressionSyntax {
   
   #·····················································································································
   
-  rule <primary_ggs3> !@semanticExpressionAST outExpression {
-    <optional_type> ?let @lstring typeName
-    $.$
-    $default$
-    outExpression = @defaultConstructorExpressionAST.new {!typeName}
-  }
+#  rule <primary_ggs3> !@semanticExpressionAST outExpression {
+#    <optional_type> ?let @lstring typeName
+#    $.$
+#    $default$
+#    outExpression = @defaultConstructorExpressionAST.new {!typeName}
+#  }
 
   #·····················································································································
 
@@ -288,48 +288,48 @@ override method @constructorExpressionAST analyzeSemanticExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @defaultConstructorExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  if self.mTypeName.string != "" then
-    [!?ioTypeMap makeEntry !self.mTypeName ?*]
-  end
-}
+#override method @defaultConstructorExpressionAST enterExpressionInSemanticContext
+#  ?!@unifiedTypeMap ioTypeMap
+#{
+#  if self.mTypeName.string != "" then
+#    [!?ioTypeMap makeEntry !self.mTypeName ?*]
+#  end
+#}
 
 #·····················································································································
 
-override method @defaultConstructorExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMapEntry inType
-  ?let @analysisContext unused inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@localVarManager unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression
-{
-  var type = inType
-  if self.mTypeName.string != "" then
-    type = [ioTypeMap searchKey !self.mTypeName]
-  end
-  if [type isNull] then
-    error self.mTypeName : "cannot infer type" : outExpression
-  else
-  #--- Check type accepts default constructor
-    if not [type definition].mIsConcrete then
-      error self.mTypeName: "an abstract class does not support the default constructor"
-    elsif [type definition].mDefaultConstructorName == "" then
-      error self.mTypeName: "this class does not support the default constructor"
-    end
-  #---
-    let usefulnessName = typeNameForUsefulEntitiesGraph (!.new {![type definition].mTypeName.string !self.mTypeName})
-    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
-  #---
-    outExpression = @defaultConstructorExpressionForGeneration.new {
-      !type
-      !self.mTypeName.location
-    }
-  end
-}
+#override method @defaultConstructorExpressionAST analyzeSemanticExpression
+#  ?let @lstring inUsefulnessCallerEntityName
+#  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+#  ?inferenceType: let @unifiedTypeMapEntry inType
+#  ?let @analysisContext unused inAnalysisContext
+#                                ?!@unifiedTypeMap ioTypeMap
+#  ?!@localVarManager unused ioVariableMap
+#  !@semanticExpressionForGeneration outExpression
+#{
+#  var type = inType
+#  if self.mTypeName.string != "" then
+#    type = [ioTypeMap searchKey !self.mTypeName]
+#  end
+#  if [type isNull] then
+#    error self.mTypeName : "cannot infer type" : outExpression
+#  else
+#  #--- Check type accepts default constructor
+#    if not [type definition].mIsConcrete then
+#      error self.mTypeName: "an abstract class does not support the default constructor"
+#    elsif [type definition].mDefaultConstructorName == "" then
+#      error self.mTypeName: "this class does not support the default constructor"
+#    end
+#  #---
+#    let usefulnessName = typeNameForUsefulEntitiesGraph (!.new {![type definition].mTypeName.string !self.mTypeName})
+#    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+#  #---
+#    outExpression = @defaultConstructorExpressionForGeneration.new {
+#      !type
+#      !self.mTypeName.location
+#    }
+#  end
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION

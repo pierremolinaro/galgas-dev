@@ -9,90 +9,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Overriding extension method '@assignmentInstructionAST analyzeSemanticInstruction'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void cPtr_assignmentInstructionAST::method_analyzeSemanticInstruction (const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                       GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                       const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                       GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                       GALGAS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
-                                                                       GALGAS_localVarManager & ioArgument_ioVariableMap,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapEntry var_targetType_6025 ;
-  enumGalgasBool test_0 = kBoolTrue ;
-  if (kBoolTrue == test_0) {
-    const GALGAS_assignmentInstructionAST temp_1 = this ;
-    test_0 = GALGAS_bool (kIsEqual, temp_1.readProperty_mOptionalProperty ().readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-    if (kBoolTrue == test_0) {
-      {
-      const GALGAS_assignmentInstructionAST temp_2 = this ;
-      GALGAS_string joker_6173 ; // Joker input parameter
-      GALGAS_string joker_6182 ; // Joker input parameter
-      extensionSetter_neutralAccess (ioArgument_ioVariableMap, temp_2.readProperty_mTargetVariableName (), var_targetType_6025, joker_6173, joker_6182, inCompiler COMMA_SOURCE_FILE ("instruction-assignment.galgas", 166)) ;
-      }
-    }
-  }
-  if (kBoolFalse == test_0) {
-    {
-    const GALGAS_assignmentInstructionAST temp_3 = this ;
-    GALGAS_string joker_6289 ; // Joker input parameter
-    GALGAS_string joker_6298 ; // Joker input parameter
-    extensionSetter_neutralAccess (ioArgument_ioVariableMap, temp_3.readProperty_mTargetVariableName (), var_targetType_6025, joker_6289, joker_6298, inCompiler COMMA_SOURCE_FILE ("instruction-assignment.galgas", 173)) ;
-    }
-    GALGAS_propertyMap var_propertyMap_6355 = extensionGetter_definition (var_targetType_6025, inCompiler COMMA_SOURCE_FILE ("instruction-assignment.galgas", 180)).readProperty_mPropertyMap () ;
-    GALGAS_AccessControl var_accessControl_6462 ;
-    GALGAS_bool var_isConstant_6481 ;
-    const GALGAS_assignmentInstructionAST temp_4 = this ;
-    var_propertyMap_6355.method_searchKey (temp_4.readProperty_mOptionalProperty (), var_accessControl_6462, var_isConstant_6481, var_targetType_6025, inCompiler COMMA_SOURCE_FILE ("instruction-assignment.galgas", 181)) ;
-    const GALGAS_assignmentInstructionAST temp_5 = this ;
-    extensionMethod_checkSetAccess (var_accessControl_6462, constinArgument_inAnalysisContext.readProperty_selfType (), temp_5.readProperty_mOptionalProperty ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("instruction-assignment.galgas", 182)) ;
-    enumGalgasBool test_6 = kBoolTrue ;
-    if (kBoolTrue == test_6) {
-      test_6 = var_isConstant_6481.boolEnum () ;
-      if (kBoolTrue == test_6) {
-        const GALGAS_assignmentInstructionAST temp_7 = this ;
-        TC_Array <C_FixItDescription> fixItArray8 ;
-        inCompiler->emitSemanticError (temp_7.readProperty_mOptionalProperty ().readProperty_location (), GALGAS_string ("a constant property cannot be modified"), fixItArray8  COMMA_SOURCE_FILE ("instruction-assignment.galgas", 194)) ;
-      }
-    }
-  }
-  GALGAS_semanticExpressionForGeneration var_expression_7383 ;
-  const GALGAS_assignmentInstructionAST temp_9 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_9.readProperty_mSourceExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_targetType_6025, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_7383, inCompiler COMMA_SOURCE_FILE ("instruction-assignment.galgas", 198)) ;
-  {
-  const GALGAS_assignmentInstructionAST temp_10 = this ;
-  routine_checkAssignmentTypeWithImplicitGetterCall (var_targetType_6025, var_expression_7383.readProperty_mResultType (), temp_10.readProperty_mInstructionLocation (), var_expression_7383, inCompiler  COMMA_SOURCE_FILE ("instruction-assignment.galgas", 208)) ;
-  }
-  GALGAS_string var_targetVariableCppName_7620 ;
-  GALGAS_string var_nameForCheckingFormalParameterUsing_7656 ;
-  enumGalgasBool test_11 = kBoolTrue ;
-  if (kBoolTrue == test_11) {
-    const GALGAS_assignmentInstructionAST temp_12 = this ;
-    test_11 = GALGAS_bool (kIsEqual, temp_12.readProperty_mOptionalProperty ().readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-    if (kBoolTrue == test_11) {
-      {
-      const GALGAS_assignmentInstructionAST temp_13 = this ;
-      GALGAS_unifiedTypeMapEntry joker_7818 ; // Joker input parameter
-      extensionSetter_searchForWriteAccess (ioArgument_ioVariableMap, temp_13.readProperty_mTargetVariableName (), joker_7818, var_targetVariableCppName_7620, var_nameForCheckingFormalParameterUsing_7656, inCompiler COMMA_SOURCE_FILE ("instruction-assignment.galgas", 218)) ;
-      }
-    }
-  }
-  if (kBoolFalse == test_11) {
-    {
-    const GALGAS_assignmentInstructionAST temp_14 = this ;
-    GALGAS_unifiedTypeMapEntry joker_7990 ; // Joker input parameter
-    extensionSetter_searchForReadWriteAccess (ioArgument_ioVariableMap, temp_14.readProperty_mTargetVariableName (), joker_7990, var_targetVariableCppName_7620, var_nameForCheckingFormalParameterUsing_7656, inCompiler COMMA_SOURCE_FILE ("instruction-assignment.galgas", 225)) ;
-    }
-  }
-  const GALGAS_assignmentInstructionAST temp_15 = this ;
-  const GALGAS_assignmentInstructionAST temp_16 = this ;
-  ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_assignmentInstructionForGeneration::constructor_new (var_targetType_6025, var_targetVariableCppName_7620, var_nameForCheckingFormalParameterUsing_7656, temp_15.readProperty_mOptionalProperty ().readProperty_string (), var_expression_7383, temp_16.readProperty_mTargetVariableName ().readProperty_location ()  COMMA_SOURCE_FILE ("instruction-assignment.galgas", 233))  COMMA_SOURCE_FILE ("instruction-assignment.galgas", 233)) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@selfPropertyAssignmentInstructionAST analyzeSemanticInstruction'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -7597,4 +7513,82 @@ void cPtr_parseLoopInstructionForGeneration::method_generateInstruction (GALGAS_
   routine_generateInstructionList (ioArgument_ioInclusionSet, function_syntaxSignatureOfInstructionList (GALGAS_string ("parse"), temp_3.readProperty_mInstructionList (), inCompiler COMMA_SOURCE_FILE ("instruction-parse-loop.galgas", 255)), ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, constinArgument_inGenerateSyntaxDirectedTranslationString, ioArgument_ioGeneratedCode, inCompiler  COMMA_SOURCE_FILE ("instruction-parse-loop.galgas", 253)) ;
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-parse-loop.galgas", 261)).add_operation (GALGAS_string ("->resetTemplateString () ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-parse-loop.galgas", 261)), inCompiler  COMMA_SOURCE_FILE ("instruction-parse-loop.galgas", 261)) ;
+}
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@parseRewindInstruction transformInstruction'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_parseRewindInstruction::method_transformInstruction (GALGAS_terminalSymbolsMapForGrammarAnalysis & ioArgument_ioActuallyUsedTerminalSymbolMap,
+                                                               const GALGAS_nonTerminalSymbolMapForGrammarAnalysis constinArgument_inNonTerminalSymbolMap,
+                                                               GALGAS_uint & ioArgument_ioAddedNonTerminalIndex,
+                                                               GALGAS_syntaxInstructionListForGrammarAnalysis & ioArgument_ioSyntaxInstructionList,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_syntaxInstructionList var_syntaxInstructionList_3655 ;
+  const GALGAS_parseRewindInstruction temp_0 = this ;
+  GALGAS_location joker_3677 ; // Joker input parameter
+  temp_0.readProperty_mParseRewindBranchList ().method_first (var_syntaxInstructionList_3655, joker_3677, inCompiler COMMA_SOURCE_FILE ("instruction-parse-rewind.galgas", 88)) ;
+  {
+  routine_transformInstructionList (var_syntaxInstructionList_3655, ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, ioArgument_ioSyntaxInstructionList, inCompiler  COMMA_SOURCE_FILE ("instruction-parse-rewind.galgas", 90)) ;
+  }
+}
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@parseRewindInstruction analyzeSyntaxInstruction'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_parseRewindInstruction::method_analyzeSyntaxInstruction (const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                   GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                   const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                   GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                   const GALGAS_bool constinArgument_inHasTranslateFeature,
+                                                                   const GALGAS_terminalMap constinArgument_inTerminalMap,
+                                                                   const GALGAS_string constinArgument_inLexiqueName,
+                                                                   const GALGAS_nonterminalMap constinArgument_inNonterminalMap,
+                                                                   const GALGAS_string constinArgument_inComponentName,
+                                                                   const GALGAS_stringset constinArgument_inIndexNameSet,
+                                                                   GALGAS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
+                                                                   GALGAS_localVarManager & ioArgument_ioVariableMap,
+                                                                   GALGAS_uint & ioArgument_ioSelectMethodCount,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_listOfSemanticInstructionListForGeneration var_listOfSemanticInstructionListForGeneration_4814 = GALGAS_listOfSemanticInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("instruction-parse-rewind.galgas", 119)) ;
+  GALGAS_uint var_referenceSelectMethodCount_4918 = ioArgument_ioSelectMethodCount ;
+  const GALGAS_parseRewindInstruction temp_0 = this ;
+  cEnumerator_listOfSyntaxInstructionList enumerator_4997 (temp_0.readProperty_mParseRewindBranchList (), kENUMERATION_UP) ;
+  while (enumerator_4997.hasCurrentObject ()) {
+    ioArgument_ioSelectMethodCount = var_referenceSelectMethodCount_4918 ;
+    GALGAS_semanticInstructionListForGeneration var_instructionList_5113 = GALGAS_semanticInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("instruction-parse-rewind.galgas", 123)) ;
+    cEnumerator_syntaxInstructionList enumerator_5181 (enumerator_4997.current_mSyntaxInstructionList (HERE), kENUMERATION_UP) ;
+    while (enumerator_5181.hasCurrentObject ()) {
+      callExtensionMethod_analyzeSyntaxInstruction ((cPtr_syntaxInstructionAST *) enumerator_5181.current_mInstruction (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, constinArgument_inHasTranslateFeature, constinArgument_inTerminalMap, constinArgument_inLexiqueName, constinArgument_inNonterminalMap, constinArgument_inComponentName, constinArgument_inIndexNameSet, var_instructionList_5113, ioArgument_ioVariableMap, ioArgument_ioSelectMethodCount, inCompiler COMMA_SOURCE_FILE ("instruction-parse-rewind.galgas", 125)) ;
+      enumerator_5181.gotoNextObject () ;
+    }
+    var_listOfSemanticInstructionListForGeneration_4814.addAssign_operation (var_instructionList_5113, enumerator_4997.current_mEndOf_5F_instructions (HERE)  COMMA_SOURCE_FILE ("instruction-parse-rewind.galgas", 141)) ;
+    enumerator_4997.gotoNextObject () ;
+  }
+  GALGAS_listOfSemanticInstructionListForGeneration var_tempListOfBranches_5818 = var_listOfSemanticInstructionListForGeneration_4814 ;
+  GALGAS_semanticInstructionListForGeneration var_instructionList_5920 ;
+  {
+  GALGAS_location joker_5936 ; // Joker input parameter
+  var_tempListOfBranches_5818.setter_popFirst (var_instructionList_5920, joker_5936, inCompiler COMMA_SOURCE_FILE ("instruction-parse-rewind.galgas", 145)) ;
+  }
+  GALGAS_semanticInstructionListForGeneration var_referenceSignature_5984 = function_syntaxSignatureOfInstructionList (GALGAS_string ("parse"), var_instructionList_5920, inCompiler COMMA_SOURCE_FILE ("instruction-parse-rewind.galgas", 146)) ;
+  GALGAS_bool var_ok_6078 = GALGAS_bool (true) ;
+  cEnumerator_listOfSemanticInstructionListForGeneration enumerator_6112 (var_tempListOfBranches_5818, kENUMERATION_UP) ;
+  bool bool_1 = var_ok_6078.isValidAndTrue () ;
+  if (enumerator_6112.hasCurrentObject () && bool_1) {
+    while (enumerator_6112.hasCurrentObject () && bool_1) {
+      var_ok_6078 = function_compareSyntaxSignature (var_referenceSignature_5984, function_syntaxSignatureOfInstructionList (GALGAS_string ("parse"), enumerator_6112.current_mInstructionList (HERE), inCompiler COMMA_SOURCE_FILE ("instruction-parse-rewind.galgas", 151)), enumerator_6112.current_mEndOfInstructionList (HERE), inCompiler COMMA_SOURCE_FILE ("instruction-parse-rewind.galgas", 149)) ;
+      enumerator_6112.gotoNextObject () ;
+      if (enumerator_6112.hasCurrentObject ()) {
+        bool_1 = var_ok_6078.isValidAndTrue () ;
+      }
+    }
+  }
+  const GALGAS_parseRewindInstruction temp_2 = this ;
+  ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_parseRewindInstructionForGeneration::constructor_new (temp_2.readProperty_mInstructionLocation (), var_listOfSemanticInstructionListForGeneration_4814  COMMA_SOURCE_FILE ("instruction-parse-rewind.galgas", 156))  COMMA_SOURCE_FILE ("instruction-parse-rewind.galgas", 156)) ;
 }

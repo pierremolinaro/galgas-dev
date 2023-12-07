@@ -102,9 +102,9 @@ override getter @structDeclarationAST keyRepresentation ->@string result {
 #   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func %once selectorFeatureForNewConstructor -> @string {
-  result = "selector"
-}
+#private func %once selectorFeatureForNewConstructor -> @string {
+#  result = "selector"
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
