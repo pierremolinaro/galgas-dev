@@ -105,9 +105,9 @@ style commentStyle -> "Comments"
 # keywords can be written in lower or upper case
 # for identifiers, case is significant
 
-$identifier$ ! tokenString error message "an identifier"
+$identifier$ ! tokenString %errorMessage "an identifier"
 
-list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
+list galgasKeyWordList style keywordsStyle %errorMessage "the '%K' keyword" {
   "abstract",
   "after",
   "array",
@@ -145,7 +145,6 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "if",
   "in",
   "indexing",
-  "insert",
   "is",
   "label",
   "let",
@@ -155,7 +154,6 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "log",
   "loop",
   "map",
-  "message",
   "method",
   "mod",
   "mutating",
@@ -172,7 +170,6 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "proc",
   "project",
   "refclass",
-  "remove",
   "replace",
   "repeat",
   "rewind",
@@ -195,7 +192,6 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "typealias",
   "unused",
   "var",
-  "valueclass",
   "warning",
   "while",
   "with"
@@ -213,12 +209,12 @@ rule isUnicodeLetter {
 #------------------------------- Integer, floating Point Constant ------------------
 @double floatValue
 @bigint bigintValue
-$double.xxx$ !floatValue !tokenString  style floatStyle error message "a float number"
-$literalInt$ !bigintValue  style bigintStyle error message "a big integer number"
+$double.xxx$ !floatValue !tokenString  style floatStyle %errorMessage "a float number"
+$literalInt$ !bigintValue  style bigintStyle %errorMessage "a big integer number"
 
-message floatNumberConversionError : "invalid float number"
-message internalError : "internal error"
-message hexDigitError : "0x should be followed by a hexadecimal digit"
+%errorMessage floatNumberConversionError : "invalid float number"
+%errorMessage internalError : "internal error"
+%errorMessage hexDigitError : "0x should be followed by a hexadecimal digit"
 
 rule "0x" {
   repeat
@@ -264,9 +260,9 @@ rule '0'->'9' {
 
 
 #------------------------------- Floating point Number ------------------
-$.$  style delimitersStyle error message "the '.' delimitor"
-$...$  style delimitersStyle error message "the '...' delimitor"
-$..<$  style delimitersStyle error message "the '..<' delimitor"
+$.$  style delimitersStyle %errorMessage "the '.' delimitor"
+$...$  style delimitersStyle %errorMessage "the '...' delimitor"
+$..<$  style delimitersStyle %errorMessage "the '..<' delimitor"
 
 #--- Floating Point constant begining with a dot
 rule '.' {
@@ -297,9 +293,9 @@ rule '.' {
 
 # -------------------------- Type Name -----------------------------
 
-$@type$ ! tokenString  style typeNameStyle error message "a type name (@...)"
+$@type$ ! tokenString  style typeNameStyle %errorMessage "a type name (@...)"
 
-message incorrectTypeNameError : "in a type name, a letter, a digit or the underscore character should follow the '@' character"
+%errorMessage incorrectTypeNameError : "in a type name, a letter, a digit or the underscore character should follow the '@' character"
 
 rule '@' {
   select
@@ -324,11 +320,13 @@ rule '@' {
 
 # -------------------------- Attribute -----------------------------
 
-message attributeError : "in an attribute name, a letter or a digit should follow the '%' character"
+%errorMessage attributeError : "in an attribute name, a letter or a digit should follow the '%' character"
 
-message undefinedAttribute : "undefined attribute"
+%errorMessage undefinedAttribute : "undefined attribute"
 
-list attributeKeyWordList style attributeStyle error message "the '%K' keyword" {
+list attributeKeyWordList style attributeStyle %errorMessage "the '%K' keyword" {
+  "app-link" -> $%app-link$,
+  "app-source" -> $%app-source$,
   "makefile-macosx" -> $%makefile-macosx$,
   "makefile-unix" -> $%makefile-unix$,
   "makefile-x86linux32-on-macosx" -> $%makefile-x86linux32-on-macosx$,
@@ -344,8 +342,6 @@ list attributeKeyWordList style attributeStyle error message "the '%K' keyword" 
   "macCodeSign" -> $%macCodeSign$,
   "libpmAtPath" -> $%libpmAtPath$,
   "tool-source" -> $%tool-source$,
-  "app-source" -> $%app-source$,
-  "app-link" -> $%app-link$,
   "translate" -> $%translate$,
   "once" -> $%once$,
   "usefull" -> $%usefull$,
@@ -353,7 +349,17 @@ list attributeKeyWordList style attributeStyle error message "the '%K' keyword" 
   "nonAtomicSelection" -> $%nonAtomicSelection$,
   "templateEndMark" -> $%templateEndMark$,
   "preserved" -> $%preserved$,
-  "selector" -> $%selector$
+  "selector" -> $%selector$,
+  "insertSetter" -> $%insertSetter$,
+  "searchMethod" -> $%searchMethod$,
+  "removeSetter" -> $%removeSetter$,
+  "errorMessage" -> $%errorMessage$,
+  "insertOrReplaceSetter" -> $%insertOrReplaceSetter$,
+  "remove" -> $%remove$,
+  "replaceBy" -> $%replaceBy$,
+  "insertAfter" -> $%insertAfter$,
+  "insertBefore" -> $%insertBefore$,
+  "useGrammar" -> $%useGrammar$
 }
 
 rule '%' {
@@ -370,21 +376,15 @@ rule '%' {
 }
 
 #--------------------------------- Character constant ------------------------------------
-$'char'$ ! charValue  style characterStyle error message "a character constant"
+$'char'$ ! charValue  style characterStyle %errorMessage "a character constant"
 
-message incorrectCharConstant : "incorrect literal character"
+%errorMessage incorrectCharConstant : "incorrect literal character"
 
-#message ASCIIcodeTooLargeError : "ASCII code > 255"
+%errorMessage invalideUnicodeDefinition4 : "\\u should be followed by exactly four hexadecimal digits"
 
-message invalideUnicodeDefinition4 : "\\u should be followed by exactly four hexadecimal digits"
+%errorMessage invalideUnicodeDefinition8 : "\\U should be followed by exactly eight hexadecimal digits"
 
-message invalideUnicodeDefinition8 : "\\U should be followed by exactly eight hexadecimal digits"
-
-message unassignedUnicodeValue : "this value does not correspond to an assigned Unicode point"
-
-#message incorrectHTMLescapeSequence : "Invalid HTML sequence, should be '&...;'"
-#
-#message unknownHTMLescapeSequence : "Invalid &...; HTML sequence"
+%errorMessage unassignedUnicodeValue : "this value does not correspond to an assigned Unicode point"
 
 rule '\'' {
   select
@@ -505,12 +505,11 @@ rule '\'' {
 }
 
 #----------------------- Grammar terminal symbol ---------------------------
-$\$terminal\$$ ! tokenString  style terminalStyle error message "a terminal symbol ($...$)"
-#$separator-string$ style terminalStyle error message "a separator string terminal symbol ($$)"
+$\$terminal\$$ ! tokenString  style terminalStyle %errorMessage "a terminal symbol ($...$)"
 
-message incorrect_terminal_start : "incorrect terminal start"
+%errorMessage incorrect_terminal_start : "incorrect terminal start"
 
-message incorrect_terminal_end : "terminal does not end with '$'"
+%errorMessage incorrect_terminal_end : "terminal does not end with '$'"
 
 rule '$' {
   select
@@ -556,8 +555,8 @@ rule '$' {
 }
 
 # ------------------------------------ Comment ----------------------------
-$comment$  style commentStyle %nonAtomicSelection error message "a comment"
-$commentMark$  style commentStyle %nonAtomicSelection error message "a comment"
+$comment$  style commentStyle %nonAtomicSelection %errorMessage "a comment"
+$commentMark$  style commentStyle %nonAtomicSelection %errorMessage "a comment"
 
 rule '#' {
   select
@@ -590,7 +589,7 @@ rule "//" {
 }
 
 # ----------------------------- Delimitors ---------------------------------------
-list galgasDelimitorsList style delimitersStyle error message "the '%K' delimitor" {
+list galgasDelimitorsList style delimitersStyle %errorMessage "the '%K' delimitor" {
   "*",    ",",   "+",  "&+", "&-", "&*", "&/",
   ">",    ";",   ":",  ":>",
   "-",    "(",   ")",  "->",
@@ -606,10 +605,10 @@ list galgasDelimitorsList style delimitersStyle error message "the '%K' delimito
 rule list galgasDelimitorsList
 
 # --------- Special formal arguments, actual parameters --------------------------
-$?$ ! tokenString  style selectorStyle error message "the '\?' or '\?selector:' delimitor"
-$?!$ ! tokenString  style selectorStyle error message "the '\?!' or '\?!selector:' delimitor"
-$!$ ! tokenString  style selectorStyle error message "the '!' or '!selector:' delimitor"
-$!?$ ! tokenString  style selectorStyle error message "the '!\?' or '!\?selector:' delimitor"
+$?$ ! tokenString  style selectorStyle %errorMessage "the '\?' or '\?selector:' delimitor"
+$?!$ ! tokenString  style selectorStyle %errorMessage "the '\?!' or '\?!selector:' delimitor"
+$!$ ! tokenString  style selectorStyle %errorMessage "the '!' or '!selector:' delimitor"
+$!?$ ! tokenString  style selectorStyle %errorMessage "the '!\?' or '!\?selector:' delimitor"
 
 rule '?' {
   tag onlyInterrogationMark
@@ -688,10 +687,10 @@ rule '!' {
 }
 
 # --------- Special delimitors / non terminal symbol --------------------------
-$<$  style delimitersStyle error message "the '<' delimitor"
-$<=$  style delimitersStyle error message "the '<=' delimitor"
-$<<$  style delimitersStyle error message "the '<<' delimitor"
-$<non_terminal>$ ! tokenString  style nonTerminalStyle error message "a non terminal symbol <...>"
+$<$  style delimitersStyle %errorMessage "the '<' delimitor"
+$<=$  style delimitersStyle %errorMessage "the '<=' delimitor"
+$<<$  style delimitersStyle %errorMessage "the '<<' delimitor"
+$<non_terminal>$ ! tokenString  style nonTerminalStyle %errorMessage "a non terminal symbol <...>"
 
 rule '<' {
   tag onlyInfDelimiter
@@ -717,9 +716,9 @@ rule '<' {
 }
 
 # -------------------- Characters string --------------------------------------
-$"string"$ ! tokenString  style stringStyle %nonAtomicSelection error message "a character string constant \"...\""
+$"string"$ ! tokenString  style stringStyle %nonAtomicSelection %errorMessage "a character string constant \"...\""
 
-message incorrectStringEnd : "string does not end with '\"'"
+%errorMessage incorrectStringEnd : "string does not end with '\"'"
 
 #message obsoleteStringConstruction : "\\ followed by digits is obsolete: now, use \\u.... or \\U........"
 

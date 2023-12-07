@@ -167,7 +167,7 @@ override method @optionExpressionAST analyzeSemanticExpression
     error self.mOptionEntryName
     : "the '" + self.mOptionComponentName + "' option component does not define the '" + self.mOptionEntryName + "' option"
     : outExpression
-    fixit { replace s }
+    fixit { %replaceBy s }
   end
 }
 

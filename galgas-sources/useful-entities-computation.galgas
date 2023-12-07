@@ -16,14 +16,14 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graph @usefulEntitiesGraph (@lstringlist) {
-  insert addNode error message "the '%K' entity is already declared at %L"
+  %insertSetter addNode %errorMessage "the '%K' entity is already declared at %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @uselessEntityLocationMap {
   public let @location mLocation
-  insert insertKey error message "--- %K INTERNAL ERROR ---"
+  %insertSetter insertKey %errorMessage "--- %K INTERNAL ERROR ---"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

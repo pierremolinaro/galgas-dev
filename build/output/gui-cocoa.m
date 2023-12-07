@@ -434,13 +434,13 @@ static const UInt16 * gPopUpData_0_galgasScanner [34] = {
 
 - (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {
   static NSString * kTextMacroContent [8] = {
-    @"refclass @aClassName : @superClassName {\n  public let @aType mAnAttribute\n}\n",
+    @"refclass @aClassName : @superClassName {\n  public let @aType mProperty\n}\n",
     @"enum @aType {\n  constant1, constant2\n}\n",
-    @"list @type {\n  public let @aType mAnAttribute\n}\n",
-    @"list @type {\n  public let @aType mAnAttribute\n}\nlistmap @myListMap (@aList)\n",
-    @"map @type {\n  public let @aType mAnAttribute\n  insert insertKey error message \"the '%K' key is already declared in %L\"\n  search searchKey error message \"there is no '%K' key\"\n}\n",
+    @"list @type {\n  public let @aType mProperty\n}\n",
+    @"list @type {\n  public let @aType mAProperty\n}\nlistmap @myListMap (@aList)\n",
+    @"map @type {\n  public let @aType mProperty\n  %insertSetter insertKey %errorMessage \"the '%K' key is already declared in %L\"\n  %searchMethod searchKey %errorMessage \"there is no '%K' key\"\n}\n",
     @"sortedlist @type {\n  public let @string mFirstAttribute\n  public let @bool mSecondAttribute\n}{\n  mFirstAttribute >, mSecondAttribute <\n}\n",
-    @"struct @type {\n  public let @aType mAnAttribute\n}\n",
+    @"struct @type {\n  public let @aType mProperty\n}\n",
     NULL
   } ;
   return kTextMacroContent [inIndex] ;

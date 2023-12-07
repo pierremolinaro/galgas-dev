@@ -4,8 +4,8 @@ before {
 
 #--- 'when' clauses
 case . "%!PROJECT_NAME%"
-message "a source text file with the .%!PROJECT_NAME% extension"
-grammar %!PROJECT_NAME%_grammar
+\%errorMessage "a source text file with the .%!PROJECT_NAME% extension"
+\%useGrammar %!PROJECT_NAME%_grammar
 ?sourceFilePath:@lstring inSourceFile {
   grammar %!PROJECT_NAME%_grammar () in inSourceFile
 }

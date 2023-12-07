@@ -429,8 +429,8 @@ map @commandLineOptionMap { # the key is the option identifier
   public let @string mOptionString
   public let @string mComment
   public let @string mDefaultValue
-  insert insertKey error message "the '%K' command line option has been already declared in %L"
-  search searchKey error message "the '%K' command line option is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' command line option has been already declared in %L"
+  %searchMethod searchKey %errorMessage "the '%K' command line option is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

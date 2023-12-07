@@ -77,7 +77,7 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
         ?*
         ?let replacementGetter] then
       if (replacementGetter != "") && [option galgas_cli_options.errorObsoleteGetterCall value] then
-        error self.mGetterName : "obsolete getter" fixit { replace replacementGetter }
+        error self.mGetterName : "obsolete getter" fixit { %replaceBy replacementGetter }
       end
       if self.errorOnGetterCallInsteadOfPropertyRead
         && [[receiverType definition].mPropertyMap hasKey !self.mGetterName.string]
@@ -104,7 +104,7 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
           ]
           if mFormalSelector.string != mActualSelector.string then
             let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-            error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+            error mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
           end
           checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
           constructorEffectiveParameterList += !exp
@@ -122,7 +122,7 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
         if inAnalysisContext.mSemanticContext.galgas4
          && ([self.mActualArgumentList count] == 0)
          && [option galgas_cli_options.errorOnGetterCallWithNoArgument value] then
-          error self.mExpressionLocation : "getter with no argument, remove parenthesis" fixit { remove }
+          error self.mExpressionLocation : "getter with no argument, remove parenthesis" fixit { %remove }
         end
       end
   #--------------------------------------- The getter does not exist, it is a property ?
@@ -206,13 +206,13 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
             ]
             if mFormalSelector.string != mActualSelector.string then
               let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-              error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+              error mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
             end
             checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
             constructorEffectiveParameterList += !exp
           end
           if (obsoletedByGetter != "") && [option galgas_cli_options.errorObsoleteGetterCall value] then
-            error self.mGetterName : "obsolete getter" fixit { replace obsoletedByGetter }
+            error self.mGetterName : "obsolete getter" fixit { %replaceBy obsoletedByGetter }
           end
           outExpression = @getterCallExpressionForGeneration.new {
             !returnedType
@@ -233,7 +233,7 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
         error self.mGetterName
         : "the '@"+ [receiverType definition].mTypeName.string + "' type does not define the '" + self.mGetterName + "' getter "
         : outExpression
-        fixit { replace [[receiverType definition].mGetterMap keyList] }
+        fixit { %replaceBy [[receiverType definition].mGetterMap keyList] }
       end
     end
   }

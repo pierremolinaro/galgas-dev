@@ -4,8 +4,8 @@ before {
 }
 
 case . "dangling_else_solution"
-message "an '.dangling_else_solution' source file"
-grammar dangling_else_solution_grammar
+%errorMessage "an '.dangling_else_solution' source file"
+%useGrammar dangling_else_solution_grammar
 ?sourceFilePath:@lstring inSourceFile {
   grammar dangling_else_solution_grammar () in inSourceFile
 }

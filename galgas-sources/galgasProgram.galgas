@@ -63,8 +63,8 @@ before {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "galgas"
-message "a GALGAS 3 source file"
-grammar galgas3Grammar
+%errorMessage "a GALGAS 3 source file"
+%useGrammar galgas3Grammar
 ?sourceFilePath: @lstring inSourceFile {
 #--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
@@ -90,8 +90,8 @@ grammar galgas3Grammar
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "ggs"
-message "a GALGAS 4 source file"
-grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
+%errorMessage "a GALGAS 4 source file"
+%useGrammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 #--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
   let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !{!"ggsProject"}]
@@ -116,8 +116,8 @@ grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "galgasTemplate"
-message "a GALGAS Template source file"
-grammar templateGrammar
+%errorMessage "a GALGAS Template source file"
+%useGrammar templateGrammar
 ?sourceFilePath:@lstring inSourceFile {
   grammar templateGrammar (?*) in inSourceFile
 }
@@ -129,8 +129,8 @@ grammar templateGrammar
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "galgasProject"
-message "a GALGAS project source file"
-grammar galgas3ProjectGrammar
+%errorMessage "a GALGAS project source file"
+%useGrammar galgas3ProjectGrammar
 ?sourceFilePath:@lstring inProjectSourceFile {
   parseAndAnalyzeProject (!inProjectSourceFile !galgas4: false !"" )
 }
@@ -138,8 +138,8 @@ grammar galgas3ProjectGrammar
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "ggsproject"
-message "a GALGAS project source file"
-grammar galgas3ProjectGrammar
+%errorMessage "a GALGAS project source file"
+%useGrammar galgas3ProjectGrammar
 ?sourceFilePath: @lstring inProjectSourceFile {
   parseAndAnalyzeProject (!inProjectSourceFile !galgas4: true !"" )
 }

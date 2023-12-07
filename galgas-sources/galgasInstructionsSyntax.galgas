@@ -122,13 +122,13 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
     while
       $%once$
       if isOnce then
-        error .here : "duplicate attribute" fixit { remove }
+        error .here : "duplicate attribute" fixit { %remove }
       end
       isOnce = true
     while
       $%usefull$
       if isUsefull then
-        error .here : "duplicate attribute" fixit { remove }
+        error .here : "duplicate attribute" fixit { %remove }
       end
       isUsefull = true
     end
@@ -186,13 +186,13 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
     while
       $%once$
       if isOnce then
-        error .here : "duplicate attribute" fixit { remove }
+        error .here : "duplicate attribute" fixit { %remove }
       end
       isOnce = true
     while
       $%usefull$
       if isUsefull then
-        error .here : "duplicate attribute" fixit { remove }
+        error .here : "duplicate attribute" fixit { %remove }
       end
       isUsefull = true
     end
@@ -269,7 +269,7 @@ syntax galgas3InstructionsSyntax (galgasScanner) {
   rule <syntax_directed_translation_result> !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
     $?$ ?let selector
     if selector.string != "" then
-      error selector : "the selector should be '?'" fixit { replace "?" }
+      error selector : "the selector should be '?'" fixit { %replaceBy "?" }
     end
     select
       $*$
@@ -459,13 +459,13 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
     while
       $%once$
       if isOnce then
-        error .here : "duplicate attribute" fixit { remove }
+        error .here : "duplicate attribute" fixit { %remove }
       end
       isOnce = true
     while
       $%usefull$
       if isUsefull then
-        error .here : "duplicate attribute" fixit { remove }
+        error .here : "duplicate attribute" fixit { %remove }
       end
       isUsefull = true
     end
@@ -524,13 +524,13 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
     while
       $%once$
       if isOnce then
-        error .here : "duplicate attribute" fixit { remove }
+        error .here : "duplicate attribute" fixit { %remove }
       end
       isOnce = true
     while
       $%usefull$
       if isUsefull then
-        error .here : "duplicate attribute" fixit { remove }
+        error .here : "duplicate attribute" fixit { %remove }
       end
       isUsefull = true
     end
@@ -609,7 +609,7 @@ syntax galgas4InstructionsSyntax (galgasScanner) {
     $($
     $?$ ?let selector
     if selector.string != "" then
-      error selector : "the selector should be '?'" fixit { replace "?" }
+      error selector : "the selector should be '?'" fixit { %replaceBy "?" }
     end
     select
       $*$

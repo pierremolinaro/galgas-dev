@@ -41,25 +41,25 @@ syntax extension galgas3InstructionsSyntax {
       var hasFixItRemove = false
       repeat
       while
-        $remove$
+        $%remove$
         if hasFixItRemove then
-          warning .here : "duplicated action" fixit { remove }
+          warning .here : "duplicated action" fixit { %remove }
         else
           outFixitListAST += !.fixItRemove
           hasFixItRemove = true
         end
       while
-        $replace$
+        $%replaceBy$
         let errorLocation = @location.here
         <expression_ggs3> ?let @semanticExpressionAST expression
         outFixitListAST += !.fixItReplace {!exp:expression !errorLocation:errorLocation}
       while
-        $after$
+        $%insertAfter$
         let errorLocation = @location.here
         <expression_ggs3> ?let @semanticExpressionAST expression
         outFixitListAST += !.fixItInsertAfter {!exp:expression !errorLocation:errorLocation}
       while
-        $before$
+        $%insertBefore$
         let errorLocation = @location.here
         <expression_ggs3> ?let @semanticExpressionAST expression
         outFixitListAST += !.fixItInsertBefore {!exp:expression !errorLocation:errorLocation}
@@ -116,25 +116,25 @@ syntax extension galgas4InstructionsSyntax {
       var hasFixItRemove = false
       repeat
         select
-          $remove$
+          $%remove$
           if hasFixItRemove then
-            warning .here : "duplicated action" fixit { remove }
+            warning .here : "duplicated action" fixit { %remove }
           else
             outFixitListAST += !.fixItRemove
             hasFixItRemove = true
           end
         or
-          $replace$
+          $%replaceBy$
           let errorLocation = @location.here
           <expression> ?let @semanticExpressionAST expression
           outFixitListAST += !.fixItReplace {!exp:expression !errorLocation:errorLocation}
         or
-          $after$
+          $%insertAfter$
           let errorLocation = @location.here
           <expression> ?let @semanticExpressionAST expression
           outFixitListAST += !.fixItInsertAfter {!exp:expression !errorLocation:errorLocation}
         or
-          $before$
+          $%insertBefore$
           let errorLocation = @location.here
           <expression> ?let @semanticExpressionAST expression
           outFixitListAST += !.fixItInsertBefore {!exp:expression !errorLocation:errorLocation}

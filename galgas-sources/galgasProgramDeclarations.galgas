@@ -60,20 +60,20 @@ syntax galgas3ProgramDeclarations (galgasScanner) {
     $case$
     $.$
     $"string"$ ?let @lstring mSourceFileExtension
-    $message$
+    $%errorMessage$
     $"string"$ ?let @lstring mSourceFileHelp
   #--- Reference grammar
     let @lstring referenceGrammar
     select
       referenceGrammar = ["" nowhere]
     or
-      $grammar$
+      $%useGrammar$
       $identifier$ ?referenceGrammar
     end
   #--- Source file
     $?$ ?let selector
     if selector.string != "sourceFilePath" then
-      error selector : "the selector should be '?sourceFilePath:'" fixit { replace "?sourceFilePath:" }
+      error selector : "the selector should be '?sourceFilePath:'" fixit { %replaceBy "?sourceFilePath:" }
     end
     select
     or
@@ -160,20 +160,20 @@ syntax galgas4ProgramDeclarations (galgasScanner) {
     $case$
     $.$
     $"string"$ ?let @lstring mSourceFileExtension
-    $message$
+    $%errorMessage$
     $"string"$ ?let @lstring mSourceFileHelp
   #--- Reference grammar
     let @lstring referenceGrammar
     select
       referenceGrammar = ["" nowhere]
     or
-      $grammar$
+      $%useGrammar$
       $identifier$ ?referenceGrammar
     end
   #--- Source file
     $?$ ?let selector
     if selector.string != "sourceFilePath" then
-      error selector : "the selector should be '?sourceFilePath:'" fixit { replace "?sourceFilePath:" }
+      error selector : "the selector should be '?sourceFilePath:'" fixit { %replaceBy "?sourceFilePath:" }
     end
     select
     or

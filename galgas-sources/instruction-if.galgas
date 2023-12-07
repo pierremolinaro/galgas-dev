@@ -165,7 +165,7 @@ syntax extension galgas3InstructionsSyntax {
             $literalInt$ ?let repetitionCount
             $*$
             if selector.string != "" then
-              error selector : "the selector should be '?'"  fixit { replace "?" }
+              error selector : "the selector should be '?'"  fixit { %replaceBy "?" }
             end
             if repetitionCount.bigint == 0 then
               error repetitionCount : "the repetition count should be > 0"
@@ -317,7 +317,7 @@ syntax extension galgas4InstructionsSyntax {
             $literalInt$ ?let repetitionCount
             $*$
             if selector.string != "" then
-              error selector : "the selector should be '?'"  fixit { replace "?" }
+              error selector : "the selector should be '?'"  fixit { %replaceBy "?" }
             end
             if repetitionCount.bigint == 0 then
               error repetitionCount : "the repetition count should be > 0"
@@ -636,7 +636,7 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
         ]
         if formalSelector.string != actualSelector.string then
           let @string s = "!" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
-          error actualSelector : "the selector should be '" + s + "'" fixit { replace s }
+          error actualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
         end
         checkAssignmentTypeWithImplicitGetterCall (!formalType !exp.mResultType !location !?exp)
         actualParameterList += !.actualOutput {!expression: exp}
@@ -644,7 +644,7 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
         if (actualTypeName.string != "") && ([formalType definition].mTypeName.string != actualTypeName.string) then
           error actualTypeName
            : "the '@" + [formalType definition].mTypeName.string + "' type name is required here"
-           fixit { replace "@" + [formalType definition].mTypeName.string }
+           fixit { %replaceBy "@" + [formalType definition].mTypeName.string }
         end
         let targetVariableCppName = "var_" + [constantName identifierRepresentation]
          + "_" + [constantName.location startLocationIndex]
@@ -657,13 +657,13 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
         actualParameterList += !.actualLetInput {!typeName: [formalType definition].mTypeName.string !constantName: targetVariableCppName}
         if formalSelector.string != actualSelector.string then
           let @string s = "?" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
-          error actualSelector : "the selector should be '" + s + "'" fixit { replace s }
+          error actualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
         end
       case actualVarInput (@lstring actualTypeName @lstring variableName) :
          if (actualTypeName.string != "") && ([formalType definition].mTypeName.string != actualTypeName.string) then
           error actualTypeName
            : "the '@" + [formalType definition].mTypeName.string + "' type name is required here"
-           fixit { replace "@" + [formalType definition].mTypeName.string }
+           fixit { %replaceBy "@" + [formalType definition].mTypeName.string }
         end
         let targetVariableCppName = "var_" + [variableName identifierRepresentation]
          + "_" + [variableName.location startLocationIndex]
@@ -677,14 +677,14 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
         actualParameterList += !.actualVarInput {!typeName: [formalType definition].mTypeName.string !variableName: targetVariableCppName}
         if formalSelector.string != actualSelector.string then
           let @string s = "?" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
-          error actualSelector : "the selector should be '" + s + "'" fixit { replace s }
+          error actualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
         end
       case actualInputJoker (checkSelector location idx) :
         let targetVariableCppName = "var_unused_" + idx + "_" + [location startLocationIndex]
         actualParameterList += !.actualVarInput {!typeName: [formalType definition].mTypeName.string !variableName: targetVariableCppName}
         if checkSelector && (formalSelector.string != actualSelector.string) then
           let @string s = "?" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
-          error actualSelector : "the selector should be '" + s + "'" fixit { replace s }
+          error actualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
         end
       end
     end

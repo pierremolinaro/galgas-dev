@@ -152,7 +152,7 @@ override method @extensionSetterAST enterDeclarationInGraph
       !{}
     ]
   end
-  with self.mTypeName in !?ioExtensionSetterMapForBuildingContext error message searchKey  do
+  with self.mTypeName in !?ioExtensionSetterMapForBuildingContext %errorMessage searchKey  do
     [!?mExtensionSetterMapForType insertKey
       !self.mExtensionSetterName
       !self.mExtensionSetterFormalParameterList

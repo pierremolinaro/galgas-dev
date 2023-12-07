@@ -364,8 +364,8 @@ list @lexicalSentValueList {
 
 map @terminalMap {
   public let @lexicalSentValueList mSentAttributeList
-  insert insertKey error message "the '%K' terminal has been already declared in %L"
-  search searchKey error message "the '%K' terminal is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' terminal has been already declared in %L"
+  %searchMethod searchKey %errorMessage "the '%K' terminal is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -374,8 +374,8 @@ map @terminalMap {
 
 map @lexicalTypeMap {
   public let @lexicalTypeEnum mLexicalType
-  insert insertKey error message "the '@%K' lexical type is already declared in %L"
-  search searchKey error message "there is no '@%K' lexical type"
+  %insertSetter insertKey %errorMessage "the '@%K' lexical type is already declared in %L"
+  %searchMethod searchKey %errorMessage "there is no '@%K' lexical type"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -398,8 +398,8 @@ func %once buildLexicalTypeMap
 
 map @lexicalAttributeMap {
   public let @lexicalTypeEnum mLexicalType
-  insert insertKey error message "the '%K' lexical attribute has been already declared in %L"
-  search searchKey error message "the '%K' lexical attribute is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' lexical attribute has been already declared in %L"
+  %searchMethod searchKey %errorMessage "the '%K' lexical attribute is not declared"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

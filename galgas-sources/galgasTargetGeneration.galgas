@@ -390,7 +390,7 @@ proc updateGalgasTargets
       for (key) in availableGenerationFeatures do
         s += !"%" + key
       end
-      error value: "unknown '" + value + "' feature" fixit { replace s }
+      error value: "unknown '" + value + "' feature" fixit { %replaceBy s }
     end
   end
 #--- Codesign without selecting OSX ?

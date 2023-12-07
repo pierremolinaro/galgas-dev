@@ -96,7 +96,7 @@ syntax extension templateSyntax {
       let startLocation = @location.here
       $identifier$ ?let @lstring prefixString
       error [prefixString.location union !startLocation]
-      : "useless prefix" fixit { replace "" }
+      : "useless prefix" fixit { %replaceBy "" }
     end
     outEnumeratedObject = .explicit {!enumeration: enumeration !endOfProperties: endOfProperties}
   }
@@ -243,7 +243,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     if [option galgas_cli_options.errorAnomynousForInstructionEnumeratedObject value] then
       error remplacementRange
       : "anonymous 'for' enumerated object (due to '--error-anonymous-for-instruction' option)"
-      fixit { replace suggestion }
+      fixit { %replaceBy suggestion }
     end
   case explicit (@lstringlist enumeration @location errorLocation) :
     if [enumeration count] != [enumerationDescriptor count] then

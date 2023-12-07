@@ -8,10 +8,10 @@ lexique %!PROJECT_NAME%_lexique {
 
 style keywordsStyle -> "Keywords"
 
-$identifier$ ! tokenString error message "an identifier"
+$identifier$ ! tokenString \%errorMessage "an identifier"
 
 #--- This is the keyword list
-list keyWordList style keywordsStyle error message "the '\%K' keyword" {
+list keyWordList style keywordsStyle \%errorMessage "the '\%K' keyword" {
   "begin",
   "end"
 }
@@ -30,10 +30,10 @@ rule 'a'->'z' |  'A'->'Z' {
 
 style integerStyle -> "Integer Constants"
 @uint uint32value
-$integer$ !uint32value style integerStyle error message "a 32-bit unsigned decimal number"
+$integer$ !uint32value style integerStyle \%errorMessage "a 32-bit unsigned decimal number"
 
-message decimalNumberTooLarge : "decimal number too large"
-message internalError : "internal error"
+\%errorMessage decimalNumberTooLarge : "decimal number too large"
+\%errorMessage internalError : "internal error"
 
 rule '0'->'9' {
   enterCharacterIntoString (!?tokenString !*)
@@ -51,10 +51,10 @@ rule '0'->'9' {
 #-----------------------------------------------------------------------------------------------------------------------
 
 style stringStyle -> "String Constants"
-$"string"$ ! tokenString style stringStyle \%nonAtomicSelection error message "a character string constant \"...\""
+$"string"$ ! tokenString style stringStyle \%nonAtomicSelection \%errorMessage "a character string constant \"...\""
 
 
-message incorrectStringEnd : "string does not end with '\"'"
+\%errorMessage incorrectStringEnd : "string does not end with '\"'"
 
 rule '"' {
   repeat
@@ -74,7 +74,7 @@ rule '"' {
 #-----------------------------------------------------------------------------------------------------------------------
 
 style delimitersStyle -> "Delimiters"
-list delimitorsList style delimitersStyle error message "the '\%K' delimitor" {
+list delimitorsList style delimitersStyle \%errorMessage "the '\%K' delimitor" {
   ":",    ",",    ";",   "!",  "{",  "}", "->", "@", "*", "-"
 }
 
@@ -85,7 +85,7 @@ rule list delimitorsList
 #-----------------------------------------------------------------------------------------------------------------------
 
 style commentStyle -> "Comments"
-$comment$ style commentStyle \%nonAtomicSelection error message "a comment"
+$comment$ style commentStyle \%nonAtomicSelection \%errorMessage "a comment"
 rule '#' {
   repeat
   while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD' :

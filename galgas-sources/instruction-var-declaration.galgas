@@ -37,7 +37,7 @@ syntax extension galgas3InstructionsSyntax {
     outInstruction = @localVariableDeclarationNoAssignmentAST.new {!typeName.location !typeName !variableName}
     if [option galgas_cli_options.errorOldStyleLocalVarDeclaration value] then
       error typeName : "old style local variable declaration (due to '--error-old-style-local-var-declaration' option)"
-      fixit { replace "var @" + typeName }
+      fixit { %replaceBy "var @" + typeName }
     end
   }
 
@@ -88,7 +88,7 @@ syntax extension galgas3InstructionsSyntax {
     }
     if [option galgas_cli_options.errorOldStyleLocalVarDeclaration value] then
       error typeName : "old style local variable declaration (due to '--error-old-style-local-var-declaration' option)"
-      fixit { replace "var @" + typeName }
+      fixit { %replaceBy "var @" + typeName }
     end
   }
 

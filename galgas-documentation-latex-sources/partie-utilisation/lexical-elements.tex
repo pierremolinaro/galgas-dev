@@ -47,7 +47,7 @@ var переменная = 7
 
 Les mots réservés de GALGAS sont les identificateurs listés dans le \refTableauPage{mots-reserves}.
 
-\begin{table}[t]
+\begin{table}[ht]
   \centering
   \begin{tabular}{llllllll}
     \input{partie-utilisation/included-keyword-list.tex}
@@ -61,7 +61,7 @@ Les mots réservés de GALGAS sont les identificateurs listés dans le \refTable
 
 Les délimiteurs du langage GALGAS sont listés dans le \refTableauPage{delimiteurs}.
 
-\begin{table}[t]
+\begin{table}[ht]
   \centering
   \begin{tabular}{lllllllllllllllll}
     \input{partie-utilisation/included-delimiter-list.tex}
@@ -74,7 +74,7 @@ Les délimiteurs du langage GALGAS sont listés dans le \refTableauPage{delimite
 
 \sectionLabel{Les sélecteurs}{selecteursGALGAS}
 
-\begin{table}[t]
+\begin{table}[ht]
   \centering
   \begin{tabular}{llllllllllllll}
     \ggs=!=  & \ggs=!selecteur:=  & \ggs=!?=  & \ggs=!?selecteur:= & \ggs=?= & \ggs=?selecteur:= & \ggs=?!= & \ggs=?!selecteur:= \\
@@ -160,7 +160,7 @@ Le caractère « \texttt{\_} » peut être utilisé pour séparer les chiffres d
 
 Une constante littérale entière est typée~; son type est fixé par son suffixe (\refTableau{suffixeConstantesLiteralesEntieres}).
 
-\begin{table}[t]
+\begin{table}[ht]
   \centering
   \begin{tabular}{llllllllllllll}
     \textbf{Suffixe} & \textbf{Type} & \textbf{Exemples}\\
@@ -208,7 +208,7 @@ Un \emph{caractère littéral} est un caractère Unicode placé entre deux apost
 
 Plusieurs séquences d'échappements sont définies et listées dans le \refTableau{echappementConstantesLiteralesCaracteres}.
 
-\begin{table}[t]
+\begin{table}[ht]
   \centering
   \begin{tabular}{llllllllllllll}
     \textbf{Échappement} & \textbf{Caractère} & \textbf{Point de code}\\
@@ -240,7 +240,7 @@ Un \emph{chaîne de caractères littérale} est une séquence de caractères Uni
 
 Plusieurs séquences d'échappements sont définies et listées dans le \refTableau{echappementConstantesLiteralesChaine}.
 
-\begin{table}[t]
+\begin{table}[ht]
   \centering
   \begin{tabular}{llllllllllllll}
     \textbf{Échappement} & \textbf{Caractère} & \textbf{Point de code}\\
@@ -292,9 +292,15 @@ Un attribut~:
   \item est suivi par une ou plusieurs lettres Unicode, chiffres décimaux, «~\texttt{-}~» ou «~\texttt{\_}~».
 \end{itemize}
 
-Par exemple~:
-\begin{galgas}
- %once, %translate, %héhé-π
-\end{galgas}
+La liste des attributs est donnée dans le \refTableauPage{attributs-reserves}. Un attribut est un mot réservé « secondaire ».
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{llllllll}
+    \input{partie-utilisation/included-attribute-list.tex}
+  \end{tabular}
+  \caption{Attributs du langage GALGAS}
+  \labelTableau{attributs-reserves}
+\end{table}
 
 

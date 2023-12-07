@@ -103,7 +103,7 @@ method @unifiedTypeMap searchType ?let @lstring inLKey
 
 map @unifiedTypeMap {
   private var @unifiedTypeMapElementClass mElement
-  insert internalInsertKey error message "the '%K' key is already declared in %L"
+  %insertSetter internalInsertKey %errorMessage "the '%K' key is already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

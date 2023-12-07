@@ -26,9 +26,6 @@ syntax extension galgas3DeclarationsSyntax {
       end
       isReference = false
     or
-      $valueclass$
-      isReference = false
-    or
       $refclass$
       isReference = true
     end

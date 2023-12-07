@@ -33,10 +33,9 @@ syntax extension galgas3DeclarationsSyntax {
     var graphInsertModifierList = @graphInsertModifierList {}
     repeat
     while
-      $insert$
+      $%insertSetter$
       $identifier$ ?let @lstring insertName
-      $error$
-      $message$
+      $%errorMessage$
       $"string"$ ?let @lstring errorMessage
       graphInsertModifierList += !insertName !errorMessage
     end
@@ -70,10 +69,9 @@ syntax extension galgas4DeclarationsSyntax {
     var graphInsertModifierList = @graphInsertModifierList {}
     repeat
     while
-      $insert$
+      $%insertSetter$
       $identifier$ ?let @lstring insertName
-      $error$
-      $message$
+      $%errorMessage$
       $"string"$ ?let @lstring errorMessage
       graphInsertModifierList += !insertName !errorMessage
     end

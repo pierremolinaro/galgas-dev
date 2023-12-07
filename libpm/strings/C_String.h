@@ -183,8 +183,12 @@ class C_String : public AC_OutputStream {
   public: int32_t compare (const char * const inCstring) const ;
   public: int32_t compare (const C_String & inString) const ;
   public: int32_t compareStringByLength (const C_String & inString) const ;
-  public: bool operator == (const C_String & inString) const ;
-  public: bool operator != (const C_String & inString) const ;
+  public: bool operator == (const C_String & inString) const { return compare (inString) == 0 ; }
+  public: bool operator != (const C_String & inString) const { return compare (inString) != 0 ; }
+  public: bool operator <= (const C_String & inString) const { return compare (inString) <= 0 ; }
+  public: bool operator <  (const C_String & inString) const { return compare (inString) <  0 ; }
+  public: bool operator >= (const C_String & inString) const { return compare (inString) >= 0 ; }
+  public: bool operator >  (const C_String & inString) const { return compare (inString) >  0 ; }
 
 //--- Distance from an other string
   public: uint32_t LevenshteinDistanceFromString (const C_String & inOtherString) const ;

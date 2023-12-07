@@ -1,14 +1,14 @@
 lexique dangling_else_solution_lexique {
 
 #--- Key words
-list keyWordList error message "the '%K' key word"{
+list keyWordList %errorMessage "the '%K' key word"{
  "I", # IF EXPR THEN
  "E", # ELSE
  "O" } # OTHER
 rule list keyWordList
 
 #--- Identifiers
-$id$ error message "an identifier"
+$id$ %errorMessage "an identifier"
 
 @string identifierString
 
@@ -18,7 +18,7 @@ rule 'a'->'z' | 'A'->'Z' {
 }
 
 #--- Delimitors
-list delimitorsList error message "the '%K' delimitor"{
+list delimitorsList %errorMessage "the '%K' delimitor"{
   "+" , "*", "(", ")" }
 rule list delimitorsList
 

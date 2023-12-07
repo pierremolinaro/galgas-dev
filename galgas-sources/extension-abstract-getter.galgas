@@ -28,7 +28,7 @@ syntax extension galgas3DeclarationsSyntax {
     select
     or
       $identifier$ ? let idf
-      warning idf : "an identifier is no longer required here" fixit { remove }
+      warning idf : "an identifier is no longer required here" fixit { %remove }
     end
     ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST.new {
       !false # Is not predefined
@@ -51,7 +51,7 @@ syntax extension galgas3DeclarationsSyntax {
     select
     or
       $identifier$ ? let idf
-      warning idf : "an identifier is no longer required here" fixit { remove }
+      warning idf : "an identifier is no longer required here" fixit { %remove }
     end
     ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST.new {
       !false # Is not predefined
@@ -85,7 +85,7 @@ syntax extension galgas4DeclarationsSyntax {
     select
     or
       $identifier$ ? let idf
-      warning idf : "an identifier is no longer required here" fixit { remove }
+      warning idf : "an identifier is no longer required here" fixit { %remove }
     end
     ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST.new {
       !false # Is not predefined
@@ -110,7 +110,7 @@ syntax extension galgas4DeclarationsSyntax {
     select
     or
       $identifier$ ? let idf
-      warning idf : "an identifier is no longer required here" fixit { remove }
+      warning idf : "an identifier is no longer required here" fixit { %remove }
     end
     ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST.new {
       !false # Is not predefined
@@ -157,7 +157,7 @@ override method @abstractExtensionGetterAST enterDeclarationInGraph
       !{}
     ]
   end
-  with self.mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
+  with self.mTypeName in !?ioExtensionGetterMapForBuildingContext %errorMessage searchKey  do
     [!?mExtensionGetterMapForType insertKey
       !self.mAbstractExtensionGetterName
       !self.mAbstractExtensionGetterReturnedTypeName

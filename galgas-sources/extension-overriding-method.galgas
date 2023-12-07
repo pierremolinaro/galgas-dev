@@ -150,7 +150,7 @@ override method @overridingExtensionMethodAST enterDeclarationInGraph
       !{}
     ]
   end
-  with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
+  with self.mTypeName in !?ioExtensionMethodMapForBuildingContext %errorMessage searchKey  do
     [!?mExtensionMethodMapForType insertKey
       !self.mOverridingExtensionMethodName
       ! self.mOverridingExtensionMethodFormalParameterList

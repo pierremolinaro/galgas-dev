@@ -745,7 +745,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
       ]
       if mFormalSelector.string != mActualSelector.string then
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-        error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+        error mActualSelector : "the selector should be '" + s + "'" fixit { %replaceBy s }
 #        error mActualSelector
 #          : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end

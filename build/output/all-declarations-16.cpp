@@ -12679,9 +12679,9 @@ GALGAS_unifiedTypeDefinition cPtr_unifiedTypeMapElementClass::getter_definition 
     break ;
   case GALGAS_typeDefinition::kEnum_solved:
     {
-      const cEnumAssociatedValues_typeDefinition_solved * extractPtr_5764 = (const cEnumAssociatedValues_typeDefinition_solved *) (temp_0.readProperty_mDefinition ().unsafePointer ()) ;
-      const GALGAS_unifiedTypeDefinition extractedValue_5737_definition = extractPtr_5764->mAssociatedValue0 ;
-      result_result = extractedValue_5737_definition ;
+      const cEnumAssociatedValues_typeDefinition_solved * extractPtr_5771 = (const cEnumAssociatedValues_typeDefinition_solved *) (temp_0.readProperty_mDefinition ().unsafePointer ()) ;
+      const GALGAS_unifiedTypeDefinition extractedValue_5744_definition = extractPtr_5771->mAssociatedValue0 ;
+      result_result = extractedValue_5744_definition ;
     }
     break ;
   }

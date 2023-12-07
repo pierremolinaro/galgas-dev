@@ -337,9 +337,9 @@ map @scopeLocalVarMap {
   private var @string mNameForCheckingFormalParameterUsing
   private var @localVariableAttributes mAttributes
   private var @localVarValuation mState
-  insert insertKey error message "the '%K' local variable is already declared"
-  search searchKey error message "there is no '%K' local variable"
-  remove removeKey error message "there is no '%K' local variable"
+  %insertSetter insertKey %errorMessage "the '%K' local variable is already declared"
+  %searchMethod searchKey %errorMessage "there is no '%K' local variable"
+  %removeSetter removeKey %errorMessage "there is no '%K' local variable"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

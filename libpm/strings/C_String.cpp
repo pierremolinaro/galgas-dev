@@ -1674,15 +1674,15 @@ int32_t C_String::compareStringByLength (const C_String & inString) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool C_String::operator == (const C_String & inString) const {
-  return compareStringByLength (inString) == 0 ;
-}
+//bool C_String::operator == (const C_String & inString) const {
+//  return compareStringByLength (inString) == 0 ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool C_String::operator != (const C_String & inString) const {
-  return compareStringByLength (inString) != 0 ;
-}
+//bool C_String::operator != (const C_String & inString) const {
+//  return compareStringByLength (inString) != 0 ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 //

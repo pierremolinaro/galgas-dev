@@ -610,19 +610,19 @@ Sa syntaxe est la suivante~:
 
 \begin{galgas}
 fixit {
-  remove
-  replace expression
-  after expression
-  before expression
+  %remove
+  %replaceBy expression
+  %insertAfter expression
+  %insertBefore expression
 }
 \end{galgas}
 
 La clause \ggs=fixit= contient une séquence de suggestions~; il existe quatre types de suggestions~:
 \begin{itemize}
-\item \ggs=remove=, qui suggère d'éliminer le token désigné~;
-\item \ggs=replace=, qui suggère de remplacer le token désigné par l'\ggs=expression= indiquée~;
-\item \ggs=after=, qui suggère d'insérer l'\ggs=expression= indiquée après le token désigné~;
-\item \ggs=before=, qui suggère d'insérer l'\ggs=expression= indiquée avant le token désigné.
+\item \ggs=%remove=, qui suggère d'éliminer le token désigné~;
+\item \ggs=%replaceBy=, qui suggère de remplacer le token désigné par l'\ggs=expression= indiquée~;
+\item \ggs=%insertAfter=, qui suggère d'insérer l'\ggs=expression= indiquée après le token désigné~;
+\item \ggs=%insertBefore=, qui suggère d'insérer l'\ggs=expression= indiquée avant le token désigné.
 \end{itemize}
 
 Quatre types sont acceptés pour l'\ggs=expression=~:
@@ -635,39 +635,39 @@ Quatre types sont acceptés pour l'\ggs=expression=~:
 
 Ainsi, on peut écrire (et de même avec \ggs=after= et \ggs=before=)~:
 \begin{galgas}
-fixit { replace "toto" } # Suggère de remplacer le token par toto
-fixit { replace "toto" replace "tata" } # Deux suggestions
-fixit { replace @stringlist {!"toto" !"tata"} } # Identique au précédent
-fixit { replace {!"toto" !"tata"} } # Le type @stringlist est inféré
+fixit { %replaceBy "toto" } # Suggère de remplacer le token par toto
+fixit { %replaceBy "toto" %replaceBy "tata" } # Deux suggestions
+fixit { %replaceBy @stringlist {!"toto" !"tata"} } # Identique au précédent
+fixit { %replaceBy {!"toto" !"tata"} } # Le type @stringlist est inféré
 \end{galgas}
 
 
 L'\ggs=expression= n'est pas limitée aux constructions statiques, mais accepte des expressions calculées à l'exécution~: la liste des suggestions peut donc être calculée dynamiquement.
 
-La clause \ggs=fixit= contient une séquence de suggestions, qui peut être vide. Une séquence peut contenir plusieurs suggestions \ggs=replace=, \ggs=after=, \ggs=before=~; par contre, la suggestion \ggs=remove= ne peut apparaître qu'au plus une fois. Les suggestions sont présentées à l'utilisateur dans l'ordre où elles apparaissent dans la clause \ggs=fixit=. Il est parfaitement légal d'écrire par exemple~:
+La clause \ggs=fixit= contient une séquence de suggestions, qui peut être vide. Une séquence peut contenir plusieurs suggestions \ggs=%replaceBy=, \ggs=%insertAfter=, \ggs=%insertBefore=~; par contre, la suggestion \ggs=%remove= ne peut apparaître qu'au plus une fois. Les suggestions sont présentées à l'utilisateur dans l'ordre où elles apparaissent dans la clause \ggs=fixit=. Il est parfaitement légal d'écrire par exemple~:
 \begin{galgas}
 fixit {
-  replace "toto"
-  after "tata"
-  before "tutu"
-  replace "titi"
-  remove
+  %replaceBy "toto"
+  %insertAfter "tata"
+  %insertBefore "tutu"
+  %replaceBy "titi"
+  %remove
 }
 \end{galgas}
 
 
 La suite présente plusieurs exemples~:
 \begin{itemize}
-  \item un premier exemple \ggs=remove= sur un identificateur (\refSubsubsectionPage {premierExempleFixit})~;
-  \item un exemple  \ggs=remove= sur un mot réservé (\refSubsubsectionPage {deuxiemeExempleFixit})~;
-  \item un exemple \ggs=replace= (\refSubsubsectionPage {troisiemeExempleFixIt})~;
-  \item un second exemple \ggs=replace=, qui met en évidence un piège qui existe avec des chaînes de caractères (\refSubsubsectionPage {quatriemeExempleFixIt}).
+  \item un premier exemple \ggs=%remove= sur un identificateur (\refSubsubsectionPage {premierExempleFixit})~;
+  \item un exemple  \ggs=%remove= sur un mot réservé (\refSubsubsectionPage {deuxiemeExempleFixit})~;
+  \item un exemple \ggs=%replaceBy= (\refSubsubsectionPage {troisiemeExempleFixIt})~;
+  \item un second exemple \ggs=%replaceBy=, qui met en évidence un piège qui existe avec des chaînes de caractères (\refSubsubsectionPage {quatriemeExempleFixIt}).
 \end{itemize}
 
-L'utilisation de \ggs=before= et de \ggs=after= est analogue à celui de \ggs=replace=~: on se reportera aux exemples \ggs=replace= pour ceux-ci.
+L'utilisation de \ggs=before= et de \ggs=after= est analogue à celui de \ggs=%replaceBy=~: on se reportera aux exemples \ggs=%replaceBy= pour ceux-ci.
 
 
-\subsubsectionLabel{Premier exemple \texttt{fixit remove}}{premierExempleFixit}
+\subsubsectionLabel{Premier exemple \texttt{fixit \%remove}}{premierExempleFixit}
 
 Supposons que votre langage contient une règle de production où un identificateur apparaît~:
 
@@ -702,7 +702,7 @@ rule <règle> ... {
   ...
   select
     $identifier$ ?let idf
-    warning idf : "the identifier is no longer needed" fixit { remove }
+    warning idf : "the identifier is no longer needed" fixit { %remove }
   or
   end
   ...
@@ -713,7 +713,7 @@ rule <règle> ... {
 Dans l'application Cocoa, le menu contextuel activé sur l'identificateur présentera la suggestion de supprimer l'identificateur.
 
 
-\subsubsectionLabel{Second exemple \texttt{fixit remove}}{deuxiemeExempleFixit}
+\subsubsectionLabel{Second exemple \texttt{fixit \%remove}}{deuxiemeExempleFixit}
 
 Reprenons l'exemple précédent, mais en considérant que c'est un mot réservé qui devient inutile~; on écrit~:
 
@@ -722,7 +722,7 @@ rule <règle> ... {
   ...
   select
     $mot-réservé$
-    warning .here : "this keyword is no longer needed" fixit { remove }
+    warning .here : "this keyword is no longer needed" fixit { %remove }
   or
   end
   ...
@@ -740,7 +740,7 @@ rule <règle> ... {
   select
     let loc = @location.next
     $mot-réservé$
-    warning loc : "this keyword is no longer needed" fixit { remove }
+    warning loc : "this keyword is no longer needed" fixit { %remove }
   or
   end
   ...
@@ -749,7 +749,7 @@ rule <règle> ... {
 \end{galgas}
 
 
-\subsubsectionLabel{Exemple \texttt{fixit replace}}{troisiemeExempleFixIt}
+\subsubsectionLabel{Exemple \texttt{fixit \%replaceBy}}{troisiemeExempleFixIt}
 
 Supposons qu'un identificateur ne puisse prendre qu'un ensemble de valeurs possibles. C'est le rôle des écritures sémantiques de vérifier que la valeur est l'une de celles autorisées.
 
@@ -773,7 +773,7 @@ Maintenant, la sémantique. Sans clause \ggs=fixit=, elle a l'allure suivante~:
 }
 \end{galgas}
 
-On pourrait améliorer le message d'erreur ci-dessus en ajoutant la liste des valeurs possibles. Ajouter une clause \ggs=fixit replace= permet de le faire très simplement. Après le mot réservé \ggs=replace= est attendue une expression de type \ggs=@string= ou \ggs=@stringlist=, or la variable \ggs=valeursPossibles= est du type \ggs=@stringset=~: on utilise donc le getter \refGetterPage{stringset}{stringList}. D'où~:
+On pourrait améliorer le message d'erreur ci-dessus en ajoutant la liste des valeurs possibles. Ajouter une clause \ggs=fixit %replaceBy= permet de le faire très simplement. Après le mot réservé \ggs=%replaceBy= est attendue une expression de type \ggs=@string= ou \ggs=@stringlist=, or la variable \ggs=valeursPossibles= est du type \ggs=@stringset=~: on utilise donc le getter \refGetterPage{stringset}{stringList}. D'où~:
 
 \begin{galgas}
   let @stringset valeursPossibles = ...
@@ -781,13 +781,13 @@ On pourrait améliorer le message d'erreur ci-dessus en ajoutant la liste des va
     ...
   else
     error valeurÀVérifier : "valeur invalide" fixit {
-      replace [valeursPossibles stringList]
+      %replaceBy [valeursPossibles stringList]
     }
   end
 }
 \end{galgas}
 
-\subsubsectionLabel{Exemple \texttt{fixit replace}, chaîne de caractères}{quatriemeExempleFixIt}
+\subsubsectionLabel{Exemple \texttt{fixit \%replaceBy}, chaîne de caractères}{quatriemeExempleFixIt}
 
 Reprenons l'exemple précédent, mais en supposant \ggs=valeurÀVérifier= est obtenue à partir d'une chaîne de caractères.
 
@@ -811,7 +811,7 @@ On pourrait que le fait que le terminal soit une chaîne plutôt qu'un identific
       suggestions += !"\"" + s + "\""
     end
     error valeurÀVérifier : "valeur invalide" fixit {
-      replace suggestions
+      %replaceBy suggestions
     }
   end
 }
@@ -1623,8 +1623,8 @@ Cette instruction est typiquement utilisé dans une règle d'analyse de fichier 
 
 \begin{galgas}
 case . "monExtension"
-message "un fichier source"
-grammar maGrammaire
+%errorMessage "un fichier source"
+%useGrammar maGrammaire
 ?sourceFilePath: @lstring inSourceFile {
   var declaration = @declarationList {}
   grammar maGrammaire (!?ioDeclarations) in inSourceFile
@@ -2184,7 +2184,7 @@ end
 \textbf{Deuxième forme.} Accès en lecture, signalement d'erreur si échec de la recherche (\refSubsectionPage{instructionWithEnLectureSansTolerance})~:
 \begin{galgas}
 with expression_cle prefixe_optionnel in expression_table
-error message methode_recherche
+%errorMessage methode_recherche
 do
   liste_instructions_do
 end
@@ -2205,7 +2205,7 @@ end
 \textbf{Quatrième forme.} Accès en lecture/écriture, signalement d'erreur si échec de la recherche (\refSubsectionPage{instructionWithEnLectureEcritureSansTolerance})~:
 \begin{galgas}
 with expression_cle prefixe_optionnel in !?cible_table
-error message methode_recherche
+%errorMessage methode_recherche
 do
   liste_instructions_do
 end
@@ -2239,40 +2239,13 @@ La clé désignée par la valeur de \ggs+expression_cle+ est recherchée dans la
   \item en cas de succès, ce sont les instructions \ggs+liste_instructions_do+ qui sont exécutées~; les propriétés de l'élément recherché sont alors disponibles en lecture, sous leur nom éventuellement préfixé~; la clé est disponible sous le nom \ggs+lkey+ éventuellement préfixé, et est de type \ggs+@lstring+.
 \end{itemize}
 
-%Par exemple, on veut disposer d'une table qui implémente un \emph{counted set}, c'est à dire que l'on associe à la clé son nombre de citations. On déclare~:
-%\begin{galgas}
-%map @maTable {
-%  @uint mOccurrenceCount
-%  insert insertKey error message "entree deja presente"
-%}
-%\end{galgas}
-%
-%Et on effectue des recherches / insertions de la façon suivante~:
-%\begin{galgas}
-%@lstring cle = ...
-%with cle.string in !?table do
-%  mOccurrenceCount ++
-%else
-%  [!?table insertKey !cle !1]
-%end
-%\end{galgas}
-%
-%En utilisant un préfixe, le code devient~:
-%\begin{galgas}
-%@lstring cle = ...
-%with cle.string : xyz_ in !?table do
-%  mOccurrenceCount ++
-%else
-%  [!?table insertKey !cle !1]
-%end
-%\end{galgas}
 
 
 Par exemple, on veut disposer d'une table possédant une propriété identifiant de manière unique la clé. On déclare~:
 \begin{galgas}
 map @maTable {
   @uint mIndex
-  insert insertKey error message "entree deja presente"
+  %insertSetter insertKey %errorMessage "entree deja presente"
 }
 \end{galgas}
 
@@ -2308,7 +2281,7 @@ end
 
 \begin{galgas}
 with expression_cle prefixe_optionnel in expression_table
-error message methode_recherche
+%errorMessage methode_recherche
 do
   liste_instructions_do
 end
@@ -2332,7 +2305,7 @@ Par exemple, on veut disposer d'une table qui implémente un \emph{counted set},
 \begin{galgas}
 map @maTable {
   @uint mOccurrenceCount
-  search searchKey error message "entree %K absente"
+  search searchKey %errorMessage "entree %K absente"
 }
 \end{galgas}
 
@@ -2340,7 +2313,7 @@ Et on effectue des recherches de la façon suivante~:
 \begin{galgas}
 @lstring cle = ...
 @uint occurenceCount
-with cle in table error message searchKey do
+with cle in table %errorMessage searchKey do
   occurenceCount = mOccurrenceCount ++
 end
 \end{galgas}
@@ -2349,7 +2322,7 @@ En utilisant un préfixe, le code devient~:
 \begin{galgas}
 @lstring cle = ...
 @uint occurenceCount
-with cle : abc_ in table error message searchKey do
+with cle : abc_ in table %errorMessage searchKey do
   occurenceCount = abc_mOccurrenceCount ++
 end
 \end{galgas}
@@ -2388,7 +2361,7 @@ Par exemple, on veut disposer d'une table qui implémente un \emph{counted set},
 \begin{galgas}
 map @maTable {
   @uint mOccurrenceCount
-  insert insertKey error message "entree deja presente"
+  %insertSetter insertKey %errorMessage "entree deja presente"
 }
 \end{galgas}
 
@@ -2419,7 +2392,7 @@ end
 
 \begin{galgas}
 with expression_cle prefixe_optionnel in !?cible_table
-error message methode_recherche
+%errorMessage methode_recherche
 do
   liste_instructions_do
 end
@@ -2444,14 +2417,14 @@ Par exemple, on veut disposer d'une table qui implémente un \emph{counted set},
 \begin{galgas}
 map @maTable {
   @uint mOccurrenceCount
-  search searchKey error message "entree %K absente"
+  search searchKey %errorMessage "entree %K absente"
 }
 \end{galgas}
 
 Et on effectue des recherches de la façon suivante~:
 \begin{galgas}
 @lstring cle = ...
-with cle in !?table error message searchKey do
+with cle in !?table %errorMessage searchKey do
   mOccurrenceCount ++
 end
 \end{galgas}
@@ -2459,7 +2432,7 @@ end
 En utilisant un préfixe, le code devient~:
 \begin{galgas}
 @lstring cle = ...
-with cle : abc_ in !?table error message searchKey do
+with cle : abc_ in !?table %errorMessage searchKey do
   abc_mOccurrenceCount ++
 end
 \end{galgas}

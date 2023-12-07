@@ -53,7 +53,7 @@ list @guiCommandLineOptionList {
 map @extensionMap {
   public let @string mLexiqueName
   public let @uint mIndex
-  insert insertKey error message "the '%K' extension is already declared in %L"
+  %insertSetter insertKey %errorMessage "the '%K' extension is already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -385,7 +385,7 @@ struct @guiAnalysisContext {
 
 map @optionComponentMapForGeneration {
   public let @guiAnalysisContext mGuiComponentContext
-  insert insertKey error message "redefinition of the '%K' option component: it has been already declared in %L"
+  %insertSetter insertKey %errorMessage "redefinition of the '%K' option component: it has been already declared in %L"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

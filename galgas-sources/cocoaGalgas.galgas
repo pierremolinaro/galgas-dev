@@ -78,7 +78,7 @@ gui cocoa {
     
     textMacro "Class" :
       "refclass @aClassName : @superClassName {\n"
-      "  public let @aType mAnAttribute\n"
+      "  public let @aType mProperty\n"
       "}\n"
     
     textMacro "Enum" :
@@ -88,20 +88,20 @@ gui cocoa {
     
     textMacro "List" :
       "list @type {\n"
-      "  public let @aType mAnAttribute\n"
+      "  public let @aType mProperty\n"
       "}\n"
     
     textMacro "List Map" :
       "list @type {\n"
-      "  public let @aType mAnAttribute\n"
+      "  public let @aType mAProperty\n"
       "}\n"
       "listmap @myListMap (@aList)\n"
     
     textMacro "Map" :
       "map @type {\n"
-      "  public let @aType mAnAttribute\n"
-      "  insert insertKey error message \"the '%K' key is already declared in %L\"\n"
-      "  search searchKey error message \"there is no '%K' key\"\n"
+      "  public let @aType mProperty\n"
+      "  %insertSetter insertKey %errorMessage \"the '%K' key is already declared in %L\"\n"
+      "  %searchMethod searchKey %errorMessage \"there is no '%K' key\"\n"
       "}\n"
     
     textMacro "Sorted List" :
@@ -114,7 +114,7 @@ gui cocoa {
     
     textMacro "Struct" :
       "struct @type {\n"
-      "  public let @aType mAnAttribute\n"
+      "  public let @aType mProperty\n"
       "}\n"
   }
 

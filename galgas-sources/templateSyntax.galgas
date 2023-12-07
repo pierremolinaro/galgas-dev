@@ -494,7 +494,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
   $!$ ?let selector
   if selector.string != "" then
     error selector : "the selector should be '!'"
-    fixit { replace "!" }
+    fixit { %replaceBy "!" }
   end
   <expression_tpl> ?let @templateExpressionAST expression
   ioResultingInstructionList += !@templateInstructionExpressionAST.new {!expression !@location.here}

@@ -60,6 +60,8 @@ void cLexiqueIntrospection::getKeywordListForIdentifier (const C_String & inIden
     p->mGetKeywordsForIdentifier (inIdentifier, outFound, outList) ;
     p = p->mNext ;
   }
+//--- Sort keyword list
+  outList.sortArrayUsingComparisonOperators () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
