@@ -240,7 +240,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !@mapSearchMethodListAST {}
     !false # Do not generate header in separate file
     !listElementTypeIndex # Type for enumerated element for "for" instruction
-    !"emptyMap" # Default constructor
+    !defaultConstructorName: "emptyMap" # Default constructor
     !"listmap-" + [self.mListmapTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }

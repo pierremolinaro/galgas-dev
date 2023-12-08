@@ -349,7 +349,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !@mapSearchMethodListAST {}
     !false # Do not generate header in separate file
     !listElementTypeIndex # Type for enumerated element for "for" instruction
-    !"emptyList" # Default constructor
+    !defaultConstructorName: "emptyList" # Default constructor
     !"list-" + [self.mListTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }

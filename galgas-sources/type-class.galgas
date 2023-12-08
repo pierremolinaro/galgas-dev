@@ -358,7 +358,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   #--- Generate a "default" constructor ?
     var @string defaultConstructorName = if self.mIsAbstract then "" else "default" end
     for (propertyTypeEntry 3*) in allTypedAttributeList while defaultConstructorName != "" do
-      if [propertyTypeEntry definition].mDefaultConstructorName == "" then 
+      if [propertyTypeEntry definition].defaultConstructorName == "" then 
         defaultConstructorName = ""
       end
     end
@@ -388,7 +388,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       !{}
       !generateHeaderInSeparateFile
       !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
-      !defaultConstructorName # Default constructor name
+      !defaultConstructorName: defaultConstructorName # Default constructor name
       !"class-" + [self.mClassTypeName fileNameRepresentation]
       !@headerKind.twoHeaders
     }
@@ -527,7 +527,6 @@ override method @classTypeForGeneration appendDeclaration1 ?!@stringset ioInclus
       ![self.mSelfTypeEntry identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mIsAbstract
-      ![self.mSelfTypeEntry definition].mDefaultConstructorName != ""
       !self.mCurrentTypedAttributeList
     ]
   else
@@ -536,7 +535,6 @@ override method @classTypeForGeneration appendDeclaration1 ?!@stringset ioInclus
       ![self.mSelfTypeEntry identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mIsAbstract
-      ![self.mSelfTypeEntry definition].mDefaultConstructorName != ""
       !self.mCurrentTypedAttributeList
     ]  
   end
@@ -694,7 +692,6 @@ override method @classTypeForGeneration appendSpecificImplementation ?let @unifi
       !allPropertyList: self.mAllTypedAttributeList
       !inheritedPropertyList: at
       !self.mIsAbstract
-      ![self.mSelfTypeEntry definition].mDefaultConstructorName != ""
     ]
   else
     outImplementation = [filewrapper typeGenerationTemplate.valueClassTypeSpecificImplementation
@@ -705,7 +702,6 @@ override method @classTypeForGeneration appendSpecificImplementation ?let @unifi
       !self.mAllTypedAttributeList
       !at
       !self.mIsAbstract
-      ![self.mSelfTypeEntry definition].mDefaultConstructorName != ""
     ]
   end
 }

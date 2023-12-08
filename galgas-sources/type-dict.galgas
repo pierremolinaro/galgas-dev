@@ -328,7 +328,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !{}
     !false # Do not generate header in separate file
     !elementTypeEntry # Type for enumerated element for "for" instruction
-    !"emptyDict"
+    !defaultConstructorName: "emptyDict"
     !"dict-" + [self.mDictTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }

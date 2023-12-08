@@ -10664,9 +10664,9 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
     return mProperty_mTypeForEnumeratedElement ;
   }
 
-  public: GALGAS_string mProperty_mDefaultConstructorName ;
-  public: inline GALGAS_string readProperty_mDefaultConstructorName (void) const {
-    return mProperty_mDefaultConstructorName ;
+  public: GALGAS_string mProperty_defaultConstructorName ;
+  public: inline GALGAS_string readProperty_defaultConstructorName (void) const {
+    return mProperty_defaultConstructorName ;
   }
 
   public: GALGAS_string mProperty_mHeaderFileName ;
@@ -10783,8 +10783,8 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
     mProperty_mTypeForEnumeratedElement = inValue ;
   }
 
-  public: inline void setter_setMDefaultConstructorName (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mDefaultConstructorName = inValue ;
+  public: inline void setter_setDefaultConstructorName (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_defaultConstructorName = inValue ;
   }
 
   public: inline void setter_setMHeaderFileName (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -10823,7 +10823,7 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
                                         const GALGAS_mapSearchMethodListAST & in_mMapEntrySearchConstructorList,
                                         const GALGAS_bool & in_mGenerateHeaderInSeparateFile,
                                         const GALGAS_unifiedTypeMapEntry & in_mTypeForEnumeratedElement,
-                                        const GALGAS_string & in_mDefaultConstructorName,
+                                        const GALGAS_string & in_defaultConstructorName,
                                         const GALGAS_string & in_mHeaderFileName,
                                         const GALGAS_headerKind & in_mHeaderKind) ;
 

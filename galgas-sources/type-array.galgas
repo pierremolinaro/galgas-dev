@@ -220,7 +220,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
     !@mapSearchMethodListAST {}
     !false # Do not generate header in separate file
     !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
-    !"" # No default constructor
+    !defaultConstructorName: "" # No default constructor
     !"array-" + [self.mArrayTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }

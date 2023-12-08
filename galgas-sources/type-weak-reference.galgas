@@ -146,7 +146,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !{}
     !generateHeaderInSeparateFile
     !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
-    !"nil" # Default constructor
+    !defaultConstructorName: "nil" # Default constructor
     !"weak-reference-" + [self.mWeakReferenceTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
@@ -263,7 +263,6 @@ override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset 
     ![self.mReferenceClassType identifierRepresentation]
     ![self.mSelfTypeEntry identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-    !typedefinition.mDefaultConstructorName != ""
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     !typedefinition.mTypeName.string
@@ -298,7 +297,6 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
     !self.mTypedAttributeList
     !self.mAllTypedPropertyList
     ![self.mAllTypedPropertyList subListWithRange !.new {!0 ![self.mAllTypedPropertyList count] - [self.mTypedAttributeList count]}]
-    !typedefinition.mDefaultConstructorName != ""
   ]
 }
 

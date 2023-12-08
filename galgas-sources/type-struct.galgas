@@ -102,12 +102,6 @@ override getter @structDeclarationAST keyRepresentation ->@string result {
 #   SEMANTIC CONTEXT                        
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#private func %once selectorFeatureForNewConstructor -> @string {
-#  result = "selector"
-#}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 override method @structDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
@@ -178,7 +172,7 @@ override method @structDeclarationAST enterDeclarationInSemanticContext
 #--- Generate a "default" constructor ?
   var @string defaultConstructorName = "default"
   for (mPropertyTypeEntry 3*) in typedPropertyList while defaultConstructorName != "" do
-    if ([mPropertyTypeEntry definition].mDefaultConstructorName == "") | not [mPropertyTypeEntry definition].mIsConcrete then
+    if ([mPropertyTypeEntry definition].defaultConstructorName == "") | not [mPropertyTypeEntry definition].mIsConcrete then
       defaultConstructorName = ""
     end
   end  
@@ -208,7 +202,7 @@ override method @structDeclarationAST enterDeclarationInSemanticContext
     !@mapSearchMethodListAST {}
     !false # Do not generate header in separate file
     !enumeratedType # Type for enumerated element for "for" instruction
-    !defaultConstructorName # Default constructor
+    !defaultConstructorName: defaultConstructorName # Default constructor
     !"struct-" + [self.mStructTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
@@ -357,7 +351,6 @@ filewrapper structureGenerationTemplate in "+generation-templates/type_generatio
     ?@string TYPE_IDENTIFIER
     ?@typedPropertyList PROPERTY_LIST
     ?@typedPropertyList CONSTRUCTOR_ARGUMENT_LIST
-    ?@bool HAS_DEFAULT_CONSTRUCTOR
 
   template structTypeSpecificImplementation "GALGAS_struct.cpp.galgasTemplate"
     ?@string TYPE_NAME
@@ -365,7 +358,6 @@ filewrapper structureGenerationTemplate in "+generation-templates/type_generatio
     ?@typedPropertyList PROPERTY_LIST
     ?@typedPropertyList CONSTRUCTOR_ARGUMENT_LIST
     ?@string CONSTRUCTOR_INITIALIZATION_CODE
-    ?@bool HAS_DEFAULT_CONSTRUCTOR
     ?@bool CONSTRUCTOR_NEEDS_COMPILER_VAR
 }
 
@@ -384,7 +376,6 @@ override method @structTypeForGeneration appendDeclaration1
     ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedPropertyList
     !self.mConstructorArgumentList
-    !selfTypedefinition.mDefaultConstructorName != ""
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     !selfTypedefinition.mTypeName.string
@@ -418,7 +409,6 @@ override method @structTypeForGeneration appendSpecificImplementation
     !self.mTypedPropertyList
     !self.mConstructorArgumentList
     !self.mConstructorInitializationCode
-    !selfTypedefinition.mDefaultConstructorName != ""
     !self.mConstructorNeedsCompilerVar
   ]
  }

@@ -325,7 +325,7 @@ override method @predefinedTypeAST enterDeclarationInSemanticContext
     !@mapSearchMethodListAST {}
     !false # Do not generate header in separate file
     !enumeratedTypeEntry
-    ![self.mKind defaultConstructorName]
+    !defaultConstructorName: [self.mKind defaultConstructorName]
     !"galgas2/predefined-types"
     !@headerKind.twoHeaders
   }

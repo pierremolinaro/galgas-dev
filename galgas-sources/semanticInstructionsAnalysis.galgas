@@ -2,7 +2,7 @@
 #                                           
 #  metamodel that defines expression        
 #                                           
-#  Copyright (C) 2010, ..., 2016 Pierre Molinaro.
+#  Copyright (C) 2010, ..., 2023 Pierre Molinaro.
 #                                           
 #  e-mail : pierre@pcmolinaro.name          
 #                                           
@@ -322,14 +322,9 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
     end
   end
   if not found then
-    warning self.mActualSelector
+    error self.mActualSelector
     : "the '@" + [inFormalArgumentType definition].mTypeName + "' has no initializer without argument"
   end
-  
-#  let defaultConstructorName = [inFormalArgumentType definition].mDefaultConstructorName
-#  if defaultConstructorName == "" then
-#    error self.mActualSelector : "the formal parameter type @" + [inFormalArgumentType definition].mTypeName.string + " should support the default constructor"
-#  end
 #--- Generate actual parameter
   let cppVarName = "joker_" + [self.mActualSelector.location startLocationIndex]
   ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
@@ -442,13 +437,9 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
     end
   end
   if not found then
-    warning self.mQualifierLocation
+    error self.mQualifierLocation
     : "the '@" + [inFormalArgumentType definition].mTypeName + "' has no initializer without argument"
   end
-#  let defaultConstructorName = [inFormalArgumentType definition].mDefaultConstructorName
-#  if defaultConstructorName == "" then
-#    error self.mQualifierLocation : "the formal parameter type @" + [inFormalArgumentType definition].mTypeName.string + " should support the default constructor"
-#  end
 #--- Generate actual parameter
   let cppVarName = "joker_" + [self.mQualifierLocation startLocationIndex] + "_" + self.mJokerIndex
   ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {

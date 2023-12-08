@@ -443,7 +443,7 @@ override method @externTypeDeclarationAST enterDeclarationInSemanticContext
     !{}
     !false # Do not generate header in separate file
     !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
-    !"default" # Default constructor
+    !defaultConstructorName: "default" # Default constructor
     !"externtype-" + [self.mExternTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }

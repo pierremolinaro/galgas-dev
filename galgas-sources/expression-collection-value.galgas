@@ -192,7 +192,7 @@ override method @collectionValueAST analyzeSemanticExpression
       end
     end
     if not found then
-      warning self.mTypeName
+      error self.mTypeName
       : "the '@" + [targetType definition].mTypeName + "' has no initializer without argument"
     end
     let usefulnessName = typeNameForUsefulEntitiesGraph (
@@ -442,7 +442,7 @@ override method @expressionCollectionForGeneration generateExpression
   ioTemporaryVariableIndex += 1
 #--- Declare variable and apply default constructor
   ioGeneratedCode += "GALGAS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression
-     + " = GALGAS_" +  [self.mResultType identifierRepresentation] + "::constructor_" + [[self.mResultType definition].mDefaultConstructorName identifierRepresentation] + " (" + [self.mLocation sourceFile] + ") ;\n"
+     + " = GALGAS_" +  [self.mResultType identifierRepresentation] + "::constructor_" + [[self.mResultType definition].defaultConstructorName identifierRepresentation] + " (" + [self.mLocation sourceFile] + ") ;\n"
 #--- Add Elements
   for (mElement) in self.mElementList do
     [mElement generateCollectionElementCode
