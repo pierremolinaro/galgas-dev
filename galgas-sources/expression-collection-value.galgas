@@ -177,14 +177,35 @@ override method @collectionValueAST analyzeSemanticExpression
   if targetType == .null then
     error self.mTypeName : "Cannot infer type" : outExpression
   elsif not [targetType definition].mSupportCollectionValue then
-    error self.mTypeName : "the @" + [targetType definition].mTypeName.string + " type does not support collection value" : outExpression
+    error self.mTypeName
+    : "the @" + [targetType definition].mTypeName.string + " type does not support collection value" : outExpression
   else
-    let usefulnessName = typeNameForUsefulEntitiesGraph (!.new {![targetType definition].mTypeName.string !self.mEndOfCollectionValue})
+    let constructorMap = [targetType definition].mConstructorMap
+    var @bool hasCompilerArgument = false
+    var @string constructorName = ""
+    var found = false
+    for c in constructorMap while not found do
+      if ([c.mArgumentTypeList length] == 0) && (c.mReturnedType == targetType) then
+        hasCompilerArgument = c.mHasCompilerArgument
+        constructorName = c.lkey.string
+        found = true
+      end
+    end
+    if not found then
+      warning self.mTypeName
+      : "the '@" + [targetType definition].mTypeName + "' has no initializer without argument"
+    end
+    let usefulnessName = typeNameForUsefulEntitiesGraph (
+      !.new {![targetType definition].mTypeName.string
+      !self.mEndOfCollectionValue}
+    )
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
     if [self.mElementList count] == 0 then
       outExpression = @defaultConstructorExpressionForGeneration.new {
         !targetType
         !self.mTypeName.location
+        !constructorName
+        !hasCompilerArgument
       }
     else
       var @collectionValueElementListForGeneration collectionValueElementListForGeneration = {}

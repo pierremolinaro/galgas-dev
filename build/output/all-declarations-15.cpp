@@ -10892,7 +10892,6 @@ GALGAS_weakReferenceTypeForGeneration_2D_weak GALGAS_weakReferenceTypeForGenerat
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
     mProperty_mEnumTypeName.printNonNullClassInstanceProperties ("mEnumTypeName") ;
     mProperty_mConstantList.printNonNullClassInstanceProperties ("mConstantList") ;
-    mProperty_mDefaultConstantName.printNonNullClassInstanceProperties ("mDefaultConstantName") ;
   }
 #endif
 
@@ -10910,9 +10909,6 @@ typeComparisonResult cPtr_enumDeclarationAST::dynamicObjectCompare (const acPtr_
   }
   if (kOperandEqual == result) {
     result = mProperty_mConstantList.objectCompare (p->mProperty_mConstantList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mDefaultConstantName.objectCompare (p->mProperty_mDefaultConstantName) ;
   }
   return result ;
 }
@@ -10952,12 +10948,11 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 
 GALGAS_enumDeclarationAST GALGAS_enumDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                       const GALGAS_lstring & inAttribute_mEnumTypeName,
-                                                                      const GALGAS_enumConstantList & inAttribute_mConstantList,
-                                                                      const GALGAS_lstring & inAttribute_mDefaultConstantName
+                                                                      const GALGAS_enumConstantList & inAttribute_mConstantList
                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_enumDeclarationAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mEnumTypeName.isValid () && inAttribute_mConstantList.isValid () && inAttribute_mDefaultConstantName.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_enumDeclarationAST (inAttribute_mIsPredefined, inAttribute_mEnumTypeName, inAttribute_mConstantList, inAttribute_mDefaultConstantName COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mEnumTypeName.isValid () && inAttribute_mConstantList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_enumDeclarationAST (inAttribute_mIsPredefined, inAttribute_mEnumTypeName, inAttribute_mConstantList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -10987,30 +10982,16 @@ GALGAS_enumConstantList GALGAS_enumDeclarationAST::readProperty_mConstantList (v
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_enumDeclarationAST::readProperty_mDefaultConstantName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstring () ;
-  }else{
-    cPtr_enumDeclarationAST * p = (cPtr_enumDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_enumDeclarationAST) ;
-    return p->mProperty_mDefaultConstantName ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @enumDeclarationAST class
 //----------------------------------------------------------------------------------------------------------------------
 
 cPtr_enumDeclarationAST::cPtr_enumDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                   const GALGAS_lstring & in_mEnumTypeName,
-                                                  const GALGAS_enumConstantList & in_mConstantList,
-                                                  const GALGAS_lstring & in_mDefaultConstantName
+                                                  const GALGAS_enumConstantList & in_mConstantList
                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mProperty_mEnumTypeName (in_mEnumTypeName),
-mProperty_mConstantList (in_mConstantList),
-mProperty_mDefaultConstantName (in_mDefaultConstantName) {
+mProperty_mConstantList (in_mConstantList) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -11027,8 +11008,6 @@ void cPtr_enumDeclarationAST::description (C_String & ioString,
   mProperty_mEnumTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mConstantList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mDefaultConstantName.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -11036,7 +11015,7 @@ void cPtr_enumDeclarationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_enumDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_enumDeclarationAST (mProperty_mIsPredefined, mProperty_mEnumTypeName, mProperty_mConstantList, mProperty_mDefaultConstantName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_enumDeclarationAST (mProperty_mIsPredefined, mProperty_mEnumTypeName, mProperty_mConstantList COMMA_THERE)) ;
   return ptr ;
 }
 

@@ -389,6 +389,8 @@ override method @constructorExpressionForGeneration generateExpression
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @defaultConstructorExpressionForGeneration : @semanticExpressionForGeneration {
+  private let @string mConstructorName
+  private let @bool mHasCompilerArgument
 }
 
 #·····················································································································
@@ -404,8 +406,12 @@ override method @defaultConstructorExpressionForGeneration generateExpression
   outCppExpression =
     "GALGAS_"  + [self.mResultType identifierRepresentation]
   + "::constructor_"
-  + [[self.mResultType definition].mDefaultConstructorName identifierRepresentation]
-  + " (" + [self.mLocation sourceFile] + ")"
+  + [self.mConstructorName identifierRepresentation]
+  if self.mHasCompilerArgument then
+    outCppExpression += " (" + compilerCppName () + [self.mLocation commaSourceFile] + ")"
+  else
+    outCppExpression += " (" + [self.mLocation sourceFile] + ")"
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

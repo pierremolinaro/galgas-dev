@@ -9835,6 +9835,8 @@ GALGAS_constructorExpressionForGeneration GALGAS_constructorExpressionForGenerat
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_defaultConstructorExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mConstructorName.printNonNullClassInstanceProperties ("mConstructorName") ;
+    mProperty_mHasCompilerArgument.printNonNullClassInstanceProperties ("mHasCompilerArgument") ;
   }
 #endif
 
@@ -9849,6 +9851,12 @@ typeComparisonResult cPtr_defaultConstructorExpressionForGeneration::dynamicObje
   }
   if (kOperandEqual == result) {
     result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mConstructorName.objectCompare (p->mProperty_mConstructorName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mHasCompilerArgument.objectCompare (p->mProperty_mHasCompilerArgument) ;
   }
   return result ;
 }
@@ -9887,13 +9895,39 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_defaultConstructorExpressionForGeneration GALGAS_defaultConstructorExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
-                                                                                                                    const GALGAS_location & inAttribute_mLocation
+                                                                                                                    const GALGAS_location & inAttribute_mLocation,
+                                                                                                                    const GALGAS_string & inAttribute_mConstructorName,
+                                                                                                                    const GALGAS_bool & inAttribute_mHasCompilerArgument
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_defaultConstructorExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_defaultConstructorExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation COMMA_THERE)) ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mConstructorName.isValid () && inAttribute_mHasCompilerArgument.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_defaultConstructorExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mConstructorName, inAttribute_mHasCompilerArgument COMMA_THERE)) ;
   }
   return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_defaultConstructorExpressionForGeneration::readProperty_mConstructorName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_string () ;
+  }else{
+    cPtr_defaultConstructorExpressionForGeneration * p = (cPtr_defaultConstructorExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_defaultConstructorExpressionForGeneration) ;
+    return p->mProperty_mConstructorName ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_defaultConstructorExpressionForGeneration::readProperty_mHasCompilerArgument (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_bool () ;
+  }else{
+    cPtr_defaultConstructorExpressionForGeneration * p = (cPtr_defaultConstructorExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_defaultConstructorExpressionForGeneration) ;
+    return p->mProperty_mHasCompilerArgument ;
+  }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -9901,9 +9935,13 @@ GALGAS_defaultConstructorExpressionForGeneration GALGAS_defaultConstructorExpres
 //----------------------------------------------------------------------------------------------------------------------
 
 cPtr_defaultConstructorExpressionForGeneration::cPtr_defaultConstructorExpressionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mResultType,
-                                                                                                const GALGAS_location & in_mLocation
+                                                                                                const GALGAS_location & in_mLocation,
+                                                                                                const GALGAS_string & in_mConstructorName,
+                                                                                                const GALGAS_bool & in_mHasCompilerArgument
                                                                                                 COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE) {
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
+mProperty_mConstructorName (in_mConstructorName),
+mProperty_mHasCompilerArgument (in_mHasCompilerArgument) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -9918,6 +9956,10 @@ void cPtr_defaultConstructorExpressionForGeneration::description (C_String & ioS
   mProperty_mResultType.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mConstructorName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mHasCompilerArgument.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -9925,7 +9967,7 @@ void cPtr_defaultConstructorExpressionForGeneration::description (C_String & ioS
 
 acPtr_class * cPtr_defaultConstructorExpressionForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_defaultConstructorExpressionForGeneration (mProperty_mResultType, mProperty_mLocation COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_defaultConstructorExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mConstructorName, mProperty_mHasCompilerArgument COMMA_THERE)) ;
   return ptr ;
 }
 

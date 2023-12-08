@@ -7556,6 +7556,10 @@ class GALGAS_defaultConstructorExpressionForGeneration : public GALGAS_semanticE
   public: GALGAS_defaultConstructorExpressionForGeneration (const class cPtr_defaultConstructorExpressionForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
+  public: class GALGAS_string readProperty_mConstructorName (void) const ;
+
+  public: class GALGAS_bool readProperty_mHasCompilerArgument (void) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -7568,7 +7572,9 @@ class GALGAS_defaultConstructorExpressionForGeneration : public GALGAS_semanticE
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_defaultConstructorExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                         const class GALGAS_location & inOperand1
+                                                                                         const class GALGAS_location & inOperand1,
+                                                                                         const class GALGAS_string & inOperand2,
+                                                                                         const class GALGAS_bool & inOperand3
                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7613,10 +7619,14 @@ class cPtr_defaultConstructorExpressionForGeneration : public cPtr_semanticExpre
            C_Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
+  public: GALGAS_string mProperty_mConstructorName ;
+  public: GALGAS_bool mProperty_mHasCompilerArgument ;
 
 //--- Constructor
   public: cPtr_defaultConstructorExpressionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mResultType,
-                                                          const GALGAS_location & in_mLocation
+                                                          const GALGAS_location & in_mLocation,
+                                                          const GALGAS_string & in_mConstructorName,
+                                                          const GALGAS_bool & in_mHasCompilerArgument
                                                           COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

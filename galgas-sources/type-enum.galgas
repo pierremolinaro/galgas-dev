@@ -5,7 +5,6 @@
 refclass @enumDeclarationAST : @semanticDeclarationAST {
   private let @lstring mEnumTypeName
   private let @enumConstantList mConstantList
-  private let @lstring mDefaultConstantName
 }
 
 #·······················································································································
@@ -50,19 +49,11 @@ syntax extension galgas3DeclarationsSyntax {
     while
       <method_declaration_ggs3> !mEnumTypeName !?ioDeclarations
     end
-    let @lstring defaultConstantName
-    select
-      defaultConstantName = ["" nowhere]
-    or
-      $default$
-      $identifier$ ?defaultConstantName
-    end
     $}$
     ioDeclarations.mDeclarationList += !@enumDeclarationAST.new {
       !false # Is not predefined
       !mEnumTypeName
       !mConstantList
-      !defaultConstantName
     }
   }
 
@@ -109,7 +100,6 @@ syntax extension galgas4DeclarationsSyntax {
       !false # Is not predefined
       !mEnumTypeName
       !mConstantList
-      !["" nowhere]
     }
   }
 
@@ -254,16 +244,6 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !?instanceMethodMap
     !acceptSetters: true
   )
-#--- Default value ?
-  var defaultConstructorName = "" # No default contructor
-  if self.mDefaultConstantName.string != "" then
-    [constantMap searchKey !self.mDefaultConstantName ?* ?let associatedTypeList]
-    if [associatedTypeList count] == 0 then
-      defaultConstructorName = self.mDefaultConstantName.string
-    else
-      error self.mDefaultConstantName : "the default constant should have no associated values"
-    end
-  end
 #--- Enter type in type map
   let typeDefinition = @unifiedTypeDefinition.new {
     !self.mEnumTypeName
@@ -290,7 +270,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !{}
     !false # Do not generate header in separate file
     !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
-    !defaultConstructorName
+    !""
     !"enum-" + [self.mEnumTypeName fileNameRepresentation]
     !if hasAssociatedValues then @headerKind.twoHeaders else @headerKind.oneHeader end
   }

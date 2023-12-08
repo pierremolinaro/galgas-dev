@@ -5521,8 +5521,6 @@ class GALGAS_enumDeclarationAST : public GALGAS_semanticDeclarationAST {
 
   public: class GALGAS_enumConstantList readProperty_mConstantList (void) const ;
 
-  public: class GALGAS_lstring readProperty_mDefaultConstantName (void) const ;
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -5536,8 +5534,7 @@ class GALGAS_enumDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_enumDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
                                                                   const class GALGAS_lstring & inOperand1,
-                                                                  const class GALGAS_enumConstantList & inOperand2,
-                                                                  const class GALGAS_lstring & inOperand3
+                                                                  const class GALGAS_enumConstantList & inOperand2
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5605,13 +5602,11 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Properties
   public: GALGAS_lstring mProperty_mEnumTypeName ;
   public: GALGAS_enumConstantList mProperty_mConstantList ;
-  public: GALGAS_lstring mProperty_mDefaultConstantName ;
 
 //--- Constructor
   public: cPtr_enumDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                    const GALGAS_lstring & in_mEnumTypeName,
-                                   const GALGAS_enumConstantList & in_mConstantList,
-                                   const GALGAS_lstring & in_mDefaultConstantName
+                                   const GALGAS_enumConstantList & in_mConstantList
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
