@@ -17,13 +17,7 @@ end
   public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
-%if HAS_DEFAULT_CONSTRUCTOR then
-%//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_%!TYPE_IDENTIFIER% constructor_default (LOCATION_ARGS) ;
-
-%
-end
-%//--------------------------------- Default constructor
+//--------------------------------- Default constructor
   public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Property setters

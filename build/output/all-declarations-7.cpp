@@ -6660,19 +6660,6 @@ GALGAS_semanticDeclarationForGeneration () {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_syntaxDeclarationForGeneration GALGAS_syntaxDeclarationForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_syntaxDeclarationForGeneration::constructor_new (GALGAS_string::constructor_default (HERE),
-                                                                 GALGAS_string::constructor_default (HERE),
-                                                                 GALGAS_nonterminalMap::constructor_emptyMap (HERE),
-                                                                 GALGAS_ruleDeclarationList::constructor_emptyList (HERE),
-                                                                 GALGAS_uint::constructor_default (HERE),
-                                                                 GALGAS_bool::constructor_default (HERE),
-                                                                 GALGAS_bool::constructor_default (HERE)
-                                                                 COMMA_THERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_syntaxDeclarationForGeneration::GALGAS_syntaxDeclarationForGeneration (const cPtr_syntaxDeclarationForGeneration * inSourcePtr) :
 GALGAS_semanticDeclarationForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_syntaxDeclarationForGeneration) ;
@@ -9703,13 +9690,6 @@ GALGAS_currentVarManager::GALGAS_currentVarManager (const GALGAS_scopeLocalVarMa
                                                     const GALGAS_localVarMapListForLLVM & inOperand1) :
 mProperty_mLocalVarMap (inOperand0),
 mProperty_mSubMaps (inOperand1) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_currentVarManager GALGAS_currentVarManager::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_currentVarManager (GALGAS_scopeLocalVarMap::constructor_emptyMap (HERE),
-                                   GALGAS_localVarMapListForLLVM::constructor_emptyList (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -13912,13 +13892,6 @@ GALGAS_semanticExpressionAST () {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_trueExpressionAST GALGAS_trueExpressionAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_trueExpressionAST::constructor_new (GALGAS_location::constructor_nowhere (HERE)
-                                                    COMMA_THERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_trueExpressionAST::GALGAS_trueExpressionAST (const cPtr_trueExpressionAST * inSourcePtr) :
 GALGAS_semanticExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_trueExpressionAST) ;
@@ -14178,13 +14151,6 @@ typeComparisonResult GALGAS_falseExpressionAST::objectCompare (const GALGAS_fals
 
 GALGAS_falseExpressionAST::GALGAS_falseExpressionAST (void) :
 GALGAS_semanticExpressionAST () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_falseExpressionAST GALGAS_falseExpressionAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_falseExpressionAST::constructor_new (GALGAS_location::constructor_nowhere (HERE)
-                                                     COMMA_THERE) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -14674,14 +14640,6 @@ typeComparisonResult GALGAS_literalStringExpressionAST::objectCompare (const GAL
 
 GALGAS_literalStringExpressionAST::GALGAS_literalStringExpressionAST (void) :
 GALGAS_semanticExpressionAST () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_literalStringExpressionAST GALGAS_literalStringExpressionAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalStringExpressionAST::constructor_new (GALGAS_location::constructor_nowhere (HERE),
-                                                             GALGAS_stringlist::constructor_emptyList (HERE)
-                                                             COMMA_THERE) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

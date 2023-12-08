@@ -8578,14 +8578,6 @@ GALGAS_actualParameterAST () {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_outputInputJokerParameterAST GALGAS_outputInputJokerParameterAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_outputInputJokerParameterAST::constructor_new (GALGAS_location::constructor_nowhere (HERE),
-                                                               GALGAS_uint::constructor_default (HERE)
-                                                               COMMA_THERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_outputInputJokerParameterAST::GALGAS_outputInputJokerParameterAST (const cPtr_outputInputJokerParameterAST * inSourcePtr) :
 GALGAS_actualParameterAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_outputInputJokerParameterAST) ;
@@ -9536,14 +9528,6 @@ GALGAS_actualParameterAST () {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_inputJokerActualParameterAST GALGAS_inputJokerActualParameterAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_inputJokerActualParameterAST::constructor_new (GALGAS_location::constructor_nowhere (HERE),
-                                                               GALGAS_uint::constructor_default (HERE)
-                                                               COMMA_THERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_inputJokerActualParameterAST::GALGAS_inputJokerActualParameterAST (const cPtr_inputJokerActualParameterAST * inSourcePtr) :
 GALGAS_actualParameterAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_inputJokerActualParameterAST) ;
@@ -10427,12 +10411,6 @@ typeComparisonResult GALGAS_inputParameterAnonymousVariable::objectCompare (cons
 
 GALGAS_inputParameterAnonymousVariable::GALGAS_inputParameterAnonymousVariable (void) :
 GALGAS_abstractInputParameter () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_inputParameterAnonymousVariable GALGAS_inputParameterAnonymousVariable::constructor_default (LOCATION_ARGS) {
-  return GALGAS_inputParameterAnonymousVariable::constructor_new (THERE) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -4986,19 +4986,6 @@ mProperty_mEpilogueDeclarationList (inOperand7) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_galgasDeclarationAST GALGAS_galgasDeclarationAST::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_galgasDeclarationAST (GALGAS_semanticDeclarationListAST::constructor_emptyList (HERE),
-                                      GALGAS_stringset::constructor_emptySet (HERE),
-                                      GALGAS_galgas_33_SyntaxComponentListAST::constructor_emptyList (HERE),
-                                      GALGAS_syntaxExtensions::constructor_emptyMap (HERE),
-                                      GALGAS_galgasGUIComponentListAST::constructor_emptyList (HERE),
-                                      GALGAS_prologueEpilogueList::constructor_emptyList (HERE),
-                                      GALGAS_programRuleList::constructor_emptyList (HERE),
-                                      GALGAS_prologueEpilogueList::constructor_emptyList (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_galgasDeclarationAST GALGAS_galgasDeclarationAST::constructor_new (C_Compiler * /* inCompiler */
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_semanticDeclarationListAST in_mDeclarationList = GALGAS_semanticDeclarationListAST::constructor_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 498)) ;

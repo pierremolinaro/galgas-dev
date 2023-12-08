@@ -9611,14 +9611,6 @@ GALGAS_abstractCollectionValueElement () {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_expressionListCollectionValue GALGAS_expressionListCollectionValue::constructor_default (LOCATION_ARGS) {
-  return GALGAS_expressionListCollectionValue::constructor_new (GALGAS_actualOutputExpressionList::constructor_emptyList (HERE),
-                                                                GALGAS_location::constructor_nowhere (HERE)
-                                                                COMMA_THERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_expressionListCollectionValue::GALGAS_expressionListCollectionValue (const cPtr_expressionListCollectionValue * inSourcePtr) :
 GALGAS_abstractCollectionValueElement (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_expressionListCollectionValue) ;
@@ -10815,14 +10807,6 @@ GALGAS_abstractCollectionValueElementForGeneration () {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_expressionListCollectionForGeneration GALGAS_expressionListCollectionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_expressionListCollectionForGeneration::constructor_new (GALGAS_location::constructor_nowhere (HERE),
-                                                                        GALGAS_semanticExpressionListForGeneration::constructor_emptyList (HERE)
-                                                                        COMMA_THERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_expressionListCollectionForGeneration::GALGAS_expressionListCollectionForGeneration (const cPtr_expressionListCollectionForGeneration * inSourcePtr) :
 GALGAS_abstractCollectionValueElementForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_expressionListCollectionForGeneration) ;
@@ -11197,13 +11181,6 @@ typeComparisonResult GALGAS_selfInExpressionAST::objectCompare (const GALGAS_sel
 
 GALGAS_selfInExpressionAST::GALGAS_selfInExpressionAST (void) :
 GALGAS_semanticExpressionAST () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_selfInExpressionAST GALGAS_selfInExpressionAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_selfInExpressionAST::constructor_new (GALGAS_location::constructor_nowhere (HERE)
-                                                      COMMA_THERE) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

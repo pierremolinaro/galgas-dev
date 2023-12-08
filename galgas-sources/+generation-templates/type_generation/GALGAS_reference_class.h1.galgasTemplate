@@ -12,13 +12,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public %
 //--------------------------------- Default constructor
   public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
-%if HAS_DEFAULT_CONSTRUCTOR & not IS_ABSTRACT then
-%//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_%!TYPE_IDENTIFIER% constructor_default (LOCATION_ARGS) ;
-
-%
-end
-%//--------------------------------- Constructor from pointer
+//--------------------------------- Constructor from pointer
   public: GALGAS_%!TYPE_IDENTIFIER% (const class cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) ;
 
 //--------------------------------- Property read access

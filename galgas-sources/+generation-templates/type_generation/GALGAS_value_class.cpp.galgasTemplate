@@ -52,24 +52,7 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
   end% () {
 }
 
-%if HAS_DEFAULT_CONSTRUCTOR & not IS_ABSTRACT then
-%//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_default (LOCATION_ARGS) {
-  return GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
-if [ALL_PROPERTY_LIST count] > 0 then
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST do
-   %GALGAS_%![mPropertyTypeEntry identifierRepresentation]%::constructor_%![[mPropertyTypeEntry definition].mDefaultConstructorName identifierRepresentation]% (HERE)%
-  between %,\n%!^
-end%\n%!^%COMMA_THERE%
-else
-  %THERE%
-end
-%) ;
-}
-
-%end
-%//----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) :
 % if SUPER_TYPE_IDENTIFIER == ""

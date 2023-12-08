@@ -1206,9 +1206,6 @@ class GALGAS_lexiqueComponentAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Default constructor
   public: GALGAS_lexiqueComponentAST (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_lexiqueComponentAST constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexiqueComponentAST (const class cPtr_lexiqueComponentAST * inSourcePtr) ;
 

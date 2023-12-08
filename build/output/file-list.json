@@ -2,7 +2,6 @@
     "LIBPM_DIRECTORY_PATH"  :  "../libpm",
     "SOURCES_DIR"  :  ["../build/output",  "../build/user-headers",  "../libpm",  "../hand_coded_sources"],
     "SOURCES"  :  [
-        "all-declarations-30.cpp",
         "all-declarations-29.cpp",
         "all-declarations-28.cpp",
         "all-declarations-27.cpp",

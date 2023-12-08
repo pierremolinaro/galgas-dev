@@ -6662,20 +6662,6 @@ mProperty_mProjectIndexingDescriptorList (inOperand8) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_guiAnalysisContext GALGAS_guiAnalysisContext::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_guiAnalysisContext (GALGAS_stringlist::constructor_emptyList (HERE),
-                                    GALGAS_guiCommandLineOptionList::constructor_emptyList (HERE),
-                                    GALGAS_guiCommandLineOptionList::constructor_emptyList (HERE),
-                                    GALGAS_guiCommandLineOptionList::constructor_emptyList (HERE),
-                                    GALGAS_stringlist::constructor_emptyList (HERE),
-                                    GALGAS_extensionMap::constructor_emptyMap (HERE),
-                                    GALGAS_importedLexiqueList::constructor_emptyList (HERE),
-                                    GALGAS_string::constructor_default (HERE),
-                                    GALGAS_projectIndexingDescriptorList::constructor_emptyList (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_guiAnalysisContext GALGAS_guiAnalysisContext::constructor_new (C_Compiler * /* inCompiler */
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_stringlist in_mImportedOptionComponentList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 373)) ;

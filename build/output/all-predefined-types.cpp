@@ -1159,13 +1159,6 @@ mProperty_location (inOperand1) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lbool GALGAS_lbool::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_lbool (GALGAS_bool::constructor_default (HERE),
-                       GALGAS_location::constructor_nowhere (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_lbool GALGAS_lbool::constructor_new (const GALGAS_bool & in_bool,
                                             const GALGAS_location & in_location,
                                             C_Compiler * /* inCompiler */
@@ -3131,13 +3124,6 @@ GALGAS_luint::GALGAS_luint (const GALGAS_uint & inOperand0,
                             const GALGAS_location & inOperand1) :
 mProperty_uint (inOperand0),
 mProperty_location (inOperand1) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_luint GALGAS_luint::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_luint (GALGAS_uint::constructor_default (HERE),
-                       GALGAS_location::constructor_nowhere (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5713,13 +5699,6 @@ mProperty_location (inOperand1) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lsint GALGAS_lsint::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_lsint (GALGAS_sint::constructor_default (HERE),
-                       GALGAS_location::constructor_nowhere (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_lsint GALGAS_lsint::constructor_new (const GALGAS_sint & in_sint,
                                             const GALGAS_location & in_location,
                                             C_Compiler * /* inCompiler */
@@ -5833,13 +5812,6 @@ GALGAS_lsint_36__34_::GALGAS_lsint_36__34_ (const GALGAS_sint_36__34_ & inOperan
                                             const GALGAS_location & inOperand1) :
 mProperty_sint_36__34_ (inOperand0),
 mProperty_location (inOperand1) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_lsint_36__34_ (GALGAS_sint_36__34_::constructor_default (HERE),
-                               GALGAS_location::constructor_nowhere (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5961,13 +5933,6 @@ mProperty_location (inOperand1) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_luint_36__34_ GALGAS_luint_36__34_::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_luint_36__34_ (GALGAS_uint_36__34_::constructor_default (HERE),
-                               GALGAS_location::constructor_nowhere (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_luint_36__34_ GALGAS_luint_36__34_::constructor_new (const GALGAS_uint_36__34_ & in_uint64,
                                                             const GALGAS_location & in_location,
                                                             C_Compiler * /* inCompiler */
@@ -6081,13 +6046,6 @@ GALGAS_range::GALGAS_range (const GALGAS_uint & inOperand0,
                             const GALGAS_uint & inOperand1) :
 mProperty_start (inOperand0),
 mProperty_length (inOperand1) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_range GALGAS_range::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_range (GALGAS_uint::constructor_default (HERE),
-                       GALGAS_uint::constructor_default (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6313,12 +6271,6 @@ mProperty_mValue (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_luintlist_2D_element GALGAS_luintlist_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_luintlist_2D_element (GALGAS_luint::constructor_default (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_luintlist_2D_element GALGAS_luintlist_2D_element::constructor_new (const GALGAS_luint & in_mValue,
                                                                           C_Compiler * /* inCompiler */
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
@@ -6529,12 +6481,6 @@ GALGAS_stringlist_2D_element::~ GALGAS_stringlist_2D_element (void) {
 
 GALGAS_stringlist_2D_element::GALGAS_stringlist_2D_element (const GALGAS_string & inOperand0) :
 mProperty_mValue (inOperand0) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_stringlist_2D_element GALGAS_stringlist_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_stringlist_2D_element (GALGAS_string::constructor_default (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6753,12 +6699,6 @@ mProperty_mValue (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uintlist_2D_element GALGAS_uintlist_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_uintlist_2D_element (GALGAS_uint::constructor_default (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_uintlist_2D_element GALGAS_uintlist_2D_element::constructor_new (const GALGAS_uint & in_mValue,
                                                                         C_Compiler * /* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -6862,12 +6802,6 @@ GALGAS_uint_36__34_list_2D_element::~ GALGAS_uint_36__34_list_2D_element (void) 
 
 GALGAS_uint_36__34_list_2D_element::GALGAS_uint_36__34_list_2D_element (const GALGAS_uint_36__34_ & inOperand0) :
 mProperty_mValue (inOperand0) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint_36__34_list_2D_element GALGAS_uint_36__34_list_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_uint_36__34_list_2D_element (GALGAS_uint_36__34_::constructor_default (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6979,12 +6913,6 @@ mProperty_mValue (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bigintlist_2D_element GALGAS_bigintlist_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_bigintlist_2D_element (GALGAS_bigint::constructor_zero (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_bigintlist_2D_element GALGAS_bigintlist_2D_element::constructor_new (const GALGAS_bigint & in_mValue,
                                                                             C_Compiler * /* inCompiler */
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
@@ -7091,13 +7019,6 @@ GALGAS__32_stringlist_2D_element::GALGAS__32_stringlist_2D_element (const GALGAS
                                                                     const GALGAS_string & inOperand1) :
 mProperty_mValue_30_ (inOperand0),
 mProperty_mValue_31_ (inOperand1) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS__32_stringlist_2D_element GALGAS__32_stringlist_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS__32_stringlist_2D_element (GALGAS_string::constructor_default (HERE),
-                                           GALGAS_string::constructor_default (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7219,13 +7140,6 @@ mProperty_location (inOperand1) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_lstring::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_lstring (GALGAS_string::constructor_default (HERE),
-                         GALGAS_location::constructor_nowhere (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_lstring GALGAS_lstring::constructor_new (const GALGAS_string & in_string,
                                                 const GALGAS_location & in_location,
                                                 C_Compiler * /* inCompiler */
@@ -7339,13 +7253,6 @@ GALGAS_lbigint::GALGAS_lbigint (const GALGAS_bigint & inOperand0,
                                 const GALGAS_location & inOperand1) :
 mProperty_bigint (inOperand0),
 mProperty_location (inOperand1) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lbigint GALGAS_lbigint::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_lbigint (GALGAS_bigint::constructor_zero (HERE),
-                         GALGAS_location::constructor_nowhere (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7467,13 +7374,6 @@ mProperty_location (inOperand1) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lchar GALGAS_lchar::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_lchar (GALGAS_char::constructor_default (HERE),
-                       GALGAS_location::constructor_nowhere (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_lchar GALGAS_lchar::constructor_new (const GALGAS_char & in_char,
                                             const GALGAS_location & in_location,
                                             C_Compiler * /* inCompiler */
@@ -7587,13 +7487,6 @@ GALGAS_ldouble::GALGAS_ldouble (const GALGAS_double & inOperand0,
                                 const GALGAS_location & inOperand1) :
 mProperty_double (inOperand0),
 mProperty_location (inOperand1) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_ldouble GALGAS_ldouble::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_ldouble (GALGAS_double::constructor_default (HERE),
-                         GALGAS_location::constructor_nowhere (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7712,12 +7605,6 @@ mProperty_mValue (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist_2D_element GALGAS_lstringlist_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_lstringlist_2D_element (GALGAS_lstring::constructor_default (HERE)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_lstringlist_2D_element GALGAS_lstringlist_2D_element::constructor_new (const GALGAS_lstring & in_mValue,
                                                                               C_Compiler * /* inCompiler */
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
@@ -7821,12 +7708,6 @@ GALGAS_lbigintlist_2D_element::~ GALGAS_lbigintlist_2D_element (void) {
 
 GALGAS_lbigintlist_2D_element::GALGAS_lbigintlist_2D_element (const GALGAS_lbigint & inOperand0) :
 mProperty_mValue (inOperand0) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lbigintlist_2D_element GALGAS_lbigintlist_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_lbigintlist_2D_element (GALGAS_lbigint::constructor_default (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
