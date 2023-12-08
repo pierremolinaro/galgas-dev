@@ -43,13 +43,22 @@ end%) ;
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
 if [CONSTRUCTOR_ARGUMENT_LIST count] == 0 then
-  %UNUSED_LOCATION_ARGS) {
+if CONSTRUCTOR_NEEDS_COMPILER_VAR then
+  %C_Compiler * inCompiler\n%
+else
+ %C_Compiler * /* inCompiler */\n%
+end
+  !^%COMMA_UNUSED_LOCATION_ARGS) {
 %else
 for (propertyTypeEntry propertyName 2*) in CONSTRUCTOR_ARGUMENT_LIST
-  do %const GALGAS_%![propertyTypeEntry identifierRepresentation]% & in_%![propertyName string]
-  between %,\n%!^
+  do %const GALGAS_%![propertyTypeEntry identifierRepresentation]% & in_%![propertyName string]%,\n%!^
 end
-% \n%!^%COMMA_UNUSED_LOCATION_ARGS) {
+if CONSTRUCTOR_NEEDS_COMPILER_VAR then
+  %C_Compiler * inCompiler\n%
+else
+ %C_Compiler * /* inCompiler */\n%
+end
+  !^%COMMA_UNUSED_LOCATION_ARGS) {
 %
 end
 !CONSTRUCTOR_INITIALIZATION_CODE

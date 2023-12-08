@@ -142,7 +142,7 @@ override method @structDeclarationAST enterDeclarationInSemanticContext
   [!?constructorMap insertKey
     !@lstring.new {!"new" !.here}
     !constructorPropertyTypeList
-    !false
+    !true
     !structTypeIndex
   ]
 #--- Getters
@@ -279,7 +279,7 @@ override method @structDeclarationAST semanticAnalysis
   var initializationCode = ""
   var inclusionSet = @stringset {}
   var @uint temporaryVariableIndex = 0
-  var unusedVariableCppNameSet = @stringset {}
+  var unusedVariableCppNameSet = @stringset {!compilerCppName ()}
   var @usefulEntitiesGraph usefulEntitiesGraph = .emptyGraph
   for (* propertyTypeName propertyName 2* initExpression) in self.mStructurePropertyList do
    switch initExpression
@@ -324,6 +324,7 @@ override method @structDeclarationAST semanticAnalysis
 
   end
 #---
+  let constructorNeedsCompilerVar = not [unusedVariableCppNameSet hasKey !compilerCppName ()]
   ioSemanticDeclarationListForGeneration +=
     !"struct " + self.mStructTypeName
     !@structTypeForGeneration.new {
@@ -331,6 +332,7 @@ override method @structDeclarationAST semanticAnalysis
       !typedPropertyList
       !constructorArgumentList
       !initializationCode
+      !constructorNeedsCompilerVar
     }
 }
 
@@ -342,11 +344,12 @@ refclass @structTypeForGeneration : @semanticTypeForGeneration {
   private let @typedPropertyList mTypedPropertyList
   private let @typedPropertyList mConstructorArgumentList
   private let @string mConstructorInitializationCode
+  private let @bool mConstructorNeedsCompilerVar
 }
 
 #·······················································································································
 
-filewrapper boolsetGenerationTemplate in "+generation-templates/type_generation" {
+filewrapper structureGenerationTemplate in "+generation-templates/type_generation" {
 }{
 }{
   template structTypeHeader1 "GALGAS_struct.h1.galgasTemplate"
@@ -363,6 +366,7 @@ filewrapper boolsetGenerationTemplate in "+generation-templates/type_generation"
     ?@typedPropertyList CONSTRUCTOR_ARGUMENT_LIST
     ?@string CONSTRUCTOR_INITIALIZATION_CODE
     ?@bool HAS_DEFAULT_CONSTRUCTOR
+    ?@bool CONSTRUCTOR_NEEDS_COMPILER_VAR
 }
 
 #·······················································································································
@@ -375,7 +379,7 @@ override method @structTypeForGeneration appendDeclaration1
     [t addHeaderFileName1 !?ioInclusionSet]
   end
   let selfTypedefinition = [self.mSelfTypeEntry definition]
-  outHeader = [filewrapper boolsetGenerationTemplate.structTypeHeader1
+  outHeader = [filewrapper structureGenerationTemplate.structTypeHeader1
     !selfTypedefinition.mTypeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedPropertyList
@@ -408,13 +412,14 @@ override method @structTypeForGeneration appendSpecificImplementation
 {
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
   let selfTypedefinition = [self.mSelfTypeEntry definition]
-  outImplementation = [filewrapper boolsetGenerationTemplate.structTypeSpecificImplementation
+  outImplementation = [filewrapper structureGenerationTemplate.structTypeSpecificImplementation
     !selfTypedefinition.mTypeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedPropertyList
     !self.mConstructorArgumentList
     !self.mConstructorInitializationCode
     !selfTypedefinition.mDefaultConstructorName != ""
+    !self.mConstructorNeedsCompilerVar
   ]
  }
 

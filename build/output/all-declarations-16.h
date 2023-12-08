@@ -247,6 +247,8 @@ class GALGAS_structTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
   public: class GALGAS_string readProperty_mConstructorInitializationCode (void) const ;
 
+  public: class GALGAS_bool readProperty_mConstructorNeedsCompilerVar (void) const ;
+
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -261,7 +263,8 @@ class GALGAS_structTypeForGeneration : public GALGAS_semanticTypeForGeneration {
   public: static class GALGAS_structTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                        const class GALGAS_typedPropertyList & inOperand1,
                                                                        const class GALGAS_typedPropertyList & inOperand2,
-                                                                       const class GALGAS_string & inOperand3
+                                                                       const class GALGAS_string & inOperand3,
+                                                                       const class GALGAS_bool & inOperand4
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -312,12 +315,14 @@ class cPtr_structTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: GALGAS_typedPropertyList mProperty_mTypedPropertyList ;
   public: GALGAS_typedPropertyList mProperty_mConstructorArgumentList ;
   public: GALGAS_string mProperty_mConstructorInitializationCode ;
+  public: GALGAS_bool mProperty_mConstructorNeedsCompilerVar ;
 
 //--- Constructor
   public: cPtr_structTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                         const GALGAS_typedPropertyList & in_mTypedPropertyList,
                                         const GALGAS_typedPropertyList & in_mConstructorArgumentList,
-                                        const GALGAS_string & in_mConstructorInitializationCode
+                                        const GALGAS_string & in_mConstructorInitializationCode,
+                                        const GALGAS_bool & in_mConstructorNeedsCompilerVar
                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -2668,60 +2673,4 @@ class cPtr_routinePrototypeDeclarationForGeneration : public cPtr_semanticDeclar
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @routinePrototypeDeclarationForGeneration_2D_weak weak reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_routinePrototypeDeclarationForGeneration_2D_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_routinePrototypeDeclarationForGeneration_2D_weak (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_routinePrototypeDeclarationForGeneration_2D_weak constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_routinePrototypeDeclarationForGeneration_2D_weak (const class GALGAS_routinePrototypeDeclarationForGeneration & inSource) ;
-
-  public: GALGAS_routinePrototypeDeclarationForGeneration_2D_weak & operator = (const class GALGAS_routinePrototypeDeclarationForGeneration & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_routinePrototypeDeclarationForGeneration bang_routinePrototypeDeclarationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_routinePrototypeDeclarationForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_routinePrototypeDeclarationForGeneration_2D_weak constructor_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_routinePrototypeDeclarationForGeneration_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_routinePrototypeDeclarationForGeneration_2D_weak class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration_2D_weak ;
 

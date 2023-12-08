@@ -218,7 +218,8 @@ class GALGAS_nonterminalDeclarationListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_nonterminalDeclarationListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                        const class GALGAS_nonTerminalLabelListAST & inOperand1
+                                                                                        const class GALGAS_nonTerminalLabelListAST & inOperand1,
+                                                                                        class C_Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -549,7 +550,8 @@ class GALGAS_syntaxRuleLabelListAST_2D_element : public AC_GALGAS_root {
                                                                                  const class GALGAS_formalParameterListAST & inOperand1,
                                                                                  const class GALGAS_location & inOperand2,
                                                                                  const class GALGAS_syntaxInstructionList & inOperand3,
-                                                                                 const class GALGAS_location & inOperand4
+                                                                                 const class GALGAS_location & inOperand4,
+                                                                                 class C_Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -787,7 +789,8 @@ class GALGAS_syntaxRuleListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_syntaxRuleListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                            const class GALGAS_syntaxRuleLabelListAST & inOperand1
+                                                                            const class GALGAS_syntaxRuleLabelListAST & inOperand1,
+                                                                            class C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -1025,7 +1028,8 @@ class GALGAS_listOfSyntaxInstructionList_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_listOfSyntaxInstructionList_2D_element constructor_new (const class GALGAS_syntaxInstructionList & inOperand0,
-                                                                                      const class GALGAS_location & inOperand1
+                                                                                      const class GALGAS_location & inOperand1,
+                                                                                      class C_Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -1759,7 +1763,8 @@ class GALGAS_galgas_33_SyntaxComponentListAST_2D_element : public AC_GALGAS_root
                                                                                            const class GALGAS_lstring & inOperand1,
                                                                                            const class GALGAS_nonterminalDeclarationListAST & inOperand2,
                                                                                            const class GALGAS_syntaxRuleListAST & inOperand3,
-                                                                                           const class GALGAS_bool & inOperand4
+                                                                                           const class GALGAS_bool & inOperand4,
+                                                                                           class C_Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -2028,7 +2033,8 @@ class GALGAS_galgas_33_SyntaxExtensionListAST_2D_element : public AC_GALGAS_root
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_galgas_33_SyntaxExtensionListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                                            const class GALGAS_nonterminalDeclarationListAST & inOperand1,
-                                                                                           const class GALGAS_syntaxRuleListAST & inOperand2
+                                                                                           const class GALGAS_syntaxRuleListAST & inOperand2,
+                                                                                           class C_Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -2188,7 +2194,8 @@ class GALGAS_syntaxExtensions_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_syntaxExtensions_2D_element constructor_new (const class GALGAS_string & inOperand0,
-                                                                           const class GALGAS_galgas_33_SyntaxExtensionListAST & inOperand1
+                                                                           const class GALGAS_galgas_33_SyntaxExtensionListAST & inOperand1,
+                                                                           class C_Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -2426,7 +2433,8 @@ class GALGAS_prologueEpilogueList_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_prologueEpilogueList_2D_element constructor_new (const class GALGAS_semanticInstructionListAST & inOperand0,
-                                                                               const class GALGAS_location & inOperand1
+                                                                               const class GALGAS_location & inOperand1,
+                                                                               class C_Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -2819,7 +2827,8 @@ class GALGAS_programRuleList_2D_element : public AC_GALGAS_root {
                                                                           const class GALGAS_bool & inOperand3,
                                                                           const class GALGAS_lstring & inOperand4,
                                                                           const class GALGAS_semanticInstructionListAST & inOperand5,
-                                                                          const class GALGAS_location & inOperand6
+                                                                          const class GALGAS_location & inOperand6,
+                                                                          class C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -2962,7 +2971,8 @@ class GALGAS_galgasDeclarationAST : public AC_GALGAS_root {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_galgasDeclarationAST constructor_new (LOCATION_ARGS) ;
+  public: static class GALGAS_galgasDeclarationAST constructor_new (C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -3053,7 +3063,8 @@ class GALGAS_functionSignature_2D_element : public AC_GALGAS_root {
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_functionSignature_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                             const class GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                                            const class GALGAS_string & inOperand2
+                                                                            const class GALGAS_string & inOperand2,
+                                                                            class C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -3188,7 +3199,8 @@ class GALGAS_constructorMap_2D_element : public AC_GALGAS_root {
   public: static class GALGAS_constructorMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                          const class GALGAS_functionSignature & inOperand1,
                                                                          const class GALGAS_bool & inOperand2,
-                                                                         const class GALGAS_unifiedTypeMapEntry & inOperand3
+                                                                         const class GALGAS_unifiedTypeMapEntry & inOperand3,
+                                                                         class C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -3666,7 +3678,8 @@ class GALGAS_optionalMethodSignature_2D_element : public AC_GALGAS_root {
   public: static class GALGAS_optionalMethodSignature_2D_element constructor_new (const class GALGAS_bool & inOperand0,
                                                                                   const class GALGAS_lstring & inOperand1,
                                                                                   const class GALGAS_unifiedTypeMapEntry & inOperand2,
-                                                                                  const class GALGAS_string & inOperand3
+                                                                                  const class GALGAS_string & inOperand3,
+                                                                                  class C_Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -3778,7 +3791,8 @@ class GALGAS_optionalMethodMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_optionalMethodMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                            const class GALGAS_optionalMethodSignature & inOperand1
+                                                                            const class GALGAS_optionalMethodSignature & inOperand1,
+                                                                            class C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -3965,7 +3979,8 @@ class GALGAS_getterMap_2D_element : public AC_GALGAS_root {
                                                                     const class GALGAS_bool & inOperand4,
                                                                     const class GALGAS_unifiedTypeMapEntry & inOperand5,
                                                                     const class GALGAS_methodQualifier & inOperand6,
-                                                                    const class GALGAS_string & inOperand7
+                                                                    const class GALGAS_string & inOperand7,
+                                                                    class C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -4262,7 +4277,8 @@ class GALGAS_formalParameterSignature_2D_element : public AC_GALGAS_root {
   public: static class GALGAS_formalParameterSignature_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                                    const class GALGAS_formalArgumentPassingModeAST & inOperand2,
-                                                                                   const class GALGAS_string & inOperand3
+                                                                                   const class GALGAS_string & inOperand3,
+                                                                                   class C_Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -4423,7 +4439,8 @@ class GALGAS_setterMap_2D_element : public AC_GALGAS_root {
                                                                     const class GALGAS_formalParameterSignature & inOperand2,
                                                                     const class GALGAS_bool & inOperand3,
                                                                     const class GALGAS_methodQualifier & inOperand4,
-                                                                    const class GALGAS_string & inOperand5
+                                                                    const class GALGAS_string & inOperand5,
+                                                                    class C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -4597,7 +4614,8 @@ class GALGAS_instanceMethodMap_2D_element : public AC_GALGAS_root {
                                                                             const class GALGAS_location & inOperand3,
                                                                             const class GALGAS_bool & inOperand4,
                                                                             const class GALGAS_methodQualifier & inOperand5,
-                                                                            const class GALGAS_string & inOperand6
+                                                                            const class GALGAS_string & inOperand6,
+                                                                            class C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -4722,7 +4740,8 @@ class GALGAS_classMethodMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_classMethodMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                          const class GALGAS_formalParameterSignature & inOperand1,
-                                                                         const class GALGAS_bool & inOperand2
+                                                                         const class GALGAS_bool & inOperand2,
+                                                                         class C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -4803,7 +4822,8 @@ class GALGAS_enumerationDescriptorList_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_enumerationDescriptorList_2D_element constructor_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                    const class GALGAS_string & inOperand1
+                                                                                    const class GALGAS_string & inOperand1,
+                                                                                    class C_Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -5319,7 +5339,8 @@ class GALGAS_propertyMap_2D_element : public AC_GALGAS_root {
   public: static class GALGAS_propertyMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                       const class GALGAS_AccessControl & inOperand1,
                                                                       const class GALGAS_bool & inOperand2,
-                                                                      const class GALGAS_unifiedTypeMapEntry & inOperand3
+                                                                      const class GALGAS_unifiedTypeMapEntry & inOperand3,
+                                                                      class C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -5544,7 +5565,8 @@ class GALGAS_constantIndexMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_constantIndexMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                            const class GALGAS_uint & inOperand1,
-                                                                           const class GALGAS_unifiedTypeMapEntryList & inOperand2
+                                                                           const class GALGAS_unifiedTypeMapEntryList & inOperand2,
+                                                                           class C_Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'

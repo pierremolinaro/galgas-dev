@@ -273,7 +273,8 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_XcodeProjectDescriptor constructor_new (LOCATION_ARGS) ;
+  public: static class GALGAS_XcodeProjectDescriptor constructor_new (C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (C_String & ioString,

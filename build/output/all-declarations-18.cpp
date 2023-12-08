@@ -46,7 +46,8 @@ GALGAS_analysisContext GALGAS_analysisContext::constructor_new (const GALGAS_sem
                                                                 const GALGAS_string & in_mSelfObjectCppName,
                                                                 const GALGAS_selfAvailability & in_selfType,
                                                                 const GALGAS_string & in_mSelfObjectCppPrefixForAccessingProperty,
-                                                                const GALGAS_bool & in_requiresSelfForAccessingProperty 
+                                                                const GALGAS_bool & in_requiresSelfForAccessingProperty,
+                                                                C_Compiler * /* inCompiler */
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_analysisContext result ;
   if (in_mSemanticContext.isValid () && in_mPredefinedTypes.isValid () && in_mSelfObjectCppName.isValid () && in_selfType.isValid () && in_mSelfObjectCppPrefixForAccessingProperty.isValid () && in_requiresSelfForAccessingProperty.isValid ()) {
@@ -13567,7 +13568,8 @@ GALGAS_productionRuleListForGrammarAnalysis_2D_element GALGAS_productionRuleList
 GALGAS_productionRuleListForGrammarAnalysis_2D_element GALGAS_productionRuleListForGrammarAnalysis_2D_element::constructor_new (const GALGAS_lstring & in_mLeftNonterminalSymbol,
                                                                                                                                 const GALGAS_uint & in_mLeftNonterminalSymbolIndex,
                                                                                                                                 const GALGAS_syntaxInstructionListForGrammarAnalysis & in_mInstructionList,
-                                                                                                                                const GALGAS_uint & in_mProductionIndex 
+                                                                                                                                const GALGAS_uint & in_mProductionIndex,
+                                                                                                                                C_Compiler * /* inCompiler */
                                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_productionRuleListForGrammarAnalysis_2D_element result ;
   if (in_mLeftNonterminalSymbol.isValid () && in_mLeftNonterminalSymbolIndex.isValid () && in_mInstructionList.isValid () && in_mProductionIndex.isValid ()) {
@@ -13803,7 +13805,8 @@ GALGAS_galgas_33_ProjectComponentAST GALGAS_galgas_33_ProjectComponentAST::const
                                                                                             const GALGAS_lstringlist & in_mGenerationFeatureList,
                                                                                             const GALGAS_galgas_33_QualifiedFeatureList & in_mQualifiedFeatureList,
                                                                                             const GALGAS_lstring & in_mTargetName,
-                                                                                            const GALGAS_location & in_mEndOfSourceFile 
+                                                                                            const GALGAS_location & in_mEndOfSourceFile,
+                                                                                            C_Compiler * /* inCompiler */
                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_galgas_33_ProjectComponentAST result ;
   if (in_mProjectSourceList.isValid () && in_mMajorVersion.isValid () && in_mMinorVersion.isValid () && in_mRevisionVersion.isValid () && in_mGenerationFeatureList.isValid () && in_mQualifiedFeatureList.isValid () && in_mTargetName.isValid () && in_mEndOfSourceFile.isValid ()) {

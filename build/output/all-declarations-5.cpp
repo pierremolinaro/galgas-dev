@@ -4999,7 +4999,8 @@ GALGAS_galgasDeclarationAST GALGAS_galgasDeclarationAST::constructor_default (UN
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_galgasDeclarationAST GALGAS_galgasDeclarationAST::constructor_new (UNUSED_LOCATION_ARGS) {
+GALGAS_galgasDeclarationAST GALGAS_galgasDeclarationAST::constructor_new (C_Compiler * /* inCompiler */
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_semanticDeclarationListAST in_mDeclarationList = GALGAS_semanticDeclarationListAST::constructor_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 498)) ;
   const GALGAS_stringset in_mImplicitTypeDeclarationSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticsTypesForAST.galgas", 499)) ;
   const GALGAS_galgas_33_SyntaxComponentListAST in_mSyntaxComponentList = GALGAS_galgas_33_SyntaxComponentListAST::constructor_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 500)) ;

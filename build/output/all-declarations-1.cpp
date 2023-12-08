@@ -2514,7 +2514,8 @@ GALGAS_predefinedTypes GALGAS_predefinedTypes::constructor_new (const GALGAS_uni
                                                                 const GALGAS_unifiedTypeMapEntry & in_mLBigIntType,
                                                                 const GALGAS_unifiedTypeMapEntry & in_mBigIntType,
                                                                 const GALGAS_unifiedTypeMapEntry & in_mStringSetType,
-                                                                const GALGAS_unifiedTypeMapEntry & in_mLStringListType 
+                                                                const GALGAS_unifiedTypeMapEntry & in_mLStringListType,
+                                                                C_Compiler * /* inCompiler */
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_predefinedTypes result ;
   if (in_mLocationType.isValid () && in_mBoolType.isValid () && in_mCharType.isValid () && in_mStringType.isValid () && in_mUIntType.isValid () && in_mSIntType.isValid () && in_mUInt64Type.isValid () && in_mSInt64Type.isValid () && in_mDoubleType.isValid () && in_mLBoolType.isValid () && in_mLCharType.isValid () && in_mLStringType.isValid () && in_mLUIntType.isValid () && in_mLSIntType.isValid () && in_mLUInt64Type.isValid () && in_mLSInt64Type.isValid () && in_mLDoubleType.isValid () && in_mStringListType.isValid () && in_mLBigIntType.isValid () && in_mBigIntType.isValid () && in_mStringSetType.isValid () && in_mLStringListType.isValid ()) {

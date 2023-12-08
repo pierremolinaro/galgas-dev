@@ -10,6 +10,49 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Routine 'commonGetterMapForAllTypes'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_commonGetterMapForAllTypes (class GALGAS_unifiedTypeMap & ioArgument0,
+                                         class GALGAS_getterMap & outArgument1,
+                                         class C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterBaseGetterWithArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterBaseGetterWithArgument (class GALGAS_getterMap & ioArgument0,
+                                          class GALGAS_unifiedTypeMap & ioArgument1,
+                                          const class GALGAS_string constinArgument2,
+                                          const class GALGAS_string constinArgument3,
+                                          const class GALGAS_string constinArgument4,
+                                          const class GALGAS_string constinArgument5,
+                                          const class GALGAS_string constinArgument6,
+                                          const class GALGAS_bool constinArgument7,
+                                          class C_Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterBaseGetterWithoutArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterBaseGetterWithoutArgument (class GALGAS_getterMap & ioArgument0,
+                                             class GALGAS_unifiedTypeMap & ioArgument1,
+                                             const class GALGAS_string constinArgument2,
+                                             const class GALGAS_string constinArgument3,
+                                             const class GALGAS_string constinArgument4,
+                                             const class GALGAS_bool constinArgument5,
+                                             class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Function 'typeNameForUsefulEntitiesGraph'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -791,7 +834,16 @@ class GALGAS_stringset function_forbiddenKeysForStruct (class C_Compiler * inCom
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Filewrapper 'boolsetGenerationTemplate'
+//Function 'compilerCppName'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_compilerCppName (class C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'structureGenerationTemplate'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -804,36 +856,37 @@ class GALGAS_stringset function_forbiddenKeysForStruct (class C_Compiler * inCom
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extern const cDirectoryWrapper gWrapperDirectory_0_boolsetGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_0_structureGenerationTemplate ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'boolsetGenerationTemplate structTypeHeader1'
+//Filewrapper template 'structureGenerationTemplate structTypeHeader1'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_boolsetGenerationTemplate_structTypeHeader_31_ (class C_Compiler * inCompiler,
-                                                                                  const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                  const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                  const class GALGAS_typedPropertyList & in_PROPERTY_5F_LIST,
-                                                                                  const class GALGAS_typedPropertyList & in_CONSTRUCTOR_5F_ARGUMENT_5F_LIST,
-                                                                                  const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
-                                                                                  COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_structureGenerationTemplate_structTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                                    const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                    const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                    const class GALGAS_typedPropertyList & in_PROPERTY_5F_LIST,
+                                                                                    const class GALGAS_typedPropertyList & in_CONSTRUCTOR_5F_ARGUMENT_5F_LIST,
+                                                                                    const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'boolsetGenerationTemplate structTypeSpecificImplementation'
+//Filewrapper template 'structureGenerationTemplate structTypeSpecificImplementation'
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_boolsetGenerationTemplate_structTypeSpecificImplementation (class C_Compiler * inCompiler,
-                                                                                              const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                              const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                              const class GALGAS_typedPropertyList & in_PROPERTY_5F_LIST,
-                                                                                              const class GALGAS_typedPropertyList & in_CONSTRUCTOR_5F_ARGUMENT_5F_LIST,
-                                                                                              const class GALGAS_string & in_CONSTRUCTOR_5F_INITIALIZATION_5F_CODE,
-                                                                                              const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
-                                                                                              COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_structureGenerationTemplate_structTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                                const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                                const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                                const class GALGAS_typedPropertyList & in_PROPERTY_5F_LIST,
+                                                                                                const class GALGAS_typedPropertyList & in_CONSTRUCTOR_5F_ARGUMENT_5F_LIST,
+                                                                                                const class GALGAS_string & in_CONSTRUCTOR_5F_INITIALIZATION_5F_CODE,
+                                                                                                const class GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR,
+                                                                                                const class GALGAS_bool & in_CONSTRUCTOR_5F_NEEDS_5F_COMPILER_5F_VAR
+                                                                                                COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -1283,70 +1336,4 @@ void routine_generateFunction (const class GALGAS_string constinArgument0,
                                class GALGAS_string & outArgument9,
                                class C_Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Function 'methodNameForUsefulEntitiesGraph'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_lstring function_methodNameForUsefulEntitiesGraph (const class GALGAS_string & constinArgument0,
-                                                                const class GALGAS_lstring & constinArgument1,
-                                                                class C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'analyzeRoutineBody'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_analyzeRoutineBody (const class GALGAS_lstring constinArgument0,
-                                 class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                 const class GALGAS_analysisContext constinArgument2,
-                                 class GALGAS_unifiedTypeMap & ioArgument3,
-                                 const class GALGAS_formalParameterListAST constinArgument4,
-                                 const class GALGAS_typedPropertyList constinArgument5,
-                                 const class GALGAS_typedPropertyList constinArgument6,
-                                 const class GALGAS_semanticInstructionListAST constinArgument7,
-                                 const class GALGAS_location constinArgument8,
-                                 class GALGAS_semanticInstructionListForGeneration & outArgument9,
-                                 class GALGAS_formalParameterListForGeneration & outArgument10,
-                                 class C_Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateExtensionMethodNew'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateExtensionMethodNew (const class GALGAS_unifiedTypeMapEntry constinArgument0,
-                                         class GALGAS_stringset & ioArgument1,
-                                         const class GALGAS_string constinArgument2,
-                                         const class GALGAS_formalParameterListForGeneration constinArgument3,
-                                         const class GALGAS_semanticInstructionListForGeneration constinArgument4,
-                                         class GALGAS_string & outArgument5,
-                                         class C_Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'generateProcedure'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_generateProcedure (const class GALGAS_bool constinArgument0,
-                                const class GALGAS_string constinArgument1,
-                                class GALGAS_stringset & ioArgument2,
-                                const class GALGAS_formalParameterListForGeneration constinArgument3,
-                                const class GALGAS_semanticInstructionListForGeneration constinArgument4,
-                                const class GALGAS_bool constinArgument5,
-                                const class GALGAS_string constinArgument6,
-                                const class GALGAS_bool constinArgument7,
-                                const class GALGAS_bool constinArgument8,
-                                const class GALGAS_bool constinArgument9,
-                                class GALGAS_string & outArgument10,
-                                class C_Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
 

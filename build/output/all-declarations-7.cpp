@@ -9714,7 +9714,8 @@ GALGAS_currentVarManager GALGAS_currentVarManager::constructor_default (UNUSED_L
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_currentVarManager GALGAS_currentVarManager::constructor_new (UNUSED_LOCATION_ARGS) {
+GALGAS_currentVarManager GALGAS_currentVarManager::constructor_new (C_Compiler * /* inCompiler */
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_scopeLocalVarMap in_mLocalVarMap = GALGAS_scopeLocalVarMap::constructor_emptyMap (SOURCE_FILE ("variable-manager.galgas", 375)) ;
   const GALGAS_localVarMapListForLLVM in_mSubMaps = GALGAS_localVarMapListForLLVM::constructor_emptyList (SOURCE_FILE ("variable-manager.galgas", 376)) ;
   GALGAS_currentVarManager result ;
@@ -11456,7 +11457,7 @@ void extensionSetter_makeEntryFromString (GALGAS_unifiedTypeMap & ioObject,
     if (kBoolFalse == test_1) {
       GALGAS_unifiedTypeMapElementClass var_newElement_2271 = GALGAS_unifiedTypeMapElementClass::constructor_new (GALGAS_typeDefinition::constructor_unsolved (SOURCE_FILE ("unified-type-map.galgas", 49))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 49)) ;
       {
-      ioObject.setter_internalInsertKey (GALGAS_lstring::constructor_new (constinArgument_inKey, GALGAS_location::constructor_nowhere (SOURCE_FILE ("unified-type-map.galgas", 50))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 50)), var_newElement_2271, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 50)) ;
+      ioObject.setter_internalInsertKey (GALGAS_lstring::constructor_new (constinArgument_inKey, GALGAS_location::constructor_nowhere (SOURCE_FILE ("unified-type-map.galgas", 50)), inCompiler  COMMA_SOURCE_FILE ("unified-type-map.galgas", 50)), var_newElement_2271, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 50)) ;
       }
       outArgument_outEntry = GALGAS_unifiedTypeMapEntry::constructor_element (var_newElement_2271  COMMA_SOURCE_FILE ("unified-type-map.galgas", 51)) ;
     }
