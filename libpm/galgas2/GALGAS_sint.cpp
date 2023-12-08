@@ -31,12 +31,6 @@ mSIntValue (0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_sint GALGAS_sint::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_sint (0) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_sint::GALGAS_sint (const int32_t inValue) :
 AC_GALGAS_root (),
 mIsValid (true),

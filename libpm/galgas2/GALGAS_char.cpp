@@ -45,12 +45,6 @@ mCharValue (TO_UNICODE (0)) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_char GALGAS_char::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_char (TO_UNICODE (0)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 #if (COMPILE_FOR_WINDOWS == 1) || defined(__CYGWIN__)
   GALGAS_char GALGAS_char::constructor_unicodeCharacterFromRawKeyboard (C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {

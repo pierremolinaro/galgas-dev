@@ -104,13 +104,6 @@ syntax extension galgas4DeclarationsSyntax {
     while
       <method_declaration> !mEnumTypeName !?ioDeclarations !?ioUserImplicitDeclaredTypeSet
     end
-#    let @lstring defaultConstantName
-#    select
-#      defaultConstantName = ["" nowhere]
-#    or
-#      $default$
-#      $identifier$ ?defaultConstantName
-#    end
     $}$
     ioDeclarations.mDeclarationList += !@enumDeclarationAST.new {
       !false # Is not predefined

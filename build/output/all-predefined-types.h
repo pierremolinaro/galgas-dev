@@ -197,9 +197,6 @@ class GALGAS_string : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GALGAS_string (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_string constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Constructor for making an empty string
   public: static GALGAS_string makeEmptyString (void) ;
 
@@ -636,9 +633,6 @@ class GALGAS_bool : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GALGAS_bool (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_bool constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Native constructors
   public: GALGAS_bool (const bool inValue) ; // Is built
   public: GALGAS_bool (const bool inBuilt, const bool inValue) ;
@@ -730,9 +724,6 @@ class GALGAS_uint : public AC_GALGAS_root {
 
 //--------------------------------- Default constructor
   public: GALGAS_uint (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_uint constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Native constructors
   public: GALGAS_uint (const uint32_t inValue) ;
@@ -1094,9 +1085,6 @@ class GALGAS_char : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GALGAS_char (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_char constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Native constructor
   public: GALGAS_char (const utf32 inValue) ;
 
@@ -1204,9 +1192,6 @@ class GALGAS_double : public AC_GALGAS_root {
 
 //--------------------------------- Default constructor
   public: GALGAS_double (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_double constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_double (const double inValue) ;
@@ -1368,9 +1353,6 @@ class GALGAS_uint_36__34_ : public AC_GALGAS_root {
 
 //--------------------------------- Default constructor
   public: GALGAS_uint_36__34_ (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_uint_36__34_ constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_uint_36__34_ (const uint64_t inValue) ;
@@ -1588,9 +1570,6 @@ class GALGAS_sint : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GALGAS_sint (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_sint constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Native constructor
   public: GALGAS_sint (const int32_t inValue) ;
 
@@ -1795,9 +1774,6 @@ class GALGAS_sint_36__34_ : public AC_GALGAS_root {
 
 //--------------------------------- Default constructor
   public: GALGAS_sint_36__34_ (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_sint_36__34_ constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_sint_36__34_ (const int64_t inValue) ;

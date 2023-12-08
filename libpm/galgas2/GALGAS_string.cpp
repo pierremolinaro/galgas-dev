@@ -244,12 +244,6 @@ GALGAS_string GALGAS_string::constructor_CppString (const GALGAS_string & inStri
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_string ("") ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 GALGAS_string GALGAS_string::constructor_stringWithSequenceOfCharacters (const GALGAS_char & inCharacter,
                                                                          const GALGAS_uint & inCount
                                                                          COMMA_UNUSED_LOCATION_ARGS) {

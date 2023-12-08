@@ -18,9 +18,6 @@ class GALGAS_uint : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GALGAS_uint (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_uint constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Native constructors
   public: GALGAS_uint (const uint32_t inValue) ;
   public: GALGAS_uint (const bool inValid, const uint32_t inValue) ;
