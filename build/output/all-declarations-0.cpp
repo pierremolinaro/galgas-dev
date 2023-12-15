@@ -3890,7 +3890,7 @@ C_String C_Lexique_galgasScanner::getCurrentTokenString (const cToken * inTokenP
 
 void C_Lexique_galgasScanner::internalParseLexicalToken (cTokenFor_galgasScanner & token) {
   bool loop = true ;
-  token.mLexicalAttribute_bigintValue.setToZero () ;
+  token.mLexicalAttribute_bigintValue = C_BigInt () ;
   token.mLexicalAttribute_charValue = TO_UNICODE (0) ;
   token.mLexicalAttribute_floatValue = 0.0 ;
   token.mLexicalAttribute_identifierString.setLengthToZero () ;

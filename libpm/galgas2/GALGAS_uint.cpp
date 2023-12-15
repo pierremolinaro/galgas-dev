@@ -286,7 +286,7 @@ GALGAS_string GALGAS_uint::getter_alphaString (UNUSED_LOCATION_ARGS) const {
 GALGAS_bigint GALGAS_uint::getter_bigint (UNUSED_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid ()) {
-    result = GALGAS_bigint (C_BigInt (mUIntValue, false)) ;
+    result = GALGAS_bigint (C_BigInt (true, mUIntValue)) ;
   }
   return result ;
 }
@@ -724,7 +724,7 @@ GALGAS_uint GALGAS_uint::left_shift_operation (const GALGAS_bigint inShiftOperan
                                                COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid () && inShiftOperand.isValid ()) {
-    if (inShiftOperand.bigintValue().isNegative ()) {
+    if (inShiftOperand.bigintValue().isStrictlyNegative ()) {
       inCompiler->onTheFlyRunTimeError ("@uint left shift by a negative amount" COMMA_THERE) ;
     }else{
       result = GALGAS_uint (mUIntValue << (inShiftOperand.bigintValue().uint32 () & 31)) ;
@@ -752,7 +752,7 @@ GALGAS_uint GALGAS_uint::right_shift_operation (const GALGAS_bigint inShiftOpera
                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid () && inShiftOperand.isValid ()) {
-    if (inShiftOperand.bigintValue().isNegative ()) {
+    if (inShiftOperand.bigintValue().isStrictlyNegative ()) {
       inCompiler->onTheFlyRunTimeError ("@uint right shift by a negative amount" COMMA_THERE) ;
     }else{
       result = GALGAS_uint (mUIntValue >> (inShiftOperand.bigintValue().uint32 () & 31)) ;

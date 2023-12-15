@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2015, ..., 2018 Pierre Molinaro.
+//  Copyright (C) 2015, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -71,7 +71,7 @@ GALGAS_bigint::~GALGAS_bigint (void) {
 
 void GALGAS_bigint::drop (void) {
   mIsValid = false ;
-  mValue.setToZero () ;
+  mValue = C_BigInt () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -420,7 +420,7 @@ GALGAS_string GALGAS_bigint::getter_xString (UNUSED_LOCATION_ARGS) const {
 void GALGAS_bigint::increment_operation (C_Compiler * /* inCompiler */
                                          COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
-    ++ mValue ;
+    mValue += 1 ;
   }
 }
 
@@ -429,7 +429,7 @@ void GALGAS_bigint::increment_operation (C_Compiler * /* inCompiler */
 void GALGAS_bigint::decrement_operation (C_Compiler * /* inCompiler */
                                          COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
-    -- mValue ;
+    mValue -= 1 ;
   }
 }
 
@@ -771,7 +771,7 @@ GALGAS_bigint GALGAS_bigint::left_shift_operation (const GALGAS_bigint inShiftOp
 
   GALGAS_bigint result ;
   if (isValid () && inShiftOperand.isValid ()) {
-    if (inShiftOperand.mValue.isNegative ()) {
+    if (inShiftOperand.mValue.isStrictlyNegative ()) {
       inCompiler->onTheFlyRunTimeError ("@bigint left shift by a negative amount" COMMA_THERE) ;
     }else{
       result = GALGAS_bigint (mValue << inShiftOperand.mValue) ;
@@ -800,7 +800,7 @@ GALGAS_bigint GALGAS_bigint::right_shift_operation (const GALGAS_bigint inShiftO
 
   GALGAS_bigint result ;
   if (isValid () && inShiftOperand.isValid ()) {
-    if (inShiftOperand.mValue.isNegative ()) {
+    if (inShiftOperand.mValue.isStrictlyNegative ()) {
       inCompiler->onTheFlyRunTimeError ("@bigint right shift by a negative amount" COMMA_THERE) ;
     }else{
       result = GALGAS_bigint (mValue >> inShiftOperand.mValue) ;

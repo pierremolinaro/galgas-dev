@@ -1086,8 +1086,8 @@ static void internalValueCount (const uint32_t inValue,
                                 COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
-    nombreDirect.setToZero () ;
-    nombreComplement.setFromU32 (1) ;
+    nombreDirect = C_BigInt () ; //.setToZero () ;
+    nombreComplement = C_BigInt (true, 1) ;
     nombreComplement <<= inVariableCount ;
   }else{
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
@@ -1127,8 +1127,9 @@ static void internalValueCountUsingCache (const uint32_t inValue,
                                           COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
-    nombreDirect.setToZero () ;
-    nombreComplement.setFromU32 (1) ; nombreComplement <<= inVariableCount ;
+    nombreDirect = C_BigInt () ; // .setToZero () ;
+    nombreComplement = C_BigInt (true, 1) ;
+    nombreComplement <<= inVariableCount ;
   }else if ((ioDirectCacheArray.count () > (int32_t) (inValue / 2))
     && (((!ioDirectCacheArray (inValue / 2 COMMA_HERE).isZero ()) || (!ioComplementCacheArray (inValue / 2 COMMA_HERE).isZero())))) {
     nombreDirect = ioDirectCacheArray (inValue / 2 COMMA_HERE) ;

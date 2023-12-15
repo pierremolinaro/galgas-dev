@@ -69,7 +69,7 @@ getter @lexicalTypeEnum initialization -> @string {
     case lexicalType_sint   : result = " = 0"
     case lexicalType_sint64 : result = " = 0"
     case lexicalType_double : result = " = 0.0"
-    case lexicalType_bigint : result = ".setToZero ()"
+    case lexicalType_bigint : result = " = C_BigInt ()"
   end
 }
 

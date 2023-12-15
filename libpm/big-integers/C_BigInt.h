@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2015, ..., 2019 Pierre Molinaro.
+//  Copyright (C) 2015, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -40,11 +40,16 @@
 
 class C_BigInt final {
 //--- Constructors
-  public: C_BigInt (void) ;
-  public: explicit C_BigInt (const uint64_t inValue, const bool inNegate) ;
-  public: explicit C_BigInt (const uint64_t inHighValue, const uint64_t inLowValue, const bool inNegate) ;
+  public: C_BigInt (void) ; // Zero
+
+  public: explicit C_BigInt (const bool inIsPositive, const uint64_t inValue) ;
+
+  public: explicit C_BigInt (const bool inIsPositive, const uint64_t inHighValue, const uint64_t inLowValue) ;
+
   public: explicit C_BigInt (const int64_t inValue) ;
+
   public: explicit C_BigInt (const char * inString, const int32_t inBase, bool & outOk) ;
+
   public: static C_BigInt randomNumber (void) ;
 
 //--- Destructor
@@ -54,16 +59,11 @@ class C_BigInt final {
   public: C_BigInt (const C_BigInt & inOperand) ;
   public: C_BigInt & operator = (const C_BigInt & inOperand) ;
 
-//--- Set to value
-  public: void setToZero (void) ;
-  public: void setFromU32 (const uint32_t inValue) ;
-
 //--- Sign
   public: bool isZero (void) const ;
   public: bool isOne (void) const ;
-  public: bool isMinusOne (void) const ;
-  public: bool isPositive (void) const ; // >0
-  public: bool isNegative (void) const ; // <0
+  public: bool isStrictlyPositive (void) const ; // >0
+  public: bool isStrictlyNegative (void) const ; // <0
 
 //--- Comparison
   public: bool operator == (const C_BigInt & inValue) const ;
@@ -74,10 +74,6 @@ class C_BigInt final {
   public: bool operator <= (const C_BigInt & inOperand) const ;
   public: int32_t compare (const C_BigInt & inValue) const ;
   public: int32_t sign (void) const ;
-
-//--- Incrementation, decrementation
-  public: C_BigInt & operator ++ (void) ;
-  public: C_BigInt & operator -- (void) ;
 
 //--- Shift
   public: C_BigInt operator << (const uint32_t inValue) const ;
@@ -177,7 +173,7 @@ class C_BigInt final {
   protected: mpz_t mGMPint ;
 
 //--- Friend
-  friend void swap (C_BigInt & ioOp1, C_BigInt & ioOp2) ;
+//  friend void swap (C_BigInt & ioOp1, C_BigInt & ioOp2) ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------

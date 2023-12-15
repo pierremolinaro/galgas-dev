@@ -554,7 +554,7 @@ GALGAS_sint GALGAS_sint::left_shift_operation (const GALGAS_bigint inShiftOperan
                                                COMMA_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (isValid () && inShiftOperand.isValid ()) {
-    if (inShiftOperand.bigintValue().isNegative ()) {
+    if (inShiftOperand.bigintValue().isStrictlyNegative ()) {
       inCompiler->onTheFlyRunTimeError ("@sint left shift by a negative amount" COMMA_THERE) ;
     }else{
       result = GALGAS_sint (mSIntValue << (inShiftOperand.bigintValue ().uint32 () & 31)) ;
@@ -582,7 +582,7 @@ GALGAS_sint GALGAS_sint::right_shift_operation (const GALGAS_bigint inShiftOpera
                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (isValid () && inShiftOperand.isValid ()) {
-    if (inShiftOperand.bigintValue().isNegative ()) {
+    if (inShiftOperand.bigintValue().isStrictlyNegative ()) {
       inCompiler->onTheFlyRunTimeError ("@sint right shift by a negative amount" COMMA_THERE) ;
     }else{
       result = GALGAS_sint (mSIntValue >> (inShiftOperand.bigintValue ().uint32 () & 31)) ;

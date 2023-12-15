@@ -86,25 +86,19 @@ bool C_BigInt::isOne (void) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool C_BigInt::isMinusOne (void) const {
-  return mpz_cmp_si (mGMPint, -1) == 0 ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 int32_t C_BigInt::sign (void) const {
   return mpz_sgn (mGMPint) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool C_BigInt::isNegative (void) const {
+bool C_BigInt::isStrictlyNegative (void) const {
   return sign () < 0 ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool C_BigInt::isPositive (void) const {
+bool C_BigInt::isStrictlyPositive (void) const {
   return sign () > 0 ;
 }
 
@@ -118,7 +112,7 @@ bool C_BigInt::isPositive (void) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-C_BigInt::C_BigInt (const uint64_t inValue, const bool inNegate) :
+C_BigInt::C_BigInt (const bool inIsPositive, const uint64_t inValue) :
 mGMPint () {
   mpz_init (mGMPint) ;
   const uint64_t high = inValue >> 32 ;
@@ -129,14 +123,16 @@ mGMPint () {
     mpz_mul_2exp (mGMPint, mGMPint, 32) ;
     mpz_add_ui (mGMPint, mGMPint, (uint32_t) (inValue & UINT32_MAX)) ;
   }
-  if (inNegate) {
+  if (!inIsPositive) {
     mpz_neg (mGMPint, mGMPint) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-C_BigInt::C_BigInt (const uint64_t inHighValue, const uint64_t inLowValue, const bool inNegate) :
+C_BigInt::C_BigInt (const bool inIsPositive,
+                    const uint64_t inHighValue,
+                    const uint64_t inLowValue) :
 mGMPint () {
   mpz_init (mGMPint) ;
   mpz_set_ui (mGMPint, 0) ;
@@ -155,7 +151,7 @@ mGMPint () {
   mpz_add_ui (mGMPint, mGMPint, (uint32_t) high) ;
   mpz_mul_2exp (mGMPint, mGMPint, 32) ;
   mpz_add_ui (mGMPint, mGMPint, (uint32_t) (inLowValue & UINT32_MAX)) ;
-  if (inNegate) {
+  if (!inIsPositive) {
     mpz_neg (mGMPint, mGMPint) ;
   }
 }
@@ -182,15 +178,9 @@ mGMPint () {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void C_BigInt::setToZero (void) {
-  mpz_set_ui (mGMPint, 0) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void C_BigInt::setFromU32 (const uint32_t inValue) {
-  mpz_set_ui (mGMPint, inValue) ;
-}
+//void C_BigInt::setFromU32 (const uint32_t inValue) {
+//  mpz_set_ui (mGMPint, inValue) ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -211,17 +201,17 @@ mGMPint () {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-C_BigInt & C_BigInt::operator ++ (void) {
-  mpz_add_ui (mGMPint, mGMPint, 1) ;
-  return *this ;
-}
+//C_BigInt & C_BigInt::operator ++ (void) {
+//  mpz_add_ui (mGMPint, mGMPint, 1) ;
+//  return *this ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 
-C_BigInt & C_BigInt::operator -- (void) {
-  mpz_sub_ui (mGMPint, mGMPint, 1) ;
-  return *this ;
-}
+//C_BigInt & C_BigInt::operator -- (void) {
+//  mpz_sub_ui (mGMPint, mGMPint, 1) ;
+//  return *this ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 // String
@@ -896,42 +886,17 @@ void C_BigInt::extractBytesForSignedRepresentation (std::vector <uint8_t> & outV
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Swap
-#endif
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void swap (C_BigInt & ioOp1, C_BigInt & ioOp2) {
-  mpz_swap (ioOp1.mGMPint, ioOp2.mGMPint) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Swap
-#endif
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static uint32_t randomUInt32 (void) {
-  return (uint32_t) rand () ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 C_BigInt C_BigInt::randomNumber (void) {
   C_BigInt result ;
   const size_t randomSize = size_t (galgas_random ()) % 20 ;
   for (uint32_t i=0 ; i<randomSize ; i++) {
     result <<= 32 ;
-    result += randomUInt32 () ;
+    result += uint32_t (galgas_random ()) ;
   }
-  if ((randomUInt32 () & 1) == 0) {
+  if ((galgas_random () & 1) == 0) {
     result.negateInPlace () ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-

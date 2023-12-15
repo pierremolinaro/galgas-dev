@@ -586,7 +586,7 @@ GALGAS_bigint GALGAS_binaryset::getter_bigValueCount (const GALGAS_uint & inVari
       inCompiler->onTheFlyRunTimeError ("needed variable count is greater than variable count argument" COMMA_THERE) ;
     }else{
       const PMUInt128 r = mBDD.valueCount128 (inVariableCount.uintValue ()) ;
-      result = GALGAS_bigint (C_BigInt (r.high (), r.low (), false)) ;
+      result = GALGAS_bigint (C_BigInt (true, r.high (), r.low ())) ;
     }
   }
   return result ;
@@ -1027,7 +1027,7 @@ GALGAS_binaryset GALGAS_binaryset::left_shift_operation (const GALGAS_bigint inL
                                                          COMMA_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if (isValid () && inLeftShiftCount.isValid ()) {
-    if (inLeftShiftCount.bigintValue().isNegative ()) {
+    if (inLeftShiftCount.bigintValue().isStrictlyNegative ()) {
       inCompiler->onTheFlyRunTimeError ("@binaryset left shift by a negative amount" COMMA_THERE) ;
     }else{
       result = GALGAS_binaryset (mBDD.bddByLeftShifting (inLeftShiftCount.bigintValue().uint32 ())) ;
@@ -1055,7 +1055,7 @@ GALGAS_binaryset GALGAS_binaryset::right_shift_operation (const GALGAS_bigint in
                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if (isValid () && inRightShiftCount.isValid ()) {
-    if (inRightShiftCount.bigintValue().isNegative ()) {
+    if (inRightShiftCount.bigintValue().isStrictlyNegative ()) {
       inCompiler->onTheFlyRunTimeError ("@binaryset right shift by a negative amount" COMMA_THERE) ;
     }else{
       result = GALGAS_binaryset (mBDD.bddByRightShifting (inRightShiftCount.bigintValue ().uint32 ())) ;
