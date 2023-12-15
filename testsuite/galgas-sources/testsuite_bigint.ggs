@@ -229,56 +229,56 @@ proc testsuite_bigint_type() {
     ?remainder:remainder
   )
   println (quotient.string + " " + remainder) # -80000000737 8280
-  println ("--- floorDivideBy")
-  let cst5 = 9876543210_9876543210 ; cst5.floorDivideBy (
-    !1234567890,
-    ?quotient:quotient,
-    ?remainder:remainder
-  )
-  println (quotient.string + " " + remainder) # 80000000737 8280
-  let cst6 = -9876543210_9876543210 ; cst6.floorDivideBy (
-    !1234567890,
-    ?quotient:quotient,
-    ?remainder:remainder
-  )
-  println (quotient.string + " " + remainder) # -80000000738 1234559610
-  let cst7 = -9876543210_9876543210 ; cst7.floorDivideBy (
-    !-1234567890,
-    ?quotient:quotient,
-    ?remainder:remainder
-  )
-  println (quotient.string + " " + remainder) # 80000000737 -8280
-  let cst8 = 9876543210_9876543210 ; cst8.floorDivideBy (
-    !-1234567890,
-    ?quotient:quotient,
-    ?remainder:remainder
-  )
-  println (quotient.string + " " + remainder) # -80000000738 -1234559610
-  println ("--- ceilDivideBy")
-  let cst9 = 9876543210_9876543210 ; cst9.ceilDivideBy (
-    !1234567890,
-    ?quotient:quotient,
-    ?remainder:remainder
-  )
-  println (quotient.string + " " + remainder) # 80000000738 -1234559610
-  let cstA = -9876543210_9876543210 ; cstA.ceilDivideBy (
-    !1234567890,
-    ?quotient:quotient,
-    ?remainder:remainder
-  )
-  println (quotient.string + " " + remainder) # -80000000737 -8280
-  let cstB = -9876543210_9876543210 ; cstB.ceilDivideBy (
-    !-1234567890,
-    ?quotient:quotient,
-    ?remainder:remainder
-  )
-  println (quotient.string + " " + remainder) # 80000000738 1234559610
-  let cstC = 9876543210_9876543210 ; cstC.ceilDivideBy (
-    !-1234567890,
-    ?quotient:quotient,
-    ?remainder:remainder
-  )
-  println (quotient.string + " " + remainder) # -80000000737 8280
+#  println ("--- floorDivideBy")
+#  let cst5 = 9876543210_9876543210 ; cst5.floorDivideBy (
+#    !1234567890,
+#    ?quotient:quotient,
+#    ?remainder:remainder
+#  )
+#  println (quotient.string + " " + remainder) # 80000000737 8280
+#  let cst6 = -9876543210_9876543210 ; cst6.floorDivideBy (
+#    !1234567890,
+#    ?quotient:quotient,
+#    ?remainder:remainder
+#  )
+#  println (quotient.string + " " + remainder) # -80000000738 1234559610
+#  let cst7 = -9876543210_9876543210 ; cst7.floorDivideBy (
+#    !-1234567890,
+#    ?quotient:quotient,
+#    ?remainder:remainder
+#  )
+#  println (quotient.string + " " + remainder) # 80000000737 -8280
+#  let cst8 = 9876543210_9876543210 ; cst8.floorDivideBy (
+#    !-1234567890,
+#    ?quotient:quotient,
+#    ?remainder:remainder
+#  )
+#  println (quotient.string + " " + remainder) # -80000000738 -1234559610
+#  println ("--- ceilDivideBy")
+#  let cst9 = 9876543210_9876543210 ; cst9.ceilDivideBy (
+#    !1234567890,
+#    ?quotient:quotient,
+#    ?remainder:remainder
+#  )
+#  println (quotient.string + " " + remainder) # 80000000738 -1234559610
+#  let cstA = -9876543210_9876543210 ; cstA.ceilDivideBy (
+#    !1234567890,
+#    ?quotient:quotient,
+#    ?remainder:remainder
+#  )
+#  println (quotient.string + " " + remainder) # -80000000737 -8280
+#  let cstB = -9876543210_9876543210 ; cstB.ceilDivideBy (
+#    !-1234567890,
+#    ?quotient:quotient,
+#    ?remainder:remainder
+#  )
+#  println (quotient.string + " " + remainder) # 80000000738 1234559610
+#  let cstC = 9876543210_9876543210 ; cstC.ceilDivideBy (
+#    !-1234567890,
+#    ?quotient:quotient,
+#    ?remainder:remainder
+#  )
+#  println (quotient.string + " " + remainder) # -80000000737 8280
   println ("--- operator <<")
   println ((0x1234567890 << 12).hexString) # 0x1234567890000
   println (((-0x1234567890) << 12).hexString) # -0x1234567890000

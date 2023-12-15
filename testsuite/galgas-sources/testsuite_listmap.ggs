@@ -10,10 +10,10 @@ listmap @myListMap (@aList)
 proc testsuite_listmap() {
   println ("*************************************** begin of listmap")
   var m = @myListMap []
-  m += !"d" !"g" !37
-  m += !"a" !"b" !23
-  m += !"c" !"f" !11
-  m += !"a" !"c" !98
+  !?m.insert ("d", "g", 37)
+  !?m.insert ("a", "b", 23)
+  !?m.insert ("c", "f", 11)
+  !?m.insert ("a", "c", 98)
   log m
   let @uint c = m.count
   log c
@@ -24,15 +24,15 @@ proc testsuite_listmap() {
   let @aList aList = m.listForKey ("a")
   log aList
 #  println ("--- test .= operator listmap") ;
-  var m2 = @myListMap []
+#  var m2 = @myListMap []
 #  m2 += !"b" !"z" !9 ;
 #  m2 += !"a" !"q" !14 ;
 #  m .= m2 ;
 #  log m ;
-  println ("--- test += operator listmap")
-  m2 += !"b" !"w" !7
-  m2 += !"e" !"r" !2
-  m2 += !"b" !"x" !19
+#  println ("--- test += operator listmap")
+#  !?m.insert ("b", "w", 7)
+#  !?m.insert ("e", "r", 2)
+#  !?m.insert ("b", "x", 19)
 #  @myListMap mm := m .m2 ;
 #  log mm ;
   println ("--- test foreach for listmap")

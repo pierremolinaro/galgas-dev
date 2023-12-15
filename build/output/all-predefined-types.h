@@ -651,6 +651,9 @@ class GALGAS_bool : public AC_GALGAS_root {
                                             C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_bool constructor_default (LOCATION_ARGS) ;
+
 //--------------------------------- & operator
   public: VIRTUAL_IN_DEBUG GALGAS_bool operator_and (const GALGAS_bool & inOperand
                                                      COMMA_LOCATION_ARGS) const ;
@@ -2105,23 +2108,11 @@ class GALGAS_bigint : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_ceilDivideBy (class GALGAS_bigint constinArgument0,
-                                                     class GALGAS_bigint & outArgument1,
-                                                     class GALGAS_bigint & outArgument2,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const ;
-
   public: VIRTUAL_IN_DEBUG void method_divideBy (class GALGAS_bigint constinArgument0,
                                                  class GALGAS_bigint & outArgument1,
                                                  class GALGAS_bigint & outArgument2,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG void method_floorDivideBy (class GALGAS_bigint constinArgument0,
-                                                      class GALGAS_bigint & outArgument1,
-                                                      class GALGAS_bigint & outArgument2,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 

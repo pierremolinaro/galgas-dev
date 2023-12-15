@@ -8,10 +8,10 @@ sortedlist @mySortedList {
 
 proc testsuite_sortedlist() {
   var strList = @mySortedList []
-  strList += !"b"
-  strList += !"a"
-  strList += !"d"
-  strList += !"c"
+  !?strList.insert ("b")
+  !?strList.insert ("a")
+  !?strList.insert ("d")
+  !?strList.insert ("c")
   println ("*************************************** begin of sorted list test")
   for s in strList do (idx)
     println ("  index " + idx + " : " + s.mValue)

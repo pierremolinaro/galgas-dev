@@ -210,6 +210,22 @@ override method @locationPredefinedTypeAST getConstructorMap
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+override method @boolPredefinedTypeAST getConstructorMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@constructorMap outMap
+{
+  outMap = {}
+  enterConstructorWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name: "default"
+    !resultTypeName: "bool"
+    !hasLexiqueArg: false
+  )
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 override method @stringPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap

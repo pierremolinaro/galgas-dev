@@ -52,6 +52,12 @@ mBoolValue (inValue) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_bool::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_bool (false) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 GALGAS_bool::GALGAS_bool (const typeComparisonKind inComparisonKind,
                           const typeComparisonResult inComparisonResult) :
 mIsValid (kOperandNotValid != inComparisonResult),

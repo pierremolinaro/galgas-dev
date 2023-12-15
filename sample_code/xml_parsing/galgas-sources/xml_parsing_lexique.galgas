@@ -2,12 +2,12 @@ template lexique xml_parsing_lexique {
 
 template "<"  %preserved ... ""
 
-replace "&amp;" -> "&"
-replace "&lt;" -> "<"
-replace "&gt;" -> ">"
-replace "&quot;" -> "\""
-replace "&apos;" -> "'"
-replace "&#" ... ";" : codePointToUnicode
+%templateReplacement "&amp;" -> "&"
+%templateReplacement "&lt;" -> "<"
+%templateReplacement "&gt;" -> ">"
+%templateReplacement "&quot;" -> "\""
+%templateReplacement "&apos;" -> "'"
+%templateReplacement "&#" ... ";" : codePointToUnicode
 
 style delimitersStyle -> "Delimiter"
 style nameStyle -> "Name"

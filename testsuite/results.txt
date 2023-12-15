@@ -213,7 +213,6 @@ LOGGING aList: <list @aList (2 objects):
 |-at 1
 | mString:<@string:"c">
 | mInt:<@uint:98>>
---- test += operator listmap
 --- test foreach for listmap
 LOGGING key: : <@string:"a">
 LOGGING list: : <list @aList (2 objects):
@@ -516,16 +515,6 @@ LOGGING imaginary: <@double:-1>
 80000000737 8280
 -80000000737 -8280
 80000000737 -8280
--80000000737 8280
---- floorDivideBy
-80000000737 8280
--80000000738 1234559610
-80000000737 -8280
--80000000738 -1234559610
---- ceilDivideBy
-80000000738 -1234559610
--80000000737 -8280
-80000000738 1234559610
 -80000000737 8280
 --- operator <<
 0x1234567890000

@@ -3,10 +3,10 @@
 proc testsuite_for_instruction() {
   println ("*************************************** begin of for instruction test 1")
   var strList = @stringlist []
-  strList += !"a"
-  strList += !"b"
-  strList += !"c"
-  strList += !"d"
+  !?strList.append ("a")
+  !?strList.append ("b")
+  !?strList.append ("c")
+  !?strList.append ("d")
   for (s) in strList 
   before
     println ("  before")
@@ -78,14 +78,14 @@ proc testsuite_for_instruction() {
 
   println ("--- begin of for instruction test 7")
   var @stringset set = []
-  set += !"A"
-  set += !"B"
-  set += !"C"
-  set += !"D"
-  set += !"E"
-  set += !"F"
-  set += !"G"
-  set += !"H"
+  !?set.insert ("A")
+  !?set.insert ("B")
+  !?set.insert ("C")
+  !?set.insert ("D")
+  !?set.insert ("E")
+  !?set.insert ("F")
+  !?set.insert ("G")
+  !?set.insert ("H")
   for s in set do (idx)
     println ("  do '" + s + "' (idx: " + idx.string + ")")
   end

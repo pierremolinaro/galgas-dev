@@ -8,10 +8,10 @@ list @myList {
 
 proc testsuite_list() {
   var strList = @myList []
-  strList += !"a"
-  strList += !"b"
-  strList += !"c"
-  strList += !"d"
+  !?strList.append ("a")
+  !?strList.append ("b")
+  !?strList.append ("c")
+  !?strList.append ("d")
   println ("*************************************** begin of list direct access")
   var @string s = strList.mValueAtIndex (0)
   log s
@@ -33,10 +33,10 @@ proc testsuite_list() {
   log comp
   println ("*************************************** begin of collection value")
   var s1 = @stringlist [!"a"]
-  s1 += !"b"
+  !?s1.append ("b")
   var s2 = @stringlist [!"c"]
-  s2 += !"d"
-  s2 += [!"e"]
+  !?s2.append ("d")
+  s2 += ["e"]
   let str = s1 + s2
   log str
   let str2 = @stringlist ["a" : !"b" : !"c" : !"d" : !"e"]

@@ -947,87 +947,87 @@ message [quotient string] + " " + remainder + "\n" # -80000000737 8280
 
 
 
-\subsectionMethod{floorDivideBy}{bigint}
-
-\begin{galgasbox}
-method @bigint floorDivideBy ?@bigint inDivisor
-                             !@bigint outQuotient
-                             !@bigint outRemainder
-\end{galgasbox}
-
-Elle effectue toujours la division dont le quotient arrondi \emph{vers $-\infty$}.
-
-\begin{galgas}
-@bigint quotient
-@bigint remainder
-[9876543210_9876543210G floorDivideBy
-  !1234567890G
-  ?quotient:quotient
-  ?remainder:remainder
-]
-message [quotient string] + " " + remainder + "\n" # 80000000737 8280
-[-9876543210_9876543210G floorDivideBy
-  !1234567890G
-  ?quotient:quotient
-  ?remainder:remainder
-]
-message [quotient string] + " " + remainder + "\n" # -80000000738 1234559610
-[-9876543210_9876543210G floorDivideBy
-  !-1234567890G
-  ?quotient:quotient
-  ?remainder:remainder
-]
-message [quotient string] + " " + remainder + "\n" # 80000000737 -8280
-[9876543210_9876543210G floorDivideBy
-  !-1234567890G
-  ?quotient:quotient
-  ?remainder:remainder
-]
-message [quotient string] + " " + remainder + "\n" # -80000000738 -1234559610
-\end{galgas}
-
-
+%\subsectionMethod{floorDivideBy}{bigint}
+%
+%\begin{galgasbox}
+%method @bigint floorDivideBy ?@bigint inDivisor
+%                             !@bigint outQuotient
+%                             !@bigint outRemainder
+%\end{galgasbox}
+%
+%Elle effectue toujours la division dont le quotient arrondi \emph{vers $-\infty$}.
+%
+%\begin{galgas}
+%@bigint quotient
+%@bigint remainder
+%[9876543210_9876543210G floorDivideBy
+%  !1234567890G
+%  ?quotient:quotient
+%  ?remainder:remainder
+%]
+%message [quotient string] + " " + remainder + "\n" # 80000000737 8280
+%[-9876543210_9876543210G floorDivideBy
+%  !1234567890G
+%  ?quotient:quotient
+%  ?remainder:remainder
+%]
+%message [quotient string] + " " + remainder + "\n" # -80000000738 1234559610
+%[-9876543210_9876543210G floorDivideBy
+%  !-1234567890G
+%  ?quotient:quotient
+%  ?remainder:remainder
+%]
+%message [quotient string] + " " + remainder + "\n" # 80000000737 -8280
+%[9876543210_9876543210G floorDivideBy
+%  !-1234567890G
+%  ?quotient:quotient
+%  ?remainder:remainder
+%]
+%message [quotient string] + " " + remainder + "\n" # -80000000738 -1234559610
+%\end{galgas}
 
 
 
-\subsectionMethod{ceilDivideBy}{bigint}
 
-\begin{galgasbox}
-method @bigint ceilDivideBy ?@bigint inDivisor
-                            !@bigint outQuotient
-                            !@bigint outRemainder
-\end{galgasbox}
 
-Elle effectue toujours la division dont le quotient arrondi \emph{vers $+\infty$}.
-
-\begin{galgas}
-@bigint quotient
-@bigint remainder
-[9876543210_9876543210G ceilDivideBy
-  !1234567890G
-  ?quotient:quotient
-  ?remainder:remainder
-]
-message [quotient string] + " " + remainder + "\n" # 80000000738 -1234559610
-[-9876543210_9876543210G ceilDivideBy
-  !1234567890G
-  ?quotient:quotient
-  ?remainder:remainder
-]
-message [quotient string] + " " + remainder + "\n" # -80000000737 -8280
-[-9876543210_9876543210G ceilDivideBy
-  !-1234567890G
-  ?quotient:quotient
-  ?remainder:remainder
-]
-message [quotient string] + " " + remainder + "\n" # 80000000738 1234559610
-[9876543210_9876543210G ceilDivideBy
-  !-1234567890G
-  ?quotient:quotient
-  ?remainder:remainder
-]
-message [quotient string] + " " + remainder + "\n" # -80000000737 8280
-\end{galgas}
+%\subsectionMethod{ceilDivideBy}{bigint}
+%
+%\begin{galgasbox}
+%method @bigint ceilDivideBy ?@bigint inDivisor
+%                            !@bigint outQuotient
+%                            !@bigint outRemainder
+%\end{galgasbox}
+%
+%Elle effectue toujours la division dont le quotient arrondi \emph{vers $+\infty$}.
+%
+%\begin{galgas}
+%@bigint quotient
+%@bigint remainder
+%[9876543210_9876543210G ceilDivideBy
+%  !1234567890G
+%  ?quotient:quotient
+%  ?remainder:remainder
+%]
+%message [quotient string] + " " + remainder + "\n" # 80000000738 -1234559610
+%[-9876543210_9876543210G ceilDivideBy
+%  !1234567890G
+%  ?quotient:quotient
+%  ?remainder:remainder
+%]
+%message [quotient string] + " " + remainder + "\n" # -80000000737 -8280
+%[-9876543210_9876543210G ceilDivideBy
+%  !-1234567890G
+%  ?quotient:quotient
+%  ?remainder:remainder
+%]
+%message [quotient string] + " " + remainder + "\n" # 80000000738 1234559610
+%[9876543210_9876543210G ceilDivideBy
+%  !-1234567890G
+%  ?quotient:quotient
+%  ?remainder:remainder
+%]
+%message [quotient string] + " " + remainder + "\n" # -80000000737 8280
+%\end{galgas}
 
 
 
