@@ -34,6 +34,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 #include <stdint.h>
+#include <vector>
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -124,11 +125,11 @@ class C_BigInt final {
   public: void divideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder) ;
   public: void divideBy (const C_BigInt inDivisor, C_BigInt & outQuotient, C_BigInt & outRemainder) const ;
 
-  public: void floorDivideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder) ;
-  public: void floorDivideBy (const C_BigInt inDivisor, C_BigInt & outQuotient, C_BigInt & outRemainder) const ;
+//  public: void floorDivideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder) ;
+//  public: void floorDivideBy (const C_BigInt inDivisor, C_BigInt & outQuotient, C_BigInt & outRemainder) const ;
 
-  public: void ceilDivideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder) ;
-  public: void ceilDivideBy (const C_BigInt inDivisor, C_BigInt & outQuotient, C_BigInt & outRemainder) const ;
+//  public: void ceilDivideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder) ;
+//  public: void ceilDivideBy (const C_BigInt inDivisor, C_BigInt & outQuotient, C_BigInt & outRemainder) const ;
 
   public: void operator /= (const C_BigInt inDivisor) ;
   public: C_BigInt operator / (const C_BigInt & inDivisor) const ;
@@ -161,8 +162,8 @@ class C_BigInt final {
   public: uint64_t uint64 (void) const ;
   public:  int32_t int32  (void) const ;
   public:  int64_t int64  (void) const ;
-  public: void extractBytesForUnsignedRepresentation (TC_UniqueArray <uint8_t> & outValue) const ;
-  public: void extractBytesForSignedRepresentation (TC_UniqueArray <uint8_t> & outValue) const ;
+  public: void extractBytesForUnsignedRepresentation (std::vector <uint8_t> & outValue) const ;
+  public: void extractBytesForSignedRepresentation (std::vector <uint8_t> & outValue) const ;
 
 //--- Testing value
   public: bool fitsInUInt32 (void) const ;

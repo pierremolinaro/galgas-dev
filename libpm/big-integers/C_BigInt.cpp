@@ -538,41 +538,41 @@ void C_BigInt::divideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder)
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void C_BigInt::ceilDivideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder) {
-  mpz_t quotient ;
-  mpz_init (quotient) ;
-  mpz_cdiv_qr (quotient, outRemainder.mGMPint, mGMPint, inDivisor.mGMPint) ;
-  mpz_swap (quotient, mGMPint) ;
-  mpz_clear (quotient) ;
-}
+//void C_BigInt::ceilDivideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder) {
+//  mpz_t quotient ;
+//  mpz_init (quotient) ;
+//  mpz_cdiv_qr (quotient, outRemainder.mGMPint, mGMPint, inDivisor.mGMPint) ;
+//  mpz_swap (quotient, mGMPint) ;
+//  mpz_clear (quotient) ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void C_BigInt::ceilDivideBy (const C_BigInt inDivisor,
-                             C_BigInt & outQuotient,
-                             C_BigInt & outRemainder) const {
-  outQuotient = *this ;
-  outQuotient.ceilDivideInPlace (inDivisor, outRemainder) ;
-}
+//void C_BigInt::ceilDivideBy (const C_BigInt inDivisor,
+//                             C_BigInt & outQuotient,
+//                             C_BigInt & outRemainder) const {
+//  outQuotient = *this ;
+//  outQuotient.ceilDivideInPlace (inDivisor, outRemainder) ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void C_BigInt::floorDivideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder) {
-  mpz_t quotient ;
-  mpz_init (quotient) ;
-  mpz_fdiv_qr (quotient, outRemainder.mGMPint, mGMPint, inDivisor.mGMPint) ;
-  mpz_swap (quotient, mGMPint) ;
-  mpz_clear (quotient) ;
-}
+//void C_BigInt::floorDivideInPlace (const C_BigInt inDivisor, C_BigInt & outRemainder) {
+//  mpz_t quotient ;
+//  mpz_init (quotient) ;
+//  mpz_fdiv_qr (quotient, outRemainder.mGMPint, mGMPint, inDivisor.mGMPint) ;
+//  mpz_swap (quotient, mGMPint) ;
+//  mpz_clear (quotient) ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void C_BigInt::floorDivideBy (const C_BigInt inDivisor,
-                              C_BigInt & outQuotient,
-                              C_BigInt & outRemainder) const {
-  outQuotient = *this ;
-  outQuotient.floorDivideInPlace (inDivisor, outRemainder) ;
-}
+//void C_BigInt::floorDivideBy (const C_BigInt inDivisor,
+//                              C_BigInt & outQuotient,
+//                              C_BigInt & outRemainder) const {
+//  outQuotient = *this ;
+//  outQuotient.floorDivideInPlace (inDivisor, outRemainder) ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -858,37 +858,37 @@ int64_t C_BigInt::int64 (void) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void C_BigInt::extractBytesForUnsignedRepresentation (TC_UniqueArray <uint8_t> & outValue) const {
+void C_BigInt::extractBytesForUnsignedRepresentation (std::vector <uint8_t> & outValue) const {
   size_t count = 0 ;
   const uint8_t * ptr = (const uint8_t *) mpz_export (nullptr, & count, -1, sizeof (uint8_t), 0, 0, mGMPint) ;
-  outValue.removeAllKeepingCapacity () ;
+  outValue.clear () ;
   for (size_t i=0 ; i<count ; i++) {
-    outValue.appendObject (ptr [i]) ;
+    outValue.push_back (ptr [i]) ;
   }
   ::free ((void *) ptr) ;
   if (count == 0) {
-    outValue.appendObject (0) ;
+    outValue.push_back (0) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void C_BigInt::extractBytesForSignedRepresentation (TC_UniqueArray <uint8_t> & outValue) const {
+void C_BigInt::extractBytesForSignedRepresentation (std::vector <uint8_t> & outValue) const {
   if (mpz_sgn (mGMPint) == 0) { // zero
-    outValue.removeAllKeepingCapacity () ;
-    outValue.appendObject (0) ;
+    outValue.clear () ;
+    outValue.push_back (0) ;
   }else if (mpz_sgn (mGMPint) > 0) { // > 0
     extractBytesForUnsignedRepresentation (outValue) ;
-    if ((outValue.lastObject (HERE) & 0x80) != 0) {
-      outValue.appendObject (0) ;
+    if ((outValue.back () & 0x80) != 0) {
+      outValue.push_back (0) ;
     }
   }else{ // < 0
     extractBytesForUnsignedRepresentation (outValue) ;
   //--- Perform two's complement
     uint8_t carry = 1 ;
-    for (int32_t i=0 ; i<outValue.count () ; i++) {
-      const uint8_t v = (uint8_t) (carry + ~ outValue (i COMMA_HERE)) ;
-      outValue (i COMMA_HERE) = v ;
+    for (size_t i=0 ; i<outValue.size () ; i++) {
+      const uint8_t v = (uint8_t) (carry + ~ outValue [i]) ;
+      outValue [i] = v ;
       carry = v == 0 ;
     }
   }
