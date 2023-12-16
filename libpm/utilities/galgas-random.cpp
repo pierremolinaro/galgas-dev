@@ -27,20 +27,23 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#ifndef COMPILE_FOR_WINDOWS
-  #error COMPILE_FOR_WINDOWS is undefined
-#endif
+static uint64_t gSeed = 0 ;
 
 //--------------------------------------------------------------------------------------------------
 
-#if (COMPILE_FOR_WINDOWS == 1) || defined (__CYGWIN__)
-  int64_t galgas_random (void) {
-    return rand () ;
-  }
-#else
-  int64_t galgas_random (void) {
-    return random () ;
-  }
-#endif
+void set_galgas_random_seed (const uint64_t inSeed) {
+  gSeed = inSeed ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// https://en.wikipedia.org/wiki/Linear_congruential_generator
+// ANSI C linear congruential PRNG : gSeed = gSeed * 1103515245 + 12345
+// Newlib : gSeed = gSeed * 6364136223846793005 + 1
+//--------------------------------------------------------------------------------------------------
+
+uint32_t galgas_random (void) {
+  gSeed = gSeed * 6364136223846793005 + 1 ;
+  return uint32_t (gSeed) ; // Period is 2**32
+}
 
 //--------------------------------------------------------------------------------------------------

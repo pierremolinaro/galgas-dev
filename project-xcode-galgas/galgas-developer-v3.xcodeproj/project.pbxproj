@@ -510,6 +510,60 @@
 		CFCA2EA51C331FF300AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCA2EA21C331FF300AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp */; };
 		CFCA2EA61C33200700AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCA2EA21C331FF300AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp */; };
 		CFCAEE67160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCAEE66160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.m */; };
+		CFCB7A132B2DAECF008DD653 /* BigUnsigned-conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79F02B2DAECE008DD653 /* BigUnsigned-conversions.cpp */; };
+		CFCB7A142B2DAECF008DD653 /* BigUnsigned-conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79F02B2DAECE008DD653 /* BigUnsigned-conversions.cpp */; };
+		CFCB7A152B2DAECF008DD653 /* BigSigned-subtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79F12B2DAECE008DD653 /* BigSigned-subtract.cpp */; };
+		CFCB7A162B2DAECF008DD653 /* BigSigned-subtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79F12B2DAECE008DD653 /* BigSigned-subtract.cpp */; };
+		CFCB7A172B2DAECF008DD653 /* BigSigned-utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79F22B2DAECE008DD653 /* BigSigned-utilities.cpp */; };
+		CFCB7A182B2DAECF008DD653 /* BigSigned-utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79F22B2DAECE008DD653 /* BigSigned-utilities.cpp */; };
+		CFCB7A192B2DAECF008DD653 /* BigSigned-chunk-operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79F32B2DAECE008DD653 /* BigSigned-chunk-operations.cpp */; };
+		CFCB7A1A2B2DAECF008DD653 /* BigSigned-chunk-operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79F32B2DAECE008DD653 /* BigSigned-chunk-operations.cpp */; };
+		CFCB7A1B2B2DAECF008DD653 /* BigUnsigned-divide-naive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79F42B2DAECE008DD653 /* BigUnsigned-divide-naive.cpp */; };
+		CFCB7A1C2B2DAECF008DD653 /* BigUnsigned-divide-naive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79F42B2DAECE008DD653 /* BigUnsigned-divide-naive.cpp */; };
+		CFCB7A1D2B2DAECF008DD653 /* BigUnsigned-chunk-operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79F62B2DAECE008DD653 /* BigUnsigned-chunk-operations.cpp */; };
+		CFCB7A1E2B2DAECF008DD653 /* BigUnsigned-chunk-operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79F62B2DAECE008DD653 /* BigUnsigned-chunk-operations.cpp */; };
+		CFCB7A1F2B2DAECF008DD653 /* BigUnsigned-add.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79F72B2DAECE008DD653 /* BigUnsigned-add.cpp */; };
+		CFCB7A202B2DAECF008DD653 /* BigUnsigned-add.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79F72B2DAECE008DD653 /* BigUnsigned-add.cpp */; };
+		CFCB7A212B2DAECF008DD653 /* BigUnsigned-bit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79F82B2DAECE008DD653 /* BigUnsigned-bit.cpp */; };
+		CFCB7A222B2DAECF008DD653 /* BigUnsigned-bit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79F82B2DAECE008DD653 /* BigUnsigned-bit.cpp */; };
+		CFCB7A232B2DAECF008DD653 /* ChunkSharedArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79FA2B2DAECF008DD653 /* ChunkSharedArray.cpp */; };
+		CFCB7A242B2DAECF008DD653 /* ChunkSharedArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79FA2B2DAECF008DD653 /* ChunkSharedArray.cpp */; };
+		CFCB7A252B2DAECF008DD653 /* BigUnsigned-utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79FC2B2DAECF008DD653 /* BigUnsigned-utilities.cpp */; };
+		CFCB7A262B2DAECF008DD653 /* BigUnsigned-utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79FC2B2DAECF008DD653 /* BigUnsigned-utilities.cpp */; };
+		CFCB7A272B2DAECF008DD653 /* BigUnsigned-divide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79FD2B2DAECF008DD653 /* BigUnsigned-divide.cpp */; };
+		CFCB7A282B2DAECF008DD653 /* BigUnsigned-divide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB79FD2B2DAECF008DD653 /* BigUnsigned-divide.cpp */; };
+		CFCB7A292B2DAECF008DD653 /* BigSigned-logic-operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A002B2DAECF008DD653 /* BigSigned-logic-operations.cpp */; };
+		CFCB7A2A2B2DAECF008DD653 /* BigSigned-logic-operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A002B2DAECF008DD653 /* BigSigned-logic-operations.cpp */; };
+		CFCB7A2B2B2DAECF008DD653 /* BigUnsigned-logic-operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A012B2DAECF008DD653 /* BigUnsigned-logic-operations.cpp */; };
+		CFCB7A2C2B2DAECF008DD653 /* BigUnsigned-logic-operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A012B2DAECF008DD653 /* BigUnsigned-logic-operations.cpp */; };
+		CFCB7A2D2B2DAECF008DD653 /* BigSigned.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A022B2DAECF008DD653 /* BigSigned.cpp */; };
+		CFCB7A2E2B2DAECF008DD653 /* BigSigned.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A022B2DAECF008DD653 /* BigSigned.cpp */; };
+		CFCB7A2F2B2DAECF008DD653 /* BigUnsigned-print.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A032B2DAECF008DD653 /* BigUnsigned-print.cpp */; };
+		CFCB7A302B2DAECF008DD653 /* BigUnsigned-print.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A032B2DAECF008DD653 /* BigUnsigned-print.cpp */; };
+		CFCB7A312B2DAECF008DD653 /* BigSigned-bit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A042B2DAECF008DD653 /* BigSigned-bit.cpp */; };
+		CFCB7A322B2DAECF008DD653 /* BigSigned-bit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A042B2DAECF008DD653 /* BigSigned-bit.cpp */; };
+		CFCB7A332B2DAECF008DD653 /* BigSigned-multiply.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A052B2DAECF008DD653 /* BigSigned-multiply.cpp */; };
+		CFCB7A342B2DAECF008DD653 /* BigSigned-multiply.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A052B2DAECF008DD653 /* BigSigned-multiply.cpp */; };
+		CFCB7A352B2DAECF008DD653 /* BigSigned-shifts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A062B2DAECF008DD653 /* BigSigned-shifts.cpp */; };
+		CFCB7A362B2DAECF008DD653 /* BigSigned-shifts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A062B2DAECF008DD653 /* BigSigned-shifts.cpp */; };
+		CFCB7A372B2DAECF008DD653 /* BigSigned-constructors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A072B2DAECF008DD653 /* BigSigned-constructors.cpp */; };
+		CFCB7A382B2DAECF008DD653 /* BigSigned-constructors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A072B2DAECF008DD653 /* BigSigned-constructors.cpp */; };
+		CFCB7A392B2DAECF008DD653 /* BigSigned-conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A082B2DAECF008DD653 /* BigSigned-conversions.cpp */; };
+		CFCB7A3A2B2DAECF008DD653 /* BigSigned-conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A082B2DAECF008DD653 /* BigSigned-conversions.cpp */; };
+		CFCB7A3B2B2DAECF008DD653 /* BigUnsigned-multiply.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A0A2B2DAECF008DD653 /* BigUnsigned-multiply.cpp */; };
+		CFCB7A3C2B2DAECF008DD653 /* BigUnsigned-multiply.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A0A2B2DAECF008DD653 /* BigUnsigned-multiply.cpp */; };
+		CFCB7A3D2B2DAECF008DD653 /* BigUnsigned-shifts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A0B2B2DAECF008DD653 /* BigUnsigned-shifts.cpp */; };
+		CFCB7A3E2B2DAECF008DD653 /* BigUnsigned-shifts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A0B2B2DAECF008DD653 /* BigUnsigned-shifts.cpp */; };
+		CFCB7A3F2B2DAECF008DD653 /* BigUnsigned-subtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A0C2B2DAECF008DD653 /* BigUnsigned-subtract.cpp */; };
+		CFCB7A402B2DAECF008DD653 /* BigUnsigned-subtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A0C2B2DAECF008DD653 /* BigUnsigned-subtract.cpp */; };
+		CFCB7A412B2DAECF008DD653 /* BigSigned-add.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A0D2B2DAECF008DD653 /* BigSigned-add.cpp */; };
+		CFCB7A422B2DAECF008DD653 /* BigSigned-add.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A0D2B2DAECF008DD653 /* BigSigned-add.cpp */; };
+		CFCB7A432B2DAECF008DD653 /* BigSigned-print.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A0E2B2DAECF008DD653 /* BigSigned-print.cpp */; };
+		CFCB7A442B2DAECF008DD653 /* BigSigned-print.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A0E2B2DAECF008DD653 /* BigSigned-print.cpp */; };
+		CFCB7A452B2DAECF008DD653 /* BigSigned-divide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A102B2DAECF008DD653 /* BigSigned-divide.cpp */; };
+		CFCB7A462B2DAECF008DD653 /* BigSigned-divide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A102B2DAECF008DD653 /* BigSigned-divide.cpp */; };
+		CFCB7A472B2DAECF008DD653 /* BigUnsigned-constructors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A122B2DAECF008DD653 /* BigUnsigned-constructors.cpp */; };
+		CFCB7A482B2DAECF008DD653 /* BigUnsigned-constructors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB7A122B2DAECF008DD653 /* BigUnsigned-constructors.cpp */; };
 		CFCDC7EE2AB358C800FD6CB0 /* print.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDC7EC2AB358C800FD6CB0 /* print.cpp */; };
 		CFCDC7EF2AB358C800FD6CB0 /* print.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCDC7EC2AB358C800FD6CB0 /* print.cpp */; };
 		CFCEC3FB1B7FA158001D89B8 /* GALGAS_bigint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCEC3FA1B7FA158001D89B8 /* GALGAS_bigint.cpp */; };
@@ -1038,6 +1092,41 @@
 		CFCA2EA41C331FF300AB04B8 /* F_verbose_output.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = F_verbose_output.h; sourceTree = "<group>"; };
 		CFCAEE65160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OC_GGS_ApplicationDelegate.h; sourceTree = "<group>"; };
 		CFCAEE66160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OC_GGS_ApplicationDelegate.m; sourceTree = "<group>"; };
+		CFCB79F02B2DAECE008DD653 /* BigUnsigned-conversions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigUnsigned-conversions.cpp"; sourceTree = "<group>"; };
+		CFCB79F12B2DAECE008DD653 /* BigSigned-subtract.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigSigned-subtract.cpp"; sourceTree = "<group>"; };
+		CFCB79F22B2DAECE008DD653 /* BigSigned-utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigSigned-utilities.cpp"; sourceTree = "<group>"; };
+		CFCB79F32B2DAECE008DD653 /* BigSigned-chunk-operations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigSigned-chunk-operations.cpp"; sourceTree = "<group>"; };
+		CFCB79F42B2DAECE008DD653 /* BigUnsigned-divide-naive.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigUnsigned-divide-naive.cpp"; sourceTree = "<group>"; };
+		CFCB79F52B2DAECE008DD653 /* chunk-U8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "chunk-U8.h"; sourceTree = "<group>"; };
+		CFCB79F62B2DAECE008DD653 /* BigUnsigned-chunk-operations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigUnsigned-chunk-operations.cpp"; sourceTree = "<group>"; };
+		CFCB79F72B2DAECE008DD653 /* BigUnsigned-add.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigUnsigned-add.cpp"; sourceTree = "<group>"; };
+		CFCB79F82B2DAECE008DD653 /* BigUnsigned-bit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigUnsigned-bit.cpp"; sourceTree = "<group>"; };
+		CFCB79F92B2DAECE008DD653 /* chunk-U64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "chunk-U64.h"; sourceTree = "<group>"; };
+		CFCB79FA2B2DAECF008DD653 /* ChunkSharedArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChunkSharedArray.cpp; sourceTree = "<group>"; };
+		CFCB79FB2B2DAECF008DD653 /* ChunkSelectSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkSelectSize.h; sourceTree = "<group>"; };
+		CFCB79FC2B2DAECF008DD653 /* BigUnsigned-utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigUnsigned-utilities.cpp"; sourceTree = "<group>"; };
+		CFCB79FD2B2DAECF008DD653 /* BigUnsigned-divide.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigUnsigned-divide.cpp"; sourceTree = "<group>"; };
+		CFCB79FE2B2DAECF008DD653 /* BigSigned.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigSigned.h; sourceTree = "<group>"; };
+		CFCB79FF2B2DAECF008DD653 /* chunk-U32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "chunk-U32.h"; sourceTree = "<group>"; };
+		CFCB7A002B2DAECF008DD653 /* BigSigned-logic-operations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigSigned-logic-operations.cpp"; sourceTree = "<group>"; };
+		CFCB7A012B2DAECF008DD653 /* BigUnsigned-logic-operations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigUnsigned-logic-operations.cpp"; sourceTree = "<group>"; };
+		CFCB7A022B2DAECF008DD653 /* BigSigned.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BigSigned.cpp; sourceTree = "<group>"; };
+		CFCB7A032B2DAECF008DD653 /* BigUnsigned-print.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigUnsigned-print.cpp"; sourceTree = "<group>"; };
+		CFCB7A042B2DAECF008DD653 /* BigSigned-bit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigSigned-bit.cpp"; sourceTree = "<group>"; };
+		CFCB7A052B2DAECF008DD653 /* BigSigned-multiply.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigSigned-multiply.cpp"; sourceTree = "<group>"; };
+		CFCB7A062B2DAECF008DD653 /* BigSigned-shifts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigSigned-shifts.cpp"; sourceTree = "<group>"; };
+		CFCB7A072B2DAECF008DD653 /* BigSigned-constructors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigSigned-constructors.cpp"; sourceTree = "<group>"; };
+		CFCB7A082B2DAECF008DD653 /* BigSigned-conversions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigSigned-conversions.cpp"; sourceTree = "<group>"; };
+		CFCB7A092B2DAECF008DD653 /* BigUnsigned.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigUnsigned.h; sourceTree = "<group>"; };
+		CFCB7A0A2B2DAECF008DD653 /* BigUnsigned-multiply.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigUnsigned-multiply.cpp"; sourceTree = "<group>"; };
+		CFCB7A0B2B2DAECF008DD653 /* BigUnsigned-shifts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigUnsigned-shifts.cpp"; sourceTree = "<group>"; };
+		CFCB7A0C2B2DAECF008DD653 /* BigUnsigned-subtract.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigUnsigned-subtract.cpp"; sourceTree = "<group>"; };
+		CFCB7A0D2B2DAECF008DD653 /* BigSigned-add.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigSigned-add.cpp"; sourceTree = "<group>"; };
+		CFCB7A0E2B2DAECF008DD653 /* BigSigned-print.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigSigned-print.cpp"; sourceTree = "<group>"; };
+		CFCB7A0F2B2DAECF008DD653 /* chunk-U16.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "chunk-U16.h"; sourceTree = "<group>"; };
+		CFCB7A102B2DAECF008DD653 /* BigSigned-divide.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigSigned-divide.cpp"; sourceTree = "<group>"; };
+		CFCB7A112B2DAECF008DD653 /* ChunkSharedArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkSharedArray.h; sourceTree = "<group>"; };
+		CFCB7A122B2DAECF008DD653 /* BigUnsigned-constructors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "BigUnsigned-constructors.cpp"; sourceTree = "<group>"; };
 		CFCDC7EC2AB358C800FD6CB0 /* print.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = print.cpp; sourceTree = "<group>"; };
 		CFCDC7ED2AB358C800FD6CB0 /* print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = print.h; sourceTree = "<group>"; };
 		CFCEC3FA1B7FA158001D89B8 /* GALGAS_bigint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_bigint.cpp; sourceTree = "<group>"; };
@@ -1326,6 +1415,41 @@
 		CF40C83D2AFD3CCE0027918A /* big-integers */ = {
 			isa = PBXGroup;
 			children = (
+				CFCB7A0D2B2DAECF008DD653 /* BigSigned-add.cpp */,
+				CFCB7A042B2DAECF008DD653 /* BigSigned-bit.cpp */,
+				CFCB79F32B2DAECE008DD653 /* BigSigned-chunk-operations.cpp */,
+				CFCB7A072B2DAECF008DD653 /* BigSigned-constructors.cpp */,
+				CFCB7A082B2DAECF008DD653 /* BigSigned-conversions.cpp */,
+				CFCB7A102B2DAECF008DD653 /* BigSigned-divide.cpp */,
+				CFCB7A002B2DAECF008DD653 /* BigSigned-logic-operations.cpp */,
+				CFCB7A052B2DAECF008DD653 /* BigSigned-multiply.cpp */,
+				CFCB7A0E2B2DAECF008DD653 /* BigSigned-print.cpp */,
+				CFCB7A062B2DAECF008DD653 /* BigSigned-shifts.cpp */,
+				CFCB79F12B2DAECE008DD653 /* BigSigned-subtract.cpp */,
+				CFCB79F22B2DAECE008DD653 /* BigSigned-utilities.cpp */,
+				CFCB7A022B2DAECF008DD653 /* BigSigned.cpp */,
+				CFCB79FE2B2DAECF008DD653 /* BigSigned.h */,
+				CFCB79F72B2DAECE008DD653 /* BigUnsigned-add.cpp */,
+				CFCB79F82B2DAECE008DD653 /* BigUnsigned-bit.cpp */,
+				CFCB79F62B2DAECE008DD653 /* BigUnsigned-chunk-operations.cpp */,
+				CFCB7A122B2DAECF008DD653 /* BigUnsigned-constructors.cpp */,
+				CFCB79F02B2DAECE008DD653 /* BigUnsigned-conversions.cpp */,
+				CFCB79F42B2DAECE008DD653 /* BigUnsigned-divide-naive.cpp */,
+				CFCB79FD2B2DAECF008DD653 /* BigUnsigned-divide.cpp */,
+				CFCB7A012B2DAECF008DD653 /* BigUnsigned-logic-operations.cpp */,
+				CFCB7A0A2B2DAECF008DD653 /* BigUnsigned-multiply.cpp */,
+				CFCB7A032B2DAECF008DD653 /* BigUnsigned-print.cpp */,
+				CFCB7A0B2B2DAECF008DD653 /* BigUnsigned-shifts.cpp */,
+				CFCB7A0C2B2DAECF008DD653 /* BigUnsigned-subtract.cpp */,
+				CFCB79FC2B2DAECF008DD653 /* BigUnsigned-utilities.cpp */,
+				CFCB7A092B2DAECF008DD653 /* BigUnsigned.h */,
+				CFCB79F52B2DAECE008DD653 /* chunk-U8.h */,
+				CFCB7A0F2B2DAECF008DD653 /* chunk-U16.h */,
+				CFCB79FF2B2DAECF008DD653 /* chunk-U32.h */,
+				CFCB79F92B2DAECE008DD653 /* chunk-U64.h */,
+				CFCB79FB2B2DAECF008DD653 /* ChunkSelectSize.h */,
+				CFCB79FA2B2DAECF008DD653 /* ChunkSharedArray.cpp */,
+				CFCB7A112B2DAECF008DD653 /* ChunkSharedArray.h */,
 				CF40C8422AFD47500027918A /* C_BigInt.cpp */,
 				CF40C8432AFD47500027918A /* C_BigInt.h */,
 				CF23CCE22B127FFE001F9FE2 /* PMUInt128.cpp */,
@@ -1996,6 +2120,7 @@
 				CF6DF17109E3F23700506859 /* C_Timer.cpp in Sources */,
 				CF873F6A1A32333C0014C45A /* C_StringListCommandLineOption.cpp in Sources */,
 				CF6DF17409E3F23700506859 /* F_DisplayException.cpp in Sources */,
+				CFCB7A1B2B2DAECF008DD653 /* BigUnsigned-divide-naive.cpp in Sources */,
 				CF9E755B1BADDA0E00DBEFEE /* mpn-toom_interpolate_8pts.c in Sources */,
 				CF6DF17509E3F23700506859 /* F_GetPrime.cpp in Sources */,
 				CF34D95B1E521CB900CD0245 /* cIssueDescriptor.cpp in Sources */,
@@ -2005,10 +2130,13 @@
 				CF6DF17B09E3F23700506859 /* C_builtin_CLI_Options.cpp in Sources */,
 				CF6DF18009E3F23700506859 /* C_BDD.cpp in Sources */,
 				CF40C8442AFD47500027918A /* C_BigInt.cpp in Sources */,
+				CFCB7A272B2DAECF008DD653 /* BigUnsigned-divide.cpp in Sources */,
 				CF9E75661BADDAA900DBEFEE /* mpn-sbpi1_div_qr.c in Sources */,
+				CFCB7A152B2DAECF008DD653 /* BigSigned-subtract.cpp in Sources */,
 				CF9E75541BADD98300DBEFEE /* mpn-toom44_mul.c in Sources */,
 				CF69B28E0A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */,
 				CF0676460E7EE037008B9D1F /* md5.cpp in Sources */,
+				CFCB7A1F2B2DAECF008DD653 /* BigUnsigned-add.cpp in Sources */,
 				CFD3E8620FA0C0F800C4995E /* C_String.cpp in Sources */,
 				CFD3E8640FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CF92344D1BADC719001032DA /* mpn-toom33_mul.c in Sources */,
@@ -2021,8 +2149,10 @@
 				CFDACD081003D0B60096A8E5 /* F_mainForLIBPM.cpp in Sources */,
 				CF92340F1BADBFF6001032DA /* mpz-set.c in Sources */,
 				CF82F11210BEDAB200F40B32 /* C_CommandLineOption.cpp in Sources */,
+				CFCB7A232B2DAECF008DD653 /* ChunkSharedArray.cpp in Sources */,
 				CF63B55310FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */,
 				CF23745219967C4F0061D2D8 /* all-declarations-3.cpp in Sources */,
+				CFCB7A212B2DAECF008DD653 /* BigUnsigned-bit.cpp in Sources */,
 				CFF991AB110B6CA40055EE27 /* C_SharedObject.cpp in Sources */,
 				CF9E75271BADD83300DBEFEE /* mpn-add_n.c in Sources */,
 				CF9E75641BADDAA900DBEFEE /* mpn-mulmod_bnm1.c in Sources */,
@@ -2035,6 +2165,9 @@
 				CF9234201BADC11B001032DA /* mpz-get_str.c in Sources */,
 				CFD396F1110E1EAF001549E6 /* cpp-allocation.cpp in Sources */,
 				CF9233D71BADB9DD001032DA /* mpz-fits_uint.c in Sources */,
+				CFCB7A2F2B2DAECF008DD653 /* BigUnsigned-print.cpp in Sources */,
+				CFCB7A252B2DAECF008DD653 /* BigUnsigned-utilities.cpp in Sources */,
+				CFCB7A412B2DAECF008DD653 /* BigSigned-add.cpp in Sources */,
 				CF9E75871BADE15D00DBEFEE /* root-mp_dv_tab.c in Sources */,
 				CFD396F9110E1EEC001549E6 /* basic-allocation.cpp in Sources */,
 				CFFC0F1D11EDC44200C97B85 /* C_BDD-and-operation.cpp in Sources */,
@@ -2049,6 +2182,7 @@
 				CF23746A19967C4F0061D2D8 /* all-declarations-15.cpp in Sources */,
 				CF12C0BE1D043E610060778F /* all-predefined-types.cpp in Sources */,
 				CF23746419967C4F0061D2D8 /* all-declarations-12.cpp in Sources */,
+				CFCB7A312B2DAECF008DD653 /* BigSigned-bit.cpp in Sources */,
 				CF2382D3124D126000A57965 /* C_galgas_function_descriptor.cpp in Sources */,
 				CF3D9FD61257733E0037D473 /* capCollectionElement.cpp in Sources */,
 				CF3D9FD71257733E0037D473 /* capSortedListElement.cpp in Sources */,
@@ -2060,11 +2194,13 @@
 				CF92AD0612578D3F003F16F7 /* cCollectionElement.cpp in Sources */,
 				CFB02C8019F3FC2F0011D03D /* all-declarations-22.cpp in Sources */,
 				CF9233CD1BADB4C0001032DA /* mpz-and.c in Sources */,
+				CFCB7A2D2B2DAECF008DD653 /* BigSigned.cpp in Sources */,
 				CF92AD0712578D40003F16F7 /* capCollectionElementArray.cpp in Sources */,
 				CF9E75841BADE0AE00DBEFEE /* root-errno.c in Sources */,
 				CF92AD0812578D40003F16F7 /* GALGAS_object.cpp in Sources */,
 				CF9E75931BADE2BE00DBEFEE /* root-mp_minv_tab.c in Sources */,
 				CF9234281BADC29D001032DA /* mpz-realloc.c in Sources */,
+				CFCB7A372B2DAECF008DD653 /* BigSigned-constructors.cpp in Sources */,
 				CF92AD0A12578D43003F16F7 /* GALGAS_stringset.cpp in Sources */,
 				CFB339331DAA4D5C00C0563C /* cGenericAbstractEnumerator.cpp in Sources */,
 				CF9E75151BADD69600DBEFEE /* mpn-toom6_sqr.c in Sources */,
@@ -2076,6 +2212,7 @@
 				CF92AD0E12578D47003F16F7 /* GALGAS_bool.cpp in Sources */,
 				CF9233EA1BADBD7C001032DA /* mpz-cmp.c in Sources */,
 				CF23747019967C4F0061D2D8 /* all-declarations-18.cpp in Sources */,
+				CFCB7A292B2DAECF008DD653 /* BigSigned-logic-operations.cpp in Sources */,
 				CF92AD0F12578D48003F16F7 /* GALGAS_char.cpp in Sources */,
 				CF9E75991BADE36D00DBEFEE /* root-mp_bpl.c in Sources */,
 				CF23744E19967C4F0061D2D8 /* all-declarations-1.cpp in Sources */,
@@ -2086,9 +2223,12 @@
 				CF92AD1212578D4B003F16F7 /* GALGAS_function.cpp in Sources */,
 				CFAC1A0B1C3318B800465212 /* C_galgas_quiet_option.cpp in Sources */,
 				CF92AD1312578D4C003F16F7 /* GALGAS_location.cpp in Sources */,
+				CFCB7A192B2DAECF008DD653 /* BigSigned-chunk-operations.cpp in Sources */,
+				CFCB7A332B2DAECF008DD653 /* BigSigned-multiply.cpp in Sources */,
 				CF92343E1BADC5F3001032DA /* mpn-mul.c in Sources */,
 				CF92AD1412578D4C003F16F7 /* GALGAS_sint_36__34_.cpp in Sources */,
 				CF9E75311BADD83300DBEFEE /* mpn-toom_eval_pm1.c in Sources */,
+				CFCB7A392B2DAECF008DD653 /* BigSigned-conversions.cpp in Sources */,
 				CF9E75721BADDD4900DBEFEE /* mpn-nussbaumer_mul.c in Sources */,
 				CF23745A19967C4F0061D2D8 /* all-declarations-7.cpp in Sources */,
 				CF9E74FC1BADD36200DBEFEE /* mpn-toom8h_mul.c in Sources */,
@@ -2103,6 +2243,7 @@
 				CFF8BF00126614D9001B7E61 /* cPtr_object.cpp in Sources */,
 				CF9E750B1BADD69600DBEFEE /* mpn-lshift.c in Sources */,
 				CF9234261BADC29D001032DA /* mpz-cfdiv_q_2exp.c in Sources */,
+				CFCB7A132B2DAECF008DD653 /* BigUnsigned-conversions.cpp in Sources */,
 				CF01558F1267796800917801 /* cObjectArray.cpp in Sources */,
 				CF333686126B07C1008DA1DE /* AC_GALGAS_value_class.cpp in Sources */,
 				CF9E751B1BADD69600DBEFEE /* mpn-toom53_mul.c in Sources */,
@@ -2121,6 +2262,7 @@
 				CF33370D126B13A6008DA1DE /* acPtr_class.cpp in Sources */,
 				CF23746619967C4F0061D2D8 /* all-declarations-13.cpp in Sources */,
 				CF206C091D54772A00CC4135 /* C_IssueWithFixIt.cpp in Sources */,
+				CFCB7A3D2B2DAECF008DD653 /* BigUnsigned-shifts.cpp in Sources */,
 				CF333815126B38B7008DA1DE /* GALGAS_filewrapper.cpp in Sources */,
 				CFB6E59912788349000F1772 /* GALGAS_application.cpp in Sources */,
 				CF9E752B1BADD83300DBEFEE /* mpn-mul_n.c in Sources */,
@@ -2133,8 +2275,11 @@
 				CF9E75441BADD90200DBEFEE /* mpn-cmp.c in Sources */,
 				CF6CEB861278B57400E8F785 /* C_Lexique.cpp in Sources */,
 				CF6CEB871278B57400E8F785 /* C_LocationInSource.cpp in Sources */,
+				CFCB7A352B2DAECF008DD653 /* BigSigned-shifts.cpp in Sources */,
+				CFCB7A1D2B2DAECF008DD653 /* BigUnsigned-chunk-operations.cpp in Sources */,
 				CF9234471BADC719001032DA /* mpn-sqr.c in Sources */,
 				CF23745E19967C4F0061D2D8 /* all-declarations-9.cpp in Sources */,
+				CFCB7A3B2B2DAECF008DD653 /* BigUnsigned-multiply.cpp in Sources */,
 				CF6CEB881278B57400E8F785 /* C_SourceTextInString.cpp in Sources */,
 				CF6CEC5B1278CBD500E8F785 /* scanner_actions.cpp in Sources */,
 				CF27F1E11279FE7A0068C230 /* C_galgas_CLI_Options.cpp in Sources */,
@@ -2145,6 +2290,7 @@
 				CF9FB045127A0A0200335160 /* C_galgas_class_inspector.cpp in Sources */,
 				CFD94AD81290635400864538 /* buildPureBNFgrammar.cpp in Sources */,
 				CF9E75B41BAE12AC00DBEFEE /* mpz-cmp_si.c in Sources */,
+				CFCB7A432B2DAECF008DD653 /* BigSigned-print.cpp in Sources */,
 				CFD94AD91290635400864538 /* cDecisionTableElement.cpp in Sources */,
 				CF9E74F01BADD36200DBEFEE /* mpn-addmul_1.c in Sources */,
 				CFD94ADA1290635400864538 /* cVocabulary.cpp in Sources */,
@@ -2161,7 +2307,9 @@
 				CFC89AB11BAF10D6002AF9C2 /* check-gmp.cpp in Sources */,
 				CF9E75351BADD83300DBEFEE /* mpn-toom_interpolate_16pts.c in Sources */,
 				CFB02C8219F3FC2F0011D03D /* all-declarations-23.cpp in Sources */,
+				CFCB7A172B2DAECF008DD653 /* BigSigned-utilities.cpp in Sources */,
 				CF9E75B71BAE137600DBEFEE /* mpz-cdiv_q_ui.c in Sources */,
+				CFCB7A3F2B2DAECF008DD653 /* BigUnsigned-subtract.cpp in Sources */,
 				CF92344B1BADC719001032DA /* mpn-tdiv_qr.c in Sources */,
 				CF9233C71BADAEDD001032DA /* mpz-export.c in Sources */,
 				CF9E75AE1BAE11DD00DBEFEE /* mpz-fdiv_q_ui.c in Sources */,
@@ -2216,6 +2364,7 @@
 				CF9234591BADCD3D001032DA /* mpn-set_str.c in Sources */,
 				CF1C0C9914E8502300F79BD0 /* C_BinaryFileWrite.cpp in Sources */,
 				CF92344F1BADC719001032DA /* mpn-toom43_mul.c in Sources */,
+				CFCB7A472B2DAECF008DD653 /* BigUnsigned-constructors.cpp in Sources */,
 				CF23746C19967C4F0061D2D8 /* all-declarations-16.cpp in Sources */,
 				CFE71EC515010F3500EAD989 /* cEnumerator_range.cpp in Sources */,
 				CF23746219967C4F0061D2D8 /* all-declarations-11.cpp in Sources */,
@@ -2227,7 +2376,9 @@
 				CF9E75501BADD98300DBEFEE /* mpn-toom_eval_pm2.c in Sources */,
 				CF4A1A592118A8B800BF7D12 /* all-declarations-27.cpp in Sources */,
 				CF9233C11BADAE68001032DA /* mpz-get_si.c in Sources */,
+				CFCB7A452B2DAECF008DD653 /* BigSigned-divide.cpp in Sources */,
 				CF9233C41BADAEB3001032DA /* mpz-get_ui.c in Sources */,
+				CFCB7A2B2B2DAECF008DD653 /* BigUnsigned-logic-operations.cpp in Sources */,
 				CFB3190417B38D98009424C2 /* C_DirectedGraph.cpp in Sources */,
 				CF9233F01BADBD7C001032DA /* mpz-setbit.c in Sources */,
 				CFB3190817B3C553009424C2 /* C_UIntSet.cpp in Sources */,
@@ -2264,6 +2415,7 @@
 				CF1AA5921979A9240095B745 /* C_HTMLString.cpp in Sources */,
 				CF6DF1EA09E3F30400506859 /* C_DateTime.cpp in Sources */,
 				CFB02C8519F3FC2F0011D03D /* all-declarations-24.cpp in Sources */,
+				CFCB7A1C2B2DAECF008DD653 /* BigUnsigned-divide-naive.cpp in Sources */,
 				CF6DF1EB09E3F30400506859 /* C_Timer.cpp in Sources */,
 				CF873F6B1A32333C0014C45A /* C_StringListCommandLineOption.cpp in Sources */,
 				CF34D95C1E52203100CD0245 /* cIssueDescriptor.cpp in Sources */,
@@ -2273,10 +2425,13 @@
 				CF6DF1F009E3F30400506859 /* MF_Assert.cpp in Sources */,
 				CF9E75851BADE0AE00DBEFEE /* root-errno.c in Sources */,
 				CF40C8452AFD47500027918A /* C_BigInt.cpp in Sources */,
+				CFCB7A282B2DAECF008DD653 /* BigUnsigned-divide.cpp in Sources */,
 				CF9E756C1BADDCB600DBEFEE /* mpn-invertappr.c in Sources */,
+				CFCB7A162B2DAECF008DD653 /* BigSigned-subtract.cpp in Sources */,
 				CF6DF1F109E3F30400506859 /* MF_MemoryControl.cpp in Sources */,
 				CF6DF1F509E3F30400506859 /* C_builtin_CLI_Options.cpp in Sources */,
 				CF6DF1FA09E3F30400506859 /* C_BDD.cpp in Sources */,
+				CFCB7A202B2DAECF008DD653 /* BigUnsigned-add.cpp in Sources */,
 				CF69B2900A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */,
 				CFD3E8650FA0C0F800C4995E /* C_String.cpp in Sources */,
 				CF9E74FF1BADD36200DBEFEE /* mpn-toom32_mul.c in Sources */,
@@ -2289,8 +2444,10 @@
 				CF9E74F91BADD36200DBEFEE /* mpn-toom_eval_dgr3_pm1.c in Sources */,
 				CF074C341000E29F00F45986 /* C_UIntCommandLineOption.cpp in Sources */,
 				CF074CA11000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */,
+				CFCB7A242B2DAECF008DD653 /* ChunkSharedArray.cpp in Sources */,
 				CF7CB7BD1B95C8BC00B2162E /* GALGAS_timer.cpp in Sources */,
 				CFDACD091003D0B60096A8E5 /* F_mainForLIBPM.cpp in Sources */,
+				CFCB7A222B2DAECF008DD653 /* BigUnsigned-bit.cpp in Sources */,
 				CF9E755E1BADDA0E00DBEFEE /* mpn-toom4_sqr.c in Sources */,
 				CF9234101BADBFF6001032DA /* mpz-set.c in Sources */,
 				CF82F11310BEDAB200F40B32 /* C_CommandLineOption.cpp in Sources */,
@@ -2303,6 +2460,9 @@
 				CF9233F31BADBD7C001032DA /* mpz-sub_ui.c in Sources */,
 				CF9E75881BADE15D00DBEFEE /* root-mp_dv_tab.c in Sources */,
 				CF9E74FB1BADD36200DBEFEE /* mpn-toom_interpolate_6pts.c in Sources */,
+				CFCB7A302B2DAECF008DD653 /* BigUnsigned-print.cpp in Sources */,
+				CFCB7A262B2DAECF008DD653 /* BigUnsigned-utilities.cpp in Sources */,
+				CFCB7A422B2DAECF008DD653 /* BigSigned-add.cpp in Sources */,
 				CF9E759E1BADED0900DBEFEE /* mpn-set_str.c in Sources */,
 				CF92341B1BADC11B001032DA /* mpz-cdiv_qr.c in Sources */,
 				CF9233EF1BADBD7C001032DA /* mpz-set_ui.c in Sources */,
@@ -2317,6 +2477,7 @@
 				CF9E75821BADE05300DBEFEE /* root-memory.c in Sources */,
 				CFFC0F2211EDC44200C97B85 /* C_BDD-single-operand-ops.cpp in Sources */,
 				CF9E75471BADD90200DBEFEE /* mpn-toom_interpolate_7pts.c in Sources */,
+				CFCB7A322B2DAECF008DD653 /* BigSigned-bit.cpp in Sources */,
 				CF9E74FD1BADD36200DBEFEE /* mpn-toom8h_mul.c in Sources */,
 				CF9234371BADC452001032DA /* mpn-mul_1.c in Sources */,
 				CF2382A8124D10EF00A57965 /* C_galgas_type_descriptor.cpp in Sources */,
@@ -2328,11 +2489,13 @@
 				CF9234581BADCD3D001032DA /* mpn-rshift.c in Sources */,
 				CF9E75101BADD69600DBEFEE /* mpn-sub_1.c in Sources */,
 				CF9E752A1BADD83300DBEFEE /* mpn-divrem_2.c in Sources */,
+				CFCB7A2E2B2DAECF008DD653 /* BigSigned.cpp in Sources */,
 				CF9E75511BADD98300DBEFEE /* mpn-toom_eval_pm2.c in Sources */,
 				CF9E75631BADDAA900DBEFEE /* mpn-dive_1.c in Sources */,
 				CF23746B19967C4F0061D2D8 /* all-declarations-15.cpp in Sources */,
 				CF23746519967C4F0061D2D8 /* all-declarations-12.cpp in Sources */,
 				CF9E75121BADD69600DBEFEE /* mpn-toom_eval_dgr3_pm2.c in Sources */,
+				CFCB7A382B2DAECF008DD653 /* BigSigned-constructors.cpp in Sources */,
 				CF2382D4124D126000A57965 /* C_galgas_function_descriptor.cpp in Sources */,
 				CF9E75411BADD90200DBEFEE /* mpn-add.c in Sources */,
 				CF3D9FDB1257733E0037D473 /* capCollectionElement.cpp in Sources */,
@@ -2344,6 +2507,7 @@
 				CF9E75781BADDDA900DBEFEE /* mpn-lshiftc.c in Sources */,
 				CF92AD1B12578D59003F16F7 /* cCollectionElement.cpp in Sources */,
 				CFB02C8119F3FC2F0011D03D /* all-declarations-22.cpp in Sources */,
+				CFCB7A2A2B2DAECF008DD653 /* BigSigned-logic-operations.cpp in Sources */,
 				CF9233CE1BADB4C0001032DA /* mpz-and.c in Sources */,
 				CF9E750C1BADD69600DBEFEE /* mpn-lshift.c in Sources */,
 				CF92AD1C12578D5A003F16F7 /* capCollectionElementArray.cpp in Sources */,
@@ -2354,9 +2518,12 @@
 				CFCA2EA11C331E8500AB04B8 /* C_galgas_quiet_option.cpp in Sources */,
 				CF92AD2312578D63003F16F7 /* GALGAS_binaryset.cpp in Sources */,
 				CF9E755C1BADDA0E00DBEFEE /* mpn-toom_interpolate_8pts.c in Sources */,
+				CFCB7A1A2B2DAECF008DD653 /* BigSigned-chunk-operations.cpp in Sources */,
+				CFCB7A342B2DAECF008DD653 /* BigSigned-multiply.cpp in Sources */,
 				CF23745519967C4F0061D2D8 /* all-declarations-4.cpp in Sources */,
 				CF92AD2412578D64003F16F7 /* GALGAS_bool.cpp in Sources */,
 				CF9233EB1BADBD7C001032DA /* mpz-cmp.c in Sources */,
+				CFCB7A3A2B2DAECF008DD653 /* BigSigned-conversions.cpp in Sources */,
 				CF23747119967C4F0061D2D8 /* all-declarations-18.cpp in Sources */,
 				CF92AD2512578D65003F16F7 /* GALGAS_char.cpp in Sources */,
 				CF9E759A1BADE36D00DBEFEE /* root-mp_bpl.c in Sources */,
@@ -2371,6 +2538,7 @@
 				CF92343F1BADC5F3001032DA /* mpn-mul.c in Sources */,
 				CF92AD2A12578D68003F16F7 /* GALGAS_sint_36__34_.cpp in Sources */,
 				CF23745B19967C4F0061D2D8 /* all-declarations-7.cpp in Sources */,
+				CFCB7A142B2DAECF008DD653 /* BigUnsigned-conversions.cpp in Sources */,
 				CF92AD2B12578D6B003F16F7 /* GALGAS_sint.cpp in Sources */,
 				CF9E752C1BADD83300DBEFEE /* mpn-mul_n.c in Sources */,
 				CF92AD2C12578D6B003F16F7 /* GALGAS_string.cpp in Sources */,
@@ -2389,6 +2557,7 @@
 				CF9E755A1BADDA0E00DBEFEE /* mpn-toom_eval_pm2rexp.c in Sources */,
 				CF206C0A1D54772A00CC4135 /* C_IssueWithFixIt.cpp in Sources */,
 				CF33368F126B07C1008DA1DE /* AC_GALGAS_map.cpp in Sources */,
+				CFCB7A3E2B2DAECF008DD653 /* BigUnsigned-shifts.cpp in Sources */,
 				CF9E75971BADE30A00DBEFEE /* root-tal-notreent.c in Sources */,
 				CF9E75301BADD83300DBEFEE /* mpn-toom_couple_handling.c in Sources */,
 				CF333690126B07C1008DA1DE /* AC_GALGAS_root.cpp in Sources */,
@@ -2401,8 +2570,11 @@
 				CF9233D61BADB9DD001032DA /* mpz-fits_sint.c in Sources */,
 				CF6CEB891278B57400E8F785 /* C_Compiler.cpp in Sources */,
 				CF6CEB8A1278B57400E8F785 /* C_galgas_io.cpp in Sources */,
+				CFCB7A362B2DAECF008DD653 /* BigSigned-shifts.cpp in Sources */,
+				CFCB7A1E2B2DAECF008DD653 /* BigUnsigned-chunk-operations.cpp in Sources */,
 				CF6CEB8B1278B57400E8F785 /* C_Lexique.cpp in Sources */,
 				CF6CEB8C1278B57400E8F785 /* C_LocationInSource.cpp in Sources */,
+				CFCB7A3C2B2DAECF008DD653 /* BigUnsigned-multiply.cpp in Sources */,
 				CF9234481BADC719001032DA /* mpn-sqr.c in Sources */,
 				CF23745F19967C4F0061D2D8 /* all-declarations-9.cpp in Sources */,
 				CF6CEB8D1278B57400E8F785 /* C_SourceTextInString.cpp in Sources */,
@@ -2413,6 +2585,7 @@
 				CF27F1E21279FE7A0068C230 /* C_galgas_CLI_Options.cpp in Sources */,
 				CF9233DD1BADBA1F001032DA /* mpz-add.c in Sources */,
 				CF9E75B51BAE12AC00DBEFEE /* mpz-cmp_si.c in Sources */,
+				CFCB7A442B2DAECF008DD653 /* BigSigned-print.cpp in Sources */,
 				CF92343B1BADC452001032DA /* mpz-neg.c in Sources */,
 				CF9E75941BADE2BE00DBEFEE /* root-mp_minv_tab.c in Sources */,
 				CF23745119967C4F0061D2D8 /* all-declarations-2.cpp in Sources */,
@@ -2429,7 +2602,9 @@
 				CFC89AB21BAF10D6002AF9C2 /* check-gmp.cpp in Sources */,
 				CF23745D19967C4F0061D2D8 /* all-declarations-8.cpp in Sources */,
 				CF9E75B81BAE137600DBEFEE /* mpz-cdiv_q_ui.c in Sources */,
+				CFCB7A182B2DAECF008DD653 /* BigSigned-utilities.cpp in Sources */,
 				CFD94AEA1290635400864538 /* FOLLOW_computations.cpp in Sources */,
+				CFCB7A402B2DAECF008DD653 /* BigUnsigned-subtract.cpp in Sources */,
 				CF9234141BADBFF6001032DA /* mpz-tdiv_qr.c in Sources */,
 				CF9E75AF1BAE11DD00DBEFEE /* mpz-fdiv_q_ui.c in Sources */,
 				CFB02C8319F3FC2F0011D03D /* all-declarations-23.cpp in Sources */,
@@ -2484,6 +2659,7 @@
 				CF9234501BADC719001032DA /* mpn-toom43_mul.c in Sources */,
 				CF23746D19967C4F0061D2D8 /* all-declarations-16.cpp in Sources */,
 				CFE71EC615010F3500EAD989 /* cEnumerator_range.cpp in Sources */,
+				CFCB7A482B2DAECF008DD653 /* BigUnsigned-constructors.cpp in Sources */,
 				CF23746319967C4F0061D2D8 /* all-declarations-11.cpp in Sources */,
 				CF23745719967C4F0061D2D8 /* all-declarations-5.cpp in Sources */,
 				CF9E75381BADD83300DBEFEE /* mpn-toom2_sqr.c in Sources */,
@@ -2495,7 +2671,9 @@
 				CFB02C7F19F3FC2F0011D03D /* all-declarations-21.cpp in Sources */,
 				CF4A1A5B2118A8EE00BF7D12 /* all-declarations-27.cpp in Sources */,
 				CF9233C21BADAE68001032DA /* mpz-get_si.c in Sources */,
+				CFCB7A462B2DAECF008DD653 /* BigSigned-divide.cpp in Sources */,
 				CF9233C51BADAEB3001032DA /* mpz-get_ui.c in Sources */,
+				CFCB7A2C2B2DAECF008DD653 /* BigUnsigned-logic-operations.cpp in Sources */,
 				CF9E757A1BADDDA900DBEFEE /* mpn-sbpi1_divappr_q.c in Sources */,
 				CFB3190517B38D98009424C2 /* C_DirectedGraph.cpp in Sources */,
 				CF9233F11BADBD7C001032DA /* mpz-setbit.c in Sources */,

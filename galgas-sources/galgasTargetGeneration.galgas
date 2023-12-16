@@ -726,12 +726,49 @@ proc updateGalgasTargets
       !groupName:"Big Integers"
       !groupPath:"big-integers"
       !fileNames:{
-#        !"BigUnsigned.cpp",
-#        !"BigUnsigned.h",
+        !"BigSigned-add.cpp",
+        !"BigSigned-bit.cpp",
+        !"BigSigned-chunk-operations.cpp",
+        !"BigSigned-constructors.cpp",
+        !"BigSigned-conversions.cpp",
+        !"BigSigned-divide.cpp",
+        !"BigSigned-logic-operations.cpp",
+        !"BigSigned-multiply.cpp",
+        !"BigSigned-print.cpp",
+        !"BigSigned-shifts.cpp",
+        !"BigSigned-subtract.cpp",
+        !"BigSigned-utilities.cpp",
+        !"BigSigned.cpp",
+        !"BigSigned.h",
+        !"BigUnsigned-add.cpp",
+        !"BigUnsigned-bit.cpp",
+        !"BigUnsigned-chunk-operations.cpp",
+        !"BigUnsigned-constructors.cpp",
+        !"BigUnsigned-conversions.cpp",
+        !"BigUnsigned-divide-naive.cpp",
+        !"BigUnsigned-divide.cpp",
+        !"BigUnsigned-logic-operations.cpp",
+        !"BigUnsigned-multiply.cpp",
+        !"BigUnsigned-print.cpp",
+        !"BigUnsigned-shifts.cpp",
+        !"BigUnsigned-subtract.cpp",
+        !"BigUnsigned-utilities.cpp",
+        !"BigUnsigned.h",
         !"C_BigInt.cpp",
         !"C_BigInt.h",
+        !"ChunkSelectSize.h",
+        !"ChunkSharedArray.cpp",
+        !"ChunkSharedArray.h",
         !"PMUInt128.cpp",
-        !"PMUInt128.h"
+        !"PMUInt128.h",
+        !"chunk-U16.h",
+        !"chunk-U32.h",
+        !"chunk-U64.h",
+        !"chunk-U8.h"
+#        !"C_BigInt.cpp",
+#        !"C_BigInt.h",
+#        !"PMUInt128.cpp",
+#        !"PMUInt128.h"
      }
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
