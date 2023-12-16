@@ -2,7 +2,7 @@
 
 #include "ChunkSharedArray.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 size_t ChunkSharedArray::mChunkSharedArrayAllocationCount = 0 ;
 size_t ChunkSharedArray::mChunkSharedArrayCurrentlyAllocatedCount = 0 ;

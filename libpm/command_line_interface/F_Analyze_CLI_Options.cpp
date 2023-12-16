@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  Routine 'F_Analyze_CLI_Options' : a way for automatic command line options analysis for MacOS, Win32 and Unix.     *
 //
@@ -16,7 +16,7 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "command_line_interface/F_Analyze_CLI_Options.h"
 #include "command_line_interface/C_BoolCommandLineOption.h"
@@ -27,69 +27,69 @@
 #include "streams/C_ConsoleOut.h"
 #include "files/C_FileManager.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include <string.h>
 #include <ctype.h>
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef COMPILE_FOR_WINDOWS
   #error COMPILE_FOR_WINDOWS is undefined
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #if COMPILE_FOR_WINDOWS == 1
   #include <windows.h>
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //                        C O C O A   O U T P U T
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static bool gCocoaOutput = false ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool cocoaOutput (void) {
   return gCocoaOutput ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const char * galgasVersionString (void) {
   return "GALGASBETAVERSION" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     print_usage
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void print_usage (int argv, const char * argc []) {
   co.setForeColor (kMagentaForeColor) ;
   co.setTextAttribute (kBoldTextAttribute) ;
-  co << "Usage:\n" ;
+  co += "Usage:\n" ;
   co.setTextAttribute (kAllAttributesOff) ;
   if (argv > 0) {
-    co << argc [0] ;
+    co += argc [0] ;
   }
   C_BoolCommandLineOption::printUsageOfBoolOptions () ;
   C_UIntCommandLineOption::printUsageOfUIntOptions () ;
   C_StringCommandLineOption::printUsageOfStringOptions () ;
   C_StringListCommandLineOption::printUsageOfStringOptions () ;
-  co << " file...\n" ;
+  co += " file...\n" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     print_options
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void print_option_list (void) {
   printf ("*** Available command line options:\n") ;
@@ -99,11 +99,11 @@ static void print_option_list (void) {
   C_StringListCommandLineOption::printStringOptions () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     print_help
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void print_help (int argv,
                         const char * argc [],
@@ -111,29 +111,29 @@ static void print_help (int argv,
                         const char * inHelpMessages [],
                         void print_tool_help_message (void)) {
   #ifdef __LP64__
-    co << "Compiled in 64 bits mode" ;
+    co += "Compiled in 64 bits mode" ;
   #else
-    co << "Compiled in 32 bits mode" ;
+    co += "Compiled in 32 bits mode" ;
   #endif
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    co << " (with debug code)" ;
+    co += " (with debug code)" ;
   #endif
-  co << ".\n" ;
+  co += ".\n" ;
   print_tool_help_message () ;
 /*  #ifndef DO_NOT_GENERATE_CHECKINGS
-    co << "sizeof (short)=" << ((uint32_t) sizeof (short))
-       << ", sizeof (int)=" << ((uint32_t) sizeof (int))
-       << ", sizeof (long)=" << ((uint32_t) sizeof (long))
-       << ", sizeof (long long)=" << ((uint32_t) sizeof (long long))
-       << ", sizeof (wchar_t)=" << ((uint32_t) sizeof (wchar_t))
-       << "\n" ;
+    co += "sizeof (short)=" + ((uint32_t) sizeof (short))
+       + ", sizeof (int)=" + ((uint32_t) sizeof (int))
+       + ", sizeof (long)=" + ((uint32_t) sizeof (long))
+       + ", sizeof (long long)=" + ((uint32_t) sizeof (long long))
+       + ", sizeof (wchar_t)=" + ((uint32_t) sizeof (wchar_t))
+       + "\n" ;
   #endif */
   print_usage (argv, argc) ;
   co.setForeColor (kMagentaForeColor) ;
   co.setTextAttribute (kBoldTextAttribute) ;
-  co << "Options:\n" ;
+  co += "Options:\n" ;
   co.setTextAttribute (kAllAttributesOff) ;
-  co << "You can place options anywhere in the command line: they will be executed before the files are processed.\n" ;
+  co += "You can place options anywhere in the command line: they will be executed before the files are processed.\n" ;
   C_BoolCommandLineOption::printBoolOptions () ;
   C_UIntCommandLineOption::printUIntOptions () ;
   C_StringCommandLineOption::printStringOptions () ;
@@ -145,34 +145,38 @@ static void print_help (int argv,
   }
   co.setForeColor (kMagentaForeColor) ;
   co.setTextAttribute (kBoldTextAttribute) ;
-  co << "Handled extension" << ((extensionIndex > 1) ? "s" : "") << ":\n" ;
+  co += "Handled extension" ;
+  co += ((extensionIndex > 1) ? "s" : "") ;
+  co += ":\n" ;
   co.setTextAttribute (kAllAttributesOff) ;
   extensionIndex = 0 ;
   while (inExtensions [extensionIndex] != nullptr) {
     co.setForeColor (kBlueForeColor) ;
     co.setTextAttribute (kBoldTextAttribute) ;
-    co << "." << inExtensions [extensionIndex] ;
+    co += "." ;
+    co += inExtensions [extensionIndex] ;
     co.setTextAttribute (kAllAttributesOff) ;
     const uint32_t extensionLength = (uint32_t) (strlen (inExtensions [extensionIndex]) & UINT32_MAX) ;
     const uint32_t kDisplayLength = 20 ;
     if (extensionLength < kDisplayLength) {
       for (uint32_t i=extensionLength ; i<kDisplayLength ; i++) {
-        co << " " ;
+        co += " " ;
       }
     }else{
-      co << "\n" ;
+      co += "\n" ;
       co.appendSpaces (kDisplayLength+2) ;
     }
-    co << inHelpMessages [extensionIndex] << "\n" ;
+    co += inHelpMessages [extensionIndex] ;
+    co += "\n" ;
     extensionIndex ++ ;
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     Command line option beginning with a single '-'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void option_beginning_with_single_minus_sign (const char * inCommand,
                                                      bool & outOk) {
@@ -182,7 +186,9 @@ static void option_beginning_with_single_minus_sign (const char * inCommand,
   if (optionLength == 2) {
     C_BoolCommandLineOption::setBoolOptionForCommandChar (inCommand [1], outOk) ;
     if (! outOk) {
-      co << "Error : unknown '" << inCommand << "' command line option.\n" ;
+      co += "Error : unknown '" ;
+      co += inCommand ;
+      co += "' command line option.\n" ;
     }
   }else if (optionLength > 2) {
   //--- Search for an UInt option
@@ -196,25 +202,29 @@ static void option_beginning_with_single_minus_sign (const char * inCommand,
       C_StringListCommandLineOption::setStringListOptionForCommandChar (& inCommand [1], outOk, correctFormat) ;
     }
     if (! outOk) {
-      co << "Error : unknown '" << inCommand << "' command line option.\n" ;
+      co += "Error : unknown '" ;
+      co += inCommand ;
+      co += "' command line option.\n" ;
     }else if (! correctFormat) {
       outOk = false ;
-      co << "Error : incorrect format for '"
-         << inCommand
-         << "' command line option (correct format is : '-"
-         << inCommand
-         << "=value').\n" ;
+      co += "Error : incorrect format for '" ;
+      co += inCommand ;
+      co += "' command line option (correct format is : '-" ;
+      co += inCommand ;
+      co += "=value').\n" ;
     }
   }else{
-    co << "Error : unknown '" << inCommand << "' command line option.\n" ;
+    co += "Error : unknown '" ;
+    co += inCommand ;
+    co += "' command line option.\n" ;
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     Command line option beginning with '--'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void option_beginning_with_double_minus_sign (const char * inCommand,
                                                      bool & outFound) {
@@ -234,18 +244,22 @@ static void option_beginning_with_double_minus_sign (const char * inCommand,
     C_StringListCommandLineOption::setStringListOptionForCommandString (& inCommand [2], outFound, correctFormat) ;
   }
   if (! outFound) {
-    co << "Error : unknown '" << inCommand << "' command line option.\n" ;
+    co += "Error : unknown '" ;
+    co += inCommand ;
+    co += "' command line option.\n" ;
   }else if (! correctFormat) {
     outFound = false ;
-    co << "Error : incorrect format for '" << inCommand << "' command line option.\n" ;
+    co += "Error : incorrect format for '" ;
+    co += inCommand ;
+    co += "' command line option.\n" ;
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     analyze_one_option
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void analyze_one_option (const char * inCommand,
                                 TC_UniqueArray <C_String> & outSourceFileArray,
@@ -295,7 +309,7 @@ static void analyze_one_option (const char * inCommand,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #if COMPILE_FOR_WINDOWS == 1
   static void getSourceFileFromWin32OpenDialog (TC_UniqueArray <C_String> & outSourceFileArray,
@@ -354,11 +368,11 @@ static void analyze_one_option (const char * inCommand,
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     F_Analyze_CLI_Options
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void F_Analyze_CLI_Options (const int argv,
                             const char * argc [],
@@ -388,11 +402,15 @@ void F_Analyze_CLI_Options (const int argv,
   #endif
 //--- Print version ?
   if (gOption_generic_5F_cli_5F_options_display_5F_version.mValue) {
-    co << argc [0] << " : " << projectVersionString () ;
+    co += argc [0] ;
+    co += " : " ;
+    co += projectVersionString () ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
-      co << " [DEBUG]" ;
+      co += " [DEBUG]" ;
     #endif
-    co << ", build with GALGAS " << galgasVersionString () << "\n" ;
+    co += ", build with GALGAS " ;
+    co += galgasVersionString () ;
+    co += "\n" ;
   }
 //--- Print Help ?
   if (gOption_generic_5F_cli_5F_options_display_5F_help.mValue) {
@@ -406,4 +424,4 @@ void F_Analyze_CLI_Options (const int argv,
   #endif
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

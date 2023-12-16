@@ -3,13 +3,13 @@
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "utilities/C_PrologueEpilogue.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "all-declarations-16.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @structDeclarationAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_structDeclarationAST::printNonNullClassInstanceProperties (void) const {
@@ -20,7 +20,7 @@
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_structDeclarationAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -41,7 +41,7 @@ typeComparisonResult cPtr_structDeclarationAST::dynamicObjectCompare (const acPt
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_structDeclarationAST::objectCompare (const GALGAS_structDeclarationAST & inOperand) const {
@@ -60,19 +60,19 @@ typeComparisonResult GALGAS_structDeclarationAST::objectCompare (const GALGAS_st
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_structDeclarationAST::GALGAS_structDeclarationAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_structDeclarationAST::GALGAS_structDeclarationAST (const cPtr_structDeclarationAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_structDeclarationAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_structDeclarationAST GALGAS_structDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                           const GALGAS_lstring & inAttribute_mStructTypeName,
@@ -86,7 +86,7 @@ GALGAS_structDeclarationAST GALGAS_structDeclarationAST::constructor_new (const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_structDeclarationAST::readProperty_mStructTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -98,7 +98,7 @@ GALGAS_lstring GALGAS_structDeclarationAST::readProperty_mStructTypeName (void) 
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_propertyInCollectionListAST GALGAS_structDeclarationAST::readProperty_mStructurePropertyList (void) const {
   if (nullptr == mObjectPtr) {
@@ -110,7 +110,7 @@ GALGAS_propertyInCollectionListAST GALGAS_structDeclarationAST::readProperty_mSt
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_structDeclarationAST::readProperty_mEnumeratedElementTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -122,9 +122,9 @@ GALGAS_string GALGAS_structDeclarationAST::readProperty_mEnumeratedElementTypeNa
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @structDeclarationAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_structDeclarationAST::cPtr_structDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                       const GALGAS_lstring & in_mStructTypeName,
@@ -137,7 +137,7 @@ mProperty_mStructurePropertyList (in_mStructurePropertyList),
 mProperty_mEnumeratedElementTypeName (in_mEnumeratedElementTypeName) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_structDeclarationAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structDeclarationAST ;
@@ -145,18 +145,18 @@ const C_galgas_type_descriptor * cPtr_structDeclarationAST::classDescriptor (voi
 
 void cPtr_structDeclarationAST::description (C_String & ioString,
                                              const int32_t inIndentation) const {
-  ioString << "[@structDeclarationAST:" ;
+  ioString += "[@structDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mStructTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mStructurePropertyList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mEnumeratedElementTypeName.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_structDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -165,23 +165,23 @@ acPtr_class * cPtr_structDeclarationAST::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @structDeclarationAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_structDeclarationAST ("structDeclarationAST",
                                              & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_structDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structDeclarationAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_structDeclarationAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -191,7 +191,7 @@ AC_GALGAS_root * GALGAS_structDeclarationAST::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_structDeclarationAST GALGAS_structDeclarationAST::extractObject (const GALGAS_object & inObject,
                                                                         C_Compiler * inCompiler
@@ -208,9 +208,9 @@ GALGAS_structDeclarationAST GALGAS_structDeclarationAST::extractObject (const GA
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @structTypeForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_structTypeForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -222,7 +222,7 @@ GALGAS_structDeclarationAST GALGAS_structDeclarationAST::extractObject (const GA
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_structTypeForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -246,7 +246,7 @@ typeComparisonResult cPtr_structTypeForGeneration::dynamicObjectCompare (const a
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_structTypeForGeneration::objectCompare (const GALGAS_structTypeForGeneration & inOperand) const {
@@ -265,19 +265,19 @@ typeComparisonResult GALGAS_structTypeForGeneration::objectCompare (const GALGAS
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_structTypeForGeneration::GALGAS_structTypeForGeneration (void) :
 GALGAS_semanticTypeForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_structTypeForGeneration::GALGAS_structTypeForGeneration (const cPtr_structTypeForGeneration * inSourcePtr) :
 GALGAS_semanticTypeForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_structTypeForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mSelfTypeEntry,
                                                                                 const GALGAS_typedPropertyList & inAttribute_mTypedPropertyList,
@@ -292,7 +292,7 @@ GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration::constructor_new (
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_typedPropertyList GALGAS_structTypeForGeneration::readProperty_mTypedPropertyList (void) const {
   if (nullptr == mObjectPtr) {
@@ -304,7 +304,7 @@ GALGAS_typedPropertyList GALGAS_structTypeForGeneration::readProperty_mTypedProp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_typedPropertyList GALGAS_structTypeForGeneration::readProperty_mConstructorArgumentList (void) const {
   if (nullptr == mObjectPtr) {
@@ -316,7 +316,7 @@ GALGAS_typedPropertyList GALGAS_structTypeForGeneration::readProperty_mConstruct
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_structTypeForGeneration::readProperty_mConstructorInitializationCode (void) const {
   if (nullptr == mObjectPtr) {
@@ -328,7 +328,7 @@ GALGAS_string GALGAS_structTypeForGeneration::readProperty_mConstructorInitializ
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_structTypeForGeneration::readProperty_mConstructorNeedsCompilerVar (void) const {
   if (nullptr == mObjectPtr) {
@@ -340,9 +340,9 @@ GALGAS_bool GALGAS_structTypeForGeneration::readProperty_mConstructorNeedsCompil
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @structTypeForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_structTypeForGeneration::cPtr_structTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                             const GALGAS_typedPropertyList & in_mTypedPropertyList,
@@ -357,7 +357,7 @@ mProperty_mConstructorInitializationCode (in_mConstructorInitializationCode),
 mProperty_mConstructorNeedsCompilerVar (in_mConstructorNeedsCompilerVar) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_structTypeForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structTypeForGeneration ;
@@ -365,20 +365,20 @@ const C_galgas_type_descriptor * cPtr_structTypeForGeneration::classDescriptor (
 
 void cPtr_structTypeForGeneration::description (C_String & ioString,
                                                 const int32_t inIndentation) const {
-  ioString << "[@structTypeForGeneration:" ;
+  ioString += "[@structTypeForGeneration:" ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypedPropertyList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mConstructorArgumentList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mConstructorInitializationCode.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mConstructorNeedsCompilerVar.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_structTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -387,23 +387,23 @@ acPtr_class * cPtr_structTypeForGeneration::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @structTypeForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_structTypeForGeneration ("structTypeForGeneration",
                                                 & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_structTypeForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structTypeForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_structTypeForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -413,7 +413,7 @@ AC_GALGAS_root * GALGAS_structTypeForGeneration::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration::extractObject (const GALGAS_object & inObject,
                                                                               C_Compiler * inCompiler
@@ -430,7 +430,7 @@ GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration::extractObject (co
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_structTypeForGeneration_2D_weak::objectCompare (const GALGAS_structTypeForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -450,13 +450,13 @@ typeComparisonResult GALGAS_structTypeForGeneration_2D_weak::objectCompare (cons
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_structTypeForGeneration_2D_weak::GALGAS_structTypeForGeneration_2D_weak (void) :
 GALGAS_semanticTypeForGeneration_2D_weak () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_structTypeForGeneration_2D_weak & GALGAS_structTypeForGeneration_2D_weak::operator = (const GALGAS_structTypeForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -468,13 +468,13 @@ GALGAS_structTypeForGeneration_2D_weak & GALGAS_structTypeForGeneration_2D_weak:
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_structTypeForGeneration_2D_weak::GALGAS_structTypeForGeneration_2D_weak (const GALGAS_structTypeForGeneration & inSource) :
 GALGAS_semanticTypeForGeneration_2D_weak (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_structTypeForGeneration_2D_weak GALGAS_structTypeForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_structTypeForGeneration_2D_weak result ;
@@ -482,7 +482,7 @@ GALGAS_structTypeForGeneration_2D_weak GALGAS_structTypeForGeneration_2D_weak::c
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration_2D_weak::bang_structTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_structTypeForGeneration result ;
@@ -498,23 +498,23 @@ GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration_2D_weak::bang_stru
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @structTypeForGeneration-weak generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_structTypeForGeneration_2D_weak ("structTypeForGeneration-weak",
                                                         & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_structTypeForGeneration_2D_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_structTypeForGeneration_2D_weak ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_structTypeForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -524,7 +524,7 @@ AC_GALGAS_root * GALGAS_structTypeForGeneration_2D_weak::clonedObject (void) con
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_structTypeForGeneration_2D_weak GALGAS_structTypeForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                               C_Compiler * inCompiler
@@ -541,9 +541,9 @@ GALGAS_structTypeForGeneration_2D_weak GALGAS_structTypeForGeneration_2D_weak::e
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @typealiasDeclarationAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typealiasDeclarationAST::printNonNullClassInstanceProperties (void) const {
@@ -553,7 +553,7 @@ GALGAS_structTypeForGeneration_2D_weak GALGAS_structTypeForGeneration_2D_weak::e
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_typealiasDeclarationAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -571,7 +571,7 @@ typeComparisonResult cPtr_typealiasDeclarationAST::dynamicObjectCompare (const a
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_typealiasDeclarationAST::objectCompare (const GALGAS_typealiasDeclarationAST & inOperand) const {
@@ -590,19 +590,19 @@ typeComparisonResult GALGAS_typealiasDeclarationAST::objectCompare (const GALGAS
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_typealiasDeclarationAST::GALGAS_typealiasDeclarationAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_typealiasDeclarationAST::GALGAS_typealiasDeclarationAST (const cPtr_typealiasDeclarationAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_typealiasDeclarationAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_typealiasDeclarationAST GALGAS_typealiasDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                 const GALGAS_lstring & inAttribute_mAliasTypeName,
@@ -615,7 +615,7 @@ GALGAS_typealiasDeclarationAST GALGAS_typealiasDeclarationAST::constructor_new (
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_typealiasDeclarationAST::readProperty_mAliasTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -627,7 +627,7 @@ GALGAS_lstring GALGAS_typealiasDeclarationAST::readProperty_mAliasTypeName (void
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_typealiasDeclarationAST::readProperty_mDefinedTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -639,9 +639,9 @@ GALGAS_lstring GALGAS_typealiasDeclarationAST::readProperty_mDefinedTypeName (vo
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @typealiasDeclarationAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_typealiasDeclarationAST::cPtr_typealiasDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                             const GALGAS_lstring & in_mAliasTypeName,
@@ -652,7 +652,7 @@ mProperty_mAliasTypeName (in_mAliasTypeName),
 mProperty_mDefinedTypeName (in_mDefinedTypeName) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_typealiasDeclarationAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typealiasDeclarationAST ;
@@ -660,16 +660,16 @@ const C_galgas_type_descriptor * cPtr_typealiasDeclarationAST::classDescriptor (
 
 void cPtr_typealiasDeclarationAST::description (C_String & ioString,
                                                 const int32_t inIndentation) const {
-  ioString << "[@typealiasDeclarationAST:" ;
+  ioString += "[@typealiasDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAliasTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mDefinedTypeName.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_typealiasDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -678,23 +678,23 @@ acPtr_class * cPtr_typealiasDeclarationAST::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @typealiasDeclarationAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_typealiasDeclarationAST ("typealiasDeclarationAST",
                                                 & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_typealiasDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typealiasDeclarationAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_typealiasDeclarationAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -704,7 +704,7 @@ AC_GALGAS_root * GALGAS_typealiasDeclarationAST::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_typealiasDeclarationAST GALGAS_typealiasDeclarationAST::extractObject (const GALGAS_object & inObject,
                                                                               C_Compiler * inCompiler
@@ -721,9 +721,9 @@ GALGAS_typealiasDeclarationAST GALGAS_typealiasDeclarationAST::extractObject (co
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @aliasTypeForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_aliasTypeForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -733,7 +733,7 @@ GALGAS_typealiasDeclarationAST GALGAS_typealiasDeclarationAST::extractObject (co
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_aliasTypeForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -751,7 +751,7 @@ typeComparisonResult cPtr_aliasTypeForGeneration::dynamicObjectCompare (const ac
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_aliasTypeForGeneration::objectCompare (const GALGAS_aliasTypeForGeneration & inOperand) const {
@@ -770,19 +770,19 @@ typeComparisonResult GALGAS_aliasTypeForGeneration::objectCompare (const GALGAS_
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_aliasTypeForGeneration::GALGAS_aliasTypeForGeneration (void) :
 GALGAS_semanticTypeForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_aliasTypeForGeneration::GALGAS_aliasTypeForGeneration (const cPtr_aliasTypeForGeneration * inSourcePtr) :
 GALGAS_semanticTypeForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_aliasTypeForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_aliasTypeForGeneration GALGAS_aliasTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mSelfTypeEntry,
                                                                               const GALGAS_string & inAttribute_mAliasTypeName,
@@ -795,7 +795,7 @@ GALGAS_aliasTypeForGeneration GALGAS_aliasTypeForGeneration::constructor_new (co
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_aliasTypeForGeneration::readProperty_mAliasTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -807,7 +807,7 @@ GALGAS_string GALGAS_aliasTypeForGeneration::readProperty_mAliasTypeName (void) 
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_aliasTypeForGeneration::readProperty_mReferencedType (void) const {
   if (nullptr == mObjectPtr) {
@@ -819,9 +819,9 @@ GALGAS_unifiedTypeMapEntry GALGAS_aliasTypeForGeneration::readProperty_mReferenc
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @aliasTypeForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_aliasTypeForGeneration::cPtr_aliasTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                           const GALGAS_string & in_mAliasTypeName,
@@ -832,7 +832,7 @@ mProperty_mAliasTypeName (in_mAliasTypeName),
 mProperty_mReferencedType (in_mReferencedType) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_aliasTypeForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_aliasTypeForGeneration ;
@@ -840,16 +840,16 @@ const C_galgas_type_descriptor * cPtr_aliasTypeForGeneration::classDescriptor (v
 
 void cPtr_aliasTypeForGeneration::description (C_String & ioString,
                                                const int32_t inIndentation) const {
-  ioString << "[@aliasTypeForGeneration:" ;
+  ioString += "[@aliasTypeForGeneration:" ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAliasTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mReferencedType.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_aliasTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -858,23 +858,23 @@ acPtr_class * cPtr_aliasTypeForGeneration::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @aliasTypeForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_aliasTypeForGeneration ("aliasTypeForGeneration",
                                                & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_aliasTypeForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_aliasTypeForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_aliasTypeForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -884,7 +884,7 @@ AC_GALGAS_root * GALGAS_aliasTypeForGeneration::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_aliasTypeForGeneration GALGAS_aliasTypeForGeneration::extractObject (const GALGAS_object & inObject,
                                                                             C_Compiler * inCompiler
@@ -901,7 +901,7 @@ GALGAS_aliasTypeForGeneration GALGAS_aliasTypeForGeneration::extractObject (cons
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_aliasTypeForGeneration_2D_weak::objectCompare (const GALGAS_aliasTypeForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -921,13 +921,13 @@ typeComparisonResult GALGAS_aliasTypeForGeneration_2D_weak::objectCompare (const
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_aliasTypeForGeneration_2D_weak::GALGAS_aliasTypeForGeneration_2D_weak (void) :
 GALGAS_semanticTypeForGeneration_2D_weak () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_aliasTypeForGeneration_2D_weak & GALGAS_aliasTypeForGeneration_2D_weak::operator = (const GALGAS_aliasTypeForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -939,13 +939,13 @@ GALGAS_aliasTypeForGeneration_2D_weak & GALGAS_aliasTypeForGeneration_2D_weak::o
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_aliasTypeForGeneration_2D_weak::GALGAS_aliasTypeForGeneration_2D_weak (const GALGAS_aliasTypeForGeneration & inSource) :
 GALGAS_semanticTypeForGeneration_2D_weak (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_aliasTypeForGeneration_2D_weak GALGAS_aliasTypeForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_aliasTypeForGeneration_2D_weak result ;
@@ -953,7 +953,7 @@ GALGAS_aliasTypeForGeneration_2D_weak GALGAS_aliasTypeForGeneration_2D_weak::con
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_aliasTypeForGeneration GALGAS_aliasTypeForGeneration_2D_weak::bang_aliasTypeForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_aliasTypeForGeneration result ;
@@ -969,23 +969,23 @@ GALGAS_aliasTypeForGeneration GALGAS_aliasTypeForGeneration_2D_weak::bang_aliasT
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @aliasTypeForGeneration-weak generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_aliasTypeForGeneration_2D_weak ("aliasTypeForGeneration-weak",
                                                        & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_aliasTypeForGeneration_2D_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_aliasTypeForGeneration_2D_weak ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_aliasTypeForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -995,7 +995,7 @@ AC_GALGAS_root * GALGAS_aliasTypeForGeneration_2D_weak::clonedObject (void) cons
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_aliasTypeForGeneration_2D_weak GALGAS_aliasTypeForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                             C_Compiler * inCompiler
@@ -1012,9 +1012,9 @@ GALGAS_aliasTypeForGeneration_2D_weak GALGAS_aliasTypeForGeneration_2D_weak::ext
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @abstractExtensionGetterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_abstractExtensionGetterAST::printNonNullClassInstanceProperties (void) const {
@@ -1026,7 +1026,7 @@ GALGAS_aliasTypeForGeneration_2D_weak GALGAS_aliasTypeForGeneration_2D_weak::ext
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_abstractExtensionGetterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -1050,7 +1050,7 @@ typeComparisonResult cPtr_abstractExtensionGetterAST::dynamicObjectCompare (cons
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_abstractExtensionGetterAST::objectCompare (const GALGAS_abstractExtensionGetterAST & inOperand) const {
@@ -1069,19 +1069,19 @@ typeComparisonResult GALGAS_abstractExtensionGetterAST::objectCompare (const GAL
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterAST::GALGAS_abstractExtensionGetterAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterAST::GALGAS_abstractExtensionGetterAST (const cPtr_abstractExtensionGetterAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractExtensionGetterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterAST GALGAS_abstractExtensionGetterAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                       const GALGAS_lstring & inAttribute_mTypeName,
@@ -1096,7 +1096,7 @@ GALGAS_abstractExtensionGetterAST GALGAS_abstractExtensionGetterAST::constructor
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_abstractExtensionGetterAST::readProperty_mTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -1108,7 +1108,7 @@ GALGAS_lstring GALGAS_abstractExtensionGetterAST::readProperty_mTypeName (void) 
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_abstractExtensionGetterAST::readProperty_mAbstractExtensionGetterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -1120,7 +1120,7 @@ GALGAS_lstring GALGAS_abstractExtensionGetterAST::readProperty_mAbstractExtensio
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListAST GALGAS_abstractExtensionGetterAST::readProperty_mAbstractExtensionGetterFormalInputParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -1132,7 +1132,7 @@ GALGAS_formalInputParameterListAST GALGAS_abstractExtensionGetterAST::readProper
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_abstractExtensionGetterAST::readProperty_mAbstractExtensionGetterReturnedTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -1144,9 +1144,9 @@ GALGAS_lstring GALGAS_abstractExtensionGetterAST::readProperty_mAbstractExtensio
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @abstractExtensionGetterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_abstractExtensionGetterAST::cPtr_abstractExtensionGetterAST (const GALGAS_bool & in_mIsPredefined,
                                                                   const GALGAS_lstring & in_mTypeName,
@@ -1161,7 +1161,7 @@ mProperty_mAbstractExtensionGetterFormalInputParameterList (in_mAbstractExtensio
 mProperty_mAbstractExtensionGetterReturnedTypeName (in_mAbstractExtensionGetterReturnedTypeName) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_abstractExtensionGetterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionGetterAST ;
@@ -1169,20 +1169,20 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionGetterAST::classDescripto
 
 void cPtr_abstractExtensionGetterAST::description (C_String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString << "[@abstractExtensionGetterAST:" ;
+  ioString += "[@abstractExtensionGetterAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAbstractExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAbstractExtensionGetterFormalInputParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAbstractExtensionGetterReturnedTypeName.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_abstractExtensionGetterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -1191,23 +1191,23 @@ acPtr_class * cPtr_abstractExtensionGetterAST::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @abstractExtensionGetterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_abstractExtensionGetterAST ("abstractExtensionGetterAST",
                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_abstractExtensionGetterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionGetterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_abstractExtensionGetterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -1217,7 +1217,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionGetterAST::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterAST GALGAS_abstractExtensionGetterAST::extractObject (const GALGAS_object & inObject,
                                                                                     C_Compiler * inCompiler
@@ -1234,9 +1234,9 @@ GALGAS_abstractExtensionGetterAST GALGAS_abstractExtensionGetterAST::extractObje
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @abstractExtensionGetterForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_abstractExtensionGetterForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -1248,7 +1248,7 @@ GALGAS_abstractExtensionGetterAST GALGAS_abstractExtensionGetterAST::extractObje
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_abstractExtensionGetterForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -1275,7 +1275,7 @@ typeComparisonResult cPtr_abstractExtensionGetterForGeneration::dynamicObjectCom
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_abstractExtensionGetterForGeneration::objectCompare (const GALGAS_abstractExtensionGetterForGeneration & inOperand) const {
@@ -1294,19 +1294,19 @@ typeComparisonResult GALGAS_abstractExtensionGetterForGeneration::objectCompare 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterForGeneration::GALGAS_abstractExtensionGetterForGeneration (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterForGeneration::GALGAS_abstractExtensionGetterForGeneration (const cPtr_abstractExtensionGetterForGeneration * inSourcePtr) :
 GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractExtensionGetterForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterForGeneration GALGAS_abstractExtensionGetterForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                           const GALGAS_string & inAttribute_mImplementationCppFileName,
@@ -1322,7 +1322,7 @@ GALGAS_abstractExtensionGetterForGeneration GALGAS_abstractExtensionGetterForGen
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_abstractExtensionGetterForGeneration::readProperty_mReceiverType (void) const {
   if (nullptr == mObjectPtr) {
@@ -1334,7 +1334,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_abstractExtensionGetterForGeneration::readProp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_abstractExtensionGetterForGeneration::readProperty_mAbstractExtensionGetterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -1346,7 +1346,7 @@ GALGAS_string GALGAS_abstractExtensionGetterForGeneration::readProperty_mAbstrac
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_abstractExtensionGetterForGeneration::readProperty_mResultType (void) const {
   if (nullptr == mObjectPtr) {
@@ -1358,7 +1358,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_abstractExtensionGetterForGeneration::readProp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListForGeneration GALGAS_abstractExtensionGetterForGeneration::readProperty_mAbstractExtensionGetterFormalParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -1370,9 +1370,9 @@ GALGAS_formalInputParameterListForGeneration GALGAS_abstractExtensionGetterForGe
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @abstractExtensionGetterForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_abstractExtensionGetterForGeneration::cPtr_abstractExtensionGetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                       const GALGAS_string & in_mImplementationCppFileName,
@@ -1388,7 +1388,7 @@ mProperty_mResultType (in_mResultType),
 mProperty_mAbstractExtensionGetterFormalParameterList (in_mAbstractExtensionGetterFormalParameterList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_abstractExtensionGetterForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionGetterForGeneration ;
@@ -1396,22 +1396,22 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionGetterForGeneration::clas
 
 void cPtr_abstractExtensionGetterForGeneration::description (C_String & ioString,
                                                              const int32_t inIndentation) const {
-  ioString << "[@abstractExtensionGetterForGeneration:" ;
+  ioString += "[@abstractExtensionGetterForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAbstractExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAbstractExtensionGetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_abstractExtensionGetterForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -1420,23 +1420,23 @@ acPtr_class * cPtr_abstractExtensionGetterForGeneration::duplicate (LOCATION_ARG
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @abstractExtensionGetterForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_abstractExtensionGetterForGeneration ("abstractExtensionGetterForGeneration",
                                                              & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_abstractExtensionGetterForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionGetterForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_abstractExtensionGetterForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -1446,7 +1446,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionGetterForGeneration::clonedObject (void
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterForGeneration GALGAS_abstractExtensionGetterForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                                         C_Compiler * inCompiler
@@ -1463,7 +1463,7 @@ GALGAS_abstractExtensionGetterForGeneration GALGAS_abstractExtensionGetterForGen
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_abstractExtensionGetterForGeneration_2D_weak::objectCompare (const GALGAS_abstractExtensionGetterForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -1483,13 +1483,13 @@ typeComparisonResult GALGAS_abstractExtensionGetterForGeneration_2D_weak::object
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterForGeneration_2D_weak::GALGAS_abstractExtensionGetterForGeneration_2D_weak (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterForGeneration_2D_weak & GALGAS_abstractExtensionGetterForGeneration_2D_weak::operator = (const GALGAS_abstractExtensionGetterForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -1501,13 +1501,13 @@ GALGAS_abstractExtensionGetterForGeneration_2D_weak & GALGAS_abstractExtensionGe
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterForGeneration_2D_weak::GALGAS_abstractExtensionGetterForGeneration_2D_weak (const GALGAS_abstractExtensionGetterForGeneration & inSource) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterForGeneration_2D_weak GALGAS_abstractExtensionGetterForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_abstractExtensionGetterForGeneration_2D_weak result ;
@@ -1515,7 +1515,7 @@ GALGAS_abstractExtensionGetterForGeneration_2D_weak GALGAS_abstractExtensionGett
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterForGeneration GALGAS_abstractExtensionGetterForGeneration_2D_weak::bang_abstractExtensionGetterForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_abstractExtensionGetterForGeneration result ;
@@ -1531,23 +1531,23 @@ GALGAS_abstractExtensionGetterForGeneration GALGAS_abstractExtensionGetterForGen
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @abstractExtensionGetterForGeneration-weak generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_abstractExtensionGetterForGeneration_2D_weak ("abstractExtensionGetterForGeneration-weak",
                                                                      & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_abstractExtensionGetterForGeneration_2D_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionGetterForGeneration_2D_weak ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_abstractExtensionGetterForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -1557,7 +1557,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionGetterForGeneration_2D_weak::clonedObje
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionGetterForGeneration_2D_weak GALGAS_abstractExtensionGetterForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                         C_Compiler * inCompiler
@@ -1574,9 +1574,9 @@ GALGAS_abstractExtensionGetterForGeneration_2D_weak GALGAS_abstractExtensionGett
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @abstractExtensionMethodAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_abstractExtensionMethodAST::printNonNullClassInstanceProperties (void) const {
@@ -1587,7 +1587,7 @@ GALGAS_abstractExtensionGetterForGeneration_2D_weak GALGAS_abstractExtensionGett
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_abstractExtensionMethodAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -1608,7 +1608,7 @@ typeComparisonResult cPtr_abstractExtensionMethodAST::dynamicObjectCompare (cons
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_abstractExtensionMethodAST::objectCompare (const GALGAS_abstractExtensionMethodAST & inOperand) const {
@@ -1627,19 +1627,19 @@ typeComparisonResult GALGAS_abstractExtensionMethodAST::objectCompare (const GAL
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodAST::GALGAS_abstractExtensionMethodAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodAST::GALGAS_abstractExtensionMethodAST (const cPtr_abstractExtensionMethodAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractExtensionMethodAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodAST GALGAS_abstractExtensionMethodAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                       const GALGAS_lstring & inAttribute_mTypeName,
@@ -1653,7 +1653,7 @@ GALGAS_abstractExtensionMethodAST GALGAS_abstractExtensionMethodAST::constructor
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_abstractExtensionMethodAST::readProperty_mTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -1665,7 +1665,7 @@ GALGAS_lstring GALGAS_abstractExtensionMethodAST::readProperty_mTypeName (void) 
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_abstractExtensionMethodAST::readProperty_mAbstractExtensionMethodName (void) const {
   if (nullptr == mObjectPtr) {
@@ -1677,7 +1677,7 @@ GALGAS_lstring GALGAS_abstractExtensionMethodAST::readProperty_mAbstractExtensio
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListAST GALGAS_abstractExtensionMethodAST::readProperty_mAbstractExtensionMethodFormalParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -1689,9 +1689,9 @@ GALGAS_formalParameterListAST GALGAS_abstractExtensionMethodAST::readProperty_mA
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @abstractExtensionMethodAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_abstractExtensionMethodAST::cPtr_abstractExtensionMethodAST (const GALGAS_bool & in_mIsPredefined,
                                                                   const GALGAS_lstring & in_mTypeName,
@@ -1704,7 +1704,7 @@ mProperty_mAbstractExtensionMethodName (in_mAbstractExtensionMethodName),
 mProperty_mAbstractExtensionMethodFormalParameterList (in_mAbstractExtensionMethodFormalParameterList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_abstractExtensionMethodAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionMethodAST ;
@@ -1712,18 +1712,18 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionMethodAST::classDescripto
 
 void cPtr_abstractExtensionMethodAST::description (C_String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString << "[@abstractExtensionMethodAST:" ;
+  ioString += "[@abstractExtensionMethodAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAbstractExtensionMethodName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAbstractExtensionMethodFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_abstractExtensionMethodAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -1732,23 +1732,23 @@ acPtr_class * cPtr_abstractExtensionMethodAST::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @abstractExtensionMethodAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_abstractExtensionMethodAST ("abstractExtensionMethodAST",
                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_abstractExtensionMethodAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionMethodAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_abstractExtensionMethodAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -1758,7 +1758,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionMethodAST::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodAST GALGAS_abstractExtensionMethodAST::extractObject (const GALGAS_object & inObject,
                                                                                     C_Compiler * inCompiler
@@ -1775,9 +1775,9 @@ GALGAS_abstractExtensionMethodAST GALGAS_abstractExtensionMethodAST::extractObje
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @abstractExtensionMethodForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_abstractExtensionMethodForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -1788,7 +1788,7 @@ GALGAS_abstractExtensionMethodAST GALGAS_abstractExtensionMethodAST::extractObje
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_abstractExtensionMethodForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -1812,7 +1812,7 @@ typeComparisonResult cPtr_abstractExtensionMethodForGeneration::dynamicObjectCom
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_abstractExtensionMethodForGeneration::objectCompare (const GALGAS_abstractExtensionMethodForGeneration & inOperand) const {
@@ -1831,19 +1831,19 @@ typeComparisonResult GALGAS_abstractExtensionMethodForGeneration::objectCompare 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodForGeneration::GALGAS_abstractExtensionMethodForGeneration (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodForGeneration::GALGAS_abstractExtensionMethodForGeneration (const cPtr_abstractExtensionMethodForGeneration * inSourcePtr) :
 GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractExtensionMethodForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodForGeneration GALGAS_abstractExtensionMethodForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                           const GALGAS_string & inAttribute_mImplementationCppFileName,
@@ -1858,7 +1858,7 @@ GALGAS_abstractExtensionMethodForGeneration GALGAS_abstractExtensionMethodForGen
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_abstractExtensionMethodForGeneration::readProperty_mReceiverType (void) const {
   if (nullptr == mObjectPtr) {
@@ -1870,7 +1870,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_abstractExtensionMethodForGeneration::readProp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_abstractExtensionMethodForGeneration::readProperty_mAbstractExtensionMethodName (void) const {
   if (nullptr == mObjectPtr) {
@@ -1882,7 +1882,7 @@ GALGAS_string GALGAS_abstractExtensionMethodForGeneration::readProperty_mAbstrac
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListForGeneration GALGAS_abstractExtensionMethodForGeneration::readProperty_mAbstractExtensionMethodFormalParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -1894,9 +1894,9 @@ GALGAS_formalParameterListForGeneration GALGAS_abstractExtensionMethodForGenerat
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @abstractExtensionMethodForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_abstractExtensionMethodForGeneration::cPtr_abstractExtensionMethodForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                       const GALGAS_string & in_mImplementationCppFileName,
@@ -1910,7 +1910,7 @@ mProperty_mAbstractExtensionMethodName (in_mAbstractExtensionMethodName),
 mProperty_mAbstractExtensionMethodFormalParameterList (in_mAbstractExtensionMethodFormalParameterList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_abstractExtensionMethodForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration ;
@@ -1918,20 +1918,20 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionMethodForGeneration::clas
 
 void cPtr_abstractExtensionMethodForGeneration::description (C_String & ioString,
                                                              const int32_t inIndentation) const {
-  ioString << "[@abstractExtensionMethodForGeneration:" ;
+  ioString += "[@abstractExtensionMethodForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAbstractExtensionMethodName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAbstractExtensionMethodFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_abstractExtensionMethodForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -1940,23 +1940,23 @@ acPtr_class * cPtr_abstractExtensionMethodForGeneration::duplicate (LOCATION_ARG
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @abstractExtensionMethodForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration ("abstractExtensionMethodForGeneration",
                                                              & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_abstractExtensionMethodForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_abstractExtensionMethodForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -1966,7 +1966,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionMethodForGeneration::clonedObject (void
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodForGeneration GALGAS_abstractExtensionMethodForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                                         C_Compiler * inCompiler
@@ -1983,7 +1983,7 @@ GALGAS_abstractExtensionMethodForGeneration GALGAS_abstractExtensionMethodForGen
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_abstractExtensionMethodForGeneration_2D_weak::objectCompare (const GALGAS_abstractExtensionMethodForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -2003,13 +2003,13 @@ typeComparisonResult GALGAS_abstractExtensionMethodForGeneration_2D_weak::object
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodForGeneration_2D_weak::GALGAS_abstractExtensionMethodForGeneration_2D_weak (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodForGeneration_2D_weak & GALGAS_abstractExtensionMethodForGeneration_2D_weak::operator = (const GALGAS_abstractExtensionMethodForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -2021,13 +2021,13 @@ GALGAS_abstractExtensionMethodForGeneration_2D_weak & GALGAS_abstractExtensionMe
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodForGeneration_2D_weak::GALGAS_abstractExtensionMethodForGeneration_2D_weak (const GALGAS_abstractExtensionMethodForGeneration & inSource) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodForGeneration_2D_weak GALGAS_abstractExtensionMethodForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_abstractExtensionMethodForGeneration_2D_weak result ;
@@ -2035,7 +2035,7 @@ GALGAS_abstractExtensionMethodForGeneration_2D_weak GALGAS_abstractExtensionMeth
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodForGeneration GALGAS_abstractExtensionMethodForGeneration_2D_weak::bang_abstractExtensionMethodForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_abstractExtensionMethodForGeneration result ;
@@ -2051,23 +2051,23 @@ GALGAS_abstractExtensionMethodForGeneration GALGAS_abstractExtensionMethodForGen
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @abstractExtensionMethodForGeneration-weak generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration_2D_weak ("abstractExtensionMethodForGeneration-weak",
                                                                      & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_abstractExtensionMethodForGeneration_2D_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration_2D_weak ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_abstractExtensionMethodForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -2077,7 +2077,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionMethodForGeneration_2D_weak::clonedObje
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionMethodForGeneration_2D_weak GALGAS_abstractExtensionMethodForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                         C_Compiler * inCompiler
@@ -2094,9 +2094,9 @@ GALGAS_abstractExtensionMethodForGeneration_2D_weak GALGAS_abstractExtensionMeth
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @abstractExtensionSetterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_abstractExtensionSetterAST::printNonNullClassInstanceProperties (void) const {
@@ -2107,7 +2107,7 @@ GALGAS_abstractExtensionMethodForGeneration_2D_weak GALGAS_abstractExtensionMeth
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_abstractExtensionSetterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -2128,7 +2128,7 @@ typeComparisonResult cPtr_abstractExtensionSetterAST::dynamicObjectCompare (cons
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_abstractExtensionSetterAST::objectCompare (const GALGAS_abstractExtensionSetterAST & inOperand) const {
@@ -2147,19 +2147,19 @@ typeComparisonResult GALGAS_abstractExtensionSetterAST::objectCompare (const GAL
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterAST::GALGAS_abstractExtensionSetterAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterAST::GALGAS_abstractExtensionSetterAST (const cPtr_abstractExtensionSetterAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractExtensionSetterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterAST GALGAS_abstractExtensionSetterAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                       const GALGAS_lstring & inAttribute_mTypeName,
@@ -2173,7 +2173,7 @@ GALGAS_abstractExtensionSetterAST GALGAS_abstractExtensionSetterAST::constructor
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_abstractExtensionSetterAST::readProperty_mTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -2185,7 +2185,7 @@ GALGAS_lstring GALGAS_abstractExtensionSetterAST::readProperty_mTypeName (void) 
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_abstractExtensionSetterAST::readProperty_mAbstractExtensionSetterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -2197,7 +2197,7 @@ GALGAS_lstring GALGAS_abstractExtensionSetterAST::readProperty_mAbstractExtensio
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListAST GALGAS_abstractExtensionSetterAST::readProperty_mAbstractExtensionSetterFormalParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -2209,9 +2209,9 @@ GALGAS_formalParameterListAST GALGAS_abstractExtensionSetterAST::readProperty_mA
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @abstractExtensionSetterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_abstractExtensionSetterAST::cPtr_abstractExtensionSetterAST (const GALGAS_bool & in_mIsPredefined,
                                                                   const GALGAS_lstring & in_mTypeName,
@@ -2224,7 +2224,7 @@ mProperty_mAbstractExtensionSetterName (in_mAbstractExtensionSetterName),
 mProperty_mAbstractExtensionSetterFormalParameterList (in_mAbstractExtensionSetterFormalParameterList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_abstractExtensionSetterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionSetterAST ;
@@ -2232,18 +2232,18 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionSetterAST::classDescripto
 
 void cPtr_abstractExtensionSetterAST::description (C_String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString << "[@abstractExtensionSetterAST:" ;
+  ioString += "[@abstractExtensionSetterAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAbstractExtensionSetterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAbstractExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_abstractExtensionSetterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -2252,23 +2252,23 @@ acPtr_class * cPtr_abstractExtensionSetterAST::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @abstractExtensionSetterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_abstractExtensionSetterAST ("abstractExtensionSetterAST",
                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_abstractExtensionSetterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionSetterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_abstractExtensionSetterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -2278,7 +2278,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionSetterAST::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterAST GALGAS_abstractExtensionSetterAST::extractObject (const GALGAS_object & inObject,
                                                                                     C_Compiler * inCompiler
@@ -2295,9 +2295,9 @@ GALGAS_abstractExtensionSetterAST GALGAS_abstractExtensionSetterAST::extractObje
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @abstractExtensionSetterForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_abstractExtensionSetterForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -2308,7 +2308,7 @@ GALGAS_abstractExtensionSetterAST GALGAS_abstractExtensionSetterAST::extractObje
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_abstractExtensionSetterForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -2332,7 +2332,7 @@ typeComparisonResult cPtr_abstractExtensionSetterForGeneration::dynamicObjectCom
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_abstractExtensionSetterForGeneration::objectCompare (const GALGAS_abstractExtensionSetterForGeneration & inOperand) const {
@@ -2351,19 +2351,19 @@ typeComparisonResult GALGAS_abstractExtensionSetterForGeneration::objectCompare 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterForGeneration::GALGAS_abstractExtensionSetterForGeneration (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterForGeneration::GALGAS_abstractExtensionSetterForGeneration (const cPtr_abstractExtensionSetterForGeneration * inSourcePtr) :
 GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractExtensionSetterForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterForGeneration GALGAS_abstractExtensionSetterForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                           const GALGAS_string & inAttribute_mImplementationCppFileName,
@@ -2378,7 +2378,7 @@ GALGAS_abstractExtensionSetterForGeneration GALGAS_abstractExtensionSetterForGen
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_abstractExtensionSetterForGeneration::readProperty_mReceiverType (void) const {
   if (nullptr == mObjectPtr) {
@@ -2390,7 +2390,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_abstractExtensionSetterForGeneration::readProp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_abstractExtensionSetterForGeneration::readProperty_mAbstractExtensionSetterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -2402,7 +2402,7 @@ GALGAS_string GALGAS_abstractExtensionSetterForGeneration::readProperty_mAbstrac
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListForGeneration GALGAS_abstractExtensionSetterForGeneration::readProperty_mAbstractExtensionSetterFormalParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -2414,9 +2414,9 @@ GALGAS_formalParameterListForGeneration GALGAS_abstractExtensionSetterForGenerat
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @abstractExtensionSetterForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_abstractExtensionSetterForGeneration::cPtr_abstractExtensionSetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                       const GALGAS_string & in_mImplementationCppFileName,
@@ -2430,7 +2430,7 @@ mProperty_mAbstractExtensionSetterName (in_mAbstractExtensionSetterName),
 mProperty_mAbstractExtensionSetterFormalParameterList (in_mAbstractExtensionSetterFormalParameterList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_abstractExtensionSetterForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration ;
@@ -2438,20 +2438,20 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionSetterForGeneration::clas
 
 void cPtr_abstractExtensionSetterForGeneration::description (C_String & ioString,
                                                              const int32_t inIndentation) const {
-  ioString << "[@abstractExtensionSetterForGeneration:" ;
+  ioString += "[@abstractExtensionSetterForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAbstractExtensionSetterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAbstractExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_abstractExtensionSetterForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -2460,23 +2460,23 @@ acPtr_class * cPtr_abstractExtensionSetterForGeneration::duplicate (LOCATION_ARG
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @abstractExtensionSetterForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration ("abstractExtensionSetterForGeneration",
                                                              & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_abstractExtensionSetterForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_abstractExtensionSetterForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -2486,7 +2486,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionSetterForGeneration::clonedObject (void
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterForGeneration GALGAS_abstractExtensionSetterForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                                         C_Compiler * inCompiler
@@ -2503,7 +2503,7 @@ GALGAS_abstractExtensionSetterForGeneration GALGAS_abstractExtensionSetterForGen
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_abstractExtensionSetterForGeneration_2D_weak::objectCompare (const GALGAS_abstractExtensionSetterForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -2523,13 +2523,13 @@ typeComparisonResult GALGAS_abstractExtensionSetterForGeneration_2D_weak::object
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterForGeneration_2D_weak::GALGAS_abstractExtensionSetterForGeneration_2D_weak (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterForGeneration_2D_weak & GALGAS_abstractExtensionSetterForGeneration_2D_weak::operator = (const GALGAS_abstractExtensionSetterForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -2541,13 +2541,13 @@ GALGAS_abstractExtensionSetterForGeneration_2D_weak & GALGAS_abstractExtensionSe
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterForGeneration_2D_weak::GALGAS_abstractExtensionSetterForGeneration_2D_weak (const GALGAS_abstractExtensionSetterForGeneration & inSource) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterForGeneration_2D_weak GALGAS_abstractExtensionSetterForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_abstractExtensionSetterForGeneration_2D_weak result ;
@@ -2555,7 +2555,7 @@ GALGAS_abstractExtensionSetterForGeneration_2D_weak GALGAS_abstractExtensionSett
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterForGeneration GALGAS_abstractExtensionSetterForGeneration_2D_weak::bang_abstractExtensionSetterForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_abstractExtensionSetterForGeneration result ;
@@ -2571,23 +2571,23 @@ GALGAS_abstractExtensionSetterForGeneration GALGAS_abstractExtensionSetterForGen
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @abstractExtensionSetterForGeneration-weak generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration_2D_weak ("abstractExtensionSetterForGeneration-weak",
                                                                      & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_abstractExtensionSetterForGeneration_2D_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration_2D_weak ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_abstractExtensionSetterForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -2597,7 +2597,7 @@ AC_GALGAS_root * GALGAS_abstractExtensionSetterForGeneration_2D_weak::clonedObje
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractExtensionSetterForGeneration_2D_weak GALGAS_abstractExtensionSetterForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                         C_Compiler * inCompiler
@@ -2614,9 +2614,9 @@ GALGAS_abstractExtensionSetterForGeneration_2D_weak GALGAS_abstractExtensionSett
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @extensionGetterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_extensionGetterAST::printNonNullClassInstanceProperties (void) const {
@@ -2632,7 +2632,7 @@ GALGAS_abstractExtensionSetterForGeneration_2D_weak GALGAS_abstractExtensionSett
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_extensionGetterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -2668,7 +2668,7 @@ typeComparisonResult cPtr_extensionGetterAST::dynamicObjectCompare (const acPtr_
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_extensionGetterAST::objectCompare (const GALGAS_extensionGetterAST & inOperand) const {
@@ -2687,19 +2687,19 @@ typeComparisonResult GALGAS_extensionGetterAST::objectCompare (const GALGAS_exte
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterAST::GALGAS_extensionGetterAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterAST::GALGAS_extensionGetterAST (const cPtr_extensionGetterAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionGetterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterAST GALGAS_extensionGetterAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                       const GALGAS_bool & inAttribute_requiresSelfForAccessingProperty,
@@ -2718,7 +2718,7 @@ GALGAS_extensionGetterAST GALGAS_extensionGetterAST::constructor_new (const GALG
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_extensionGetterAST::readProperty_requiresSelfForAccessingProperty (void) const {
   if (nullptr == mObjectPtr) {
@@ -2730,7 +2730,7 @@ GALGAS_bool GALGAS_extensionGetterAST::readProperty_requiresSelfForAccessingProp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -2742,7 +2742,7 @@ GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mTypeName (void) const {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mExtensionGetterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -2754,7 +2754,7 @@ GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mExtensionGetterName (voi
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListAST GALGAS_extensionGetterAST::readProperty_mExtensionGetterFormalInputParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -2766,7 +2766,7 @@ GALGAS_formalInputParameterListAST GALGAS_extensionGetterAST::readProperty_mExte
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mExtensionGetterReturnedTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -2778,7 +2778,7 @@ GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mExtensionGetterReturnedT
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mExtensionGetterReturnedVariableName (void) const {
   if (nullptr == mObjectPtr) {
@@ -2790,7 +2790,7 @@ GALGAS_lstring GALGAS_extensionGetterAST::readProperty_mExtensionGetterReturnedV
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListAST GALGAS_extensionGetterAST::readProperty_mExtensionGetterInstructionList (void) const {
   if (nullptr == mObjectPtr) {
@@ -2802,7 +2802,7 @@ GALGAS_semanticInstructionListAST GALGAS_extensionGetterAST::readProperty_mExten
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_extensionGetterAST::readProperty_mEndOfReaderLocation (void) const {
   if (nullptr == mObjectPtr) {
@@ -2814,9 +2814,9 @@ GALGAS_location GALGAS_extensionGetterAST::readProperty_mEndOfReaderLocation (vo
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @extensionGetterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_extensionGetterAST::cPtr_extensionGetterAST (const GALGAS_bool & in_mIsPredefined,
                                                   const GALGAS_bool & in_requiresSelfForAccessingProperty,
@@ -2839,7 +2839,7 @@ mProperty_mExtensionGetterInstructionList (in_mExtensionGetterInstructionList),
 mProperty_mEndOfReaderLocation (in_mEndOfReaderLocation) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_extensionGetterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionGetterAST ;
@@ -2847,28 +2847,28 @@ const C_galgas_type_descriptor * cPtr_extensionGetterAST::classDescriptor (void)
 
 void cPtr_extensionGetterAST::description (C_String & ioString,
                                            const int32_t inIndentation) const {
-  ioString << "[@extensionGetterAST:" ;
+  ioString += "[@extensionGetterAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_requiresSelfForAccessingProperty.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionGetterFormalInputParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionGetterReturnedTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionGetterReturnedVariableName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionGetterInstructionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mEndOfReaderLocation.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_extensionGetterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -2877,23 +2877,23 @@ acPtr_class * cPtr_extensionGetterAST::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @extensionGetterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_extensionGetterAST ("extensionGetterAST",
                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_extensionGetterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionGetterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_extensionGetterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -2903,7 +2903,7 @@ AC_GALGAS_root * GALGAS_extensionGetterAST::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterAST GALGAS_extensionGetterAST::extractObject (const GALGAS_object & inObject,
                                                                     C_Compiler * inCompiler
@@ -2920,9 +2920,9 @@ GALGAS_extensionGetterAST GALGAS_extensionGetterAST::extractObject (const GALGAS
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @extensionGetterForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_extensionGetterForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -2938,7 +2938,7 @@ GALGAS_extensionGetterAST GALGAS_extensionGetterAST::extractObject (const GALGAS
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_extensionGetterForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -2977,7 +2977,7 @@ typeComparisonResult cPtr_extensionGetterForGeneration::dynamicObjectCompare (co
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_extensionGetterForGeneration::objectCompare (const GALGAS_extensionGetterForGeneration & inOperand) const {
@@ -2996,19 +2996,19 @@ typeComparisonResult GALGAS_extensionGetterForGeneration::objectCompare (const G
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterForGeneration::GALGAS_extensionGetterForGeneration (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterForGeneration::GALGAS_extensionGetterForGeneration (const cPtr_extensionGetterForGeneration * inSourcePtr) :
 GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionGetterForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterForGeneration GALGAS_extensionGetterForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                           const GALGAS_string & inAttribute_mImplementationCppFileName,
@@ -3028,7 +3028,7 @@ GALGAS_extensionGetterForGeneration GALGAS_extensionGetterForGeneration::constru
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_extensionGetterForGeneration::readProperty_mReceiverType (void) const {
   if (nullptr == mObjectPtr) {
@@ -3040,7 +3040,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_extensionGetterForGeneration::readProperty_mRe
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_extensionGetterForGeneration::readProperty_mExtensionGetterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -3052,7 +3052,7 @@ GALGAS_string GALGAS_extensionGetterForGeneration::readProperty_mExtensionGetter
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_extensionGetterForGeneration::readProperty_mImplementedAsFunction (void) const {
   if (nullptr == mObjectPtr) {
@@ -3064,7 +3064,7 @@ GALGAS_bool GALGAS_extensionGetterForGeneration::readProperty_mImplementedAsFunc
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_extensionGetterForGeneration::readProperty_mResultType (void) const {
   if (nullptr == mObjectPtr) {
@@ -3076,7 +3076,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_extensionGetterForGeneration::readProperty_mRe
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_extensionGetterForGeneration::readProperty_mResultVarCppName (void) const {
   if (nullptr == mObjectPtr) {
@@ -3088,7 +3088,7 @@ GALGAS_string GALGAS_extensionGetterForGeneration::readProperty_mResultVarCppNam
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListForGeneration GALGAS_extensionGetterForGeneration::readProperty_mExtensionGetterFormalParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -3100,7 +3100,7 @@ GALGAS_formalInputParameterListForGeneration GALGAS_extensionGetterForGeneration
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_typedPropertyList GALGAS_extensionGetterForGeneration::readProperty_mTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
@@ -3112,7 +3112,7 @@ GALGAS_typedPropertyList GALGAS_extensionGetterForGeneration::readProperty_mType
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListForGeneration GALGAS_extensionGetterForGeneration::readProperty_mSemanticInstructionListForGeneration (void) const {
   if (nullptr == mObjectPtr) {
@@ -3124,9 +3124,9 @@ GALGAS_semanticInstructionListForGeneration GALGAS_extensionGetterForGeneration:
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @extensionGetterForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_extensionGetterForGeneration::cPtr_extensionGetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                       const GALGAS_string & in_mImplementationCppFileName,
@@ -3150,7 +3150,7 @@ mProperty_mTypedAttributeList (in_mTypedAttributeList),
 mProperty_mSemanticInstructionListForGeneration (in_mSemanticInstructionListForGeneration) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_extensionGetterForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionGetterForGeneration ;
@@ -3158,30 +3158,30 @@ const C_galgas_type_descriptor * cPtr_extensionGetterForGeneration::classDescrip
 
 void cPtr_extensionGetterForGeneration::description (C_String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString << "[@extensionGetterForGeneration:" ;
+  ioString += "[@extensionGetterForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementedAsFunction.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mResultVarCppName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionGetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_extensionGetterForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -3190,23 +3190,23 @@ acPtr_class * cPtr_extensionGetterForGeneration::duplicate (LOCATION_ARGS) const
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @extensionGetterForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_extensionGetterForGeneration ("extensionGetterForGeneration",
                                                      & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_extensionGetterForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionGetterForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_extensionGetterForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -3216,7 +3216,7 @@ AC_GALGAS_root * GALGAS_extensionGetterForGeneration::clonedObject (void) const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterForGeneration GALGAS_extensionGetterForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                         C_Compiler * inCompiler
@@ -3233,7 +3233,7 @@ GALGAS_extensionGetterForGeneration GALGAS_extensionGetterForGeneration::extract
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_extensionGetterForGeneration_2D_weak::objectCompare (const GALGAS_extensionGetterForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -3253,13 +3253,13 @@ typeComparisonResult GALGAS_extensionGetterForGeneration_2D_weak::objectCompare 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterForGeneration_2D_weak::GALGAS_extensionGetterForGeneration_2D_weak (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterForGeneration_2D_weak & GALGAS_extensionGetterForGeneration_2D_weak::operator = (const GALGAS_extensionGetterForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -3271,13 +3271,13 @@ GALGAS_extensionGetterForGeneration_2D_weak & GALGAS_extensionGetterForGeneratio
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterForGeneration_2D_weak::GALGAS_extensionGetterForGeneration_2D_weak (const GALGAS_extensionGetterForGeneration & inSource) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterForGeneration_2D_weak GALGAS_extensionGetterForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_extensionGetterForGeneration_2D_weak result ;
@@ -3285,7 +3285,7 @@ GALGAS_extensionGetterForGeneration_2D_weak GALGAS_extensionGetterForGeneration_
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterForGeneration GALGAS_extensionGetterForGeneration_2D_weak::bang_extensionGetterForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_extensionGetterForGeneration result ;
@@ -3301,23 +3301,23 @@ GALGAS_extensionGetterForGeneration GALGAS_extensionGetterForGeneration_2D_weak:
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @extensionGetterForGeneration-weak generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_extensionGetterForGeneration_2D_weak ("extensionGetterForGeneration-weak",
                                                              & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_extensionGetterForGeneration_2D_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionGetterForGeneration_2D_weak ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_extensionGetterForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -3327,7 +3327,7 @@ AC_GALGAS_root * GALGAS_extensionGetterForGeneration_2D_weak::clonedObject (void
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterForGeneration_2D_weak GALGAS_extensionGetterForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                                         C_Compiler * inCompiler
@@ -3344,9 +3344,9 @@ GALGAS_extensionGetterForGeneration_2D_weak GALGAS_extensionGetterForGeneration_
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @extensionMethodAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_extensionMethodAST::printNonNullClassInstanceProperties (void) const {
@@ -3360,7 +3360,7 @@ GALGAS_extensionGetterForGeneration_2D_weak GALGAS_extensionGetterForGeneration_
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_extensionMethodAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -3390,7 +3390,7 @@ typeComparisonResult cPtr_extensionMethodAST::dynamicObjectCompare (const acPtr_
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_extensionMethodAST::objectCompare (const GALGAS_extensionMethodAST & inOperand) const {
@@ -3409,19 +3409,19 @@ typeComparisonResult GALGAS_extensionMethodAST::objectCompare (const GALGAS_exte
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodAST::GALGAS_extensionMethodAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodAST::GALGAS_extensionMethodAST (const cPtr_extensionMethodAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionMethodAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodAST GALGAS_extensionMethodAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                       const GALGAS_bool & inAttribute_requiresSelfForAccessingProperty,
@@ -3438,7 +3438,7 @@ GALGAS_extensionMethodAST GALGAS_extensionMethodAST::constructor_new (const GALG
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_extensionMethodAST::readProperty_requiresSelfForAccessingProperty (void) const {
   if (nullptr == mObjectPtr) {
@@ -3450,7 +3450,7 @@ GALGAS_bool GALGAS_extensionMethodAST::readProperty_requiresSelfForAccessingProp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_extensionMethodAST::readProperty_mTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -3462,7 +3462,7 @@ GALGAS_lstring GALGAS_extensionMethodAST::readProperty_mTypeName (void) const {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_extensionMethodAST::readProperty_mExtensionMethodName (void) const {
   if (nullptr == mObjectPtr) {
@@ -3474,7 +3474,7 @@ GALGAS_lstring GALGAS_extensionMethodAST::readProperty_mExtensionMethodName (voi
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListAST GALGAS_extensionMethodAST::readProperty_mExtensionMethodFormalParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -3486,7 +3486,7 @@ GALGAS_formalParameterListAST GALGAS_extensionMethodAST::readProperty_mExtension
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListAST GALGAS_extensionMethodAST::readProperty_mExtensionMethodInstructionList (void) const {
   if (nullptr == mObjectPtr) {
@@ -3498,7 +3498,7 @@ GALGAS_semanticInstructionListAST GALGAS_extensionMethodAST::readProperty_mExten
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_extensionMethodAST::readProperty_mEndOfMethodLocation (void) const {
   if (nullptr == mObjectPtr) {
@@ -3510,9 +3510,9 @@ GALGAS_location GALGAS_extensionMethodAST::readProperty_mEndOfMethodLocation (vo
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @extensionMethodAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_extensionMethodAST::cPtr_extensionMethodAST (const GALGAS_bool & in_mIsPredefined,
                                                   const GALGAS_bool & in_requiresSelfForAccessingProperty,
@@ -3531,7 +3531,7 @@ mProperty_mExtensionMethodInstructionList (in_mExtensionMethodInstructionList),
 mProperty_mEndOfMethodLocation (in_mEndOfMethodLocation) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_extensionMethodAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionMethodAST ;
@@ -3539,24 +3539,24 @@ const C_galgas_type_descriptor * cPtr_extensionMethodAST::classDescriptor (void)
 
 void cPtr_extensionMethodAST::description (C_String & ioString,
                                            const int32_t inIndentation) const {
-  ioString << "[@extensionMethodAST:" ;
+  ioString += "[@extensionMethodAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_requiresSelfForAccessingProperty.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionMethodName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionMethodFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionMethodInstructionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mEndOfMethodLocation.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_extensionMethodAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -3565,23 +3565,23 @@ acPtr_class * cPtr_extensionMethodAST::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @extensionMethodAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_extensionMethodAST ("extensionMethodAST",
                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_extensionMethodAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionMethodAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_extensionMethodAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -3591,7 +3591,7 @@ AC_GALGAS_root * GALGAS_extensionMethodAST::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodAST GALGAS_extensionMethodAST::extractObject (const GALGAS_object & inObject,
                                                                     C_Compiler * inCompiler
@@ -3608,9 +3608,9 @@ GALGAS_extensionMethodAST GALGAS_extensionMethodAST::extractObject (const GALGAS
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @extensionMethodForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_extensionMethodForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -3624,7 +3624,7 @@ GALGAS_extensionMethodAST GALGAS_extensionMethodAST::extractObject (const GALGAS
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_extensionMethodForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -3657,7 +3657,7 @@ typeComparisonResult cPtr_extensionMethodForGeneration::dynamicObjectCompare (co
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_extensionMethodForGeneration::objectCompare (const GALGAS_extensionMethodForGeneration & inOperand) const {
@@ -3676,19 +3676,19 @@ typeComparisonResult GALGAS_extensionMethodForGeneration::objectCompare (const G
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodForGeneration::GALGAS_extensionMethodForGeneration (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodForGeneration::GALGAS_extensionMethodForGeneration (const cPtr_extensionMethodForGeneration * inSourcePtr) :
 GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionMethodForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodForGeneration GALGAS_extensionMethodForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                           const GALGAS_string & inAttribute_mImplementationCppFileName,
@@ -3706,7 +3706,7 @@ GALGAS_extensionMethodForGeneration GALGAS_extensionMethodForGeneration::constru
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_extensionMethodForGeneration::readProperty_mReceiverType (void) const {
   if (nullptr == mObjectPtr) {
@@ -3718,7 +3718,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_extensionMethodForGeneration::readProperty_mRe
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_extensionMethodForGeneration::readProperty_mExtensionMethodName (void) const {
   if (nullptr == mObjectPtr) {
@@ -3730,7 +3730,7 @@ GALGAS_string GALGAS_extensionMethodForGeneration::readProperty_mExtensionMethod
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_extensionMethodForGeneration::readProperty_mImplementedAsFunction (void) const {
   if (nullptr == mObjectPtr) {
@@ -3742,7 +3742,7 @@ GALGAS_bool GALGAS_extensionMethodForGeneration::readProperty_mImplementedAsFunc
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListForGeneration GALGAS_extensionMethodForGeneration::readProperty_mExtensionMethodFormalParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -3754,7 +3754,7 @@ GALGAS_formalParameterListForGeneration GALGAS_extensionMethodForGeneration::rea
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_typedPropertyList GALGAS_extensionMethodForGeneration::readProperty_mTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
@@ -3766,7 +3766,7 @@ GALGAS_typedPropertyList GALGAS_extensionMethodForGeneration::readProperty_mType
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListForGeneration GALGAS_extensionMethodForGeneration::readProperty_mSemanticInstructionListForGeneration (void) const {
   if (nullptr == mObjectPtr) {
@@ -3778,9 +3778,9 @@ GALGAS_semanticInstructionListForGeneration GALGAS_extensionMethodForGeneration:
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @extensionMethodForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_extensionMethodForGeneration::cPtr_extensionMethodForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                       const GALGAS_string & in_mImplementationCppFileName,
@@ -3800,7 +3800,7 @@ mProperty_mTypedAttributeList (in_mTypedAttributeList),
 mProperty_mSemanticInstructionListForGeneration (in_mSemanticInstructionListForGeneration) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_extensionMethodForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionMethodForGeneration ;
@@ -3808,26 +3808,26 @@ const C_galgas_type_descriptor * cPtr_extensionMethodForGeneration::classDescrip
 
 void cPtr_extensionMethodForGeneration::description (C_String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString << "[@extensionMethodForGeneration:" ;
+  ioString += "[@extensionMethodForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionMethodName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementedAsFunction.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionMethodFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_extensionMethodForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -3836,23 +3836,23 @@ acPtr_class * cPtr_extensionMethodForGeneration::duplicate (LOCATION_ARGS) const
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @extensionMethodForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_extensionMethodForGeneration ("extensionMethodForGeneration",
                                                      & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_extensionMethodForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionMethodForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_extensionMethodForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -3862,7 +3862,7 @@ AC_GALGAS_root * GALGAS_extensionMethodForGeneration::clonedObject (void) const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodForGeneration GALGAS_extensionMethodForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                         C_Compiler * inCompiler
@@ -3879,7 +3879,7 @@ GALGAS_extensionMethodForGeneration GALGAS_extensionMethodForGeneration::extract
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_extensionMethodForGeneration_2D_weak::objectCompare (const GALGAS_extensionMethodForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -3899,13 +3899,13 @@ typeComparisonResult GALGAS_extensionMethodForGeneration_2D_weak::objectCompare 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodForGeneration_2D_weak::GALGAS_extensionMethodForGeneration_2D_weak (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodForGeneration_2D_weak & GALGAS_extensionMethodForGeneration_2D_weak::operator = (const GALGAS_extensionMethodForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -3917,13 +3917,13 @@ GALGAS_extensionMethodForGeneration_2D_weak & GALGAS_extensionMethodForGeneratio
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodForGeneration_2D_weak::GALGAS_extensionMethodForGeneration_2D_weak (const GALGAS_extensionMethodForGeneration & inSource) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodForGeneration_2D_weak GALGAS_extensionMethodForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_extensionMethodForGeneration_2D_weak result ;
@@ -3931,7 +3931,7 @@ GALGAS_extensionMethodForGeneration_2D_weak GALGAS_extensionMethodForGeneration_
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodForGeneration GALGAS_extensionMethodForGeneration_2D_weak::bang_extensionMethodForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_extensionMethodForGeneration result ;
@@ -3947,23 +3947,23 @@ GALGAS_extensionMethodForGeneration GALGAS_extensionMethodForGeneration_2D_weak:
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @extensionMethodForGeneration-weak generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_extensionMethodForGeneration_2D_weak ("extensionMethodForGeneration-weak",
                                                              & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_extensionMethodForGeneration_2D_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionMethodForGeneration_2D_weak ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_extensionMethodForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -3973,7 +3973,7 @@ AC_GALGAS_root * GALGAS_extensionMethodForGeneration_2D_weak::clonedObject (void
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodForGeneration_2D_weak GALGAS_extensionMethodForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                                         C_Compiler * inCompiler
@@ -3990,9 +3990,9 @@ GALGAS_extensionMethodForGeneration_2D_weak GALGAS_extensionMethodForGeneration_
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @extensionSetterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_extensionSetterAST::printNonNullClassInstanceProperties (void) const {
@@ -4006,7 +4006,7 @@ GALGAS_extensionMethodForGeneration_2D_weak GALGAS_extensionMethodForGeneration_
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_extensionSetterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -4036,7 +4036,7 @@ typeComparisonResult cPtr_extensionSetterAST::dynamicObjectCompare (const acPtr_
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_extensionSetterAST::objectCompare (const GALGAS_extensionSetterAST & inOperand) const {
@@ -4055,19 +4055,19 @@ typeComparisonResult GALGAS_extensionSetterAST::objectCompare (const GALGAS_exte
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterAST::GALGAS_extensionSetterAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterAST::GALGAS_extensionSetterAST (const cPtr_extensionSetterAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionSetterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterAST GALGAS_extensionSetterAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                       const GALGAS_bool & inAttribute_requiresSelfForAccessingProperty,
@@ -4084,7 +4084,7 @@ GALGAS_extensionSetterAST GALGAS_extensionSetterAST::constructor_new (const GALG
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_extensionSetterAST::readProperty_requiresSelfForAccessingProperty (void) const {
   if (nullptr == mObjectPtr) {
@@ -4096,7 +4096,7 @@ GALGAS_bool GALGAS_extensionSetterAST::readProperty_requiresSelfForAccessingProp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_extensionSetterAST::readProperty_mTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -4108,7 +4108,7 @@ GALGAS_lstring GALGAS_extensionSetterAST::readProperty_mTypeName (void) const {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_extensionSetterAST::readProperty_mExtensionSetterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -4120,7 +4120,7 @@ GALGAS_lstring GALGAS_extensionSetterAST::readProperty_mExtensionSetterName (voi
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListAST GALGAS_extensionSetterAST::readProperty_mExtensionSetterFormalParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -4132,7 +4132,7 @@ GALGAS_formalParameterListAST GALGAS_extensionSetterAST::readProperty_mExtension
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListAST GALGAS_extensionSetterAST::readProperty_mExtensionSetterInstructionList (void) const {
   if (nullptr == mObjectPtr) {
@@ -4144,7 +4144,7 @@ GALGAS_semanticInstructionListAST GALGAS_extensionSetterAST::readProperty_mExten
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_extensionSetterAST::readProperty_mEndOfSetterDeclarationLocation (void) const {
   if (nullptr == mObjectPtr) {
@@ -4156,9 +4156,9 @@ GALGAS_location GALGAS_extensionSetterAST::readProperty_mEndOfSetterDeclarationL
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @extensionSetterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_extensionSetterAST::cPtr_extensionSetterAST (const GALGAS_bool & in_mIsPredefined,
                                                   const GALGAS_bool & in_requiresSelfForAccessingProperty,
@@ -4177,7 +4177,7 @@ mProperty_mExtensionSetterInstructionList (in_mExtensionSetterInstructionList),
 mProperty_mEndOfSetterDeclarationLocation (in_mEndOfSetterDeclarationLocation) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_extensionSetterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionSetterAST ;
@@ -4185,24 +4185,24 @@ const C_galgas_type_descriptor * cPtr_extensionSetterAST::classDescriptor (void)
 
 void cPtr_extensionSetterAST::description (C_String & ioString,
                                            const int32_t inIndentation) const {
-  ioString << "[@extensionSetterAST:" ;
+  ioString += "[@extensionSetterAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_requiresSelfForAccessingProperty.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionSetterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionSetterInstructionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mEndOfSetterDeclarationLocation.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_extensionSetterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -4211,23 +4211,23 @@ acPtr_class * cPtr_extensionSetterAST::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @extensionSetterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_extensionSetterAST ("extensionSetterAST",
                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_extensionSetterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionSetterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_extensionSetterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -4237,7 +4237,7 @@ AC_GALGAS_root * GALGAS_extensionSetterAST::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterAST GALGAS_extensionSetterAST::extractObject (const GALGAS_object & inObject,
                                                                     C_Compiler * inCompiler
@@ -4254,9 +4254,9 @@ GALGAS_extensionSetterAST GALGAS_extensionSetterAST::extractObject (const GALGAS
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @extensionSetterForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_extensionSetterForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -4270,7 +4270,7 @@ GALGAS_extensionSetterAST GALGAS_extensionSetterAST::extractObject (const GALGAS
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_extensionSetterForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -4303,7 +4303,7 @@ typeComparisonResult cPtr_extensionSetterForGeneration::dynamicObjectCompare (co
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_extensionSetterForGeneration::objectCompare (const GALGAS_extensionSetterForGeneration & inOperand) const {
@@ -4322,19 +4322,19 @@ typeComparisonResult GALGAS_extensionSetterForGeneration::objectCompare (const G
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterForGeneration::GALGAS_extensionSetterForGeneration (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterForGeneration::GALGAS_extensionSetterForGeneration (const cPtr_extensionSetterForGeneration * inSourcePtr) :
 GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionSetterForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterForGeneration GALGAS_extensionSetterForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                           const GALGAS_string & inAttribute_mImplementationCppFileName,
@@ -4352,7 +4352,7 @@ GALGAS_extensionSetterForGeneration GALGAS_extensionSetterForGeneration::constru
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_extensionSetterForGeneration::readProperty_mReceiverType (void) const {
   if (nullptr == mObjectPtr) {
@@ -4364,7 +4364,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_extensionSetterForGeneration::readProperty_mRe
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_extensionSetterForGeneration::readProperty_mExtensionSetterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -4376,7 +4376,7 @@ GALGAS_string GALGAS_extensionSetterForGeneration::readProperty_mExtensionSetter
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_extensionSetterForGeneration::readProperty_mImplementedAsFunction (void) const {
   if (nullptr == mObjectPtr) {
@@ -4388,7 +4388,7 @@ GALGAS_bool GALGAS_extensionSetterForGeneration::readProperty_mImplementedAsFunc
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListForGeneration GALGAS_extensionSetterForGeneration::readProperty_mExtensionSetterFormalParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -4400,7 +4400,7 @@ GALGAS_formalParameterListForGeneration GALGAS_extensionSetterForGeneration::rea
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_typedPropertyList GALGAS_extensionSetterForGeneration::readProperty_mTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
@@ -4412,7 +4412,7 @@ GALGAS_typedPropertyList GALGAS_extensionSetterForGeneration::readProperty_mType
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListForGeneration GALGAS_extensionSetterForGeneration::readProperty_mSemanticInstructionListForGeneration (void) const {
   if (nullptr == mObjectPtr) {
@@ -4424,9 +4424,9 @@ GALGAS_semanticInstructionListForGeneration GALGAS_extensionSetterForGeneration:
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @extensionSetterForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_extensionSetterForGeneration::cPtr_extensionSetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                       const GALGAS_string & in_mImplementationCppFileName,
@@ -4446,7 +4446,7 @@ mProperty_mTypedAttributeList (in_mTypedAttributeList),
 mProperty_mSemanticInstructionListForGeneration (in_mSemanticInstructionListForGeneration) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_extensionSetterForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionSetterForGeneration ;
@@ -4454,26 +4454,26 @@ const C_galgas_type_descriptor * cPtr_extensionSetterForGeneration::classDescrip
 
 void cPtr_extensionSetterForGeneration::description (C_String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString << "[@extensionSetterForGeneration:" ;
+  ioString += "[@extensionSetterForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionSetterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementedAsFunction.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_extensionSetterForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -4482,23 +4482,23 @@ acPtr_class * cPtr_extensionSetterForGeneration::duplicate (LOCATION_ARGS) const
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @extensionSetterForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_extensionSetterForGeneration ("extensionSetterForGeneration",
                                                      & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_extensionSetterForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionSetterForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_extensionSetterForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -4508,7 +4508,7 @@ AC_GALGAS_root * GALGAS_extensionSetterForGeneration::clonedObject (void) const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterForGeneration GALGAS_extensionSetterForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                         C_Compiler * inCompiler
@@ -4525,7 +4525,7 @@ GALGAS_extensionSetterForGeneration GALGAS_extensionSetterForGeneration::extract
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_extensionSetterForGeneration_2D_weak::objectCompare (const GALGAS_extensionSetterForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -4545,13 +4545,13 @@ typeComparisonResult GALGAS_extensionSetterForGeneration_2D_weak::objectCompare 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterForGeneration_2D_weak::GALGAS_extensionSetterForGeneration_2D_weak (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterForGeneration_2D_weak & GALGAS_extensionSetterForGeneration_2D_weak::operator = (const GALGAS_extensionSetterForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -4563,13 +4563,13 @@ GALGAS_extensionSetterForGeneration_2D_weak & GALGAS_extensionSetterForGeneratio
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterForGeneration_2D_weak::GALGAS_extensionSetterForGeneration_2D_weak (const GALGAS_extensionSetterForGeneration & inSource) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterForGeneration_2D_weak GALGAS_extensionSetterForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_extensionSetterForGeneration_2D_weak result ;
@@ -4577,7 +4577,7 @@ GALGAS_extensionSetterForGeneration_2D_weak GALGAS_extensionSetterForGeneration_
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterForGeneration GALGAS_extensionSetterForGeneration_2D_weak::bang_extensionSetterForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_extensionSetterForGeneration result ;
@@ -4593,23 +4593,23 @@ GALGAS_extensionSetterForGeneration GALGAS_extensionSetterForGeneration_2D_weak:
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @extensionSetterForGeneration-weak generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_extensionSetterForGeneration_2D_weak ("extensionSetterForGeneration-weak",
                                                              & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_extensionSetterForGeneration_2D_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionSetterForGeneration_2D_weak ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_extensionSetterForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -4619,7 +4619,7 @@ AC_GALGAS_root * GALGAS_extensionSetterForGeneration_2D_weak::clonedObject (void
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterForGeneration_2D_weak GALGAS_extensionSetterForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                                         C_Compiler * inCompiler
@@ -4636,9 +4636,9 @@ GALGAS_extensionSetterForGeneration_2D_weak GALGAS_extensionSetterForGeneration_
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @overridingAbstractExtensionGetterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingAbstractExtensionGetterAST::printNonNullClassInstanceProperties (void) const {
@@ -4650,7 +4650,7 @@ GALGAS_extensionSetterForGeneration_2D_weak GALGAS_extensionSetterForGeneration_
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_overridingAbstractExtensionGetterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -4674,7 +4674,7 @@ typeComparisonResult cPtr_overridingAbstractExtensionGetterAST::dynamicObjectCom
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_overridingAbstractExtensionGetterAST::objectCompare (const GALGAS_overridingAbstractExtensionGetterAST & inOperand) const {
@@ -4693,19 +4693,19 @@ typeComparisonResult GALGAS_overridingAbstractExtensionGetterAST::objectCompare 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionGetterAST::GALGAS_overridingAbstractExtensionGetterAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionGetterAST::GALGAS_overridingAbstractExtensionGetterAST (const cPtr_overridingAbstractExtensionGetterAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_overridingAbstractExtensionGetterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGetterAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                                           const GALGAS_lstring & inAttribute_mTypeName,
@@ -4720,7 +4720,7 @@ GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGe
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::readProperty_mTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -4732,7 +4732,7 @@ GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::readProperty_mTypeNa
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::readProperty_mAbstractExtensionGetterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -4744,7 +4744,7 @@ GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::readProperty_mAbstra
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListAST GALGAS_overridingAbstractExtensionGetterAST::readProperty_mAbstractExtensionGetterFormalInputParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -4756,7 +4756,7 @@ GALGAS_formalInputParameterListAST GALGAS_overridingAbstractExtensionGetterAST::
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::readProperty_mAbstractExtensionGetterReturnedTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -4768,9 +4768,9 @@ GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::readProperty_mAbstra
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @overridingAbstractExtensionGetterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_overridingAbstractExtensionGetterAST::cPtr_overridingAbstractExtensionGetterAST (const GALGAS_bool & in_mIsPredefined,
                                                                                       const GALGAS_lstring & in_mTypeName,
@@ -4785,7 +4785,7 @@ mProperty_mAbstractExtensionGetterFormalInputParameterList (in_mAbstractExtensio
 mProperty_mAbstractExtensionGetterReturnedTypeName (in_mAbstractExtensionGetterReturnedTypeName) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionGetterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ;
@@ -4793,20 +4793,20 @@ const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionGetterAST::clas
 
 void cPtr_overridingAbstractExtensionGetterAST::description (C_String & ioString,
                                                              const int32_t inIndentation) const {
-  ioString << "[@overridingAbstractExtensionGetterAST:" ;
+  ioString += "[@overridingAbstractExtensionGetterAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAbstractExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAbstractExtensionGetterFormalInputParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mAbstractExtensionGetterReturnedTypeName.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_overridingAbstractExtensionGetterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -4815,23 +4815,23 @@ acPtr_class * cPtr_overridingAbstractExtensionGetterAST::duplicate (LOCATION_ARG
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @overridingAbstractExtensionGetterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ("overridingAbstractExtensionGetterAST",
                                                              & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_overridingAbstractExtensionGetterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_overridingAbstractExtensionGetterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -4841,7 +4841,7 @@ AC_GALGAS_root * GALGAS_overridingAbstractExtensionGetterAST::clonedObject (void
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGetterAST::extractObject (const GALGAS_object & inObject,
                                                                                                         C_Compiler * inCompiler
@@ -4858,9 +4858,9 @@ GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGe
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @overridingAbstractExtensionMethodAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingAbstractExtensionMethodAST::printNonNullClassInstanceProperties (void) const {
@@ -4871,7 +4871,7 @@ GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGe
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_overridingAbstractExtensionMethodAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -4892,7 +4892,7 @@ typeComparisonResult cPtr_overridingAbstractExtensionMethodAST::dynamicObjectCom
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_overridingAbstractExtensionMethodAST::objectCompare (const GALGAS_overridingAbstractExtensionMethodAST & inOperand) const {
@@ -4911,19 +4911,19 @@ typeComparisonResult GALGAS_overridingAbstractExtensionMethodAST::objectCompare 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionMethodAST::GALGAS_overridingAbstractExtensionMethodAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionMethodAST::GALGAS_overridingAbstractExtensionMethodAST (const cPtr_overridingAbstractExtensionMethodAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_overridingAbstractExtensionMethodAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionMethodAST GALGAS_overridingAbstractExtensionMethodAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                                           const GALGAS_lstring & inAttribute_mTypeName,
@@ -4937,7 +4937,7 @@ GALGAS_overridingAbstractExtensionMethodAST GALGAS_overridingAbstractExtensionMe
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_overridingAbstractExtensionMethodAST::readProperty_mTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -4949,7 +4949,7 @@ GALGAS_lstring GALGAS_overridingAbstractExtensionMethodAST::readProperty_mTypeNa
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_overridingAbstractExtensionMethodAST::readProperty_mOverridingExtensionMethodName (void) const {
   if (nullptr == mObjectPtr) {
@@ -4961,7 +4961,7 @@ GALGAS_lstring GALGAS_overridingAbstractExtensionMethodAST::readProperty_mOverri
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListAST GALGAS_overridingAbstractExtensionMethodAST::readProperty_mOverridingExtensionMethodFormalParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -4973,9 +4973,9 @@ GALGAS_formalParameterListAST GALGAS_overridingAbstractExtensionMethodAST::readP
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @overridingAbstractExtensionMethodAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_overridingAbstractExtensionMethodAST::cPtr_overridingAbstractExtensionMethodAST (const GALGAS_bool & in_mIsPredefined,
                                                                                       const GALGAS_lstring & in_mTypeName,
@@ -4988,7 +4988,7 @@ mProperty_mOverridingExtensionMethodName (in_mOverridingExtensionMethodName),
 mProperty_mOverridingExtensionMethodFormalParameterList (in_mOverridingExtensionMethodFormalParameterList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionMethodAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST ;
@@ -4996,18 +4996,18 @@ const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionMethodAST::clas
 
 void cPtr_overridingAbstractExtensionMethodAST::description (C_String & ioString,
                                                              const int32_t inIndentation) const {
-  ioString << "[@overridingAbstractExtensionMethodAST:" ;
+  ioString += "[@overridingAbstractExtensionMethodAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOverridingExtensionMethodName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOverridingExtensionMethodFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_overridingAbstractExtensionMethodAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -5016,23 +5016,23 @@ acPtr_class * cPtr_overridingAbstractExtensionMethodAST::duplicate (LOCATION_ARG
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @overridingAbstractExtensionMethodAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST ("overridingAbstractExtensionMethodAST",
                                                              & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_overridingAbstractExtensionMethodAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_overridingAbstractExtensionMethodAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -5042,7 +5042,7 @@ AC_GALGAS_root * GALGAS_overridingAbstractExtensionMethodAST::clonedObject (void
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionMethodAST GALGAS_overridingAbstractExtensionMethodAST::extractObject (const GALGAS_object & inObject,
                                                                                                         C_Compiler * inCompiler
@@ -5059,9 +5059,9 @@ GALGAS_overridingAbstractExtensionMethodAST GALGAS_overridingAbstractExtensionMe
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @overridingAbstractExtensionSetterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingAbstractExtensionSetterAST::printNonNullClassInstanceProperties (void) const {
@@ -5072,7 +5072,7 @@ GALGAS_overridingAbstractExtensionMethodAST GALGAS_overridingAbstractExtensionMe
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_overridingAbstractExtensionSetterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -5093,7 +5093,7 @@ typeComparisonResult cPtr_overridingAbstractExtensionSetterAST::dynamicObjectCom
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_overridingAbstractExtensionSetterAST::objectCompare (const GALGAS_overridingAbstractExtensionSetterAST & inOperand) const {
@@ -5112,19 +5112,19 @@ typeComparisonResult GALGAS_overridingAbstractExtensionSetterAST::objectCompare 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionSetterAST::GALGAS_overridingAbstractExtensionSetterAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionSetterAST::GALGAS_overridingAbstractExtensionSetterAST (const cPtr_overridingAbstractExtensionSetterAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_overridingAbstractExtensionSetterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionSetterAST GALGAS_overridingAbstractExtensionSetterAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                                           const GALGAS_lstring & inAttribute_mTypeName,
@@ -5138,7 +5138,7 @@ GALGAS_overridingAbstractExtensionSetterAST GALGAS_overridingAbstractExtensionSe
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_overridingAbstractExtensionSetterAST::readProperty_mTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -5150,7 +5150,7 @@ GALGAS_lstring GALGAS_overridingAbstractExtensionSetterAST::readProperty_mTypeNa
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_overridingAbstractExtensionSetterAST::readProperty_mOverridingExtensionSetterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -5162,7 +5162,7 @@ GALGAS_lstring GALGAS_overridingAbstractExtensionSetterAST::readProperty_mOverri
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListAST GALGAS_overridingAbstractExtensionSetterAST::readProperty_mOverridingExtensionSetterFormalParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -5174,9 +5174,9 @@ GALGAS_formalParameterListAST GALGAS_overridingAbstractExtensionSetterAST::readP
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @overridingAbstractExtensionSetterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_overridingAbstractExtensionSetterAST::cPtr_overridingAbstractExtensionSetterAST (const GALGAS_bool & in_mIsPredefined,
                                                                                       const GALGAS_lstring & in_mTypeName,
@@ -5189,7 +5189,7 @@ mProperty_mOverridingExtensionSetterName (in_mOverridingExtensionSetterName),
 mProperty_mOverridingExtensionSetterFormalParameterList (in_mOverridingExtensionSetterFormalParameterList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionSetterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST ;
@@ -5197,18 +5197,18 @@ const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionSetterAST::clas
 
 void cPtr_overridingAbstractExtensionSetterAST::description (C_String & ioString,
                                                              const int32_t inIndentation) const {
-  ioString << "[@overridingAbstractExtensionSetterAST:" ;
+  ioString += "[@overridingAbstractExtensionSetterAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOverridingExtensionSetterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOverridingExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_overridingAbstractExtensionSetterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -5217,23 +5217,23 @@ acPtr_class * cPtr_overridingAbstractExtensionSetterAST::duplicate (LOCATION_ARG
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @overridingAbstractExtensionSetterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST ("overridingAbstractExtensionSetterAST",
                                                              & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_overridingAbstractExtensionSetterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_overridingAbstractExtensionSetterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -5243,7 +5243,7 @@ AC_GALGAS_root * GALGAS_overridingAbstractExtensionSetterAST::clonedObject (void
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingAbstractExtensionSetterAST GALGAS_overridingAbstractExtensionSetterAST::extractObject (const GALGAS_object & inObject,
                                                                                                         C_Compiler * inCompiler
@@ -5260,9 +5260,9 @@ GALGAS_overridingAbstractExtensionSetterAST GALGAS_overridingAbstractExtensionSe
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @overridingExtensionGetterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingExtensionGetterAST::printNonNullClassInstanceProperties (void) const {
@@ -5278,7 +5278,7 @@ GALGAS_overridingAbstractExtensionSetterAST GALGAS_overridingAbstractExtensionSe
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_overridingExtensionGetterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -5314,7 +5314,7 @@ typeComparisonResult cPtr_overridingExtensionGetterAST::dynamicObjectCompare (co
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_overridingExtensionGetterAST::objectCompare (const GALGAS_overridingExtensionGetterAST & inOperand) const {
@@ -5333,19 +5333,19 @@ typeComparisonResult GALGAS_overridingExtensionGetterAST::objectCompare (const G
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionGetterAST::GALGAS_overridingExtensionGetterAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionGetterAST::GALGAS_overridingExtensionGetterAST (const cPtr_overridingExtensionGetterAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_overridingExtensionGetterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionGetterAST GALGAS_overridingExtensionGetterAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                           const GALGAS_bool & inAttribute_requiresSelfForAccessingProperty,
@@ -5364,7 +5364,7 @@ GALGAS_overridingExtensionGetterAST GALGAS_overridingExtensionGetterAST::constru
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_overridingExtensionGetterAST::readProperty_requiresSelfForAccessingProperty (void) const {
   if (nullptr == mObjectPtr) {
@@ -5376,7 +5376,7 @@ GALGAS_bool GALGAS_overridingExtensionGetterAST::readProperty_requiresSelfForAcc
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -5388,7 +5388,7 @@ GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mTypeName (void
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExtensionGetterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -5400,7 +5400,7 @@ GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExte
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListAST GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExtensionGetterFormalInputParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -5412,7 +5412,7 @@ GALGAS_formalInputParameterListAST GALGAS_overridingExtensionGetterAST::readProp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExtensionGetterReturnedTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -5424,7 +5424,7 @@ GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExte
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExtensionGetterReturnedVariableName (void) const {
   if (nullptr == mObjectPtr) {
@@ -5436,7 +5436,7 @@ GALGAS_lstring GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExte
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListAST GALGAS_overridingExtensionGetterAST::readProperty_mOverridingExtensionGetterInstructionList (void) const {
   if (nullptr == mObjectPtr) {
@@ -5448,7 +5448,7 @@ GALGAS_semanticInstructionListAST GALGAS_overridingExtensionGetterAST::readPrope
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_overridingExtensionGetterAST::readProperty_mEndOfReaderLocation (void) const {
   if (nullptr == mObjectPtr) {
@@ -5460,9 +5460,9 @@ GALGAS_location GALGAS_overridingExtensionGetterAST::readProperty_mEndOfReaderLo
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @overridingExtensionGetterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_overridingExtensionGetterAST::cPtr_overridingExtensionGetterAST (const GALGAS_bool & in_mIsPredefined,
                                                                       const GALGAS_bool & in_requiresSelfForAccessingProperty,
@@ -5485,7 +5485,7 @@ mProperty_mOverridingExtensionGetterInstructionList (in_mOverridingExtensionGett
 mProperty_mEndOfReaderLocation (in_mEndOfReaderLocation) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_overridingExtensionGetterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionGetterAST ;
@@ -5493,28 +5493,28 @@ const C_galgas_type_descriptor * cPtr_overridingExtensionGetterAST::classDescrip
 
 void cPtr_overridingExtensionGetterAST::description (C_String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString << "[@overridingExtensionGetterAST:" ;
+  ioString += "[@overridingExtensionGetterAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_requiresSelfForAccessingProperty.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOverridingExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOverridingExtensionGetterFormalInputParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOverridingExtensionGetterReturnedTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOverridingExtensionGetterReturnedVariableName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOverridingExtensionGetterInstructionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mEndOfReaderLocation.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_overridingExtensionGetterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -5523,23 +5523,23 @@ acPtr_class * cPtr_overridingExtensionGetterAST::duplicate (LOCATION_ARGS) const
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @overridingExtensionGetterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_overridingExtensionGetterAST ("overridingExtensionGetterAST",
                                                      & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_overridingExtensionGetterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionGetterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_overridingExtensionGetterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -5549,7 +5549,7 @@ AC_GALGAS_root * GALGAS_overridingExtensionGetterAST::clonedObject (void) const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionGetterAST GALGAS_overridingExtensionGetterAST::extractObject (const GALGAS_object & inObject,
                                                                                         C_Compiler * inCompiler
@@ -5566,9 +5566,9 @@ GALGAS_overridingExtensionGetterAST GALGAS_overridingExtensionGetterAST::extract
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @overrideExtensionGetterForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overrideExtensionGetterForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -5584,7 +5584,7 @@ GALGAS_overridingExtensionGetterAST GALGAS_overridingExtensionGetterAST::extract
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_overrideExtensionGetterForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -5623,7 +5623,7 @@ typeComparisonResult cPtr_overrideExtensionGetterForGeneration::dynamicObjectCom
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_overrideExtensionGetterForGeneration::objectCompare (const GALGAS_overrideExtensionGetterForGeneration & inOperand) const {
@@ -5642,19 +5642,19 @@ typeComparisonResult GALGAS_overrideExtensionGetterForGeneration::objectCompare 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overrideExtensionGetterForGeneration::GALGAS_overrideExtensionGetterForGeneration (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overrideExtensionGetterForGeneration::GALGAS_overrideExtensionGetterForGeneration (const cPtr_overrideExtensionGetterForGeneration * inSourcePtr) :
 GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_overrideExtensionGetterForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overrideExtensionGetterForGeneration GALGAS_overrideExtensionGetterForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                           const GALGAS_string & inAttribute_mImplementationCppFileName,
@@ -5674,7 +5674,7 @@ GALGAS_overrideExtensionGetterForGeneration GALGAS_overrideExtensionGetterForGen
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_overrideExtensionGetterForGeneration::readProperty_mReceiverType (void) const {
   if (nullptr == mObjectPtr) {
@@ -5686,7 +5686,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_overrideExtensionGetterForGeneration::readProp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_overrideExtensionGetterForGeneration::readProperty_mBaseTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -5698,7 +5698,7 @@ GALGAS_string GALGAS_overrideExtensionGetterForGeneration::readProperty_mBaseTyp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_overrideExtensionGetterForGeneration::readProperty_mOverridingExtensionGetterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -5710,7 +5710,7 @@ GALGAS_string GALGAS_overrideExtensionGetterForGeneration::readProperty_mOverrid
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_overrideExtensionGetterForGeneration::readProperty_mResultType (void) const {
   if (nullptr == mObjectPtr) {
@@ -5722,7 +5722,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_overrideExtensionGetterForGeneration::readProp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_overrideExtensionGetterForGeneration::readProperty_mResultVarCppName (void) const {
   if (nullptr == mObjectPtr) {
@@ -5734,7 +5734,7 @@ GALGAS_string GALGAS_overrideExtensionGetterForGeneration::readProperty_mResultV
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListForGeneration GALGAS_overrideExtensionGetterForGeneration::readProperty_mOverridingExtensionGetterFormalParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -5746,7 +5746,7 @@ GALGAS_formalInputParameterListForGeneration GALGAS_overrideExtensionGetterForGe
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_typedPropertyList GALGAS_overrideExtensionGetterForGeneration::readProperty_mTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
@@ -5758,7 +5758,7 @@ GALGAS_typedPropertyList GALGAS_overrideExtensionGetterForGeneration::readProper
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListForGeneration GALGAS_overrideExtensionGetterForGeneration::readProperty_mSemanticInstructionListForGeneration (void) const {
   if (nullptr == mObjectPtr) {
@@ -5770,9 +5770,9 @@ GALGAS_semanticInstructionListForGeneration GALGAS_overrideExtensionGetterForGen
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @overrideExtensionGetterForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_overrideExtensionGetterForGeneration::cPtr_overrideExtensionGetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                       const GALGAS_string & in_mImplementationCppFileName,
@@ -5796,7 +5796,7 @@ mProperty_mTypedAttributeList (in_mTypedAttributeList),
 mProperty_mSemanticInstructionListForGeneration (in_mSemanticInstructionListForGeneration) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_overrideExtensionGetterForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration ;
@@ -5804,30 +5804,30 @@ const C_galgas_type_descriptor * cPtr_overrideExtensionGetterForGeneration::clas
 
 void cPtr_overrideExtensionGetterForGeneration::description (C_String & ioString,
                                                              const int32_t inIndentation) const {
-  ioString << "[@overrideExtensionGetterForGeneration:" ;
+  ioString += "[@overrideExtensionGetterForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mBaseTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOverridingExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mResultVarCppName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOverridingExtensionGetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_overrideExtensionGetterForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -5836,23 +5836,23 @@ acPtr_class * cPtr_overrideExtensionGetterForGeneration::duplicate (LOCATION_ARG
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @overrideExtensionGetterForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration ("overrideExtensionGetterForGeneration",
                                                              & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_overrideExtensionGetterForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_overrideExtensionGetterForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -5862,7 +5862,7 @@ AC_GALGAS_root * GALGAS_overrideExtensionGetterForGeneration::clonedObject (void
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overrideExtensionGetterForGeneration GALGAS_overrideExtensionGetterForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                                         C_Compiler * inCompiler
@@ -5879,7 +5879,7 @@ GALGAS_overrideExtensionGetterForGeneration GALGAS_overrideExtensionGetterForGen
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_overrideExtensionGetterForGeneration_2D_weak::objectCompare (const GALGAS_overrideExtensionGetterForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -5899,13 +5899,13 @@ typeComparisonResult GALGAS_overrideExtensionGetterForGeneration_2D_weak::object
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overrideExtensionGetterForGeneration_2D_weak::GALGAS_overrideExtensionGetterForGeneration_2D_weak (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overrideExtensionGetterForGeneration_2D_weak & GALGAS_overrideExtensionGetterForGeneration_2D_weak::operator = (const GALGAS_overrideExtensionGetterForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -5917,13 +5917,13 @@ GALGAS_overrideExtensionGetterForGeneration_2D_weak & GALGAS_overrideExtensionGe
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overrideExtensionGetterForGeneration_2D_weak::GALGAS_overrideExtensionGetterForGeneration_2D_weak (const GALGAS_overrideExtensionGetterForGeneration & inSource) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overrideExtensionGetterForGeneration_2D_weak GALGAS_overrideExtensionGetterForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_overrideExtensionGetterForGeneration_2D_weak result ;
@@ -5931,7 +5931,7 @@ GALGAS_overrideExtensionGetterForGeneration_2D_weak GALGAS_overrideExtensionGett
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overrideExtensionGetterForGeneration GALGAS_overrideExtensionGetterForGeneration_2D_weak::bang_overrideExtensionGetterForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_overrideExtensionGetterForGeneration result ;
@@ -5947,23 +5947,23 @@ GALGAS_overrideExtensionGetterForGeneration GALGAS_overrideExtensionGetterForGen
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @overrideExtensionGetterForGeneration-weak generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration_2D_weak ("overrideExtensionGetterForGeneration-weak",
                                                                      & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_overrideExtensionGetterForGeneration_2D_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration_2D_weak ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_overrideExtensionGetterForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -5973,7 +5973,7 @@ AC_GALGAS_root * GALGAS_overrideExtensionGetterForGeneration_2D_weak::clonedObje
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overrideExtensionGetterForGeneration_2D_weak GALGAS_overrideExtensionGetterForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                         C_Compiler * inCompiler
@@ -5990,9 +5990,9 @@ GALGAS_overrideExtensionGetterForGeneration_2D_weak GALGAS_overrideExtensionGett
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @overridingExtensionMethodAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingExtensionMethodAST::printNonNullClassInstanceProperties (void) const {
@@ -6006,7 +6006,7 @@ GALGAS_overrideExtensionGetterForGeneration_2D_weak GALGAS_overrideExtensionGett
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_overridingExtensionMethodAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -6036,7 +6036,7 @@ typeComparisonResult cPtr_overridingExtensionMethodAST::dynamicObjectCompare (co
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_overridingExtensionMethodAST::objectCompare (const GALGAS_overridingExtensionMethodAST & inOperand) const {
@@ -6055,19 +6055,19 @@ typeComparisonResult GALGAS_overridingExtensionMethodAST::objectCompare (const G
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodAST::GALGAS_overridingExtensionMethodAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodAST::GALGAS_overridingExtensionMethodAST (const cPtr_overridingExtensionMethodAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_overridingExtensionMethodAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodAST GALGAS_overridingExtensionMethodAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                           const GALGAS_bool & inAttribute_requiresSelfForAccessingProperty,
@@ -6084,7 +6084,7 @@ GALGAS_overridingExtensionMethodAST GALGAS_overridingExtensionMethodAST::constru
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_overridingExtensionMethodAST::readProperty_requiresSelfForAccessingProperty (void) const {
   if (nullptr == mObjectPtr) {
@@ -6096,7 +6096,7 @@ GALGAS_bool GALGAS_overridingExtensionMethodAST::readProperty_requiresSelfForAcc
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_overridingExtensionMethodAST::readProperty_mTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -6108,7 +6108,7 @@ GALGAS_lstring GALGAS_overridingExtensionMethodAST::readProperty_mTypeName (void
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_overridingExtensionMethodAST::readProperty_mOverridingExtensionMethodName (void) const {
   if (nullptr == mObjectPtr) {
@@ -6120,7 +6120,7 @@ GALGAS_lstring GALGAS_overridingExtensionMethodAST::readProperty_mOverridingExte
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListAST GALGAS_overridingExtensionMethodAST::readProperty_mOverridingExtensionMethodFormalParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -6132,7 +6132,7 @@ GALGAS_formalParameterListAST GALGAS_overridingExtensionMethodAST::readProperty_
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListAST GALGAS_overridingExtensionMethodAST::readProperty_mOverridingExtensionMethodInstructionList (void) const {
   if (nullptr == mObjectPtr) {
@@ -6144,7 +6144,7 @@ GALGAS_semanticInstructionListAST GALGAS_overridingExtensionMethodAST::readPrope
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_overridingExtensionMethodAST::readProperty_mEndOfMethodLocation (void) const {
   if (nullptr == mObjectPtr) {
@@ -6156,9 +6156,9 @@ GALGAS_location GALGAS_overridingExtensionMethodAST::readProperty_mEndOfMethodLo
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @overridingExtensionMethodAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_overridingExtensionMethodAST::cPtr_overridingExtensionMethodAST (const GALGAS_bool & in_mIsPredefined,
                                                                       const GALGAS_bool & in_requiresSelfForAccessingProperty,
@@ -6177,7 +6177,7 @@ mProperty_mOverridingExtensionMethodInstructionList (in_mOverridingExtensionMeth
 mProperty_mEndOfMethodLocation (in_mEndOfMethodLocation) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_overridingExtensionMethodAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionMethodAST ;
@@ -6185,24 +6185,24 @@ const C_galgas_type_descriptor * cPtr_overridingExtensionMethodAST::classDescrip
 
 void cPtr_overridingExtensionMethodAST::description (C_String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString << "[@overridingExtensionMethodAST:" ;
+  ioString += "[@overridingExtensionMethodAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_requiresSelfForAccessingProperty.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOverridingExtensionMethodName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOverridingExtensionMethodFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOverridingExtensionMethodInstructionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mEndOfMethodLocation.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_overridingExtensionMethodAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -6211,23 +6211,23 @@ acPtr_class * cPtr_overridingExtensionMethodAST::duplicate (LOCATION_ARGS) const
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @overridingExtensionMethodAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_overridingExtensionMethodAST ("overridingExtensionMethodAST",
                                                      & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_overridingExtensionMethodAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionMethodAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_overridingExtensionMethodAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -6237,7 +6237,7 @@ AC_GALGAS_root * GALGAS_overridingExtensionMethodAST::clonedObject (void) const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodAST GALGAS_overridingExtensionMethodAST::extractObject (const GALGAS_object & inObject,
                                                                                         C_Compiler * inCompiler
@@ -6254,9 +6254,9 @@ GALGAS_overridingExtensionMethodAST GALGAS_overridingExtensionMethodAST::extract
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @overridingExtensionMethodForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingExtensionMethodForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -6270,7 +6270,7 @@ GALGAS_overridingExtensionMethodAST GALGAS_overridingExtensionMethodAST::extract
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_overridingExtensionMethodForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -6303,7 +6303,7 @@ typeComparisonResult cPtr_overridingExtensionMethodForGeneration::dynamicObjectC
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_overridingExtensionMethodForGeneration::objectCompare (const GALGAS_overridingExtensionMethodForGeneration & inOperand) const {
@@ -6322,19 +6322,19 @@ typeComparisonResult GALGAS_overridingExtensionMethodForGeneration::objectCompar
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodForGeneration::GALGAS_overridingExtensionMethodForGeneration (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodForGeneration::GALGAS_overridingExtensionMethodForGeneration (const cPtr_overridingExtensionMethodForGeneration * inSourcePtr) :
 GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_overridingExtensionMethodForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodForGeneration GALGAS_overridingExtensionMethodForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                               const GALGAS_string & inAttribute_mImplementationCppFileName,
@@ -6352,7 +6352,7 @@ GALGAS_overridingExtensionMethodForGeneration GALGAS_overridingExtensionMethodFo
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_overridingExtensionMethodForGeneration::readProperty_mReceiverType (void) const {
   if (nullptr == mObjectPtr) {
@@ -6364,7 +6364,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_overridingExtensionMethodForGeneration::readPr
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_overridingExtensionMethodForGeneration::readProperty_mBaseTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -6376,7 +6376,7 @@ GALGAS_string GALGAS_overridingExtensionMethodForGeneration::readProperty_mBaseT
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_overridingExtensionMethodForGeneration::readProperty_mExtensionMethodName (void) const {
   if (nullptr == mObjectPtr) {
@@ -6388,7 +6388,7 @@ GALGAS_string GALGAS_overridingExtensionMethodForGeneration::readProperty_mExten
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListForGeneration GALGAS_overridingExtensionMethodForGeneration::readProperty_mExtensionMethodFormalParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -6400,7 +6400,7 @@ GALGAS_formalParameterListForGeneration GALGAS_overridingExtensionMethodForGener
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_typedPropertyList GALGAS_overridingExtensionMethodForGeneration::readProperty_mTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
@@ -6412,7 +6412,7 @@ GALGAS_typedPropertyList GALGAS_overridingExtensionMethodForGeneration::readProp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListForGeneration GALGAS_overridingExtensionMethodForGeneration::readProperty_mSemanticInstructionListForGeneration (void) const {
   if (nullptr == mObjectPtr) {
@@ -6424,9 +6424,9 @@ GALGAS_semanticInstructionListForGeneration GALGAS_overridingExtensionMethodForG
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @overridingExtensionMethodForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_overridingExtensionMethodForGeneration::cPtr_overridingExtensionMethodForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                           const GALGAS_string & in_mImplementationCppFileName,
@@ -6446,7 +6446,7 @@ mProperty_mTypedAttributeList (in_mTypedAttributeList),
 mProperty_mSemanticInstructionListForGeneration (in_mSemanticInstructionListForGeneration) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_overridingExtensionMethodForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration ;
@@ -6454,26 +6454,26 @@ const C_galgas_type_descriptor * cPtr_overridingExtensionMethodForGeneration::cl
 
 void cPtr_overridingExtensionMethodForGeneration::description (C_String & ioString,
                                                                const int32_t inIndentation) const {
-  ioString << "[@overridingExtensionMethodForGeneration:" ;
+  ioString += "[@overridingExtensionMethodForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mBaseTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionMethodName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionMethodFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_overridingExtensionMethodForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -6482,23 +6482,23 @@ acPtr_class * cPtr_overridingExtensionMethodForGeneration::duplicate (LOCATION_A
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @overridingExtensionMethodForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration ("overridingExtensionMethodForGeneration",
                                                                & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_overridingExtensionMethodForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_overridingExtensionMethodForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -6508,7 +6508,7 @@ AC_GALGAS_root * GALGAS_overridingExtensionMethodForGeneration::clonedObject (vo
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodForGeneration GALGAS_overridingExtensionMethodForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                                             C_Compiler * inCompiler
@@ -6525,7 +6525,7 @@ GALGAS_overridingExtensionMethodForGeneration GALGAS_overridingExtensionMethodFo
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_overridingExtensionMethodForGeneration_2D_weak::objectCompare (const GALGAS_overridingExtensionMethodForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -6545,13 +6545,13 @@ typeComparisonResult GALGAS_overridingExtensionMethodForGeneration_2D_weak::obje
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodForGeneration_2D_weak::GALGAS_overridingExtensionMethodForGeneration_2D_weak (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodForGeneration_2D_weak & GALGAS_overridingExtensionMethodForGeneration_2D_weak::operator = (const GALGAS_overridingExtensionMethodForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -6563,13 +6563,13 @@ GALGAS_overridingExtensionMethodForGeneration_2D_weak & GALGAS_overridingExtensi
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodForGeneration_2D_weak::GALGAS_overridingExtensionMethodForGeneration_2D_weak (const GALGAS_overridingExtensionMethodForGeneration & inSource) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodForGeneration_2D_weak GALGAS_overridingExtensionMethodForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_overridingExtensionMethodForGeneration_2D_weak result ;
@@ -6577,7 +6577,7 @@ GALGAS_overridingExtensionMethodForGeneration_2D_weak GALGAS_overridingExtension
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodForGeneration GALGAS_overridingExtensionMethodForGeneration_2D_weak::bang_overridingExtensionMethodForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_overridingExtensionMethodForGeneration result ;
@@ -6593,23 +6593,23 @@ GALGAS_overridingExtensionMethodForGeneration GALGAS_overridingExtensionMethodFo
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @overridingExtensionMethodForGeneration-weak generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration_2D_weak ("overridingExtensionMethodForGeneration-weak",
                                                                        & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_overridingExtensionMethodForGeneration_2D_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration_2D_weak ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_overridingExtensionMethodForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -6619,7 +6619,7 @@ AC_GALGAS_root * GALGAS_overridingExtensionMethodForGeneration_2D_weak::clonedOb
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionMethodForGeneration_2D_weak GALGAS_overridingExtensionMethodForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                             C_Compiler * inCompiler
@@ -6636,9 +6636,9 @@ GALGAS_overridingExtensionMethodForGeneration_2D_weak GALGAS_overridingExtension
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @overridingExtensionSetterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingExtensionSetterAST::printNonNullClassInstanceProperties (void) const {
@@ -6652,7 +6652,7 @@ GALGAS_overridingExtensionMethodForGeneration_2D_weak GALGAS_overridingExtension
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_overridingExtensionSetterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -6682,7 +6682,7 @@ typeComparisonResult cPtr_overridingExtensionSetterAST::dynamicObjectCompare (co
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_overridingExtensionSetterAST::objectCompare (const GALGAS_overridingExtensionSetterAST & inOperand) const {
@@ -6701,19 +6701,19 @@ typeComparisonResult GALGAS_overridingExtensionSetterAST::objectCompare (const G
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterAST::GALGAS_overridingExtensionSetterAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterAST::GALGAS_overridingExtensionSetterAST (const cPtr_overridingExtensionSetterAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_overridingExtensionSetterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterAST GALGAS_overridingExtensionSetterAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                           const GALGAS_bool & inAttribute_requiresSelfForAccessingProperty,
@@ -6730,7 +6730,7 @@ GALGAS_overridingExtensionSetterAST GALGAS_overridingExtensionSetterAST::constru
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_overridingExtensionSetterAST::readProperty_requiresSelfForAccessingProperty (void) const {
   if (nullptr == mObjectPtr) {
@@ -6742,7 +6742,7 @@ GALGAS_bool GALGAS_overridingExtensionSetterAST::readProperty_requiresSelfForAcc
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_overridingExtensionSetterAST::readProperty_mTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -6754,7 +6754,7 @@ GALGAS_lstring GALGAS_overridingExtensionSetterAST::readProperty_mTypeName (void
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_overridingExtensionSetterAST::readProperty_mOverridingExtensionSetterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -6766,7 +6766,7 @@ GALGAS_lstring GALGAS_overridingExtensionSetterAST::readProperty_mOverridingExte
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListAST GALGAS_overridingExtensionSetterAST::readProperty_mOverridingExtensionSetterFormalParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -6778,7 +6778,7 @@ GALGAS_formalParameterListAST GALGAS_overridingExtensionSetterAST::readProperty_
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListAST GALGAS_overridingExtensionSetterAST::readProperty_mOverridingExtensionSetterInstructionList (void) const {
   if (nullptr == mObjectPtr) {
@@ -6790,7 +6790,7 @@ GALGAS_semanticInstructionListAST GALGAS_overridingExtensionSetterAST::readPrope
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_overridingExtensionSetterAST::readProperty_mEndOfSetterDeclarationLocation (void) const {
   if (nullptr == mObjectPtr) {
@@ -6802,9 +6802,9 @@ GALGAS_location GALGAS_overridingExtensionSetterAST::readProperty_mEndOfSetterDe
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @overridingExtensionSetterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_overridingExtensionSetterAST::cPtr_overridingExtensionSetterAST (const GALGAS_bool & in_mIsPredefined,
                                                                       const GALGAS_bool & in_requiresSelfForAccessingProperty,
@@ -6823,7 +6823,7 @@ mProperty_mOverridingExtensionSetterInstructionList (in_mOverridingExtensionSett
 mProperty_mEndOfSetterDeclarationLocation (in_mEndOfSetterDeclarationLocation) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_overridingExtensionSetterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionSetterAST ;
@@ -6831,24 +6831,24 @@ const C_galgas_type_descriptor * cPtr_overridingExtensionSetterAST::classDescrip
 
 void cPtr_overridingExtensionSetterAST::description (C_String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString << "[@overridingExtensionSetterAST:" ;
+  ioString += "[@overridingExtensionSetterAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_requiresSelfForAccessingProperty.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOverridingExtensionSetterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOverridingExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOverridingExtensionSetterInstructionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mEndOfSetterDeclarationLocation.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_overridingExtensionSetterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -6857,23 +6857,23 @@ acPtr_class * cPtr_overridingExtensionSetterAST::duplicate (LOCATION_ARGS) const
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @overridingExtensionSetterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_overridingExtensionSetterAST ("overridingExtensionSetterAST",
                                                      & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_overridingExtensionSetterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionSetterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_overridingExtensionSetterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -6883,7 +6883,7 @@ AC_GALGAS_root * GALGAS_overridingExtensionSetterAST::clonedObject (void) const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterAST GALGAS_overridingExtensionSetterAST::extractObject (const GALGAS_object & inObject,
                                                                                         C_Compiler * inCompiler
@@ -6900,9 +6900,9 @@ GALGAS_overridingExtensionSetterAST GALGAS_overridingExtensionSetterAST::extract
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @overridingExtensionSetterForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_overridingExtensionSetterForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -6916,7 +6916,7 @@ GALGAS_overridingExtensionSetterAST GALGAS_overridingExtensionSetterAST::extract
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_overridingExtensionSetterForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -6949,7 +6949,7 @@ typeComparisonResult cPtr_overridingExtensionSetterForGeneration::dynamicObjectC
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_overridingExtensionSetterForGeneration::objectCompare (const GALGAS_overridingExtensionSetterForGeneration & inOperand) const {
@@ -6968,19 +6968,19 @@ typeComparisonResult GALGAS_overridingExtensionSetterForGeneration::objectCompar
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterForGeneration::GALGAS_overridingExtensionSetterForGeneration (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterForGeneration::GALGAS_overridingExtensionSetterForGeneration (const cPtr_overridingExtensionSetterForGeneration * inSourcePtr) :
 GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_overridingExtensionSetterForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                               const GALGAS_string & inAttribute_mImplementationCppFileName,
@@ -6998,7 +6998,7 @@ GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterFo
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_overridingExtensionSetterForGeneration::readProperty_mReceiverType (void) const {
   if (nullptr == mObjectPtr) {
@@ -7010,7 +7010,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_overridingExtensionSetterForGeneration::readPr
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_overridingExtensionSetterForGeneration::readProperty_mBaseTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -7022,7 +7022,7 @@ GALGAS_string GALGAS_overridingExtensionSetterForGeneration::readProperty_mBaseT
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_overridingExtensionSetterForGeneration::readProperty_mExtensionSetterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -7034,7 +7034,7 @@ GALGAS_string GALGAS_overridingExtensionSetterForGeneration::readProperty_mExten
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListForGeneration GALGAS_overridingExtensionSetterForGeneration::readProperty_mExtensionSetterFormalParameterList (void) const {
   if (nullptr == mObjectPtr) {
@@ -7046,7 +7046,7 @@ GALGAS_formalParameterListForGeneration GALGAS_overridingExtensionSetterForGener
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_typedPropertyList GALGAS_overridingExtensionSetterForGeneration::readProperty_mTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
@@ -7058,7 +7058,7 @@ GALGAS_typedPropertyList GALGAS_overridingExtensionSetterForGeneration::readProp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListForGeneration GALGAS_overridingExtensionSetterForGeneration::readProperty_mSemanticInstructionListForGeneration (void) const {
   if (nullptr == mObjectPtr) {
@@ -7070,9 +7070,9 @@ GALGAS_semanticInstructionListForGeneration GALGAS_overridingExtensionSetterForG
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @overridingExtensionSetterForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_overridingExtensionSetterForGeneration::cPtr_overridingExtensionSetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                           const GALGAS_string & in_mImplementationCppFileName,
@@ -7092,7 +7092,7 @@ mProperty_mTypedAttributeList (in_mTypedAttributeList),
 mProperty_mSemanticInstructionListForGeneration (in_mSemanticInstructionListForGeneration) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_overridingExtensionSetterForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration ;
@@ -7100,26 +7100,26 @@ const C_galgas_type_descriptor * cPtr_overridingExtensionSetterForGeneration::cl
 
 void cPtr_overridingExtensionSetterForGeneration::description (C_String & ioString,
                                                                const int32_t inIndentation) const {
-  ioString << "[@overridingExtensionSetterForGeneration:" ;
+  ioString += "[@overridingExtensionSetterForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mBaseTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionSetterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_overridingExtensionSetterForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -7128,23 +7128,23 @@ acPtr_class * cPtr_overridingExtensionSetterForGeneration::duplicate (LOCATION_A
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @overridingExtensionSetterForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration ("overridingExtensionSetterForGeneration",
                                                                & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_overridingExtensionSetterForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_overridingExtensionSetterForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -7154,7 +7154,7 @@ AC_GALGAS_root * GALGAS_overridingExtensionSetterForGeneration::clonedObject (vo
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                                             C_Compiler * inCompiler
@@ -7171,7 +7171,7 @@ GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterFo
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_overridingExtensionSetterForGeneration_2D_weak::objectCompare (const GALGAS_overridingExtensionSetterForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -7191,13 +7191,13 @@ typeComparisonResult GALGAS_overridingExtensionSetterForGeneration_2D_weak::obje
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterForGeneration_2D_weak::GALGAS_overridingExtensionSetterForGeneration_2D_weak (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterForGeneration_2D_weak & GALGAS_overridingExtensionSetterForGeneration_2D_weak::operator = (const GALGAS_overridingExtensionSetterForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -7209,13 +7209,13 @@ GALGAS_overridingExtensionSetterForGeneration_2D_weak & GALGAS_overridingExtensi
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterForGeneration_2D_weak::GALGAS_overridingExtensionSetterForGeneration_2D_weak (const GALGAS_overridingExtensionSetterForGeneration & inSource) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterForGeneration_2D_weak GALGAS_overridingExtensionSetterForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_overridingExtensionSetterForGeneration_2D_weak result ;
@@ -7223,7 +7223,7 @@ GALGAS_overridingExtensionSetterForGeneration_2D_weak GALGAS_overridingExtension
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterForGeneration_2D_weak::bang_overridingExtensionSetterForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_overridingExtensionSetterForGeneration result ;
@@ -7239,23 +7239,23 @@ GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterFo
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @overridingExtensionSetterForGeneration-weak generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration_2D_weak ("overridingExtensionSetterForGeneration-weak",
                                                                        & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_overridingExtensionSetterForGeneration_2D_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration_2D_weak ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_overridingExtensionSetterForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -7265,7 +7265,7 @@ AC_GALGAS_root * GALGAS_overridingExtensionSetterForGeneration_2D_weak::clonedOb
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_overridingExtensionSetterForGeneration_2D_weak GALGAS_overridingExtensionSetterForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                             C_Compiler * inCompiler
@@ -7282,9 +7282,9 @@ GALGAS_overridingExtensionSetterForGeneration_2D_weak GALGAS_overridingExtension
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @outputActualParameterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_outputActualParameterAST::printNonNullClassInstanceProperties (void) const {
@@ -7295,7 +7295,7 @@ GALGAS_overridingExtensionSetterForGeneration_2D_weak GALGAS_overridingExtension
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_outputActualParameterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -7313,7 +7313,7 @@ typeComparisonResult cPtr_outputActualParameterAST::dynamicObjectCompare (const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_outputActualParameterAST::objectCompare (const GALGAS_outputActualParameterAST & inOperand) const {
@@ -7332,19 +7332,19 @@ typeComparisonResult GALGAS_outputActualParameterAST::objectCompare (const GALGA
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputActualParameterAST::GALGAS_outputActualParameterAST (void) :
 GALGAS_actualParameterAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputActualParameterAST::GALGAS_outputActualParameterAST (const cPtr_outputActualParameterAST * inSourcePtr) :
 GALGAS_actualParameterAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_outputActualParameterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputActualParameterAST GALGAS_outputActualParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector,
                                                                                   const GALGAS_semanticExpressionAST & inAttribute_mOutputActualParameterExpression,
@@ -7357,7 +7357,7 @@ GALGAS_outputActualParameterAST GALGAS_outputActualParameterAST::constructor_new
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_outputActualParameterAST::readProperty_mActualSelector (void) const {
   if (nullptr == mObjectPtr) {
@@ -7369,7 +7369,7 @@ GALGAS_lstring GALGAS_outputActualParameterAST::readProperty_mActualSelector (vo
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticExpressionAST GALGAS_outputActualParameterAST::readProperty_mOutputActualParameterExpression (void) const {
   if (nullptr == mObjectPtr) {
@@ -7381,7 +7381,7 @@ GALGAS_semanticExpressionAST GALGAS_outputActualParameterAST::readProperty_mOutp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_outputActualParameterAST::readProperty_mEndOfExpressionLocation (void) const {
   if (nullptr == mObjectPtr) {
@@ -7393,9 +7393,9 @@ GALGAS_location GALGAS_outputActualParameterAST::readProperty_mEndOfExpressionLo
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @outputActualParameterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_outputActualParameterAST::cPtr_outputActualParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                               const GALGAS_semanticExpressionAST & in_mOutputActualParameterExpression,
@@ -7407,7 +7407,7 @@ mProperty_mOutputActualParameterExpression (in_mOutputActualParameterExpression)
 mProperty_mEndOfExpressionLocation (in_mEndOfExpressionLocation) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_outputActualParameterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_outputActualParameterAST ;
@@ -7415,16 +7415,16 @@ const C_galgas_type_descriptor * cPtr_outputActualParameterAST::classDescriptor 
 
 void cPtr_outputActualParameterAST::description (C_String & ioString,
                                                  const int32_t inIndentation) const {
-  ioString << "[@outputActualParameterAST:" ;
+  ioString += "[@outputActualParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOutputActualParameterExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mEndOfExpressionLocation.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_outputActualParameterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -7433,23 +7433,23 @@ acPtr_class * cPtr_outputActualParameterAST::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @outputActualParameterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_outputActualParameterAST ("outputActualParameterAST",
                                                  & kTypeDescriptor_GALGAS_actualParameterAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_outputActualParameterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_outputActualParameterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_outputActualParameterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -7459,7 +7459,7 @@ AC_GALGAS_root * GALGAS_outputActualParameterAST::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputActualParameterAST GALGAS_outputActualParameterAST::extractObject (const GALGAS_object & inObject,
                                                                                 C_Compiler * inCompiler
@@ -7476,9 +7476,9 @@ GALGAS_outputActualParameterAST GALGAS_outputActualParameterAST::extractObject (
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @outputInputActualParameterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_outputInputActualParameterAST::printNonNullClassInstanceProperties (void) const {
@@ -7489,7 +7489,7 @@ GALGAS_outputActualParameterAST GALGAS_outputActualParameterAST::extractObject (
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_outputInputActualParameterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -7507,7 +7507,7 @@ typeComparisonResult cPtr_outputInputActualParameterAST::dynamicObjectCompare (c
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_outputInputActualParameterAST::objectCompare (const GALGAS_outputInputActualParameterAST & inOperand) const {
@@ -7526,19 +7526,19 @@ typeComparisonResult GALGAS_outputInputActualParameterAST::objectCompare (const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputActualParameterAST::GALGAS_outputInputActualParameterAST (void) :
 GALGAS_actualParameterAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputActualParameterAST::GALGAS_outputInputActualParameterAST (const cPtr_outputInputActualParameterAST * inSourcePtr) :
 GALGAS_actualParameterAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_outputInputActualParameterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputActualParameterAST GALGAS_outputInputActualParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector,
                                                                                             const GALGAS_lstring & inAttribute_mOutputInputActualParameterName,
@@ -7551,7 +7551,7 @@ GALGAS_outputInputActualParameterAST GALGAS_outputInputActualParameterAST::const
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_outputInputActualParameterAST::readProperty_mActualSelector (void) const {
   if (nullptr == mObjectPtr) {
@@ -7563,7 +7563,7 @@ GALGAS_lstring GALGAS_outputInputActualParameterAST::readProperty_mActualSelecto
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_outputInputActualParameterAST::readProperty_mOutputInputActualParameterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -7575,7 +7575,7 @@ GALGAS_lstring GALGAS_outputInputActualParameterAST::readProperty_mOutputInputAc
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist GALGAS_outputInputActualParameterAST::readProperty_mStructAttributeList (void) const {
   if (nullptr == mObjectPtr) {
@@ -7587,9 +7587,9 @@ GALGAS_lstringlist GALGAS_outputInputActualParameterAST::readProperty_mStructAtt
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @outputInputActualParameterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_outputInputActualParameterAST::cPtr_outputInputActualParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                                         const GALGAS_lstring & in_mOutputInputActualParameterName,
@@ -7601,7 +7601,7 @@ mProperty_mOutputInputActualParameterName (in_mOutputInputActualParameterName),
 mProperty_mStructAttributeList (in_mStructAttributeList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_outputInputActualParameterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_outputInputActualParameterAST ;
@@ -7609,16 +7609,16 @@ const C_galgas_type_descriptor * cPtr_outputInputActualParameterAST::classDescri
 
 void cPtr_outputInputActualParameterAST::description (C_String & ioString,
                                                       const int32_t inIndentation) const {
-  ioString << "[@outputInputActualParameterAST:" ;
+  ioString += "[@outputInputActualParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOutputInputActualParameterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mStructAttributeList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_outputInputActualParameterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -7627,23 +7627,23 @@ acPtr_class * cPtr_outputInputActualParameterAST::duplicate (LOCATION_ARGS) cons
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @outputInputActualParameterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_outputInputActualParameterAST ("outputInputActualParameterAST",
                                                       & kTypeDescriptor_GALGAS_actualParameterAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_outputInputActualParameterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_outputInputActualParameterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_outputInputActualParameterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -7653,7 +7653,7 @@ AC_GALGAS_root * GALGAS_outputInputActualParameterAST::clonedObject (void) const
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputActualParameterAST GALGAS_outputInputActualParameterAST::extractObject (const GALGAS_object & inObject,
                                                                                           C_Compiler * inCompiler
@@ -7670,9 +7670,9 @@ GALGAS_outputInputActualParameterAST GALGAS_outputInputActualParameterAST::extra
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @outputInputSingleJokerParameterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_outputInputSingleJokerParameterAST::printNonNullClassInstanceProperties (void) const {
@@ -7681,7 +7681,7 @@ GALGAS_outputInputActualParameterAST GALGAS_outputInputActualParameterAST::extra
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_outputInputSingleJokerParameterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -7693,7 +7693,7 @@ typeComparisonResult cPtr_outputInputSingleJokerParameterAST::dynamicObjectCompa
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_outputInputSingleJokerParameterAST::objectCompare (const GALGAS_outputInputSingleJokerParameterAST & inOperand) const {
@@ -7712,19 +7712,19 @@ typeComparisonResult GALGAS_outputInputSingleJokerParameterAST::objectCompare (c
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputSingleJokerParameterAST::GALGAS_outputInputSingleJokerParameterAST (void) :
 GALGAS_actualParameterAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputSingleJokerParameterAST::GALGAS_outputInputSingleJokerParameterAST (const cPtr_outputInputSingleJokerParameterAST * inSourcePtr) :
 GALGAS_actualParameterAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_outputInputSingleJokerParameterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector
                                                                                                       COMMA_LOCATION_ARGS) {
@@ -7735,7 +7735,7 @@ GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameter
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_outputInputSingleJokerParameterAST::readProperty_mActualSelector (void) const {
   if (nullptr == mObjectPtr) {
@@ -7747,9 +7747,9 @@ GALGAS_lstring GALGAS_outputInputSingleJokerParameterAST::readProperty_mActualSe
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @outputInputSingleJokerParameterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_outputInputSingleJokerParameterAST::cPtr_outputInputSingleJokerParameterAST (const GALGAS_lstring & in_mActualSelector
                                                                                   COMMA_LOCATION_ARGS) :
@@ -7757,7 +7757,7 @@ cPtr_actualParameterAST (THERE),
 mProperty_mActualSelector (in_mActualSelector) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_outputInputSingleJokerParameterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_outputInputSingleJokerParameterAST ;
@@ -7765,12 +7765,12 @@ const C_galgas_type_descriptor * cPtr_outputInputSingleJokerParameterAST::classD
 
 void cPtr_outputInputSingleJokerParameterAST::description (C_String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString << "[@outputInputSingleJokerParameterAST:" ;
+  ioString += "[@outputInputSingleJokerParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_outputInputSingleJokerParameterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -7779,23 +7779,23 @@ acPtr_class * cPtr_outputInputSingleJokerParameterAST::duplicate (LOCATION_ARGS)
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @outputInputSingleJokerParameterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_outputInputSingleJokerParameterAST ("outputInputSingleJokerParameterAST",
                                                            & kTypeDescriptor_GALGAS_actualParameterAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_outputInputSingleJokerParameterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_outputInputSingleJokerParameterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_outputInputSingleJokerParameterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -7805,7 +7805,7 @@ AC_GALGAS_root * GALGAS_outputInputSingleJokerParameterAST::clonedObject (void) 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameterAST::extractObject (const GALGAS_object & inObject,
                                                                                                     C_Compiler * inCompiler
@@ -7822,9 +7822,9 @@ GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameter
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @outputInputSelfParameterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_outputInputSelfParameterAST::printNonNullClassInstanceProperties (void) const {
@@ -7833,7 +7833,7 @@ GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameter
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_outputInputSelfParameterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -7845,7 +7845,7 @@ typeComparisonResult cPtr_outputInputSelfParameterAST::dynamicObjectCompare (con
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_outputInputSelfParameterAST::objectCompare (const GALGAS_outputInputSelfParameterAST & inOperand) const {
@@ -7864,19 +7864,19 @@ typeComparisonResult GALGAS_outputInputSelfParameterAST::objectCompare (const GA
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputSelfParameterAST::GALGAS_outputInputSelfParameterAST (void) :
 GALGAS_actualParameterAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputSelfParameterAST::GALGAS_outputInputSelfParameterAST (const cPtr_outputInputSelfParameterAST * inSourcePtr) :
 GALGAS_actualParameterAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_outputInputSelfParameterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputSelfParameterAST GALGAS_outputInputSelfParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector
                                                                                         COMMA_LOCATION_ARGS) {
@@ -7887,7 +7887,7 @@ GALGAS_outputInputSelfParameterAST GALGAS_outputInputSelfParameterAST::construct
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_outputInputSelfParameterAST::readProperty_mActualSelector (void) const {
   if (nullptr == mObjectPtr) {
@@ -7899,9 +7899,9 @@ GALGAS_lstring GALGAS_outputInputSelfParameterAST::readProperty_mActualSelector 
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @outputInputSelfParameterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_outputInputSelfParameterAST::cPtr_outputInputSelfParameterAST (const GALGAS_lstring & in_mActualSelector
                                                                     COMMA_LOCATION_ARGS) :
@@ -7909,7 +7909,7 @@ cPtr_actualParameterAST (THERE),
 mProperty_mActualSelector (in_mActualSelector) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_outputInputSelfParameterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_outputInputSelfParameterAST ;
@@ -7917,12 +7917,12 @@ const C_galgas_type_descriptor * cPtr_outputInputSelfParameterAST::classDescript
 
 void cPtr_outputInputSelfParameterAST::description (C_String & ioString,
                                                     const int32_t inIndentation) const {
-  ioString << "[@outputInputSelfParameterAST:" ;
+  ioString += "[@outputInputSelfParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_outputInputSelfParameterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -7931,23 +7931,23 @@ acPtr_class * cPtr_outputInputSelfParameterAST::duplicate (LOCATION_ARGS) const 
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @outputInputSelfParameterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_outputInputSelfParameterAST ("outputInputSelfParameterAST",
                                                     & kTypeDescriptor_GALGAS_actualParameterAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_outputInputSelfParameterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_outputInputSelfParameterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_outputInputSelfParameterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -7957,7 +7957,7 @@ AC_GALGAS_root * GALGAS_outputInputSelfParameterAST::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputSelfParameterAST GALGAS_outputInputSelfParameterAST::extractObject (const GALGAS_object & inObject,
                                                                                       C_Compiler * inCompiler
@@ -7974,9 +7974,9 @@ GALGAS_outputInputSelfParameterAST GALGAS_outputInputSelfParameterAST::extractOb
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @inputActualExistingVariableParameterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputActualExistingVariableParameterAST::printNonNullClassInstanceProperties (void) const {
@@ -7987,7 +7987,7 @@ GALGAS_outputInputSelfParameterAST GALGAS_outputInputSelfParameterAST::extractOb
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_inputActualExistingVariableParameterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -8005,7 +8005,7 @@ typeComparisonResult cPtr_inputActualExistingVariableParameterAST::dynamicObject
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_inputActualExistingVariableParameterAST::objectCompare (const GALGAS_inputActualExistingVariableParameterAST & inOperand) const {
@@ -8024,19 +8024,19 @@ typeComparisonResult GALGAS_inputActualExistingVariableParameterAST::objectCompa
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualExistingVariableParameterAST::GALGAS_inputActualExistingVariableParameterAST (void) :
 GALGAS_actualParameterAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualExistingVariableParameterAST::GALGAS_inputActualExistingVariableParameterAST (const cPtr_inputActualExistingVariableParameterAST * inSourcePtr) :
 GALGAS_actualParameterAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_inputActualExistingVariableParameterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualExistingVariableParameterAST GALGAS_inputActualExistingVariableParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector,
                                                                                                                 const GALGAS_lstring & inAttribute_mInputActualParameterName,
@@ -8049,7 +8049,7 @@ GALGAS_inputActualExistingVariableParameterAST GALGAS_inputActualExistingVariabl
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_inputActualExistingVariableParameterAST::readProperty_mActualSelector (void) const {
   if (nullptr == mObjectPtr) {
@@ -8061,7 +8061,7 @@ GALGAS_lstring GALGAS_inputActualExistingVariableParameterAST::readProperty_mAct
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_inputActualExistingVariableParameterAST::readProperty_mInputActualParameterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -8073,7 +8073,7 @@ GALGAS_lstring GALGAS_inputActualExistingVariableParameterAST::readProperty_mInp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist GALGAS_inputActualExistingVariableParameterAST::readProperty_mPoisonedVarNameList (void) const {
   if (nullptr == mObjectPtr) {
@@ -8085,9 +8085,9 @@ GALGAS_lstringlist GALGAS_inputActualExistingVariableParameterAST::readProperty_
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @inputActualExistingVariableParameterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_inputActualExistingVariableParameterAST::cPtr_inputActualExistingVariableParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                                                             const GALGAS_lstring & in_mInputActualParameterName,
@@ -8099,7 +8099,7 @@ mProperty_mInputActualParameterName (in_mInputActualParameterName),
 mProperty_mPoisonedVarNameList (in_mPoisonedVarNameList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_inputActualExistingVariableParameterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST ;
@@ -8107,16 +8107,16 @@ const C_galgas_type_descriptor * cPtr_inputActualExistingVariableParameterAST::c
 
 void cPtr_inputActualExistingVariableParameterAST::description (C_String & ioString,
                                                                 const int32_t inIndentation) const {
-  ioString << "[@inputActualExistingVariableParameterAST:" ;
+  ioString += "[@inputActualExistingVariableParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mInputActualParameterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_inputActualExistingVariableParameterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -8125,23 +8125,23 @@ acPtr_class * cPtr_inputActualExistingVariableParameterAST::duplicate (LOCATION_
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @inputActualExistingVariableParameterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST ("inputActualExistingVariableParameterAST",
                                                                 & kTypeDescriptor_GALGAS_actualParameterAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_inputActualExistingVariableParameterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_inputActualExistingVariableParameterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -8151,7 +8151,7 @@ AC_GALGAS_root * GALGAS_inputActualExistingVariableParameterAST::clonedObject (v
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualExistingVariableParameterAST GALGAS_inputActualExistingVariableParameterAST::extractObject (const GALGAS_object & inObject,
                                                                                                               C_Compiler * inCompiler
@@ -8168,9 +8168,9 @@ GALGAS_inputActualExistingVariableParameterAST GALGAS_inputActualExistingVariabl
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @inputActualSelfPropertyParameterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputActualSelfPropertyParameterAST::printNonNullClassInstanceProperties (void) const {
@@ -8181,7 +8181,7 @@ GALGAS_inputActualExistingVariableParameterAST GALGAS_inputActualExistingVariabl
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_inputActualSelfPropertyParameterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -8199,7 +8199,7 @@ typeComparisonResult cPtr_inputActualSelfPropertyParameterAST::dynamicObjectComp
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_inputActualSelfPropertyParameterAST::objectCompare (const GALGAS_inputActualSelfPropertyParameterAST & inOperand) const {
@@ -8218,19 +8218,19 @@ typeComparisonResult GALGAS_inputActualSelfPropertyParameterAST::objectCompare (
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualSelfPropertyParameterAST::GALGAS_inputActualSelfPropertyParameterAST (void) :
 GALGAS_actualParameterAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualSelfPropertyParameterAST::GALGAS_inputActualSelfPropertyParameterAST (const cPtr_inputActualSelfPropertyParameterAST * inSourcePtr) :
 GALGAS_actualParameterAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_inputActualSelfPropertyParameterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualSelfPropertyParameterAST GALGAS_inputActualSelfPropertyParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector,
                                                                                                         const GALGAS_lstring & inAttribute_mInputActualSelfPropertyName,
@@ -8243,7 +8243,7 @@ GALGAS_inputActualSelfPropertyParameterAST GALGAS_inputActualSelfPropertyParamet
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_inputActualSelfPropertyParameterAST::readProperty_mActualSelector (void) const {
   if (nullptr == mObjectPtr) {
@@ -8255,7 +8255,7 @@ GALGAS_lstring GALGAS_inputActualSelfPropertyParameterAST::readProperty_mActualS
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_inputActualSelfPropertyParameterAST::readProperty_mInputActualSelfPropertyName (void) const {
   if (nullptr == mObjectPtr) {
@@ -8267,7 +8267,7 @@ GALGAS_lstring GALGAS_inputActualSelfPropertyParameterAST::readProperty_mInputAc
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist GALGAS_inputActualSelfPropertyParameterAST::readProperty_mPoisonedVarNameList (void) const {
   if (nullptr == mObjectPtr) {
@@ -8279,9 +8279,9 @@ GALGAS_lstringlist GALGAS_inputActualSelfPropertyParameterAST::readProperty_mPoi
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @inputActualSelfPropertyParameterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_inputActualSelfPropertyParameterAST::cPtr_inputActualSelfPropertyParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                                                     const GALGAS_lstring & in_mInputActualSelfPropertyName,
@@ -8293,7 +8293,7 @@ mProperty_mInputActualSelfPropertyName (in_mInputActualSelfPropertyName),
 mProperty_mPoisonedVarNameList (in_mPoisonedVarNameList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_inputActualSelfPropertyParameterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST ;
@@ -8301,16 +8301,16 @@ const C_galgas_type_descriptor * cPtr_inputActualSelfPropertyParameterAST::class
 
 void cPtr_inputActualSelfPropertyParameterAST::description (C_String & ioString,
                                                             const int32_t inIndentation) const {
-  ioString << "[@inputActualSelfPropertyParameterAST:" ;
+  ioString += "[@inputActualSelfPropertyParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mInputActualSelfPropertyName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_inputActualSelfPropertyParameterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -8319,23 +8319,23 @@ acPtr_class * cPtr_inputActualSelfPropertyParameterAST::duplicate (LOCATION_ARGS
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @inputActualSelfPropertyParameterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST ("inputActualSelfPropertyParameterAST",
                                                             & kTypeDescriptor_GALGAS_actualParameterAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_inputActualSelfPropertyParameterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_inputActualSelfPropertyParameterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -8345,7 +8345,7 @@ AC_GALGAS_root * GALGAS_inputActualSelfPropertyParameterAST::clonedObject (void)
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualSelfPropertyParameterAST GALGAS_inputActualSelfPropertyParameterAST::extractObject (const GALGAS_object & inObject,
                                                                                                       C_Compiler * inCompiler
@@ -8362,9 +8362,9 @@ GALGAS_inputActualSelfPropertyParameterAST GALGAS_inputActualSelfPropertyParamet
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @inputActualSelfParameterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputActualSelfParameterAST::printNonNullClassInstanceProperties (void) const {
@@ -8375,7 +8375,7 @@ GALGAS_inputActualSelfPropertyParameterAST GALGAS_inputActualSelfPropertyParamet
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_inputActualSelfParameterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -8393,7 +8393,7 @@ typeComparisonResult cPtr_inputActualSelfParameterAST::dynamicObjectCompare (con
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_inputActualSelfParameterAST::objectCompare (const GALGAS_inputActualSelfParameterAST & inOperand) const {
@@ -8412,19 +8412,19 @@ typeComparisonResult GALGAS_inputActualSelfParameterAST::objectCompare (const GA
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualSelfParameterAST::GALGAS_inputActualSelfParameterAST (void) :
 GALGAS_actualParameterAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualSelfParameterAST::GALGAS_inputActualSelfParameterAST (const cPtr_inputActualSelfParameterAST * inSourcePtr) :
 GALGAS_actualParameterAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_inputActualSelfParameterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualSelfParameterAST GALGAS_inputActualSelfParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector,
                                                                                         const GALGAS_location & inAttribute_mSelfLocation,
@@ -8437,7 +8437,7 @@ GALGAS_inputActualSelfParameterAST GALGAS_inputActualSelfParameterAST::construct
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_inputActualSelfParameterAST::readProperty_mActualSelector (void) const {
   if (nullptr == mObjectPtr) {
@@ -8449,7 +8449,7 @@ GALGAS_lstring GALGAS_inputActualSelfParameterAST::readProperty_mActualSelector 
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_inputActualSelfParameterAST::readProperty_mSelfLocation (void) const {
   if (nullptr == mObjectPtr) {
@@ -8461,7 +8461,7 @@ GALGAS_location GALGAS_inputActualSelfParameterAST::readProperty_mSelfLocation (
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist GALGAS_inputActualSelfParameterAST::readProperty_mPoisonedVarNameList (void) const {
   if (nullptr == mObjectPtr) {
@@ -8473,9 +8473,9 @@ GALGAS_lstringlist GALGAS_inputActualSelfParameterAST::readProperty_mPoisonedVar
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @inputActualSelfParameterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_inputActualSelfParameterAST::cPtr_inputActualSelfParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                                     const GALGAS_location & in_mSelfLocation,
@@ -8487,7 +8487,7 @@ mProperty_mSelfLocation (in_mSelfLocation),
 mProperty_mPoisonedVarNameList (in_mPoisonedVarNameList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_inputActualSelfParameterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputActualSelfParameterAST ;
@@ -8495,16 +8495,16 @@ const C_galgas_type_descriptor * cPtr_inputActualSelfParameterAST::classDescript
 
 void cPtr_inputActualSelfParameterAST::description (C_String & ioString,
                                                     const int32_t inIndentation) const {
-  ioString << "[@inputActualSelfParameterAST:" ;
+  ioString += "[@inputActualSelfParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mSelfLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_inputActualSelfParameterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -8513,23 +8513,23 @@ acPtr_class * cPtr_inputActualSelfParameterAST::duplicate (LOCATION_ARGS) const 
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @inputActualSelfParameterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_inputActualSelfParameterAST ("inputActualSelfParameterAST",
                                                     & kTypeDescriptor_GALGAS_actualParameterAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_inputActualSelfParameterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputActualSelfParameterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_inputActualSelfParameterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -8539,7 +8539,7 @@ AC_GALGAS_root * GALGAS_inputActualSelfParameterAST::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualSelfParameterAST GALGAS_inputActualSelfParameterAST::extractObject (const GALGAS_object & inObject,
                                                                                       C_Compiler * inCompiler
@@ -8556,9 +8556,9 @@ GALGAS_inputActualSelfParameterAST GALGAS_inputActualSelfParameterAST::extractOb
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @inputActualNewVariableParameterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputActualNewVariableParameterAST::printNonNullClassInstanceProperties (void) const {
@@ -8570,7 +8570,7 @@ GALGAS_inputActualSelfParameterAST GALGAS_inputActualSelfParameterAST::extractOb
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_inputActualNewVariableParameterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -8591,7 +8591,7 @@ typeComparisonResult cPtr_inputActualNewVariableParameterAST::dynamicObjectCompa
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_inputActualNewVariableParameterAST::objectCompare (const GALGAS_inputActualNewVariableParameterAST & inOperand) const {
@@ -8610,19 +8610,19 @@ typeComparisonResult GALGAS_inputActualNewVariableParameterAST::objectCompare (c
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualNewVariableParameterAST::GALGAS_inputActualNewVariableParameterAST (void) :
 GALGAS_actualParameterAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualNewVariableParameterAST::GALGAS_inputActualNewVariableParameterAST (const cPtr_inputActualNewVariableParameterAST * inSourcePtr) :
 GALGAS_actualParameterAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_inputActualNewVariableParameterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualNewVariableParameterAST GALGAS_inputActualNewVariableParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector,
                                                                                                       const GALGAS_lstring & inAttribute_mInputOptionalActualTypeName,
@@ -8636,7 +8636,7 @@ GALGAS_inputActualNewVariableParameterAST GALGAS_inputActualNewVariableParameter
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_inputActualNewVariableParameterAST::readProperty_mActualSelector (void) const {
   if (nullptr == mObjectPtr) {
@@ -8648,7 +8648,7 @@ GALGAS_lstring GALGAS_inputActualNewVariableParameterAST::readProperty_mActualSe
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_inputActualNewVariableParameterAST::readProperty_mInputOptionalActualTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -8660,7 +8660,7 @@ GALGAS_lstring GALGAS_inputActualNewVariableParameterAST::readProperty_mInputOpt
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_inputActualNewVariableParameterAST::readProperty_mInputActualParameterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -8672,7 +8672,7 @@ GALGAS_lstring GALGAS_inputActualNewVariableParameterAST::readProperty_mInputAct
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist GALGAS_inputActualNewVariableParameterAST::readProperty_mPoisonedVarNameList (void) const {
   if (nullptr == mObjectPtr) {
@@ -8684,9 +8684,9 @@ GALGAS_lstringlist GALGAS_inputActualNewVariableParameterAST::readProperty_mPois
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @inputActualNewVariableParameterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_inputActualNewVariableParameterAST::cPtr_inputActualNewVariableParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                                                   const GALGAS_lstring & in_mInputOptionalActualTypeName,
@@ -8700,7 +8700,7 @@ mProperty_mInputActualParameterName (in_mInputActualParameterName),
 mProperty_mPoisonedVarNameList (in_mPoisonedVarNameList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_inputActualNewVariableParameterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputActualNewVariableParameterAST ;
@@ -8708,18 +8708,18 @@ const C_galgas_type_descriptor * cPtr_inputActualNewVariableParameterAST::classD
 
 void cPtr_inputActualNewVariableParameterAST::description (C_String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString << "[@inputActualNewVariableParameterAST:" ;
+  ioString += "[@inputActualNewVariableParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mInputOptionalActualTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mInputActualParameterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_inputActualNewVariableParameterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -8728,23 +8728,23 @@ acPtr_class * cPtr_inputActualNewVariableParameterAST::duplicate (LOCATION_ARGS)
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @inputActualNewVariableParameterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_inputActualNewVariableParameterAST ("inputActualNewVariableParameterAST",
                                                            & kTypeDescriptor_GALGAS_actualParameterAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_inputActualNewVariableParameterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputActualNewVariableParameterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_inputActualNewVariableParameterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -8754,7 +8754,7 @@ AC_GALGAS_root * GALGAS_inputActualNewVariableParameterAST::clonedObject (void) 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualNewVariableParameterAST GALGAS_inputActualNewVariableParameterAST::extractObject (const GALGAS_object & inObject,
                                                                                                     C_Compiler * inCompiler
@@ -8771,9 +8771,9 @@ GALGAS_inputActualNewVariableParameterAST GALGAS_inputActualNewVariableParameter
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @inputActualNewConstantParameterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputActualNewConstantParameterAST::printNonNullClassInstanceProperties (void) const {
@@ -8786,7 +8786,7 @@ GALGAS_inputActualNewVariableParameterAST GALGAS_inputActualNewVariableParameter
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_inputActualNewConstantParameterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -8810,7 +8810,7 @@ typeComparisonResult cPtr_inputActualNewConstantParameterAST::dynamicObjectCompa
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_inputActualNewConstantParameterAST::objectCompare (const GALGAS_inputActualNewConstantParameterAST & inOperand) const {
@@ -8829,19 +8829,19 @@ typeComparisonResult GALGAS_inputActualNewConstantParameterAST::objectCompare (c
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualNewConstantParameterAST::GALGAS_inputActualNewConstantParameterAST (void) :
 GALGAS_actualParameterAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualNewConstantParameterAST::GALGAS_inputActualNewConstantParameterAST (const cPtr_inputActualNewConstantParameterAST * inSourcePtr) :
 GALGAS_actualParameterAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_inputActualNewConstantParameterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualNewConstantParameterAST GALGAS_inputActualNewConstantParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector,
                                                                                                       const GALGAS_lstring & inAttribute_mInputOptionalActualTypeName,
@@ -8856,7 +8856,7 @@ GALGAS_inputActualNewConstantParameterAST GALGAS_inputActualNewConstantParameter
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_inputActualNewConstantParameterAST::readProperty_mActualSelector (void) const {
   if (nullptr == mObjectPtr) {
@@ -8868,7 +8868,7 @@ GALGAS_lstring GALGAS_inputActualNewConstantParameterAST::readProperty_mActualSe
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_inputActualNewConstantParameterAST::readProperty_mInputOptionalActualTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -8880,7 +8880,7 @@ GALGAS_lstring GALGAS_inputActualNewConstantParameterAST::readProperty_mInputOpt
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_inputActualNewConstantParameterAST::readProperty_mInputActualParameterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -8892,7 +8892,7 @@ GALGAS_lstring GALGAS_inputActualNewConstantParameterAST::readProperty_mInputAct
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_inputActualNewConstantParameterAST::readProperty_mMarkedAsUnused (void) const {
   if (nullptr == mObjectPtr) {
@@ -8904,7 +8904,7 @@ GALGAS_bool GALGAS_inputActualNewConstantParameterAST::readProperty_mMarkedAsUnu
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist GALGAS_inputActualNewConstantParameterAST::readProperty_mPoisonedVarNameList (void) const {
   if (nullptr == mObjectPtr) {
@@ -8916,9 +8916,9 @@ GALGAS_lstringlist GALGAS_inputActualNewConstantParameterAST::readProperty_mPois
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @inputActualNewConstantParameterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_inputActualNewConstantParameterAST::cPtr_inputActualNewConstantParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                                                   const GALGAS_lstring & in_mInputOptionalActualTypeName,
@@ -8934,7 +8934,7 @@ mProperty_mMarkedAsUnused (in_mMarkedAsUnused),
 mProperty_mPoisonedVarNameList (in_mPoisonedVarNameList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_inputActualNewConstantParameterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputActualNewConstantParameterAST ;
@@ -8942,20 +8942,20 @@ const C_galgas_type_descriptor * cPtr_inputActualNewConstantParameterAST::classD
 
 void cPtr_inputActualNewConstantParameterAST::description (C_String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString << "[@inputActualNewConstantParameterAST:" ;
+  ioString += "[@inputActualNewConstantParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mInputOptionalActualTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mInputActualParameterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mMarkedAsUnused.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_inputActualNewConstantParameterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -8964,23 +8964,23 @@ acPtr_class * cPtr_inputActualNewConstantParameterAST::duplicate (LOCATION_ARGS)
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @inputActualNewConstantParameterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_inputActualNewConstantParameterAST ("inputActualNewConstantParameterAST",
                                                            & kTypeDescriptor_GALGAS_actualParameterAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_inputActualNewConstantParameterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputActualNewConstantParameterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_inputActualNewConstantParameterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -8990,7 +8990,7 @@ AC_GALGAS_root * GALGAS_inputActualNewConstantParameterAST::clonedObject (void) 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualNewConstantParameterAST GALGAS_inputActualNewConstantParameterAST::extractObject (const GALGAS_object & inObject,
                                                                                                     C_Compiler * inCompiler
@@ -9007,9 +9007,9 @@ GALGAS_inputActualNewConstantParameterAST GALGAS_inputActualNewConstantParameter
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @inputSingleJokerActualParameterAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputSingleJokerActualParameterAST::printNonNullClassInstanceProperties (void) const {
@@ -9019,7 +9019,7 @@ GALGAS_inputActualNewConstantParameterAST GALGAS_inputActualNewConstantParameter
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_inputSingleJokerActualParameterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -9034,7 +9034,7 @@ typeComparisonResult cPtr_inputSingleJokerActualParameterAST::dynamicObjectCompa
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_inputSingleJokerActualParameterAST::objectCompare (const GALGAS_inputSingleJokerActualParameterAST & inOperand) const {
@@ -9053,19 +9053,19 @@ typeComparisonResult GALGAS_inputSingleJokerActualParameterAST::objectCompare (c
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputSingleJokerActualParameterAST::GALGAS_inputSingleJokerActualParameterAST (void) :
 GALGAS_actualParameterAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputSingleJokerActualParameterAST::GALGAS_inputSingleJokerActualParameterAST (const cPtr_inputSingleJokerActualParameterAST * inSourcePtr) :
 GALGAS_actualParameterAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_inputSingleJokerActualParameterAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputSingleJokerActualParameterAST GALGAS_inputSingleJokerActualParameterAST::constructor_new (const GALGAS_lstring & inAttribute_mActualSelector,
                                                                                                       const GALGAS_lstringlist & inAttribute_mPoisonedVarNameList
@@ -9077,7 +9077,7 @@ GALGAS_inputSingleJokerActualParameterAST GALGAS_inputSingleJokerActualParameter
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_inputSingleJokerActualParameterAST::readProperty_mActualSelector (void) const {
   if (nullptr == mObjectPtr) {
@@ -9089,7 +9089,7 @@ GALGAS_lstring GALGAS_inputSingleJokerActualParameterAST::readProperty_mActualSe
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist GALGAS_inputSingleJokerActualParameterAST::readProperty_mPoisonedVarNameList (void) const {
   if (nullptr == mObjectPtr) {
@@ -9101,9 +9101,9 @@ GALGAS_lstringlist GALGAS_inputSingleJokerActualParameterAST::readProperty_mPois
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @inputSingleJokerActualParameterAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_inputSingleJokerActualParameterAST::cPtr_inputSingleJokerActualParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                                                   const GALGAS_lstringlist & in_mPoisonedVarNameList
@@ -9113,7 +9113,7 @@ mProperty_mActualSelector (in_mActualSelector),
 mProperty_mPoisonedVarNameList (in_mPoisonedVarNameList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_inputSingleJokerActualParameterAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputSingleJokerActualParameterAST ;
@@ -9121,14 +9121,14 @@ const C_galgas_type_descriptor * cPtr_inputSingleJokerActualParameterAST::classD
 
 void cPtr_inputSingleJokerActualParameterAST::description (C_String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString << "[@inputSingleJokerActualParameterAST:" ;
+  ioString += "[@inputSingleJokerActualParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_inputSingleJokerActualParameterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -9137,23 +9137,23 @@ acPtr_class * cPtr_inputSingleJokerActualParameterAST::duplicate (LOCATION_ARGS)
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @inputSingleJokerActualParameterAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_inputSingleJokerActualParameterAST ("inputSingleJokerActualParameterAST",
                                                            & kTypeDescriptor_GALGAS_actualParameterAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_inputSingleJokerActualParameterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputSingleJokerActualParameterAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_inputSingleJokerActualParameterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -9163,7 +9163,7 @@ AC_GALGAS_root * GALGAS_inputSingleJokerActualParameterAST::clonedObject (void) 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputSingleJokerActualParameterAST GALGAS_inputSingleJokerActualParameterAST::extractObject (const GALGAS_object & inObject,
                                                                                                     C_Compiler * inCompiler
@@ -9180,9 +9180,9 @@ GALGAS_inputSingleJokerActualParameterAST GALGAS_inputSingleJokerActualParameter
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @inputParameterVariable reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputParameterVariable::printNonNullClassInstanceProperties (void) const {
@@ -9191,7 +9191,7 @@ GALGAS_inputSingleJokerActualParameterAST GALGAS_inputSingleJokerActualParameter
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_inputParameterVariable::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -9203,7 +9203,7 @@ typeComparisonResult cPtr_inputParameterVariable::dynamicObjectCompare (const ac
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_inputParameterVariable::objectCompare (const GALGAS_inputParameterVariable & inOperand) const {
@@ -9222,19 +9222,19 @@ typeComparisonResult GALGAS_inputParameterVariable::objectCompare (const GALGAS_
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterVariable::GALGAS_inputParameterVariable (void) :
 GALGAS_abstractInputParameter () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterVariable::GALGAS_inputParameterVariable (const cPtr_inputParameterVariable * inSourcePtr) :
 GALGAS_abstractInputParameter (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_inputParameterVariable) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterVariable GALGAS_inputParameterVariable::constructor_new (const GALGAS_lstring & inAttribute_mActualParameterName
                                                                               COMMA_LOCATION_ARGS) {
@@ -9245,7 +9245,7 @@ GALGAS_inputParameterVariable GALGAS_inputParameterVariable::constructor_new (co
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_inputParameterVariable::readProperty_mActualParameterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -9257,9 +9257,9 @@ GALGAS_lstring GALGAS_inputParameterVariable::readProperty_mActualParameterName 
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @inputParameterVariable class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_inputParameterVariable::cPtr_inputParameterVariable (const GALGAS_lstring & in_mActualParameterName
                                                           COMMA_LOCATION_ARGS) :
@@ -9267,7 +9267,7 @@ cPtr_abstractInputParameter (THERE),
 mProperty_mActualParameterName (in_mActualParameterName) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_inputParameterVariable::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputParameterVariable ;
@@ -9275,12 +9275,12 @@ const C_galgas_type_descriptor * cPtr_inputParameterVariable::classDescriptor (v
 
 void cPtr_inputParameterVariable::description (C_String & ioString,
                                                const int32_t inIndentation) const {
-  ioString << "[@inputParameterVariable:" ;
+  ioString += "[@inputParameterVariable:" ;
   mProperty_mActualParameterName.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_inputParameterVariable::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -9289,23 +9289,23 @@ acPtr_class * cPtr_inputParameterVariable::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @inputParameterVariable generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_inputParameterVariable ("inputParameterVariable",
                                                & kTypeDescriptor_GALGAS_abstractInputParameter) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_inputParameterVariable::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputParameterVariable ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_inputParameterVariable::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -9315,7 +9315,7 @@ AC_GALGAS_root * GALGAS_inputParameterVariable::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterVariable GALGAS_inputParameterVariable::extractObject (const GALGAS_object & inObject,
                                                                             C_Compiler * inCompiler
@@ -9332,9 +9332,9 @@ GALGAS_inputParameterVariable GALGAS_inputParameterVariable::extractObject (cons
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @inputParameterDeclaredVariable reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputParameterDeclaredVariable::printNonNullClassInstanceProperties (void) const {
@@ -9344,7 +9344,7 @@ GALGAS_inputParameterVariable GALGAS_inputParameterVariable::extractObject (cons
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_inputParameterDeclaredVariable::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -9359,7 +9359,7 @@ typeComparisonResult cPtr_inputParameterDeclaredVariable::dynamicObjectCompare (
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_inputParameterDeclaredVariable::objectCompare (const GALGAS_inputParameterDeclaredVariable & inOperand) const {
@@ -9378,19 +9378,19 @@ typeComparisonResult GALGAS_inputParameterDeclaredVariable::objectCompare (const
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterDeclaredVariable::GALGAS_inputParameterDeclaredVariable (void) :
 GALGAS_abstractInputParameter () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterDeclaredVariable::GALGAS_inputParameterDeclaredVariable (const cPtr_inputParameterDeclaredVariable * inSourcePtr) :
 GALGAS_abstractInputParameter (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_inputParameterDeclaredVariable) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterDeclaredVariable GALGAS_inputParameterDeclaredVariable::constructor_new (const GALGAS_lstring & inAttribute_mActualParameterTypeName,
                                                                                               const GALGAS_lstring & inAttribute_mActualParameterName
@@ -9402,7 +9402,7 @@ GALGAS_inputParameterDeclaredVariable GALGAS_inputParameterDeclaredVariable::con
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_inputParameterDeclaredVariable::readProperty_mActualParameterTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -9414,7 +9414,7 @@ GALGAS_lstring GALGAS_inputParameterDeclaredVariable::readProperty_mActualParame
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_inputParameterDeclaredVariable::readProperty_mActualParameterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -9426,9 +9426,9 @@ GALGAS_lstring GALGAS_inputParameterDeclaredVariable::readProperty_mActualParame
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @inputParameterDeclaredVariable class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_inputParameterDeclaredVariable::cPtr_inputParameterDeclaredVariable (const GALGAS_lstring & in_mActualParameterTypeName,
                                                                           const GALGAS_lstring & in_mActualParameterName
@@ -9438,7 +9438,7 @@ mProperty_mActualParameterTypeName (in_mActualParameterTypeName),
 mProperty_mActualParameterName (in_mActualParameterName) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_inputParameterDeclaredVariable::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputParameterDeclaredVariable ;
@@ -9446,14 +9446,14 @@ const C_galgas_type_descriptor * cPtr_inputParameterDeclaredVariable::classDescr
 
 void cPtr_inputParameterDeclaredVariable::description (C_String & ioString,
                                                        const int32_t inIndentation) const {
-  ioString << "[@inputParameterDeclaredVariable:" ;
+  ioString += "[@inputParameterDeclaredVariable:" ;
   mProperty_mActualParameterTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mActualParameterName.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_inputParameterDeclaredVariable::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -9462,23 +9462,23 @@ acPtr_class * cPtr_inputParameterDeclaredVariable::duplicate (LOCATION_ARGS) con
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @inputParameterDeclaredVariable generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_inputParameterDeclaredVariable ("inputParameterDeclaredVariable",
                                                        & kTypeDescriptor_GALGAS_abstractInputParameter) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_inputParameterDeclaredVariable::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputParameterDeclaredVariable ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_inputParameterDeclaredVariable::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -9488,7 +9488,7 @@ AC_GALGAS_root * GALGAS_inputParameterDeclaredVariable::clonedObject (void) cons
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterDeclaredVariable GALGAS_inputParameterDeclaredVariable::extractObject (const GALGAS_object & inObject,
                                                                                             C_Compiler * inCompiler
@@ -9505,9 +9505,9 @@ GALGAS_inputParameterDeclaredVariable GALGAS_inputParameterDeclaredVariable::ext
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @inputParameterDeclaredConstant reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputParameterDeclaredConstant::printNonNullClassInstanceProperties (void) const {
@@ -9517,7 +9517,7 @@ GALGAS_inputParameterDeclaredVariable GALGAS_inputParameterDeclaredVariable::ext
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_inputParameterDeclaredConstant::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -9532,7 +9532,7 @@ typeComparisonResult cPtr_inputParameterDeclaredConstant::dynamicObjectCompare (
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_inputParameterDeclaredConstant::objectCompare (const GALGAS_inputParameterDeclaredConstant & inOperand) const {
@@ -9551,19 +9551,19 @@ typeComparisonResult GALGAS_inputParameterDeclaredConstant::objectCompare (const
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterDeclaredConstant::GALGAS_inputParameterDeclaredConstant (void) :
 GALGAS_abstractInputParameter () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterDeclaredConstant::GALGAS_inputParameterDeclaredConstant (const cPtr_inputParameterDeclaredConstant * inSourcePtr) :
 GALGAS_abstractInputParameter (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_inputParameterDeclaredConstant) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterDeclaredConstant GALGAS_inputParameterDeclaredConstant::constructor_new (const GALGAS_lstring & inAttribute_mActualParameterTypeName,
                                                                                               const GALGAS_lstring & inAttribute_mActualParameterName
@@ -9575,7 +9575,7 @@ GALGAS_inputParameterDeclaredConstant GALGAS_inputParameterDeclaredConstant::con
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_inputParameterDeclaredConstant::readProperty_mActualParameterTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -9587,7 +9587,7 @@ GALGAS_lstring GALGAS_inputParameterDeclaredConstant::readProperty_mActualParame
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_inputParameterDeclaredConstant::readProperty_mActualParameterName (void) const {
   if (nullptr == mObjectPtr) {
@@ -9599,9 +9599,9 @@ GALGAS_lstring GALGAS_inputParameterDeclaredConstant::readProperty_mActualParame
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @inputParameterDeclaredConstant class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_inputParameterDeclaredConstant::cPtr_inputParameterDeclaredConstant (const GALGAS_lstring & in_mActualParameterTypeName,
                                                                           const GALGAS_lstring & in_mActualParameterName
@@ -9611,7 +9611,7 @@ mProperty_mActualParameterTypeName (in_mActualParameterTypeName),
 mProperty_mActualParameterName (in_mActualParameterName) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_inputParameterDeclaredConstant::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputParameterDeclaredConstant ;
@@ -9619,14 +9619,14 @@ const C_galgas_type_descriptor * cPtr_inputParameterDeclaredConstant::classDescr
 
 void cPtr_inputParameterDeclaredConstant::description (C_String & ioString,
                                                        const int32_t inIndentation) const {
-  ioString << "[@inputParameterDeclaredConstant:" ;
+  ioString += "[@inputParameterDeclaredConstant:" ;
   mProperty_mActualParameterTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mActualParameterName.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_inputParameterDeclaredConstant::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -9635,23 +9635,23 @@ acPtr_class * cPtr_inputParameterDeclaredConstant::duplicate (LOCATION_ARGS) con
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @inputParameterDeclaredConstant generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_inputParameterDeclaredConstant ("inputParameterDeclaredConstant",
                                                        & kTypeDescriptor_GALGAS_abstractInputParameter) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_inputParameterDeclaredConstant::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputParameterDeclaredConstant ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_inputParameterDeclaredConstant::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -9661,7 +9661,7 @@ AC_GALGAS_root * GALGAS_inputParameterDeclaredConstant::clonedObject (void) cons
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputParameterDeclaredConstant GALGAS_inputParameterDeclaredConstant::extractObject (const GALGAS_object & inObject,
                                                                                             C_Compiler * inCompiler
@@ -9678,9 +9678,9 @@ GALGAS_inputParameterDeclaredConstant GALGAS_inputParameterDeclaredConstant::ext
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @externProcedureDeclarationAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_externProcedureDeclarationAST::printNonNullClassInstanceProperties (void) const {
@@ -9692,7 +9692,7 @@ GALGAS_inputParameterDeclaredConstant GALGAS_inputParameterDeclaredConstant::ext
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_externProcedureDeclarationAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -9716,7 +9716,7 @@ typeComparisonResult cPtr_externProcedureDeclarationAST::dynamicObjectCompare (c
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_externProcedureDeclarationAST::objectCompare (const GALGAS_externProcedureDeclarationAST & inOperand) const {
@@ -9735,19 +9735,19 @@ typeComparisonResult GALGAS_externProcedureDeclarationAST::objectCompare (const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_externProcedureDeclarationAST::GALGAS_externProcedureDeclarationAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_externProcedureDeclarationAST::GALGAS_externProcedureDeclarationAST (const cPtr_externProcedureDeclarationAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_externProcedureDeclarationAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_externProcedureDeclarationAST GALGAS_externProcedureDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                             const GALGAS_bool & inAttribute_mIsInternal,
@@ -9762,7 +9762,7 @@ GALGAS_externProcedureDeclarationAST GALGAS_externProcedureDeclarationAST::const
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_externProcedureDeclarationAST::readProperty_mIsInternal (void) const {
   if (nullptr == mObjectPtr) {
@@ -9774,7 +9774,7 @@ GALGAS_bool GALGAS_externProcedureDeclarationAST::readProperty_mIsInternal (void
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_externProcedureDeclarationAST::readProperty_mRoutineName (void) const {
   if (nullptr == mObjectPtr) {
@@ -9786,7 +9786,7 @@ GALGAS_lstring GALGAS_externProcedureDeclarationAST::readProperty_mRoutineName (
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListAST GALGAS_externProcedureDeclarationAST::readProperty_mFormalArgumentList (void) const {
   if (nullptr == mObjectPtr) {
@@ -9798,7 +9798,7 @@ GALGAS_formalParameterListAST GALGAS_externProcedureDeclarationAST::readProperty
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_externProcedureDeclarationAST::readProperty_usefullProcedure (void) const {
   if (nullptr == mObjectPtr) {
@@ -9810,9 +9810,9 @@ GALGAS_bool GALGAS_externProcedureDeclarationAST::readProperty_usefullProcedure 
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @externProcedureDeclarationAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_externProcedureDeclarationAST::cPtr_externProcedureDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                                         const GALGAS_bool & in_mIsInternal,
@@ -9827,7 +9827,7 @@ mProperty_mFormalArgumentList (in_mFormalArgumentList),
 mProperty_usefullProcedure (in_usefullProcedure) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_externProcedureDeclarationAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externProcedureDeclarationAST ;
@@ -9835,20 +9835,20 @@ const C_galgas_type_descriptor * cPtr_externProcedureDeclarationAST::classDescri
 
 void cPtr_externProcedureDeclarationAST::description (C_String & ioString,
                                                       const int32_t inIndentation) const {
-  ioString << "[@externProcedureDeclarationAST:" ;
+  ioString += "[@externProcedureDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mIsInternal.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mRoutineName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_usefullProcedure.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_externProcedureDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -9857,23 +9857,23 @@ acPtr_class * cPtr_externProcedureDeclarationAST::duplicate (LOCATION_ARGS) cons
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @externProcedureDeclarationAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_externProcedureDeclarationAST ("externProcedureDeclarationAST",
                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_externProcedureDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externProcedureDeclarationAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_externProcedureDeclarationAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -9883,7 +9883,7 @@ AC_GALGAS_root * GALGAS_externProcedureDeclarationAST::clonedObject (void) const
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_externProcedureDeclarationAST GALGAS_externProcedureDeclarationAST::extractObject (const GALGAS_object & inObject,
                                                                                           C_Compiler * inCompiler
@@ -9900,9 +9900,9 @@ GALGAS_externProcedureDeclarationAST GALGAS_externProcedureDeclarationAST::extra
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @procDeclarationAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_procDeclarationAST::printNonNullClassInstanceProperties (void) const {
@@ -9912,7 +9912,7 @@ GALGAS_externProcedureDeclarationAST GALGAS_externProcedureDeclarationAST::extra
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_procDeclarationAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -9942,7 +9942,7 @@ typeComparisonResult cPtr_procDeclarationAST::dynamicObjectCompare (const acPtr_
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_procDeclarationAST::objectCompare (const GALGAS_procDeclarationAST & inOperand) const {
@@ -9961,19 +9961,19 @@ typeComparisonResult GALGAS_procDeclarationAST::objectCompare (const GALGAS_proc
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_procDeclarationAST::GALGAS_procDeclarationAST (void) :
 GALGAS_externProcedureDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_procDeclarationAST::GALGAS_procDeclarationAST (const cPtr_procDeclarationAST * inSourcePtr) :
 GALGAS_externProcedureDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_procDeclarationAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_procDeclarationAST GALGAS_procDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                       const GALGAS_bool & inAttribute_mIsInternal,
@@ -9990,7 +9990,7 @@ GALGAS_procDeclarationAST GALGAS_procDeclarationAST::constructor_new (const GALG
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListAST GALGAS_procDeclarationAST::readProperty_mRoutineInstructionList (void) const {
   if (nullptr == mObjectPtr) {
@@ -10002,7 +10002,7 @@ GALGAS_semanticInstructionListAST GALGAS_procDeclarationAST::readProperty_mRouti
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_procDeclarationAST::readProperty_mEndOfRoutineInstructionList (void) const {
   if (nullptr == mObjectPtr) {
@@ -10014,9 +10014,9 @@ GALGAS_location GALGAS_procDeclarationAST::readProperty_mEndOfRoutineInstruction
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @procDeclarationAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_procDeclarationAST::cPtr_procDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                   const GALGAS_bool & in_mIsInternal,
@@ -10031,7 +10031,7 @@ mProperty_mRoutineInstructionList (in_mRoutineInstructionList),
 mProperty_mEndOfRoutineInstructionList (in_mEndOfRoutineInstructionList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_procDeclarationAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_procDeclarationAST ;
@@ -10039,24 +10039,24 @@ const C_galgas_type_descriptor * cPtr_procDeclarationAST::classDescriptor (void)
 
 void cPtr_procDeclarationAST::description (C_String & ioString,
                                            const int32_t inIndentation) const {
-  ioString << "[@procDeclarationAST:" ;
+  ioString += "[@procDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mIsInternal.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mRoutineName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_usefullProcedure.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mRoutineInstructionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mEndOfRoutineInstructionList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_procDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -10065,23 +10065,23 @@ acPtr_class * cPtr_procDeclarationAST::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @procDeclarationAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_procDeclarationAST ("procDeclarationAST",
                                            & kTypeDescriptor_GALGAS_externProcedureDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_procDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_procDeclarationAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_procDeclarationAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -10091,7 +10091,7 @@ AC_GALGAS_root * GALGAS_procDeclarationAST::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_procDeclarationAST GALGAS_procDeclarationAST::extractObject (const GALGAS_object & inObject,
                                                                     C_Compiler * inCompiler
@@ -10108,9 +10108,9 @@ GALGAS_procDeclarationAST GALGAS_procDeclarationAST::extractObject (const GALGAS
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @externFunctionDeclarationAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_externFunctionDeclarationAST::printNonNullClassInstanceProperties (void) const {
@@ -10122,7 +10122,7 @@ GALGAS_procDeclarationAST GALGAS_procDeclarationAST::extractObject (const GALGAS
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_externFunctionDeclarationAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -10146,7 +10146,7 @@ typeComparisonResult cPtr_externFunctionDeclarationAST::dynamicObjectCompare (co
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_externFunctionDeclarationAST::objectCompare (const GALGAS_externFunctionDeclarationAST & inOperand) const {
@@ -10165,19 +10165,19 @@ typeComparisonResult GALGAS_externFunctionDeclarationAST::objectCompare (const G
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_externFunctionDeclarationAST::GALGAS_externFunctionDeclarationAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_externFunctionDeclarationAST::GALGAS_externFunctionDeclarationAST (const cPtr_externFunctionDeclarationAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_externFunctionDeclarationAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_externFunctionDeclarationAST GALGAS_externFunctionDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                           const GALGAS_lstring & inAttribute_mFunctionName,
@@ -10192,7 +10192,7 @@ GALGAS_externFunctionDeclarationAST GALGAS_externFunctionDeclarationAST::constru
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_externFunctionDeclarationAST::readProperty_mFunctionName (void) const {
   if (nullptr == mObjectPtr) {
@@ -10204,7 +10204,7 @@ GALGAS_lstring GALGAS_externFunctionDeclarationAST::readProperty_mFunctionName (
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListAST GALGAS_externFunctionDeclarationAST::readProperty_mFormalArgumentList (void) const {
   if (nullptr == mObjectPtr) {
@@ -10216,7 +10216,7 @@ GALGAS_formalInputParameterListAST GALGAS_externFunctionDeclarationAST::readProp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_externFunctionDeclarationAST::readProperty_mResultTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -10228,7 +10228,7 @@ GALGAS_lstring GALGAS_externFunctionDeclarationAST::readProperty_mResultTypeName
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_externFunctionDeclarationAST::readProperty_usefullFunc (void) const {
   if (nullptr == mObjectPtr) {
@@ -10240,9 +10240,9 @@ GALGAS_bool GALGAS_externFunctionDeclarationAST::readProperty_usefullFunc (void)
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @externFunctionDeclarationAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_externFunctionDeclarationAST::cPtr_externFunctionDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                                       const GALGAS_lstring & in_mFunctionName,
@@ -10257,7 +10257,7 @@ mProperty_mResultTypeName (in_mResultTypeName),
 mProperty_usefullFunc (in_usefullFunc) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_externFunctionDeclarationAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externFunctionDeclarationAST ;
@@ -10265,20 +10265,20 @@ const C_galgas_type_descriptor * cPtr_externFunctionDeclarationAST::classDescrip
 
 void cPtr_externFunctionDeclarationAST::description (C_String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString << "[@externFunctionDeclarationAST:" ;
+  ioString += "[@externFunctionDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFunctionName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mResultTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_usefullFunc.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_externFunctionDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -10287,23 +10287,23 @@ acPtr_class * cPtr_externFunctionDeclarationAST::duplicate (LOCATION_ARGS) const
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @externFunctionDeclarationAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_externFunctionDeclarationAST ("externFunctionDeclarationAST",
                                                      & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_externFunctionDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externFunctionDeclarationAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_externFunctionDeclarationAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -10313,7 +10313,7 @@ AC_GALGAS_root * GALGAS_externFunctionDeclarationAST::clonedObject (void) const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_externFunctionDeclarationAST GALGAS_externFunctionDeclarationAST::extractObject (const GALGAS_object & inObject,
                                                                                         C_Compiler * inCompiler
@@ -10330,9 +10330,9 @@ GALGAS_externFunctionDeclarationAST GALGAS_externFunctionDeclarationAST::extract
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @functionDeclarationAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_functionDeclarationAST::printNonNullClassInstanceProperties (void) const {
@@ -10344,7 +10344,7 @@ GALGAS_externFunctionDeclarationAST GALGAS_externFunctionDeclarationAST::extract
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_functionDeclarationAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -10380,7 +10380,7 @@ typeComparisonResult cPtr_functionDeclarationAST::dynamicObjectCompare (const ac
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_functionDeclarationAST::objectCompare (const GALGAS_functionDeclarationAST & inOperand) const {
@@ -10399,19 +10399,19 @@ typeComparisonResult GALGAS_functionDeclarationAST::objectCompare (const GALGAS_
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionDeclarationAST::GALGAS_functionDeclarationAST (void) :
 GALGAS_externFunctionDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionDeclarationAST::GALGAS_functionDeclarationAST (const cPtr_functionDeclarationAST * inSourcePtr) :
 GALGAS_externFunctionDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_functionDeclarationAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionDeclarationAST GALGAS_functionDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                               const GALGAS_lstring & inAttribute_mFunctionName,
@@ -10430,7 +10430,7 @@ GALGAS_functionDeclarationAST GALGAS_functionDeclarationAST::constructor_new (co
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_functionDeclarationAST::readProperty_mResultVariableName (void) const {
   if (nullptr == mObjectPtr) {
@@ -10442,7 +10442,7 @@ GALGAS_lstring GALGAS_functionDeclarationAST::readProperty_mResultVariableName (
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListAST GALGAS_functionDeclarationAST::readProperty_mFunctionInstructionList (void) const {
   if (nullptr == mObjectPtr) {
@@ -10454,7 +10454,7 @@ GALGAS_semanticInstructionListAST GALGAS_functionDeclarationAST::readProperty_mF
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_functionDeclarationAST::readProperty_mEndOfFunctionInstructionList (void) const {
   if (nullptr == mObjectPtr) {
@@ -10466,7 +10466,7 @@ GALGAS_location GALGAS_functionDeclarationAST::readProperty_mEndOfFunctionInstru
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_functionDeclarationAST::readProperty_mIsInternal (void) const {
   if (nullptr == mObjectPtr) {
@@ -10478,9 +10478,9 @@ GALGAS_bool GALGAS_functionDeclarationAST::readProperty_mIsInternal (void) const
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @functionDeclarationAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_functionDeclarationAST::cPtr_functionDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                           const GALGAS_lstring & in_mFunctionName,
@@ -10499,7 +10499,7 @@ mProperty_mEndOfFunctionInstructionList (in_mEndOfFunctionInstructionList),
 mProperty_mIsInternal (in_mIsInternal) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_functionDeclarationAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionDeclarationAST ;
@@ -10507,28 +10507,28 @@ const C_galgas_type_descriptor * cPtr_functionDeclarationAST::classDescriptor (v
 
 void cPtr_functionDeclarationAST::description (C_String & ioString,
                                                const int32_t inIndentation) const {
-  ioString << "[@functionDeclarationAST:" ;
+  ioString += "[@functionDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFunctionName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mResultTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_usefullFunc.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mResultVariableName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFunctionInstructionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mEndOfFunctionInstructionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mIsInternal.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_functionDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -10537,23 +10537,23 @@ acPtr_class * cPtr_functionDeclarationAST::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @functionDeclarationAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_functionDeclarationAST ("functionDeclarationAST",
                                                & kTypeDescriptor_GALGAS_externFunctionDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_functionDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionDeclarationAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_functionDeclarationAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -10563,7 +10563,7 @@ AC_GALGAS_root * GALGAS_functionDeclarationAST::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionDeclarationAST GALGAS_functionDeclarationAST::extractObject (const GALGAS_object & inObject,
                                                                             C_Compiler * inCompiler
@@ -10580,9 +10580,9 @@ GALGAS_functionDeclarationAST GALGAS_functionDeclarationAST::extractObject (cons
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @onceFunctionDeclarationAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_onceFunctionDeclarationAST::printNonNullClassInstanceProperties (void) const {
@@ -10597,7 +10597,7 @@ GALGAS_functionDeclarationAST GALGAS_functionDeclarationAST::extractObject (cons
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_onceFunctionDeclarationAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -10630,7 +10630,7 @@ typeComparisonResult cPtr_onceFunctionDeclarationAST::dynamicObjectCompare (cons
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_onceFunctionDeclarationAST::objectCompare (const GALGAS_onceFunctionDeclarationAST & inOperand) const {
@@ -10649,19 +10649,19 @@ typeComparisonResult GALGAS_onceFunctionDeclarationAST::objectCompare (const GAL
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_onceFunctionDeclarationAST::GALGAS_onceFunctionDeclarationAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_onceFunctionDeclarationAST::GALGAS_onceFunctionDeclarationAST (const cPtr_onceFunctionDeclarationAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_onceFunctionDeclarationAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_onceFunctionDeclarationAST GALGAS_onceFunctionDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                       const GALGAS_lstring & inAttribute_mFunctionName,
@@ -10679,7 +10679,7 @@ GALGAS_onceFunctionDeclarationAST GALGAS_onceFunctionDeclarationAST::constructor
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_onceFunctionDeclarationAST::readProperty_mFunctionName (void) const {
   if (nullptr == mObjectPtr) {
@@ -10691,7 +10691,7 @@ GALGAS_lstring GALGAS_onceFunctionDeclarationAST::readProperty_mFunctionName (vo
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_onceFunctionDeclarationAST::readProperty_mResultTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -10703,7 +10703,7 @@ GALGAS_lstring GALGAS_onceFunctionDeclarationAST::readProperty_mResultTypeName (
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_onceFunctionDeclarationAST::readProperty_mResultVariableName (void) const {
   if (nullptr == mObjectPtr) {
@@ -10715,7 +10715,7 @@ GALGAS_lstring GALGAS_onceFunctionDeclarationAST::readProperty_mResultVariableNa
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListAST GALGAS_onceFunctionDeclarationAST::readProperty_mFunctionInstructionList (void) const {
   if (nullptr == mObjectPtr) {
@@ -10727,7 +10727,7 @@ GALGAS_semanticInstructionListAST GALGAS_onceFunctionDeclarationAST::readPropert
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_onceFunctionDeclarationAST::readProperty_mEndOfFunctionInstructionList (void) const {
   if (nullptr == mObjectPtr) {
@@ -10739,7 +10739,7 @@ GALGAS_location GALGAS_onceFunctionDeclarationAST::readProperty_mEndOfFunctionIn
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_onceFunctionDeclarationAST::readProperty_mIsInternal (void) const {
   if (nullptr == mObjectPtr) {
@@ -10751,7 +10751,7 @@ GALGAS_bool GALGAS_onceFunctionDeclarationAST::readProperty_mIsInternal (void) c
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_onceFunctionDeclarationAST::readProperty_mIsUsefull (void) const {
   if (nullptr == mObjectPtr) {
@@ -10763,9 +10763,9 @@ GALGAS_bool GALGAS_onceFunctionDeclarationAST::readProperty_mIsUsefull (void) co
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @onceFunctionDeclarationAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_onceFunctionDeclarationAST::cPtr_onceFunctionDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                                   const GALGAS_lstring & in_mFunctionName,
@@ -10786,7 +10786,7 @@ mProperty_mIsInternal (in_mIsInternal),
 mProperty_mIsUsefull (in_mIsUsefull) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_onceFunctionDeclarationAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_onceFunctionDeclarationAST ;
@@ -10794,26 +10794,26 @@ const C_galgas_type_descriptor * cPtr_onceFunctionDeclarationAST::classDescripto
 
 void cPtr_onceFunctionDeclarationAST::description (C_String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString << "[@onceFunctionDeclarationAST:" ;
+  ioString += "[@onceFunctionDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFunctionName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mResultTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mResultVariableName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFunctionInstructionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mEndOfFunctionInstructionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mIsInternal.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mIsUsefull.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_onceFunctionDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -10822,23 +10822,23 @@ acPtr_class * cPtr_onceFunctionDeclarationAST::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @onceFunctionDeclarationAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_onceFunctionDeclarationAST ("onceFunctionDeclarationAST",
                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_onceFunctionDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_onceFunctionDeclarationAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_onceFunctionDeclarationAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -10848,7 +10848,7 @@ AC_GALGAS_root * GALGAS_onceFunctionDeclarationAST::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_onceFunctionDeclarationAST GALGAS_onceFunctionDeclarationAST::extractObject (const GALGAS_object & inObject,
                                                                                     C_Compiler * inCompiler
@@ -10865,9 +10865,9 @@ GALGAS_onceFunctionDeclarationAST GALGAS_onceFunctionDeclarationAST::extractObje
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @filewrapperDeclarationAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_filewrapperDeclarationAST::printNonNullClassInstanceProperties (void) const {
@@ -10882,7 +10882,7 @@ GALGAS_onceFunctionDeclarationAST GALGAS_onceFunctionDeclarationAST::extractObje
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_filewrapperDeclarationAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -10915,7 +10915,7 @@ typeComparisonResult cPtr_filewrapperDeclarationAST::dynamicObjectCompare (const
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_filewrapperDeclarationAST::objectCompare (const GALGAS_filewrapperDeclarationAST & inOperand) const {
@@ -10934,19 +10934,19 @@ typeComparisonResult GALGAS_filewrapperDeclarationAST::objectCompare (const GALG
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperDeclarationAST::GALGAS_filewrapperDeclarationAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperDeclarationAST::GALGAS_filewrapperDeclarationAST (const cPtr_filewrapperDeclarationAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_filewrapperDeclarationAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperDeclarationAST GALGAS_filewrapperDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                     const GALGAS_bool & inAttribute_mIsInternal,
@@ -10964,7 +10964,7 @@ GALGAS_filewrapperDeclarationAST GALGAS_filewrapperDeclarationAST::constructor_n
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_filewrapperDeclarationAST::readProperty_mIsInternal (void) const {
   if (nullptr == mObjectPtr) {
@@ -10976,7 +10976,7 @@ GALGAS_bool GALGAS_filewrapperDeclarationAST::readProperty_mIsInternal (void) co
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_filewrapperDeclarationAST::readProperty_mSourceFileAbsolutePath (void) const {
   if (nullptr == mObjectPtr) {
@@ -10988,7 +10988,7 @@ GALGAS_string GALGAS_filewrapperDeclarationAST::readProperty_mSourceFileAbsolute
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_filewrapperDeclarationAST::readProperty_mFilewrapperName (void) const {
   if (nullptr == mObjectPtr) {
@@ -11000,7 +11000,7 @@ GALGAS_lstring GALGAS_filewrapperDeclarationAST::readProperty_mFilewrapperName (
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_filewrapperDeclarationAST::readProperty_mFilewrapperPath (void) const {
   if (nullptr == mObjectPtr) {
@@ -11012,7 +11012,7 @@ GALGAS_lstring GALGAS_filewrapperDeclarationAST::readProperty_mFilewrapperPath (
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist GALGAS_filewrapperDeclarationAST::readProperty_mFilewrapperTextFileExtensionList (void) const {
   if (nullptr == mObjectPtr) {
@@ -11024,7 +11024,7 @@ GALGAS_lstringlist GALGAS_filewrapperDeclarationAST::readProperty_mFilewrapperTe
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist GALGAS_filewrapperDeclarationAST::readProperty_mFilewrapperBinaryFileExtensionList (void) const {
   if (nullptr == mObjectPtr) {
@@ -11036,7 +11036,7 @@ GALGAS_lstringlist GALGAS_filewrapperDeclarationAST::readProperty_mFilewrapperBi
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperTemplateListAST GALGAS_filewrapperDeclarationAST::readProperty_mFilewrapperTemplateList (void) const {
   if (nullptr == mObjectPtr) {
@@ -11048,9 +11048,9 @@ GALGAS_filewrapperTemplateListAST GALGAS_filewrapperDeclarationAST::readProperty
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @filewrapperDeclarationAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_filewrapperDeclarationAST::cPtr_filewrapperDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                                 const GALGAS_bool & in_mIsInternal,
@@ -11071,7 +11071,7 @@ mProperty_mFilewrapperBinaryFileExtensionList (in_mFilewrapperBinaryFileExtensio
 mProperty_mFilewrapperTemplateList (in_mFilewrapperTemplateList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_filewrapperDeclarationAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperDeclarationAST ;
@@ -11079,26 +11079,26 @@ const C_galgas_type_descriptor * cPtr_filewrapperDeclarationAST::classDescriptor
 
 void cPtr_filewrapperDeclarationAST::description (C_String & ioString,
                                                   const int32_t inIndentation) const {
-  ioString << "[@filewrapperDeclarationAST:" ;
+  ioString += "[@filewrapperDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mIsInternal.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mSourceFileAbsolutePath.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFilewrapperName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFilewrapperPath.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFilewrapperTextFileExtensionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFilewrapperBinaryFileExtensionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFilewrapperTemplateList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_filewrapperDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -11107,23 +11107,23 @@ acPtr_class * cPtr_filewrapperDeclarationAST::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @filewrapperDeclarationAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_filewrapperDeclarationAST ("filewrapperDeclarationAST",
                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_filewrapperDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperDeclarationAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_filewrapperDeclarationAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -11133,7 +11133,7 @@ AC_GALGAS_root * GALGAS_filewrapperDeclarationAST::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperDeclarationAST GALGAS_filewrapperDeclarationAST::extractObject (const GALGAS_object & inObject,
                                                                                   C_Compiler * inCompiler
@@ -11150,9 +11150,9 @@ GALGAS_filewrapperDeclarationAST GALGAS_filewrapperDeclarationAST::extractObject
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @galgas_33_SyntaxComponentAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_galgas_33_SyntaxComponentAST::printNonNullClassInstanceProperties (void) const {
@@ -11165,7 +11165,7 @@ GALGAS_filewrapperDeclarationAST GALGAS_filewrapperDeclarationAST::extractObject
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_galgas_33_SyntaxComponentAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -11192,7 +11192,7 @@ typeComparisonResult cPtr_galgas_33_SyntaxComponentAST::dynamicObjectCompare (co
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_galgas_33_SyntaxComponentAST::objectCompare (const GALGAS_galgas_33_SyntaxComponentAST & inOperand) const {
@@ -11211,19 +11211,19 @@ typeComparisonResult GALGAS_galgas_33_SyntaxComponentAST::objectCompare (const G
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_SyntaxComponentAST::GALGAS_galgas_33_SyntaxComponentAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_SyntaxComponentAST::GALGAS_galgas_33_SyntaxComponentAST (const cPtr_galgas_33_SyntaxComponentAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_galgas_33_SyntaxComponentAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_SyntaxComponentAST GALGAS_galgas_33_SyntaxComponentAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                           const GALGAS_lstring & inAttribute_mSyntaxComponentName,
@@ -11239,7 +11239,7 @@ GALGAS_galgas_33_SyntaxComponentAST GALGAS_galgas_33_SyntaxComponentAST::constru
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_galgas_33_SyntaxComponentAST::readProperty_mSyntaxComponentName (void) const {
   if (nullptr == mObjectPtr) {
@@ -11251,7 +11251,7 @@ GALGAS_lstring GALGAS_galgas_33_SyntaxComponentAST::readProperty_mSyntaxComponen
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_galgas_33_SyntaxComponentAST::readProperty_mLexiqueName (void) const {
   if (nullptr == mObjectPtr) {
@@ -11263,7 +11263,7 @@ GALGAS_lstring GALGAS_galgas_33_SyntaxComponentAST::readProperty_mLexiqueName (v
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_nonterminalDeclarationListAST GALGAS_galgas_33_SyntaxComponentAST::readProperty_mNonterminalDeclarationList (void) const {
   if (nullptr == mObjectPtr) {
@@ -11275,7 +11275,7 @@ GALGAS_nonterminalDeclarationListAST GALGAS_galgas_33_SyntaxComponentAST::readPr
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxRuleListAST GALGAS_galgas_33_SyntaxComponentAST::readProperty_mRuleList (void) const {
   if (nullptr == mObjectPtr) {
@@ -11287,7 +11287,7 @@ GALGAS_syntaxRuleListAST GALGAS_galgas_33_SyntaxComponentAST::readProperty_mRule
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_galgas_33_SyntaxComponentAST::readProperty_mHasTranslateFeature (void) const {
   if (nullptr == mObjectPtr) {
@@ -11299,9 +11299,9 @@ GALGAS_bool GALGAS_galgas_33_SyntaxComponentAST::readProperty_mHasTranslateFeatu
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @galgas3SyntaxComponentAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_galgas_33_SyntaxComponentAST::cPtr_galgas_33_SyntaxComponentAST (const GALGAS_bool & in_mIsPredefined,
                                                                       const GALGAS_lstring & in_mSyntaxComponentName,
@@ -11318,7 +11318,7 @@ mProperty_mRuleList (in_mRuleList),
 mProperty_mHasTranslateFeature (in_mHasTranslateFeature) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_galgas_33_SyntaxComponentAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_galgas_33_SyntaxComponentAST ;
@@ -11326,22 +11326,22 @@ const C_galgas_type_descriptor * cPtr_galgas_33_SyntaxComponentAST::classDescrip
 
 void cPtr_galgas_33_SyntaxComponentAST::description (C_String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString << "[@galgas3SyntaxComponentAST:" ;
+  ioString += "[@galgas3SyntaxComponentAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mSyntaxComponentName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mLexiqueName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mNonterminalDeclarationList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mRuleList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mHasTranslateFeature.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_galgas_33_SyntaxComponentAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -11350,23 +11350,23 @@ acPtr_class * cPtr_galgas_33_SyntaxComponentAST::duplicate (LOCATION_ARGS) const
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @galgas3SyntaxComponentAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_galgas_33_SyntaxComponentAST ("galgas3SyntaxComponentAST",
                                                      & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_galgas_33_SyntaxComponentAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_galgas_33_SyntaxComponentAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_galgas_33_SyntaxComponentAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -11376,7 +11376,7 @@ AC_GALGAS_root * GALGAS_galgas_33_SyntaxComponentAST::clonedObject (void) const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_SyntaxComponentAST GALGAS_galgas_33_SyntaxComponentAST::extractObject (const GALGAS_object & inObject,
                                                                                         C_Compiler * inCompiler
@@ -11393,9 +11393,9 @@ GALGAS_galgas_33_SyntaxComponentAST GALGAS_galgas_33_SyntaxComponentAST::extract
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @galgas_33_GrammarComponentAST reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_galgas_33_GrammarComponentAST::printNonNullClassInstanceProperties (void) const {
@@ -11411,7 +11411,7 @@ GALGAS_galgas_33_SyntaxComponentAST GALGAS_galgas_33_SyntaxComponentAST::extract
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_galgas_33_GrammarComponentAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -11447,7 +11447,7 @@ typeComparisonResult cPtr_galgas_33_GrammarComponentAST::dynamicObjectCompare (c
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_galgas_33_GrammarComponentAST::objectCompare (const GALGAS_galgas_33_GrammarComponentAST & inOperand) const {
@@ -11466,19 +11466,19 @@ typeComparisonResult GALGAS_galgas_33_GrammarComponentAST::objectCompare (const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_GrammarComponentAST::GALGAS_galgas_33_GrammarComponentAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_GrammarComponentAST::GALGAS_galgas_33_GrammarComponentAST (const cPtr_galgas_33_GrammarComponentAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_galgas_33_GrammarComponentAST) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_GrammarComponentAST GALGAS_galgas_33_GrammarComponentAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                             const GALGAS_lbool & inAttribute_mHasIndexing,
@@ -11497,7 +11497,7 @@ GALGAS_galgas_33_GrammarComponentAST GALGAS_galgas_33_GrammarComponentAST::const
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lbool GALGAS_galgas_33_GrammarComponentAST::readProperty_mHasIndexing (void) const {
   if (nullptr == mObjectPtr) {
@@ -11509,7 +11509,7 @@ GALGAS_lbool GALGAS_galgas_33_GrammarComponentAST::readProperty_mHasIndexing (vo
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_galgas_33_GrammarComponentAST::readProperty_mGrammarComponentName (void) const {
   if (nullptr == mObjectPtr) {
@@ -11521,7 +11521,7 @@ GALGAS_lstring GALGAS_galgas_33_GrammarComponentAST::readProperty_mGrammarCompon
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_galgas_33_GrammarComponentAST::readProperty_mGrammarClass (void) const {
   if (nullptr == mObjectPtr) {
@@ -11533,7 +11533,7 @@ GALGAS_lstring GALGAS_galgas_33_GrammarComponentAST::readProperty_mGrammarClass 
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist GALGAS_galgas_33_GrammarComponentAST::readProperty_mSyntaxComponents (void) const {
   if (nullptr == mObjectPtr) {
@@ -11545,7 +11545,7 @@ GALGAS_lstringlist GALGAS_galgas_33_GrammarComponentAST::readProperty_mSyntaxCom
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_galgas_33_GrammarComponentAST::readProperty_mStartSymbolName (void) const {
   if (nullptr == mObjectPtr) {
@@ -11557,7 +11557,7 @@ GALGAS_lstring GALGAS_galgas_33_GrammarComponentAST::readProperty_mStartSymbolNa
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_nonTerminalLabelListAST GALGAS_galgas_33_GrammarComponentAST::readProperty_mStartSymbolLabelList (void) const {
   if (nullptr == mObjectPtr) {
@@ -11569,7 +11569,7 @@ GALGAS_nonTerminalLabelListAST GALGAS_galgas_33_GrammarComponentAST::readPropert
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist GALGAS_galgas_33_GrammarComponentAST::readProperty_mUnusedNonterminalList (void) const {
   if (nullptr == mObjectPtr) {
@@ -11581,7 +11581,7 @@ GALGAS_lstringlist GALGAS_galgas_33_GrammarComponentAST::readProperty_mUnusedNon
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_galgas_33_GrammarComponentAST::readProperty_mHasTranslateFeature (void) const {
   if (nullptr == mObjectPtr) {
@@ -11593,9 +11593,9 @@ GALGAS_bool GALGAS_galgas_33_GrammarComponentAST::readProperty_mHasTranslateFeat
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @galgas3GrammarComponentAST class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_galgas_33_GrammarComponentAST::cPtr_galgas_33_GrammarComponentAST (const GALGAS_bool & in_mIsPredefined,
                                                                         const GALGAS_lbool & in_mHasIndexing,
@@ -11618,7 +11618,7 @@ mProperty_mUnusedNonterminalList (in_mUnusedNonterminalList),
 mProperty_mHasTranslateFeature (in_mHasTranslateFeature) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_galgas_33_GrammarComponentAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_galgas_33_GrammarComponentAST ;
@@ -11626,28 +11626,28 @@ const C_galgas_type_descriptor * cPtr_galgas_33_GrammarComponentAST::classDescri
 
 void cPtr_galgas_33_GrammarComponentAST::description (C_String & ioString,
                                                       const int32_t inIndentation) const {
-  ioString << "[@galgas3GrammarComponentAST:" ;
+  ioString += "[@galgas3GrammarComponentAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mHasIndexing.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mGrammarComponentName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mGrammarClass.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mSyntaxComponents.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mStartSymbolName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mStartSymbolLabelList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mUnusedNonterminalList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mHasTranslateFeature.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_galgas_33_GrammarComponentAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -11656,23 +11656,23 @@ acPtr_class * cPtr_galgas_33_GrammarComponentAST::duplicate (LOCATION_ARGS) cons
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @galgas3GrammarComponentAST generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_galgas_33_GrammarComponentAST ("galgas3GrammarComponentAST",
                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_galgas_33_GrammarComponentAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_galgas_33_GrammarComponentAST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_galgas_33_GrammarComponentAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -11682,7 +11682,7 @@ AC_GALGAS_root * GALGAS_galgas_33_GrammarComponentAST::clonedObject (void) const
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_galgas_33_GrammarComponentAST GALGAS_galgas_33_GrammarComponentAST::extractObject (const GALGAS_object & inObject,
                                                                                           C_Compiler * inCompiler
@@ -11699,11 +11699,11 @@ GALGAS_galgas_33_GrammarComponentAST GALGAS_galgas_33_GrammarComponentAST::extra
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Abstract extension method '@semanticExpressionForGeneration generateExpression'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_generateExpression (cPtr_semanticExpressionForGeneration * inObject,
                                              GALGAS_string & io_ioGeneratedCode,
@@ -11721,9 +11721,9 @@ void callExtensionMethod_generateExpression (cPtr_semanticExpressionForGeneratio
     inObject->method_generateExpression (io_ioGeneratedCode, io_ioInclusionSet, io_ioTemporaryVariableIndex, io_ioUnusedVariableCppNameSet, out_outCppExpression, inCompiler COMMA_THERE) ;
   }
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @castInExpressionForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_castInExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -11734,7 +11734,7 @@ void callExtensionMethod_generateExpression (cPtr_semanticExpressionForGeneratio
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_castInExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -11758,7 +11758,7 @@ typeComparisonResult cPtr_castInExpressionForGeneration::dynamicObjectCompare (c
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_castInExpressionForGeneration::objectCompare (const GALGAS_castInExpressionForGeneration & inOperand) const {
@@ -11777,19 +11777,19 @@ typeComparisonResult GALGAS_castInExpressionForGeneration::objectCompare (const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_castInExpressionForGeneration::GALGAS_castInExpressionForGeneration (void) :
 GALGAS_semanticExpressionForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_castInExpressionForGeneration::GALGAS_castInExpressionForGeneration (const cPtr_castInExpressionForGeneration * inSourcePtr) :
 GALGAS_semanticExpressionForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_castInExpressionForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_castInExpressionForGeneration GALGAS_castInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mResultType,
                                                                                             const GALGAS_location & inAttribute_mLocation,
@@ -11804,7 +11804,7 @@ GALGAS_castInExpressionForGeneration GALGAS_castInExpressionForGeneration::const
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticExpressionForGeneration GALGAS_castInExpressionForGeneration::readProperty_mReceiverExpression (void) const {
   if (nullptr == mObjectPtr) {
@@ -11816,7 +11816,7 @@ GALGAS_semanticExpressionForGeneration GALGAS_castInExpressionForGeneration::rea
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_castInExpressionForGeneration::readProperty_mTypeName (void) const {
   if (nullptr == mObjectPtr) {
@@ -11828,7 +11828,7 @@ GALGAS_string GALGAS_castInExpressionForGeneration::readProperty_mTypeName (void
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_castInExpressionForGeneration::readProperty_mCastType (void) const {
   if (nullptr == mObjectPtr) {
@@ -11840,9 +11840,9 @@ GALGAS_unifiedTypeMapEntry GALGAS_castInExpressionForGeneration::readProperty_mC
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @castInExpressionForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_castInExpressionForGeneration::cPtr_castInExpressionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mResultType,
                                                                         const GALGAS_location & in_mLocation,
@@ -11856,7 +11856,7 @@ mProperty_mTypeName (in_mTypeName),
 mProperty_mCastType (in_mCastType) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_castInExpressionForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_castInExpressionForGeneration ;
@@ -11864,20 +11864,20 @@ const C_galgas_type_descriptor * cPtr_castInExpressionForGeneration::classDescri
 
 void cPtr_castInExpressionForGeneration::description (C_String & ioString,
                                                       const int32_t inIndentation) const {
-  ioString << "[@castInExpressionForGeneration:" ;
+  ioString += "[@castInExpressionForGeneration:" ;
   mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mReceiverExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mCastType.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_castInExpressionForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -11886,23 +11886,23 @@ acPtr_class * cPtr_castInExpressionForGeneration::duplicate (LOCATION_ARGS) cons
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @castInExpressionForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_castInExpressionForGeneration ("castInExpressionForGeneration",
                                                       & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_castInExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_castInExpressionForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_castInExpressionForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -11912,7 +11912,7 @@ AC_GALGAS_root * GALGAS_castInExpressionForGeneration::clonedObject (void) const
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_castInExpressionForGeneration GALGAS_castInExpressionForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                           C_Compiler * inCompiler
@@ -11929,9 +11929,9 @@ GALGAS_castInExpressionForGeneration GALGAS_castInExpressionForGeneration::extra
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @outputActualParameterForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_outputActualParameterForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -11940,7 +11940,7 @@ GALGAS_castInExpressionForGeneration GALGAS_castInExpressionForGeneration::extra
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_outputActualParameterForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -11955,7 +11955,7 @@ typeComparisonResult cPtr_outputActualParameterForGeneration::dynamicObjectCompa
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_outputActualParameterForGeneration::objectCompare (const GALGAS_outputActualParameterForGeneration & inOperand) const {
@@ -11974,19 +11974,19 @@ typeComparisonResult GALGAS_outputActualParameterForGeneration::objectCompare (c
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputActualParameterForGeneration::GALGAS_outputActualParameterForGeneration (void) :
 GALGAS_actualParameterForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputActualParameterForGeneration::GALGAS_outputActualParameterForGeneration (const cPtr_outputActualParameterForGeneration * inSourcePtr) :
 GALGAS_actualParameterForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_outputActualParameterForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputActualParameterForGeneration GALGAS_outputActualParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mFormalArgumentType,
                                                                                                       const GALGAS_semanticExpressionForGeneration & inAttribute_mOutputActualParameterExpression
@@ -11998,7 +11998,7 @@ GALGAS_outputActualParameterForGeneration GALGAS_outputActualParameterForGenerat
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticExpressionForGeneration GALGAS_outputActualParameterForGeneration::readProperty_mOutputActualParameterExpression (void) const {
   if (nullptr == mObjectPtr) {
@@ -12010,9 +12010,9 @@ GALGAS_semanticExpressionForGeneration GALGAS_outputActualParameterForGeneration
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @outputActualParameterForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_outputActualParameterForGeneration::cPtr_outputActualParameterForGeneration (const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                                                   const GALGAS_semanticExpressionForGeneration & in_mOutputActualParameterExpression
@@ -12021,7 +12021,7 @@ cPtr_actualParameterForGeneration (in_mFormalArgumentType COMMA_THERE),
 mProperty_mOutputActualParameterExpression (in_mOutputActualParameterExpression) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_outputActualParameterForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_outputActualParameterForGeneration ;
@@ -12029,14 +12029,14 @@ const C_galgas_type_descriptor * cPtr_outputActualParameterForGeneration::classD
 
 void cPtr_outputActualParameterForGeneration::description (C_String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString << "[@outputActualParameterForGeneration:" ;
+  ioString += "[@outputActualParameterForGeneration:" ;
   mProperty_mFormalArgumentType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mOutputActualParameterExpression.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_outputActualParameterForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -12045,23 +12045,23 @@ acPtr_class * cPtr_outputActualParameterForGeneration::duplicate (LOCATION_ARGS)
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @outputActualParameterForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_outputActualParameterForGeneration ("outputActualParameterForGeneration",
                                                            & kTypeDescriptor_GALGAS_actualParameterForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_outputActualParameterForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_outputActualParameterForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_outputActualParameterForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -12071,7 +12071,7 @@ AC_GALGAS_root * GALGAS_outputActualParameterForGeneration::clonedObject (void) 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_outputActualParameterForGeneration GALGAS_outputActualParameterForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                                     C_Compiler * inCompiler
@@ -12088,9 +12088,9 @@ GALGAS_outputActualParameterForGeneration GALGAS_outputActualParameterForGenerat
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @inputActualParameterForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputActualParameterForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -12100,7 +12100,7 @@ GALGAS_outputActualParameterForGeneration GALGAS_outputActualParameterForGenerat
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_inputActualParameterForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -12118,7 +12118,7 @@ typeComparisonResult cPtr_inputActualParameterForGeneration::dynamicObjectCompar
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_inputActualParameterForGeneration::objectCompare (const GALGAS_inputActualParameterForGeneration & inOperand) const {
@@ -12137,19 +12137,19 @@ typeComparisonResult GALGAS_inputActualParameterForGeneration::objectCompare (co
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualParameterForGeneration::GALGAS_inputActualParameterForGeneration (void) :
 GALGAS_actualParameterForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualParameterForGeneration::GALGAS_inputActualParameterForGeneration (const cPtr_inputActualParameterForGeneration * inSourcePtr) :
 GALGAS_actualParameterForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_inputActualParameterForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualParameterForGeneration GALGAS_inputActualParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mFormalArgumentType,
                                                                                                     const GALGAS_string & inAttribute_mInputActualCppName,
@@ -12162,7 +12162,7 @@ GALGAS_inputActualParameterForGeneration GALGAS_inputActualParameterForGeneratio
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_inputActualParameterForGeneration::readProperty_mInputActualCppName (void) const {
   if (nullptr == mObjectPtr) {
@@ -12174,7 +12174,7 @@ GALGAS_string GALGAS_inputActualParameterForGeneration::readProperty_mInputActua
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS__32_stringlist GALGAS_inputActualParameterForGeneration::readProperty_mPoisonedVarNameList (void) const {
   if (nullptr == mObjectPtr) {
@@ -12186,9 +12186,9 @@ GALGAS__32_stringlist GALGAS_inputActualParameterForGeneration::readProperty_mPo
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @inputActualParameterForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_inputActualParameterForGeneration::cPtr_inputActualParameterForGeneration (const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                                                 const GALGAS_string & in_mInputActualCppName,
@@ -12199,7 +12199,7 @@ mProperty_mInputActualCppName (in_mInputActualCppName),
 mProperty_mPoisonedVarNameList (in_mPoisonedVarNameList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_inputActualParameterForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputActualParameterForGeneration ;
@@ -12207,16 +12207,16 @@ const C_galgas_type_descriptor * cPtr_inputActualParameterForGeneration::classDe
 
 void cPtr_inputActualParameterForGeneration::description (C_String & ioString,
                                                           const int32_t inIndentation) const {
-  ioString << "[@inputActualParameterForGeneration:" ;
+  ioString += "[@inputActualParameterForGeneration:" ;
   mProperty_mFormalArgumentType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mInputActualCppName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_inputActualParameterForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -12225,23 +12225,23 @@ acPtr_class * cPtr_inputActualParameterForGeneration::duplicate (LOCATION_ARGS) 
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @inputActualParameterForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_inputActualParameterForGeneration ("inputActualParameterForGeneration",
                                                           & kTypeDescriptor_GALGAS_actualParameterForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_inputActualParameterForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_inputActualParameterForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_inputActualParameterForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -12251,7 +12251,7 @@ AC_GALGAS_root * GALGAS_inputActualParameterForGeneration::clonedObject (void) c
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_inputActualParameterForGeneration GALGAS_inputActualParameterForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                                   C_Compiler * inCompiler
@@ -12268,9 +12268,9 @@ GALGAS_inputActualParameterForGeneration GALGAS_inputActualParameterForGeneratio
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @lexiqueDeclarationForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_lexiqueDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -12285,7 +12285,7 @@ GALGAS_inputActualParameterForGeneration GALGAS_inputActualParameterForGeneratio
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_lexiqueDeclarationForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -12321,7 +12321,7 @@ typeComparisonResult cPtr_lexiqueDeclarationForGeneration::dynamicObjectCompare 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_lexiqueDeclarationForGeneration::objectCompare (const GALGAS_lexiqueDeclarationForGeneration & inOperand) const {
@@ -12340,19 +12340,19 @@ typeComparisonResult GALGAS_lexiqueDeclarationForGeneration::objectCompare (cons
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueDeclarationForGeneration::GALGAS_lexiqueDeclarationForGeneration (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueDeclarationForGeneration::GALGAS_lexiqueDeclarationForGeneration (const cPtr_lexiqueDeclarationForGeneration * inSourcePtr) :
 GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexiqueDeclarationForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueDeclarationForGeneration GALGAS_lexiqueDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                 const GALGAS_string & inAttribute_mImplementationCppFileName,
@@ -12371,7 +12371,7 @@ GALGAS_lexiqueDeclarationForGeneration GALGAS_lexiqueDeclarationForGeneration::c
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mLexiqueName (void) const {
   if (nullptr == mObjectPtr) {
@@ -12383,7 +12383,7 @@ GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mLexiqueName 
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mSuperLexiqueName (void) const {
   if (nullptr == mObjectPtr) {
@@ -12395,7 +12395,7 @@ GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mSuperLexique
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mHeaderContents (void) const {
   if (nullptr == mObjectPtr) {
@@ -12407,7 +12407,7 @@ GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mHeaderConten
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mCppContents (void) const {
   if (nullptr == mObjectPtr) {
@@ -12419,7 +12419,7 @@ GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mCppContents 
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mObjcCocoaHeader (void) const {
   if (nullptr == mObjectPtr) {
@@ -12431,7 +12431,7 @@ GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mObjcCocoaHea
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mObjcCocoaImplementation (void) const {
   if (nullptr == mObjectPtr) {
@@ -12443,7 +12443,7 @@ GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mObjcCocoaImp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mSwiftCocoaImplementation (void) const {
   if (nullptr == mObjectPtr) {
@@ -12455,9 +12455,9 @@ GALGAS_string GALGAS_lexiqueDeclarationForGeneration::readProperty_mSwiftCocoaIm
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @lexiqueDeclarationForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_lexiqueDeclarationForGeneration::cPtr_lexiqueDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                             const GALGAS_string & in_mImplementationCppFileName,
@@ -12479,7 +12479,7 @@ mProperty_mObjcCocoaImplementation (in_mObjcCocoaImplementation),
 mProperty_mSwiftCocoaImplementation (in_mSwiftCocoaImplementation) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_lexiqueDeclarationForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexiqueDeclarationForGeneration ;
@@ -12487,28 +12487,28 @@ const C_galgas_type_descriptor * cPtr_lexiqueDeclarationForGeneration::classDesc
 
 void cPtr_lexiqueDeclarationForGeneration::description (C_String & ioString,
                                                         const int32_t inIndentation) const {
-  ioString << "[@lexiqueDeclarationForGeneration:" ;
+  ioString += "[@lexiqueDeclarationForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mLexiqueName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mSuperLexiqueName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mHeaderContents.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mCppContents.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mObjcCocoaHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mObjcCocoaImplementation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mSwiftCocoaImplementation.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_lexiqueDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -12517,23 +12517,23 @@ acPtr_class * cPtr_lexiqueDeclarationForGeneration::duplicate (LOCATION_ARGS) co
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @lexiqueDeclarationForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexiqueDeclarationForGeneration ("lexiqueDeclarationForGeneration",
                                                         & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_lexiqueDeclarationForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexiqueDeclarationForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexiqueDeclarationForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -12543,7 +12543,7 @@ AC_GALGAS_root * GALGAS_lexiqueDeclarationForGeneration::clonedObject (void) con
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueDeclarationForGeneration GALGAS_lexiqueDeclarationForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                               C_Compiler * inCompiler
@@ -12560,7 +12560,7 @@ GALGAS_lexiqueDeclarationForGeneration GALGAS_lexiqueDeclarationForGeneration::e
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_lexiqueDeclarationForGeneration_2D_weak::objectCompare (const GALGAS_lexiqueDeclarationForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -12580,13 +12580,13 @@ typeComparisonResult GALGAS_lexiqueDeclarationForGeneration_2D_weak::objectCompa
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueDeclarationForGeneration_2D_weak::GALGAS_lexiqueDeclarationForGeneration_2D_weak (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueDeclarationForGeneration_2D_weak & GALGAS_lexiqueDeclarationForGeneration_2D_weak::operator = (const GALGAS_lexiqueDeclarationForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -12598,13 +12598,13 @@ GALGAS_lexiqueDeclarationForGeneration_2D_weak & GALGAS_lexiqueDeclarationForGen
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueDeclarationForGeneration_2D_weak::GALGAS_lexiqueDeclarationForGeneration_2D_weak (const GALGAS_lexiqueDeclarationForGeneration & inSource) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueDeclarationForGeneration_2D_weak GALGAS_lexiqueDeclarationForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_lexiqueDeclarationForGeneration_2D_weak result ;
@@ -12612,7 +12612,7 @@ GALGAS_lexiqueDeclarationForGeneration_2D_weak GALGAS_lexiqueDeclarationForGener
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueDeclarationForGeneration GALGAS_lexiqueDeclarationForGeneration_2D_weak::bang_lexiqueDeclarationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexiqueDeclarationForGeneration result ;
@@ -12628,23 +12628,23 @@ GALGAS_lexiqueDeclarationForGeneration GALGAS_lexiqueDeclarationForGeneration_2D
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @lexiqueDeclarationForGeneration-weak generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexiqueDeclarationForGeneration_2D_weak ("lexiqueDeclarationForGeneration-weak",
                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_lexiqueDeclarationForGeneration_2D_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexiqueDeclarationForGeneration_2D_weak ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexiqueDeclarationForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -12654,7 +12654,7 @@ AC_GALGAS_root * GALGAS_lexiqueDeclarationForGeneration_2D_weak::clonedObject (v
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueDeclarationForGeneration_2D_weak GALGAS_lexiqueDeclarationForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                                               C_Compiler * inCompiler
@@ -12671,9 +12671,9 @@ GALGAS_lexiqueDeclarationForGeneration_2D_weak GALGAS_lexiqueDeclarationForGener
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @grammarForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_grammarForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -12689,7 +12689,7 @@ GALGAS_lexiqueDeclarationForGeneration_2D_weak GALGAS_lexiqueDeclarationForGener
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_grammarForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -12728,7 +12728,7 @@ typeComparisonResult cPtr_grammarForGeneration::dynamicObjectCompare (const acPt
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_grammarForGeneration::objectCompare (const GALGAS_grammarForGeneration & inOperand) const {
@@ -12747,19 +12747,19 @@ typeComparisonResult GALGAS_grammarForGeneration::objectCompare (const GALGAS_gr
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_grammarForGeneration::GALGAS_grammarForGeneration (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_grammarForGeneration::GALGAS_grammarForGeneration (const cPtr_grammarForGeneration * inSourcePtr) :
 GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_grammarForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_grammarForGeneration GALGAS_grammarForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                           const GALGAS_string & inAttribute_mImplementationCppFileName,
@@ -12779,7 +12779,7 @@ GALGAS_grammarForGeneration GALGAS_grammarForGeneration::constructor_new (const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_grammarForGeneration::readProperty_mGrammarName (void) const {
   if (nullptr == mObjectPtr) {
@@ -12791,7 +12791,7 @@ GALGAS_string GALGAS_grammarForGeneration::readProperty_mGrammarName (void) cons
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_grammarForGeneration::readProperty_mLexiqueName (void) const {
   if (nullptr == mObjectPtr) {
@@ -12803,7 +12803,7 @@ GALGAS_string GALGAS_grammarForGeneration::readProperty_mLexiqueName (void) cons
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_nonTerminalSymbolMapForGrammarAnalysis GALGAS_grammarForGeneration::readProperty_mNonTerminalMapForGrammarAnalysis (void) const {
   if (nullptr == mObjectPtr) {
@@ -12815,7 +12815,7 @@ GALGAS_nonTerminalSymbolMapForGrammarAnalysis GALGAS_grammarForGeneration::readP
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_nonTerminalToAddList GALGAS_grammarForGeneration::readProperty_mNonTerminalToAddList (void) const {
   if (nullptr == mObjectPtr) {
@@ -12827,7 +12827,7 @@ GALGAS_nonTerminalToAddList GALGAS_grammarForGeneration::readProperty_mNonTermin
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist GALGAS_grammarForGeneration::readProperty_mSyntaxComponents (void) const {
   if (nullptr == mObjectPtr) {
@@ -12839,7 +12839,7 @@ GALGAS_lstringlist GALGAS_grammarForGeneration::readProperty_mSyntaxComponents (
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_grammarForGeneration::readProperty_mStartSymbolName (void) const {
   if (nullptr == mObjectPtr) {
@@ -12851,7 +12851,7 @@ GALGAS_string GALGAS_grammarForGeneration::readProperty_mStartSymbolName (void) 
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_grammarForGeneration::readProperty_mHasTranslateFeature (void) const {
   if (nullptr == mObjectPtr) {
@@ -12863,7 +12863,7 @@ GALGAS_bool GALGAS_grammarForGeneration::readProperty_mHasTranslateFeature (void
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_grammarForGeneration::readProperty_mCppFileContents (void) const {
   if (nullptr == mObjectPtr) {
@@ -12875,9 +12875,9 @@ GALGAS_string GALGAS_grammarForGeneration::readProperty_mCppFileContents (void) 
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @grammarForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_grammarForGeneration::cPtr_grammarForGeneration (const GALGAS_bool & in_mHasHeader,
                                                       const GALGAS_string & in_mImplementationCppFileName,
@@ -12901,7 +12901,7 @@ mProperty_mHasTranslateFeature (in_mHasTranslateFeature),
 mProperty_mCppFileContents (in_mCppFileContents) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_grammarForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarForGeneration ;
@@ -12909,30 +12909,30 @@ const C_galgas_type_descriptor * cPtr_grammarForGeneration::classDescriptor (voi
 
 void cPtr_grammarForGeneration::description (C_String & ioString,
                                              const int32_t inIndentation) const {
-  ioString << "[@grammarForGeneration:" ;
+  ioString += "[@grammarForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mGrammarName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mLexiqueName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mNonTerminalMapForGrammarAnalysis.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mNonTerminalToAddList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mSyntaxComponents.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mStartSymbolName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mHasTranslateFeature.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mCppFileContents.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_grammarForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -12941,23 +12941,23 @@ acPtr_class * cPtr_grammarForGeneration::duplicate (LOCATION_ARGS) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @grammarForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_grammarForGeneration ("grammarForGeneration",
                                              & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_grammarForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_grammarForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -12967,7 +12967,7 @@ AC_GALGAS_root * GALGAS_grammarForGeneration::clonedObject (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_grammarForGeneration GALGAS_grammarForGeneration::extractObject (const GALGAS_object & inObject,
                                                                         C_Compiler * inCompiler
@@ -12984,7 +12984,7 @@ GALGAS_grammarForGeneration GALGAS_grammarForGeneration::extractObject (const GA
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_grammarForGeneration_2D_weak::objectCompare (const GALGAS_grammarForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -13004,13 +13004,13 @@ typeComparisonResult GALGAS_grammarForGeneration_2D_weak::objectCompare (const G
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_grammarForGeneration_2D_weak::GALGAS_grammarForGeneration_2D_weak (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_grammarForGeneration_2D_weak & GALGAS_grammarForGeneration_2D_weak::operator = (const GALGAS_grammarForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -13022,13 +13022,13 @@ GALGAS_grammarForGeneration_2D_weak & GALGAS_grammarForGeneration_2D_weak::opera
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_grammarForGeneration_2D_weak::GALGAS_grammarForGeneration_2D_weak (const GALGAS_grammarForGeneration & inSource) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_grammarForGeneration_2D_weak GALGAS_grammarForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_grammarForGeneration_2D_weak result ;
@@ -13036,7 +13036,7 @@ GALGAS_grammarForGeneration_2D_weak GALGAS_grammarForGeneration_2D_weak::constru
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_grammarForGeneration GALGAS_grammarForGeneration_2D_weak::bang_grammarForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_grammarForGeneration result ;
@@ -13052,23 +13052,23 @@ GALGAS_grammarForGeneration GALGAS_grammarForGeneration_2D_weak::bang_grammarFor
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @grammarForGeneration-weak generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_grammarForGeneration_2D_weak ("grammarForGeneration-weak",
                                                      & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_grammarForGeneration_2D_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarForGeneration_2D_weak ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_grammarForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -13078,7 +13078,7 @@ AC_GALGAS_root * GALGAS_grammarForGeneration_2D_weak::clonedObject (void) const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_grammarForGeneration_2D_weak GALGAS_grammarForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                         C_Compiler * inCompiler
@@ -13095,9 +13095,9 @@ GALGAS_grammarForGeneration_2D_weak GALGAS_grammarForGeneration_2D_weak::extract
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @routinePrototypeDeclarationForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_routinePrototypeDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -13107,7 +13107,7 @@ GALGAS_grammarForGeneration_2D_weak GALGAS_grammarForGeneration_2D_weak::extract
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_routinePrototypeDeclarationForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -13128,7 +13128,7 @@ typeComparisonResult cPtr_routinePrototypeDeclarationForGeneration::dynamicObjec
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_routinePrototypeDeclarationForGeneration::objectCompare (const GALGAS_routinePrototypeDeclarationForGeneration & inOperand) const {
@@ -13147,19 +13147,19 @@ typeComparisonResult GALGAS_routinePrototypeDeclarationForGeneration::objectComp
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routinePrototypeDeclarationForGeneration::GALGAS_routinePrototypeDeclarationForGeneration (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routinePrototypeDeclarationForGeneration::GALGAS_routinePrototypeDeclarationForGeneration (const cPtr_routinePrototypeDeclarationForGeneration * inSourcePtr) :
 GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_routinePrototypeDeclarationForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                                   const GALGAS_string & inAttribute_mImplementationCppFileName,
@@ -13173,7 +13173,7 @@ GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarati
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_routinePrototypeDeclarationForGeneration::readProperty_mRoutineName (void) const {
   if (nullptr == mObjectPtr) {
@@ -13185,7 +13185,7 @@ GALGAS_string GALGAS_routinePrototypeDeclarationForGeneration::readProperty_mRou
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalParameterListForGeneration GALGAS_routinePrototypeDeclarationForGeneration::readProperty_mFormalArgumentList (void) const {
   if (nullptr == mObjectPtr) {
@@ -13197,9 +13197,9 @@ GALGAS_formalParameterListForGeneration GALGAS_routinePrototypeDeclarationForGen
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @routinePrototypeDeclarationForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_routinePrototypeDeclarationForGeneration::cPtr_routinePrototypeDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                               const GALGAS_string & in_mImplementationCppFileName,
@@ -13211,7 +13211,7 @@ mProperty_mRoutineName (in_mRoutineName),
 mProperty_mFormalArgumentList (in_mFormalArgumentList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_routinePrototypeDeclarationForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration ;
@@ -13219,18 +13219,18 @@ const C_galgas_type_descriptor * cPtr_routinePrototypeDeclarationForGeneration::
 
 void cPtr_routinePrototypeDeclarationForGeneration::description (C_String & ioString,
                                                                  const int32_t inIndentation) const {
-  ioString << "[@routinePrototypeDeclarationForGeneration:" ;
+  ioString += "[@routinePrototypeDeclarationForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mRoutineName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_routinePrototypeDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -13239,23 +13239,23 @@ acPtr_class * cPtr_routinePrototypeDeclarationForGeneration::duplicate (LOCATION
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @routinePrototypeDeclarationForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration ("routinePrototypeDeclarationForGeneration",
                                                                  & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_routinePrototypeDeclarationForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_routinePrototypeDeclarationForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -13265,7 +13265,7 @@ AC_GALGAS_root * GALGAS_routinePrototypeDeclarationForGeneration::clonedObject (
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarationForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                                                 C_Compiler * inCompiler
@@ -13282,7 +13282,7 @@ GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarati
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_routinePrototypeDeclarationForGeneration_2D_weak::objectCompare (const GALGAS_routinePrototypeDeclarationForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -13302,13 +13302,13 @@ typeComparisonResult GALGAS_routinePrototypeDeclarationForGeneration_2D_weak::ob
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routinePrototypeDeclarationForGeneration_2D_weak::GALGAS_routinePrototypeDeclarationForGeneration_2D_weak (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routinePrototypeDeclarationForGeneration_2D_weak & GALGAS_routinePrototypeDeclarationForGeneration_2D_weak::operator = (const GALGAS_routinePrototypeDeclarationForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -13320,13 +13320,13 @@ GALGAS_routinePrototypeDeclarationForGeneration_2D_weak & GALGAS_routinePrototyp
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routinePrototypeDeclarationForGeneration_2D_weak::GALGAS_routinePrototypeDeclarationForGeneration_2D_weak (const GALGAS_routinePrototypeDeclarationForGeneration & inSource) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routinePrototypeDeclarationForGeneration_2D_weak GALGAS_routinePrototypeDeclarationForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_routinePrototypeDeclarationForGeneration_2D_weak result ;
@@ -13334,7 +13334,7 @@ GALGAS_routinePrototypeDeclarationForGeneration_2D_weak GALGAS_routinePrototypeD
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarationForGeneration_2D_weak::bang_routinePrototypeDeclarationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_routinePrototypeDeclarationForGeneration result ;
@@ -13350,23 +13350,23 @@ GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarati
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @routinePrototypeDeclarationForGeneration-weak generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration_2D_weak ("routinePrototypeDeclarationForGeneration-weak",
                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_routinePrototypeDeclarationForGeneration_2D_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration_2D_weak ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_routinePrototypeDeclarationForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -13376,7 +13376,7 @@ AC_GALGAS_root * GALGAS_routinePrototypeDeclarationForGeneration_2D_weak::cloned
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routinePrototypeDeclarationForGeneration_2D_weak GALGAS_routinePrototypeDeclarationForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                                 C_Compiler * inCompiler
@@ -13393,9 +13393,9 @@ GALGAS_routinePrototypeDeclarationForGeneration_2D_weak GALGAS_routinePrototypeD
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @routineImplementationForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_routineImplementationForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -13405,7 +13405,7 @@ GALGAS_routinePrototypeDeclarationForGeneration_2D_weak GALGAS_routinePrototypeD
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_routineImplementationForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -13432,7 +13432,7 @@ typeComparisonResult cPtr_routineImplementationForGeneration::dynamicObjectCompa
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_routineImplementationForGeneration::objectCompare (const GALGAS_routineImplementationForGeneration & inOperand) const {
@@ -13451,19 +13451,19 @@ typeComparisonResult GALGAS_routineImplementationForGeneration::objectCompare (c
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routineImplementationForGeneration::GALGAS_routineImplementationForGeneration (void) :
 GALGAS_routinePrototypeDeclarationForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routineImplementationForGeneration::GALGAS_routineImplementationForGeneration (const cPtr_routineImplementationForGeneration * inSourcePtr) :
 GALGAS_routinePrototypeDeclarationForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_routineImplementationForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routineImplementationForGeneration GALGAS_routineImplementationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                       const GALGAS_string & inAttribute_mImplementationCppFileName,
@@ -13479,7 +13479,7 @@ GALGAS_routineImplementationForGeneration GALGAS_routineImplementationForGenerat
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_routineImplementationForGeneration::readProperty_mGenerateStatic (void) const {
   if (nullptr == mObjectPtr) {
@@ -13491,7 +13491,7 @@ GALGAS_bool GALGAS_routineImplementationForGeneration::readProperty_mGenerateSta
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListForGeneration GALGAS_routineImplementationForGeneration::readProperty_mRoutineInstructionList (void) const {
   if (nullptr == mObjectPtr) {
@@ -13503,9 +13503,9 @@ GALGAS_semanticInstructionListForGeneration GALGAS_routineImplementationForGener
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @routineImplementationForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_routineImplementationForGeneration::cPtr_routineImplementationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                   const GALGAS_string & in_mImplementationCppFileName,
@@ -13519,7 +13519,7 @@ mProperty_mGenerateStatic (in_mGenerateStatic),
 mProperty_mRoutineInstructionList (in_mRoutineInstructionList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_routineImplementationForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_routineImplementationForGeneration ;
@@ -13527,22 +13527,22 @@ const C_galgas_type_descriptor * cPtr_routineImplementationForGeneration::classD
 
 void cPtr_routineImplementationForGeneration::description (C_String & ioString,
                                                            const int32_t inIndentation) const {
-  ioString << "[@routineImplementationForGeneration:" ;
+  ioString += "[@routineImplementationForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mRoutineName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mGenerateStatic.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mRoutineInstructionList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_routineImplementationForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -13551,23 +13551,23 @@ acPtr_class * cPtr_routineImplementationForGeneration::duplicate (LOCATION_ARGS)
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @routineImplementationForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_routineImplementationForGeneration ("routineImplementationForGeneration",
                                                            & kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_routineImplementationForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_routineImplementationForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_routineImplementationForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -13577,7 +13577,7 @@ AC_GALGAS_root * GALGAS_routineImplementationForGeneration::clonedObject (void) 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routineImplementationForGeneration GALGAS_routineImplementationForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                                     C_Compiler * inCompiler
@@ -13594,7 +13594,7 @@ GALGAS_routineImplementationForGeneration GALGAS_routineImplementationForGenerat
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_routineImplementationForGeneration_2D_weak::objectCompare (const GALGAS_routineImplementationForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -13614,13 +13614,13 @@ typeComparisonResult GALGAS_routineImplementationForGeneration_2D_weak::objectCo
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routineImplementationForGeneration_2D_weak::GALGAS_routineImplementationForGeneration_2D_weak (void) :
 GALGAS_routinePrototypeDeclarationForGeneration_2D_weak () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routineImplementationForGeneration_2D_weak & GALGAS_routineImplementationForGeneration_2D_weak::operator = (const GALGAS_routineImplementationForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -13632,13 +13632,13 @@ GALGAS_routineImplementationForGeneration_2D_weak & GALGAS_routineImplementation
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routineImplementationForGeneration_2D_weak::GALGAS_routineImplementationForGeneration_2D_weak (const GALGAS_routineImplementationForGeneration & inSource) :
 GALGAS_routinePrototypeDeclarationForGeneration_2D_weak (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routineImplementationForGeneration_2D_weak GALGAS_routineImplementationForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_routineImplementationForGeneration_2D_weak result ;
@@ -13646,7 +13646,7 @@ GALGAS_routineImplementationForGeneration_2D_weak GALGAS_routineImplementationFo
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routineImplementationForGeneration GALGAS_routineImplementationForGeneration_2D_weak::bang_routineImplementationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_routineImplementationForGeneration result ;
@@ -13662,23 +13662,23 @@ GALGAS_routineImplementationForGeneration GALGAS_routineImplementationForGenerat
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @routineImplementationForGeneration-weak generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_routineImplementationForGeneration_2D_weak ("routineImplementationForGeneration-weak",
                                                                    & kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration_2D_weak) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_routineImplementationForGeneration_2D_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_routineImplementationForGeneration_2D_weak ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_routineImplementationForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -13688,7 +13688,7 @@ AC_GALGAS_root * GALGAS_routineImplementationForGeneration_2D_weak::clonedObject
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_routineImplementationForGeneration_2D_weak GALGAS_routineImplementationForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                     C_Compiler * inCompiler
@@ -13705,9 +13705,9 @@ GALGAS_routineImplementationForGeneration_2D_weak GALGAS_routineImplementationFo
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @functionPrototypeDeclarationForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_functionPrototypeDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -13718,7 +13718,7 @@ GALGAS_routineImplementationForGeneration_2D_weak GALGAS_routineImplementationFo
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_functionPrototypeDeclarationForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -13742,7 +13742,7 @@ typeComparisonResult cPtr_functionPrototypeDeclarationForGeneration::dynamicObje
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_functionPrototypeDeclarationForGeneration::objectCompare (const GALGAS_functionPrototypeDeclarationForGeneration & inOperand) const {
@@ -13761,19 +13761,19 @@ typeComparisonResult GALGAS_functionPrototypeDeclarationForGeneration::objectCom
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionPrototypeDeclarationForGeneration::GALGAS_functionPrototypeDeclarationForGeneration (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionPrototypeDeclarationForGeneration::GALGAS_functionPrototypeDeclarationForGeneration (const cPtr_functionPrototypeDeclarationForGeneration * inSourcePtr) :
 GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_functionPrototypeDeclarationForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionPrototypeDeclarationForGeneration GALGAS_functionPrototypeDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                                     const GALGAS_string & inAttribute_mImplementationCppFileName,
@@ -13788,7 +13788,7 @@ GALGAS_functionPrototypeDeclarationForGeneration GALGAS_functionPrototypeDeclara
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_functionPrototypeDeclarationForGeneration::readProperty_mFunctionName (void) const {
   if (nullptr == mObjectPtr) {
@@ -13800,7 +13800,7 @@ GALGAS_string GALGAS_functionPrototypeDeclarationForGeneration::readProperty_mFu
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_formalInputParameterListForGeneration GALGAS_functionPrototypeDeclarationForGeneration::readProperty_mFormalArgumentList (void) const {
   if (nullptr == mObjectPtr) {
@@ -13812,7 +13812,7 @@ GALGAS_formalInputParameterListForGeneration GALGAS_functionPrototypeDeclaration
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_functionPrototypeDeclarationForGeneration::readProperty_mReturnType (void) const {
   if (nullptr == mObjectPtr) {
@@ -13824,9 +13824,9 @@ GALGAS_unifiedTypeMapEntry GALGAS_functionPrototypeDeclarationForGeneration::rea
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @functionPrototypeDeclarationForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_functionPrototypeDeclarationForGeneration::cPtr_functionPrototypeDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                                 const GALGAS_string & in_mImplementationCppFileName,
@@ -13840,7 +13840,7 @@ mProperty_mFormalArgumentList (in_mFormalArgumentList),
 mProperty_mReturnType (in_mReturnType) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_functionPrototypeDeclarationForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionPrototypeDeclarationForGeneration ;
@@ -13848,20 +13848,20 @@ const C_galgas_type_descriptor * cPtr_functionPrototypeDeclarationForGeneration:
 
 void cPtr_functionPrototypeDeclarationForGeneration::description (C_String & ioString,
                                                                   const int32_t inIndentation) const {
-  ioString << "[@functionPrototypeDeclarationForGeneration:" ;
+  ioString += "[@functionPrototypeDeclarationForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFunctionName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mReturnType.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_functionPrototypeDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -13870,23 +13870,23 @@ acPtr_class * cPtr_functionPrototypeDeclarationForGeneration::duplicate (LOCATIO
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @functionPrototypeDeclarationForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_functionPrototypeDeclarationForGeneration ("functionPrototypeDeclarationForGeneration",
                                                                   & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_functionPrototypeDeclarationForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionPrototypeDeclarationForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_functionPrototypeDeclarationForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -13896,7 +13896,7 @@ AC_GALGAS_root * GALGAS_functionPrototypeDeclarationForGeneration::clonedObject 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionPrototypeDeclarationForGeneration GALGAS_functionPrototypeDeclarationForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                                                   C_Compiler * inCompiler
@@ -13913,7 +13913,7 @@ GALGAS_functionPrototypeDeclarationForGeneration GALGAS_functionPrototypeDeclara
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_functionPrototypeDeclarationForGeneration_2D_weak::objectCompare (const GALGAS_functionPrototypeDeclarationForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -13933,13 +13933,13 @@ typeComparisonResult GALGAS_functionPrototypeDeclarationForGeneration_2D_weak::o
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionPrototypeDeclarationForGeneration_2D_weak::GALGAS_functionPrototypeDeclarationForGeneration_2D_weak (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionPrototypeDeclarationForGeneration_2D_weak & GALGAS_functionPrototypeDeclarationForGeneration_2D_weak::operator = (const GALGAS_functionPrototypeDeclarationForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -13951,13 +13951,13 @@ GALGAS_functionPrototypeDeclarationForGeneration_2D_weak & GALGAS_functionProtot
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionPrototypeDeclarationForGeneration_2D_weak::GALGAS_functionPrototypeDeclarationForGeneration_2D_weak (const GALGAS_functionPrototypeDeclarationForGeneration & inSource) :
 GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionPrototypeDeclarationForGeneration_2D_weak GALGAS_functionPrototypeDeclarationForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_functionPrototypeDeclarationForGeneration_2D_weak result ;
@@ -13965,7 +13965,7 @@ GALGAS_functionPrototypeDeclarationForGeneration_2D_weak GALGAS_functionPrototyp
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionPrototypeDeclarationForGeneration GALGAS_functionPrototypeDeclarationForGeneration_2D_weak::bang_functionPrototypeDeclarationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_functionPrototypeDeclarationForGeneration result ;
@@ -13981,23 +13981,23 @@ GALGAS_functionPrototypeDeclarationForGeneration GALGAS_functionPrototypeDeclara
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @functionPrototypeDeclarationForGeneration-weak generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_functionPrototypeDeclarationForGeneration_2D_weak ("functionPrototypeDeclarationForGeneration-weak",
                                                                           & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_functionPrototypeDeclarationForGeneration_2D_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionPrototypeDeclarationForGeneration_2D_weak ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_functionPrototypeDeclarationForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -14007,7 +14007,7 @@ AC_GALGAS_root * GALGAS_functionPrototypeDeclarationForGeneration_2D_weak::clone
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionPrototypeDeclarationForGeneration_2D_weak GALGAS_functionPrototypeDeclarationForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                                   C_Compiler * inCompiler
@@ -14024,9 +14024,9 @@ GALGAS_functionPrototypeDeclarationForGeneration_2D_weak GALGAS_functionPrototyp
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @functionImplementationForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_functionImplementationForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -14036,7 +14036,7 @@ GALGAS_functionPrototypeDeclarationForGeneration_2D_weak GALGAS_functionPrototyp
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_functionImplementationForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -14066,7 +14066,7 @@ typeComparisonResult cPtr_functionImplementationForGeneration::dynamicObjectComp
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_functionImplementationForGeneration::objectCompare (const GALGAS_functionImplementationForGeneration & inOperand) const {
@@ -14085,19 +14085,19 @@ typeComparisonResult GALGAS_functionImplementationForGeneration::objectCompare (
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionImplementationForGeneration::GALGAS_functionImplementationForGeneration (void) :
 GALGAS_functionPrototypeDeclarationForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionImplementationForGeneration::GALGAS_functionImplementationForGeneration (const cPtr_functionImplementationForGeneration * inSourcePtr) :
 GALGAS_functionPrototypeDeclarationForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_functionImplementationForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                         const GALGAS_string & inAttribute_mImplementationCppFileName,
@@ -14114,7 +14114,7 @@ GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGener
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_functionImplementationForGeneration::readProperty_mResultVariableCppName (void) const {
   if (nullptr == mObjectPtr) {
@@ -14126,7 +14126,7 @@ GALGAS_string GALGAS_functionImplementationForGeneration::readProperty_mResultVa
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListForGeneration GALGAS_functionImplementationForGeneration::readProperty_mFunctionInstructionList (void) const {
   if (nullptr == mObjectPtr) {
@@ -14138,9 +14138,9 @@ GALGAS_semanticInstructionListForGeneration GALGAS_functionImplementationForGene
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @functionImplementationForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_functionImplementationForGeneration::cPtr_functionImplementationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                     const GALGAS_string & in_mImplementationCppFileName,
@@ -14155,7 +14155,7 @@ mProperty_mResultVariableCppName (in_mResultVariableCppName),
 mProperty_mFunctionInstructionList (in_mFunctionInstructionList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_functionImplementationForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionImplementationForGeneration ;
@@ -14163,24 +14163,24 @@ const C_galgas_type_descriptor * cPtr_functionImplementationForGeneration::class
 
 void cPtr_functionImplementationForGeneration::description (C_String & ioString,
                                                             const int32_t inIndentation) const {
-  ioString << "[@functionImplementationForGeneration:" ;
+  ioString += "[@functionImplementationForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFunctionName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mReturnType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mResultVariableCppName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFunctionInstructionList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_functionImplementationForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -14189,23 +14189,23 @@ acPtr_class * cPtr_functionImplementationForGeneration::duplicate (LOCATION_ARGS
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @functionImplementationForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_functionImplementationForGeneration ("functionImplementationForGeneration",
                                                             & kTypeDescriptor_GALGAS_functionPrototypeDeclarationForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_functionImplementationForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionImplementationForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_functionImplementationForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -14215,7 +14215,7 @@ AC_GALGAS_root * GALGAS_functionImplementationForGeneration::clonedObject (void)
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                                       C_Compiler * inCompiler
@@ -14232,7 +14232,7 @@ GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGener
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_functionImplementationForGeneration_2D_weak::objectCompare (const GALGAS_functionImplementationForGeneration_2D_weak & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -14252,13 +14252,13 @@ typeComparisonResult GALGAS_functionImplementationForGeneration_2D_weak::objectC
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionImplementationForGeneration_2D_weak::GALGAS_functionImplementationForGeneration_2D_weak (void) :
 GALGAS_functionPrototypeDeclarationForGeneration_2D_weak () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionImplementationForGeneration_2D_weak & GALGAS_functionImplementationForGeneration_2D_weak::operator = (const GALGAS_functionImplementationForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -14270,13 +14270,13 @@ GALGAS_functionImplementationForGeneration_2D_weak & GALGAS_functionImplementati
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionImplementationForGeneration_2D_weak::GALGAS_functionImplementationForGeneration_2D_weak (const GALGAS_functionImplementationForGeneration & inSource) :
 GALGAS_functionPrototypeDeclarationForGeneration_2D_weak (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionImplementationForGeneration_2D_weak GALGAS_functionImplementationForGeneration_2D_weak::constructor_nil (LOCATION_ARGS) {
   GALGAS_functionImplementationForGeneration_2D_weak result ;
@@ -14284,7 +14284,7 @@ GALGAS_functionImplementationForGeneration_2D_weak GALGAS_functionImplementation
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGeneration_2D_weak::bang_functionImplementationForGeneration_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_functionImplementationForGeneration result ;
@@ -14300,23 +14300,23 @@ GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGener
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @functionImplementationForGeneration-weak generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_functionImplementationForGeneration_2D_weak ("functionImplementationForGeneration-weak",
                                                                     & kTypeDescriptor_GALGAS_functionPrototypeDeclarationForGeneration_2D_weak) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_functionImplementationForGeneration_2D_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionImplementationForGeneration_2D_weak ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_functionImplementationForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -14326,7 +14326,7 @@ AC_GALGAS_root * GALGAS_functionImplementationForGeneration_2D_weak::clonedObjec
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_functionImplementationForGeneration_2D_weak GALGAS_functionImplementationForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                       C_Compiler * inCompiler
@@ -14343,9 +14343,9 @@ GALGAS_functionImplementationForGeneration_2D_weak GALGAS_functionImplementation
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // @onceFunctionDeclarationForGeneration reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_onceFunctionDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
@@ -14357,7 +14357,7 @@ GALGAS_functionImplementationForGeneration_2D_weak GALGAS_functionImplementation
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_onceFunctionDeclarationForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -14384,7 +14384,7 @@ typeComparisonResult cPtr_onceFunctionDeclarationForGeneration::dynamicObjectCom
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_onceFunctionDeclarationForGeneration::objectCompare (const GALGAS_onceFunctionDeclarationForGeneration & inOperand) const {
@@ -14403,19 +14403,19 @@ typeComparisonResult GALGAS_onceFunctionDeclarationForGeneration::objectCompare 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_onceFunctionDeclarationForGeneration::GALGAS_onceFunctionDeclarationForGeneration (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_onceFunctionDeclarationForGeneration::GALGAS_onceFunctionDeclarationForGeneration (const cPtr_onceFunctionDeclarationForGeneration * inSourcePtr) :
 GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_onceFunctionDeclarationForGeneration) ;
 }
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_onceFunctionDeclarationForGeneration GALGAS_onceFunctionDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                           const GALGAS_string & inAttribute_mImplementationCppFileName,
@@ -14431,7 +14431,7 @@ GALGAS_onceFunctionDeclarationForGeneration GALGAS_onceFunctionDeclarationForGen
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_onceFunctionDeclarationForGeneration::readProperty_mFunctionName (void) const {
   if (nullptr == mObjectPtr) {
@@ -14443,7 +14443,7 @@ GALGAS_string GALGAS_onceFunctionDeclarationForGeneration::readProperty_mFunctio
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_onceFunctionDeclarationForGeneration::readProperty_mReturnType (void) const {
   if (nullptr == mObjectPtr) {
@@ -14455,7 +14455,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_onceFunctionDeclarationForGeneration::readProp
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_onceFunctionDeclarationForGeneration::readProperty_mResultVariableCppName (void) const {
   if (nullptr == mObjectPtr) {
@@ -14467,7 +14467,7 @@ GALGAS_string GALGAS_onceFunctionDeclarationForGeneration::readProperty_mResultV
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_semanticInstructionListForGeneration GALGAS_onceFunctionDeclarationForGeneration::readProperty_mFunctionInstructionList (void) const {
   if (nullptr == mObjectPtr) {
@@ -14479,9 +14479,9 @@ GALGAS_semanticInstructionListForGeneration GALGAS_onceFunctionDeclarationForGen
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @onceFunctionDeclarationForGeneration class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_onceFunctionDeclarationForGeneration::cPtr_onceFunctionDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                       const GALGAS_string & in_mImplementationCppFileName,
@@ -14497,7 +14497,7 @@ mProperty_mResultVariableCppName (in_mResultVariableCppName),
 mProperty_mFunctionInstructionList (in_mFunctionInstructionList) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_onceFunctionDeclarationForGeneration::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_onceFunctionDeclarationForGeneration ;
@@ -14505,22 +14505,22 @@ const C_galgas_type_descriptor * cPtr_onceFunctionDeclarationForGeneration::clas
 
 void cPtr_onceFunctionDeclarationForGeneration::description (C_String & ioString,
                                                              const int32_t inIndentation) const {
-  ioString << "[@onceFunctionDeclarationForGeneration:" ;
+  ioString += "[@onceFunctionDeclarationForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mImplementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFunctionName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mReturnType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mResultVariableCppName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
+  ioString += ", " ;
   mProperty_mFunctionInstructionList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
+  ioString += "]" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_onceFunctionDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
@@ -14529,23 +14529,23 @@ acPtr_class * cPtr_onceFunctionDeclarationForGeneration::duplicate (LOCATION_ARG
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     @onceFunctionDeclarationForGeneration generic code implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_onceFunctionDeclarationForGeneration ("onceFunctionDeclarationForGeneration",
                                                              & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_onceFunctionDeclarationForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_onceFunctionDeclarationForGeneration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_onceFunctionDeclarationForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
@@ -14555,7 +14555,7 @@ AC_GALGAS_root * GALGAS_onceFunctionDeclarationForGeneration::clonedObject (void
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_onceFunctionDeclarationForGeneration GALGAS_onceFunctionDeclarationForGeneration::extractObject (const GALGAS_object & inObject,
                                                                                                         C_Compiler * inCompiler

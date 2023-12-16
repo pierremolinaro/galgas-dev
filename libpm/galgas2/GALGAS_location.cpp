@@ -1,4 +1,4 @@
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 //
 //  'GALGAS_location'
 //
@@ -16,13 +16,13 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
 #include "galgas2/C_Compiler.h"
 #include "files/C_FileManager.h"
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_location::GALGAS_location (void) :
 AC_GALGAS_root (),
@@ -32,7 +32,7 @@ mSourceText (),
 mIsValid (false) {
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_location::GALGAS_location (const C_LocationInSource & inStartLocationInSource,
                                   const C_LocationInSource & inEndLocationInSource,
@@ -44,13 +44,13 @@ mSourceText (inSourceText),
 mIsValid (true) {
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_location::drop (void) {
   mIsValid = false ;
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_location::constructor_nowhere (UNUSED_LOCATION_ARGS) {
   GALGAS_location result ;
@@ -58,36 +58,36 @@ GALGAS_location GALGAS_location::constructor_nowhere (UNUSED_LOCATION_ARGS) {
   return result ;
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 //   CONSTRUCTORS
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_location::constructor_here (C_Compiler * inCompiler
                                                    COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->here () ;
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_location::constructor_next (C_Compiler * inCompiler
                                                    COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->next () ;
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_location::constructor_separator (C_Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->separator () ;
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_location::isValidAndNotNowhere (void) const {
   return mIsValid && mSourceText.isValid () ;
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_location::getter_isNowhere (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
@@ -97,7 +97,7 @@ GALGAS_bool GALGAS_location::getter_isNowhere (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_location::objectCompare (const GALGAS_location & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -120,26 +120,30 @@ typeComparisonResult GALGAS_location::objectCompare (const GALGAS_location & inO
   return result ;
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_location::description (C_String & ioString,
                                    const int32_t /* inIndentation */) const {
-  ioString << "<@location:" ;
+  ioString += "<@location:" ;
   if (isValid ()) {
     if (!mSourceText.isValid ()) {
-      ioString << "nowhere" ;
+      ioString += "nowhere" ;
     }else{
-      ioString << "'" << mSourceText.sourceFilePath () << "'" ;
+      ioString += "'" ;
+      ioString += mSourceText.sourceFilePath () ;
+      ioString += "'" ;
     }
-    ioString << ":" << cStringWithSigned (mStartLocationInSource.lineNumber ())
-             << ":" << cStringWithSigned (mStartLocationInSource.columnNumber ()) ;
+    ioString += ":" ;
+    ioString += cStringWithSigned (mStartLocationInSource.lineNumber ()) ;
+    ioString += ":" ;
+    ioString += cStringWithSigned (mStartLocationInSource.columnNumber ()) ;
   }else{
-    ioString << "not built" ;
+    ioString += "not built" ;
   }
-  ioString << ">" ;
+  ioString += ">" ;
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_location::getter_startLocationString (C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
@@ -149,9 +153,12 @@ GALGAS_string GALGAS_location::getter_startLocationString (C_Compiler * inCompil
       inCompiler->onTheFlyRunTimeError ("'startLocationString' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
       C_String s ;
-      s << "file '" << mSourceText.sourceFilePath ()
-        << "', line " << cStringWithSigned (mStartLocationInSource.lineNumber ())
-        << ":" << cStringWithSigned (mStartLocationInSource.columnNumber ()) ;
+      s += "file '" ;
+      s += mSourceText.sourceFilePath () ;
+      s += "', line ";
+      s += cStringWithSigned (mStartLocationInSource.lineNumber ()) ;
+      s += ":";
+      s += cStringWithSigned (mStartLocationInSource.columnNumber ()) ;
       result = GALGAS_string (s) ;
     }
   }
@@ -159,7 +166,7 @@ GALGAS_string GALGAS_location::getter_startLocationString (C_Compiler * inCompil
 }
 
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_location::getter_endLocationString (C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
@@ -169,9 +176,12 @@ GALGAS_string GALGAS_location::getter_endLocationString (C_Compiler * inCompiler
       inCompiler->onTheFlyRunTimeError ("'endLocationString' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
       C_String s ;
-      s << "file '" << mSourceText.sourceFilePath ()
-        << "', line " << cStringWithSigned (mEndLocationInSource.lineNumber ())
-        << ":" << cStringWithSigned (mEndLocationInSource.columnNumber ()) ;  
+      s += "file '" ;
+      s += mSourceText.sourceFilePath () ;
+      s +=  "', line " ;
+      s +=  cStringWithSigned (mEndLocationInSource.lineNumber ()) ;
+      s +=  ":" ;
+      s += cStringWithSigned (mEndLocationInSource.columnNumber ()) ;
       result = GALGAS_string (s) ;
     }
   }
@@ -179,7 +189,7 @@ GALGAS_string GALGAS_location::getter_endLocationString (C_Compiler * inCompiler
 }
 
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_location::getter_file (C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) const {
@@ -194,7 +204,7 @@ GALGAS_string GALGAS_location::getter_file (C_Compiler * inCompiler
   return result ;
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint GALGAS_location::getter_startLocationIndex (C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
@@ -209,7 +219,7 @@ GALGAS_uint GALGAS_location::getter_startLocationIndex (C_Compiler * inCompiler
   return result ;
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint GALGAS_location::getter_endLocationIndex (C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
@@ -224,7 +234,7 @@ GALGAS_uint GALGAS_location::getter_endLocationIndex (C_Compiler * inCompiler
   return result ;
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint GALGAS_location::getter_startColumn (C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
@@ -239,7 +249,7 @@ GALGAS_uint GALGAS_location::getter_startColumn (C_Compiler * inCompiler
   return result ;
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint GALGAS_location::getter_endColumn (C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
@@ -254,7 +264,7 @@ GALGAS_uint GALGAS_location::getter_endColumn (C_Compiler * inCompiler
   return result ;
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint GALGAS_location::getter_startLine (C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
@@ -269,7 +279,7 @@ GALGAS_uint GALGAS_location::getter_startLine (C_Compiler * inCompiler
   return result ;
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint GALGAS_location::getter_endLine (C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const {
@@ -284,7 +294,7 @@ GALGAS_uint GALGAS_location::getter_endLine (C_Compiler * inCompiler
   return result ;
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_location::getter_union (const GALGAS_location & inOtherLocation,
                                                C_Compiler * inCompiler
@@ -306,5 +316,5 @@ GALGAS_location GALGAS_location::getter_union (const GALGAS_location & inOtherLo
   return result ;
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 

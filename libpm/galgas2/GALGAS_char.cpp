@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //   GALGAS_char                                                                                 
 //
@@ -16,17 +16,17 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
 #include "galgas2/C_Compiler.h"
 #include "strings/unicode_character_cpp.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include <ctype.h>
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #if COMPILE_FOR_WINDOWS == 0
   #include <termios.h>
@@ -35,7 +35,7 @@
   #include <sys/ioctl.h>
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_char::GALGAS_char (void) :
 AC_GALGAS_root (),
@@ -43,7 +43,7 @@ mIsValid (false),
 mCharValue (TO_UNICODE (0)) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #if (COMPILE_FOR_WINDOWS == 1) || defined(__CYGWIN__)
   GALGAS_char GALGAS_char::constructor_unicodeCharacterFromRawKeyboard (C_Compiler * inCompiler
@@ -131,7 +131,7 @@ mCharValue (TO_UNICODE (0)) {
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_char::GALGAS_char (const utf32 inValue) :
 AC_GALGAS_root (),
@@ -139,7 +139,7 @@ mIsValid (true),
 mCharValue (inValue) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_char::objectCompare (const GALGAS_char & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -156,26 +156,26 @@ typeComparisonResult GALGAS_char::objectCompare (const GALGAS_char & inOperand) 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_char::description (C_String & ioString,
                                const int32_t /* inIndentation */) const {
-  ioString << "<@char:" ;
+  ioString += "<@char:" ;
   if (isValid ()) {
     if (isprint ((int) UNICODE_VALUE (mCharValue))) {
-      ioString << "'" ;
+      ioString += "'" ;
       ioString.appendUnicodeCharacter (mCharValue COMMA_HERE) ;
-      ioString << "'" ;
+      ioString += "'" ;
     }else{
-      ioString << unicodeName (mCharValue) ;
+      ioString += unicodeName (mCharValue) ;
     }
   }else{
-    ioString << "not built" ;
+    ioString += "not built" ;
   }
-  ioString << ">" ;
+  ioString += ">" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_char::getter_string (LOCATION_ARGS) const {
   GALGAS_string result ;
@@ -187,7 +187,7 @@ GALGAS_string GALGAS_char::getter_string (LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_char::getter_utf_33__32_CharConstantRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
@@ -202,7 +202,7 @@ GALGAS_string GALGAS_char::getter_utf_33__32_CharConstantRepresentation (UNUSED_
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_uint GALGAS_char::getter_uint (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
@@ -212,7 +212,7 @@ GALGAS_uint GALGAS_char::getter_uint (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_char::getter_isalnum (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
@@ -226,7 +226,7 @@ GALGAS_bool GALGAS_char::getter_isalnum (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_char::getter_isalpha (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
@@ -237,7 +237,7 @@ GALGAS_bool GALGAS_char::getter_isalpha (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_char::getter_iscntrl (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
@@ -247,7 +247,7 @@ GALGAS_bool GALGAS_char::getter_iscntrl (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_char::getter_isdigit (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
@@ -257,7 +257,7 @@ GALGAS_bool GALGAS_char::getter_isdigit (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_char::getter_islower (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
@@ -267,7 +267,7 @@ GALGAS_bool GALGAS_char::getter_islower (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_char::getter_isupper (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
@@ -277,7 +277,7 @@ GALGAS_bool GALGAS_char::getter_isupper (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_char::getter_isxdigit (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
@@ -289,7 +289,7 @@ GALGAS_bool GALGAS_char::getter_isxdigit (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_char::getter_isUnicodeLetter (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
@@ -299,7 +299,7 @@ GALGAS_bool GALGAS_char::getter_isUnicodeLetter (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_char::getter_isUnicodeMark (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
@@ -309,7 +309,7 @@ GALGAS_bool GALGAS_char::getter_isUnicodeMark (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_char::getter_isUnicodeSymbol (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
@@ -319,7 +319,7 @@ GALGAS_bool GALGAS_char::getter_isUnicodeSymbol (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_char::getter_isUnicodeCommand (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
@@ -329,7 +329,7 @@ GALGAS_bool GALGAS_char::getter_isUnicodeCommand (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_char::getter_isUnicodeSeparator (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
@@ -339,7 +339,7 @@ GALGAS_bool GALGAS_char::getter_isUnicodeSeparator (UNUSED_LOCATION_ARGS) const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_char::getter_isUnicodePunctuation (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
@@ -349,7 +349,7 @@ GALGAS_bool GALGAS_char::getter_isUnicodePunctuation (UNUSED_LOCATION_ARGS) cons
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_char::getter_isUnicodeNumber (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
@@ -359,7 +359,7 @@ GALGAS_bool GALGAS_char::getter_isUnicodeNumber (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_char::getter_unicodeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
@@ -369,7 +369,7 @@ GALGAS_string GALGAS_char::getter_unicodeName (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_char GALGAS_char::getter_unicodeToLower (UNUSED_LOCATION_ARGS) const {
   GALGAS_char result ;
@@ -379,7 +379,7 @@ GALGAS_char GALGAS_char::getter_unicodeToLower (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_char GALGAS_char::getter_unicodeToUpper (UNUSED_LOCATION_ARGS) const {
   GALGAS_char result ;
@@ -389,7 +389,7 @@ GALGAS_char GALGAS_char::getter_unicodeToUpper (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_uint GALGAS_char::getter_utf_38_Length (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
@@ -399,7 +399,7 @@ GALGAS_uint GALGAS_char::getter_utf_38_Length (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_char GALGAS_char::constructor_unicodeCharacterWithUnsigned (const GALGAS_uint & inValue
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
@@ -410,10 +410,10 @@ GALGAS_char GALGAS_char::constructor_unicodeCharacterWithUnsigned (const GALGAS_
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_char GALGAS_char::constructor_replacementCharacter (UNUSED_LOCATION_ARGS) {
   return GALGAS_char (UNICODE_REPLACEMENT_CHARACTER) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

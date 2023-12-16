@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  Class for date handling.                                                                     
 //
@@ -16,33 +16,33 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "time/C_DateTime.h"
 #include "strings/C_String.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include <sys/stat.h>
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_DateTime::C_DateTime (void) :
 mDate (std::chrono::system_clock::now ()) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_DateTime::C_DateTime (const time_t inTimeInSeconds) :
 mDate (std::chrono::system_clock::from_time_t (inTimeInSeconds)) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_DateTime::~C_DateTime (void) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const char * C_DateTime::getMonthName (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
@@ -69,7 +69,7 @@ const char * C_DateTime::getMonthName (void) const {
   return (const char *) nullptr ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const char * C_DateTime::getDayName (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
@@ -91,7 +91,7 @@ const char * C_DateTime::getDayName (void) const {
   return (const char *) nullptr ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 int32_t C_DateTime::getYearCount (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
@@ -104,7 +104,7 @@ int32_t C_DateTime::getYearCount (void) const {
   return 1900 + time.tm_year ; // (1900, ...)
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 int32_t C_DateTime::getMonthCount (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
@@ -117,7 +117,7 @@ int32_t C_DateTime::getMonthCount (void) const {
   return 1 + time.tm_mon ; // (1, 12)
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 int32_t C_DateTime::getDayOfMonth (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
@@ -130,7 +130,7 @@ int32_t C_DateTime::getDayOfMonth (void) const {
   return time.tm_mday ; // (1, 31)
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 int32_t C_DateTime::getHourOfDay (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
@@ -143,7 +143,7 @@ int32_t C_DateTime::getHourOfDay (void) const {
   return time.tm_hour ; // (0, 23)
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 int32_t C_DateTime::getMinuteOfHour (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
@@ -156,7 +156,7 @@ int32_t C_DateTime::getMinuteOfHour (void) const {
   return time.tm_min ; // (0, 59)
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 int32_t C_DateTime::getSecondOfMinute (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
@@ -169,7 +169,7 @@ int32_t C_DateTime::getSecondOfMinute (void) const {
   return time.tm_sec ; // (0, 59)
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 int32_t C_DateTime::getDayOfWeek (void) const {
   const time_t tt = std::chrono::system_clock::to_time_t (mDate) ;
@@ -182,78 +182,80 @@ int32_t C_DateTime::getDayOfWeek (void) const {
   return time.tm_wday ; // 0 = dimanche
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool C_DateTime::operator == (const C_DateTime & inDate) const {
   return mDate == inDate.mDate ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool C_DateTime::operator != (const C_DateTime & inDate) const {
   return mDate != inDate.mDate ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool C_DateTime::operator > (const C_DateTime & inDate) const {
   return mDate > inDate.mDate ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool C_DateTime::operator < (const C_DateTime & inDate) const {
   return mDate < inDate.mDate ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool C_DateTime::operator >= (const C_DateTime & inDate) const {
   return mDate >= inDate.mDate ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool C_DateTime::operator <= (const C_DateTime & inDate) const {
   return mDate <= inDate.mDate ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
-AC_OutputStream & operator << (AC_OutputStream & inStream,
-                                const C_DateTime & inDate) {
+void operator += (AC_OutputStream & inStream,
+                  const C_DateTime & inDate) {
   const int32_t dayOfMonth = inDate.getDayOfMonth () ;
-  inStream << inDate.getMonthName ()
-           << " "
-           << cStringWithSigned (dayOfMonth) ;
+  inStream += inDate.getMonthName () ;
+  inStream += " " ;
+  inStream += cStringWithSigned (dayOfMonth) ;
   switch (dayOfMonth) {
   case 1 :
-    inStream << "st" ;
+    inStream += "st" ;
     break ;
   case 2 :
-    inStream << "nd" ;
+    inStream += "nd" ;
     break ;
   case 3 :
-    inStream << "rd" ;
+    inStream += "rd" ;
     break ;
   default :
-    inStream << "th" ;
+    inStream += "th" ;
     break ;
   }
-  inStream << ", "
-           << cStringWithSigned (inDate.getYearCount ())
-           << ", at "
-           << cStringWithSigned (inDate.getHourOfDay ()) << "h"
-           << cStringWithSigned (inDate.getMinuteOfHour ()) << "\'"
-           << cStringWithSigned (inDate.getSecondOfMinute ()) << "\"" ;
-  return inStream ;
+  inStream += ", " ;
+  inStream += cStringWithSigned (inDate.getYearCount ()) ;
+  inStream += ", at " ;
+  inStream += cStringWithSigned (inDate.getHourOfDay ()) ;
+  inStream += "h" ;
+  inStream += cStringWithSigned (inDate.getMinuteOfHour ()) ;
+  inStream += "\'" ;
+  inStream += cStringWithSigned (inDate.getSecondOfMinute ()) ;
+  inStream += "\"" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static time_t gCurrentToolModificationTime ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_DateTime::enterCurrentToolModificationTime (const char * inMainRoutineFirstArgument) {
   struct stat fileProperties ;
@@ -263,10 +265,10 @@ void C_DateTime::enterCurrentToolModificationTime (const char * inMainRoutineFir
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_DateTime C_DateTime::currentToolModificationTime (void) {
   return C_DateTime (gCurrentToolModificationTime) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

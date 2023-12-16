@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  'cIssueDescriptor'                                                                           
 //
@@ -16,11 +16,11 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "galgas2/cIssueDescriptor.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cIssueDescriptor::cIssueDescriptor (void) :
 mIsError (false),
@@ -31,7 +31,7 @@ mEndColumn (0),
 mMessage ("") {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cIssueDescriptor::cIssueDescriptor (const bool inIsError,
                                     const C_String & inFile,
@@ -47,7 +47,7 @@ mEndColumn (inEndColumn),
 mMessage (inMessage) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cIssueDescriptor::cIssueDescriptor (const cIssueDescriptor & inSource) :
 mIsError (inSource.mIsError),
@@ -58,7 +58,7 @@ mEndColumn (inSource.mEndColumn),
 mMessage (inSource.mMessage) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cIssueDescriptor & cIssueDescriptor::operator = (const cIssueDescriptor & inSource) {
   if (this != & inSource) {
@@ -72,19 +72,31 @@ cIssueDescriptor & cIssueDescriptor::operator = (const cIssueDescriptor & inSour
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cIssueDescriptor::appendToJSONstring (C_String & ioJSONstring, const bool inIsFirstIssue) const {
   C_String s = mMessage.stringByReplacingStringByString("\n", "\\n") ;
   s = s.stringByReplacingStringByString("\"", "\\\"") ;
-  ioJSONstring << (inIsFirstIssue ? "" : ",\n")
-               << "  { \"ERROR\" : " << (mIsError ? "true" : "false") << ",\n"
-               << "    \"SOURCE\" : \"" << mFile.lastPathComponent () << "\",\n"
-               << "    \"LINE\"  : " << cStringWithSigned (mLine) << ",\n"
-               << "    \"START_COLUMN\"  : " << cStringWithSigned (mStartColumn) << ",\n"
-               << "    \"END_COLUMN\"  : " << cStringWithSigned (mEndColumn) << ",\n"
-               << "    \"MESSAGE\" : \"" << s << "\"\n"
-               << "  }" ;
+  ioJSONstring += (inIsFirstIssue ? "" : ",\n") ;
+  ioJSONstring += "  { \"ERROR\" : " ;
+  ioJSONstring += (mIsError ? "true" : "false") ;
+  ioJSONstring += ",\n" ;
+  ioJSONstring += "    \"SOURCE\" : \"" ;
+  ioJSONstring += mFile.lastPathComponent () ;
+  ioJSONstring += "\",\n" ;
+  ioJSONstring += "    \"LINE\"  : " ;
+  ioJSONstring += cStringWithSigned (mLine) ;
+  ioJSONstring += ",\n" ;
+  ioJSONstring += "    \"START_COLUMN\"  : " ;
+  ioJSONstring += cStringWithSigned (mStartColumn) ;
+  ioJSONstring += ",\n" ;
+  ioJSONstring += "    \"END_COLUMN\"  : " ;
+  ioJSONstring += cStringWithSigned (mEndColumn) ;
+  ioJSONstring += ",\n" ;
+  ioJSONstring += "    \"MESSAGE\" : \"" ;
+  ioJSONstring += s ;
+  ioJSONstring += "\"\n"
+                  "  }" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

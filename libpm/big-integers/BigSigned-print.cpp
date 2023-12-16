@@ -34,7 +34,7 @@ C_String BigSigned::decimalString (void) const {
     return mUnsigned.decimalString () ;
   }else{
     C_String s = "-" ;
-    s << mUnsigned.decimalString () ;
+    s += mUnsigned.decimalString () ;
     return s ;
   }
 }
@@ -46,7 +46,7 @@ C_String BigSigned::spacedDecimalString (const uint32_t inSeparation) const {
     return mUnsigned.spacedDecimalString (inSeparation) ;
   }else{
     C_String s = "-" ;
-    s << mUnsigned.spacedDecimalString (inSeparation) ;
+    s += mUnsigned.spacedDecimalString (inSeparation) ;
     return s ;
   }
 }
@@ -58,7 +58,7 @@ C_String BigSigned::hexString (void) const {
     return mUnsigned.hexString () ;
   }else{
     C_String s = "-" ;
-    s << mUnsigned.hexString () ;
+    s += mUnsigned.hexString () ;
     return s ;
   }
 }
@@ -70,7 +70,7 @@ C_String BigSigned::xString (void) const {
     return mUnsigned.xString () ;
   }else{
     C_String s = "-" ;
-    s << mUnsigned.xString () ;
+    s += mUnsigned.xString () ;
     return s ;
   }
 }

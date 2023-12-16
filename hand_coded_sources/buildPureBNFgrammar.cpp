@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  Routines for building pure BNF grammar (without 'select' and 'repeat')                       
 //
@@ -13,23 +13,23 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "utilities/MF_MemoryControl.h"
 #include "strings/C_HTMLString.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "buildPureBNFgrammar.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 #include "grammarCompilation.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include <stdlib.h>
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void fixNewNonterminalSymbolsForList (const GALGAS_syntaxInstructionListForGrammarAnalysis & inList,
                                              cVocabulary & ioVocabulary,
@@ -49,7 +49,7 @@ static void fixNewNonterminalSymbolsForList (const GALGAS_syntaxInstructionListF
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPtr_repeatInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                                                                          const C_String & inSyntaxComponentName,
@@ -70,7 +70,7 @@ void cPtr_repeatInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabu
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPtr_selectInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                                                                          const C_String & inSyntaxComponentName,
@@ -91,7 +91,7 @@ void cPtr_selectInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabu
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPtr_nonTerminalInstructionForGrammarAnalysis::
 fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
@@ -99,7 +99,7 @@ fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
                           int32_t & /* ioCount */) const {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPtr_terminalInstructionForGrammarAnalysis::
 fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
@@ -107,14 +107,14 @@ fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
                           int32_t & /* ioCount */) const {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPtr_terminalInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
@@ -123,7 +123,7 @@ buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
   ioInstructionsList.appendObject ((int32_t) mProperty_mTerminalSymbolIndex.uintValue ()) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPtr_nonTerminalInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t inTerminalSymbolsCount,
@@ -133,7 +133,7 @@ buildRightDerivation (const int32_t inTerminalSymbolsCount,
   ioInstructionsList.appendObject ((int32_t) (mProperty_mNonterminalSymbolIndex.uintValue () + (uint32_t) inTerminalSymbolsCount)) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPtr_selectInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
@@ -143,7 +143,7 @@ buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
   ioInstructionsList.appendObject ((int32_t) idx) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPtr_repeatInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t inTerminalSymbolsCount,
@@ -166,13 +166,13 @@ buildRightDerivation (const int32_t inTerminalSymbolsCount,
   ioInstructionsList.appendObject ((int32_t) idx) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPtr_selectInstructionForGrammarAnalysis::
 buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
@@ -234,7 +234,7 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPtr_repeatInstructionForGrammarAnalysis::
 buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
@@ -330,7 +330,7 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPtr_terminalInstructionForGrammarAnalysis::
 buildSelectAndRepeatProductions (const int32_t /* inTerminalSymbolsCount */,
@@ -339,7 +339,7 @@ buildSelectAndRepeatProductions (const int32_t /* inTerminalSymbolsCount */,
                                  cPureBNFproductionsList  & /* ioProductions */) const {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPtr_nonTerminalInstructionForGrammarAnalysis::
 buildSelectAndRepeatProductions (const int32_t /* inTerminalSymbolsCount */,
@@ -348,13 +348,13 @@ buildSelectAndRepeatProductions (const int32_t /* inTerminalSymbolsCount */,
                                  cPureBNFproductionsList  & /* ioProductions */) const {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void
 buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
@@ -450,13 +450,13 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
                                        ioVocabulary.getNonTerminalSymbolsCount ()) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void
 printPureBNFgrammarInBNFfile (C_HTMLString & inHTMLfile,
@@ -464,11 +464,11 @@ printPureBNFgrammarInBNFfile (C_HTMLString & inHTMLfile,
                               const cPureBNFproductionsList & inProductions) {
   const int32_t productionsCount = inProductions.mProductionArray.count () ;
   inHTMLfile.outputRawData ("<p><a name=\"pure_bnf\"></a>") ;
-  inHTMLfile << "Listing of the " ;
+  inHTMLfile += "Listing of the " ;
   inHTMLfile.appendSigned (productionsCount) ;
-  inHTMLfile << " BNF production"
-             << ((productionsCount > 1) ? "s" : "")
-             << " :" ;
+  inHTMLfile += " BNF production" ;
+  inHTMLfile += ((productionsCount > 1) ? "s" : "") ;
+  inHTMLfile += " :" ;
   inHTMLfile.outputRawData ("</p>\n<table class=\"result\">") ;
   for (int32_t i=0 ; i<productionsCount ; i++) {
     const cProduction & p = inProductions.mProductionArray (i COMMA_HERE) ;
@@ -478,20 +478,20 @@ printPureBNFgrammarInBNFfile (C_HTMLString & inHTMLfile,
     inHTMLfile.outputRawData ("\">") ;
     inHTMLfile.appendSigned (i) ;
     inHTMLfile.outputRawData ("</a></td><td class=\"result_line\">") ;
-    inHTMLfile << "rule " ;
+    inHTMLfile += "rule " ;
     inHTMLfile.outputRawData ("<code>") ;
     inVocabulary.printInFile (inHTMLfile, p.leftNonTerminalIndex () COMMA_HERE) ;
     inHTMLfile.outputRawData ("</code>") ;
     if (i == (productionsCount - 1)) {
       inHTMLfile.outputRawData ("<br>") ;
-      inHTMLfile << "(added production)" ;
+      inHTMLfile += "(added production)" ;
     }else{
       inHTMLfile.outputRawData ("<br>") ;
-      inHTMLfile << "file '"
-                 << p.sourceFileName ()
-                 << "'" ;
+      inHTMLfile += "file '" ;
+      inHTMLfile += p.sourceFileName () ;
+      inHTMLfile += "'" ;
       inHTMLfile.outputRawData ("<br>") ;
-      inHTMLfile << "line " ;
+      inHTMLfile += "line " ;
       inHTMLfile.appendSigned (p.lineDefinition ()) ;
     }
     inHTMLfile.outputRawData ("</td><td><code>") ;
@@ -507,7 +507,7 @@ printPureBNFgrammarInBNFfile (C_HTMLString & inHTMLfile,
   inHTMLfile.outputRawData ("</table><p><a name=\"vocabulary\"></a></p>"
                             "<table class=\"result\">"
                             "<tr><td class=\"result_title\"colspan=\"2\">") ;
-  inHTMLfile << "Vocabulary" ;
+  inHTMLfile += "Vocabulary" ;
   inHTMLfile.outputRawData ("</td></tr>\n") ;
   for (int32_t s=0 ; s<inVocabulary.getAllSymbolsCount () ; s++) {
     inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
@@ -519,7 +519,7 @@ printPureBNFgrammarInBNFfile (C_HTMLString & inHTMLfile,
     inHTMLfile.outputRawData ("</table>") ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cPureBNFproductionsList::buildProductionsArray (const int32_t inTerminalSymbolsCount,
                                                      const int32_t inNonTerminalSymbolsCount) {
@@ -562,4 +562,4 @@ void cPureBNFproductionsList::buildProductionsArray (const int32_t inTerminalSym
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

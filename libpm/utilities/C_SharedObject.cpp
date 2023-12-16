@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  C_SharedObject : Base class for GALGAS object handling                                       
 //
@@ -16,20 +16,20 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "utilities/C_SharedObject.h"
 #include "utilities/MF_MemoryControl.h"
 #include "streams/C_ConsoleOut.h"
 #include "strings/C_String.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Validity Checking (only in Debug Mode)
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 //--- List of existing objects
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -39,7 +39,7 @@
   static C_SharedObject * gLastObject ;
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_SharedObject::C_SharedObject (LOCATION_ARGS) :
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -66,7 +66,7 @@ mRetainCount (1) {
   #endif
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_SharedObject::~ C_SharedObject (void) {
 //--- Remove object from instance list
@@ -88,7 +88,7 @@ C_SharedObject::~ C_SharedObject (void) {
   #endif
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_SharedObject::retain (const C_SharedObject * inObject COMMA_LOCATION_ARGS) {
   if (inObject != nullptr) {
@@ -97,7 +97,7 @@ void C_SharedObject::retain (const C_SharedObject * inObject COMMA_LOCATION_ARGS
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_SharedObject::release (const C_SharedObject * inObject COMMA_LOCATION_ARGS) {
   if (inObject != nullptr) {
@@ -110,7 +110,7 @@ void C_SharedObject::release (const C_SharedObject * inObject COMMA_LOCATION_ARG
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_SharedObject::retainRelease (const C_SharedObject * inObjectToRetain,
                                     const C_SharedObject * inObjectToRelease
@@ -119,35 +119,35 @@ void C_SharedObject::retainRelease (const C_SharedObject * inObjectToRetain,
   release (inObjectToRelease COMMA_THERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Collect unused Objects
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void C_SharedObject::checkAllObjectsHaveBeenReleased (void) {
     if (gObjectCurrentCount != 0) {
-      co << "Warning: "
-         << cStringWithUnsigned (gObjectCurrentCount)
-         << " object"
-         << ((gObjectCurrentCount > 1) ? "s have" : " has")
-         << " not been released:\n";
+      co += "Warning: " ;
+      co += cStringWithUnsigned (gObjectCurrentCount) ;
+      co += " object" ;
+      co += ((gObjectCurrentCount > 1) ? "s have" : " has") ;
+      co += " not been released:\n" ;
       C_SharedObject * p = gFirstObject ;
       while (p != nullptr) {
-        co << "- object declared in '"
-           << p->mCreationFile
-           << "', line "
-           << cStringWithSigned (p->mCreationLine)
-           << " (retain count: "
-           << cStringWithSigned (p->mRetainCount)
-           << ")\n" ;
+        co += "- object declared in '" ;
+        co += p->mCreationFile ;
+        co += "', line " ;
+        co += cStringWithSigned (p->mCreationLine) ;
+        co += " (retain count: " ;
+        co += cStringWithSigned (p->mRetainCount) ;
+        co += ")\n" ;
         p = p->mPtrToNextObject ;
       }
     }
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

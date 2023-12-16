@@ -55,7 +55,7 @@ BigUnsignedQuotientRemainder BigUnsigned::divideByBigUnsigned (const BigUnsigned
     MF_Assert (s < ChunkUIntBitCount, "Error (0x%llx -> %llu)", int64_t (inDivisor.mSharedArray.lastChunk (HERE)), int32_t (s)) ;
     const BigUnsigned divisor = inDivisor << s ;
     BigUnsigned remainder = *this << s ;
-//    std::cout << "§shift " << s << "\n" ;
+//    std::cout << "§shift " << s += "\n" ;
 //    remainder.printHex ("§Dividend shifted") ;
 //    divisor.printHex ("§Divisor shifted ") ;
     remainder.mSharedArray.insulateWithChunkCapacity (remainder.chunkCount () + 1) ;

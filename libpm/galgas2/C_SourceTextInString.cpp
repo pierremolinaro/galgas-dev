@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  'C_SourceTextInString'
 //
@@ -16,18 +16,18 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "galgas2/C_SourceTextInString.h"
 #include "galgas2/C_LocationInSource.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_SourceTextInString::C_SourceTextInString (void) :
 mObject (nullptr) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_SourceTextInString::C_SourceTextInString (const C_String & inSourceString,
                                             const C_String & inFilePath,
@@ -36,20 +36,20 @@ mObject (nullptr) {
   macroMyNew (mObject, cSourceTextInString (inSourceString, inFilePath, inShowSourceOnDetailledErrorMessage COMMA_HERE)) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_SourceTextInString::~ C_SourceTextInString (void) {
   macroDetachSharedObject (mObject) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_SourceTextInString::C_SourceTextInString (const C_SourceTextInString & inSource) :
 mObject (nullptr) {
   macroAssignSharedObject (mObject, inSource.mObject) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_SourceTextInString & C_SourceTextInString::operator = (const C_SourceTextInString & inSource) {
   if (this != & inSource) {
@@ -58,7 +58,7 @@ C_SourceTextInString & C_SourceTextInString::operator = (const C_SourceTextInStr
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_String C_SourceTextInString::getLineForLocation (const C_LocationInSource & inLocation) const {
   C_String errorLine ;
@@ -83,16 +83,16 @@ C_String C_SourceTextInString::getLineForLocation (const C_LocationInSource & in
   return errorLine ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_SourceTextInString::appendSourceContents (C_String & ioMessage) const {
   if ((nullptr != mObject) && mObject->mShowSourceOnDetailledErrorMessage) {
     const bool insertCarriageReturn = (mObject->mSourceString.length () > 0) && (UNICODE_VALUE (mObject->mSourceString.lastCharacter (HERE)) != '\n')  ;
-    ioMessage << "-- SOURCE STRING (--verbose option) --\n"
-              << mObject->mSourceString
-              << (insertCarriageReturn ? "\n" : "")
-              << "-------------------------------------------------------\n" ;
+    ioMessage += "-- SOURCE STRING (--verbose option) --\n" ;
+    ioMessage += mObject->mSourceString ;
+    ioMessage += (insertCarriageReturn ? "\n" : "") ;
+    ioMessage += "-------------------------------------------------------\n" ;
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

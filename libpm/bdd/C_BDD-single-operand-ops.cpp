@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  BDD package (implementation of ROBDD)
 //
@@ -16,30 +16,30 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "bdd/C_BDD.h"
 #include "utilities/F_GetPrime.h"
 #include "bdd/C_BDD-node.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Cache for Single Operand Operations
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static const int32_t kSingleOperandOperationCacheInitialSize = 131101 ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class tStructSingleOperandOperationCacheEntry {
   public: uint32_t mOperand ;
   public: uint32_t mResult ;
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static tStructSingleOperandOperationCacheEntry * gSingleOperandOperationCacheMap ;
 static uint32_t gSingleOperandOperationMapSize ;
@@ -48,13 +48,13 @@ static uint64_t gSingleOperandOperationCacheTrivialOperationCount ;
 static uint32_t gSingleOperandOperationCacheMaxPowerOfTwoSize = 31 ;
 static bool gSingleOperandOperationCacheExpandable = true ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 uint32_t singleOperandOperationCacheMemoryUsage (void) {
   return (gSingleOperandOperationMapSize * (uint32_t) sizeof (uint64_t)) / 1000000 ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void releaseSingleOperandOperationCache (void) {
   gSingleOperandOperationCacheMapUsedEntryCount = 0 ;
@@ -62,7 +62,7 @@ void releaseSingleOperandOperationCache (void) {
   gSingleOperandOperationCacheExpandable = true ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void clearSingleOperandOperationCache (void) {
   gSingleOperandOperationCacheMapUsedEntryCount = 0 ;
@@ -82,7 +82,7 @@ static void clearSingleOperandOperationCache (void) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void reallocSingleOperandOperationCache (const uint32_t inNewSize) {
   gSingleOperandOperationCacheMapUsedEntryCount = 0 ;
@@ -131,7 +131,7 @@ static void reallocSingleOperandOperationCache (const uint32_t inNewSize) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static bool searchInSingleOperandOperationCache (const uint32_t inOperand,
                                                  uint32_t & outResult) {
@@ -146,7 +146,7 @@ static bool searchInSingleOperandOperationCache (const uint32_t inOperand,
   return found ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void enterInSingleOperandOperationCache (const uint32_t inOperand,
                                                 const uint32_t inResult) {
@@ -163,7 +163,7 @@ static void enterInSingleOperandOperationCache (const uint32_t inOperand,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_BDD::setSingleOperandOperationCacheMaxSize (const uint32_t inPowerOfTwo) {
   gSingleOperandOperationCacheMaxPowerOfTwoSize = inPowerOfTwo ;
@@ -172,13 +172,13 @@ void C_BDD::setSingleOperandOperationCacheMaxSize (const uint32_t inPowerOfTwo) 
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Forall Operation
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static uint32_t
 internalForAllOnBitRange (const uint32_t inValue,
@@ -210,7 +210,7 @@ internalForAllOnBitRange (const uint32_t inValue,
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static uint32_t
 operationQuelqueSoitSurBitSupNumeroInterne (const uint32_t inValue,
@@ -239,27 +239,27 @@ operationQuelqueSoitSurBitSupNumeroInterne (const uint32_t inValue,
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD C_BDD::forallOnBitNumber (const uint32_t numeroBit) const {
   clearSingleOperandOperationCache () ;
   return C_BDD (internalForAllOnBitRange (mBDDvalue, numeroBit, 1)) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD C_BDD::forallOnBitsAfterNumber (const uint32_t numeroBit) const {
   clearSingleOperandOperationCache () ;
   return C_BDD (operationQuelqueSoitSurBitSupNumeroInterne (mBDDvalue, numeroBit)) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Exist Operation
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD C_BDD::existsOnBitNumber (const uint32_t numeroBit) const {
   clearSingleOperandOperationCache () ;
@@ -267,7 +267,7 @@ C_BDD C_BDD::existsOnBitNumber (const uint32_t numeroBit) const {
   return C_BDD (internalForAllOnBitRange (mBDDvalue ^ 1, numeroBit, 1) ^ 1) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD C_BDD::
 existsOnBitRange (const uint32_t inFirstBit,
@@ -276,7 +276,7 @@ existsOnBitRange (const uint32_t inFirstBit,
   return C_BDD (internalForAllOnBitRange (mBDDvalue ^ 1, inFirstBit, inBitCount) ^ 1) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD C_BDD::existsOnBitsAfterNumber (const uint32_t numeroBit) const {
 // ilExiste x : F <=> non (quelquesoit x : non (F))
@@ -284,13 +284,13 @@ C_BDD C_BDD::existsOnBitsAfterNumber (const uint32_t numeroBit) const {
   return C_BDD (operationQuelqueSoitSurBitSupNumeroInterne (mBDDvalue ^ 1, numeroBit) ^ 1) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Substitute variables
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static uint32_t internalRecursiveSubstitution (const uint32_t inValue,
                                                const uint32_t vecteurSubstitutionBool [],
@@ -320,7 +320,7 @@ static uint32_t internalRecursiveSubstitution (const uint32_t inValue,
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD C_BDD::substitution (const uint32_t inSubstitutionArray [],
                            const uint32_t inBDDvariablesCount
@@ -338,13 +338,13 @@ C_BDD C_BDD::substitution (const uint32_t inSubstitutionArray [],
   return C_BDD (estIdentite ? mBDDvalue : internalRecursiveSubstitution (mBDDvalue, inSubstitutionArray, noChangeIndex, inBDDvariablesCount COMMA_THERE)) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Translate BDD variables
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD C_BDD::translate (const uint32_t inBDDvariablesCount,
                         const uint32_t inTranslation) const {
@@ -358,13 +358,13 @@ C_BDD C_BDD::translate (const uint32_t inBDDvariablesCount,
   return C_BDD (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Exchange Variables
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static uint32_t
 internalExchangeVariables (const uint32_t inValue,
@@ -399,7 +399,7 @@ internalExchangeVariables (const uint32_t inValue,
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD C_BDD::exchangeVariables (const uint32_t var1, const uint32_t var2) const {
   C_BDD result (mBDDvalue) ;
@@ -411,13 +411,13 @@ C_BDD C_BDD::exchangeVariables (const uint32_t var1, const uint32_t var2) const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Roll Down
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static uint32_t
 internalRollDown (const uint32_t inValue,
@@ -447,7 +447,7 @@ internalRollDown (const uint32_t inValue,
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD C_BDD::rollDownVariables (const uint32_t var1, const uint32_t var2) const {
   C_BDD result (mBDDvalue) ;
@@ -457,13 +457,13 @@ C_BDD C_BDD::rollDownVariables (const uint32_t var1, const uint32_t var2) const 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Roll Up
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static uint32_t
 internalRollUp (const uint32_t inValue,
@@ -493,7 +493,7 @@ internalRollUp (const uint32_t inValue,
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD C_BDD::
 rollUpVariables (const uint32_t var1, const uint32_t var2) const {
@@ -504,13 +504,13 @@ rollUpVariables (const uint32_t var1, const uint32_t var2) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Left shift
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static uint32_t internalLeftShift (const uint32_t inValue,
                                    const uint32_t inLeftShiftCount) {
@@ -529,7 +529,7 @@ static uint32_t internalLeftShift (const uint32_t inValue,
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD C_BDD::bddByLeftShifting (const uint32_t inLeftShiftCount) const {
   clearSingleOperandOperationCache () ;
@@ -538,13 +538,13 @@ C_BDD C_BDD::bddByLeftShifting (const uint32_t inLeftShiftCount) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Right shift
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static uint32_t internalRightShift (const uint32_t inValue,
                                     const uint32_t inRightShiftCount) {
@@ -566,7 +566,7 @@ static uint32_t internalRightShift (const uint32_t inValue,
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD C_BDD::bddByRightShifting (const uint32_t inRightShiftCount) const {
   clearSingleOperandOperationCache () ;
@@ -575,4 +575,4 @@ C_BDD C_BDD::bddByRightShifting (const uint32_t inRightShiftCount) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

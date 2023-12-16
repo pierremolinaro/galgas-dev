@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  GALGAS_stringset
 //
@@ -16,16 +16,16 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/cCollectionElement.h"
 #include "galgas2/C_Compiler.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   cCollectionElement_stringset
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_stringset : public cCollectionElement {
 //--- Private member
@@ -53,7 +53,7 @@ class cCollectionElement_stringset : public cCollectionElement {
  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cCollectionElement_stringset::cCollectionElement_stringset (const GALGAS_string & inKey
                                                             COMMA_LOCATION_ARGS) :
@@ -61,13 +61,13 @@ cCollectionElement (THERE),
 mProperty_key (inKey) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_stringset::isValid (void) const {
   return mProperty_key.isValid () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult cCollectionElement_stringset::compare (const cCollectionElement * inOperand) const {
   const cCollectionElement_stringset * operand = (const cCollectionElement_stringset *) inOperand ;
@@ -75,7 +75,7 @@ typeComparisonResult cCollectionElement_stringset::compare (const cCollectionEle
   return mProperty_key.objectCompare (operand->mProperty_key) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_stringset::copy (void) {
   cCollectionElement_stringset * p = nullptr ;
@@ -84,17 +84,17 @@ cCollectionElement * cCollectionElement_stringset::copy (void) {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cCollectionElement_stringset::description (C_String & ioString, const int32_t inIndentation) const {
   mProperty_key.description (ioString, inIndentation) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  c S t r i n g s e t N o d e
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class cStringsetNode {
   public: cStringsetNode * mInfPtr ;
@@ -114,7 +114,7 @@ class cStringsetNode {
   public: virtual ~ cStringsetNode (void) ;
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cStringsetNode::cStringsetNode (const C_String & inString) :
 mInfPtr (nullptr),
@@ -123,7 +123,7 @@ mBalance (0),
 mKey (inString) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cStringsetNode::cStringsetNode (const cStringsetNode * inNode) :
 mInfPtr (nullptr),
@@ -138,20 +138,20 @@ mKey (inNode->mKey) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cStringsetNode::~cStringsetNode (void) {
   macroMyDelete (mInfPtr) ;
   macroMyDelete (mSupPtr) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Insertion Implementation
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void rotateLeft (cStringsetNode * & ioRootPtr) {
   cStringsetNode * ptr = ioRootPtr->mSupPtr ;
@@ -192,7 +192,7 @@ static void rotateRight (cStringsetNode * & ioRootPtr) {
   ioRootPtr = ptr ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void recursiveAddEntry (cStringsetNode * & ioRootPtr,
                                const C_String & inKey,
@@ -240,13 +240,13 @@ static void recursiveAddEntry (cStringsetNode * & ioRootPtr,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Remove Implementation
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void supBranchDecreased (cStringsetNode * & ioRoot,
                                 bool & ioBranchHasBeenRemoved) {
@@ -275,7 +275,7 @@ static void supBranchDecreased (cStringsetNode * & ioRoot,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void infBranchDecreased (cStringsetNode * & ioRoot,
                                 bool & ioBranchHasBeenRemoved) {
@@ -304,7 +304,7 @@ static void infBranchDecreased (cStringsetNode * & ioRoot,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void getPreviousElement (cStringsetNode * & ioRoot,
                                 cStringsetNode * & ioElement,
@@ -321,7 +321,7 @@ static void getPreviousElement (cStringsetNode * & ioRoot,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void internalRemoveRecursively (cStringsetNode * & ioRoot,
                                        const C_String & inKeyToRemove,
@@ -367,17 +367,17 @@ static void internalRemoveRecursively (cStringsetNode * & ioRoot,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark cSharedStringsetRoot
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  cSharedStringsetRoot
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class cSharedStringsetRoot : public C_SharedObject {
 //--- Private data members
@@ -432,7 +432,7 @@ class cSharedStringsetRoot : public C_SharedObject {
   public: void description (C_String & ioString) const ;
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cSharedStringsetRoot::cSharedStringsetRoot (LOCATION_ARGS) :
 C_SharedObject (THERE),
@@ -440,13 +440,13 @@ mRoot (nullptr),
 mEntryCount (0) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cSharedStringsetRoot::~cSharedStringsetRoot (void) {
   macroMyDelete (mRoot) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cSharedStringsetRoot::countStringSetNodes (const cStringsetNode * inNode,
@@ -459,7 +459,7 @@ cSharedStringsetRoot::~cSharedStringsetRoot (void) {
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cSharedStringsetRoot::checkStringset (LOCATION_ARGS) const {
@@ -469,30 +469,32 @@ cSharedStringsetRoot::~cSharedStringsetRoot (void) {
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cSharedStringsetRoot::displayEntries (const cStringsetNode * inNode,
                                            C_String & ioString) const {
   if (inNode != nullptr) {
     displayEntries (inNode->mInfPtr, ioString) ;
-    ioString << " '" << inNode->mKey << "'" ;
+    ioString += " '" ;
+    ioString += inNode->mKey ;
+    ioString += "'" ;
     displayEntries (inNode->mSupPtr, ioString) ;
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cSharedStringsetRoot::description (C_String & ioString) const {
-  ioString << cStringWithUnsigned (mEntryCount) ;
+  ioString += cStringWithUnsigned (mEntryCount) ;
   if (mEntryCount > 1) {
-    ioString << " entries" ;
+    ioString += " entries" ;
   }else{
-    ioString << " entry" ;
+    ioString += " entry" ;
   }
   displayEntries (mRoot, ioString) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cSharedStringsetRoot::addKey (const C_String & inKey) {
   macroUniqueSharedObject (this) ;
@@ -504,14 +506,14 @@ void cSharedStringsetRoot::addKey (const C_String & inKey) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_String cSharedStringsetRoot::rootKey (void) const {
   macroValidPointer (mRoot) ;
   return mRoot->mKey ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cSharedStringsetRoot::copyFrom (const cSharedStringsetRoot * inSharedRootToCopy) {
   macroValidSharedObject (inSharedRootToCopy, cSharedStringsetRoot) ;
@@ -521,7 +523,7 @@ void cSharedStringsetRoot::copyFrom (const cSharedStringsetRoot * inSharedRootTo
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cSharedStringsetRoot::removeKey (const C_String & inKey) {
   macroUniqueSharedObject (this) ;
@@ -533,7 +535,7 @@ void cSharedStringsetRoot::removeKey (const C_String & inKey) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void recursiveBuildKeyList (const cStringsetNode * inNode,
                                    TC_UniqueArray <C_String> & ioList) {
@@ -544,13 +546,13 @@ static void recursiveBuildKeyList (const cStringsetNode * inNode,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cSharedStringsetRoot::buildOrderedKeyList (TC_UniqueArray <C_String> & ioList) const {
   recursiveBuildKeyList (mRoot, ioList) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool cSharedStringsetRoot::hasKey (const C_String & inKey) const {
   bool found = false ;
@@ -568,7 +570,7 @@ bool cSharedStringsetRoot::hasKey (const C_String & inKey) const {
   return found ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void recursiveAddToStringList (GALGAS_stringlist & ioResult,
                                       const cStringsetNode * inNode) {
@@ -579,42 +581,42 @@ static void recursiveAddToStringList (GALGAS_stringlist & ioResult,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cSharedStringsetRoot::addToStringList (GALGAS_stringlist & ioResult) const {
   recursiveAddToStringList (ioResult, mRoot) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark GALGAS_stringset
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  G A L G A S _ s t r i n g s e t
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_stringset::GALGAS_stringset (void) :
 AC_GALGAS_root (),
 mSharedRoot (nullptr) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_stringset::~GALGAS_stringset (void) {
   macroDetachSharedObject (mSharedRoot) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_stringset::drop (void) {
   macroDetachSharedObject (mSharedRoot) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_stringset::GALGAS_stringset (const GALGAS_stringset & inSource) :
 AC_GALGAS_root (),
@@ -622,14 +624,14 @@ mSharedRoot (nullptr) {
   macroAssignSharedObject (mSharedRoot, inSource.mSharedRoot) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_stringset & GALGAS_stringset::operator = (const GALGAS_stringset & inSource) {
   macroAssignSharedObject (mSharedRoot, inSource.mSharedRoot) ;
   return * this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void GALGAS_stringset::checkStringset (LOCATION_ARGS) const {
@@ -639,20 +641,20 @@ GALGAS_stringset & GALGAS_stringset::operator = (const GALGAS_stringset & inSour
   }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_stringset::description (C_String & ioString,
                                     const int32_t /* inIndentation */) const {
-  ioString << "<@stringset:" ;
+  ioString += "<@stringset:" ;
   if (nullptr == mSharedRoot) {
-    ioString << "not built" ;
+    ioString += "not built" ;
   }else{
     mSharedRoot->description (ioString) ;
   }
-  ioString << ">" ;
+  ioString += ">" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_stringset::insulate (LOCATION_ARGS) {
   if ((nullptr != mSharedRoot) && !mSharedRoot->isUniquelyReferenced ()) {
@@ -667,7 +669,7 @@ void GALGAS_stringset::insulate (LOCATION_ARGS) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_stringset::setter_insert (const GALGAS_string inKey,
                                       C_Compiler * /* inCompiler */
@@ -687,7 +689,7 @@ void GALGAS_stringset::setter_insert (const GALGAS_string inKey,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_stringset::addAssign_operation (const GALGAS_string & inKey
                                             COMMA_LOCATION_ARGS) {
@@ -706,7 +708,7 @@ void GALGAS_stringset::addAssign_operation (const GALGAS_string & inKey
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_stringset::setter_removeKey (GALGAS_string inKey
                                            COMMA_LOCATION_ARGS) {
@@ -727,17 +729,17 @@ void GALGAS_stringset::setter_removeKey (GALGAS_string inKey
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark stringset operations
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    I N T E R S E C T I O N
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_stringset GALGAS_stringset::operator_and (const GALGAS_stringset & inOperand2
                                                  COMMA_LOCATION_ARGS) const {
@@ -779,11 +781,11 @@ GALGAS_stringset GALGAS_stringset::operator_and (const GALGAS_stringset & inOper
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    U N I O N
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_stringset GALGAS_stringset::operator_or (const GALGAS_stringset & inOperand2
                                                 COMMA_LOCATION_ARGS) const {
@@ -809,7 +811,7 @@ GALGAS_stringset GALGAS_stringset::operator_or (const GALGAS_stringset & inOpera
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_stringset::plusAssign_operation (const GALGAS_stringset inOperand2,
                                              C_Compiler *
@@ -835,11 +837,11 @@ void GALGAS_stringset::plusAssign_operation (const GALGAS_stringset inOperand2,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    D I F F E R E N C E
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_stringset GALGAS_stringset::substract_operation (const GALGAS_stringset & inOperand2,
                                                         C_Compiler * /* inCompiler */
@@ -866,13 +868,13 @@ GALGAS_stringset GALGAS_stringset::substract_operation (const GALGAS_stringset &
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Readers
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_stringlist GALGAS_stringset::getter_stringList (LOCATION_ARGS) const {
   GALGAS_stringlist result ;
@@ -883,7 +885,7 @@ GALGAS_stringlist GALGAS_stringset::getter_stringList (LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_stringset::getter_hasKey (const GALGAS_string & inKey
                                              COMMA_UNUSED_LOCATION_ARGS) const {
@@ -895,7 +897,7 @@ GALGAS_bool GALGAS_stringset::getter_hasKey (const GALGAS_string & inKey
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_uint GALGAS_stringset::getter_count (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
@@ -905,7 +907,7 @@ GALGAS_uint GALGAS_stringset::getter_count (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_stringset::getter_anyString (C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
@@ -921,17 +923,17 @@ GALGAS_string GALGAS_stringset::getter_anyString (C_Compiler * inCompiler
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark stringset cEnumerator
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //                 'GALGAS_stringset::cEnumerator' class
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void enterAscendingEnumeration (const cStringsetNode * inNode,
                                        capCollectionElementArray & ioResult) {
@@ -948,7 +950,7 @@ static void enterAscendingEnumeration (const cStringsetNode * inNode,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_stringset::populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const {
   if (isValid ()) {
@@ -962,7 +964,7 @@ void GALGAS_stringset::populateEnumerationArray (capCollectionElementArray & inE
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cEnumerator_stringset::cEnumerator_stringset (const GALGAS_stringset & inEnumeratedObject,
                                               const typeEnumerationOrder inOrder) :
@@ -970,7 +972,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
   const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
@@ -978,7 +980,7 @@ GALGAS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
   return p->attribute_key () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
   const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
@@ -986,11 +988,11 @@ GALGAS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
   return p->attribute_key () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    C O M P A R I S O N
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_stringset::objectCompare (const GALGAS_stringset & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -1023,13 +1025,13 @@ typeComparisonResult GALGAS_stringset::objectCompare (const GALGAS_stringset & i
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Constructors
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_stringset GALGAS_stringset::constructor_emptySet (LOCATION_ARGS) {
   GALGAS_stringset result ;
@@ -1037,7 +1039,7 @@ GALGAS_stringset GALGAS_stringset::constructor_emptySet (LOCATION_ARGS) {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_stringset GALGAS_stringset::constructor_setWithString (const GALGAS_string & inString
                                                               COMMA_LOCATION_ARGS) {
@@ -1052,7 +1054,7 @@ GALGAS_stringset GALGAS_stringset::constructor_setWithString (const GALGAS_strin
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_stringset GALGAS_stringset::constructor_setWithStringList (const GALGAS_stringlist & inStringList
                                                                   COMMA_LOCATION_ARGS) {
@@ -1071,7 +1073,7 @@ GALGAS_stringset GALGAS_stringset::constructor_setWithStringList (const GALGAS_s
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_stringset GALGAS_stringset::constructor_setWithLStringList (const GALGAS_lstringlist & inStringList
                                                                    COMMA_LOCATION_ARGS) {
@@ -1090,5 +1092,5 @@ GALGAS_stringset GALGAS_stringset::constructor_setWithLStringList (const GALGAS_
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 

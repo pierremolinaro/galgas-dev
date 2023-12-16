@@ -1,18 +1,18 @@
 #pragma once
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "all-declarations-26.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'analyzeErrorOrWarningInstruction'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_analyzeErrorOrWarningInstruction (const class GALGAS_lstring constinArgument0,
                                                class GALGAS_usefulEntitiesGraph & ioArgument1,
@@ -30,11 +30,11 @@ void routine_analyzeErrorOrWarningInstruction (const class GALGAS_lstring consti
                                                class C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'analyzeOptionalMethodCall'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_analyzeOptionalMethodCall (const class GALGAS_lstring constinArgument0,
                                         class GALGAS_usefulEntitiesGraph & ioArgument1,
@@ -48,11 +48,11 @@ void routine_analyzeOptionalMethodCall (const class GALGAS_lstring constinArgume
                                         class C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'transformInstructionList'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_transformInstructionList (const class GALGAS_syntaxInstructionList constinArgument0,
                                        class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioArgument1,
@@ -62,11 +62,11 @@ void routine_transformInstructionList (const class GALGAS_syntaxInstructionList 
                                        class C_Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Function 'compareSyntaxSignature'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class GALGAS_bool function_compareSyntaxSignature (const class GALGAS_semanticInstructionListForGeneration & constinArgument0,
                                                    const class GALGAS_semanticInstructionListForGeneration & constinArgument1,

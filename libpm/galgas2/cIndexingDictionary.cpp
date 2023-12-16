@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  'cIndexingDictionary': dictionary for indexing soures
 //
@@ -16,23 +16,23 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "galgas2/cIndexingDictionary.h"
 #include "strings/C_String.h"
 #include "files/C_FileManager.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Entry Dictionary
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  c I n d e x E n t r y N o d e
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class cIndexEntryNode {
   public: cIndexEntryNode * mInfPtr ;
@@ -52,7 +52,7 @@ class cIndexEntryNode {
   private: cIndexEntryNode & operator = (const cIndexEntryNode &) ;
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cIndexEntryNode::cIndexEntryNode (const C_String & inKey) :
 mInfPtr (nullptr),
@@ -62,14 +62,14 @@ mKey (inKey),
 mDescriptorArray () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cIndexEntryNode::~ cIndexEntryNode (void) {
   macroMyDelete (mInfPtr) ;
   macroMyDelete (mSupPtr) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void rotateLeft (cIndexEntryNode * & ioRootPtr) {
   cIndexEntryNode * b = ioRootPtr->mSupPtr ;
@@ -110,7 +110,7 @@ static void rotateRight (cIndexEntryNode * & ioRootPtr) {
   ioRootPtr = b ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cIndexEntryNode * cIndexingDictionary::findOrAddEntry (cIndexEntryNode * & ioRootPtr,
                                                        const C_String & inKey,
@@ -159,29 +159,29 @@ cIndexEntryNode * cIndexingDictionary::findOrAddEntry (cIndexEntryNode * & ioRoo
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark cIndexingDictionary
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //                 cIndexingDictionary
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cIndexingDictionary::cIndexingDictionary (void) :
 mEntryRoot (nullptr) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cIndexingDictionary::~ cIndexingDictionary (void) {
   macroMyDelete (mEntryRoot) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cIndexingDictionary::addIndexedKey (const uint32_t inIndexingKind,
                                          const C_String & inIndexedKey,
@@ -198,15 +198,15 @@ void cIndexingDictionary::addIndexedKey (const uint32_t inIndexingKind,
   cIndexEntryNode * entryNode = findOrAddEntry (mEntryRoot, inIndexedKey, extension) ;
 //--- Register index
   C_String entryDescriptor ;
-  entryDescriptor << cStringWithUnsigned (inIndexingKind) ;
-  entryDescriptor << ":" ;
-  entryDescriptor << cStringWithUnsigned (inTokenLineInSource) ;
-  entryDescriptor << ":" ;
-  entryDescriptor << cStringWithUnsigned (inTokenLocationInSource) ;
-  entryDescriptor << ":" ;
-  entryDescriptor << cStringWithUnsigned (inTokenLengthInSource) ;
-  entryDescriptor << ":" ;
-  entryDescriptor << inSourceFilePath ;
+  entryDescriptor += cStringWithUnsigned (inIndexingKind) ;
+  entryDescriptor += ":" ;
+  entryDescriptor += cStringWithUnsigned (inTokenLineInSource) ;
+  entryDescriptor += ":" ;
+  entryDescriptor += cStringWithUnsigned (inTokenLocationInSource) ;
+  entryDescriptor += ":" ;
+  entryDescriptor += cStringWithUnsigned (inTokenLengthInSource) ;
+  entryDescriptor += ":" ;
+  entryDescriptor += inSourceFilePath ;
   entryNode->mDescriptorArray.appendObject (entryDescriptor) ;
 }
 
@@ -216,29 +216,33 @@ static void enumerateEntries (const cIndexEntryNode * inNode,
                               C_String & ioContents) {
   if (nullptr != inNode) {
     enumerateEntries (inNode->mInfPtr, ioContents) ;
-    ioContents << "<key>" << inNode->mKey.HTMLRepresentation () << "</key>" ;
-    ioContents << "<array>" ;
+    ioContents += "<key>" ;
+    ioContents += inNode->mKey.HTMLRepresentation () ;
+    ioContents += "</key>" ;
+    ioContents += "<array>" ;
     for (int32_t i=0 ; i<inNode->mDescriptorArray.count () ; i++) {
-      ioContents << "<string>" << inNode->mDescriptorArray (i COMMA_HERE).HTMLRepresentation () << "</string>" ;
+      ioContents += "<string>" ;
+      ioContents += inNode->mDescriptorArray (i COMMA_HERE).HTMLRepresentation () ;
+      ioContents += "</string>" ;
     }
-    ioContents << "</array>" ;
+    ioContents += "</array>" ;
     enumerateEntries (inNode->mSupPtr, ioContents) ;
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cIndexingDictionary::generateIndexFile (const C_String & inOutputIndexFilePath) const {
   C_String contents = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
                       "<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">"
                       "<plist version=\"1.0\">" ;
 //--- Write entries as dictionary
-  contents << "<dict>" ;
+  contents += "<dict>" ;
   enumerateEntries (mEntryRoot, contents) ;
-  contents << "</dict>" ;
+  contents += "</dict>" ;
 //--- End of file
-  contents << "</plist>" ;
+  contents += "</plist>" ;
   C_FileManager::writeStringToFile (contents, inOutputIndexFilePath) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

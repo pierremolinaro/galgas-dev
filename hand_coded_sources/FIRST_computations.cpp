@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  Perform FIRST computations for pure BNF grammar.                                             
 //
@@ -13,18 +13,18 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "strings/C_HTMLString.h"
 #include "bdd/C_Relation.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "FIRST_computations.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static C_Relation
 computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
@@ -66,7 +66,7 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
   return FIRST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static bool
 displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
@@ -102,12 +102,12 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
   const uint64_t m = FIRST_with_empty_relation.value64Count() ;
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("<p>") ;
-    ioHTMLFileContents << "Calculus completed in "
-                << cStringWithSigned (inIterationsCount)
-                << " iterations, "
-                << cStringWithUnsigned (m)
-                << " values ;\n"
-                   "'$$' means the nonterminal can be derived to empty string (see step 4).\n" ;
+    ioHTMLFileContents += "Calculus completed in " ;
+    ioHTMLFileContents += cStringWithSigned (inIterationsCount) ;
+    ioHTMLFileContents += " iterations, " ;
+    ioHTMLFileContents += cStringWithUnsigned (m) ;
+    ioHTMLFileContents += " values ;\n"
+                          "'$$' means the nonterminal can be derived to empty string (see step 4).\n" ;
     ioHTMLFileContents.outputRawData ("</p>") ;
     ioHTMLFileContents.outputRawData ("<table class=\"result\">") ;
     for (int32_t symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
@@ -116,7 +116,7 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
       ioHTMLFileContents.outputRawData ("</code></td><td><code>") ;
       const int32_t length = outFIRSTarray (symbol COMMA_HERE).count () ;
       for (int32_t e=0 ; e<length ; e++) {
-        ioHTMLFileContents << " " ;
+        ioHTMLFileContents += " " ;
         inVocabulary.printInFile (ioHTMLFileContents, (int32_t) outFIRSTarray (symbol COMMA_HERE) (e COMMA_HERE) COMMA_HERE) ;
       }
       ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
@@ -139,7 +139,7 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
 //--- Display nonterminal symbols in error
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("<p>") ;
-    ioHTMLFileContents << "Every useful nonterminal should"
+    ioHTMLFileContents += "Every useful nonterminal should"
                    " either have a non empty FIRST,"
                    " either be derived to empty string,"
                    " either both."
@@ -148,22 +148,22 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
     ioHTMLFileContents.outputRawData ("<p>") ;
     if (ntInErrorCount == 0) {
       ioHTMLFileContents.outputRawData ("<span class=\"success\">") ;
-      ioHTMLFileContents << "All FIRST are correct.\n\n" ;
+      ioHTMLFileContents += "All FIRST are correct.\n\n" ;
       ioHTMLFileContents.outputRawData ("</span>") ;
     }else{
       ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
-      ioHTMLFileContents << "Error : "
-                  << cStringWithUnsigned (ntInErrorCount)
-                  << " nonterminal symbol"
-                  << ((ntInErrorCount>1) ? " has" : "s have")
-                  << " an empty FIRST :" ;
+      ioHTMLFileContents += "Error : " ;
+      ioHTMLFileContents += cStringWithUnsigned (ntInErrorCount) ;
+      ioHTMLFileContents += " nonterminal symbol" ;
+      ioHTMLFileContents += ((ntInErrorCount>1) ? " has" : "s have") ;
+      ioHTMLFileContents += " an empty FIRST :" ;
       TC_UniqueArray <uint64_t> errorArray_relation ;
       ntInError_relation.getValueArray (errorArray_relation) ;
       ioHTMLFileContents.outputRawData ("<code>") ;
       for (int32_t i=0 ; i<errorArray_relation.count () ; i++) {
         const uint64_t ntInError = errorArray_relation (i COMMA_HERE) ;
-        ioHTMLFileContents << " "
-                    << ntInError_relation.configuration().constantNameForVariableAndValue (0, (uint32_t) ntInError COMMA_HERE) ;
+        ioHTMLFileContents += " " ;
+        ioHTMLFileContents += ntInError_relation.configuration().constantNameForVariableAndValue (0, (uint32_t) ntInError COMMA_HERE) ;
       }
       ioHTMLFileContents.outputRawData ("</code>") ;
       ioHTMLFileContents.outputRawData ("</span>") ;
@@ -181,7 +181,7 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
   return ntInErrorCount == 0 ; 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void
 FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
@@ -227,5 +227,5 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
                                    inVerboseOptionOn) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 

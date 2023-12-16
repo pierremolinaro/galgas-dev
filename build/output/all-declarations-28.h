@@ -1,18 +1,18 @@
 #pragma once
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "all-declarations-27.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'groupSyntaxComponentsGalgas3'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_groupSyntaxComponentsGalgas_33_ (const class GALGAS_galgas_33_SyntaxComponentListAST constinArgument0,
                                               const class GALGAS_syntaxExtensions constinArgument1,
@@ -20,66 +20,66 @@ void routine_groupSyntaxComponentsGalgas_33_ (const class GALGAS_galgas_33_Synta
                                               class C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Function 'transformLabelMap'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis function_transformLabelMap (const class GALGAS_nonTerminalLabelListAST & constinArgument0,
                                                                                      class C_Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Filewrapper 'grammarRulesInTexDocumentTemplate'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_grammarRulesInTexDocumentTemplate ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Filewrapper template 'grammarRulesInTexDocumentTemplate document'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_grammarRulesInTexDocumentTemplate_document (class C_Compiler * inCompiler,
                                                                               const class GALGAS_string & in_DOCUMENT_5F_NAME,
                                                                               const class GALGAS_string & in_TEX_5F_ESCAPED_5F_DOCUMENT_5F_NAME
                                                                               COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Filewrapper 'programFileGenerationTemplate'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_programFileGenerationTemplate ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Filewrapper template 'programFileGenerationTemplate programFileImplementation'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_programFileGenerationTemplate_programFileImplementation (class C_Compiler * inCompiler,
                                                                                            const class GALGAS_string & in_COMPONENT_5F_NAME,
@@ -89,11 +89,11 @@ GALGAS_string filewrapperTemplate_programFileGenerationTemplate_programFileImple
                                                                                            const class GALGAS_string & in_PROJECT_5F_VERSION_5F_STRING
                                                                                            COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'compileBeforeClauseGalgas3'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_compileBeforeClauseGalgas_33_ (class GALGAS_lstringlist & ioArgument0,
                                             class GALGAS_usefulEntitiesGraph & ioArgument1,
@@ -104,11 +104,11 @@ void routine_compileBeforeClauseGalgas_33_ (class GALGAS_lstringlist & ioArgumen
                                             class C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'compileProgramRulesGalgas3'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_compileProgramRulesGalgas_33_ (class GALGAS_lstringlist & ioArgument0,
                                             class GALGAS_usefulEntitiesGraph & ioArgument1,
@@ -119,11 +119,11 @@ void routine_compileProgramRulesGalgas_33_ (class GALGAS_lstringlist & ioArgumen
                                             class C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'compileAfterClauseGalgas3'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_compileAfterClauseGalgas_33_ (class GALGAS_lstringlist & ioArgument0,
                                            class GALGAS_usefulEntitiesGraph & ioArgument1,
@@ -134,11 +134,11 @@ void routine_compileAfterClauseGalgas_33_ (class GALGAS_lstringlist & ioArgument
                                            class C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'compileProgramComponentGalgas3'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_compileProgramComponentGalgas_33_ (class GALGAS_lstringlist & ioArgument0,
                                                 class GALGAS_usefulEntitiesGraph & ioArgument1,
@@ -152,29 +152,29 @@ void routine_compileProgramComponentGalgas_33_ (class GALGAS_lstringlist & ioArg
                                                 class C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'checkGMP'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_checkGMP (class C_Compiler * inCompiler
                        COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'displayUnicodeLexicalTestFunctions'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_displayUnicodeLexicalTestFunctions (class C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'parseAndAnalyzeProject'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_parseAndAnalyzeProject (const class GALGAS_lstring constinArgument0,
                                      const class GALGAS_bool constinArgument1,
@@ -182,11 +182,11 @@ void routine_parseAndAnalyzeProject (const class GALGAS_lstring constinArgument0
                                      class C_Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'compileProject'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_compileProject (const class GALGAS_lstring constinArgument0,
                              const class GALGAS_string constinArgument1,
@@ -195,20 +195,20 @@ void routine_compileProject (const class GALGAS_lstring constinArgument0,
                              class C_Compiler * inCompiler
                              COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Filewrapper 'typeDumpGenerationTemplate'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_typeDumpGenerationTemplate ;
 extern const cDirectoryWrapper gWrapperDirectory_1_typeDumpGenerationTemplate ;
@@ -219,11 +219,11 @@ extern const cDirectoryWrapper gWrapperDirectory_5_typeDumpGenerationTemplate ;
 extern const cDirectoryWrapper gWrapperDirectory_6_typeDumpGenerationTemplate ;
 extern const cDirectoryWrapper gWrapperDirectory_7_typeDumpGenerationTemplate ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Filewrapper template 'typeDumpGenerationTemplate typeDump'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (class C_Compiler * inCompiler,
                                                                        const class GALGAS_string & in_PROJECT_5F_NAME,
@@ -232,21 +232,21 @@ GALGAS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (class C_C
                                                                        const class GALGAS_string & in_TABLE_5F_OF_5F_TYPES_5F_STRING
                                                                        COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Function 'linkForType'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class GALGAS_string function_linkForType (const class GALGAS_string & constinArgument0,
                                           class C_Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'compileSemanticDeclarationsGalgas'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_compileSemanticDeclarationsGalgas (class GALGAS_lstringlist & ioArgument0,
                                                 class GALGAS_usefulEntitiesGraph & ioArgument1,
@@ -260,22 +260,22 @@ void routine_compileSemanticDeclarationsGalgas (class GALGAS_lstringlist & ioArg
                                                 class C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'performGalgas3ProjectGlobalCheckings'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_performGalgas_33_ProjectGlobalCheckings (class GALGAS_unifiedTypeMap & ioArgument0,
                                                       const class GALGAS_semanticDeclarationListAST constinArgument1,
                                                       class C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'projectGeneration'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_projectGeneration (const class GALGAS_unifiedTypeMap constinArgument0,
                                 const class GALGAS_string constinArgument1,
@@ -295,11 +295,11 @@ void routine_projectGeneration (const class GALGAS_unifiedTypeMap constinArgumen
                                 class C_Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'generateSemanticDeclarationsGalgas3'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_generateSemanticDeclarationsGalgas_33_ (const class GALGAS_unifiedTypeMap constinArgument0,
                                                      const class GALGAS_string constinArgument1,
@@ -311,11 +311,11 @@ void routine_generateSemanticDeclarationsGalgas_33_ (const class GALGAS_unifiedT
                                                      class C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'updateGalgasTargets'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_updateGalgasTargets (const class GALGAS_string constinArgument0,
                                   const class GALGAS_string constinArgument1,
@@ -340,11 +340,11 @@ void routine_updateGalgasTargets (const class GALGAS_string constinArgument0,
                                   class C_Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'checkextensionSetterDefinitionForClass'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_checkextensionSetterDefinitionForClass (const class GALGAS_string constinArgument0,
                                                      const class GALGAS_string constinArgument1,
@@ -355,11 +355,11 @@ void routine_checkextensionSetterDefinitionForClass (const class GALGAS_string c
                                                      class C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'checkExtensionMethodDefinitionForClass'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_checkExtensionMethodDefinitionForClass (const class GALGAS_string constinArgument0,
                                                      const class GALGAS_string constinArgument1,
@@ -370,11 +370,11 @@ void routine_checkExtensionMethodDefinitionForClass (const class GALGAS_string c
                                                      class C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Routine 'checkExtensionGetterDefinitionForClass'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_checkExtensionGetterDefinitionForClass (const class GALGAS_string constinArgument0,
                                                      const class GALGAS_string constinArgument1,
@@ -385,11 +385,11 @@ void routine_checkExtensionGetterDefinitionForClass (const class GALGAS_string c
                                                      class C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //Filewrapper 'libpmFileWrapper'
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 extern const char * gWrapperFileContent_289_libpmFileWrapper ;
 extern const char * gWrapperFileContent_286_libpmFileWrapper ;
@@ -686,14 +686,14 @@ extern const char * gWrapperFileContent_96_libpmFileWrapper ;
 extern const char * gWrapperFileContent_104_libpmFileWrapper ;
 extern const char * gWrapperFileContent_106_libpmFileWrapper ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 extern const uint8_t gWrapperFileContent_22_libpmFileWrapper [] ;
 extern const uint8_t gWrapperFileContent_49_libpmFileWrapper [] ;
 extern const uint8_t gWrapperFileContent_50_libpmFileWrapper [] ;
 extern const uint8_t gWrapperFileContent_48_libpmFileWrapper [] ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 extern const cRegularFileWrapper gWrapperFile_0_libpmFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_1_libpmFileWrapper ;
@@ -994,7 +994,7 @@ extern const cRegularFileWrapper gWrapperFile_295_libpmFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_296_libpmFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_297_libpmFileWrapper ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_libpmFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_1_libpmFileWrapper ;

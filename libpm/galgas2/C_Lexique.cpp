@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  'C_Lexique' : an abstract lexique class ;
 //  Galgas generated scanner classes inherit from this class.
@@ -17,7 +17,7 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "galgas2/C_Lexique.h"
 #include "all-predefined-types.h"
@@ -29,14 +29,14 @@
 #include "files/C_FileManager.h"
 #include "galgas2/F_verbose_output.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include <string.h>
 #include <errno.h>
 #include <stdlib.h>
 #include <ctype.h>
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define LINE_AND_SOURCE_FILE_FOR_LEXIQUE , sourceText ().sourceFilePath ().cString (HERE), lineNumber ()
@@ -44,13 +44,13 @@
   #define LINE_AND_SOURCE_FILE_FOR_LEXIQUE
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Constructors, Destructor
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cTemplateDelimiter::
 cTemplateDelimiter (const utf32 * inStartString,
@@ -67,7 +67,7 @@ mReplacementFunction (inReplacementFunction),
 mDiscardStartString (inDiscardStartString) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cTemplateDelimiter::cTemplateDelimiter (const cTemplateDelimiter & inOperand) :
 mStartString (inOperand.mStartString),
@@ -78,7 +78,7 @@ mReplacementFunction (inOperand.mReplacementFunction),
 mDiscardStartString (inOperand.mDiscardStartString) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_Lexique::C_Lexique (C_Compiler * inCallerCompiler,
                       const C_String & inSourceFileName
@@ -122,7 +122,7 @@ mLatexNextCharacterToEnterIndex (0) {
   mCurrentChar = sourceText ().readCharOrNul (0 COMMA_HERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_Lexique::C_Lexique (C_Compiler * inCallerCompiler,
                       const C_String & inSourceString,
@@ -152,7 +152,7 @@ mLatexNextCharacterToEnterIndex (0) {
   mCurrentChar = sourceText ().readCharOrNul (0 COMMA_HERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_Lexique::~C_Lexique (void) {
   macroMyDelete (mIndexingDictionary) ;
@@ -165,23 +165,23 @@ C_Lexique::~C_Lexique (void) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Scanner configuration
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::appendLastSeparatorTo (C_String & ioString) const {
   if (nullptr != mLastToken) {
     const int32_t lastSeparatorStart = mLastToken->mEndLocation.index () + 1 ;
     const C_String lastSeparatorString = sourceText ().sourceString ().subStringFromIndex (lastSeparatorStart) ;
-    ioString << lastSeparatorString ;
+    ioString += lastSeparatorString ;
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::enterTokenFromPointer (cToken * inToken) {
   macroValidPointer (inToken) ;
@@ -243,7 +243,7 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::resetForSecondPass (void) {
   mCurrentLocation.resetWithSourceText (sourceText ()) ;
@@ -260,13 +260,13 @@ void C_Lexique::resetForSecondPass (void) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Template Delimiter Scanning
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 int32_t C_Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter inTemplateDelimiterArray [],
                                                const int32_t inTemplateDelimiterArrayLength) {
@@ -286,17 +286,17 @@ int32_t C_Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter inTempla
   return templateIndex ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Lexical Analysis
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //   performLexicalAnalysis                                                                      
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::performLexicalAnalysis (void) {
   if (executionModeIsLexicalAnalysisOnly ()) {
@@ -313,11 +313,11 @@ void C_Lexique::performLexicalAnalysis (void) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //        Methods for scanning                                                                   
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::advance (void) {
   mTokenEndLocation = mCurrentLocation ;
@@ -328,7 +328,7 @@ void C_Lexique::advance (void) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::advance (const int32_t inCount) {
   for (int32_t i=0 ; i<inCount ; i++) {
@@ -336,7 +336,7 @@ void C_Lexique::advance (const int32_t inCount) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool C_Lexique::testForInputUTF32CharRange (const utf32 inLowBound,
                                             const utf32 inHighBound) {
@@ -348,7 +348,7 @@ bool C_Lexique::testForInputUTF32CharRange (const utf32 inLowBound,
   return ok ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool C_Lexique::testForInputUTF32Char (const utf32 inChar) {
   const bool ok = UNICODE_VALUE (inChar) == UNICODE_VALUE (mCurrentChar) ;
@@ -358,7 +358,7 @@ bool C_Lexique::testForInputUTF32Char (const utf32 inChar) {
   return ok ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool C_Lexique::testForCharWithFunction (bool (*inFunction) (const utf32 inUnicodeCharacter)) {
   const bool ok = inFunction (mCurrentChar) ;
@@ -368,7 +368,7 @@ bool C_Lexique::testForCharWithFunction (bool (*inFunction) (const utf32 inUnico
   return ok ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool C_Lexique::testForInputUTF32String (const utf32 * inTestCstring,
                                          const int32_t inStringLength,
@@ -385,7 +385,7 @@ bool C_Lexique::testForInputUTF32String (const utf32 * inTestCstring,
   return ok ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool C_Lexique::notTestForInputUTF32String (const utf32 * inTestCstring,
                                             const int32_t inStringLength,
@@ -411,7 +411,7 @@ bool C_Lexique::notTestForInputUTF32String (const utf32 * inTestCstring,
   return ok ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::lexicalLog (LOCATION_ARGS) {
   C_String message ;
@@ -421,11 +421,11 @@ void C_Lexique::lexicalLog (LOCATION_ARGS) {
   printMessage (message COMMA_THERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    Search in an ordered list (used for searching into scanner generated tables)               
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 int32_t C_Lexique::searchInList (const C_String & inString,
                                  const C_unicode_lexique_table_entry inTable [],
@@ -452,13 +452,13 @@ int32_t C_Lexique::searchInList (const C_String & inString,
   return code ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Handling an error
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::internalBottomUpParserError (LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -469,11 +469,11 @@ void C_Lexique::internalBottomUpParserError (LOCATION_ARGS) {
   exit (1) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //           Lexical error                                                                       
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
   C_String errorMessage ;
@@ -482,7 +482,7 @@ void C_Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
   lexicalError (errorMessage COMMA_THERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::lexicalError (const C_String & inLexicalErrorMessage
                               COMMA_LOCATION_ARGS) {
@@ -493,11 +493,11 @@ void C_Lexique::lexicalError (const C_String & inLexicalErrorMessage
   throw C_lexicalErrorException () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //                Signaler une erreur syntaxique                                                 
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTerminalsArray,
                               const cToken * inPreviousTokenPtr,
@@ -522,34 +522,34 @@ void C_Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTermina
                       expectedTokenNames COMMA_THERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Scanner warning
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::lexicalWarning (const C_String & inLexicalWarningMessage
                                 COMMA_LOCATION_ARGS) { // §
   signalLexicalWarning (this, sourceText (), C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()), inLexicalWarningMessage COMMA_THERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Top-down parsing
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static bool TRACE_LL1_PARSING (void) { return false ; }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //   Test if a terminal symbol can be accepted in current context                                
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
                                                  const int32_t inProductions [],
@@ -561,12 +561,12 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
                                                  const int32_t inErrorProgramCounter) {
   if (TRACE_LL1_PARSING ()) {
     C_String m = getMessageForTerminal (inTerminal) ;
-    co << "------ Enter 'acceptTerminalForErrorSignaling' with '"
-       << m
-       << "' ("
-       << inTerminal
-       << ") terminal and program counter "
-       << inErrorProgramCounter ;
+    co += "------ Enter 'acceptTerminalForErrorSignaling' with '" ;
+    co += m ;
+    co += "' (" ;
+    co += inTerminal ;
+    co += ") terminal and program counter " ;
+    co += inErrorProgramCounter ;
     co.flush () ;
   }
   bool accept = false ;
@@ -592,9 +592,9 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
     }else if (instruction < 0) { // We reach a nonterminal
       const int32_t reachedNonterminal = (int32_t) (- instruction - 1) ;
       if (TRACE_LL1_PARSING ()) {
-        co << "reached non-terminal "
-           << reachedNonterminal
-           << "\n" ;
+        co += "reached non-terminal " ;
+        co += reachedNonterminal ;
+        co += "\n" ;
         co.flush () ;
       }
       int32_t nonTerminalEntry = inDecisionTableIndexes [reachedNonterminal] ;
@@ -602,7 +602,10 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
         stack.appendObject (programCounter) ;
         programCounter = inProductionIndexes [inFirstProductionIndex [reachedNonterminal]] ;
         if (TRACE_LL1_PARSING ()) {
-          co << "One rule: goto " << programCounter << "\n" ; co.flush () ;
+          co += "One rule: goto " ;
+          co += programCounter ;
+          co += "\n" ;
+          co.flush () ;
         }
       }else{ // More than one rule : test if terminal is accepted, and call rule
         loop = false ;
@@ -613,7 +616,12 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
             found = inDecisionTable [nonTerminalEntry] == inTerminal ;
             if (TRACE_LL1_PARSING ()) {
               const C_String m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
-              co << "try '" << m << "' non terminal" << (found ? " (accepted)": "") << "\n" ; co.flush () ;
+              co += "try '" ;
+              co += m ;
+              co += "' non terminal" ;
+              co += (found ? " (accepted)": "") ;
+              co += "\n" ;
+              co.flush () ;
             }
             if (found) {
               int32_t newProgramCounter = programCounter ;
@@ -649,11 +657,11 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
   return accept ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //   Build expected terminals array on syntax error with LL (1) parser                           
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorProgramCounter,
                                                           const int32_t inErrorStackCount,
@@ -676,12 +684,17 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
     errorStack.appendObject (inErrorStack (i COMMA_HERE)) ;
   }
   if (TRACE_LL1_PARSING ()) {
-    co << "------ Enter 'buildExpectedTerminalsArrayOnSyntaxError'\n"
-       << "programCounter: " << programCounter << ", errorStack: " << errorStack.count() << " value(s):" ;
+    co += "------ Enter 'buildExpectedTerminalsArrayOnSyntaxError'\n" ;
+    co += "programCounter: " ;
+    co += programCounter ;
+    co += ", errorStack: " ;
+    co += errorStack.count() ;
+    co += " value(s):" ;
     for (int32_t i=0 ; i<errorStack.count() ; i++) {
-      co << " " << errorStack (i COMMA_HERE) ;
+      co += " " ;
+      co += errorStack (i COMMA_HERE) ;
     }
-    co << "\n" ;
+    co += "\n" ;
     co.flush () ;
   }
   bool loop = true ;
@@ -690,13 +703,19 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
       loop = false ;
       if (TRACE_LL1_PARSING ()) {
         C_String m = getMessageForTerminal (inProductions [programCounter]) ;
-        co << "Terminal '" << m << "' (" << inProductions [programCounter] << ") reached\n" ;
+        co +="Terminal '" ;
+        co += m ;
+        co += "' (" ;
+        co += inProductions [programCounter] ;
+        co += ") reached\n" ;
         co.flush () ;
       }
     }else if (inProductions [programCounter] < 0) { // We reach a non terminal (<0)
       const int32_t nonTerminal = (int32_t) (- inProductions [programCounter] - 1) ;
       if (TRACE_LL1_PARSING ()) {
-        co << "Non-Terminal " << nonTerminal << " reached\n" ;
+        co += "Non-Terminal " ;
+        co += nonTerminal ;
+        co += " reached\n" ;
         co.flush () ;
       }
     //--- We look if we get a non terminal that has only one production rule
@@ -706,7 +725,9 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
         errorStack.appendObject ((int32_t) (programCounter + 1)) ;
         programCounter = inProductionIndexes [inFirstProductionIndex [nonTerminal]] ;
         if (TRACE_LL1_PARSING ()) {
-          co << "Only one rule: goto " << programCounter << "\n" ;
+          co += "Only one rule: goto " ;
+          co += programCounter ;
+          co += "\n" ;
           co.flush () ;
         }
       }else{
@@ -716,12 +737,14 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
       programCounter = errorStack.lastObject (HERE) ;
       errorStack.removeLastObject (HERE) ;
       if (TRACE_LL1_PARSING ()) {
-        co << "return instruction (goes to " << programCounter << ")\n" ;
+        co += "return instruction (goes to " ;
+        co += programCounter ;
+        co += ")\n" ;
         co.flush () ;
       }
     }else{ // End of source reached
       if (TRACE_LL1_PARSING ()) {
-        co << "end of source reached\n" ;
+        co += "end of source reached\n" ;
         co.flush () ;
       }
       loop = false ;
@@ -731,7 +754,7 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
   if (errorStack.count () == 0) { // We reach end of productions rules
     outExpectedTerminalsArray.appendObject (0) ; // 0 is always "end_of_text" terminal symbol
     if (TRACE_LL1_PARSING ()) {
-      co << "add 'end of source' to outExpectedTerminalsArray\n" ;
+      co += "add 'end of source' to outExpectedTerminalsArray\n" ;
       co.flush () ;
     }
   }else if (inProductions [programCounter] > 0) { // We reach a terminal symbol
@@ -739,7 +762,11 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
     outExpectedTerminalsArray.appendObject (terminalSymbol) ;
     if (TRACE_LL1_PARSING ()) {
       C_String m = getMessageForTerminal (inProductions [programCounter]) ;
-      co << "add '" << m << "' (" << inProductions [programCounter] << ") to outExpectedTerminalsArray\n" ;
+      co += "add '" ;
+      co += m ;
+      co += "' (" ;
+      co += inProductions [programCounter] ;
+      co += ") to outExpectedTerminalsArray\n" ;
       co.flush () ;
     }
   }else{  // We reach a non terminal symbol
@@ -758,7 +785,11 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
         if (ok) {
           if (TRACE_LL1_PARSING ()) {
             C_String m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
-            co << "add '" << m << "' (" << inDecisionTable [nonTerminalEntry] << ") to outExpectedTerminalsArray\n" ;
+            co += "add '" ;
+            co += m ;
+            co += "' (" ;
+            co += inDecisionTable [nonTerminalEntry] ;
+            co += ") to outExpectedTerminalsArray\n" ;
             co.flush () ;
           }
           outExpectedTerminalsArray.appendObject (inDecisionTable [nonTerminalEntry]) ;
@@ -773,11 +804,11 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //   Perform top down parsing (called by LL (1) parser)                                          
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void indentForParseOnly (const int32_t inIndentation) {
   for (int32_t i=1 ; i<inIndentation ; i++) {
@@ -788,7 +819,7 @@ static void indentForParseOnly (const int32_t inIndentation) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
                                        const cProductionNameDescriptor inProductionNames [],
@@ -849,8 +880,12 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
         }
       }
       if (TRACE_LL1_PARSING ()) {
-        co << "---------------------------\n"
-              "Current token is " << getCurrentTokenString (tokenPtr) << " (#" << currentToken << ")\n" ;
+        co += "---------------------------\n" ;
+        co += "Current token is " ;
+        co += getCurrentTokenString (tokenPtr) ;
+        co += " (#" ;
+        co += currentToken ;
+        co += ")\n" ;
         co.flush () ;
       }
     //--- Get instruction to do
@@ -861,13 +896,15 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
       //--- Get entry of nonterminal symbol to parse
         const int32_t nonTerminalToParse = (int32_t) (- instruction - 1) ;
         if (TRACE_LL1_PARSING ()) {
-          co << "Parse non terminal " << cStringWithSigned (nonTerminalToParse) << ": " ;
+          co += "Parse non terminal " ;
+          co += cStringWithSigned (nonTerminalToParse) ;
+          co += ": " ;
           co.flush () ;
         }
         int32_t nonTerminalEntry = inDecisionTableIndexes [nonTerminalToParse] ;
         if (inDecisionTable [nonTerminalEntry] < 0) { // Means only one production : don't make any choice
           if (TRACE_LL1_PARSING ()) {
-            co << " ok (only one production)\n" ;
+            co += " ok (only one production)\n" ;
             co.flush () ;
           }
           stack.appendObject (programCounter) ;
@@ -887,10 +924,12 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
           }
           if (executionModeIsSyntaxAnalysisOnly ()) {
             indentForParseOnly (indentationForParseOnly) ;
-            co << inProductionNames [inFirstProductionIndex [nonTerminalToParse]].mName
-               << ", file '" << inProductionNames [inFirstProductionIndex [nonTerminalToParse]].mFileName
-               << "', line " << cStringWithUnsigned (inProductionNames [inFirstProductionIndex [nonTerminalToParse]].mLineNumber)
-               << "\n" ;
+            co += inProductionNames [inFirstProductionIndex [nonTerminalToParse]].mName ;
+            co += ", file '" ;
+            co += inProductionNames [inFirstProductionIndex [nonTerminalToParse]].mFileName ;
+            co += "', line " ;
+            co += cStringWithUnsigned (inProductionNames [inFirstProductionIndex [nonTerminalToParse]].mLineNumber) ;
+            co += "\n" ;
             indentationForParseOnly ++ ;
           }
         }else{ //--- There are several choices : find the one to do
@@ -904,8 +943,13 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
               found = currentToken == inDecisionTable [nonTerminalEntry] ;
               if (TRACE_LL1_PARSING ()) {
                 C_String m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
-                co << " try " << m << " (" << inDecisionTable [nonTerminalEntry]
-                   << ")" << (found ? " (accepted)" : "") << "\n" ;
+                co += " try " ;
+                co += m ;
+                co += " (" ;
+                co += inDecisionTable [nonTerminalEntry] ;
+                co += ")" ;
+                co += (found ? " (accepted)" : "") ;
+                co += "\n" ;
                 co.flush () ;
               }
               nonTerminalEntry ++ ;
@@ -953,7 +997,9 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
                                                       inDecisionTableIndexes,
                                                       expectedTerminalsArray) ;
             if (TRACE_LL1_PARSING ()) {
-              co << expectedTerminalsArray.count () << " Token(s) in syntax error message\n" ; co.flush () ;
+              co += expectedTerminalsArray.count () ;
+              co += " Token(s) in syntax error message\n" ;
+              co.flush () ;
             }
             parsingError (expectedTerminalsArray, previousTokenPtr, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
             result = loop = false ;
@@ -1060,17 +1106,17 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Bottom up parsing
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //   Test if a given terminal symbol can be accepted for signaling an error (for bottom-up parsing)                    *
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static bool acceptExpectedTerminalForBottomUpParsingError (const int32_t inExpectedTerminal,
                                                            const int32_t inExpectedAction,
@@ -1130,11 +1176,11 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const int32_t inExpec
   return accept ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //   Perform bottom up parsing (called by SLR and LR (1) parsers)                                
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
                                         const char * inNonTerminalSymbolNames [],
@@ -1360,17 +1406,17 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Second pass methods
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //                         Get next production index                                             
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 int32_t C_Lexique::nextProductionIndex (void) {
   int32_t result = 0 ;
@@ -1381,7 +1427,7 @@ int32_t C_Lexique::nextProductionIndex (void) {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_String C_Lexique::separatorString (void) const {
   C_String result ;
@@ -1391,7 +1437,7 @@ C_String C_Lexique::separatorString (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_String C_Lexique::tokenString (void) const {
   C_String result ;
@@ -1403,11 +1449,11 @@ C_String C_Lexique::tokenString (void) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //   Accept current token by shifting it                                                         
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define IN_EXPECTED_TERMINAL inExpectedTerminal
@@ -1415,7 +1461,7 @@ C_String C_Lexique::tokenString (void) const {
   #define IN_EXPECTED_TERMINAL
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -1449,7 +1495,7 @@ void C_Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL COMMA_LOCATIO
   #endif
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::enterIndexing (const uint32_t inIndexingKind,
                                const char * inIndexedKeyPosfix) {
@@ -1467,13 +1513,13 @@ void C_Lexique::enterIndexing (const uint32_t inIndexingKind,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::enableIndexing (void) {
   macroMyNew (mIndexingDictionary, cIndexingDictionary) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::generateIndexFile (void) {
   if (nullptr != mIndexingDictionary) {
@@ -1481,13 +1527,13 @@ void C_Lexique::generateIndexFile (void) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Handling Parsing context
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_parsingContext C_Lexique::parsingContext (void) const {
   C_parsingContext context ;
@@ -1500,7 +1546,7 @@ C_parsingContext C_Lexique::parsingContext (void) const {
   return context ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::setParsingContext (const C_parsingContext & inContext) {
   mIndexForSecondPassParsing = inContext.mParsingArrayIndex ;
@@ -1511,17 +1557,17 @@ void C_Lexique::setParsingContext (const C_parsingContext & inContext) {
   mTemplateString = inContext.mTemplateString ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark For Debugging parser
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  For Debugging parser                                                                         
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::enterProduction (const char * inProductionName,
                                  const char * inLabel,
@@ -1550,7 +1596,7 @@ void C_Lexique::enterProduction (const char * inProductionName,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::exitProduction (void) {
   if (mDebugIsRunning) {
@@ -1559,7 +1605,7 @@ void C_Lexique::exitProduction (void) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::didParseTerminal (const char * inTerminalName,
                                   const C_String & inValue) {
@@ -1577,13 +1623,13 @@ void C_Lexique::didParseTerminal (const char * inTerminalName,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Generate Latex file
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
   if (executionModeIsLatex ()) {
@@ -1610,7 +1656,7 @@ void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
   switch (UNICODE_VALUE (inUnicodeCharacter)) {
@@ -1640,13 +1686,13 @@ void C_Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::signalLexicalErrorInLatexOutput (void) {
   mLatexOutputString << "\\lexicalError" << latexModeStyleSuffixString () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_Lexique::generateLatexFile (void) {
   const C_String latexFilePath = sourceText ().sourceFilePath () + ".tex" ;
@@ -1658,4 +1704,4 @@ void C_Lexique::generateLatexFile (void) {
   C_FileManager::writeStringToFile (mLatexOutputString, latexFilePath) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

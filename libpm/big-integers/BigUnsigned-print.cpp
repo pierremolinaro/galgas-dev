@@ -32,11 +32,11 @@ C_String BigUnsigned::decimalString (void) const {
       number = r.quotient () ;
     }
     const size_t n = decimalValueArray.size () ;
-    result << cStringWithUnsigned (decimalValueArray [n - 1]) ;
+    result += cStringWithUnsigned (decimalValueArray [n - 1]) ;
     for (size_t i = n - 1 ; i > 0 ; i--) {
       char s [32] ;
       snprintf (s, 31, ChunkUIntDecimalFormatSpecifierWithLeadingZeros, decimalValueArray [i-1]) ;
-      result << s ;
+      result += s ;
     }
   }
   return result ;
@@ -67,7 +67,9 @@ C_String BigUnsigned::spacedDecimalStringWithDigitCount (const uint32_t inSepara
     }
   }
   C_String result = "[" ;
-  result << cStringWithSigned (length) << "] " << s ;
+  result += cStringWithSigned (length) ;
+  result += "] " ;
+  result += s ;
   return result ;
 }
 
@@ -112,7 +114,7 @@ C_String BigUnsigned::bitString (void) const {
     for (size_t i = u64Count () ; i > 0 ; i--) {
       uint64_t v = u64AtIndex (i-1) ;
       for (size_t bit = 0 ; bit < 64 ; bit++) {
-        result << (((v & (uint64_t (1) << 63)) != 0) ? "1" : "0") ;
+        result += (((v & (uint64_t (1) << 63)) != 0) ? "1" : "0") ;
         v <<= 1 ;
       }
     }

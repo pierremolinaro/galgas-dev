@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  This file handles all computations performed on grammars                                     
 //
@@ -13,7 +13,7 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "files/C_FileManager.h"
 #include "bdd/C_Relation.h"
@@ -26,7 +26,7 @@
 #include "strings/C_HTMLString.h"
 #include "galgas2/F_verbose_output.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "useful_symbols_computations.h"
 #include "empty_strings_computations.h"
@@ -42,7 +42,7 @@
 #include "buildPureBNFgrammar.h"
 #include "grammarCompilation.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cProduction::cProduction (void) :
 mSourceFileName (),
@@ -54,7 +54,7 @@ mDerivationFirst (),
 mProductionIndex (0) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cProduction::cProduction (const C_String & inSourceFileName,
                           const int32_t inDefinitionLine,
@@ -72,7 +72,7 @@ mProductionIndex (inProductionIndex) {
   swap (mDerivation, ioDerivation) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cProduction::cProduction (const C_String & inSourceFileName,
                           const int32_t inDefinitionLine,
@@ -88,7 +88,7 @@ mDerivationFirst (),
 mProductionIndex (0) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPureBNFproductionsList::cPureBNFproductionsList (void) :
 mProductionArray (),
@@ -100,7 +100,7 @@ mLastProductionIndex (),
 mProductionIndex () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cProduction::
 engendrerAppelProduction (const int16_t nombreDeParametres,
@@ -108,21 +108,29 @@ engendrerAppelProduction (const int16_t nombreDeParametres,
                           const C_String & inAltName,
                           AC_OutputStream & fichierCPP,
                           const C_String & inSyntaxDirectedTranslationVarName) const {
-  fichierCPP << "  rule_" << mSourceFileName.identifierRepresentation ()
-             << "_" << inVocabulary.getSymbol (mLeftNonTerminalIndex COMMA_HERE).identifierRepresentation ()
-             << "_i" << cStringWithUnsigned (mProductionIndex)
-             << "_" << inAltName.identifierRepresentation () << "(" ;
+  fichierCPP += "  rule_" ;
+  fichierCPP += mSourceFileName.identifierRepresentation () ;
+  fichierCPP += "_" ;
+  fichierCPP += inVocabulary.getSymbol (mLeftNonTerminalIndex COMMA_HERE).identifierRepresentation () ;
+  fichierCPP += "_i" ;
+  fichierCPP += cStringWithUnsigned (mProductionIndex) ;
+  fichierCPP += "_" ;
+  fichierCPP += inAltName.identifierRepresentation () ;
+  fichierCPP += "(" ;
   for (int32_t i=1 ; i<nombreDeParametres ; i++) {
-     fichierCPP << "parameter_" << cStringWithSigned (i)  << ", " ;
+     fichierCPP += "parameter_" ;
+    fichierCPP += cStringWithSigned (i)  ;
+    fichierCPP += ", " ;
   }
   if (inSyntaxDirectedTranslationVarName.length () > 0) {
-    fichierCPP << inSyntaxDirectedTranslationVarName << ", " ;
+    fichierCPP += inSyntaxDirectedTranslationVarName ;
+    fichierCPP += ", " ;
   }
-  fichierCPP << "inLexique" ;
-  fichierCPP << ") ;\n" ;
+  fichierCPP += "inLexique" ;
+  fichierCPP += ") ;\n" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void swap (cProduction & ioProduction1, cProduction & ioProduction2) {
   swap (ioProduction1.mSourceFileName, ioProduction2.mSourceFileName) ;
@@ -134,7 +142,7 @@ void swap (cProduction & ioProduction1, cProduction & ioProduction2) {
   swap (ioProduction1.mProductionIndex, ioProduction2.mProductionIndex) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static bool
 searchForIdenticalProductions (const cPureBNFproductionsList & productions,
@@ -155,26 +163,30 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
       }
       if (identiques) {
         ok = false ;
-        ioHTMLFileContents << "  Error : productions " << cStringWithSigned (i) << " and " << cStringWithSigned (j) << " are identical.\n" ;
+        ioHTMLFileContents += "  Error : productions " ;
+        ioHTMLFileContents += cStringWithSigned (i) ;
+        ioHTMLFileContents += " and " ;
+        ioHTMLFileContents += cStringWithSigned (j) ;
+        ioHTMLFileContents += " are identical.\n" ;
       }
     }
   }
   ioHTMLFileContents.outputRawData ("<p>") ;
   if (ok) {
     ioHTMLFileContents.outputRawData ("<span class=\"success\">") ;
-    ioHTMLFileContents << "Ok : all productions are different.\n" ;
+    ioHTMLFileContents += "Ok : all productions are different.\n" ;
     ioHTMLFileContents.outputRawData ("</span>") ;
   }else{
     ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
-    ioHTMLFileContents << "As the grammar presents identical productions, it is ambiguous :\n"
-                   "it is impossible to build a deterministic parser.\n\n" ;
+    ioHTMLFileContents += "As the grammar presents identical productions, it is ambiguous :\n"
+                          "it is impossible to build a deterministic parser.\n\n" ;
     ioHTMLFileContents.outputRawData ("</span>") ;
   }
   ioHTMLFileContents.outputRawData ("</p>") ;
   return ok ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static const char k_default_style [] = {
   "body {\n"
@@ -275,7 +287,7 @@ static const char k_default_style [] = {
   "}\n"
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void
 analyzeGrammar (C_Compiler * inCompiler,
@@ -328,7 +340,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                                             k_default_style) ; // Style definition
 //--- HTML title
   outHTMLHelperFileContents.outputRawData ("<h1>") ;
-  outHTMLHelperFileContents << title ;
+  outHTMLHelperFileContents += title ;
   outHTMLHelperFileContents.outputRawData ("</h1>") ;
 //--- Create links to page entries
   outHTMLHelperFileContents.outputRawData ("<p><a class=\"header_link\" href=\"#pure_bnf\">Pure BNF productions</a></p>"
@@ -351,7 +363,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   cPureBNFproductionsList pureBNFproductions ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     if (verboseOptionOn) {
-      co << "  Building pure BNF productions... " ;
+      co += "  Building pure BNF productions... " ;
     }
   //--- Build vocabulary
     vocabulary.buildVocabulary (inTerminalSymbolMap,
@@ -368,7 +380,8 @@ analyzeGrammar (C_Compiler * inCompiler,
     outHTMLHelperFileContents.appendCppTitleComment ("  Pure BNF productions list", "title") ;
     printPureBNFgrammarInBNFfile (outHTMLHelperFileContents, vocabulary, pureBNFproductions) ;
     if (verboseOptionOn) {
-      co << cStringWithSigned (pureBNFproductions.mProductionArray.count ()) << ".\n" ;
+      co += cStringWithSigned (pureBNFproductions.mProductionArray.count ()) ;
+      co += ".\n" ;
       co.flush () ;
     }
   }
@@ -377,42 +390,45 @@ analyzeGrammar (C_Compiler * inCompiler,
 //--- Search for identical productions -----------------------------------------------------------
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     if (verboseOptionOn) {
-      co << "  Identical productions... " ;
+      co += "  Identical productions... " ;
     }
     const bool step2ok = searchForIdenticalProductions (pureBNFproductions, outHTMLHelperFileContents) ;
     if (! step2ok) {
       errorFlag = kError ;
       if (! verboseOptionOn) {
-        co << "  Identical productions... " ;
+        co += "  Identical productions... " ;
       }
-      co << "error.\n" ;
+      co += "error.\n" ;
     }else if (verboseOptionOn) {
-      co << "none, ok.\n" ;
+      co += "none, ok.\n" ;
     }
     co.flush () ;
   }
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
   //--- Enregistrer les caracteristiques de la grammaire
-    outHTMLHelperFileContents << "For information :\n" ;
+    outHTMLHelperFileContents += "For information :\n" ;
     outHTMLHelperFileContents.outputRawData ("<ul><li>") ;
-    outHTMLHelperFileContents << cStringWithSigned ((int32_t)(vocabulary.getTerminalSymbolsCount () - 1))
-              << " terminal symbols, numbered from 0 to "
-              << cStringWithSigned ((int32_t)(vocabulary.getTerminalSymbolsCount () - 2)) << " ;" ;
+    outHTMLHelperFileContents += cStringWithSigned ((int32_t)(vocabulary.getTerminalSymbolsCount () - 1)) ;
+    outHTMLHelperFileContents += " terminal symbols, numbered from 0 to " ;
+    outHTMLHelperFileContents += cStringWithSigned ((int32_t)(vocabulary.getTerminalSymbolsCount () - 2)) ;
+    outHTMLHelperFileContents += " ;" ;
     outHTMLHelperFileContents.outputRawData ("</li>\n<li>") ;
-    outHTMLHelperFileContents << " the 'empty string' symbol '$$' is numbered "
-              << cStringWithSigned (vocabulary.getEmptyStringTerminalSymbolIndex ()) << " ;" ;
+    outHTMLHelperFileContents += " the 'empty string' symbol '$$' is numbered " ;
+    outHTMLHelperFileContents += cStringWithSigned (vocabulary.getEmptyStringTerminalSymbolIndex ()) ;
+    outHTMLHelperFileContents += " ;" ;
     outHTMLHelperFileContents.outputRawData ("</li>\n<li>") ;
-    outHTMLHelperFileContents << cStringWithSigned (vocabulary.getNonTerminalSymbolsCount ())
-              << " nonterminal symbols in the pure BNF grammar, numbered from "
-              << cStringWithSigned (vocabulary.getTerminalSymbolsCount ())
-              << " to "
-              << cStringWithSigned ((int32_t)(vocabulary.getAllSymbolsCount () - 1)) << " ;" ;
+    outHTMLHelperFileContents += cStringWithSigned (vocabulary.getNonTerminalSymbolsCount ()) ;
+    outHTMLHelperFileContents += " nonterminal symbols in the pure BNF grammar, numbered from " ;
+    outHTMLHelperFileContents += cStringWithSigned (vocabulary.getTerminalSymbolsCount ()) ;
+    outHTMLHelperFileContents += " to " ;
+    outHTMLHelperFileContents += cStringWithSigned ((int32_t)(vocabulary.getAllSymbolsCount () - 1)) ;
+    outHTMLHelperFileContents += " ;" ;
     outHTMLHelperFileContents.outputRawData ("</li>\n<li>") ;
-    outHTMLHelperFileContents << "whole vocabulary : "
-              << cStringWithSigned (vocabulary.getAllSymbolsCount ())
-              << " elements, "
-              << cStringWithUnsigned (vocabularyBDDType.BDDBitCount ())
-              << " bits for BDDs." ;
+    outHTMLHelperFileContents += "whole vocabulary : " ;
+    outHTMLHelperFileContents += cStringWithSigned (vocabulary.getAllSymbolsCount ()) ;
+    outHTMLHelperFileContents += " elements, " ;
+    outHTMLHelperFileContents += cStringWithUnsigned (vocabularyBDDType.BDDBitCount ()) ;
+    outHTMLHelperFileContents += " bits for BDDs." ;
     outHTMLHelperFileContents.outputRawData ("</li>\n</ul>\n") ;
   }
 //--- Getting useful symbols ---------------------------------------------------------------------
@@ -572,37 +588,44 @@ analyzeGrammar (C_Compiler * inCompiler,
 //--- Final step ---------------------------------------------------------------------
   C_BDD::markAndSweepUnusedNodes () ;
   if (errorFlag != kNoError) {
-    C_String s ; s << "ENDING ON ERROR, STEP" << cStringWithSigned ((uint16_t) errorFlag) ;
+    C_String s ;
+    s += "ENDING ON ERROR, STEP" ;
+    s += cStringWithSigned ((uint16_t) errorFlag) ;
     outHTMLHelperFileContents.appendCppTitleComment (s, "title") ;
     C_String errorMessage  ;
     if (inPopulateHTMLHelperString) {
-      errorMessage << "errors have been raised when analyzing the grammar: see file"
-                      " 'file://"
-                   << inHTMLFileName
-                   << "'" ;
+      errorMessage += "errors have been raised when analyzing the grammar: see file"
+                      " 'file://" ;
+      errorMessage += inHTMLFileName ;
+      errorMessage += "'" ;
     }else{
-      errorMessage << "errors have been raised when analyzing the grammar:"
+      errorMessage += "errors have been raised when analyzing the grammar:"
                       " turn on '--output-html-grammar-file' option in order to get an output file for debugging" ;
     }
     inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }else if (warningFlag) {
     C_String s ;
-    s << "OK ; no error, but warning(s) step(s)" ;
+    s += "OK ; no error, but warning(s) step(s)" ;
     int32_t i = 1 ;
     while (warningFlag != 0) {
       if ((warningFlag & 1) != 0) {
-        s << " " << cStringWithSigned (i) ;
+        s += " " ;
+        s += cStringWithSigned (i) ;
       }
       warningFlag >>= 1 ;
       i ++ ;
     }
     outHTMLHelperFileContents.appendCppTitleComment (s, "title") ;
     C_String warningMessage  ;
-    warningMessage << "warnings have been raised when analyzing the grammar: " ;
+    warningMessage += "warnings have been raised when analyzing the grammar: " ;
     if (inPopulateHTMLHelperString) {
-      warningMessage << "see file 'file://" << inHTMLFileName << "'" ;
+      warningMessage += "see file 'file://" ;
+      warningMessage += inHTMLFileName ;
+      warningMessage += "'" ;
     }else{
-      warningMessage << "turn on '-H' command line option, and see generated '" << inTargetFileName.mProperty_string.stringValue () << ".html' file" ;
+      warningMessage += "turn on '-H' command line option, and see generated '" ;
+      warningMessage += inTargetFileName.mProperty_string.stringValue () ;
+      warningMessage += ".html' file" ;
     }
     inCompiler->semanticWarningAtLocation (inErrorLocation, warningMessage COMMA_HERE) ;
   }else{
@@ -611,7 +634,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   outHTMLHelperFileContents.writeEndCode () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void
 routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
@@ -657,4 +680,4 @@ routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

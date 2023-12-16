@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //     BDD package (implementation of ROBDD)
 //
@@ -16,7 +16,7 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "bdd/C_BDD.h"
 #include "utilities/F_GetPrime.h"
@@ -25,55 +25,55 @@
 #include "bdd/C_BDD-node.h"
 #include "time/C_Timer.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 uint32_t C_BDD::getBDDnodeSize (void) {
   return (uint32_t) sizeof (cBDDnode) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  BDD objects unique table
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static uint32_t gNodeArraySize = 0 ;
 cBDDnode * gNodeArray = nullptr ;
 static uint64_t * gMarkTable = nullptr ;
 static uint32_t gCurrentNodeCount = 0 ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 uint32_t nodeMapMemoryUsage (void) {
   return (gNodeArraySize * C_BDD::getBDDnodeSize ()) / 1000000 ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 uint32_t C_BDD::getCreatedNodesCount (void) {
   return gNodeArraySize ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 uint32_t C_BDD::getExistingNodesCount (void) {
   return gCurrentNodeCount ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static uint32_t * gCollisionMap = nullptr ;
 static uint32_t gCollisionMapSize = 0 ;
 static uint32_t gHashMapPowerOfTwoMaxSize = 31 ;
 static bool gHashMapExpandable = true ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 uint32_t hashMapMemoryUsage (void) {
   return (uint32_t) ((gCollisionMapSize * sizeof (uint32_t)) / 1000000) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 inline uint64_t nodeHashCode (const cBDDnode inNode) {
   uint64_t result = bothBranches (inNode) % (uint64_t) gCollisionMapSize ;
@@ -82,7 +82,7 @@ inline uint64_t nodeHashCode (const cBDDnode inNode) {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void reallocHashMap (const uint32_t inNewSize) {
   if ((0 < inNewSize) && (inNewSize != gCollisionMapSize)) {
@@ -104,11 +104,11 @@ static void reallocHashMap (const uint32_t inNewSize) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static const uint32_t kUniqueMapSizeIncrement = 4194304 ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static uint32_t addNewNode (const cBDDnode inNode) {
   if (gNodeArraySize <= (gCurrentNodeCount + 1)) {
@@ -166,7 +166,7 @@ static uint32_t addNewNode (const cBDDnode inNode) {
   return gCurrentNodeCount ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_BDD::unmarkAllExistingBDDnodes (void) {
   MF_Assert ((gNodeArraySize % 64) == 0, "gNodeArraySize (%lld) is not a multiple of 64", gNodeArraySize, 0) ;
@@ -175,7 +175,7 @@ void C_BDD::unmarkAllExistingBDDnodes (void) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static bool isNodeMarked (const uint32_t inValue COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
@@ -190,7 +190,7 @@ static bool isNodeMarked (const uint32_t inValue COMMA_LOCATION_ARGS) {
   return marked ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool isNodeMarkedThenMark (const uint32_t inValue COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = inValue >> 1 ;
@@ -203,7 +203,7 @@ bool isNodeMarkedThenMark (const uint32_t inValue COMMA_LOCATION_ARGS) {
   return isMarked ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void markNode (const uint32_t inValue) {
   const uint32_t nodeIndex = inValue >> 1 ;
@@ -214,7 +214,7 @@ void markNode (const uint32_t inValue) {
   gMarkTable [idx] |= mask ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 uint32_t C_BDD::getMarkedNodesCount (void) {
   uint32_t count = 0 ;
@@ -228,19 +228,19 @@ uint32_t C_BDD::getMarkedNodesCount (void) {
   return count ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  BDD objects hash map
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static const int32_t kInitialCollisionMapPowerOfTwoSize = 20 ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //       BDD unique table implementation
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 uint32_t find_or_add (const uint32_t inBoolVar,
                       const uint32_t inELSEbranch,
@@ -272,7 +272,7 @@ uint32_t find_or_add (const uint32_t inBoolVar,
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_BDD::setHashMapMaxSize (const uint32_t inPowerOfTwoSize) {
   gHashMapPowerOfTwoMaxSize = inPowerOfTwoSize ;
@@ -281,12 +281,12 @@ void C_BDD::setHashMapMaxSize (const uint32_t inPowerOfTwoSize) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static C_BDD * gFirstBDD = nullptr ;
 static C_BDD * gLastBDD = nullptr ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 uint32_t C_BDD::getBDDinstancesCount (void) {
   uint32_t n = 0 ;
@@ -298,13 +298,13 @@ uint32_t C_BDD::getBDDinstancesCount (void) {
   return n ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Mark and Sweep
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void recursiveMarkBDDNodes (const uint32_t inValue) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
@@ -316,13 +316,13 @@ static void recursiveMarkBDDNodes (const uint32_t inValue) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_BDD::markAllBDDnodes (void) {
   recursiveMarkBDDNodes (mBDDvalue) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_BDD::markAndSweepUnusedNodes (void) {
   C_Timer timer ;
@@ -390,18 +390,23 @@ void C_BDD::markAndSweepUnusedNodes (void) {
     }
   }
   if (C_BDD::displaysInformationMessages ()) {
-    co << "BDD package info: mark and sweep done in " << timer
-       << " (nodes " << cStringWithUnsigned (previousNodeCount) << " -> " << cStringWithUnsigned (gCurrentNodeCount) << ")\n" ;
+    co += "BDD package info: mark and sweep done in " ;
+    co += timer ;
+    co += " (nodes " ;
+    co += cStringWithUnsigned (previousNodeCount) ;
+    co += " -> " ;
+    co += cStringWithUnsigned (gCurrentNodeCount) ;
+    co += ")\n" ;
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark BDD constructors, destructor, assignment
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD::C_BDD (void) :
 mBDDvalue (0),
@@ -410,7 +415,7 @@ mPtrToNextBDD (nullptr) {
   initLinks () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD::C_BDD (const uint32_t inValue) :
 mBDDvalue (inValue),
@@ -419,7 +424,7 @@ mPtrToNextBDD (nullptr) {
   initLinks () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD::C_BDD (const uint32_t variable,
               const bool inSign) :
@@ -431,7 +436,7 @@ mPtrToNextBDD (nullptr) {
   mBDDvalue = find_or_add (variable, complement, complement ^ 1 COMMA_HERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD::C_BDD (const C_BDD & inSource) :
 mBDDvalue (inSource.mBDDvalue),
@@ -440,7 +445,7 @@ mPtrToNextBDD (nullptr) {
   initLinks () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_BDD::initLinks (void) {
   if (gFirstBDD == nullptr) {
@@ -452,7 +457,7 @@ void C_BDD::initLinks (void) {
   gFirstBDD = this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD::~C_BDD (void) {
   mBDDvalue = 0 ;
@@ -468,20 +473,20 @@ C_BDD::~C_BDD (void) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_BDD & C_BDD::operator = (const C_BDD & inSource) {
   mBDDvalue = inSource.mBDDvalue ;
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Check all BDDs are well-formed
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void internalCheckBDDIsWellFormed (const uint32_t inBDD,
                                           const uint32_t inCurrentVar
@@ -504,7 +509,7 @@ static void internalCheckBDDIsWellFormed (const uint32_t inBDD,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_BDD::checkAllBDDsAreWellFormed (LOCATION_ARGS) {
 //--- Unmark all nodes
@@ -517,7 +522,7 @@ void C_BDD::checkAllBDDsAreWellFormed (LOCATION_ARGS) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_BDD::checkBDDIsWellFormed (LOCATION_ARGS) {
 //--- Unmark all nodes
@@ -526,13 +531,13 @@ void C_BDD::checkBDDIsWellFormed (LOCATION_ARGS) {
   internalCheckBDDIsWellFormed (mBDDvalue, UINT16_MAX COMMA_THERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Memory Usage
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 uint32_t C_BDD::currentMemoryUsage (void) {
   uint32_t result = nodeMapMemoryUsage () ;
@@ -542,29 +547,29 @@ uint32_t C_BDD::currentMemoryUsage (void) {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static uint32_t gMaximumMemoryUsage = UINT32_MAX ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 uint32_t C_BDD::maximumMemoryUsage (void) { // In MB
   return gMaximumMemoryUsage ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_BDD::setMaximumMemoryUsage (const uint32_t inMaxMemoryUsage) { // In MB
   gMaximumMemoryUsage = inMaxMemoryUsage ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark BDD Package stats
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_BDD::printBDDpackageOperationsSummary (AC_OutputStream & inStream) {
   #ifdef __LP64__
@@ -572,21 +577,27 @@ void C_BDD::printBDDpackageOperationsSummary (AC_OutputStream & inStream) {
   #else
     const uint32_t mode = 32 ;
   #endif
-  inStream << "\n"
-              "Statistics about BDD package ("
-           << cStringWithUnsigned (mode)
-           << "-bit mode, "
-           << cStringWithUnsigned (getBDDnodeSize ())
-           << " bytes for a BDD node)\n" ;
-  inStream << "  Current BDD count: " << cStringWithUnsigned (getBDDinstancesCount ()) << "\n"
-              "  Created nodes count: " << cStringWithUnsigned (getCreatedNodesCount ()) << "\n"
-              "  RAM usage: " ;
+  inStream += "\n" "Statistics about BDD package (" ;
+  inStream += cStringWithUnsigned (mode) ;
+  inStream += "-bit mode, " ;
+  inStream += cStringWithUnsigned (getBDDnodeSize ()) ;
+  inStream += " bytes for a BDD node)\n" ;
+  inStream += "  Current BDD count: " ;
+  inStream += cStringWithUnsigned (getBDDinstancesCount ()) ;
+  inStream += "\n" ;
+  inStream += "  Created nodes count: " ;
+  inStream += cStringWithUnsigned (getCreatedNodesCount ()) ;
+  inStream += "\n" ;
+  inStream += "  RAM usage: " ;
   inStream.appendUnsigned (currentMemoryUsage ()) ;
-  inStream << " MB\n" ;
+  inStream += " MB\n" ;
 //---
-  inStream << "Unique table:\n" ;
-  inStream << "  size: " << cStringWithUnsigned (gCollisionMapSize)
-           << " (" << cStringWithUnsigned ((gCollisionMapSize * sizeof (uint32_t)) / 1000000) << " MB)\n" ;
+  inStream += "Unique table:\n" ;
+  inStream += "  size: " ;
+  inStream += cStringWithUnsigned (gCollisionMapSize) ;
+  inStream += " (" ;
+  inStream += cStringWithUnsigned ((gCollisionMapSize * sizeof (uint32_t)) / 1000000) ;
+  inStream += " MB)\n" ;
   TC_UniqueArray <uint32_t> entrySizeArray (1 COMMA_HERE) ;
   for (uint32_t i=0 ; i<gCollisionMapSize ; i++) {
     int32_t length = 0 ;
@@ -603,14 +614,18 @@ void C_BDD::printBDDpackageOperationsSummary (AC_OutputStream & inStream) {
   }
   for (int32_t i=0 ; i<entrySizeArray.count () ; i++) {
     if ((entrySizeArray (i COMMA_HERE) > 0) && (gCollisionMapSize > 0)) {
-      inStream << "  " << cStringWithUnsigned (entrySizeArray (i COMMA_HERE))
-               << " entries of size " << cStringWithSigned (i)
-               << " (" << cStringWithUnsigned ((100UL * entrySizeArray (i COMMA_HERE)) / gCollisionMapSize) << "%)\n" ;
+      inStream += "  " ;
+      inStream += cStringWithUnsigned (entrySizeArray (i COMMA_HERE)) ;
+      inStream += " entries of size " ;
+      inStream += cStringWithSigned (i) ;
+      inStream += " (" ;
+      inStream += cStringWithUnsigned ((100UL * entrySizeArray (i COMMA_HERE)) / gCollisionMapSize) ;
+      inStream += "%)\n" ;
     }
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void C_BDD::freeBDDStataStructures (void) {
   releaseANDOperationCache () ;
@@ -629,4 +644,4 @@ void C_BDD::freeBDDStataStructures (void) {
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  'GALGAS_sint' : galgas sint32                                                                
 //
@@ -16,12 +16,12 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
 #include "galgas2/C_Compiler.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint::GALGAS_sint (void) :
 AC_GALGAS_root (),
@@ -29,7 +29,7 @@ mIsValid (false),
 mSIntValue (0) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint::GALGAS_sint (const int32_t inValue) :
 AC_GALGAS_root (),
@@ -37,7 +37,7 @@ mIsValid (true),
 mSIntValue (inValue) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_sint::objectCompare (const GALGAS_sint & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -53,19 +53,19 @@ typeComparisonResult GALGAS_sint::objectCompare (const GALGAS_sint & inOperand) 
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::constructor_max (UNUSED_LOCATION_ARGS) {
   return GALGAS_sint (INT32_MAX) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::constructor_min (UNUSED_LOCATION_ARGS) {
   return GALGAS_sint (INT32_MIN) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_uint GALGAS_sint::getter_uint (C_Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) const {
@@ -80,7 +80,7 @@ GALGAS_uint GALGAS_sint::getter_uint (C_Compiler * inCompiler
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_uint_36__34_ GALGAS_sint::getter_uint_36__34_ (C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
@@ -95,7 +95,7 @@ GALGAS_uint_36__34_ GALGAS_sint::getter_uint_36__34_ (C_Compiler * inCompiler
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint_36__34_ GALGAS_sint::getter_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
   GALGAS_sint_36__34_ result ;
@@ -105,7 +105,7 @@ GALGAS_sint_36__34_ GALGAS_sint::getter_sint_36__34_ (UNUSED_LOCATION_ARGS) cons
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_double GALGAS_sint::getter_double (UNUSED_LOCATION_ARGS) const {
   GALGAS_double result ;
@@ -115,7 +115,7 @@ GALGAS_double GALGAS_sint::getter_double (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bigint GALGAS_sint::getter_bigint (UNUSED_LOCATION_ARGS) const {
   GALGAS_bigint result ;
@@ -125,7 +125,7 @@ GALGAS_bigint GALGAS_sint::getter_bigint (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_sint::getter_string (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
@@ -136,21 +136,21 @@ GALGAS_string GALGAS_sint::getter_string (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_sint::getter_hexString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     const uint32_t v = (uint32_t) mSIntValue ;
     C_String s ;
-    s << "0x" ;
+    s += "0x" ;
     s.appendUnsignedHex8 (v) ;
     result = GALGAS_string (s) ;
   }
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_sint::getter_hexStringSeparatedBy (const GALGAS_char & inSeparator,
                                                         const GALGAS_uint & inGroup,
@@ -174,7 +174,7 @@ GALGAS_string GALGAS_sint::getter_hexStringSeparatedBy (const GALGAS_char & inSe
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_sint::getter_xString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
@@ -186,32 +186,32 @@ GALGAS_string GALGAS_sint::getter_xString (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_sint::description (C_String & ioString,
                                const int32_t /* inIndentation */) const {
-  ioString << "<@sint:" ;
+  ioString += "<@sint:" ;
   if (isValid ()) {
-    ioString << cStringWithSigned (mSIntValue) ;
+    ioString += cStringWithSigned (mSIntValue) ;
   }else{
-    ioString << "not built" ;
+    ioString += "not built" ;
   }
-  ioString << ">" ;
+  ioString += ">" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_sint::increment_operation_no_overflow (void) {
   mSIntValue ++ ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_sint::decrement_operation_no_overflow (void) {
   mSIntValue -- ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_sint::increment_operation (C_Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) {
@@ -225,7 +225,7 @@ void GALGAS_sint::increment_operation (C_Compiler * inCompiler
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_sint::decrement_operation (C_Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) {
@@ -239,7 +239,7 @@ void GALGAS_sint::decrement_operation (C_Compiler * inCompiler
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_sint::plusAssign_operation (const GALGAS_sint inOperand,
                                         C_Compiler * inCompiler
@@ -259,7 +259,7 @@ void GALGAS_sint::plusAssign_operation (const GALGAS_sint inOperand,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_sint::minusAssign_operation (const GALGAS_sint inOperand,
                                          C_Compiler * inCompiler
@@ -276,7 +276,7 @@ void GALGAS_sint::minusAssign_operation (const GALGAS_sint inOperand,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_sint::mulAssign_operation (const GALGAS_sint inOperand,
                                        C_Compiler * inCompiler
@@ -298,7 +298,7 @@ void GALGAS_sint::mulAssign_operation (const GALGAS_sint inOperand,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void GALGAS_sint::divAssign_operation (const GALGAS_sint inOperand,
                                        C_Compiler * inCompiler
@@ -313,7 +313,7 @@ void GALGAS_sint::divAssign_operation (const GALGAS_sint inOperand,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::add_operation_no_ovf (const GALGAS_sint & inOperand) const {
   GALGAS_sint result ;
@@ -323,7 +323,7 @@ GALGAS_sint GALGAS_sint::add_operation_no_ovf (const GALGAS_sint & inOperand) co
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::add_operation (const GALGAS_sint & inOperand,
                                         C_Compiler * inCompiler
@@ -344,7 +344,7 @@ GALGAS_sint GALGAS_sint::add_operation (const GALGAS_sint & inOperand,
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_sint::getter_canAdd (const GALGAS_sint & inOperand
                                         COMMA_UNUSED_LOCATION_ARGS) const {
@@ -360,7 +360,7 @@ GALGAS_bool GALGAS_sint::getter_canAdd (const GALGAS_sint & inOperand
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::substract_operation (const GALGAS_sint & inOperand,
                                               C_Compiler * inCompiler
@@ -378,7 +378,7 @@ GALGAS_sint GALGAS_sint::substract_operation (const GALGAS_sint & inOperand,
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_sint::getter_canSubstract (const GALGAS_sint & inOperand
                                               COMMA_UNUSED_LOCATION_ARGS) const {
@@ -391,7 +391,7 @@ GALGAS_bool GALGAS_sint::getter_canSubstract (const GALGAS_sint & inOperand
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::substract_operation_no_ovf (const GALGAS_sint & inOperand2) const {
   GALGAS_sint result ;
@@ -401,7 +401,7 @@ GALGAS_sint GALGAS_sint::substract_operation_no_ovf (const GALGAS_sint & inOpera
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::multiply_operation_no_ovf (const GALGAS_sint & inOperand2) const {
   GALGAS_sint result ;
@@ -411,7 +411,7 @@ GALGAS_sint GALGAS_sint::multiply_operation_no_ovf (const GALGAS_sint & inOperan
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::multiply_operation (const GALGAS_sint & inOperand,
                                              C_Compiler * inCompiler
@@ -434,7 +434,7 @@ GALGAS_sint GALGAS_sint::multiply_operation (const GALGAS_sint & inOperand,
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_sint::getter_canMultiply (const GALGAS_sint & inOperand
                                              COMMA_UNUSED_LOCATION_ARGS) const {
@@ -452,7 +452,7 @@ GALGAS_bool GALGAS_sint::getter_canMultiply (const GALGAS_sint & inOperand
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::divide_operation (const GALGAS_sint & inOperand,
                                            C_Compiler * inCompiler
@@ -470,7 +470,7 @@ GALGAS_sint GALGAS_sint::divide_operation (const GALGAS_sint & inOperand,
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_sint::getter_canDivide (const GALGAS_sint & inOperand
                                            COMMA_UNUSED_LOCATION_ARGS) const {
@@ -482,7 +482,7 @@ GALGAS_bool GALGAS_sint::getter_canDivide (const GALGAS_sint & inOperand
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::divide_operation_no_ovf (const GALGAS_sint & inOperand) const {
   GALGAS_sint result ;
@@ -492,7 +492,7 @@ GALGAS_sint GALGAS_sint::divide_operation_no_ovf (const GALGAS_sint & inOperand)
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::modulo_operation (const GALGAS_sint & inOperand2,
                                            C_Compiler * inCompiler
@@ -508,7 +508,7 @@ GALGAS_sint GALGAS_sint::modulo_operation (const GALGAS_sint & inOperand2,
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::operator_unary_minus (C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
@@ -524,7 +524,7 @@ GALGAS_sint GALGAS_sint::operator_unary_minus (C_Compiler * inCompiler
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::operator_unary_minus_no_ovf (void) const {
   GALGAS_sint result ;
@@ -535,7 +535,7 @@ GALGAS_sint GALGAS_sint::operator_unary_minus_no_ovf (void) const {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::left_shift_operation (const GALGAS_uint inShiftOperand,
                                                class C_Compiler * /* inCompiler*/
@@ -547,7 +547,7 @@ GALGAS_sint GALGAS_sint::left_shift_operation (const GALGAS_uint inShiftOperand,
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::left_shift_operation (const GALGAS_bigint inShiftOperand,
                                                class C_Compiler * inCompiler
@@ -563,7 +563,7 @@ GALGAS_sint GALGAS_sint::left_shift_operation (const GALGAS_bigint inShiftOperan
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::right_shift_operation (const GALGAS_uint inShiftOperand,
                                                 class C_Compiler * /* inCompiler*/
@@ -575,7 +575,7 @@ GALGAS_sint GALGAS_sint::right_shift_operation (const GALGAS_uint inShiftOperand
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::right_shift_operation (const GALGAS_bigint inShiftOperand,
                                                 class C_Compiler * inCompiler
@@ -591,7 +591,7 @@ GALGAS_sint GALGAS_sint::right_shift_operation (const GALGAS_bigint inShiftOpera
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::operator_and (const GALGAS_sint & inOperand2
                                        COMMA_UNUSED_LOCATION_ARGS) const {
@@ -602,7 +602,7 @@ GALGAS_sint GALGAS_sint::operator_and (const GALGAS_sint & inOperand2
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::operator_or (const GALGAS_sint & inOperand2
                                       COMMA_UNUSED_LOCATION_ARGS) const {
@@ -613,7 +613,7 @@ GALGAS_sint GALGAS_sint::operator_or (const GALGAS_sint & inOperand2
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::operator_xor (const GALGAS_sint & inOperand2
                                        COMMA_UNUSED_LOCATION_ARGS) const {
@@ -624,7 +624,7 @@ GALGAS_sint GALGAS_sint::operator_xor (const GALGAS_sint & inOperand2
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_sint GALGAS_sint::operator_tilde (UNUSED_LOCATION_ARGS) const {
   GALGAS_sint result ;
@@ -634,4 +634,4 @@ GALGAS_sint GALGAS_sint::operator_tilde (UNUSED_LOCATION_ARGS) const {
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

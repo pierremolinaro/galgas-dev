@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  Pure BNF grammar vocabulary                                                                  
 //
@@ -13,16 +13,16 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "utilities/MF_MemoryControl.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "cVocabulary.h"
 #include "grammarCompilation.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cVocabulary::cVocabulary (void) :
 mStringsArray (),
@@ -32,12 +32,12 @@ mOriginalGrammarSymbolsCount (0),
 mStartSymbol (0) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cVocabulary::~cVocabulary (void) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cVocabulary::
 buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
@@ -74,85 +74,89 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
   mStartSymbol = mTerminalSymbolsCount + (int32_t) inOriginalGrammarStartSymbol ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 int32_t cVocabulary::getEmptyStringTerminalSymbolIndex (void) const {
   return mTerminalSymbolsCount - 1 ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_String cVocabulary::getSymbol (const int32_t inSymbolIndex
                                  COMMA_LOCATION_ARGS) const {
   return mStringsArray (inSymbolIndex COMMA_THERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 int32_t cVocabulary::getStartSymbol (void) const {
   return mStartSymbol ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 int32_t cVocabulary::getTerminalSymbolsCount (void) const {
   return mTerminalSymbolsCount ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 int32_t cVocabulary::getAllSymbolsCount (void) const {
   return mStringsArray.count () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 int32_t cVocabulary::getNonTerminalSymbolsCount (void) const {
   return mStringsArray.count () - mTerminalSymbolsCount ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cVocabulary::addNonTerminalSymbol (const char * inPrefix,
                                         const C_String & inClassName,
                                         const int32_t inOrderInSourceFile,
                                         const bool inGenerateChoice) {
   C_String nt  ;
-  nt << inPrefix
-     << inClassName.identifierRepresentation ()
-     << "_" ;
+  nt += inPrefix ;
+  nt += inClassName.identifierRepresentation () ;
+  nt += "_" ;
   nt.appendSigned (inOrderInSourceFile) ;
   mStringsArray.appendObject (nt) ;
   mGenerateChoiceArray.appendObject (inGenerateChoice) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cVocabulary::addAugmentedSymbol (void) {
   mStringsArray.appendObject ("") ;
   mGenerateChoiceArray.appendObject (false) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 bool cVocabulary::needToGenerateChoice (const int32_t inSymbolIndex
                                         COMMA_LOCATION_ARGS) const {
   return mGenerateChoiceArray (inSymbolIndex COMMA_THERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void cVocabulary::printInFile (AC_OutputStream & inHTMLfile,
                                const int32_t inSymbolIndex
                                COMMA_LOCATION_ARGS) const {
   if (inSymbolIndex < mTerminalSymbolsCount) {
-    inHTMLfile << "$" << mStringsArray (inSymbolIndex COMMA_THERE) << "$" ;
+    inHTMLfile += "$" ;
+    inHTMLfile += mStringsArray (inSymbolIndex COMMA_THERE) ;
+    inHTMLfile += "$" ;
   }else{
-    inHTMLfile << "<" << mStringsArray (inSymbolIndex COMMA_THERE) << ">" ;
+    inHTMLfile += "<" ;
+    inHTMLfile += mStringsArray (inSymbolIndex COMMA_THERE) ;
+    inHTMLfile += ">" ;
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 C_RelationSingleType cVocabulary::getVocabularyBDDType (void) const {
   TC_UniqueArray <C_String> constantNameArray ;
@@ -165,4 +169,4 @@ C_RelationSingleType cVocabulary::getVocabularyBDDType (void) const {
   return C_RelationSingleType (".vocabulary.", constantNameArray COMMA_HERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -9,7 +9,7 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include <iostream>
 
@@ -20,11 +20,11 @@
 #include "utilities/M_machine.h"
 #include "utilities/galgas-random.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static size_t TEST_COUNT = 1'000'000 ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static uint32_t msFromStart (const clock_t inStart) {
   clock_t duration = ::clock () - inStart ;
@@ -165,7 +165,7 @@ static void testBigUnsignedBinaryStringConstructor (void) {
     for (size_t j = 0 ; j < n ; j++) {
       uint32_t value = galgas_random () ;
       for (size_t bit = 0 ; bit < 32 ; bit ++) {
-        refString << (((value & 1) == 0) ? "0" : "1") ;
+        refString += (((value & 1) == 0) ? "0" : "1") ;
         value >>= 1 ;
       }
     }
@@ -203,7 +203,7 @@ static void testBigUnsignedHexadecimalStringConstructor (void) {
       const uint32_t value = galgas_random () ;
       char s [12] ;
       snprintf (s, 11, "%08" PRIX8, value) ;
-      refString << s ;
+      refString += s ;
     }
   //--- Remove leading zeros
     while ((refString.length () > 1) && (refString (0 COMMA_HERE) == '0')) {
@@ -241,7 +241,7 @@ static void testBigUnsignedU8ArrayConstructor (void) {
       u8Array [j] = u8Value ;
       char s [4] ;
       snprintf (s, 3, "%02" PRIX8, u8Value) ;
-      refString << s ;
+      refString += s ;
     }
   //--- Remove leading zeros
     while ((refString.length () > 1) && (refString (0 COMMA_HERE) == '0')) {
@@ -254,15 +254,15 @@ static void testBigUnsignedU8ArrayConstructor (void) {
   //--- Check U8 access
     C_String u8AccessString ;
     if (big.u8Count () == 0) {
-      u8AccessString << "0" ;
+      u8AccessString += "0" ;
     }else{
       char s [4] ;
       snprintf (s, 3, "%" PRIX8, big.u8AtIndex (big.u8Count () - 1)) ;
-      u8AccessString << s ;
+      u8AccessString += s ;
       for (size_t j = big.u8Count () - 1 ; j > 0 ; j--) {
         const uint8_t v = big.u8AtIndex (j - 1) ;
         snprintf (s, 3, "%02" PRIX8, v) ;
-        u8AccessString << s ;
+        u8AccessString += s ;
       }
     }
     if (str != refString) {
@@ -299,7 +299,7 @@ static void testBigUnsignedU64ArrayConstructor (void) {
       }else{
         snprintf (s, 31, "%016" PRIX64, u64Value) ;
       }
-      refString << s ;
+      refString += s ;
     }
     const BigUnsigned big (u64Count, u64Array) ;
     const C_String s = big.xString () ;
@@ -544,9 +544,9 @@ static void testAddingSubtractingBigUnsigned (void) {
   std::cout << "Ok " << msFromStart (start) << " ms\n" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // page 191
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void pgcdComputing (void) {
   set_galgas_random_seed (0) ;
@@ -654,7 +654,7 @@ static void pgcdComputing (void) {
   std::cout << msFromStart (start) << " ms\n" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void somePrimeNumbers (void) {
   set_galgas_random_seed (0) ;

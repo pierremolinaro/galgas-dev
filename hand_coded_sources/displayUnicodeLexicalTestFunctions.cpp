@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  Copyright (C) 2017, ..., 2018 Pierre Molinaro.
 //
@@ -11,12 +11,12 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "all-declarations.h"
 #include "strings/unicode_character_base.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 static void displayUnicodeCharacterRange (bool (*inFunction) (const utf32 inUnicodeCharacter),
@@ -57,7 +57,7 @@ static void displayUnicodeCharacterRange (bool (*inFunction) (const utf32 inUnic
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void routine_displayUnicodeLexicalTestFunctions (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   displayUnicodeCharacterRange (isUnicodeLetter, "isUnicodeLetter") ;
@@ -75,4 +75,4 @@ void routine_displayUnicodeLexicalTestFunctions (C_Compiler * COMMA_UNUSED_LOCAT
   displayUnicodeCharacterRange (isUnicodeCommand, "isUnicodeCommand") ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

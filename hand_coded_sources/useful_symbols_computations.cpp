@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  Routines for computing useful symbols of the pure BNF grammar                                
 //
@@ -13,7 +13,7 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "strings/C_HTMLString.h"
 #include "bdd/C_Relation.h"
@@ -21,14 +21,14 @@
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/C_Compiler.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "useful_symbols_computations.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 #include "grammarCompilation.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void
 computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
@@ -59,7 +59,7 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
   outUsefulSymbols = accessibilityRelation.accessibleStatesFrom (initialValueRelation, & outIterationsCount COMMA_HERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static bool displayUnusefulSymbols (C_Compiler * inCompiler,
                                     const GALGAS_location & inErrorLocation,
@@ -70,9 +70,9 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
                                     const int32_t inIterationCount,
                                     const bool inVerboseOptionOn) {
   ioHTMLFileContents.outputRawData ("<p><a name=\"useful_symbols\"></a>") ;
-  ioHTMLFileContents << "Calculus completed in "
-              << cStringWithSigned (inIterationCount)
-              << " iterations.\n" ;
+  ioHTMLFileContents += "Calculus completed in " ;
+  ioHTMLFileContents += cStringWithSigned (inIterationCount) ;
+  ioHTMLFileContents += " iterations.\n" ;
   ioHTMLFileContents.outputRawData ("</p>") ;
 
 //------------------------------------------------------ Compute useless symbols
@@ -106,17 +106,17 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
   ioHTMLFileContents.outputRawData ("<p>") ;
   if (unusedSymbolArrayForWarning.count () == 0) {
     ioHTMLFileContents.outputRawData ("<span class=\"success\">") ;
-    ioHTMLFileContents << "All terminal and nonterminal symbols are useful.\n\n" ;
+    ioHTMLFileContents += "All terminal and nonterminal symbols are useful.\n\n" ;
     ioHTMLFileContents.outputRawData ("</span>") ;
   }else{
     ioHTMLFileContents.outputRawData ("<span class=\"warning\">") ;
-    ioHTMLFileContents << "The vocabulary has " ;
+    ioHTMLFileContents += "The vocabulary has " ;
     ioHTMLFileContents.appendSigned (unusedSymbolArrayForWarning.count ()) ;
-    ioHTMLFileContents << " useless symbol(s) : \n" ;
+    ioHTMLFileContents += " useless symbol(s) : \n" ;
     ioHTMLFileContents.outputRawData ("<code>") ;
     for (int32_t symbol=0 ; symbol < unusedSymbolArrayForWarning.count () ; symbol++) {
       ioHTMLFileContents.outputRawData ("<br>") ;
-      ioHTMLFileContents << uselessSymbolsForWarning.configuration().constantNameForVariableAndValue (0, (uint32_t) unusedSymbolArrayForWarning (symbol COMMA_HERE) COMMA_HERE) ;
+      ioHTMLFileContents += uselessSymbolsForWarning.configuration().constantNameForVariableAndValue (0, (uint32_t) unusedSymbolArrayForWarning (symbol COMMA_HERE) COMMA_HERE) ;
     }
     ioHTMLFileContents.outputRawData ("</code></span>") ;
   }
@@ -126,27 +126,27 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
 //--- Ok, or warning ?
   const bool warning = (usedSymbolDeclaredAsUnusedArray.count () > 0) || (unusedSymbolArrayForWarning.count () > 0) ;
   if (inVerboseOptionOn) {
-    co << (warning ? "warning.\n" : "all, ok.\n") ;
+    co += (warning ? "warning.\n" : "all, ok.\n") ;
   }
   co.flush () ;
 //--- Warn for unused symbols
   if (unusedSymbolArrayForWarning.count () > 0) {
     C_String warningMessage ;
     if (unusedSymbolArrayForWarning.count () == 1) {
-      warningMessage << "there is 1 useless symbol, not declared as unused: " ;
+      warningMessage += "there is 1 useless symbol, not declared as unused: " ;
     }else{
-      warningMessage << "there are " ;
+      warningMessage += "there are " ;
       warningMessage.appendSigned (unusedSymbolArrayForWarning.count ()) ;
-      warningMessage << " useless symbols, not declared as unused: " ;
+      warningMessage += " useless symbols, not declared as unused: " ;
     }
     bool first = true ;
     for (int32_t symbol=0 ; symbol < unusedSymbolArrayForWarning.count () ; symbol++) {
       if (first) {
         first = false ;
       }else{
-        warningMessage << ", " ;
+        warningMessage += ", " ;
       }
-      warningMessage << uselessSymbolsForWarning.configuration().constantNameForVariableAndValue (0, (uint32_t) unusedSymbolArrayForWarning (symbol COMMA_HERE) COMMA_HERE) ;
+      warningMessage += uselessSymbolsForWarning.configuration().constantNameForVariableAndValue (0, (uint32_t) unusedSymbolArrayForWarning (symbol COMMA_HERE) COMMA_HERE) ;
     }
     inCompiler->semanticWarningAtLocation (inErrorLocation, warningMessage COMMA_HERE) ;
   }
@@ -154,20 +154,20 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
   if (usedSymbolDeclaredAsUnusedArray.count () > 0) {
     C_String warningMessage ;
     if (usedSymbolDeclaredAsUnusedArray.count () == 1) {
-      warningMessage << "there is 1 useful symbol declared as unused: " ;
+      warningMessage += "there is 1 useful symbol declared as unused: " ;
     }else{
-      warningMessage << "there are " ;
+      warningMessage += "there are " ;
       warningMessage.appendSigned (usedSymbolDeclaredAsUnusedArray.count ()) ;
-      warningMessage << " useful symbols declared as unused: " ;
+      warningMessage += " useful symbols declared as unused: " ;
     }
     bool first = true ;
     for (int32_t i=0 ; i<usedSymbolDeclaredAsUnusedArray.count () ; i++) {
       if (first) {
         first = false ;
       }else{
-        warningMessage << ", " ;
+        warningMessage += ", " ;
       }
-      warningMessage << usedSymbolDeclaredAsUnusedArray (i COMMA_HERE) ;
+      warningMessage += usedSymbolDeclaredAsUnusedArray (i COMMA_HERE) ;
     }
     inCompiler->semanticWarningAtLocation (inErrorLocation, warningMessage COMMA_HERE) ;
   }
@@ -175,7 +175,7 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
   return warning ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void useful_symbols_computations (C_Compiler * inCompiler,
                                   const GALGAS_location & inErrorLocation,
@@ -190,7 +190,7 @@ void useful_symbols_computations (C_Compiler * inCompiler,
                                   const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    co << "  Useful nonterminal symbols... " ;
+    co += "  Useful nonterminal symbols... " ;
     co.flush () ;
   }
 //--- Print in BNF file
@@ -216,4 +216,4 @@ void useful_symbols_computations (C_Compiler * inCompiler,
   outWarningFlag |= warning ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

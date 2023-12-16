@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //  Routines for computing followed by empty strings symbols                                     
 //
@@ -13,18 +13,18 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "follow_by_empty_computation.h"
 #include "strings/C_HTMLString.h"
 #include "bdd/C_Relation.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void
 computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionRules,
@@ -70,7 +70,7 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
  
 static void
 displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowedByEmpty,
@@ -83,12 +83,12 @@ displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowe
 
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("<p><a name=\"follow_by_empty\"></a>") ;
-    ioHTMLFileContents << "Calculus completed in "
-                << cStringWithSigned (inIterationsCount)
-                << " iterations.\n" ;
+    ioHTMLFileContents += "Calculus completed in " ;
+    ioHTMLFileContents += cStringWithSigned (inIterationsCount) ;
+    ioHTMLFileContents += " iterations.\n" ;
     ioHTMLFileContents.outputRawData ("</p><p>") ;
     if (n == 1) {
-      ioHTMLFileContents << "One nonterminal symbol (the start symbol) can be followed by the empty string.\n" ;
+      ioHTMLFileContents += "One nonterminal symbol (the start symbol) can be followed by the empty string.\n" ;
     }else{
       ioHTMLFileContents.appendUnsigned (n) ;
        ioHTMLFileContents.appendCString (" nonterminal symbols (including the start symbol) can be followed by the empty string.\n") ;
@@ -107,12 +107,12 @@ displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowe
   }
   if (inVerboseOptionOn) {
     co.appendUnsigned (n) ;
-    co << ".\n" ;
+    co += ".\n" ;
     co.flush () ;
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void
 follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductions,
@@ -124,7 +124,7 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
                               const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    co << "  Nonterminal symbols followed by empty... " ;
+    co += "  Nonterminal symbols followed by empty... " ;
     co.flush () ;
   }
 //--- Print in BNF file
@@ -149,4 +149,4 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
                                            inVerboseOptionOn) ; 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

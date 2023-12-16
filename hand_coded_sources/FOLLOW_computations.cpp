@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 // Routines for computing FOLLOWS                                                                
 //
@@ -13,22 +13,22 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 //  more details.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "strings/C_HTMLString.h"
 #include "bdd/C_Relation.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #include "FOLLOW_computations.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //    C O M P U T E    F O L L O W    S E T S                                                    
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
                                const C_Relation & inNonterminalSymbolsFollowedByEmpty,
@@ -113,7 +113,7 @@ static void computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules
   outFOLLOWsets.getArray (outFOLLOWarray COMMA_HERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void
 printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarray,
@@ -151,7 +151,7 @@ printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarr
   inHTMLfile.outputRawData ("</table>") ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static bool
 checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
@@ -175,7 +175,7 @@ checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
 //--- Verifier les suivants
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("<p>") ;
-    ioHTMLFileContents << "Every useful nonterminal symbol should:"
+    ioHTMLFileContents += "Every useful nonterminal symbol should:"
                    " either have a non empty FOLLOW,"
                    " either can be followed by the empty string,"
                    " either both."
@@ -201,15 +201,15 @@ checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
   if (inPopulateHTMLHelperString) {
     if (n == 0) {
       ioHTMLFileContents.outputRawData ("<p><span class=\"success\">") ;
-      ioHTMLFileContents << "All FOLLOW are correct." ;
+      ioHTMLFileContents += "All FOLLOW are correct." ;
       ioHTMLFileContents.outputRawData ("</span></p>") ;
     }else{
       ioHTMLFileContents.outputRawData ("<p><span class=\"error\">") ;
-      ioHTMLFileContents << "Error : " ;
+      ioHTMLFileContents += "Error : " ;
       ioHTMLFileContents.appendUnsigned (n) ;
-      ioHTMLFileContents << " nonterminal symbol"
-                  << ((n > 1) ? "s have" : " has")
-                  << " an empty FOLLOW :\n" ;
+      ioHTMLFileContents += " nonterminal symbol" ;
+      ioHTMLFileContents += ((n > 1) ? "s have" : " has") ;
+      ioHTMLFileContents += " an empty FOLLOW :\n" ;
       ioHTMLFileContents.outputRawData ("</span></p>") ;
 
       TC_UniqueArray <uint64_t> array ;
@@ -229,7 +229,7 @@ checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
   return n == 0 ; 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                           C_HTMLString & ioHTMLFileContents,
@@ -284,4 +284,4 @@ void FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                            inVerboseOptionOn) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
