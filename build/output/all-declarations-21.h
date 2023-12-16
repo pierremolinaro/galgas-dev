@@ -623,7 +623,7 @@ void extensionSetter_insertDeclaredLocalVariable (class GALGAS_localVarManager &
 //----------------------------------------------------------------------------------------------------------------------
 
 void extensionMethod_displayRule (const class GALGAS_productionRuleListForGrammarAnalysis_2D_element inObject,
-                                  const class GALGAS_string constin_inSyntaxCompnentName,
+                                  const class GALGAS_string constin_inSyntaxComponentName,
                                   class GALGAS_string & io_ioGeneratedCode,
                                   class C_Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;

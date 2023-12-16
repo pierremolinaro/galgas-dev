@@ -304,3 +304,9 @@ project-xcode-galgas/*
 *.layout
 *.exe
 build/helpers/*.html
+makefile-macosx/x86_64/galgas
+makefile-macosx/universal/galgas-debug
+makefile-macosx/arm64/galgas-debug
+makefile-macosx/arm64/galgas
+makefile-macosx/universal/galgas
+makefile-macosx/x86_64/galgas-debug
