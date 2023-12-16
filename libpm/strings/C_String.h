@@ -86,7 +86,7 @@ typedef enum {
 class C_String : public AC_OutputStream {
 //--- Constructors
   public: C_String (void) ; // Empty string
-  public: C_String (const char * chaineC) ; // From a C string
+  public: C_String (const char * inCString) ; // From a C string
   public: C_String (const utf32 * inUTF32String) ;
   public: static C_String spaces (const int32_t inSpaceCount) ;
   
@@ -303,7 +303,7 @@ class C_String : public AC_OutputStream {
 
 //--- Convert string to double
   public: void convertToDouble (double & outDoubleValue,
-                                 bool & outOk) const ;
+                                bool & outOk) const ;
 
   public: void convertToUInt32 (uint32_t & outResult,
                                  bool & outOk) const ;

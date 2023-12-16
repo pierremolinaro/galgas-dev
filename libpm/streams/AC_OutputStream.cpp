@@ -114,6 +114,18 @@ AC_OutputStream & AC_OutputStream::operator << (const C_String inString) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+void AC_OutputStream::operator += (const char * inCstring) {
+  appendCString (inCstring) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void AC_OutputStream::operator += (const C_String inString) {
+  genericUnicodeArrayOutput (inString.utf32String (HERE), inString.length ()) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark << char *
 #endif
@@ -129,13 +141,6 @@ AC_OutputStream & AC_OutputStream::operator << (const char * inCstring) {
 
 void AC_OutputStream::appendCString (const char * inCstring, const int32_t inCount) {
   genericCharArrayOutput (inCstring, inCount) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_OutputStream & AC_OutputStream::operator << (const utf32 * inUTF32String) {
-  genericUnicodeArrayOutput (inUTF32String, utf32_strlen (inUTF32String)) ;
-  return * this ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -109,7 +109,21 @@ void BigSigned::extractBytesForUnsignedRepresentation (std::vector <uint8_t> & o
 //--------------------------------------------------------------------------------------------------
 
 void BigSigned::extractBytesForSignedRepresentation (std::vector <uint8_t> & outValue) const {
-  mUnsigned.extractBytesForUnsignedRepresentation (outValue) ;
+  if (mUnsigned.isZero ()) {
+    outValue.push_back (0) ;
+  }else if (mIsPositive) {
+    mUnsigned.extractBytesForUnsignedRepresentation (outValue) ;
+    const uint8_t msb = mUnsigned.u8AtIndex (mUnsigned.u8Count () - 1) ;
+    if ((msb & 0x80) != 0) {
+      outValue.push_back (0) ;
+    }
+  }else{
+    const BigUnsigned v = mUnsigned.subtractedOneAndComplemented (mUnsigned.chunkCount ()) ;
+    v.extractBytesForUnsignedRepresentation (outValue) ;
+    while ((outValue.size () > 0) && (outValue.back () == 0xFF)) {
+      outValue.pop_back () ;
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -78,12 +78,10 @@ C_String BigUnsigned::hexString (void) const {
   if (u64Count () == 0) {
     result = "0" ;
   }else{
-    char s [32] ;
-    snprintf (s, 31, "0x%" PRIX64, u64AtIndex (u64Count () - 1)) ;
-    result << s ;
+    result = "0x" ;
+    result.appendUnsignedHex (u64AtIndex (u64Count () - 1)) ;
     for (size_t i = u64Count () - 1 ; i > 0 ; i--) {
-      snprintf (s, 31, ChunkUIntHexFormatSpecifierWithLeadingZeros, mSharedArray.chunkAtIndex (i COMMA_HERE)) ;
-      result << s ;
+      result.appendUnsignedHex16 (u64AtIndex (i - 1)) ;
     }
   }
   return result ;
@@ -96,12 +94,9 @@ C_String BigUnsigned::xString (void) const {
   if (u64Count () == 0) {
     result = "0" ;
   }else{
-    char s [32] ;
-    snprintf (s, 31, "%" PRIX64, u64AtIndex (u64Count () - 1)) ;
-    result << s ;
+    result.appendUnsignedHex (u64AtIndex (u64Count () - 1)) ;
     for (size_t i = u64Count () - 1 ; i > 0 ; i--) {
-      snprintf (s, 31, "%016" PRIX64, u64AtIndex (i-1)) ;
-      result << s ;
+      result.appendUnsignedHex16 (u64AtIndex (i - 1)) ;
     }
   }
   return result ;
@@ -123,10 +118,24 @@ C_String BigUnsigned::bitString (void) const {
     }
     while ((result.length () > 0) && (result (0 COMMA_HERE) == '0')) {
       result.suppress (0, 1 COMMA_HERE) ; // Remove first character
-//      result.erase (result.begin ()) ; // Remove first character
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void BigUnsigned::extractBytesForUnsignedRepresentation (std::vector <uint8_t> & outValue) const {
+  outValue.clear () ;
+  const size_t n = u8Count () ;
+  if (n == 0) {
+    outValue.push_back (0) ;
+  }else{
+    for (size_t i = 0 ; i < n ; i++) {
+      const uint8_t v = u8AtIndex (i) ;
+      outValue.push_back (v) ;
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

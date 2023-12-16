@@ -58,11 +58,11 @@ class AC_OutputStream {
   public: void appendUnsignedHex2 (const uint64_t inValue) ;
   public: void appendUnsignedHex4 (const uint64_t inValue) ;
   public: void appendUnsignedHex8 (const uint64_t inValue) ;
+  public: void appendUnsignedHex16 (const uint64_t inValue) ;
 
 //--- Appending uint64_t
   public: void appendUnsignedWithZeroFill (const uint64_t inValue, const uint32_t inWidth) ;
   public: void appendUnsigned (const uint64_t inValue) ;
-  public: void appendUnsignedHex16 (const uint64_t inValue) ;
 
 //--- Appending Sint64
   public: void appendSigned (const int64_t inValue) ;
@@ -77,9 +77,10 @@ class AC_OutputStream {
   public: void appendPointer (const void * inValue) ;
 
 //--- Output Stream
+  public: void operator += (const char * inCstring) ;
+  public: void operator += (const C_String inCstring) ; // Pass by copy (for handling 's += s ;' instruction)
   public: AC_OutputStream & operator << (const char * inCstring) ;
   public: AC_OutputStream & operator << (const C_String inString) ; // Pass by copy (for handling 's << s ;' instruction)
-  public: AC_OutputStream & operator << (const utf32 * inUTF32String) ;
 
 //--- Flush print (does nothing for this class)
   public: virtual void flush (void) ;

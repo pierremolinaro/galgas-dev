@@ -52,13 +52,3 @@ uint64_t BigUnsigned::uint64 (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-void BigUnsigned::extractBytesForUnsignedRepresentation (std::vector <uint8_t> & outValue) const {
-  outValue.clear () ;
-  for (size_t i = 0 ; i < u8Count () ; i++) {
-    const uint8_t v = u8AtIndex (i) ;
-    outValue.push_back (v) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
