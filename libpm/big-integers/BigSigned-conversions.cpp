@@ -102,26 +102,26 @@ uint32_t BigSigned::requiredBitCountForUnsignedRepresentation (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void BigSigned::extractBytesForUnsignedRepresentation (std::vector <uint8_t> & outValue) const {
+void BigSigned::extractBytesForUnsignedRepresentation (TC_UniqueArray <uint8_t> & outValue) const {
   mUnsigned.extractBytesForUnsignedRepresentation (outValue) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void BigSigned::extractBytesForSignedRepresentation (std::vector <uint8_t> & outValue) const {
+void BigSigned::extractBytesForSignedRepresentation (TC_UniqueArray <uint8_t> & outValue) const {
   if (mUnsigned.isZero ()) {
-    outValue.push_back (0) ;
+    outValue.appendObject (0) ;
   }else if (mIsPositive) {
     mUnsigned.extractBytesForUnsignedRepresentation (outValue) ;
     const uint8_t msb = mUnsigned.u8AtIndex (mUnsigned.u8Count () - 1) ;
     if ((msb & 0x80) != 0) {
-      outValue.push_back (0) ;
+      outValue.appendObject (0) ;
     }
   }else{
     const BigUnsigned v = mUnsigned.subtractedOneAndComplemented (mUnsigned.chunkCount ()) ;
     v.extractBytesForUnsignedRepresentation (outValue) ;
-    while ((outValue.size () > 0) && (outValue.back () == 0xFF)) {
-      outValue.pop_back () ;
+    while ((outValue.count () > 0) && (outValue.lastObject (HERE) == 0xFF)) {
+      outValue.removeLastObject (HERE) ;
     }
   }
 }

@@ -125,15 +125,15 @@ C_String BigUnsigned::bitString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void BigUnsigned::extractBytesForUnsignedRepresentation (std::vector <uint8_t> & outValue) const {
-  outValue.clear () ;
+void BigUnsigned::extractBytesForUnsignedRepresentation (TC_UniqueArray <uint8_t> & outValue) const {
+  outValue.removeAll () ;
   const size_t n = u8Count () ;
   if (n == 0) {
-    outValue.push_back (0) ;
+    outValue.appendObject (0) ;
   }else{
     for (size_t i = 0 ; i < n ; i++) {
       const uint8_t v = u8AtIndex (i) ;
-      outValue.push_back (v) ;
+      outValue.appendObject (v) ;
     }
   }
 }

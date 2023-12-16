@@ -143,8 +143,8 @@ class BigSigned final {
   public: uint64_t uint64 (void) const ;
   public:  int32_t int32  (void) const ;
   public:  int64_t int64  (void) const ;
-  public: void extractBytesForUnsignedRepresentation (std::vector <uint8_t> & outValue) const ;
-  public: void extractBytesForSignedRepresentation (std::vector <uint8_t> & outValue) const ;
+  public: void extractBytesForUnsignedRepresentation (TC_UniqueArray <uint8_t> & outValue) const ;
+  public: void extractBytesForSignedRepresentation (TC_UniqueArray <uint8_t> & outValue) const ;
 
 //--- Testing value
   public: bool fitsInUInt32 (void) const ;
