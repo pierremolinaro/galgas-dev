@@ -168,7 +168,7 @@ GALGAS_uint GALGAS_bool::getter_uint (UNUSED_LOCATION_ARGS) const {
 GALGAS_bigint GALGAS_bool::getter_bigint (UNUSED_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid ()) {
-    result = GALGAS_bigint (C_BigInt ((uint32_t) (mBoolValue ? 1 : 0))) ;
+    result = GALGAS_bigint (BigSigned (true, uint64_t (mBoolValue ? 1 : 0))) ;
   }
   return result ;
 }

@@ -10657,7 +10657,7 @@ GALGAS_string extensionGetter_cppTypeName (const GALGAS_lexicalTypeEnum & inObje
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
     {
-      result_result = GALGAS_string ("C_BigInt") ;
+      result_result = GALGAS_string ("BigSigned") ;
     }
     break ;
   }
@@ -10843,7 +10843,7 @@ GALGAS_string extensionGetter_initialization (const GALGAS_lexicalTypeEnum & inO
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
     {
-      result_result = GALGAS_string (" = C_BigInt ()") ;
+      result_result = GALGAS_string (" = BigSigned ()") ;
     }
     break ;
   }

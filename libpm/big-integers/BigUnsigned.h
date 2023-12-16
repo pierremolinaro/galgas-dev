@@ -3,12 +3,17 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "ChunkSharedArray.h"
+#include "C_String.h"
 #include <vector>
 
 //--------------------------------------------------------------------------------------------------
 
 class BigUnsignedQuotientU64Remainder ;
 class BigUnsignedQuotientRemainder ;
+
+//--------------------------------------------------------------------------------------------------
+
+enum class BigUnsignedBase { two, ten, sixteen } ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -25,7 +30,9 @@ class BigUnsigned final {
   public: explicit BigUnsigned (const size_t inU64Count,
                                 const uint64_t inSourceU64Array []) ;
 
-  public: explicit BigUnsigned (const std::string & inString, const uint8_t inSeparator) ;
+  public: explicit BigUnsigned (const char * inString, const uint8_t inSeparator) ;
+
+  public: explicit BigUnsigned (const char * inString, const BigUnsignedBase inBase, bool & outOk) ;
 
   public: static BigUnsigned powerOfTwo (const uint32_t inPowerOfTwo) ;
 
@@ -80,6 +87,7 @@ class BigUnsigned final {
   public: ChunkUInt operator % (const ChunkUInt inDivisor) const ;
 
 //--- Logical operations
+  public: BigUnsigned & operator |= (const ChunkUInt inOperand) ;
   public: BigUnsigned operator | (const BigUnsigned inOperand) const ;
   public: BigUnsigned operator ^ (const BigUnsigned inOperand) const ;
   public: BigUnsigned operator & (const BigUnsigned inOperand) const ;
@@ -135,11 +143,12 @@ class BigUnsigned final {
   public: void complementBitAtIndex (const uint32_t inBitIndex) ;
 
 //--- Print
-  public: std::string decimalString (void) const ;
-  public: std::string spacedDecimalString (const uint32_t inSeparation) const ;
-  public: std::string spacedDecimalStringWithDigitCount (const uint32_t inSeparation) const ;
-  public: std::string hexString (void) const ;
-  public: std::string xString (void) const ;
+  public: C_String decimalString (void) const ;
+  public: C_String spacedDecimalString (const uint32_t inSeparation) const ;
+  public: C_String spacedDecimalStringWithDigitCount (const uint32_t inSeparation) const ;
+  public: C_String hexString (void) const ;
+  public: C_String xString (void) const ;
+  public: C_String bitString (void) const ;
   public: void printHex (const char * inName) const ;
 
 //--- Testing value

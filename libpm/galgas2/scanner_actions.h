@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2009, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 2009, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -219,33 +219,33 @@ void scanner_routine_resetString (C_Lexique & inLexique,
 //--- Methods introduced in GALGAS 3.1.0
 void scanner_routine_enterDecimalDigitIntoBigInt (C_Lexique & inLexique,
                                                   const utf32 inCharacter,
-                                                  class C_BigInt & ioBigInt,
+                                                  class BigSigned & ioBigInt,
                                                   const char * inCharacterIsNotDecimalDigitError) ;
 
 void scanner_routine_enterHexDigitIntoBigInt (C_Lexique & inLexique,
                                               const utf32 inCharacter,
-                                              class C_BigInt & ioBigInt,
+                                              class BigSigned & ioBigInt,
                                               const char * inCharacterIsNotDecimalDigitError) ;
 
 void scanner_routine_convertDecimalStringIntoBigInt (C_Lexique & inLexique,
                                                      const C_String & inDecimalString,
-                                                     C_BigInt & outValue,
+                                                     BigSigned & outValue,
                                                      const char * inCharacterIsNotDecimalDigitError) ;
 
 void scanner_routine_convertHexStringIntoBigInt (C_Lexique & inLexique,
                                                  const C_String & inHexString,
-                                                 C_BigInt & outValue,
+                                                 BigSigned & outValue,
                                                  const char * inCharacterIsNotHexDigitError) ;
 
 //--- Methods introduced in GALGAS 3.1.6
 void scanner_routine_enterBinaryDigitIntoBigInt (C_Lexique & inLexique,
                                                  const utf32 inCharacter,
-                                                 class C_BigInt & ioBigInt,
+                                                 class BigSigned & ioBigInt,
                                                  const char * inCharacterIsNotBinaryDigitError) ;
 
 void scanner_routine_convertBinaryStringIntoBigInt (C_Lexique & inLexique,
                                                     const C_String & inBinaryString,
-                                                    C_BigInt & outValue,
+                                                    BigSigned & outValue,
                                                     const char * inCharacterIsNotBinaryDigitError) ;
 
 
@@ -256,6 +256,6 @@ utf32 scanner_function_toLower (C_Lexique & inLexique, const utf32 inCharacter) 
 utf32 scanner_function_toUpper (C_Lexique & inLexique, const utf32 inCharacter) ;
 
 void scanner_routine_negateBigInt (C_Lexique & inLexique,
-                                   C_BigInt & ioValue) ;
+                                   BigSigned & ioValue) ;
 
 //----------------------------------------------------------------------------------------------------------------------

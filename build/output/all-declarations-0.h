@@ -264,7 +264,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_lstringlist_2D_
 //----------------------------------------------------------------------------------------------------------------------
 
 class cTokenFor_galgasScanner : public cToken {
-  public: C_BigInt mLexicalAttribute_bigintValue ;
+  public: BigSigned mLexicalAttribute_bigintValue ;
   public: utf32 mLexicalAttribute_charValue ;
   public: double mLexicalAttribute_floatValue ;
   public: C_String mLexicalAttribute_identifierString ;
@@ -517,7 +517,7 @@ class C_Lexique_galgasScanner : public C_Lexique {
 
 
 //--- Attribute access
-  public: C_BigInt attributeValue_bigintValue (void) const ;
+  public: BigSigned attributeValue_bigintValue (void) const ;
   public: utf32 attributeValue_charValue (void) const ;
   public: double attributeValue_floatValue (void) const ;
   public: C_String attributeValue_identifierString (void) const ;

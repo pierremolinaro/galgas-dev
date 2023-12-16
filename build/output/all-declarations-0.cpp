@@ -3890,7 +3890,7 @@ C_String C_Lexique_galgasScanner::getCurrentTokenString (const cToken * inTokenP
 
 void C_Lexique_galgasScanner::internalParseLexicalToken (cTokenFor_galgasScanner & token) {
   bool loop = true ;
-  token.mLexicalAttribute_bigintValue = C_BigInt () ;
+  token.mLexicalAttribute_bigintValue = BigSigned () ;
   token.mLexicalAttribute_charValue = TO_UNICODE (0) ;
   token.mLexicalAttribute_floatValue = 0.0 ;
   token.mLexicalAttribute_identifierString.setLengthToZero () ;
@@ -4675,7 +4675,7 @@ void C_Lexique_galgasScanner::enterToken (cTokenFor_galgasScanner & ioToken) {
 //               A T T R I B U T E   A C C E S S                                                 
 //----------------------------------------------------------------------------------------------------------------------
 
-C_BigInt C_Lexique_galgasScanner::attributeValue_bigintValue (void) const {
+BigSigned C_Lexique_galgasScanner::attributeValue_bigintValue (void) const {
   cTokenFor_galgasScanner * ptr = (cTokenFor_galgasScanner *) currentTokenPtr (HERE) ;
   return ptr->mLexicalAttribute_bigintValue ;
 }

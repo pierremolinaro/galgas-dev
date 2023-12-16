@@ -584,7 +584,7 @@ GALGAS_uint GALGAS_uint_36__34_::getter_uint (C_Compiler * inCompiler
 GALGAS_bigint GALGAS_uint_36__34_::getter_bigint (UNUSED_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid ()) {
-    result = GALGAS_bigint (C_BigInt (true, mUInt64Value)) ;
+    result = GALGAS_bigint (BigSigned (true, mUInt64Value)) ;
   }
   return result ;
 }

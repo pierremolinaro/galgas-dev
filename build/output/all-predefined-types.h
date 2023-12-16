@@ -29,7 +29,7 @@
 #include "command_line_interface/C_StringCommandLineOption.h"
 #include "command_line_interface/C_StringListCommandLineOption.h"
 #include "utilities/C_PrologueEpilogue.h"
-#include "big-integers/C_BigInt.h"
+#include "big-integers/BigSigned.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1974,18 +1974,18 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint_36__34_ ;
 class GALGAS_bigint : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: bool mIsValid ;
-  private: C_BigInt mValue ;
+  private: BigSigned mValue ;
 
 //--------------------------------- Accessors
   public: inline bool isValid (void) const override { return mIsValid ; }
-  public: inline C_BigInt bigintValue (void) const { return mValue ; }
+  public: inline BigSigned bigintValue (void) const { return mValue ; }
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
   public: GALGAS_bigint (void) ;
 
 //--------------------------------- Constructor
-  public: GALGAS_bigint (const C_BigInt & inValue) ;
+  public: GALGAS_bigint (const BigSigned & inValue) ;
   public: GALGAS_bigint (const char * inDecimalString, C_Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Destructor

@@ -41,37 +41,140 @@ BigUnsigned BigUnsigned::powerOfTwo (const uint32_t inPowerOfTwo) {
 
 //--------------------------------------------------------------------------------------------------
 
-BigUnsigned::BigUnsigned (const std::string & inString, const uint8_t inSeparator) :
+BigUnsigned::BigUnsigned (const char * inString, const BigUnsignedBase inBase, bool & outOk) :
 mSharedArray () {
-  size_t idx = 0 ;
-  ChunkUInt accumulator = 0 ;
-  for (size_t i = 0 ; i < inString.length () ; i++) {
-    const char c = inString.c_str () [i] ;
-    if ((c >= '0') && (c <= '9')) {
-      accumulator *= 10 ;
-      accumulator += ChunkUInt (c - '0') ;
-      idx += 1 ;
-      if (idx == greatestPowerOf10DigitCount) {
-        idx = 0 ;
-        *this *= greatestPowerOf10 ;
-        *this += accumulator ;
-        accumulator = 0 ;
+  outOk = true ;
+  if (inString != nullptr) {
+    switch (inBase) {
+    case BigUnsignedBase::two :
+      { size_t accumulatorIndex = 0 ;
+        size_t stringIndex = 0 ;
+        ChunkUInt accumulator = 0 ;
+        while (inString [stringIndex] != '\0') {
+          const char c = inString [stringIndex] ;
+          stringIndex += 1 ;
+          if ((c >= '0') && (c <= '1')) {
+            accumulator *= 2 ;
+            accumulator |= ChunkUInt (c - '0') ;
+            accumulatorIndex += 1 ;
+            if (accumulatorIndex == ChunkUIntBitCount) {
+              accumulatorIndex = 0 ;
+              *this <<= ChunkUIntBitCount ;
+              *this |= accumulator ;
+              accumulator = 0 ;
+            }
+          }else{
+            outOk = false ;
+          }
+        }
+        if (accumulatorIndex > 0) {
+          *this <<= accumulatorIndex ;
+          *this |= accumulator ;
+        }
       }
-    }else if (c != inSeparator) {
-      std::cout << "Error " << __FILE__ << ":" << __LINE__ << "\n" ;
-      exit (1) ;
+      break ;
+    case BigUnsignedBase::ten :
+      { size_t accumulatorIndex = 0 ;
+        size_t stringIndex = 0 ;
+        ChunkUInt accumulator = 0 ;
+        while (inString [stringIndex] != '\0') {
+          const char c = inString [stringIndex] ;
+          stringIndex += 1 ;
+          if ((c >= '0') && (c <= '9')) {
+            accumulator *= 10 ;
+            accumulator += ChunkUInt (c - '0') ;
+            accumulatorIndex += 1 ;
+            if (accumulatorIndex == greatestPowerOf10DigitCount) {
+              accumulatorIndex = 0 ;
+              *this *= greatestPowerOf10 ;
+              *this += accumulator ;
+              accumulator = 0 ;
+            }
+          }else{
+            outOk = false ;
+          }
+        }
+        if (accumulatorIndex > 0) {
+          ChunkUInt multiplier = 10 ;
+          for (size_t i = 1 ; i < accumulatorIndex ; i++) {
+            multiplier *= 10 ;
+          }
+          *this *= multiplier ;
+          *this += accumulator ;
+        }
+      }
+      break ;
+    case BigUnsignedBase::sixteen :
+      { size_t accumulatorIndex = 0 ;
+        size_t stringIndex = 0 ;
+        ChunkUInt accumulator = 0 ;
+        while (inString [stringIndex] != '\0') {
+          const char c = inString [stringIndex] ;
+          stringIndex += 1 ;
+          accumulator <<= 4 ;
+          if ((c >= '0') && (c <= '9')) {
+            accumulator |= ChunkUInt (c - '0') ;
+          }else if ((c >= 'A') && (c <= 'F')) {
+            accumulator |= ChunkUInt (c + 10 - 'A') ;
+          }else if ((c >= 'a') && (c <= 'f')) {
+            accumulator |= ChunkUInt (c + 10 - 'a') ;
+          }else{
+            outOk = false ;
+          }
+          accumulatorIndex += 4 ;
+          if (accumulatorIndex == ChunkUIntBitCount) {
+            accumulatorIndex = 0 ;
+            *this <<= ChunkUIntBitCount ;
+            *this |= accumulator ;
+            accumulator = 0 ;
+          }
+        }
+        if (accumulatorIndex > 0) {
+          *this <<= accumulatorIndex ;
+          *this |= accumulator ;
+        }
+      }
+      break ;
     }
-  }
-  if (idx > 0) {
-    ChunkUInt multiplier = 10 ;
-    for (size_t i = 1 ; i < idx ; i++) {
-      multiplier *= 10 ;
-    }
-    *this *= multiplier ;
-    *this += accumulator ;
   }
 }
 
+//--------------------------------------------------------------------------------------------------
+
+BigUnsigned::BigUnsigned (const char * inString, const uint8_t inSeparator) :
+mSharedArray () {
+  if (inString != nullptr) {
+    size_t idx = 0 ;
+    ChunkUInt accumulator = 0 ;
+    size_t stringIndex = 0 ;
+    while (inString [stringIndex] != '\0') {
+      const char c = inString [stringIndex] ;
+      stringIndex += 1 ;
+      if ((c >= '0') && (c <= '9')) {
+        accumulator *= 10 ;
+        accumulator += ChunkUInt (c - '0') ;
+        idx += 1 ;
+        if (idx == greatestPowerOf10DigitCount) {
+          idx = 0 ;
+          *this *= greatestPowerOf10 ;
+          *this += accumulator ;
+          accumulator = 0 ;
+        }
+      }else if (c != inSeparator) {
+        std::cout << "Error " << __FILE__ << ":" << __LINE__ << "\n" ;
+        exit (1) ;
+      }
+    }
+    if (idx > 0) {
+      ChunkUInt multiplier = 10 ;
+      for (size_t i = 1 ; i < idx ; i++) {
+        multiplier *= 10 ;
+      }
+      *this *= multiplier ;
+      *this += accumulator ;
+    }
+  }
+}
 
 //--------------------------------------------------------------------------------------------------
 

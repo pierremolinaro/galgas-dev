@@ -74,7 +74,6 @@ end
        "BigUnsigned-utilities.cpp",
        "ChunkSharedArray.cpp",
        "PMUInt128.cpp",
-       "C_BigInt.cpp",
        "C_Data.cpp",
        "F_DisplayException.cpp",
        "MF_Assert.cpp",

@@ -7537,43 +7537,43 @@ GALGAS_localVariableAttributes GALGAS_localVariableAttributes::constructor_none 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_localVariableAttributes GALGAS_localVariableAttributes::constructor_all (UNUSED_LOCATION_ARGS) {
-  return GALGAS_localVariableAttributes ((uint64_t) 0x3F) ;
+  return GALGAS_localVariableAttributes (uint64_t (0x3F)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_localVariableAttributes GALGAS_localVariableAttributes::constructor_rejectWriteInInitializedAndReadStates (UNUSED_LOCATION_ARGS) {
-  return GALGAS_localVariableAttributes (((uint64_t) 1) << 0) ;
+  return GALGAS_localVariableAttributes (uint64_t (1) << 0) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_localVariableAttributes GALGAS_localVariableAttributes::constructor_rejectDeclaredStateAsFinalState (UNUSED_LOCATION_ARGS) {
-  return GALGAS_localVariableAttributes (((uint64_t) 1) << 1) ;
+  return GALGAS_localVariableAttributes (uint64_t (1) << 1) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_localVariableAttributes GALGAS_localVariableAttributes::constructor_acceptInitializedStateAsFinalState (UNUSED_LOCATION_ARGS) {
-  return GALGAS_localVariableAttributes (((uint64_t) 1) << 2) ;
+  return GALGAS_localVariableAttributes (uint64_t (1) << 2) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_localVariableAttributes GALGAS_localVariableAttributes::constructor_acceptReadStateAsFinalState (UNUSED_LOCATION_ARGS) {
-  return GALGAS_localVariableAttributes (((uint64_t) 1) << 3) ;
+  return GALGAS_localVariableAttributes (uint64_t (1) << 3) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_localVariableAttributes GALGAS_localVariableAttributes::constructor_warnsOnAnyAcces (UNUSED_LOCATION_ARGS) {
-  return GALGAS_localVariableAttributes (((uint64_t) 1) << 4) ;
+  return GALGAS_localVariableAttributes (uint64_t (1) << 4) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_localVariableAttributes GALGAS_localVariableAttributes::constructor_suggestDeclareUnusedParameterAsUnused (UNUSED_LOCATION_ARGS) {
-  return GALGAS_localVariableAttributes (((uint64_t) 1) << 5) ;
+  return GALGAS_localVariableAttributes (uint64_t (1) << 5) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7697,7 +7697,7 @@ GALGAS_bool GALGAS_localVariableAttributes::getter_none (UNUSED_LOCATION_ARGS) c
 GALGAS_bool GALGAS_localVariableAttributes::getter_all (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool (mFlags == (uint64_t) 0x3F) ;
+    result = GALGAS_bool (mFlags == uint64_t (0x3F)) ;
   }
   return result ;
 }
@@ -7707,7 +7707,7 @@ GALGAS_bool GALGAS_localVariableAttributes::getter_all (UNUSED_LOCATION_ARGS) co
 GALGAS_bool GALGAS_localVariableAttributes::getter_rejectWriteInInitializedAndReadStates (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 0) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 0)) != 0) ;
   }
   return result ;
 }
@@ -7717,7 +7717,7 @@ GALGAS_bool GALGAS_localVariableAttributes::getter_rejectWriteInInitializedAndRe
 GALGAS_bool GALGAS_localVariableAttributes::getter_rejectDeclaredStateAsFinalState (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 1) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 1)) != 0) ;
   }
   return result ;
 }
@@ -7727,7 +7727,7 @@ GALGAS_bool GALGAS_localVariableAttributes::getter_rejectDeclaredStateAsFinalSta
 GALGAS_bool GALGAS_localVariableAttributes::getter_acceptInitializedStateAsFinalState (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 2) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 2)) != 0) ;
   }
   return result ;
 }
@@ -7737,7 +7737,7 @@ GALGAS_bool GALGAS_localVariableAttributes::getter_acceptInitializedStateAsFinal
 GALGAS_bool GALGAS_localVariableAttributes::getter_acceptReadStateAsFinalState (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 3) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 3)) != 0) ;
   }
   return result ;
 }
@@ -7747,7 +7747,7 @@ GALGAS_bool GALGAS_localVariableAttributes::getter_acceptReadStateAsFinalState (
 GALGAS_bool GALGAS_localVariableAttributes::getter_warnsOnAnyAcces (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 4) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 4)) != 0) ;
   }
   return result ;
 }
@@ -7757,7 +7757,7 @@ GALGAS_bool GALGAS_localVariableAttributes::getter_warnsOnAnyAcces (UNUSED_LOCAT
 GALGAS_bool GALGAS_localVariableAttributes::getter_suggestDeclareUnusedParameterAsUnused (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 5) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 5)) != 0) ;
   }
   return result ;
 }

@@ -72,6 +72,19 @@ BigUnsigned BigUnsigned::operator & (const BigUnsigned inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
+BigUnsigned & BigUnsigned::operator |= (const ChunkUInt inOperand) {
+  if (isZero ()) {
+    *this = BigUnsigned (inOperand) ;
+  }else{
+    mSharedArray.insulateWithChunkCapacity (chunkCount ()) ;
+    const ChunkUInt v = mSharedArray.chunkAtIndex (1 COMMA_HERE) | inOperand ;
+    mSharedArray.setChunkAtIndex (v, 1 COMMA_HERE) ;
+  }
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 BigUnsigned BigUnsigned::complemented (const size_t inChunkCount) const {
   BigUnsigned result ;
   result.mSharedArray.insulateWithChunkCapacity (std::max (chunkCount (), inChunkCount)) ;

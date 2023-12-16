@@ -116,8 +116,6 @@
 		CF3D9FDE1257733E0037D473 /* cSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC71257733E0037D473 /* cSortedListElement.cpp */; };
 		CF3FDE2114E6CD4E0040331C /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE2014E6CD4E0040331C /* C_Data.cpp */; };
 		CF3FDE2214E6CD4E0040331C /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE2014E6CD4E0040331C /* C_Data.cpp */; };
-		CF40C8442AFD47500027918A /* C_BigInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF40C8422AFD47500027918A /* C_BigInt.cpp */; };
-		CF40C8452AFD47500027918A /* C_BigInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF40C8422AFD47500027918A /* C_BigInt.cpp */; };
 		CF40C8482AFD4C550027918A /* galgas-random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF40C8462AFD4C550027918A /* galgas-random.cpp */; };
 		CF40C8492AFD4C550027918A /* galgas-random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF40C8462AFD4C550027918A /* galgas-random.cpp */; };
 		CF4398050ADFE1900085F47C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4398030ADFE1900085F47C /* WebKit.framework */; };
@@ -780,8 +778,6 @@
 		CF3FDDFB14E66BD40040331C /* C_FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_FileManager.h; sourceTree = "<group>"; };
 		CF3FDE2014E6CD4E0040331C /* C_Data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_Data.cpp; sourceTree = "<group>"; };
 		CF3FDE2314E6D3CD0040331C /* C_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_Data.h; sourceTree = "<group>"; };
-		CF40C8422AFD47500027918A /* C_BigInt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_BigInt.cpp; sourceTree = "<group>"; };
-		CF40C8432AFD47500027918A /* C_BigInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_BigInt.h; sourceTree = "<group>"; };
 		CF40C8462AFD4C550027918A /* galgas-random.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "galgas-random.cpp"; sourceTree = "<group>"; };
 		CF40C8472AFD4C550027918A /* galgas-random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "galgas-random.h"; sourceTree = "<group>"; };
 		CF4398030ADFE1900085F47C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
@@ -1450,8 +1446,6 @@
 				CFCB79FB2B2DAECF008DD653 /* ChunkSelectSize.h */,
 				CFCB79FA2B2DAECF008DD653 /* ChunkSharedArray.cpp */,
 				CFCB7A112B2DAECF008DD653 /* ChunkSharedArray.h */,
-				CF40C8422AFD47500027918A /* C_BigInt.cpp */,
-				CF40C8432AFD47500027918A /* C_BigInt.h */,
 				CF23CCE22B127FFE001F9FE2 /* PMUInt128.cpp */,
 				CF23CCE32B127FFE001F9FE2 /* PMUInt128.h */,
 				CFF538F7057A560F00854C83 /* BDD */,
@@ -2129,7 +2123,6 @@
 				CF9E74F21BADD36200DBEFEE /* mpn-divrem_1.c in Sources */,
 				CF6DF17B09E3F23700506859 /* C_builtin_CLI_Options.cpp in Sources */,
 				CF6DF18009E3F23700506859 /* C_BDD.cpp in Sources */,
-				CF40C8442AFD47500027918A /* C_BigInt.cpp in Sources */,
 				CFCB7A272B2DAECF008DD653 /* BigUnsigned-divide.cpp in Sources */,
 				CF9E75661BADDAA900DBEFEE /* mpn-sbpi1_div_qr.c in Sources */,
 				CFCB7A152B2DAECF008DD653 /* BigSigned-subtract.cpp in Sources */,
@@ -2424,7 +2417,6 @@
 				CF9E75651BADDAA900DBEFEE /* mpn-mulmod_bnm1.c in Sources */,
 				CF6DF1F009E3F30400506859 /* MF_Assert.cpp in Sources */,
 				CF9E75851BADE0AE00DBEFEE /* root-errno.c in Sources */,
-				CF40C8452AFD47500027918A /* C_BigInt.cpp in Sources */,
 				CFCB7A282B2DAECF008DD653 /* BigUnsigned-divide.cpp in Sources */,
 				CF9E756C1BADDCB600DBEFEE /* mpn-invertappr.c in Sources */,
 				CFCB7A162B2DAECF008DD653 /* BigSigned-subtract.cpp in Sources */,

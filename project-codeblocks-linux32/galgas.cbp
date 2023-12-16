@@ -119,7 +119,6 @@
    <Unit filename="../libpm/command_line_interface/C_builtin_CLI_Options.cpp" />
    <Unit filename="../libpm/command_line_interface/F_Analyze_CLI_Options.cpp" />
    <Unit filename="../libpm/command_line_interface/F_mainForLIBPM.cpp" />
-   <Unit filename="../libpm/big-integers/C_BigInt.cpp" />
    <Unit filename="../libpm/big-integers/BigSigned-add.cpp" />
    <Unit filename="../libpm/big-integers/BigSigned-bit.cpp" />
    <Unit filename="../libpm/big-integers/BigSigned-chunk-operations.cpp" />

@@ -37,7 +37,7 @@ mValue (0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bigint::GALGAS_bigint (const C_BigInt & inValue) :
+GALGAS_bigint::GALGAS_bigint (const BigSigned & inValue) :
 AC_GALGAS_root (),
 mIsValid (true),
 mValue (inValue) {
@@ -50,7 +50,7 @@ static bool gOk ;
 GALGAS_bigint::GALGAS_bigint (const char * inDecimalString, C_Compiler * inCompiler COMMA_LOCATION_ARGS) :
 AC_GALGAS_root (),
 mIsValid (true),
-mValue (inDecimalString, 10, gOk) {
+mValue (inDecimalString, BigUnsignedBase::ten, gOk) {
   if (! gOk) {
     inCompiler->onTheFlyRunTimeError ("@bigint internal construction error" COMMA_THERE) ;
   }
@@ -71,7 +71,7 @@ GALGAS_bigint::~GALGAS_bigint (void) {
 
 void GALGAS_bigint::drop (void) {
   mIsValid = false ;
-  mValue = C_BigInt () ;
+  mValue = BigSigned () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -642,8 +642,8 @@ GALGAS_bigint GALGAS_bigint::modulo_operation (const GALGAS_bigint & inOperand2,
 //    if (inDivisor.mValue.isZero ()) {
 //      inCompiler->onTheFlyRunTimeError ("@sint64 divide by zero in modulo operation" COMMA_THERE) ;
 //    }else{
-//      C_BigInt quotient ;
-//      C_BigInt remainder ;
+//      BigSigned quotient ;
+//      BigSigned remainder ;
 //      mValue.ceilDivideBy (inDivisor.mValue, quotient, remainder) ;
 //      outQuotient = GALGAS_bigint (quotient) ;
 //      outRemainder = GALGAS_bigint (remainder) ;
@@ -664,11 +664,9 @@ void GALGAS_bigint::method_divideBy (GALGAS_bigint inDivisor,
     if (inDivisor.mValue.isZero ()) {
       inCompiler->onTheFlyRunTimeError ("@sint64 divide by zero in modulo operation" COMMA_THERE) ;
     }else{
-      C_BigInt quotient ;
-      C_BigInt remainder ;
-      mValue.divideBy (inDivisor.mValue, quotient, remainder) ;
-      outQuotient = GALGAS_bigint (quotient) ;
-      outRemainder = GALGAS_bigint (remainder) ;
+      const BigSignedQuotientRemainder r = mValue.divideByBigSigned (inDivisor.mValue) ;
+      outQuotient = GALGAS_bigint (r.quotient ()) ;
+      outRemainder = GALGAS_bigint (r.remainder ()) ;
     }
   }
 }
@@ -686,8 +684,8 @@ void GALGAS_bigint::method_divideBy (GALGAS_bigint inDivisor,
 //    if (inDivisor.mValue.isZero ()) {
 //      inCompiler->onTheFlyRunTimeError ("@bigint divide by zero in modulo operation" COMMA_THERE) ;
 //    }else{
-//      C_BigInt quotient ;
-//      C_BigInt remainder ;
+//      BigSigned quotient ;
+//      BigSigned remainder ;
 //      mValue.floorDivideBy (inDivisor.mValue, quotient, remainder) ;
 //      outQuotient = GALGAS_bigint (quotient) ;
 //      outRemainder = GALGAS_bigint (remainder) ;
@@ -773,8 +771,10 @@ GALGAS_bigint GALGAS_bigint::left_shift_operation (const GALGAS_bigint inShiftOp
   if (isValid () && inShiftOperand.isValid ()) {
     if (inShiftOperand.mValue.isStrictlyNegative ()) {
       inCompiler->onTheFlyRunTimeError ("@bigint left shift by a negative amount" COMMA_THERE) ;
+    }else if (!inShiftOperand.mValue.fitsInUInt32 ()) {
+      inCompiler->onTheFlyRunTimeError ("@bigint left shift too large amount" COMMA_THERE) ;
     }else{
-      result = GALGAS_bigint (mValue << inShiftOperand.mValue) ;
+      result = GALGAS_bigint (mValue << inShiftOperand.mValue.uint32 ()) ;
     }
   }
   return result ;
@@ -802,8 +802,10 @@ GALGAS_bigint GALGAS_bigint::right_shift_operation (const GALGAS_bigint inShiftO
   if (isValid () && inShiftOperand.isValid ()) {
     if (inShiftOperand.mValue.isStrictlyNegative ()) {
       inCompiler->onTheFlyRunTimeError ("@bigint right shift by a negative amount" COMMA_THERE) ;
+    }else if (!inShiftOperand.mValue.fitsInUInt32 ()) {
+      inCompiler->onTheFlyRunTimeError ("@bigint right shift too large amount" COMMA_THERE) ;
     }else{
-      result = GALGAS_bigint (mValue >> inShiftOperand.mValue) ;
+      result = GALGAS_bigint (mValue >> inShiftOperand.mValue.uint32 ()) ;
     }
   }
   return result ;

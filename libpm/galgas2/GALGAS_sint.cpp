@@ -120,7 +120,7 @@ GALGAS_double GALGAS_sint::getter_double (UNUSED_LOCATION_ARGS) const {
 GALGAS_bigint GALGAS_sint::getter_bigint (UNUSED_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid ()) {
-    result = GALGAS_bigint (C_BigInt (mSIntValue)) ;
+    result = GALGAS_bigint (BigSigned (mSIntValue)) ;
   }
   return result ;
 }

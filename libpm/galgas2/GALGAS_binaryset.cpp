@@ -586,7 +586,8 @@ GALGAS_bigint GALGAS_binaryset::getter_bigValueCount (const GALGAS_uint & inVari
       inCompiler->onTheFlyRunTimeError ("needed variable count is greater than variable count argument" COMMA_THERE) ;
     }else{
       const PMUInt128 r = mBDD.valueCount128 (inVariableCount.uintValue ()) ;
-      result = GALGAS_bigint (C_BigInt (true, r.high (), r.low ())) ;
+      const uint64_t u64Array [2] = {r.high (), r.low ()} ;
+      result = GALGAS_bigint (BigSigned (true, 2, u64Array)) ;
     }
   }
   return result ;

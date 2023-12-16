@@ -1081,17 +1081,17 @@ PMUInt128 C_BDD::valueCount128UsingCache (const uint32_t inVariableCount,
 
 static void internalValueCount (const uint32_t inValue,
                                 const uint32_t inVariableCount,
-                                C_BigInt & nombreDirect,
-                                C_BigInt & nombreComplement
+                                BigSigned & nombreDirect,
+                                BigSigned & nombreComplement
                                 COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
-    nombreDirect = C_BigInt () ; //.setToZero () ;
-    nombreComplement = C_BigInt (true, 1) ;
+    nombreDirect = BigSigned () ; //.setToZero () ;
+    nombreComplement = BigSigned (true, 1) ;
     nombreComplement <<= inVariableCount ;
   }else{
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
-    C_BigInt nd0, nc0, nd1, nc1 ;
+    BigSigned nd0, nc0, nd1, nc1 ;
     internalValueCount (gNodeArray [nodeIndex].mELSE, var, nd0, nc0 COMMA_THERE) ;
     internalValueCount (gNodeArray [nodeIndex].mTHEN, var, nd1, nc1 COMMA_THERE) ;
     nombreDirect = nd0 + nd1 ;
@@ -1109,9 +1109,9 @@ static void internalValueCount (const uint32_t inValue,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-C_BigInt C_BDD::valueCount (const uint32_t inVariableCount) const {
-  C_BigInt nombreDirect ;
-  C_BigInt nombreComplement ;
+BigSigned C_BDD::valueCount (const uint32_t inVariableCount) const {
+  BigSigned nombreDirect ;
+  BigSigned nombreComplement ;
   internalValueCount (mBDDvalue, inVariableCount, nombreDirect, nombreComplement COMMA_HERE) ;
   return nombreDirect ;
 }
@@ -1120,15 +1120,15 @@ C_BigInt C_BDD::valueCount (const uint32_t inVariableCount) const {
 
 static void internalValueCountUsingCache (const uint32_t inValue,
                                           const uint32_t inVariableCount,
-                                          C_BigInt & nombreDirect,
-                                          C_BigInt & nombreComplement,
-                                          TC_UniqueArray <C_BigInt> & ioDirectCacheArray,
-                                          TC_UniqueArray <C_BigInt> & ioComplementCacheArray
+                                          BigSigned & nombreDirect,
+                                          BigSigned & nombreComplement,
+                                          TC_UniqueArray <BigSigned> & ioDirectCacheArray,
+                                          TC_UniqueArray <BigSigned> & ioComplementCacheArray
                                           COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
-    nombreDirect = C_BigInt () ; // .setToZero () ;
-    nombreComplement = C_BigInt (true, 1) ;
+    nombreDirect = BigSigned () ; // .setToZero () ;
+    nombreComplement = BigSigned (true, 1) ;
     nombreComplement <<= inVariableCount ;
   }else if ((ioDirectCacheArray.count () > (int32_t) (inValue / 2))
     && (((!ioDirectCacheArray (inValue / 2 COMMA_HERE).isZero ()) || (!ioComplementCacheArray (inValue / 2 COMMA_HERE).isZero())))) {
@@ -1136,7 +1136,7 @@ static void internalValueCountUsingCache (const uint32_t inValue,
     nombreComplement = ioComplementCacheArray (inValue / 2 COMMA_HERE) ;
   }else{
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
-    C_BigInt nd0, nc0, nd1, nc1 ;
+    BigSigned nd0, nc0, nd1, nc1 ;
     internalValueCountUsingCache (gNodeArray [nodeIndex].mELSE, var, nd0, nc0, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
     internalValueCountUsingCache (gNodeArray [nodeIndex].mTHEN, var, nd1, nc1, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
     nombreDirect = nd0 + nd1 ;
@@ -1146,8 +1146,8 @@ static void internalValueCountUsingCache (const uint32_t inValue,
       nombreDirect <<= (uint32_t) shiftCount ;
       nombreComplement <<= (uint32_t) shiftCount ;
     }
-    ioDirectCacheArray.forceObjectAtIndex (inValue / 2, nombreDirect, C_BigInt () COMMA_HERE) ;
-    ioComplementCacheArray.forceObjectAtIndex (inValue / 2, nombreComplement, C_BigInt () COMMA_HERE) ;
+    ioDirectCacheArray.forceObjectAtIndex (inValue / 2, nombreDirect, BigSigned () COMMA_HERE) ;
+    ioComplementCacheArray.forceObjectAtIndex (inValue / 2, nombreComplement, BigSigned () COMMA_HERE) ;
   }
   if ((inValue & 1) != 0) {
     swap (nombreDirect, nombreComplement) ;
@@ -1156,11 +1156,11 @@ static void internalValueCountUsingCache (const uint32_t inValue,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-C_BigInt C_BDD::valueCountUsingCache (const uint32_t inVariableCount,
-                                      TC_UniqueArray <C_BigInt> & ioDirectCacheArray,
-                                      TC_UniqueArray <C_BigInt> & ioComplementCacheArray) const {
-  C_BigInt nombreDirect ;
-  C_BigInt nombreComplement ;
+BigSigned C_BDD::valueCountUsingCache (const uint32_t inVariableCount,
+                                      TC_UniqueArray <BigSigned> & ioDirectCacheArray,
+                                      TC_UniqueArray <BigSigned> & ioComplementCacheArray) const {
+  BigSigned nombreDirect ;
+  BigSigned nombreComplement ;
   internalValueCountUsingCache (mBDDvalue, inVariableCount, nombreDirect, nombreComplement, ioDirectCacheArray, ioComplementCacheArray COMMA_HERE) ;
   return nombreDirect ;
 }

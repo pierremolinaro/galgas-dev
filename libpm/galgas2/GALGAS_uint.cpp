@@ -286,7 +286,7 @@ GALGAS_string GALGAS_uint::getter_alphaString (UNUSED_LOCATION_ARGS) const {
 GALGAS_bigint GALGAS_uint::getter_bigint (UNUSED_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid ()) {
-    result = GALGAS_bigint (C_BigInt (true, mUIntValue)) ;
+    result = GALGAS_bigint (BigSigned (true, mUIntValue)) ;
   }
   return result ;
 }

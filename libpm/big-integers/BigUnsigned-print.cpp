@@ -18,8 +18,8 @@ void BigUnsigned::printHex (const char * inName) const {
 
 //--------------------------------------------------------------------------------------------------
 
-std::string BigUnsigned::decimalString (void) const {
-  std::string result ;
+C_String BigUnsigned::decimalString (void) const {
+  C_String result ;
   if (isZero ()) {
     result = "0" ;
   }else{
@@ -32,11 +32,11 @@ std::string BigUnsigned::decimalString (void) const {
       number = r.quotient () ;
     }
     const size_t n = decimalValueArray.size () ;
-    result.append (std::to_string (decimalValueArray [n - 1])) ;
+    result << cStringWithUnsigned (decimalValueArray [n - 1]) ;
     for (size_t i = n - 1 ; i > 0 ; i--) {
       char s [32] ;
       snprintf (s, 31, ChunkUIntDecimalFormatSpecifierWithLeadingZeros, decimalValueArray [i-1]) ;
-      result.append (s) ;
+      result << s ;
     }
   }
   return result ;
@@ -44,11 +44,12 @@ std::string BigUnsigned::decimalString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-std::string BigUnsigned::spacedDecimalString (const uint32_t inSeparation) const {
-  std::string result = decimalString () ;
+C_String BigUnsigned::spacedDecimalString (const uint32_t inSeparation) const {
+  C_String result = decimalString () ;
   if (inSeparation > 0) {
-    for (int64_t i = int64_t (result.length ()) - int64_t (inSeparation) ; i > 0 ; i -= int64_t (inSeparation)) {
-      result.insert (size_t (i), 1, ' ') ;
+    for (int32_t i = result.length () - int32_t (inSeparation) ; i > 0 ; i -= int32_t (inSeparation)) {
+ //     result.insert (size_t (i), 1, ' ') ;
+      result.insertCharacterAtIndex (' ', i COMMA_HERE) ;
     }
   }
   return result ;
@@ -56,31 +57,33 @@ std::string BigUnsigned::spacedDecimalString (const uint32_t inSeparation) const
 
 //--------------------------------------------------------------------------------------------------
 
-std::string BigUnsigned::spacedDecimalStringWithDigitCount (const uint32_t inSeparation) const {
-  std::string s = decimalString () ;
-  const size_t length = s.length () ;
+C_String BigUnsigned::spacedDecimalStringWithDigitCount (const uint32_t inSeparation) const {
+  C_String s = decimalString () ;
+  const int32_t length = s.length () ;
   if (inSeparation > 0) {
-    for (int64_t i = int64_t (s.length ()) - int64_t (inSeparation) ; i > 0 ; i -= int64_t (inSeparation)) {
-      s.insert (size_t (i), 1, ' ') ;
+    for (int32_t i = s.length () - int32_t (inSeparation) ; i > 0 ; i -= int32_t (inSeparation)) {
+      s.insertCharacterAtIndex (' ', i COMMA_HERE) ;
+//      s.insert (size_t (i), 1, ' ') ;
     }
   }
-  std::string result = "[" + std::to_string (length) + "] " + s ;
+  C_String result = "[" ;
+  result << cStringWithSigned (length) << "] " << s ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-std::string BigUnsigned::hexString (void) const {
-  std::string result ;
+C_String BigUnsigned::hexString (void) const {
+  C_String result ;
   if (u64Count () == 0) {
     result = "0" ;
   }else{
     char s [32] ;
-    snprintf (s, 31, "%" PRIX64, u64AtIndex (u64Count () - 1)) ;
-    result.append (s) ;
+    snprintf (s, 31, "0x%" PRIX64, u64AtIndex (u64Count () - 1)) ;
+    result << s ;
     for (size_t i = u64Count () - 1 ; i > 0 ; i--) {
       snprintf (s, 31, ChunkUIntHexFormatSpecifierWithLeadingZeros, mSharedArray.chunkAtIndex (i COMMA_HERE)) ;
-      result.append (s) ;
+      result << s ;
     }
   }
   return result ;
@@ -88,17 +91,39 @@ std::string BigUnsigned::hexString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-std::string BigUnsigned::xString (void) const {
-  std::string result ;
+C_String BigUnsigned::xString (void) const {
+  C_String result ;
   if (u64Count () == 0) {
     result = "0" ;
   }else{
     char s [32] ;
     snprintf (s, 31, "%" PRIX64, u64AtIndex (u64Count () - 1)) ;
-    result.append (s) ;
+    result << s ;
     for (size_t i = u64Count () - 1 ; i > 0 ; i--) {
       snprintf (s, 31, "%016" PRIX64, u64AtIndex (i-1)) ;
-      result.append (s) ;
+      result << s ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+C_String BigUnsigned::bitString (void) const {
+  C_String result ;
+  if (u64Count () == 0) {
+    result = "0" ;
+  }else{
+    for (size_t i = u64Count () ; i > 0 ; i--) {
+      uint64_t v = u64AtIndex (i-1) ;
+      for (size_t bit = 0 ; bit < 64 ; bit++) {
+        result << (((v & (uint64_t (1) << 63)) != 0) ? "1" : "0") ;
+        v <<= 1 ;
+      }
+    }
+    while ((result.length () > 0) && (result (0 COMMA_HERE) == '0')) {
+      result.suppress (0, 1 COMMA_HERE) ; // Remove first character
+//      result.erase (result.begin ()) ; // Remove first character
     }
   }
   return result ;

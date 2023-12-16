@@ -1,5 +1,5 @@
 //
-//  BigSigned.hpp
+//  BigSigned.h
 //  BigSigned
 //
 //  Created by Pierre Molinaro on 08/12/2023.
@@ -11,6 +11,8 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "BigUnsigned.h"
+
+//--------------------------------------------------------------------------------------------------
 
 class BigSignedQuotientRemainder ;
 
@@ -33,7 +35,13 @@ class BigSigned final {
                               const size_t inByteCount,
                               const uint8_t inSourceByteArray []) ;
 
-  public: explicit BigSigned (const std::string & inString, const uint8_t inSeparator) ;
+  public: explicit BigSigned (const bool inPositive,
+                              const size_t inU64Count,
+                              const uint64_t inSourceU64Array []) ;
+
+  public: explicit BigSigned (const char * inString, const uint8_t inSeparator) ;
+
+  public: explicit BigSigned (const char * inString, const BigUnsignedBase inBase, bool & outOk) ;
 
   public: static BigSigned powerOfTwo (const bool inPositive,
                                        const uint32_t inPowerOfTwo) ;
@@ -43,7 +51,8 @@ class BigSigned final {
 //--- Testing value
   public: bool isZero (void) const { return mUnsigned.isZero () ; }
   public: bool isOne (void) const { return mIsPositive && mUnsigned.isOne () ; }
-  public: bool isPositive (void) const { return mIsPositive ; }
+  public: bool isStrictlyPositive (void) const { return sign () > 0 ; }
+  public: bool isStrictlyNegative (void) const { return sign () < 0 ; }
   public: int32_t sign (void) const ;
   public: BigSigned abs (void) const { return mIsPositive ? *this : - *this ; }
 
@@ -51,8 +60,8 @@ class BigSigned final {
   public: BigSigned operator << (const size_t inShiftCount) const ;
   public: void operator <<= (const size_t inShiftCount) ;
 
-  public: void operator >>= (const size_t inShiftCount) ;
   public: BigSigned operator >> (const size_t inShiftCount) const ;
+  public: void operator >>= (const size_t inShiftCount) ;
 
 //--- Operations with ChunkUInt
   public: void operator += (const ChunkUInt inOperand) ;
@@ -90,6 +99,7 @@ class BigSigned final {
 
 //--- Negate
   public: BigSigned operator - (void) const ;
+  public: void negateInPlace (void) ;
 
 //--- Multiply
   public: void operator *= (const BigSigned inOperand) ;
@@ -121,11 +131,11 @@ class BigSigned final {
   public: void complementBitAtIndex (const uint32_t inBitIndex) ;
 
 //--- Print
-  public: std::string decimalString (void) const ;
-  public: std::string spacedDecimalString (const uint32_t inSeparation) const ;
-  public: std::string spacedDecimalStringWithDigitCount (const uint32_t inSeparation) const ;
-  public: std::string hexString (void) const ;
-  public: std::string xString (void) const ;
+  public: C_String decimalString (void) const ;
+  public: C_String spacedDecimalString (const uint32_t inSeparation) const ;
+  public: C_String spacedDecimalStringWithDigitCount (const uint32_t inSeparation) const ;
+  public: C_String hexString (void) const ;
+  public: C_String xString (void) const ;
   public: void printHex (const char * inName) const ;
 
 //--- Value access

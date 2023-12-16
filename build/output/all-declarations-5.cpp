@@ -11644,199 +11644,199 @@ GALGAS_operators GALGAS_operators::constructor_none (UNUSED_LOCATION_ARGS) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_all (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators ((uint64_t) 0xFFFFFFFF) ;
+  return GALGAS_operators (uint64_t (0xFFFFFFFF)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_infixAddOperator (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 0) ;
+  return GALGAS_operators (uint64_t (1) << 0) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_infixSubOperator (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 1) ;
+  return GALGAS_operators (uint64_t (1) << 1) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_infixMulOperator (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 2) ;
+  return GALGAS_operators (uint64_t (1) << 2) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_infixDivOperator (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 3) ;
+  return GALGAS_operators (uint64_t (1) << 3) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_infixModOperator (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 4) ;
+  return GALGAS_operators (uint64_t (1) << 4) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_infixShiftOperator (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 5) ;
+  return GALGAS_operators (uint64_t (1) << 5) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_prefixPlusOperator (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 6) ;
+  return GALGAS_operators (uint64_t (1) << 6) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_prefixMinusOperator (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 7) ;
+  return GALGAS_operators (uint64_t (1) << 7) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_prefixTildeOperator (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 8) ;
+  return GALGAS_operators (uint64_t (1) << 8) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_incDecOperator (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 9) ;
+  return GALGAS_operators (uint64_t (1) << 9) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_infixAndOperator (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 10) ;
+  return GALGAS_operators (uint64_t (1) << 10) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_infixOrOperator (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 11) ;
+  return GALGAS_operators (uint64_t (1) << 11) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_infixXorOperator (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 12) ;
+  return GALGAS_operators (uint64_t (1) << 12) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_prefixNotOperator (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 13) ;
+  return GALGAS_operators (uint64_t (1) << 13) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_isComparable (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 14) ;
+  return GALGAS_operators (uint64_t (1) << 14) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_isReferenceEquatable (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 15) ;
+  return GALGAS_operators (uint64_t (1) << 15) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_plusEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 16) ;
+  return GALGAS_operators (uint64_t (1) << 16) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_minusEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 17) ;
+  return GALGAS_operators (uint64_t (1) << 17) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_mulEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 18) ;
+  return GALGAS_operators (uint64_t (1) << 18) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_divEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 19) ;
+  return GALGAS_operators (uint64_t (1) << 19) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_infixAddOperatorNoOVF (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 20) ;
+  return GALGAS_operators (uint64_t (1) << 20) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_infixSubOperatorNoOVF (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 21) ;
+  return GALGAS_operators (uint64_t (1) << 21) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_infixMulOperatorNoOVF (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 22) ;
+  return GALGAS_operators (uint64_t (1) << 22) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_infixDivOperatorNoOVF (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 23) ;
+  return GALGAS_operators (uint64_t (1) << 23) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_prefixMinusOperatorNoOVF (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 24) ;
+  return GALGAS_operators (uint64_t (1) << 24) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_incDecOperatorNoOVF (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 25) ;
+  return GALGAS_operators (uint64_t (1) << 25) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_supportWithAccessor (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 26) ;
+  return GALGAS_operators (uint64_t (1) << 26) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_plusEqualOperatorWithFieldListNeedsCompilerArg (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 27) ;
+  return GALGAS_operators (uint64_t (1) << 27) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_generateEnumerationHelperMethods (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 28) ;
+  return GALGAS_operators (uint64_t (1) << 28) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_doNotGenererateObjectCompare (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 29) ;
+  return GALGAS_operators (uint64_t (1) << 29) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_generateDescriptionGetterUtilityMethod (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 30) ;
+  return GALGAS_operators (uint64_t (1) << 30) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::constructor_generateCopyConstructorAndAssignmentOperator (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (((uint64_t) 1) << 31) ;
+  return GALGAS_operators (uint64_t (1) << 31) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -12038,7 +12038,7 @@ GALGAS_bool GALGAS_operators::getter_none (UNUSED_LOCATION_ARGS) const {
 GALGAS_bool GALGAS_operators::getter_all (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool (mFlags == (uint64_t) 0xFFFFFFFF) ;
+    result = GALGAS_bool (mFlags == uint64_t (0xFFFFFFFF)) ;
   }
   return result ;
 }
@@ -12048,7 +12048,7 @@ GALGAS_bool GALGAS_operators::getter_all (UNUSED_LOCATION_ARGS) const {
 GALGAS_bool GALGAS_operators::getter_infixAddOperator (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 0) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 0)) != 0) ;
   }
   return result ;
 }
@@ -12058,7 +12058,7 @@ GALGAS_bool GALGAS_operators::getter_infixAddOperator (UNUSED_LOCATION_ARGS) con
 GALGAS_bool GALGAS_operators::getter_infixSubOperator (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 1) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 1)) != 0) ;
   }
   return result ;
 }
@@ -12068,7 +12068,7 @@ GALGAS_bool GALGAS_operators::getter_infixSubOperator (UNUSED_LOCATION_ARGS) con
 GALGAS_bool GALGAS_operators::getter_infixMulOperator (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 2) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 2)) != 0) ;
   }
   return result ;
 }
@@ -12078,7 +12078,7 @@ GALGAS_bool GALGAS_operators::getter_infixMulOperator (UNUSED_LOCATION_ARGS) con
 GALGAS_bool GALGAS_operators::getter_infixDivOperator (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 3) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 3)) != 0) ;
   }
   return result ;
 }
@@ -12088,7 +12088,7 @@ GALGAS_bool GALGAS_operators::getter_infixDivOperator (UNUSED_LOCATION_ARGS) con
 GALGAS_bool GALGAS_operators::getter_infixModOperator (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 4) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 4)) != 0) ;
   }
   return result ;
 }
@@ -12098,7 +12098,7 @@ GALGAS_bool GALGAS_operators::getter_infixModOperator (UNUSED_LOCATION_ARGS) con
 GALGAS_bool GALGAS_operators::getter_infixShiftOperator (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 5) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 5)) != 0) ;
   }
   return result ;
 }
@@ -12108,7 +12108,7 @@ GALGAS_bool GALGAS_operators::getter_infixShiftOperator (UNUSED_LOCATION_ARGS) c
 GALGAS_bool GALGAS_operators::getter_prefixPlusOperator (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 6) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 6)) != 0) ;
   }
   return result ;
 }
@@ -12118,7 +12118,7 @@ GALGAS_bool GALGAS_operators::getter_prefixPlusOperator (UNUSED_LOCATION_ARGS) c
 GALGAS_bool GALGAS_operators::getter_prefixMinusOperator (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 7) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 7)) != 0) ;
   }
   return result ;
 }
@@ -12128,7 +12128,7 @@ GALGAS_bool GALGAS_operators::getter_prefixMinusOperator (UNUSED_LOCATION_ARGS) 
 GALGAS_bool GALGAS_operators::getter_prefixTildeOperator (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 8) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 8)) != 0) ;
   }
   return result ;
 }
@@ -12138,7 +12138,7 @@ GALGAS_bool GALGAS_operators::getter_prefixTildeOperator (UNUSED_LOCATION_ARGS) 
 GALGAS_bool GALGAS_operators::getter_incDecOperator (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 9) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 9)) != 0) ;
   }
   return result ;
 }
@@ -12148,7 +12148,7 @@ GALGAS_bool GALGAS_operators::getter_incDecOperator (UNUSED_LOCATION_ARGS) const
 GALGAS_bool GALGAS_operators::getter_infixAndOperator (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 10) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 10)) != 0) ;
   }
   return result ;
 }
@@ -12158,7 +12158,7 @@ GALGAS_bool GALGAS_operators::getter_infixAndOperator (UNUSED_LOCATION_ARGS) con
 GALGAS_bool GALGAS_operators::getter_infixOrOperator (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 11) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 11)) != 0) ;
   }
   return result ;
 }
@@ -12168,7 +12168,7 @@ GALGAS_bool GALGAS_operators::getter_infixOrOperator (UNUSED_LOCATION_ARGS) cons
 GALGAS_bool GALGAS_operators::getter_infixXorOperator (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 12) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 12)) != 0) ;
   }
   return result ;
 }
@@ -12178,7 +12178,7 @@ GALGAS_bool GALGAS_operators::getter_infixXorOperator (UNUSED_LOCATION_ARGS) con
 GALGAS_bool GALGAS_operators::getter_prefixNotOperator (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 13) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 13)) != 0) ;
   }
   return result ;
 }
@@ -12188,7 +12188,7 @@ GALGAS_bool GALGAS_operators::getter_prefixNotOperator (UNUSED_LOCATION_ARGS) co
 GALGAS_bool GALGAS_operators::getter_isComparable (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 14) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 14)) != 0) ;
   }
   return result ;
 }
@@ -12198,7 +12198,7 @@ GALGAS_bool GALGAS_operators::getter_isComparable (UNUSED_LOCATION_ARGS) const {
 GALGAS_bool GALGAS_operators::getter_isReferenceEquatable (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 15) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 15)) != 0) ;
   }
   return result ;
 }
@@ -12208,7 +12208,7 @@ GALGAS_bool GALGAS_operators::getter_isReferenceEquatable (UNUSED_LOCATION_ARGS)
 GALGAS_bool GALGAS_operators::getter_plusEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 16) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 16)) != 0) ;
   }
   return result ;
 }
@@ -12218,7 +12218,7 @@ GALGAS_bool GALGAS_operators::getter_plusEqualOperatorWithExpression (UNUSED_LOC
 GALGAS_bool GALGAS_operators::getter_minusEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 17) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 17)) != 0) ;
   }
   return result ;
 }
@@ -12228,7 +12228,7 @@ GALGAS_bool GALGAS_operators::getter_minusEqualOperatorWithExpression (UNUSED_LO
 GALGAS_bool GALGAS_operators::getter_mulEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 18) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 18)) != 0) ;
   }
   return result ;
 }
@@ -12238,7 +12238,7 @@ GALGAS_bool GALGAS_operators::getter_mulEqualOperatorWithExpression (UNUSED_LOCA
 GALGAS_bool GALGAS_operators::getter_divEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 19) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 19)) != 0) ;
   }
   return result ;
 }
@@ -12248,7 +12248,7 @@ GALGAS_bool GALGAS_operators::getter_divEqualOperatorWithExpression (UNUSED_LOCA
 GALGAS_bool GALGAS_operators::getter_infixAddOperatorNoOVF (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 20) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 20)) != 0) ;
   }
   return result ;
 }
@@ -12258,7 +12258,7 @@ GALGAS_bool GALGAS_operators::getter_infixAddOperatorNoOVF (UNUSED_LOCATION_ARGS
 GALGAS_bool GALGAS_operators::getter_infixSubOperatorNoOVF (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 21) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 21)) != 0) ;
   }
   return result ;
 }
@@ -12268,7 +12268,7 @@ GALGAS_bool GALGAS_operators::getter_infixSubOperatorNoOVF (UNUSED_LOCATION_ARGS
 GALGAS_bool GALGAS_operators::getter_infixMulOperatorNoOVF (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 22) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 22)) != 0) ;
   }
   return result ;
 }
@@ -12278,7 +12278,7 @@ GALGAS_bool GALGAS_operators::getter_infixMulOperatorNoOVF (UNUSED_LOCATION_ARGS
 GALGAS_bool GALGAS_operators::getter_infixDivOperatorNoOVF (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 23) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 23)) != 0) ;
   }
   return result ;
 }
@@ -12288,7 +12288,7 @@ GALGAS_bool GALGAS_operators::getter_infixDivOperatorNoOVF (UNUSED_LOCATION_ARGS
 GALGAS_bool GALGAS_operators::getter_prefixMinusOperatorNoOVF (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 24) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 24)) != 0) ;
   }
   return result ;
 }
@@ -12298,7 +12298,7 @@ GALGAS_bool GALGAS_operators::getter_prefixMinusOperatorNoOVF (UNUSED_LOCATION_A
 GALGAS_bool GALGAS_operators::getter_incDecOperatorNoOVF (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 25) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 25)) != 0) ;
   }
   return result ;
 }
@@ -12308,7 +12308,7 @@ GALGAS_bool GALGAS_operators::getter_incDecOperatorNoOVF (UNUSED_LOCATION_ARGS) 
 GALGAS_bool GALGAS_operators::getter_supportWithAccessor (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 26) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 26)) != 0) ;
   }
   return result ;
 }
@@ -12318,7 +12318,7 @@ GALGAS_bool GALGAS_operators::getter_supportWithAccessor (UNUSED_LOCATION_ARGS) 
 GALGAS_bool GALGAS_operators::getter_plusEqualOperatorWithFieldListNeedsCompilerArg (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 27) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 27)) != 0) ;
   }
   return result ;
 }
@@ -12328,7 +12328,7 @@ GALGAS_bool GALGAS_operators::getter_plusEqualOperatorWithFieldListNeedsCompiler
 GALGAS_bool GALGAS_operators::getter_generateEnumerationHelperMethods (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 28) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 28)) != 0) ;
   }
   return result ;
 }
@@ -12338,7 +12338,7 @@ GALGAS_bool GALGAS_operators::getter_generateEnumerationHelperMethods (UNUSED_LO
 GALGAS_bool GALGAS_operators::getter_doNotGenererateObjectCompare (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 29) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 29)) != 0) ;
   }
   return result ;
 }
@@ -12348,7 +12348,7 @@ GALGAS_bool GALGAS_operators::getter_doNotGenererateObjectCompare (UNUSED_LOCATI
 GALGAS_bool GALGAS_operators::getter_generateDescriptionGetterUtilityMethod (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 30) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 30)) != 0) ;
   }
   return result ;
 }
@@ -12358,7 +12358,7 @@ GALGAS_bool GALGAS_operators::getter_generateDescriptionGetterUtilityMethod (UNU
 GALGAS_bool GALGAS_operators::getter_generateCopyConstructorAndAssignmentOperator (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 31) != 0) ;
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 31)) != 0) ;
   }
   return result ;
 }

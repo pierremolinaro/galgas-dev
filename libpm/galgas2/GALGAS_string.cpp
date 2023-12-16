@@ -1528,7 +1528,7 @@ GALGAS_bigint GALGAS_string::getter_decimalSignedBigInt (C_Compiler * inCompiler
   GALGAS_bigint result ;
   if (isValid ()) {
     bool ok = false ;
-    C_BigInt bigint (mString.cString (HERE), 10, ok) ;
+    BigSigned bigint (mString.cString (HERE), BigUnsignedBase::ten, ok) ;
     if (ok) {
       result = GALGAS_bigint (bigint) ;
     }else{
@@ -2317,7 +2317,7 @@ bool GALGAS_string::optional_extractBigInt (GALGAS_bigint & outBigInt) const {
   outBigInt.drop () ;
   if (isValid () && (mString.length () > 0)) {
     extracted = true ;
-    const C_BigInt bigint (mString.cString (HERE), 10, extracted) ;
+    const BigSigned bigint (mString.cString (HERE), BigUnsignedBase::ten, extracted) ;
     if (extracted) {
       outBigInt = GALGAS_bigint (bigint) ;
     }

@@ -26,7 +26,7 @@
 #include "big-integers/PMUInt128.h"
 #include "generic-arraies/TC_UniqueArray.h"
 #include "generic-arraies/TC_Array.h"
-#include "big-integers/C_BigInt.h"
+#include "big-integers/BigSigned.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -131,7 +131,7 @@ class C_BDD final {
 
   public: PMUInt128 valueCount128 (const uint32_t inVariableCount) const ;
 
-  public: C_BigInt valueCount (const uint32_t inVariableCount) const ;
+  public: BigSigned valueCount (const uint32_t inVariableCount) const ;
 
   public: uint64_t valueCount64UsingCache (const uint32_t inVariableCount,
                                             TC_UniqueArray <uint64_t> & ioDirectCacheArray,
@@ -141,9 +141,9 @@ class C_BDD final {
                                               TC_UniqueArray <PMUInt128> & ioDirectCacheArray,
                                               TC_UniqueArray <PMUInt128> & ioComplementCacheArray) const ;
 
-  public: C_BigInt valueCountUsingCache (const uint32_t inVariableCount,
-                                          TC_UniqueArray <C_BigInt> & ioDirectCacheArray,
-                                          TC_UniqueArray <C_BigInt> & ioComplementCacheArray) const ;
+  public: BigSigned valueCountUsingCache (const uint32_t inVariableCount,
+                                          TC_UniqueArray <BigSigned> & ioDirectCacheArray,
+                                          TC_UniqueArray <BigSigned> & ioComplementCacheArray) const ;
 
 //--- Return highest bit index + 1
   public: uint32_t significantVariableCount (void) const ;

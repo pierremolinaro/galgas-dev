@@ -20,7 +20,7 @@
 
 #include "galgas2/scanner_actions.h"
 #include "strings/unicode_character_cpp.h"
-#include "big-integers/C_BigInt.h"
+#include "big-integers/BigSigned.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -772,7 +772,7 @@ void scanner_routine_resetString (C_Lexique & /* inLexique */,
 
 void scanner_routine_enterDecimalDigitIntoBigInt (C_Lexique & inLexique,
                                                   const utf32 inCharacter,
-                                                  C_BigInt & ioBigInt,
+                                                  BigSigned & ioBigInt,
                                                   const char * inCharacterIsNotDecimalDigitError) {
   if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '9')) {
     inLexique.lexicalError (inCharacterIsNotDecimalDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
@@ -787,7 +787,7 @@ void scanner_routine_enterDecimalDigitIntoBigInt (C_Lexique & inLexique,
 
 void scanner_routine_enterHexDigitIntoBigInt (C_Lexique & inLexique,
                                               const utf32 inCharacter,
-                                              C_BigInt & ioBigInt,
+                                              BigSigned & ioBigInt,
                                               const char * inCharacterIsNotDecimalDigitError) {
 
   if ((UNICODE_VALUE (inCharacter) >= '0') && (UNICODE_VALUE (inCharacter) <= '9')) {
@@ -811,10 +811,10 @@ void scanner_routine_enterHexDigitIntoBigInt (C_Lexique & inLexique,
 
 void scanner_routine_convertDecimalStringIntoBigInt (C_Lexique & inLexique,
                                                      const C_String & inDecimalString,
-                                                     C_BigInt & outValue,
+                                                     BigSigned & outValue,
                                                      const char * inCharacterIsNotDecimalDigitError) {
   bool ok = true ;
-  outValue = C_BigInt (inDecimalString.cString (HERE), 10, ok) ;
+  outValue = BigSigned (inDecimalString.cString (HERE), BigUnsignedBase::ten, ok) ;
   if (! ok) {
     inLexique.lexicalError (inCharacterIsNotDecimalDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
   }
@@ -824,10 +824,10 @@ void scanner_routine_convertDecimalStringIntoBigInt (C_Lexique & inLexique,
 
 void scanner_routine_convertHexStringIntoBigInt (C_Lexique & inLexique,
                                                  const C_String & inHexString,
-                                                 C_BigInt & outValue,
+                                                 BigSigned & outValue,
                                                  const char * inCharacterIsNotHexDigitError) {
   bool ok = true ;
-  outValue = C_BigInt (inHexString.cString (HERE), 16, ok) ;
+  outValue = BigSigned (inHexString.cString (HERE), BigUnsignedBase::sixteen, ok) ;
   if (! ok) {
     inLexique.lexicalError (inCharacterIsNotHexDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
   }
@@ -843,7 +843,7 @@ void scanner_routine_convertHexStringIntoBigInt (C_Lexique & inLexique,
 
 void scanner_routine_enterBinaryDigitIntoBigInt (C_Lexique & inLexique,
                                                  const utf32 inCharacter,
-                                                 C_BigInt & ioBigInt,
+                                                 BigSigned & ioBigInt,
                                                  const char * inCharacterIsNotBinaryDigitError) {
   if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '1')) {
     inLexique.lexicalError (inCharacterIsNotBinaryDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
@@ -858,10 +858,10 @@ void scanner_routine_enterBinaryDigitIntoBigInt (C_Lexique & inLexique,
 
 void scanner_routine_convertBinaryStringIntoBigInt (C_Lexique & inLexique,
                                                      const C_String & inBinaryString,
-                                                     C_BigInt & outValue,
+                                                     BigSigned & outValue,
                                                      const char * inCharacterIsNotBinaryDigitError) {
   bool ok = true ;
-  outValue = C_BigInt (inBinaryString.cString (HERE), 2, ok) ;
+  outValue = BigSigned (inBinaryString.cString (HERE), BigUnsignedBase::two, ok) ;
   if (! ok) {
     inLexique.lexicalError (inCharacterIsNotBinaryDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
   }
@@ -870,7 +870,7 @@ void scanner_routine_convertBinaryStringIntoBigInt (C_Lexique & inLexique,
 //----------------------------------------------------------------------------------------------------------------------
 
 void scanner_routine_negateBigInt (C_Lexique & /* inLexique */,
-                                   C_BigInt & ioValue) {
+                                   BigSigned & ioValue) {
   ioValue.negateInPlace () ;
 }
 

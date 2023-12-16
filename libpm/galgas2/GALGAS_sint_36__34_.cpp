@@ -117,7 +117,7 @@ GALGAS_sint GALGAS_sint_36__34_::getter_sint (C_Compiler * inCompiler
 GALGAS_bigint GALGAS_sint_36__34_::getter_bigint (UNUSED_LOCATION_ARGS) const {
   GALGAS_bigint result ;
   if (isValid ()) {
-    result = GALGAS_bigint (C_BigInt (mSInt64Value)) ;
+    result = GALGAS_bigint (BigSigned (mSInt64Value)) ;
   }
   return result ;
 }

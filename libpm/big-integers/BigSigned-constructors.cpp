@@ -68,11 +68,38 @@ mUnsigned (inByteCount, inSourceByteArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-BigSigned::BigSigned (const std::string & inString, const uint8_t inSeparator) :
+BigSigned::BigSigned (const bool inPositive,
+                      const size_t inU64Count,
+                      const uint64_t inSourceU64Array []) :
+mIsPositive (inPositive),
+mUnsigned (inU64Count, inSourceU64Array) {
+  if (mUnsigned.isZero ()) {
+    mIsPositive = true ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+BigSigned::BigSigned (const char * inString, const uint8_t inSeparator) :
 mIsPositive (true),
 mUnsigned (inString, inSeparator) {
   if (mUnsigned.isZero ()) {
     mIsPositive = true ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+BigSigned::BigSigned (const char * inString, const BigUnsignedBase inBase, bool & outOk):
+mIsPositive (true),
+mUnsigned () {
+  if (inString != nullptr) {
+    if (inString [0] == '-') {
+      mUnsigned = BigUnsigned (& inString [1], inBase, outOk) ;
+      mIsPositive = mUnsigned.isZero () ;
+    }else{
+      mUnsigned = BigUnsigned (inString, inBase, outOk) ;
+    }
   }
 }
 

@@ -23,14 +23,14 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_none (UNUSED_LO
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_all (UNUSED_LOCATION_ARGS) {
-  return GALGAS_%!TYPE_IDENTIFIER% ((uint64_t) %![FULL_SET hexString]%) ;
+  return GALGAS_%!TYPE_IDENTIFIER% (uint64_t (%![FULL_SET hexString]%)) ;
 }
 
 %for (mValue) in SLOT_LIST do (idx)
 %//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_%![mValue identifierRepresentation]% (UNUSED_LOCATION_ARGS) {
-  return GALGAS_%!TYPE_IDENTIFIER% (((uint64_t) 1) << %![idx string]%) ;
+  return GALGAS_%!TYPE_IDENTIFIER% (uint64_t (1) << %![idx string]%) ;
 }
 
 %end
@@ -143,7 +143,7 @@ GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_none (UNUSED_LOCATION_ARGS) const 
 GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_all (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool (mFlags == (uint64_t) %![FULL_SET hexString]%) ;
+    result = GALGAS_bool (mFlags == uint64_t (%![FULL_SET hexString]%)) ;
   }
   return result ;
 }
@@ -153,7 +153,7 @@ GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_all (UNUSED_LOCATION_ARGS) const {
   %GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_%![mValue identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
   %  GALGAS_bool result ;\n%
   %  if (mIsValid) {\n%
-  %    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << %![idx string]%) != 0) ;\n%
+  %    result = GALGAS_bool ((mFlags & (uint64_t (1) << %![idx string]%)) != 0) ;\n%
   %  }\n%
   %  return result ;\n%
   %}\n\n%

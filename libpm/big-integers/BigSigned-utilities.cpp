@@ -13,7 +13,7 @@
 int32_t BigSigned::sign (void) const {
   if (isZero ()) {
     return 0 ;
-  }else if (isPositive ()) {
+  }else if (mIsPositive) {
     return 1 ;
   }else{
     return -1 ;
