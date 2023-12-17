@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1994, ..., 2012 Pierre Molinaro.
+//  Copyright (C) 1994, ..., 2023 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -23,6 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "utilities/MF_Assert.h"
+#include "utilities/cpp-allocation.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -42,9 +43,7 @@
     registerPointer (inPointer COMMA_HERE) ; \
   }
 #else
-  #define macroMyNew(inPointer,instanciation) { \
-    inPointer = new instanciation ; \
-  }
+  #define macroMyNew(inPointer,instanciation) { inPointer = new instanciation ; }
 #endif
 
 //--------------------------------------------------------------------------------------------------
@@ -57,9 +56,7 @@
     registerArray (inPointer COMMA_HERE) ; \
   }
 #else
-  #define macroMyNewPODArray(inPointer,type,size) { \
-    inPointer = (type *) malloc ((size) * sizeof (type)) ; \
-  }
+  #define macroMyNewArray(inPointer,type,size) { inPointer = new type [size] ; }
 #endif
 
 //--------------------------------------------------------------------------------------------------
@@ -70,9 +67,7 @@
     inPointer = (type *) allocAndRegisterPODArray ((size) * sizeof (type) COMMA_HERE) ; \
   }
 #else
-  #define macroMyReallocPODArray(inPointer,type,size) { \
-    inPointer = (type *) realloc (inPointer, (size) * sizeof (type)) ; \
-  }
+  #define macroMyNewPODArray(inPointer,type,size) { inPointer = (type *) malloc ((size) * sizeof (type)) ; }
 #endif
 
 //--------------------------------------------------------------------------------------------------
@@ -82,8 +77,8 @@
     inPointer = (type *) reallocAndRegisterPODArray (inPointer, (size) * sizeof (type) COMMA_HERE) ; \
   }
 #else
-  #define macroMyNewArray(inPointer,type,size) { \
-    inPointer = new type [size] ; \
+  #define macroMyReallocPODArray(inPointer,type,size) { \
+    inPointer = (type *) realloc (inPointer, (size) * sizeof (type)) ; \
   }
 #endif
 
@@ -97,9 +92,7 @@
     registerPointer (inPointer COMMA_THERE) ; \
   }
 #else
-  #define macroMyNewThere(inPointer,instanciation) { \
-    inPointer = new instanciation ; \
-  }
+  #define macroMyNewThere(inPointer,instanciation) { inPointer = new instanciation ; }
 #endif
 
 //--------------------------------------------------------------------------------------------------

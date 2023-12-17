@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "ChunkSelectSize.h"
+#include "utilities/MF_MemoryControl.h"
 #include <iostream>
 
 //--------------------------------------------------------------------------------------------------
@@ -26,7 +27,7 @@ class ChunkSharedArray final {
   mChunkArray (nullptr),
   mChunkCount (0),
   mChunkCapacity (0) {
-    mChunkArray = new ChunkUInt [inChunkCapacity + 1] ;
+    macroMyNewArray (mChunkArray, ChunkUInt, inChunkCapacity + 1) ;
     mChunkSharedArrayAllocationCount += 1 ;
     mChunkSharedArrayCurrentlyAllocatedCount += 1 ;
     mChunkArray [0] = 0 ; // Index 0: reference count (minus one)
@@ -37,7 +38,7 @@ class ChunkSharedArray final {
   public: ~ChunkSharedArray (void)  {
     if (mChunkArray != nullptr) {
       if (mChunkArray [0] == 0) {
-        delete [] mChunkArray ;
+        macroMyDeleteArray (mChunkArray) ;
         MF_Assert (mChunkSharedArrayCurrentlyAllocatedCount > 0, "Zero!", 0, 0) ;
         mChunkSharedArrayCurrentlyAllocatedCount -= 1 ;
       }else{
@@ -64,7 +65,7 @@ class ChunkSharedArray final {
   //--- Release
     if (mChunkArray != nullptr) {
       if (mChunkArray [0] == 0) {
-        delete [] mChunkArray ;
+        macroMyDeleteArray (mChunkArray) ;
         MF_Assert (mChunkSharedArrayCurrentlyAllocatedCount > 0, "Zero!", 0, 0) ;
         mChunkSharedArrayCurrentlyAllocatedCount -= 1 ;
       }else{
@@ -94,7 +95,8 @@ class ChunkSharedArray final {
       if (mChunkArray != nullptr) {
         mChunkArray [0] -= 1 ;
       }
-      ChunkUInt * newChunkArray = new ChunkUInt [newChunkCapacity + 1] ;
+      ChunkUInt * newChunkArray = nullptr ;
+      macroMyNewArray (newChunkArray, ChunkUInt, newChunkCapacity + 1) ;
       mChunkSharedArrayAllocationCount += 1 ;
       mChunkSharedArrayCurrentlyAllocatedCount += 1 ;
       newChunkArray [0] = 0 ; // Index 0: reference count (minus one)
@@ -104,7 +106,8 @@ class ChunkSharedArray final {
       mChunkArray = newChunkArray ;
       mChunkCapacity = newChunkCapacity ;
     }else if (mChunkCapacity < newChunkCapacity) {
-      ChunkUInt * newChunkArray = new ChunkUInt [newChunkCapacity + 1] ;
+      ChunkUInt * newChunkArray = nullptr ;
+      macroMyNewArray (newChunkArray, ChunkUInt, newChunkCapacity + 1) ;
       mChunkSharedArrayAllocationCount += 1 ;
       mChunkSharedArrayCurrentlyAllocatedCount += 1 ;
       newChunkArray [0] = 0 ; // Index 0: reference count (minus one)
@@ -112,7 +115,7 @@ class ChunkSharedArray final {
         newChunkArray [i] = mChunkArray [i] ;  // 1-Based Indexing
       }
       if (mChunkArray != nullptr) {
-        delete [] mChunkArray ;
+        macroMyDeleteArray (mChunkArray) ;
         MF_Assert (mChunkSharedArrayCurrentlyAllocatedCount > 0, "Zero!", 0, 0) ;
         mChunkSharedArrayCurrentlyAllocatedCount -= 1 ;
       }

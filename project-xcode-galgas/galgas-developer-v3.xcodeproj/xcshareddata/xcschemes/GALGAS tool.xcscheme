@@ -84,7 +84,7 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--check-gmp"
+            argument = "--check-big-int"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

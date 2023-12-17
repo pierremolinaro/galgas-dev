@@ -85,7 +85,7 @@ compare_LR0_items (const c_LR0_item & inItem1,
 //
 //--------------------------------------------------------------------------------------------------
 
-class c_LR0_items_set {
+class c_LR0_items_set final {
 //--- Private data
   private: TC_UniqueArray <c_LR0_item> mItemsSet ;
 
@@ -98,12 +98,12 @@ class c_LR0_items_set {
 
 //--- Get transitions LR0 item set from a state for a symbol
   public: void getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
-                                   const int32_t inSymbol,
-                                   c_LR0_items_set & out_LR0_item_set) ;
+                                  const int32_t inSymbol,
+                                  c_LR0_items_set & out_LR0_item_set) ;
 
 //--- Closing the LR0 items set
   public: void close_items_set (const cPureBNFproductionsList & inProductionRules,
-                                 const int32_t inTerminalSymbolsCount) ;
+                                const int32_t inTerminalSymbolsCount) ;
 
 //--- Empty set ?
   public: bool isEmptySet (void) const ;
@@ -126,7 +126,7 @@ class c_LR0_items_set {
   public: c_LR0_items_set (const c_LR0_items_set &) ;
 
 //--- No assignment
-  private: c_LR0_items_set & operator = (const c_LR0_items_set &) ;
+  private: c_LR0_items_set & operator = (const c_LR0_items_set &) = delete ;
 
 //--- Friend
   friend void swap (c_LR0_items_set & ioOperand1, c_LR0_items_set & ioOperand2) ;

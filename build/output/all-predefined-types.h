@@ -85,8 +85,8 @@ class GALGAS_location : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public: GALGAS_location (const LocationInSource & inStartLocationInSource,
-                            const LocationInSource & inEndLocationInSource,
-                            const SourceTextInString & inSourceText) ;
+                           const LocationInSource & inEndLocationInSource,
+                           const SourceTextInString & inSourceText) ;
 
 //-- Start of generic part --*
 

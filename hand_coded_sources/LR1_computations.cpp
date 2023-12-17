@@ -104,7 +104,7 @@ class cLR1_items_AVL_tree {
 
   public: virtual ~cLR1_items_AVL_tree (void) ;
 
-  public: static cLR1_items_AVL_tree * // Return inserted object, or NULL
+  public: static cLR1_items_AVL_tree * // Return inserted object, or nullptr
   recursiveSearchOrInsertLR1Item (cLR1_items_AVL_tree * & ioRootPointer,
                                   const c_LR1_item & in_LR1_item,
                                   bool & outExtension) ;
@@ -118,8 +118,8 @@ class cLR1_items_AVL_tree {
 
 cLR1_items_AVL_tree::
 cLR1_items_AVL_tree (const c_LR1_item & inLR1item) :
-mPtrToInf ((cLR1_items_AVL_tree *) NULL),
-mPtrToSup ((cLR1_items_AVL_tree *) NULL),
+mPtrToInf ((cLR1_items_AVL_tree *) nullptr),
+mPtrToSup ((cLR1_items_AVL_tree *) nullptr),
 mLR1item (inLR1item),
 mBalance (0) {
 } ;
@@ -183,8 +183,8 @@ cLR1_items_AVL_tree * cLR1_items_AVL_tree::
 recursiveSearchOrInsertLR1Item (cLR1_items_AVL_tree * & ioRootPointer,
                                 const c_LR1_item & in_LR1_item,
                                 bool & outExtension) {
-  cLR1_items_AVL_tree * result = NULL ;
-  if (ioRootPointer == NULL) {
+  cLR1_items_AVL_tree * result = nullptr ;
+  if (ioRootPointer == nullptr) {
     macroMyNew (ioRootPointer, cLR1_items_AVL_tree (in_LR1_item)) ;
     result = ioRootPointer ;
     outExtension = true ;
@@ -328,7 +328,7 @@ void swap (cLR1ItemUniqueArray & ioOperand1,
 //--------------------------------------------------------------------------------------------------
 
 cLR1ItemUniqueArray::cLR1ItemUniqueArray (void) :
-mArray (NULL),
+mArray (nullptr),
 mCount (0),
 mCapacity (0) {
 }
@@ -341,7 +341,7 @@ mCapacity (0) {
 
 cLR1ItemUniqueArray::
 cLR1ItemUniqueArray (const int32_t inAllocatedSize COMMA_LOCATION_ARGS) :
-mArray (NULL),
+mArray (nullptr),
 mCount (0),
 mCapacity (0) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -350,7 +350,7 @@ mCapacity (0) {
   if (inAllocatedSize > 0) {
     macroMyNewArray (mArray, const cLR1_items_AVL_tree *, uint32_t (inAllocatedSize)) ;
     for (int32_t i=0 ; i<inAllocatedSize ; i++) {
-      mArray [i] = NULL ;
+      mArray [i] = nullptr ;
     }
     mCapacity = inAllocatedSize ;
   }
@@ -363,7 +363,7 @@ mCapacity (0) {
 //--------------------------------------------------------------------------------------------------
 
 cLR1ItemUniqueArray::~cLR1ItemUniqueArray (void) {
-  delete [] mArray ;
+  macroMyDeleteArray (mArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -378,7 +378,7 @@ void cLR1ItemUniqueArray::makeRoom (const int32_t inNewCapacity) {
     while (newCapacity < inNewCapacity) {
       newCapacity <<= 1 ;
     }
-    const cLR1_items_AVL_tree * * newArray = NULL ;
+    const cLR1_items_AVL_tree * * newArray = nullptr ;
     macroMyNewArray (newArray, const cLR1_items_AVL_tree *, uint32_t (newCapacity)) ;
     for (int32_t i=0 ; i<mCapacity ; i++) {
       newArray [i] = mArray [i] ;
@@ -396,7 +396,7 @@ void cLR1ItemUniqueArray::makeRoom (const int32_t inNewCapacity) {
 
 void cLR1ItemUniqueArray::free (void) {
   mCount = 0 ;
-  macroMyDeleteArray (mArray) ; mArray = NULL ;
+  macroMyDeleteArray (mArray) ;
   mCapacity = 0 ;
 }
 
@@ -455,8 +455,8 @@ void cLR1ItemUniqueArray::appendObject (const cLR1_items_AVL_tree * inValue) {
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  const c_LR1_item & cLR1ItemUniqueArray::
-  operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
+  const c_LR1_item & cLR1ItemUniqueArray::operator () (const int32_t inIndex
+                                                       COMMA_LOCATION_ARGS) const {
     checkIndex (inIndex COMMA_THERE) ;
     return mArray [inIndex]->mLR1item ;
   }
@@ -474,7 +474,7 @@ void cLR1ItemUniqueArray::appendObject (const cLR1_items_AVL_tree * inValue) {
 //
 //--------------------------------------------------------------------------------------------------
 
-class c_LR1_items_set {
+class c_LR1_items_set final {
 //--- Private data
   private: cLR1ItemUniqueArray mItemsSet ;
   private: cLR1_items_AVL_tree * mRoot ;
@@ -485,7 +485,7 @@ class c_LR1_items_set {
   public: c_LR1_items_set (void) ;
 
 //--- Destructor
-  public: virtual ~c_LR1_items_set (void) ;
+  public: ~c_LR1_items_set (void) ;
 
 //--- No copy
   private: c_LR1_items_set (const c_LR1_items_set &) ;
@@ -495,21 +495,18 @@ class c_LR1_items_set {
   public: void add_LR1_item (const int32_t inProductionRuleIndex,
                               const int32_t inLocationIndex,
                               const int32_t inTerminalSymbol) ;
-  protected: void
-  recursiveBuildSortedArray (cLR1_items_AVL_tree * inPointer) ;
+  protected: void recursiveBuildSortedArray (cLR1_items_AVL_tree * inPointer) ;
 
 //--- Get transitions LR1 item set from a state for a symbol
-  public: void
-  getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
-                     const int32_t inSymbol,
-                     c_LR1_items_set & out_LR1_item_set) ;
+  public: void  getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
+                                   const int32_t inSymbol,
+                                   c_LR1_items_set & out_LR1_item_set) ;
 
 //--- Closing the LR1 items set
-  public: void
-  close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
-                       const int32_t inTerminalSymbolsCount,
-                       const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFIRSTarray,
-                       const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array) ;
+  public: void close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
+                                    const int32_t inTerminalSymbolsCount,
+                                    const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFIRSTarray,
+                                    const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array) ;
 
   public: void clear (void) ;
 
@@ -545,7 +542,7 @@ class c_LR1_items_set {
 
 c_LR1_items_set::c_LR1_items_set (void) :
 mItemsSet (),
-mRoot (NULL),
+mRoot (nullptr),
 mHashCode (0),
 mArrayIsSorted (true) {
 }
@@ -568,7 +565,7 @@ void c_LR1_items_set::clear (void) {
 
 void c_LR1_items_set::
 recursiveBuildSortedArray (cLR1_items_AVL_tree * inPointer) {
-  if (inPointer != NULL) {
+  if (inPointer != nullptr) {
     recursiveBuildSortedArray (inPointer->mPtrToSup) ;
     mItemsSet.appendObject (inPointer) ;
     recursiveBuildSortedArray (inPointer->mPtrToInf) ;
@@ -588,7 +585,7 @@ add_LR1_item (const int32_t inProductionRuleIndex,
                                                        item,
                                                        extension) ;
 //--- If not found, add it
-  if (p != NULL) {
+  if (p != nullptr) {
     mItemsSet.appendObject (p) ;
     mArrayIsSorted = false ;
     mHashCode ^= item.mHashCode ;
@@ -803,8 +800,8 @@ class cLR1_items_sets_AVL_tree {
 //--------------------------------------------------------------------------------------------------
 
 cLR1_items_sets_AVL_tree::cLR1_items_sets_AVL_tree (const int32_t inInfo) :
-mPtrToInf (NULL),
-mPtrToSup (NULL),
+mPtrToInf (nullptr),
+mPtrToSup (nullptr),
 mInfoIndex (inInfo),
 mBalance (0) {
 }
@@ -878,7 +875,7 @@ recursiveSearchOrInsert (cLR1_items_sets_AVL_tree * & ioRootPointer,
                          TC_UniqueArray <c_LR1_items_set> & io_LR1_items_sets_array,
                          bool & outExtension) {
   int32_t result ;
-  if (ioRootPointer == NULL) {
+  if (ioRootPointer == nullptr) {
     result = io_LR1_items_sets_array.count () ;
     macroMyNew (ioRootPointer, cLR1_items_sets_AVL_tree (result)) ;
     io_LR1_items_sets_array.appendObjectUsingSwap (io_LR1_items_set) ;
@@ -999,7 +996,7 @@ c_LR1_items_sets_collection::c_LR1_items_sets_collection (void) :
 m_LR1_items_sets_array () {
   m_LR1_items_sets_array.setCapacityUsingSwap (500) ;
   for (uint32_t i=0 ; i<kSlotCount ; i++) {
-    mRoot [i] = (cLR1_items_sets_AVL_tree *) NULL ;
+    mRoot [i] = (cLR1_items_sets_AVL_tree *) nullptr ;
   }
 }
 
@@ -1522,7 +1519,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
       ioCppFileContents += String ("void cGrammar_") + inTargetFileName.identifierRepresentation ()
                          + "::performIndexing (Compiler * inCompiler,\n"
                            "             const String & inSourceFilePath) {\n"
-                           "  C_Lexique_" + inLexiqueName.identifierRepresentation () + " * scanner = NULL ;\n"
+                           "  C_Lexique_" + inLexiqueName.identifierRepresentation () + " * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, C_Lexique_" + inLexiqueName.identifierRepresentation () + " (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
                            "  scanner->enableIndexing () ;\n"
                            "  if (scanner->sourceText ().isValid ()) {\n"
@@ -1540,7 +1537,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                            "void cGrammar_" + inTargetFileName.identifierRepresentation ()
                          + "::performOnlyLexicalAnalysis (Compiler * inCompiler,\n"
                            "             const String & inSourceFilePath) {\n"
-                           "  C_Lexique_" + inLexiqueName.identifierRepresentation () + " * scanner = NULL ;\n"
+                           "  C_Lexique_" + inLexiqueName.identifierRepresentation () + " * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, C_Lexique_" + inLexiqueName.identifierRepresentation () + " (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
                            "  if (scanner->sourceText ().isValid ()) {\n"
                            "    scanner->performLexicalAnalysis () ;\n"
@@ -1550,7 +1547,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                            "void cGrammar_" + inTargetFileName.identifierRepresentation ()
                          + "::performOnlySyntaxAnalysis (Compiler * inCompiler,\n"
                            "             const String & inSourceFilePath) {\n"
-                           "  C_Lexique_" + inLexiqueName.identifierRepresentation () + " * scanner = NULL ;\n"
+                           "  C_Lexique_" + inLexiqueName.identifierRepresentation () + " * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, C_Lexique_" + inLexiqueName.identifierRepresentation () + " (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
                            "  if (scanner->sourceText ().isValid ()) {\n"
                            "    scanner->performBottomUpParsing (gActionTable_" + inTargetFileName + ", gNonTerminalNames_" + inTargetFileName + ",\n"
@@ -1612,7 +1609,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                              "      filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
                              "    }\n"
                              "    if (C_FileManager::fileExistsAtPath (filePath)) {\n"
-                             "      C_Lexique_" + inLexiqueName.identifierRepresentation () + " * scanner = NULL ;\n"
+                             "      C_Lexique_" + inLexiqueName.identifierRepresentation () + " * scanner = nullptr ;\n"
                              "      macroMyNew (scanner, C_Lexique_" + inLexiqueName.identifierRepresentation () + " (inCompiler, filePath COMMA_HERE)) ;\n"
                              "      if (scanner->sourceText ().isValid ()) {\n"
                              "        const bool ok = scanner->performBottomUpParsing (gActionTable_" + inTargetFileName + ", gNonTerminalNames_" + inTargetFileName + ",\n"
@@ -1705,7 +1702,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                              "  if (inSourceString.isValid () && inNameString.isValid ()) {\n"
                              "    const String sourceString = inSourceString.stringValue () ;\n"
                              "    const String nameString = inNameString.stringValue () ;\n"
-                             "    C_Lexique_" + inLexiqueName.identifierRepresentation () + " * scanner = NULL ;\n"
+                             "    C_Lexique_" + inLexiqueName.identifierRepresentation () + " * scanner = nullptr ;\n"
                              "    macroMyNew (scanner, C_Lexique_" + inLexiqueName.identifierRepresentation ()
                            + " (inCompiler, sourceString, nameString COMMA_HERE)) ;\n"
                              "    const bool ok = scanner->performBottomUpParsing (gActionTable_" + inTargetFileName + ", gNonTerminalNames_" + inTargetFileName + ",\n"
@@ -1856,7 +1853,7 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
   }
 
 //--- Compute LR1 automaton
-  c_LR1_items_sets_collection * LR1_items_sets_collection = NULL ;
+  c_LR1_items_sets_collection * LR1_items_sets_collection = nullptr ;
   macroMyNew (LR1_items_sets_collection, c_LR1_items_sets_collection) ;
   TC_UniqueArray <c_LR1_automaton_transition> transitionList ;
   compute_LR1_automation (inProductionRules,
