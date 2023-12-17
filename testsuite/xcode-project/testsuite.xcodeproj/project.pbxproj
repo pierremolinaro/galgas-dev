@@ -1435,7 +1435,7 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  E7A499E50248A3A78F7ACFC7 /* C_String.cpp */ = {
+  E7A499E50248A3A78F7ACFC7 /* String-class.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 73C2CE17FD8FCD40041C068F ;
     settings = {ATTRIBUTES = (); };
@@ -3434,12 +3434,12 @@
     sourceTree = "<group>";
   };
 
-  73C2CE17FD8FCD40041C068F /* C_String.cpp */ = {
+  73C2CE17FD8FCD40041C068F /* String-class.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "C_String.cpp";
-    path = "C_String.cpp";
+    name = "String-class.cpp";
+    path = "String-class.cpp";
     sourceTree = "<group>";
   };
 
@@ -5693,12 +5693,12 @@
     sourceTree = "<group>";
   };
 
-  FD37FA5B98D5BB769BA1A7CC /* C_String.h */ = {
+  FD37FA5B98D5BB769BA1A7CC /* String-class.h */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.c.h;
-    name = "C_String.h";
-    path = "C_String.h";
+    name = "String-class.h";
+    path = "String-class.h";
     sourceTree = "<group>";
   };
 

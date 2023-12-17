@@ -29,10 +29,10 @@
 class AC_FileHandle {
 //---
   protected: FILE * mFilePtr ;
-  protected: C_String mFilePath ;
+  protected: String mFilePath ;
 
 //--- Protected constructor
-  protected: AC_FileHandle (const C_String & inFilePath,
+  protected: AC_FileHandle (const String & inFilePath,
                             const char * inMode) ;
 
 //--- No copy
@@ -44,7 +44,7 @@ class AC_FileHandle {
 
 //---
   public: inline bool isOpened (void) const { return nullptr != mFilePtr ; }
-  public: inline C_String filePath (void) const { return mFilePath ; }
+  public: inline String filePath (void) const { return mFilePath ; }
 } ;
 
 

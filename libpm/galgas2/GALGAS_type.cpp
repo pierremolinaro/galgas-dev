@@ -60,7 +60,7 @@ GALGAS_type::~ GALGAS_type (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_type::description (C_String & ioString,
+void GALGAS_type::description (String & ioString,
                                const int32_t /* inIndentation */) const {
   ioString += "<@type: " ;
   if (nullptr == mTypeDescriptor) {
@@ -103,7 +103,7 @@ GALGAS_type GALGAS_type::getter_superclass (C_Compiler * inCompiler
   GALGAS_type result ;
   if (mTypeDescriptor != nullptr) {
     if (nullptr == mTypeDescriptor->mSuperclassDescriptor) {
-      C_String s ;
+      String s ;
       s += "'superclass' reader invoked on class type value '@" ;
       s += mTypeDescriptor->mGalgasTypeName ;
       s += "', without super class" ;

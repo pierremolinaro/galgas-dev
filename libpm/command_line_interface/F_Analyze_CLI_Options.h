@@ -23,7 +23,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -33,7 +33,7 @@
 
 void F_Analyze_CLI_Options (const int argv,
                             const char * argc [],
-                            TC_UniqueArray <C_String> & outSourceFileArray,
+                            TC_UniqueArray <String> & outSourceFileArray,
                             const char * inExtensions [],
                             const char * inHelpMessages [],
                             void print_tool_help_message (void)) ;
@@ -48,7 +48,7 @@ const char * galgasVersionString (void) ;
 
 uint32_t commandLineArgumentCount (void) ;
 
-C_String commandLineArgumentAtIndex (const uint32_t inIndex) ;
+String commandLineArgumentAtIndex (const uint32_t inIndex) ;
 
 //--------------------------------------------------------------------------------------------------
 

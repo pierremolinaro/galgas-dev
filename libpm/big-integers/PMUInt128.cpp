@@ -172,8 +172,8 @@ void PMUInt128::operator /= (const uint32_t inDivisor) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String PMUInt128::decimalString (void) const {
-  C_String result ;
+String PMUInt128::decimalString (void) const {
+  String result ;
   if (isZero()) {
     result += "0" ;
   }else{

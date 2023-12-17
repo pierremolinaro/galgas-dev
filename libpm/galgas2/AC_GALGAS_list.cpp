@@ -90,7 +90,7 @@ AC_GALGAS_list::~ AC_GALGAS_list (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_list::description (C_String & ioString,
+void AC_GALGAS_list::description (String & ioString,
                                   const int32_t inIndentation) const {
   ioString += "<list @" ;
   ioString += staticTypeDescriptor ()->mGalgasTypeName ;
@@ -251,7 +251,7 @@ capCollectionElement AC_GALGAS_list::readObjectAtIndex (const GALGAS_uint & inIn
     if (index < mSharedArray.count ()) {
       result = mSharedArray.objectAtIndex (index COMMA_THERE) ;
     }else{
-      C_String s = "objectAtIndex: index (" ;
+      String s = "objectAtIndex: index (" ;
       s.appendUnsigned (index) ;
       s += ") >= length (" ;
       s.appendUnsigned (count ()) ;
@@ -275,7 +275,7 @@ cCollectionElement * AC_GALGAS_list::uniquelyReferencedPointerAtIndex (const GAL
         result = mSharedArray.uniquelyReferencedPointerAtIndex (index COMMA_THERE) ;
         macroUniqueSharedObject (result) ;
       }else{
-        C_String s = "objectAtIndex: index (" ;
+        String s = "objectAtIndex: index (" ;
         s.appendUnsigned (index) ;
         s += ") >= length (" ;
         s.appendUnsigned (count ()) ;
@@ -315,11 +315,11 @@ class cListMapNode {
   public: cListMapNode * mInfPtr ;
   public: cListMapNode * mSupPtr ;
   public: int32_t mBalance ;
-  public: C_String mKey ;
+  public: String mKey ;
   public: capCollectionElementArray myList ;
 
 //--- Constructors
-  public: cListMapNode (const C_String & inKey) ;
+  public: cListMapNode (const String & inKey) ;
   public: cListMapNode (const cListMapNode * inNode) ;
 
 //--- Destructor
@@ -332,7 +332,7 @@ class cListMapNode {
 
 //--------------------------------------------------------------------------------------------------
 
-cListMapNode::cListMapNode (const C_String & inKey) :
+cListMapNode::cListMapNode (const String & inKey) :
 mInfPtr (nullptr),
 mSupPtr (nullptr),
 mBalance (0),
@@ -376,23 +376,23 @@ class cSharedListMapRoot : public C_SharedObject {
   public: VIRTUAL_IN_DEBUG uint32_t count (void) const { return mCount ; }
 
 //--- Description
-  public: VIRTUAL_IN_DEBUG void description (C_String & ioString, const int32_t inIndentation) const  ;
+  public: VIRTUAL_IN_DEBUG void description (String & ioString, const int32_t inIndentation) const  ;
 
   public: static void internalDescription (cListMapNode * inNode,
-                                            C_String & ioString,
+                                            String & ioString,
                                             const int32_t inIndentation,
                                             uint32_t & ioIdx) ;
 //--- Find or add entry
   public: VIRTUAL_IN_DEBUG void findOrAddEntry (cListMapNode * & ioRootPtr,
-                                                 const C_String & inKey,
+                                                 const String & inKey,
                                                  cListMapNode * & outEntry,
                                                  bool & ioExtension) ;
 
-  public: VIRTUAL_IN_DEBUG void addObjectInListMap (const C_String & inKey,
+  public: VIRTUAL_IN_DEBUG void addObjectInListMap (const String & inKey,
                                                      capCollectionElement & inAttributeArray) ;
 
 //--------------------------------- Support for 'listForKey' reader
-  public: VIRTUAL_IN_DEBUG capCollectionElementArray listForKey (const C_String & inKey) const ;
+  public: VIRTUAL_IN_DEBUG capCollectionElementArray listForKey (const String & inKey) const ;
 
 //--------------------------------- Support for enumeration
   public: VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;
@@ -561,7 +561,7 @@ typeComparisonResult AC_GALGAS_listmap::objectCompare (const AC_GALGAS_listmap &
 //--------------------------------------------------------------------------------------------------
 
 void cSharedListMapRoot::internalDescription (cListMapNode * inNode,
-                                              C_String & ioString,
+                                              String & ioString,
                                               const int32_t inIndentation,
                                               uint32_t & ioIdx) {
   if (nullptr != inNode) {
@@ -581,7 +581,7 @@ void cSharedListMapRoot::internalDescription (cListMapNode * inNode,
 
 //--------------------------------------------------------------------------------------------------
 
-void cSharedListMapRoot::description (C_String & ioString,
+void cSharedListMapRoot::description (String & ioString,
                                       const int32_t inIndentation) const {
   ioString += " (" ;
   ioString.appendUnsigned (count ()) ;
@@ -595,7 +595,7 @@ void cSharedListMapRoot::description (C_String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_listmap::description (C_String & ioString,
+void AC_GALGAS_listmap::description (String & ioString,
                                      const int32_t inIndentation) const {
   ioString += "<@" ;
   ioString += staticTypeDescriptor ()->mGalgasTypeName ;
@@ -721,7 +721,7 @@ static void rotateRight (cListMapNode * & ioRootPtr) {
 //--------------------------------------------------------------------------------------------------
 
 void cSharedListMapRoot::findOrAddEntry (cListMapNode * & ioRootPtr,
-                                         const C_String & inKey,
+                                         const String & inKey,
                                          cListMapNode * & outEntry,
                                          bool & ioExtension) {
   if (ioRootPtr == nullptr) {
@@ -769,7 +769,7 @@ void cSharedListMapRoot::findOrAddEntry (cListMapNode * & ioRootPtr,
 
 //--------------------------------------------------------------------------------------------------
 
-void cSharedListMapRoot::addObjectInListMap (const C_String & inKey,
+void cSharedListMapRoot::addObjectInListMap (const String & inKey,
                                                  capCollectionElement & inAttributeArray) {
   macroUniqueSharedObject (this) ;
   cListMapNode * entry = nullptr ;
@@ -799,7 +799,7 @@ void AC_GALGAS_listmap::addObjectInListMap (const GALGAS_string & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-capCollectionElementArray cSharedListMapRoot::listForKey (const C_String & inKey) const {
+capCollectionElementArray cSharedListMapRoot::listForKey (const String & inKey) const {
   capCollectionElementArray result ;
   bool found = false ;
   const cListMapNode * p = mRoot ;
@@ -835,7 +835,7 @@ capCollectionElementArray AC_GALGAS_listmap::listForKey (const GALGAS_string & i
 
 //--------------------------------------------------------------------------------------------------
 
-cListMapElement::cListMapElement (const C_String & inKey,
+cListMapElement::cListMapElement (const String & inKey,
                                           const capCollectionElementArray & inSharedList
                                           COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
@@ -869,7 +869,7 @@ cCollectionElement * cListMapElement::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cListMapElement::description (C_String & /* ioString */,
+void cListMapElement::description (String & /* ioString */,
                                    const int32_t /* inIndentation */) const {
 }
 

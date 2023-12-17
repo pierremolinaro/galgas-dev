@@ -20,7 +20,7 @@
 
 #include "galgas2/cPtr_weakReference_proxy.h"
 #include "galgas2/acStrongPtr_class.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 

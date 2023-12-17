@@ -29,12 +29,12 @@ typedef cTokenFor_galgasScanner cTokenFor_galgasTemplateScanner ;
 class C_Lexique_galgasTemplateScanner : public C_Lexique_galgasScanner {
 //--- Constructors
   public: C_Lexique_galgasTemplateScanner (C_Compiler * inCallerCompiler,
-                       const C_String & inSourceFileName
+                       const String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;
 
   public: C_Lexique_galgasTemplateScanner (C_Compiler * inCallerCompiler,
-                       const C_String & inSourceString,
-                       const C_String & inStringForError
+                       const String & inSourceString,
+                       const String & inStringForError
                        COMMA_LOCATION_ARGS) ;
 
 //--- Instrospection
@@ -580,7 +580,7 @@ class cPtr_templateInstructionStringForGeneration : public cPtr_templateInstruct
 
 //--- Attribute accessors
 //--- Description
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
   public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
@@ -779,7 +779,7 @@ class cPtr_semanticDeclarationWithHeaderForGeneration : public cPtr_semanticDecl
 
 //--- Attribute accessors
 //--- Description
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override = 0 ;
 
   public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override = 0 ;
@@ -924,7 +924,7 @@ class cPtr_semanticTypeForGeneration : public cPtr_semanticDeclarationForGenerat
 
 //--- Attribute accessors
 //--- Description
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override = 0 ;
 
   public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override = 0 ;
@@ -1074,7 +1074,7 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Attribute accessors
 //--- Description
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
   public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
@@ -1255,7 +1255,7 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Attribute accessors
 //--- Description
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
   public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
@@ -1425,7 +1425,7 @@ class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneratio
 
 //--- Attribute accessors
 //--- Description
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
   public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;

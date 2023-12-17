@@ -587,7 +587,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
       end
     end
     if self.mGrammarHasTranslateFeature then
-      ioGeneratedCode += "C_String " + self.mSyntaxDirectedTranslationResultVarName + " ;\n"
+      ioGeneratedCode += "String " + self.mSyntaxDirectedTranslationResultVarName + " ;\n"
     end
     ioGeneratedCode += "cGrammar_" + [self.mGrammarName identifierRepresentation]
                     +  "::_performSourceFileParsing_" + [self.mLabelName identifierRepresentation] 
@@ -666,7 +666,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
       end
     end
     if self.mGrammarHasTranslateFeature then
-      ioGeneratedCode += "C_String " + self.mSyntaxDirectedTranslationResultVarName + " ;\n"
+      ioGeneratedCode += "String " + self.mSyntaxDirectedTranslationResultVarName + " ;\n"
     end
     ioGeneratedCode += "cGrammar_" + [self.mGrammarName identifierRepresentation]
                     +  "::_performSourceStringParsing_" + [self.mLabelName identifierRepresentation] 

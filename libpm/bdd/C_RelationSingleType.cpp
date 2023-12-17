@@ -7,7 +7,7 @@
 
 #include "bdd/C_RelationSingleType.h"
 #include "utilities/C_SharedObject.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -32,7 +32,7 @@ static C_RelationSingleType::cType * gLastRelation ;
 
 class C_RelationSingleType::cType : public C_SharedObject {
 //--- Constructor
-  public: inline cType (const C_String & inTypeName,
+  public: inline cType (const String & inTypeName,
                          const uint32_t inBDDBitCount
                          COMMA_LOCATION_ARGS) :
   C_SharedObject (THERE),
@@ -66,11 +66,11 @@ class C_RelationSingleType::cType : public C_SharedObject {
 
 //--- Accessors
   public: virtual uint32_t constantCount (void) const = 0 ;
-  public: virtual C_String nameForValue (const uint32_t inIndex
+  public: virtual String nameForValue (const uint32_t inIndex
                                           COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Attribute
-  public: const C_String mTypeName ;
+  public: const String mTypeName ;
   public: const uint32_t mBDDBitCount ;
   public: cType * mNextPtr ;
   private: cType * mPreviousPtr ;
@@ -82,8 +82,8 @@ class C_RelationSingleType::cType : public C_SharedObject {
 
 class C_EnumeratedTypeInRelation : public C_RelationSingleType::cType {
 //--- Constructor
-  public: C_EnumeratedTypeInRelation (const C_String & inTypeName,
-                                       const TC_UniqueArray <C_String> & inConstantNameArray
+  public: C_EnumeratedTypeInRelation (const String & inTypeName,
+                                       const TC_UniqueArray <String> & inConstantNameArray
                                        COMMA_LOCATION_ARGS) ;
 
 //--- Accessors
@@ -91,24 +91,24 @@ class C_EnumeratedTypeInRelation : public C_RelationSingleType::cType {
     return (uint32_t) mConstantNameArray.count () ;
   }
 
-  public: virtual C_String nameForValue (const uint32_t inIndex
+  public: virtual String nameForValue (const uint32_t inIndex
                                           COMMA_LOCATION_ARGS) const {
     return mConstantNameArray ((int32_t) inIndex COMMA_THERE) ;
   }
 
-  public: inline bool isConstantArrayEqualTo (const TC_UniqueArray <C_String> & inConstantNameArray) const {
+  public: inline bool isConstantArrayEqualTo (const TC_UniqueArray <String> & inConstantNameArray) const {
     return mConstantNameArray == inConstantNameArray ;
   }
 
 //--- Attributes
-  private: TC_UniqueArray <C_String> mConstantNameArray ;
+  private: TC_UniqueArray <String> mConstantNameArray ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
 C_EnumeratedTypeInRelation::
-C_EnumeratedTypeInRelation (const C_String & inTypeName,
-                            const TC_UniqueArray <C_String> & inConstantNameArray
+C_EnumeratedTypeInRelation (const String & inTypeName,
+                            const TC_UniqueArray <String> & inConstantNameArray
                             COMMA_LOCATION_ARGS) :
 cType (inTypeName, bitCountForCount ((uint32_t) inConstantNameArray.count ()) COMMA_THERE),
 mConstantNameArray () {
@@ -118,8 +118,8 @@ mConstantNameArray () {
 //--------------------------------------------------------------------------------------------------
 
 C_RelationSingleType::
-C_RelationSingleType (const C_String & inTypeName,
-                      const TC_UniqueArray <C_String> & inConstantNameArray
+C_RelationSingleType (const String & inTypeName,
+                      const TC_UniqueArray <String> & inConstantNameArray
                       COMMA_LOCATION_ARGS) :
 mTypePtr (nullptr) {
 //--- Check type is unique
@@ -146,7 +146,7 @@ mTypePtr (nullptr) {
 
 class C_UnsignedTypeInRelation : public C_RelationSingleType::cType {
 //--- Constructor
-  public: C_UnsignedTypeInRelation (const C_String & inTypeName,
+  public: C_UnsignedTypeInRelation (const String & inTypeName,
                                      const uint32_t inValueCount
                                      COMMA_LOCATION_ARGS) ;
 
@@ -155,7 +155,7 @@ class C_UnsignedTypeInRelation : public C_RelationSingleType::cType {
     return mValueCount ;
   }
 
-  public: virtual C_String nameForValue (const uint32_t inIndex
+  public: virtual String nameForValue (const uint32_t inIndex
                                           COMMA_UNUSED_LOCATION_ARGS) const {
     return stringWithUnsigned (inIndex) ;
   }
@@ -167,7 +167,7 @@ class C_UnsignedTypeInRelation : public C_RelationSingleType::cType {
 //--------------------------------------------------------------------------------------------------
 
 C_UnsignedTypeInRelation::
-C_UnsignedTypeInRelation (const C_String & inTypeName,
+C_UnsignedTypeInRelation (const String & inTypeName,
                           const uint32_t inValueCount
                           COMMA_LOCATION_ARGS) :
 cType (inTypeName, bitCountForCount (inValueCount) COMMA_THERE),
@@ -177,7 +177,7 @@ mValueCount (inValueCount) {
 //--------------------------------------------------------------------------------------------------
 
 C_RelationSingleType::
-C_RelationSingleType (const C_String & inTypeName,
+C_RelationSingleType (const String & inTypeName,
                       const uint32_t inValueCount
                       COMMA_LOCATION_ARGS) :
 mTypePtr (nullptr) {
@@ -203,7 +203,7 @@ mTypePtr (nullptr) {
 //  Accessors
 //--------------------------------------------------------------------------------------------------
 
-C_String C_RelationSingleType::typeName (void) const {
+String C_RelationSingleType::typeName (void) const {
   macroValidPointer (mTypePtr) ;
   return mTypePtr->mTypeName ;
 }
@@ -224,7 +224,7 @@ uint32_t C_RelationSingleType::constantCount (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_RelationSingleType::nameForValue (const uint32_t inIndex
+String C_RelationSingleType::nameForValue (const uint32_t inIndex
                                              COMMA_LOCATION_ARGS) const {
   macroValidPointer (mTypePtr) ;
   return mTypePtr->nameForValue (inIndex COMMA_THERE) ;

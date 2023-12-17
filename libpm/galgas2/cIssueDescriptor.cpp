@@ -34,11 +34,11 @@ mMessage ("") {
 //--------------------------------------------------------------------------------------------------
 
 cIssueDescriptor::cIssueDescriptor (const bool inIsError,
-                                    const C_String & inFile,
+                                    const String & inFile,
                                     const int32_t inLine,
                                     const int32_t inStartColumn,
                                     const int32_t inEndColumn,
-                                    const C_String & inMessage) :
+                                    const String & inMessage) :
 mIsError (inIsError),
 mFile (inFile),
 mLine (inLine),
@@ -74,8 +74,8 @@ cIssueDescriptor & cIssueDescriptor::operator = (const cIssueDescriptor & inSour
 
 //--------------------------------------------------------------------------------------------------
 
-void cIssueDescriptor::appendToJSONstring (C_String & ioJSONstring, const bool inIsFirstIssue) const {
-  C_String s = mMessage.stringByReplacingStringByString("\n", "\\n") ;
+void cIssueDescriptor::appendToJSONstring (String & ioJSONstring, const bool inIsFirstIssue) const {
+  String s = mMessage.stringByReplacingStringByString("\n", "\\n") ;
   s = s.stringByReplacingStringByString("\"", "\\\"") ;
   ioJSONstring += (inIsFirstIssue ? "" : ",\n") ;
   ioJSONstring += "  { \"ERROR\" : " ;

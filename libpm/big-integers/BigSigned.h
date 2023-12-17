@@ -131,11 +131,11 @@ class BigSigned final {
   public: void complementBitAtIndex (const uint32_t inBitIndex) ;
 
 //--- Print
-  public: C_String decimalString (void) const ;
-  public: C_String spacedDecimalString (const uint32_t inSeparation) const ;
-  public: C_String spacedDecimalStringWithDigitCount (const uint32_t inSeparation) const ;
-  public: C_String hexString (void) const ;
-  public: C_String xString (void) const ;
+  public: String decimalString (void) const ;
+  public: String spacedDecimalString (const uint32_t inSeparation) const ;
+  public: String spacedDecimalStringWithDigitCount (const uint32_t inSeparation) const ;
+  public: String hexString (void) const ;
+  public: String xString (void) const ;
   public: void printHex (const char * inName) const ;
 
 //--- Value access

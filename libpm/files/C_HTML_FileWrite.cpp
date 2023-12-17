@@ -20,7 +20,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "files/C_HTML_FileWrite.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 #include "time/C_DateTime.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -29,10 +29,10 @@
 
 //--------------------------------------------------------------------------------------------------
 
-C_HTML_FileWrite::C_HTML_FileWrite (const C_String & inFileName,
-                                    const C_String & inWindowTitle,
-                                    const C_String & inCSSFileName,
-                                    const C_String & inCSSContents) :
+C_HTML_FileWrite::C_HTML_FileWrite (const String & inFileName,
+                                    const String & inWindowTitle,
+                                    const String & inCSSFileName,
+                                    const String & inCSSContents) :
 C_TextFileWrite (inFileName) {
   outputRawData ("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n"
                  "<html>"
@@ -133,8 +133,8 @@ void C_HTML_FileWrite::performActualUnicodeArrayOutput (const utf32 * inCharArra
 //                 Comments as a table                   
 //--------------------------------------------------------------------------------------------------
 
-void C_HTML_FileWrite::appendCppTitleComment (const C_String & inCommentString,
-                                              const C_String & inTableStyleClass) {
+void C_HTML_FileWrite::appendCppTitleComment (const String & inCommentString,
+                                              const String & inTableStyleClass) {
   outputRawData ("<table") ;
   if (inTableStyleClass.length () > 0) {
     outputRawData (" class=\"") ;

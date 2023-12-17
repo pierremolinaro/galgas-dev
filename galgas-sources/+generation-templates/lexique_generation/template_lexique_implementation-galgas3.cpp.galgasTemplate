@@ -11,7 +11,7 @@
 //--------------------------------------------------------------------------------------------------
 
 C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%C_Compiler * inCallerCompiler,
-                %!^%const C_String & inSourceFileName
+                %!^%const String & inSourceFileName
                 %!^%COMMA_LOCATION_ARGS) :
 C_Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceFileName COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
@@ -20,8 +20,8 @@ mMatchedTemplateDelimiterIndex (-1) {
 //--------------------------------------------------------------------------------------------------
 
 C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%C_Compiler * inCallerCompiler,
-                %!^%const C_String & inSourceString,
-                %!^%const C_String & inStringForError
+                %!^%const String & inSourceString,
+                %!^%const String & inStringForError
                 %!^%COMMA_LOCATION_ARGS) :
 C_Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceString, inStringForError COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
@@ -113,7 +113,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
           if (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mReplacementFunction == nullptr) {
             token.mTemplateStringBeforeToken += %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndString ;
           }else{
-            C_String s ;
+            String s ;
             while (notTestForInputUTF32String (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndString,
                                                %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndStringLength,
                                                kEndOfSourceLexicalErrorMessage
@@ -158,7 +158,7 @@ GALGAS_stringlist C_Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-static void getKeywordLists_%!LEXIQUE_IDENTIFIER% (TC_UniqueArray <C_String> & %
+static void getKeywordLists_%!LEXIQUE_IDENTIFIER% (TC_UniqueArray <String> & %
 if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* ioList */% else %ioList% end
 %) {
 %
@@ -169,9 +169,9 @@ end
 
 //--------------------------------------------------------------------------------------------------
 
-static void getKeywordsForIdentifier_%!LEXIQUE_IDENTIFIER% (%?^%const C_String & %if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* inIdentifier */% else %inIdentifier% end%,
+static void getKeywordsForIdentifier_%!LEXIQUE_IDENTIFIER% (%?^%const String & %if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* inIdentifier */% else %inIdentifier% end%,
      %!^%bool & %if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* ioFound */% else %ioFound% end%,
-     %!^%TC_UniqueArray <C_String> & %if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* ioList */% else %ioList% end
+     %!^%TC_UniqueArray <String> & %if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* ioList */% else %ioList% end
 %) {
 %
 for (lkey mExplicitTokenListMap mTokenSortedList mShouldBeGenerated) in LEXICAL_TOKEN_LIST_MAP do

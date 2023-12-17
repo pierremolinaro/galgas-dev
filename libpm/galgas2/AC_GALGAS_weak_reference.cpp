@@ -23,7 +23,7 @@
 #include "galgas2/AC_GALGAS_reference_class.h"
 #include "galgas2/acStrongPtr_class.h"
 #include "galgas2/C_galgas_type_descriptor.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -101,7 +101,7 @@ acStrongPtr_class * AC_GALGAS_weak_reference::ptr (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_weak_reference::description (C_String & ioString,
+void AC_GALGAS_weak_reference::description (String & ioString,
                                             const int32_t /* inIndentation */) const {
   ioString += "<@" ;
   ioString += staticTypeDescriptor ()->mGalgasTypeName ;

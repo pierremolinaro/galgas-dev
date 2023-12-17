@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "command_line_interface/C_UIntCommandLineOption.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -170,7 +170,7 @@ void C_UIntCommandLineOption::printUIntOptions (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_UIntCommandLineOption::getUIntOptionNameList (TC_UniqueArray <C_String> & outArray) {
+void C_UIntCommandLineOption::getUIntOptionNameList (TC_UniqueArray <String> & outArray) {
   C_UIntCommandLineOption * p = gFirstIntOption ;
   while (p != nullptr) {
     outArray.appendObject (p->mDomainName) ;
@@ -181,8 +181,8 @@ void C_UIntCommandLineOption::getUIntOptionNameList (TC_UniqueArray <C_String> &
 
 //--------------------------------------------------------------------------------------------------
 
-utf32 C_UIntCommandLineOption::getUIntOptionInvocationLetter (const C_String & inDomainName,
-                                                       const C_String & inIdentifier) {
+utf32 C_UIntCommandLineOption::getUIntOptionInvocationLetter (const String & inDomainName,
+                                                       const String & inIdentifier) {
   utf32 result = TO_UNICODE (0) ;
   C_UIntCommandLineOption * p = gFirstIntOption ;
   bool found = false ;
@@ -196,9 +196,9 @@ utf32 C_UIntCommandLineOption::getUIntOptionInvocationLetter (const C_String & i
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_UIntCommandLineOption::getUIntOptionInvocationString (const C_String & inDomainName,
-                                                       const C_String & inIdentifier) {
-  C_String result ;
+String C_UIntCommandLineOption::getUIntOptionInvocationString (const String & inDomainName,
+                                                       const String & inIdentifier) {
+  String result ;
   C_UIntCommandLineOption * p = gFirstIntOption ;
   bool found = false ;
   while ((p != nullptr) && not found) {
@@ -211,9 +211,9 @@ C_String C_UIntCommandLineOption::getUIntOptionInvocationString (const C_String 
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_UIntCommandLineOption::getUIntOptionCommentString (const C_String & inDomainName,
-                                                       const C_String & inIdentifier) {
-  C_String result ;
+String C_UIntCommandLineOption::getUIntOptionCommentString (const String & inDomainName,
+                                                       const String & inIdentifier) {
+  String result ;
   C_UIntCommandLineOption * p = gFirstIntOption ;
   bool found = false ;
   while ((p != nullptr) && not found) {
@@ -226,8 +226,8 @@ C_String C_UIntCommandLineOption::getUIntOptionCommentString (const C_String & i
 
 //--------------------------------------------------------------------------------------------------
 
-uint32_t C_UIntCommandLineOption::getUIntOptionValue (const C_String & inDomainName,
-                                                      const C_String & inIdentifier) {
+uint32_t C_UIntCommandLineOption::getUIntOptionValue (const String & inDomainName,
+                                                      const String & inIdentifier) {
   uint32_t result = 0 ;
   C_UIntCommandLineOption * p = gFirstIntOption ;
   bool found = false ;
@@ -241,8 +241,8 @@ uint32_t C_UIntCommandLineOption::getUIntOptionValue (const C_String & inDomainN
 
 //--------------------------------------------------------------------------------------------------
 
-void C_UIntCommandLineOption::setUIntOptionValue (const C_String & inDomainName,
-                                                  const C_String & inIdentifier,
+void C_UIntCommandLineOption::setUIntOptionValue (const String & inDomainName,
+                                                  const String & inIdentifier,
                                                   const uint32_t inValue) {
   C_UIntCommandLineOption * p = gFirstIntOption ;
   bool found = false ;

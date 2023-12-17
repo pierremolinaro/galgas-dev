@@ -76,7 +76,7 @@ void GALGAS_bigint::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_bigint::description (C_String & ioString,
+void GALGAS_bigint::description (String & ioString,
                                  const int32_t /* inIndentation */) const {
   ioString += "<@bigint: " ;
   if (!mIsValid) {
@@ -374,12 +374,12 @@ GALGAS_string GALGAS_bigint::getter_hexStringSeparatedBy (const GALGAS_char & in
     if (group <= 0) {
       inCompiler->onTheFlyRunTimeError ("last argument should be > 0" COMMA_THERE) ;
     }else{
-      C_String s = mValue.xString () ;
+      String s = mValue.xString () ;
       const utf32 separator = inSeparator.charValue() ;
       for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
         s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
       }
-      result = GALGAS_string (C_String ("0x") + s) ;
+      result = GALGAS_string (String ("0x") + s) ;
     }
   }
   return result ;

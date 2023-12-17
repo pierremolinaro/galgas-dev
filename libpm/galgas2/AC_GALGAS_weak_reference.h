@@ -26,7 +26,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class C_String ;
+class String ;
 class C_galgas_type_descriptor ;
 class AC_GALGAS_reference_class ;
 class cPtr_weakReference_proxy ;
@@ -62,7 +62,7 @@ class AC_GALGAS_weak_reference : public AC_GALGAS_root { // AC_GALGAS_weak_refer
 //--- Dynamic Type Descriptor
   public: virtual const C_galgas_type_descriptor * dynamicTypeDescriptor (void) const ;
 
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const ;
 } ;
 

@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-AC_FileHandle::AC_FileHandle (const C_String & inFilePath,
+AC_FileHandle::AC_FileHandle (const String & inFilePath,
                               const char * inMode) :
 mFilePtr ((inFilePath.length () == 0)
   ? nullptr :

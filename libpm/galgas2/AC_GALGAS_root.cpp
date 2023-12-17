@@ -24,7 +24,7 @@
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_root::log (const char * inMessage COMMA_LOCATION_ARGS) const {
-  C_String s ;
+  String s ;
   s += "LOGGING " ;
   s += inMessage ;
   s += ": " ;
@@ -38,7 +38,7 @@ void AC_GALGAS_root::log (const char * inMessage COMMA_LOCATION_ARGS) const {
 GALGAS_string AC_GALGAS_root::getter_description (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
-    C_String s ;
+    String s ;
     description (s, 0) ;
     result = GALGAS_string (s) ;
   }

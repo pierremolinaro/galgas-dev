@@ -93,7 +93,7 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
   public: virtual const C_galgas_type_descriptor * staticTypeDescriptor (void) const override = 0 ;
 
 //--- Description
-  public: VIRTUAL_IN_DEBUG void description (C_String & ioString, const int32_t inIndentation) const override ;
+  public: VIRTUAL_IN_DEBUG void description (String & ioString, const int32_t inIndentation) const override ;
 
 //--- Internal methods for handling graph
   protected: VIRTUAL_IN_DEBUG void reversedGraphFromGraph (const AC_GALGAS_graph & inGraph

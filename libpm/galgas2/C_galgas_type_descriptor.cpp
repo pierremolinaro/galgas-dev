@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "galgas2/C_galgas_type_descriptor.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 #include "galgas2/C_galgas_io.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -160,7 +160,7 @@ void C_galgas_type_descriptor::recursiveInsert (C_galgas_type_descriptor * & ioR
       }
     }else{
       ioExtension = false;
-      C_String errorMessage ;
+      String errorMessage ;
       errorMessage += "FATAL ERROR (type '@" ;
       errorMessage += inDescriptor->mGalgasTypeName ;
       errorMessage += "' already defined)" ;

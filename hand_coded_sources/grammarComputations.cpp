@@ -56,7 +56,7 @@ mProductionIndex (0) {
 
 //--------------------------------------------------------------------------------------------------
 
-cProduction::cProduction (const C_String & inSourceFileName,
+cProduction::cProduction (const String & inSourceFileName,
                           const int32_t inDefinitionLine,
                           const int32_t inColumnDefinition,
                           const int32_t inLeftNonTerminalIndex,
@@ -74,7 +74,7 @@ mProductionIndex (inProductionIndex) {
 
 //--------------------------------------------------------------------------------------------------
 
-cProduction::cProduction (const C_String & inSourceFileName,
+cProduction::cProduction (const String & inSourceFileName,
                           const int32_t inDefinitionLine,
                           const int32_t inColumnDefinition,
                           const int32_t inLeftNonTerminalIndex) :
@@ -105,9 +105,9 @@ mProductionIndex () {
 void cProduction::
 engendrerAppelProduction (const int16_t nombreDeParametres,
                           const cVocabulary & inVocabulary,
-                          const C_String & inAltName,
+                          const String & inAltName,
                           AC_OutputStream & fichierCPP,
-                          const C_String & inSyntaxDirectedTranslationVarName) const {
+                          const String & inSyntaxDirectedTranslationVarName) const {
   fichierCPP += "  rule_" ;
   fichierCPP += mSourceFileName.identifierRepresentation () ;
   fichierCPP += "_" ;
@@ -291,18 +291,18 @@ static const char k_default_style [] = {
 
 static void
 analyzeGrammar (C_Compiler * inCompiler,
-                const C_String & inHTMLFileName,
+                const String & inHTMLFileName,
                 const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                 const GALGAS_lstring & inTargetFileName,
                 const GALGAS_lstring & inGrammarClass,
                 const GALGAS_uint & inOriginalGrammarStartSymbol,
-                const C_String & inLexiqueName,
+                const String & inLexiqueName,
                 const GALGAS_location & inErrorLocation,
                 const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
                 const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
                 const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
-                const C_String & inSyntaxDirectedTranslationVarName,
-                C_String & ioCppFileContents,
+                const String & inSyntaxDirectedTranslationVarName,
+                String & ioCppFileContents,
                 C_HTMLString & outHTMLHelperFileContents,
                 const bool inPopulateHTMLHelperString) {
   bool warningFlag = false ;
@@ -334,7 +334,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   const bool verboseOptionOn = verboseOutput () ;
 
 //--- Create output HTML file
-  const C_String title = C_String ("'") + inTargetFileName.mProperty_string.stringValue () + "' grammar" ;
+  const String title = String ("'") + inTargetFileName.mProperty_string.stringValue () + "' grammar" ;
   outHTMLHelperFileContents.writeStartCode (title,
                                             "", // No css file
                                             k_default_style) ; // Style definition
@@ -588,11 +588,11 @@ analyzeGrammar (C_Compiler * inCompiler,
 //--- Final step ---------------------------------------------------------------------
   C_BDD::markAndSweepUnusedNodes () ;
   if (errorFlag != kNoError) {
-    C_String s ;
+    String s ;
     s += "ENDING ON ERROR, STEP" ;
     s.appendSigned ((uint16_t) errorFlag) ;
     outHTMLHelperFileContents.appendCppTitleComment (s, "title") ;
-    C_String errorMessage  ;
+    String errorMessage  ;
     if (inPopulateHTMLHelperString) {
       errorMessage += "errors have been raised when analyzing the grammar: see file"
                       " 'file://" ;
@@ -604,7 +604,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     }
     inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }else if (warningFlag) {
-    C_String s ;
+    String s ;
     s += "OK ; no error, but warning(s) step(s)" ;
     int32_t i = 1 ;
     while (warningFlag != 0) {
@@ -616,7 +616,7 @@ analyzeGrammar (C_Compiler * inCompiler,
       i ++ ;
     }
     outHTMLHelperFileContents.appendCppTitleComment (s, "title") ;
-    C_String warningMessage  ;
+    String warningMessage  ;
     warningMessage += "warnings have been raised when analyzing the grammar: " ;
     if (inPopulateHTMLHelperString) {
       warningMessage += "see file 'file://" ;
@@ -658,7 +658,7 @@ routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
     const GALGAS_location inErrorLocation = inTargetFileName.mProperty_location ;
 
     C_HTMLString HTMLHelperFileContents ;
-    C_String CppFileContents ;
+    String CppFileContents ;
     const bool populateHTMLHelperString = gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile.mValue ;
     analyzeGrammar (inCompiler,
                     inHTMLFileName.stringValue (),

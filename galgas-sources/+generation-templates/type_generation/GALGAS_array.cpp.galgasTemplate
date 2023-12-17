@@ -130,7 +130,7 @@ end
 for (mValue) in DIMENSION_LIST
 do
 %if (inIndex%!mValue% >= size%!mValue% ()) {
-    C_String s ;
+    String s ;
     s += "array index %!mValue% : " ;
     s.appendUnsigned (inIndex%!mValue%) ;
     s += " >= size " ;
@@ -241,7 +241,7 @@ for (mValue) in DIMENSION_LIST
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
+void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
        %!^%const int32_t /* inIndentation */) const {
   ioString += "<@ptrint:" ;
   if (nullptr == mSharedObject) {
@@ -277,7 +277,7 @@ GALGAS_range GALGAS_%!TYPE_IDENTIFIER%::getter_rangeForAxis (%?^%const GALGAS_ui
   if (isValid () && inAxisIndex.isValid ()) {
     const uint32_t axisIndex = inAxisIndex.uintValue () ;
     if (axisIndex >= %![DIMENSION string]%) {
-      C_String s ;
+      String s ;
       s << "getter @ptrint sizeForAxis: argument >= dimension" ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
 % for (mValue) in DIMENSION_LIST do
@@ -298,7 +298,7 @@ GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::getter_sizeForAxis (%?^%const GALGAS_uint
   if (isValid () && inAxisIndex.isValid ()) {
     const uint32_t axisIndex = inAxisIndex.uintValue () ;
     if (axisIndex >= %![DIMENSION string]%) {
-      C_String s ;
+      String s ;
       s << "getter @ptrint sizeForAxis: argument >= dimension" ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
 % for (mValue) in DIMENSION_LIST do
@@ -354,7 +354,7 @@ end
     if (idx >= 0) {
       result = mSharedObject->objectAtAbsoluteIndex (idx) ;
       if (! result.isValid ()) {
-        C_String s ;
+        String s ;
         s += "getter @ptrint valueAtIndex: object at index (" ;\n%
 for (mValue) in DIMENSION_LIST
 do %        s.appendUnsigned (mSharedObject->size%!mValue% ())\n%
@@ -451,7 +451,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_setSizeForAxis (%?^%GALGAS_uint inNewSize
   //--- 
     const uint32_t axisIndex = inAxisIndex.uintValue () ;
     if (axisIndex >= %![DIMENSION string]%) {
-      C_String s ;
+      String s ;
       s += "setter @ptrint setSizeForAxis: axis index (" ;
       s.appendUnsigned (axisIndex) ;
       s += ") >= dimension (%![DIMENSION string]%)" ;

@@ -60,15 +60,15 @@ class cGrammar_galgas_33_ProjectGrammar : public cParser_galgas_33_ProjectSyntax
 
 //--- Indexing
   public: static void performIndexing (C_Compiler * inCompiler,
-                                       const C_String & inSourceFilePath) ;
+                                       const String & inSourceFilePath) ;
 
 //--- Only lexical analysis
   public: static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
-                                                  const C_String & inSourceFilePath) ;
+                                                  const String & inSourceFilePath) ;
 
 //--- Only syntax analysis
   public: static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
-                                                 const C_String & inSourceFilePath) ;
+                                                 const String & inSourceFilePath) ;
 
 //------------------------------------- 'project_header' non terminal
 //--- 'parse' label
@@ -898,15 +898,15 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
 
 //--- Indexing
   public: static void performIndexing (C_Compiler * inCompiler,
-                                       const C_String & inSourceFilePath) ;
+                                       const String & inSourceFilePath) ;
 
 //--- Only lexical analysis
   public: static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
-                                                  const C_String & inSourceFilePath) ;
+                                                  const String & inSourceFilePath) ;
 
 //--- Only syntax analysis
   public: static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
-                                                 const C_String & inSourceFilePath) ;
+                                                 const String & inSourceFilePath) ;
 
 //------------------------------------- 'style_declaration_ggs3' non terminal
 //--- 'parse' label

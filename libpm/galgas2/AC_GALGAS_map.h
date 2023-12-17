@@ -101,7 +101,7 @@ class AC_GALGAS_map : public AC_GALGAS_root {
                                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Search
-  protected: VIRTUAL_IN_DEBUG cMapNode * searchEntryInMap (const C_String & inKey) const ;
+  protected: VIRTUAL_IN_DEBUG cMapNode * searchEntryInMap (const String & inKey) const ;
 
   protected: VIRTUAL_IN_DEBUG const cCollectionElement * performSearch (const GALGAS_lstring & inKey,
                                                                          C_Compiler * inCompiler,
@@ -160,7 +160,7 @@ class AC_GALGAS_map : public AC_GALGAS_root {
   public: virtual const C_galgas_type_descriptor * staticTypeDescriptor (void) const override = 0 ;
 
 //--------------------------------- Implementation of reader 'description'
-  public: VIRTUAL_IN_DEBUG void description (C_String & ioString, const int32_t inIndentation) const override ;
+  public: VIRTUAL_IN_DEBUG void description (String & ioString, const int32_t inIndentation) const override ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const AC_GALGAS_map & inOperand) const ;

@@ -130,7 +130,7 @@ GALGAS_bigint GALGAS_sint::getter_bigint (UNUSED_LOCATION_ARGS) const {
 GALGAS_string GALGAS_sint::getter_string (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
-    C_String s ; s.appendSigned (mSIntValue) ;
+    String s ; s.appendSigned (mSIntValue) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -142,7 +142,7 @@ GALGAS_string GALGAS_sint::getter_hexString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     const uint32_t v = (uint32_t) mSIntValue ;
-    C_String s ;
+    String s ;
     s += "0x" ;
     s.appendUnsignedHex8 (v) ;
     result = GALGAS_string (s) ;
@@ -162,13 +162,13 @@ GALGAS_string GALGAS_sint::getter_hexStringSeparatedBy (const GALGAS_char & inSe
     if (group <= 0) {
       inCompiler->onTheFlyRunTimeError ("last argument should be > 0" COMMA_THERE) ;
     }else{
-      C_String s ;
+      String s ;
       s.appendUnsignedHex ((uint32_t) mSIntValue) ;
       const utf32 separator = inSeparator.charValue() ;
       for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
         s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
       }
-      result = GALGAS_string (C_String ("0x") + s) ;
+      result = GALGAS_string (String ("0x") + s) ;
     }
   }
   return result ;
@@ -180,7 +180,7 @@ GALGAS_string GALGAS_sint::getter_xString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     const uint32_t v = (uint32_t) mSIntValue ;
-    C_String s ; s.appendUnsignedHex8 (v) ;
+    String s ; s.appendUnsignedHex8 (v) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -188,7 +188,7 @@ GALGAS_string GALGAS_sint::getter_xString (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_sint::description (C_String & ioString,
+void GALGAS_sint::description (String & ioString,
                                const int32_t /* inIndentation */) const {
   ioString += "<@sint:" ;
   if (isValid ()) {

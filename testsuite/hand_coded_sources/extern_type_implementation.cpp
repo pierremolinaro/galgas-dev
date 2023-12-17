@@ -25,7 +25,7 @@ void GALGAS_complex::drop (void) {
 
 //---------------------------------------------------------------------------*
 
-void GALGAS_complex::description (C_String & ioString,
+void GALGAS_complex::description (String & ioString,
                                   const int32_t /* inIndentation */) const {
   ioString += "<@complex:" ;
   if (mIsValid) {

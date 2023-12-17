@@ -604,7 +604,7 @@ GALGAS_double GALGAS_uint_36__34_::getter_double (UNUSED_LOCATION_ARGS) const {
 GALGAS_string GALGAS_uint_36__34_::getter_alphaString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
-    C_String s = "aaaaaaaaaaaaaa" ; // 2**64 values needs 14 characters (base 26) : n = 64 * log (2) / log (26)
+    String s = "aaaaaaaaaaaaaa" ; // 2**64 values needs 14 characters (base 26) : n = 64 * log (2) / log (26)
     uint64_t v = mUInt64Value ;
     int32_t idx = 13 ;
     while (v > 0) {
@@ -623,7 +623,7 @@ GALGAS_string GALGAS_uint_36__34_::getter_alphaString (UNUSED_LOCATION_ARGS) con
 GALGAS_string GALGAS_uint_36__34_::getter_string (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
-    C_String s ;
+    String s ;
     s.appendUnsigned (mUInt64Value) ;
     result = GALGAS_string (s) ;
   }
@@ -635,7 +635,7 @@ GALGAS_string GALGAS_uint_36__34_::getter_string (UNUSED_LOCATION_ARGS) const {
 GALGAS_string GALGAS_uint_36__34_::getter_hexString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
-    C_String s ;
+    String s ;
     s.appendCString ("0x") ;
     s.appendUnsignedHex16 (mUInt64Value) ;
     result = GALGAS_string (s) ;
@@ -655,13 +655,13 @@ GALGAS_string GALGAS_uint_36__34_::getter_hexStringSeparatedBy (const GALGAS_cha
     if (group <= 0) {
       inCompiler->onTheFlyRunTimeError ("last argument should be > 0" COMMA_THERE) ;
     }else{
-      C_String s ;
+      String s ;
       s.appendUnsignedHex16 (mUInt64Value) ;
       const utf32 separator = inSeparator.charValue() ;
       for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
         s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
       }
-      result = GALGAS_string (C_String ("0x") + s) ;
+      result = GALGAS_string (String ("0x") + s) ;
     }
   }
   return result ;
@@ -672,7 +672,7 @@ GALGAS_string GALGAS_uint_36__34_::getter_hexStringSeparatedBy (const GALGAS_cha
 GALGAS_string GALGAS_uint_36__34_::getter_xString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
-    C_String s ;
+    String s ;
     s.appendUnsignedHex16 (mUInt64Value) ;
     result = GALGAS_string (s) ;
   }
@@ -681,7 +681,7 @@ GALGAS_string GALGAS_uint_36__34_::getter_xString (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_uint_36__34_::description (C_String & ioString,
+void GALGAS_uint_36__34_::description (String & ioString,
                                        const int32_t /* inIndentation */) const {
   ioString += "<@uint64:" ;
   if (isValid ()) {

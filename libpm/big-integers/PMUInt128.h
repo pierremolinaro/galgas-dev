@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -68,7 +68,7 @@ class PMUInt128 final {
   public: static void example (void) ;
   
 //--- Value as string
-  public: C_String decimalString (void) const ;
+  public: String decimalString (void) const ;
 
 //--- Attributes
   private: uint64_t mLow ;

@@ -21,7 +21,7 @@
 #include "utilities/C_SharedObject.h"
 #include "utilities/MF_MemoryControl.h"
 #include "streams/C_ConsoleOut.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 

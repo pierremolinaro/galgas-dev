@@ -20,7 +20,7 @@
 
 #include "galgas2/capSortedListElement.h"
 #include "galgas2/cSortedListElement.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -102,7 +102,7 @@ void capSortedListElement::insulate (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void capSortedListElement::description (C_String & ioString, const int32_t inIndentation) const {
+void capSortedListElement::description (String & ioString, const int32_t inIndentation) const {
   if (nullptr == mPtr) {
     ioString += "NULL" ;
   }else{

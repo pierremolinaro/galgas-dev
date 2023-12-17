@@ -20,7 +20,7 @@ class C_Relation final {
   public: C_Relation (void) ;
 
 //--- Constructor (One variable, type, empty or full)
-  public: C_Relation (const C_String & inVariableName,
+  public: C_Relation (const String & inVariableName,
                       const C_RelationSingleType & inVariableType,
                       const bool isFull) ;
 
@@ -47,7 +47,7 @@ class C_Relation final {
   public: C_Relation & operator = (const C_Relation & inSource) ;
 
 //--- Add variable
-  public: void addVariable (const C_String & inVariableName,
+  public: void addVariable (const String & inVariableName,
                              const C_RelationSingleType & inType) ;
 
   public: void appendConfiguration (const C_RelationConfiguration & inConfiguration) ;

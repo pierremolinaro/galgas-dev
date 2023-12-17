@@ -112,7 +112,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_tilde (UNUSED_LOCA
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
+void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
                               %!^%const int32_t /* inIndentation */) const {
   ioString += "<boolset @%!TYPE_NAME%:" ;
   if (! isValid ()) {

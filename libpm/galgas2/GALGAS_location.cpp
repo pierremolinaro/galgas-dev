@@ -122,7 +122,7 @@ typeComparisonResult GALGAS_location::objectCompare (const GALGAS_location & inO
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_location::description (C_String & ioString,
+void GALGAS_location::description (String & ioString,
                                    const int32_t /* inIndentation */) const {
   ioString += "<@location:" ;
   if (isValid ()) {
@@ -152,7 +152,7 @@ GALGAS_string GALGAS_location::getter_startLocationString (C_Compiler * inCompil
     if (!mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'startLocationString' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
-      C_String s ;
+      String s ;
       s += "file '" ;
       s += mSourceText.sourceFilePath () ;
       s += "', line ";
@@ -175,7 +175,7 @@ GALGAS_string GALGAS_location::getter_endLocationString (C_Compiler * inCompiler
     if (!mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'endLocationString' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
-      C_String s ;
+      String s ;
       s += "file '" ;
       s += mSourceText.sourceFilePath () ;
       s += "', line " ;

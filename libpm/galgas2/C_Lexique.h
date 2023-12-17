@@ -41,12 +41,12 @@ class cIndexingDictionary ;
 class C_Lexique : public C_Compiler {
 //--- Constructors and destructor
   public: C_Lexique (C_Compiler * inCallerCompiler,
-                     const C_String & inSourceFileName
+                     const String & inSourceFileName
                      COMMA_LOCATION_ARGS) ;
 
   public: C_Lexique (C_Compiler * inCallerCompiler,
-                     const C_String & inSourceString,
-                     const C_String & inStringForError
+                     const String & inSourceString,
+                     const String & inStringForError
                      COMMA_LOCATION_ARGS) ;
 
   public: virtual ~C_Lexique (void) ;
@@ -72,7 +72,7 @@ class C_Lexique : public C_Compiler {
   private: cToken * mCurrentTokenPtr ;
   protected: void enterTokenFromPointer (cToken * inToken) ;
   private: int32_t mLastSeparatorIndex ;
-  public: void appendLastSeparatorTo (C_String & ioString) const ;
+  public: void appendLastSeparatorTo (String & ioString) const ;
 
   protected: cToken * currentTokenPtr (LOCATION_ARGS) const {
     macroValidPointerThere (mCurrentTokenPtr) ;
@@ -80,8 +80,8 @@ class C_Lexique : public C_Compiler {
   }
 
 //--- Syntax directed translation : accessing current token
-  public: virtual C_String separatorString (void) const ;
-  public: C_String tokenString (void) const ;
+  public: virtual String separatorString (void) const ;
+  public: String tokenString (void) const ;
 
 //--- Current character
   protected: utf32 mCurrentChar ;
@@ -101,7 +101,7 @@ class C_Lexique : public C_Compiler {
   protected: void advance (const int32_t inCount) ; // Several characters
 
 //--- For Debugging parser
-  private: C_String mTriggerNonTerminalSymbolList ;
+  private: String mTriggerNonTerminalSymbolList ;
   private: uint16_t mDebugDepthCounter ;
   private: bool mDebugIsRunning ;
 
@@ -110,7 +110,7 @@ class C_Lexique : public C_Compiler {
                                 const char * inTag) ;
 
   public: void didParseTerminal (const char * inTerminalName,
-                                const C_String & inValue) ;
+                                const String & inValue) ;
 
   public: void exitProduction (void) ;
 
@@ -127,11 +127,11 @@ class C_Lexique : public C_Compiler {
 //--- Handling lexical error
   protected: void unknownCharacterLexicalError (LOCATION_ARGS) ;
 
-  public: void lexicalError (const C_String & inLexicalErrorMessage
+  public: void lexicalError (const String & inLexicalErrorMessage
                              COMMA_LOCATION_ARGS) ;
 
 //--- Signal a lexical warning
-  protected: void lexicalWarning (const C_String & messageAlerte COMMA_LOCATION_ARGS) ;
+  protected: void lexicalWarning (const String & messageAlerte COMMA_LOCATION_ARGS) ;
 
 //--- Handling syntax error
   private: void parsingError (const TC_UniqueArray <int32_t> & inExpectedTerminalsArray,
@@ -141,16 +141,16 @@ class C_Lexique : public C_Compiler {
                               COMMA_LOCATION_ARGS) ;
 
 //--- Get message for terminal
-  protected: virtual C_String getMessageForTerminal (const int32_t inTerminalSymbol) const = 0 ;
+  protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const = 0 ;
 
 //--- Static method for searching a string in an ordered list
 //    returns -1 if not found, and associated code if found
-  protected: static int32_t searchInList (const C_String & inString,
+  protected: static int32_t searchInList (const String & inString,
                                           const C_unicode_lexique_table_entry inTable [],
                                           const int32_t inTableSize) ;
 
 //--- Get Token String
-  public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const = 0 ;
+  public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const = 0 ;
 
 //--- Lexical analysis methods
   public: void performLexicalAnalysis (void) ;
@@ -222,7 +222,7 @@ class C_Lexique : public C_Compiler {
   private: int32_t mIndexForSecondPassParsing ;
 
 //--- Latex string (for --mode=latex command line option)
-  private: C_String mLatexOutputString ;
+  private: String mLatexOutputString ;
   private: int32_t mLatexNextCharacterToEnterIndex ;
   private: void generateLatexFile (void) ;
   private: void appendCharacterToLatexFile (const utf32 inUnicodeCharacter) ;
@@ -230,7 +230,7 @@ class C_Lexique : public C_Compiler {
   protected: void signalLexicalErrorInLatexOutput (void) ;
 //--- Style name 
   protected: virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const = 0 ;
-  protected: virtual C_String styleNameForIndex (const uint32_t inStyleIndex) const = 0 ;
+  protected: virtual String styleNameForIndex (const uint32_t inStyleIndex) const = 0 ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

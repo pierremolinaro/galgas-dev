@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "generic-arraies/TC_UniqueArray.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 #include "utilities/C_SharedObject.h"
 #include "galgas2/C_LocationInSource.h"
 #include "galgas2/C_SourceTextInString.h"
@@ -63,15 +63,15 @@ class C_Compiler : public C_SharedObject {
 //--- Issue array
   private: TC_UniqueArray <cIssueDescriptor> mIssueArray ;
   public: void appendIssue (const cIssueDescriptor & inIssue) ;
-  public: void writeIssueJSONFile (const C_String & inFile) ;
+  public: void writeIssueJSONFile (const String & inFile) ;
 
 //--- Sent string
-  private: C_String mSentString ;
+  private: String mSentString ;
   private: bool mSentStringIsValid ;
   public: GALGAS_string sentString (void) const ;
 
 //--- Template String
-  protected: C_String mTemplateString ;
+  protected: String mTemplateString ;
   protected: C_LocationInSource mTemplateStringLocation ;
   public: GALGAS_string retrieveAndResetTemplateString (void) ;
   public: void resetTemplateString (void) ;
@@ -101,7 +101,7 @@ class C_Compiler : public C_SharedObject {
   public: GALGAS_location next (void) const ;
 
 //--- Source file name
-  public: C_String sourceFilePath (void) const ;
+  public: String sourceFilePath (void) const ;
 
 //--- Syntax error message for 'end of source':
   protected: static const char * kEndOfSourceLexicalErrorMessage ;
@@ -124,34 +124,34 @@ class C_Compiler : public C_SharedObject {
   }
 
 //--- Get separator string
-  public: virtual C_String separatorString (void) const { return "" ; }
+  public: virtual String separatorString (void) const { return "" ; }
 
 //--- Init scanner from source file (for Cocoa GALGAS)
   public: void resetAndLoadSourceFromText (const C_SourceTextInString & inSourceText) ;
 
 //--- Print a message
   public: void printMessage (const GALGAS_string & inMessage COMMA_LOCATION_ARGS) ;
-  public: void printMessage (const C_String & inMessage COMMA_LOCATION_ARGS) ;
+  public: void printMessage (const String & inMessage COMMA_LOCATION_ARGS) ;
 
 //--- Print semantic error
   public: void semanticErrorAtLocation (const GALGAS_location & inErrorLocation,
-                                         const C_String & inErrorMessage,
+                                         const String & inErrorMessage,
                                          const TC_Array <C_FixItDescription> & inFixItArray
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Print semantic warning
   public: void semanticWarningAtLocation (const GALGAS_location & inErrorLocation,
-                                           const C_String & inWarningMessage
+                                           const String & inWarningMessage
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Signal a run-time error
-  public: void onTheFlyRunTimeError (const C_String & inRunTimeErrorMessage COMMA_LOCATION_ARGS) ;
+  public: void onTheFlyRunTimeError (const String & inRunTimeErrorMessage COMMA_LOCATION_ARGS) ;
 
 //--- Signal a semantic error
-  public: void onTheFlySemanticError (const C_String & inMessage COMMA_LOCATION_ARGS) ;
+  public: void onTheFlySemanticError (const String & inMessage COMMA_LOCATION_ARGS) ;
 
 //--- Signal a semantic warning
-  public: void onTheFlySemanticWarning (const C_String & inMessage COMMA_LOCATION_ARGS) ;
+  public: void onTheFlySemanticWarning (const String & inMessage COMMA_LOCATION_ARGS) ;
 
 //--- Emit a warning
   public: void emitSemanticWarning (const GALGAS_location & inWarningLocation,
@@ -167,7 +167,7 @@ class C_Compiler : public C_SharedObject {
 
 //--- Emit an error message with an error message that contains %K espace sequence
   public: void semanticErrorWith_K_message (const GALGAS_lstring & inKey,
-                                             TC_UniqueArray <C_String> & ioNearestKeyArray,
+                                             TC_UniqueArray <String> & ioNearestKeyArray,
                                              const char * in_K_ErrorMessage
                                              COMMA_LOCATION_ARGS) ;
 
@@ -184,44 +184,44 @@ class C_Compiler : public C_SharedObject {
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Cast error
-  public: void castError (const C_String & inTargetTypeName,
+  public: void castError (const String & inTargetTypeName,
                            const C_galgas_type_descriptor * inObjectDynamicTypeDescriptor
                            COMMA_LOCATION_ARGS) ;
 
 //--- File read logging
   public: static bool performLogFileRead (void) ;
 
-  public: void logFileRead (const C_String & inFilePath) ;
+  public: void logFileRead (const String & inFilePath) ;
 
 //--- File generation
   public: static bool performGeneration (void) ;
 
 //--- Generate file in directory
-  public: void generateFile (const C_String & inLineCommentPrefix,
-                              const TC_UniqueArray <C_String> & inDirectoriesToExclude,
-                              const C_String & inFileName,
-                              const C_String & inHeader,
-                              const C_String & inDefaultUserZone1,
-                              const C_String & inGeneratedZone2,
-                              const C_String & inDefaultUserZone2,
-                              const C_String & inGeneratedZone3,
+  public: void generateFile (const String & inLineCommentPrefix,
+                              const TC_UniqueArray <String> & inDirectoriesToExclude,
+                              const String & inFileName,
+                              const String & inHeader,
+                              const String & inDefaultUserZone1,
+                              const String & inGeneratedZone2,
+                              const String & inDefaultUserZone2,
+                              const String & inGeneratedZone3,
                               const bool inMakeExecutable) ;
 
-  public: void generateFileWithPatternFromPathes (const C_String & inStartPath,
-                                                   const TC_UniqueArray <C_String> & inDirectoriesToExclude,
-                                                   const C_String & inLineCommentPrefix,
-                                                   const C_String & inFileName,
-                                                   const C_String & inHeader,
-                                                   const C_String & inDefaultUserZone1,
-                                                   const C_String & inGeneratedZone2,
-                                                   const C_String & inDefaultUserZone2,
-                                                   const C_String & inGeneratedZone3,
+  public: void generateFileWithPatternFromPathes (const String & inStartPath,
+                                                   const TC_UniqueArray <String> & inDirectoriesToExclude,
+                                                   const String & inLineCommentPrefix,
+                                                   const String & inFileName,
+                                                   const String & inHeader,
+                                                   const String & inDefaultUserZone1,
+                                                   const String & inGeneratedZone2,
+                                                   const String & inDefaultUserZone2,
+                                                   const String & inGeneratedZone3,
                                                    const bool inMakeExecutable) ;
 
-  public: void generateFileFromPathes (const C_String & inStartPath,
-                                        const TC_UniqueArray <C_String> & inDirectoriesToExclude,
-                                        const C_String & inFileName,
-                                        const C_String & inContents) ;
+  public: void generateFileFromPathes (const String & inStartPath,
+                                        const TC_UniqueArray <String> & inDirectoriesToExclude,
+                                        const String & inFileName,
+                                        const String & inContents) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

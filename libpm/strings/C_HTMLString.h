@@ -22,15 +22,15 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 //
-//      Fully dynamic character string : C_String                                                
+//      Fully dynamic character string : String                                                
 //
 //--------------------------------------------------------------------------------------------------
 
-class C_HTMLString : public C_String {
+class C_HTMLString : public String {
 //--- Constructors
   public: C_HTMLString (void) ;
   
@@ -49,19 +49,19 @@ class C_HTMLString : public C_String {
                                                             const int32_t inArrayCount) ;
 
 //--- Method for writing a HTML table
-  public: void appendCppTitleComment (const C_String & inCommentString,
-                                       const C_String & inTableStyleClass) ;
+  public: void appendCppTitleComment (const String & inCommentString,
+                                       const String & inTableStyleClass) ;
 
 //--- Write start code
-  public: void writeStartCode (const C_String & inWindowTitle,
-                                const C_String & inCSSFileName,
-                                const C_String & inCSSContents) ;
+  public: void writeStartCode (const String & inWindowTitle,
+                                const String & inCSSFileName,
+                                const String & inCSSContents) ;
 
 //--- Write end code
   public: void writeEndCode (void) ;
 
 //--- Private attributes
-  private: typedef C_String inherited ;
+  private: typedef String inherited ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

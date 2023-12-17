@@ -62,7 +62,7 @@ class AC_GALGAS_list : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
 
 //--- Description
-  public: VIRTUAL_IN_DEBUG void description (C_String & ioString, const int32_t inIndentation) const override ;
+  public: VIRTUAL_IN_DEBUG void description (String & ioString, const int32_t inIndentation) const override ;
 
 //--- introspection
   public: virtual const C_galgas_type_descriptor * staticTypeDescriptor (void) const override = 0 ;
@@ -132,11 +132,11 @@ class AC_GALGAS_list : public AC_GALGAS_root {
 
 class cListMapElement : public cCollectionElement {
 //--- Attributes
-  public: C_String mKey ;
+  public: String mKey ;
   public: capCollectionElementArray mSharedListMapList ;
 
 //--- Default constructor
-  public: cListMapElement (const C_String & inKey,
+  public: cListMapElement (const String & inKey,
                             const capCollectionElementArray & inSharedList
                             COMMA_LOCATION_ARGS) ;
 
@@ -157,7 +157,7 @@ class cListMapElement : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -196,7 +196,7 @@ class AC_GALGAS_listmap : public AC_GALGAS_root {
   public: virtual const C_galgas_type_descriptor * staticTypeDescriptor (void) const override = 0 ;
 
 //--------------------------------- Implementation of reader 'description'
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
 //--- Internal methods for enumeration

@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "galgas2/C_LocationInSource.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 #include "generic-arraies/TC_Array.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -50,15 +50,15 @@ class C_FixItDescription final {
 
 //--- Constructor
   public: C_FixItDescription (const EnumFixItKind inKind,
-                               const C_String & inActionString) ;
+                               const String & inActionString) ;
 
 //--- Accessors
   public: EnumFixItKind kind (void) const { return mKind ; }
-  public: C_String actionString (void) const { return mActionString ; }
+  public: String actionString (void) const { return mActionString ; }
   
 //--- Private properties
   private: EnumFixItKind mKind ;
-  private: C_String mActionString ;
+  private: String mActionString ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class C_String ;
+class String ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -49,7 +49,7 @@ class cCollectionElement : public C_SharedObject {
   public: virtual cCollectionElement * copy (void) = 0 ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const = 0 ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const = 0 ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

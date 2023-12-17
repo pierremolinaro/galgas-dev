@@ -63,7 +63,7 @@ GALGAS_function::~ GALGAS_function (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_function::description (C_String & ioString,
+void GALGAS_function::description (String & ioString,
                                    const int32_t /* inIndentation */) const {
   ioString += "<@function:" ;
   if (nullptr == mFunctionDescriptor) {
@@ -103,7 +103,7 @@ GALGAS_bool GALGAS_function::constructor_isFunctionDefined (const GALGAS_string 
   GALGAS_bool result ;
   if (inFunctionName.isValid ()) {
     bool resultValue = false ;
-    const C_String functionName = inFunctionName.stringValue () ;
+    const String functionName = inFunctionName.stringValue () ;
     const C_galgas_function_descriptor * p = C_galgas_function_descriptor::functionListRoot () ;
     while ((nullptr != p) && ! resultValue) {
       resultValue = functionName == p->mFunctionName ;
@@ -120,7 +120,7 @@ GALGAS_function GALGAS_function::constructor_functionWithName (const GALGAS_stri
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_function result ;
   if (inFunctionName.isValid ()) {
-    const C_String functionName = inFunctionName.stringValue () ;
+    const String functionName = inFunctionName.stringValue () ;
     const C_galgas_function_descriptor * p = C_galgas_function_descriptor::functionListRoot () ;
     while ((nullptr != p) && ! result.isValid ()) {
       if (functionName == p->mFunctionName) {
@@ -164,7 +164,7 @@ GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObject
 //--- Check parameter count
   bool ok = mFunctionDescriptor->mParameterCount == argumentsArray.count () ;
   if (! ok) {
-    C_String errorMessage ;
+    String errorMessage ;
     errorMessage += "the '" ;
     errorMessage += mFunctionDescriptor->mFunctionName ;
     errorMessage += "' function is called with " ;
@@ -187,7 +187,7 @@ GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObject
         ok = t == mFunctionDescriptor->mFormalParameterTypeList [i] ;
       }
       if (! ok) {
-        C_String errorMessage ;
+        String errorMessage ;
         errorMessage += "the actual parameter #" ;
         errorMessage.appendUnsigned (i) ;
         errorMessage += " of the '" ;

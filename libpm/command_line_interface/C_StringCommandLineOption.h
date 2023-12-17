@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "C_CommandLineOption.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -41,8 +41,8 @@ class C_StringCommandLineOption final : public C_CommandLineOption {
 
 //--- Attributes
   private: C_StringCommandLineOption * mNext ;
-  public: C_String mValue ;
-  public: inline C_String readProperty_value (void) const { return mValue ; }
+  public: String mValue ;
+  public: inline String readProperty_value (void) const { return mValue ; }
   public: const char * mDefaultValue ;
 
 //--- Static methods
@@ -58,23 +58,23 @@ class C_StringCommandLineOption final : public C_CommandLineOption {
   public: static void releaseStrings (void) ; // Called at the end of main routine
 
 //--- Option introspection
-  public: static void getStringOptionNameList (TC_UniqueArray <C_String> & outArray) ;
+  public: static void getStringOptionNameList (TC_UniqueArray <String> & outArray) ;
 
-  public: static utf32 getStringOptionInvocationLetter (const C_String & inDomainName,
-                                                       const C_String & inIdentifier) ;
+  public: static utf32 getStringOptionInvocationLetter (const String & inDomainName,
+                                                       const String & inIdentifier) ;
 
-  public: static C_String getStringOptionInvocationString (const C_String & inDomainName,
-                                                          const C_String & inIdentifier) ;
+  public: static String getStringOptionInvocationString (const String & inDomainName,
+                                                          const String & inIdentifier) ;
 
-  public: static C_String getStringOptionCommentString (const C_String & inDomainName,
-                                                       const C_String & inIdentifier) ;
+  public: static String getStringOptionCommentString (const String & inDomainName,
+                                                       const String & inIdentifier) ;
 
-  public: static C_String getStringOptionValue (const C_String & inDomainName,
-                                                 const C_String & inIdentifier) ;
+  public: static String getStringOptionValue (const String & inDomainName,
+                                                 const String & inIdentifier) ;
 
-  public: static void setStringOptionValue (const C_String & inDomainName,
-                                             const C_String & inIdentifier,
-                                             const C_String & inValue) ;
+  public: static void setStringOptionValue (const String & inDomainName,
+                                             const String & inIdentifier,
+                                             const String & inValue) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

@@ -26,7 +26,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 #include "generic-arraies/TC_UniqueArray.h"
 #include "galgas2/C_LocationInSource.h"
 #include "galgas2/C_SourceTextInString.h"
@@ -96,8 +96,8 @@ class cToken {
   public: cToken * mNextToken ;
   public: C_LocationInSource mStartLocation ;
   public: C_LocationInSource mEndLocation ;
-  public: C_String mTemplateStringBeforeToken ; // Template string before the token
-  public: C_String mSeparatorStringBeforeToken ;
+  public: String mTemplateStringBeforeToken ; // Template string before the token
+  public: String mSeparatorStringBeforeToken ;
   public: int32_t mTokenCode ;
 
   public: cToken (void) ;
@@ -121,7 +121,7 @@ class C_parsingContext {
   private: cToken * mCurrentTokenPtr ;
   private: utf32 mCurrentChar ;
   private: utf32 mPreviousChar ;
-  private: C_String mTemplateString ;
+  private: String mTemplateString ;
 
   friend class C_Lexique ;
   
@@ -152,15 +152,15 @@ void signalParsingError (C_Compiler * inCompiler,
                          const C_SourceTextInString & inSourceText,
                          const C_LocationInSource & inPreviousTokenEndLocation,
                          const C_IssueWithFixIt & inIssue,
-                         const C_String & inFoundTokenMessage,
-                         const TC_UniqueArray <C_String> & inAcceptedTokenNames
+                         const String & inFoundTokenMessage,
+                         const TC_UniqueArray <String> & inAcceptedTokenNames
                          COMMA_LOCATION_ARGS) ;
 
 void signalExtractError (C_Compiler * inCompiler,
                          const C_SourceTextInString & inSourceText,
                          const C_IssueWithFixIt & inIssue,
-                         const TC_UniqueArray <C_String> & inExpectedClassesErrorStringsArray,
-                         const C_String & inActualFoundClassErrorString
+                         const TC_UniqueArray <String> & inExpectedClassesErrorStringsArray,
+                         const String & inActualFoundClassErrorString
                          COMMA_LOCATION_ARGS) ;
 
 void signalCastError (C_Compiler * inCompiler,
@@ -168,63 +168,63 @@ void signalCastError (C_Compiler * inCompiler,
                       const C_IssueWithFixIt & inIssue,
                       const std::type_info * inBaseClass,
                       const bool inUseKindOfClass,
-                      const C_String & inActualFoundClassErrorString
+                      const String & inActualFoundClassErrorString
                       COMMA_LOCATION_ARGS) ;
 
 void signalLexicalWarning (C_Compiler * inCompiler,
                            const C_SourceTextInString & inSourceText,
                            const C_IssueWithFixIt & inIssue,
-                           const C_String & inLexicalWarningMessage
+                           const String & inLexicalWarningMessage
                            COMMA_LOCATION_ARGS) ;
 
 void signalLexicalError (C_Compiler * inCompiler,
                          const C_SourceTextInString & inSourceText,
                          const C_IssueWithFixIt & inIssue,
-                         const C_String & inLexicalErrorMessage
+                         const String & inLexicalErrorMessage
                          COMMA_LOCATION_ARGS) ;
 
 void signalSemanticWarning (C_Compiler * inCompiler,
                             const C_SourceTextInString & inSourceText,
                             const C_IssueWithFixIt & inIssue,
-                            const C_String & inWarningMessage
+                            const String & inWarningMessage
                             COMMA_LOCATION_ARGS) ;
 
 void signalSemanticError (C_Compiler * inCompiler,
                           const C_SourceTextInString & inSourceText,
                           const C_IssueWithFixIt & inIssue,
-                          const C_String & inErrorMessage
+                          const String & inErrorMessage
                           COMMA_LOCATION_ARGS) ;
 
 void signalRunTimeError (C_Compiler * inCompiler,
-                         const C_String & inErrorMessage
+                         const String & inErrorMessage
                          COMMA_LOCATION_ARGS) ;
 
 void signalRunTimeWarning (C_Compiler * inCompiler,
-                           const C_String & inWarningMessage
+                           const String & inWarningMessage
                            COMMA_LOCATION_ARGS) ;
 
 void ggs_printError (C_Compiler * inCompiler,
                      const C_SourceTextInString & inSourceText,
                      const C_IssueWithFixIt & inIssue,
-                     const C_String & inMessage
+                     const String & inMessage
                      COMMA_LOCATION_ARGS) ;
 
 void ggs_printWarning (C_Compiler * inCompiler,
                        const C_SourceTextInString & inSourceText,
                        const C_IssueWithFixIt & inIssue,
-                       const C_String & inMessage
+                       const String & inMessage
                        COMMA_LOCATION_ARGS) ;
 
-void ggs_printFileOperationSuccess (const C_String & inMessage) ;
+void ggs_printFileOperationSuccess (const String & inMessage) ;
 
-void ggs_printFileCreationSuccess (const C_String & inMessage) ;
+void ggs_printFileCreationSuccess (const String & inMessage) ;
 
-void ggs_printMessage (const C_String & inMessage
+void ggs_printMessage (const String & inMessage
                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 
-void fatalError (const C_String & inErrorMessage,
+void fatalError (const String & inErrorMessage,
                  const char * inSourceFile,
                  const int inSourceLine) ;
 

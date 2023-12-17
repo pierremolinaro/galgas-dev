@@ -110,7 +110,7 @@ const C_galgas_type_descriptor * cPtr_notExpressionForGeneration::classDescripto
   return & kTypeDescriptor_GALGAS_notExpressionForGeneration ;
 }
 
-void cPtr_notExpressionForGeneration::description (C_String & ioString,
+void cPtr_notExpressionForGeneration::description (String & ioString,
                                                    const int32_t inIndentation) const {
   ioString += "[@notExpressionForGeneration:" ;
   mProperty_mResultType.description (ioString, inIndentation+1) ;
@@ -276,7 +276,7 @@ const C_galgas_type_descriptor * cPtr_tildeExpressionForGeneration::classDescrip
   return & kTypeDescriptor_GALGAS_tildeExpressionForGeneration ;
 }
 
-void cPtr_tildeExpressionForGeneration::description (C_String & ioString,
+void cPtr_tildeExpressionForGeneration::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "[@tildeExpressionForGeneration:" ;
   mProperty_mResultType.description (ioString, inIndentation+1) ;
@@ -461,7 +461,7 @@ const C_galgas_type_descriptor * cPtr_bangExpressionForGeneration::classDescript
   return & kTypeDescriptor_GALGAS_bangExpressionForGeneration ;
 }
 
-void cPtr_bangExpressionForGeneration::description (C_String & ioString,
+void cPtr_bangExpressionForGeneration::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "[@bangExpressionForGeneration:" ;
   mProperty_mResultType.description (ioString, inIndentation+1) ;
@@ -629,7 +629,7 @@ const C_galgas_type_descriptor * cPtr_unaryWrappingMinusExpressionForGeneration:
   return & kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionForGeneration ;
 }
 
-void cPtr_unaryWrappingMinusExpressionForGeneration::description (C_String & ioString,
+void cPtr_unaryWrappingMinusExpressionForGeneration::description (String & ioString,
                                                                   const int32_t inIndentation) const {
   ioString += "[@unaryWrappingMinusExpressionForGeneration:" ;
   mProperty_mResultType.description (ioString, inIndentation+1) ;
@@ -814,7 +814,7 @@ const C_galgas_type_descriptor * cPtr_orShortExpressionForGeneration::classDescr
   return & kTypeDescriptor_GALGAS_orShortExpressionForGeneration ;
 }
 
-void cPtr_orShortExpressionForGeneration::description (C_String & ioString,
+void cPtr_orShortExpressionForGeneration::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString += "[@orShortExpressionForGeneration:" ;
   mProperty_mResultType.description (ioString, inIndentation+1) ;
@@ -1001,7 +1001,7 @@ const C_galgas_type_descriptor * cPtr_openedSliceExpressionForGeneration::classD
   return & kTypeDescriptor_GALGAS_openedSliceExpressionForGeneration ;
 }
 
-void cPtr_openedSliceExpressionForGeneration::description (C_String & ioString,
+void cPtr_openedSliceExpressionForGeneration::description (String & ioString,
                                                            const int32_t inIndentation) const {
   ioString += "[@openedSliceExpressionForGeneration:" ;
   mProperty_mResultType.description (ioString, inIndentation+1) ;
@@ -1188,7 +1188,7 @@ const C_galgas_type_descriptor * cPtr_closedSliceExpressionForGeneration::classD
   return & kTypeDescriptor_GALGAS_closedSliceExpressionForGeneration ;
 }
 
-void cPtr_closedSliceExpressionForGeneration::description (C_String & ioString,
+void cPtr_closedSliceExpressionForGeneration::description (String & ioString,
                                                            const int32_t inIndentation) const {
   ioString += "[@closedSliceExpressionForGeneration:" ;
   mProperty_mResultType.description (ioString, inIndentation+1) ;
@@ -1375,7 +1375,7 @@ const C_galgas_type_descriptor * cPtr_andShortExpressionForGeneration::classDesc
   return & kTypeDescriptor_GALGAS_andShortExpressionForGeneration ;
 }
 
-void cPtr_andShortExpressionForGeneration::description (C_String & ioString,
+void cPtr_andShortExpressionForGeneration::description (String & ioString,
                                                         const int32_t inIndentation) const {
   ioString += "[@andShortExpressionForGeneration:" ;
   mProperty_mResultType.description (ioString, inIndentation+1) ;
@@ -1533,7 +1533,7 @@ void GALGAS_analysisContext::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_analysisContext::description (C_String & ioString,
+void GALGAS_analysisContext::description (String & ioString,
                                           const int32_t inIndentation) const {
   ioString += "<struct @analysisContext:" ;
   if (! isValid ()) {
@@ -1733,7 +1733,7 @@ const C_galgas_type_descriptor * cPtr_assignmentInstructionAST::classDescriptor 
   return & kTypeDescriptor_GALGAS_assignmentInstructionAST ;
 }
 
-void cPtr_assignmentInstructionAST::description (C_String & ioString,
+void cPtr_assignmentInstructionAST::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "[@assignmentInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -1934,7 +1934,7 @@ const C_galgas_type_descriptor * cPtr_selfPropertyAssignmentInstructionAST::clas
   return & kTypeDescriptor_GALGAS_selfPropertyAssignmentInstructionAST ;
 }
 
-void cPtr_selfPropertyAssignmentInstructionAST::description (C_String & ioString,
+void cPtr_selfPropertyAssignmentInstructionAST::description (String & ioString,
                                                              const int32_t inIndentation) const {
   ioString += "[@selfPropertyAssignmentInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -2187,7 +2187,7 @@ const C_galgas_type_descriptor * cPtr_assignmentInstructionForGeneration::classD
   return & kTypeDescriptor_GALGAS_assignmentInstructionForGeneration ;
 }
 
-void cPtr_assignmentInstructionForGeneration::description (C_String & ioString,
+void cPtr_assignmentInstructionForGeneration::description (String & ioString,
                                                            const int32_t inIndentation) const {
   ioString += "[@assignmentInstructionForGeneration:" ;
   mProperty_mTargetType.description (ioString, inIndentation+1) ;
@@ -2387,7 +2387,7 @@ const C_galgas_type_descriptor * cPtr_structuredCastInstructionForGeneration::cl
   return & kTypeDescriptor_GALGAS_structuredCastInstructionForGeneration ;
 }
 
-void cPtr_structuredCastInstructionForGeneration::description (C_String & ioString,
+void cPtr_structuredCastInstructionForGeneration::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "[@structuredCastInstructionForGeneration:" ;
   mProperty_mExpression.description (ioString, inIndentation+1) ;
@@ -2605,7 +2605,7 @@ const C_galgas_type_descriptor * cPtr_plusEqualElementsInstructionAST::classDesc
   return & kTypeDescriptor_GALGAS_plusEqualElementsInstructionAST ;
 }
 
-void cPtr_plusEqualElementsInstructionAST::description (C_String & ioString,
+void cPtr_plusEqualElementsInstructionAST::description (String & ioString,
                                                         const int32_t inIndentation) const {
   ioString += "[@plusEqualElementsInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -2827,7 +2827,7 @@ const C_galgas_type_descriptor * cPtr_plusEqualExpressionInstructionAST::classDe
   return & kTypeDescriptor_GALGAS_plusEqualExpressionInstructionAST ;
 }
 
-void cPtr_plusEqualExpressionInstructionAST::description (C_String & ioString,
+void cPtr_plusEqualExpressionInstructionAST::description (String & ioString,
                                                           const int32_t inIndentation) const {
   ioString += "[@plusEqualExpressionInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -3049,7 +3049,7 @@ const C_galgas_type_descriptor * cPtr_minusEqualExpressionInstructionAST::classD
   return & kTypeDescriptor_GALGAS_minusEqualExpressionInstructionAST ;
 }
 
-void cPtr_minusEqualExpressionInstructionAST::description (C_String & ioString,
+void cPtr_minusEqualExpressionInstructionAST::description (String & ioString,
                                                            const int32_t inIndentation) const {
   ioString += "[@minusEqualExpressionInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -3271,7 +3271,7 @@ const C_galgas_type_descriptor * cPtr_mulEqualExpressionInstructionAST::classDes
   return & kTypeDescriptor_GALGAS_mulEqualExpressionInstructionAST ;
 }
 
-void cPtr_mulEqualExpressionInstructionAST::description (C_String & ioString,
+void cPtr_mulEqualExpressionInstructionAST::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "[@mulEqualExpressionInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -3493,7 +3493,7 @@ const C_galgas_type_descriptor * cPtr_divEqualExpressionInstructionAST::classDes
   return & kTypeDescriptor_GALGAS_divEqualExpressionInstructionAST ;
 }
 
-void cPtr_divEqualExpressionInstructionAST::description (C_String & ioString,
+void cPtr_divEqualExpressionInstructionAST::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "[@divEqualExpressionInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -3767,7 +3767,7 @@ const C_galgas_type_descriptor * cPtr_opEqualInstructionForGeneration::classDesc
   return & kTypeDescriptor_GALGAS_opEqualInstructionForGeneration ;
 }
 
-void cPtr_opEqualInstructionForGeneration::description (C_String & ioString,
+void cPtr_opEqualInstructionForGeneration::description (String & ioString,
                                                         const int32_t inIndentation) const {
   ioString += "[@opEqualInstructionForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -4007,7 +4007,7 @@ const C_galgas_type_descriptor * cPtr_errorInstructionForGeneration::classDescri
   return & kTypeDescriptor_GALGAS_errorInstructionForGeneration ;
 }
 
-void cPtr_errorInstructionForGeneration::description (C_String & ioString,
+void cPtr_errorInstructionForGeneration::description (String & ioString,
                                                       const int32_t inIndentation) const {
   ioString += "[@errorInstructionForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -4205,7 +4205,7 @@ const C_galgas_type_descriptor * cPtr_enumeratedCollectionImplicitVarInExpAST::c
   return & kTypeDescriptor_GALGAS_enumeratedCollectionImplicitVarInExpAST ;
 }
 
-void cPtr_enumeratedCollectionImplicitVarInExpAST::description (C_String & ioString,
+void cPtr_enumeratedCollectionImplicitVarInExpAST::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString += "[@enumeratedCollectionImplicitVarInExpAST:" ;
   mProperty_mPrefix.description (ioString, inIndentation+1) ;
@@ -4418,7 +4418,7 @@ const C_galgas_type_descriptor * cPtr_enumeratedCollectionVarInExpAST::classDesc
   return & kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST ;
 }
 
-void cPtr_enumeratedCollectionVarInExpAST::description (C_String & ioString,
+void cPtr_enumeratedCollectionVarInExpAST::description (String & ioString,
                                                         const int32_t inIndentation) const {
   ioString += "[@enumeratedCollectionVarInExpAST:" ;
   mProperty_mEnumerationOptionalTypeName.description (ioString, inIndentation+1) ;
@@ -4809,7 +4809,7 @@ const C_galgas_type_descriptor * cPtr_forInstructionAST::classDescriptor (void) 
   return & kTypeDescriptor_GALGAS_forInstructionAST ;
 }
 
-void cPtr_forInstructionAST::description (C_String & ioString,
+void cPtr_forInstructionAST::description (String & ioString,
                                           const int32_t inIndentation) const {
   ioString += "[@forInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -5120,7 +5120,7 @@ const C_galgas_type_descriptor * cPtr_forInstructionForGeneration::classDescript
   return & kTypeDescriptor_GALGAS_forInstructionForGeneration ;
 }
 
-void cPtr_forInstructionForGeneration::description (C_String & ioString,
+void cPtr_forInstructionForGeneration::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "[@forInstructionForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -5286,7 +5286,7 @@ const C_galgas_type_descriptor * cPtr_grammarInstructionSyntaxDirectedTranslatio
   return & kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar ;
 }
 
-void cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar::description (C_String & ioString,
+void cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar::description (String & ioString,
                                                                                const int32_t inIndentation) const {
   ioString += "[@grammarInstructionSyntaxDirectedTranslationResultInVar:" ;
   mProperty_mActualParameterName.description (ioString, inIndentation+1) ;
@@ -5457,7 +5457,7 @@ const C_galgas_type_descriptor * cPtr_grammarInstructionSyntaxDirectedTranslatio
   return & kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar ;
 }
 
-void cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar::description (C_String & ioString,
+void cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar::description (String & ioString,
                                                                                        const int32_t inIndentation) const {
   ioString += "[@grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar:" ;
   mProperty_mActualParameterTypeName.description (ioString, inIndentation+1) ;
@@ -5630,7 +5630,7 @@ const C_galgas_type_descriptor * cPtr_grammarInstructionSyntaxDirectedTranslatio
   return & kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst ;
 }
 
-void cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst::description (C_String & ioString,
+void cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst::description (String & ioString,
                                                                                          const int32_t inIndentation) const {
   ioString += "[@grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst:" ;
   mProperty_mActualParameterTypeName.description (ioString, inIndentation+1) ;
@@ -5884,7 +5884,7 @@ const C_galgas_type_descriptor * cPtr_grammarInFileInstructionAST::classDescript
   return & kTypeDescriptor_GALGAS_grammarInFileInstructionAST ;
 }
 
-void cPtr_grammarInFileInstructionAST::description (C_String & ioString,
+void cPtr_grammarInFileInstructionAST::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "[@grammarInFileInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -6186,7 +6186,7 @@ const C_galgas_type_descriptor * cPtr_grammarInStringInstructionAST::classDescri
   return & kTypeDescriptor_GALGAS_grammarInStringInstructionAST ;
 }
 
-void cPtr_grammarInStringInstructionAST::description (C_String & ioString,
+void cPtr_grammarInStringInstructionAST::description (String & ioString,
                                                       const int32_t inIndentation) const {
   ioString += "[@grammarInStringInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -6487,7 +6487,7 @@ const C_galgas_type_descriptor * cPtr_grammarInstructionWithSourceFileForGenerat
   return & kTypeDescriptor_GALGAS_grammarInstructionWithSourceFileForGeneration ;
 }
 
-void cPtr_grammarInstructionWithSourceFileForGeneration::description (C_String & ioString,
+void cPtr_grammarInstructionWithSourceFileForGeneration::description (String & ioString,
                                                                       const int32_t inIndentation) const {
   ioString += "[@grammarInstructionWithSourceFileForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -6805,7 +6805,7 @@ const C_galgas_type_descriptor * cPtr_grammarInstructionWithSourceExpressionForG
   return & kTypeDescriptor_GALGAS_grammarInstructionWithSourceExpressionForGeneration ;
 }
 
-void cPtr_grammarInstructionWithSourceExpressionForGeneration::description (C_String & ioString,
+void cPtr_grammarInstructionWithSourceExpressionForGeneration::description (String & ioString,
                                                                             const int32_t inIndentation) const {
   ioString += "[@grammarInstructionWithSourceExpressionForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -7035,7 +7035,7 @@ const C_galgas_type_descriptor * cPtr_incDecInstructionAST::classDescriptor (voi
   return & kTypeDescriptor_GALGAS_incDecInstructionAST ;
 }
 
-void cPtr_incDecInstructionAST::description (C_String & ioString,
+void cPtr_incDecInstructionAST::description (String & ioString,
                                              const int32_t inIndentation) const {
   ioString += "[@incDecInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -7257,7 +7257,7 @@ const C_galgas_type_descriptor * cPtr_incDecNoOVFInstructionAST::classDescriptor
   return & kTypeDescriptor_GALGAS_incDecNoOVFInstructionAST ;
 }
 
-void cPtr_incDecNoOVFInstructionAST::description (C_String & ioString,
+void cPtr_incDecNoOVFInstructionAST::description (String & ioString,
                                                   const int32_t inIndentation) const {
   ioString += "[@incDecNoOVFInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -7479,7 +7479,7 @@ const C_galgas_type_descriptor * cPtr_localVariableOrConstantDeclarationWithAssi
   return & kTypeDescriptor_GALGAS_localVariableOrConstantDeclarationWithAssignmentAST ;
 }
 
-void cPtr_localVariableOrConstantDeclarationWithAssignmentAST::description (C_String & ioString,
+void cPtr_localVariableOrConstantDeclarationWithAssignmentAST::description (String & ioString,
                                                                             const int32_t inIndentation) const {
   ioString += "[@localVariableOrConstantDeclarationWithAssignmentAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -7663,7 +7663,7 @@ const C_galgas_type_descriptor * cPtr_undefinedLocalConstantDeclarationAST::clas
   return & kTypeDescriptor_GALGAS_undefinedLocalConstantDeclarationAST ;
 }
 
-void cPtr_undefinedLocalConstantDeclarationAST::description (C_String & ioString,
+void cPtr_undefinedLocalConstantDeclarationAST::description (String & ioString,
                                                              const int32_t inIndentation) const {
   ioString += "[@undefinedLocalConstantDeclarationAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -7843,7 +7843,7 @@ const C_galgas_type_descriptor * cPtr_localConstantDeclarationWithAssignmentAST:
   return & kTypeDescriptor_GALGAS_localConstantDeclarationWithAssignmentAST ;
 }
 
-void cPtr_localConstantDeclarationWithAssignmentAST::description (C_String & ioString,
+void cPtr_localConstantDeclarationWithAssignmentAST::description (String & ioString,
                                                                   const int32_t inIndentation) const {
   ioString += "[@localConstantDeclarationWithAssignmentAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -8056,7 +8056,7 @@ const C_galgas_type_descriptor * cPtr_localVariableOrConstantDeclarationWithSour
   return & kTypeDescriptor_GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration ;
 }
 
-void cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::description (C_String & ioString,
+void cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::description (String & ioString,
                                                                                             const int32_t inIndentation) const {
   ioString += "[@localVariableOrConstantDeclarationWithSourceExpressionForGeneration:" ;
   mProperty_mTargetType.description (ioString, inIndentation+1) ;
@@ -8233,7 +8233,7 @@ const C_galgas_type_descriptor * cPtr_logInstructionForGeneration::classDescript
   return & kTypeDescriptor_GALGAS_logInstructionForGeneration ;
 }
 
-void cPtr_logInstructionForGeneration::description (C_String & ioString,
+void cPtr_logInstructionForGeneration::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "[@logInstructionForGeneration:" ;
   mProperty_mLogMessage.description (ioString, inIndentation+1) ;
@@ -8463,7 +8463,7 @@ const C_galgas_type_descriptor * cPtr_loopInstructionWithVariantForGeneration::c
   return & kTypeDescriptor_GALGAS_loopInstructionWithVariantForGeneration ;
 }
 
-void cPtr_loopInstructionWithVariantForGeneration::description (C_String & ioString,
+void cPtr_loopInstructionWithVariantForGeneration::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString += "[@loopInstructionWithVariantForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -8680,7 +8680,7 @@ const C_galgas_type_descriptor * cPtr_loopInstructionWithoutVariantForGeneration
   return & kTypeDescriptor_GALGAS_loopInstructionWithoutVariantForGeneration ;
 }
 
-void cPtr_loopInstructionWithoutVariantForGeneration::description (C_String & ioString,
+void cPtr_loopInstructionWithoutVariantForGeneration::description (String & ioString,
                                                                    const int32_t inIndentation) const {
   ioString += "[@loopInstructionWithoutVariantForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -8881,7 +8881,7 @@ const C_galgas_type_descriptor * cPtr_methodCallInstructionAST::classDescriptor 
   return & kTypeDescriptor_GALGAS_methodCallInstructionAST ;
 }
 
-void cPtr_methodCallInstructionAST::description (C_String & ioString,
+void cPtr_methodCallInstructionAST::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "[@methodCallInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -9172,7 +9172,7 @@ const C_galgas_type_descriptor * cPtr_methodCallInstructionForGeneration::classD
   return & kTypeDescriptor_GALGAS_methodCallInstructionForGeneration ;
 }
 
-void cPtr_methodCallInstructionForGeneration::description (C_String & ioString,
+void cPtr_methodCallInstructionForGeneration::description (String & ioString,
                                                            const int32_t inIndentation) const {
   ioString += "[@methodCallInstructionForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -9362,7 +9362,7 @@ const C_galgas_type_descriptor * cPtr_procCallInstructionAST::classDescriptor (v
   return & kTypeDescriptor_GALGAS_procCallInstructionAST ;
 }
 
-void cPtr_procCallInstructionAST::description (C_String & ioString,
+void cPtr_procCallInstructionAST::description (String & ioString,
                                                const int32_t inIndentation) const {
   ioString += "[@procCallInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -9537,7 +9537,7 @@ const C_galgas_type_descriptor * cPtr_procCallInstructionForGeneration::classDes
   return & kTypeDescriptor_GALGAS_procCallInstructionForGeneration ;
 }
 
-void cPtr_procCallInstructionForGeneration::description (C_String & ioString,
+void cPtr_procCallInstructionForGeneration::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "[@procCallInstructionForGeneration:" ;
   mProperty_mRoutineName.description (ioString, inIndentation+1) ;
@@ -9791,7 +9791,7 @@ const C_galgas_type_descriptor * cPtr_setterCallInstructionAST::classDescriptor 
   return & kTypeDescriptor_GALGAS_setterCallInstructionAST ;
 }
 
-void cPtr_setterCallInstructionAST::description (C_String & ioString,
+void cPtr_setterCallInstructionAST::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "[@setterCallInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -9979,7 +9979,7 @@ const C_galgas_type_descriptor * cPtr_selfSetterCallInstructionAST::classDescrip
   return & kTypeDescriptor_GALGAS_selfSetterCallInstructionAST ;
 }
 
-void cPtr_selfSetterCallInstructionAST::description (C_String & ioString,
+void cPtr_selfSetterCallInstructionAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "[@selfSetterCallInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -10325,7 +10325,7 @@ const C_galgas_type_descriptor * cPtr_setterCallInstructionForGeneration::classD
   return & kTypeDescriptor_GALGAS_setterCallInstructionForGeneration ;
 }
 
-void cPtr_setterCallInstructionForGeneration::description (C_String & ioString,
+void cPtr_setterCallInstructionForGeneration::description (String & ioString,
                                                            const int32_t inIndentation) const {
   ioString += "[@setterCallInstructionForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -10592,7 +10592,7 @@ const C_galgas_type_descriptor * cPtr_selfSetterCallInstructionForGeneration::cl
   return & kTypeDescriptor_GALGAS_selfSetterCallInstructionForGeneration ;
 }
 
-void cPtr_selfSetterCallInstructionForGeneration::description (C_String & ioString,
+void cPtr_selfSetterCallInstructionForGeneration::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "[@selfSetterCallInstructionForGeneration:" ;
   mProperty_mSelfCppName.description (ioString, inIndentation+1) ;
@@ -10792,7 +10792,7 @@ const C_galgas_type_descriptor * cPtr_switchInstructionForGeneration::classDescr
   return & kTypeDescriptor_GALGAS_switchInstructionForGeneration ;
 }
 
-void cPtr_switchInstructionForGeneration::description (C_String & ioString,
+void cPtr_switchInstructionForGeneration::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString += "[@switchInstructionForGeneration:" ;
   mProperty_mEnumType.description (ioString, inIndentation+1) ;
@@ -10991,7 +10991,7 @@ const C_galgas_type_descriptor * cPtr_typeMethodCallInstructionAST::classDescrip
   return & kTypeDescriptor_GALGAS_typeMethodCallInstructionAST ;
 }
 
-void cPtr_typeMethodCallInstructionAST::description (C_String & ioString,
+void cPtr_typeMethodCallInstructionAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "[@typeMethodCallInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -11206,7 +11206,7 @@ const C_galgas_type_descriptor * cPtr_typeMethodCallInstructionForGeneration::cl
   return & kTypeDescriptor_GALGAS_typeMethodCallInstructionForGeneration ;
 }
 
-void cPtr_typeMethodCallInstructionForGeneration::description (C_String & ioString,
+void cPtr_typeMethodCallInstructionForGeneration::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "[@typeMethodCallInstructionForGeneration:" ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
@@ -11388,7 +11388,7 @@ const C_galgas_type_descriptor * cPtr_localVariableDeclarationWithAssignmentAST:
   return & kTypeDescriptor_GALGAS_localVariableDeclarationWithAssignmentAST ;
 }
 
-void cPtr_localVariableDeclarationWithAssignmentAST::description (C_String & ioString,
+void cPtr_localVariableDeclarationWithAssignmentAST::description (String & ioString,
                                                                   const int32_t inIndentation) const {
   ioString += "[@localVariableDeclarationWithAssignmentAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -11568,7 +11568,7 @@ const C_galgas_type_descriptor * cPtr_localVariableDeclarationNoAssignmentAST::c
   return & kTypeDescriptor_GALGAS_localVariableDeclarationNoAssignmentAST ;
 }
 
-void cPtr_localVariableDeclarationNoAssignmentAST::description (C_String & ioString,
+void cPtr_localVariableDeclarationNoAssignmentAST::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString += "[@localVariableDeclarationNoAssignmentAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -11781,7 +11781,7 @@ const C_galgas_type_descriptor * cPtr_warningInstructionForGeneration::classDesc
   return & kTypeDescriptor_GALGAS_warningInstructionForGeneration ;
 }
 
-void cPtr_warningInstructionForGeneration::description (C_String & ioString,
+void cPtr_warningInstructionForGeneration::description (String & ioString,
                                                         const int32_t inIndentation) const {
   ioString += "[@warningInstructionForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -12115,7 +12115,7 @@ const C_galgas_type_descriptor * cPtr_readAccessWithInstructionAST::classDescrip
   return & kTypeDescriptor_GALGAS_readAccessWithInstructionAST ;
 }
 
-void cPtr_readAccessWithInstructionAST::description (C_String & ioString,
+void cPtr_readAccessWithInstructionAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "[@readAccessWithInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -12501,7 +12501,7 @@ const C_galgas_type_descriptor * cPtr_readWriteAccessWithInstructionAST::classDe
   return & kTypeDescriptor_GALGAS_readWriteAccessWithInstructionAST ;
 }
 
-void cPtr_readWriteAccessWithInstructionAST::description (C_String & ioString,
+void cPtr_readWriteAccessWithInstructionAST::description (String & ioString,
                                                           const int32_t inIndentation) const {
   ioString += "[@readWriteAccessWithInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -12791,7 +12791,7 @@ const C_galgas_type_descriptor * cPtr_readOnlyWithInstructionForGeneration::clas
   return & kTypeDescriptor_GALGAS_readOnlyWithInstructionForGeneration ;
 }
 
-void cPtr_readOnlyWithInstructionForGeneration::description (C_String & ioString,
+void cPtr_readOnlyWithInstructionForGeneration::description (String & ioString,
                                                              const int32_t inIndentation) const {
   ioString += "[@readOnlyWithInstructionForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -13107,7 +13107,7 @@ const C_galgas_type_descriptor * cPtr_readWriteWithInstructionForGeneration::cla
   return & kTypeDescriptor_GALGAS_readWriteWithInstructionForGeneration ;
 }
 
-void cPtr_readWriteWithInstructionForGeneration::description (C_String & ioString,
+void cPtr_readWriteWithInstructionForGeneration::description (String & ioString,
                                                               const int32_t inIndentation) const {
   ioString += "[@readWriteWithInstructionForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -13337,7 +13337,7 @@ const C_galgas_type_descriptor * cPtr_nonterminalCallInstruction::classDescripto
   return & kTypeDescriptor_GALGAS_nonterminalCallInstruction ;
 }
 
-void cPtr_nonterminalCallInstruction::description (C_String & ioString,
+void cPtr_nonterminalCallInstruction::description (String & ioString,
                                                    const int32_t inIndentation) const {
   ioString += "[@nonterminalCallInstruction:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -13578,7 +13578,7 @@ const C_galgas_type_descriptor * cPtr_terminalCheckInstruction::classDescriptor 
   return & kTypeDescriptor_GALGAS_terminalCheckInstruction ;
 }
 
-void cPtr_terminalCheckInstruction::description (C_String & ioString,
+void cPtr_terminalCheckInstruction::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "[@terminalCheckInstruction:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -13840,7 +13840,7 @@ const C_galgas_type_descriptor * cPtr_terminalCheckInstructionForGeneration::cla
   return & kTypeDescriptor_GALGAS_terminalCheckInstructionForGeneration ;
 }
 
-void cPtr_terminalCheckInstructionForGeneration::description (C_String & ioString,
+void cPtr_terminalCheckInstructionForGeneration::description (String & ioString,
                                                               const int32_t inIndentation) const {
   ioString += "[@terminalCheckInstructionForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -14047,7 +14047,7 @@ const C_galgas_type_descriptor * cPtr_parseLoopInstructionForGeneration::classDe
   return & kTypeDescriptor_GALGAS_parseLoopInstructionForGeneration ;
 }
 
-void cPtr_parseLoopInstructionForGeneration::description (C_String & ioString,
+void cPtr_parseLoopInstructionForGeneration::description (String & ioString,
                                                           const int32_t inIndentation) const {
   ioString += "[@parseLoopInstructionForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -14248,7 +14248,7 @@ const C_galgas_type_descriptor * cPtr_parseWhenInstructionForGeneration::classDe
   return & kTypeDescriptor_GALGAS_parseWhenInstructionForGeneration ;
 }
 
-void cPtr_parseWhenInstructionForGeneration::description (C_String & ioString,
+void cPtr_parseWhenInstructionForGeneration::description (String & ioString,
                                                           const int32_t inIndentation) const {
   ioString += "[@parseWhenInstructionForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -14411,7 +14411,7 @@ const C_galgas_type_descriptor * cPtr_syntaxSendInstructionForGeneration::classD
   return & kTypeDescriptor_GALGAS_syntaxSendInstructionForGeneration ;
 }
 
-void cPtr_syntaxSendInstructionForGeneration::description (C_String & ioString,
+void cPtr_syntaxSendInstructionForGeneration::description (String & ioString,
                                                            const int32_t inIndentation) const {
   ioString += "[@syntaxSendInstructionForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -14589,7 +14589,7 @@ const C_galgas_type_descriptor * cPtr_terminalInstructionForGrammarAnalysis::cla
   return & kTypeDescriptor_GALGAS_terminalInstructionForGrammarAnalysis ;
 }
 
-void cPtr_terminalInstructionForGrammarAnalysis::description (C_String & ioString,
+void cPtr_terminalInstructionForGrammarAnalysis::description (String & ioString,
                                                               const int32_t inIndentation) const {
   ioString += "[@terminalInstructionForGrammarAnalysis:" ;
   mProperty_mStartLocation.description (ioString, inIndentation+1) ;

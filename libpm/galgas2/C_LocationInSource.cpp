@@ -20,7 +20,7 @@
 
 #include "galgas2/C_LocationInSource.h"
 #include "galgas2/C_SourceTextInString.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -76,7 +76,7 @@ void C_LocationInSource::resetWithSourceText (const C_SourceTextInString & inSou
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_LocationInSource::sourceFilePath (void) const {
+String C_LocationInSource::sourceFilePath (void) const {
   return mSourceText.sourceFilePath () ;
 }
 

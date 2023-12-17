@@ -62,7 +62,7 @@ AC_GALGAS_enumAssociatedValues::~ AC_GALGAS_enumAssociatedValues (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_enumAssociatedValues::description (C_String & ioString,
+void AC_GALGAS_enumAssociatedValues::description (String & ioString,
                                                   const int32_t inIndentation) const {
   if (nullptr != mSharedPtr) {
     macroValidSharedObject (mSharedPtr, cEnumAssociatedValues) ;

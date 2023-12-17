@@ -4696,7 +4696,7 @@ cMapElement * cMapElement_headerCompositionMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_headerCompositionMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_headerCompositionMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mInclusion" ":" ;
@@ -5033,7 +5033,7 @@ cMapElement * cMapElement_headerRepartitionMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_headerRepartitionMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_headerRepartitionMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mHeaderFileName" ":" ;
@@ -5318,7 +5318,7 @@ cMapElement * cMapElement_projectQualifiedFeatureMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_projectQualifiedFeatureMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_projectQualifiedFeatureMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFeatureValue" ":" ;
@@ -5605,7 +5605,7 @@ class cCollectionElement_XCodeGroupList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5642,7 +5642,7 @@ cCollectionElement * cCollectionElement_XCodeGroupList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_XCodeGroupList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_XCodeGroupList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mGroupReference" ":" ;
@@ -6219,7 +6219,7 @@ class cCollectionElement_XCodeToolTargetList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6263,7 +6263,7 @@ cCollectionElement * cCollectionElement_XCodeToolTargetList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_XCodeToolTargetList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_XCodeToolTargetList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mTargetRef" ":" ;
@@ -7291,7 +7291,7 @@ class cCollectionElement_XCodeAppTargetList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7338,7 +7338,7 @@ cCollectionElement * cCollectionElement_XCodeAppTargetList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_XCodeAppTargetList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_XCodeAppTargetList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mTargetRef" ":" ;
@@ -8547,7 +8547,7 @@ class cCollectionElement_BuildFileList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8583,7 +8583,7 @@ cCollectionElement * cCollectionElement_BuildFileList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_BuildFileList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_BuildFileList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFileReference" ":" ;
@@ -9115,7 +9115,7 @@ void GALGAS_templateInstructionListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_templateInstructionListAST_2D_element::description (C_String & ioString,
+void GALGAS_templateInstructionListAST_2D_element::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString += "<struct @templateInstructionListAST-element:" ;
   if (! isValid ()) {
@@ -9230,7 +9230,7 @@ void GALGAS_templateInstructionIfBranchListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_templateInstructionIfBranchListAST_2D_element::description (C_String & ioString,
+void GALGAS_templateInstructionIfBranchListAST_2D_element::description (String & ioString,
                                                                         const int32_t inIndentation) const {
   ioString += "<struct @templateInstructionIfBranchListAST-element:" ;
   if (! isValid ()) {
@@ -9363,7 +9363,7 @@ void GALGAS_templateInstructionSwitchBranchListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_templateInstructionSwitchBranchListAST_2D_element::description (C_String & ioString,
+void GALGAS_templateInstructionSwitchBranchListAST_2D_element::description (String & ioString,
                                                                             const int32_t inIndentation) const {
   ioString += "<struct @templateInstructionSwitchBranchListAST-element:" ;
   if (! isValid ()) {
@@ -9500,7 +9500,7 @@ void GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element::drop (v
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element::description (String & ioString,
                                                                                       const int32_t inIndentation) const {
   ioString += "<struct @templateInstructionSwitchBranchListForGeneration-element:" ;
   if (! isValid ()) {
@@ -9613,7 +9613,7 @@ void GALGAS_lexicalInstructionListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalInstructionListAST_2D_element::description (C_String & ioString,
+void GALGAS_lexicalInstructionListAST_2D_element::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "<struct @lexicalInstructionListAST-element:" ;
   if (! isValid ()) {
@@ -9720,7 +9720,7 @@ void GALGAS_lexicalRuleListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalRuleListAST_2D_element::description (C_String & ioString,
+void GALGAS_lexicalRuleListAST_2D_element::description (String & ioString,
                                                         const int32_t inIndentation) const {
   ioString += "<struct @lexicalRuleListAST-element:" ;
   if (! isValid ()) {
@@ -9835,7 +9835,7 @@ void GALGAS_lexicalWhileBranchListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalWhileBranchListAST_2D_element::description (C_String & ioString,
+void GALGAS_lexicalWhileBranchListAST_2D_element::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "<struct @lexicalWhileBranchListAST-element:" ;
   if (! isValid ()) {
@@ -9952,7 +9952,7 @@ void GALGAS_lexicalSelectBranchListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalSelectBranchListAST_2D_element::description (C_String & ioString,
+void GALGAS_lexicalSelectBranchListAST_2D_element::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString += "<struct @lexicalSelectBranchListAST-element:" ;
   if (! isValid ()) {
@@ -10061,7 +10061,7 @@ void GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element::description (C_String & ioString,
+void GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element::description (String & ioString,
                                                                               const int32_t inIndentation) const {
   ioString += "<struct @lexicalFunctionCallActualArgumentListAST-element:" ;
   if (! isValid ()) {
@@ -10184,7 +10184,7 @@ void GALGAS_tokenSortedlist_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_tokenSortedlist_2D_element::description (C_String & ioString,
+void GALGAS_tokenSortedlist_2D_element::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "<struct @tokenSortedlist-element:" ;
   if (! isValid ()) {
@@ -10311,7 +10311,7 @@ void GALGAS_lexicalRoutineFormalArgumentList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalRoutineFormalArgumentList_2D_element::description (C_String & ioString,
+void GALGAS_lexicalRoutineFormalArgumentList_2D_element::description (String & ioString,
                                                                       const int32_t inIndentation) const {
   ioString += "<struct @lexicalRoutineFormalArgumentList-element:" ;
   if (! isValid ()) {
@@ -10430,7 +10430,7 @@ void GALGAS_lexicalFunctionFormalArgumentList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalFunctionFormalArgumentList_2D_element::description (C_String & ioString,
+void GALGAS_lexicalFunctionFormalArgumentList_2D_element::description (String & ioString,
                                                                        const int32_t inIndentation) const {
   ioString += "<struct @lexicalFunctionFormalArgumentList-element:" ;
   if (! isValid ()) {
@@ -10539,7 +10539,7 @@ void GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element::description (C_String & ioString,
+void GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element::description (String & ioString,
                                                                              const int32_t inIndentation) const {
   ioString += "<struct @lexicalRoutineCallActualArgumentListAST-element:" ;
   if (! isValid ()) {
@@ -10662,7 +10662,7 @@ void GALGAS_guiLabelListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_guiLabelListAST_2D_element::description (C_String & ioString,
+void GALGAS_guiLabelListAST_2D_element::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "<struct @guiLabelListAST-element:" ;
   if (! isValid ()) {
@@ -10805,7 +10805,7 @@ void GALGAS_guiCommandLineOptionList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_guiCommandLineOptionList_2D_element::description (C_String & ioString,
+void GALGAS_guiCommandLineOptionList_2D_element::description (String & ioString,
                                                               const int32_t inIndentation) const {
   ioString += "<struct @guiCommandLineOptionList-element:" ;
   if (! isValid ()) {
@@ -10928,7 +10928,7 @@ void GALGAS_textMacroList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_textMacroList_2D_element::description (C_String & ioString,
+void GALGAS_textMacroList_2D_element::description (String & ioString,
                                                    const int32_t inIndentation) const {
   ioString += "<struct @textMacroList-element:" ;
   if (! isValid ()) {
@@ -11085,7 +11085,7 @@ void GALGAS_importedLexiqueList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_importedLexiqueList_2D_element::description (C_String & ioString,
+void GALGAS_importedLexiqueList_2D_element::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "<struct @importedLexiqueList-element:" ;
   if (! isValid ()) {
@@ -11212,7 +11212,7 @@ void GALGAS_enumConstantListForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_enumConstantListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_enumConstantListForGeneration_2D_element::description (String & ioString,
                                                                    const int32_t inIndentation) const {
   ioString += "<struct @enumConstantListForGeneration-element:" ;
   if (! isValid ()) {
@@ -11321,7 +11321,7 @@ void GALGAS_insertOrReplaceDeclarationListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_insertOrReplaceDeclarationListAST_2D_element::description (C_String & ioString,
+void GALGAS_insertOrReplaceDeclarationListAST_2D_element::description (String & ioString,
                                                                        const int32_t inIndentation) const {
   ioString += "<struct @insertOrReplaceDeclarationListAST-element:" ;
   if (! isValid ()) {
@@ -11444,7 +11444,7 @@ void GALGAS_sortDescriptorListForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_sortDescriptorListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_sortDescriptorListForGeneration_2D_element::description (String & ioString,
                                                                      const int32_t inIndentation) const {
   ioString += "<struct @sortDescriptorListForGeneration-element:" ;
   if (! isValid ()) {
@@ -11555,7 +11555,7 @@ void GALGAS_actualParameterListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_actualParameterListAST_2D_element::description (C_String & ioString,
+void GALGAS_actualParameterListAST_2D_element::description (String & ioString,
                                                             const int32_t inIndentation) const {
   ioString += "<struct @actualParameterListAST-element:" ;
   if (! isValid ()) {
@@ -11662,7 +11662,7 @@ void GALGAS_semanticInstructionListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_semanticInstructionListAST_2D_element::description (C_String & ioString,
+void GALGAS_semanticInstructionListAST_2D_element::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString += "<struct @semanticInstructionListAST-element:" ;
   if (! isValid ()) {
@@ -11769,7 +11769,7 @@ void GALGAS_semanticDeclarationListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_semanticDeclarationListAST_2D_element::description (C_String & ioString,
+void GALGAS_semanticDeclarationListAST_2D_element::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString += "<struct @semanticDeclarationListAST-element:" ;
   if (! isValid ()) {
@@ -11876,7 +11876,7 @@ void GALGAS_syntaxInstructionList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_syntaxInstructionList_2D_element::description (C_String & ioString,
+void GALGAS_syntaxInstructionList_2D_element::description (String & ioString,
                                                            const int32_t inIndentation) const {
   ioString += "<struct @syntaxInstructionList-element:" ;
   if (! isValid ()) {
@@ -11991,7 +11991,7 @@ void GALGAS_listOfSyntaxInstructionList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_listOfSyntaxInstructionList_2D_element::description (C_String & ioString,
+void GALGAS_listOfSyntaxInstructionList_2D_element::description (String & ioString,
                                                                  const int32_t inIndentation) const {
   ioString += "<struct @listOfSyntaxInstructionList-element:" ;
   if (! isValid ()) {
@@ -12108,7 +12108,7 @@ void GALGAS_syntaxExtensions_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_syntaxExtensions_2D_element::description (C_String & ioString,
+void GALGAS_syntaxExtensions_2D_element::description (String & ioString,
                                                       const int32_t inIndentation) const {
   ioString += "<struct @syntaxExtensions-element:" ;
   if (! isValid ()) {
@@ -12225,7 +12225,7 @@ void GALGAS_prologueEpilogueList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_prologueEpilogueList_2D_element::description (C_String & ioString,
+void GALGAS_prologueEpilogueList_2D_element::description (String & ioString,
                                                           const int32_t inIndentation) const {
   ioString += "<struct @prologueEpilogueList-element:" ;
   if (! isValid ()) {
@@ -12342,7 +12342,7 @@ void GALGAS_enumerationDescriptorList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_enumerationDescriptorList_2D_element::description (C_String & ioString,
+void GALGAS_enumerationDescriptorList_2D_element::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "<struct @enumerationDescriptorList-element:" ;
   if (! isValid ()) {
@@ -12451,7 +12451,7 @@ void GALGAS_templateInstructionListForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_templateInstructionListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_templateInstructionListForGeneration_2D_element::description (String & ioString,
                                                                           const int32_t inIndentation) const {
   ioString += "<struct @templateInstructionListForGeneration-element:" ;
   if (! isValid ()) {
@@ -12558,7 +12558,7 @@ void GALGAS_actualParameterListForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_actualParameterListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_actualParameterListForGeneration_2D_element::description (String & ioString,
                                                                       const int32_t inIndentation) const {
   ioString += "<struct @actualParameterListForGeneration-element:" ;
   if (! isValid ()) {
@@ -12665,7 +12665,7 @@ void GALGAS_semanticInstructionListForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_semanticInstructionListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_semanticInstructionListForGeneration_2D_element::description (String & ioString,
                                                                           const int32_t inIndentation) const {
   ioString += "<struct @semanticInstructionListForGeneration-element:" ;
   if (! isValid ()) {
@@ -12780,7 +12780,7 @@ void GALGAS_listOfSemanticInstructionListForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_listOfSemanticInstructionListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_listOfSemanticInstructionListForGeneration_2D_element::description (String & ioString,
                                                                                 const int32_t inIndentation) const {
   ioString += "<struct @listOfSemanticInstructionListForGeneration-element:" ;
   if (! isValid ()) {
@@ -12897,7 +12897,7 @@ void GALGAS_semanticDeclarationListForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_semanticDeclarationListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_semanticDeclarationListForGeneration_2D_element::description (String & ioString,
                                                                           const int32_t inIndentation) const {
   ioString += "<struct @semanticDeclarationListForGeneration-element:" ;
   if (! isValid ()) {
@@ -13014,7 +13014,7 @@ void GALGAS_nonTerminalToAddList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_nonTerminalToAddList_2D_element::description (C_String & ioString,
+void GALGAS_nonTerminalToAddList_2D_element::description (String & ioString,
                                                           const int32_t inIndentation) const {
   ioString += "<struct @nonTerminalToAddList-element:" ;
   if (! isValid ()) {
@@ -13139,7 +13139,7 @@ void GALGAS_terminalCheckAssignementList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_terminalCheckAssignementList_2D_element::description (C_String & ioString,
+void GALGAS_terminalCheckAssignementList_2D_element::description (String & ioString,
                                                                   const int32_t inIndentation) const {
   ioString += "<struct @terminalCheckAssignementList-element:" ;
   if (! isValid ()) {
@@ -13266,7 +13266,7 @@ void GALGAS_filewrapperTemplateListForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_filewrapperTemplateListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_filewrapperTemplateListForGeneration_2D_element::description (String & ioString,
                                                                           const int32_t inIndentation) const {
   ioString += "<struct @filewrapperTemplateListForGeneration-element:" ;
   if (! isValid ()) {
@@ -13393,7 +13393,7 @@ void GALGAS_ruleDeclarationList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_ruleDeclarationList_2D_element::description (C_String & ioString,
+void GALGAS_ruleDeclarationList_2D_element::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "<struct @ruleDeclarationList-element:" ;
   if (! isValid ()) {
@@ -13504,7 +13504,7 @@ void GALGAS_localVarMapListForLLVM_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_localVarMapListForLLVM_2D_element::description (C_String & ioString,
+void GALGAS_localVarMapListForLLVM_2D_element::description (String & ioString,
                                                             const int32_t inIndentation) const {
   ioString += "<struct @localVarMapListForLLVM-element:" ;
   if (! isValid ()) {
@@ -13611,7 +13611,7 @@ void GALGAS_openedOverrideList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_openedOverrideList_2D_element::description (C_String & ioString,
+void GALGAS_openedOverrideList_2D_element::description (String & ioString,
                                                         const int32_t inIndentation) const {
   ioString += "<struct @openedOverrideList-element:" ;
   if (! isValid ()) {
@@ -13718,7 +13718,7 @@ void GALGAS_collectionValueElementList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_collectionValueElementList_2D_element::description (C_String & ioString,
+void GALGAS_collectionValueElementList_2D_element::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString += "<struct @collectionValueElementList-element:" ;
   if (! isValid ()) {

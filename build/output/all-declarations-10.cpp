@@ -674,7 +674,7 @@ const C_galgas_type_descriptor * cPtr_localVariableDeclarationForGeneration::cla
   return & kTypeDescriptor_GALGAS_localVariableDeclarationForGeneration ;
 }
 
-void cPtr_localVariableDeclarationForGeneration::description (C_String & ioString,
+void cPtr_localVariableDeclarationForGeneration::description (String & ioString,
                                                               const int32_t inIndentation) const {
   ioString += "[@localVariableDeclarationForGeneration:" ;
   mProperty_mVariableType.description (ioString, inIndentation+1) ;
@@ -982,7 +982,7 @@ const C_galgas_type_descriptor * cPtr_warningInstructionAST::classDescriptor (vo
   return & kTypeDescriptor_GALGAS_warningInstructionAST ;
 }
 
-void cPtr_warningInstructionAST::description (C_String & ioString,
+void cPtr_warningInstructionAST::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString += "[@warningInstructionAST:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -1979,7 +1979,7 @@ const C_galgas_type_descriptor * cPtr_nonterminalInstructionForGeneration::class
   return & kTypeDescriptor_GALGAS_nonterminalInstructionForGeneration ;
 }
 
-void cPtr_nonterminalInstructionForGeneration::description (C_String & ioString,
+void cPtr_nonterminalInstructionForGeneration::description (String & ioString,
                                                             const int32_t inIndentation) const {
   ioString += "[@nonterminalInstructionForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -2312,7 +2312,7 @@ const C_galgas_type_descriptor * cPtr_repeatInstruction::classDescriptor (void) 
   return & kTypeDescriptor_GALGAS_repeatInstruction ;
 }
 
-void cPtr_repeatInstruction::description (C_String & ioString,
+void cPtr_repeatInstruction::description (String & ioString,
                                           const int32_t inIndentation) const {
   ioString += "[@repeatInstruction:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -2664,7 +2664,7 @@ const C_galgas_type_descriptor * cPtr_repeatInstructionForGeneration::classDescr
   return & kTypeDescriptor_GALGAS_repeatInstructionForGeneration ;
 }
 
-void cPtr_repeatInstructionForGeneration::description (C_String & ioString,
+void cPtr_repeatInstructionForGeneration::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString += "[@repeatInstructionForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -2961,7 +2961,7 @@ const C_galgas_type_descriptor * cPtr_selectInstruction::classDescriptor (void) 
   return & kTypeDescriptor_GALGAS_selectInstruction ;
 }
 
-void cPtr_selectInstruction::description (C_String & ioString,
+void cPtr_selectInstruction::description (String & ioString,
                                           const int32_t inIndentation) const {
   ioString += "[@selectInstruction:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -3271,7 +3271,7 @@ const C_galgas_type_descriptor * cPtr_selectInstructionForGeneration::classDescr
   return & kTypeDescriptor_GALGAS_selectInstructionForGeneration ;
 }
 
-void cPtr_selectInstructionForGeneration::description (C_String & ioString,
+void cPtr_selectInstructionForGeneration::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString += "[@selectInstructionForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -3862,7 +3862,7 @@ const C_galgas_type_descriptor * cPtr_parseLoopInstruction::classDescriptor (voi
   return & kTypeDescriptor_GALGAS_parseLoopInstruction ;
 }
 
-void cPtr_parseLoopInstruction::description (C_String & ioString,
+void cPtr_parseLoopInstruction::description (String & ioString,
                                              const int32_t inIndentation) const {
   ioString += "[@parseLoopInstruction:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -4272,7 +4272,7 @@ const C_galgas_type_descriptor * cPtr_parseRewindInstruction::classDescriptor (v
   return & kTypeDescriptor_GALGAS_parseRewindInstruction ;
 }
 
-void cPtr_parseRewindInstruction::description (C_String & ioString,
+void cPtr_parseRewindInstruction::description (String & ioString,
                                                const int32_t inIndentation) const {
   ioString += "[@parseRewindInstruction:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -4544,7 +4544,7 @@ const C_galgas_type_descriptor * cPtr_parseRewindInstructionForGeneration::class
   return & kTypeDescriptor_GALGAS_parseRewindInstructionForGeneration ;
 }
 
-void cPtr_parseRewindInstructionForGeneration::description (C_String & ioString,
+void cPtr_parseRewindInstructionForGeneration::description (String & ioString,
                                                             const int32_t inIndentation) const {
   ioString += "[@parseRewindInstructionForGeneration:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -4909,7 +4909,7 @@ const C_galgas_type_descriptor * cPtr_parseWhenInstruction::classDescriptor (voi
   return & kTypeDescriptor_GALGAS_parseWhenInstruction ;
 }
 
-void cPtr_parseWhenInstruction::description (C_String & ioString,
+void cPtr_parseWhenInstruction::description (String & ioString,
                                              const int32_t inIndentation) const {
   ioString += "[@parseWhenInstruction:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -5300,7 +5300,7 @@ const C_galgas_type_descriptor * cPtr_syntaxSendInstruction::classDescriptor (vo
   return & kTypeDescriptor_GALGAS_syntaxSendInstruction ;
 }
 
-void cPtr_syntaxSendInstruction::description (C_String & ioString,
+void cPtr_syntaxSendInstruction::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString += "[@syntaxSendInstruction:" ;
   mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
@@ -5881,7 +5881,7 @@ class cCollectionElement_syntaxInstructionListForGrammarAnalysis : public cColle
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5915,7 +5915,7 @@ cCollectionElement * cCollectionElement_syntaxInstructionListForGrammarAnalysis:
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_syntaxInstructionListForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_syntaxInstructionListForGrammarAnalysis::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mInstruction" ":" ;
@@ -6293,7 +6293,7 @@ class cCollectionElement_productionRuleListForGrammarAnalysis : public cCollecti
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6330,7 +6330,7 @@ cCollectionElement * cCollectionElement_productionRuleListForGrammarAnalysis::co
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_productionRuleListForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_productionRuleListForGrammarAnalysis::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mLeftNonterminalSymbol" ":" ;
@@ -6898,7 +6898,7 @@ cMapElement * cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis::copy (vo
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mNonTerminalIndex" ":" ;
@@ -7161,7 +7161,7 @@ class cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis : public 
   public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Description
- public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+ public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 
 //--- Virtual method that comparing element for sorting
   public: virtual typeComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
@@ -7193,7 +7193,7 @@ cSortedListElement * cSortedListElement_nonTerminalSymbolSortedListForGrammarAna
 
 //--------------------------------------------------------------------------------------------------
 
-void cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
+void cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mNonTerminalSymbol" ":" ;
@@ -7720,7 +7720,7 @@ class cCollectionElement_branchListForGrammarAnalysis : public cCollectionElemen
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7754,7 +7754,7 @@ cCollectionElement * cCollectionElement_branchListForGrammarAnalysis::copy (void
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_branchListForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_branchListForGrammarAnalysis::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mSyntaxInstructionList" ":" ;
@@ -8222,7 +8222,7 @@ const C_galgas_type_descriptor * cPtr_selectInstructionForGrammarAnalysis::class
   return & kTypeDescriptor_GALGAS_selectInstructionForGrammarAnalysis ;
 }
 
-void cPtr_selectInstructionForGrammarAnalysis::description (C_String & ioString,
+void cPtr_selectInstructionForGrammarAnalysis::description (String & ioString,
                                                             const int32_t inIndentation) const {
   ioString += "[@selectInstructionForGrammarAnalysis:" ;
   mProperty_mStartLocation.description (ioString, inIndentation+1) ;
@@ -8513,7 +8513,7 @@ const C_galgas_type_descriptor * cPtr_repeatInstructionForGrammarAnalysis::class
   return & kTypeDescriptor_GALGAS_repeatInstructionForGrammarAnalysis ;
 }
 
-void cPtr_repeatInstructionForGrammarAnalysis::description (C_String & ioString,
+void cPtr_repeatInstructionForGrammarAnalysis::description (String & ioString,
                                                             const int32_t inIndentation) const {
   ioString += "[@repeatInstructionForGrammarAnalysis:" ;
   mProperty_mStartLocation.description (ioString, inIndentation+1) ;
@@ -8712,7 +8712,7 @@ class cCollectionElement_syntaxComponentListForGrammarAnalysis : public cCollect
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8747,7 +8747,7 @@ cCollectionElement * cCollectionElement_syntaxComponentListForGrammarAnalysis::c
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_syntaxComponentListForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_syntaxComponentListForGrammarAnalysis::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mProductionRulesList" ":" ;
@@ -9187,7 +9187,7 @@ cMapElement * cMapElement_terminalSymbolsMapForGrammarAnalysis::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_terminalSymbolsMapForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_terminalSymbolsMapForGrammarAnalysis::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mTerminalIndex" ":" ;
@@ -9534,7 +9534,7 @@ class cCollectionElement_rowList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -9568,7 +9568,7 @@ cCollectionElement * cCollectionElement_rowList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_rowList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_rowList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "columns" ":" ;
@@ -10062,7 +10062,7 @@ class cCollectionElement_programListForGeneration : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -10096,7 +10096,7 @@ cCollectionElement * cCollectionElement_programListForGeneration::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_programListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_programListForGeneration::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mDeclaration" ":" ;
@@ -10756,7 +10756,7 @@ cMapElement * cMapElement_extensionMethodMapForGlobalCheckings::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_extensionMethodMapForGlobalCheckings::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {
+void cMapElement_extensionMethodMapForGlobalCheckings::description (String & /* ioString */, const int32_t /* inIndentation */) const {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10968,7 +10968,7 @@ cMapElement * cMapElement_extensionSetterMapForGlobalCheckings::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_extensionSetterMapForGlobalCheckings::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {
+void cMapElement_extensionSetterMapForGlobalCheckings::description (String & /* ioString */, const int32_t /* inIndentation */) const {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11180,7 +11180,7 @@ cMapElement * cMapElement_extensionGetterMapForGlobalCheckings::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_extensionGetterMapForGlobalCheckings::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {
+void cMapElement_extensionGetterMapForGlobalCheckings::description (String & /* ioString */, const int32_t /* inIndentation */) const {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11394,7 +11394,7 @@ class cCollectionElement_galgas_33_QualifiedFeatureList : public cCollectionElem
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -11429,7 +11429,7 @@ cCollectionElement * cCollectionElement_galgas_33_QualifiedFeatureList::copy (vo
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_galgas_33_QualifiedFeatureList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_galgas_33_QualifiedFeatureList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFeatureName" ":" ;

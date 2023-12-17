@@ -72,7 +72,7 @@ void C_Data::appendByte (const uint8_t inByte) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Data::appendString (const C_String & inString) {
+void C_Data::appendString (const String & inString) {
   const utf32 * ptr = inString.utf32String (HERE) ;
   for (int32_t i=0 ; i<inString.length () ; i++) {
     appendUTF32Character (ptr [i]) ;

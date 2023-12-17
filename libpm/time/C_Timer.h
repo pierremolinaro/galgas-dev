@@ -29,7 +29,7 @@
 //--------------------------------------------------------------------------------------------------
 
 class AC_OutputStream ;
-class C_String ;
+class String ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -47,7 +47,7 @@ class C_Timer final {
 
   public: uint32_t msFromStart (void) const ;
 
-  public: C_String timeString (void) const ;
+  public: String timeString (void) const ;
   
   public: inline bool isRunning (void) const { return mRunning ; }
 

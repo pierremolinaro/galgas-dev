@@ -22,15 +22,15 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
-typedef void (* Type_appendKeywordListNames) (TC_UniqueArray <C_String> & ioList) ;
+typedef void (* Type_appendKeywordListNames) (TC_UniqueArray <String> & ioList) ;
 
-typedef void (* Type_getKeywordsForIdentifier) (const C_String & inIdentifier,
+typedef void (* Type_getKeywordsForIdentifier) (const String & inIdentifier,
                                                 bool & ioFound,
-                                                TC_UniqueArray <C_String> & ioList) ;
+                                                TC_UniqueArray <String> & ioList) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -40,10 +40,10 @@ class cLexiqueIntrospection final {
                                  Type_getKeywordsForIdentifier getKeywordsForIdentifier) ;
 
 //--- Accessors
-  public: static void getKeywordListNames (TC_UniqueArray <C_String> & outList) ;
-  public: static void getKeywordListForIdentifier (const C_String & inIdentifier,
+  public: static void getKeywordListNames (TC_UniqueArray <String> & outList) ;
+  public: static void getKeywordListForIdentifier (const String & inIdentifier,
                                                    bool & outFound,
-                                                   TC_UniqueArray <C_String> & outList) ;
+                                                   TC_UniqueArray <String> & outList) ;
 
   public: static void handleGetKeywordListOption (class C_Compiler * inCompiler) ;
 

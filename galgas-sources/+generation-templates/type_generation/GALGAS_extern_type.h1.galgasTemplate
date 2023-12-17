@@ -18,8 +18,8 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
   public: virtual void drop (void) override ;
 
 //--- For log instruction
-  public: virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const override ;
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
 
 //--- Code (from GALGAS extern type declaration)
 %!CODE%

@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  C_String : an implementation of fully dynamic character string                               
+//  String : an implementation of fully dynamic character string                               
 //
 //  This file is part of libpm library                                                           
 //
@@ -31,15 +31,15 @@
 //--------------------------------------------------------------------------------------------------
 
 C_HTMLString::C_HTMLString (void) :
-C_String () {
+String () {
 }
 
 
 //--------------------------------------------------------------------------------------------------
 
-void C_HTMLString::writeStartCode (const C_String & inWindowTitle,
-                                   const C_String & inCSSFileName,
-                                   const C_String & inCSSContents) {
+void C_HTMLString::writeStartCode (const String & inWindowTitle,
+                                   const String & inCSSFileName,
+                                   const String & inCSSContents) {
   outputRawData ("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n"
                  "<html>"
                  "<head>\n"
@@ -126,8 +126,8 @@ void C_HTMLString::performActualUnicodeArrayOutput (const utf32 * inCharArray,
 //                 Comments as a table                                                           
 //--------------------------------------------------------------------------------------------------
 
-void C_HTMLString::appendCppTitleComment (const C_String & inCommentString,
-                                          const C_String & inTableStyleClass) {
+void C_HTMLString::appendCppTitleComment (const String & inCommentString,
+                                          const String & inTableStyleClass) {
   outputRawData ("<table") ;
   if (inTableStyleClass.length () > 0) {
     outputRawData (" class=\"") ;

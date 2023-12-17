@@ -20,7 +20,7 @@
 
 #include "strings/unicode_character_cpp.h"
 #include "cUnicodeData.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 

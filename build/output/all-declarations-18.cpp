@@ -124,7 +124,7 @@ const C_galgas_type_descriptor * cPtr_nonTerminalInstructionForGrammarAnalysis::
   return & kTypeDescriptor_GALGAS_nonTerminalInstructionForGrammarAnalysis ;
 }
 
-void cPtr_nonTerminalInstructionForGrammarAnalysis::description (C_String & ioString,
+void cPtr_nonTerminalInstructionForGrammarAnalysis::description (String & ioString,
                                                                  const int32_t inIndentation) const {
   ioString += "[@nonTerminalInstructionForGrammarAnalysis:" ;
   mProperty_mStartLocation.description (ioString, inIndentation+1) ;
@@ -264,7 +264,7 @@ void GALGAS_productionRuleListForGrammarAnalysis_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_productionRuleListForGrammarAnalysis_2D_element::description (C_String & ioString,
+void GALGAS_productionRuleListForGrammarAnalysis_2D_element::description (String & ioString,
                                                                           const int32_t inIndentation) const {
   ioString += "<struct @productionRuleListForGrammarAnalysis-element:" ;
   if (! isValid ()) {
@@ -504,7 +504,7 @@ void GALGAS_galgas_33_ProjectComponentAST::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_galgas_33_ProjectComponentAST::description (C_String & ioString,
+void GALGAS_galgas_33_ProjectComponentAST::description (String & ioString,
                                                         const int32_t inIndentation) const {
   ioString += "<struct @galgas3ProjectComponentAST:" ;
   if (! isValid ()) {
@@ -872,7 +872,7 @@ void cGrammar_galgas_33_ProjectGrammar::nt_project_5F_component_5F_start_5F_symb
 }
 
 void cGrammar_galgas_33_ProjectGrammar::performIndexing (C_Compiler * inCompiler,
-             const C_String & inSourceFilePath) {
+             const String & inSourceFilePath) {
   C_Lexique_galgasScanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   scanner->enableIndexing () ;
@@ -889,7 +889,7 @@ void cGrammar_galgas_33_ProjectGrammar::performIndexing (C_Compiler * inCompiler
 }
 
 void cGrammar_galgas_33_ProjectGrammar::performOnlyLexicalAnalysis (C_Compiler * inCompiler,
-             const C_String & inSourceFilePath) {
+             const String & inSourceFilePath) {
   C_Lexique_galgasScanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
@@ -899,7 +899,7 @@ void cGrammar_galgas_33_ProjectGrammar::performOnlyLexicalAnalysis (C_Compiler *
 }
 
 void cGrammar_galgas_33_ProjectGrammar::performOnlySyntaxAnalysis (C_Compiler * inCompiler,
-             const C_String & inSourceFilePath) {
+             const String & inSourceFilePath) {
   C_Lexique_galgasScanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
@@ -921,7 +921,7 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (C_Compiler *
                                 COMMA_LOCATION_ARGS) {
   if (inFilePath.isValid ()) {
     const GALGAS_string filePathAsString = inFilePath.readProperty_string () ;
-    C_String filePath = filePathAsString.stringValue () ;
+    String filePath = filePathAsString.stringValue () ;
     if (! C_FileManager::isAbsolutePath (filePath)) {
       filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;
     }
@@ -936,7 +936,7 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (C_Compiler *
         grammar.nt_project_5F_component_5F_start_5F_symbol_ (parameter_1, scanner) ;
         }
       }else{
-        C_String message ;
+        String message ;
         message += "the '" ;
         message += filePath ;
         message += "' file exists, but cannot be read" ;
@@ -945,7 +945,7 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (C_Compiler *
       }
       macroDetachSharedObject (scanner) ;
     }else{
-      C_String message ;
+      String message ;
       message += "the '"  ;
       message += filePath ;
       message += "' file does not exist" ;
@@ -963,8 +963,8 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceStringParsing_ (C_Compiler
                                 GALGAS_galgas_33_ProjectComponentAST &  parameter_1
                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (inSourceString.isValid () && inNameString.isValid ()) {
-    const C_String sourceString = inSourceString.stringValue () ;
-    const C_String nameString = inNameString.stringValue () ;
+    const String sourceString = inSourceString.stringValue () ;
+    const String nameString = inNameString.stringValue () ;
     C_Lexique_galgasScanner * scanner = NULL ;
     macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, sourceString, nameString COMMA_HERE)) ;
     const bool ok = scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
@@ -38638,7 +38638,7 @@ void cGrammar_galgas_33_Grammar::nt_start_5F_symbol_ (GALGAS_galgasDeclarationAS
 }
 
 void cGrammar_galgas_33_Grammar::performIndexing (C_Compiler * inCompiler,
-             const C_String & inSourceFilePath) {
+             const String & inSourceFilePath) {
   C_Lexique_galgasScanner * scanner = nullptr ;
   macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   scanner->enableIndexing () ;
@@ -38656,7 +38656,7 @@ void cGrammar_galgas_33_Grammar::performIndexing (C_Compiler * inCompiler,
 }
 
 void cGrammar_galgas_33_Grammar::performOnlyLexicalAnalysis (C_Compiler * inCompiler,
-             const C_String & inSourceFilePath) {
+             const String & inSourceFilePath) {
   C_Lexique_galgasScanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
@@ -38666,7 +38666,7 @@ void cGrammar_galgas_33_Grammar::performOnlyLexicalAnalysis (C_Compiler * inComp
 }
 
 void cGrammar_galgas_33_Grammar::performOnlySyntaxAnalysis (C_Compiler * inCompiler,
-             const C_String & inSourceFilePath) {
+             const String & inSourceFilePath) {
   C_Lexique_galgasScanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
@@ -38689,7 +38689,7 @@ void cGrammar_galgas_33_Grammar::_performSourceFileParsing_ (C_Compiler * inComp
                                 COMMA_LOCATION_ARGS) {
   if (inFilePath.isValid ()) {
     const GALGAS_string filePathAsString = inFilePath.readProperty_string () ;
-    C_String filePath = filePathAsString.stringValue () ;
+    String filePath = filePathAsString.stringValue () ;
     if (! C_FileManager::isAbsolutePath (filePath)) {
       filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;
     }
@@ -38705,7 +38705,7 @@ void cGrammar_galgas_33_Grammar::_performSourceFileParsing_ (C_Compiler * inComp
           grammar.nt_start_5F_symbol_ (parameter_1, scanner) ;
         }
       }else{
-        C_String message ;
+        String message ;
         message += "the '" ;
         message += filePath ;
         message += "' file exists, but cannot be read" ;
@@ -38714,7 +38714,7 @@ void cGrammar_galgas_33_Grammar::_performSourceFileParsing_ (C_Compiler * inComp
       }
       macroDetachSharedObject (scanner) ;
     }else{
-      C_String message ;
+      String message ;
       message += "the '" ;
       message += filePath ;
       message += "' file does not exist" ;
@@ -38732,8 +38732,8 @@ void cGrammar_galgas_33_Grammar::_performSourceStringParsing_ (C_Compiler * inCo
                                 GALGAS_galgasDeclarationAST &  parameter_1
                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (inSourceString.isValid () && inNameString.isValid ()) {
-    const C_String sourceString = inSourceString.stringValue () ;
-    const C_String nameString = inNameString.stringValue () ;
+    const String sourceString = inSourceString.stringValue () ;
+    const String nameString = inNameString.stringValue () ;
     C_Lexique_galgasScanner * scanner = NULL ;
     macroMyNew (scanner, C_Lexique_galgasScanner (inCompiler, sourceString, nameString COMMA_HERE)) ;
     if (scanner->sourceText ().isValid ()) {

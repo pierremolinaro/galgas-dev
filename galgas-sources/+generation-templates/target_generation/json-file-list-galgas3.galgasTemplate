@@ -39,7 +39,7 @@ end
        "C_ErrorOut.cpp",
        "unicode_character_cpp.cpp",
        "unicode_string_routines.cpp",
-       "C_String.cpp",
+       "String-class.cpp",
        "C_HTMLString.cpp",
        "print.cpp",
        "C_Timer.cpp",

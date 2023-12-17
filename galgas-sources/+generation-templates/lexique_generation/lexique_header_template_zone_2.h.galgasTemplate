@@ -60,12 +60,12 @@ class cTokenFor_%!LEXIQUE_IDENTIFIER% : public cToken {
 class C_Lexique_%!LEXIQUE_IDENTIFIER% : public C_Lexique {
 //--- Constructors
   public: C_Lexique_%!LEXIQUE_IDENTIFIER% (C_Compiler * inCallerCompiler,
-                       const C_String & inSourceFileName
+                       const String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;
 
   public: C_Lexique_%!LEXIQUE_IDENTIFIER% (C_Compiler * inCallerCompiler,
-                       const C_String & inSourceString,
-                       const C_String & inStringForError
+                       const String & inSourceString,
+                       const String & inStringForError
                        COMMA_LOCATION_ARGS) ;
 
 //--- Instrospection
@@ -92,7 +92,7 @@ class C_Lexique_%!LEXIQUE_IDENTIFIER% : public C_Lexique {
 %
   for (mName mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in DELIMITOR_LIST_LIST do
     %\n//--- Key words table '%!mName.string%'\n%
-    %  public: static int32_t search_into_%!mName.string% (const C_String & inSearchedString) ;\n%
+    %  public: static int32_t search_into_%!mName.string% (const String & inSearchedString) ;\n%
   end
 %  
 
@@ -124,19 +124,19 @@ class C_Lexique_%!LEXIQUE_IDENTIFIER% : public C_Lexique {
   protected: virtual bool parseLexicalToken (void) override ;
 
 //--- Get terminal message
-  protected: virtual C_String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
+  protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
   public: virtual int32_t terminalVocabularyCount (void) const override { return %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count] string]% ; }
 
 //--- Get Token String
-  public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const override ;
+  public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;
 
 //--- Enter Token
   protected: void enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER% & ioToken) ;
 
 //--- Style name for Latex
-  protected: virtual C_String styleNameForIndex (const uint32_t inStyleIndex) const override ;
+  protected: virtual String styleNameForIndex (const uint32_t inStyleIndex) const override ;
   protected: virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const override ;
 } ;
 

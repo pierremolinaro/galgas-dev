@@ -31,7 +31,7 @@ mTimer () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_timer::description (C_String & ioString,
+void GALGAS_timer::description (String & ioString,
                                 const int32_t /* inIndentation */) const {
   ioString += "<@timer: " ;
   if (!mIsValid) {

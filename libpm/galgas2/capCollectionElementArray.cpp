@@ -20,7 +20,7 @@
 
 #include "galgas2/capCollectionElementArray.h"
 #include "utilities/MF_MemoryControl.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 #include "galgas2/C_Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -203,7 +203,7 @@ void capCollectionElementArray::insertObjectAtIndex (const capCollectionElement 
     mSharedRoot->mArray [inInsertionIndex] = inObject ;
     mSharedRoot->mCount ++ ;
   }else{
-    C_String s = "insertAtIndex: insertion index (" ;
+    String s = "insertAtIndex: insertion index (" ;
     s.appendUnsigned (inInsertionIndex) ;
     s += ") > length (" ;
     s.appendUnsigned (count ()) ;
@@ -229,7 +229,7 @@ void capCollectionElementArray::removeObjectAtIndex (capCollectionElement & outO
     mSharedRoot->mCount -- ;
     mSharedRoot->mArray [mSharedRoot->mCount].drop () ;
   }else{
-    C_String s = "removeObjectAtIndex: index (" ;
+    String s = "removeObjectAtIndex: index (" ;
     s.appendUnsigned (inIndex) ;
     s += ") >= length (" ;
     s.appendUnsigned (count ()) ;
@@ -246,7 +246,7 @@ void capCollectionElementArray::removeFirstObject (capCollectionElement & outObj
   insulateOrCreate () ;
   macroUniqueSharedObject (mSharedRoot) ;
   if (count () == 0) {
-    C_String s = "removeFirstObject: empty list" ;
+    String s = "removeFirstObject: empty list" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     outObject = mSharedRoot->mArray [0] ;
@@ -264,7 +264,7 @@ void capCollectionElementArray::readFirstObject (capCollectionElement & outObjec
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
   if (count () == 0) {
-    C_String s = "firstObject: empty list" ;
+    String s = "firstObject: empty list" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     outObject = mSharedRoot->mArray [0] ;
@@ -279,7 +279,7 @@ void capCollectionElementArray::removeLastObject (capCollectionElement & outObje
   insulateOrCreate () ;
   macroUniqueSharedObject (mSharedRoot) ;
   if (count () == 0) {
-    C_String s = "removeLastObject: empty list" ;
+    String s = "removeLastObject: empty list" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     mSharedRoot->mCount -- ;
@@ -294,7 +294,7 @@ void capCollectionElementArray::readLastObject (capCollectionElement & outObject
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   if (count () == 0) {
-    C_String s = "lastObject: empty list" ;
+    String s = "lastObject: empty list" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     outObject = mSharedRoot->mArray [mSharedRoot->mCount - 1] ;
@@ -409,7 +409,7 @@ typeComparisonResult capCollectionElementArray::compareCollectionElementArray (c
 
 //--------------------------------------------------------------------------------------------------
 
-void capCollectionElementArray::description (C_String & ioString,
+void capCollectionElementArray::description (String & ioString,
                                              const int32_t inIndentation) const {
   for (uint32_t i=0 ; i<count () ; i++) {
     ioString += "\n" ;
@@ -430,7 +430,7 @@ void capCollectionElementArray::subListToIndex (capCollectionElementArray & outS
   outSubList.removeAllObjects () ;
   outOk = false ;
   if (inIndex >= count ()) {
-    C_String s ;
+    String s ;
     s += "Cannot get a sub list from index " ;
     s.appendUnsigned (inIndex) ;
     s += " with a list of length " ;
@@ -457,7 +457,7 @@ void capCollectionElementArray::subListWithRange (capCollectionElementArray & ou
   outOk = false ;
   outSubList.removeAllObjects () ;
   if ((inStartIndex + inLength) > count ()) {
-    C_String s ;
+    String s ;
     s += "Cannot get a sub list of range [" ;
     s.appendUnsigned (inStartIndex) ;
     s += ":" ;
@@ -484,7 +484,7 @@ void capCollectionElementArray::subListFromIndex (capCollectionElementArray & ou
   outOk = false ;
   outSubList.removeAllObjects () ;
   if (inIndex > count ()) {
-    C_String s ;
+    String s ;
     s += "Cannot get a sub list from index " ;
     s.appendUnsigned (inIndex) ;
     s += " with a list of length " ;

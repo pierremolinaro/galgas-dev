@@ -203,8 +203,8 @@ if [SUPPORTED_OPERATORS incDecOperatorNoOVF] then
 end
 if [SUPPORTED_OPERATORS generateDescriptionGetterUtilityMethod] then
   %//--------------------------------- Implementation of getter 'description'\n%
-  %  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,\n%
-  %                                              const int32_t inIndentation) const override ;\n%
+  %  public: VIRTUAL_IN_DEBUG void description (String & ioString,\n%
+  %                                             const int32_t inIndentation) const override ;\n%
 end
 
 if not [SUPPORTED_OPERATORS doNotGenererateObjectCompare] then

@@ -18,13 +18,13 @@ class cVariablesInRelationConfiguration : public C_SharedObject {
   public: cVariablesInRelationConfiguration (cVariablesInRelationConfiguration * inPtr COMMA_LOCATION_ARGS) ;
 
 
-  public: void addVariable (const C_String & inVariableName,
+  public: void addVariable (const String & inVariableName,
                              const C_RelationSingleType & inType) ;
 
 //--- Accessors
   public: uint32_t bitCount (void) const ;
 
-  public: C_String nameForVariable (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
+  public: String nameForVariable (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
 
   public: C_RelationSingleType typeForVariable (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
 
@@ -48,7 +48,7 @@ class cVariablesInRelationConfiguration : public C_SharedObject {
     return mVariableTypeArray (inIndex COMMA_THERE).BDDBitCount () ;
   }
 
-  public: C_String constantNameForVariableAndValue (const int32_t inIndex,
+  public: String constantNameForVariableAndValue (const int32_t inIndex,
                                                      const uint32_t inValue
                                                      COMMA_LOCATION_ARGS) const ;
 
@@ -73,7 +73,7 @@ class cVariablesInRelationConfiguration : public C_SharedObject {
 
 //--- Attributes
   private: TC_UniqueArray <uint32_t> mBDDStartIndexArray ;
-  private: TC_UniqueArray <C_String> mVariableNameArray ;
+  private: TC_UniqueArray <String> mVariableNameArray ;
   private: TC_UniqueArray <C_RelationSingleType> mVariableTypeArray ;
 } ;
 
@@ -130,7 +130,7 @@ mVariableTypeArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-void cVariablesInRelationConfiguration::addVariable (const C_String & inVariableName,
+void cVariablesInRelationConfiguration::addVariable (const String & inVariableName,
                                                      const C_RelationSingleType & inType) {
   if (mBDDStartIndexArray.count () == 0) {
     mBDDStartIndexArray.appendObject (0) ;
@@ -207,7 +207,7 @@ uint32_t cVariablesInRelationConfiguration::bitCount (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String cVariablesInRelationConfiguration::constantNameForVariableAndValue (const int32_t inIndex,
+String cVariablesInRelationConfiguration::constantNameForVariableAndValue (const int32_t inIndex,
                                                                              const uint32_t inValue
                                                                              COMMA_LOCATION_ARGS) const {
   return mVariableTypeArray (inIndex COMMA_THERE).nameForValue(inValue COMMA_THERE) ;
@@ -215,7 +215,7 @@ C_String cVariablesInRelationConfiguration::constantNameForVariableAndValue (con
 
 //--------------------------------------------------------------------------------------------------
 
-C_String cVariablesInRelationConfiguration::nameForVariable (const int32_t inIndex COMMA_LOCATION_ARGS) const {
+String cVariablesInRelationConfiguration::nameForVariable (const int32_t inIndex COMMA_LOCATION_ARGS) const {
   return mVariableNameArray (inIndex COMMA_THERE) ;
 }
 
@@ -354,7 +354,7 @@ void C_RelationConfiguration::insulate (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_RelationConfiguration::addVariable (const C_String & inVariableName,
+void C_RelationConfiguration::addVariable (const String & inVariableName,
                                            const C_RelationSingleType & inType) {
   insulate (HERE) ;
   macroValidSharedObject (mVariablesPtr, cVariablesInRelationConfiguration) ;
@@ -366,7 +366,7 @@ void C_RelationConfiguration::addVariable (const C_String & inVariableName,
 void C_RelationConfiguration::appendConfiguration (const C_RelationConfiguration & inConfiguration) {
   insulate (HERE) ;
   for (int32_t i=0 ; i<inConfiguration.variableCount() ; i++) {
-    const C_String variableName = inConfiguration.nameForVariable (i COMMA_HERE) ;
+    const String variableName = inConfiguration.nameForVariable (i COMMA_HERE) ;
     const C_RelationSingleType type = inConfiguration.typeForVariable (i COMMA_HERE) ;
     mVariablesPtr->addVariable (variableName, type) ;
   }
@@ -374,7 +374,7 @@ void C_RelationConfiguration::appendConfiguration (const C_RelationConfiguration
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_RelationConfiguration::nameForVariable (const int32_t inIndex
+String C_RelationConfiguration::nameForVariable (const int32_t inIndex
                                                    COMMA_LOCATION_ARGS) const {
   macroValidSharedObjectThere (mVariablesPtr, cVariablesInRelationConfiguration) ;
   return mVariablesPtr->nameForVariable (inIndex COMMA_THERE) ;
@@ -435,7 +435,7 @@ uint32_t C_RelationConfiguration::bddBitCountForVariable (const int32_t inIndex
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_RelationConfiguration::constantNameForVariableAndValue (const int32_t inIndex,
+String C_RelationConfiguration::constantNameForVariableAndValue (const int32_t inIndex,
                                                                    const uint32_t inValue
                                                                    COMMA_LOCATION_ARGS) const {
   macroValidSharedObjectThere (mVariablesPtr, cVariablesInRelationConfiguration) ;

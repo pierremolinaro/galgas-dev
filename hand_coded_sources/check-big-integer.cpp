@@ -124,7 +124,7 @@ static void testBigUnsignedDecimalStringConstructor (void) {
   set_galgas_random_seed (0) ;
   std::cout << "BigUnsigned: test decimal string constructor... " ;
   const size_t LENGTH = 13 ;
-  C_String refString ;
+  String refString ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     refString = "" ;
@@ -140,7 +140,7 @@ static void testBigUnsignedDecimalStringConstructor (void) {
   //---
     bool ok = false ;
     const BigUnsigned big (refString.cString (HERE), BigUnsignedBase::ten, ok) ;
-    const C_String str = big.decimalString () ;
+    const String str = big.decimalString () ;
      if ((str != refString) || !ok) {
       std::cout << "error (i=" << i << "), ok=" << ok << "\n" ;
       std::cout << "Reference string '" << refString.cString (HERE) << "'\n" ;
@@ -157,7 +157,7 @@ static void testBigUnsignedBinaryStringConstructor (void) {
   set_galgas_random_seed (0) ;
   std::cout << "BigUnsigned: test binary string constructor... " ;
   const size_t LENGTH = 13 ;
-  C_String refString ;
+  String refString ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     refString = "" ;
@@ -177,7 +177,7 @@ static void testBigUnsignedBinaryStringConstructor (void) {
   //---
     bool ok = false ;
     const BigUnsigned big (refString.cString (HERE), BigUnsignedBase::two, ok) ;
-    const C_String str = big.bitString () ;
+    const String str = big.bitString () ;
     if ((str != refString) || !ok) {
       std::cout << "error (i=" << i << "), ok=" << ok << "\n" ;
       std::cout << "Reference string '" << refString.cString (HERE) << "'\n" ;
@@ -194,7 +194,7 @@ static void testBigUnsignedHexadecimalStringConstructor (void) {
   set_galgas_random_seed (0) ;
   std::cout << "BigUnsigned: test hexadecimal string constructor... " ;
   const size_t LENGTH = 13 ;
-  C_String refString ;
+  String refString ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     refString = "" ;
@@ -213,7 +213,7 @@ static void testBigUnsignedHexadecimalStringConstructor (void) {
   //---
     bool ok = false ;
     const BigUnsigned big (refString.cString (HERE), BigUnsignedBase::sixteen, ok) ;
-    const C_String str = big.xString () ;
+    const String str = big.xString () ;
      if ((str != refString) || !ok) {
       std::cout << "error (i=" << i << "), ok=" << ok << "\n" ;
       std::cout << "Reference string '" << refString.cString (HERE) << "'\n" ;
@@ -231,7 +231,7 @@ static void testBigUnsignedU8ArrayConstructor (void) {
   std::cout << "BigUnsigned: test U8 array constructor, U8 access... " ;
   const size_t LENGTH = 41 ;
   uint8_t u8Array [LENGTH] ;
-  C_String refString ;
+  String refString ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     refString = "" ;
@@ -250,9 +250,9 @@ static void testBigUnsignedU8ArrayConstructor (void) {
     }
   //---
     const BigUnsigned big (u8Count, u8Array) ;
-    const C_String str = big.xString () ;
+    const String str = big.xString () ;
   //--- Check U8 access
-    C_String u8AccessString ;
+    String u8AccessString ;
     if (big.u8Count () == 0) {
       u8AccessString += "0" ;
     }else{
@@ -283,7 +283,7 @@ static void testBigUnsignedU64ArrayConstructor (void) {
   std::cout << "BigUnsigned: test U64 array constructor... " ;
   const size_t LENGTH = 20 ;
   uint64_t u64Array [LENGTH] ;
-  C_String refString ;
+  String refString ;
   const clock_t start = ::clock () ;
   for (size_t i = 0 ; i < TEST_COUNT ; i++) {
     refString = "" ;
@@ -302,7 +302,7 @@ static void testBigUnsignedU64ArrayConstructor (void) {
       refString += s ;
     }
     const BigUnsigned big (u64Count, u64Array) ;
-    const C_String s = big.xString () ;
+    const String s = big.xString () ;
     if (s != refString) {
       std::cout << "error (i=" << i << ")\n" ;
       std::cout << "Reference string '" << refString.cString (HERE) << "'\n" ;
@@ -323,9 +323,9 @@ static void testBigUnsignedU64Constructor (void) {
     uint64_t v = galgas_random () ;
     v <<= 32 ;
     v |= galgas_random () ;
-    const C_String sRef = stringWithUnsigned (v) ;
+    const String sRef = stringWithUnsigned (v) ;
     const BigUnsigned big (v) ;
-    const C_String s = big.decimalString () ;
+    const String s = big.decimalString () ;
     if (s != sRef) {
       std::cout << "error (i=" << i << ")\n" ;
       std::cout << "Reference string '" << sRef.cString (HERE) << "'\n" ;
@@ -553,10 +553,10 @@ static void pgcdComputing (void) {
   std::cout << "BigUnsigned: gcd computing... " ;
   std::cout << "n**17 + 9 and (n+1)**17 + 9...\n" ;
   const clock_t start = ::clock () ;
-  const C_String s ("8 424 432 925 592 889 329 288 197 322 308 900 672 459 420 460 792 433") ;
+  const String s ("8 424 432 925 592 889 329 288 197 322 308 900 672 459 420 460 792 433") ;
   const BigUnsigned n (s.cString (HERE), ' ') ;
   std::cout << " n " << n.spacedDecimalStringWithDigitCount (3).cString (HERE) << "\n" ;
-  { const C_String verif = n.spacedDecimalString (3) ;
+  { const String verif = n.spacedDecimalString (3) ;
     if (s != verif) {
       std::cout << "  Error\n" ;
       std::cout << "   s     '" << s.cString (HERE) << "'\n" ;
@@ -663,7 +663,7 @@ static void somePrimeNumbers (void) {
   { BigUnsigned n = BigUnsigned (1) ;
     n <<= 127 ;
     n -= 1 ;
-    const C_String s = n.spacedDecimalString (3) ;
+    const String s = n.spacedDecimalString (3) ;
     std::cout << "  2**127 - 1 = " << s.cString (HERE) << "\n" ;
   }
   { BigUnsigned n = BigUnsigned (1) ;
@@ -671,25 +671,25 @@ static void somePrimeNumbers (void) {
     n += 1 ;
     const BigUnsignedQuotientU64Remainder r = n.dividingByChunkUInt (17) ;
     n = r.quotient () ;
-    const C_String s = n.spacedDecimalString (3) ;
+    const String s = n.spacedDecimalString (3) ;
     std::cout << "  (2**148 + 1) / 17 = " << s.cString (HERE) << "\n" ;
   }
   { BigUnsigned n = BigUnsigned (1) ;
     n <<= 607 ;
     n -= 1 ;
-    const C_String s = n.spacedDecimalString (3) ;
+    const String s = n.spacedDecimalString (3) ;
     std::cout << "  2**607 - 1 = " << s.cString (HERE) << "\n" ;
   }
   { BigUnsigned n = BigUnsigned (1) ;
     n <<= 4423 ;
     n -= 1 ;
-    const C_String s = n.spacedDecimalString (3) ;
+    const String s = n.spacedDecimalString (3) ;
     std::cout << "  2**4423 - 1 = " << s.cString (HERE) << "\n" ;
   }
   { BigUnsigned n = BigUnsigned (1) ;
     n <<= 44497 ;
     n -= 1 ;
-    const C_String s = n.spacedDecimalString (3) ;
+    const String s = n.spacedDecimalString (3) ;
     std::cout << "  2**44497 - 1 = " << s.cString (HERE) << "\n" ;
   }
   std::cout << msFromStart (start) << " ms\n" ;

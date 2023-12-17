@@ -252,7 +252,7 @@ cMapElement * cMapElement_propertyIndexMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_propertyIndexMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_propertyIndexMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mPropertyTypeIndex" ":" ;
@@ -541,7 +541,7 @@ cMapElement * cMapElement_nonterminalLabelMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_nonterminalLabelMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_nonterminalLabelMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mSignatureForGeneration" ":" ;
@@ -930,7 +930,7 @@ cMapElement * cMapElement_nonterminalMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_nonterminalMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_nonterminalMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mLabelMap" ":" ;
@@ -1218,7 +1218,7 @@ class cCollectionElement_ruleLabelImplementationList : public cCollectionElement
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1256,7 +1256,7 @@ cCollectionElement * cCollectionElement_ruleLabelImplementationList::copy (void)
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_ruleLabelImplementationList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_ruleLabelImplementationList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mLabelName" ":" ;
@@ -1889,7 +1889,7 @@ class cCollectionElement_ruleDeclarationList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1925,7 +1925,7 @@ cCollectionElement * cCollectionElement_ruleDeclarationList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_ruleDeclarationList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_ruleDeclarationList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mNonterminalName" ":" ;
@@ -2611,7 +2611,7 @@ const C_galgas_type_descriptor * cPtr_syntaxDeclarationForGeneration::classDescr
   return & kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration ;
 }
 
-void cPtr_syntaxDeclarationForGeneration::description (C_String & ioString,
+void cPtr_syntaxDeclarationForGeneration::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString += "[@syntaxDeclarationForGeneration:" ;
   mProperty_mSyntaxComponentName.description (ioString, inIndentation+1) ;
@@ -3092,7 +3092,7 @@ cMapElement * cMapElement_uselessEntityLocationMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_uselessEntityLocationMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_uselessEntityLocationMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mLocation" ":" ;
@@ -3472,7 +3472,7 @@ GALGAS_localVariableAttributes GALGAS_localVariableAttributes::operator_tilde (U
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_localVariableAttributes::description (C_String & ioString,
+void GALGAS_localVariableAttributes::description (String & ioString,
                                                   const int32_t /* inIndentation */) const {
   ioString += "<boolset @localVariableAttributes:" ;
   if (! isValid ()) {
@@ -3633,7 +3633,7 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cEnumAssociatedValues_localVarValuation_declared::description (C_String & ioString,
+void cEnumAssociatedValues_localVarValuation_declared::description (String & ioString,
                                                                     const int32_t inIndentation) const {
   ioString += "(\n" ;
   mAssociatedValue0.description (ioString, inIndentation) ;
@@ -3713,7 +3713,7 @@ void GALGAS_localVarValuation::method_declared (GALGAS_bool & outAssociatedValue
                                                 COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_declared) {
     outAssociatedValue0.drop () ;
-    C_String s ;
+    String s ;
     s += "method @localVarValuation declared invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
@@ -3804,7 +3804,7 @@ GALGAS_bool GALGAS_localVarValuation::getter_isMutated (UNUSED_LOCATION_ARGS) co
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_localVarValuation::description (C_String & ioString,
+void GALGAS_localVarValuation::description (String & ioString,
                                             const int32_t inIndentation) const {
   ioString += "<enum @localVarValuation: " ;
   ioString += gEnumNameArrayFor_localVarValuation [mEnum] ;
@@ -3904,7 +3904,7 @@ cMapElement * cMapElement_scopeLocalVarMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_scopeLocalVarMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_scopeLocalVarMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mType" ":" ;
@@ -4426,7 +4426,7 @@ class cCollectionElement_localVarMapListForLLVM : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4460,7 +4460,7 @@ cCollectionElement * cCollectionElement_localVarMapListForLLVM::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_localVarMapListForLLVM::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_localVarMapListForLLVM::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mMap" ":" ;
@@ -4821,7 +4821,7 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch::description (C_String & ioString,
+void cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch::description (String & ioString,
                                                                                 const int32_t inIndentation) const {
   ioString += "(\n" ;
   mAssociatedValue0.description (ioString, inIndentation) ;
@@ -4852,7 +4852,7 @@ mAssociatedValue1 (inAssociatedValue1) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cEnumAssociatedValues_overrideKind_selectOverrideNextBranches::description (C_String & ioString,
+void cEnumAssociatedValues_overrideKind_selectOverrideNextBranches::description (String & ioString,
                                                                                  const int32_t inIndentation) const {
   ioString += "(\n" ;
   mAssociatedValue0.description (ioString, inIndentation) ;
@@ -4928,7 +4928,7 @@ void GALGAS_overrideKind::method_selectOverrideFirstBranch (GALGAS_currentVarMan
                                                             COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_selectOverrideFirstBranch) {
     outAssociatedValue0.drop () ;
-    C_String s ;
+    String s ;
     s += "method @overrideKind selectOverrideFirstBranch invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
@@ -4946,7 +4946,7 @@ void GALGAS_overrideKind::method_selectOverrideNextBranches (GALGAS_currentVarMa
   if (mEnum != kEnum_selectOverrideNextBranches) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
-    C_String s ;
+    String s ;
     s += "method @overrideKind selectOverrideNextBranches invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
@@ -5016,7 +5016,7 @@ GALGAS_bool GALGAS_overrideKind::getter_isRepeatOverride (UNUSED_LOCATION_ARGS) 
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_overrideKind::description (C_String & ioString,
+void GALGAS_overrideKind::description (String & ioString,
                                        const int32_t inIndentation) const {
   ioString += "<enum @overrideKind: " ;
   ioString += gEnumNameArrayFor_overrideKind [mEnum] ;
@@ -5107,7 +5107,7 @@ class cCollectionElement_openedOverrideList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5141,7 +5141,7 @@ cCollectionElement * cCollectionElement_openedOverrideList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_openedOverrideList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_openedOverrideList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mOverrideKind" ":" ;
@@ -5553,7 +5553,7 @@ void GALGAS_currentVarManager::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_currentVarManager::description (C_String & ioString,
+void GALGAS_currentVarManager::description (String & ioString,
                                             const int32_t inIndentation) const {
   ioString += "<struct @currentVarManager:" ;
   if (! isValid ()) {
@@ -6941,7 +6941,7 @@ cMapElement * cMapElement_unifiedTypeMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_unifiedTypeMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_unifiedTypeMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mElement" ":" ;
@@ -7415,7 +7415,7 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cEnumAssociatedValues_typeDefinition_solved::description (C_String & ioString,
+void cEnumAssociatedValues_typeDefinition_solved::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "(\n" ;
   mAssociatedValue0.description (ioString, inIndentation) ;
@@ -7471,7 +7471,7 @@ void GALGAS_typeDefinition::method_solved (GALGAS_unifiedTypeDefinition & outAss
                                            COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_solved) {
     outAssociatedValue0.drop () ;
-    C_String s ;
+    String s ;
     s += "method @typeDefinition solved invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
@@ -7520,7 +7520,7 @@ GALGAS_bool GALGAS_typeDefinition::getter_isSolved (UNUSED_LOCATION_ARGS) const 
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_typeDefinition::description (C_String & ioString,
+void GALGAS_typeDefinition::description (String & ioString,
                                          const int32_t inIndentation) const {
   ioString += "<enum @typeDefinition: " ;
   ioString += gEnumNameArrayFor_typeDefinition [mEnum] ;
@@ -7915,7 +7915,7 @@ const C_galgas_type_descriptor * cPtr_ifExpressionAST::classDescriptor (void) co
   return & kTypeDescriptor_GALGAS_ifExpressionAST ;
 }
 
-void cPtr_ifExpressionAST::description (C_String & ioString,
+void cPtr_ifExpressionAST::description (String & ioString,
                                         const int32_t inIndentation) const {
   ioString += "[@ifExpressionAST:" ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
@@ -8314,7 +8314,7 @@ const C_galgas_type_descriptor * cPtr_unaryPlusExpressionAST::classDescriptor (v
   return & kTypeDescriptor_GALGAS_unaryPlusExpressionAST ;
 }
 
-void cPtr_unaryPlusExpressionAST::description (C_String & ioString,
+void cPtr_unaryPlusExpressionAST::description (String & ioString,
                                                const int32_t inIndentation) const {
   ioString += "[@unaryPlusExpressionAST:" ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
@@ -8598,7 +8598,7 @@ const C_galgas_type_descriptor * cPtr_unaryMinusExpressionAST::classDescriptor (
   return & kTypeDescriptor_GALGAS_unaryMinusExpressionAST ;
 }
 
-void cPtr_unaryMinusExpressionAST::description (C_String & ioString,
+void cPtr_unaryMinusExpressionAST::description (String & ioString,
                                                 const int32_t inIndentation) const {
   ioString += "[@unaryMinusExpressionAST:" ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
@@ -9129,7 +9129,7 @@ class cCollectionElement_actualOutputExpressionList : public cCollectionElement 
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -9165,7 +9165,7 @@ cCollectionElement * cCollectionElement_actualOutputExpressionList::copy (void) 
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_actualOutputExpressionList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_actualOutputExpressionList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mActualSelector" ":" ;
@@ -9756,7 +9756,7 @@ const C_galgas_type_descriptor * cPtr_trueExpressionAST::classDescriptor (void) 
   return & kTypeDescriptor_GALGAS_trueExpressionAST ;
 }
 
-void cPtr_trueExpressionAST::description (C_String & ioString,
+void cPtr_trueExpressionAST::description (String & ioString,
                                           const int32_t inIndentation) const {
   ioString += "[@trueExpressionAST:" ;
   mProperty_mLocation.description (ioString, inIndentation+1) ;
@@ -10019,7 +10019,7 @@ const C_galgas_type_descriptor * cPtr_falseExpressionAST::classDescriptor (void)
   return & kTypeDescriptor_GALGAS_falseExpressionAST ;
 }
 
-void cPtr_falseExpressionAST::description (C_String & ioString,
+void cPtr_falseExpressionAST::description (String & ioString,
                                            const int32_t inIndentation) const {
   ioString += "[@falseExpressionAST:" ;
   mProperty_mLocation.description (ioString, inIndentation+1) ;
@@ -10523,7 +10523,7 @@ const C_galgas_type_descriptor * cPtr_literalStringExpressionAST::classDescripto
   return & kTypeDescriptor_GALGAS_literalStringExpressionAST ;
 }
 
-void cPtr_literalStringExpressionAST::description (C_String & ioString,
+void cPtr_literalStringExpressionAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
   ioString += "[@literalStringExpressionAST:" ;
   mProperty_mLocation.description (ioString, inIndentation+1) ;
@@ -12106,7 +12106,7 @@ GALGAS_bool GALGAS_comparison::getter_isDifferentInstances (UNUSED_LOCATION_ARGS
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_comparison::description (C_String & ioString,
+void GALGAS_comparison::description (String & ioString,
                                      const int32_t /* inIndentation */) const {
   ioString += "<enum @comparison: " ;
   ioString += gEnumNameArrayFor_comparison [mEnum] ;
@@ -12322,7 +12322,7 @@ const C_galgas_type_descriptor * cPtr_comparisonExpressionAST::classDescriptor (
   return & kTypeDescriptor_GALGAS_comparisonExpressionAST ;
 }
 
-void cPtr_comparisonExpressionAST::description (C_String & ioString,
+void cPtr_comparisonExpressionAST::description (String & ioString,
                                                 const int32_t inIndentation) const {
   ioString += "[@comparisonExpressionAST:" ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
@@ -12740,7 +12740,7 @@ const C_galgas_type_descriptor * cPtr_rightShiftExpressionAST::classDescriptor (
   return & kTypeDescriptor_GALGAS_rightShiftExpressionAST ;
 }
 
-void cPtr_rightShiftExpressionAST::description (C_String & ioString,
+void cPtr_rightShiftExpressionAST::description (String & ioString,
                                                 const int32_t inIndentation) const {
   ioString += "[@rightShiftExpressionAST:" ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
@@ -13045,7 +13045,7 @@ const C_galgas_type_descriptor * cPtr_leftShiftExpressionAST::classDescriptor (v
   return & kTypeDescriptor_GALGAS_leftShiftExpressionAST ;
 }
 
-void cPtr_leftShiftExpressionAST::description (C_String & ioString,
+void cPtr_leftShiftExpressionAST::description (String & ioString,
                                                const int32_t inIndentation) const {
   ioString += "[@leftShiftExpressionAST:" ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
@@ -13350,7 +13350,7 @@ const C_galgas_type_descriptor * cPtr_addExpressionAST::classDescriptor (void) c
   return & kTypeDescriptor_GALGAS_addExpressionAST ;
 }
 
-void cPtr_addExpressionAST::description (C_String & ioString,
+void cPtr_addExpressionAST::description (String & ioString,
                                          const int32_t inIndentation) const {
   ioString += "[@addExpressionAST:" ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
@@ -13655,7 +13655,7 @@ const C_galgas_type_descriptor * cPtr_addExpressionNoOverflowAST::classDescripto
   return & kTypeDescriptor_GALGAS_addExpressionNoOverflowAST ;
 }
 
-void cPtr_addExpressionNoOverflowAST::description (C_String & ioString,
+void cPtr_addExpressionNoOverflowAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
   ioString += "[@addExpressionNoOverflowAST:" ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
@@ -13960,7 +13960,7 @@ const C_galgas_type_descriptor * cPtr_subExpressionAST::classDescriptor (void) c
   return & kTypeDescriptor_GALGAS_subExpressionAST ;
 }
 
-void cPtr_subExpressionAST::description (C_String & ioString,
+void cPtr_subExpressionAST::description (String & ioString,
                                          const int32_t inIndentation) const {
   ioString += "[@subExpressionAST:" ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
@@ -14265,7 +14265,7 @@ const C_galgas_type_descriptor * cPtr_subExpressionNoOverflowAST::classDescripto
   return & kTypeDescriptor_GALGAS_subExpressionNoOverflowAST ;
 }
 
-void cPtr_subExpressionNoOverflowAST::description (C_String & ioString,
+void cPtr_subExpressionNoOverflowAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
   ioString += "[@subExpressionNoOverflowAST:" ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
@@ -14761,7 +14761,7 @@ GALGAS_bool GALGAS_binaryOperator::getter_isModulo_5F_operation (UNUSED_LOCATION
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_binaryOperator::description (C_String & ioString,
+void GALGAS_binaryOperator::description (String & ioString,
                                          const int32_t /* inIndentation */) const {
   ioString += "<enum @binaryOperator: " ;
   ioString += gEnumNameArrayFor_binaryOperator [mEnum] ;
@@ -15069,7 +15069,7 @@ const C_galgas_type_descriptor * cPtr_multiplicationExpressionAST::classDescript
   return & kTypeDescriptor_GALGAS_multiplicationExpressionAST ;
 }
 
-void cPtr_multiplicationExpressionAST::description (C_String & ioString,
+void cPtr_multiplicationExpressionAST::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "[@multiplicationExpressionAST:" ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
@@ -15374,7 +15374,7 @@ const C_galgas_type_descriptor * cPtr_multiplicationExpressionNoOverflowAST::cla
   return & kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST ;
 }
 
-void cPtr_multiplicationExpressionNoOverflowAST::description (C_String & ioString,
+void cPtr_multiplicationExpressionNoOverflowAST::description (String & ioString,
                                                               const int32_t inIndentation) const {
   ioString += "[@multiplicationExpressionNoOverflowAST:" ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
@@ -15679,7 +15679,7 @@ const C_galgas_type_descriptor * cPtr_divisionExpressionAST::classDescriptor (vo
   return & kTypeDescriptor_GALGAS_divisionExpressionAST ;
 }
 
-void cPtr_divisionExpressionAST::description (C_String & ioString,
+void cPtr_divisionExpressionAST::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString += "[@divisionExpressionAST:" ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
@@ -15984,7 +15984,7 @@ const C_galgas_type_descriptor * cPtr_divisionExpressionNoOverflowAST::classDesc
   return & kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST ;
 }
 
-void cPtr_divisionExpressionNoOverflowAST::description (C_String & ioString,
+void cPtr_divisionExpressionNoOverflowAST::description (String & ioString,
                                                         const int32_t inIndentation) const {
   ioString += "[@divisionExpressionNoOverflowAST:" ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
@@ -16289,7 +16289,7 @@ const C_galgas_type_descriptor * cPtr_moduloExpressionAST::classDescriptor (void
   return & kTypeDescriptor_GALGAS_moduloExpressionAST ;
 }
 
-void cPtr_moduloExpressionAST::description (C_String & ioString,
+void cPtr_moduloExpressionAST::description (String & ioString,
                                             const int32_t inIndentation) const {
   ioString += "[@moduloExpressionAST:" ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;

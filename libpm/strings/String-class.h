@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  C_String : an implementation of fully dynamic character string                               
+//  String : an implementation of fully dynamic character string                               
 //
 //  This file is part of libpm library                                                           
 //
@@ -79,29 +79,29 @@ typedef enum {
 
 //--------------------------------------------------------------------------------------------------
 //
-//      Fully dynamic character string : C_String                                                
+//      Fully dynamic character string : String                                                
 //
 //--------------------------------------------------------------------------------------------------
 
-class C_String : public AC_OutputStream {
+class String : public AC_OutputStream {
 //--- Constructors
-  public: C_String (void) ; // Empty string
-  public: C_String (const char * inCString) ; // From a C string
-  public: C_String (const utf32 * inUTF32String) ;
-  public: static C_String spaces (const int32_t inSpaceCount) ;
+  public: String (void) ; // Empty string
+  public: String (const char * inCString) ; // From a C string
+  public: String (const utf32 * inUTF32String) ;
+  public: static String spaces (const int32_t inSpaceCount) ;
   
 //--- Virtual destructor
-  public: virtual ~C_String (void) ;
+  public: virtual ~String (void) ;
 
 //--- Handling copy
-  public: C_String (const C_String & inSource) ;
-  public: C_String & operator = (const C_String & inString) ;
+  public: String (const String & inSource) ;
+  public: String & operator = (const String & inString) ;
 
 //--- Get string from stdin
-  public: static C_String newWithStdIn (void) ;
+  public: static String newWithStdIn (void) ;
 
 //--- Copy from a C string
-  public: C_String & operator = (const char * inSource) ;
+  public: String & operator = (const char * inSource) ;
 
 //--- Set capacity (does nothing if length >= inCapacity)
   public: void setCapacity (const uint32_t inCapacity) ;
@@ -114,7 +114,7 @@ class C_String : public AC_OutputStream {
 
 //--- Init from a string
   public: void setFromCstring (const char * inCstring) ;
-  public: void setFromString (const C_String & inString) ;
+  public: void setFromString (const String & inString) ;
 
 //--- Insulate
   public: void insulate (void) const ;
@@ -155,23 +155,23 @@ class C_String : public AC_OutputStream {
   public: int32_t length (void) const ;
 
 //--- Get a representation that contains only letters, digits or '_', so that it is a valid C identifier
-  public: C_String identifierRepresentation (void) const ; // Preserves ASCII letters
-  public: C_String nameRepresentation (void) const ; // Preserves ASCII letters, digits and '_'
-  public: C_String fileNameRepresentation (void) const ; // Preserves ASCII lowercase letters, digits and '_'
-  public: C_String assemblerRepresentation (void) const ; // Preserves ASCII letters, digits, '_', '.' and '$'
-  public: C_String utf8RepresentationWithUnicodeEscaping (void) const ; // \uXXXX, \UXXXXXXXX
-  public: C_String decodedStringFromRepresentation (bool & outOk) const ; // Reverses the above representations
+  public: String identifierRepresentation (void) const ; // Preserves ASCII letters
+  public: String nameRepresentation (void) const ; // Preserves ASCII letters, digits and '_'
+  public: String fileNameRepresentation (void) const ; // Preserves ASCII lowercase letters, digits and '_'
+  public: String assemblerRepresentation (void) const ; // Preserves ASCII letters, digits, '_', '.' and '$'
+  public: String utf8RepresentationWithUnicodeEscaping (void) const ; // \uXXXX, \UXXXXXXXX
+  public: String decodedStringFromRepresentation (bool & outOk) const ; // Reverses the above representations
 
 //--- Get a representation enclosing by a given character
 //      - escaped by a back slash
 //      - back slash is also escaped by back slash
-  public: C_String utf8RepresentationEnclosedWithin (const utf32 inCharacter, const bool inEscapeQuestionMark) const ;
+  public: String utf8RepresentationEnclosedWithin (const utf32 inCharacter, const bool inEscapeQuestionMark) const ;
 
 //--- Get an HTML representation (&, <, > and " are escaped using HTML escape sequence)
-  public: C_String HTMLRepresentation (void) const ;
+  public: String HTMLRepresentation (void) const ;
 
 //--- Get MD5 value
-  public: C_String md5 (void) const ;
+  public: String md5 (void) const ;
 
 //--- Get a string pointer
   public: const char * cString (LOCATION_ARGS) const ;
@@ -181,20 +181,20 @@ class C_String : public AC_OutputStream {
 
 //--- Compare with an other string 
   public: int32_t compare (const char * const inCstring) const ;
-  public: int32_t compare (const C_String & inString) const ;
-  public: int32_t compareStringByLength (const C_String & inString) const ;
-  public: bool operator == (const C_String & inString) const { return compare (inString) == 0 ; }
-  public: bool operator != (const C_String & inString) const { return compare (inString) != 0 ; }
-  public: bool operator <= (const C_String & inString) const { return compare (inString) <= 0 ; }
-  public: bool operator <  (const C_String & inString) const { return compare (inString) <  0 ; }
-  public: bool operator >= (const C_String & inString) const { return compare (inString) >= 0 ; }
-  public: bool operator >  (const C_String & inString) const { return compare (inString) >  0 ; }
+  public: int32_t compare (const String & inString) const ;
+  public: int32_t compareStringByLength (const String & inString) const ;
+  public: bool operator == (const String & inString) const { return compare (inString) == 0 ; }
+  public: bool operator != (const String & inString) const { return compare (inString) != 0 ; }
+  public: bool operator <= (const String & inString) const { return compare (inString) <= 0 ; }
+  public: bool operator <  (const String & inString) const { return compare (inString) <  0 ; }
+  public: bool operator >= (const String & inString) const { return compare (inString) >= 0 ; }
+  public: bool operator >  (const String & inString) const { return compare (inString) >  0 ; }
 
 //--- Distance from an other string
-  public: uint32_t LevenshteinDistanceFromString (const C_String & inOtherString) const ;
+  public: uint32_t LevenshteinDistanceFromString (const String & inOtherString) const ;
 
 //--- Get lines array
-  public: void linesArray (TC_UniqueArray <C_String> & outStringArray) const ;
+  public: void linesArray (TC_UniqueArray <String> & outStringArray) const ;
 
 //--- Get line from index
   public: class LineColumnContents lineAndColumnFromIndex (const int32_t inIndex) const ;
@@ -204,17 +204,17 @@ class C_String : public AC_OutputStream {
                                            const int32_t inColumnNumber) const ;
 
 //--- Subsitute 'inCharacter' by 'inString' ; if the character occurs twice, suppress one
-  public: C_String stringByReplacingCharacterByString (const utf32 inCharacter,
-                                                        const C_String & inString) const ;
+  public: String stringByReplacingCharacterByString (const utf32 inCharacter,
+                                                        const String & inString) const ;
 
 //--- Substitute 'inSearchedString' by 'inReplacementString'
-  public: C_String stringByReplacingStringByString (const C_String inSearchedString,
-                                                     const C_String inReplacementString,
+  public: String stringByReplacingStringByString (const String inSearchedString,
+                                                     const String inReplacementString,
                                                      uint32_t & outReplacementCount,
                                                      bool & outOk) const ;
 
-  public: C_String stringByReplacingStringByString (const C_String inSearchedString,
-                                                     const C_String inReplacementString) const ;
+  public: String stringByReplacingStringByString (const String inSearchedString,
+                                                     const String inReplacementString) const ;
 
 //--- Get character last occurrence (returns -1 if not found)
   public: int32_t lastOccurrenceIndexOfChar (const utf32 inChar) const ;
@@ -223,70 +223,70 @@ class C_String : public AC_OutputStream {
 //    - at the beginning of the string,
 //    - within the string (replace a sequence of white spaces with a single space),
 //    - at end at the end of string.
-  public: C_String stringByTrimmingSeparators (void) const ;
+  public: String stringByTrimmingSeparators (void) const ;
 
 //--- Get a sub string
-  public: C_String subString (const int32_t inStartIndex,
+  public: String subString (const int32_t inStartIndex,
                               const int32_t inLength) const ;
 
 //--- Get a sub string
-  public: C_String leftSubString (const int32_t inLength) const ;
-  public: C_String rightSubString (const int32_t inLength) const ;
-  public: C_String subStringFromIndex (const int32_t inIndex) const ;
+  public: String leftSubString (const int32_t inLength) const ;
+  public: String rightSubString (const int32_t inLength) const ;
+  public: String subStringFromIndex (const int32_t inIndex) const ;
 
 //--- String concatenation
-  public: C_String operator + (const C_String & inOperand) const ;
-  public: C_String operator + (const char * inOperand) const ;
+  public: String operator + (const String & inOperand) const ;
+  public: String operator + (const char * inOperand) const ;
 
 //--- Returns a string where ", ', <, > and & have been replaced by &quot;, &apos;, &lt;, &gt; and &amp;
-  public: C_String XMLEscapedString (void) const ;
+  public: String XMLEscapedString (void) const ;
 
 //--- Returns an array containing substrings from the receiver that have been divided by separator
-  public: void componentsSeparatedByString (const C_String & inSeparator,
-                                             TC_UniqueArray <C_String> & outResult) const ;
+  public: void componentsSeparatedByString (const String & inSeparator,
+                                             TC_UniqueArray <String> & outResult) const ;
 
 //--- Recompose a string from components
-  public: static C_String componentsJoinedByString (const TC_UniqueArray <C_String> & inComponentArray,
-                                                     const C_String & inSeparator) ;
+  public: static String componentsJoinedByString (const TC_UniqueArray <String> & inComponentArray,
+                                                     const String & inSeparator) ;
 
 //--- Interprets the receiver as a path, returning the receiver's extension
-  public: C_String pathExtension (void) const ;
+  public: String pathExtension (void) const ;
 
 //--- Returns a new string made by appending inPathComponent to the receiver, preceded if necessary by a path separator.
-  public: C_String stringByAppendingPathComponent (const C_String & inPathComponent) const ;
+  public: String stringByAppendingPathComponent (const String & inPathComponent) const ;
 
 //--- Returns a string made by deleting the last path component (if any, and only the last)
 //    from the receiver.
-  public: C_String stringByDeletingLastPathComponent (void) const ;
+  public: String stringByDeletingLastPathComponent (void) const ;
 
 //--- Returns a string made by deleting the extension (if any, and only the last)
 //    from the receiver.
-  public: C_String stringByDeletingPathExtension (void) const ;
+  public: String stringByDeletingPathExtension (void) const ;
 
 //--- Returns a string made by deleting from the receiver all characters from inSearchedString
-  public: C_String stringByDeletingTailFromString (const C_String & inSearchedString) const ;
+  public: String stringByDeletingTailFromString (const String & inSearchedString) const ;
 
 //--- Returns the last path component of the receiver.
-  public: C_String lastPathComponent (void) const ;
-  public: C_String lastPathComponentWithoutExtension (void) const ;
+  public: String lastPathComponent (void) const ;
+  public: String lastPathComponentWithoutExtension (void) const ;
 
 //--- Contains an other string ?
-  public: bool containsString (const C_String & inSearchedString) const ;
+  public: bool containsString (const String & inSearchedString) const ;
 
 //--- Return string, with first letter in upper case
-  public: C_String stringByCapitalizingFirstCharacter (void) const ;
+  public: String stringByCapitalizingFirstCharacter (void) const ;
 
 //--- Return string, with all letters in upper case
-  public: C_String uppercaseString (void) const ;
+  public: String uppercaseString (void) const ;
 
 //--- Return string, with all letters in lower case
-  public: C_String lowercaseString (void) const ;
+  public: String lowercaseString (void) const ;
 
 //--- Check if the receiver ends with inString
-  public: bool endsWithString (const C_String & inString) const ;
+  public: bool endsWithString (const String & inString) const ;
 
 //--- Return reversed string
-  public: C_String reversedString (void) const ;
+  public: String reversedString (void) const ;
   public: void reverseStringInPlace (void) ;
 
 //--- Return unsigned integer value
@@ -294,12 +294,12 @@ class C_String : public AC_OutputStream {
   public: uint32_t unsignedIntegerValue (void) const ;
 
 //--- Get current column index (starting from 0)
-  public: static C_String stringWithRepeatedCharacter (const utf32 inRepeatedCharacter, const uint32_t inCount) ;
+  public: static String stringWithRepeatedCharacter (const utf32 inRepeatedCharacter, const uint32_t inCount) ;
 
 //--- Standardizing Path
 //    - first, convert Windows Path to Unix Path (on windows only)
 //    - Reduce empty components and references to the current directory (that is, the sequences "//" and "/./") to single path separators
-  public: C_String stringByStandardizingPath (void) const ;
+  public: String stringByStandardizingPath (void) const ;
 
 //--- Convert string to double
   public: void convertToDouble (double & outDoubleValue,
@@ -333,7 +333,7 @@ class C_String : public AC_OutputStream {
 
   public: static bool parseUTF8 (const C_Data & inDataString,
                                   const int32_t inOffset,
-                                  C_String & outString) ;
+                                  String & outString) ;
 
 //---------------- Private attributes -------------
   private: mutable class cEmbeddedString * mEmbeddedString ;
@@ -360,7 +360,7 @@ class C_TextReadException : public::std::exception {
 class LineColumnContents final {
   private: int32_t mLineNumber ;
   private: int32_t mColumnNumber ;
-  private: C_String mLineContents ;
+  private: String mLineContents ;
 
   public: LineColumnContents (void) :
   mLineNumber (0),
@@ -370,7 +370,7 @@ class LineColumnContents final {
 
   public: LineColumnContents (const int32_t inLineNumber,
                               const int32_t inColumnNumber,
-                              const C_String inLineContents) :
+                              const String inLineContents) :
   mLineNumber (inLineNumber),
   mColumnNumber (inColumnNumber),
   mLineContents (inLineContents) {
@@ -378,7 +378,7 @@ class LineColumnContents final {
 
   public: int32_t lineNumber (void) const { return mLineNumber ; }
   public: int32_t columnNumber (void) const { return mColumnNumber ; }
-  public: C_String lineContents (void) const { return mLineContents ; }
+  public: String lineContents (void) const { return mLineContents ; }
 
 } ;
 

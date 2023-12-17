@@ -132,7 +132,7 @@ class capCollectionElementArray final {
   public: typeComparisonResult compareCollectionElementArray (const capCollectionElementArray & inOperand) const ;
 
 //--- Description
-  public: void description (C_String & ioString,
+  public: void description (String & ioString,
                              const int32_t inIndentation) const ;
 
 //--- Internal

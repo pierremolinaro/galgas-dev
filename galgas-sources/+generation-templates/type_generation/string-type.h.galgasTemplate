@@ -7,12 +7,12 @@
 class GALGAS_string : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
-  private: C_String mString ;
+  private: String mString ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
-  public: inline C_String stringValue (void) const { return mString ; }
+  public: inline String stringValue (void) const { return mString ; }
 
 //--------------------------------- Default constructor
   public: GALGAS_string (void) ;
@@ -21,7 +21,7 @@ class GALGAS_string : public AC_GALGAS_root {
   public: static GALGAS_string makeEmptyString (void) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_string (const C_String & inValue) ;
+  public: GALGAS_string (const String & inValue) ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (const char * inPropertyName) const override ;

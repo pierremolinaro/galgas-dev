@@ -59,8 +59,8 @@ bool isUnicodeCharacterAssigned (const utf32 inUnicodeCharacter) {
 //               EXIT.
 
 #ifdef __cplusplus
-  C_String unicodeName (const utf32 inUnicodeCharacter) {
-    C_String result ;
+  String unicodeName (const utf32 inUnicodeCharacter) {
+    String result ;
     if (! isUnicodeCharacterAssigned (inUnicodeCharacter)) {
       result += "invalid unicode character \\U" ;
       result.appendUnsignedHex8 (UNICODE_VALUE (inUnicodeCharacter)) ;
@@ -415,7 +415,7 @@ uint32_t utf8Length (const utf32 inUnicodeCharacter) {
 //--------------------------------------------------------------------------------------------------
 
 #ifdef __cplusplus
-  utf32 unicodeCharacterFromHTMLSequence (const C_String & inString) {
+  utf32 unicodeCharacterFromHTMLSequence (const String & inString) {
     utf32 result = TO_UNICODE (0) ; // Means not found
     int32_t lowIndex = 0 ;
     int32_t highIndex = kHTMLtoUnicodeConversionTableSize - 1 ;

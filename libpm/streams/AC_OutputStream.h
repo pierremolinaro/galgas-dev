@@ -28,7 +28,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class C_String ;
+class String ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -40,8 +40,8 @@ class AC_OutputStream {
   public: virtual ~AC_OutputStream (void) ;
 
 //--- Appending string
-  public: void appendString (const C_String inString) ; // Pass by copy (for handling 's.appendString (s) ;' instruction)
-  public: void appendUTF32LiteralStringConstant (const C_String & inUTF32String) ;
+  public: void appendString (const String inString) ; // Pass by copy (for handling 's.appendString (s) ;' instruction)
+  public: void appendUTF32LiteralStringConstant (const String & inUTF32String) ;
 
 //--- Appending C string
   public: void appendCString (const char * inCstring) ;
@@ -80,7 +80,7 @@ class AC_OutputStream {
 
 //--- Output Stream
   public: void operator += (const char * inCstring) ;
-  public: void operator += (const C_String inCstring) ; // Pass by copy (for handling 's += s ;' instruction)
+  public: void operator += (const String inCstring) ; // Pass by copy (for handling 's += s ;' instruction)
 
 //--- Flush print (does nothing for this class)
   public: virtual void flush (void) ;
@@ -101,37 +101,37 @@ class AC_OutputStream {
   public: void appendSpaces (const int32_t inSpaceCount) ;
 
 //--- Writing a string several times
-  public: void writeStringMultiple (const C_String & inString, const int32_t inRepeatCount) ;
+  public: void writeStringMultiple (const String & inString, const int32_t inRepeatCount) ;
 
 //--- Methods for writing comment
-  public: void appendTitleComment (const C_String & inLineCommentPrefix,
-                                    const C_String & inCommentString) ;
-  public: void appendHyphenLineCommentWithoutExtraBlankLine (const C_String & inLineCommentPrefix) ;
-  public: void appendCppHyphenLineComment (const C_String & inLineCommentPrefix) ;
-  public: void appendSpaceLineComment (const C_String & inLineCommentPrefix) ;
-  public: void appendCenterJustifiedComment (const C_String & inLineCommentPrefix,
-                                              const C_String & inCommentString) ;
-  public: void appendComment (const C_String & inLineCommentPrefix,
-                               const C_String & inCommentString) ;
-  public: void appendFileHeaderComment (const C_String & inLineCommentPrefix,
-                                         const C_String & inTitle,
-                                         const C_String & in_generatedBy_subtitle,
+  public: void appendTitleComment (const String & inLineCommentPrefix,
+                                    const String & inCommentString) ;
+  public: void appendHyphenLineCommentWithoutExtraBlankLine (const String & inLineCommentPrefix) ;
+  public: void appendCppHyphenLineComment (const String & inLineCommentPrefix) ;
+  public: void appendSpaceLineComment (const String & inLineCommentPrefix) ;
+  public: void appendCenterJustifiedComment (const String & inLineCommentPrefix,
+                                              const String & inCommentString) ;
+  public: void appendComment (const String & inLineCommentPrefix,
+                               const String & inCommentString) ;
+  public: void appendFileHeaderComment (const String & inLineCommentPrefix,
+                                         const String & inTitle,
+                                         const String & in_generatedBy_subtitle,
                                          const bool inIncludeLGPLtext) ;
 
 //--- Methods for writing C and C++ code
-  public: void appendCLiteralStringConstant (const C_String & inString, const int32_t inLineMaxLength) ;
-  public: void appendCLiteralStringConstant (const C_String & inCstring) ;
+  public: void appendCLiteralStringConstant (const String & inString, const int32_t inLineMaxLength) ;
+  public: void appendCLiteralStringConstant (const String & inCstring) ;
   public: void appendCLiteralCharConstant (const utf32 c) ;
-  public: void appendCLiteralStringConstantWithoutDelimiters (const C_String & inCstring) ;
+  public: void appendCLiteralStringConstantWithoutDelimiters (const String & inCstring) ;
 
 //--- Writing C++ Comments (// ...)
-  public: void appendCppTitleComment (const C_String & inCommentString) ;
+  public: void appendCppTitleComment (const String & inCommentString) ;
   public: void appendCppTitleComment (const char * inCommentString) ;
   public: void appendCppHyphenLineCommentWithoutExtraBlankLine (void) ;
   public: void appendCppHyphenLineComment (void) ;
   public: void appendCppSpaceLineComment (void) ;
-  public: void appendCppCenterJustifiedComment (const C_String & inCommentString) ;
-  public: void appendCppComment (const C_String & inCommentString) ;
+  public: void appendCppCenterJustifiedComment (const String & inCommentString) ;
+  public: void appendCppComment (const String & inCommentString) ;
 
 //--- Writing C Comments (/* ... */)
   public: void append_C_HyphenLineComment (void) ;
@@ -152,18 +152,18 @@ class AC_OutputStream {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String stringWithUnsigned (const uint64_t inValue) ;
+String stringWithUnsigned (const uint64_t inValue) ;
 
-C_String stringWithHex0xUnsigned (const uint64_t inValue) ;
+String stringWithHex0xUnsigned (const uint64_t inValue) ;
 
-C_String stringWithSigned (const int64_t inValue) ;
+String stringWithSigned (const int64_t inValue) ;
 
-C_String stringWithPointer (const void * inValue) ;
+String stringWithPointer (const void * inValue) ;
 
-C_String stringWithCharacter (const char inValue) ;
+String stringWithCharacter (const char inValue) ;
 
-C_String stringWithUnicodeCharacter (const utf32 inValue) ;
+String stringWithUnicodeCharacter (const utf32 inValue) ;
 
-C_String stringWithDouble (const double inValue) ;
+String stringWithDouble (const double inValue) ;
 
 //--------------------------------------------------------------------------------------------------

@@ -183,12 +183,12 @@ if not IS_ABSTRACT then
   %  return & kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;\n%
   %}\n\n%
   if [ALL_PROPERTY_LIST count] == 0 then
-    %void cPtr_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,\n%
+    %void cPtr_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,\n%
                                !^%const int32_t /* inIndentation */) const {\n%
     %  ioString += "[@%!TYPE_NAME%]" ;\n%
     %}\n\n%
   else
-    %void cPtr_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,\n%
+    %void cPtr_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,\n%
                                !^%const int32_t inIndentation) const {\n%
     %  ioString += "[@%!TYPE_NAME%:" ;\n%
     for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST

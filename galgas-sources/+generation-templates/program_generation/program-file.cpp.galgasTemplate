@@ -54,7 +54,7 @@ const char * projectVersionString (void) {
 
 int mainForLIBPM (int inArgc, const char * inArgv []) {
 //--- Analyze Command Line Options
-  TC_UniqueArray <C_String> sourceFilesArray ;
+  TC_UniqueArray <String> sourceFilesArray ;
   F_Analyze_CLI_Options (inArgc, inArgv,
                          sourceFilesArray,
                          kSourceFileExtensions,
@@ -63,7 +63,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
 //---
   int returnCode = 0 ; // No error
 //--- Set Execution mode
-  C_String executionModeOptionErrorMessage ;
+  String executionModeOptionErrorMessage ;
   setExecutionMode (executionModeOptionErrorMessage) ;
   if (executionModeOptionErrorMessage.length () > 0) {
     gCout += executionModeOptionErrorMessage ;
@@ -77,7 +77,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
       cLexiqueIntrospection::handleGetKeywordListOption (commonCompiler) ;
       const bool verboseOptionOn = verboseOutput () ;
       for (int32_t i=0 ; i<sourceFilesArray.count () ; i++) {
-        const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
+        const String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
         const GALGAS_string sfp = GALGAS_string (sourceFilesArray (i COMMA_HERE)) ;
         const GALGAS_location location = commonCompiler->here () ;
         const GALGAS_lstring sourceFilePath (sfp, location) ;
@@ -154,7 +154,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
       }
     //--- Display error and warnings count
       if (verboseOptionOn || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {
-        C_String message ;
+        String message ;
         if (totalWarningCount () == 0) {
           message += "No warning" ;
         }else if (totalWarningCount () == 1) {

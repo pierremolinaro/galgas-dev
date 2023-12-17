@@ -65,7 +65,7 @@ GALGAS_data GALGAS_data::constructor_dataWithContentsOfFile (const GALGAS_string
 
       result = GALGAS_data (binaryData) ;
     }else{
-      C_String s ;
+      String s ;
       s += "cannot read binary file at path '" ;
       s += inFilePath.stringValue () ;
       s += "'" ;
@@ -94,7 +94,7 @@ typeComparisonResult GALGAS_data::objectCompare (const GALGAS_data & inOperand) 
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_data::description (C_String & ioString,
+void GALGAS_data::description (String & ioString,
                                const int32_t /* inIndentation */) const {
   ioString += "<@data:" ;
   if (isValid ()) {
@@ -121,7 +121,7 @@ GALGAS_uint GALGAS_data::getter_count (UNUSED_LOCATION_ARGS) const {
 GALGAS_string GALGAS_data::getter_cStringRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
-    C_String s ;
+    String s ;
     s.appendUnsigned (mData (0 COMMA_HERE)) ;
     for (int32_t i=1 ; i<mData.count () ; i++) {
       s += ", " ;
@@ -213,7 +213,7 @@ void GALGAS_data::setter_appendUIntLE (GALGAS_uint inArgument0
 void GALGAS_data::setter_appendUTF_38_String (GALGAS_string inString
                                               COMMA_UNUSED_LOCATION_ARGS) {
   if (inString.isValid ()) {
-    const C_String s = inString.stringValue () ;
+    const String s = inString.stringValue () ;
     for (int32_t i=0 ; i<s.length () ; i++) {
       const utf32 c = s (i COMMA_HERE) ;
       char sequence [5] ;
@@ -257,7 +257,7 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
         const bool verboseOptionOn = verboseOutput () ;
         bool ok = C_FileManager::makeDirectoryIfDoesNotExist (inFilePath.stringValue ().stringByDeletingLastPathComponent ()) ;
         if (! ok) {
-          C_String message ;
+          String message ;
           message += "cannot create '" ;
           message += inFilePath.stringValue () ;
           message += "' directory" ;
@@ -266,11 +266,11 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
         }else{
           ok = C_FileManager::writeBinaryDataToFile (mData, inFilePath.stringValue ()) ;
           if (ok && verboseOptionOn && fileAlreadyExists) {
-            ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.stringValue () + "'.\n") ;
+            ggs_printFileOperationSuccess (String ("Replaced '") + inFilePath.stringValue () + "'.\n") ;
           }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-            ggs_printFileCreationSuccess (C_String ("Created '") + inFilePath.stringValue () + "'.\n") ;
+            ggs_printFileCreationSuccess (String ("Created '") + inFilePath.stringValue () + "'.\n") ;
           }else if (! ok) {
-            C_String message ;
+            String message ;
             message += "cannot write '" ;
             message += inFilePath.stringValue () ;
             message += "' file" ;
@@ -279,7 +279,7 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
           }
         }
       }else{
-        ggs_printWarning (inCompiler, C_SourceTextInString (), C_IssueWithFixIt (), C_String ("Need to write '") + inFilePath.stringValue () + "'." COMMA_HERE) ;
+        ggs_printWarning (inCompiler, C_SourceTextInString (), C_IssueWithFixIt (), String ("Need to write '") + inFilePath.stringValue () + "'." COMMA_HERE) ;
       }
     }
   }
@@ -291,18 +291,18 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
                                       C_Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) const {
   if (inFilePath.isValid ()) {
-    const C_String filePath = inFilePath.stringValue () ;
+    const String filePath = inFilePath.stringValue () ;
     if (filePath.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("'@data writeToFile' modifier invoked with empty file path argument" COMMA_THERE) ;
     }else if (! C_Compiler::performGeneration ()) {
-      ggs_printWarning (inCompiler, C_SourceTextInString (), C_IssueWithFixIt (), C_String ("Need to write '") + filePath + "'." COMMA_HERE) ;
+      ggs_printWarning (inCompiler, C_SourceTextInString (), C_IssueWithFixIt (), String ("Need to write '") + filePath + "'." COMMA_HERE) ;
     }else{
       const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (filePath) ;
       const bool verboseOptionOn = verboseOutput () ;
       C_FileManager::makeDirectoryIfDoesNotExist (filePath.stringByDeletingLastPathComponent()) ;
       C_BinaryFileWrite binaryFile (filePath) ;
       if (! binaryFile.isOpened ()) {
-        C_String s ;
+        String s ;
         s += "'@data writeToFile': cannot open '" ;
         s += filePath ;
         s += "' file in write mode" ;
@@ -311,11 +311,11 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
         binaryFile.appendData (mData) ;
         const bool ok = binaryFile.close () ;
         if (ok && verboseOptionOn && fileAlreadyExists) {
-          ggs_printFileOperationSuccess (C_String ("Replaced '") + filePath + "'.\n") ;
+          ggs_printFileOperationSuccess (String ("Replaced '") + filePath + "'.\n") ;
         }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-          ggs_printFileCreationSuccess (C_String ("Created '") + filePath + "'.\n") ;
+          ggs_printFileCreationSuccess (String ("Created '") + filePath + "'.\n") ;
         }else if (! ok) {
-          C_String message ;
+          String message ;
           message += "cannot write '" ;
           message += filePath ;
           message += "' file" ;
@@ -332,18 +332,18 @@ void GALGAS_data::method_writeToExecutableFile (GALGAS_string inFilePath,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   if (inFilePath.isValid ()) {
-    const C_String filePath = inFilePath.stringValue () ;
+    const String filePath = inFilePath.stringValue () ;
     if (filePath.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("'@data writeToFile' modifier invoked with empty file path argument" COMMA_THERE) ;
     }else if (! C_Compiler::performGeneration ()) {
-      ggs_printWarning (inCompiler, C_SourceTextInString (), C_IssueWithFixIt (), C_String ("Need to write '") + filePath + "'." COMMA_HERE) ;
+      ggs_printWarning (inCompiler, C_SourceTextInString (), C_IssueWithFixIt (), String ("Need to write '") + filePath + "'." COMMA_HERE) ;
     }else{
       const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (filePath) ;
       const bool verboseOptionOn = verboseOutput () ;
       C_FileManager::makeDirectoryIfDoesNotExist (filePath.stringByDeletingLastPathComponent()) ;
       C_BinaryFileWrite binaryFile (filePath) ;
       if (! binaryFile.isOpened ()) {
-        C_String s ;
+        String s ;
         s += "'@data writeToExecutableFile': cannot open '" ;
         s += filePath ;
         s += "' file in write mode" ;
@@ -353,11 +353,11 @@ void GALGAS_data::method_writeToExecutableFile (GALGAS_string inFilePath,
         const bool ok = binaryFile.close () ;
         C_FileManager::makeFileExecutable (filePath) ;
         if (ok && verboseOptionOn && fileAlreadyExists) {
-          ggs_printFileOperationSuccess (C_String ("Replaced '") + filePath + "'.\n") ;
+          ggs_printFileOperationSuccess (String ("Replaced '") + filePath + "'.\n") ;
         }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-          ggs_printFileOperationSuccess (C_String ("Created '") + filePath + "'.\n") ;
+          ggs_printFileOperationSuccess (String ("Created '") + filePath + "'.\n") ;
         }else if (! ok) {
-          C_String message ;
+          String message ;
           message += "cannot write '" ;
           message += filePath ;
           message += "' file" ;
@@ -395,7 +395,7 @@ class cCollectionElement_data : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+ public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -430,7 +430,7 @@ cCollectionElement * cCollectionElement_data::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_data::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_data::description (String & ioString, const int32_t inIndentation) const {
   mProperty_data.description (ioString, inIndentation) ;
 }
 

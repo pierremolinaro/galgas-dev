@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 #include "utilities/C_SharedObject.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -33,8 +33,8 @@
 
 class cSourceTextInString final : public C_SharedObject {
 //--- Constructor
-  public: cSourceTextInString (const C_String & inSourceString,
-                               const C_String & inFilePath,
+  public: cSourceTextInString (const String & inSourceString,
+                               const String & inFilePath,
                                const bool inShowSourceOnDetailledErrorMessage
                                COMMA_LOCATION_ARGS) :
   C_SharedObject (THERE),
@@ -43,8 +43,8 @@ class cSourceTextInString final : public C_SharedObject {
   mShowSourceOnDetailledErrorMessage (inShowSourceOnDetailledErrorMessage) {
   }
 
-  public: C_String mFilePath ;
-  public: C_String mSourceString ;
+  public: String mFilePath ;
+  public: String mSourceString ;
   public: bool mShowSourceOnDetailledErrorMessage ;
 
 //--- No copy
@@ -59,8 +59,8 @@ class C_SourceTextInString {
   public: C_SourceTextInString (void) ;
 
 //--- Constructor
-  public: C_SourceTextInString (const C_String & inSourceString,
-                                 const C_String & inFilePath,
+  public: C_SourceTextInString (const String & inSourceString,
+                                 const String & inFilePath,
                                  const bool inShowSourceOnDetailledErrorMessage) ;
 
 //--- Default constructor
@@ -73,12 +73,12 @@ class C_SourceTextInString {
 //--- Source file Name
   private: cSourceTextInString * mObject ;
 
-  public: inline C_String sourceFilePath (void) const {
+  public: inline String sourceFilePath (void) const {
     return (mObject == nullptr) ? "" : mObject->mFilePath ;
   }
 
 //--- Source text
-  public: inline C_String sourceString (void) const {
+  public: inline String sourceString (void) const {
     return (mObject == nullptr) ? "" : mObject->mSourceString ;
   }
 
@@ -106,9 +106,9 @@ class C_SourceTextInString {
     return (mObject == nullptr) ? nullptr : & (mObject->mSourceString.utf32String (THERE)) [inIndex] ;
   }
 
-  public: C_String getLineForLocation (const class C_LocationInSource & inLocation) const ;
+  public: String getLineForLocation (const class C_LocationInSource & inLocation) const ;
 
-  public: void appendSourceContents (C_String & ioMessage) const ;
+  public: void appendSourceContents (String & ioMessage) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

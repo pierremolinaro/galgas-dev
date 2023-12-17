@@ -269,7 +269,7 @@ GALGAS_double GALGAS_uint::getter_double (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_uint::getter_alphaString (UNUSED_LOCATION_ARGS) const {
-  C_String s = "aaaaaaa" ; // 2**32 values needs 7 characters (base 26) : n = 32 * log (2) / log (26)
+  String s = "aaaaaaa" ; // 2**32 values needs 7 characters (base 26) : n = 32 * log (2) / log (26)
   uint32_t v = mUIntValue ;
   int32_t idx = 6 ;
   while (v > 0) {
@@ -296,7 +296,7 @@ GALGAS_bigint GALGAS_uint::getter_bigint (UNUSED_LOCATION_ARGS) const {
 GALGAS_string GALGAS_uint::getter_string (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
-    C_String s ;
+    String s ;
     s.appendUnsigned (mUIntValue) ;
     result = GALGAS_string (s) ;
   }
@@ -308,7 +308,7 @@ GALGAS_string GALGAS_uint::getter_string (UNUSED_LOCATION_ARGS) const {
 GALGAS_string GALGAS_uint::getter_hexString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
-    C_String s ;
+    String s ;
     s.appendCString ("0x") ;
     s.appendUnsignedHex (mUIntValue) ;
     result = GALGAS_string (s) ;
@@ -328,13 +328,13 @@ GALGAS_string GALGAS_uint::getter_hexStringSeparatedBy (const GALGAS_char & inSe
     if (group <= 0) {
       inCompiler->onTheFlyRunTimeError ("last argument should be > 0" COMMA_THERE) ;
     }else{
-      C_String s ;
+      String s ;
       s.appendUnsignedHex (mUIntValue) ;
       const utf32 separator = inSeparator.charValue() ;
       for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
         s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
       }
-      result = GALGAS_string (C_String ("0x") + s) ;
+      result = GALGAS_string (String ("0x") + s) ;
     }
   }
   return result ;
@@ -343,14 +343,14 @@ GALGAS_string GALGAS_uint::getter_hexStringSeparatedBy (const GALGAS_char & inSe
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_uint::getter_xString (UNUSED_LOCATION_ARGS) const {
-  C_String s ;
+  String s ;
   s.appendUnsignedHex (mUIntValue) ;
   return GALGAS_string (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_uint::description (C_String & ioString,
+void GALGAS_uint::description (String & ioString,
                                const int32_t /* inIndentation */) const {
   ioString += "<@uint:" ;
   if (isValid ()) {

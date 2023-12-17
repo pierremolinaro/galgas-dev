@@ -139,8 +139,8 @@ uint32_t C_DirectedGraph::unusedNodeIndex (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_DirectedGraph::graphvizString (const TC_UniqueArray <C_String> & inNodeNameArray) const {
-  C_String s = "digraph G {\n" ;
+String C_DirectedGraph::graphvizString (const TC_UniqueArray <String> & inNodeNameArray) const {
+  String s = "digraph G {\n" ;
   for (int32_t i=0 ; i<mEdges.count () ; i++) {
     if (isNodeDefined (uint32_t (i))) {
       s += "  " ;

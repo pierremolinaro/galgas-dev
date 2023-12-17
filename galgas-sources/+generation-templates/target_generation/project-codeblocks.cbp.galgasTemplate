@@ -136,7 +136,7 @@ end
    <Unit filename="%!LIBPM_PATH%/streams/C_ErrorOut.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/unicode_character_cpp.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/unicode_string_routines.cpp" />
-   <Unit filename="%!LIBPM_PATH%/strings/C_String.cpp" />
+   <Unit filename="%!LIBPM_PATH%/strings/String-class.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/C_HTMLString.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/print.cpp" />
    <Unit filename="%!LIBPM_PATH%/time/C_Timer.cpp" />

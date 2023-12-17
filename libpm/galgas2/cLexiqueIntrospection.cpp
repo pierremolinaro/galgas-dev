@@ -29,7 +29,7 @@ static cLexiqueIntrospection * gLexiqueIntrospectionRoot = nullptr ;
 
 //--------------------------------------------------------------------------------------------------
 
-cLexiqueIntrospection::cLexiqueIntrospection (void (*appendKeywordListNames) (TC_UniqueArray <C_String> & ioList),
+cLexiqueIntrospection::cLexiqueIntrospection (void (*appendKeywordListNames) (TC_UniqueArray <String> & ioList),
                                               Type_getKeywordsForIdentifier getKeywordsForIdentifier) :
 mNext (gLexiqueIntrospectionRoot),
 mAppendKeywordListNames (appendKeywordListNames),
@@ -39,7 +39,7 @@ mGetKeywordsForIdentifier (getKeywordsForIdentifier) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cLexiqueIntrospection::getKeywordListNames (TC_UniqueArray <C_String> & outList) {
+void cLexiqueIntrospection::getKeywordListNames (TC_UniqueArray <String> & outList) {
   outList.removeAllKeepingCapacity () ;
   cLexiqueIntrospection * p = gLexiqueIntrospectionRoot ;
   while (nullptr != p) {
@@ -50,9 +50,9 @@ void cLexiqueIntrospection::getKeywordListNames (TC_UniqueArray <C_String> & out
 
 //--------------------------------------------------------------------------------------------------
 
-void cLexiqueIntrospection::getKeywordListForIdentifier (const C_String & inIdentifier,
+void cLexiqueIntrospection::getKeywordListForIdentifier (const String & inIdentifier,
                                                          bool & outFound,
-                                                         TC_UniqueArray <C_String> & outList) {
+                                                         TC_UniqueArray <String> & outList) {
   outFound = false ;
   outList.removeAllKeepingCapacity () ;
   cLexiqueIntrospection * p = gLexiqueIntrospectionRoot ;
@@ -67,24 +67,24 @@ void cLexiqueIntrospection::getKeywordListForIdentifier (const C_String & inIden
 //--------------------------------------------------------------------------------------------------
 
 void cLexiqueIntrospection::handleGetKeywordListOption (C_Compiler * inCompiler) {
-  const C_String option = gOption_galgas_5F_builtin_5F_options_outputKeywordList.readProperty_value () ;
+  const String option = gOption_galgas_5F_builtin_5F_options_outputKeywordList.readProperty_value () ;
   if (option != "") {
-    const C_String optionFormat = "lexique_name:list_name:columns:prefix:postfix:path" ;
+    const String optionFormat = "lexique_name:list_name:columns:prefix:postfix:path" ;
     gCout += "Option \"--" ;
     gCout += gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString ;
     gCout += "=" ;
     gCout += option ;
     gCout += "\":\n" ;
-    TC_UniqueArray <C_String> components ;
+    TC_UniqueArray <String> components ;
     option.componentsSeparatedByString (":", components) ;
     if (components.count () != 6) {
-      C_String message = "invalid option ; should be \"--" ;
+      String message = "invalid option ; should be \"--" ;
       message += gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString ;
       message += "=" ;
       message += optionFormat + "\"" ;
       inCompiler->onTheFlyRunTimeError (message COMMA_HERE) ;
     }else if (!components (2 COMMA_HERE).isUnsignedInteger ()) {
-      C_String message = "invalid option ; in \"--" ;
+      String message = "invalid option ; in \"--" ;
       message += gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString ;
       message += "=" ;
       message += optionFormat + "\", " ;
@@ -92,19 +92,19 @@ void cLexiqueIntrospection::handleGetKeywordListOption (C_Compiler * inCompiler)
       inCompiler->onTheFlyRunTimeError (message COMMA_HERE) ;
     }else{
       const uint32_t columns = components (2 COMMA_HERE).unsignedIntegerValue () ;
-      const C_String prefix = components (3 COMMA_HERE) ;
-      const C_String postfix = components (4 COMMA_HERE) ;
-      const C_String identifier = components (0 COMMA_HERE) + ":" + components (1 COMMA_HERE) ;
-      TC_UniqueArray <C_String> nameList ;
+      const String prefix = components (3 COMMA_HERE) ;
+      const String postfix = components (4 COMMA_HERE) ;
+      const String identifier = components (0 COMMA_HERE) + ":" + components (1 COMMA_HERE) ;
+      TC_UniqueArray <String> nameList ;
       bool found = false ;
       getKeywordListForIdentifier (identifier, found, nameList) ;
       if (!found) {
-        C_String message = "invalid option ; in \"--" ;
+        String message = "invalid option ; in \"--" ;
         message += gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString ;
         message += "=" ;
         message += optionFormat + "\", " ;
         message += "available values for \"lexique_name:list_name\" are:" ;
-        TC_UniqueArray <C_String> keywordListNames ; getKeywordListNames (keywordListNames) ;
+        TC_UniqueArray <String> keywordListNames ; getKeywordListNames (keywordListNames) ;
         for (int32_t i=0 ; i<keywordListNames.count () ; i++) {
           message += "  - " ;
           message += keywordListNames (i COMMA_HERE) ;
@@ -113,7 +113,7 @@ void cLexiqueIntrospection::handleGetKeywordListOption (C_Compiler * inCompiler)
         inCompiler->onTheFlyRunTimeError (message COMMA_HERE) ;
       }else{
         uint32_t idx = 0 ;
-        C_String s ;
+        String s ;
         for (int32_t i=0 ; i<nameList.count() ; i++) {
           s += "  " ;
           s += prefix ;
@@ -134,7 +134,7 @@ void cLexiqueIntrospection::handleGetKeywordListOption (C_Compiler * inCompiler)
           }
           s += "  \\\\\n" ;
         }
-        const C_String path = components (5 COMMA_HERE) ;
+        const String path = components (5 COMMA_HERE) ;
         C_FileManager::writeStringToFile (s, path) ;
       }
     }

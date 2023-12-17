@@ -49,7 +49,7 @@ class cDirectoryWrapper {
 class GALGAS_filewrapper : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: const cDirectoryWrapper * mRootDirectoryPtr ;
-  private: C_String mCurrentDirectory ;
+  private: String mCurrentDirectory ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return nullptr != mRootDirectoryPtr ; }

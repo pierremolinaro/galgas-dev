@@ -72,14 +72,14 @@ GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithPredicateString (con
                                                                              COMMA_LOCATION_ARGS) {
   GALGAS_binaryset result ;
   if (inBitString.isValid ()) {
-    const C_String bitString = inBitString.stringValue () ;
+    const String bitString = inBitString.stringValue () ;
     const int32_t stringLength = bitString.length () ;
     int32_t stringIndex = 0 ;
     bool ok = true ;
     C_BDD resultBDD ;
     while ((stringIndex < stringLength) && ok) {
       utf32 cc = bitString (stringIndex COMMA_HERE) ;
-      C_String s ;
+      String s ;
       while ((stringIndex < stringLength) && ((UNICODE_VALUE (cc) == '0') || (UNICODE_VALUE (cc) == '1') || (UNICODE_VALUE (cc) == 'X') || (UNICODE_VALUE (cc) == ' '))) {
         s.appendUnicodeCharacter (cc COMMA_HERE) ;
         stringIndex ++ ;
@@ -112,7 +112,7 @@ GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithPredicateString (con
     if (ok) {
       result = GALGAS_binaryset (resultBDD) ;
     }else{
-      C_String message ("invalid query string near index ") ;
+      String message ("invalid query string near index ") ;
       message.appendSigned (stringIndex) ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }
@@ -400,7 +400,7 @@ GALGAS_binaryset GALGAS_binaryset::operator_tilde (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_binaryset::description (C_String & ioString,
+void GALGAS_binaryset::description (String & ioString,
                                     const int32_t /* inIndentation */) const {
   ioString += "<@binaryset: " ;
   if (isValid ()) {
@@ -409,7 +409,7 @@ void GALGAS_binaryset::description (C_String & ioString,
     }else if (mBDD.isTrue ()){
       ioString += "true" ;
     }else{
-      TC_UniqueArray <C_String> stringArray ;
+      TC_UniqueArray <String> stringArray ;
       mBDD.buildCompressedBigEndianStringValueArray (stringArray COMMA_HERE) ;
       for (int32_t i=0 ; i<stringArray.count () ; i++) {
         if (i != 0) {
@@ -596,7 +596,7 @@ GALGAS_bigint GALGAS_binaryset::getter_bigValueCount (const GALGAS_uint & inVari
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_uint_36__34_ GALGAS_binaryset::getter_compressedValueCount (UNUSED_LOCATION_ARGS) const {
-  TC_UniqueArray <C_String> valuesArray ;
+  TC_UniqueArray <String> valuesArray ;
   mBDD.buildCompressedLittleEndianStringValueArray (valuesArray COMMA_HERE) ;
   return GALGAS_uint_36__34_ ((uint32_t) valuesArray.count ()) ;
 }
@@ -648,7 +648,7 @@ GALGAS_stringlist GALGAS_binaryset::getter_compressedStringValueList (const GALG
     const uint32_t variableCount = inVariableCount.uintValue () ;
     const uint32_t actualVariableCount = mBDD.significantVariableCount () ;
     if (actualVariableCount > variableCount) {
-      C_String message ;
+      String message ;
       message += "variable count argument (" ;
       message.appendSigned (variableCount) ;
       message += ") is lower than actual variable count (" ;
@@ -656,11 +656,11 @@ GALGAS_stringlist GALGAS_binaryset::getter_compressedStringValueList (const GALG
       message += "); it should be greater or equal" ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
-      TC_UniqueArray <C_String> valuesArray ;
+      TC_UniqueArray <String> valuesArray ;
       mBDD.buildCompressedBigEndianStringValueArray (valuesArray, variableCount COMMA_THERE) ;
       result = GALGAS_stringlist::constructor_emptyList (THERE) ;
       for (int32_t i=0 ; i<valuesArray.count () ; i++) {
-        const C_String v = valuesArray (i COMMA_HERE) ;
+        const String v = valuesArray (i COMMA_HERE) ;
         result.addAssign_operation (GALGAS_string (v) COMMA_HERE) ;
       }
     }
@@ -674,11 +674,11 @@ GALGAS_stringlist GALGAS_binaryset::getter_stringValueList (const GALGAS_uint & 
                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (isValid () && inVariableCount.isValid ()) {
-    TC_UniqueArray <C_String> valuesArray ;
+    TC_UniqueArray <String> valuesArray ;
     mBDD.buildBigEndianStringValueArray (valuesArray, inVariableCount.uintValue ()) ;
     result = GALGAS_stringlist::constructor_emptyList (THERE) ;
     for (int32_t i=0 ; i<valuesArray.count () ; i++) {
-      const C_String v = valuesArray (i COMMA_HERE) ;
+      const String v = valuesArray (i COMMA_HERE) ;
       result.addAssign_operation (GALGAS_string (v) COMMA_HERE) ;
     }
   }
@@ -742,19 +742,19 @@ GALGAS_string GALGAS_binaryset::getter_print (const GALGAS_stringlist & inVariab
                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid () && inVariableList.isValid () && inBDDCount.isValid ()) {
-    TC_UniqueArray <C_String> variablesNames ;
+    TC_UniqueArray <String> variablesNames ;
     TC_UniqueArray <int32_t> bitCounts ;
     cEnumerator_stringlist variableEnumerator (inVariableList, kENUMERATION_UP) ;
     cEnumerator_uintlist bddCountEnumerator (inBDDCount, kENUMERATION_UP) ;
     while (variableEnumerator.hasCurrentObject () && bddCountEnumerator.hasCurrentObject ()) {
-      const C_String name = variableEnumerator.current_mValue (HERE).stringValue () ;
+      const String name = variableEnumerator.current_mValue (HERE).stringValue () ;
       variablesNames.appendObject (name) ;
       const uint32_t bddCount = bddCountEnumerator.current_mValue (HERE).uintValue () ;
       bitCounts.appendObject ((int32_t) bddCount) ;
       variableEnumerator.gotoNextObject () ;
       bddCountEnumerator.gotoNextObject () ;
     }
-    C_String s ;
+    String s ;
     mBDD.print (s, variablesNames, bitCounts) ;
     result = GALGAS_string (s) ;
   }
@@ -799,10 +799,10 @@ GALGAS_string GALGAS_binaryset::getter_graphviz (const GALGAS_stringlist & inBit
                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid () && inBitNameList.isValid ()) {
-    TC_UniqueArray <C_String> bitNameArray ;
+    TC_UniqueArray <String> bitNameArray ;
     cEnumerator_stringlist variableEnumerator (inBitNameList, kENUMERATION_UP) ;
     while (variableEnumerator.hasCurrentObject ()) {
-      const C_String name = variableEnumerator.current_mValue (HERE).stringValue () ;
+      const String name = variableEnumerator.current_mValue (HERE).stringValue () ;
       bitNameArray.appendObject (name) ;
       variableEnumerator.gotoNextObject () ;
     }

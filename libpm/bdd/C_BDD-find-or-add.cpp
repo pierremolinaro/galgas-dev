@@ -21,7 +21,7 @@
 #include "bdd/C_BDD.h"
 #include "utilities/F_GetPrime.h"
 #include "utilities/C_PrologueEpilogue.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 #include "bdd/C_BDD-node.h"
 #include "time/C_Timer.h"
 

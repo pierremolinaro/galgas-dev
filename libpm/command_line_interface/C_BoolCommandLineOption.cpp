@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "command_line_interface/C_BoolCommandLineOption.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -131,7 +131,7 @@ void C_BoolCommandLineOption::printBoolOptions (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_BoolCommandLineOption::getBoolOptionNameList (TC_UniqueArray <C_String> & outArray) {
+void C_BoolCommandLineOption::getBoolOptionNameList (TC_UniqueArray <String> & outArray) {
   C_BoolCommandLineOption * p = gFirstBoolCommand ;
   while (p != nullptr) {
     if (p->mVisibleInGalgas) {
@@ -144,8 +144,8 @@ void C_BoolCommandLineOption::getBoolOptionNameList (TC_UniqueArray <C_String> &
 
 //--------------------------------------------------------------------------------------------------
 
-utf32 C_BoolCommandLineOption::getBoolOptionInvocationLetter (const C_String & inDomainName,
-                                                              const C_String & inIdentifier) {
+utf32 C_BoolCommandLineOption::getBoolOptionInvocationLetter (const String & inDomainName,
+                                                              const String & inIdentifier) {
   utf32 result = TO_UNICODE (0) ;
   C_BoolCommandLineOption * p = gFirstBoolCommand ;
   bool found = false ;
@@ -159,9 +159,9 @@ utf32 C_BoolCommandLineOption::getBoolOptionInvocationLetter (const C_String & i
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_BoolCommandLineOption::getBoolOptionInvocationString (const C_String & inDomainName,
-                                                                 const C_String & inIdentifier) {
-  C_String result ;
+String C_BoolCommandLineOption::getBoolOptionInvocationString (const String & inDomainName,
+                                                                 const String & inIdentifier) {
+  String result ;
   C_BoolCommandLineOption * p = gFirstBoolCommand ;
   bool found = false ;
   while ((p != nullptr) && not found) {
@@ -174,9 +174,9 @@ C_String C_BoolCommandLineOption::getBoolOptionInvocationString (const C_String 
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_BoolCommandLineOption::getBoolOptionCommentString (const C_String & inDomainName,
-                                                              const C_String & inIdentifier) {
-  C_String result ;
+String C_BoolCommandLineOption::getBoolOptionCommentString (const String & inDomainName,
+                                                              const String & inIdentifier) {
+  String result ;
   C_BoolCommandLineOption * p = gFirstBoolCommand ;
   bool found = false ;
   while ((p != nullptr) && not found) {
@@ -189,8 +189,8 @@ C_String C_BoolCommandLineOption::getBoolOptionCommentString (const C_String & i
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_BoolCommandLineOption::getBoolOptionValue (const C_String & inDomainName,
-                                                  const C_String & inIdentifier) {
+bool C_BoolCommandLineOption::getBoolOptionValue (const String & inDomainName,
+                                                  const String & inIdentifier) {
   bool result = false ;
   C_BoolCommandLineOption * p = gFirstBoolCommand ;
   bool found = false ;
@@ -204,8 +204,8 @@ bool C_BoolCommandLineOption::getBoolOptionValue (const C_String & inDomainName,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_BoolCommandLineOption::setBoolOptionValue (const C_String & inDomainName,
-                                                  const C_String & inIdentifier,
+void C_BoolCommandLineOption::setBoolOptionValue (const String & inDomainName,
+                                                  const String & inIdentifier,
                                                   const bool inValue) {
   C_BoolCommandLineOption * p = gFirstBoolCommand ;
   bool found = false ;

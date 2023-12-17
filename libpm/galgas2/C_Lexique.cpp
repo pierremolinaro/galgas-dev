@@ -57,7 +57,7 @@ cTemplateDelimiter (const utf32 * inStartString,
                     const int32_t inStartStringLength,
                     const utf32 * inEndString,
                     const int32_t inEndStringLength,
-                    void (* inReplacementFunction) (C_Lexique & inLexique, const C_String & inElementString, C_String & ioTemplateString),
+                    void (* inReplacementFunction) (C_Lexique & inLexique, const String & inElementString, String & ioTemplateString),
                     const bool inDiscardStartString) :
 mStartString (inStartString),
 mStartStringLength (inStartStringLength),
@@ -81,7 +81,7 @@ mDiscardStartString (inOperand.mDiscardStartString) {
 //--------------------------------------------------------------------------------------------------
 
 C_Lexique::C_Lexique (C_Compiler * inCallerCompiler,
-                      const C_String & inSourceFileName
+                      const String & inSourceFileName
                       COMMA_LOCATION_ARGS) :
 C_Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (nullptr),
@@ -105,7 +105,7 @@ mLatexNextCharacterToEnterIndex (0) {
     logFileRead (inSourceFileName) ;
     bool ok = false ;
     PMTextFileEncoding textFileEncoding ;
-    const C_String sourceString = C_FileManager::stringWithContentOfFile (inSourceFileName, textFileEncoding, ok) ;
+    const String sourceString = C_FileManager::stringWithContentOfFile (inSourceFileName, textFileEncoding, ok) ;
     if (ok) {
       const C_SourceTextInString source (sourceString,
                                          inSourceFileName,
@@ -114,7 +114,7 @@ mLatexNextCharacterToEnterIndex (0) {
       mTokenStartLocation.resetWithSourceText (source) ;
       mTokenEndLocation.resetWithSourceText (source) ;
     }else if (inCallerCompiler != nullptr) {
-      C_String errorMessage ;
+      String errorMessage ;
       errorMessage += "cannot read '" ;
       errorMessage += inSourceFileName ;
       errorMessage += "': this file does not exist or is not encoded in UTF8" ;
@@ -127,8 +127,8 @@ mLatexNextCharacterToEnterIndex (0) {
 //--------------------------------------------------------------------------------------------------
 
 C_Lexique::C_Lexique (C_Compiler * inCallerCompiler,
-                      const C_String & inSourceString,
-                      const C_String & inStringForError
+                      const String & inSourceString,
+                      const String & inStringForError
                       COMMA_LOCATION_ARGS) :
 C_Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (nullptr),
@@ -175,10 +175,10 @@ C_Lexique::~C_Lexique (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::appendLastSeparatorTo (C_String & ioString) const {
+void C_Lexique::appendLastSeparatorTo (String & ioString) const {
   if (nullptr != mLastToken) {
     const int32_t lastSeparatorStart = mLastToken->mEndLocation.index () + 1 ;
-    const C_String lastSeparatorString = sourceText ().sourceString ().subStringFromIndex (lastSeparatorStart) ;
+    const String lastSeparatorString = sourceText ().sourceString ().subStringFromIndex (lastSeparatorStart) ;
     ioString += lastSeparatorString ;
   }
 }
@@ -190,7 +190,7 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
 //--- Append separator and comments
   const int32_t tokenStart = mTokenStartLocation.index () ;
   if (tokenStart > mLastSeparatorIndex) {
-    const C_String sep = sourceText ().sourceString ().subString (mLastSeparatorIndex, tokenStart -mLastSeparatorIndex) ;
+    const String sep = sourceText ().sourceString ().subString (mLastSeparatorIndex, tokenStart -mLastSeparatorIndex) ;
     inToken->mSeparatorStringBeforeToken += sep ;
   }
   mLastSeparatorIndex = mTokenEndLocation.index () + 1 ;
@@ -203,7 +203,7 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
   mLastToken = inToken ;
 //---
   if (executionModeIsLexicalAnalysisOnly ()) {
-    C_String s ;
+    String s ;
     for (int32_t i=inToken->mStartLocation.index () ; i<=inToken->mEndLocation.index () ; i++) {
       const utf32 c = sourceText ().readCharOrNul (i COMMA_HERE) ;
       if (UNICODE_VALUE (c) != '\0') {
@@ -238,7 +238,7 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
       appendCharacterToLatexFile (c) ;
       mLatexNextCharacterToEnterIndex ++ ;
     }
-    const C_String styleName = styleNameForIndex (styleIndexForTerminal (inToken->mTokenCode)) ;
+    const String styleName = styleNameForIndex (styleIndexForTerminal (inToken->mTokenCode)) ;
     if (styleName.length () > 0) {
       mLatexOutputString += "\\" ;
       mLatexOutputString += styleName ;
@@ -430,7 +430,7 @@ bool C_Lexique::notTestForInputUTF32String (const utf32 * inTestCstring,
 //--------------------------------------------------------------------------------------------------
 
 void C_Lexique::lexicalLog (LOCATION_ARGS) {
-  C_String message ;
+  String message ;
   message += "LEXICAL LOG:'" ;
   message.appendCLiteralCharConstant (mCurrentChar) ;
   message += "'\n" ;
@@ -443,7 +443,7 @@ void C_Lexique::lexicalLog (LOCATION_ARGS) {
 //
 //--------------------------------------------------------------------------------------------------
 
-int32_t C_Lexique::searchInList (const C_String & inString,
+int32_t C_Lexique::searchInList (const String & inString,
                                  const C_unicode_lexique_table_entry inTable [],
                                  const int32_t inTableSize) {
   const int32_t searchedStringLength = inString.length () ;
@@ -492,7 +492,7 @@ void C_Lexique::internalBottomUpParserError (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 void C_Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
-  C_String errorMessage ;
+  String errorMessage ;
   errorMessage += "Unknown character: " ;
   errorMessage += unicodeName (mCurrentChar) ;
   errorMessage += " (Unicode " ;
@@ -503,7 +503,7 @@ void C_Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::lexicalError (const C_String & inLexicalErrorMessage
+void C_Lexique::lexicalError (const String & inLexicalErrorMessage
                               COMMA_LOCATION_ARGS) {
   signalLexicalError (this, sourceText (), C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()), inLexicalErrorMessage COMMA_THERE) ;
   if (executionModeIsLatex ()) {
@@ -524,9 +524,9 @@ void C_Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTermina
                               const int32_t inCurrentTokenCode
                               COMMA_LOCATION_ARGS) {
 //--- Build error message
-  C_String foundTokenMessage = getMessageForTerminal (inCurrentTokenCode) ;
+  String foundTokenMessage = getMessageForTerminal (inCurrentTokenCode) ;
   const int32_t expectedTerminalsCount = inExpectedTerminalsArray.count () ;
-  TC_UniqueArray <C_String> expectedTokenNames (expectedTerminalsCount, C_String () COMMA_HERE) ;
+  TC_UniqueArray <String> expectedTokenNames (expectedTerminalsCount, String () COMMA_HERE) ;
   for (int32_t i=0 ; i<expectedTerminalsCount ; i++) {
     expectedTokenNames (i COMMA_HERE) = getMessageForTerminal (inExpectedTerminalsArray (i COMMA_HERE)) ;
   }
@@ -549,7 +549,7 @@ void C_Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTermina
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::lexicalWarning (const C_String & inLexicalWarningMessage
+void C_Lexique::lexicalWarning (const String & inLexicalWarningMessage
                                 COMMA_LOCATION_ARGS) { // §
   signalLexicalWarning (this, sourceText (), C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()), inLexicalWarningMessage COMMA_THERE) ;
 }
@@ -579,7 +579,7 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
                                                  const TC_Array <int32_t> & inErrorStack,
                                                  const int32_t inErrorProgramCounter) {
   if (TRACE_LL1_PARSING ()) {
-    C_String m = getMessageForTerminal (inTerminal) ;
+    String m = getMessageForTerminal (inTerminal) ;
     gCout += "------ Enter 'acceptTerminalForErrorSignaling' with '" ;
     gCout += m ;
     gCout += "' (" ;
@@ -599,7 +599,7 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
       const int32_t reachedTerminal = (int32_t) (instruction - 1) ;
       accept = reachedTerminal == inTerminal ;
       if (TRACE_LL1_PARSING ()) {
-        const C_String m = getMessageForTerminal (reachedTerminal) ;
+        const String m = getMessageForTerminal (reachedTerminal) ;
         gCout += "reached '" ;
         gCout += m ;
         gCout += "' terminal" ;
@@ -634,7 +634,7 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
           while ((inDecisionTable [nonTerminalEntry] >= 0) && ! found) {
             found = inDecisionTable [nonTerminalEntry] == inTerminal ;
             if (TRACE_LL1_PARSING ()) {
-              const C_String m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
+              const String m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
               gCout += "try '" ;
               gCout += m ;
               gCout += "' non terminal" ;
@@ -723,7 +723,7 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
     if (inProductions [programCounter] > 0) { // We reach a terminal (when >0)
       loop = false ;
       if (TRACE_LL1_PARSING ()) {
-        C_String m = getMessageForTerminal (inProductions [programCounter]) ;
+        String m = getMessageForTerminal (inProductions [programCounter]) ;
         gCout +="Terminal '" ;
         gCout += m ;
         gCout += "' (" ;
@@ -782,7 +782,7 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
     const int32_t terminalSymbol = (int32_t) (inProductions [programCounter] - 1) ;
     outExpectedTerminalsArray.appendObject (terminalSymbol) ;
     if (TRACE_LL1_PARSING ()) {
-      C_String m = getMessageForTerminal (inProductions [programCounter]) ;
+      String m = getMessageForTerminal (inProductions [programCounter]) ;
       gCout += "add '" ;
       gCout += m ;
       gCout += "' (" ;
@@ -805,7 +805,7 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
                                                         programCounter) ;
         if (ok) {
           if (TRACE_LL1_PARSING ()) {
-            C_String m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
+            String m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
             gCout += "add '" ;
             gCout += m ;
             gCout += "' (" ;
@@ -856,7 +856,7 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
   //--- Variables for generating syntax tree in a form suitable for graphviz
     const bool produceSyntaxTree = gOption_galgas_5F_builtin_5F_options_outputConcreteSyntaxTree.mValue
        && (sourceFilePath ().stringByDeletingPathExtension () != "") ;
-    C_String syntaxTreeDescriptionString ;
+    String syntaxTreeDescriptionString ;
     TC_Array <uint32_t> productionUniqueNameStack ;
     uint32_t uniqueProductionNameIndex = 0 ;
     uint32_t uniqueTerminalIndex = 0 ;
@@ -967,7 +967,7 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
             while ((inDecisionTable [nonTerminalEntry] >= 0) && ! found) {
               found = currentToken == inDecisionTable [nonTerminalEntry] ;
               if (TRACE_LL1_PARSING ()) {
-                C_String m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
+                String m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
                 gCout += " try " ;
                 gCout += m ;
                 gCout += " (" ;
@@ -1122,7 +1122,7 @@ bool C_Lexique::performTopDownParsing (const int32_t inProductions [],
   //--- Output graphviz file
     if (produceSyntaxTree) {
       syntaxTreeDescriptionString += "}\n" ;
-      const C_String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + ".dot" ;
+      const String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + ".dot" ;
       GALGAS_bool fileWritten ;
       GALGAS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GALGAS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
     }
@@ -1230,8 +1230,8 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
   //--- Variables for generating syntax tree in a form suitable for graphviz
     const bool produceSyntaxTree = gOption_galgas_5F_builtin_5F_options_outputConcreteSyntaxTree.mValue
        && (sourceFilePath ().stringByDeletingPathExtension () != "") ;
-    C_String syntaxTreeDescriptionString ;
-    TC_Array <C_String> shiftedElementStack ;
+    String syntaxTreeDescriptionString ;
+    TC_Array <String> shiftedElementStack ;
     shiftedElementStack.appendObject ("TOP") ;
     uint32_t uniqueTerminalIndex = 0 ;
     uint32_t currentProductionName = 0 ;
@@ -1298,7 +1298,7 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
         executionList.appendDefaultObjectUsingSwap () ;
       //---
         if (produceSyntaxTree) {
-          C_String terminalUniqueName ;
+          String terminalUniqueName ;
           terminalUniqueName += "T" ;
           terminalUniqueName.appendUnsigned (uniqueTerminalIndex) ;
           syntaxTreeDescriptionString += "  " ;
@@ -1370,7 +1370,7 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
         stack.appendObject (newCurrentState) ; // Enter next current state
         errorSignalingUselessEntryOnTopOfStack += 2 ;
         if (produceSyntaxTree) {
-          C_String uniqueProductionName ;
+          String uniqueProductionName ;
           uniqueProductionName += "NT" ;
           uniqueProductionName.appendUnsigned (currentProductionName) ;
           syntaxTreeDescriptionString += "  " ;
@@ -1447,7 +1447,7 @@ bool C_Lexique::performBottomUpParsing (const int32_t inActionTable [],
   //--- Output graphviz file
     if (produceSyntaxTree) {
       syntaxTreeDescriptionString += "}\n" ;
-      const C_String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + ".dot" ;
+      const String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + ".dot" ;
       GALGAS_bool fileWritten ;
       GALGAS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GALGAS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
     }
@@ -1485,8 +1485,8 @@ int32_t C_Lexique::nextProductionIndex (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_Lexique::separatorString (void) const {
-  C_String result ;
+String C_Lexique::separatorString (void) const {
+  String result ;
   if (mCurrentTokenPtr != nullptr) {
     result = mCurrentTokenPtr->mSeparatorStringBeforeToken ;
   }
@@ -1495,8 +1495,8 @@ C_String C_Lexique::separatorString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_Lexique::tokenString (void) const {
-  C_String result ;
+String C_Lexique::tokenString (void) const {
+  String result ;
   if (mCurrentTokenPtr != nullptr) {
     const int32_t tokenStart = mCurrentTokenPtr->mStartLocation.index () ;
     const int32_t tokenLength = mCurrentTokenPtr->mEndLocation.index () - tokenStart + 1 ;
@@ -1541,8 +1541,8 @@ void C_Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL COMMA_LOCATIO
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (currentTokenCode != inExpectedTerminal) {
-      const C_String currentTokenString = getMessageForTerminal (currentTokenCode) ;
-      const C_String expectedTokenString = getMessageForTerminal (inExpectedTerminal) ;
+      const String currentTokenString = getMessageForTerminal (currentTokenCode) ;
+      const String expectedTokenString = getMessageForTerminal (inExpectedTerminal) ;
       MF_AssertThere (false,
                       "Internal second pass parsing error (current token:%s, expected token:%s)",
                       (intptr_t) currentTokenString.cString (HERE),
@@ -1559,7 +1559,7 @@ void C_Lexique::enterIndexing (const uint32_t inIndexingKind,
     const uint32_t tokenStartLocation = (uint32_t) mCurrentTokenPtr->mStartLocation.index () ;
     const uint32_t tokenLine = (uint32_t) mCurrentTokenPtr->mStartLocation.lineNumber () ;
     const uint32_t tokenLength  = ((uint32_t) mCurrentTokenPtr->mEndLocation.index ()) - tokenStartLocation + 1 ;
-    C_String indexedKey = sourceText ().sourceString ().subString ((int32_t) tokenStartLocation, (int32_t) tokenLength) + inIndexedKeyPosfix ;
+    String indexedKey = sourceText ().sourceString ().subString ((int32_t) tokenStartLocation, (int32_t) tokenLength) + inIndexedKeyPosfix ;
     mIndexingDictionary->addIndexedKey (inIndexingKind,
                                         indexedKey,
                                         sourceText ().sourceFilePath (),
@@ -1630,12 +1630,12 @@ void C_Lexique::enterProduction (const char * inProductionName,
                                  const char * inTag) {
 //--- If Debug is not running, check if trigger list contains non terminal
   if (! mDebugIsRunning) {
-    TC_UniqueArray <C_String> stringArray ;
+    TC_UniqueArray <String> stringArray ;
     mTriggerNonTerminalSymbolList.componentsSeparatedByString (inProductionName, stringArray) ;
     mDebugIsRunning = stringArray.count () > 1 ;
   }
   if (mDebugIsRunning) {
-    C_String message ;
+    String message ;
     for (uint16_t i=1 ; i<mDebugDepthCounter ; i++) {
       message += "|  " ;
     }
@@ -1669,9 +1669,9 @@ void C_Lexique::exitProduction (void) {
 //--------------------------------------------------------------------------------------------------
 
 void C_Lexique::didParseTerminal (const char * inTerminalName,
-                                  const C_String & inValue) {
+                                  const String & inValue) {
   if (mDebugIsRunning) {
-    C_String message ;
+    String message ;
     for (uint16_t i=1 ; i<mDebugDepthCounter ; i++) {
       message += "|  " ;
     }
@@ -1700,7 +1700,7 @@ void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
       appendCharacterToLatexFile (c) ;
       mLatexNextCharacterToEnterIndex += 1 ;
     }
-    const C_String styleName = styleNameForIndex (styleIndexForTerminal (inTerminalIndex)) ;
+    const String styleName = styleNameForIndex (styleIndexForTerminal (inTerminalIndex)) ;
     if (styleName.length () > 0) {
       mLatexOutputString += "\\" ;
       mLatexOutputString += styleName ;
@@ -1761,9 +1761,9 @@ void C_Lexique::signalLexicalErrorInLatexOutput (void) {
 //--------------------------------------------------------------------------------------------------
 
 void C_Lexique::generateLatexFile (void) {
-  const C_String latexFilePath = sourceText ().sourceFilePath () + ".tex" ;
+  const String latexFilePath = sourceText ().sourceFilePath () + ".tex" ;
 //--- Suppress last '\newline'
-  const C_String newLine = "\\newline\n" ;
+  const String newLine = "\\newline\n" ;
   if (mLatexOutputString.endsWithString (newLine)) {
     mLatexOutputString = mLatexOutputString.subString (0, mLatexOutputString.length () - newLine.length ()) ;
   }

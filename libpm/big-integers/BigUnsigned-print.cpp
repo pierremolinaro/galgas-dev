@@ -18,8 +18,8 @@ void BigUnsigned::printHex (const char * inName) const {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String BigUnsigned::decimalString (void) const {
-  C_String result ;
+String BigUnsigned::decimalString (void) const {
+  String result ;
   if (isZero ()) {
     result = "0" ;
   }else{
@@ -44,8 +44,8 @@ C_String BigUnsigned::decimalString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String BigUnsigned::spacedDecimalString (const uint32_t inSeparation) const {
-  C_String result = decimalString () ;
+String BigUnsigned::spacedDecimalString (const uint32_t inSeparation) const {
+  String result = decimalString () ;
   if (inSeparation > 0) {
     for (int32_t i = result.length () - int32_t (inSeparation) ; i > 0 ; i -= int32_t (inSeparation)) {
  //     result.insert (size_t (i), 1, ' ') ;
@@ -57,8 +57,8 @@ C_String BigUnsigned::spacedDecimalString (const uint32_t inSeparation) const {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String BigUnsigned::spacedDecimalStringWithDigitCount (const uint32_t inSeparation) const {
-  C_String s = decimalString () ;
+String BigUnsigned::spacedDecimalStringWithDigitCount (const uint32_t inSeparation) const {
+  String s = decimalString () ;
   const int32_t length = s.length () ;
   if (inSeparation > 0) {
     for (int32_t i = s.length () - int32_t (inSeparation) ; i > 0 ; i -= int32_t (inSeparation)) {
@@ -66,7 +66,7 @@ C_String BigUnsigned::spacedDecimalStringWithDigitCount (const uint32_t inSepara
 //      s.insert (size_t (i), 1, ' ') ;
     }
   }
-  C_String result = "[" ;
+  String result = "[" ;
   result.appendSigned (length) ;
   result += "] " ;
   result += s ;
@@ -75,8 +75,8 @@ C_String BigUnsigned::spacedDecimalStringWithDigitCount (const uint32_t inSepara
 
 //--------------------------------------------------------------------------------------------------
 
-C_String BigUnsigned::hexString (void) const {
-  C_String result ;
+String BigUnsigned::hexString (void) const {
+  String result ;
   if (u64Count () == 0) {
     result = "0" ;
   }else{
@@ -91,8 +91,8 @@ C_String BigUnsigned::hexString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String BigUnsigned::xString (void) const {
-  C_String result ;
+String BigUnsigned::xString (void) const {
+  String result ;
   if (u64Count () == 0) {
     result = "0" ;
   }else{
@@ -106,8 +106,8 @@ C_String BigUnsigned::xString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String BigUnsigned::bitString (void) const {
-  C_String result ;
+String BigUnsigned::bitString (void) const {
+  String result ;
   if (u64Count () == 0) {
     result = "0" ;
   }else{

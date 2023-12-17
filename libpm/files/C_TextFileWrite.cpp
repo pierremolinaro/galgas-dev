@@ -29,7 +29,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-C_TextFileWrite::C_TextFileWrite (const C_String & inFileName) :
+C_TextFileWrite::C_TextFileWrite (const String & inFileName) :
 AC_FileHandle (inFileName, "wt"),
 mBufferLength (0) {
 }

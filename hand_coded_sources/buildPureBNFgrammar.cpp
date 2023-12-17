@@ -33,7 +33,7 @@
 
 static void fixNewNonterminalSymbolsForList (const GALGAS_syntaxInstructionListForGrammarAnalysis & inList,
                                              cVocabulary & ioVocabulary,
-                                             const C_String & inSyntaxComponentName,
+                                             const String & inSyntaxComponentName,
                                              int32_t & ioCount) {
   cEnumerator_syntaxInstructionListForGrammarAnalysis currentInstruction (inList, kENUMERATION_UP) ;
   while (currentInstruction.hasCurrentObject ()) {
@@ -52,7 +52,7 @@ static void fixNewNonterminalSymbolsForList (const GALGAS_syntaxInstructionListF
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_repeatInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
-                                                                         const C_String & inSyntaxComponentName,
+                                                                         const String & inSyntaxComponentName,
                                                                          int32_t & ioCount) const {
   ioVocabulary.addNonTerminalSymbol ("select_",
                                      inSyntaxComponentName,
@@ -73,7 +73,7 @@ void cPtr_repeatInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabu
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selectInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
-                                                                         const C_String & inSyntaxComponentName,
+                                                                         const String & inSyntaxComponentName,
                                                                          int32_t & ioCount) const {
   ioVocabulary.addNonTerminalSymbol ("select_",
                                      inSyntaxComponentName,
@@ -95,7 +95,7 @@ void cPtr_selectInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabu
 
 void cPtr_nonTerminalInstructionForGrammarAnalysis::
 fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
-                          const C_String & /* inSyntaxComponentName */,
+                          const String & /* inSyntaxComponentName */,
                           int32_t & /* ioCount */) const {
 }
 
@@ -103,7 +103,7 @@ fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
 
 void cPtr_terminalInstructionForGrammarAnalysis::
 fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
-                          const C_String & /* inSyntaxComponentName */,
+                          const String & /* inSyntaxComponentName */,
                           int32_t & /* ioCount */) const {
 }
 
@@ -177,7 +177,7 @@ buildRightDerivation (const int32_t inTerminalSymbolsCount,
 void cPtr_selectInstructionForGrammarAnalysis::
 buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                                  const int32_t inOriginalGrammarSymbolCount,
-                                 const C_String & inSyntaxComponentName,
+                                 const String & inSyntaxComponentName,
                                  cPureBNFproductionsList & ioProductions) const {
 // A ; choix X ou Y ou Z ... fin choix ; B
 //  'aNumeroNonTerminauxRepeter' designe le nouveau non terminal 'choix_xx_xx', note <W>,
@@ -239,7 +239,7 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
 void cPtr_repeatInstructionForGrammarAnalysis::
 buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                                  const int32_t inOriginalGrammarSymbolCount,
-                                 const C_String & inSyntaxComponentName,
+                                 const String & inSyntaxComponentName,
                                  cPureBNFproductionsList & ioProductions) const {
 //--- How the sequence 'A ; repeat X while Y while Z ... end repeat ; B' is translated into pure BNF productions
 // A new non terminal, call it <T> is created (in fact, in the BNF file, this non terminal has a mangled
@@ -335,7 +335,7 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
 void cPtr_terminalInstructionForGrammarAnalysis::
 buildSelectAndRepeatProductions (const int32_t /* inTerminalSymbolsCount */,
                                  const int32_t /* inOriginalGrammarSymbolCount */,
-                                 const C_String & /* inSyntaxComponentName */,
+                                 const String & /* inSyntaxComponentName */,
                                  cPureBNFproductionsList  & /* ioProductions */) const {
 }
 
@@ -344,7 +344,7 @@ buildSelectAndRepeatProductions (const int32_t /* inTerminalSymbolsCount */,
 void cPtr_nonTerminalInstructionForGrammarAnalysis::
 buildSelectAndRepeatProductions (const int32_t /* inTerminalSymbolsCount */,
                                  const int32_t /* inOriginalGrammarSymbolCount */,
-                                 const C_String & /* inSyntaxComponentName */,
+                                 const String & /* inSyntaxComponentName */,
                                  cPureBNFproductionsList  & /* ioProductions */) const {
 }
 

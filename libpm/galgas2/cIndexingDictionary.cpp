@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "galgas2/cIndexingDictionary.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 #include "files/C_FileManager.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -38,11 +38,11 @@ class cIndexEntryNode {
   public: cIndexEntryNode * mInfPtr ;
   public: cIndexEntryNode * mSupPtr ;
   public: int32_t mBalance ;
-  public: const C_String mKey ;
-  public: TC_UniqueArray <C_String> mDescriptorArray ;
+  public: const String mKey ;
+  public: TC_UniqueArray <String> mDescriptorArray ;
 
 //--- Constructor
-  public: cIndexEntryNode (const C_String & inKey) ;
+  public: cIndexEntryNode (const String & inKey) ;
 
 //--- Destructor
   public: virtual ~ cIndexEntryNode (void) ;
@@ -54,7 +54,7 @@ class cIndexEntryNode {
 
 //--------------------------------------------------------------------------------------------------
 
-cIndexEntryNode::cIndexEntryNode (const C_String & inKey) :
+cIndexEntryNode::cIndexEntryNode (const String & inKey) :
 mInfPtr (nullptr),
 mSupPtr (nullptr),
 mBalance (0),
@@ -113,7 +113,7 @@ static void rotateRight (cIndexEntryNode * & ioRootPtr) {
 //--------------------------------------------------------------------------------------------------
 
 cIndexEntryNode * cIndexingDictionary::findOrAddEntry (cIndexEntryNode * & ioRootPtr,
-                                                       const C_String & inKey,
+                                                       const String & inKey,
                                                        bool & ioExtension) {
   cIndexEntryNode * result = nullptr ;
   if (ioRootPtr == nullptr) {
@@ -184,8 +184,8 @@ cIndexingDictionary::~ cIndexingDictionary (void) {
 //--------------------------------------------------------------------------------------------------
 
 void cIndexingDictionary::addIndexedKey (const uint32_t inIndexingKind,
-                                         const C_String & inIndexedKey,
-                                         const C_String & inSourceFilePath,
+                                         const String & inIndexedKey,
+                                         const String & inSourceFilePath,
                                          const uint32_t inTokenLineInSource,
                                          const uint32_t inTokenLocationInSource,
                                          const uint32_t inTokenLengthInSource) {
@@ -197,7 +197,7 @@ void cIndexingDictionary::addIndexedKey (const uint32_t inIndexingKind,
   bool extension = false ;
   cIndexEntryNode * entryNode = findOrAddEntry (mEntryRoot, inIndexedKey, extension) ;
 //--- Register index
-  C_String entryDescriptor ;
+  String entryDescriptor ;
   entryDescriptor.appendUnsigned (inIndexingKind) ;
   entryDescriptor += ":" ;
   entryDescriptor.appendUnsigned (inTokenLineInSource) ;
@@ -213,7 +213,7 @@ void cIndexingDictionary::addIndexedKey (const uint32_t inIndexingKind,
 //---------------------------------------------------------------------
 
 static void enumerateEntries (const cIndexEntryNode * inNode,
-                              C_String & ioContents) {
+                              String & ioContents) {
   if (nullptr != inNode) {
     enumerateEntries (inNode->mInfPtr, ioContents) ;
     ioContents += "<key>" ;
@@ -232,8 +232,8 @@ static void enumerateEntries (const cIndexEntryNode * inNode,
 
 //--------------------------------------------------------------------------------------------------
 
-void cIndexingDictionary::generateIndexFile (const C_String & inOutputIndexFilePath) const {
-  C_String contents = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+void cIndexingDictionary::generateIndexFile (const String & inOutputIndexFilePath) const {
+  String contents = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
                       "<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">"
                       "<plist version=\"1.0\">" ;
 //--- Write entries as dictionary

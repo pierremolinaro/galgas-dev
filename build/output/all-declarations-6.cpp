@@ -36,7 +36,7 @@ cMapElement * cMapElement_grammarMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_grammarMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_grammarMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mLabelMap" ":" ;
@@ -427,7 +427,7 @@ cMapElement * cMapElement_routineMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_routineMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_routineMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mRoutineSignature" ":" ;
@@ -768,7 +768,7 @@ cMapElement * cMapElement_functionMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_functionMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_functionMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFunctionSignature" ":" ;
@@ -1163,7 +1163,7 @@ cMapElement * cMapElement_wrapperFileMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_wrapperFileMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_wrapperFileMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mAbsoluteFilePath" ":" ;
@@ -1608,7 +1608,7 @@ cMapElement * cMapElement_wrapperDirectoryMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_wrapperDirectoryMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_wrapperDirectoryMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mRegularFileMap" ":" ;
@@ -1999,7 +1999,7 @@ cMapElement * cMapElement_filewrapperTemplateMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_filewrapperTemplateMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_filewrapperTemplateMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mTemplateSignature" ":" ;
@@ -2346,7 +2346,7 @@ cMapElement * cMapElement_filewrapperMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_filewrapperMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_filewrapperMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFilewrapperPath" ":" ;
@@ -2899,7 +2899,7 @@ cMapElement * cMapElement_optionComponentMapForSemanticAnalysis::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_optionComponentMapForSemanticAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_optionComponentMapForSemanticAnalysis::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mIsPredefined" ":" ;
@@ -3404,7 +3404,7 @@ cMapElement * cMapElement_lexiqueComponentMapForSemanticAnalysis::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_lexiqueComponentMapForSemanticAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_lexiqueComponentMapForSemanticAnalysis::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mIsTemplate" ":" ;
@@ -4007,7 +4007,7 @@ cMapElement * cMapElement_syntaxComponentMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_syntaxComponentMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_syntaxComponentMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mLexiqueName" ":" ;
@@ -4450,7 +4450,7 @@ cMapElement * cMapElement_extensionMethodMapForType::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_extensionMethodMapForType::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_extensionMethodMapForType::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFormalParameterList" ":" ;
@@ -4762,7 +4762,7 @@ cMapElement * cMapElement_extensionMethodMapForBuildingContext::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_extensionMethodMapForBuildingContext::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_extensionMethodMapForBuildingContext::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mExtensionMethodMapForType" ":" ;
@@ -5047,7 +5047,7 @@ cMapElement * cMapElement_extensionSetterMapForType::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_extensionSetterMapForType::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_extensionSetterMapForType::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFormalParameterList" ":" ;
@@ -5310,7 +5310,7 @@ cMapElement * cMapElement_extensionSetterMapForBuildingContext::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_extensionSetterMapForBuildingContext::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_extensionSetterMapForBuildingContext::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mExtensionSetterMapForType" ":" ;
@@ -5599,7 +5599,7 @@ cMapElement * cMapElement_extensionGetterMapForType::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_extensionGetterMapForType::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_extensionGetterMapForType::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mResultTypeName" ":" ;
@@ -5960,7 +5960,7 @@ cMapElement * cMapElement_extensionGetterMapForBuildingContext::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_extensionGetterMapForBuildingContext::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_extensionGetterMapForBuildingContext::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mExtensionGetterMapForType" ":" ;
@@ -6369,7 +6369,7 @@ cMapElement * cMapElement_wrapperExtensionMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_wrapperExtensionMap::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {
+void cMapElement_wrapperExtensionMap::description (String & /* ioString */, const int32_t /* inIndentation */) const {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6919,7 +6919,7 @@ class cCollectionElement_semanticExpressionListForGeneration : public cCollectio
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6953,7 +6953,7 @@ cCollectionElement * cCollectionElement_semanticExpressionListForGeneration::cop
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_semanticExpressionListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_semanticExpressionListForGeneration::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mExpression" ":" ;
@@ -7924,7 +7924,7 @@ const C_galgas_type_descriptor * cPtr_outputInputActualParameterForGeneration::c
   return & kTypeDescriptor_GALGAS_outputInputActualParameterForGeneration ;
 }
 
-void cPtr_outputInputActualParameterForGeneration::description (C_String & ioString,
+void cPtr_outputInputActualParameterForGeneration::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString += "[@outputInputActualParameterForGeneration:" ;
   mProperty_mFormalArgumentType.description (ioString, inIndentation+1) ;
@@ -8328,7 +8328,7 @@ const C_galgas_type_descriptor * cPtr_inputJokerParameterForGeneration::classDes
   return & kTypeDescriptor_GALGAS_inputJokerParameterForGeneration ;
 }
 
-void cPtr_inputJokerParameterForGeneration::description (C_String & ioString,
+void cPtr_inputJokerParameterForGeneration::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "[@inputJokerParameterForGeneration:" ;
   mProperty_mFormalArgumentType.description (ioString, inIndentation+1) ;
@@ -8526,7 +8526,7 @@ class cCollectionElement_actualParameterListForGeneration : public cCollectionEl
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8560,7 +8560,7 @@ cCollectionElement * cCollectionElement_actualParameterListForGeneration::copy (
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_actualParameterListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_actualParameterListForGeneration::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mActualParameter" ":" ;
@@ -9230,7 +9230,7 @@ const C_galgas_type_descriptor * cPtr_semanticBlockInstructionForGeneration::cla
   return & kTypeDescriptor_GALGAS_semanticBlockInstructionForGeneration ;
 }
 
-void cPtr_semanticBlockInstructionForGeneration::description (C_String & ioString,
+void cPtr_semanticBlockInstructionForGeneration::description (String & ioString,
                                                               const int32_t inIndentation) const {
   ioString += "[@semanticBlockInstructionForGeneration:" ;
   mProperty_mInstructionList.description (ioString, inIndentation+1) ;
@@ -9425,7 +9425,7 @@ class cCollectionElement_listOfSemanticInstructionListForGeneration : public cCo
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -9460,7 +9460,7 @@ cCollectionElement * cCollectionElement_listOfSemanticInstructionListForGenerati
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_listOfSemanticInstructionListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_listOfSemanticInstructionListForGeneration::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mInstructionList" ":" ;
@@ -10219,7 +10219,7 @@ class cCollectionElement_semanticDeclarationListForGeneration : public cCollecti
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -10254,7 +10254,7 @@ cCollectionElement * cCollectionElement_semanticDeclarationListForGeneration::co
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_semanticDeclarationListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_semanticDeclarationListForGeneration::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mMessage" ":" ;
@@ -10694,7 +10694,7 @@ class cCollectionElement_signatureForGrammarAnalysis : public cCollectionElement
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -10729,7 +10729,7 @@ cCollectionElement * cCollectionElement_signatureForGrammarAnalysis::copy (void)
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_signatureForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_signatureForGrammarAnalysis::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFormalArgumentPassingModeForGrammarAnalysis" ":" ;
@@ -11169,7 +11169,7 @@ cMapElement * cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis::copy (voi
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFormalParametersList" ":" ;
@@ -11456,7 +11456,7 @@ cMapElement * cMapElement_nonTerminalSymbolMapForGrammarAnalysis::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_nonTerminalSymbolMapForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_nonTerminalSymbolMapForGrammarAnalysis::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mNonTerminalIndex" ":" ;
@@ -11793,7 +11793,7 @@ class cCollectionElement_nonTerminalToAddList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -11828,7 +11828,7 @@ cCollectionElement * cCollectionElement_nonTerminalToAddList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_nonTerminalToAddList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_nonTerminalToAddList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mSyntaxComponentName" ":" ;
@@ -12269,7 +12269,7 @@ class cCollectionElement_terminalCheckAssignementList : public cCollectionElemen
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -12305,7 +12305,7 @@ cCollectionElement * cCollectionElement_terminalCheckAssignementList::copy (void
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_terminalCheckAssignementList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_terminalCheckAssignementList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mTypeName" ":" ;
@@ -13030,7 +13030,7 @@ class cCollectionElement_filewrapperTemplateListForGeneration : public cCollecti
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -13066,7 +13066,7 @@ cCollectionElement * cCollectionElement_filewrapperTemplateListForGeneration::co
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_filewrapperTemplateListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_filewrapperTemplateListForGeneration::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFilewrapperTemplateName" ":" ;
@@ -13730,7 +13730,7 @@ class cCollectionElement_localConstantList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -13767,7 +13767,7 @@ cCollectionElement * cCollectionElement_localConstantList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_localConstantList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_localConstantList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mType" ":" ;
@@ -14336,7 +14336,7 @@ class cCollectionElement_localInitializedVariableList : public cCollectionElemen
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -14372,7 +14372,7 @@ cCollectionElement * cCollectionElement_localInitializedVariableList::copy (void
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_localInitializedVariableList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_localInitializedVariableList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mType" ":" ;

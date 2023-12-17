@@ -262,7 +262,7 @@ static void option_beginning_with_double_minus_sign (const char * inCommand,
 //--------------------------------------------------------------------------------------------------
 
 static void analyze_one_option (const char * inCommand,
-                                TC_UniqueArray <C_String> & outSourceFileArray,
+                                TC_UniqueArray <String> & outSourceFileArray,
                                 bool & outOk) {
   const int32_t optionLength = (int32_t) (strlen (inCommand) & UINT32_MAX) ;
   bool found = false ;
@@ -280,7 +280,7 @@ static void analyze_one_option (const char * inCommand,
 //--- Look for a file
   if (! found) {
     if (inCommand [0] != '-') {
-      C_String fileName ;
+      String fileName ;
       #if COMPILE_FOR_WINDOWS == 1
         const int32_t fileLength = (int32_t) strlen (inCommand) ;
         int32_t firstChar = 0 ;
@@ -312,7 +312,7 @@ static void analyze_one_option (const char * inCommand,
 //--------------------------------------------------------------------------------------------------
 
 #if COMPILE_FOR_WINDOWS == 1
-  static void getSourceFileFromWin32OpenDialog (TC_UniqueArray <C_String> & outSourceFileArray,
+  static void getSourceFileFromWin32OpenDialog (TC_UniqueArray <String> & outSourceFileArray,
                                                 const char * inExtensions []) {
     char szFile[260] ;       // buffer for file name
     OPENFILENAME ofn ;
@@ -347,7 +347,7 @@ static void analyze_one_option (const char * inCommand,
     ofn.lpstrTitle = nullptr ;
     ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY ;
     if (GetOpenFileName (& ofn)) {
-      C_String fileName ;
+      String fileName ;
       const int32_t fileLength = (int32_t) strlen (szFile) ;
       int32_t firstChar = 0 ;
       if ((fileLength > 3)
@@ -376,7 +376,7 @@ static void analyze_one_option (const char * inCommand,
 
 void F_Analyze_CLI_Options (const int argv,
                             const char * argc [],
-                            TC_UniqueArray <C_String> & outSourceFileArray,
+                            TC_UniqueArray <String> & outSourceFileArray,
                             const char * inExtensions [],
                             const char * inHelpMessages [],
                             void print_tool_help_message (void)) {

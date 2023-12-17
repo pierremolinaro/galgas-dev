@@ -82,7 +82,7 @@ int32_t cVocabulary::getEmptyStringTerminalSymbolIndex (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String cVocabulary::getSymbol (const int32_t inSymbolIndex
+String cVocabulary::getSymbol (const int32_t inSymbolIndex
                                  COMMA_LOCATION_ARGS) const {
   return mStringsArray (inSymbolIndex COMMA_THERE) ;
 }
@@ -114,10 +114,10 @@ int32_t cVocabulary::getNonTerminalSymbolsCount (void) const {
 //--------------------------------------------------------------------------------------------------
 
 void cVocabulary::addNonTerminalSymbol (const char * inPrefix,
-                                        const C_String & inClassName,
+                                        const String & inClassName,
                                         const int32_t inOrderInSourceFile,
                                         const bool inGenerateChoice) {
-  C_String nt  ;
+  String nt  ;
   nt += inPrefix ;
   nt += inClassName.identifierRepresentation () ;
   nt += "_" ;
@@ -159,12 +159,12 @@ void cVocabulary::printInFile (AC_OutputStream & inHTMLfile,
 //--------------------------------------------------------------------------------------------------
 
 C_RelationSingleType cVocabulary::getVocabularyBDDType (void) const {
-  TC_UniqueArray <C_String> constantNameArray ;
+  TC_UniqueArray <String> constantNameArray ;
   for (int32_t i=0 ; i<mTerminalSymbolsCount ; i++) {
-    constantNameArray.appendObject (C_String ("$") + mStringsArray (i COMMA_HERE) + "$") ;
+    constantNameArray.appendObject (String ("$") + mStringsArray (i COMMA_HERE) + "$") ;
   }
   for (int32_t i=mTerminalSymbolsCount ; i<mStringsArray.count () ; i++) {
-    constantNameArray.appendObject (C_String ("<") + mStringsArray (i COMMA_HERE) + ">") ;
+    constantNameArray.appendObject (String ("<") + mStringsArray (i COMMA_HERE) + ">") ;
   }
   return C_RelationSingleType (".vocabulary.", constantNameArray COMMA_HERE) ;
 }

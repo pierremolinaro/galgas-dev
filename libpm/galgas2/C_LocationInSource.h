@@ -28,7 +28,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class C_String ;
+class String ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -60,7 +60,7 @@ class C_LocationInSource final {
 
 //  public: LineColumnContents lineColumnNumber (void) const ;
 
-  public: C_String sourceFilePath (void) const ;
+  public: String sourceFilePath (void) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

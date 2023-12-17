@@ -31,7 +31,7 @@ mActionString ("") {
 //--------------------------------------------------------------------------------------------------
 
 C_FixItDescription::C_FixItDescription (const EnumFixItKind inKind,
-                                        const C_String & inActionString) :
+                                        const String & inActionString) :
 mKind (inKind),
 mActionString (inActionString) {
 }
@@ -61,7 +61,7 @@ void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
                          const GALGAS_stringlist & inList) {
   cEnumerator_stringlist enumerator (inList, kENUMERATION_UP) ;
   while (enumerator.hasCurrentObject ()) {
-    const C_String s = enumerator.current_mValue (HERE).stringValue () ;
+    const String s = enumerator.current_mValue (HERE).stringValue () ;
     ioArray.appendObject (C_FixItDescription (inKind, s)) ;
     enumerator.gotoNextObject () ;
   }
@@ -74,7 +74,7 @@ void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
                          const GALGAS_lstringlist & inList) {
   cEnumerator_lstringlist enumerator (inList, kENUMERATION_UP) ;
   while (enumerator.hasCurrentObject ()) {
-    const C_String s = enumerator.current_mValue (HERE).mProperty_string.stringValue () ;
+    const String s = enumerator.current_mValue (HERE).mProperty_string.stringValue () ;
     ioArray.appendObject (C_FixItDescription (inKind, s)) ;
     enumerator.gotoNextObject () ;
   }
@@ -87,7 +87,7 @@ void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
                          const GALGAS_stringset & inStringSet) {
   cEnumerator_stringset enumerator (inStringSet, kENUMERATION_UP) ;
   while (enumerator.hasCurrentObject ()) {
-    const C_String s = enumerator.current_key (HERE).stringValue () ;
+    const String s = enumerator.current_key (HERE).stringValue () ;
     ioArray.appendObject (C_FixItDescription (inKind, s)) ;
     enumerator.gotoNextObject () ;
   }
@@ -98,7 +98,7 @@ void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
 void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GALGAS_string & inString) {
-  const C_String s = inString.stringValue () ;
+  const String s = inString.stringValue () ;
   ioArray.appendObject (C_FixItDescription (inKind, s)) ;
 }
 

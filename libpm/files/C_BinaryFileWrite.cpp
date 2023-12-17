@@ -24,7 +24,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-C_BinaryFileWrite::C_BinaryFileWrite (const C_String & inFileName) :
+C_BinaryFileWrite::C_BinaryFileWrite (const String & inFileName) :
 AC_FileHandle (inFileName, "wb") {
 }
 

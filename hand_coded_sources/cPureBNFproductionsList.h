@@ -20,7 +20,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "bdd/C_Relation.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 #include "utilities/TF_Swap.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ class cVocabulary ;
 //--------------------------------------------------------------------------------------------------
 
 class cProduction {
-  private: C_String mSourceFileName ;
+  private: String mSourceFileName ;
   private: int32_t mLineDefinition ;
   private: int32_t mColumnDefinition ;
   private: int32_t mLeftNonTerminalIndex ;
@@ -40,19 +40,19 @@ class cProduction {
 
 //--- Constructor
   public: cProduction (void) ;
-  public: cProduction (const C_String & inSourceFileName,
+  public: cProduction (const String & inSourceFileName,
                         const int32_t inDefinitionLine,
                         const int32_t inColumnDefinition,
                         const int32_t inLeftNonTerminalIndex,
                         TC_UniqueArray <int32_t> & ioDerivation, // Swap
                         const uint32_t inProductionIndex) ;
-  public: cProduction (const C_String & inSourceFileName,
+  public: cProduction (const String & inSourceFileName,
                         const int32_t inDefinitionLine,
                         const int32_t inColumnDefinition,
                         const int32_t inLeftNonTerminalIndex) ;
 
 //--- Accessors
-  public: inline C_String sourceFileName (void) const { return mSourceFileName ; }
+  public: inline String sourceFileName (void) const { return mSourceFileName ; }
   public: inline int32_t lineDefinition (void) const { return mLineDefinition ; }
   public: inline int32_t columnDefinition (void) const { return mColumnDefinition ; }
   public: inline int32_t leftNonTerminalIndex (void) const { return mLeftNonTerminalIndex ; }
@@ -67,9 +67,9 @@ class cProduction {
 //--- Generate a C++ call instruction of this production
   public: void engendrerAppelProduction (const int16_t nombreDeParametres,
                                           const cVocabulary & inVocabulary,
-                                          const C_String & inAltName,
+                                          const String & inAltName,
                                           AC_OutputStream & fichierCPP,
-                                          const C_String & inSyntaxDirectedTranslationVarName) const ;
+                                          const String & inSyntaxDirectedTranslationVarName) const ;
 
 //--- No copy
   private: cProduction (const cProduction &) ;

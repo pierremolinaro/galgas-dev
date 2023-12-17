@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "streams/AC_OutputStream.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 #include "strings/unicode_character_cpp.h"
 #include "strings/unicode_string_routines.h"
 
@@ -96,18 +96,18 @@ void AC_OutputStream::genericUnicodeArrayOutput (const utf32 * inCharArray, cons
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark << C_String
+  #pragma mark << String
 #endif
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_OutputStream::appendString (const C_String inString) {
+void AC_OutputStream::appendString (const String inString) {
   genericUnicodeArrayOutput (inString.utf32String (HERE), inString.length ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-//AC_OutputStream & AC_OutputStream::operator << (const C_String inString) {
+//AC_OutputStream & AC_OutputStream::operator << (const String inString) {
 //  genericUnicodeArrayOutput (inString.utf32String (HERE), inString.length ()) ;
 //  return *this ;
 //}
@@ -120,7 +120,7 @@ void AC_OutputStream::operator += (const char * inCstring) {
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_OutputStream::operator += (const C_String inString) {
+void AC_OutputStream::operator += (const String inString) {
   genericUnicodeArrayOutput (inString.utf32String (HERE), inString.length ()) ;
 }
 
@@ -144,7 +144,7 @@ void AC_OutputStream::appendUTF32String (const utf32 * inUTF32String) {
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_OutputStream::appendUTF32LiteralStringConstant (const C_String & inString) {
+void AC_OutputStream::appendUTF32LiteralStringConstant (const String & inString) {
   const utf32 * str = inString.utf32String (HERE) ;
   appendUnicodeCharacter (TO_UNICODE ('{') COMMA_HERE) ;
   while (UNICODE_VALUE (* str) != 0) {
@@ -322,7 +322,7 @@ void AC_OutputStream::appendSpaces (const int32_t inSpaceCount) {
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_OutputStream::writeStringMultiple (const C_String & inString, const int32_t inRepeatCount) {
+void AC_OutputStream::writeStringMultiple (const String & inString, const int32_t inRepeatCount) {
   for (int32_t i=0 ; i<inRepeatCount ; i++) {
     *this += inString ;
   }
@@ -336,7 +336,7 @@ static const int32_t kCommentMaxLength = 119 ;
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_OutputStream::appendHyphenLineCommentWithoutExtraBlankLine (const C_String & inLineCommentPrefix) {
+void AC_OutputStream::appendHyphenLineCommentWithoutExtraBlankLine (const String & inLineCommentPrefix) {
   *this += inLineCommentPrefix ;
   for (int32_t i=2 ; i<kCommentMaxLength ; i++) {
     *this += "-" ;
@@ -346,8 +346,8 @@ void AC_OutputStream::appendHyphenLineCommentWithoutExtraBlankLine (const C_Stri
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_OutputStream::appendTitleComment (const C_String & inLineCommentPrefix,
-                                          const C_String & inCommentString) {
+void AC_OutputStream::appendTitleComment (const String & inLineCommentPrefix,
+                                          const String & inCommentString) {
   appendHyphenLineCommentWithoutExtraBlankLine (inLineCommentPrefix) ;
   appendSpaceLineComment (inLineCommentPrefix) ;
   appendCenterJustifiedComment (inLineCommentPrefix, inCommentString) ;
@@ -357,8 +357,8 @@ void AC_OutputStream::appendTitleComment (const C_String & inLineCommentPrefix,
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_OutputStream::appendComment (const C_String & inLineCommentPrefix,
-                                     const C_String & inCommentString) {
+void AC_OutputStream::appendComment (const String & inLineCommentPrefix,
+                                     const String & inCommentString) {
   *this += inLineCommentPrefix ;
   *this += " " ;
   *this += inCommentString ;
@@ -367,8 +367,8 @@ void AC_OutputStream::appendComment (const C_String & inLineCommentPrefix,
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_OutputStream::appendCenterJustifiedComment (const C_String & inLineCommentPrefix,
-                                                    const C_String & inCommentString) {
+void AC_OutputStream::appendCenterJustifiedComment (const String & inLineCommentPrefix,
+                                                    const String & inCommentString) {
   const int32_t commentLength = inCommentString.length () ;
   const int32_t n = (kCommentMaxLength - 3 - commentLength) / 2 ;
 
@@ -386,7 +386,7 @@ void AC_OutputStream::appendCenterJustifiedComment (const C_String & inLineComme
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_OutputStream::appendSpaceLineComment (const C_String & inLineCommentPrefix) {
+void AC_OutputStream::appendSpaceLineComment (const String & inLineCommentPrefix) {
   *this += inLineCommentPrefix ;
   for (int32_t i=1 ; i<kCommentMaxLength ; i++) {
     *this += " " ;
@@ -396,7 +396,7 @@ void AC_OutputStream::appendSpaceLineComment (const C_String & inLineCommentPref
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_OutputStream::appendCppHyphenLineComment (const C_String & inLineCommentPrefix) {
+void AC_OutputStream::appendCppHyphenLineComment (const String & inLineCommentPrefix) {
   appendHyphenLineCommentWithoutExtraBlankLine (inLineCommentPrefix) ;
   *this += "\n" ;
 }
@@ -433,7 +433,7 @@ void AC_OutputStream::appendCppHyphenLineCommentWithoutExtraBlankLine (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_OutputStream::appendCppTitleComment (const C_String & inCommentString) {
+void AC_OutputStream::appendCppTitleComment (const String & inCommentString) {
   appendTitleComment ("//", inCommentString) ;
 }
 
@@ -445,13 +445,13 @@ void AC_OutputStream::appendCppTitleComment (const char * inCommentString) {
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_OutputStream::appendCppComment (const C_String & inCommentString) {
+void AC_OutputStream::appendCppComment (const String & inCommentString) {
   appendComment ("//", inCommentString) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_OutputStream::appendCppCenterJustifiedComment (const C_String & inCommentString) {
+void AC_OutputStream::appendCppCenterJustifiedComment (const String & inCommentString) {
   appendCenterJustifiedComment ("//", inCommentString) ;
 }
 
@@ -470,7 +470,7 @@ void AC_OutputStream::appendCppHyphenLineComment (void) {
 //--------------------------------------------------------------------------------------------------
 
 static void internalWriteCstringConstantWithoutDelimiters (AC_OutputStream & ioStream,
-                                                           const C_String & inString,
+                                                           const String & inString,
                                                            const int32_t inStringLength,
                                                            const int32_t inLineMaxLength) {
   int32_t currentColumn = 0 ;
@@ -537,7 +537,7 @@ static void internalWriteCstringConstantWithoutDelimiters (AC_OutputStream & ioS
 //--------------------------------------------------------------------------------------------------
 
 static void internalWriteCstringConstant (AC_OutputStream & ioStream,
-                                          const C_String & inString,
+                                          const String & inString,
                                           const int32_t inStringLength,
                                           const int32_t inLineMaxLength) {
   ioStream += "\"" ;
@@ -547,19 +547,19 @@ static void internalWriteCstringConstant (AC_OutputStream & ioStream,
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_OutputStream::appendCLiteralStringConstant (const C_String & inString) {
+void AC_OutputStream::appendCLiteralStringConstant (const String & inString) {
   internalWriteCstringConstant (*this, inString, inString.length (), 150) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_OutputStream::appendCLiteralStringConstantWithoutDelimiters (const C_String & inString) {
+void AC_OutputStream::appendCLiteralStringConstantWithoutDelimiters (const String & inString) {
   internalWriteCstringConstantWithoutDelimiters (*this, inString, inString.length (), 150) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_OutputStream::appendCLiteralStringConstant (const C_String & inString,
+void AC_OutputStream::appendCLiteralStringConstant (const String & inString,
                                                     const int32_t inLineMaxLength) {
   internalWriteCstringConstant (*this, inString, inString.length (), inLineMaxLength) ;
 }
@@ -619,15 +619,15 @@ void AC_OutputStream::appendCLiteralCharConstant (const utf32 c) {
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_OutputStream::appendFileHeaderComment (const C_String & inLineCommentPrefix,
-                                               const C_String & inTitle,
-                                               const C_String & in_generatedBy_subtitle,
+void AC_OutputStream::appendFileHeaderComment (const String & inLineCommentPrefix,
+                                               const String & inTitle,
+                                               const String & in_generatedBy_subtitle,
                                                const bool inIncludeLGPLtext) {
   if (inLineCommentPrefix.length () > 0) {
     appendCppHyphenLineCommentWithoutExtraBlankLine () ;
     appendCppSpaceLineComment () ;
     appendCppCenterJustifiedComment (inTitle) ;
-    C_String subTitle ;
+    String subTitle ;
     if (in_generatedBy_subtitle.length () != 0) {
       subTitle += "Generated by " ;
       subTitle += in_generatedBy_subtitle ;
@@ -679,56 +679,56 @@ void AC_OutputStream::appendFileHeaderComment (const C_String & inLineCommentPre
 
 //--------------------------------------------------------------------------------------------------
 
-C_String stringWithUnsigned (const uint64_t inValue) {
-  C_String result ;
+String stringWithUnsigned (const uint64_t inValue) {
+  String result ;
   result.appendUnsigned (inValue) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-C_String stringWithHex0xUnsigned (const uint64_t inValue) {
-  C_String s ;
+String stringWithHex0xUnsigned (const uint64_t inValue) {
+  String s ;
   s.appendHex0xUnsigned (inValue) ;
   return s ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-C_String stringWithSigned (const int64_t inValue) {
-  C_String result ;
+String stringWithSigned (const int64_t inValue) {
+  String result ;
   result.appendSigned (inValue) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-C_String stringWithCharacter (const char inValue) {
-  C_String result ;
+String stringWithCharacter (const char inValue) {
+  String result ;
   result.appendUnicodeCharacter (TO_UNICODE (uint32_t (inValue)) COMMA_HERE) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-C_String stringWithUnicodeCharacter (const utf32 inValue) {
-  C_String result ;
+String stringWithUnicodeCharacter (const utf32 inValue) {
+  String result ;
   result.appendUnicodeCharacter (inValue COMMA_HERE) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-C_String stringWithPointer (const void * inValue) {
-  C_String result ;
+String stringWithPointer (const void * inValue) {
+  String result ;
   result.appendPointer (inValue) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-C_String stringWithDouble (const double inValue) {
-  C_String result ;
+String stringWithDouble (const double inValue) {
+  String result ;
   result.appendDouble (inValue) ;
   return result ;
 }

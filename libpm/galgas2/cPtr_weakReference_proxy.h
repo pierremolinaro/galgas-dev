@@ -42,7 +42,7 @@ class cPtr_weakReference_proxy final : public acPtr_class {
   public: acStrongPtr_class * strongObject (void) const { return mStrongObjectPtr ; }
 
 //--- Virtual methods from acPtr_class
-  public: virtual void description (C_String &, const int32_t) const {} // Never invoked
+  public: virtual void description (String &, const int32_t) const {} // Never invoked
 
   public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class *) const { // Never invoked
     return typeComparisonResult::kOperandNotValid ;

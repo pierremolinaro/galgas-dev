@@ -30,7 +30,7 @@
 class GALGAS_uint ;
 class C_Compiler ;
 class cSharedSortedListRoot ;
-class C_String ;
+class String ;
 class C_galgas_type_descriptor ;
 class capSortedListElement ;
 class cSortedListNode ;
@@ -65,7 +65,7 @@ class AC_GALGAS_sortedlist : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Implementation of reader 'description'
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const override ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const override ;
 
 //--- Enumeration handling
   protected: void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;

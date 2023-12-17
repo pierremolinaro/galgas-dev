@@ -688,9 +688,9 @@ void C_BDD::buildValueArray (TC_UniqueArray <TC_Array <bool> > & outValuesArray,
 //--------------------------------------------------------------------------------------------------
 
 class cLittleEndianStringValueBuilder : public C_bdd_value_traversing {
-  private: TC_UniqueArray <C_String> * mPtr ;
+  private: TC_UniqueArray <String> * mPtr ;
 
-  public: cLittleEndianStringValueBuilder (TC_UniqueArray <C_String> * inPtr) :
+  public: cLittleEndianStringValueBuilder (TC_UniqueArray <String> * inPtr) :
   mPtr (inPtr) {
   }
 
@@ -708,7 +708,7 @@ class cLittleEndianStringValueBuilder : public C_bdd_value_traversing {
 void cLittleEndianStringValueBuilder::
 action (const bool tableauDesValeurs [],
         const uint32_t inVariableCount) {
-  C_String value ;
+  String value ;
   for (uint32_t i=0 ; i<inVariableCount ; i++) {
     value.appendCharacter ((char) ('0' + tableauDesValeurs [i])) ;
   }
@@ -718,7 +718,7 @@ action (const bool tableauDesValeurs [],
 //--------------------------------------------------------------------------------------------------
 
 void C_BDD::
-buildLittleEndianStringValueArray (TC_UniqueArray <C_String> & outValuesArray,
+buildLittleEndianStringValueArray (TC_UniqueArray <String> & outValuesArray,
                                    const uint32_t inVariableCount) const {
   outValuesArray.removeAllKeepingCapacity () ;
   cLittleEndianStringValueBuilder builder (& outValuesArray) ;
@@ -731,9 +731,9 @@ buildLittleEndianStringValueArray (TC_UniqueArray <C_String> & outValuesArray,
 //--------------------------------------------------------------------------------------------------
 
 class cBuildBigEndianStringValueArray : public C_bdd_value_traversing {
-  private: TC_UniqueArray <C_String> * mPtr ;
+  private: TC_UniqueArray <String> * mPtr ;
 
-  public: cBuildBigEndianStringValueArray (TC_UniqueArray <C_String> * inPtr) :
+  public: cBuildBigEndianStringValueArray (TC_UniqueArray <String> * inPtr) :
   mPtr (inPtr) {
   }
 
@@ -751,7 +751,7 @@ class cBuildBigEndianStringValueArray : public C_bdd_value_traversing {
 void cBuildBigEndianStringValueArray::
 action (const bool tableauDesValeurs [],
         const uint32_t inVariableCount) {
-  C_String value ;
+  String value ;
   for (uint32_t i=inVariableCount ; i>0 ; i--) {
     value.appendCharacter ((char) ('0' + tableauDesValeurs [i-1])) ;
   }
@@ -761,7 +761,7 @@ action (const bool tableauDesValeurs [],
 //--------------------------------------------------------------------------------------------------
 
 void C_BDD::
-buildBigEndianStringValueArray (TC_UniqueArray <C_String> & outValuesArray,
+buildBigEndianStringValueArray (TC_UniqueArray <String> & outValuesArray,
                                 const uint32_t inVariableCount) const {
   outValuesArray.removeAllKeepingCapacity () ;
   cBuildBigEndianStringValueArray builder (& outValuesArray) ;
@@ -774,9 +774,9 @@ buildBigEndianStringValueArray (TC_UniqueArray <C_String> & outValuesArray,
 //--------------------------------------------------------------------------------------------------
 
 class cBuildQueryString : public C_bdd_value_traversing {
-  private: C_String * mStringPtr ;
+  private: String * mStringPtr ;
 
-  public: cBuildQueryString (C_String * inStringPtr) :
+  public: cBuildQueryString (String * inStringPtr) :
   mStringPtr (inStringPtr) {
   }
 
@@ -795,7 +795,7 @@ class cBuildQueryString : public C_bdd_value_traversing {
 void cBuildQueryString::
 action (const bool tableauDesValeurs [],
         const uint32_t inVariableCount) {
-  C_String value ;
+  String value ;
   if (mStringPtr->length () > 0) {
     *mStringPtr += "|" ;
   }
@@ -806,13 +806,13 @@ action (const bool tableauDesValeurs [],
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_BDD::
+String C_BDD::
 queryStringValue (LOCATION_ARGS) const {
-  C_String s ;
+  String s ;
   if (isTrue ()) {
     s += "X" ;
   }else if (! isFalse ()) {
-    TC_UniqueArray <C_String> stringArray ;
+    TC_UniqueArray <String> stringArray ;
     buildCompressedBigEndianStringValueArray (stringArray COMMA_THERE) ;
     if (stringArray.count () > 0) {
       s += stringArray (0 COMMA_HERE) ;
@@ -833,7 +833,7 @@ queryStringValue (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-C_BDD C_BDD::BDDWithPredicateString (const C_String & inPredicateStringValue
+C_BDD C_BDD::BDDWithPredicateString (const String & inPredicateStringValue
                                      COMMA_LOCATION_ARGS) {
   C_BDD result ;
   const int32_t stringLength = inPredicateStringValue.length () ;
@@ -841,7 +841,7 @@ C_BDD C_BDD::BDDWithPredicateString (const C_String & inPredicateStringValue
   bool ok = true ;
   while ((stringIndex < stringLength) && ok) {
     utf32 cc = inPredicateStringValue (stringIndex COMMA_HERE) ;
-    C_String s ;
+    String s ;
     while ((stringIndex < stringLength) && ((UNICODE_VALUE (cc) == '0') || (UNICODE_VALUE (cc) == '1') || (UNICODE_VALUE (cc) == 'X') || (UNICODE_VALUE (cc) == ' '))) {
       s.appendUnicodeCharacter (cc COMMA_HERE) ;
       stringIndex ++ ;
@@ -1895,7 +1895,7 @@ static void printLineWithSeparator (AC_OutputStream & outputStream,
   int32_t bitIndex = inValueArray.count () - 1 ;
   for (int32_t i=0 ; i<inBitCounts.count () ; i++) {
     outputStream += " " ;
-    outputStream += C_String::spaces (inValueSeparation (i COMMA_HERE)) ;
+    outputStream += String::spaces (inValueSeparation (i COMMA_HERE)) ;
     for (int32_t j=0 ; j<inBitCounts (i COMMA_HERE) ; j++) {
       outputStream.appendCharacter (inValueArray (bitIndex COMMA_HERE)) ;
       bitIndex -- ;
@@ -1956,7 +1956,7 @@ static void internalPrintWithSeparator (AC_OutputStream & outputStream,
 //--------------------------------------------------------------------------------------------------
 
 void C_BDD::print (AC_OutputStream & outputStream,
-                   const TC_UniqueArray <C_String> & inVariablesNames,
+                   const TC_UniqueArray <String> & inVariablesNames,
                    const TC_UniqueArray <int32_t> & inBitCounts) const {
 //--- Build separators
   TC_UniqueArray <int32_t> variableNameSeparation ;
@@ -1971,7 +1971,7 @@ void C_BDD::print (AC_OutputStream & outputStream,
 //--- Print header
   for (int32_t i=0 ; i<inVariablesNames.count () ; i++) {
     outputStream += " " ;
-    outputStream += C_String::spaces (variableNameSeparation (i COMMA_HERE)) ;
+    outputStream += String::spaces (variableNameSeparation (i COMMA_HERE)) ;
     outputStream += inVariablesNames (i COMMA_HERE) ;
   }
   outputStream += "\n" ;
@@ -1986,10 +1986,10 @@ void C_BDD::print (AC_OutputStream & outputStream,
                    const TC_UniqueArray <int32_t> & inBitCounts,
                    const int32_t inPrefixedSpaceCount) const {
   if (mBDDvalue == 0) {
-    outputStream += C_String::spaces (inPrefixedSpaceCount) ;
+    outputStream += String::spaces (inPrefixedSpaceCount) ;
     outputStream += "(false)\n" ;
   }else if (mBDDvalue == 1) {
-    outputStream += C_String::spaces (inPrefixedSpaceCount) ;
+    outputStream += String::spaces (inPrefixedSpaceCount) ;
     outputStream += "(true)\n" ;
   }else{
     uint32_t totalBitCount = 0 ;
@@ -2014,16 +2014,16 @@ void C_BDD::print (AC_OutputStream & outputStream,
 
 //--------------------------------------------------------------------------------------------------
 
-static void buildGraphvizRepresentation (C_String & ioString,
-                                         const C_String & inSourceNode,
+static void buildGraphvizRepresentation (String & ioString,
+                                         const String & inSourceNode,
                                          const uint32_t inBDDValue,
-                                         const TC_UniqueArray <C_String> & inBitNames) {
+                                         const TC_UniqueArray <String> & inBitNames) {
   const uint32_t nodeIndex = nodeIndexForRoot (inBDDValue COMMA_HERE) ;
   const int32_t var = (int32_t) gNodeArray [nodeIndex].mVariableIndex ;
-  const C_String node = C_String ("N") + stringWithUnsigned (nodeIndex) ;
+  const String node = String ("N") + stringWithUnsigned (nodeIndex) ;
   if (! isNodeMarkedThenMark (inBDDValue COMMA_HERE)) {
     const uint32_t THENbranch = gNodeArray [nodeIndex].mTHEN ;
-    C_String THENlabel ;
+    String THENlabel ;
     if (THENbranch == 0) {
       THENlabel += "F" ;
     }else if (THENbranch == 1) {
@@ -2032,7 +2032,7 @@ static void buildGraphvizRepresentation (C_String & ioString,
       THENlabel += "<f1>" ;
     }
     const uint32_t ELSEbranch = gNodeArray [nodeIndex].mELSE ;
-    C_String ELSElabel ;
+    String ELSElabel ;
     if (ELSEbranch == 0) {
       ELSElabel += "F" ;
     }else if (ELSEbranch == 1) {
@@ -2069,13 +2069,13 @@ static void buildGraphvizRepresentation (C_String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_BDD::graphvizRepresentation (void) const {
+String C_BDD::graphvizRepresentation (void) const {
   int32_t varCount = 0 ;
   if (mBDDvalue > 1) {
     const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
     varCount = ((int32_t) gNodeArray [nodeIndex].mVariableIndex) + 1 ;
   }
-  TC_UniqueArray <C_String> bitNames ;
+  TC_UniqueArray <String> bitNames ;
   for (int32_t i=0 ; i<varCount ; i++) {
     bitNames.appendObject (stringWithSigned (i)) ;
   }
@@ -2084,9 +2084,9 @@ C_String C_BDD::graphvizRepresentation (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_BDD::graphvizRepresentationWithNames (const TC_UniqueArray <C_String> & inBitNames) const {
+String C_BDD::graphvizRepresentationWithNames (const TC_UniqueArray <String> & inBitNames) const {
   unmarkAllExistingBDDnodes () ;
-  C_String result ;
+  String result ;
   result += "digraph G {\n" ;
   if (mBDDvalue == 0) {
     result += "  N [label=\"F\", shape=rectangle]\n" ;
@@ -2112,9 +2112,9 @@ C_String C_BDD::graphvizRepresentationWithNames (const TC_UniqueArray <C_String>
 
 static void
 internalPrintBDDInLittleEndianStringArray (const uint32_t inValue,
-                               C_String & ioDisplayString,
+                               String & ioDisplayString,
                                uint32_t inVariableIndex,
-                               TC_UniqueArray <C_String> & outStringArray
+                               TC_UniqueArray <String> & outStringArray
                                COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const uint32_t complement = inValue & 1 ;
@@ -2160,11 +2160,11 @@ internalPrintBDDInLittleEndianStringArray (const uint32_t inValue,
 //--------------------------------------------------------------------------------------------------
 
 void C_BDD::
-buildCompressedLittleEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray
+buildCompressedLittleEndianStringValueArray (TC_UniqueArray <String> & outStringArray
                                              COMMA_LOCATION_ARGS) const {
   const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) != 0) {
-    C_String displayString ;
+    String displayString ;
     for (int32_t i=0 ; i<=((int32_t) gNodeArray [nodeIndex].mVariableIndex) ; i++) {
       displayString += "X" ;
     }
@@ -2175,10 +2175,10 @@ buildCompressedLittleEndianStringValueArray (TC_UniqueArray <C_String> & outStri
 //--------------------------------------------------------------------------------------------------
 
 void C_BDD::
-buildCompressedLittleEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray,
+buildCompressedLittleEndianStringValueArray (TC_UniqueArray <String> & outStringArray,
                                              const uint32_t inVariableCount
                                              COMMA_LOCATION_ARGS) const {
-  C_String displayString ;
+  String displayString ;
   for (int32_t i=0 ; i<((int32_t) inVariableCount) ; i++) {
     displayString += "X" ;
   }
@@ -2189,10 +2189,10 @@ buildCompressedLittleEndianStringValueArray (TC_UniqueArray <C_String> & outStri
 
 static void
 internalPrintBDDInBigEndianStringArray (const uint32_t inValue,
-                               C_String & ioDisplayString,
+                               String & ioDisplayString,
                                uint32_t inVariableIndex,
                                const uint32_t inTotalVariableCountMinusOne,
-                               TC_UniqueArray <C_String> & outStringArray
+                               TC_UniqueArray <String> & outStringArray
                                COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const uint32_t complement = inValue & 1 ;
@@ -2238,11 +2238,11 @@ internalPrintBDDInBigEndianStringArray (const uint32_t inValue,
 //--------------------------------------------------------------------------------------------------
 
 void C_BDD::
-buildCompressedBigEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray
+buildCompressedBigEndianStringValueArray (TC_UniqueArray <String> & outStringArray
                                           COMMA_LOCATION_ARGS) const {
   const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
   if (bothBranches (gNodeArray [nodeIndex]) != 0) {
-    C_String displayString ;
+    String displayString ;
     for (int32_t i=0 ; i<=((int32_t) gNodeArray [nodeIndex].mVariableIndex) ; i++) {
       displayString += "X" ;
     }
@@ -2253,10 +2253,10 @@ buildCompressedBigEndianStringValueArray (TC_UniqueArray <C_String> & outStringA
 //--------------------------------------------------------------------------------------------------
 
 void C_BDD::
-buildCompressedBigEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray,
+buildCompressedBigEndianStringValueArray (TC_UniqueArray <String> & outStringArray,
                                  const uint32_t inVariableCount
                                  COMMA_LOCATION_ARGS) const {
-  C_String displayString ;
+  String displayString ;
   for (int32_t i=0 ; i<((int32_t) inVariableCount) ; i++) {
     displayString += "X" ;
   }

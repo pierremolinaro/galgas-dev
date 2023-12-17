@@ -87,7 +87,7 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
 
 //--------------------- Compute array of used symbols declared as unused by user
   cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis currentNT (inUnusedNonTerminalSymbolsForGrammar, kENUMERATION_UP) ;
-  TC_UniqueArray <C_String> usedSymbolDeclaredAsUnusedArray ;
+  TC_UniqueArray <String> usedSymbolDeclaredAsUnusedArray ;
   while (currentNT.hasCurrentObject ()) {
     const uint32_t nt = currentNT.current_mNonTerminalIndex (HERE).uintValue () + (uint32_t) inVocabulary.getTerminalSymbolsCount () ;
     // printf ("*** UNUSED DECLARED SYMBOL %u *** \n", nt) ;
@@ -131,7 +131,7 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
   gCout.flush () ;
 //--- Warn for unused symbols
   if (unusedSymbolArrayForWarning.count () > 0) {
-    C_String warningMessage ;
+    String warningMessage ;
     if (unusedSymbolArrayForWarning.count () == 1) {
       warningMessage += "there is 1 useless symbol, not declared as unused: " ;
     }else{
@@ -152,7 +152,7 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
   }
   //--- Warn for used symbols declared as unused
   if (usedSymbolDeclaredAsUnusedArray.count () > 0) {
-    C_String warningMessage ;
+    String warningMessage ;
     if (usedSymbolDeclaredAsUnusedArray.count () == 1) {
       warningMessage += "there is 1 useful symbol declared as unused: " ;
     }else{

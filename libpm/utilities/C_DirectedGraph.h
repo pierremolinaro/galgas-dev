@@ -24,7 +24,7 @@
 
 #include "generic-arraies/TC_Array.h"
 #include "C_UIntSet.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -57,7 +57,7 @@ class C_DirectedGraph final {
 //--- Accessors
   public: uint32_t unusedNodeIndex (void) const ;
 
-  public: C_String graphvizString (const TC_UniqueArray <C_String> & inNodeNameArray) const ;
+  public: String graphvizString (const TC_UniqueArray <String> & inNodeNameArray) const ;
   
   public: void getNodeBoolArray (TC_UniqueArray <bool> & outNodes) const ;
   

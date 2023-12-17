@@ -60,7 +60,7 @@ void GALGAS_collectionValueElementListForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_collectionValueElementListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_collectionValueElementListForGeneration_2D_element::description (String & ioString,
                                                                              const int32_t inIndentation) const {
   ioString += "<struct @collectionValueElementListForGeneration-element:" ;
   if (! isValid ()) {
@@ -191,7 +191,7 @@ void GALGAS_castInstructionBranchListForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_castInstructionBranchListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_castInstructionBranchListForGeneration_2D_element::description (String & ioString,
                                                                             const int32_t inIndentation) const {
   ioString += "<struct @castInstructionBranchListForGeneration-element:" ;
   if (! isValid ()) {
@@ -304,7 +304,7 @@ void GALGAS_fixitListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_fixitListAST_2D_element::description (C_String & ioString,
+void GALGAS_fixitListAST_2D_element::description (String & ioString,
                                                   const int32_t inIndentation) const {
   ioString += "<struct @fixitListAST-element:" ;
   if (! isValid ()) {
@@ -411,7 +411,7 @@ void GALGAS_fixitListForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_fixitListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_fixitListForGeneration_2D_element::description (String & ioString,
                                                             const int32_t inIndentation) const {
   ioString += "<struct @fixitListForGeneration-element:" ;
   if (! isValid ()) {
@@ -526,7 +526,7 @@ void GALGAS_forInstructionEnumeratedObjectListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_forInstructionEnumeratedObjectListAST_2D_element::description (C_String & ioString,
+void GALGAS_forInstructionEnumeratedObjectListAST_2D_element::description (String & ioString,
                                                                            const int32_t inIndentation) const {
   ioString += "<struct @forInstructionEnumeratedObjectListAST-element:" ;
   if (! isValid ()) {
@@ -635,7 +635,7 @@ void GALGAS_ifExpressionList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_ifExpressionList_2D_element::description (C_String & ioString,
+void GALGAS_ifExpressionList_2D_element::description (String & ioString,
                                                       const int32_t inIndentation) const {
   ioString += "<struct @ifExpressionList-element:" ;
   if (! isValid ()) {
@@ -742,7 +742,7 @@ void GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::drop (void
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::description (String & ioString,
                                                                                    const int32_t inIndentation) const {
   ioString += "<struct @optionalMethodActualArgumentListForGeneration-element:" ;
   if (! isValid ()) {
@@ -849,7 +849,7 @@ void GALGAS_ifTestListForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_ifTestListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_ifTestListForGeneration_2D_element::description (String & ioString,
                                                              const int32_t inIndentation) const {
   ioString += "<struct @ifTestListForGeneration-element:" ;
   if (! isValid ()) {
@@ -980,7 +980,7 @@ void GALGAS_switchBranchesAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_switchBranchesAST_2D_element::description (C_String & ioString,
+void GALGAS_switchBranchesAST_2D_element::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString += "<struct @switchBranchesAST-element:" ;
   if (! isValid ()) {
@@ -1109,7 +1109,7 @@ void GALGAS_extractedAssociatedValuesForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_extractedAssociatedValuesForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_extractedAssociatedValuesForGeneration_2D_element::description (String & ioString,
                                                                             const int32_t inIndentation) const {
   ioString += "<struct @extractedAssociatedValuesForGeneration-element:" ;
   if (! isValid ()) {
@@ -1244,7 +1244,7 @@ void GALGAS_switchBranchesForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_switchBranchesForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_switchBranchesForGeneration_2D_element::description (String & ioString,
                                                                  const int32_t inIndentation) const {
   ioString += "<struct @switchBranchesForGeneration-element:" ;
   if (! isValid ()) {
@@ -1357,7 +1357,7 @@ void GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element::description (C_String & ioString,
+void GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element::description (String & ioString,
                                                                              const int32_t inIndentation) const {
   ioString += "<struct @syntaxInstructionListForGrammarAnalysis-element:" ;
   if (! isValid ()) {
@@ -1464,7 +1464,7 @@ void GALGAS_branchListForGrammarAnalysis_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_branchListForGrammarAnalysis_2D_element::description (C_String & ioString,
+void GALGAS_branchListForGrammarAnalysis_2D_element::description (String & ioString,
                                                                   const int32_t inIndentation) const {
   ioString += "<struct @branchListForGrammarAnalysis-element:" ;
   if (! isValid ()) {
@@ -1571,7 +1571,7 @@ void GALGAS_rowList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_rowList_2D_element::description (C_String & ioString,
+void GALGAS_rowList_2D_element::description (String & ioString,
                                              const int32_t inIndentation) const {
   ioString += "<struct @rowList-element:" ;
   if (! isValid ()) {
@@ -1678,7 +1678,7 @@ void GALGAS_programListForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_programListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_programListForGeneration_2D_element::description (String & ioString,
                                                               const int32_t inIndentation) const {
   ioString += "<struct @programListForGeneration-element:" ;
   if (! isValid ()) {
@@ -1793,7 +1793,7 @@ void GALGAS_genericExtensionMethodListMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_genericExtensionMethodListMap_2D_element::description (C_String & ioString,
+void GALGAS_genericExtensionMethodListMap_2D_element::description (String & ioString,
                                                                    const int32_t inIndentation) const {
   ioString += "<struct @genericExtensionMethodListMap-element:" ;
   if (! isValid ()) {
@@ -1902,7 +1902,7 @@ void GALGAS_unifiedTypeMapEntryList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMapEntryList_2D_element::description (C_String & ioString,
+void GALGAS_unifiedTypeMapEntryList_2D_element::description (String & ioString,
                                                              const int32_t inIndentation) const {
   ioString += "<struct @unifiedTypeMapEntryList-element:" ;
   if (! isValid ()) {
@@ -2017,7 +2017,7 @@ void GALGAS_descendantClassListMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_descendantClassListMap_2D_element::description (C_String & ioString,
+void GALGAS_descendantClassListMap_2D_element::description (String & ioString,
                                                             const int32_t inIndentation) const {
   ioString += "<struct @descendantClassListMap-element:" ;
   if (! isValid ()) {
@@ -2150,7 +2150,7 @@ void GALGAS_XCodeGroupList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_XCodeGroupList_2D_element::description (C_String & ioString,
+void GALGAS_XCodeGroupList_2D_element::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "<struct @XCodeGroupList-element:" ;
   if (! isValid ()) {
@@ -2343,7 +2343,7 @@ void GALGAS_XCodeToolTargetList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_XCodeToolTargetList_2D_element::description (C_String & ioString,
+void GALGAS_XCodeToolTargetList_2D_element::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "<struct @XCodeToolTargetList-element:" ;
   if (! isValid ()) {
@@ -2574,7 +2574,7 @@ void GALGAS_XCodeAppTargetList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_XCodeAppTargetList_2D_element::description (C_String & ioString,
+void GALGAS_XCodeAppTargetList_2D_element::description (String & ioString,
                                                         const int32_t inIndentation) const {
   ioString += "<struct @XCodeAppTargetList-element:" ;
   if (! isValid ()) {
@@ -2723,7 +2723,7 @@ void GALGAS_BuildFileList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_BuildFileList_2D_element::description (C_String & ioString,
+void GALGAS_BuildFileList_2D_element::description (String & ioString,
                                                    const int32_t inIndentation) const {
   ioString += "<struct @BuildFileList-element:" ;
   if (! isValid ()) {
@@ -2794,7 +2794,7 @@ GALGAS_BuildFileList_2D_element GALGAS_BuildFileList_2D_element::extractObject (
 //--------------------------------------------------------------------------------------------------
 
 C_Lexique_galgasTemplateScanner::C_Lexique_galgasTemplateScanner (C_Compiler * inCallerCompiler,
-                                                                  const C_String & inSourceFileName
+                                                                  const String & inSourceFileName
                                                                   COMMA_LOCATION_ARGS) :
 C_Lexique_galgasScanner (inCallerCompiler, inSourceFileName COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
@@ -2803,8 +2803,8 @@ mMatchedTemplateDelimiterIndex (-1) {
 //--------------------------------------------------------------------------------------------------
 
 C_Lexique_galgasTemplateScanner::C_Lexique_galgasTemplateScanner (C_Compiler * inCallerCompiler,
-                                                                  const C_String & inSourceString,
-                                                                  const C_String & inStringForError
+                                                                  const String & inSourceString,
+                                                                  const String & inStringForError
                                                                   COMMA_LOCATION_ARGS) :
 C_Lexique_galgasScanner (inCallerCompiler, inSourceString, inStringForError COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
@@ -3091,7 +3091,7 @@ bool C_Lexique_galgasTemplateScanner::parseLexicalToken (void) {
           if (galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mReplacementFunction == nullptr) {
             token.mTemplateStringBeforeToken += galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mEndString ;
           }else{
-            C_String s ;
+            String s ;
             while (notTestForInputUTF32String (galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mEndString,
                                                galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mEndStringLength,
                                                kEndOfSourceLexicalErrorMessage
@@ -3320,14 +3320,14 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-static void getKeywordLists_galgasTemplateScanner (TC_UniqueArray <C_String> & /* ioList */) {
+static void getKeywordLists_galgasTemplateScanner (TC_UniqueArray <String> & /* ioList */) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-static void getKeywordsForIdentifier_galgasTemplateScanner (const C_String & /* inIdentifier */,
+static void getKeywordsForIdentifier_galgasTemplateScanner (const String & /* inIdentifier */,
                                                             bool & /* ioFound */,
-                                                            TC_UniqueArray <C_String> & /* ioList */) {
+                                                            TC_UniqueArray <String> & /* ioList */) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3467,7 +3467,7 @@ const C_galgas_type_descriptor * cPtr_templateConstructorAST::classDescriptor (v
   return & kTypeDescriptor_GALGAS_templateConstructorAST ;
 }
 
-void cPtr_templateConstructorAST::description (C_String & ioString,
+void cPtr_templateConstructorAST::description (String & ioString,
                                                const int32_t inIndentation) const {
   ioString += "[@templateConstructorAST:" ;
   mProperty_mTypeName.description (ioString, inIndentation+1) ;
@@ -3661,7 +3661,7 @@ const C_galgas_type_descriptor * cPtr_templateFileWrapperTemplateCallAST::classD
   return & kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ;
 }
 
-void cPtr_templateFileWrapperTemplateCallAST::description (C_String & ioString,
+void cPtr_templateFileWrapperTemplateCallAST::description (String & ioString,
                                                            const int32_t inIndentation) const {
   ioString += "[@templateFileWrapperTemplateCallAST:" ;
   mProperty_mFileWrapperName.description (ioString, inIndentation+1) ;
@@ -3855,7 +3855,7 @@ const C_galgas_type_descriptor * cPtr_templateExtensionTemplateCallAST::classDes
   return & kTypeDescriptor_GALGAS_templateExtensionTemplateCallAST ;
 }
 
-void cPtr_templateExtensionTemplateCallAST::description (C_String & ioString,
+void cPtr_templateExtensionTemplateCallAST::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "[@templateExtensionTemplateCallAST:" ;
   mProperty_mExpressionValue.description (ioString, inIndentation+1) ;
@@ -4030,7 +4030,7 @@ const C_galgas_type_descriptor * cPtr_templateLiteralStringExpressionAST::classD
   return & kTypeDescriptor_GALGAS_templateLiteralStringExpressionAST ;
 }
 
-void cPtr_templateLiteralStringExpressionAST::description (C_String & ioString,
+void cPtr_templateLiteralStringExpressionAST::description (String & ioString,
                                                            const int32_t inIndentation) const {
   ioString += "[@templateLiteralStringExpressionAST:" ;
   mProperty_mLiteralStringList.description (ioString, inIndentation+1) ;
@@ -4222,7 +4222,7 @@ const C_galgas_type_descriptor * cPtr_structFieldAccessTemplateExpressionAST::cl
   return & kTypeDescriptor_GALGAS_structFieldAccessTemplateExpressionAST ;
 }
 
-void cPtr_structFieldAccessTemplateExpressionAST::description (C_String & ioString,
+void cPtr_structFieldAccessTemplateExpressionAST::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "[@structFieldAccessTemplateExpressionAST:" ;
   mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
@@ -4416,7 +4416,7 @@ const C_galgas_type_descriptor * cPtr_templateOptionAccessAST::classDescriptor (
   return & kTypeDescriptor_GALGAS_templateOptionAccessAST ;
 }
 
-void cPtr_templateOptionAccessAST::description (C_String & ioString,
+void cPtr_templateOptionAccessAST::description (String & ioString,
                                                 const int32_t inIndentation) const {
   ioString += "[@templateOptionAccessAST:" ;
   mProperty_mOptionComponentName.description (ioString, inIndentation+1) ;
@@ -4629,7 +4629,7 @@ const C_galgas_type_descriptor * cPtr_templateTestDynamicClassAST::classDescript
   return & kTypeDescriptor_GALGAS_templateTestDynamicClassAST ;
 }
 
-void cPtr_templateTestDynamicClassAST::description (C_String & ioString,
+void cPtr_templateTestDynamicClassAST::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "[@templateTestDynamicClassAST:" ;
   mProperty_mReceiverExpression.description (ioString, inIndentation+1) ;
@@ -4806,7 +4806,7 @@ const C_galgas_type_descriptor * cPtr_templateFunctionCallAST::classDescriptor (
   return & kTypeDescriptor_GALGAS_templateFunctionCallAST ;
 }
 
-void cPtr_templateFunctionCallAST::description (C_String & ioString,
+void cPtr_templateFunctionCallAST::description (String & ioString,
                                                 const int32_t inIndentation) const {
   ioString += "[@templateFunctionCallAST:" ;
   mProperty_mFunctionName.description (ioString, inIndentation+1) ;
@@ -4960,7 +4960,7 @@ const C_galgas_type_descriptor * cPtr_templateVarInExpressionAST::classDescripto
   return & kTypeDescriptor_GALGAS_templateVarInExpressionAST ;
 }
 
-void cPtr_templateVarInExpressionAST::description (C_String & ioString,
+void cPtr_templateVarInExpressionAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
   ioString += "[@templateVarInExpressionAST:" ;
   mProperty_mVarName.description (ioString, inIndentation+1) ;
@@ -5112,7 +5112,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionStringAST::classDescrip
   return & kTypeDescriptor_GALGAS_templateInstructionStringAST ;
 }
 
-void cPtr_templateInstructionStringAST::description (C_String & ioString,
+void cPtr_templateInstructionStringAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "[@templateInstructionStringAST:" ;
   mProperty_mTemplateString.description (ioString, inIndentation+1) ;
@@ -7609,7 +7609,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionStringForGeneration::cl
   return & kTypeDescriptor_GALGAS_templateInstructionStringForGeneration ;
 }
 
-void cPtr_templateInstructionStringForGeneration::description (C_String & ioString,
+void cPtr_templateInstructionStringForGeneration::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "[@templateInstructionStringForGeneration:" ;
   mProperty_mTemplateString.description (ioString, inIndentation+1) ;
@@ -8034,7 +8034,7 @@ const C_galgas_type_descriptor * cPtr_templateBlockInstructionForGeneration::cla
   return & kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration ;
 }
 
-void cPtr_templateBlockInstructionForGeneration::description (C_String & ioString,
+void cPtr_templateBlockInstructionForGeneration::description (String & ioString,
                                                               const int32_t inIndentation) const {
   ioString += "[@templateBlockInstructionForGeneration:" ;
   mProperty_mExpression.description (ioString, inIndentation+1) ;
@@ -8206,7 +8206,7 @@ void GALGAS_semanticContext::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_semanticContext::description (C_String & ioString,
+void GALGAS_semanticContext::description (String & ioString,
                                           const int32_t inIndentation) const {
   ioString += "<struct @semanticContext:" ;
   if (! isValid ()) {
@@ -8424,7 +8424,7 @@ const C_galgas_type_descriptor * cPtr_templateGetterCallInExpressionAST::classDe
   return & kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST ;
 }
 
-void cPtr_templateGetterCallInExpressionAST::description (C_String & ioString,
+void cPtr_templateGetterCallInExpressionAST::description (String & ioString,
                                                           const int32_t inIndentation) const {
   ioString += "[@templateGetterCallInExpressionAST:" ;
   mProperty_mReceiverExpression.description (ioString, inIndentation+1) ;
@@ -8715,7 +8715,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionForeachAST::classDescri
   return & kTypeDescriptor_GALGAS_templateInstructionForeachAST ;
 }
 
-void cPtr_templateInstructionForeachAST::description (C_String & ioString,
+void cPtr_templateInstructionForeachAST::description (String & ioString,
                                                       const int32_t inIndentation) const {
   ioString += "[@templateInstructionForeachAST:" ;
   mProperty_mIsAscending.description (ioString, inIndentation+1) ;
@@ -9014,7 +9014,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionForeachForGeneration::c
   return & kTypeDescriptor_GALGAS_templateInstructionForeachForGeneration ;
 }
 
-void cPtr_templateInstructionForeachForGeneration::description (C_String & ioString,
+void cPtr_templateInstructionForeachForGeneration::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString += "[@templateInstructionForeachForGeneration:" ;
   mProperty_mIsAscending.description (ioString, inIndentation+1) ;
@@ -9218,7 +9218,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionSwitchForGeneration::cl
   return & kTypeDescriptor_GALGAS_templateInstructionSwitchForGeneration ;
 }
 
-void cPtr_templateInstructionSwitchForGeneration::description (C_String & ioString,
+void cPtr_templateInstructionSwitchForGeneration::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "[@templateInstructionSwitchForGeneration:" ;
   mProperty_mEnumType.description (ioString, inIndentation+1) ;
@@ -9569,7 +9569,7 @@ const C_galgas_type_descriptor * cPtr_lexiqueComponentAST::classDescriptor (void
   return & kTypeDescriptor_GALGAS_lexiqueComponentAST ;
 }
 
-void cPtr_lexiqueComponentAST::description (C_String & ioString,
+void cPtr_lexiqueComponentAST::description (String & ioString,
                                             const int32_t inIndentation) const {
   ioString += "[@lexiqueComponentAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -9916,7 +9916,7 @@ const C_galgas_type_descriptor * cPtr_templateLexiqueComponentAST::classDescript
   return & kTypeDescriptor_GALGAS_templateLexiqueComponentAST ;
 }
 
-void cPtr_templateLexiqueComponentAST::description (C_String & ioString,
+void cPtr_templateLexiqueComponentAST::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "[@templateLexiqueComponentAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -10076,7 +10076,7 @@ const C_galgas_type_descriptor * cPtr_lexicalImplicitRuleAST::classDescriptor (v
   return & kTypeDescriptor_GALGAS_lexicalImplicitRuleAST ;
 }
 
-void cPtr_lexicalImplicitRuleAST::description (C_String & ioString,
+void cPtr_lexicalImplicitRuleAST::description (String & ioString,
                                                const int32_t inIndentation) const {
   ioString += "[@lexicalImplicitRuleAST:" ;
   mProperty_mListName.description (ioString, inIndentation+1) ;
@@ -10228,7 +10228,7 @@ const C_galgas_type_descriptor * cPtr_lexicalCharacterSetMatchAST::classDescript
   return & kTypeDescriptor_GALGAS_lexicalCharacterSetMatchAST ;
 }
 
-void cPtr_lexicalCharacterSetMatchAST::description (C_String & ioString,
+void cPtr_lexicalCharacterSetMatchAST::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "[@lexicalCharacterSetMatchAST:" ;
   mProperty_mCharacterSetName.description (ioString, inIndentation+1) ;
@@ -10380,7 +10380,7 @@ const C_galgas_type_descriptor * cPtr_lexicalCharacterMatchAST::classDescriptor 
   return & kTypeDescriptor_GALGAS_lexicalCharacterMatchAST ;
 }
 
-void cPtr_lexicalCharacterMatchAST::description (C_String & ioString,
+void cPtr_lexicalCharacterMatchAST::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "[@lexicalCharacterMatchAST:" ;
   mProperty_mCharacter.description (ioString, inIndentation+1) ;
@@ -10551,7 +10551,7 @@ const C_galgas_type_descriptor * cPtr_lexicalCharacterIntervalMatchAST::classDes
   return & kTypeDescriptor_GALGAS_lexicalCharacterIntervalMatchAST ;
 }
 
-void cPtr_lexicalCharacterIntervalMatchAST::description (C_String & ioString,
+void cPtr_lexicalCharacterIntervalMatchAST::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "[@lexicalCharacterIntervalMatchAST:" ;
   mProperty_mLowerBound.description (ioString, inIndentation+1) ;
@@ -10705,7 +10705,7 @@ const C_galgas_type_descriptor * cPtr_lexicalStringMatchAST::classDescriptor (vo
   return & kTypeDescriptor_GALGAS_lexicalStringMatchAST ;
 }
 
-void cPtr_lexicalStringMatchAST::description (C_String & ioString,
+void cPtr_lexicalStringMatchAST::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString += "[@lexicalStringMatchAST:" ;
   mProperty_mString.description (ioString, inIndentation+1) ;
@@ -10876,7 +10876,7 @@ const C_galgas_type_descriptor * cPtr_lexicalStringNotMatchAST::classDescriptor 
   return & kTypeDescriptor_GALGAS_lexicalStringNotMatchAST ;
 }
 
-void cPtr_lexicalStringNotMatchAST::description (C_String & ioString,
+void cPtr_lexicalStringNotMatchAST::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "[@lexicalStringNotMatchAST:" ;
   mProperty_mString.description (ioString, inIndentation+1) ;
@@ -11030,7 +11030,7 @@ const C_galgas_type_descriptor * cPtr_lexicalSendTerminalByDefaultAST::classDesc
   return & kTypeDescriptor_GALGAS_lexicalSendTerminalByDefaultAST ;
 }
 
-void cPtr_lexicalSendTerminalByDefaultAST::description (C_String & ioString,
+void cPtr_lexicalSendTerminalByDefaultAST::description (String & ioString,
                                                         const int32_t inIndentation) const {
   ioString += "[@lexicalSendTerminalByDefaultAST:" ;
   mProperty_mDefaultSentTerminal.description (ioString, inIndentation+1) ;
@@ -11182,7 +11182,7 @@ const C_galgas_type_descriptor * cPtr_lexicalErrorByDefaultAST::classDescriptor 
   return & kTypeDescriptor_GALGAS_lexicalErrorByDefaultAST ;
 }
 
-void cPtr_lexicalErrorByDefaultAST::description (C_String & ioString,
+void cPtr_lexicalErrorByDefaultAST::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "[@lexicalErrorByDefaultAST:" ;
   mProperty_mDefaultErrorMessageName.description (ioString, inIndentation+1) ;
@@ -11334,7 +11334,7 @@ const C_galgas_type_descriptor * cPtr_lexicalAttributeInputArgumentAST::classDes
   return & kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST ;
 }
 
-void cPtr_lexicalAttributeInputArgumentAST::description (C_String & ioString,
+void cPtr_lexicalAttributeInputArgumentAST::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "[@lexicalAttributeInputArgumentAST:" ;
   mProperty_mAttributeName.description (ioString, inIndentation+1) ;
@@ -11486,7 +11486,7 @@ const C_galgas_type_descriptor * cPtr_lexicalCharacterInputArgumentAST::classDes
   return & kTypeDescriptor_GALGAS_lexicalCharacterInputArgumentAST ;
 }
 
-void cPtr_lexicalCharacterInputArgumentAST::description (C_String & ioString,
+void cPtr_lexicalCharacterInputArgumentAST::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "[@lexicalCharacterInputArgumentAST:" ;
   mProperty_mCharacter.description (ioString, inIndentation+1) ;
@@ -11638,7 +11638,7 @@ const C_galgas_type_descriptor * cPtr_lexicalUnsignedInputArgumentAST::classDesc
   return & kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST ;
 }
 
-void cPtr_lexicalUnsignedInputArgumentAST::description (C_String & ioString,
+void cPtr_lexicalUnsignedInputArgumentAST::description (String & ioString,
                                                         const int32_t inIndentation) const {
   ioString += "[@lexicalUnsignedInputArgumentAST:" ;
   mProperty_mUnsigned.description (ioString, inIndentation+1) ;
@@ -11809,7 +11809,7 @@ const C_galgas_type_descriptor * cPtr_lexicalFunctionInputArgumentAST::classDesc
   return & kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST ;
 }
 
-void cPtr_lexicalFunctionInputArgumentAST::description (C_String & ioString,
+void cPtr_lexicalFunctionInputArgumentAST::description (String & ioString,
                                                         const int32_t inIndentation) const {
   ioString += "[@lexicalFunctionInputArgumentAST:" ;
   mProperty_mFunctionName.description (ioString, inIndentation+1) ;
@@ -12011,7 +12011,7 @@ void GALGAS_lexiqueAnalysisContext::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexiqueAnalysisContext::description (C_String & ioString,
+void GALGAS_lexiqueAnalysisContext::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "<struct @lexiqueAnalysisContext:" ;
   if (! isValid ()) {
@@ -12180,7 +12180,7 @@ const C_galgas_type_descriptor * cPtr_lexicalDropInstructionAST::classDescriptor
   return & kTypeDescriptor_GALGAS_lexicalDropInstructionAST ;
 }
 
-void cPtr_lexicalDropInstructionAST::description (C_String & ioString,
+void cPtr_lexicalDropInstructionAST::description (String & ioString,
                                                   const int32_t inIndentation) const {
   ioString += "[@lexicalDropInstructionAST:" ;
   mProperty_mTerminalName.description (ioString, inIndentation+1) ;
@@ -12332,7 +12332,7 @@ const C_galgas_type_descriptor * cPtr_lexicalErrorInstructionAST::classDescripto
   return & kTypeDescriptor_GALGAS_lexicalErrorInstructionAST ;
 }
 
-void cPtr_lexicalErrorInstructionAST::description (C_String & ioString,
+void cPtr_lexicalErrorInstructionAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
   ioString += "[@lexicalErrorInstructionAST:" ;
   mProperty_mErrorMessageName.description (ioString, inIndentation+1) ;
@@ -12503,7 +12503,7 @@ const C_galgas_type_descriptor * cPtr_lexicalRewindInstructionAST::classDescript
   return & kTypeDescriptor_GALGAS_lexicalRewindInstructionAST ;
 }
 
-void cPtr_lexicalRewindInstructionAST::description (C_String & ioString,
+void cPtr_lexicalRewindInstructionAST::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "[@lexicalRewindInstructionAST:" ;
   mProperty_mLexicalTagName.description (ioString, inIndentation+1) ;
@@ -12662,7 +12662,7 @@ const C_galgas_type_descriptor * cPtr_lexicalAttributeInputOutputArgumentAST::cl
   return & kTypeDescriptor_GALGAS_lexicalAttributeInputOutputArgumentAST ;
 }
 
-void cPtr_lexicalAttributeInputOutputArgumentAST::description (C_String & ioString,
+void cPtr_lexicalAttributeInputOutputArgumentAST::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "[@lexicalAttributeInputOutputArgumentAST:" ;
   mProperty_mActualPassingModeLocation.description (ioString, inIndentation+1) ;
@@ -12854,7 +12854,7 @@ const C_galgas_type_descriptor * cPtr_lexicalRoutineCallInstructionAST::classDes
   return & kTypeDescriptor_GALGAS_lexicalRoutineCallInstructionAST ;
 }
 
-void cPtr_lexicalRoutineCallInstructionAST::description (C_String & ioString,
+void cPtr_lexicalRoutineCallInstructionAST::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "[@lexicalRoutineCallInstructionAST:" ;
   mProperty_mRoutineName.description (ioString, inIndentation+1) ;
@@ -13010,7 +13010,7 @@ const C_galgas_type_descriptor * cPtr_lexicalSimpleSendInstructionAST::classDesc
   return & kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST ;
 }
 
-void cPtr_lexicalSimpleSendInstructionAST::description (C_String & ioString,
+void cPtr_lexicalSimpleSendInstructionAST::description (String & ioString,
                                                         const int32_t inIndentation) const {
   ioString += "[@lexicalSimpleSendInstructionAST:" ;
   mProperty_mSentTerminal.description (ioString, inIndentation+1) ;
@@ -13162,7 +13162,7 @@ const C_galgas_type_descriptor * cPtr_lexicalTagInstructionAST::classDescriptor 
   return & kTypeDescriptor_GALGAS_lexicalTagInstructionAST ;
 }
 
-void cPtr_lexicalTagInstructionAST::description (C_String & ioString,
+void cPtr_lexicalTagInstructionAST::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "[@lexicalTagInstructionAST:" ;
   mProperty_mLexicalTagName.description (ioString, inIndentation+1) ;
@@ -13314,7 +13314,7 @@ const C_galgas_type_descriptor * cPtr_lexicalWarningInstructionAST::classDescrip
   return & kTypeDescriptor_GALGAS_lexicalWarningInstructionAST ;
 }
 
-void cPtr_lexicalWarningInstructionAST::description (C_String & ioString,
+void cPtr_lexicalWarningInstructionAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "[@lexicalWarningInstructionAST:" ;
   mProperty_mWarningMessageName.description (ioString, inIndentation+1) ;
@@ -13490,7 +13490,7 @@ const C_galgas_type_descriptor * cPtr_optionComponentDeclarationAST::classDescri
   return & kTypeDescriptor_GALGAS_optionComponentDeclarationAST ;
 }
 
-void cPtr_optionComponentDeclarationAST::description (C_String & ioString,
+void cPtr_optionComponentDeclarationAST::description (String & ioString,
                                                       const int32_t inIndentation) const {
   ioString += "[@optionComponentDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -13924,7 +13924,7 @@ const C_galgas_type_descriptor * cPtr_arrayDeclarationAST::classDescriptor (void
   return & kTypeDescriptor_GALGAS_arrayDeclarationAST ;
 }
 
-void cPtr_arrayDeclarationAST::description (C_String & ioString,
+void cPtr_arrayDeclarationAST::description (String & ioString,
                                             const int32_t inIndentation) const {
   ioString += "[@arrayDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -14326,7 +14326,7 @@ const C_galgas_type_descriptor * cPtr_boolsetDeclarationAST::classDescriptor (vo
   return & kTypeDescriptor_GALGAS_boolsetDeclarationAST ;
 }
 
-void cPtr_boolsetDeclarationAST::description (C_String & ioString,
+void cPtr_boolsetDeclarationAST::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString += "[@boolsetDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -14487,7 +14487,7 @@ const C_galgas_type_descriptor * cPtr_boolsetTypeForGeneration::classDescriptor 
   return & kTypeDescriptor_GALGAS_boolsetTypeForGeneration ;
 }
 
-void cPtr_boolsetTypeForGeneration::description (C_String & ioString,
+void cPtr_boolsetTypeForGeneration::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "[@boolsetTypeForGeneration:" ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
@@ -14852,7 +14852,7 @@ const C_galgas_type_descriptor * cPtr_classDeclarationAST::classDescriptor (void
   return & kTypeDescriptor_GALGAS_classDeclarationAST ;
 }
 
-void cPtr_classDeclarationAST::description (C_String & ioString,
+void cPtr_classDeclarationAST::description (String & ioString,
                                             const int32_t inIndentation) const {
   ioString += "[@classDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -15116,7 +15116,7 @@ const C_galgas_type_descriptor * cPtr_classTypeForGeneration::classDescriptor (v
   return & kTypeDescriptor_GALGAS_classTypeForGeneration ;
 }
 
-void cPtr_classTypeForGeneration::description (C_String & ioString,
+void cPtr_classTypeForGeneration::description (String & ioString,
                                                const int32_t inIndentation) const {
   ioString += "[@classTypeForGeneration:" ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
@@ -15472,7 +15472,7 @@ const C_galgas_type_descriptor * cPtr_weakReferenceDeclarationAST::classDescript
   return & kTypeDescriptor_GALGAS_weakReferenceDeclarationAST ;
 }
 
-void cPtr_weakReferenceDeclarationAST::description (C_String & ioString,
+void cPtr_weakReferenceDeclarationAST::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "[@weakReferenceDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -15715,7 +15715,7 @@ const C_galgas_type_descriptor * cPtr_weakReferenceTypeForGeneration::classDescr
   return & kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration ;
 }
 
-void cPtr_weakReferenceTypeForGeneration::description (C_String & ioString,
+void cPtr_weakReferenceTypeForGeneration::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString += "[@weakReferenceTypeForGeneration:" ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;

@@ -294,9 +294,9 @@ proc generateProcedure
 #--- Syntax directed argument ?
   if inGenerateSyntaxDirectedTranslationString then
     if [unusedVariableCppNameSet hasKey !syntaxDirectedTranslationResultVarName ()] then
-      outGeneratedCode += "C_String & /* " + syntaxDirectedTranslationResultVarName () + " */,\n"
+      outGeneratedCode += "String & /* " + syntaxDirectedTranslationResultVarName () + " */,\n"
     else
-      outGeneratedCode += "C_String & " + syntaxDirectedTranslationResultVarName () + ",\n"
+      outGeneratedCode += "String & " + syntaxDirectedTranslationResultVarName () + ",\n"
     end
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
   end

@@ -1080,8 +1080,8 @@ proc updateGalgasTargets
       !fileNames:{
         !"C_HTMLString.cpp",
         !"C_HTMLString.h",
-        !"C_String.cpp",
-        !"C_String.h",
+        !"String-class.cpp",
+        !"String-class.h",
         !"cUnicodeData.h",
         !"string_encodings.h",
         !"unicode_character_base.h",

@@ -20,7 +20,7 @@
 
 #include "time/C_Timer.h"
 #include "utilities/M_machine.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -63,12 +63,12 @@ uint32_t C_Timer::msFromStart (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_Timer::timeString (void) const {
+String C_Timer::timeString (void) const {
   const uint32_t d = msFromStart () ;
   const uint32_t ms = d % 1000 ;
   const uint32_t secondes = (d / 1000) % 60 ;
   const uint32_t minutes  = d / 60000 ;
-  C_String result ;
+  String result ;
   if (minutes > 0) {
     result.appendUnsigned (minutes) ;
     result += " min " ;

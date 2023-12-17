@@ -235,7 +235,7 @@ const C_galgas_type_descriptor * cPtr_enumDeclarationAST::classDescriptor (void)
   return & kTypeDescriptor_GALGAS_enumDeclarationAST ;
 }
 
-void cPtr_enumDeclarationAST::description (C_String & ioString,
+void cPtr_enumDeclarationAST::description (String & ioString,
                                            const int32_t inIndentation) const {
   ioString += "[@enumDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -396,7 +396,7 @@ const C_galgas_type_descriptor * cPtr_enumTypeForGeneration::classDescriptor (vo
   return & kTypeDescriptor_GALGAS_enumTypeForGeneration ;
 }
 
-void cPtr_enumTypeForGeneration::description (C_String & ioString,
+void cPtr_enumTypeForGeneration::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString += "[@enumTypeForGeneration:" ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
@@ -780,7 +780,7 @@ const C_galgas_type_descriptor * cPtr_externTypeDeclarationAST::classDescriptor 
   return & kTypeDescriptor_GALGAS_externTypeDeclarationAST ;
 }
 
-void cPtr_externTypeDeclarationAST::description (C_String & ioString,
+void cPtr_externTypeDeclarationAST::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "[@externTypeDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -989,7 +989,7 @@ const C_galgas_type_descriptor * cPtr_externTypeDeclarationForGeneration::classD
   return & kTypeDescriptor_GALGAS_externTypeDeclarationForGeneration ;
 }
 
-void cPtr_externTypeDeclarationForGeneration::description (C_String & ioString,
+void cPtr_externTypeDeclarationForGeneration::description (String & ioString,
                                                            const int32_t inIndentation) const {
   ioString += "[@externTypeDeclarationForGeneration:" ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
@@ -1301,7 +1301,7 @@ const C_galgas_type_descriptor * cPtr_graphDeclarationAST::classDescriptor (void
   return & kTypeDescriptor_GALGAS_graphDeclarationAST ;
 }
 
-void cPtr_graphDeclarationAST::description (C_String & ioString,
+void cPtr_graphDeclarationAST::description (String & ioString,
                                             const int32_t inIndentation) const {
   ioString += "[@graphDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -1502,7 +1502,7 @@ const C_galgas_type_descriptor * cPtr_graphDeclarationForGeneration::classDescri
   return & kTypeDescriptor_GALGAS_graphDeclarationForGeneration ;
 }
 
-void cPtr_graphDeclarationForGeneration::description (C_String & ioString,
+void cPtr_graphDeclarationForGeneration::description (String & ioString,
                                                       const int32_t inIndentation) const {
   ioString += "[@graphDeclarationForGeneration:" ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
@@ -1814,7 +1814,7 @@ const C_galgas_type_descriptor * cPtr_listDeclarationAST::classDescriptor (void)
   return & kTypeDescriptor_GALGAS_listDeclarationAST ;
 }
 
-void cPtr_listDeclarationAST::description (C_String & ioString,
+void cPtr_listDeclarationAST::description (String & ioString,
                                            const int32_t inIndentation) const {
   ioString += "[@listDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -1996,7 +1996,7 @@ const C_galgas_type_descriptor * cPtr_listTypeForGeneration::classDescriptor (vo
   return & kTypeDescriptor_GALGAS_listTypeForGeneration ;
 }
 
-void cPtr_listTypeForGeneration::description (C_String & ioString,
+void cPtr_listTypeForGeneration::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString += "[@listTypeForGeneration:" ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
@@ -2287,7 +2287,7 @@ const C_galgas_type_descriptor * cPtr_listmapDeclarationAST::classDescriptor (vo
   return & kTypeDescriptor_GALGAS_listmapDeclarationAST ;
 }
 
-void cPtr_listmapDeclarationAST::description (C_String & ioString,
+void cPtr_listmapDeclarationAST::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString += "[@listmapDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -2486,7 +2486,7 @@ const C_galgas_type_descriptor * cPtr_listmapTypeForGeneration::classDescriptor 
   return & kTypeDescriptor_GALGAS_listmapTypeForGeneration ;
 }
 
-void cPtr_listmapTypeForGeneration::description (C_String & ioString,
+void cPtr_listmapTypeForGeneration::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "[@listmapTypeForGeneration:" ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
@@ -2798,7 +2798,7 @@ const C_galgas_type_descriptor * cPtr_dictDeclarationAST::classDescriptor (void)
   return & kTypeDescriptor_GALGAS_dictDeclarationAST ;
 }
 
-void cPtr_dictDeclarationAST::description (C_String & ioString,
+void cPtr_dictDeclarationAST::description (String & ioString,
                                            const int32_t inIndentation) const {
   ioString += "[@dictDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -3018,7 +3018,7 @@ const C_galgas_type_descriptor * cPtr_dictTypeForGeneration::classDescriptor (vo
   return & kTypeDescriptor_GALGAS_dictTypeForGeneration ;
 }
 
-void cPtr_dictTypeForGeneration::description (C_String & ioString,
+void cPtr_dictTypeForGeneration::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString += "[@dictTypeForGeneration:" ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
@@ -3389,7 +3389,7 @@ const C_galgas_type_descriptor * cPtr_mapDeclarationAST::classDescriptor (void) 
   return & kTypeDescriptor_GALGAS_mapDeclarationAST ;
 }
 
-void cPtr_mapDeclarationAST::description (C_String & ioString,
+void cPtr_mapDeclarationAST::description (String & ioString,
                                           const int32_t inIndentation) const {
   ioString += "[@mapDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -3672,7 +3672,7 @@ const C_galgas_type_descriptor * cPtr_mapTypeForGeneration::classDescriptor (voi
   return & kTypeDescriptor_GALGAS_mapTypeForGeneration ;
 }
 
-void cPtr_mapTypeForGeneration::description (C_String & ioString,
+void cPtr_mapTypeForGeneration::description (String & ioString,
                                              const int32_t inIndentation) const {
   ioString += "[@mapTypeForGeneration:" ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
@@ -3992,7 +3992,7 @@ const C_galgas_type_descriptor * cPtr_sortedListDeclarationAST::classDescriptor 
   return & kTypeDescriptor_GALGAS_sortedListDeclarationAST ;
 }
 
-void cPtr_sortedListDeclarationAST::description (C_String & ioString,
+void cPtr_sortedListDeclarationAST::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "[@sortedListDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -4193,7 +4193,7 @@ const C_galgas_type_descriptor * cPtr_sortedListTypeForGeneration::classDescript
   return & kTypeDescriptor_GALGAS_sortedListTypeForGeneration ;
 }
 
-void cPtr_sortedListTypeForGeneration::description (C_String & ioString,
+void cPtr_sortedListTypeForGeneration::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "[@sortedListTypeForGeneration:" ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
@@ -4505,7 +4505,7 @@ const C_galgas_type_descriptor * cPtr_structDeclarationAST::classDescriptor (voi
   return & kTypeDescriptor_GALGAS_structDeclarationAST ;
 }
 
-void cPtr_structDeclarationAST::description (C_String & ioString,
+void cPtr_structDeclarationAST::description (String & ioString,
                                              const int32_t inIndentation) const {
   ioString += "[@structDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -4725,7 +4725,7 @@ const C_galgas_type_descriptor * cPtr_structTypeForGeneration::classDescriptor (
   return & kTypeDescriptor_GALGAS_structTypeForGeneration ;
 }
 
-void cPtr_structTypeForGeneration::description (C_String & ioString,
+void cPtr_structTypeForGeneration::description (String & ioString,
                                                 const int32_t inIndentation) const {
   ioString += "[@structTypeForGeneration:" ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
@@ -5020,7 +5020,7 @@ const C_galgas_type_descriptor * cPtr_typealiasDeclarationAST::classDescriptor (
   return & kTypeDescriptor_GALGAS_typealiasDeclarationAST ;
 }
 
-void cPtr_typealiasDeclarationAST::description (C_String & ioString,
+void cPtr_typealiasDeclarationAST::description (String & ioString,
                                                 const int32_t inIndentation) const {
   ioString += "[@typealiasDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -5200,7 +5200,7 @@ const C_galgas_type_descriptor * cPtr_aliasTypeForGeneration::classDescriptor (v
   return & kTypeDescriptor_GALGAS_aliasTypeForGeneration ;
 }
 
-void cPtr_aliasTypeForGeneration::description (C_String & ioString,
+void cPtr_aliasTypeForGeneration::description (String & ioString,
                                                const int32_t inIndentation) const {
   ioString += "[@aliasTypeForGeneration:" ;
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
@@ -5529,7 +5529,7 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionGetterAST::classDescripto
   return & kTypeDescriptor_GALGAS_abstractExtensionGetterAST ;
 }
 
-void cPtr_abstractExtensionGetterAST::description (C_String & ioString,
+void cPtr_abstractExtensionGetterAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
   ioString += "[@abstractExtensionGetterAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -5756,7 +5756,7 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionGetterForGeneration::clas
   return & kTypeDescriptor_GALGAS_abstractExtensionGetterForGeneration ;
 }
 
-void cPtr_abstractExtensionGetterForGeneration::description (C_String & ioString,
+void cPtr_abstractExtensionGetterForGeneration::description (String & ioString,
                                                              const int32_t inIndentation) const {
   ioString += "[@abstractExtensionGetterForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
@@ -6072,7 +6072,7 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionMethodAST::classDescripto
   return & kTypeDescriptor_GALGAS_abstractExtensionMethodAST ;
 }
 
-void cPtr_abstractExtensionMethodAST::description (C_String & ioString,
+void cPtr_abstractExtensionMethodAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
   ioString += "[@abstractExtensionMethodAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -6278,7 +6278,7 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionMethodForGeneration::clas
   return & kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration ;
 }
 
-void cPtr_abstractExtensionMethodForGeneration::description (C_String & ioString,
+void cPtr_abstractExtensionMethodForGeneration::description (String & ioString,
                                                              const int32_t inIndentation) const {
   ioString += "[@abstractExtensionMethodForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
@@ -6592,7 +6592,7 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionSetterAST::classDescripto
   return & kTypeDescriptor_GALGAS_abstractExtensionSetterAST ;
 }
 
-void cPtr_abstractExtensionSetterAST::description (C_String & ioString,
+void cPtr_abstractExtensionSetterAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
   ioString += "[@abstractExtensionSetterAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -6798,7 +6798,7 @@ const C_galgas_type_descriptor * cPtr_abstractExtensionSetterForGeneration::clas
   return & kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration ;
 }
 
-void cPtr_abstractExtensionSetterForGeneration::description (C_String & ioString,
+void cPtr_abstractExtensionSetterForGeneration::description (String & ioString,
                                                              const int32_t inIndentation) const {
   ioString += "[@abstractExtensionSetterForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
@@ -7207,7 +7207,7 @@ const C_galgas_type_descriptor * cPtr_extensionGetterAST::classDescriptor (void)
   return & kTypeDescriptor_GALGAS_extensionGetterAST ;
 }
 
-void cPtr_extensionGetterAST::description (C_String & ioString,
+void cPtr_extensionGetterAST::description (String & ioString,
                                            const int32_t inIndentation) const {
   ioString += "[@extensionGetterAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -7518,7 +7518,7 @@ const C_galgas_type_descriptor * cPtr_extensionGetterForGeneration::classDescrip
   return & kTypeDescriptor_GALGAS_extensionGetterForGeneration ;
 }
 
-void cPtr_extensionGetterForGeneration::description (C_String & ioString,
+void cPtr_extensionGetterForGeneration::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "[@extensionGetterForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
@@ -7899,7 +7899,7 @@ const C_galgas_type_descriptor * cPtr_extensionMethodAST::classDescriptor (void)
   return & kTypeDescriptor_GALGAS_extensionMethodAST ;
 }
 
-void cPtr_extensionMethodAST::description (C_String & ioString,
+void cPtr_extensionMethodAST::description (String & ioString,
                                            const int32_t inIndentation) const {
   ioString += "[@extensionMethodAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -8168,7 +8168,7 @@ const C_galgas_type_descriptor * cPtr_extensionMethodForGeneration::classDescrip
   return & kTypeDescriptor_GALGAS_extensionMethodForGeneration ;
 }
 
-void cPtr_extensionMethodForGeneration::description (C_String & ioString,
+void cPtr_extensionMethodForGeneration::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "[@extensionMethodForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
@@ -8545,7 +8545,7 @@ const C_galgas_type_descriptor * cPtr_extensionSetterAST::classDescriptor (void)
   return & kTypeDescriptor_GALGAS_extensionSetterAST ;
 }
 
-void cPtr_extensionSetterAST::description (C_String & ioString,
+void cPtr_extensionSetterAST::description (String & ioString,
                                            const int32_t inIndentation) const {
   ioString += "[@extensionSetterAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -8814,7 +8814,7 @@ const C_galgas_type_descriptor * cPtr_extensionSetterForGeneration::classDescrip
   return & kTypeDescriptor_GALGAS_extensionSetterForGeneration ;
 }
 
-void cPtr_extensionSetterForGeneration::description (C_String & ioString,
+void cPtr_extensionSetterForGeneration::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "[@extensionSetterForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
@@ -9153,7 +9153,7 @@ const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionGetterAST::clas
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ;
 }
 
-void cPtr_overridingAbstractExtensionGetterAST::description (C_String & ioString,
+void cPtr_overridingAbstractExtensionGetterAST::description (String & ioString,
                                                              const int32_t inIndentation) const {
   ioString += "[@overridingAbstractExtensionGetterAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -9356,7 +9356,7 @@ const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionMethodAST::clas
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST ;
 }
 
-void cPtr_overridingAbstractExtensionMethodAST::description (C_String & ioString,
+void cPtr_overridingAbstractExtensionMethodAST::description (String & ioString,
                                                              const int32_t inIndentation) const {
   ioString += "[@overridingAbstractExtensionMethodAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -9557,7 +9557,7 @@ const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionSetterAST::clas
   return & kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST ;
 }
 
-void cPtr_overridingAbstractExtensionSetterAST::description (C_String & ioString,
+void cPtr_overridingAbstractExtensionSetterAST::description (String & ioString,
                                                              const int32_t inIndentation) const {
   ioString += "[@overridingAbstractExtensionSetterAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -9853,7 +9853,7 @@ const C_galgas_type_descriptor * cPtr_overridingExtensionGetterAST::classDescrip
   return & kTypeDescriptor_GALGAS_overridingExtensionGetterAST ;
 }
 
-void cPtr_overridingExtensionGetterAST::description (C_String & ioString,
+void cPtr_overridingExtensionGetterAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "[@overridingExtensionGetterAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -10164,7 +10164,7 @@ const C_galgas_type_descriptor * cPtr_overrideExtensionGetterForGeneration::clas
   return & kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration ;
 }
 
-void cPtr_overrideExtensionGetterForGeneration::description (C_String & ioString,
+void cPtr_overrideExtensionGetterForGeneration::description (String & ioString,
                                                              const int32_t inIndentation) const {
   ioString += "[@overrideExtensionGetterForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
@@ -10545,7 +10545,7 @@ const C_galgas_type_descriptor * cPtr_overridingExtensionMethodAST::classDescrip
   return & kTypeDescriptor_GALGAS_overridingExtensionMethodAST ;
 }
 
-void cPtr_overridingExtensionMethodAST::description (C_String & ioString,
+void cPtr_overridingExtensionMethodAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "[@overridingExtensionMethodAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -10814,7 +10814,7 @@ const C_galgas_type_descriptor * cPtr_overridingExtensionMethodForGeneration::cl
   return & kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration ;
 }
 
-void cPtr_overridingExtensionMethodForGeneration::description (C_String & ioString,
+void cPtr_overridingExtensionMethodForGeneration::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "[@overridingExtensionMethodForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
@@ -11191,7 +11191,7 @@ const C_galgas_type_descriptor * cPtr_overridingExtensionSetterAST::classDescrip
   return & kTypeDescriptor_GALGAS_overridingExtensionSetterAST ;
 }
 
-void cPtr_overridingExtensionSetterAST::description (C_String & ioString,
+void cPtr_overridingExtensionSetterAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "[@overridingExtensionSetterAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -11460,7 +11460,7 @@ const C_galgas_type_descriptor * cPtr_overridingExtensionSetterForGeneration::cl
   return & kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration ;
 }
 
-void cPtr_overridingExtensionSetterForGeneration::description (C_String & ioString,
+void cPtr_overridingExtensionSetterForGeneration::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "[@overridingExtensionSetterForGeneration:" ;
   mProperty_mHasHeader.description (ioString, inIndentation+1) ;
@@ -11775,7 +11775,7 @@ const C_galgas_type_descriptor * cPtr_outputActualParameterAST::classDescriptor 
   return & kTypeDescriptor_GALGAS_outputActualParameterAST ;
 }
 
-void cPtr_outputActualParameterAST::description (C_String & ioString,
+void cPtr_outputActualParameterAST::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "[@outputActualParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
@@ -11969,7 +11969,7 @@ const C_galgas_type_descriptor * cPtr_outputInputActualParameterAST::classDescri
   return & kTypeDescriptor_GALGAS_outputInputActualParameterAST ;
 }
 
-void cPtr_outputInputActualParameterAST::description (C_String & ioString,
+void cPtr_outputInputActualParameterAST::description (String & ioString,
                                                       const int32_t inIndentation) const {
   ioString += "[@outputInputActualParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
@@ -12125,7 +12125,7 @@ const C_galgas_type_descriptor * cPtr_outputInputSingleJokerParameterAST::classD
   return & kTypeDescriptor_GALGAS_outputInputSingleJokerParameterAST ;
 }
 
-void cPtr_outputInputSingleJokerParameterAST::description (C_String & ioString,
+void cPtr_outputInputSingleJokerParameterAST::description (String & ioString,
                                                            const int32_t inIndentation) const {
   ioString += "[@outputInputSingleJokerParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
@@ -12277,7 +12277,7 @@ const C_galgas_type_descriptor * cPtr_outputInputSelfParameterAST::classDescript
   return & kTypeDescriptor_GALGAS_outputInputSelfParameterAST ;
 }
 
-void cPtr_outputInputSelfParameterAST::description (C_String & ioString,
+void cPtr_outputInputSelfParameterAST::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "[@outputInputSelfParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
@@ -12467,7 +12467,7 @@ const C_galgas_type_descriptor * cPtr_inputActualExistingVariableParameterAST::c
   return & kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST ;
 }
 
-void cPtr_inputActualExistingVariableParameterAST::description (C_String & ioString,
+void cPtr_inputActualExistingVariableParameterAST::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString += "[@inputActualExistingVariableParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
@@ -12661,7 +12661,7 @@ const C_galgas_type_descriptor * cPtr_inputActualSelfPropertyParameterAST::class
   return & kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST ;
 }
 
-void cPtr_inputActualSelfPropertyParameterAST::description (C_String & ioString,
+void cPtr_inputActualSelfPropertyParameterAST::description (String & ioString,
                                                             const int32_t inIndentation) const {
   ioString += "[@inputActualSelfPropertyParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
@@ -12855,7 +12855,7 @@ const C_galgas_type_descriptor * cPtr_inputActualSelfParameterAST::classDescript
   return & kTypeDescriptor_GALGAS_inputActualSelfParameterAST ;
 }
 
-void cPtr_inputActualSelfParameterAST::description (C_String & ioString,
+void cPtr_inputActualSelfParameterAST::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "[@inputActualSelfParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
@@ -13068,7 +13068,7 @@ const C_galgas_type_descriptor * cPtr_inputActualNewVariableParameterAST::classD
   return & kTypeDescriptor_GALGAS_inputActualNewVariableParameterAST ;
 }
 
-void cPtr_inputActualNewVariableParameterAST::description (C_String & ioString,
+void cPtr_inputActualNewVariableParameterAST::description (String & ioString,
                                                            const int32_t inIndentation) const {
   ioString += "[@inputActualNewVariableParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
@@ -13302,7 +13302,7 @@ const C_galgas_type_descriptor * cPtr_inputActualNewConstantParameterAST::classD
   return & kTypeDescriptor_GALGAS_inputActualNewConstantParameterAST ;
 }
 
-void cPtr_inputActualNewConstantParameterAST::description (C_String & ioString,
+void cPtr_inputActualNewConstantParameterAST::description (String & ioString,
                                                            const int32_t inIndentation) const {
   ioString += "[@inputActualNewConstantParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
@@ -13481,7 +13481,7 @@ const C_galgas_type_descriptor * cPtr_inputSingleJokerActualParameterAST::classD
   return & kTypeDescriptor_GALGAS_inputSingleJokerActualParameterAST ;
 }
 
-void cPtr_inputSingleJokerActualParameterAST::description (C_String & ioString,
+void cPtr_inputSingleJokerActualParameterAST::description (String & ioString,
                                                            const int32_t inIndentation) const {
   ioString += "[@inputSingleJokerActualParameterAST:" ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
@@ -13635,7 +13635,7 @@ const C_galgas_type_descriptor * cPtr_inputParameterVariable::classDescriptor (v
   return & kTypeDescriptor_GALGAS_inputParameterVariable ;
 }
 
-void cPtr_inputParameterVariable::description (C_String & ioString,
+void cPtr_inputParameterVariable::description (String & ioString,
                                                const int32_t inIndentation) const {
   ioString += "[@inputParameterVariable:" ;
   mProperty_mActualParameterName.description (ioString, inIndentation+1) ;
@@ -13806,7 +13806,7 @@ const C_galgas_type_descriptor * cPtr_inputParameterDeclaredVariable::classDescr
   return & kTypeDescriptor_GALGAS_inputParameterDeclaredVariable ;
 }
 
-void cPtr_inputParameterDeclaredVariable::description (C_String & ioString,
+void cPtr_inputParameterDeclaredVariable::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString += "[@inputParameterDeclaredVariable:" ;
   mProperty_mActualParameterTypeName.description (ioString, inIndentation+1) ;
@@ -13979,7 +13979,7 @@ const C_galgas_type_descriptor * cPtr_inputParameterDeclaredConstant::classDescr
   return & kTypeDescriptor_GALGAS_inputParameterDeclaredConstant ;
 }
 
-void cPtr_inputParameterDeclaredConstant::description (C_String & ioString,
+void cPtr_inputParameterDeclaredConstant::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString += "[@inputParameterDeclaredConstant:" ;
   mProperty_mActualParameterTypeName.description (ioString, inIndentation+1) ;
@@ -14195,7 +14195,7 @@ const C_galgas_type_descriptor * cPtr_externProcedureDeclarationAST::classDescri
   return & kTypeDescriptor_GALGAS_externProcedureDeclarationAST ;
 }
 
-void cPtr_externProcedureDeclarationAST::description (C_String & ioString,
+void cPtr_externProcedureDeclarationAST::description (String & ioString,
                                                       const int32_t inIndentation) const {
   ioString += "[@externProcedureDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -14399,7 +14399,7 @@ const C_galgas_type_descriptor * cPtr_procDeclarationAST::classDescriptor (void)
   return & kTypeDescriptor_GALGAS_procDeclarationAST ;
 }
 
-void cPtr_procDeclarationAST::description (C_String & ioString,
+void cPtr_procDeclarationAST::description (String & ioString,
                                            const int32_t inIndentation) const {
   ioString += "[@procDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -14625,7 +14625,7 @@ const C_galgas_type_descriptor * cPtr_externFunctionDeclarationAST::classDescrip
   return & kTypeDescriptor_GALGAS_externFunctionDeclarationAST ;
 }
 
-void cPtr_externFunctionDeclarationAST::description (C_String & ioString,
+void cPtr_externFunctionDeclarationAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "[@externFunctionDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -14867,7 +14867,7 @@ const C_galgas_type_descriptor * cPtr_functionDeclarationAST::classDescriptor (v
   return & kTypeDescriptor_GALGAS_functionDeclarationAST ;
 }
 
-void cPtr_functionDeclarationAST::description (C_String & ioString,
+void cPtr_functionDeclarationAST::description (String & ioString,
                                                const int32_t inIndentation) const {
   ioString += "[@functionDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -15154,7 +15154,7 @@ const C_galgas_type_descriptor * cPtr_onceFunctionDeclarationAST::classDescripto
   return & kTypeDescriptor_GALGAS_onceFunctionDeclarationAST ;
 }
 
-void cPtr_onceFunctionDeclarationAST::description (C_String & ioString,
+void cPtr_onceFunctionDeclarationAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
   ioString += "[@onceFunctionDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -15439,7 +15439,7 @@ const C_galgas_type_descriptor * cPtr_filewrapperDeclarationAST::classDescriptor
   return & kTypeDescriptor_GALGAS_filewrapperDeclarationAST ;
 }
 
-void cPtr_filewrapperDeclarationAST::description (C_String & ioString,
+void cPtr_filewrapperDeclarationAST::description (String & ioString,
                                                   const int32_t inIndentation) const {
   ioString += "[@filewrapperDeclarationAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;

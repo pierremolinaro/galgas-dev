@@ -60,7 +60,7 @@ extern C_StringCommandLineOption gOption_galgas_5F_builtin_5F_options_outputKeyw
 
 //--------------------------------------------------------------------------------------------------
 
-void setExecutionMode (C_String & outErrorMessage) ;
+void setExecutionMode (String & outErrorMessage) ;
 
 typedef enum {
  kExecutionModeNormal,
@@ -80,8 +80,8 @@ bool executionModeIsIndexing (void) ;
 
 bool executionModeIsLatex (void) ;
 
-C_String latexModeStyleSuffixString (void) ;
+String latexModeStyleSuffixString (void) ;
 
-C_String indexingModeOutputFilePath (void) ;
+String indexingModeOutputFilePath (void) ;
 
 //--------------------------------------------------------------------------------------------------

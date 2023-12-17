@@ -125,11 +125,11 @@ int32_t totalWarningCount (void) {
 //
 //--------------------------------------------------------------------------------------------------
 
-static C_String errorOrWarningLocationString (const C_IssueWithFixIt & inIssue,
+static String errorOrWarningLocationString (const C_IssueWithFixIt & inIssue,
                                               const C_SourceTextInString & inSourceText) {
-  C_String result ;
+  String result ;
   if (inSourceText.isValid ()) {
-    const C_String textLine = inSourceText.getLineForLocation (inIssue.mStartLocation) ;
+    const String textLine = inSourceText.getLineForLocation (inIssue.mStartLocation) ;
     result += inSourceText.sourceFilePath () ;
     result += ":" ;
     result.appendSigned (inIssue.mStartLocation.lineNumber ()) ;
@@ -144,10 +144,10 @@ static C_String errorOrWarningLocationString (const C_IssueWithFixIt & inIssue,
 
 //--------------------------------------------------------------------------------------------------
 
-static C_String constructErrorOrWarningLocationMessage (const C_String & inMessage,
+static String constructErrorOrWarningLocationMessage (const String & inMessage,
                                                         const C_IssueWithFixIt & inIssue,
                                                         const C_SourceTextInString & inSourceText) {
-  C_String result ;
+  String result ;
   if (!inSourceText.isValid ()) {
     result += inMessage ;
   }else{
@@ -155,7 +155,7 @@ static C_String constructErrorOrWarningLocationMessage (const C_String & inMessa
     result += errorOrWarningLocationString (inIssue, inSourceText) ;
     result += inMessage ;
     if (verboseOutput ()) {
-      const C_String textLine = inSourceText.getLineForLocation (inIssue.mStartLocation) ;
+      const String textLine = inSourceText.getLineForLocation (inIssue.mStartLocation) ;
       result += textLine ;
       result += "\n" ;
     //--- Underline issue
@@ -167,7 +167,7 @@ static C_String constructErrorOrWarningLocationMessage (const C_String & inMessa
       }
       result += "\n" ;
     //--- Add fix it suggestions
-      const C_String ZeroWidthSpace = stringWithUnicodeCharacter (TO_UNICODE (0x200B)) ;
+      const String ZeroWidthSpace = stringWithUnicodeCharacter (TO_UNICODE (0x200B)) ;
       for (int32_t i=0 ; i<inIssue.mFixItArray.count () ; i++) {
         const C_FixItDescription d = inIssue.mFixItArray (i COMMA_HERE) ;
         switch (d.kind()) {
@@ -208,12 +208,12 @@ static C_String constructErrorOrWarningLocationMessage (const C_String & inMessa
 void signalLexicalWarning (C_Compiler * inCompiler,
                            const C_SourceTextInString & inSourceText,
                            const C_IssueWithFixIt & inIssue,
-                           const C_String & inLexicalWarningMessage
+                           const String & inLexicalWarningMessage
                            COMMA_LOCATION_ARGS) {
 //--- Increment warning count
   mTotalWarningCount ++ ;
 //--- Construct location warning message
-  C_String warningMessage ;
+  String warningMessage ;
 //--- Add warning
   warningMessage += (verboseOutput () ? "lexical " : "") ;
   warningMessage += "warning #" ;
@@ -238,12 +238,12 @@ void signalLexicalWarning (C_Compiler * inCompiler,
 void signalLexicalError (C_Compiler * inCompiler,
                          const C_SourceTextInString & inSourceText,
                          const C_IssueWithFixIt & inIssue,
-                         const C_String & inLexicalErrorMessage
+                         const String & inLexicalErrorMessage
                          COMMA_LOCATION_ARGS) {
 //--- Increment error count
   mErrorTotalCount ++ ;
 //--- Construct parsing error message
-  C_String errorMessage ;
+  String errorMessage ;
   errorMessage += (verboseOutput () ? "lexical " : "") ;
   errorMessage += "error #" ;
   errorMessage.appendSigned (mErrorTotalCount) ;
@@ -268,13 +268,13 @@ void signalParsingError (C_Compiler * inCompiler,
                          const C_SourceTextInString & inSourceText,
                          const C_LocationInSource & inPreviousTokenEndLocation,
                          const C_IssueWithFixIt & inIssue,
-                         const C_String & inFoundTokenMessage,
-                         const TC_UniqueArray <C_String> & inAcceptedTokenNames
+                         const String & inFoundTokenMessage,
+                         const TC_UniqueArray <String> & inAcceptedTokenNames
                          COMMA_LOCATION_ARGS) {
 //--- Increment error count
   mErrorTotalCount ++ ;
 //--- Construct location error message
-  C_String errorMessage ;
+  String errorMessage ;
 //--- Construct parsing error message
   errorMessage += (verboseOutput () ? "syntax " : "") ;
   errorMessage += "error #" ;
@@ -310,13 +310,13 @@ void signalParsingError (C_Compiler * inCompiler,
 void signalExtractError (C_Compiler * inCompiler,
                          const C_SourceTextInString & inSourceText,
                          const C_IssueWithFixIt & inIssue,
-                         const TC_UniqueArray <C_String> & inExpectedClassesErrorStringsArray,
-                         const C_String & inActualFoundClassErrorString
+                         const TC_UniqueArray <String> & inExpectedClassesErrorStringsArray,
+                         const String & inActualFoundClassErrorString
                          COMMA_LOCATION_ARGS) {
 //--- Increment error count
   mErrorTotalCount ++ ;
 //--- Construct location error message
-  C_String errorMessage ;
+  String errorMessage ;
 //--- Print extract error
   errorMessage += (verboseOutput () ? "semantic " : "") ;
   errorMessage += "error: I have found:\n" ;
@@ -367,12 +367,12 @@ void signalCastError (C_Compiler * inCompiler,
                       const C_IssueWithFixIt & inIssue,
                       const std::type_info * inBaseClass,
                       const bool inUseKindOfClass,
-                      const C_String & inActualFoundClassErrorString
+                      const String & inActualFoundClassErrorString
                       COMMA_LOCATION_ARGS) {
 //--- Increment error count
   mErrorTotalCount ++ ;
 //--- Construct expected class message array
-  TC_UniqueArray <C_String> expectedClassMessageArray ;
+  TC_UniqueArray <String> expectedClassMessageArray ;
   const C_galgas_class_inspector * p = C_galgas_class_inspector::root () ;
   bool found = false ;
   while ((p != nullptr) && ! found) {
@@ -401,7 +401,7 @@ void signalCastError (C_Compiler * inCompiler,
     }
   }
 //--- Print extract error
-  C_String errorMessage ;
+  String errorMessage ;
   expectedClassMessageArray.sortArrayUsingCompareMethod () ;
   errorMessage += (verboseOutput () ? "semantic " : "") ;
   errorMessage += "error: I have found:\n" ;
@@ -448,12 +448,12 @@ void signalCastError (C_Compiler * inCompiler,
 void signalSemanticWarning (C_Compiler * inCompiler,
                             const C_SourceTextInString & inSourceText,
                             const C_IssueWithFixIt & inIssue,
-                            const C_String & inWarningMessage
+                            const String & inWarningMessage
                             COMMA_LOCATION_ARGS) {
 //--- Increment warning count
   mTotalWarningCount ++ ;
 //--- Construct location error message
-  C_String warningMessage ;
+  String warningMessage ;
 //--- Add warning
   warningMessage += (verboseOutput () ? "semantic " : "") ;
   warningMessage += "warning #" ;
@@ -474,13 +474,13 @@ void signalSemanticWarning (C_Compiler * inCompiler,
 void signalSemanticError (C_Compiler * inCompiler,
                           const C_SourceTextInString & inSourceText,
                           const C_IssueWithFixIt & inIssue,
-                          const C_String & inErrorMessage
+                          const String & inErrorMessage
                           COMMA_LOCATION_ARGS) {
   const C_LocationInSource inEndErrorLocation = inIssue.mStartLocation ;
 //--- Increment error count
   mErrorTotalCount ++ ;
 //--- Construct location error message
-  C_String errorMessage ;
+  String errorMessage ;
 //--- Print error
   errorMessage += "semantic error #" ;
   errorMessage.appendSigned (mErrorTotalCount) ;
@@ -498,12 +498,12 @@ void signalSemanticError (C_Compiler * inCompiler,
 //--------------------------------------------------------------------------------------------------
 
 void signalRunTimeError (C_Compiler * inCompiler,
-                         const C_String & inRunTimeErrorMessage
+                         const String & inRunTimeErrorMessage
                          COMMA_LOCATION_ARGS) {
 //--- Increment error count
   mErrorTotalCount ++ ;
 //--- Construct location error message
-  C_String errorMessage ;
+  String errorMessage ;
   errorMessage += "Run Time Error #" ;
   errorMessage.appendSigned (mErrorTotalCount) ;
   errorMessage += ": " ;
@@ -520,12 +520,12 @@ void signalRunTimeError (C_Compiler * inCompiler,
 //--------------------------------------------------------------------------------------------------
 
 void signalRunTimeWarning (C_Compiler * inCompiler,
-                           const C_String & inWarningMessage
+                           const String & inWarningMessage
                            COMMA_LOCATION_ARGS) {
 //--- Increment warning count
   mTotalWarningCount ++ ;
 //--- Construct location error message
-  C_String warningMessage ;
+  String warningMessage ;
   warningMessage += "Run Time Warning #" ;
   warningMessage.appendSigned (mTotalWarningCount) ;
   warningMessage += ": " ;
@@ -559,7 +559,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 void ggs_printError (C_Compiler * inCompiler,
                      const C_SourceTextInString & inSourceText,
                      const C_IssueWithFixIt & inIssue,
-                     const C_String & inMessage
+                     const String & inMessage
                      COMMA_LOCATION_ARGS) {
 //--- Append to issue array
   const cIssueDescriptor issue (
@@ -572,11 +572,11 @@ void ggs_printError (C_Compiler * inCompiler,
   ) ;
   inCompiler->appendIssue (issue) ;
 //---
-  C_String errorMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceText) ;
+  String errorMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceText) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (verboseOutput ()) {
       errorMessage += "[Error raised from file '" ;
-      errorMessage += C_String (IN_SOURCE_FILE).lastPathComponent () ;
+      errorMessage += String (IN_SOURCE_FILE).lastPathComponent () ;
       errorMessage += "' at line " ;
       errorMessage.appendSigned (IN_SOURCE_LINE) ;
       errorMessage += "]\n" ;
@@ -605,13 +605,13 @@ void ggs_printError (C_Compiler * inCompiler,
 
 //--------------------------------------------------------------------------------------------------
 
-void fatalError (const C_String & inErrorMessage,
+void fatalError (const String & inErrorMessage,
                  const char * inSourceFile,
                  const int inSourceLine) {
 //--- Increment error count
   mErrorTotalCount ++ ;
 //--- Error message
-  C_String errorMessage ;
+  String errorMessage ;
   errorMessage += inErrorMessage ;
   errorMessage += " in file '" ;
   errorMessage += inSourceFile ;
@@ -619,11 +619,11 @@ void fatalError (const C_String & inErrorMessage,
   errorMessage.appendSigned (inSourceLine) ;
   errorMessage += "\n" ;
 //----
-  C_String message = constructErrorOrWarningLocationMessage (errorMessage, C_IssueWithFixIt (), C_SourceTextInString ()) ;
+  String message = constructErrorOrWarningLocationMessage (errorMessage, C_IssueWithFixIt (), C_SourceTextInString ()) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (verboseOutput ()) {
       message += "[Error raised from file '" ;
-      message += C_String (inSourceFile).lastPathComponent () ;
+      message += String (inSourceFile).lastPathComponent () ;
       message += "' at line " ;
       message.appendSigned (inSourceLine) ;
       message += "]\n" ;
@@ -660,7 +660,7 @@ void fatalError (const C_String & inErrorMessage,
 void ggs_printWarning (C_Compiler * inCompiler,
                        const C_SourceTextInString & inSourceText,
                        const C_IssueWithFixIt & inIssue,
-                       const C_String & inMessage
+                       const String & inMessage
                        COMMA_LOCATION_ARGS) {
 //--- Append to issue array
   const cIssueDescriptor issue (
@@ -673,11 +673,11 @@ void ggs_printWarning (C_Compiler * inCompiler,
   ) ;
   inCompiler->appendIssue (issue) ;
 //---
-  C_String warningMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceText) ;
+  String warningMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceText) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (verboseOutput ()) {
       warningMessage += "[Warning raised from file '" ;
-      warningMessage += C_String (IN_SOURCE_FILE).lastPathComponent () ;
+      warningMessage += String (IN_SOURCE_FILE).lastPathComponent () ;
       warningMessage += "' at line " ;
       warningMessage.appendSigned (IN_SOURCE_LINE) ;
       warningMessage += "]\n" ;
@@ -713,7 +713,7 @@ void ggs_printWarning (C_Compiler * inCompiler,
 //
 //--------------------------------------------------------------------------------------------------
 
-void ggs_printFileOperationSuccess (const C_String & inMessage) {
+void ggs_printFileOperationSuccess (const String & inMessage) {
   if (! executionModeIsIndexing ()) {
     if (cocoaOutput ()) {
       gCout.setForeColor (kGreenForeColor) ;
@@ -737,7 +737,7 @@ void ggs_printFileOperationSuccess (const C_String & inMessage) {
 //
 //--------------------------------------------------------------------------------------------------
 
-void ggs_printFileCreationSuccess (const C_String & inMessage) {
+void ggs_printFileCreationSuccess (const String & inMessage) {
   if (! executionModeIsIndexing ()) {
     if (cocoaOutput ()) {
       gCout.setForeColor (kBlueForeColor) ;
@@ -761,14 +761,14 @@ void ggs_printFileCreationSuccess (const C_String & inMessage) {
 //
 //--------------------------------------------------------------------------------------------------
 
-void ggs_printMessage (const C_String & inMessage
+void ggs_printMessage (const String & inMessage
                        COMMA_LOCATION_ARGS) {
   if (! executionModeIsIndexing ()) {
-    C_String message = inMessage ;
+    String message = inMessage ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
       if (verboseOutput ()) {
         message += "[Displayed from file '" ;
-        message += C_String (IN_SOURCE_FILE).lastPathComponent () ;
+        message += String (IN_SOURCE_FILE).lastPathComponent () ;
         message += "' at line " ;
         message.appendSigned (IN_SOURCE_LINE) ;
         message += "]\n" ;

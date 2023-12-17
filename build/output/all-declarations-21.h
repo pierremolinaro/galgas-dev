@@ -161,15 +161,15 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 
 //--- Indexing
   public: static void performIndexing (C_Compiler * inCompiler,
-                                       const C_String & inSourceFilePath) ;
+                                       const String & inSourceFilePath) ;
 
 //--- Only lexical analysis
   public: static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
-                                                  const C_String & inSourceFilePath) ;
+                                                  const String & inSourceFilePath) ;
 
 //--- Only syntax analysis
   public: static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
-                                                 const C_String & inSourceFilePath) ;
+                                                 const String & inSourceFilePath) ;
 
 //------------------------------------- 'term_tpl' non terminal
 //--- 'parse' label
@@ -385,7 +385,7 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
 
 //--- Attribute accessors
 //--- Description
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
   public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
@@ -540,7 +540,7 @@ class cPtr_arrayTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Attribute accessors
 //--- Description
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
   public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;

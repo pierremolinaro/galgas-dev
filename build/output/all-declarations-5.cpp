@@ -33,7 +33,7 @@ class cCollectionElement_galgas_33_SyntaxExtensionListAST : public cCollectionEl
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -69,7 +69,7 @@ cCollectionElement * cCollectionElement_galgas_33_SyntaxExtensionListAST::copy (
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_galgas_33_SyntaxExtensionListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_galgas_33_SyntaxExtensionListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mSyntaxComponentName" ":" ;
@@ -698,7 +698,7 @@ class cCollectionElement_prologueEpilogueList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -733,7 +733,7 @@ cCollectionElement * cCollectionElement_prologueEpilogueList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_prologueEpilogueList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_prologueEpilogueList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mInstructionList" ":" ;
@@ -1178,7 +1178,7 @@ class cCollectionElement_programRuleList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1218,7 +1218,7 @@ cCollectionElement * cCollectionElement_programRuleList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_programRuleList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_programRuleList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mSourceFileExtension" ":" ;
@@ -2062,7 +2062,7 @@ void GALGAS_galgasDeclarationAST::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_galgasDeclarationAST::description (C_String & ioString,
+void GALGAS_galgasDeclarationAST::description (String & ioString,
                                                const int32_t inIndentation) const {
   ioString += "<struct @galgasDeclarationAST:" ;
   if (! isValid ()) {
@@ -2156,7 +2156,7 @@ class cCollectionElement_functionSignature : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2192,7 +2192,7 @@ cCollectionElement * cCollectionElement_functionSignature::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_functionSignature::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_functionSignature::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFormalSelector" ":" ;
@@ -2700,7 +2700,7 @@ cMapElement * cMapElement_constructorMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_constructorMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_constructorMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mArgumentTypeList" ":" ;
@@ -3247,7 +3247,7 @@ GALGAS_bool GALGAS_methodQualifier::getter_isIsVirtualOverridingAbstract (UNUSED
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_methodQualifier::description (C_String & ioString,
+void GALGAS_methodQualifier::description (String & ioString,
                                           const int32_t /* inIndentation */) const {
   ioString += "<enum @methodQualifier: " ;
   ioString += gEnumNameArrayFor_methodQualifier [mEnum] ;
@@ -3371,7 +3371,7 @@ GALGAS_bool GALGAS_methodKind::getter_isDefinedAsExtension (UNUSED_LOCATION_ARGS
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_methodKind::description (C_String & ioString,
+void GALGAS_methodKind::description (String & ioString,
                                      const int32_t /* inIndentation */) const {
   ioString += "<enum @methodKind: " ;
   ioString += gEnumNameArrayFor_methodKind [mEnum] ;
@@ -3464,7 +3464,7 @@ class cCollectionElement_optionalMethodSignature : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3501,7 +3501,7 @@ cCollectionElement * cCollectionElement_optionalMethodSignature::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_optionalMethodSignature::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_optionalMethodSignature::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mInputArgument" ":" ;
@@ -4069,7 +4069,7 @@ cMapElement * cMapElement_optionalMethodMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_optionalMethodMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_optionalMethodMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mArgumentTypeList" ":" ;
@@ -4366,7 +4366,7 @@ cMapElement * cMapElement_getterMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_getterMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_getterMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mKind" ":" ;
@@ -4984,7 +4984,7 @@ class cCollectionElement_formalParameterSignature : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5021,7 +5021,7 @@ cCollectionElement * cCollectionElement_formalParameterSignature::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_formalParameterSignature::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_formalParameterSignature::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFormalSelector" ":" ;
@@ -5597,7 +5597,7 @@ cMapElement * cMapElement_setterMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_setterMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_setterMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mKind" ":" ;
@@ -6117,7 +6117,7 @@ cMapElement * cMapElement_instanceMethodMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_instanceMethodMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_instanceMethodMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mKind" ":" ;
@@ -6701,7 +6701,7 @@ cMapElement * cMapElement_classMethodMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_classMethodMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_classMethodMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mParameterList" ":" ;
@@ -7052,7 +7052,7 @@ class cCollectionElement_enumerationDescriptorList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7087,7 +7087,7 @@ cCollectionElement * cCollectionElement_enumerationDescriptorList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_enumerationDescriptorList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_enumerationDescriptorList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mEnumeratedType" ":" ;
@@ -7934,7 +7934,7 @@ GALGAS_bool GALGAS_predefinedTypeKindEnum::getter_isPredefined_5F_timer (UNUSED_
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_predefinedTypeKindEnum::description (C_String & ioString,
+void GALGAS_predefinedTypeKindEnum::description (String & ioString,
                                                  const int32_t /* inIndentation */) const {
   ioString += "<enum @predefinedTypeKindEnum: " ;
   ioString += gEnumNameArrayFor_predefinedTypeKindEnum [mEnum] ;
@@ -8010,7 +8010,7 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cEnumAssociatedValues_typeKindEnum_classType::description (C_String & ioString,
+void cEnumAssociatedValues_typeKindEnum_classType::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString += "(\n" ;
   mAssociatedValue0.description (ioString, inIndentation) ;
@@ -8039,7 +8039,7 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cEnumAssociatedValues_typeKindEnum_weakReferenceType::description (C_String & ioString,
+void cEnumAssociatedValues_typeKindEnum_weakReferenceType::description (String & ioString,
                                                                         const int32_t inIndentation) const {
   ioString += "(\n" ;
   mAssociatedValue0.description (ioString, inIndentation) ;
@@ -8206,7 +8206,7 @@ void GALGAS_typeKindEnum::method_classType (GALGAS_bool & outAssociatedValue0,
                                             COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_classType) {
     outAssociatedValue0.drop () ;
-    C_String s ;
+    String s ;
     s += "method @typeKindEnum classType invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
@@ -8222,7 +8222,7 @@ void GALGAS_typeKindEnum::method_weakReferenceType (GALGAS_unifiedTypeMapEntry &
                                                     COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_weakReferenceType) {
     outAssociatedValue0.drop () ;
-    C_String s ;
+    String s ;
     s += "method @typeKindEnum weakReferenceType invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
@@ -8457,7 +8457,7 @@ GALGAS_bool GALGAS_typeKindEnum::getter_isPredefinedType (UNUSED_LOCATION_ARGS) 
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_typeKindEnum::description (C_String & ioString,
+void GALGAS_typeKindEnum::description (String & ioString,
                                        const int32_t inIndentation) const {
   ioString += "<enum @typeKindEnum: " ;
   ioString += gEnumNameArrayFor_typeKindEnum [mEnum] ;
@@ -8928,7 +8928,7 @@ GALGAS_operators GALGAS_operators::operator_tilde (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_operators::description (C_String & ioString,
+void GALGAS_operators::description (String & ioString,
                                     const int32_t /* inIndentation */) const {
   ioString += "<boolset @operators:" ;
   if (! isValid ()) {
@@ -9446,7 +9446,7 @@ cMapElement * cMapElement_propertyMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_propertyMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_propertyMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mAccessControl" ":" ;
@@ -9820,7 +9820,7 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cEnumAssociatedValues_AccessControl_protectedAccess::description (C_String & ioString,
+void cEnumAssociatedValues_AccessControl_protectedAccess::description (String & ioString,
                                                                        const int32_t inIndentation) const {
   ioString += "(\n" ;
   mAssociatedValue0.description (ioString, inIndentation) ;
@@ -9849,7 +9849,7 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cEnumAssociatedValues_AccessControl_protectedSetAccess::description (C_String & ioString,
+void cEnumAssociatedValues_AccessControl_protectedSetAccess::description (String & ioString,
                                                                           const int32_t inIndentation) const {
   ioString += "(\n" ;
   mAssociatedValue0.description (ioString, inIndentation) ;
@@ -9878,7 +9878,7 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cEnumAssociatedValues_AccessControl_privateAccess::description (C_String & ioString,
+void cEnumAssociatedValues_AccessControl_privateAccess::description (String & ioString,
                                                                      const int32_t inIndentation) const {
   ioString += "(\n" ;
   mAssociatedValue0.description (ioString, inIndentation) ;
@@ -9907,7 +9907,7 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cEnumAssociatedValues_AccessControl_privateSetAccess::description (C_String & ioString,
+void cEnumAssociatedValues_AccessControl_privateSetAccess::description (String & ioString,
                                                                         const int32_t inIndentation) const {
   ioString += "(\n" ;
   mAssociatedValue0.description (ioString, inIndentation) ;
@@ -9936,7 +9936,7 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cEnumAssociatedValues_AccessControl_fileprivateAccess::description (C_String & ioString,
+void cEnumAssociatedValues_AccessControl_fileprivateAccess::description (String & ioString,
                                                                          const int32_t inIndentation) const {
   ioString += "(\n" ;
   mAssociatedValue0.description (ioString, inIndentation) ;
@@ -9965,7 +9965,7 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cEnumAssociatedValues_AccessControl_fileprivateSetAccess::description (C_String & ioString,
+void cEnumAssociatedValues_AccessControl_fileprivateSetAccess::description (String & ioString,
                                                                             const int32_t inIndentation) const {
   ioString += "(\n" ;
   mAssociatedValue0.description (ioString, inIndentation) ;
@@ -10096,7 +10096,7 @@ void GALGAS_AccessControl::method_protectedAccess (GALGAS_unifiedTypeMapEntry & 
                                                    COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_protectedAccess) {
     outAssociatedValue0.drop () ;
-    C_String s ;
+    String s ;
     s += "method @AccessControl protectedAccess invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
@@ -10112,7 +10112,7 @@ void GALGAS_AccessControl::method_protectedSetAccess (GALGAS_unifiedTypeMapEntry
                                                       COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_protectedSetAccess) {
     outAssociatedValue0.drop () ;
-    C_String s ;
+    String s ;
     s += "method @AccessControl protectedSetAccess invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
@@ -10128,7 +10128,7 @@ void GALGAS_AccessControl::method_privateAccess (GALGAS_unifiedTypeMapEntry & ou
                                                  COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_privateAccess) {
     outAssociatedValue0.drop () ;
-    C_String s ;
+    String s ;
     s += "method @AccessControl privateAccess invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
@@ -10144,7 +10144,7 @@ void GALGAS_AccessControl::method_privateSetAccess (GALGAS_unifiedTypeMapEntry &
                                                     COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_privateSetAccess) {
     outAssociatedValue0.drop () ;
-    C_String s ;
+    String s ;
     s += "method @AccessControl privateSetAccess invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
@@ -10160,7 +10160,7 @@ void GALGAS_AccessControl::method_fileprivateAccess (GALGAS_location & outAssoci
                                                      COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_fileprivateAccess) {
     outAssociatedValue0.drop () ;
-    C_String s ;
+    String s ;
     s += "method @AccessControl fileprivateAccess invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
@@ -10176,7 +10176,7 @@ void GALGAS_AccessControl::method_fileprivateSetAccess (GALGAS_location & outAss
                                                         COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_fileprivateSetAccess) {
     outAssociatedValue0.drop () ;
-    C_String s ;
+    String s ;
     s += "method @AccessControl fileprivateSetAccess invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
@@ -10315,7 +10315,7 @@ GALGAS_bool GALGAS_AccessControl::getter_isFileprivateSetAccess (UNUSED_LOCATION
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_AccessControl::description (C_String & ioString,
+void GALGAS_AccessControl::description (String & ioString,
                                         const int32_t inIndentation) const {
   ioString += "<enum @AccessControl: " ;
   ioString += gEnumNameArrayFor_AccessControl [mEnum] ;
@@ -10462,7 +10462,7 @@ GALGAS_bool GALGAS_headerKind::getter_isTwoHeaders (UNUSED_LOCATION_ARGS) const 
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_headerKind::description (C_String & ioString,
+void GALGAS_headerKind::description (String & ioString,
                                      const int32_t /* inIndentation */) const {
   ioString += "<enum @headerKind: " ;
   ioString += gEnumNameArrayFor_headerKind [mEnum] ;
@@ -10555,7 +10555,7 @@ cMapElement * cMapElement_constantIndexMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_constantIndexMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_constantIndexMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mIndex" ":" ;
@@ -11192,7 +11192,7 @@ const C_galgas_type_descriptor * cPtr_applicationPredefinedTypeAST::classDescrip
   return & kTypeDescriptor_GALGAS_applicationPredefinedTypeAST ;
 }
 
-void cPtr_applicationPredefinedTypeAST::description (C_String & ioString,
+void cPtr_applicationPredefinedTypeAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "[@applicationPredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -11455,7 +11455,7 @@ const C_galgas_type_descriptor * cPtr_bigintPredefinedTypeAST::classDescriptor (
   return & kTypeDescriptor_GALGAS_bigintPredefinedTypeAST ;
 }
 
-void cPtr_bigintPredefinedTypeAST::description (C_String & ioString,
+void cPtr_bigintPredefinedTypeAST::description (String & ioString,
                                                 const int32_t inIndentation) const {
   ioString += "[@bigintPredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -11718,7 +11718,7 @@ const C_galgas_type_descriptor * cPtr_objectPredefinedTypeAST::classDescriptor (
   return & kTypeDescriptor_GALGAS_objectPredefinedTypeAST ;
 }
 
-void cPtr_objectPredefinedTypeAST::description (C_String & ioString,
+void cPtr_objectPredefinedTypeAST::description (String & ioString,
                                                 const int32_t inIndentation) const {
   ioString += "[@objectPredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -11981,7 +11981,7 @@ const C_galgas_type_descriptor * cPtr_filewrapperPredefinedTypeAST::classDescrip
   return & kTypeDescriptor_GALGAS_filewrapperPredefinedTypeAST ;
 }
 
-void cPtr_filewrapperPredefinedTypeAST::description (C_String & ioString,
+void cPtr_filewrapperPredefinedTypeAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "[@filewrapperPredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -12244,7 +12244,7 @@ const C_galgas_type_descriptor * cPtr_binarysetPredefinedTypeAST::classDescripto
   return & kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST ;
 }
 
-void cPtr_binarysetPredefinedTypeAST::description (C_String & ioString,
+void cPtr_binarysetPredefinedTypeAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
   ioString += "[@binarysetPredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -12507,7 +12507,7 @@ const C_galgas_type_descriptor * cPtr_boolPredefinedTypeAST::classDescriptor (vo
   return & kTypeDescriptor_GALGAS_boolPredefinedTypeAST ;
 }
 
-void cPtr_boolPredefinedTypeAST::description (C_String & ioString,
+void cPtr_boolPredefinedTypeAST::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString += "[@boolPredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -12770,7 +12770,7 @@ const C_galgas_type_descriptor * cPtr_uintPredefinedTypeAST::classDescriptor (vo
   return & kTypeDescriptor_GALGAS_uintPredefinedTypeAST ;
 }
 
-void cPtr_uintPredefinedTypeAST::description (C_String & ioString,
+void cPtr_uintPredefinedTypeAST::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString += "[@uintPredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -13033,7 +13033,7 @@ const C_galgas_type_descriptor * cPtr_uint_36__34_PredefinedTypeAST::classDescri
   return & kTypeDescriptor_GALGAS_uint_36__34_PredefinedTypeAST ;
 }
 
-void cPtr_uint_36__34_PredefinedTypeAST::description (C_String & ioString,
+void cPtr_uint_36__34_PredefinedTypeAST::description (String & ioString,
                                                       const int32_t inIndentation) const {
   ioString += "[@uint64PredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -13296,7 +13296,7 @@ const C_galgas_type_descriptor * cPtr_sintPredefinedTypeAST::classDescriptor (vo
   return & kTypeDescriptor_GALGAS_sintPredefinedTypeAST ;
 }
 
-void cPtr_sintPredefinedTypeAST::description (C_String & ioString,
+void cPtr_sintPredefinedTypeAST::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString += "[@sintPredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -13559,7 +13559,7 @@ const C_galgas_type_descriptor * cPtr_sint_36__34_PredefinedTypeAST::classDescri
   return & kTypeDescriptor_GALGAS_sint_36__34_PredefinedTypeAST ;
 }
 
-void cPtr_sint_36__34_PredefinedTypeAST::description (C_String & ioString,
+void cPtr_sint_36__34_PredefinedTypeAST::description (String & ioString,
                                                       const int32_t inIndentation) const {
   ioString += "[@sint64PredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -13822,7 +13822,7 @@ const C_galgas_type_descriptor * cPtr_charPredefinedTypeAST::classDescriptor (vo
   return & kTypeDescriptor_GALGAS_charPredefinedTypeAST ;
 }
 
-void cPtr_charPredefinedTypeAST::description (C_String & ioString,
+void cPtr_charPredefinedTypeAST::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString += "[@charPredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -14085,7 +14085,7 @@ const C_galgas_type_descriptor * cPtr_doublePredefinedTypeAST::classDescriptor (
   return & kTypeDescriptor_GALGAS_doublePredefinedTypeAST ;
 }
 
-void cPtr_doublePredefinedTypeAST::description (C_String & ioString,
+void cPtr_doublePredefinedTypeAST::description (String & ioString,
                                                 const int32_t inIndentation) const {
   ioString += "[@doublePredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -14348,7 +14348,7 @@ const C_galgas_type_descriptor * cPtr_stringPredefinedTypeAST::classDescriptor (
   return & kTypeDescriptor_GALGAS_stringPredefinedTypeAST ;
 }
 
-void cPtr_stringPredefinedTypeAST::description (C_String & ioString,
+void cPtr_stringPredefinedTypeAST::description (String & ioString,
                                                 const int32_t inIndentation) const {
   ioString += "[@stringPredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -14611,7 +14611,7 @@ const C_galgas_type_descriptor * cPtr_locationPredefinedTypeAST::classDescriptor
   return & kTypeDescriptor_GALGAS_locationPredefinedTypeAST ;
 }
 
-void cPtr_locationPredefinedTypeAST::description (C_String & ioString,
+void cPtr_locationPredefinedTypeAST::description (String & ioString,
                                                   const int32_t inIndentation) const {
   ioString += "[@locationPredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -14874,7 +14874,7 @@ const C_galgas_type_descriptor * cPtr_stringsetPredefinedTypeAST::classDescripto
   return & kTypeDescriptor_GALGAS_stringsetPredefinedTypeAST ;
 }
 
-void cPtr_stringsetPredefinedTypeAST::description (C_String & ioString,
+void cPtr_stringsetPredefinedTypeAST::description (String & ioString,
                                                    const int32_t inIndentation) const {
   ioString += "[@stringsetPredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -15137,7 +15137,7 @@ const C_galgas_type_descriptor * cPtr_functionPredefinedTypeAST::classDescriptor
   return & kTypeDescriptor_GALGAS_functionPredefinedTypeAST ;
 }
 
-void cPtr_functionPredefinedTypeAST::description (C_String & ioString,
+void cPtr_functionPredefinedTypeAST::description (String & ioString,
                                                   const int32_t inIndentation) const {
   ioString += "[@functionPredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -15400,7 +15400,7 @@ const C_galgas_type_descriptor * cPtr_typePredefinedTypeAST::classDescriptor (vo
   return & kTypeDescriptor_GALGAS_typePredefinedTypeAST ;
 }
 
-void cPtr_typePredefinedTypeAST::description (C_String & ioString,
+void cPtr_typePredefinedTypeAST::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString += "[@typePredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -15663,7 +15663,7 @@ const C_galgas_type_descriptor * cPtr_dataPredefinedTypeAST::classDescriptor (vo
   return & kTypeDescriptor_GALGAS_dataPredefinedTypeAST ;
 }
 
-void cPtr_dataPredefinedTypeAST::description (C_String & ioString,
+void cPtr_dataPredefinedTypeAST::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString += "[@dataPredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -15926,7 +15926,7 @@ const C_galgas_type_descriptor * cPtr_timerPredefinedTypeAST::classDescriptor (v
   return & kTypeDescriptor_GALGAS_timerPredefinedTypeAST ;
 }
 
-void cPtr_timerPredefinedTypeAST::description (C_String & ioString,
+void cPtr_timerPredefinedTypeAST::description (String & ioString,
                                                const int32_t inIndentation) const {
   ioString += "[@timerPredefinedTypeAST:" ;
   mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
@@ -16467,7 +16467,7 @@ cMapElement * cMapElement_grammarLabelMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_grammarLabelMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_grammarLabelMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mLabelSignature" ":" ;

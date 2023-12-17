@@ -36,7 +36,7 @@ mBDD () {
 
 //--------------------------------------------------------------------------------------------------
 
-C_Relation::C_Relation (const C_String & inVariableName,
+C_Relation::C_Relation (const String & inVariableName,
                         const C_RelationSingleType & inVariableType,
                         const bool inIsFull) :
 mConfiguration (),
@@ -71,7 +71,7 @@ C_Relation & C_Relation::operator = (const C_Relation & inSource) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Relation::addVariable (const C_String & inVariableName,
+void C_Relation::addVariable (const String & inVariableName,
                               const C_RelationSingleType & inType) {
   mConfiguration.addVariable (inVariableName, inType) ;
 }
@@ -366,9 +366,9 @@ C_Relation C_Relation::transposedRelation (LOCATION_ARGS) const {
   const C_BDD r = mBDD.substitution (tab, totalSize COMMA_HERE) ;
   macroMyDeleteArray (tab) ;
 //---
-  const C_String name0 = mConfiguration.nameForVariable (0 COMMA_HERE) ;
+  const String name0 = mConfiguration.nameForVariable (0 COMMA_HERE) ;
   const C_RelationSingleType type0 = mConfiguration.typeForVariable (0 COMMA_HERE) ;
-  const C_String name1 = mConfiguration.nameForVariable (1 COMMA_HERE) ;
+  const String name1 = mConfiguration.nameForVariable (1 COMMA_HERE) ;
   const C_RelationSingleType type1 = mConfiguration.typeForVariable (1 COMMA_HERE) ;
   C_RelationConfiguration config ;
   config.addVariable (name1, type1) ;

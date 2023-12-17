@@ -236,7 +236,7 @@ void GALGAS_XcodeProjectDescriptor::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_XcodeProjectDescriptor::description (C_String & ioString,
+void GALGAS_XcodeProjectDescriptor::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "<struct @XcodeProjectDescriptor:" ;
   if (! isValid ()) {
@@ -1103,7 +1103,7 @@ void GALGAS__32_lstringlist_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS__32_lstringlist_2D_element::description (C_String & ioString,
+void GALGAS__32_lstringlist_2D_element::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "<struct @2lstringlist-element:" ;
   if (! isValid ()) {
@@ -1228,7 +1228,7 @@ void GALGAS_templateExpressionListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_templateExpressionListAST_2D_element::description (C_String & ioString,
+void GALGAS_templateExpressionListAST_2D_element::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "<struct @templateExpressionListAST-element:" ;
   if (! isValid ()) {
@@ -1347,7 +1347,7 @@ void GALGAS_templateInstructionIfBranchListForGeneration_2D_element::drop (void)
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_templateInstructionIfBranchListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_templateInstructionIfBranchListForGeneration_2D_element::description (String & ioString,
                                                                                   const int32_t inIndentation) const {
   ioString += "<struct @templateInstructionIfBranchListForGeneration-element:" ;
   if (! isValid ()) {
@@ -1472,7 +1472,7 @@ void GALGAS_templateVariableMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_templateVariableMap_2D_element::description (C_String & ioString,
+void GALGAS_templateVariableMap_2D_element::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "<struct @templateVariableMap-element:" ;
   if (! isValid ()) {
@@ -1615,7 +1615,7 @@ void GALGAS_templateDelimitorListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_templateDelimitorListAST_2D_element::description (C_String & ioString,
+void GALGAS_templateDelimitorListAST_2D_element::description (String & ioString,
                                                               const int32_t inIndentation) const {
   ioString += "<struct @templateDelimitorListAST-element:" ;
   if (! isValid ()) {
@@ -1746,7 +1746,7 @@ void GALGAS_templateReplacementListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_templateReplacementListAST_2D_element::description (C_String & ioString,
+void GALGAS_templateReplacementListAST_2D_element::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString += "<struct @templateReplacementListAST-element:" ;
   if (! isValid ()) {
@@ -1865,7 +1865,7 @@ void GALGAS_lexicalMessageDeclarationListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalMessageDeclarationListAST_2D_element::description (C_String & ioString,
+void GALGAS_lexicalMessageDeclarationListAST_2D_element::description (String & ioString,
                                                                       const int32_t inIndentation) const {
   ioString += "<struct @lexicalMessageDeclarationListAST-element:" ;
   if (! isValid ()) {
@@ -1982,7 +1982,7 @@ void GALGAS_lexicalAttributeListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalAttributeListAST_2D_element::description (C_String & ioString,
+void GALGAS_lexicalAttributeListAST_2D_element::description (String & ioString,
                                                              const int32_t inIndentation) const {
   ioString += "<struct @lexicalAttributeListAST-element:" ;
   if (! isValid ()) {
@@ -2099,7 +2099,7 @@ void GALGAS_lexicalStyleListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalStyleListAST_2D_element::description (C_String & ioString,
+void GALGAS_lexicalStyleListAST_2D_element::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "<struct @lexicalStyleListAST-element:" ;
   if (! isValid ()) {
@@ -2248,7 +2248,7 @@ void GALGAS_terminalDeclarationListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_terminalDeclarationListAST_2D_element::description (C_String & ioString,
+void GALGAS_terminalDeclarationListAST_2D_element::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString += "<struct @terminalDeclarationListAST-element:" ;
   if (! isValid ()) {
@@ -2389,7 +2389,7 @@ void GALGAS_lexicalListEntryListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalListEntryListAST_2D_element::description (C_String & ioString,
+void GALGAS_lexicalListEntryListAST_2D_element::description (String & ioString,
                                                              const int32_t inIndentation) const {
   ioString += "<struct @lexicalListEntryListAST-element:" ;
   if (! isValid ()) {
@@ -2510,7 +2510,7 @@ void GALGAS_sentLexicalAttributeListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_sentLexicalAttributeListAST_2D_element::description (C_String & ioString,
+void GALGAS_sentLexicalAttributeListAST_2D_element::description (String & ioString,
                                                                  const int32_t inIndentation) const {
   ioString += "<struct @sentLexicalAttributeListAST-element:" ;
   if (! isValid ()) {
@@ -2651,7 +2651,7 @@ void GALGAS_lexicalListDeclarationListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalListDeclarationListAST_2D_element::description (C_String & ioString,
+void GALGAS_lexicalListDeclarationListAST_2D_element::description (String & ioString,
                                                                    const int32_t inIndentation) const {
   ioString += "<struct @lexicalListDeclarationListAST-element:" ;
   if (! isValid ()) {
@@ -2774,7 +2774,7 @@ void GALGAS_lexicalSendSearchListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalSendSearchListAST_2D_element::description (C_String & ioString,
+void GALGAS_lexicalSendSearchListAST_2D_element::description (String & ioString,
                                                               const int32_t inIndentation) const {
   ioString += "<struct @lexicalSendSearchListAST-element:" ;
   if (! isValid ()) {
@@ -2891,7 +2891,7 @@ void GALGAS_indexingListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_indexingListAST_2D_element::description (C_String & ioString,
+void GALGAS_indexingListAST_2D_element::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "<struct @indexingListAST-element:" ;
   if (! isValid ()) {
@@ -3016,7 +3016,7 @@ void GALGAS_lexicalSentValueList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalSentValueList_2D_element::description (C_String & ioString,
+void GALGAS_lexicalSentValueList_2D_element::description (String & ioString,
                                                           const int32_t inIndentation) const {
   ioString += "<struct @lexicalSentValueList-element:" ;
   if (! isValid ()) {
@@ -3135,7 +3135,7 @@ void GALGAS_terminalMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_terminalMap_2D_element::description (C_String & ioString,
+void GALGAS_terminalMap_2D_element::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "<struct @terminalMap-element:" ;
   if (! isValid ()) {
@@ -3252,7 +3252,7 @@ void GALGAS_lexicalTypeMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalTypeMap_2D_element::description (C_String & ioString,
+void GALGAS_lexicalTypeMap_2D_element::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "<struct @lexicalTypeMap-element:" ;
   if (! isValid ()) {
@@ -3369,7 +3369,7 @@ void GALGAS_lexicalAttributeMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalAttributeMap_2D_element::description (C_String & ioString,
+void GALGAS_lexicalAttributeMap_2D_element::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "<struct @lexicalAttributeMap-element:" ;
   if (! isValid ()) {
@@ -3518,7 +3518,7 @@ void GALGAS_terminalList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_terminalList_2D_element::description (C_String & ioString,
+void GALGAS_terminalList_2D_element::description (String & ioString,
                                                   const int32_t inIndentation) const {
   ioString += "<struct @terminalList-element:" ;
   if (! isValid ()) {
@@ -3659,7 +3659,7 @@ void GALGAS_lexicalExplicitTokenListMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalExplicitTokenListMap_2D_element::description (C_String & ioString,
+void GALGAS_lexicalExplicitTokenListMap_2D_element::description (String & ioString,
                                                                  const int32_t inIndentation) const {
   ioString += "<struct @lexicalExplicitTokenListMap-element:" ;
   if (! isValid ()) {
@@ -3796,7 +3796,7 @@ void GALGAS_lexicalExplicitTokenListMapMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalExplicitTokenListMapMap_2D_element::description (C_String & ioString,
+void GALGAS_lexicalExplicitTokenListMapMap_2D_element::description (String & ioString,
                                                                     const int32_t inIndentation) const {
   ioString += "<struct @lexicalExplicitTokenListMapMap-element:" ;
   if (! isValid ()) {
@@ -3925,7 +3925,7 @@ void GALGAS_lexicalMessageMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalMessageMap_2D_element::description (C_String & ioString,
+void GALGAS_lexicalMessageMap_2D_element::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString += "<struct @lexicalMessageMap-element:" ;
   if (! isValid ()) {
@@ -4060,7 +4060,7 @@ void GALGAS_lexicalRoutineMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalRoutineMap_2D_element::description (C_String & ioString,
+void GALGAS_lexicalRoutineMap_2D_element::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString += "<struct @lexicalRoutineMap-element:" ;
   if (! isValid ()) {
@@ -4205,7 +4205,7 @@ void GALGAS_lexicalFunctionMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalFunctionMap_2D_element::description (C_String & ioString,
+void GALGAS_lexicalFunctionMap_2D_element::description (String & ioString,
                                                         const int32_t inIndentation) const {
   ioString += "<struct @lexicalFunctionMap-element:" ;
   if (! isValid ()) {
@@ -4336,7 +4336,7 @@ void GALGAS_templateDelimitorList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_templateDelimitorList_2D_element::description (C_String & ioString,
+void GALGAS_templateDelimitorList_2D_element::description (String & ioString,
                                                            const int32_t inIndentation) const {
   ioString += "<struct @templateDelimitorList-element:" ;
   if (! isValid ()) {
@@ -4463,7 +4463,7 @@ void GALGAS_styleMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_styleMap_2D_element::description (C_String & ioString,
+void GALGAS_styleMap_2D_element::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString += "<struct @styleMap-element:" ;
   if (! isValid ()) {
@@ -4574,7 +4574,7 @@ void GALGAS_lexicalTagMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalTagMap_2D_element::description (C_String & ioString,
+void GALGAS_lexicalTagMap_2D_element::description (String & ioString,
                                                    const int32_t inIndentation) const {
   ioString += "<struct @lexicalTagMap-element:" ;
   if (! isValid ()) {
@@ -4729,7 +4729,7 @@ void GALGAS_commandLineOptionListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_commandLineOptionListAST_2D_element::description (C_String & ioString,
+void GALGAS_commandLineOptionListAST_2D_element::description (String & ioString,
                                                               const int32_t inIndentation) const {
   ioString += "<struct @commandLineOptionListAST-element:" ;
   if (! isValid ()) {
@@ -4880,7 +4880,7 @@ void GALGAS_commandLineOptionMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_commandLineOptionMap_2D_element::description (C_String & ioString,
+void GALGAS_commandLineOptionMap_2D_element::description (String & ioString,
                                                           const int32_t inIndentation) const {
   ioString += "<struct @commandLineOptionMap-element:" ;
   if (! isValid ()) {
@@ -5003,7 +5003,7 @@ void GALGAS_guiSimpleAttributeListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_guiSimpleAttributeListAST_2D_element::description (C_String & ioString,
+void GALGAS_guiSimpleAttributeListAST_2D_element::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "<struct @guiSimpleAttributeListAST-element:" ;
   if (! isValid ()) {
@@ -5128,7 +5128,7 @@ void GALGAS_guiCompoundAttributeListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_guiCompoundAttributeListAST_2D_element::description (C_String & ioString,
+void GALGAS_guiCompoundAttributeListAST_2D_element::description (String & ioString,
                                                                  const int32_t inIndentation) const {
   ioString += "<struct @guiCompoundAttributeListAST-element:" ;
   if (! isValid ()) {
@@ -5247,7 +5247,7 @@ void GALGAS_terminalLabelListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_terminalLabelListAST_2D_element::description (C_String & ioString,
+void GALGAS_terminalLabelListAST_2D_element::description (String & ioString,
                                                           const int32_t inIndentation) const {
   ioString += "<struct @terminalLabelListAST-element:" ;
   if (! isValid ()) {
@@ -5380,7 +5380,7 @@ void GALGAS_withLexiqueListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_withLexiqueListAST_2D_element::description (C_String & ioString,
+void GALGAS_withLexiqueListAST_2D_element::description (String & ioString,
                                                         const int32_t inIndentation) const {
   ioString += "<struct @withLexiqueListAST-element:" ;
   if (! isValid ()) {
@@ -5509,7 +5509,7 @@ void GALGAS_extensionMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_extensionMap_2D_element::description (C_String & ioString,
+void GALGAS_extensionMap_2D_element::description (String & ioString,
                                                   const int32_t inIndentation) const {
   ioString += "<struct @extensionMap-element:" ;
   if (! isValid ()) {
@@ -5628,7 +5628,7 @@ void GALGAS_projectIndexingDescriptorList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_projectIndexingDescriptorList_2D_element::description (C_String & ioString,
+void GALGAS_projectIndexingDescriptorList_2D_element::description (String & ioString,
                                                                    const int32_t inIndentation) const {
   ioString += "<struct @projectIndexingDescriptorList-element:" ;
   if (! isValid ()) {
@@ -5769,7 +5769,7 @@ void GALGAS_galgasGUIComponentListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_galgasGUIComponentListAST_2D_element::description (C_String & ioString,
+void GALGAS_galgasGUIComponentListAST_2D_element::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "<struct @galgasGUIComponentListAST-element:" ;
   if (! isValid ()) {
@@ -5892,7 +5892,7 @@ void GALGAS_optionComponentMapForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_optionComponentMapForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_optionComponentMapForGeneration_2D_element::description (String & ioString,
                                                                      const int32_t inIndentation) const {
   ioString += "<struct @optionComponentMapForGeneration-element:" ;
   if (! isValid ()) {
@@ -6009,7 +6009,7 @@ void GALGAS_enumConstantList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_enumConstantList_2D_element::description (C_String & ioString,
+void GALGAS_enumConstantList_2D_element::description (String & ioString,
                                                       const int32_t inIndentation) const {
   ioString += "<struct @enumConstantList-element:" ;
   if (! isValid ()) {
@@ -6134,7 +6134,7 @@ void GALGAS_typeNameFormalParameterNameList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_typeNameFormalParameterNameList_2D_element::description (C_String & ioString,
+void GALGAS_typeNameFormalParameterNameList_2D_element::description (String & ioString,
                                                                      const int32_t inIndentation) const {
   ioString += "<struct @typeNameFormalParameterNameList-element:" ;
   if (! isValid ()) {
@@ -6261,7 +6261,7 @@ void GALGAS_externTypeConstructorList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeConstructorList_2D_element::description (C_String & ioString,
+void GALGAS_externTypeConstructorList_2D_element::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "<struct @externTypeConstructorList-element:" ;
   if (! isValid ()) {
@@ -6388,7 +6388,7 @@ void GALGAS_externTypeGetterList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeGetterList_2D_element::description (C_String & ioString,
+void GALGAS_externTypeGetterList_2D_element::description (String & ioString,
                                                           const int32_t inIndentation) const {
   ioString += "<struct @externTypeGetterList-element:" ;
   if (! isValid ()) {
@@ -6507,7 +6507,7 @@ void GALGAS_externTypeSetterList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeSetterList_2D_element::description (C_String & ioString,
+void GALGAS_externTypeSetterList_2D_element::description (String & ioString,
                                                           const int32_t inIndentation) const {
   ioString += "<struct @externTypeSetterList-element:" ;
   if (! isValid ()) {
@@ -6632,7 +6632,7 @@ void GALGAS_externTypeMethodList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeMethodList_2D_element::description (C_String & ioString,
+void GALGAS_externTypeMethodList_2D_element::description (String & ioString,
                                                           const int32_t inIndentation) const {
   ioString += "<struct @externTypeMethodList-element:" ;
   if (! isValid ()) {
@@ -6751,7 +6751,7 @@ void GALGAS_graphInsertModifierList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_graphInsertModifierList_2D_element::description (C_String & ioString,
+void GALGAS_graphInsertModifierList_2D_element::description (String & ioString,
                                                              const int32_t inIndentation) const {
   ioString += "<struct @graphInsertModifierList-element:" ;
   if (! isValid ()) {
@@ -6876,7 +6876,7 @@ void GALGAS_insertMethodListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_insertMethodListAST_2D_element::description (C_String & ioString,
+void GALGAS_insertMethodListAST_2D_element::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "<struct @insertMethodListAST-element:" ;
   if (! isValid ()) {
@@ -6995,7 +6995,7 @@ void GALGAS_mapSearchMethodListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_mapSearchMethodListAST_2D_element::description (C_String & ioString,
+void GALGAS_mapSearchMethodListAST_2D_element::description (String & ioString,
                                                             const int32_t inIndentation) const {
   ioString += "<struct @mapSearchMethodListAST-element:" ;
   if (! isValid ()) {
@@ -7112,7 +7112,7 @@ void GALGAS_mapRemoveMethodListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_mapRemoveMethodListAST_2D_element::description (C_String & ioString,
+void GALGAS_mapRemoveMethodListAST_2D_element::description (String & ioString,
                                                             const int32_t inIndentation) const {
   ioString += "<struct @mapRemoveMethodListAST-element:" ;
   if (! isValid ()) {
@@ -7221,7 +7221,7 @@ void GALGAS_insertMethodMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_insertMethodMap_2D_element::description (C_String & ioString,
+void GALGAS_insertMethodMap_2D_element::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "<struct @insertMethodMap-element:" ;
   if (! isValid ()) {
@@ -7328,7 +7328,7 @@ void GALGAS_searchMethodMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_searchMethodMap_2D_element::description (C_String & ioString,
+void GALGAS_searchMethodMap_2D_element::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "<struct @searchMethodMap-element:" ;
   if (! isValid ()) {
@@ -7443,7 +7443,7 @@ void GALGAS_sortedListSortDescriptorListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_sortedListSortDescriptorListAST_2D_element::description (C_String & ioString,
+void GALGAS_sortedListSortDescriptorListAST_2D_element::description (String & ioString,
                                                                      const int32_t inIndentation) const {
   ioString += "<struct @sortedListSortDescriptorListAST-element:" ;
   if (! isValid ()) {
@@ -7584,7 +7584,7 @@ void GALGAS_formalParameterListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_formalParameterListAST_2D_element::description (C_String & ioString,
+void GALGAS_formalParameterListAST_2D_element::description (String & ioString,
                                                             const int32_t inIndentation) const {
   ioString += "<struct @formalParameterListAST-element:" ;
   if (! isValid ()) {
@@ -7731,7 +7731,7 @@ void GALGAS_formalInputParameterListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_formalInputParameterListAST_2D_element::description (C_String & ioString,
+void GALGAS_formalInputParameterListAST_2D_element::description (String & ioString,
                                                                  const int32_t inIndentation) const {
   ioString += "<struct @formalInputParameterListAST-element:" ;
   if (! isValid ()) {
@@ -7854,7 +7854,7 @@ void GALGAS_actualInputParameterListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_actualInputParameterListAST_2D_element::description (C_String & ioString,
+void GALGAS_actualInputParameterListAST_2D_element::description (String & ioString,
                                                                  const int32_t inIndentation) const {
   ioString += "<struct @actualInputParameterListAST-element:" ;
   if (! isValid ()) {
@@ -8003,7 +8003,7 @@ void GALGAS_propertyInCollectionListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_propertyInCollectionListAST_2D_element::description (C_String & ioString,
+void GALGAS_propertyInCollectionListAST_2D_element::description (String & ioString,
                                                                  const int32_t inIndentation) const {
   ioString += "<struct @propertyInCollectionListAST-element:" ;
   if (! isValid ()) {
@@ -8144,7 +8144,7 @@ void GALGAS_formalTemplateInputParameterListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_formalTemplateInputParameterListAST_2D_element::description (C_String & ioString,
+void GALGAS_formalTemplateInputParameterListAST_2D_element::description (String & ioString,
                                                                          const int32_t inIndentation) const {
   ioString += "<struct @formalTemplateInputParameterListAST-element:" ;
   if (! isValid ()) {
@@ -8273,7 +8273,7 @@ void GALGAS_filewrapperTemplateListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_filewrapperTemplateListAST_2D_element::description (C_String & ioString,
+void GALGAS_filewrapperTemplateListAST_2D_element::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString += "<struct @filewrapperTemplateListAST-element:" ;
   if (! isValid ()) {
@@ -8400,7 +8400,7 @@ void GALGAS_nonTerminalLabelListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_nonTerminalLabelListAST_2D_element::description (C_String & ioString,
+void GALGAS_nonTerminalLabelListAST_2D_element::description (String & ioString,
                                                              const int32_t inIndentation) const {
   ioString += "<struct @nonTerminalLabelListAST-element:" ;
   if (! isValid ()) {
@@ -8519,7 +8519,7 @@ void GALGAS_nonterminalDeclarationListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_nonterminalDeclarationListAST_2D_element::description (C_String & ioString,
+void GALGAS_nonterminalDeclarationListAST_2D_element::description (String & ioString,
                                                                    const int32_t inIndentation) const {
   ioString += "<struct @nonterminalDeclarationListAST-element:" ;
   if (! isValid ()) {
@@ -8660,7 +8660,7 @@ void GALGAS_syntaxRuleLabelListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_syntaxRuleLabelListAST_2D_element::description (C_String & ioString,
+void GALGAS_syntaxRuleLabelListAST_2D_element::description (String & ioString,
                                                             const int32_t inIndentation) const {
   ioString += "<struct @syntaxRuleLabelListAST-element:" ;
   if (! isValid ()) {
@@ -8783,7 +8783,7 @@ void GALGAS_syntaxRuleListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_syntaxRuleListAST_2D_element::description (C_String & ioString,
+void GALGAS_syntaxRuleListAST_2D_element::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString += "<struct @syntaxRuleListAST-element:" ;
   if (! isValid ()) {
@@ -8924,7 +8924,7 @@ void GALGAS_galgas_33_SyntaxComponentListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_galgas_33_SyntaxComponentListAST_2D_element::description (C_String & ioString,
+void GALGAS_galgas_33_SyntaxComponentListAST_2D_element::description (String & ioString,
                                                                       const int32_t inIndentation) const {
   ioString += "<struct @galgas3SyntaxComponentListAST-element:" ;
   if (! isValid ()) {
@@ -9055,7 +9055,7 @@ void GALGAS_galgas_33_SyntaxExtensionListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_galgas_33_SyntaxExtensionListAST_2D_element::description (C_String & ioString,
+void GALGAS_galgas_33_SyntaxExtensionListAST_2D_element::description (String & ioString,
                                                                       const int32_t inIndentation) const {
   ioString += "<struct @galgas3SyntaxExtensionListAST-element:" ;
   if (! isValid ()) {
@@ -9214,7 +9214,7 @@ void GALGAS_programRuleList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_programRuleList_2D_element::description (C_String & ioString,
+void GALGAS_programRuleList_2D_element::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "<struct @programRuleList-element:" ;
   if (! isValid ()) {
@@ -9349,7 +9349,7 @@ void GALGAS_functionSignature_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_functionSignature_2D_element::description (C_String & ioString,
+void GALGAS_functionSignature_2D_element::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString += "<struct @functionSignature-element:" ;
   if (! isValid ()) {
@@ -9484,7 +9484,7 @@ void GALGAS_constructorMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_constructorMap_2D_element::description (C_String & ioString,
+void GALGAS_constructorMap_2D_element::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "<struct @constructorMap-element:" ;
   if (! isValid ()) {
@@ -9621,7 +9621,7 @@ void GALGAS_optionalMethodSignature_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_optionalMethodSignature_2D_element::description (C_String & ioString,
+void GALGAS_optionalMethodSignature_2D_element::description (String & ioString,
                                                              const int32_t inIndentation) const {
   ioString += "<struct @optionalMethodSignature-element:" ;
   if (! isValid ()) {
@@ -9742,7 +9742,7 @@ void GALGAS_optionalMethodMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_optionalMethodMap_2D_element::description (C_String & ioString,
+void GALGAS_optionalMethodMap_2D_element::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString += "<struct @optionalMethodMap-element:" ;
   if (! isValid ()) {
@@ -9907,7 +9907,7 @@ void GALGAS_getterMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_getterMap_2D_element::description (C_String & ioString,
+void GALGAS_getterMap_2D_element::description (String & ioString,
                                                const int32_t inIndentation) const {
   ioString += "<struct @getterMap-element:" ;
   if (! isValid ()) {
@@ -10052,7 +10052,7 @@ void GALGAS_formalParameterSignature_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_formalParameterSignature_2D_element::description (C_String & ioString,
+void GALGAS_formalParameterSignature_2D_element::description (String & ioString,
                                                               const int32_t inIndentation) const {
   ioString += "<struct @formalParameterSignature-element:" ;
   if (! isValid ()) {
@@ -10205,7 +10205,7 @@ void GALGAS_setterMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_setterMap_2D_element::description (C_String & ioString,
+void GALGAS_setterMap_2D_element::description (String & ioString,
                                                const int32_t inIndentation) const {
   ioString += "<struct @setterMap-element:" ;
   if (! isValid ()) {
@@ -10370,7 +10370,7 @@ void GALGAS_instanceMethodMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_instanceMethodMap_2D_element::description (C_String & ioString,
+void GALGAS_instanceMethodMap_2D_element::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString += "<struct @instanceMethodMap-element:" ;
   if (! isValid ()) {
@@ -10505,7 +10505,7 @@ void GALGAS_classMethodMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_classMethodMap_2D_element::description (C_String & ioString,
+void GALGAS_classMethodMap_2D_element::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "<struct @classMethodMap-element:" ;
   if (! isValid ()) {
@@ -10640,7 +10640,7 @@ void GALGAS_typedPropertyList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_typedPropertyList_2D_element::description (C_String & ioString,
+void GALGAS_typedPropertyList_2D_element::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString += "<struct @typedPropertyList-element:" ;
   if (! isValid ()) {
@@ -10777,7 +10777,7 @@ void GALGAS_propertyMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_propertyMap_2D_element::description (C_String & ioString,
+void GALGAS_propertyMap_2D_element::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "<struct @propertyMap-element:" ;
   if (! isValid ()) {
@@ -10906,7 +10906,7 @@ void GALGAS_constantIndexMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_constantIndexMap_2D_element::description (C_String & ioString,
+void GALGAS_constantIndexMap_2D_element::description (String & ioString,
                                                       const int32_t inIndentation) const {
   ioString += "<struct @constantIndexMap-element:" ;
   if (! isValid ()) {
@@ -11025,7 +11025,7 @@ void GALGAS_grammarLabelMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_grammarLabelMap_2D_element::description (C_String & ioString,
+void GALGAS_grammarLabelMap_2D_element::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "<struct @grammarLabelMap-element:" ;
   if (! isValid ()) {
@@ -11158,7 +11158,7 @@ void GALGAS_grammarMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_grammarMap_2D_element::description (C_String & ioString,
+void GALGAS_grammarMap_2D_element::description (String & ioString,
                                                 const int32_t inIndentation) const {
   ioString += "<struct @grammarMap-element:" ;
   if (! isValid ()) {
@@ -11287,7 +11287,7 @@ void GALGAS_routineMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_routineMap_2D_element::description (C_String & ioString,
+void GALGAS_routineMap_2D_element::description (String & ioString,
                                                 const int32_t inIndentation) const {
   ioString += "<struct @routineMap-element:" ;
   if (! isValid ()) {
@@ -11422,7 +11422,7 @@ void GALGAS_functionMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_functionMap_2D_element::description (C_String & ioString,
+void GALGAS_functionMap_2D_element::description (String & ioString,
                                                  const int32_t inIndentation) const {
   ioString += "<struct @functionMap-element:" ;
   if (! isValid ()) {
@@ -11567,7 +11567,7 @@ void GALGAS_wrapperFileMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_wrapperFileMap_2D_element::description (C_String & ioString,
+void GALGAS_wrapperFileMap_2D_element::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "<struct @wrapperFileMap-element:" ;
   if (! isValid ()) {
@@ -11706,7 +11706,7 @@ void GALGAS_wrapperDirectoryMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_wrapperDirectoryMap_2D_element::description (C_String & ioString,
+void GALGAS_wrapperDirectoryMap_2D_element::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "<struct @wrapperDirectoryMap-element:" ;
   if (! isValid ()) {
@@ -11835,7 +11835,7 @@ void GALGAS_filewrapperTemplateMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_filewrapperTemplateMap_2D_element::description (C_String & ioString,
+void GALGAS_filewrapperTemplateMap_2D_element::description (String & ioString,
                                                             const int32_t inIndentation) const {
   ioString += "<struct @filewrapperTemplateMap-element:" ;
   if (! isValid ()) {
@@ -11994,7 +11994,7 @@ void GALGAS_filewrapperMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_filewrapperMap_2D_element::description (C_String & ioString,
+void GALGAS_filewrapperMap_2D_element::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "<struct @filewrapperMap-element:" ;
   if (! isValid ()) {
@@ -12153,7 +12153,7 @@ void GALGAS_optionComponentMapForSemanticAnalysis_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_optionComponentMapForSemanticAnalysis_2D_element::description (C_String & ioString,
+void GALGAS_optionComponentMapForSemanticAnalysis_2D_element::description (String & ioString,
                                                                            const int32_t inIndentation) const {
   ioString += "<struct @optionComponentMapForSemanticAnalysis-element:" ;
   if (! isValid ()) {
@@ -12326,7 +12326,7 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::description (C_String & ioString,
+void GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element::description (String & ioString,
                                                                             const int32_t inIndentation) const {
   ioString += "<struct @lexiqueComponentMapForSemanticAnalysis-element:" ;
   if (! isValid ()) {
@@ -12479,7 +12479,7 @@ void GALGAS_syntaxComponentMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_syntaxComponentMap_2D_element::description (C_String & ioString,
+void GALGAS_syntaxComponentMap_2D_element::description (String & ioString,
                                                         const int32_t inIndentation) const {
   ioString += "<struct @syntaxComponentMap-element:" ;
   if (! isValid ()) {
@@ -12610,7 +12610,7 @@ void GALGAS_extensionMethodMapForType_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_extensionMethodMapForType_2D_element::description (C_String & ioString,
+void GALGAS_extensionMethodMapForType_2D_element::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "<struct @extensionMethodMapForType-element:" ;
   if (! isValid ()) {
@@ -12729,7 +12729,7 @@ void GALGAS_extensionMethodMapForBuildingContext_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_extensionMethodMapForBuildingContext_2D_element::description (C_String & ioString,
+void GALGAS_extensionMethodMapForBuildingContext_2D_element::description (String & ioString,
                                                                           const int32_t inIndentation) const {
   ioString += "<struct @extensionMethodMapForBuildingContext-element:" ;
   if (! isValid ()) {
@@ -12846,7 +12846,7 @@ void GALGAS_extensionSetterMapForType_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_extensionSetterMapForType_2D_element::description (C_String & ioString,
+void GALGAS_extensionSetterMapForType_2D_element::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "<struct @extensionSetterMapForType-element:" ;
   if (! isValid ()) {
@@ -12963,7 +12963,7 @@ void GALGAS_extensionSetterMapForBuildingContext_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_extensionSetterMapForBuildingContext_2D_element::description (C_String & ioString,
+void GALGAS_extensionSetterMapForBuildingContext_2D_element::description (String & ioString,
                                                                           const int32_t inIndentation) const {
   ioString += "<struct @extensionSetterMapForBuildingContext-element:" ;
   if (! isValid ()) {
@@ -13096,7 +13096,7 @@ void GALGAS_extensionGetterMapForType_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_extensionGetterMapForType_2D_element::description (C_String & ioString,
+void GALGAS_extensionGetterMapForType_2D_element::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString += "<struct @extensionGetterMapForType-element:" ;
   if (! isValid ()) {
@@ -13217,7 +13217,7 @@ void GALGAS_extensionGetterMapForBuildingContext_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_extensionGetterMapForBuildingContext_2D_element::description (C_String & ioString,
+void GALGAS_extensionGetterMapForBuildingContext_2D_element::description (String & ioString,
                                                                           const int32_t inIndentation) const {
   ioString += "<struct @extensionGetterMapForBuildingContext-element:" ;
   if (! isValid ()) {
@@ -13326,7 +13326,7 @@ void GALGAS_wrapperExtensionMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_wrapperExtensionMap_2D_element::description (C_String & ioString,
+void GALGAS_wrapperExtensionMap_2D_element::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "<struct @wrapperExtensionMap-element:" ;
   if (! isValid ()) {
@@ -13433,7 +13433,7 @@ void GALGAS_semanticExpressionListForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_semanticExpressionListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_semanticExpressionListForGeneration_2D_element::description (String & ioString,
                                                                          const int32_t inIndentation) const {
   ioString += "<struct @semanticExpressionListForGeneration-element:" ;
   if (! isValid ()) {
@@ -13572,7 +13572,7 @@ void GALGAS_formalParameterListForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_formalParameterListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_formalParameterListForGeneration_2D_element::description (String & ioString,
                                                                       const int32_t inIndentation) const {
   ioString += "<struct @formalParameterListForGeneration-element:" ;
   if (! isValid ()) {
@@ -13719,7 +13719,7 @@ void GALGAS_formalInputParameterListForGeneration_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_formalInputParameterListForGeneration_2D_element::description (C_String & ioString,
+void GALGAS_formalInputParameterListForGeneration_2D_element::description (String & ioString,
                                                                            const int32_t inIndentation) const {
   ioString += "<struct @formalInputParameterListForGeneration-element:" ;
   if (! isValid ()) {
@@ -13842,7 +13842,7 @@ void GALGAS_signatureForGrammarAnalysis_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_signatureForGrammarAnalysis_2D_element::description (C_String & ioString,
+void GALGAS_signatureForGrammarAnalysis_2D_element::description (String & ioString,
                                                                  const int32_t inIndentation) const {
   ioString += "<struct @signatureForGrammarAnalysis-element:" ;
   if (! isValid ()) {
@@ -13959,7 +13959,7 @@ void GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element::drop (void) 
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element::description (C_String & ioString,
+void GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element::description (String & ioString,
                                                                                  const int32_t inIndentation) const {
   ioString += "<struct @nonterminalSymbolLabelMapForGrammarAnalysis-element:" ;
   if (! isValid ()) {
@@ -14084,7 +14084,7 @@ void GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element::description (C_String & ioString,
+void GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element::description (String & ioString,
                                                                             const int32_t inIndentation) const {
   ioString += "<struct @nonTerminalSymbolMapForGrammarAnalysis-element:" ;
   if (! isValid ()) {
@@ -14219,7 +14219,7 @@ void GALGAS_localConstantList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_localConstantList_2D_element::description (C_String & ioString,
+void GALGAS_localConstantList_2D_element::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString += "<struct @localConstantList-element:" ;
   if (! isValid ()) {
@@ -14348,7 +14348,7 @@ void GALGAS_localInitializedVariableList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_localInitializedVariableList_2D_element::description (C_String & ioString,
+void GALGAS_localInitializedVariableList_2D_element::description (String & ioString,
                                                                   const int32_t inIndentation) const {
   ioString += "<struct @localInitializedVariableList-element:" ;
   if (! isValid ()) {
@@ -14467,7 +14467,7 @@ void GALGAS_propertyIndexMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_propertyIndexMap_2D_element::description (C_String & ioString,
+void GALGAS_propertyIndexMap_2D_element::description (String & ioString,
                                                       const int32_t inIndentation) const {
   ioString += "<struct @propertyIndexMap-element:" ;
   if (! isValid ()) {
@@ -14600,7 +14600,7 @@ void GALGAS_nonterminalLabelMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_nonterminalLabelMap_2D_element::description (C_String & ioString,
+void GALGAS_nonterminalLabelMap_2D_element::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString += "<struct @nonterminalLabelMap-element:" ;
   if (! isValid ()) {
@@ -14721,7 +14721,7 @@ void GALGAS_nonterminalMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_nonterminalMap_2D_element::description (C_String & ioString,
+void GALGAS_nonterminalMap_2D_element::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "<struct @nonterminalMap-element:" ;
   if (! isValid ()) {
@@ -14862,7 +14862,7 @@ void GALGAS_ruleLabelImplementationList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_ruleLabelImplementationList_2D_element::description (C_String & ioString,
+void GALGAS_ruleLabelImplementationList_2D_element::description (String & ioString,
                                                                  const int32_t inIndentation) const {
   ioString += "<struct @ruleLabelImplementationList-element:" ;
   if (! isValid ()) {
@@ -14985,7 +14985,7 @@ void GALGAS_uselessEntityLocationMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_uselessEntityLocationMap_2D_element::description (C_String & ioString,
+void GALGAS_uselessEntityLocationMap_2D_element::description (String & ioString,
                                                               const int32_t inIndentation) const {
   ioString += "<struct @uselessEntityLocationMap-element:" ;
   if (! isValid ()) {
@@ -15134,7 +15134,7 @@ void GALGAS_scopeLocalVarMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_scopeLocalVarMap_2D_element::description (C_String & ioString,
+void GALGAS_scopeLocalVarMap_2D_element::description (String & ioString,
                                                       const int32_t inIndentation) const {
   ioString += "<struct @scopeLocalVarMap-element:" ;
   if (! isValid ()) {
@@ -15259,7 +15259,7 @@ void GALGAS_unifiedTypeMap_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMap_2D_element::description (C_String & ioString,
+void GALGAS_unifiedTypeMap_2D_element::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString += "<struct @unifiedTypeMap-element:" ;
   if (! isValid ()) {
@@ -15384,7 +15384,7 @@ void GALGAS_actualOutputExpressionList_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_actualOutputExpressionList_2D_element::description (C_String & ioString,
+void GALGAS_actualOutputExpressionList_2D_element::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString += "<struct @actualOutputExpressionList-element:" ;
   if (! isValid ()) {
@@ -15527,7 +15527,7 @@ void GALGAS_castInstructionBranchListAST_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_castInstructionBranchListAST_2D_element::description (C_String & ioString,
+void GALGAS_castInstructionBranchListAST_2D_element::description (String & ioString,
                                                                   const int32_t inIndentation) const {
   ioString += "<struct @castInstructionBranchListAST-element:" ;
   if (! isValid ()) {
@@ -15658,7 +15658,7 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element::drop (void)
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element::description (C_String & ioString,
+void GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element::description (String & ioString,
                                                                                   const int32_t inIndentation) const {
   ioString += "<struct @forInstructionEnumeratedObjectElementListAST-element:" ;
   if (! isValid ()) {

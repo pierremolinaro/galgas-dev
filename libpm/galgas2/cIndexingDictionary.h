@@ -26,7 +26,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class C_String ;
+class String ;
 class cIndexEntryNode ;
 
 //--------------------------------------------------------------------------------------------------
@@ -49,18 +49,18 @@ class cIndexingDictionary final {
 
 //--- Add indexed entry
   public: void addIndexedKey (const uint32_t inIndexingKind,
-                               const C_String & inIndexedKey,
-                               const C_String & inSourceFilePath,
+                               const String & inIndexedKey,
+                               const String & inSourceFilePath,
                                const uint32_t inTokenLineInSource,
                                const uint32_t inTokenLocationInSource,
                                const uint32_t inTokenLengthInSource) ;
 
 //--- Generate Index file (in a plist format)
-  public: void generateIndexFile (const C_String & inOutputIndexFilePath) const ;
+  public: void generateIndexFile (const String & inOutputIndexFilePath) const ;
 
 //--- Internal private method
   private: cIndexEntryNode * findOrAddEntry (cIndexEntryNode * & ioRootPtr,
-                                              const C_String & inKey,
+                                              const String & inKey,
                                               bool & ioExtension) ;
 
 //--- Private attributes

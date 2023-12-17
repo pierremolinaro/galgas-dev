@@ -26,7 +26,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class C_String ;
+class String ;
 class C_galgas_type_descriptor ;
 class acStrongPtr_class ;
 
@@ -59,7 +59,7 @@ class AC_GALGAS_reference_class : public AC_GALGAS_root { // AC_GALGAS_reference
 //--- Dynamic Type Descriptor
   public: virtual const C_galgas_type_descriptor * dynamicTypeDescriptor (void) const ;
 
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS

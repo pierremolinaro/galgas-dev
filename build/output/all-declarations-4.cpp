@@ -144,7 +144,7 @@ class cCollectionElement_sortDescriptorListForGeneration : public cCollectionEle
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -180,7 +180,7 @@ cCollectionElement * cCollectionElement_sortDescriptorListForGeneration::copy (v
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_sortDescriptorListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_sortDescriptorListForGeneration::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mAttributeTypeIndex" ":" ;
@@ -909,7 +909,7 @@ class cCollectionElement_formalInputParameterListAST : public cCollectionElement
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -947,7 +947,7 @@ cCollectionElement * cCollectionElement_formalInputParameterListAST::copy (void)
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_formalInputParameterListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_formalInputParameterListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFormalSelector" ":" ;
@@ -1693,7 +1693,7 @@ class cCollectionElement_formalInputParameterListForGeneration : public cCollect
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1731,7 +1731,7 @@ cCollectionElement * cCollectionElement_formalInputParameterListForGeneration::c
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_formalInputParameterListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_formalInputParameterListForGeneration::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFormalSelector" ":" ;
@@ -2477,7 +2477,7 @@ class cCollectionElement_formalParameterListForGeneration : public cCollectionEl
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2515,7 +2515,7 @@ cCollectionElement * cCollectionElement_formalParameterListForGeneration::copy (
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_formalParameterListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_formalParameterListForGeneration::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFormalSelector" ":" ;
@@ -3257,7 +3257,7 @@ class cCollectionElement_semanticInstructionListAST : public cCollectionElement 
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3291,7 +3291,7 @@ cCollectionElement * cCollectionElement_semanticInstructionListAST::copy (void) 
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_semanticInstructionListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_semanticInstructionListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mInstruction" ":" ;
@@ -3777,7 +3777,7 @@ class cCollectionElement_semanticInstructionListForGeneration : public cCollecti
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3811,7 +3811,7 @@ cCollectionElement * cCollectionElement_semanticInstructionListForGeneration::co
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_semanticInstructionListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_semanticInstructionListForGeneration::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mInstruction" ":" ;
@@ -5357,7 +5357,7 @@ GALGAS_bool GALGAS_formalArgumentPassingModeAST::getter_isArgumentConstantIn (UN
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_formalArgumentPassingModeAST::description (C_String & ioString,
+void GALGAS_formalArgumentPassingModeAST::description (String & ioString,
                                                        const int32_t /* inIndentation */) const {
   ioString += "<enum @formalArgumentPassingModeAST: " ;
   ioString += gEnumNameArrayFor_formalArgumentPassingModeAST [mEnum] ;
@@ -6268,7 +6268,7 @@ const C_galgas_type_descriptor * cPtr_outputInputJokerParameterAST::classDescrip
   return & kTypeDescriptor_GALGAS_outputInputJokerParameterAST ;
 }
 
-void cPtr_outputInputJokerParameterAST::description (C_String & ioString,
+void cPtr_outputInputJokerParameterAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "[@outputInputJokerParameterAST:" ;
   mProperty_mQualifierLocation.description (ioString, inIndentation+1) ;
@@ -7218,7 +7218,7 @@ const C_galgas_type_descriptor * cPtr_inputJokerActualParameterAST::classDescrip
   return & kTypeDescriptor_GALGAS_inputJokerActualParameterAST ;
 }
 
-void cPtr_inputJokerActualParameterAST::description (C_String & ioString,
+void cPtr_inputJokerActualParameterAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString += "[@inputJokerActualParameterAST:" ;
   mProperty_mQualifierLocation.description (ioString, inIndentation+1) ;
@@ -7414,7 +7414,7 @@ class cCollectionElement_actualParameterListAST : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7448,7 +7448,7 @@ cCollectionElement * cCollectionElement_actualParameterListAST::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_actualParameterListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_actualParameterListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mActualParameter" ":" ;
@@ -8073,7 +8073,7 @@ const C_galgas_type_descriptor * cPtr_inputParameterAnonymousVariable::classDesc
   return & kTypeDescriptor_GALGAS_inputParameterAnonymousVariable ;
 }
 
-void cPtr_inputParameterAnonymousVariable::description (C_String & ioString,
+void cPtr_inputParameterAnonymousVariable::description (String & ioString,
                                                         const int32_t /* inIndentation */) const {
   ioString += "[@inputParameterAnonymousVariable]" ;
 }
@@ -8599,7 +8599,7 @@ class cCollectionElement_actualInputParameterListAST : public cCollectionElement
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8634,7 +8634,7 @@ cCollectionElement * cCollectionElement_actualInputParameterListAST::copy (void)
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_actualInputParameterListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_actualInputParameterListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mActualSelector" ":" ;
@@ -9499,7 +9499,7 @@ class cCollectionElement_semanticDeclarationListAST : public cCollectionElement 
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -9533,7 +9533,7 @@ cCollectionElement * cCollectionElement_semanticDeclarationListAST::copy (void) 
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_semanticDeclarationListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_semanticDeclarationListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mSemanticDeclaration" ":" ;
@@ -10449,7 +10449,7 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cEnumAssociatedValues_AccessControlAST_fileprivateAccess::description (C_String & ioString,
+void cEnumAssociatedValues_AccessControlAST_fileprivateAccess::description (String & ioString,
                                                                             const int32_t inIndentation) const {
   ioString += "(\n" ;
   mAssociatedValue0.description (ioString, inIndentation) ;
@@ -10478,7 +10478,7 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess::description (C_String & ioString,
+void cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess::description (String & ioString,
                                                                                const int32_t inIndentation) const {
   ioString += "(\n" ;
   mAssociatedValue0.description (ioString, inIndentation) ;
@@ -10581,7 +10581,7 @@ void GALGAS_AccessControlAST::method_fileprivateAccess (GALGAS_location & outAss
                                                         COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_fileprivateAccess) {
     outAssociatedValue0.drop () ;
-    C_String s ;
+    String s ;
     s += "method @AccessControlAST fileprivateAccess invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
@@ -10597,7 +10597,7 @@ void GALGAS_AccessControlAST::method_fileprivateSetAccess (GALGAS_location & out
                                                            COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_fileprivateSetAccess) {
     outAssociatedValue0.drop () ;
-    C_String s ;
+    String s ;
     s += "method @AccessControlAST fileprivateSetAccess invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
@@ -10720,7 +10720,7 @@ GALGAS_bool GALGAS_AccessControlAST::getter_isFileprivateSetAccess (UNUSED_LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_AccessControlAST::description (C_String & ioString,
+void GALGAS_AccessControlAST::description (String & ioString,
                                            const int32_t inIndentation) const {
   ioString += "<enum @AccessControlAST: " ;
   ioString += gEnumNameArrayFor_AccessControlAST [mEnum] ;
@@ -10797,7 +10797,7 @@ mAssociatedValue0 (inAssociatedValue0) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cEnumAssociatedValues_propertyInCollectionInitializationAST_some::description (C_String & ioString,
+void cEnumAssociatedValues_propertyInCollectionInitializationAST_some::description (String & ioString,
                                                                                     const int32_t inIndentation) const {
   ioString += "(\n" ;
   mAssociatedValue0.description (ioString, inIndentation) ;
@@ -10853,7 +10853,7 @@ void GALGAS_propertyInCollectionInitializationAST::method_some (GALGAS_semanticE
                                                                 COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_some) {
     outAssociatedValue0.drop () ;
-    C_String s ;
+    String s ;
     s += "method @propertyInCollectionInitializationAST some invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
@@ -10902,7 +10902,7 @@ GALGAS_bool GALGAS_propertyInCollectionInitializationAST::getter_isSome (UNUSED_
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_propertyInCollectionInitializationAST::description (C_String & ioString,
+void GALGAS_propertyInCollectionInitializationAST::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString += "<enum @propertyInCollectionInitializationAST: " ;
   ioString += gEnumNameArrayFor_propertyInCollectionInitializationAST [mEnum] ;
@@ -10996,7 +10996,7 @@ class cCollectionElement_formalTemplateInputParameterListAST : public cCollectio
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -11033,7 +11033,7 @@ cCollectionElement * cCollectionElement_formalTemplateInputParameterListAST::cop
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_formalTemplateInputParameterListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_formalTemplateInputParameterListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFormalTemplateSelector" ":" ;
@@ -11602,7 +11602,7 @@ class cCollectionElement_filewrapperTemplateListAST : public cCollectionElement 
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -11638,7 +11638,7 @@ cCollectionElement * cCollectionElement_filewrapperTemplateListAST::copy (void) 
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_filewrapperTemplateListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_filewrapperTemplateListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFilewrapperTemplateName" ":" ;
@@ -12252,7 +12252,7 @@ class cCollectionElement_syntaxInstructionList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -12286,7 +12286,7 @@ cCollectionElement * cCollectionElement_syntaxInstructionList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_syntaxInstructionList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_syntaxInstructionList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mInstruction" ":" ;
@@ -12663,7 +12663,7 @@ class cCollectionElement_nonTerminalLabelListAST : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -12699,7 +12699,7 @@ cCollectionElement * cCollectionElement_nonTerminalLabelListAST::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_nonTerminalLabelListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_nonTerminalLabelListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mLabelName" ":" ;
@@ -13203,7 +13203,7 @@ class cCollectionElement_nonterminalDeclarationListAST : public cCollectionEleme
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -13238,7 +13238,7 @@ cCollectionElement * cCollectionElement_nonterminalDeclarationListAST::copy (voi
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_nonterminalDeclarationListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_nonterminalDeclarationListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mNonterminalName" ":" ;
@@ -13681,7 +13681,7 @@ class cCollectionElement_syntaxRuleLabelListAST : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -13719,7 +13719,7 @@ cCollectionElement * cCollectionElement_syntaxRuleLabelListAST::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_syntaxRuleLabelListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_syntaxRuleLabelListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mLabelName" ":" ;
@@ -14351,7 +14351,7 @@ class cCollectionElement_syntaxRuleListAST : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -14386,7 +14386,7 @@ cCollectionElement * cCollectionElement_syntaxRuleListAST::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_syntaxRuleListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_syntaxRuleListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mNonterminalName" ":" ;
@@ -14826,7 +14826,7 @@ class cCollectionElement_listOfSyntaxInstructionList : public cCollectionElement
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -14861,7 +14861,7 @@ cCollectionElement * cCollectionElement_listOfSyntaxInstructionList::copy (void)
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_listOfSyntaxInstructionList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_listOfSyntaxInstructionList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mSyntaxInstructionList" ":" ;
@@ -15526,7 +15526,7 @@ class cCollectionElement_galgas_33_SyntaxComponentListAST : public cCollectionEl
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -15564,7 +15564,7 @@ cCollectionElement * cCollectionElement_galgas_33_SyntaxComponentListAST::copy (
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_galgas_33_SyntaxComponentListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_galgas_33_SyntaxComponentListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mSyntaxComponentName" ":" ;

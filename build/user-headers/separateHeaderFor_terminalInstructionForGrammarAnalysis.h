@@ -32,7 +32,7 @@ class cPtr_terminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxIns
   public: virtual void printInstructionForGrammar (C_HTMLString & inHTMLfile) const override ;
 
   public: virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
-                                                 const C_String & inSyntaxComponentName,
+                                                 const String & inSyntaxComponentName,
                                                  int32_t & ioCount) const override ;
 
   public: virtual void buildRightDerivation (const int32_t inTerminalSymbolsCount,
@@ -41,7 +41,7 @@ class cPtr_terminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxIns
 
   public: virtual void buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                                                         const int32_t inOriginalGrammarSymbolCount,
-                                                        const C_String & inSyntaxComponentName,
+                                                        const String & inSyntaxComponentName,
                                                         cPureBNFproductionsList & ioProductions) const override ;
 
 //--- END OF USER ZONE 2
@@ -60,7 +60,7 @@ class cPtr_terminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxIns
 
 //--- Attribute accessors
 //--- Description
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
   public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;

@@ -36,6 +36,6 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
   private: cPtr_%!TYPE_IDENTIFIER% * mSharedObject ;
 
 //--- Drop
-  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 

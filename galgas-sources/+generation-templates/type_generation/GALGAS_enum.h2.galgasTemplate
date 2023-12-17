@@ -19,7 +19,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     between %,\n%!^
     end
     %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
-    %  public: virtual void description (%?^%C_String & ioString,\n%
+    %  public: virtual void description (%?^%String & ioString,\n%
                        !^%const int32_t inIndentation) const ;\n%
     %  public: virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;\n\n%
     %  public: virtual ~ cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% (void) {}\n%

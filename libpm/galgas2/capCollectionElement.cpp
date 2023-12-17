@@ -20,7 +20,7 @@
 
 #include "galgas2/capCollectionElement.h"
 #include "galgas2/cCollectionElement.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -100,7 +100,7 @@ void capCollectionElement::insulate (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void capCollectionElement::description (C_String & ioString, const int32_t inIndentation) const {
+void capCollectionElement::description (String & ioString, const int32_t inIndentation) const {
   if (nullptr == mPtr) {
     ioString += "NULL" ;
   }else{

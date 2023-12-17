@@ -137,7 +137,7 @@ GALGAS_double GALGAS_sint_36__34_::getter_double (UNUSED_LOCATION_ARGS) const {
 GALGAS_string GALGAS_sint_36__34_::getter_string (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
-    C_String s ;
+    String s ;
     s.appendSigned (mSInt64Value) ;
     result = GALGAS_string (s) ;
   }
@@ -150,7 +150,7 @@ GALGAS_string GALGAS_sint_36__34_::getter_hexString (UNUSED_LOCATION_ARGS) const
   GALGAS_string result ;
   if (isValid ()) {
     const uint64_t v = (uint64_t) mSInt64Value ;
-    C_String s ;
+    String s ;
     s += "0x" ;
     s.appendUnsignedHex16 (v) ;
     result = GALGAS_string (s) ;
@@ -170,13 +170,13 @@ GALGAS_string GALGAS_sint_36__34_::getter_hexStringSeparatedBy (const GALGAS_cha
     if (group <= 0) {
       inCompiler->onTheFlyRunTimeError ("last argument should be > 0" COMMA_THERE) ;
     }else{
-      C_String s ;
+      String s ;
       s.appendUnsignedHex ((uint64_t) mSInt64Value) ;
       const utf32 separator = inSeparator.charValue() ;
       for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
         s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
       }
-      result = GALGAS_string (C_String ("0x") + s) ;
+      result = GALGAS_string (String ("0x") + s) ;
     }
   }
   return result ;
@@ -188,7 +188,7 @@ GALGAS_string GALGAS_sint_36__34_::getter_xString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     const uint64_t v = (uint64_t) mSInt64Value ;
-    C_String s ; s.appendUnsignedHex16 (v) ;
+    String s ; s.appendUnsignedHex16 (v) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -196,7 +196,7 @@ GALGAS_string GALGAS_sint_36__34_::getter_xString (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_sint_36__34_::description (C_String & ioString,
+void GALGAS_sint_36__34_::description (String & ioString,
                                        const int32_t /* inIndentation */) const {
   ioString += "<@sint64:" ;
   ioString.appendSigned (mSInt64Value) ;

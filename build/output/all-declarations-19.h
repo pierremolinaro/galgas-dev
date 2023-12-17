@@ -796,15 +796,15 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 
 //--- Indexing
   public: static void performIndexing (C_Compiler * inCompiler,
-                                       const C_String & inSourceFilePath) ;
+                                       const String & inSourceFilePath) ;
 
 //--- Only lexical analysis
   public: static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
-                                                  const C_String & inSourceFilePath) ;
+                                                  const String & inSourceFilePath) ;
 
 //--- Only syntax analysis
   public: static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
-                                                 const C_String & inSourceFilePath) ;
+                                                 const String & inSourceFilePath) ;
 
 //------------------------------------- 'style_declaration' non terminal
 //--- 'parse' label

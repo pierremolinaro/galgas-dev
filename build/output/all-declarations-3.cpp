@@ -33,7 +33,7 @@ class cCollectionElement_guiLabelListAST : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -69,7 +69,7 @@ cCollectionElement * cCollectionElement_guiLabelListAST::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_guiLabelListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_guiLabelListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mLeadingCharacterStrippedCount" ":" ;
@@ -575,7 +575,7 @@ class cCollectionElement_withLexiqueListAST : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -612,7 +612,7 @@ cCollectionElement * cCollectionElement_withLexiqueListAST::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_withLexiqueListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_withLexiqueListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mLexiqueFileName" ":" ;
@@ -1183,7 +1183,7 @@ class cCollectionElement_guiCommandLineOptionList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1221,7 +1221,7 @@ cCollectionElement * cCollectionElement_guiCommandLineOptionList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_guiCommandLineOptionList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_guiCommandLineOptionList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mOptionComponent" ":" ;
@@ -1855,7 +1855,7 @@ cMapElement * cMapElement_extensionMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_extensionMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_extensionMap::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mLexiqueName" ":" ;
@@ -2167,7 +2167,7 @@ class cCollectionElement_textMacroList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2202,7 +2202,7 @@ cCollectionElement * cCollectionElement_textMacroList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_textMacroList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_textMacroList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mKey" ":" ;
@@ -2647,7 +2647,7 @@ class cCollectionElement_importedLexiqueList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2687,7 +2687,7 @@ cCollectionElement * cCollectionElement_importedLexiqueList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_importedLexiqueList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_importedLexiqueList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mLexiqueClassName" ":" ;
@@ -3447,7 +3447,7 @@ class cCollectionElement_projectIndexingDescriptorList : public cCollectionEleme
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3482,7 +3482,7 @@ cCollectionElement * cCollectionElement_projectIndexingDescriptorList::copy (voi
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_projectIndexingDescriptorList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_projectIndexingDescriptorList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mProjectFileExtension" ":" ;
@@ -3925,7 +3925,7 @@ class cCollectionElement_galgasGUIComponentListAST : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3963,7 +3963,7 @@ cCollectionElement * cCollectionElement_galgasGUIComponentListAST::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_galgasGUIComponentListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_galgasGUIComponentListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mGUIComponentName" ":" ;
@@ -4687,7 +4687,7 @@ void GALGAS_guiAnalysisContext::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_guiAnalysisContext::description (C_String & ioString,
+void GALGAS_guiAnalysisContext::description (String & ioString,
                                              const int32_t inIndentation) const {
   ioString += "<struct @guiAnalysisContext:" ;
   if (! isValid ()) {
@@ -4782,7 +4782,7 @@ cMapElement * cMapElement_optionComponentMapForGeneration::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_optionComponentMapForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_optionComponentMapForGeneration::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mGuiComponentContext" ":" ;
@@ -5271,7 +5271,7 @@ class cCollectionElement_propertyInCollectionListAST : public cCollectionElement
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5310,7 +5310,7 @@ cCollectionElement * cCollectionElement_propertyInCollectionListAST::copy (void)
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_propertyInCollectionListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_propertyInCollectionListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "isConstant" ":" ;
@@ -6119,7 +6119,7 @@ class cCollectionElement_typedPropertyList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6156,7 +6156,7 @@ cCollectionElement * cCollectionElement_typedPropertyList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_typedPropertyList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_typedPropertyList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mPropertyTypeEntry" ":" ;
@@ -6835,7 +6835,7 @@ class cCollectionElement_enumConstantList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6870,7 +6870,7 @@ cCollectionElement * cCollectionElement_enumConstantList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_enumConstantList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_enumConstantList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mConstantName" ":" ;
@@ -7421,7 +7421,7 @@ class cCollectionElement_enumConstantListForGeneration : public cCollectionEleme
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7456,7 +7456,7 @@ cCollectionElement * cCollectionElement_enumConstantListForGeneration::copy (voi
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_enumConstantListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_enumConstantListForGeneration::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mConstantName" ":" ;
@@ -7895,7 +7895,7 @@ class cCollectionElement_unifiedTypeMapEntryList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7929,7 +7929,7 @@ cCollectionElement * cCollectionElement_unifiedTypeMapEntryList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_unifiedTypeMapEntryList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_unifiedTypeMapEntryList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mEntry" ":" ;
@@ -8306,7 +8306,7 @@ class cCollectionElement_externTypeConstructorList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8342,7 +8342,7 @@ cCollectionElement * cCollectionElement_externTypeConstructorList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_externTypeConstructorList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_externTypeConstructorList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mConstructorName" ":" ;
@@ -8847,7 +8847,7 @@ class cCollectionElement_externTypeGetterList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8883,7 +8883,7 @@ cCollectionElement * cCollectionElement_externTypeGetterList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_externTypeGetterList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_externTypeGetterList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mGetterName" ":" ;
@@ -9387,7 +9387,7 @@ class cCollectionElement_externTypeSetterList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -9422,7 +9422,7 @@ cCollectionElement * cCollectionElement_externTypeSetterList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_externTypeSetterList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_externTypeSetterList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mSetterName" ":" ;
@@ -9863,7 +9863,7 @@ class cCollectionElement_externTypeMethodList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -9899,7 +9899,7 @@ cCollectionElement * cCollectionElement_externTypeMethodList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_externTypeMethodList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_externTypeMethodList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mMethodName" ":" ;
@@ -10515,7 +10515,7 @@ class cCollectionElement_typeNameFormalParameterNameList : public cCollectionEle
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -10551,7 +10551,7 @@ cCollectionElement * cCollectionElement_typeNameFormalParameterNameList::copy (v
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_typeNameFormalParameterNameList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_typeNameFormalParameterNameList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFormalSelector" ":" ;
@@ -11058,7 +11058,7 @@ class cCollectionElement_formalParameterListAST : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -11096,7 +11096,7 @@ cCollectionElement * cCollectionElement_formalParameterListAST::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_formalParameterListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_formalParameterListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mFormalSelector" ":" ;
@@ -11728,7 +11728,7 @@ class cCollectionElement_graphInsertModifierList : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -11763,7 +11763,7 @@ cCollectionElement * cCollectionElement_graphInsertModifierList::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_graphInsertModifierList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_graphInsertModifierList::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mInsertModifierName" ":" ;
@@ -12648,7 +12648,7 @@ class cCollectionElement_insertMethodListAST : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -12684,7 +12684,7 @@ cCollectionElement * cCollectionElement_insertMethodListAST::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_insertMethodListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_insertMethodListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mInsertMethodName" ":" ;
@@ -13188,7 +13188,7 @@ class cCollectionElement_mapSearchMethodListAST : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -13223,7 +13223,7 @@ cCollectionElement * cCollectionElement_mapSearchMethodListAST::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_mapSearchMethodListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_mapSearchMethodListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mSearchMethodName" ":" ;
@@ -13663,7 +13663,7 @@ class cCollectionElement_mapRemoveMethodListAST : public cCollectionElement {
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -13698,7 +13698,7 @@ cCollectionElement * cCollectionElement_mapRemoveMethodListAST::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_mapRemoveMethodListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_mapRemoveMethodListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mMethodName" ":" ;
@@ -14137,7 +14137,7 @@ class cCollectionElement_insertOrReplaceDeclarationListAST : public cCollectionE
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -14171,7 +14171,7 @@ cCollectionElement * cCollectionElement_insertOrReplaceDeclarationListAST::copy 
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_insertOrReplaceDeclarationListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_insertOrReplaceDeclarationListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mInsertOrReplaceDeclarationLocation" ":" ;
@@ -14656,7 +14656,7 @@ cMapElement * cMapElement_insertMethodMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_insertMethodMap::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {
+void cMapElement_insertMethodMap::description (String & /* ioString */, const int32_t /* inIndentation */) const {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14868,7 +14868,7 @@ cMapElement * cMapElement_searchMethodMap::copy (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cMapElement_searchMethodMap::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {
+void cMapElement_searchMethodMap::description (String & /* ioString */, const int32_t /* inIndentation */) const {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15082,7 +15082,7 @@ class cCollectionElement_sortedListSortDescriptorListAST : public cCollectionEle
   public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -15117,7 +15117,7 @@ cCollectionElement * cCollectionElement_sortedListSortDescriptorListAST::copy (v
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_sortedListSortDescriptorListAST::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_sortedListSortDescriptorListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString += "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString += "mSortedAttributeName" ":" ;

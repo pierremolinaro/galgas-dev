@@ -34,9 +34,9 @@ cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
 //--------------------------------------------------------------------------------------------------
 
 %if [ATTRIBUTE_LIST count] == 0 then
-  %void cMapElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {\n%
+  %void cMapElement_%!TYPE_IDENTIFIER%::description (String & /* ioString */, const int32_t /* inIndentation */) const {\n%
 else
-  %void cMapElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, const int32_t inIndentation) const {\n%
+  %void cMapElement_%!TYPE_IDENTIFIER%::description (String & ioString, const int32_t inIndentation) const {\n%
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do
     %  ioString += "\\n" ;\n%
     %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%

@@ -27,8 +27,8 @@ bool isUnicodeCharacterAssigned (const utf32 inUnicodeCharacterCode) ;
 
 //--- Returns character name, or empty string if not assigned
 #ifdef __cplusplus
-  #include "strings/C_String.h"
-  C_String unicodeName (const utf32 inUnicodeCharacter) ;
+  #include "strings/String-class.h"
+  String unicodeName (const utf32 inUnicodeCharacter) ;
 #endif
 #ifdef __OBJC__
   NSString * unicodeName (const utf32 inUnicodeCharacter) ;
@@ -92,7 +92,7 @@ bool isRestrictedUnicodeLetter (const utf32 inUnicodeCharacter) ;
 
 //--- Decode HTML in string, return Unicode (or NULL if not found)
 #ifdef __cplusplus
-  utf32 unicodeCharacterFromHTMLSequence (const C_String & inString) ;
+  utf32 unicodeCharacterFromHTMLSequence (const String & inString) ;
 #endif
 
 #ifdef __OBJC__

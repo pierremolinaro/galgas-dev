@@ -19,7 +19,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 #include "bdd/C_RelationSingleType.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ class cVocabulary {
 
 //--- Add a new non terminal symbol
   public: void addNonTerminalSymbol (const char * inPrefix,
-                                      const C_String & inClassName,
+                                      const String & inClassName,
                                       const int32_t inOrderInSourceFile,
                                       const bool inGenerateChoice) ;
 
@@ -73,7 +73,7 @@ class cVocabulary {
   public: inline int32_t originalGrammarSymbolsCount (void) const { return mOriginalGrammarSymbolsCount ; }
 
 //--- Get symbol
-  public: C_String getSymbol (const int32_t symbolIndex
+  public: String getSymbol (const int32_t symbolIndex
                                COMMA_LOCATION_ARGS) const ;
 
 //--- Get start symbol
@@ -91,7 +91,7 @@ class cVocabulary {
   private: cVocabulary & operator = (cVocabulary &) ;
 
 //--- Private data
-  private: TC_UniqueArray <C_String> mStringsArray ;
+  private: TC_UniqueArray <String> mStringsArray ;
   private: TC_UniqueArray <bool> mGenerateChoiceArray ;
   private: int32_t mTerminalSymbolsCount ;
   private: int32_t mOriginalGrammarSymbolsCount ;

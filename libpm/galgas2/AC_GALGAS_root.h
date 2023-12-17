@@ -29,7 +29,7 @@
 class GALGAS_object ;
 class GALGAS_type ;
 class GALGAS_string ;
-class C_String ;
+class String ;
 class C_galgas_type_descriptor ;
 
 //--------------------------------------------------------------------------------------------------
@@ -77,7 +77,7 @@ class AC_GALGAS_root {
 //--- Log instruction
   public: VIRTUAL_IN_DEBUG void log (const char * inMessage COMMA_LOCATION_ARGS) const ;
 
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                      const int32_t inIndentation) const = 0 ;
 
 //--- Readers implemented in this class

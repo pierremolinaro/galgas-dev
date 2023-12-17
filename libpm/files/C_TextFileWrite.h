@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 #include "streams/AC_OutputStream.h"
 #include "files/AC_FileHandle.h"
 
@@ -40,7 +40,7 @@ class C_TextFileWrite : public AC_OutputStream, public AC_FileHandle {
 //--- Constructor : if inFileName is the empty string, no file is opened.
 //    Otherwise, it tries to open the file for writing;
 //    The destructor will close the file (is successfully opened)
-  public: C_TextFileWrite (const C_String & inFileName) ;
+  public: C_TextFileWrite (const String & inFileName) ;
 
 //--- Destructor closes the file
   public: virtual ~C_TextFileWrite (void) ;

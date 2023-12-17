@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class C_String ;
+class String ;
 class cCollectionElement ;
 
 //--------------------------------------------------------------------------------------------------
@@ -69,7 +69,7 @@ class capCollectionElement final {
   public: capCollectionElement copy (void) ;
 
 //--- Description
- public: void description (C_String & ioString, const int32_t inIndentation) const ;
+ public: void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

@@ -49,7 +49,7 @@ uint32_t commandLineArgumentCount (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String commandLineArgumentAtIndex (const uint32_t inIndex) {
+String commandLineArgumentAtIndex (const uint32_t inIndex) {
   const char * result = "" ;
   if (inIndex < gArgc) {
     result = gArgv [inIndex] ;

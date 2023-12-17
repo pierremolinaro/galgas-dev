@@ -103,14 +103,14 @@ C_StringCommandLineOption gOption_galgas_5F_builtin_5F_options_outputKeywordList
 //--------------------------------------------------------------------------------------------------
 
 static EnumExecutionMode gExecutionMode = kExecutionModeNormal ;
-static C_String gModeLatexSuffixString ;
-static C_String gModeIndexingOutputFilePath ;
+static String gModeLatexSuffixString ;
+static String gModeIndexingOutputFilePath ;
 
 //--------------------------------------------------------------------------------------------------
 
-void setExecutionMode (C_String & outErrorMessage) {
-  const C_String mode = gOption_galgas_5F_builtin_5F_options_mode.mValue ;
-  TC_UniqueArray <C_String> modeComponents ;
+void setExecutionMode (String & outErrorMessage) {
+  const String mode = gOption_galgas_5F_builtin_5F_options_mode.mValue ;
+  TC_UniqueArray <String> modeComponents ;
   mode.componentsSeparatedByString (":", modeComponents) ;
   if (mode == "") {
     gExecutionMode = kExecutionModeNormal ;
@@ -178,13 +178,13 @@ bool executionModeIsLatex (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String latexModeStyleSuffixString (void) {
+String latexModeStyleSuffixString (void) {
   return gModeLatexSuffixString ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-C_String indexingModeOutputFilePath (void) {
+String indexingModeOutputFilePath (void) {
   return gModeIndexingOutputFilePath ;
 }
 

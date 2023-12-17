@@ -174,7 +174,7 @@ C_PrologueEpilogue gReleaseStringList (nullptr, C_StringListCommandLineOption::r
 
 //--------------------------------------------------------------------------------------------------
 
-void C_StringListCommandLineOption::getStringOptionNameList (TC_UniqueArray <C_String> & outArray) {
+void C_StringListCommandLineOption::getStringOptionNameList (TC_UniqueArray <String> & outArray) {
   C_StringListCommandLineOption * p = gFirstStringListOption ;
   while (p != nullptr) {
     outArray.appendObject (p->mDomainName) ;
@@ -185,8 +185,8 @@ void C_StringListCommandLineOption::getStringOptionNameList (TC_UniqueArray <C_S
 
 //--------------------------------------------------------------------------------------------------
 
-utf32 C_StringListCommandLineOption::getStringOptionInvocationLetter (const C_String & inDomainName,
-                                                                      const C_String & inIdentifier) {
+utf32 C_StringListCommandLineOption::getStringOptionInvocationLetter (const String & inDomainName,
+                                                                      const String & inIdentifier) {
   utf32 result = TO_UNICODE (0) ;
   C_StringListCommandLineOption * p = gFirstStringListOption ;
   bool found = false ;
@@ -200,9 +200,9 @@ utf32 C_StringListCommandLineOption::getStringOptionInvocationLetter (const C_St
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_StringListCommandLineOption::getStringOptionInvocationString (const C_String & inDomainName,
-                                                                         const C_String & inIdentifier) {
-  C_String result ;
+String C_StringListCommandLineOption::getStringOptionInvocationString (const String & inDomainName,
+                                                                         const String & inIdentifier) {
+  String result ;
   C_StringListCommandLineOption * p = gFirstStringListOption ;
   bool found = false ;
   while ((p != nullptr) && not found) {
@@ -215,9 +215,9 @@ C_String C_StringListCommandLineOption::getStringOptionInvocationString (const C
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_StringListCommandLineOption::getStringOptionCommentString (const C_String & inDomainName,
-                                                                      const C_String & inIdentifier) {
-  C_String result ;
+String C_StringListCommandLineOption::getStringOptionCommentString (const String & inDomainName,
+                                                                      const String & inIdentifier) {
+  String result ;
   C_StringListCommandLineOption * p = gFirstStringListOption ;
   bool found = false ;
   while ((p != nullptr) && not found) {

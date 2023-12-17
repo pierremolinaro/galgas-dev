@@ -123,7 +123,7 @@ class cSharedSortedListRoot : public C_SharedObject {
   protected: inline uint32_t count (void) const { return mCount ; }
 
 //--------------------------------- Implementation of reader 'description'
-  protected: virtual void description (C_String & ioString,
+  protected: virtual void description (String & ioString,
                                      const int32_t inIndentation) const ;
 
 //--- Enumeration handling
@@ -749,7 +749,7 @@ void AC_GALGAS_sortedlist::createNewEmptySortedList (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void cSharedSortedListRoot::description (C_String & ioString,
+void cSharedSortedListRoot::description (String & ioString,
                                          const int32_t inIndentation) const {
   ioString += " (" ;
   ioString.appendUnsigned (mCount) ;
@@ -772,7 +772,7 @@ void cSharedSortedListRoot::description (C_String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_sortedlist::description (C_String & ioString,
+void AC_GALGAS_sortedlist::description (String & ioString,
                                      const int32_t inIndentation) const {
   ioString += "<@" ;
   ioString += staticTypeDescriptor ()->mGalgasTypeName ;

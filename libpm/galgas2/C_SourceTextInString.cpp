@@ -29,8 +29,8 @@ mObject (nullptr) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_SourceTextInString::C_SourceTextInString (const C_String & inSourceString,
-                                            const C_String & inFilePath,
+C_SourceTextInString::C_SourceTextInString (const String & inSourceString,
+                                            const String & inFilePath,
                                             const bool inShowSourceOnDetailledErrorMessage) :
 mObject (nullptr) {
   macroMyNew (mObject, cSourceTextInString (inSourceString, inFilePath, inShowSourceOnDetailledErrorMessage COMMA_HERE)) ;
@@ -60,8 +60,8 @@ C_SourceTextInString & C_SourceTextInString::operator = (const C_SourceTextInStr
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_SourceTextInString::getLineForLocation (const C_LocationInSource & inLocation) const {
-  C_String errorLine ;
+String C_SourceTextInString::getLineForLocation (const C_LocationInSource & inLocation) const {
+  String errorLine ;
   if (nullptr != mObject) {
     const int32_t sourceTextLength = mObject->mSourceString.length () ;
     int32_t index = 0 ;
@@ -85,7 +85,7 @@ C_String C_SourceTextInString::getLineForLocation (const C_LocationInSource & in
 
 //--------------------------------------------------------------------------------------------------
 
-void C_SourceTextInString::appendSourceContents (C_String & ioMessage) const {
+void C_SourceTextInString::appendSourceContents (String & ioMessage) const {
   if ((nullptr != mObject) && mObject->mShowSourceOnDetailledErrorMessage) {
     const bool insertCarriageReturn = (mObject->mSourceString.length () > 0) && (UNICODE_VALUE (mObject->mSourceString.lastCharacter (HERE)) != '\n')  ;
     ioMessage += "-- SOURCE STRING (--verbose option) --\n" ;

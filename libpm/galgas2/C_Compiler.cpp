@@ -87,7 +87,7 @@ C_Compiler::~C_Compiler (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_String C_Compiler::sourceFilePath (void) const {
+String C_Compiler::sourceFilePath (void) const {
   return mSourceText.sourceFilePath () ;
 }
 
@@ -109,9 +109,9 @@ void C_Compiler::appendIssue (const cIssueDescriptor & inIssue) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::writeIssueJSONFile (const C_String & inFile) {
+void C_Compiler::writeIssueJSONFile (const String & inFile) {
   if (performGeneration ()) {
-    C_String s ("[\n") ;
+    String s ("[\n") ;
     bool isFirst = true ;
     for (int32_t i=0 ; i<mIssueArray.count () ; i++) {
       mIssueArray (i COMMA_HERE).appendToJSONstring (s, isFirst) ;
@@ -120,11 +120,11 @@ void C_Compiler::writeIssueJSONFile (const C_String & inFile) {
     s += "\n]\n" ;
     const bool ok = C_FileManager::writeStringToFile (s, inFile) ;
     if (!ok) {
-      const C_String message (C_String ("Cannot write to '") + inFile + "'") ;
+      const String message (String ("Cannot write to '") + inFile + "'") ;
       fatalError (message, "", 0) ;
     }
   }else{
-    ggs_printWarning (this, C_SourceTextInString (), C_IssueWithFixIt (), C_String ("Need to replace '") + inFile + "'.\n" COMMA_HERE) ;
+    ggs_printWarning (this, C_SourceTextInString (), C_IssueWithFixIt (), String ("Need to replace '") + inFile + "'.\n" COMMA_HERE) ;
   }
 }
 
@@ -153,7 +153,7 @@ GALGAS_string C_Compiler::sentString (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_string C_Compiler::retrieveAndResetTemplateString (void) {
-  const C_String s = mTemplateString ;
+  const String s = mTemplateString ;
   mTemplateString.setLengthToZero () ;
   return GALGAS_string (s) ;
 }
@@ -185,7 +185,7 @@ void C_Compiler::resetAndLoadSourceFromText (const C_SourceTextInString & inSour
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::onTheFlySemanticError (const C_String & inErrorMessage
+void C_Compiler::onTheFlySemanticError (const String & inErrorMessage
                                         COMMA_LOCATION_ARGS) {
   signalSemanticError (this,
                        sourceText (),
@@ -202,7 +202,7 @@ void C_Compiler::onTheFlySemanticError (const C_String & inErrorMessage
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::onTheFlySemanticWarning (const C_String & inWarningMessage
+void C_Compiler::onTheFlySemanticWarning (const String & inWarningMessage
                                           COMMA_LOCATION_ARGS) {
   signalSemanticWarning (this,
                          sourceText (),
@@ -228,9 +228,9 @@ void C_Compiler::printMessage (const GALGAS_string & inMessage
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::printMessage (const C_String & inMessage
+void C_Compiler::printMessage (const String & inMessage
                                COMMA_LOCATION_ARGS) {
-  C_String s ;
+  String s ;
   s += inMessage ;
   ggs_printMessage (s COMMA_THERE) ;
 }
@@ -243,7 +243,7 @@ void C_Compiler::printMessage (const C_String & inMessage
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::logFileRead (const C_String & inFilePath) {
+void C_Compiler::logFileRead (const String & inFilePath) {
   if (performLogFileRead ()) {
     printf ("Reading '%s' file.\n", inFilePath.cString (HERE)) ;
   }
@@ -269,10 +269,10 @@ void C_Compiler::loopRunTimeVariantError (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::castError (const C_String & inTargetTypeName,
+void C_Compiler::castError (const String & inTargetTypeName,
                             const C_galgas_type_descriptor * inObjectDynamicTypeDescriptor
                             COMMA_LOCATION_ARGS) {
-  C_String m ;
+  String m ;
   m += "cannot cast an @" ;
   m += inObjectDynamicTypeDescriptor->mGalgasTypeName ;
   m += " to an @" ;
@@ -289,7 +289,7 @@ void C_Compiler::castError (const C_String & inTargetTypeName,
 //--------------------------------------------------------------------------------------------------
 
 void C_Compiler::semanticErrorAtLocation (const GALGAS_location & inErrorLocation,
-                                          const C_String & inErrorMessage,
+                                          const String & inErrorMessage,
                                           const TC_Array <C_FixItDescription> & inFixItArray
                                           COMMA_LOCATION_ARGS) {
   if (inErrorLocation.isValid ()) { // No error raised if not built
@@ -312,7 +312,7 @@ void C_Compiler::emitSemanticError (const GALGAS_location & inErrorLocation,
                                     const TC_Array <C_FixItDescription> & inFixItArray
                                     COMMA_LOCATION_ARGS) {
   if (inErrorLocation.isValid () && inErrorMessage.isValid ()) {
-    const C_String errorMessage = inErrorMessage.stringValue () ;
+    const String errorMessage = inErrorMessage.stringValue () ;
     if (!inErrorLocation.sourceText ().isValid ()) {
       onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
@@ -328,14 +328,14 @@ void C_Compiler::emitSemanticError (const GALGAS_location & inErrorLocation,
 //--------------------------------------------------------------------------------------------------
 
 void C_Compiler::semanticErrorWith_K_message (const GALGAS_lstring & inKey,
-                                              TC_UniqueArray <C_String> & ioNearestKeyArray,
+                                              TC_UniqueArray <String> & ioNearestKeyArray,
                                               const char * in_K_ErrorMessage
                                               COMMA_LOCATION_ARGS) {
-  const C_String key = inKey.mProperty_string.stringValue () ;
+  const String key = inKey.mProperty_string.stringValue () ;
 //--- Build error message
-  C_String message ;
+  String message ;
   bool perCentFound = false ;
-  const C_String searchErrorMessage (in_K_ErrorMessage) ;
+  const String searchErrorMessage (in_K_ErrorMessage) ;
   const int32_t errorMessageLength = searchErrorMessage.length () ;
   for (int32_t i=0 ; i<errorMessageLength ; i++) {
     const utf32 c = searchErrorMessage (i COMMA_HERE) ;
@@ -366,11 +366,11 @@ void C_Compiler::semanticErrorWith_K_L_message (const GALGAS_lstring & inKey,
                                                 const char * in_K_L_ErrorMessage,
                                                 const GALGAS_location & inExistingKeyLocation
                                                 COMMA_LOCATION_ARGS) {
-  const C_String key = inKey.mProperty_string.stringValue () ;
+  const String key = inKey.mProperty_string.stringValue () ;
 //--- Build error message
-  C_String message ;
+  String message ;
   bool perCentFound = false ;
-  const C_String searchErrorMessage (in_K_L_ErrorMessage) ;
+  const String searchErrorMessage (in_K_L_ErrorMessage) ;
   const int32_t errorMessageLength = searchErrorMessage.length () ;
   for (int32_t i=0 ; i<errorMessageLength ; i++) {
     const utf32 c = searchErrorMessage (i COMMA_HERE) ;
@@ -404,11 +404,11 @@ void C_Compiler::semanticWarningWith_K_L_message (const GALGAS_lstring & inKey,
                                                   const char * in_K_L_ErrorMessage,
                                                   const GALGAS_location & inExistingKeyLocation
                                                   COMMA_LOCATION_ARGS) {
-  const C_String key = inKey.mProperty_string.stringValue () ;
+  const String key = inKey.mProperty_string.stringValue () ;
 //--- Build error message
-  C_String message ;
+  String message ;
   bool perCentFound = false ;
-  const C_String searchErrorMessage (in_K_L_ErrorMessage) ;
+  const String searchErrorMessage (in_K_L_ErrorMessage) ;
   const int32_t errorMessageLength = searchErrorMessage.length () ;
   for (int32_t i=0 ; i<errorMessageLength ; i++) {
     const utf32 c = searchErrorMessage (i COMMA_HERE) ;
@@ -439,7 +439,7 @@ void C_Compiler::semanticWarningWith_K_L_message (const GALGAS_lstring & inKey,
 //--------------------------------------------------------------------------------------------------
 
 void C_Compiler::semanticWarningAtLocation (const GALGAS_location & inWarningLocation,
-                                            const C_String & inWarningMessage
+                                            const String & inWarningMessage
                                             COMMA_LOCATION_ARGS) {
   if (inWarningLocation.isValid ()) { // No warning raised if not built
     if (!inWarningLocation.sourceText ().isValid ()) {
@@ -461,7 +461,7 @@ void C_Compiler::emitSemanticWarning (const GALGAS_location & inWarningLocation,
                                       const TC_Array <C_FixItDescription> & inFixItArray
                                       COMMA_LOCATION_ARGS) {
   if (inWarningLocation.isValid () && inWarningMessage.isValid ()) {
-    const C_String warningMessage = inWarningMessage.stringValue () ;
+    const String warningMessage = inWarningMessage.stringValue () ;
     if (!inWarningLocation.sourceText ().isValid ()) {
       signalRunTimeWarning (this, warningMessage COMMA_THERE) ;
     }else{
@@ -482,7 +482,7 @@ void C_Compiler::emitSemanticWarning (const GALGAS_location & inWarningLocation,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::onTheFlyRunTimeError (const C_String & inRunTimeErrorMessage
+void C_Compiler::onTheFlyRunTimeError (const String & inRunTimeErrorMessage
                                        COMMA_LOCATION_ARGS) {
   signalRunTimeError (this, inRunTimeErrorMessage COMMA_THERE) ;
 }
@@ -530,14 +530,14 @@ static const char END_OF_USER_ZONE_2   [] =  "--- END OF USER ZONE 2\n" ;
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::generateFile (const C_String & inLineCommentPrefix,
-                               const TC_UniqueArray <C_String> & inDirectoriesToExclude,
-                               const C_String & inFileName,
-                               const C_String & inHeader,
-                               const C_String & inDefaultUserZone1,
-                               const C_String & inGeneratedZone2,
-                               const C_String & inDefaultUserZone2,
-                               const C_String & inGeneratedZone3,
+void C_Compiler::generateFile (const String & inLineCommentPrefix,
+                               const TC_UniqueArray <String> & inDirectoriesToExclude,
+                               const String & inFileName,
+                               const String & inHeader,
+                               const String & inDefaultUserZone1,
+                               const String & inGeneratedZone2,
+                               const String & inDefaultUserZone2,
+                               const String & inGeneratedZone3,
                                const bool inMakeExecutable) {
   generateFileWithPatternFromPathes (sourceFilePath ().stringByDeletingLastPathComponent (),
                           inDirectoriesToExclude,
@@ -553,30 +553,30 @@ void C_Compiler::generateFile (const C_String & inLineCommentPrefix,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
-                                         const TC_UniqueArray <C_String> & inDirectoriesToExclude,
-                                         const C_String & inFileName,
-                                         const C_String & inContents) {
+void C_Compiler::generateFileFromPathes (const String & inStartPath,
+                                         const TC_UniqueArray <String> & inDirectoriesToExclude,
+                                         const String & inFileName,
+                                         const String & inContents) {
 //--- Verbose option ?
   const bool verboseOptionOn = verboseOutput () ;
 //--- Start path : by default, use source file directory
-  const C_String startPath = (inStartPath.length () == 0)
+  const String startPath = (inStartPath.length () == 0)
    ? sourceFilePath ().stringByDeletingLastPathComponent ()
    : inStartPath ;
 //--- Search file in directory
-  const C_String fullPathName = C_FileManager::findFileInDirectory (startPath, inFileName, inDirectoriesToExclude) ;
+  const String fullPathName = C_FileManager::findFileInDirectory (startPath, inFileName, inDirectoriesToExclude) ;
   if (fullPathName.length () == 0) {
   //--- File does not exist : create it
-    C_String fileName = startPath ;
+    String fileName = startPath ;
     fileName.appendString ("/") ;
     fileName.appendString (inFileName) ;
-    const C_String directory = fileName.stringByDeletingLastPathComponent () ;
+    const String directory = fileName.stringByDeletingLastPathComponent () ;
     C_FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (performGeneration ()) {
       C_TextFileWrite f (fileName) ;
       bool ok = f.isOpened () ;
       if (! ok) {
-        C_String message ;
+        String message ;
         message += "Cannot open '" ;
         message += fileName ;
         message += "' file in write mode." ;
@@ -584,19 +584,19 @@ void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
       }
       f += inContents ;
       if (verboseOptionOn) {
-        ggs_printFileOperationSuccess (C_String ("Created '") + fileName + "'.\n") ;
+        ggs_printFileOperationSuccess (String ("Created '") + fileName + "'.\n") ;
       }
     }else{
-      ggs_printWarning (this, C_SourceTextInString(), C_IssueWithFixIt (), C_String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
+      ggs_printWarning (this, C_SourceTextInString(), C_IssueWithFixIt (), String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
     }
   }else{
-    const C_String previousContents = C_FileManager::stringWithContentOfFile (fullPathName) ;
+    const String previousContents = C_FileManager::stringWithContentOfFile (fullPathName) ;
     const bool same = previousContents == inContents ;
     if (! same) {
       if (performGeneration ()) {
         C_TextFileWrite f (fullPathName) ;
         if (! f.isOpened ()) {
-          C_String message ;
+          String message ;
           message += "Cannot open '" ;
           message += fullPathName ;
           message += "' file in write mode." ;
@@ -604,11 +604,11 @@ void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
         }else{
           f += inContents ;
           if (verboseOptionOn) {
-            ggs_printFileOperationSuccess (C_String ("Replaced '") + fullPathName + "'.\n") ;
+            ggs_printFileOperationSuccess (String ("Replaced '") + fullPathName + "'.\n") ;
           }
         }
       }else{
-        ggs_printWarning (this, C_SourceTextInString (), C_IssueWithFixIt (), C_String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
+        ggs_printWarning (this, C_SourceTextInString (), C_IssueWithFixIt (), String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
       }
     }
   }
@@ -617,43 +617,43 @@ void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
 //--------------------------------------------------------------------------------------------------
 
 void C_Compiler::generateFileWithPatternFromPathes (
-  const C_String & inStartPath,
-  const TC_UniqueArray <C_String> & inDirectoriesToExclude,
-  const C_String & inLineCommentPrefix,
-  const C_String & inFileName,
-  const C_String & inHeader,
-  const C_String & inDefaultUserZone1,
-  const C_String & inGeneratedZone2,
-  const C_String & inDefaultUserZone2,
-  const C_String & inGeneratedZone3,
+  const String & inStartPath,
+  const TC_UniqueArray <String> & inDirectoriesToExclude,
+  const String & inLineCommentPrefix,
+  const String & inFileName,
+  const String & inHeader,
+  const String & inDefaultUserZone1,
+  const String & inGeneratedZone2,
+  const String & inDefaultUserZone2,
+  const String & inGeneratedZone3,
   const bool inMakeExecutable
 ) {
 //--- Verbose option ?
   const bool verboseOptionOn = verboseOutput () ;
 //--- User zones
-  const C_String kSTART_OF_USER_ZONE_1 = C_String (inLineCommentPrefix) + START_OF_USER_ZONE_1 ;
-  const C_String kEND_OF_USER_ZONE_1   = C_String (inLineCommentPrefix) + END_OF_USER_ZONE_1 ;
-  const C_String kSTART_OF_USER_ZONE_2 = C_String (inLineCommentPrefix) + START_OF_USER_ZONE_2 ;
-  const C_String kEND_OF_USER_ZONE_2   = C_String (inLineCommentPrefix) + END_OF_USER_ZONE_2 ;
+  const String kSTART_OF_USER_ZONE_1 = String (inLineCommentPrefix) + START_OF_USER_ZONE_1 ;
+  const String kEND_OF_USER_ZONE_1   = String (inLineCommentPrefix) + END_OF_USER_ZONE_1 ;
+  const String kSTART_OF_USER_ZONE_2 = String (inLineCommentPrefix) + START_OF_USER_ZONE_2 ;
+  const String kEND_OF_USER_ZONE_2   = String (inLineCommentPrefix) + END_OF_USER_ZONE_2 ;
 //--- Start path : by default, use source file directory
-  const C_String startPath = (inStartPath.length () == 0)
+  const String startPath = (inStartPath.length () == 0)
     ? sourceFilePath ().stringByDeletingLastPathComponent ()
     : inStartPath
   ;
 //--- Search file in directory
-  const C_String fullPathName = C_FileManager::findFileInDirectory (startPath, inFileName, inDirectoriesToExclude) ;
+  const String fullPathName = C_FileManager::findFileInDirectory (startPath, inFileName, inDirectoriesToExclude) ;
   if (fullPathName.length () == 0) {
   //--- File does not exist : create it
-    C_String fileName = startPath ;
+    String fileName = startPath ;
     fileName.appendString ("/") ;
     fileName.appendString (inFileName) ;
-    const C_String directory = fileName.stringByDeletingLastPathComponent () ;
+    const String directory = fileName.stringByDeletingLastPathComponent () ;
     C_FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (performGeneration ()) {
       C_TextFileWrite f (fileName) ;
       bool ok = f.isOpened () ;
       if (! ok) {
-        C_String message ;
+        String message ;
         message += "Cannot open '" ;
         message += fileName ;
         message += "' file in write mode." ;
@@ -669,7 +669,7 @@ void C_Compiler::generateFileWithPatternFromPathes (
       f += kEND_OF_USER_ZONE_2 ;
       f += inGeneratedZone3 ;
       if (verboseOptionOn) {
-        ggs_printFileCreationSuccess (C_String ("Created '") + fileName + "'.\n") ;
+        ggs_printFileCreationSuccess (String ("Created '") + fileName + "'.\n") ;
       }
 
       f.close () ;
@@ -681,18 +681,18 @@ void C_Compiler::generateFileWithPatternFromPathes (
         #endif
       }
     }else{
-      ggs_printWarning (this, C_SourceTextInString (), C_IssueWithFixIt (), C_String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
+      ggs_printWarning (this, C_SourceTextInString (), C_IssueWithFixIt (), String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
     }
   }else{
-    C_String firstUserPart ;
-    C_String secondUserPart ;
-    C_String firstGeneratedPart ;
-    C_String secondGeneratedPart ;
+    String firstUserPart ;
+    String secondUserPart ;
+    String firstGeneratedPart ;
+    String secondGeneratedPart ;
     logFileRead (fullPathName) ;
-    C_String s = C_FileManager::stringWithContentOfFile (fullPathName) ;
-    TC_UniqueArray <C_String> stringArray ;
+    String s = C_FileManager::stringWithContentOfFile (fullPathName) ;
+    TC_UniqueArray <String> stringArray ;
     s.componentsSeparatedByString (kSTART_OF_USER_ZONE_1, stringArray) ;
-    C_String header ;
+    String header ;
     bool ok = stringArray.count () == 2 ;
     if (ok) {
       header = stringArray (0 COMMA_HERE) ;
@@ -717,13 +717,13 @@ void C_Compiler::generateFileWithPatternFromPathes (
       secondGeneratedPart = stringArray (1 COMMA_HERE) ;
     }
     if (! ok) {
-      ggs_printError (this, C_SourceTextInString (), C_IssueWithFixIt (), C_String ("BAD FILE '") + fullPathName + "'.\n" COMMA_HERE) ;
+      ggs_printError (this, C_SourceTextInString (), C_IssueWithFixIt (), String ("BAD FILE '") + fullPathName + "'.\n" COMMA_HERE) ;
     }else if ((header == inHeader) && (firstGeneratedPart == inGeneratedZone2) && (secondGeneratedPart == inGeneratedZone3)) {
     }else if (performGeneration ()) {
       C_TextFileWrite f (fullPathName) ;
       ok = f.isOpened () ;
       if (! ok) {
-        C_String message ;
+        String message ;
         message += "Cannot open '" ;
         message += fullPathName ;
         message += "' file in write mode." ;
@@ -739,7 +739,7 @@ void C_Compiler::generateFileWithPatternFromPathes (
       f += kEND_OF_USER_ZONE_2 ;
       f += inGeneratedZone3 ;
       if (verboseOptionOn) {
-        ggs_printFileOperationSuccess (C_String ("Replaced '") + fullPathName + "'.\n") ;
+        ggs_printFileOperationSuccess (String ("Replaced '") + fullPathName + "'.\n") ;
       }
       f.close () ;
       if (inMakeExecutable) {
@@ -750,7 +750,7 @@ void C_Compiler::generateFileWithPatternFromPathes (
         #endif
       }
     }else{
-      ggs_printWarning (this, C_SourceTextInString (), C_IssueWithFixIt (), C_String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
+      ggs_printWarning (this, C_SourceTextInString (), C_IssueWithFixIt (), String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
     }
   }
 }

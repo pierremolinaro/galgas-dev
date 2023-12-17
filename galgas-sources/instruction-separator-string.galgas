@@ -220,7 +220,7 @@
 #  #--- Generate method call
 #    let sdtResultVarName = "syntaxDirectedTranslationResult_" + [self.mInstructionLocation locationIndex]
 #    if inGenerateSyntaxDirectedTranslationString then
-#      ioGeneratedCode += "C_String " + sdtResultVarName + " ;\n"
+#      ioGeneratedCode += "String " + sdtResultVarName + " ;\n"
 #    end
 #    ioGeneratedCode += "nt_" + [self.mNonterminalName identifierRepresentation] + "_" + [self.mLabelName identifierRepresentation] + " ("
 #    for (mValue) in parameterCppNameList do

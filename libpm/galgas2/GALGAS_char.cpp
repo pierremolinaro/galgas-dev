@@ -158,7 +158,7 @@ typeComparisonResult GALGAS_char::objectCompare (const GALGAS_char & inOperand) 
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_char::description (C_String & ioString,
+void GALGAS_char::description (String & ioString,
                                const int32_t /* inIndentation */) const {
   ioString += "<@char:" ;
   if (isValid ()) {
@@ -180,7 +180,7 @@ void GALGAS_char::description (C_String & ioString,
 GALGAS_string GALGAS_char::getter_string (LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
-    C_String s ;
+    String s ;
     s.appendUnicodeCharacter (mCharValue COMMA_THERE) ;
     result = GALGAS_string (s) ;
   }
@@ -192,7 +192,7 @@ GALGAS_string GALGAS_char::getter_string (LOCATION_ARGS) const {
 GALGAS_string GALGAS_char::getter_utf_33__32_CharConstantRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
-    C_String s ;
+    String s ;
     s.appendCString ("TO_UNICODE (") ;
     s.appendCLiteralCharConstant (mCharValue) ;
     s.appendCString (")") ;

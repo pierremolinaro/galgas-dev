@@ -15,7 +15,7 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
     %//--- 'parse' label\n%
     %  public: virtual void nt_%![lkey identifierRepresentation]%_parse (%?^
     if HAS_TRANSLATE_FEATURE then
-      %C_String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
+      %String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
     end
     %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
   #--- indexing
@@ -38,7 +38,7 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
       %,\n%!^
     end
     if HAS_TRANSLATE_FEATURE then
-      %C_String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
+      %String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
     end
     %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
   #--- Start symbol ?
@@ -47,7 +47,7 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
       %  public: static void _performSourceFileParsing_%![label_lkey identifierRepresentation]% (%?^
       %C_Compiler * inCompiler,\n%!^
       if HAS_TRANSLATE_FEATURE then
-        %C_String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
+        %String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
       end
       %GALGAS_lstring inFileName%
       for (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in label_mFormalParametersList do (IDX)
@@ -66,7 +66,7 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
       %  public: static void _performSourceStringParsing_%![label_lkey identifierRepresentation]% (%?^
       %C_Compiler * inCompiler,\n%!^
       if HAS_TRANSLATE_FEATURE then
-        %C_String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
+        %String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
       end
       %GALGAS_string inSourceString,\n%!^
       %GALGAS_string inNameString%
@@ -89,13 +89,13 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
   if START_SYMBOL_NAME == lkey.string then
     %//--- Indexing\n%
     %  public: static void performIndexing (%?^%C_Compiler * inCompiler,\n%
-    !^%const C_String & inSourceFilePath) ;\n\n%
+    !^%const String & inSourceFilePath) ;\n\n%
     %//--- Only lexical analysis\n%
     %  public: static void performOnlyLexicalAnalysis (%?^%C_Compiler * inCompiler,\n%
-    !^%const C_String & inSourceFilePath) ;\n\n%
+    !^%const String & inSourceFilePath) ;\n\n%
     %//--- Only syntax analysis\n%
     %  public: static void performOnlySyntaxAnalysis (%?^%C_Compiler * inCompiler,\n%
-    !^%const C_String & inSourceFilePath) ;\n\n%
+    !^%const String & inSourceFilePath) ;\n\n%
   end
 end
 

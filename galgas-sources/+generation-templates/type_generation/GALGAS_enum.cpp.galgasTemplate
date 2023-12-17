@@ -15,7 +15,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     % {\n%   
     %} ;\n\n%
     %//--------------------------------------------------------------------------------------------------\n\n%
-    %void cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName%::description (%?^%C_String & ioString,\n%
+    %void cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName%::description (%?^%String & ioString,\n%
                        !^%const int32_t inIndentation) const {\n%
     %  ioString += "(\\n" ;\n%
     for (mType) in mAssociatedValueTypeList do (idx)
@@ -101,7 +101,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     for (mType) in mAssociatedValueTypeList do (idx)
       %    outAssociatedValue%![idx string]%.drop () ;\n%
     end
-    %    C_String s ;\n%
+    %    String s ;\n%
     %    s += "method @%!TYPE_IDENTIFIER% %!mConstantName% invoked with an invalid enum value" ;\n%
     %    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n%
     %  }else{\n%
@@ -157,7 +157,7 @@ GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_is%![[mConstantName stringByCapita
 end
 %//--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
+void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
 %                                       !^%const int32_t %
 if HAS_ASSOCIATED_VALUES then
   %inIndentation%
