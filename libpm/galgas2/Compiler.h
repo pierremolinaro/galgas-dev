@@ -25,7 +25,7 @@
 #include "generic-arraies/TC_UniqueArray.h"
 #include "strings/String-class.h"
 #include "utilities/C_SharedObject.h"
-#include "galgas2/C_LocationInSource.h"
+#include "galgas2/LocationInSource.h"
 #include "galgas2/C_SourceTextInString.h"
 #include "galgas2/C_IssueWithFixIt.h"
 #include "galgas2/cIssueDescriptor.h"
@@ -72,13 +72,13 @@ class Compiler : public C_SharedObject {
 
 //--- Template String
   protected: String mTemplateString ;
-  protected: C_LocationInSource mTemplateStringLocation ;
+  protected: LocationInSource mTemplateStringLocation ;
   public: GALGAS_string retrieveAndResetTemplateString (void) ;
   public: void resetTemplateString (void) ;
 
 //--- Handling current character and its location
   private: C_SourceTextInString mSourceText ;
-  protected: C_LocationInSource mCurrentLocation ;
+  protected: LocationInSource mCurrentLocation ;
 
   public: inline C_SourceTextInString sourceText (void) const {
     return mSourceText ;
@@ -88,16 +88,16 @@ class Compiler : public C_SharedObject {
   public: void loopRunTimeVariantError (LOCATION_ARGS) ;
 
 //--- Handle 'here' in GALGAS
-  protected: C_LocationInSource mStartLocationForHere ; // Set by lexique
-  protected: C_LocationInSource mEndLocationForHere ; // Set by lexique
+  protected: LocationInSource mStartLocationForHere ; // Set by lexique
+  protected: LocationInSource mEndLocationForHere ; // Set by lexique
   public: GALGAS_location here (void) const ;
 
 //--- Handle 'separator' in GALGAS
   public: GALGAS_location separator (void) const ;
 
 //--- Handle 'next' in GALGAS
-  protected: C_LocationInSource mStartLocationForNext ; // Set by lexique
-  protected: C_LocationInSource mEndLocationForNext ; // Set by lexique
+  protected: LocationInSource mStartLocationForNext ; // Set by lexique
+  protected: LocationInSource mEndLocationForNext ; // Set by lexique
   public: GALGAS_location next (void) const ;
 
 //--- Source file name
@@ -107,7 +107,7 @@ class Compiler : public C_SharedObject {
   protected: static const char * kEndOfSourceLexicalErrorMessage ;
 
 //--- Location in source
-  public: inline C_LocationInSource currentLocationInSource (void) const {
+  public: inline LocationInSource currentLocationInSource (void) const {
     return mCurrentLocation ;
   }
 

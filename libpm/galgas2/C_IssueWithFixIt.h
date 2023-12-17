@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/C_LocationInSource.h"
+#include "galgas2/LocationInSource.h"
 #include "strings/String-class.h"
 #include "generic-arraies/TC_Array.h"
 
@@ -68,13 +68,13 @@ class C_IssueWithFixIt {
   public: C_IssueWithFixIt (void) ;
 
 //--- Constructor
-  public: C_IssueWithFixIt (const C_LocationInSource & inStartLocation,
-                             const C_LocationInSource & inEndLocation,
+  public: C_IssueWithFixIt (const LocationInSource & inStartLocation,
+                             const LocationInSource & inEndLocation,
                              const TC_Array <C_FixItDescription> & inFixItArray) ;
 
 //--- Properties
-  public: const C_LocationInSource mStartLocation ;
-  public: const C_LocationInSource mEndLocation ;
+  public: const LocationInSource mStartLocation ;
+  public: const LocationInSource mEndLocation ;
   public: const TC_Array <C_FixItDescription> mFixItArray ;
 } ;
 

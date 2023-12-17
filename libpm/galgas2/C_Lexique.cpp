@@ -535,7 +535,7 @@ void C_Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTermina
 //--- Signal error
   signalParsingError (this,
                       sourceText (),
-                      (inPreviousTokenPtr == nullptr) ? C_LocationInSource () : inPreviousTokenPtr->mEndLocation,
+                      (inPreviousTokenPtr == nullptr) ? LocationInSource () : inPreviousTokenPtr->mEndLocation,
                       C_IssueWithFixIt (inCurrentTokenPtr->mStartLocation, inCurrentTokenPtr->mEndLocation, TC_Array <C_FixItDescription> ()),
                       foundTokenMessage,
                       expectedTokenNames COMMA_THERE) ;

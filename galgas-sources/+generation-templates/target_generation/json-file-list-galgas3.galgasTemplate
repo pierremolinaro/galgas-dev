@@ -89,7 +89,7 @@ end
        "typeComparisonResult.cpp",
        "Compiler.cpp",
        "C_Lexique.cpp",
-       "C_LocationInSource.cpp",
+       "LocationInSource.cpp",
        "C_SourceTextInString.cpp",
        "C_galgas_type_descriptor.cpp",
        "C_galgas_function_descriptor.cpp",

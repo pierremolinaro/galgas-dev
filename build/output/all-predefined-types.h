@@ -60,15 +60,15 @@ class GALGAS_type ;
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/C_LocationInSource.h"
+#include "galgas2/LocationInSource.h"
 #include "galgas2/C_SourceTextInString.h"
 
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_location : public AC_GALGAS_root {
-//--------------------------------- Private data members
-  private: C_LocationInSource mStartLocationInSource ;
-  private: C_LocationInSource mEndLocationInSource ;
+//--------------------------------- Private properties
+  private: LocationInSource mStartLocationInSource ;
+  private: LocationInSource mEndLocationInSource ;
   private: C_SourceTextInString mSourceText ;
   private: bool mIsValid ;
 
@@ -76,16 +76,16 @@ class GALGAS_location : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
   public: VIRTUAL_IN_DEBUG bool isValidAndNotNowhere (void) const ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
-  public: C_LocationInSource startLocation (void) const { return mStartLocationInSource ; }
-  public: C_LocationInSource endLocation (void) const { return mEndLocationInSource ; }
+  public: LocationInSource startLocation (void) const { return mStartLocationInSource ; }
+  public: LocationInSource endLocation (void) const { return mEndLocationInSource ; }
   public: C_SourceTextInString sourceText (void) const { return mSourceText ; }
 
 //--------------------------------- Default constructor
   public: GALGAS_location (void) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_location (const C_LocationInSource & inStartLocationInSource,
-                            const C_LocationInSource & inEndLocationInSource,
+  public: GALGAS_location (const LocationInSource & inStartLocationInSource,
+                            const LocationInSource & inEndLocationInSource,
                             const C_SourceTextInString & inSourceText) ;
 
 //-- Start of generic part --*

@@ -28,7 +28,7 @@
 
 #include "strings/String-class.h"
 #include "generic-arraies/TC_UniqueArray.h"
-#include "galgas2/C_LocationInSource.h"
+#include "galgas2/LocationInSource.h"
 #include "galgas2/C_SourceTextInString.h"
 #include "galgas2/C_IssueWithFixIt.h"
 #include "utilities/C_SharedObject.h"
@@ -94,8 +94,8 @@ class C_unicode_lexique_table_entry final {
 
 class cToken {
   public: cToken * mNextToken ;
-  public: C_LocationInSource mStartLocation ;
-  public: C_LocationInSource mEndLocation ;
+  public: LocationInSource mStartLocation ;
+  public: LocationInSource mEndLocation ;
   public: String mTemplateStringBeforeToken ; // Template string before the token
   public: String mSeparatorStringBeforeToken ;
   public: int32_t mTokenCode ;
@@ -117,7 +117,7 @@ class cToken {
 
 class C_parsingContext {
   private: int32_t mParsingArrayIndex ;
-  private: C_LocationInSource mLocation ;
+  private: LocationInSource mLocation ;
   private: cToken * mCurrentTokenPtr ;
   private: utf32 mCurrentChar ;
   private: utf32 mPreviousChar ;
@@ -150,7 +150,7 @@ int32_t totalWarningCount (void) ;
  
 void signalParsingError (Compiler * inCompiler,
                          const C_SourceTextInString & inSourceText,
-                         const C_LocationInSource & inPreviousTokenEndLocation,
+                         const LocationInSource & inPreviousTokenEndLocation,
                          const C_IssueWithFixIt & inIssue,
                          const String & inFoundTokenMessage,
                          const TC_UniqueArray <String> & inAcceptedTokenNames

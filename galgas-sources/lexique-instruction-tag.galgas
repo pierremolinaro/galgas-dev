@@ -85,8 +85,8 @@ override getter @lexicalTagInstructionAST generateLexicalInstructionCode
   ?let @string unused inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string {
-  result = "const C_LocationInSource currentLocationForTag_" + self.mLexicalTagName + " = mCurrentLocation ;\n"
-                    + "const C_LocationInSource endLocationForTag_" + self.mLexicalTagName + " = mTokenEndLocation ;\n"
+  result = "const LocationInSource currentLocationForTag_" + self.mLexicalTagName + " = mCurrentLocation ;\n"
+                    + "const LocationInSource endLocationForTag_" + self.mLexicalTagName + " = mTokenEndLocation ;\n"
                     + "const utf32 currentCharForTag_" + self.mLexicalTagName + " = mCurrentChar ;\n"
 }
 

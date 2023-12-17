@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_LocationInSource'                                                                         
+//  'LocationInSource'                                                                         
 //
 //  This file is part of libpm library                                                           
 //
@@ -18,13 +18,13 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/C_LocationInSource.h"
+#include "galgas2/LocationInSource.h"
 #include "galgas2/C_SourceTextInString.h"
 #include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
 
-C_LocationInSource::C_LocationInSource (void) :
+LocationInSource::LocationInSource (void) :
 mIndex (0),
 mLineNumber (1),
 mColumnNumber (1),
@@ -33,7 +33,7 @@ mSourceText () {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_LocationInSource::gotoNextLocation (void) {
+void LocationInSource::gotoNextLocation (void) {
   if (mIndex < mSourceText.sourceString ().length ()) {
     const utf32 currentChar = mSourceText.sourceString () (mIndex COMMA_HERE) ;
     const bool previousCharWasEndOfLine = UNICODE_VALUE (currentChar) == '\n' ;
@@ -49,7 +49,7 @@ void C_LocationInSource::gotoNextLocation (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_LocationInSource::goForward (const uint32_t inCount) {
+void LocationInSource::goForward (const uint32_t inCount) {
   uint32_t count = inCount ;
   while (count > 0) {
     gotoNextLocation () ;
@@ -59,7 +59,7 @@ void C_LocationInSource::goForward (const uint32_t inCount) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_LocationInSource::resetLocation (void) {
+void LocationInSource::resetLocation (void) {
   mIndex = 0 ;
   mLineNumber = 1 ;
   mColumnNumber = 1 ;
@@ -67,7 +67,7 @@ void C_LocationInSource::resetLocation (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_LocationInSource::resetWithSourceText (const C_SourceTextInString & inSourceText) {
+void LocationInSource::resetWithSourceText (const C_SourceTextInString & inSourceText) {
   mIndex = 0 ;
   mLineNumber = 1 ;
   mColumnNumber = 1 ;
@@ -76,13 +76,13 @@ void C_LocationInSource::resetWithSourceText (const C_SourceTextInString & inSou
 
 //--------------------------------------------------------------------------------------------------
 
-String C_LocationInSource::sourceFilePath (void) const {
+String LocationInSource::sourceFilePath (void) const {
   return mSourceText.sourceFilePath () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-//LineColumnContents C_LocationInSource::lineColumnNumber (void) const {
+//LineColumnContents LocationInSource::lineColumnNumber (void) const {
 //  return mSourceText.sourceString ().lineAndColumnFromIndex (mIndex) ;
 //}
 

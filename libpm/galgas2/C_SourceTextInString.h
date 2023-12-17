@@ -70,9 +70,6 @@ class C_SourceTextInString {
   public: C_SourceTextInString (const C_SourceTextInString & inSource) ;
   public: C_SourceTextInString & operator = (const C_SourceTextInString & inSource) ;
 
-//--- Source file Name
-  private: cSourceTextInString * mObject ;
-
   public: inline String sourceFilePath (void) const {
     return (mObject == nullptr) ? "" : mObject->mFilePath ;
   }
@@ -106,9 +103,12 @@ class C_SourceTextInString {
     return (mObject == nullptr) ? nullptr : & (mObject->mSourceString.utf32String (THERE)) [inIndex] ;
   }
 
-  public: String getLineForLocation (const class C_LocationInSource & inLocation) const ;
+  public: String getLineForLocation (const class LocationInSource & inLocation) const ;
 
   public: void appendSourceContents (String & ioMessage) const ;
+
+//--- Private property
+  private: cSourceTextInString * mObject ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

@@ -93,8 +93,8 @@ class C_Lexique : public Compiler {
   }
 
 //--- Locations for current token (significant only during lexical analysis phase)
-  protected: C_LocationInSource mTokenStartLocation ;
-  protected: C_LocationInSource mTokenEndLocation ;
+  protected: LocationInSource mTokenStartLocation ;
+  protected: LocationInSource mTokenEndLocation ;
 
 //--- Advance
   protected: void advance (void) ; // One character

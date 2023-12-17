@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_LocationInSource'                                                                         
+//  'LocationInSource'                                                                         
 //
 //  This file is part of libpm library                                                           
 //
@@ -36,13 +36,13 @@ class String ;
 //
 //--------------------------------------------------------------------------------------------------
 
-class C_LocationInSource final {
+class LocationInSource final {
   private: int32_t mIndex ;
   private: int32_t mLineNumber ;
   private: int32_t mColumnNumber ;
   private: C_SourceTextInString mSourceText ;
 
-  public: C_LocationInSource (void) ;
+  public: LocationInSource (void) ;
 
   public: void gotoNextLocation (void) ;
 

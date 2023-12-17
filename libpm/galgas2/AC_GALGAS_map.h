@@ -37,7 +37,7 @@ class GALGAS_stringlist ;
 class GALGAS_bool ;
 class GALGAS_uint ;
 class GALGAS_location ;
-class C_LocationInSource ;
+class LocationInSource ;
 class AC_GALGAS_map ;
 class capCollectionElement ;
 class cCollectionElement ;

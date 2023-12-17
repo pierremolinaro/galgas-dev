@@ -4368,12 +4368,12 @@ void C_Lexique_galgasScanner::internalParseLexicalToken (cTokenFor_galgasScanner
       token.mTokenCode = kToken__26_ ;
       enterToken (token) ;
     }else if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
-      const C_LocationInSource currentLocationForTag_onlyInterrogationMark = mCurrentLocation ;
-      const C_LocationInSource endLocationForTag_onlyInterrogationMark = mTokenEndLocation ;
+      const LocationInSource currentLocationForTag_onlyInterrogationMark = mCurrentLocation ;
+      const LocationInSource endLocationForTag_onlyInterrogationMark = mTokenEndLocation ;
       const utf32 currentCharForTag_onlyInterrogationMark = mCurrentChar ;
       if (testForInputUTF32Char (TO_UNICODE ('!'))) {
-        const C_LocationInSource currentLocationForTag_onlyExclamationInterrogationMark = mCurrentLocation ;
-        const C_LocationInSource endLocationForTag_onlyExclamationInterrogationMark = mTokenEndLocation ;
+        const LocationInSource currentLocationForTag_onlyExclamationInterrogationMark = mCurrentLocation ;
+        const LocationInSource endLocationForTag_onlyExclamationInterrogationMark = mTokenEndLocation ;
         const utf32 currentCharForTag_onlyExclamationInterrogationMark = mCurrentChar ;
         if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
           do {
@@ -4424,12 +4424,12 @@ void C_Lexique_galgasScanner::internalParseLexicalToken (cTokenFor_galgasScanner
         enterToken (token) ;
       }
     }else if (testForInputUTF32Char (TO_UNICODE ('!'))) {
-      const C_LocationInSource currentLocationForTag_onlyExclamationMark = mCurrentLocation ;
-      const C_LocationInSource endLocationForTag_onlyExclamationMark = mTokenEndLocation ;
+      const LocationInSource currentLocationForTag_onlyExclamationMark = mCurrentLocation ;
+      const LocationInSource endLocationForTag_onlyExclamationMark = mTokenEndLocation ;
       const utf32 currentCharForTag_onlyExclamationMark = mCurrentChar ;
       if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
-        const C_LocationInSource currentLocationForTag_onlyInterrogationExclamationMark = mCurrentLocation ;
-        const C_LocationInSource endLocationForTag_onlyInterrogationExclamationMark = mTokenEndLocation ;
+        const LocationInSource currentLocationForTag_onlyInterrogationExclamationMark = mCurrentLocation ;
+        const LocationInSource endLocationForTag_onlyInterrogationExclamationMark = mTokenEndLocation ;
         const utf32 currentCharForTag_onlyInterrogationExclamationMark = mCurrentChar ;
         if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
           do {
@@ -4480,8 +4480,8 @@ void C_Lexique_galgasScanner::internalParseLexicalToken (cTokenFor_galgasScanner
         enterToken (token) ;
       }
     }else if (testForInputUTF32Char (TO_UNICODE ('<'))) {
-      const C_LocationInSource currentLocationForTag_onlyInfDelimiter = mCurrentLocation ;
-      const C_LocationInSource endLocationForTag_onlyInfDelimiter = mTokenEndLocation ;
+      const LocationInSource currentLocationForTag_onlyInfDelimiter = mCurrentLocation ;
+      const LocationInSource endLocationForTag_onlyInfDelimiter = mTokenEndLocation ;
       const utf32 currentCharForTag_onlyInfDelimiter = mCurrentChar ;
       if (testForInputUTF32Char (TO_UNICODE ('='))) {
         token.mTokenCode = kToken__3C__3D_ ;

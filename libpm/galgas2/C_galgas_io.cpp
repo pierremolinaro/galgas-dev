@@ -266,7 +266,7 @@ void signalLexicalError (Compiler * inCompiler,
 
 void signalParsingError (Compiler * inCompiler,
                          const C_SourceTextInString & inSourceText,
-                         const C_LocationInSource & inPreviousTokenEndLocation,
+                         const LocationInSource & inPreviousTokenEndLocation,
                          const C_IssueWithFixIt & inIssue,
                          const String & inFoundTokenMessage,
                          const TC_UniqueArray <String> & inAcceptedTokenNames
@@ -476,7 +476,7 @@ void signalSemanticError (Compiler * inCompiler,
                           const C_IssueWithFixIt & inIssue,
                           const String & inErrorMessage
                           COMMA_LOCATION_ARGS) {
-  const C_LocationInSource inEndErrorLocation = inIssue.mStartLocation ;
+  const LocationInSource inEndErrorLocation = inIssue.mStartLocation ;
 //--- Increment error count
   mErrorTotalCount ++ ;
 //--- Construct location error message

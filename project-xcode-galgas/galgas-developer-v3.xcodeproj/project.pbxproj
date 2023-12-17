@@ -146,12 +146,12 @@
 		CF6CEB841278B57400E8F785 /* Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEB6F1278B57400E8F785 /* Compiler.cpp */; };
 		CF6CEB851278B57400E8F785 /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEB711278B57400E8F785 /* C_galgas_io.cpp */; };
 		CF6CEB861278B57400E8F785 /* C_Lexique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEB731278B57400E8F785 /* C_Lexique.cpp */; };
-		CF6CEB871278B57400E8F785 /* C_LocationInSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEB751278B57400E8F785 /* C_LocationInSource.cpp */; };
+		CF6CEB871278B57400E8F785 /* LocationInSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEB751278B57400E8F785 /* LocationInSource.cpp */; };
 		CF6CEB881278B57400E8F785 /* C_SourceTextInString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEB771278B57400E8F785 /* C_SourceTextInString.cpp */; };
 		CF6CEB891278B57400E8F785 /* Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEB6F1278B57400E8F785 /* Compiler.cpp */; };
 		CF6CEB8A1278B57400E8F785 /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEB711278B57400E8F785 /* C_galgas_io.cpp */; };
 		CF6CEB8B1278B57400E8F785 /* C_Lexique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEB731278B57400E8F785 /* C_Lexique.cpp */; };
-		CF6CEB8C1278B57400E8F785 /* C_LocationInSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEB751278B57400E8F785 /* C_LocationInSource.cpp */; };
+		CF6CEB8C1278B57400E8F785 /* LocationInSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEB751278B57400E8F785 /* LocationInSource.cpp */; };
 		CF6CEB8D1278B57400E8F785 /* C_SourceTextInString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEB771278B57400E8F785 /* C_SourceTextInString.cpp */; };
 		CF6CEC5B1278CBD500E8F785 /* scanner_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEC571278CBD500E8F785 /* scanner_actions.cpp */; };
 		CF6CEC5C1278CBD500E8F785 /* scanner_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEC571278CBD500E8F785 /* scanner_actions.cpp */; };
@@ -610,8 +610,8 @@
 		CF6CEB711278B57400E8F785 /* C_galgas_io.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_galgas_io.cpp; sourceTree = "<group>"; };
 		CF6CEB721278B57400E8F785 /* C_galgas_io.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_galgas_io.h; sourceTree = "<group>"; };
 		CF6CEB731278B57400E8F785 /* C_Lexique.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_Lexique.cpp; sourceTree = "<group>"; };
-		CF6CEB751278B57400E8F785 /* C_LocationInSource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_LocationInSource.cpp; sourceTree = "<group>"; };
-		CF6CEB761278B57400E8F785 /* C_LocationInSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_LocationInSource.h; sourceTree = "<group>"; };
+		CF6CEB751278B57400E8F785 /* LocationInSource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = LocationInSource.cpp; sourceTree = "<group>"; };
+		CF6CEB761278B57400E8F785 /* LocationInSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LocationInSource.h; sourceTree = "<group>"; };
 		CF6CEB771278B57400E8F785 /* C_SourceTextInString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_SourceTextInString.cpp; sourceTree = "<group>"; };
 		CF6CEB781278B57400E8F785 /* C_SourceTextInString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_SourceTextInString.h; sourceTree = "<group>"; };
 		CF6CEC571278CBD500E8F785 /* scanner_actions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = scanner_actions.cpp; sourceTree = "<group>"; };
@@ -1152,8 +1152,8 @@
 				CF206C081D54772A00CC4135 /* C_IssueWithFixIt.h */,
 				CF6CEB731278B57400E8F785 /* C_Lexique.cpp */,
 				CF8A32101278D21600E3EDC9 /* C_Lexique.h */,
-				CF6CEB751278B57400E8F785 /* C_LocationInSource.cpp */,
-				CF6CEB761278B57400E8F785 /* C_LocationInSource.h */,
+				CF6CEB751278B57400E8F785 /* LocationInSource.cpp */,
+				CF6CEB761278B57400E8F785 /* LocationInSource.h */,
 				CF6CEB771278B57400E8F785 /* C_SourceTextInString.cpp */,
 				CF6CEB781278B57400E8F785 /* C_SourceTextInString.h */,
 				CF3D9FC11257733E0037D473 /* capCollectionElement.cpp */,
@@ -1746,7 +1746,7 @@
 				CF6CEB841278B57400E8F785 /* Compiler.cpp in Sources */,
 				CF6CEB851278B57400E8F785 /* C_galgas_io.cpp in Sources */,
 				CF6CEB861278B57400E8F785 /* C_Lexique.cpp in Sources */,
-				CF6CEB871278B57400E8F785 /* C_LocationInSource.cpp in Sources */,
+				CF6CEB871278B57400E8F785 /* LocationInSource.cpp in Sources */,
 				CFCB7A352B2DAECF008DD653 /* BigSigned-shifts.cpp in Sources */,
 				CFCB7A1D2B2DAECF008DD653 /* BigUnsigned-chunk-operations.cpp in Sources */,
 				CF23745E19967C4F0061D2D8 /* all-declarations-9.cpp in Sources */,
@@ -1928,7 +1928,7 @@
 				CFCB7A362B2DAECF008DD653 /* BigSigned-shifts.cpp in Sources */,
 				CFCB7A1E2B2DAECF008DD653 /* BigUnsigned-chunk-operations.cpp in Sources */,
 				CF6CEB8B1278B57400E8F785 /* C_Lexique.cpp in Sources */,
-				CF6CEB8C1278B57400E8F785 /* C_LocationInSource.cpp in Sources */,
+				CF6CEB8C1278B57400E8F785 /* LocationInSource.cpp in Sources */,
 				CFCB7A3C2B2DAECF008DD653 /* BigUnsigned-multiply.cpp in Sources */,
 				CF23745F19967C4F0061D2D8 /* all-declarations-9.cpp in Sources */,
 				CF6CEB8D1278B57400E8F785 /* C_SourceTextInString.cpp in Sources */,

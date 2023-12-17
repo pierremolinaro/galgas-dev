@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "galgas2/C_SourceTextInString.h"
-#include "galgas2/C_LocationInSource.h"
+#include "galgas2/LocationInSource.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -60,7 +60,7 @@ C_SourceTextInString & C_SourceTextInString::operator = (const C_SourceTextInStr
 
 //--------------------------------------------------------------------------------------------------
 
-String C_SourceTextInString::getLineForLocation (const C_LocationInSource & inLocation) const {
+String C_SourceTextInString::getLineForLocation (const LocationInSource & inLocation) const {
   String errorLine ;
   if (nullptr != mObject) {
     const int32_t sourceTextLength = mObject->mSourceString.length () ;

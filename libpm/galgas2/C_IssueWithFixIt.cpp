@@ -46,8 +46,8 @@ mFixItArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-C_IssueWithFixIt::C_IssueWithFixIt (const C_LocationInSource & inStartLocation,
-                                    const C_LocationInSource & inEndLocation,
+C_IssueWithFixIt::C_IssueWithFixIt (const LocationInSource & inStartLocation,
+                                    const LocationInSource & inEndLocation,
                                     const TC_Array <C_FixItDescription> & inFixItArray) :
 mStartLocation (inStartLocation),
 mEndLocation (inEndLocation),
