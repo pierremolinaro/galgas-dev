@@ -11,21 +11,26 @@
 
 class GALGAS_location : public AC_GALGAS_root {
 //--------------------------------- Private properties
-  private: LocationInSource mStartLocationInSource ;
-  private: LocationInSource mEndLocationInSource ;
-  private: SourceTextInString mSourceText ;
-  private: bool mIsValid ;
+  private: class InternalLocation * mInternalLocation ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG bool isValidAndNotNowhere (void) const ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
-  public: LocationInSource startLocation (void) const { return mStartLocationInSource ; }
-  public: LocationInSource endLocation (void) const { return mEndLocationInSource ; }
-  public: SourceTextInString sourceText (void) const { return mSourceText ; }
+  public: LocationInSource startLocation (void) const ;
+  public: LocationInSource endLocation (void) const ;
+  public: SourceTextInString sourceText (void) const ;
 
 //--------------------------------- Default constructor
   public: GALGAS_location (void) ;
+
+//--------------------------------- Handle copy
+  public: GALGAS_location (const GALGAS_location & inSource) ;
+  public: GALGAS_location & operator = (const GALGAS_location & inSource) ;
+
+//--------------------------------- Destructor
+  public: virtual ~ GALGAS_location (void) ;
+
 
 //--------------------------------- Native constructor
   public: GALGAS_location (const LocationInSource & inStartLocationInSource,
