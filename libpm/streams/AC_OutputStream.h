@@ -79,7 +79,6 @@ class AC_OutputStream {
 //--- Output Stream
   public: void operator += (const char * inCstring) ;
   public: void operator += (const C_String inCstring) ; // Pass by copy (for handling 's += s ;' instruction)
-  public: AC_OutputStream & operator << (const C_String inString) ; // Pass by copy (for handling 's << s ;' instruction)
 
 //--- Flush print (does nothing for this class)
   public: virtual void flush (void) ;
@@ -176,9 +175,5 @@ C_String cStringWithUnicodeCharacter (const utf32 inValue) ;
 //--------------------------------------------------------------------------------------------------
 
 C_String cStringWithDouble (const double inValue) ;
-
-//--------------------------------------------------------------------------------------------------
-
-//C_String operator + (const char * inLeftString, const char * inRightString) ;
 
 //--------------------------------------------------------------------------------------------------

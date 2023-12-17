@@ -71,10 +71,10 @@ C_String C_Timer::timeString (void) const {
   C_String result ;
   if (minutes > 0) {
     result.appendUnsigned (minutes) ;
-    result << " min " ;
+    result += " min " ;
   }
   result.appendUnsigned (secondes) ;
-  result << " s " ;
+  result += " s " ;
   result.appendUnsigned (ms / 100) ;
   result.appendUnsigned ((ms / 10) % 10) ;
   result.appendUnsigned (ms % 10) ;
@@ -97,10 +97,10 @@ void operator += (AC_OutputStream & inStream,
   const clock_t minutes = duration / 6000 ;
   if (minutes > 0) {
     inStream.appendUnsigned (minutes) ;
-    inStream << " min " ;
+    inStream += " min " ;
   }
   inStream.appendUnsigned (secondes) ;
-  inStream << " s " ;
+  inStream += " s " ;
   inStream.appendUnsigned (cs / 10) ;
   inStream.appendUnsigned (cs % 10) ;
 }

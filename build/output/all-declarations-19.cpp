@@ -31391,14 +31391,18 @@ void cGrammar_galgas_34_Grammar::_performSourceFileParsing_ (C_Compiler * inComp
         }
       }else{
         C_String message ;
-        message << "the '" << filePath << "' file exists, but cannot be read" ;
+        message += "the '" ;
+        message += filePath ;
+        message += "' file exists, but cannot be read" ;
         const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
         inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
       }
       macroDetachSharedObject (scanner) ;
     }else{
       C_String message ;
-      message << "the '" << filePath << "' file does not exist" ;
+      message += "the '" ;
+      message += filePath ;
+      message += "' file does not exist" ;
       const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
       inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
     }

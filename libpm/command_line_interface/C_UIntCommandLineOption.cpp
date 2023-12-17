@@ -144,20 +144,26 @@ void C_UIntCommandLineOption::printUIntOptions (void) {
     if (p->mCommandChar != '\0') {
       co.setForeColor (kBlueForeColor) ;
       co.setTextAttribute (kBoldTextAttribute) ;
-      co << "-" << cStringWithCharacter (p->mCommandChar) << "=number" ;
+      co += "-" ;
+      co += cStringWithCharacter (p->mCommandChar) ;
+      co += "=number" ;
       co.setTextAttribute (kAllAttributesOff) ;
-      co << "\n" ;
+      co += "\n" ;
     }
     if (p->mCommandString [0] != '\0') {
       co.setForeColor (kBlueForeColor) ;
       co.setTextAttribute (kBoldTextAttribute) ;
-      co << "--" << p->mCommandString << "=number" ;
+      co += "--" ;
+      co += p->mCommandString ;
+      co += "=number" ;
       co.setTextAttribute (kAllAttributesOff) ;
-      co << "\n" ;
+      co += "\n" ;
     }
-    co << "    " << p->mComment << " (default value: "
-       << cStringWithUnsigned (p->mDefaultValue)
-       << ")\n" ;
+    co += "    " ;
+    co += p->mComment ;
+    co += " (default value: " ;
+    co += cStringWithUnsigned (p->mDefaultValue) ;
+    co += ")\n" ;
     p = p->mNext ;
   }
 }

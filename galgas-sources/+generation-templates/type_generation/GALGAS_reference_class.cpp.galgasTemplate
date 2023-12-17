@@ -1,6 +1,6 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //%!" @" + TYPE_IDENTIFIER% reference class
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_%!TYPE_IDENTIFIER%::printNonNullClassInstanceProperties (void) const {
@@ -15,14 +15,14 @@
 %  }
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 %if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST count] == 0) then
 %typeComparisonResult cPtr_%!TYPE_IDENTIFIER%::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
   return kOperandEqual ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 %end
 
 if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST count] > 0) then
@@ -38,7 +38,7 @@ if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST count] > 0) then
 %  return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 %end%
 
 typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
@@ -57,7 +57,7 @@ typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TY
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 %if SUPER_TYPE_IDENTIFIER == ""
@@ -66,7 +66,7 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
   end% () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) :
 % if SUPER_TYPE_IDENTIFIER == ""
@@ -77,7 +77,7 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFI
 }
 %
 if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST count] == 0) then
-  %//----------------------------------------------------------------------------------------------------------------------\n\n%
+  %//--------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (LOCATION_ARGS) {\n%
   %  GALGAS_%!TYPE_IDENTIFIER% result ;\n%
   %  macroMyNew (result.mObjectPtr, cPtr_%!TYPE_IDENTIFIER% (THERE)) ;\n%
@@ -86,7 +86,7 @@ if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST count] == 0) then
 end
 
 if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST count] > 0) then
-  %//----------------------------------------------------------------------------------------------------------------------\n\n%
+  %//--------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST
     do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inAttribute_%![mPropertyName identifierRepresentation]
@@ -118,7 +118,7 @@ end
 
 for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do
   if mHasSetter then
-    %//----------------------------------------------------------------------------------------------------------------------\n\n%
+    %//--------------------------------------------------------------------------------------------------\n\n%
     %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inValue\n%
                   !^%COMMA_UNUSED_LOCATION_ARGS) {\n%
     %  if (nullptr != mObjectPtr) {\n%
@@ -132,7 +132,7 @@ end
 
 
 for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do
-%//----------------------------------------------------------------------------------------------------------------------\n\n%
+%//--------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::readProperty_%![mPropertyName identifierRepresentation]% (void) const {\n%
     %  if (nullptr == mObjectPtr) {\n%
     %    return GALGAS_%![mPropertyTypeEntry identifierRepresentation]% () ;\n%
@@ -144,9 +144,9 @@ for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPER
   %}\n\n%
 end
 
-%//----------------------------------------------------------------------------------------------------------------------
+%//--------------------------------------------------------------------------------------------------
 //%!"Pointer class for @" + TYPE_NAME + " class"%
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST
@@ -178,30 +178,30 @@ cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
 
 %
 if not IS_ABSTRACT then
-  %//----------------------------------------------------------------------------------------------------------------------\n\n%
+  %//--------------------------------------------------------------------------------------------------\n\n%
   %const C_galgas_type_descriptor * cPtr_%!TYPE_IDENTIFIER%::classDescriptor (void) const {\n%
   %  return & kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;\n%
   %}\n\n%
   if [ALL_PROPERTY_LIST count] == 0 then
     %void cPtr_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,\n%
                                !^%const int32_t /* inIndentation */) const {\n%
-    %  ioString << "[@%!TYPE_NAME%]" ;\n%
+    %  ioString += "[@%!TYPE_NAME%]" ;\n%
     %}\n\n%
   else
     %void cPtr_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,\n%
                                !^%const int32_t inIndentation) const {\n%
-    %  ioString << "[@%!TYPE_NAME%:" ;\n%
+    %  ioString += "[@%!TYPE_NAME%:" ;\n%
     for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ALL_PROPERTY_LIST
       do %  mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
-      between %  ioString << ", " ;\n%
+      between %  ioString += ", " ;\n%
     end
-    %  ioString << "]" ;\n%
+    %  ioString += "]" ;\n%
     %}\n\n%
   end
 end
 
 if not IS_ABSTRACT then
-%//----------------------------------------------------------------------------------------------------------------------
+%//--------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_%!TYPE_IDENTIFIER%::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;

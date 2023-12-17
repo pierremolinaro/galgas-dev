@@ -165,12 +165,14 @@ GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObject
   bool ok = mFunctionDescriptor->mParameterCount == argumentsArray.count () ;
   if (! ok) {
     C_String errorMessage ;
-    errorMessage << "the '" << mFunctionDescriptor->mFunctionName << "' function is called with "
-                 << cStringWithUnsigned (argumentsArray.count ())
-                 << " actual parameter"
-                 << ((argumentsArray.count () > 1) ? "s" : "")
-                 << ", but its header requires "
-                 << cStringWithUnsigned (mFunctionDescriptor->mParameterCount) ;
+    errorMessage += "the '" ;
+    errorMessage += mFunctionDescriptor->mFunctionName ;
+    errorMessage += "' function is called with " ;
+    errorMessage += cStringWithUnsigned (argumentsArray.count ()) ;
+    errorMessage += " actual parameter" ;
+    errorMessage += ((argumentsArray.count () > 1) ? "s" : "") ;
+    errorMessage += ", but its header requires " ;
+    errorMessage += cStringWithUnsigned (mFunctionDescriptor->mParameterCount) ;
     inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_THERE) ;
   }
 //--- Check parameters
@@ -186,13 +188,15 @@ GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObject
       }
       if (! ok) {
         C_String errorMessage ;
-        errorMessage << "the actual parameter #"
-                     << cStringWithUnsigned (i)
-                     << " of the '" << mFunctionDescriptor->mFunctionName << "' function call has the '@"
-                     << parameter.staticTypeDescriptor ()->mGalgasTypeName
-                     << "', but the function header requires an instance of '@"
-                     << mFunctionDescriptor->mFormalParameterTypeList [i]->mGalgasTypeName
-                     << "'" ;
+        errorMessage += "the actual parameter #" ;
+        errorMessage += cStringWithUnsigned (i) ;
+        errorMessage += " of the '" ;
+        errorMessage += mFunctionDescriptor->mFunctionName ;
+        errorMessage += "' function call has the '@" ;
+        errorMessage += parameter.staticTypeDescriptor ()->mGalgasTypeName ;
+        errorMessage += "', but the function header requires an instance of '@" ;
+        errorMessage += mFunctionDescriptor->mFormalParameterTypeList [i]->mGalgasTypeName ;
+        errorMessage += "'" ;
         inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_THERE) ;
       }
     }

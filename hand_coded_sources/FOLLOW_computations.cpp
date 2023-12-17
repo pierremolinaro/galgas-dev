@@ -123,11 +123,11 @@ printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarr
                  const int32_t inIterationsCount) {
 //--- Print messages
   inHTMLfile.outputRawData ("<p>") ;
-  inHTMLfile << "Calculus completed in " ;
+  inHTMLfile += "Calculus completed in " ;
   inHTMLfile.appendSigned (inIterationsCount) ;
-  inHTMLfile << " iterations, " ;
+  inHTMLfile += " iterations, " ;
   inHTMLfile.appendUnsigned (inValuesCount) ;
-  inHTMLfile << " values ;\n"
+  inHTMLfile += " values ;\n"
                 "'$$' means the nonterminal symbol can be followed by empty string (see step 6) ;\n\n"
                 "the followings of terminal symbols are given for information.\n";
   inHTMLfile.outputRawData ("</p>") ;
@@ -142,7 +142,7 @@ printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarr
       inHTMLfile.outputRawData ("</code></td><td><code>") ;
       const int32_t n = inFOLLOWarray (i COMMA_HERE).count () ;
       for (int32_t j=0 ; j<n ; j++) {
-        inHTMLfile << " " ;
+        inHTMLfile += " " ;
         inVocabulary.printInFile (inHTMLfile, (int32_t) inFOLLOWarray (i COMMA_HERE) (j COMMA_HERE) COMMA_HERE) ;
       }
       inHTMLfile.outputRawData ("</code></td></tr>") ;
@@ -192,9 +192,9 @@ checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
   const uint64_t n = ntErreurSuivants.value64Count () ;
   if (inVerboseOptionOn) {
     if (n == 0) {
-      co << "ok.\n" ;
+      co += "ok.\n" ;
     }else{
-      co << "error.\n" ;
+      co += "error.\n" ;
     }
     co.flush () ;
   }
@@ -245,7 +245,7 @@ void FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                           const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    co << "  FOLLOW sets... " ;
+    co += "  FOLLOW sets... " ;
     co.flush () ;
   }
 //--- Print in BNF file

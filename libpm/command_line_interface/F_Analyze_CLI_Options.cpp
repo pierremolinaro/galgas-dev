@@ -288,9 +288,9 @@ static void analyze_one_option (const char * inCommand,
          && isalpha (inCommand [0])
          && (inCommand [1] == ':')
          && (inCommand [2] == '\\')) {
-          fileName << "/" ;
+          fileName += "/" ;
           fileName.appendUnicodeCharacter (TO_UNICODE (inCommand [0]) COMMA_HERE) ;
-          fileName << "/" ;
+          fileName += "/" ;
           firstChar = 3 ;
         }
         for (int32_t i=firstChar ; i<fileLength ; i++) {
@@ -354,9 +354,9 @@ static void analyze_one_option (const char * inCommand,
        && isalpha (szFile [0])
        && (szFile [1] == ':')
        && (szFile [2] == '\\')) {
-        fileName << "/" ;
+        fileName += "/" ;
         fileName.appendUnicodeCharacter (TO_UNICODE (szFile [0]) COMMA_HERE) ;
-        fileName << "/" ;
+        fileName += "/" ;
         firstChar = 3 ;
       }
       for (int32_t i=firstChar ; i<fileLength ; i++) {

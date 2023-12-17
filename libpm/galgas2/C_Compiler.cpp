@@ -231,7 +231,7 @@ void C_Compiler::printMessage (const GALGAS_string & inMessage
 void C_Compiler::printMessage (const C_String & inMessage
                                COMMA_LOCATION_ARGS) {
   C_String s ;
-  s << inMessage ;
+  s += inMessage ;
   ggs_printMessage (s COMMA_THERE) ;
 }
 
@@ -273,7 +273,10 @@ void C_Compiler::castError (const C_String & inTargetTypeName,
                             const C_galgas_type_descriptor * inObjectDynamicTypeDescriptor
                             COMMA_LOCATION_ARGS) {
   C_String m ;
-  m << "cannot cast an @" << inObjectDynamicTypeDescriptor->mGalgasTypeName << " to an @" << inTargetTypeName ;
+  m += "cannot cast an @" ;
+  m += inObjectDynamicTypeDescriptor->mGalgasTypeName ;
+  m += " to an @" ;
+  m += inTargetTypeName ;
   onTheFlyRunTimeError (m COMMA_THERE) ;
 }
 
@@ -338,7 +341,7 @@ void C_Compiler::semanticErrorWith_K_message (const GALGAS_lstring & inKey,
     const utf32 c = searchErrorMessage (i COMMA_HERE) ;
     if (perCentFound) {
       if (UNICODE_VALUE (c) == 'K') {
-        message << key ;
+        message += key ;
       }
       perCentFound = false ;
     }else if (UNICODE_VALUE (c) == '%') {
@@ -373,14 +376,14 @@ void C_Compiler::semanticErrorWith_K_L_message (const GALGAS_lstring & inKey,
     const utf32 c = searchErrorMessage (i COMMA_HERE) ;
     if (perCentFound) {
       if (UNICODE_VALUE (c) == 'K') {
-        message << key ;
+        message += key ;
       }else if (UNICODE_VALUE (c) == 'L') {
         if (!inExistingKeyLocation.isValid ()) {
-          message << "<<unknown>>" ;
+          message += "<<unknown>>" ;
         }else if (inExistingKeyLocation.getter_isNowhere (HERE).boolEnum () == kBoolTrue) {
-          message << "<<unknown>>" ;
+          message += "<<unknown>>" ;
         }else{
-          message << inExistingKeyLocation.getter_startLocationString (this COMMA_THERE) ;
+          message += inExistingKeyLocation.getter_startLocationString (this COMMA_THERE).stringValue () ;
         }
       }
       perCentFound = false ;
@@ -411,9 +414,9 @@ void C_Compiler::semanticWarningWith_K_L_message (const GALGAS_lstring & inKey,
     const utf32 c = searchErrorMessage (i COMMA_HERE) ;
     if (perCentFound) {
       if (UNICODE_VALUE (c) == 'K') {
-        message << key ;
+        message += key ;
       }else if (UNICODE_VALUE (c) == 'L') {
-        message << inExistingKeyLocation.getter_startLocationString (this COMMA_THERE) ;
+        message += inExistingKeyLocation.getter_startLocationString (this COMMA_THERE).stringValue () ;
       }
       perCentFound = false ;
     }else if (UNICODE_VALUE (c) == '%') {
@@ -574,10 +577,12 @@ void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
       bool ok = f.isOpened () ;
       if (! ok) {
         C_String message ;
-        message << "Cannot open '" << fileName << "' file in write mode." ;
+        message += "Cannot open '" ;
+        message += fileName ;
+        message += "' file in write mode." ;
         onTheFlySemanticError (message COMMA_HERE) ;
       }
-      f << inContents ;
+      f += inContents ;
       if (verboseOptionOn) {
         ggs_printFileOperationSuccess (C_String ("Created '") + fileName + "'.\n") ;
       }
@@ -592,10 +597,12 @@ void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
         C_TextFileWrite f (fullPathName) ;
         if (! f.isOpened ()) {
           C_String message ;
-          message << "Cannot open '" << fullPathName << "' file in write mode." ;
+          message += "Cannot open '" ;
+          message += fullPathName ;
+          message += "' file in write mode." ;
           onTheFlySemanticError (message COMMA_HERE) ;
         }else{
-          f << inContents ;
+          f += inContents ;
           if (verboseOptionOn) {
             ggs_printFileOperationSuccess (C_String ("Replaced '") + fullPathName + "'.\n") ;
           }
@@ -647,12 +654,20 @@ void C_Compiler::generateFileWithPatternFromPathes (
       bool ok = f.isOpened () ;
       if (! ok) {
         C_String message ;
-        message << "Cannot open '" << fileName << "' file in write mode." ;
+        message += "Cannot open '" ;
+        message += fileName ;
+        message += "' file in write mode." ;
         onTheFlySemanticError (message COMMA_HERE) ;
       }
-      f << inHeader << kSTART_OF_USER_ZONE_1 << inDefaultUserZone1 << kEND_OF_USER_ZONE_1
-        << inGeneratedZone2 << kSTART_OF_USER_ZONE_2 << inDefaultUserZone2 << kEND_OF_USER_ZONE_2
-        << inGeneratedZone3 ;
+      f += inHeader ;
+      f += kSTART_OF_USER_ZONE_1 ;
+      f += inDefaultUserZone1 ;
+      f += kEND_OF_USER_ZONE_1 ;
+      f += inGeneratedZone2 ;
+      f += kSTART_OF_USER_ZONE_2 ;
+      f += inDefaultUserZone2 ;
+      f += kEND_OF_USER_ZONE_2 ;
+      f += inGeneratedZone3 ;
       if (verboseOptionOn) {
         ggs_printFileCreationSuccess (C_String ("Created '") + fileName + "'.\n") ;
       }
@@ -709,14 +724,20 @@ void C_Compiler::generateFileWithPatternFromPathes (
       ok = f.isOpened () ;
       if (! ok) {
         C_String message ;
-        message << "Cannot open '" << fullPathName << "' file in write mode." ;
+        message += "Cannot open '" ;
+        message += fullPathName ;
+        message += "' file in write mode." ;
         onTheFlySemanticError (message COMMA_HERE) ;
       }
-      f << inHeader
-        << kSTART_OF_USER_ZONE_1 << firstUserPart << kEND_OF_USER_ZONE_1
-        << inGeneratedZone2
-        << kSTART_OF_USER_ZONE_2 << secondUserPart << kEND_OF_USER_ZONE_2
-        << inGeneratedZone3 ;
+      f += inHeader ;
+      f += kSTART_OF_USER_ZONE_1 ;
+      f += firstUserPart ;
+      f += kEND_OF_USER_ZONE_1 ;
+      f += inGeneratedZone2 ;
+      f += kSTART_OF_USER_ZONE_2 ;
+      f += secondUserPart ;
+      f += kEND_OF_USER_ZONE_2 ;
+      f += inGeneratedZone3 ;
       if (verboseOptionOn) {
         ggs_printFileOperationSuccess (C_String ("Replaced '") + fullPathName + "'.\n") ;
       }

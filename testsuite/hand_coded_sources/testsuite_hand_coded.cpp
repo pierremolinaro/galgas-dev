@@ -8,25 +8,25 @@ static void routine_test_dictionary (void) {
   GALGAS_stringset dictionary = GALGAS_stringset::constructor_emptySet (HERE) ;
 //--- First insertion
   for (int32_t i=0 ; i<TEST_SIZE ; i++) {
-    C_String s ; s << cStringWithSigned (i) ;
+    C_String s = cStringWithSigned (i) ;
     dictionary.addAssign_operation (GALGAS_string (s) COMMA_HERE) ;
   }
   printf ("Insertion Test Done\n") ;
 //--- First remove
   for (int32_t i=0 ; i<TEST_SIZE ; i++) {
-    C_String s ; s << cStringWithSigned (i) ;
+    C_String s = cStringWithSigned (i) ;
     dictionary.setter_removeKey (GALGAS_string (s) COMMA_HERE) ;
   }
   printf ("Delete Test Done\n") ;
 //--- Second insertion
   for (int32_t i=0 ; i<TEST_SIZE ; i++) {
-    C_String s ; s << cStringWithSigned (i) ;
+    C_String s = cStringWithSigned (i) ;
     dictionary.addAssign_operation (GALGAS_string (s) COMMA_HERE) ;
   }
   printf ("Insertion Test Done\n") ;
 //--- Second Remove
   for (int32_t i=0 ; i<TEST_SIZE ; i++) {
-    C_String s ; s << cStringWithSigned (i) ;
+    C_String s = cStringWithSigned (i) ;
     dictionary.setter_removeKey (GALGAS_string (s) COMMA_HERE) ;
   }
   printf ("Delete Test Done\n") ;

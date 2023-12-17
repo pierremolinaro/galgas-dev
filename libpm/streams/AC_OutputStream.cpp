@@ -107,10 +107,10 @@ void AC_OutputStream::appendString (const C_String inString) {
 
 //--------------------------------------------------------------------------------------------------
 
-AC_OutputStream & AC_OutputStream::operator << (const C_String inString) {
-  genericUnicodeArrayOutput (inString.utf32String (HERE), inString.length ()) ;
-  return *this ;
-}
+//AC_OutputStream & AC_OutputStream::operator << (const C_String inString) {
+//  genericUnicodeArrayOutput (inString.utf32String (HERE), inString.length ()) ;
+//  return *this ;
+//}
 
 //--------------------------------------------------------------------------------------------------
 

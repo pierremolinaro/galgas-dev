@@ -1400,7 +1400,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultNone generateC
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode {
   if inGenerateSyntaxDirectedTranslationString then
-    ioGeneratedCode += syntaxDirectedTranslationResultVarName() + " << " + inAccessMethodName + " ;\n"
+    ioGeneratedCode += syntaxDirectedTranslationResultVarName() + " += " + inAccessMethodName + " ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !syntaxDirectedTranslationResultVarName ()]
   end
 }

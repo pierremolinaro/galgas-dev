@@ -1971,7 +1971,7 @@ C_String C_String::stringByStandardizingPath (void) const {
     C_String path = * this ;
   #endif
   if (path.length () == 0) {
-    path << "." ;
+    path += "." ;
   }else{
   //#define TRACE_stringByStandardizingPath
   //--- Decompose path

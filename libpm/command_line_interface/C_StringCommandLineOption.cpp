@@ -63,7 +63,7 @@ void C_StringCommandLineOption::setStringOptionForCommandChar (const char * inCo
       outFound = inCommandString [0] == p->mCommandChar ;
       if (outFound) {
         p->mValue.setLengthToZero () ;
-        p->mValue << & inCommandString [2] ;
+        p->mValue += & inCommandString [2] ;
       }
       p = p->mNext ;
     }
@@ -98,7 +98,7 @@ void C_StringCommandLineOption::setStringOptionForCommandString (const char * in
                  (strncmp (p->mCommandString, inCommandString, equalSignIndex) == 0) ;
       if (outFound) {
         p->mValue.setLengthToZero () ;
-        p->mValue << & inCommandString [strlen (p->mCommandString) + 1] ;
+        p->mValue += & inCommandString [strlen (p->mCommandString) + 1] ;
       }
       p = p->mNext ;
     }
@@ -130,20 +130,26 @@ void C_StringCommandLineOption::printStringOptions (void) {
     if (p->mCommandChar != '\0') {
       co.setForeColor (kBlueForeColor) ;
       co.setTextAttribute (kBoldTextAttribute) ;
-      co << "-" << cStringWithCharacter (p->mCommandChar) << "=string" ;
+      co += "-" ;
+      co += cStringWithCharacter (p->mCommandChar) ;
+      co += "=string" ;
       co.setTextAttribute (kAllAttributesOff) ;
-      co << "\n" ;
+      co += "\n" ;
     }
     if (p->mCommandString [0] != '\0') {
       co.setForeColor (kBlueForeColor) ;
       co.setTextAttribute (kBoldTextAttribute) ;
-      co << "--" << p->mCommandString << "=string" ;
+      co += "--" ;
+      co += p->mCommandString ;
+      co += "=string" ;
       co.setTextAttribute (kAllAttributesOff) ;
-      co << "\n" ;
+      co += "\n" ;
     }
-    co << "    " << p->mComment  << " (default value: '"
-       << p->mDefaultValue
-       << "')\n" ;
+    co += "    " ;
+    co += p->mComment  ;
+    co += " (default value: '" ;
+    co += p->mDefaultValue ;
+    co += "')\n" ;
     p = p->mNext ;
   }
 }

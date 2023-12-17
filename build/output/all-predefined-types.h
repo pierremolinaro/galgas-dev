@@ -174,16 +174,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_location ;
 //
 //--------------------------------------------------------------------------------------------------
 
-AC_OutputStream & operator << (AC_OutputStream & inStream,
-                               const GALGAS_string & inString) ;
-
-//--------------------------------------------------------------------------------------------------
-
-AC_OutputStream & operator << (AC_OutputStream & inStream,
-                               const GALGAS_lstring & inString) ;
-
-//--------------------------------------------------------------------------------------------------
-
 class GALGAS_string : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;

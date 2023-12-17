@@ -1,8 +1,8 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //                               Bool options                                                    
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 %for (lkey mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_MAP do
   %C_BoolCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
@@ -11,11 +11,11 @@
   %                                         %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
   %                                         %![mComment utf8RepresentationEscapingQuestionMark]%) ;\n\n%
 end
-%//----------------------------------------------------------------------------------------------------------------------
+%//--------------------------------------------------------------------------------------------------
 //
 //                               UInt options                                                    
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 %for (lkey mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_MAP do
   %C_UIntCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
@@ -25,11 +25,11 @@ end
   %                                         %![mComment utf8RepresentationEscapingQuestionMark]%,\n%
   %                                         %!mDefaultValue%) ;\n\n%
 end
-%//----------------------------------------------------------------------------------------------------------------------
+%//--------------------------------------------------------------------------------------------------
 //
 //                              String options                                                   
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 %for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_MAP do
   %C_StringCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
@@ -39,11 +39,11 @@ end
   %                                         %![mComment utf8RepresentationEscapingQuestionMark]%,\n%
   %                                         %![mDefaultValue utf8RepresentationEscapingQuestionMark]%) ;\n\n%
 end
-%//----------------------------------------------------------------------------------------------------------------------
+%//--------------------------------------------------------------------------------------------------
 //
 //                              String List options                                              
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 %for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_MAP do
   %C_StringListCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
@@ -52,6 +52,6 @@ end
   %                                         %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
   %                                         %![mComment utf8RepresentationEscapingQuestionMark]%) ;\n\n%
 end
-%//----------------------------------------------------------------------------------------------------------------------
+%//--------------------------------------------------------------------------------------------------
 
 

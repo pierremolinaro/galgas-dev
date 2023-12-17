@@ -131,7 +131,7 @@ static void testBigUnsignedDecimalStringConstructor (void) {
     const size_t n = 1 + galgas_random () % LENGTH ;
     for (size_t j = 0 ; j < n ; j++) {
       const uint32_t value = galgas_random () ;
-      refString << cStringWithUnsigned (value) ;
+      refString += cStringWithUnsigned (value) ;
     }
   //--- Remove leading zeros
     while ((refString.length () > 1) && (refString (0 COMMA_HERE) == '0')) {

@@ -257,7 +257,9 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
         bool ok = C_FileManager::makeDirectoryIfDoesNotExist (inFilePath.stringValue ().stringByDeletingLastPathComponent ()) ;
         if (! ok) {
           C_String message ;
-          message << "cannot create '" << inFilePath.stringValue () << "' directory" ;
+          message += "cannot create '" ;
+          message += inFilePath.stringValue () ;
+          message += "' directory" ;
           inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
           outFileWritten.drop () ;
         }else{
@@ -268,7 +270,9 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
             ggs_printFileCreationSuccess (C_String ("Created '") + inFilePath.stringValue () + "'.\n") ;
           }else if (! ok) {
             C_String message ;
-            message << "cannot write '" << inFilePath.stringValue () << "' file" ;
+            message += "cannot write '" ;
+            message += inFilePath.stringValue () ;
+            message += "' file" ;
             inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
             outFileWritten.drop () ;
           }
@@ -311,7 +315,9 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
           ggs_printFileCreationSuccess (C_String ("Created '") + filePath + "'.\n") ;
         }else if (! ok) {
           C_String message ;
-          message << "cannot write '" << filePath << "' file" ;
+          message += "cannot write '" ;
+          message += filePath ;
+          message += "' file" ;
           inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
         }
       }
@@ -351,7 +357,9 @@ void GALGAS_data::method_writeToExecutableFile (GALGAS_string inFilePath,
           ggs_printFileOperationSuccess (C_String ("Created '") + filePath + "'.\n") ;
         }else if (! ok) {
           C_String message ;
-          message << "cannot write '" << filePath << "' file" ;
+          message += "cannot write '" ;
+          message += filePath ;
+          message += "' file" ;
           inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
         }
       }

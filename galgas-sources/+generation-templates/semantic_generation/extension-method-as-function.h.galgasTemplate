@@ -1,8 +1,8 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //%!"Extension method '@" + TYPE_NAME + " " + METHOD_NAME + "'"%
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void extensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const class GALGAS_%![TYPE_NAME identifierRepresentation]% inObject%
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do

@@ -664,22 +664,22 @@ display (const cPureBNFproductionsList & inProductionRules,
     const cProduction & p = inProductionRules.mProductionArray (mItemsSet (i COMMA_HERE).mProductionRuleIndex COMMA_HERE) ;
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     inHTMLfile.outputRawData ("<span class=\"list\">") ;
-    inHTMLfile << "[" ;
+    inHTMLfile += "[" ;
     inVocabulary.printInFile (inHTMLfile, p.leftNonTerminalIndex () COMMA_HERE) ;
-    inHTMLfile << " ->" ;
+    inHTMLfile += " ->" ;
     for (int32_t j=0 ; j<p.derivationLength () ; j++) {
       if (j == location) {
-        inHTMLfile << " ." ;      
+        inHTMLfile += " ." ;      
       }
-      inHTMLfile << " " ;
+      inHTMLfile += " " ;
       inVocabulary.printInFile (inHTMLfile, p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ;
     }
     if (location == p.derivationLength ()) {
-      inHTMLfile << " ." ;      
+      inHTMLfile += " ." ;      
     }
-    inHTMLfile << ", " ;
+    inHTMLfile += ", " ;
     inVocabulary.printInFile (inHTMLfile, mItemsSet (i COMMA_HERE).mTerminalSymbol COMMA_HERE) ;
-    inHTMLfile << "]" ;
+    inHTMLfile += "]" ;
     inHTMLfile.outputRawData ("</span>") ;
   }
 }
@@ -1029,7 +1029,8 @@ display (const cPureBNFproductionsList & inProductionRules,
          C_HTMLString & inHTMLfile) const {
   for (int32_t i=0 ; i<m_LR1_items_sets_array.count () ; i++) {
     inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
-    inHTMLfile << "S" << cStringWithSigned (i) ;
+    inHTMLfile += "S" ;
+    inHTMLfile += cStringWithSigned (i) ;
     inHTMLfile.outputRawData ("</td><td><code>") ;
     m_LR1_items_sets_array (i COMMA_HERE).display (inProductionRules, inVocabulary, inHTMLfile) ;
     inHTMLfile.outputRawData ("</code></td></tr>") ;
@@ -1172,7 +1173,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
   int32_t startIndex = 0 ;
   for (int32_t i=0 ; i<rowsCount ; i++) {
     startIndexArray.appendObject (startIndex) ;
-    ioCppFileContents <<"\n// State S" ;
+    ioCppFileContents +="\n// State S" ;
     ioCppFileContents += cStringWithSigned (i) ;
     ioCppFileContents += " (index = " ;
     ioCppFileContents += cStringWithSigned (startIndex) ;
@@ -1243,7 +1244,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
 
 //--- Write successor table, state by state ----------------------------------
   ioCppFileContents += "// Successor tables handle non terminal successors ;\n"
-                    "// an entry is (non_terminal_symbol, n) ; successor is state n.\n\n" ;
+                       "// an entry is (non_terminal_symbol, n) ; successor is state n.\n\n" ;
   int32_t currentSourceState = -1 ; // No state
   for (int32_t t=0 ; t<transitionsCount ; t++) {
     const int32_t nonterminal =  inTransitionList (t COMMA_HERE).action () - columnsCount ; 
@@ -1264,7 +1265,9 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         ioCppFileContents += "] = {" ;
         currentSourceState = sourceState ;
       }
-      ioCppFileContents << cStringWithSigned (nonterminal) << ", " << cStringWithSigned (inTransitionList (t COMMA_HERE).targetState ()) ;
+      ioCppFileContents += cStringWithSigned (nonterminal) ;
+      ioCppFileContents += ", " ;
+      ioCppFileContents += cStringWithSigned (inTransitionList (t COMMA_HERE).targetState ()) ;
     }
   }
   ioCppFileContents += ", -1} ;\n\n" ;
@@ -1638,14 +1641,18 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                              "        }\n"
                              "      }else{\n"
                              "        C_String message ;\n"
-                             "        message << \"the '\" << filePath << \"' file exists, but cannot be read\" ;\n"
+                             "        message += \"the '\" ;\n"
+                             "        message += filePath ;\n"
+                             "        message += \"' file exists, but cannot be read\" ;\n"
                              "        const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;\n"
                              "        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;\n"
                              "        }\n"
                              "        macroDetachSharedObject (scanner) ;\n"
                              "      }else{\n"
                              "        C_String message ;\n"
-                             "        message << \"the '\" << filePath << \"' file does not exist\" ;\n"
+                             "        message += \"the '\";\n"
+                             "        message += filePath ;\n"
+                             "        message += \"' file does not exist\" ;\n"
                              "        const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;\n"
                              "        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;\n"
                              "    }\n"
@@ -1839,7 +1846,7 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
                   const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Console display
   if (inVerboseOptionOn) {
-    co << "  LR(1) automaton... " ;
+    co += "  LR(1) automaton... " ;
     co.flush () ;
   }
 //--- Print in BNF file
@@ -1859,8 +1866,10 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
                           inVocabularyDerivingToEmpty_Array,
                           transitionList) ;
   if (inVerboseOptionOn) {
-    co << cStringWithSigned (LR1_items_sets_collection->getStateCount ()) << " states, "
-       << cStringWithSigned (transitionList.count ()) << " transitions.\n" ;
+    co += cStringWithSigned (LR1_items_sets_collection->getStateCount ()) ;
+    co += " states, " ;
+    co += cStringWithSigned (transitionList.count ()) ;
+    co += " transitions.\n" ;
     co.flush () ;
   }
 //--- Display automaton states
@@ -2023,9 +2032,13 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
 //--- Display summary
   if (inVerboseOptionOn) {
     if (conflictCount == 0) {
-      co << "ok.\n" ;
+      co += "ok.\n" ;
     }else{
-      co << "error, " << cStringWithSigned (conflictCount) << " conflict" << ((conflictCount > 1) ? "s" : "") << ".\n" ;
+      co += "error, " ;
+      co += cStringWithSigned (conflictCount) ;
+      co += " conflict" ;
+      co += ((conflictCount > 1) ? "s" : "") ;
+      co += ".\n" ;
     }
     co.flush () ;
   }
@@ -2049,10 +2062,10 @@ LR1_computations (const cPureBNFproductionsList & inProductionRules,
       ioHTMLFileContents.outputRawData ("</span>") ;
     }else{
       ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
-      ioHTMLFileContents << cStringWithSigned (conflictCount)
-                  << " conflict"
-                  << ((conflictCount > 1) ? "s" : "")
-                  << " : grammar is not LR (1)." ;
+      ioHTMLFileContents += cStringWithSigned (conflictCount) ;
+      ioHTMLFileContents += " conflict" ;
+      ioHTMLFileContents += ((conflictCount > 1) ? "s" : "") ;
+      ioHTMLFileContents += " : grammar is not LR (1)." ;
       ioHTMLFileContents.outputRawData ("</span>") ;
     }
     ioHTMLFileContents.outputRawData ("</p>") ;

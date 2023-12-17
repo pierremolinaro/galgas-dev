@@ -1,7 +1,7 @@
 %
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   if [mAssociatedValueTypeList count] > 0 then
-    %//----------------------------------------------------------------------------------------------------------------------\n\n%
+    %//--------------------------------------------------------------------------------------------------\n\n%
     %cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName%::cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% (%?^
     for (mType) in mAssociatedValueTypeList
     do (idx) %const GALGAS_%![mType identifierRepresentation]% inAssociatedValue%![idx string]
@@ -14,16 +14,16 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     end
     % {\n%   
     %} ;\n\n%
-    %//----------------------------------------------------------------------------------------------------------------------\n\n%
+    %//--------------------------------------------------------------------------------------------------\n\n%
     %void cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName%::description (%?^%C_String & ioString,\n%
                        !^%const int32_t inIndentation) const {\n%
-    %  ioString << "(\\n" ;\n%
+    %  ioString += "(\\n" ;\n%
     for (mType) in mAssociatedValueTypeList do (idx)
       %  mAssociatedValue%![idx string]%.description (ioString, inIndentation) ;\n%
     end
-    %  ioString << ")" ;\n%
+    %  ioString += ")" ;\n%
     %}\n\n%
-    %//----------------------------------------------------------------------------------------------------------------------\n\n%
+    %//--------------------------------------------------------------------------------------------------\n\n%
     %typeComparisonResult cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName%::compare (const cEnumAssociatedValues * inOperand) const {\n%
     %  const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = dynamic_cast<const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *> (inOperand) ;\n%
     %  macroValidPointer (ptr) ;\n%
@@ -38,7 +38,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   end
 end
 
-%//----------------------------------------------------------------------------------------------------------------------
+%//--------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 %
@@ -50,7 +50,7 @@ end
 
 %
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
-  %//----------------------------------------------------------------------------------------------------------------------\n\n%
+  %//--------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_%![mConstantName identifierRepresentation]% (%?^
   if [mAssociatedValueTypeList count] == 0 then
     %UNUSED_LOCATION_ARGS%
@@ -90,7 +90,7 @@ end
 
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   if [mAssociatedValueTypeList count] > 0 then
-    %//----------------------------------------------------------------------------------------------------------------------\n\n%
+    %//--------------------------------------------------------------------------------------------------\n\n%
     %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mConstantName identifierRepresentation]% (%?^
     for (mType) in mAssociatedValueTypeList do (idx)
       %GALGAS_%![mType identifierRepresentation]% & outAssociatedValue%![idx string]%,\n%!^
@@ -102,7 +102,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
       %    outAssociatedValue%![idx string]%.drop () ;\n%
     end
     %    C_String s ;\n%
-    %    s << "method @%!TYPE_IDENTIFIER% %!mConstantName% invoked with an invalid enum value" ;\n%
+    %    s += "method @%!TYPE_IDENTIFIER% %!mConstantName% invoked with an invalid enum value" ;\n%
     %    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n%
     %  }else{\n%
     %    const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
@@ -116,7 +116,7 @@ end
 
 
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
-    %//----------------------------------------------------------------------------------------------------------------------\n\n%
+    %//--------------------------------------------------------------------------------------------------\n\n%
     %bool GALGAS_%!TYPE_IDENTIFIER%::optional_%![mConstantName identifierRepresentation]% (%?^
     for (mType) in mAssociatedValueTypeList
     do (idx)
@@ -138,7 +138,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
      %}\n\n%
 end
 
-%//----------------------------------------------------------------------------------------------------------------------
+%//--------------------------------------------------------------------------------------------------
 
 static const char * gEnumNameArrayFor_%!TYPE_IDENTIFIER% [%![[CONSTANT_LIST count] + 1 string]%] = {
   "(not built)"%
@@ -149,13 +149,13 @@ end%
 
 %
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
-%//----------------------------------------------------------------------------------------------------------------------
+%//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_is%![[mConstantName stringByCapitalizingFirstCharacter] identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_%![mConstantName identifierRepresentation]% == mEnum) ;
 }\n\n%
 end
-%//----------------------------------------------------------------------------------------------------------------------
+%//--------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
 %                                       !^%const int32_t %
@@ -165,15 +165,16 @@ else
   %/* inIndentation */%
 end
 %) const {
-  ioString << "<enum @%!TYPE_NAME%: " << gEnumNameArrayFor_%!TYPE_IDENTIFIER% [mEnum] ;
+  ioString += "<enum @%!TYPE_NAME%: " ;
+  ioString += gEnumNameArrayFor_%!TYPE_IDENTIFIER% [mEnum] ;
 %
 if HAS_ASSOCIATED_VALUES then
   %  mAssociatedValues.description (ioString, inIndentation) ;\n%
 end
-%  ioString << ">" ;
+%  ioString += ">" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;

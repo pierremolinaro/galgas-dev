@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -18,7 +18,7 @@ typeComparisonResult GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::objectCompare (const GA
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (void) :
 %if SUPER_WEAK_REF_TYPE_IDENTIFIER == ""
@@ -27,7 +27,7 @@ GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (void) :
   end% () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::operator = (const GALGAS_%!CLASS_TYPE_IDENTIFIER% & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
@@ -39,7 +39,7 @@ GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::operato
   return *this ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (const GALGAS_%!CLASS_TYPE_IDENTIFIER% & inSource) :
 % if SUPER_WEAK_REF_TYPE_IDENTIFIER == ""
@@ -48,7 +48,7 @@ GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (const GA
   end% (inSource) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::constructor_nil (LOCATION_ARGS) {
   GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% result ;
@@ -56,7 +56,7 @@ GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::construct
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_%!CLASS_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::bang_%!WEAK_REF_TYPE_IDENTIFIER% (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_%!CLASS_TYPE_IDENTIFIER% result ;

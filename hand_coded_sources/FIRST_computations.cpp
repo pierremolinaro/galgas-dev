@@ -112,7 +112,7 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
     ioHTMLFileContents.outputRawData ("<table class=\"result\">") ;
     for (int32_t symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
       ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-      ioHTMLFileContents << FIRST_with_empty_relation.configuration().constantNameForVariableAndValue(0, (uint32_t) symbol COMMA_HERE) ;
+      ioHTMLFileContents += FIRST_with_empty_relation.configuration().constantNameForVariableAndValue(0, (uint32_t) symbol COMMA_HERE) ;
       ioHTMLFileContents.outputRawData ("</code></td><td><code>") ;
       const int32_t length = outFIRSTarray (symbol COMMA_HERE).count () ;
       for (int32_t e=0 ; e<length ; e++) {
@@ -172,9 +172,9 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
   }
   if (inVerboseOptionOn) {
     if (ntInErrorCount == 0) {
-      co << "ok.\n" ;
+      co += "ok.\n" ;
     }else{
-      co << "error.\n" ;
+      co += "error.\n" ;
     }
     co.flush () ;
   }
@@ -198,7 +198,7 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
   const C_RelationConfiguration vocabularyConfiguration = inUsefulSymbols.configuration () ;
 //--- Console display
   if (inVerboseOptionOn) {
-    co << "  FIRST sets... " ;
+    co += "  FIRST sets... " ;
     co.flush () ;
   }
 //--- Print in BNF file

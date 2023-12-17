@@ -1,8 +1,8 @@
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //%!"Extension setter '@" + TYPE_NAME + " " + MODIFIER_NAME + "'"%
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 void extensionSetter_%![MODIFIER_NAME identifierRepresentation]% (%?^%class GALGAS_%![TYPE_NAME identifierRepresentation]% & ioObject%
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do

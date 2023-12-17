@@ -59,7 +59,7 @@ void cAffichagePremiersProduction::action (const bool tableauDesValeurs [],
   for (int32_t i=((int32_t) nombreVariables) - 1 ; i>=0 ; i--) {
     element = (element << 1) + tableauDesValeurs [i] ;
   }
-  mFichierBNF << " " ;
+  mFichierBNF += " " ;
   mVocabulary.printInFile (mFichierBNF, element COMMA_HERE) ;
 }
 
@@ -108,9 +108,9 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           const int32_t numeroProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
           if (inPopulateHTMLHelperString) {
             ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><a href=\"#pure_bnf_") ;
-            ioHTMLFileContents << cStringWithSigned (numeroProduction) ;
+            ioHTMLFileContents += cStringWithSigned (numeroProduction) ;
             ioHTMLFileContents.outputRawData ("\">") ;
-            ioHTMLFileContents << cStringWithSigned (numeroProduction) ;
+            ioHTMLFileContents += cStringWithSigned (numeroProduction) ;
             ioHTMLFileContents.outputRawData ("</a></td><td><code>") ;
           }
           cProduction & p = inPureBNFproductions.mProductionArray (numeroProduction COMMA_HERE) ;
@@ -170,9 +170,9 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
 //--- Bilan de l'analyse
   if (inVerboseOptionOn) {
     if (nombreDeConflits == 0) {
-      co << "ok.\n" ;
+      co += "ok.\n" ;
     }else{
-      co << "error.\n" ;
+      co += "error.\n" ;
     }
     co.flush () ;
   }
@@ -236,12 +236,13 @@ void cEcrireNonTerminal::action (const bool tableauDesValeurs [],
   }
   aIndice ++ ;
   if (aIndice == 2) {
-    mFichierBNF << "\n" ;
+    mFichierBNF += "\n" ;
     aIndice = 0 ;
   }
-  mFichierBNF << aNomClasseLexique << "::kToken_"
-              << mVocabulary.getSymbol (element COMMA_HERE).identifierRepresentation ()
-              << ", " ;
+  mFichierBNF += aNomClasseLexique ;
+  mFichierBNF += "::kToken_" ;
+  mFichierBNF += mVocabulary.getSymbol (element COMMA_HERE).identifierRepresentation () ;
+  mFichierBNF += ", " ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -261,16 +262,18 @@ engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
       const int32_t indiceProduction = inPureBNFproductions.tableauIndirectionProduction (first COMMA_HERE) ;
       inPureBNFproductions.mProductionArray (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP, inSyntaxDirectedTranslationVarName) ;
     }else{ // Plusieurs inPureBNFproductions : engendrer l'aiguillage
-      fichierCPP << "  switch (inLexique->nextProductionIndex ()) {\n" ;
+      fichierCPP += "  switch (inLexique->nextProductionIndex ()) {\n" ;
       for (int32_t j=first ; j<=derniere ; j++) {
-        fichierCPP << "  case " << cStringWithSigned ((int32_t)(j - first + 1)) << " :\n  " ;
+        fichierCPP += "  case " ;
+        fichierCPP += cStringWithSigned ((int32_t)(j - first + 1)) ;
+        fichierCPP += " :\n  " ;
         const int32_t indiceProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
         inPureBNFproductions.mProductionArray (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP, inSyntaxDirectedTranslationVarName) ;
-        fichierCPP << "    break ;\n" ;
+        fichierCPP += "    break ;\n" ;
       }
-      fichierCPP << "  default :\n"
-                 << "    break ;\n"
-                 << "  }\n" ;
+      fichierCPP += "  default :\n" ;
+      fichierCPP += "    break ;\n" ;
+      fichierCPP += "  }\n" ;
     }
   }
 }
@@ -332,43 +335,44 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
       inVocabulary.printInFile (title, p.leftNonTerminalIndex () COMMA_HERE) ;
       const C_ProductionNameDescriptor description (title, p.sourceFileName (), (uint32_t) ioProductionIndex) ;
       ioProductionRuleDescription.appendObject (description) ;
-      title << ", in file '" 
-            << p.sourceFileName ()
-            << ".ggs', line "
-            << cStringWithSigned (p.lineDefinition ()) ;
-      inCppFile << "// At index "
-                << cStringWithSigned (ioProductionIndex)
-                << " : "
-                << title 
-                << "\n" ;
+      title += ", in file '" ;
+      title += p.sourceFileName () ;
+      title += ".ggs', line " ;
+      title += cStringWithSigned (p.lineDefinition ()) ;
+      inCppFile += "// At index " ;
+      inCppFile += cStringWithSigned (ioProductionIndex) ;
+      inCppFile += " : " ;
+      inCppFile += title ;
+      inCppFile += "\n" ;
       ioProductionRulesTitle.appendObjectUsingSwap (title) ;
       const int32_t derivationLength = p.derivationLength () ;
       for (int32_t item=0 ; item<=derivationLength ; item++) {
         if (ioFirst) {
-          inCppFile << "  " ;
+          inCppFile += "  " ;
           ioFirst = false ;
         }else{
-          inCppFile << ", " ;
+          inCppFile += ", " ;
         }
         if (item < derivationLength) {
           const int32_t v = p.derivationAtIndex (item COMMA_HERE) ;
           if (v < inVocabulary.getTerminalSymbolsCount ()) {
-            inCppFile << "TERMINAL ("
-                    << "C_Lexique_" << inLexiqueName.identifierRepresentation ()
-                    << "::kToken_"
-                    << inVocabulary.getSymbol (v COMMA_HERE).identifierRepresentation ()
-                    << ") // $"
-                    << inVocabulary.getSymbol (v COMMA_HERE) 
-                    << "$\n" ;
+            inCppFile += "TERMINAL (" ;
+            inCppFile += "C_Lexique_" ;
+            inCppFile += inLexiqueName.identifierRepresentation () ;
+            inCppFile += "::kToken_" ;
+            inCppFile += inVocabulary.getSymbol (v COMMA_HERE).identifierRepresentation () ;
+            inCppFile += ") // $" ;
+            inCppFile += inVocabulary.getSymbol (v COMMA_HERE) ;
+            inCppFile += "$\n" ;
           }else{
-            inCppFile << "NONTERMINAL ("
-                      << cStringWithSigned ((int32_t) (v - inVocabulary.getTerminalSymbolsCount ()))
-                      << ") // <"
-                      << inVocabulary.getSymbol (v COMMA_HERE) 
-                      << ">\n" ;        
+            inCppFile += "NONTERMINAL (" ;
+            inCppFile += cStringWithSigned ((int32_t) (v - inVocabulary.getTerminalSymbolsCount ())) ;
+            inCppFile += ") // <" ;
+            inCppFile += inVocabulary.getSymbol (v COMMA_HERE) ;
+            inCppFile += ">\n" ;
           } 
         }else{
-          inCppFile << "END_PRODUCTION\n" ;
+          inCppFile += "END_PRODUCTION\n" ;
         }
       }
       ioProductionIndex = (int16_t) (ioProductionIndex + derivationLength + 1) ;
@@ -387,42 +391,43 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
                     TC_UniqueArray <int16_t> & ioProductionDecisionTableIndex,
                     AC_OutputStream & inCppFile) {
   ioProductionDecisionTableIndex.appendObject (ioDecisionTableIndex) ;
-  inCppFile << "// At index "
-            << cStringWithSigned (ioDecisionTableIndex)
-            << " : <"
-            << inVocabulary.getSymbol (inNonterminalIndex + inVocabulary.getTerminalSymbolsCount () COMMA_HERE)
-            << ">" ;
+  inCppFile += "// At index " ;
+  inCppFile += cStringWithSigned (ioDecisionTableIndex) ;
+  inCppFile += " : <" ;
+  inCppFile += inVocabulary.getSymbol (inNonterminalIndex + inVocabulary.getTerminalSymbolsCount () COMMA_HERE) ;
+  inCppFile += ">" ;
   const int32_t firstProduction = inPureBNFproductions.tableauIndicePremiereProduction (inNonterminalIndex COMMA_HERE) ;
   if (firstProduction >= 0) { // At least one production
     const int32_t lastProduction = inPureBNFproductions.tableauIndiceDerniereProduction (inNonterminalIndex COMMA_HERE) ;
     if (firstProduction == lastProduction) { // Only one production, no choice
-      inCppFile << " only one production, no choice\n"
+      inCppFile += " only one production, no choice\n"
                    "  -1,\n" ;
       ioDecisionTableIndex ++ ;
     }else{ // Several productions : generate decision table
-      inCppFile << "\n" ;
+      inCppFile += "\n" ;
       for (int32_t j=firstProduction ; j<=lastProduction ; j++) {
         cProduction & p = inPureBNFproductions.mProductionArray (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
         TC_UniqueArray <uint64_t> array ;
         p.derivationFirst ().getValueArray (array) ;
         for (int32_t i=0 ; i < array.count () ; i++) {
           const uint64_t symbol = array (i COMMA_HERE) ;
-          inCppFile << "C_Lexique_" << inLexiqueName.identifierRepresentation ()
-                    << "::kToken_"
-                    << inVocabulary.getSymbol ((int32_t) symbol COMMA_HERE).identifierRepresentation ()
-                    << ", " ;
+          inCppFile += "C_Lexique_" ;
+          inCppFile += inLexiqueName.identifierRepresentation () ;
+          inCppFile += "::kToken_" ;
+          inCppFile += inVocabulary.getSymbol ((int32_t) symbol COMMA_HERE).identifierRepresentation () ;
+          inCppFile += ", " ;
         }
-        inCppFile << "-1, // Choice "
-                  << cStringWithSigned ((int32_t)(j - firstProduction + 1))
-                  << "\n" ;
+        inCppFile += "-1, // Choice " ;
+        inCppFile += cStringWithSigned ((int32_t)(j - firstProduction + 1)) ;
+        inCppFile += "\n" ;
         ioDecisionTableIndex = (int16_t) (ioDecisionTableIndex + (int16_t) p.derivationFirst ().value64Count ()) ;
         ioDecisionTableIndex ++ ;
       }
-      inCppFile << "  -1,\n" ;
+      inCppFile += "  -1,\n" ;
       ioDecisionTableIndex ++ ;
     }
    }else{
-    inCppFile << " no production\n" ;
+    inCppFile += " no production\n" ;
   }
 }
 
@@ -807,14 +812,18 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
         ioCppFileContents += "        }\n"
                              "      }else{\n"
                              "        C_String message ;\n"
-                             "        message << \"the '\" << filePath << \"' file exists, but cannot be read\" ;\n"
+                             "        message += \"the '\" ;\n"
+                             "        message += filePath ;\n"
+                             "        message += \"' file exists, but cannot be read\" ;\n"
                              "        const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;\n"
                              "        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;\n"
                              "      }\n"
                              "      macroDetachSharedObject (scanner) ;\n"
                              "    }else{\n"
                              "      C_String message ;\n"
-                             "      message << \"the '\" << filePath << \"' file does not exist\" ;\n"
+                             "      message += \"the '\"  ;\n"
+                             "      message += filePath ;\n"
+                             "      message += \"' file does not exist\" ;\n"
                              "      const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;\n"
                              "      inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;\n"
                              "    }\n"
@@ -889,7 +898,8 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
           numeroParametre ++ ;
         }
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
-          ioCppFileContents << inSyntaxDirectedTranslationVarName << ", " ;
+          ioCppFileContents += inSyntaxDirectedTranslationVarName ;
+          ioCppFileContents += ", " ;
         }
         ioCppFileContents += "scanner) ;\n"
                           "    }\n"

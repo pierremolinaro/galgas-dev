@@ -9,17 +9,17 @@
 % for (mValue) in IMPORTED_COMPONENT_LIST do
     %#include "%!mValue%.h"\n%
   end%
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 //                      print_tool_help_message                                                  
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static void print_tool_help_message (void) {
-  co << "Compiled with GALGAS revision NUMERO_REVISION_GALGAS\\n" ;
+  co += "Compiled with GALGAS revision NUMERO_REVISION_GALGAS\\n" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static const char * kSourceFileExtensions [] = {
 %
@@ -29,7 +29,7 @@ end
 %  nullptr
 } ;    
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 static const char * kSourceFileHelpMessages [] = {
 %
@@ -39,18 +39,18 @@ end
 %  nullptr
 } ;    
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 const char * projectVersionString (void) {
   return %![PROJECT_VERSION_STRING utf8RepresentationEscapingQuestionMark]% ;
 }
 
 %!BEFORE_AFTER_RULE_IMPLEMENTATION_STRING
-%//----------------------------------------------------------------------------------------------------------------------
+%//--------------------------------------------------------------------------------------------------
 //
 //                      M A I N    F O R    L I B P M                                            
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 int mainForLIBPM (int inArgc, const char * inArgv []) {
 //--- Analyze Command Line Options
@@ -66,7 +66,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
   C_String executionModeOptionErrorMessage ;
   setExecutionMode (executionModeOptionErrorMessage) ;
   if (executionModeOptionErrorMessage.length () > 0) {
-    co << executionModeOptionErrorMessage ;
+    co += executionModeOptionErrorMessage ;
     returnCode = 1 ;
   }else{
   //--- Common lexique object
@@ -156,21 +156,23 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
       if (verboseOptionOn || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {
         C_String message ;
         if (totalWarningCount () == 0) {
-          message << "No warning" ;
+          message += "No warning" ;
         }else if (totalWarningCount () == 1) {
-          message << "1 warning" ;
+          message += "1 warning" ;
         }else{
-          message << cStringWithSigned (totalWarningCount ()) << " warnings" ;
+          message += cStringWithSigned (totalWarningCount ()) ;
+          message += " warnings" ;
         }
-        message << ", " ;
+        message += ", " ;
         if (totalErrorCount () == 0) {
-          message << "no error" ;
+          message += "no error" ;
         }else if (totalErrorCount () == 1) {
-          message << "1 error" ;
+          message += "1 error" ;
         }else{
-          message << cStringWithSigned (totalErrorCount ()) << " errors" ;
+          message += cStringWithSigned (totalErrorCount ()) ;
+          message += " errors" ;
         }
-        message << ".\\n" ;
+        message += ".\\n" ;
         ggs_printMessage (message COMMA_HERE) ;
       }
     }catch (const ::std::exception & e) {

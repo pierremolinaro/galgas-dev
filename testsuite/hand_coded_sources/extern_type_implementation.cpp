@@ -27,13 +27,15 @@ void GALGAS_complex::drop (void) {
 
 void GALGAS_complex::description (C_String & ioString,
                                   const int32_t /* inIndentation */) const {
-  ioString << "<@complex:" ;
+  ioString += "<@complex:" ;
   if (mIsValid) {
-    ioString << cStringWithDouble (mReal) << ", " << cStringWithDouble (mImaginary) ;
+    ioString += cStringWithDouble (mReal) ;
+    ioString += ", " ;
+    ioString += cStringWithDouble (mImaginary) ;
   }else{
-    ioString << "invalid" ;
+    ioString += "invalid" ;
   }
-  ioString << ">" ;
+  ioString += ">" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -51,7 +53,7 @@ typeComparisonResult GALGAS_complex::objectCompare (const GALGAS_complex & inOpe
       result = kFirstOperandGreaterThanSecond ;
     }else{
       result = kOperandEqual ;
-    }  
+    }
   }
   return result ;
 }

@@ -51,7 +51,7 @@ override method @templateInstructionStringForGeneration templateCodeGeneration
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@bool unused ioUseColumnMarker {
-  ioGeneratedCode += "result << " + [self.mTemplateString utf8RepresentationEscapingQuestionMark] + " ;\n"
+  ioGeneratedCode += "result += " + [self.mTemplateString utf8RepresentationEscapingQuestionMark] + " ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -64,7 +64,7 @@ override method @templateInstructionExpressionForGeneration templateCodeGenerati
   ?!@bool unused ioUseColumnMarker {
 #--- Expression
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let cppName]
-  ioGeneratedCode += "result << " + cppName + ".stringValue () ;\n"
+  ioGeneratedCode += "result += " + cppName + ".stringValue () ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
