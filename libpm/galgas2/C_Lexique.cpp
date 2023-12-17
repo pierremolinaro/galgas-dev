@@ -107,7 +107,7 @@ mLatexNextCharacterToEnterIndex (0) {
     PMTextFileEncoding textFileEncoding ;
     const String sourceString = C_FileManager::stringWithContentOfFile (inSourceFileName, textFileEncoding, ok) ;
     if (ok) {
-      const C_SourceTextInString source (sourceString,
+      const SourceTextInString source (sourceString,
                                          inSourceFileName,
                                          false) ; // Do not print source string
       resetAndLoadSourceFromText (source) ;
@@ -147,7 +147,7 @@ mArrayForSecondPassParsing (),
 mIndexForSecondPassParsing (0),
 mLatexOutputString (),
 mLatexNextCharacterToEnterIndex (0) {
-  const C_SourceTextInString source (inSourceString, inStringForError, verboseOutput ()) ;
+  const SourceTextInString source (inSourceString, inStringForError, verboseOutput ()) ;
   resetAndLoadSourceFromText (source) ;
   mTokenStartLocation.resetWithSourceText (source) ;
   mTokenEndLocation.resetWithSourceText (source) ;

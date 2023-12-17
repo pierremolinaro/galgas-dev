@@ -26,7 +26,7 @@
 #include "strings/String-class.h"
 #include "utilities/C_SharedObject.h"
 #include "galgas2/LocationInSource.h"
-#include "galgas2/C_SourceTextInString.h"
+#include "galgas2/SourceTextInString.h"
 #include "galgas2/C_IssueWithFixIt.h"
 #include "galgas2/cIssueDescriptor.h"
 
@@ -77,10 +77,10 @@ class Compiler : public C_SharedObject {
   public: void resetTemplateString (void) ;
 
 //--- Handling current character and its location
-  private: C_SourceTextInString mSourceText ;
+  private: SourceTextInString mSourceText ;
   protected: LocationInSource mCurrentLocation ;
 
-  public: inline C_SourceTextInString sourceText (void) const {
+  public: inline SourceTextInString sourceText (void) const {
     return mSourceText ;
   }
 
@@ -127,7 +127,7 @@ class Compiler : public C_SharedObject {
   public: virtual String separatorString (void) const { return "" ; }
 
 //--- Init scanner from source file (for Cocoa GALGAS)
-  public: void resetAndLoadSourceFromText (const C_SourceTextInString & inSourceText) ;
+  public: void resetAndLoadSourceFromText (const SourceTextInString & inSourceText) ;
 
 //--- Print a message
   public: void printMessage (const GALGAS_string & inMessage COMMA_LOCATION_ARGS) ;

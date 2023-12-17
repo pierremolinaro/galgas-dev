@@ -17,7 +17,7 @@
 
 #include "utilities/MF_MemoryControl.h"
 #include "strings/C_HTMLString.h"
-#include "galgas2/C_SourceTextInString.h"
+#include "galgas2/SourceTextInString.h"
 
 //--------------------------------------------------------------------------------------------------
 

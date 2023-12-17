@@ -126,7 +126,7 @@
        "Compiler.cpp",
        "C_Lexique.cpp",
        "LocationInSource.cpp",
-       "C_SourceTextInString.cpp",
+       "SourceTextInString.cpp",
        "C_galgas_type_descriptor.cpp",
        "C_galgas_function_descriptor.cpp",
        "C_galgas_io.cpp",

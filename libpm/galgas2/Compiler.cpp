@@ -124,7 +124,7 @@ void Compiler::writeIssueJSONFile (const String & inFile) {
       fatalError (message, "", 0) ;
     }
   }else{
-    ggs_printWarning (this, C_SourceTextInString (), C_IssueWithFixIt (), String ("Need to replace '") + inFile + "'.\n" COMMA_HERE) ;
+    ggs_printWarning (this, SourceTextInString (), C_IssueWithFixIt (), String ("Need to replace '") + inFile + "'.\n" COMMA_HERE) ;
   }
 }
 
@@ -172,7 +172,7 @@ void Compiler::resetTemplateString (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void Compiler::resetAndLoadSourceFromText (const C_SourceTextInString & inSourceText) {
+void Compiler::resetAndLoadSourceFromText (const SourceTextInString & inSourceText) {
   mSourceText = inSourceText ;
   mCurrentLocation.resetWithSourceText (mSourceText) ;
 }
@@ -587,7 +587,7 @@ void Compiler::generateFileFromPathes (const String & inStartPath,
         ggs_printFileOperationSuccess (String ("Created '") + fileName + "'.\n") ;
       }
     }else{
-      ggs_printWarning (this, C_SourceTextInString(), C_IssueWithFixIt (), String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
+      ggs_printWarning (this, SourceTextInString(), C_IssueWithFixIt (), String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
     }
   }else{
     const String previousContents = C_FileManager::stringWithContentOfFile (fullPathName) ;
@@ -608,7 +608,7 @@ void Compiler::generateFileFromPathes (const String & inStartPath,
           }
         }
       }else{
-        ggs_printWarning (this, C_SourceTextInString (), C_IssueWithFixIt (), String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
+        ggs_printWarning (this, SourceTextInString (), C_IssueWithFixIt (), String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
       }
     }
   }
@@ -681,7 +681,7 @@ void Compiler::generateFileWithPatternFromPathes (
         #endif
       }
     }else{
-      ggs_printWarning (this, C_SourceTextInString (), C_IssueWithFixIt (), String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
+      ggs_printWarning (this, SourceTextInString (), C_IssueWithFixIt (), String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
     }
   }else{
     String firstUserPart ;
@@ -717,7 +717,7 @@ void Compiler::generateFileWithPatternFromPathes (
       secondGeneratedPart = stringArray (1 COMMA_HERE) ;
     }
     if (! ok) {
-      ggs_printError (this, C_SourceTextInString (), C_IssueWithFixIt (), String ("BAD FILE '") + fullPathName + "'.\n" COMMA_HERE) ;
+      ggs_printError (this, SourceTextInString (), C_IssueWithFixIt (), String ("BAD FILE '") + fullPathName + "'.\n" COMMA_HERE) ;
     }else if ((header == inHeader) && (firstGeneratedPart == inGeneratedZone2) && (secondGeneratedPart == inGeneratedZone3)) {
     }else if (performGeneration ()) {
       C_TextFileWrite f (fullPathName) ;
@@ -750,7 +750,7 @@ void Compiler::generateFileWithPatternFromPathes (
         #endif
       }
     }else{
-      ggs_printWarning (this, C_SourceTextInString (), C_IssueWithFixIt (), String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
+      ggs_printWarning (this, SourceTextInString (), C_IssueWithFixIt (), String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
     }
   }
 }

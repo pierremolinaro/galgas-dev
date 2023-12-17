@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_SourceTextInString'
+//  'SourceTextInString'
 //
 //  This file is part of libpm library
 //
@@ -54,21 +54,21 @@ class cSourceTextInString final : public C_SharedObject {
 
 //--------------------------------------------------------------------------------------------------
 
-class C_SourceTextInString {
+class SourceTextInString final {
 //--- Default constructor
-  public: C_SourceTextInString (void) ;
+  public: SourceTextInString (void) ;
 
 //--- Constructor
-  public: C_SourceTextInString (const String & inSourceString,
-                                 const String & inFilePath,
-                                 const bool inShowSourceOnDetailledErrorMessage) ;
+  public: SourceTextInString (const String & inSourceString,
+                              const String & inFilePath,
+                              const bool inShowSourceOnDetailledErrorMessage) ;
 
 //--- Default constructor
-  public: virtual ~ C_SourceTextInString (void) ;
+  public: ~ SourceTextInString (void) ;
 
 //--- Handle copy
-  public: C_SourceTextInString (const C_SourceTextInString & inSource) ;
-  public: C_SourceTextInString & operator = (const C_SourceTextInString & inSource) ;
+  public: SourceTextInString (const SourceTextInString & inSource) ;
+  public: SourceTextInString & operator = (const SourceTextInString & inSource) ;
 
   public: inline String sourceFilePath (void) const {
     return (mObject == nullptr) ? "" : mObject->mFilePath ;
@@ -83,11 +83,11 @@ class C_SourceTextInString {
     return mObject != nullptr ;
   }
 
-  public: inline bool operator == (const C_SourceTextInString & inOther) const {
+  public: inline bool operator == (const SourceTextInString & inOther) const {
     return mObject == inOther.mObject ;
   }
 
-  public: inline bool operator != (const C_SourceTextInString & inOther) const {
+  public: inline bool operator != (const SourceTextInString & inOther) const {
     return mObject != inOther.mObject ;
   }
 

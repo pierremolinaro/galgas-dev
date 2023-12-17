@@ -36,7 +36,7 @@ mIsValid (false) {
 
 GALGAS_location::GALGAS_location (const LocationInSource & inStartLocationInSource,
                                   const LocationInSource & inEndLocationInSource,
-                                  const C_SourceTextInString & inSourceText) :
+                                  const SourceTextInString & inSourceText) :
 AC_GALGAS_root (),
 mStartLocationInSource (inStartLocationInSource),
 mEndLocationInSource (inEndLocationInSource),

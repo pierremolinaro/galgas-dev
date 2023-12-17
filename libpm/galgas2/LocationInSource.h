@@ -24,7 +24,7 @@
 
 #include "utilities/M_machine.h"
 #include "utilities/MF_Assert.h"
-#include "galgas2/C_SourceTextInString.h"
+#include "galgas2/SourceTextInString.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -40,7 +40,7 @@ class LocationInSource final {
   private: int32_t mIndex ;
   private: int32_t mLineNumber ;
   private: int32_t mColumnNumber ;
-  private: C_SourceTextInString mSourceText ;
+  private: SourceTextInString mSourceText ;
 
   public: LocationInSource (void) ;
 
@@ -50,13 +50,13 @@ class LocationInSource final {
 
   public: void resetLocation (void) ;
 
-  public: void resetWithSourceText (const C_SourceTextInString & inSourceText) ;
+  public: void resetWithSourceText (const SourceTextInString & inSourceText) ;
 
   public: inline int32_t index (void) const { return mIndex ; }
 
-  public: inline int32_t lineNumber (void) const { return mLineNumber ; }
+  public: int32_t lineNumber (void) const ;
 
-  public: inline int32_t columnNumber (void) const { return mColumnNumber ; }
+  public: int32_t columnNumber (void) const ;
 
 //  public: LineColumnContents lineColumnNumber (void) const ;
 

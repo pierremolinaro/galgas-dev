@@ -29,7 +29,7 @@
 #include "strings/String-class.h"
 #include "generic-arraies/TC_UniqueArray.h"
 #include "galgas2/LocationInSource.h"
-#include "galgas2/C_SourceTextInString.h"
+#include "galgas2/SourceTextInString.h"
 #include "galgas2/C_IssueWithFixIt.h"
 #include "utilities/C_SharedObject.h"
 
@@ -149,7 +149,7 @@ int32_t maxWarningCount (void) ;
 int32_t totalWarningCount (void) ;
  
 void signalParsingError (Compiler * inCompiler,
-                         const C_SourceTextInString & inSourceText,
+                         const SourceTextInString & inSourceText,
                          const LocationInSource & inPreviousTokenEndLocation,
                          const C_IssueWithFixIt & inIssue,
                          const String & inFoundTokenMessage,
@@ -157,14 +157,14 @@ void signalParsingError (Compiler * inCompiler,
                          COMMA_LOCATION_ARGS) ;
 
 void signalExtractError (Compiler * inCompiler,
-                         const C_SourceTextInString & inSourceText,
+                         const SourceTextInString & inSourceText,
                          const C_IssueWithFixIt & inIssue,
                          const TC_UniqueArray <String> & inExpectedClassesErrorStringsArray,
                          const String & inActualFoundClassErrorString
                          COMMA_LOCATION_ARGS) ;
 
 void signalCastError (Compiler * inCompiler,
-                      const C_SourceTextInString & inSourceText,
+                      const SourceTextInString & inSourceText,
                       const C_IssueWithFixIt & inIssue,
                       const std::type_info * inBaseClass,
                       const bool inUseKindOfClass,
@@ -172,25 +172,25 @@ void signalCastError (Compiler * inCompiler,
                       COMMA_LOCATION_ARGS) ;
 
 void signalLexicalWarning (Compiler * inCompiler,
-                           const C_SourceTextInString & inSourceText,
+                           const SourceTextInString & inSourceText,
                            const C_IssueWithFixIt & inIssue,
                            const String & inLexicalWarningMessage
                            COMMA_LOCATION_ARGS) ;
 
 void signalLexicalError (Compiler * inCompiler,
-                         const C_SourceTextInString & inSourceText,
+                         const SourceTextInString & inSourceText,
                          const C_IssueWithFixIt & inIssue,
                          const String & inLexicalErrorMessage
                          COMMA_LOCATION_ARGS) ;
 
 void signalSemanticWarning (Compiler * inCompiler,
-                            const C_SourceTextInString & inSourceText,
+                            const SourceTextInString & inSourceText,
                             const C_IssueWithFixIt & inIssue,
                             const String & inWarningMessage
                             COMMA_LOCATION_ARGS) ;
 
 void signalSemanticError (Compiler * inCompiler,
-                          const C_SourceTextInString & inSourceText,
+                          const SourceTextInString & inSourceText,
                           const C_IssueWithFixIt & inIssue,
                           const String & inErrorMessage
                           COMMA_LOCATION_ARGS) ;
@@ -204,13 +204,13 @@ void signalRunTimeWarning (Compiler * inCompiler,
                            COMMA_LOCATION_ARGS) ;
 
 void ggs_printError (Compiler * inCompiler,
-                     const C_SourceTextInString & inSourceText,
+                     const SourceTextInString & inSourceText,
                      const C_IssueWithFixIt & inIssue,
                      const String & inMessage
                      COMMA_LOCATION_ARGS) ;
 
 void ggs_printWarning (Compiler * inCompiler,
-                       const C_SourceTextInString & inSourceText,
+                       const SourceTextInString & inSourceText,
                        const C_IssueWithFixIt & inIssue,
                        const String & inMessage
                        COMMA_LOCATION_ARGS) ;

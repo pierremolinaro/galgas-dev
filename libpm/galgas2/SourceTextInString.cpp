@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_SourceTextInString'
+//  'SourceTextInString'
 //
 //  This file is part of libpm library
 //
@@ -18,18 +18,18 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "galgas2/C_SourceTextInString.h"
+#include "galgas2/SourceTextInString.h"
 #include "galgas2/LocationInSource.h"
 
 //--------------------------------------------------------------------------------------------------
 
-C_SourceTextInString::C_SourceTextInString (void) :
+SourceTextInString::SourceTextInString (void) :
 mObject (nullptr) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-C_SourceTextInString::C_SourceTextInString (const String & inSourceString,
+SourceTextInString::SourceTextInString (const String & inSourceString,
                                             const String & inFilePath,
                                             const bool inShowSourceOnDetailledErrorMessage) :
 mObject (nullptr) {
@@ -38,20 +38,20 @@ mObject (nullptr) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_SourceTextInString::~ C_SourceTextInString (void) {
+SourceTextInString::~ SourceTextInString (void) {
   macroDetachSharedObject (mObject) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-C_SourceTextInString::C_SourceTextInString (const C_SourceTextInString & inSource) :
+SourceTextInString::SourceTextInString (const SourceTextInString & inSource) :
 mObject (nullptr) {
   macroAssignSharedObject (mObject, inSource.mObject) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-C_SourceTextInString & C_SourceTextInString::operator = (const C_SourceTextInString & inSource) {
+SourceTextInString & SourceTextInString::operator = (const SourceTextInString & inSource) {
   if (this != & inSource) {
     macroAssignSharedObject (mObject, inSource.mObject) ;
   }
@@ -60,7 +60,7 @@ C_SourceTextInString & C_SourceTextInString::operator = (const C_SourceTextInStr
 
 //--------------------------------------------------------------------------------------------------
 
-String C_SourceTextInString::getLineForLocation (const LocationInSource & inLocation) const {
+String SourceTextInString::getLineForLocation (const LocationInSource & inLocation) const {
   String errorLine ;
   if (nullptr != mObject) {
     const int32_t sourceTextLength = mObject->mSourceString.length () ;
@@ -85,7 +85,7 @@ String C_SourceTextInString::getLineForLocation (const LocationInSource & inLoca
 
 //--------------------------------------------------------------------------------------------------
 
-void C_SourceTextInString::appendSourceContents (String & ioMessage) const {
+void SourceTextInString::appendSourceContents (String & ioMessage) const {
   if ((nullptr != mObject) && mObject->mShowSourceOnDetailledErrorMessage) {
     const bool insertCarriageReturn = (mObject->mSourceString.length () > 0) && (UNICODE_VALUE (mObject->mSourceString.lastCharacter (HERE)) != '\n')  ;
     ioMessage += "-- SOURCE STRING (--verbose option) --\n" ;

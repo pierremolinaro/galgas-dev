@@ -126,7 +126,7 @@ int32_t totalWarningCount (void) {
 //--------------------------------------------------------------------------------------------------
 
 static String errorOrWarningLocationString (const C_IssueWithFixIt & inIssue,
-                                              const C_SourceTextInString & inSourceText) {
+                                              const SourceTextInString & inSourceText) {
   String result ;
   if (inSourceText.isValid ()) {
     const String textLine = inSourceText.getLineForLocation (inIssue.mStartLocation) ;
@@ -146,7 +146,7 @@ static String errorOrWarningLocationString (const C_IssueWithFixIt & inIssue,
 
 static String constructErrorOrWarningLocationMessage (const String & inMessage,
                                                         const C_IssueWithFixIt & inIssue,
-                                                        const C_SourceTextInString & inSourceText) {
+                                                        const SourceTextInString & inSourceText) {
   String result ;
   if (!inSourceText.isValid ()) {
     result += inMessage ;
@@ -206,7 +206,7 @@ static String constructErrorOrWarningLocationMessage (const String & inMessage,
 //--------------------------------------------------------------------------------------------------
 
 void signalLexicalWarning (Compiler * inCompiler,
-                           const C_SourceTextInString & inSourceText,
+                           const SourceTextInString & inSourceText,
                            const C_IssueWithFixIt & inIssue,
                            const String & inLexicalWarningMessage
                            COMMA_LOCATION_ARGS) {
@@ -236,7 +236,7 @@ void signalLexicalWarning (Compiler * inCompiler,
 //--------------------------------------------------------------------------------------------------
 
 void signalLexicalError (Compiler * inCompiler,
-                         const C_SourceTextInString & inSourceText,
+                         const SourceTextInString & inSourceText,
                          const C_IssueWithFixIt & inIssue,
                          const String & inLexicalErrorMessage
                          COMMA_LOCATION_ARGS) {
@@ -265,7 +265,7 @@ void signalLexicalError (Compiler * inCompiler,
 //--------------------------------------------------------------------------------------------------
 
 void signalParsingError (Compiler * inCompiler,
-                         const C_SourceTextInString & inSourceText,
+                         const SourceTextInString & inSourceText,
                          const LocationInSource & inPreviousTokenEndLocation,
                          const C_IssueWithFixIt & inIssue,
                          const String & inFoundTokenMessage,
@@ -308,7 +308,7 @@ void signalParsingError (Compiler * inCompiler,
 //--------------------------------------------------------------------------------------------------
 
 void signalExtractError (Compiler * inCompiler,
-                         const C_SourceTextInString & inSourceText,
+                         const SourceTextInString & inSourceText,
                          const C_IssueWithFixIt & inIssue,
                          const TC_UniqueArray <String> & inExpectedClassesErrorStringsArray,
                          const String & inActualFoundClassErrorString
@@ -363,7 +363,7 @@ void signalExtractError (Compiler * inCompiler,
 //--------------------------------------------------------------------------------------------------
 
 void signalCastError (Compiler * inCompiler,
-                      const C_SourceTextInString & inSourceText,
+                      const SourceTextInString & inSourceText,
                       const C_IssueWithFixIt & inIssue,
                       const std::type_info * inBaseClass,
                       const bool inUseKindOfClass,
@@ -446,7 +446,7 @@ void signalCastError (Compiler * inCompiler,
 //--------------------------------------------------------------------------------------------------
 
 void signalSemanticWarning (Compiler * inCompiler,
-                            const C_SourceTextInString & inSourceText,
+                            const SourceTextInString & inSourceText,
                             const C_IssueWithFixIt & inIssue,
                             const String & inWarningMessage
                             COMMA_LOCATION_ARGS) {
@@ -472,7 +472,7 @@ void signalSemanticWarning (Compiler * inCompiler,
 //--------------------------------------------------------------------------------------------------
 
 void signalSemanticError (Compiler * inCompiler,
-                          const C_SourceTextInString & inSourceText,
+                          const SourceTextInString & inSourceText,
                           const C_IssueWithFixIt & inIssue,
                           const String & inErrorMessage
                           COMMA_LOCATION_ARGS) {
@@ -510,7 +510,7 @@ void signalRunTimeError (Compiler * inCompiler,
   errorMessage += inRunTimeErrorMessage ;
   errorMessage += "\n" ;
 //--- Print
-  ggs_printError (inCompiler, C_SourceTextInString (), C_IssueWithFixIt (), errorMessage COMMA_THERE) ;
+  ggs_printError (inCompiler, SourceTextInString (), C_IssueWithFixIt (), errorMessage COMMA_THERE) ;
 //--- Error max count reached ?
   if ((maxErrorCount () > 0) && (totalErrorCount () >= maxErrorCount ())) {
     throw max_error_count_reached_exception () ;
@@ -532,7 +532,7 @@ void signalRunTimeWarning (Compiler * inCompiler,
   warningMessage += inWarningMessage ;
   warningMessage += "\n" ;
 //--- Print
-  ggs_printWarning (inCompiler, C_SourceTextInString (), C_IssueWithFixIt (), warningMessage COMMA_THERE) ;
+  ggs_printWarning (inCompiler, SourceTextInString (), C_IssueWithFixIt (), warningMessage COMMA_THERE) ;
 //--- Warning max count reached ?
   if ((maxWarningCount () > 0) && (totalWarningCount () >= maxWarningCount ())) {
     throw max_warning_count_reached_exception () ;
@@ -557,7 +557,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 //--------------------------------------------------------------------------------------------------
 
 void ggs_printError (Compiler * inCompiler,
-                     const C_SourceTextInString & inSourceText,
+                     const SourceTextInString & inSourceText,
                      const C_IssueWithFixIt & inIssue,
                      const String & inMessage
                      COMMA_LOCATION_ARGS) {
@@ -619,7 +619,7 @@ void fatalError (const String & inErrorMessage,
   errorMessage.appendSigned (inSourceLine) ;
   errorMessage += "\n" ;
 //----
-  String message = constructErrorOrWarningLocationMessage (errorMessage, C_IssueWithFixIt (), C_SourceTextInString ()) ;
+  String message = constructErrorOrWarningLocationMessage (errorMessage, C_IssueWithFixIt (), SourceTextInString ()) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (verboseOutput ()) {
       message += "[Error raised from file '" ;
@@ -658,7 +658,7 @@ void fatalError (const String & inErrorMessage,
 //--------------------------------------------------------------------------------------------------
 
 void ggs_printWarning (Compiler * inCompiler,
-                       const C_SourceTextInString & inSourceText,
+                       const SourceTextInString & inSourceText,
                        const C_IssueWithFixIt & inIssue,
                        const String & inMessage
                        COMMA_LOCATION_ARGS) {

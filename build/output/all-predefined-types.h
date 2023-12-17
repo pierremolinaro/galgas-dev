@@ -61,7 +61,7 @@ class GALGAS_type ;
 //--------------------------------------------------------------------------------------------------
 
 #include "galgas2/LocationInSource.h"
-#include "galgas2/C_SourceTextInString.h"
+#include "galgas2/SourceTextInString.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -69,7 +69,7 @@ class GALGAS_location : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: LocationInSource mStartLocationInSource ;
   private: LocationInSource mEndLocationInSource ;
-  private: C_SourceTextInString mSourceText ;
+  private: SourceTextInString mSourceText ;
   private: bool mIsValid ;
 
 //--------------------------------- Accessors
@@ -78,7 +78,7 @@ class GALGAS_location : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
   public: LocationInSource startLocation (void) const { return mStartLocationInSource ; }
   public: LocationInSource endLocation (void) const { return mEndLocationInSource ; }
-  public: C_SourceTextInString sourceText (void) const { return mSourceText ; }
+  public: SourceTextInString sourceText (void) const { return mSourceText ; }
 
 //--------------------------------- Default constructor
   public: GALGAS_location (void) ;
@@ -86,7 +86,7 @@ class GALGAS_location : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GALGAS_location (const LocationInSource & inStartLocationInSource,
                             const LocationInSource & inEndLocationInSource,
-                            const C_SourceTextInString & inSourceText) ;
+                            const SourceTextInString & inSourceText) ;
 
 //-- Start of generic part --*
 

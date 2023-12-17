@@ -159,7 +159,7 @@ end
    <Unit filename="%!LIBPM_PATH%/galgas2/Compiler.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_Lexique.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/LocationInSource.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas2/C_SourceTextInString.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas2/SourceTextInString.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_type_descriptor.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_function_descriptor.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_io.cpp" />

@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "galgas2/LocationInSource.h"
-#include "galgas2/C_SourceTextInString.h"
+#include "galgas2/SourceTextInString.h"
 #include "strings/String-class.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -67,7 +67,7 @@ void LocationInSource::resetLocation (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void LocationInSource::resetWithSourceText (const C_SourceTextInString & inSourceText) {
+void LocationInSource::resetWithSourceText (const SourceTextInString & inSourceText) {
   mIndex = 0 ;
   mLineNumber = 1 ;
   mColumnNumber = 1 ;
@@ -78,6 +78,18 @@ void LocationInSource::resetWithSourceText (const C_SourceTextInString & inSourc
 
 String LocationInSource::sourceFilePath (void) const {
   return mSourceText.sourceFilePath () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+int32_t LocationInSource::lineNumber (void) const {
+  return mLineNumber ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+int32_t LocationInSource::columnNumber (void) const {
+  return mColumnNumber ;
 }
 
 //--------------------------------------------------------------------------------------------------
